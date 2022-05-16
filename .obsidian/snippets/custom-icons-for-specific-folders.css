@@ -1,0 +1,62 @@
+/* Custom icons for specific folders */
+
+/* https://forum.obsidian.md/t/add-emojis-to-folder-titles-in-explorer-without-renaming-folders/22702 */
+
+div[data-path="0_TODOs"] .nav-folder-title-content::before
+{
+  content: "⏰ ";
+}
+
+div[data-path="1_Seeds"] .nav-folder-title-content::before
+{
+  content: "📥 ";
+}
+
+div[data-path="6_Tools&Helpers"] .nav-folder-title-content::before
+{
+  content: "🔧 ";
+}
+
+div[data-path="2_MOCs"] .nav-folder-title-content::before
+{
+  content: "🗺️ ";
+}
+
+div[data-path="3_Notes"] .nav-folder-title-content::before
+{
+  content: "🗂️ ";
+}
+
+div[data-path="9_Templates"] .nav-folder-title-content::before
+{
+  content: "📐 ";
+}
+
+div[data-path="5_Topics"] .nav-folder-title-content::before
+{
+  content: "🏷️ ";
+}
+
+div[data-path="7_Ref"] .nav-folder-title-content::before
+{
+  content: "🔖 ";
+}
+
+div[data-path="8_Attachment"] .nav-folder-title-content::before
+{
+  content: "📚 ";
+}
+
+div[data-path="10_Excalidraw"] .nav-folder-title-content::before
+{
+  content: "✏️ ";
+}
+div[data-path="4_Gist"] .nav-folder-title-content::before
+{
+  content: "🔹 ";
+}
+
+div[data-path="10_Kanban"] .nav-folder-title-content::before
+{
+  content: "📜 ";
+}

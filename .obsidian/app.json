@@ -1,0 +1,26 @@
+{
+  "obsidianCss": false,
+  "spellcheck": true,
+  "readableLineLength": false,
+  "alwaysUpdateLinks": true,
+  "foldHeading": true,
+  "showLineNumber": false,
+  "showFrontmatter": false,
+  "attachmentFolderPath": "附件",
+  "defaultViewMode": "source",
+  "newFileLocation": "folder",
+  "newLinkFormat": "shortest",
+  "promptDelete": false,
+  "showUnsupportedFiles": true,
+  "foldIndent": true,
+  "fileSortOrder": "alphabetical",
+  "newFileFolderPath": "1_Seeds",
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "legacyEditor": false,
+  "livePreview": true
+}

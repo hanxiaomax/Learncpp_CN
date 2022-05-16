@@ -1,0 +1,13 @@
+{
+  "baseFontSize": 22,
+  "theme": "moonstone",
+  "translucency": false,
+  "cssTheme": "Deep Work",
+  "baseFontSizeAction": true,
+  "enabledCssSnippets": [
+    "bullet-point-relationship-lines",
+    "custom-icons-for-specific-folders",
+    "outliner-for-the-outline-and-file-explorer",
+    "supercharged-links-gen"
+  ]
+}

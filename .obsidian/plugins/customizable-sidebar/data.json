@@ -1,0 +1,34 @@
+{
+  "sidebarCommands": [
+    {
+      "id": "templater-obsidian:create-new-note-from-template",
+      "name": "Templater: Create new note from template",
+      "hotkeys": [
+        {
+          "modifiers": [
+            "Alt"
+          ],
+          "key": "n"
+        }
+      ],
+      "icon": "create-new"
+    },
+    {
+      "id": "customizable-sidebar:theme-toggle",
+      "name": "Customizable Sidebar: Toggle Dark/Light Mode",
+      "icon": "feather-eye"
+    },
+    {
+      "id": "obsidian-emoji-toolbar:emoji-picker:open-picker",
+      "name": "Emoji Toolbar: Open emoji picker",
+      "hotkeys": [],
+      "icon": "feather-meh"
+    },
+    {
+      "id": "sliding-panes-obsidian:toggle-sliding-panes",
+      "name": "Sliding Panes (Andy's Mode): Toggle Sliding Panes",
+      "icon": "feather-sliders"
+    }
+  ],
+  "hiddenCommands": []
+}

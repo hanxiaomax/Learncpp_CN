@@ -1,0 +1,44 @@
+{
+  "collapse-filter": false,
+  "search": "-path:Excalidraw -path:9_Templates",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "file:/^@.*/",
+      "color": {
+        "a": 1,
+        "rgb": 5415904
+      }
+    },
+    {
+      "query": "file:/.MOC/",
+      "color": {
+        "a": 1,
+        "rgb": 3728740
+      }
+    },
+    {
+      "query": "file:/^_.*/",
+      "color": {
+        "a": 1,
+        "rgb": 15728640
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -2.6,
+  "nodeSizeMultiplier": 1.46590757978723,
+  "lineSizeMultiplier": 2.20424700797872,
+  "collapse-forces": false,
+  "centerStrength": 0.333147321428571,
+  "repelStrength": 13.9285714285714,
+  "linkStrength": 0.776387117346939,
+  "linkDistance": 148,
+  "scale": 0.07569614409302239,
+  "close": false
+}

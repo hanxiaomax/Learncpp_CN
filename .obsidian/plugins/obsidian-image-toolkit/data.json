@@ -1,0 +1,14 @@
+{
+  "viewImageGlobal": true,
+  "viewImageEditor": true,
+  "viewImageToggle": true,
+  "viewImageInCPB": true,
+  "viewImageWithALink": true,
+  "imageMoveSpeed": 10,
+  "imgTipToggle": true,
+  "imgFullScreenMode": "FIT",
+  "imageBorderToggle": false,
+  "imageBorderWidth": "medium",
+  "imageBorderStyle": "solid",
+  "imageBorderColor": "red"
+}
