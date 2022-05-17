@@ -112,6 +112,7 @@
   "active": "2211ac01cffb708d",
   "lastOpenFiles": [
     "C++ Basics/1.5 iostream 简介： cout，cin 和 endl.md",
+    "2.9 名称冲突和命名空间简介.md",
     "C++ Basics/1.4 变量赋值和初始化.md",
     "C++ Basics/1.6 未初始化值和未定义行为.md",
     "C++ Basics/1.3 对象和变量.md",
@@ -119,7 +120,6 @@
     "C++ Basics/1.2 Comments.md",
     "C++ Basics/1.1 Statements and the structure of a pogram.md",
     "_HOME/_HOME.md",
-    "1_Seeds/Typescript.md",
-    "2_MOCs/Computer Science MOC.md"
+    "1_Seeds/Typescript.md"
   ]
 }

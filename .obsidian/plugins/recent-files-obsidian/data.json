@@ -5,6 +5,10 @@
       "path": "C++ Basics/1.5 iostream 简介： cout，cin 和 endl.md"
     },
     {
+      "basename": "2.9 名称冲突和命名空间简介",
+      "path": "2.9 名称冲突和命名空间简介.md"
+    },
+    {
       "basename": "1.4 变量赋值和初始化",
       "path": "C++ Basics/1.4 变量赋值和初始化.md"
     },
