@@ -5,6 +5,14 @@
       "path": "C++ Basics/1.4 变量赋值和初始化.md"
     },
     {
+      "basename": "1.6 未初始化值和未定义行为",
+      "path": "C++ Basics/1.6 未初始化值和未定义行为.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
       "basename": "1.3 对象和变量",
       "path": "C++ Basics/1.3 对象和变量.md"
     },
@@ -15,10 +23,6 @@
     {
       "basename": "1.1 Statements and the structure of a pogram",
       "path": "C++ Basics/1.1 Statements and the structure of a pogram.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
     },
     {
       "basename": "_HOME",
