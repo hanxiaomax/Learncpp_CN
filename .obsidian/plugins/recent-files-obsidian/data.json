@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "1.6 未初始化值和未定义行为",
+      "path": "1_C++ 基础/1.6 未初始化值和未定义行为.md"
+    },
+    {
       "basename": "1.5 iostream 简介： cout，cin 和 endl",
       "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
+    },
+    {
+      "basename": "1.9 字面量和操作符",
+      "path": "1_C++ 基础/1.9 字面量和操作符.md"
     },
     {
       "basename": "2.9 名称冲突和命名空间简介",
@@ -11,10 +19,6 @@
     {
       "basename": "1.4 变量赋值和初始化",
       "path": "1_C++ 基础/1.4 变量赋值和初始化.md"
-    },
-    {
-      "basename": "1.6 未初始化值和未定义行为",
-      "path": "1_C++ 基础/1.6 未初始化值和未定义行为.md"
     },
     {
       "basename": "1.3 对象和变量",
