@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "C++ Basics/1.3 Introduction to objects and variables.md",
+            "file": "C++ Basics/1.4 变量赋值和初始化.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++ Basics/1.3 Introduction to objects and variables.md",
+                "file": "C++ Basics/1.4 变量赋值和初始化.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++ Basics/1.3 Introduction to objects and variables.md"
+                "file": "C++ Basics/1.4 变量赋值和初始化.md"
               }
             }
           }
@@ -111,7 +111,8 @@
   },
   "active": "2211ac01cffb708d",
   "lastOpenFiles": [
-    "C++ Basics/1.3 Introduction to objects and variables.md",
+    "C++ Basics/1.4 变量赋值和初始化.md",
+    "C++ Basics/1.3 对象和变量.md",
     "C++ Basics/1.2 Comments.md",
     "C++ Basics/1.1 Statements and the structure of a pogram.md",
     "README.md",
@@ -119,7 +120,6 @@
     "1_Seeds/Typescript.md",
     "2_MOCs/Computer Science MOC.md",
     "1_Seeds/VS Code.md",
-    "1_Seeds/插件开发obsidian发布到vuepress.md",
-    "3_Notes/基于 Obsidian 构建数字笔记.md"
+    "1_Seeds/插件开发obsidian发布到vuepress.md"
   ]
 }
