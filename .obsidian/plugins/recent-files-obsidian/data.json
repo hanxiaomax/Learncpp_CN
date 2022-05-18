@@ -5,12 +5,12 @@
       "path": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md"
     },
     {
-      "basename": "1.5 iostream 简介： cout，cin 和 endl",
-      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
-    },
-    {
       "basename": "1.9 字面量和操作符",
       "path": "1_C++ 基础/1.9 字面量和操作符.md"
+    },
+    {
+      "basename": "1.5 iostream 简介： cout，cin 和 endl",
+      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
     },
     {
       "basename": "2.9 名称冲突和命名空间简介",
