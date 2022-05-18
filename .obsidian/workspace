@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "1_C++ 基础/1.6 未初始化值和未定义行为.md",
+            "file": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1_C++ 基础/1.6 未初始化值和未定义行为.md",
+                "file": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1_C++ 基础/1.6 未初始化值和未定义行为.md"
+                "file": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md"
               }
             }
           }
@@ -111,7 +111,7 @@
   },
   "active": "2211ac01cffb708d",
   "lastOpenFiles": [
-    "1_C++ 基础/1.6 未初始化值和未定义行为.md",
+    "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
     "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md",
     "1_C++ 基础/1.9 字面量和操作符.md",
     "2_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md",
