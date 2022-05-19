@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "1_C++ 基础/1.10  表达式简介.md",
+            "file": "1_C++ 基础/1.11  开发你的第一个程序.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "note",
+                "query": "法则",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1_C++ 基础/1.10  表达式简介.md",
+                "file": "1_C++ 基础/1.11  开发你的第一个程序.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1_C++ 基础/1.10  表达式简介.md"
+                "file": "1_C++ 基础/1.11  开发你的第一个程序.md"
               }
             }
           }
@@ -111,15 +111,15 @@
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
+    "1_C++ 基础/1.11  开发你的第一个程序.md",
+    "1_C++ 基础/1.x — 小结与测试.md",
     "1_C++ 基础/1.10  表达式简介.md",
+    "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
+    "9_Templates/rule.md",
+    "1_C++ 基础/1.2 Comments.md",
     "1_C++ 基础/1.9 字面量和操作符.md",
     "1_C++ 基础/1.8 空白和代码排版.md",
-    "9_Templates/origin-link.md",
     "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md",
-    "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
-    "1_C++ 基础/1.7 关键字和命名标识符.md",
-    "1_C++ 基础/1.11  开发你的第一个程序.md",
-    "9_Templates/tip.md",
-    "9_Templates/warning.md"
+    "1_C++ 基础/1.4 变量赋值和初始化.md"
   ]
 }
