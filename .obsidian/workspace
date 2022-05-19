@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "法则",
+                "query": "题外话",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -112,14 +112,14 @@
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
     "1_C++ 基础/1.11  开发你的第一个程序.md",
-    "1_C++ 基础/1.x — 小结与测试.md",
     "1_C++ 基础/1.10  表达式简介.md",
+    "2_C++ 基础-函数和文件/2.3 — Void functions (non-value returning functions).md",
+    "2_C++ 基础-函数和文件/2.2 Function return values (value-returning functions).md",
+    "1_C++ 基础/1.x 小结与测试.md",
+    "9_Templates/aside.md",
     "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
-    "9_Templates/rule.md",
-    "1_C++ 基础/1.2 Comments.md",
     "1_C++ 基础/1.9 字面量和操作符.md",
-    "1_C++ 基础/1.8 空白和代码排版.md",
-    "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md",
-    "1_C++ 基础/1.4 变量赋值和初始化.md"
+    "2_C++ 基础-函数和文件/2.1 函数简介.md",
+    "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
   ]
 }
