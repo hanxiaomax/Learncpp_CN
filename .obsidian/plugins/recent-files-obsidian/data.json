@@ -5,16 +5,28 @@
       "path": "1_C++ 基础/1.7 关键字和命名标识符.md"
     },
     {
+      "basename": "1.9 字面量和操作符",
+      "path": "1_C++ 基础/1.9 字面量和操作符.md"
+    },
+    {
+      "basename": "2.9 名称冲突和命名空间简介",
+      "path": "2_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "翻译约定.md"
+    },
+    {
       "basename": "1.6 未初始化的变量和未定义行为",
       "path": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md"
     },
     {
-      "basename": "1.8 空格和代码格式",
-      "path": "1_C++ 基础/1.8 空格和代码格式.md"
+      "basename": "1.5 iostream 简介： cout，cin 和 endl",
+      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
     },
     {
-      "basename": "1.9 字面量和操作符",
-      "path": "1_C++ 基础/1.9 字面量和操作符.md"
+      "basename": "1.8 空格和代码格式",
+      "path": "1_C++ 基础/1.8 空格和代码格式.md"
     },
     {
       "basename": "1.3 对象和变量",
@@ -31,14 +43,6 @@
     {
       "basename": "1.4 变量赋值和初始化",
       "path": "1_C++ 基础/1.4 变量赋值和初始化.md"
-    },
-    {
-      "basename": "2.9 名称冲突和命名空间简介",
-      "path": "2_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md"
-    },
-    {
-      "basename": "1.5 iostream 简介： cout，cin 和 endl",
-      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
     },
     {
       "basename": "README",
