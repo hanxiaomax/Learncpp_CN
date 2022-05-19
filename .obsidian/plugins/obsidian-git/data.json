@@ -16,5 +16,6 @@
   "customMessageOnAutoBackup": false,
   "autoBackupAfterFileChange": false,
   "treeStructure": false,
-  "refreshSourceControl": true
+  "refreshSourceControl": true,
+  "basePath": ""
 }
