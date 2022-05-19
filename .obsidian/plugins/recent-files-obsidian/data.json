@@ -5,8 +5,16 @@
       "path": "1_C++ 基础/1.9 字面量和操作符.md"
     },
     {
+      "basename": "1.10  表达式简介",
+      "path": "1_C++ 基础/1.10  表达式简介.md"
+    },
+    {
       "basename": "1.8 空白和代码排版",
       "path": "1_C++ 基础/1.8 空白和代码排版.md"
+    },
+    {
+      "basename": "origin-link",
+      "path": "9_Templates/origin-link.md"
     },
     {
       "basename": "1.5 iostream 简介： cout，cin 和 endl",
@@ -19,10 +27,6 @@
     {
       "basename": "1.7 关键字和命名标识符",
       "path": "1_C++ 基础/1.7 关键字和命名标识符.md"
-    },
-    {
-      "basename": "1.10  表达式简介",
-      "path": "1_C++ 基础/1.10  表达式简介.md"
     },
     {
       "basename": "1.11  开发你的第一个程序",
@@ -47,10 +51,6 @@
     {
       "basename": "best-practices",
       "path": "9_Templates/best-practices.md"
-    },
-    {
-      "basename": "origin-link",
-      "path": "9_Templates/origin-link.md"
     },
     {
       "basename": "1.x — 小结与测试",

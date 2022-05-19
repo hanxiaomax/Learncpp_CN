@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "2211ac01cffb708d",
+        "id": "e4a29859d556cd7d",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -109,17 +109,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2211ac01cffb708d",
+  "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
     "1_C++ 基础/1.9 字面量和操作符.md",
+    "1_C++ 基础/1.10  表达式简介.md",
     "1_C++ 基础/1.8 空白和代码排版.md",
+    "9_Templates/origin-link.md",
     "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md",
     "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
     "1_C++ 基础/1.7 关键字和命名标识符.md",
-    "1_C++ 基础/1.10  表达式简介.md",
     "1_C++ 基础/1.11  开发你的第一个程序.md",
     "9_Templates/tip.md",
-    "9_Templates/warning.md",
-    "9_Templates/author-notes.md"
+    "9_Templates/warning.md"
   ]
 }
