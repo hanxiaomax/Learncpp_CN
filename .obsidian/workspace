@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "1_C++ 基础/1.8 空白和代码格式.md",
+            "file": "1_C++ 基础/1.x — 小结与测试.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1_C++ 基础/1.8 空白和代码格式.md",
+                "file": "1_C++ 基础/1.x — 小结与测试.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1_C++ 基础/1.8 空白和代码格式.md"
+                "file": "1_C++ 基础/1.x — 小结与测试.md"
               }
             }
           }
@@ -111,6 +111,8 @@
   },
   "active": "2211ac01cffb708d",
   "lastOpenFiles": [
+    "1_C++ 基础/1.x — 小结与测试.md",
+    "9_Templates/origin-link.md",
     "1_C++ 基础/1.8 空白和代码格式.md",
     "1_C++ 基础/1.7 关键字和命名标识符.md",
     "翻译约定.md",
@@ -118,8 +120,6 @@
     "2_C++ 基础-函数和文件/2.1 — Introduction to functions.md",
     "2_C++ 基础-函数和文件/2.3 — Void functions (non-value returning functions).md",
     "2_C++ 基础-函数和文件/2.2 — Function return values (value-returning functions).md",
-    "1_C++ 基础/1.x — 小结与测试.md",
-    "1_C++ 基础/1.11  开发你的第一个程序.md",
-    "1_C++ 基础/1.10  表达式简介.md"
+    "1_C++ 基础/1.11  开发你的第一个程序.md"
   ]
 }
