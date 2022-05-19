@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "1_C++ 基础/1.9 字面量和操作符.md",
+            "file": "1_C++ 基础/1.10  表达式简介.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1_C++ 基础/1.9 字面量和操作符.md",
+                "file": "1_C++ 基础/1.10  表达式简介.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1_C++ 基础/1.9 字面量和操作符.md"
+                "file": "1_C++ 基础/1.10  表达式简介.md"
               }
             }
           }
@@ -111,8 +111,8 @@
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
-    "1_C++ 基础/1.9 字面量和操作符.md",
     "1_C++ 基础/1.10  表达式简介.md",
+    "1_C++ 基础/1.9 字面量和操作符.md",
     "1_C++ 基础/1.8 空白和代码排版.md",
     "9_Templates/origin-link.md",
     "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md",
