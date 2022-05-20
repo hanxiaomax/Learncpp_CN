@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "2.1 函数简介",
+      "path": "2_C++ 基础-函数和文件/2.1 函数简介.md"
+    },
+    {
+      "basename": "1.2 注释",
+      "path": "1_C++ 基础/1.2 注释.md"
+    },
+    {
+      "basename": "1.1 程序结构和语句",
+      "path": "1_C++ 基础/1.1 程序结构和语句.md"
+    },
+    {
+      "basename": "1.5 iostream 简介： cout，cin 和 endl",
+      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
+    },
+    {
+      "basename": "advanced",
+      "path": "Templates/advanced.md"
+    },
+    {
       "basename": "1.x 小结与测试",
       "path": "1_C++ 基础/1.x 小结与测试.md"
     },
@@ -17,10 +37,6 @@
       "path": "1_C++ 基础/1.10  表达式简介.md"
     },
     {
-      "basename": "1.5 iostream 简介： cout，cin 和 endl",
-      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
-    },
-    {
       "basename": "1.4 变量赋值和初始化",
       "path": "1_C++ 基础/1.4 变量赋值和初始化.md"
     },
@@ -34,27 +50,19 @@
     },
     {
       "basename": "aside",
-      "path": "9_Templates/aside.md"
+      "path": "Templates/aside.md"
     },
     {
       "basename": "1.6 未初始化的变量和未定义行为",
       "path": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md"
     },
     {
-      "basename": "2.1 函数简介",
-      "path": "2_C++ 基础-函数和文件/2.1 函数简介.md"
-    },
-    {
       "basename": "related",
-      "path": "9_Templates/related.md"
+      "path": "Templates/related.md"
     },
     {
       "basename": "rule",
-      "path": "9_Templates/rule.md"
-    },
-    {
-      "basename": "1.2 Comments",
-      "path": "1_C++ 基础/1.2 Comments.md"
+      "path": "Templates/rule.md"
     },
     {
       "basename": "1.8 空白和代码排版",
@@ -66,7 +74,7 @@
     },
     {
       "basename": "origin-link",
-      "path": "9_Templates/origin-link.md"
+      "path": "Templates/origin-link.md"
     },
     {
       "basename": "1.7 关键字和命名标识符",
@@ -74,19 +82,19 @@
     },
     {
       "basename": "tip",
-      "path": "9_Templates/tip.md"
+      "path": "Templates/tip.md"
     },
     {
       "basename": "warning",
-      "path": "9_Templates/warning.md"
+      "path": "Templates/warning.md"
     },
     {
       "basename": "author-notes",
-      "path": "9_Templates/author-notes.md"
+      "path": "Templates/author-notes.md"
     },
     {
       "basename": "best-practices",
-      "path": "9_Templates/best-practices.md"
+      "path": "Templates/best-practices.md"
     },
     {
       "basename": "翻译约定",
@@ -99,10 +107,6 @@
     {
       "basename": "2.9 名称冲突和命名空间简介",
       "path": "2_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md"
-    },
-    {
-      "basename": "1.1 Statements and the structure of a pogram",
-      "path": "1_C++ 基础/1.1 Statements and the structure of a pogram.md"
     },
     {
       "basename": "_HOME",
