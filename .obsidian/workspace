@@ -112,6 +112,7 @@
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
     "1_C++ 基础/1.x 小结与测试.md",
+    "1_C++ 基础/1.4 变量赋值和初始化.md",
     "1_C++ 基础/1.11  开发你的第一个程序.md",
     "1_C++ 基础/I’m fond of.md",
     "1_C++ 基础/1.10  表达式简介.md",
@@ -119,7 +120,6 @@
     "2_C++ 基础-函数和文件/2.2 Function return values (value-returning functions).md",
     "9_Templates/aside.md",
     "1_C++ 基础/1.6 未初始化的变量和未定义行为.md",
-    "1_C++ 基础/1.9 字面量和操作符.md",
-    "2_C++ 基础-函数和文件/2.1 函数简介.md"
+    "1_C++ 基础/1.9 字面量和操作符.md"
   ]
 }
