@@ -5,16 +5,24 @@
       "path": "1_C++ 基础/1.x 小结与测试.md"
     },
     {
-      "basename": "1.4 变量赋值和初始化",
-      "path": "1_C++ 基础/1.4 变量赋值和初始化.md"
-    },
-    {
       "basename": "1.11  开发你的第一个程序",
       "path": "1_C++ 基础/1.11  开发你的第一个程序.md"
     },
     {
+      "basename": "1.9 字面量和运算符",
+      "path": "1_C++ 基础/1.9 字面量和运算符.md"
+    },
+    {
       "basename": "1.10  表达式简介",
       "path": "1_C++ 基础/1.10  表达式简介.md"
+    },
+    {
+      "basename": "1.5 iostream 简介： cout，cin 和 endl",
+      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
+    },
+    {
+      "basename": "1.4 变量赋值和初始化",
+      "path": "1_C++ 基础/1.4 变量赋值和初始化.md"
     },
     {
       "basename": "2.3 — Void functions (non-value returning functions)",
@@ -33,16 +41,8 @@
       "path": "1_C++ 基础/1.6 未初始化的变量和未定义行为.md"
     },
     {
-      "basename": "1.9 字面量和操作符",
-      "path": "1_C++ 基础/1.9 字面量和操作符.md"
-    },
-    {
       "basename": "2.1 函数简介",
       "path": "2_C++ 基础-函数和文件/2.1 函数简介.md"
-    },
-    {
-      "basename": "1.5 iostream 简介： cout，cin 和 endl",
-      "path": "1_C++ 基础/1.5 iostream 简介： cout，cin 和 endl.md"
     },
     {
       "basename": "related",
