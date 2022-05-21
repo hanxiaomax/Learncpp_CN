@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Untitled",
+      "path": "06_作用域，生命周期和链接/Untitled.md"
+    },
+    {
+      "basename": "Untitled 1",
+      "path": "07_控制流和错误处理/Untitled 1.md"
+    },
+    {
+      "basename": "Untitled",
+      "path": "04_基础数据类型/Untitled.md"
+    },
+    {
+      "basename": "Untitled 1",
+      "path": "05_运算符/Untitled 1.md"
+    },
+    {
+      "basename": "Untitled",
+      "path": "03_调试 C++ 程序/Untitled.md"
+    },
+    {
+      "basename": "2.3 Void 函数 (无返回值函数)",
+      "path": "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md"
+    },
+    {
       "basename": "2.2 函数返回值 (带返回值的函数)",
       "path": "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md"
     },
@@ -11,10 +35,6 @@
     {
       "basename": "2.1 函数简介",
       "path": "02_C++ 基础-函数和文件/2.1 函数简介.md"
-    },
-    {
-      "basename": "2.3 Void 函数 (无返回值函数)",
-      "path": "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md"
     },
     {
       "basename": "2.9 名称冲突和命名空间简介",
