@@ -1,24 +1,104 @@
 {
   "recentFiles": [
     {
-      "basename": "Untitled",
-      "path": "06_作用域，生命周期和链接/Untitled.md"
+      "basename": "3.x — Chapter 3 summary and quiz",
+      "path": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md"
+    },
+    {
+      "basename": "3.10 — Finding issues before they become problems",
+      "path": "03_调试 C++ 程序/3.10 — Finding issues before they become problems.md"
+    },
+    {
+      "basename": "3.9 — Using an integrated debugger-The call stack",
+      "path": "03_调试 C++ 程序/3.9 — Using an integrated debugger-The call stack.md"
+    },
+    {
+      "basename": "3.8 — Using an integrated debugger-Watching variables",
+      "path": "03_调试 C++ 程序/3.8 — Using an integrated debugger-Watching variables.md"
+    },
+    {
+      "basename": "3.7 — Using an integrated debugger-Running and breakpoints",
+      "path": "03_调试 C++ 程序/3.7 — Using an integrated debugger-Running and breakpoints.md"
+    },
+    {
+      "basename": "3.6 — Using an integrated debugger-Stepping",
+      "path": "03_调试 C++ 程序/3.6 — Using an integrated debugger-Stepping.md"
+    },
+    {
+      "basename": "3.5 — More debugging tactics",
+      "path": "03_调试 C++ 程序/3.5 — More debugging tactics.md"
+    },
+    {
+      "basename": "3.4 — Basic debugging tactics",
+      "path": "03_调试 C++ 程序/3.4 — Basic debugging tactics.md"
+    },
+    {
+      "basename": "3.3 — A strategy for debugging",
+      "path": "03_调试 C++ 程序/3.3 — A strategy for debugging.md"
+    },
+    {
+      "basename": "3.2 — The debugging process",
+      "path": "03_调试 C++ 程序/3.2 — The debugging process.md"
+    },
+    {
+      "basename": "6.1 — Compound statements (blocks)",
+      "path": "06_作用域，生命周期和链接/6.1 — Compound statements (blocks).md"
+    },
+    {
+      "basename": "5.1 — Operator precedence and associativity",
+      "path": "05_运算符/5.1 — Operator precedence and associativity.md"
+    },
+    {
+      "basename": "4.1 — Introduction to fundamental data types",
+      "path": "04_基础数据类型/4.1 — Introduction to fundamental data types.md"
+    },
+    {
+      "basename": "3.1 — Syntax and semantic errors",
+      "path": "03_调试 C++ 程序/3.1 — Syntax and semantic errors.md"
+    },
+    {
+      "basename": "2.x — Chapter 2 summary and quiz",
+      "path": "02_C++ 基础-函数和文件/2.x — Chapter 2 summary and quiz.md"
+    },
+    {
+      "basename": "2.13 — How to design your first programs",
+      "path": "02_C++ 基础-函数和文件/2.13 — How to design your first programs.md"
+    },
+    {
+      "basename": "2.12 — Header guards",
+      "path": "02_C++ 基础-函数和文件/2.12 — Header guards.md"
+    },
+    {
+      "basename": "2.11 — Header files",
+      "path": "02_C++ 基础-函数和文件/2.11 — Header files.md"
+    },
+    {
+      "basename": "2.10 — Introduction to the preprocessor",
+      "path": "02_C++ 基础-函数和文件/2.10 — Introduction to the preprocessor.md"
+    },
+    {
+      "basename": "2.8 — Programs with multiple code files",
+      "path": "02_C++ 基础-函数和文件/2.8 — Programs with multiple code files.md"
+    },
+    {
+      "basename": "2.7 — Forward declarations and definitions",
+      "path": "02_C++ 基础-函数和文件/2.7 — Forward declarations and definitions.md"
+    },
+    {
+      "basename": "2.6 — Why functions are useful, and how to use them effectively",
+      "path": "02_C++ 基础-函数和文件/2.6 — Why functions are useful, and how to use them effectively.md"
+    },
+    {
+      "basename": "2.5 — Introduction to local scope",
+      "path": "02_C++ 基础-函数和文件/2.5 — Introduction to local scope.md"
+    },
+    {
+      "basename": "2.4 — Introduction to function parameters and arguments",
+      "path": "02_C++ 基础-函数和文件/2.4 — Introduction to function parameters and arguments.md"
     },
     {
       "basename": "Untitled 1",
       "path": "07_控制流和错误处理/Untitled 1.md"
-    },
-    {
-      "basename": "Untitled",
-      "path": "04_基础数据类型/Untitled.md"
-    },
-    {
-      "basename": "Untitled 1",
-      "path": "05_运算符/Untitled 1.md"
-    },
-    {
-      "basename": "Untitled",
-      "path": "03_调试 C++ 程序/Untitled.md"
     },
     {
       "basename": "2.3 Void 函数 (无返回值函数)",
@@ -119,18 +199,6 @@
     {
       "basename": "author-notes",
       "path": "Templates/author-notes.md"
-    },
-    {
-      "basename": "best-practices",
-      "path": "Templates/best-practices.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
-    },
-    {
-      "basename": "_HOME",
-      "path": "_HOME/_HOME.md"
     }
   ],
   "omittedPaths": [],

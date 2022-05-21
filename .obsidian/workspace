@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "06_作用域，生命周期和链接/Untitled.md",
+            "file": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
             "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "06_作用域，生命周期和链接/Untitled.md",
+                "file": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "06_作用域，生命周期和链接/Untitled.md"
+                "file": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md"
               }
             }
           }
@@ -111,15 +111,15 @@
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
-    "06_作用域，生命周期和链接/Untitled.md",
-    "07_控制流和错误处理/Untitled 1.md",
-    "04_基础数据类型/Untitled.md",
-    "05_运算符/Untitled 1.md",
-    "03_调试 C++ 程序/Untitled.md",
-    "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md",
-    "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md",
-    "01_C++ 基础/1.4 变量赋值和初始化.md",
-    "02_C++ 基础-函数和文件/2.1 函数简介.md",
-    "02_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md"
+    "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
+    "03_调试 C++ 程序/3.10 — Finding issues before they become problems.md",
+    "03_调试 C++ 程序/3.9 — Using an integrated debugger-The call stack.md",
+    "03_调试 C++ 程序/3.8 — Using an integrated debugger-Watching variables.md",
+    "03_调试 C++ 程序/3.7 — Using an integrated debugger-Running and breakpoints.md",
+    "03_调试 C++ 程序/3.6 — Using an integrated debugger-Stepping.md",
+    "03_调试 C++ 程序/3.5 — More debugging tactics.md",
+    "03_调试 C++ 程序/3.4 — Basic debugging tactics.md",
+    "03_调试 C++ 程序/3.3 — A strategy for debugging.md",
+    "03_调试 C++ 程序/3.2 — The debugging process.md"
   ]
 }
