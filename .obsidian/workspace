@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "01_C++ 基础/1.2 注释.md",
+            "file": "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "01_C++ 基础/1.2 注释.md",
+                "file": "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -99,7 +99,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "01_C++ 基础/1.2 注释.md"
+                "file": "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md"
               }
             }
           }
@@ -112,6 +112,8 @@
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
+    "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md",
+    "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md",
     "01_C++ 基础/1.2 注释.md",
     "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
     "03_调试 C++ 程序/3.10 — Finding issues before they become problems.md",
@@ -119,8 +121,6 @@
     "03_调试 C++ 程序/3.8 — Using an integrated debugger-Watching variables.md",
     "03_调试 C++ 程序/3.7 — Using an integrated debugger-Running and breakpoints.md",
     "03_调试 C++ 程序/3.6 — Using an integrated debugger-Stepping.md",
-    "03_调试 C++ 程序/3.5 — More debugging tactics.md",
-    "03_调试 C++ 程序/3.4 — Basic debugging tactics.md",
-    "03_调试 C++ 程序/3.3 — A strategy for debugging.md"
+    "03_调试 C++ 程序/3.5 — More debugging tactics.md"
   ]
 }
