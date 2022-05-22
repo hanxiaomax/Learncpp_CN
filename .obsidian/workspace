@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
+            "file": "01_C++ 基础/1.2 注释.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 292
+    "width": 292,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
+                "file": "01_C++ 基础/1.2 注释.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,7 +99,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md"
+                "file": "01_C++ 基础/1.2 注释.md"
               }
             }
           }
@@ -111,6 +112,7 @@
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
+    "01_C++ 基础/1.2 注释.md",
     "03_调试 C++ 程序/3.x — Chapter 3 summary and quiz.md",
     "03_调试 C++ 程序/3.10 — Finding issues before they become problems.md",
     "03_调试 C++ 程序/3.9 — Using an integrated debugger-The call stack.md",
@@ -119,7 +121,6 @@
     "03_调试 C++ 程序/3.6 — Using an integrated debugger-Stepping.md",
     "03_调试 C++ 程序/3.5 — More debugging tactics.md",
     "03_调试 C++ 程序/3.4 — Basic debugging tactics.md",
-    "03_调试 C++ 程序/3.3 — A strategy for debugging.md",
-    "03_调试 C++ 程序/3.2 — The debugging process.md"
+    "03_调试 C++ 程序/3.3 — A strategy for debugging.md"
   ]
 }
