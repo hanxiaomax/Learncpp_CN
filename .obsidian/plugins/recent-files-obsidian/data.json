@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "2.5 — 局部变量和局部作用域",
+      "path": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md"
+    },
+    {
+      "basename": "2.6 函数为何有用，如何高效使用函数",
+      "path": "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "翻译约定.md"
+    },
+    {
+      "basename": "2.7 — Forward declarations and definitions",
+      "path": "02_C++ 基础-函数和文件/2.7 — Forward declarations and definitions.md"
+    },
+    {
+      "basename": "3.10 -- Finding issues before they become problems",
+      "path": "03_调试 C++ 程序/3.10 -- Finding issues before they become problems.md"
+    },
+    {
+      "basename": "origin-link",
+      "path": "Templates/origin-link.md"
+    },
+    {
       "basename": "2.4 函数的形参和实参",
       "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
+    },
+    {
+      "basename": "2.11 — Header files",
+      "path": "02_C++ 基础-函数和文件/2.11 — Header files.md"
     },
     {
       "basename": "2.3 Void 函数 (无返回值函数)",
@@ -10,7 +38,7 @@
     },
     {
       "basename": "7.10 -- Break and continue",
-      "path": "02_C++ 基础-函数和文件/7.10 -- Break and continue.md"
+      "path": "07_控制流和错误处理/7.10 -- Break and continue.md"
     },
     {
       "basename": "2.2 函数返回值 (带返回值的函数)",
@@ -89,28 +117,12 @@
       "path": "02_C++ 基础-函数和文件/2.12 — Header guards.md"
     },
     {
-      "basename": "2.11 — Header files",
-      "path": "02_C++ 基础-函数和文件/2.11 — Header files.md"
-    },
-    {
       "basename": "2.10 — Introduction to the preprocessor",
       "path": "02_C++ 基础-函数和文件/2.10 — Introduction to the preprocessor.md"
     },
     {
       "basename": "2.8 — Programs with multiple code files",
       "path": "02_C++ 基础-函数和文件/2.8 — Programs with multiple code files.md"
-    },
-    {
-      "basename": "2.7 — Forward declarations and definitions",
-      "path": "02_C++ 基础-函数和文件/2.7 — Forward declarations and definitions.md"
-    },
-    {
-      "basename": "2.6 — Why functions are useful, and how to use them effectively",
-      "path": "02_C++ 基础-函数和文件/2.6 — Why functions are useful, and how to use them effectively.md"
-    },
-    {
-      "basename": "2.5 — Introduction to local scope",
-      "path": "02_C++ 基础-函数和文件/2.5 — Introduction to local scope.md"
     },
     {
       "basename": "Untitled 1",
@@ -127,10 +139,6 @@
     {
       "basename": "2.9 名称冲突和命名空间简介",
       "path": "02_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "翻译约定.md"
     },
     {
       "basename": "1.8 空白和代码排版",
@@ -185,20 +193,12 @@
       "path": "01_C++ 基础/1.3 对象和变量.md"
     },
     {
-      "basename": "origin-link",
-      "path": "Templates/origin-link.md"
-    },
-    {
       "basename": "1.7 关键字和命名标识符",
       "path": "01_C++ 基础/1.7 关键字和命名标识符.md"
     },
     {
       "basename": "tip",
       "path": "Templates/tip.md"
-    },
-    {
-      "basename": "warning",
-      "path": "Templates/warning.md"
     }
   ],
   "omittedPaths": [],
