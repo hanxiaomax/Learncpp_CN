@@ -125,9 +125,9 @@
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
     "Templates/add-glossary.md",
+    "00_seed/arguments.md",
     "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
     "<% (await tp.file.create_new(\"word\",tp.file.selection(),\"../99_glossary\")).basename %>.md",
-    "00_seed/arguments.md",
     "Templates/word.md",
     "00_seed/<% await (tp.file.create_new(\"word\",tp.file.selection(),\"glossary\")) %>.md",
     "02_C++ 基础-函数和文件/2.1 函数简介.md",
