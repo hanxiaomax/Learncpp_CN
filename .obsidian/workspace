@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md",
+            "file": "Templates/add-glossary.md",
             "mode": "source",
-            "backlinks": false,
+            "backlinks": true,
             "source": false
           }
         }
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#glossary",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md",
+                "file": "Templates/add-glossary.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -98,11 +98,40 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md"
+                "file": "Templates/add-glossary.md"
+              }
+            }
+          },
+          {
+            "id": "d7f56cec969870e0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Templates/add-glossary.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "007fc127cd13d94a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -111,15 +140,15 @@
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
-    "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md",
-    "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
-    "翻译约定.md",
-    "02_C++ 基础-函数和文件/2.7 — Forward declarations and definitions.md",
-    "03_调试 C++ 程序/3.10 -- Finding issues before they become problems.md",
-    "Templates/origin-link.md",
+    "Templates/add-glossary.md",
+    "00_seed/arguments.md",
     "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
-    "02_C++ 基础-函数和文件/2.11 — Header files.md",
-    "02_C++ 基础-函数和文件/2.3 Void 函数 (无返回值函数).md",
-    "07_控制流和错误处理/7.10 -- Break and continue.md"
+    "Templates/word.md",
+    "02_C++ 基础-函数和文件/2.1 函数简介.md",
+    "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md",
+    "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
+    "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md",
+    "00_seed/词汇表.md",
+    "00_seed/forward declaration.md"
   ]
 }

@@ -1,32 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "2.5 — 局部变量和局部作用域",
-      "path": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md"
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
+    },
+    {
+      "basename": "2.4 函数的形参和实参",
+      "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
+    },
+    {
+      "basename": "word",
+      "path": "Templates/word.md"
+    },
+    {
+      "basename": "2.1 函数简介",
+      "path": "02_C++ 基础-函数和文件/2.1 函数简介.md"
+    },
+    {
+      "basename": "2.2 函数返回值 (带返回值的函数)",
+      "path": "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md"
     },
     {
       "basename": "2.6 函数为何有用，如何高效使用函数",
       "path": "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md"
     },
     {
-      "basename": "翻译约定",
-      "path": "翻译约定.md"
+      "basename": "2.7 — 前向声明和定义",
+      "path": "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md"
     },
     {
-      "basename": "2.7 — Forward declarations and definitions",
-      "path": "02_C++ 基础-函数和文件/2.7 — Forward declarations and definitions.md"
+      "basename": "词汇表",
+      "path": "00_seed/词汇表.md"
     },
     {
-      "basename": "3.10 -- Finding issues before they become problems",
-      "path": "03_调试 C++ 程序/3.10 -- Finding issues before they become problems.md"
+      "basename": "forward declaration",
+      "path": "00_seed/forward declaration.md"
     },
     {
       "basename": "origin-link",
       "path": "Templates/origin-link.md"
     },
     {
-      "basename": "2.4 函数的形参和实参",
-      "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
+      "basename": "2.5 — 局部变量和局部作用域",
+      "path": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md"
+    },
+    {
+      "basename": "key-insight",
+      "path": "Templates/key-insight.md"
+    },
+    {
+      "basename": "1.3 对象和变量",
+      "path": "01_C++ 基础/1.3 对象和变量.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "翻译约定.md"
+    },
+    {
+      "basename": "3.10 -- Finding issues before they become problems",
+      "path": "03_调试 C++ 程序/3.10 -- Finding issues before they become problems.md"
     },
     {
       "basename": "2.11 — Header files",
@@ -39,10 +71,6 @@
     {
       "basename": "7.10 -- Break and continue",
       "path": "07_控制流和错误处理/7.10 -- Break and continue.md"
-    },
-    {
-      "basename": "2.2 函数返回值 (带返回值的函数)",
-      "path": "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md"
     },
     {
       "basename": "1.2 注释",
@@ -133,10 +161,6 @@
       "path": "01_C++ 基础/1.4 变量赋值和初始化.md"
     },
     {
-      "basename": "2.1 函数简介",
-      "path": "02_C++ 基础-函数和文件/2.1 函数简介.md"
-    },
-    {
       "basename": "2.9 名称冲突和命名空间简介",
       "path": "02_C++ 基础-函数和文件/2.9 名称冲突和命名空间简介.md"
     },
@@ -171,34 +195,6 @@
     {
       "basename": "1.10  表达式简介",
       "path": "01_C++ 基础/1.10  表达式简介.md"
-    },
-    {
-      "basename": "aside",
-      "path": "Templates/aside.md"
-    },
-    {
-      "basename": "1.6 未初始化的变量和未定义行为",
-      "path": "01_C++ 基础/1.6 未初始化的变量和未定义行为.md"
-    },
-    {
-      "basename": "related",
-      "path": "Templates/related.md"
-    },
-    {
-      "basename": "rule",
-      "path": "Templates/rule.md"
-    },
-    {
-      "basename": "1.3 对象和变量",
-      "path": "01_C++ 基础/1.3 对象和变量.md"
-    },
-    {
-      "basename": "1.7 关键字和命名标识符",
-      "path": "01_C++ 基础/1.7 关键字和命名标识符.md"
-    },
-    {
-      "basename": "tip",
-      "path": "Templates/tip.md"
     }
   ],
   "omittedPaths": [],
