@@ -1,2 +1,12 @@
-<% tp.file.create_new("word",tp.file.selection(),"./glossary") %>
-[[<% (await tp.file.create_new("MyFileContent", "MyFilename")).basename %>]]
+
+<%*
+new_title = tp.file.selection()
+new_folder = "99_glossary"
+
+await tp.file.create_new(
+	template = "Templates/word",
+	filename = new_title,
+	open_new = false,
+	folder = new_folder
+);
+%>

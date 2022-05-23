@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -103,23 +104,6 @@
             }
           },
           {
-            "id": "d7f56cec969870e0",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Templates/add-glossary.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "007fc127cd13d94a",
             "type": "leaf",
             "state": {
@@ -141,14 +125,14 @@
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
     "Templates/add-glossary.md",
-    "00_seed/arguments.md",
     "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
+    "<% (await tp.file.create_new(\"word\",tp.file.selection(),\"../99_glossary\")).basename %>.md",
+    "00_seed/arguments.md",
     "Templates/word.md",
+    "00_seed/<% await (tp.file.create_new(\"word\",tp.file.selection(),\"glossary\")) %>.md",
     "02_C++ 基础-函数和文件/2.1 函数简介.md",
     "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md",
     "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
-    "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md",
-    "00_seed/词汇表.md",
-    "00_seed/forward declaration.md"
+    "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md"
   ]
 }
