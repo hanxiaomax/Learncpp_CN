@@ -1,8 +1,1 @@
-
-[[<%*
-（await tp.file.create_new(
-	template = "#glossary",
-	filename = tp.file.selection(),
-	open_new = false
-);
-%>]】
+<% tp.file.create_new(template = "#glossary",filename = tp.file.selection(),open_new = false) %>

@@ -1,16 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "add-glossary",
-      "path": "Templates/add-glossary.md"
-    },
-    {
       "basename": "2.4 函数的形参和实参",
       "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
     },
     {
-      "basename": "word",
-      "path": "Templates/word.md"
+      "basename": "glossary",
+      "path": "00_seed/glossary.md"
+    },
+    {
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
     },
     {
       "basename": "2.1 函数简介",
@@ -191,10 +191,6 @@
     {
       "basename": "1.9 字面量和运算符",
       "path": "01_C++ 基础/1.9 字面量和运算符.md"
-    },
-    {
-      "basename": "1.10  表达式简介",
-      "path": "01_C++ 基础/1.10  表达式简介.md"
     }
   ],
   "omittedPaths": [],

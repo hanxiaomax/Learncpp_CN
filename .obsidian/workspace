@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Templates/add-glossary.md",
+            "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -44,7 +44,7 @@
                 "query": "tag:#glossary",
                 "matchingCase": false,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -87,7 +87,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Templates/add-glossary.md",
+                "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -99,7 +99,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Templates/add-glossary.md"
+                "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
               }
             }
           },
@@ -115,24 +115,23 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "active": "e4a29859d556cd7d",
   "lastOpenFiles": [
-    "Templates/add-glossary.md",
-    "00_seed/arguments.md",
     "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
-    "<% (await tp.file.create_new(\"word\",tp.file.selection(),\"../99_glossary\")).basename %>.md",
+    "00_seed/Untitled.md",
+    "00_seed/glossary.md",
+    "Templates/add-glossary.md",
+    "00_seed/Untitled 1.md",
+    "00_seed/parameters.md",
+    "00_seed/arguments.md",
     "Templates/word.md",
-    "00_seed/<% await (tp.file.create_new(\"word\",tp.file.selection(),\"glossary\")) %>.md",
-    "02_C++ 基础-函数和文件/2.1 函数简介.md",
-    "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md",
-    "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
-    "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md"
+    "00_seed/arguments 1.md",
+    "<% (await tp.file.create_new(\"word\",tp.file.selection(),\"../99_glossary\")).basename %>.md"
   ]
 }
