@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
+            "file": "docs/99_glossary/按值传递(pass by value).md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md"
+                "file": "docs/99_glossary/按值传递(pass by value).md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
+                "file": "docs/99_glossary/按值传递(pass by value).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,15 +127,15 @@
   },
   "active": "843d21ee89d9d388",
   "lastOpenFiles": [
-    "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md",
-    "03_调试 C++ 程序/3.10 — Finding issues before they become problems.md",
-    "03_调试 C++ 程序/3.10 -- Finding issues before they become problems.md",
-    "02_C++ 基础-函数和文件/2.5 局部变量和局部作用域.md",
+    "docs/99_glossary/按值传递(pass by value).md",
+    "docs/99_glossary/前向声明(forward declaration).md",
+    "docs/99_glossary/实参(arguments).md",
+    "docs/99_glossary/形参(parameters).md",
+    "docs/99_glossary/词汇表.md",
+    "docs/翻译约定.md",
+    "部完结后统一翻译并解析.md",
+    "Templates/add-glossary.md",
     "02_C++ 基础-函数和文件/2.7 前向声明和定义.md",
-    "01_C++ 基础/1.9 字面量和运算符.md",
-    "01_C++ 基础/1.x 小结与测试.md",
-    "01_C++ 基础/1.10  表达式简介.md",
-    "01_C++ 基础/1.8 空白和代码排版.md",
-    "01_C++ 基础/1.7 关键字和命名标识符.md"
+    "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md"
   ]
 }

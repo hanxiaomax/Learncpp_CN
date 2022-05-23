@@ -1,7 +1,6 @@
 #glossary
 
-
-## 定义
+## 实参(arguments)
 
 
 
@@ -17,3 +16,4 @@ dv.table(["Title"],dv.current().file.inlinks
 )
 
 ```
+

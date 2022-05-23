@@ -1,6 +1,6 @@
 #glossary
 
-## 定义
+## 按值传递(pass by value)
 
 
 

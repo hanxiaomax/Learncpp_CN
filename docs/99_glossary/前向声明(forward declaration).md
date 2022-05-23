@@ -1,7 +1,6 @@
 #glossary
 
-
-## 定义
+## 前向声明(forward declaration)
 
 
 
@@ -17,4 +16,3 @@ dv.table(["Title"],dv.current().file.inlinks
 )
 
 ```
-

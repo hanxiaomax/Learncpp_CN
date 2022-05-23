@@ -1,7 +1,7 @@
 #glossary
 
 
-## 定义
+## {{title}}
 
 
 

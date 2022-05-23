@@ -1,7 +1,6 @@
 #glossary
 
-
-## 定义
+## 形参(parameters)
 
 
 
