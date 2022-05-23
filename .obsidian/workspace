@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "843d21ee89d9d388",
+        "id": "96c96c2b79f727ab",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/01_C++ 基础/1.07 关键字和命名标识符.md",
+            "file": "docs/02_C++ 基础-函数和文件/2.05 局部变量和局部作用域.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
+                "file": "docs/02_C++ 基础-函数和文件/2.05 局部变量和局部作用域.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/01_C++ 基础/1.07 关键字和命名标识符.md",
+                "file": "docs/02_C++ 基础-函数和文件/2.05 局部变量和局部作用域.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,24 +118,25 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "843d21ee89d9d388",
+  "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/01_C++ 基础/1.07 关键字和命名标识符.md",
-    "docs/01_C++ 基础/1.10  表达式简介.md",
-    "docs/01_C++ 基础/1.09 字面量和运算符.md",
-    "docs/01_C++ 基础/1.08 空白和代码排版.md",
-    "docs/01_C++ 基础/1.02 注释.md",
-    "docs/01_C++ 基础/images/keyword.png",
-    "docs/02_C++ 基础-函数和文件/2.02 函数返回值 (带返回值的函数).md",
+    "docs/02_C++ 基础-函数和文件/2.05 局部变量和局部作用域.md",
+    "docs/02_C++ 基础-函数和文件/2.06 函数为何有用，如何高效使用函数.md",
+    "docs/02_C++ 基础-函数和文件/2.04 函数的形参和实参.md",
     "docs/02_C++ 基础-函数和文件/2.03 Void 函数 (无返回值函数).md",
-    "docs/99_glossary/按值传递(pass by value).md",
-    "docs/99_glossary/前向声明(forward declaration).md"
+    "docs/02_C++ 基础-函数和文件/2.01 函数简介.md",
+    "docs/01_C++ 基础/1.07 关键字和命名标识符.md",
+    "全局变量.md",
+    "docs/99_glossary/形参.md",
+    "docs/01_C++ 基础/1.03 对象和变量.md",
+    "标识符(identifier).md"
   ]
 }

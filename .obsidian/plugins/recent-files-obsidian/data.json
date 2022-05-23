@@ -1,8 +1,60 @@
 {
   "recentFiles": [
     {
+      "basename": "2.05 局部变量和局部作用域",
+      "path": "docs/02_C++ 基础-函数和文件/2.05 局部变量和局部作用域.md"
+    },
+    {
+      "basename": "2.06 函数为何有用，如何高效使用函数",
+      "path": "docs/02_C++ 基础-函数和文件/2.06 函数为何有用，如何高效使用函数.md"
+    },
+    {
+      "basename": "2.04 函数的形参和实参",
+      "path": "docs/02_C++ 基础-函数和文件/2.04 函数的形参和实参.md"
+    },
+    {
+      "basename": "2.03 Void 函数 (无返回值函数)",
+      "path": "docs/02_C++ 基础-函数和文件/2.03 Void 函数 (无返回值函数).md"
+    },
+    {
+      "basename": "2.01 函数简介",
+      "path": "docs/02_C++ 基础-函数和文件/2.01 函数简介.md"
+    },
+    {
       "basename": "1.07 关键字和命名标识符",
       "path": "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
+    },
+    {
+      "basename": "形参",
+      "path": "docs/99_glossary/形参.md"
+    },
+    {
+      "basename": "1.03 对象和变量",
+      "path": "docs/01_C++ 基础/1.03 对象和变量.md"
+    },
+    {
+      "basename": "标识符(identifier)",
+      "path": "标识符(identifier).md"
+    },
+    {
+      "basename": "1.01 程序结构和语句",
+      "path": "docs/01_C++ 基础/1.01 程序结构和语句.md"
+    },
+    {
+      "basename": "1.02 注释",
+      "path": "docs/01_C++ 基础/1.02 注释.md"
+    },
+    {
+      "basename": "1.06 未初始化的变量和未定义行为",
+      "path": "docs/01_C++ 基础/1.06 未初始化的变量和未定义行为.md"
+    },
+    {
+      "basename": "1.05 iostream 简介： cout，cin 和 endl",
+      "path": "docs/01_C++ 基础/1.05 iostream 简介： cout，cin 和 endl.md"
+    },
+    {
+      "basename": "1.04 变量赋值和初始化",
+      "path": "docs/01_C++ 基础/1.04 变量赋值和初始化.md"
     },
     {
       "basename": "1.10  表达式简介",
@@ -17,20 +69,12 @@
       "path": "docs/01_C++ 基础/1.08 空白和代码排版.md"
     },
     {
-      "basename": "1.02 注释",
-      "path": "docs/01_C++ 基础/1.02 注释.md"
-    },
-    {
       "basename": "keyword",
       "path": "docs/01_C++ 基础/images/keyword.png"
     },
     {
       "basename": "2.02 函数返回值 (带返回值的函数)",
       "path": "docs/02_C++ 基础-函数和文件/2.02 函数返回值 (带返回值的函数).md"
-    },
-    {
-      "basename": "2.03 Void 函数 (无返回值函数)",
-      "path": "docs/02_C++ 基础-函数和文件/2.03 Void 函数 (无返回值函数).md"
     },
     {
       "basename": "按值传递(pass by value)",
@@ -43,10 +87,6 @@
     {
       "basename": "实参(arguments)",
       "path": "docs/99_glossary/实参(arguments).md"
-    },
-    {
-      "basename": "形参(parameters)",
-      "path": "docs/99_glossary/形参(parameters).md"
     },
     {
       "basename": "词汇表",
