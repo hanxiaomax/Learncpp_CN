@@ -8,6 +8,5 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
 plugins:
-  - search
   - ezlinks:
       wikilinks: true
