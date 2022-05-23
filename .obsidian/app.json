@@ -24,5 +24,6 @@
   "legacyEditor": false,
   "livePreview": true,
   "tabSize": 6,
-  "vimMode": false
+  "vimMode": false,
+  "useMarkdownLinks": true
 }

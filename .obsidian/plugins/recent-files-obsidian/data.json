@@ -5,6 +5,34 @@
       "path": "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
     },
     {
+      "basename": "1.10  表达式简介",
+      "path": "docs/01_C++ 基础/1.10  表达式简介.md"
+    },
+    {
+      "basename": "1.09 字面量和运算符",
+      "path": "docs/01_C++ 基础/1.09 字面量和运算符.md"
+    },
+    {
+      "basename": "1.08 空白和代码排版",
+      "path": "docs/01_C++ 基础/1.08 空白和代码排版.md"
+    },
+    {
+      "basename": "1.02 注释",
+      "path": "docs/01_C++ 基础/1.02 注释.md"
+    },
+    {
+      "basename": "keyword",
+      "path": "docs/01_C++ 基础/images/keyword.png"
+    },
+    {
+      "basename": "2.02 函数返回值 (带返回值的函数)",
+      "path": "docs/02_C++ 基础-函数和文件/2.02 函数返回值 (带返回值的函数).md"
+    },
+    {
+      "basename": "2.03 Void 函数 (无返回值函数)",
+      "path": "docs/02_C++ 基础-函数和文件/2.03 Void 函数 (无返回值函数).md"
+    },
+    {
       "basename": "按值传递(pass by value)",
       "path": "docs/99_glossary/按值传递(pass by value).md"
     },

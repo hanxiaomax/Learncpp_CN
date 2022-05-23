@@ -12,7 +12,7 @@
             "file": "docs/01_C++ 基础/1.07 关键字和命名标识符.md",
             "mode": "source",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         }
       }
@@ -128,14 +128,14 @@
   "active": "843d21ee89d9d388",
   "lastOpenFiles": [
     "docs/01_C++ 基础/1.07 关键字和命名标识符.md",
+    "docs/01_C++ 基础/1.10  表达式简介.md",
+    "docs/01_C++ 基础/1.09 字面量和运算符.md",
+    "docs/01_C++ 基础/1.08 空白和代码排版.md",
+    "docs/01_C++ 基础/1.02 注释.md",
+    "docs/01_C++ 基础/images/keyword.png",
+    "docs/02_C++ 基础-函数和文件/2.02 函数返回值 (带返回值的函数).md",
+    "docs/02_C++ 基础-函数和文件/2.03 Void 函数 (无返回值函数).md",
     "docs/99_glossary/按值传递(pass by value).md",
-    "docs/99_glossary/前向声明(forward declaration).md",
-    "docs/99_glossary/实参(arguments).md",
-    "docs/99_glossary/形参(parameters).md",
-    "docs/99_glossary/词汇表.md",
-    "docs/翻译约定.md",
-    "部完结后统一翻译并解析.md",
-    "Templates/add-glossary.md",
-    "02_C++ 基础-函数和文件/2.7 前向声明和定义.md"
+    "docs/99_glossary/前向声明(forward declaration).md"
   ]
 }
