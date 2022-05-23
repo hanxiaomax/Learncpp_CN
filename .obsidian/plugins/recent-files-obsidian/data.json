@@ -1,44 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "add-glossary",
-      "path": "Templates/add-glossary.md"
-    },
-    {
-      "basename": "parameters",
-      "path": "00_seed/parameters.md"
+      "basename": "按值传递(pass by value)",
+      "path": "00_seed/按值传递(pass by value).md"
     },
     {
       "basename": "2.4 函数的形参和实参",
       "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
     },
     {
-      "basename": "2.1 函数简介",
-      "path": "02_C++ 基础-函数和文件/2.1 函数简介.md"
+      "basename": "实参(arguments)",
+      "path": "00_seed/实参(arguments).md"
+    },
+    {
+      "basename": "形参(parameters)",
+      "path": "00_seed/形参(parameters).md"
+    },
+    {
+      "basename": "前向声明(forward declaration)",
+      "path": "00_seed/前向声明(forward declaration).md"
+    },
+    {
+      "basename": "1.11  开发你的第一个程序",
+      "path": "01_C++ 基础/1.11  开发你的第一个程序.md"
+    },
+    {
+      "basename": "2.5 — 局部变量和局部作用域",
+      "path": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md"
     },
     {
       "basename": "词汇表",
       "path": "00_seed/词汇表.md"
     },
     {
-      "basename": "2.2 函数返回值 (带返回值的函数)",
-      "path": "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md"
+      "basename": "2.7 前向声明和定义",
+      "path": "02_C++ 基础-函数和文件/2.7 前向声明和定义.md"
     },
     {
       "basename": "2.6 函数为何有用，如何高效使用函数",
       "path": "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md"
     },
     {
-      "basename": "2.7 — 前向声明和定义",
-      "path": "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md"
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
+    },
+    {
+      "basename": "2.1 函数简介",
+      "path": "02_C++ 基础-函数和文件/2.1 函数简介.md"
+    },
+    {
+      "basename": "2.2 函数返回值 (带返回值的函数)",
+      "path": "02_C++ 基础-函数和文件/2.2 函数返回值 (带返回值的函数).md"
     },
     {
       "basename": "origin-link",
       "path": "Templates/origin-link.md"
-    },
-    {
-      "basename": "2.5 — 局部变量和局部作用域",
-      "path": "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md"
     },
     {
       "basename": "key-insight",
@@ -179,10 +195,6 @@
     {
       "basename": "1.x 小结与测试",
       "path": "01_C++ 基础/1.x 小结与测试.md"
-    },
-    {
-      "basename": "1.11  开发你的第一个程序",
-      "path": "01_C++ 基础/1.11  开发你的第一个程序.md"
     },
     {
       "basename": "1.9 字面量和运算符",

@@ -4,25 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "e4a29859d556cd7d",
+        "id": "843d21ee89d9d388",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
-        }
-      },
-      {
-        "id": "fc29418a4cef6b5c",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Templates/add-glossary.md",
+            "file": "00_seed/按值传递(pass by value).md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -54,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#glossary",
+                "query": "argument",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -99,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Templates/add-glossary.md"
+                "file": "00_seed/按值传递(pass by value).md"
               }
             }
           },
@@ -120,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Templates/add-glossary.md",
+                "file": "00_seed/按值传递(pass by value).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,17 +125,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "fc29418a4cef6b5c",
+  "active": "843d21ee89d9d388",
   "lastOpenFiles": [
-    "Templates/add-glossary.md",
-    "Templates/new-word.md",
-    "00_seed/parameters.md",
+    "00_seed/按值传递(pass by value).md",
     "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
-    "02_C++ 基础-函数和文件/2.1 函数简介.md",
+    "00_seed/实参(arguments).md",
+    "00_seed/形参(parameters).md",
+    "00_seed/前向声明(forward declaration).md",
+    "01_C++ 基础/1.11  开发你的第一个程序.md",
+    "02_C++ 基础-函数和文件/2.5 — 局部变量和局部作用域.md",
     "00_seed/词汇表.md",
-    "00_seed/glossary.md",
-    "00_seed/Untitled.md",
-    "00_seed/Untitled 1.md",
-    "00_seed/arguments.md"
+    "02_C++ 基础-函数和文件/2.7 前向声明和定义.md",
+    "02_C++ 基础-函数和文件/2.6 函数为何有用，如何高效使用函数.md"
   ]
 }
