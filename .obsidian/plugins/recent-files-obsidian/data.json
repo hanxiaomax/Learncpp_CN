@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "2.4 函数的形参和实参",
-      "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
-    },
-    {
-      "basename": "glossary",
-      "path": "00_seed/glossary.md"
-    },
-    {
       "basename": "add-glossary",
       "path": "Templates/add-glossary.md"
     },
     {
+      "basename": "parameters",
+      "path": "00_seed/parameters.md"
+    },
+    {
+      "basename": "2.4 函数的形参和实参",
+      "path": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
+    },
+    {
       "basename": "2.1 函数简介",
       "path": "02_C++ 基础-函数和文件/2.1 函数简介.md"
+    },
+    {
+      "basename": "词汇表",
+      "path": "00_seed/词汇表.md"
     },
     {
       "basename": "2.2 函数返回值 (带返回值的函数)",
@@ -27,14 +31,6 @@
     {
       "basename": "2.7 — 前向声明和定义",
       "path": "02_C++ 基础-函数和文件/2.7 — 前向声明和定义.md"
-    },
-    {
-      "basename": "词汇表",
-      "path": "00_seed/词汇表.md"
-    },
-    {
-      "basename": "forward declaration",
-      "path": "00_seed/forward declaration.md"
     },
     {
       "basename": "origin-link",

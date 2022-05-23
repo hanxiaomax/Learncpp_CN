@@ -11,7 +11,20 @@
           "state": {
             "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
             "mode": "source",
-            "backlinks": true,
+            "backlinks": false,
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "fc29418a4cef6b5c",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Templates/add-glossary.md",
+            "mode": "source",
+            "backlinks": false,
             "source": false
           }
         }
@@ -66,8 +79,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -82,24 +94,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "cafc9d3fc3f3c5d0",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "443be626e233958a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md"
+                "file": "Templates/add-glossary.md"
               }
             }
           },
@@ -113,25 +113,42 @@
                 "useHierarchy": true
               }
             }
+          },
+          {
+            "id": "43fe58f8d0453352",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Templates/add-glossary.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "e4a29859d556cd7d",
+  "active": "fc29418a4cef6b5c",
   "lastOpenFiles": [
-    "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
-    "00_seed/Untitled.md",
-    "00_seed/glossary.md",
     "Templates/add-glossary.md",
-    "00_seed/Untitled 1.md",
+    "Templates/new-word.md",
     "00_seed/parameters.md",
-    "00_seed/arguments.md",
-    "Templates/word.md",
-    "00_seed/arguments 1.md",
-    "<% (await tp.file.create_new(\"word\",tp.file.selection(),\"../99_glossary\")).basename %>.md"
+    "02_C++ 基础-函数和文件/2.4 函数的形参和实参.md",
+    "02_C++ 基础-函数和文件/2.1 函数简介.md",
+    "00_seed/词汇表.md",
+    "00_seed/glossary.md",
+    "00_seed/Untitled.md",
+    "00_seed/Untitled 1.md",
+    "00_seed/arguments.md"
   ]
 }
