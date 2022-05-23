@@ -1,0 +1,1155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>1.09 字面量和运算符 - LearnCpp-cn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#19" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LearnCpp-cn" class="md-header__button md-logo" aria-label="LearnCpp-cn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LearnCpp-cn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.09 字面量和运算符
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LearnCpp-cn" class="md-nav__button md-logo" aria-label="LearnCpp-cn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LearnCpp-cn
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A/" class="md-nav__link">
+        翻译约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          01 C++ 基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="01 C++ 基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          01 C++ 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.01%20%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%92%8C%E8%AF%AD%E5%8F%A5/" class="md-nav__link">
+        1.01 程序结构和语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.02%20%E6%B3%A8%E9%87%8A/" class="md-nav__link">
+        1.02 注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.03%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        1.3 对象和变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.04%20%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
+        1.4 变量赋值和初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.05%20iostream%20%E7%AE%80%E4%BB%8B%EF%BC%9A%20cout%EF%BC%8Ccin%20%E5%92%8C%20endl/" class="md-nav__link">
+        1.5 iostream 简介： cout，cin 和 endl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.06%20%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" class="md-nav__link">
+        1.6 未初始化的变量和未定义行为
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.07%20%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E5%91%BD%E5%90%8D%E6%A0%87%E8%AF%86%E7%AC%A6/" class="md-nav__link">
+        1.7 关键字和命名标识符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.08%20%E7%A9%BA%E7%99%BD%E5%92%8C%E4%BB%A3%E7%A0%81%E6%8E%92%E7%89%88/" class="md-nav__link">
+        1.08 空白和代码排版
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.09 字面量和运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        1.09 字面量和运算符
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    字面量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    运算符
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    运算符链
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.10%20%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        1.10  表达式简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.11%20%20%E5%BC%80%E5%8F%91%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        1.11  开发你的第一个程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.x%20%E5%B0%8F%E7%BB%93%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        1.x 小结与测试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          02 C++ 基础 函数和文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="02 C++ 基础 函数和文件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          02 C++ 基础 函数和文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.01%20%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        2.01 函数简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.02%20%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%20%28%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E5%87%BD%E6%95%B0%29/" class="md-nav__link">
+        2.02 函数返回值 (带返回值的函数)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.03%20Void%20%E5%87%BD%E6%95%B0%20%28%E6%97%A0%E8%BF%94%E5%9B%9E%E5%80%BC%E5%87%BD%E6%95%B0%29/" class="md-nav__link">
+        2.03 Void 函数 (无返回值函数)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.04%20%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82/" class="md-nav__link">
+        2.04 函数的形参和实参
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.05%20%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        2.05 局部变量和局部作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.06%20%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BD%95%E6%9C%89%E7%94%A8%EF%BC%8C%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        2.06 函数为何有用，如何高效使用函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.07%20%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+        2.07 前向声明和定义
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.08%20%E2%80%94%20Programs%20with%20multiple%20code%20files/" class="md-nav__link">
+        2.08 — Programs with multiple code files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.09%20%E5%90%8D%E7%A7%B0%E5%86%B2%E7%AA%81%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        2.09 名称冲突和命名空间简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.10%20%E2%80%94%20Introduction%20to%20the%20preprocessor/" class="md-nav__link">
+        2.10 — Introduction to the preprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.11%20%E2%80%94%20Header%20files/" class="md-nav__link">
+        2.11 — Header files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.12%20%E2%80%94%20Header%20guards/" class="md-nav__link">
+        2.12 — Header guards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.13%20%E2%80%94%20How%20to%20design%20your%20first%20programs/" class="md-nav__link">
+        2.13 — How to design your first programs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_C%2B%2B%20%E5%9F%BA%E7%A1%80-%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%87%E4%BB%B6/2.x%20%E2%80%94%20Chapter%202%20summary%20and%20quiz/" class="md-nav__link">
+        2.x — Chapter 2 summary and quiz
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          03 调试 C++ 程序
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="03 调试 C++ 程序" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          03 调试 C++ 程序
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.1%20%E2%80%94%20Syntax%20and%20semantic%20errors/" class="md-nav__link">
+        3.1 — Syntax and semantic errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.10%20%E2%80%94%20Finding%20issues%20before%20they%20become%20problems/" class="md-nav__link">
+        3.10 — Finding issues before they become problems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.2%20%E2%80%94%20The%20debugging%20process/" class="md-nav__link">
+        3.2 — The debugging process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.3%20%E2%80%94%20A%20strategy%20for%20debugging/" class="md-nav__link">
+        3.3 — A strategy for debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.4%20%E2%80%94%20Basic%20debugging%20tactics/" class="md-nav__link">
+        3.4 — Basic debugging tactics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.5%20%E2%80%94%20More%20debugging%20tactics/" class="md-nav__link">
+        3.5 — More debugging tactics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.6%20%E2%80%94%20Using%20an%20integrated%20debugger-Stepping/" class="md-nav__link">
+        3.6 — Using an integrated debugger Stepping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.7%20%E2%80%94%20Using%20an%20integrated%20debugger-Running%20and%20breakpoints/" class="md-nav__link">
+        3.7 — Using an integrated debugger Running and breakpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.8%20%E2%80%94%20Using%20an%20integrated%20debugger-Watching%20variables/" class="md-nav__link">
+        3.8 — Using an integrated debugger Watching variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.9%20%E2%80%94%20Using%20an%20integrated%20debugger-The%20call%20stack/" class="md-nav__link">
+        3.9 — Using an integrated debugger The call stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.x%20%E2%80%94%20Chapter%203%20summary%20and%20quiz/" class="md-nav__link">
+        3.x — Chapter 3 summary and quiz
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          99 glossary
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="99 glossary" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          99 glossary
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E%28forward%20declaration%29/" class="md-nav__link">
+        前向声明(forward declaration)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E5%AE%9E%E5%8F%82%28arguments%29/" class="md-nav__link">
+        实参(arguments)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E5%BD%A2%E5%8F%82%28parameters%29/" class="md-nav__link">
+        形参(parameters)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%28pass%20by%20value%29/" class="md-nav__link">
+        按值传递(pass by value)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E8%AF%8D%E6%B1%87%E8%A1%A8/" class="md-nav__link">
+        词汇表
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    字面量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    运算符
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    运算符链
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<blockquote>
+<p>[!INFO] 原文信息：
+- 链接：<a href="https://www.learncpp.com/cpp-tutorial/introduction-to-literals-and-operators/">1.9 — Introduction to literals and operators</a>
+- 作者：<a href="https://www.learncpp.com/author/Alex/" title="View all posts by Alex"><em>ALEX</em></a>  
+- 2021-10-28</p>
+</blockquote>
+<h1 id="19">1.9 字面量和运算符</h1>
+<h2 id="_1">字面量</h2>
+<p>考虑下面两条语句：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这里的 <em>“Hello world!”</em> 和 <em>5</em> 有什么共同点？它们都是字面量。 [[字面量(literals)]]（也称为字面量常量）指的是被直接插入到源码中的常量。</p>
+<p>字面量和变量都具有一个值（及其类型）。但是，字面量的值是固定的，而且不能被修改（所以成为常量），而变量的值是可以改变的，不论是通过初始化还是通过赋值。</p>
+<h2 id="_2">运算符</h2>
+<p>数学中的运算指的是一个计算操作，它涉及到0个或多个输入值（称为[[操作数(operands)]]），并能够产生一个新的值（称为输出值）。这个特定的计算操作，通过某种结构（通常是一个或一对符号）来指定，这种结构称之为[[运算符(operator)]]。</p>
+<p>例如，我们都知道 <code>2 + 3 = 5</code>。在这个表达式中，2和3称之为运算符，而符号 <code>+</code> 则称为运算符，该运算符告诉我们此时将对两个操作数执行一个加法操作，并产生一个新的值 5。</p>
+<blockquote>
+<p>[!NOTE] 作者注
+对于符号类型的运算符，常用的术语表示方法是将运算符本身写在operator之后，其原因会随着我们深入了解运算符后变得清晰。
+例如，加法运算符会写作 <em>operator+</em>，提取运算符则写作 <em>operator&gt;&gt;</em>.</p>
+</blockquote>
+<p>对于数学中常用标准运算符你应当已经非常熟悉了，包括加(<code>+</code>)、减(<code>-</code>)、乘(<code>*</code>)、除(<code>/</code>)。在 C++ 中，赋值号(<code>=</code>)也是一个运算符，此外还有 插入运算符<code>&lt;&lt;</code>和提取运算符<code>&gt;&gt;</code>。有些运算符包含多个符号，例如相等比较运算符(<code>==</code>)。还有一些运算符则是以单词的形式出现的（例如：<code>new</code>，<code>delete</code>和<code>throw</code>）。</p>
+<p>一个运算符使用的操作数的个数，称为该运算符的[[元数(arity)]]。C++ 中的运算符具有三种不同的元数：</p>
+<ul>
+<li><strong>一元</strong> 运算符使用一个操作数。<code>-</code>是一个一元运算符的典型，例如，<code>-5</code>。它使用一个字面量操作数5，并将其符号反转，生成一个新的输出量 -5。</li>
+<li><strong>二元</strong> 运算符使用两个操作数（左右操作数）。例如 <code>3 + 4</code>，运算符 <code>+</code> 将左操作数 3 和右操作数 4执行加法运算，输出结果 7。插入运算符(<code>&lt;&lt;</code>) 和提取运算符(<code>&gt;&gt;</code>)也是二元运算符。它的左侧为 <code>std::cout</code> 或 <code>std::cin</code>，右侧是要输出的值或接收输入的变量。</li>
+<li><strong>三元</strong> 运算符使用三个操作数。C++ 中只有一种三元运算符，稍后我们会介绍。</li>
+</ul>
+<p>注意，有些运算符在不同的使用条件下具有不同的含义。例如 <code>-</code>就有两种不同的含义。它可以作为一元运算符取一个值的相反数（例如将5转换为-5，或者反过来），或者也可以作为二元运算符减号使用（例如 <code>4 - 3</code>）。</p>
+<h2 id="_3">运算符链</h2>
+<p>运算符可以进行链式操作，这样一来，一个运算符便可以直接使用其他运算符的输出结果。例如：<code>2 * 3 + 4</code>，乘法首先执行并得到结果6，然后它就成为了加号的做操作数。接下来执行加法得到新值10。</p>
+<p>在讲解运算符时，我们会深入探讨运算符的优先级。现在你只需要知道，它的优先级和数学中的优先级是一样的：括号优先级最高，然后是指数运算符，然后是乘除，再然后是加减。该优先级顺序常常缩写为 <em>PEMDAS</em>（或者展开为下面这种帮助记忆的形式：“Please Excuse My Dear Aunt Sally”）</p>
+<blockquote>
+<p>[!NOTE] 作者注
+在有些国家，PEMDAS 表述为 PEDMAS、BEDMAS、BODMAS 或 BIDMAS。</p>
+</blockquote>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../1.08%20%E7%A9%BA%E7%99%BD%E5%92%8C%E4%BB%A3%E7%A0%81%E6%8E%92%E7%89%88/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.08 空白和代码排版" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1.08 空白和代码排版
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../1.10%20%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--next" aria-label="Next: 1.10  表达式简介" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              1.10  表达式简介
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1573 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>2.02 函数返回值 (带返回值的函数) - LearnCpp-cn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#22" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="LearnCpp-cn" class="md-header__button md-logo" aria-label="LearnCpp-cn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LearnCpp-cn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.02 函数返回值 (带返回值的函数)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LearnCpp-cn" class="md-nav__button md-logo" aria-label="LearnCpp-cn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LearnCpp-cn
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A/" class="md-nav__link">
+        翻译约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          01 C++ 基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="01 C++ 基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          01 C++ 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.01%20%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%92%8C%E8%AF%AD%E5%8F%A5/" class="md-nav__link">
+        1.01 程序结构和语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.02%20%E6%B3%A8%E9%87%8A/" class="md-nav__link">
+        1.02 注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.03%20%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        1.3 对象和变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.04%20%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96/" class="md-nav__link">
+        1.4 变量赋值和初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.05%20iostream%20%E7%AE%80%E4%BB%8B%EF%BC%9A%20cout%EF%BC%8Ccin%20%E5%92%8C%20endl/" class="md-nav__link">
+        1.5 iostream 简介： cout，cin 和 endl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.06%20%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E5%8F%98%E9%87%8F%E5%92%8C%E6%9C%AA%E5%AE%9A%E4%B9%89%E8%A1%8C%E4%B8%BA/" class="md-nav__link">
+        1.6 未初始化的变量和未定义行为
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.07%20%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E5%91%BD%E5%90%8D%E6%A0%87%E8%AF%86%E7%AC%A6/" class="md-nav__link">
+        1.7 关键字和命名标识符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.08%20%E7%A9%BA%E7%99%BD%E5%92%8C%E4%BB%A3%E7%A0%81%E6%8E%92%E7%89%88/" class="md-nav__link">
+        1.08 空白和代码排版
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.09%20%E5%AD%97%E9%9D%A2%E9%87%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/" class="md-nav__link">
+        1.09 字面量和运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.10%20%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        1.10  表达式简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.11%20%20%E5%BC%80%E5%8F%91%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        1.11  开发你的第一个程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_C%2B%2B%20%E5%9F%BA%E7%A1%80/1.x%20%E5%B0%8F%E7%BB%93%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        1.x 小结与测试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          02 C++ 基础 函数和文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="02 C++ 基础 函数和文件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          02 C++ 基础 函数和文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.01%20%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        2.01 函数简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.02 函数返回值 (带返回值的函数)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.02 函数返回值 (带返回值的函数)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    返回值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    修改程序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    返回到主函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    具有返回值的函数不返回值则会产生未定义行为
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-return-0" class="md-nav__link">
+    main 函数如果没有使用 return 语句则会隐式地返回 0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    函数只能返回一个单值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    函数的编写者可以决定返回值的含义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    函数重用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.03%20Void%20%E5%87%BD%E6%95%B0%20%28%E6%97%A0%E8%BF%94%E5%9B%9E%E5%80%BC%E5%87%BD%E6%95%B0%29/" class="md-nav__link">
+        2.03 Void 函数 (无返回值函数)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.04%20%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82/" class="md-nav__link">
+        2.04 函数的形参和实参
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.05%20%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="md-nav__link">
+        2.05 局部变量和局部作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.06%20%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BD%95%E6%9C%89%E7%94%A8%EF%BC%8C%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        2.06 函数为何有用，如何高效使用函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.07%20%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+        2.07 前向声明和定义
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.08%20%E2%80%94%20Programs%20with%20multiple%20code%20files/" class="md-nav__link">
+        2.08 — Programs with multiple code files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.09%20%E5%90%8D%E7%A7%B0%E5%86%B2%E7%AA%81%E5%92%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        2.09 名称冲突和命名空间简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.10%20%E2%80%94%20Introduction%20to%20the%20preprocessor/" class="md-nav__link">
+        2.10 — Introduction to the preprocessor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.11%20%E2%80%94%20Header%20files/" class="md-nav__link">
+        2.11 — Header files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.12%20%E2%80%94%20Header%20guards/" class="md-nav__link">
+        2.12 — Header guards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.13%20%E2%80%94%20How%20to%20design%20your%20first%20programs/" class="md-nav__link">
+        2.13 — How to design your first programs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.x%20%E2%80%94%20Chapter%202%20summary%20and%20quiz/" class="md-nav__link">
+        2.x — Chapter 2 summary and quiz
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          03 调试 C++ 程序
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="03 调试 C++ 程序" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          03 调试 C++ 程序
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.1%20%E2%80%94%20Syntax%20and%20semantic%20errors/" class="md-nav__link">
+        3.1 — Syntax and semantic errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.10%20%E2%80%94%20Finding%20issues%20before%20they%20become%20problems/" class="md-nav__link">
+        3.10 — Finding issues before they become problems
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.2%20%E2%80%94%20The%20debugging%20process/" class="md-nav__link">
+        3.2 — The debugging process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.3%20%E2%80%94%20A%20strategy%20for%20debugging/" class="md-nav__link">
+        3.3 — A strategy for debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.4%20%E2%80%94%20Basic%20debugging%20tactics/" class="md-nav__link">
+        3.4 — Basic debugging tactics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.5%20%E2%80%94%20More%20debugging%20tactics/" class="md-nav__link">
+        3.5 — More debugging tactics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.6%20%E2%80%94%20Using%20an%20integrated%20debugger-Stepping/" class="md-nav__link">
+        3.6 — Using an integrated debugger Stepping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.7%20%E2%80%94%20Using%20an%20integrated%20debugger-Running%20and%20breakpoints/" class="md-nav__link">
+        3.7 — Using an integrated debugger Running and breakpoints
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.8%20%E2%80%94%20Using%20an%20integrated%20debugger-Watching%20variables/" class="md-nav__link">
+        3.8 — Using an integrated debugger Watching variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.9%20%E2%80%94%20Using%20an%20integrated%20debugger-The%20call%20stack/" class="md-nav__link">
+        3.9 — Using an integrated debugger The call stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B0%83%E8%AF%95%20C%2B%2B%20%E7%A8%8B%E5%BA%8F/3.x%20%E2%80%94%20Chapter%203%20summary%20and%20quiz/" class="md-nav__link">
+        3.x — Chapter 3 summary and quiz
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          99 glossary
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="99 glossary" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          99 glossary
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E%28forward%20declaration%29/" class="md-nav__link">
+        前向声明(forward declaration)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E5%AE%9E%E5%8F%82%28arguments%29/" class="md-nav__link">
+        实参(arguments)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E5%BD%A2%E5%8F%82%28parameters%29/" class="md-nav__link">
+        形参(parameters)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%28pass%20by%20value%29/" class="md-nav__link">
+        按值传递(pass by value)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99_glossary/%E8%AF%8D%E6%B1%87%E8%A1%A8/" class="md-nav__link">
+        词汇表
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    返回值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    修改程序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    返回到主函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    具有返回值的函数不返回值则会产生未定义行为
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-return-0" class="md-nav__link">
+    main 函数如果没有使用 return 语句则会隐式地返回 0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    函数只能返回一个单值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    函数的编写者可以决定返回值的含义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    函数重用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<blockquote>
+<p>[!INFO] 原文信息：
+- 链接： <a href="https://www.learncpp.com/cpp-tutorial/function-return-values-value-returning-functions/">2.2 — Function return values (value-returning functions)</a>
+- 作者：<a href="https://www.learncpp.com/author/Alex/" title="View all posts by Alex"><em>ALEX</em></a>
+- 2022-4-22</p>
+</blockquote>
+<h1 id="22">2.2 函数返回值 (带返回值的函数)</h1>
+<p>请考虑下面这个程序：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// get a value from the user</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// print the value doubled</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; doubled is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这个程序从概念上将包含两部分：首先我们从用户获取一个输入，然后告诉用户该输入的两倍是多少。</p>
+<p>虽然这个程序已经足够简单，没必要将其划分为多个函数，但如果我们执意要这么做呢？从用户获取输入是一个非常明确的任务，将其作为一个函数应该是很合适的。</p>
+<p>因此，程序被修改成了下面这样：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// This program doesn&#39;t work</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">getValueFromUser</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">getValueFromUser</span><span class="p">();</span><span class="w"> </span><span class="c1">// Ask user for input</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">{};</span><span class="w"> </span><span class="c1">// How do we get the value from getValueFromUser() and use it to initialize this variable?</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; doubled is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>尽管看上去上面的尝试没什么问题，但实际上它却不能正常工作。</p>
+<p>当函数 <code>getValueFromUser</code> 被调用时，程序会要求用户输入一个整型数，这符合我们的预期。但是当函数 <code>getValueFromUser</code> 调用结束并返回 <code>main</code> 函数时，刚才输入的值就被丢弃了。变量 <code>num</code> 始终都没有被初始化为用户输入的值，因此输出结果始终是 <code>0</code>。</p>
+<p>问题出在 <code>getValueFromUser</code> 函数返回到 <code>main</code> 函数的时候，我们没有将用户输入的值一起返回，因此 <code>main</code> 函数就无法使用该值。</p>
+<h2 id="_1">返回值</h2>
+<p>在编写函数的时候，我们需要确定该函数是否应该返回一个值给主调函数。如果需要，有两件事需要去做。</p>
+<p>首先，必须指定函数返回值的类型，函数返回值类型的定义位于函数名前面。在上面的例子中，<code>getValueFromUser</code> 函数的返回值类型为 <code>void</code>（表示无需返回任何值给主调函数），而 <code>main</code> 函数的返回值类型则为 <code>int</code> （即返回一个 <code>int</code> 类型的值给主调函数）。注意，这里并不是定义返回的具体是什么值，而仅是指定其<em>类型</em>。</p>
+<blockquote>
+<p>[!INFO] 相关内容
+返回值为 <code>void</code> 类型的函数将在下节课中介绍（[[2.3 Void 函数 (无返回值函数)]]）</p>
+</blockquote>
+<p>其次，在需要返回值的函数中，需要通过 <code>return</code> 语句来指定要返回的具体值。该具体值称为函数的<strong>返回值</strong>。当 <code>return</code> 语句被执行时，函数会立即退出，同时将返回值<em>拷贝</em>给主调函数。这个过程称为<strong>值返回</strong>（return by value）。</p>
+<p>以下面这个简单的函数为例，它返回一个整型值：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="c1">// int 是返回值类型</span>
+<span class="c1">// 返回值类型为 int 意味着函数会返回某个整型值给主调函数（具体是什么值并不会在此处指定）</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">returnFive</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// return 语句指定了要返回的具体值</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// 返回 5 给主调函数</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">returnFive</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// prints 5</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">returnFive</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// prints 7</span>
+
+<span class="w">    </span><span class="n">returnFive</span><span class="p">();</span><span class="w"> </span><span class="c1">// 函数返回了 5，但是该值被忽略了，因为没有使用该值做任何事情</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>函数执行结果如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>5
+7
+</code></pre></div></td></tr></table></div>
+<p>代码执行从 <code>main</code> 的顶部开始执行，第一条语句对 <code>returnFive</code> 进行了求值，即调用了该函数。函数 <code>returnFive</code> 返回值为 5，该值返回给主调函数后，通过 <code>std:: cout</code> 被打印到控制台。</p>
+<p>在第二处函数调用，语句 <code>returnFive</code> 进行了求值， 其结果就是 <code>returnFive</code> 函数再次被调用。函数仍然将返回值 5 返回给了主调函数。表达式 <code>5 + 2</code> 的求值结果是 7，随后该值通过 <code>std:: cout</code> 被打印到了控制台。</p>
+<p>第三条语句再次调用了 <code>returnFive</code> 函数，其返回值仍然被返回给了主调函数，但是 <code>main</code> 函数并没有对该返回值进行任何操作，因此什么事情都没有发生（返回值被忽略了）。</p>
+<p>注意：除非主调函数通过 <code>std:: cout</code> 将返回值发送到控制台进行打印，否则该值并不会被打印。在上面的例子中，最后一次调用函数时，主调函数没有将返回值发送到 <code>std:: cout</code>，因此其结果没有打印。</p>
+<blockquote>
+<p>[!TIP] 小贴士
+当被调函数返回值是，主调函数可以决定是否在表达式或者语句中使用该返回值（例如：将其赋值给某个变量或将其发送到 <code>std:: cout</code>），也可以忽略它（不对返回值做任何操作）。</p>
+</blockquote>
+<h2 id="_2">修改程序</h2>
+<p>有了上面的知识，我们可以对课程开始时的程序进行适当的修改：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">getValueFromUser</span><span class="p">()</span><span class="w"> </span><span class="c1">// this function now returns an integer value</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"> </span><span class="c1">// return the value the user entered back to the caller</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getValueFromUser</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 使用 getValueFromUser() 的返回值对 num 进行初始化</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; doubled is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>当上述程序开始执行时，<code>main</code> 函数中的第一条语句会创建一个 <code>int</code>  类型的变量 <code>num</code>。当程序准备要对 <code>num</code>  初始化时，它会发现此处有一个函数调用 <code>getValueFromUser()</code>，因此它会跳转去执行该函数。函数 <code>getValueFromUser</code> 要求用户输入一个值，然后它将该输入值返回给主调函数(<code>main</code>)。该返回值被用来对变量 <code>num</code> 进行初始化。</p>
+<p>请自行编译该函数并运行其几次以确保程序能够正确运行。</p>
+<h2 id="_3">返回到主函数</h2>
+<p>现在，我们可以使用思维工具来理解 <code>main</code> 函数是如何工作的。当程序执行时，操作系统会创建一个函数调用取调用 <code>main</code> 函数。随后程序就会跳转到 <code>main</code> 函数的顶部开始执行。函数体中的语句会顺序执行。最终，<code>main</code> 函数会返回一个整型值（通常是 0），然后程序就终止了。<code>main</code> 函数的的返回值通常称为状态码（有时也称为退出状态码，极少数情况下也称为返回码），因为该返回值用来反映程序是否正确执行。</p>
+<p>根据定义，状态码为 <code>0</code> 表示程序执行成功。</p>
+<blockquote>
+<p>[!TIP] 最佳实践
+如果程序正常运行，<code>main</code> 的返回值应该为 <code>0</code>。</p>
+</blockquote>
+<p>非 0 的返回值通常用来表示程序执行失败（尽管大多数操作系统都按照上述约定来对待返回值，但是严格来讲，其可移植性并不能得到保证）。</p>
+<blockquote>
+<p>[!INFO] 扩展阅读
+C++标准中值定义了三种返回状态码：0、<code>EXIT_SUCCESS 和</code> <code>EXIT_FAILURE</code>。0 和 <code>EXIT_SUCCESS</code> 都表示程序执行成功。<code>EXIT_FAILURE</code> 则表示程序没有成功执行。</p>
+</blockquote>
+<p><code>EXIT_SUCCESS</code> 和 <code>EXIT_FAILURE</code> 在  <code>&lt;cstdlib&gt;</code> 头文件中声明：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span><span class="c1"> // for EXIT_SUCCESS and EXIT_FAILURE</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>如果你想尽可能保证可移植性，请使用 <code>0</code> 或者 <code>EXIT_SUCCESS</code> 表示程序成功执行，或者使用 <code>EXIT_FAILURE</code> 表示程序执行失败。</p>
+<p>C++ 不允许显式调用 <code>main</code> 函数。</p>
+<p>就目前而言，你还应该将 <code>main</code> 函数定义在文件的最下方，即定义在其他所有函数后面。</p>
+<h2 id="_4">具有返回值的函数不返回值则会产生未定义行为</h2>
+<p>一个会返回值的函数，称为具有返回值的函数(value-returning function)，除非返回值类型是 <code>void</code>，否则都属于具有返回值的函数。</p>
+<p>一个具有返回值的函数必须返回对应类型的值（使用 <code>return</code> 语句），否则会产生未定义行为。</p>
+<blockquote>
+<p>[!INFO] 相关内容
+ 我们在[[1.6 未初始化的变量和未定义行为]]中讨论了未定义行为。</p>
+</blockquote>
+<p>下面是一个函数产生未定义行为的例子：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">getValueFromUser</span><span class="p">()</span><span class="w"> </span><span class="c1">// this function returns an integer value</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// 注意：没有 return 语句</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getValueFromUser</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// initialize num with the return value of getValueFromUser()</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; doubled is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>在编译上述代码的时候，现代编译器会产生错误信息，因为 <code>getValueFromUser</code> 定义了 <code>int</code> 类型的返回值但实际上并没有包含 <code>return</code> 语句。然而，如果程序出于某种原因编译通过了，那么在运行上述程序时就会产生未定义行为，因为 <code>getValueFromUser()</code> 是具有返回值的函数，但并没有返回一个值。</p>
+<p>大多数情况下，如果你忘记返回值，编译器是能够检测到的。但是，有一些非常复杂的情况，编译器有可能无法确定函数是否返回值的。所以你不应该依赖编译器。</p>
+<blockquote>
+<p>[!TIP] 最佳实践
+确保非 <code>void</code> 类型的函数在任何情况下都返回值。</p>
+<p>具有返回值的函数不返回值则会产生未定义行为。</p>
+</blockquote>
+<h2 id="main-return-0">main 函数如果没有使用 return 语句则会隐式地返回 0</h2>
+<p>上述原则有一个特例，那就是main函数。main 函数如果没有使用 return 语句则会隐式地返回 0。即便如此，最佳实践仍然是显式地返回一个值，这样既能够表明你的实际意图，也能够在形式上和其他函数保持一致(可以预防你忽略其他函数的返回值)。</p>
+<h2 id="_5">函数只能返回一个单值</h2>
+<p>具有返回值的函数依次只能返回一个单值给主调函数。</p>
+<p>注意，<code>return</code>语句中的值不一定要素字面量——也可以是任何表达式的值，包括变量，甚至可以是其他函数的返回值。<code>getValueFromUser()</code> 的例子中，返回值是变量 <code>input</code>，其中包含了用户输入的实际值。</p>
+<p>通过一些方法是可以绕过函数只能返回单一值的限制的，我们会在后续的课程中进行介绍。</p>
+<h2 id="_6">函数的编写者可以决定返回值的含义</h2>
+<p>函数返回值的含义是由函数编写者决定的。有些函数会将状态码作为返回值来表示函数是否执行成功。有的函数则将计算结果或其他选定的值返回给主调函数。还有些函数什么都不返回（我们会在下一节课中介绍此类函数）。</p>
+<p>因为函数返回值的含义可能是各种各样的，因此通过注释的方式对函数返回值的含义进行描述是一个很好的选择。例如： </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 函数提示用户输入一个值</span>
+<span class="c1">// 返回值是用户从键盘输入的值，整型</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getValueFromUser</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"> </span><span class="c1">// 将用户数结果返回给主调函数</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_7">函数重用</h2>
+<p>接下来，介绍函数重用的典型例子，考虑下面这个程序：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; + &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>虽然这个程序可以正常工作，但是代码有些冗余。实际上这个函数违反了好代码的核心信条：不要重复你自己——Don’t Repeat Yourself (常常缩写为DRY)。</p>
+<p>为什么重复的代码是不好的？如果你想要将文本 “Enter an integer:” 修改成其他内容，那么你必须要修改两个地方。如果要初始化的变量有10个而不是两个呢？这无疑将会产生大量的冗余代码（使得程序变得又长又难以理解），还为拼写错误提供了滋生的空间。</p>
+<p>下面，使用 <code>getValueFromUser</code> 函数来重构上述代码：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">getValueFromUser</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer: &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="w"> </span><span class="n">getValueFromUser</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// first call to getValueFromUser</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">{</span><span class="w"> </span><span class="n">getValueFromUser</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// second call to getValueFromUser</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; + &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>上述程序的输出结果如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter an integer: 5
+Enter an integer: 7
+5 + 7 = 12
+</code></pre></div></td></tr></table></div>
+<p>上述程序中，<code>getValueFromUser</code>被调用了量词，一次用于初始化变量 <code>x</code>，一次用于初始化变量 <code>y</code>。使用该函数可以有效地避免重复代码，也减少了犯错的概率。只要 <code>getValueFromUser</code> 函数能够正确工作，那么便可以多次调用它。</p>
+<p>这也是模块化编程的精髓：编写函数、测试函数以确保它能够正确工作，然后便可以在接下来的工作中反复使用该函数（只要我们没有修改这个函数——否则必须对该函数重新测试）。</p>
+<blockquote>
+<p>[!TIP] 最佳实践
+请遵循DRY原则，即不要"重复你自己的工作"。如果有件事需要做多次，请考虑是否可以修改代码，尽可能移除冗余的部分。变量可以用来存放被计算出来且需要多次使用的数据（这样就不需要进行重复计算）。函数可以用来定义一组可能会被多次执行的指令。循环（后面的章节中会介绍）则可以用来多次执行语句。</p>
+<p>[!INFO] 题外话
+DRY 的反义词是 WET (“Write everything twice”——任何代码都写两遍).</p>
+</blockquote>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../2.01%20%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.01 函数简介" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              2.01 函数简介
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2.03%20Void%20%E5%87%BD%E6%95%B0%20%28%E6%97%A0%E8%BF%94%E5%9B%9E%E5%80%BC%E5%87%BD%E6%95%B0%29/" class="md-footer__link md-footer__link--next" aria-label="Next: 2.03 Void 函数 (无返回值函数)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              2.03 Void 函数 (无返回值函数)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+    
+  </body>
+</html>

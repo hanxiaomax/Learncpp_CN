@@ -3,10 +3,7 @@ theme:
   name: material
 markdown_extensions:
   - pymdownx.highlight:
-      anchor_linenums: true
+      linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-plugins:
-  - search
-  - ezlinks
