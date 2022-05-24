@@ -29,3 +29,25 @@ nav:
   - 2. C++ 基础-函数和文件: index.md
   - 3. 调试 C++ 程序: index.md
   - 4. 基础数据类型: index.md
+  - 5. 运算符: index.md
+  - 6. 作用域，生命周期和链接: index.md
+  - 7. 控制流和错误处理: index.md
+  - 8. 类型转换和函数重载: index.md
+  - 9. 复合类型-引用和指针: index.md
+  - 10. 复合类型-枚举和结构体: index.md
+  - 11. 数组，字符串和动态内存分配: index.md
+  - 12. 函数: index.md
+  - 13. 面向对象编程基础: index.md
+  - 14. 操作符重载: index.md
+  - 16. 对象关系简介: index.md
+  - 17. 继承: index.md
+  - 18. 虚函数: index.md
+  - 19. 模板和类: index.md
+  - 20. 异常: index.md
+  - 21. move和智能指针: index.md
+  - 22. STL: index.md
+  - 22. std字符串: index.md
+  - 23. 输入输出: index.md
+  - 24. 其他话题: index.md
+  - 25. C++标准更新: index.md
+  - O1. 位运算: index.md
