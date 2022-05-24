@@ -54,8 +54,9 @@ Programs typically terminate (finish running) when the last statement inside fun
 
 Functions are typically written to do a specific job. For example, a function named “max” might contain statements that figures out which of two numbers is larger. A function named “calculateGrade” might calculate a student’s grade from a set of test scores. We will talk a lot more about functions soon, as they are the most commonly used organizing tool in a program.
 
-> [!NOTE] 作者注
-> When discussing functions, it’s fairly common shorthand to append a pair of parenthesis to the end of the function’s name. For example, if you see the term _main()_ or _doSomething()_, this is shorthand for functions named _main_ or _doSomething_ respectively. This helps differentiate functions from other things with names (such as variables) without having to write the word “function” each time.
+!!! info "作者注"
+
+	When discussing functions, it’s fairly common shorthand to append a pair of parenthesis to the end of the function’s name. For example, if you see the term _main()_ or _doSomething()_, this is shorthand for functions named _main_ or _doSomething_ respectively. This helps differentiate functions from other things with names (such as variables) without having to write the word “function” each time.
 
 ## Dissecting Hello world!
 

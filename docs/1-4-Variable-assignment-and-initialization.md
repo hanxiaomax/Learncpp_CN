@@ -55,10 +55,9 @@ int main()
 
 在我们把 7 赋值给变量 `width` 的时候，之前的值（5）就被覆盖掉了。一般的变量只能够存储一个值。
 
->[!Warning] 注意
-> 新手程序员常犯的错误之一就是将赋值运算符(`=`)和相等比较运算符(`==`)弄混淆。赋值运算符用于给变量赋值，而相等比较运算符则用于校验两个操作数的值是否相等。
+!!! warning 注意
 
-
+	新手程序员常犯的错误之一就是将赋值运算符(`=`)和相等比较运算符(`==`)弄混淆。赋值运算符用于给变量赋值，而相等比较运算符则用于校验两个操作数的值是否相等。
 
 ## 初始化
 
@@ -127,12 +126,14 @@ int width { 4.5 }; // 错误: not all double values fit into an int
 
 在上面的代码片段中，我们尝试将一个包含了小数部分的值 4.5 赋值给一个整型变量（只能存储整数部分）。拷贝和直接初始化都会丢弃小数部分，最终结果就是正数部分 4 被存储在了变量 `width` 中。而对于括号初始化，上述操作会导致编译器报错（通常来讲这是件好事，因为很少有故意丢失数据精度的需求）。不会造成潜在数据丢失的类型转换则是允许的。
 
-> [!TIP] 最佳实践
-> 只要条件允许，应该尽可能使用括号初始化。
+!!! success "最佳实践"
 
-> [!INFO] Q&A
-> Q；C++ 提供了拷贝初始化、直接初始化和括号初始化。那么是否存在直接赋值和括号赋值呢？
-> A：C++ 并不支持直接赋值和括号赋值语法
+	只要条件允许，应该尽可能使用括号初始化。
+
+!!! faq
+
+	Q；C++ 提供了拷贝初始化、直接初始化和括号初始化。那么是否存在直接赋值和括号赋值呢？
+	A：C++ 并不支持直接赋值和括号赋值语法
 
 
 ## 值初始化和零初始化
@@ -143,19 +144,19 @@ int width { 4.5 }; // 错误: not all double values fit into an int
 int width {}; // zero initialization to value 0
 ```
 
-> [!INFO] Q&A
-> Q: 什么时候应该使用 { 0 } ，是什么时候使用 {}?
-> 如果你使用的的确是0这个具体值，那么就应当明确地将其初始化为0
->
->```cpp
-int x { 0 }; // explicit initialization to value 0
->std::cout << x; // we're using that zero value
->```
-> 如果初始化的值只是临时值且即将被替换，则可以使用值初始化。
->```cpp
-int x {}; // value initialization
-std::cin >> x; // we're immediately replacing that value
->```
+!!! faq
+
+	Q: 什么时候应该使用 { 0 } ，是什么时候使用 {}?
+	如果你使用的的确是0这个具体值，那么就应当明确地将其初始化为0
+
+	int x { 0 }; // explicit initialization to value 0
+	std::cout << x; // we're using that zero value
+
+	如果初始化的值只是临时值且即将被替换，则可以使用值初始化。
+
+	int x {}; // value initialization
+	std::cin >> x; // we're immediately replacing that value
+
 
 
 ## 习惯性地初始化变量

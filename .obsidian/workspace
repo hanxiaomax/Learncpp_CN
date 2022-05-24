@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Templates/tip.md",
+            "file": "docs/2-5-Introduction-to-local-scope.md",
             "mode": "source",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         },
         "group": "24d391fb2347414e"
@@ -23,10 +23,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Templates/tip.md",
+            "file": "docs/2-5-Introduction-to-local-scope.md",
             "mode": "preview",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         },
         "group": "24d391fb2347414e"
@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "关键信息",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -81,7 +81,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -101,7 +102,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Templates/tip.md"
+                "file": "docs/2-5-Introduction-to-local-scope.md"
               }
             }
           },
@@ -122,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Templates/tip.md",
+                "file": "docs/2-5-Introduction-to-local-scope.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,15 +144,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "Templates/tip.md",
-    "Templates/rule.md",
-    "Templates/related.md",
-    "Templates/origin-link.md",
+    "docs/2-5-Introduction-to-local-scope.md",
+    "docs/1-10-Introduction-to-expressions.md",
+    "docs/1-3-Introduction-to-objects-and-variables.md",
     "Templates/key-insight.md",
-    "Templates/best-practices.md",
-    "Templates/author-notes.md",
-    "Templates/aside.md",
-    "Templates/advanced.md",
-    "docs/2-2-Function-return-values-value-returning functions.md"
+    "docs/2-7-Forward-declarations-and-definitions.md",
+    "docs/2-3-Void-functions-non-value returning functions.md",
+    "docs/2-2-Function-return-values-value-returning functions.md",
+    "docs/1-11-Developing-your-first-program.md",
+    "docs/1-8-Whitespace-and-basic-formatting.md",
+    "docs/1-4-Variable-assignment-and-initialization.md"
   ]
 }

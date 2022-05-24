@@ -140,13 +140,15 @@ int main()
 
 这么做可以使得每行代码都具有很好的可读性。在宽屏显示器上，这么做还可以允许你将两个代码窗口并排显示，轻松地对比它们的差异。
 
-> [!TIP] 最佳实践
-> 单行代码长度不应该超过80个字符。
+!!! success "最佳实践"
 
-> [!TIP] 小贴士
-> 很多编辑器都集成（或通过插件/扩展）了*列指示器*，能够显示出特定列的位置（例如80个字符处）。因此你可以很容易地判断你的代码行是不是超长了。搜索编辑器名+“Column guide”来查询你的编辑器是否支持该特性。
-> 
-> 译注：在 VS Code 中，这一特性叫做 `editor.rulers` ，可以在设置中配置其出现的位置，例如 `editor.rulers=[80]`
+	单行代码长度不应该超过80个字符。
+
+!!! tip 小贴士
+
+	很多编辑器都集成（或通过插件/扩展）了*列指示器*，能够显示出特定列的位置（例如80个字符处）。因此你可以很容易地判断你的代码行是不是超长了。搜索编辑器名+“Column guide”来查询你的编辑器是否支持该特性。
+
+	译注：在 VS Code 中，这一特性叫做 `editor.rulers` ，可以在设置中配置其出现的位置，例如 `editor.rulers=[80]`
 
 5.如果一个较长的行被基于运算符分割为了多个短行，那么运算符应该放置在下一行的开头而不是上一行的结尾：
 
@@ -228,16 +230,19 @@ C++ 给与了你选择任何你喜欢的风格的权利，但是，我们仍然�
 
 然而，当你添加、删除代码，或者修改了IDE的默认排版规则后，又或者你从其他地方拷贝了代码，这种情况下排版可能会变得一团糟。修复部分或整个文件中的排版问题是非常头疼的。幸运的是，现代DIE通常都提供了自动排版的功能，它可以对你选择的部分或者整个文件进行重新排版。
 
-> [!TIP] 小贴士
-> #### For Visual Studio users
-> 在 Visual Studio 中，可以通过 _Edit > Advanced > Format Document_ and _Edit > Advanced > Format Selection_ 来配置自动排版。
+!!! tip 小贴士
 
-> [!TIP] 小贴士
-> #### For Code::Blocks users
-> 在 Code::Blocks 中，可以通过鼠标右键，选择 Format use AStyle 来使用。
+	#### For Visual Studio users
+	在 Visual Studio 中，可以通过 _Edit > Advanced > Format Document_ and _Edit > Advanced > Format Selection_ 来配置自动排版。
+
+!!! tip 小贴士
+
+	#### For Code::Blocks users
+	在 Code::Blocks 中，可以通过鼠标右键，选择 Format use AStyle 来使用。
 
 为了使用方便，推荐为自动排版功能绑定一个键盘快捷键。
 
-> [!TIP] 小贴士
-> 使用自动排版功能，是保持代码风格一致性的好办法。
+!!! tip 小贴士
+
+	使用自动排版功能，是保持代码风格一致性的好办法。
 

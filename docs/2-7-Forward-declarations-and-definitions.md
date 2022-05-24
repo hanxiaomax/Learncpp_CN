@@ -51,8 +51,9 @@ add.cpp(9) : error C2365: 'add'; : redefinition; previous definition was 'former
 
 This is somewhat misleading, given that _add_ wasn’t ever defined in the first place. Despite this, it’s useful to generally note that it is fairly common for a single error to produce many redundant or related errors or warnings.
 
-> [!TIP] 最佳实践
-> When addressing compile errors in your programs, always resolve the first error produced first and then compile again.
+!!! success "最佳实践"
+
+	When addressing compile errors in your programs, always resolve the first error produced first and then compile again.
 
 To fix this problem, we need to address the fact that the compiler doesn’t know what add is. There are two common ways to address the issue.
 
@@ -129,8 +130,9 @@ int add(int, int); // valid function prototype
 
 However, we prefer to name our parameters (using the same names as the actual function), because it allows you to understand what the function parameters are just by looking at the prototype. Otherwise, you’ll have to locate the function definition.
 
-> [!TIP] 最佳实践
-> When defining function prototypes, keep the parameter names. You can easily create forward declarations by copy/pasting your function’s prototype and adding a semicolon.
+!!! success "最佳实践"
+
+	When defining function prototypes, keep the parameter names. You can easily create forward declarations by copy/pasting your function’s prototype and adding a semicolon.
 
 ## Forgetting the function body
 
@@ -230,8 +232,9 @@ project3.cpp(16): error C2086: 'int x': redefinition
 project3.cpp(15): note: see declaration of 'x'
 ```
 
->[!INFO] 扩展阅读
->Functions that share an identifier but have different parameters are considered to be distinct functions. We discuss this further in lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/)
+!!! info "扩展阅读"
+
+	Functions that share an identifier but have different parameters are considered to be distinct functions. We discuss this further in lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/)
 
 A declaration is a statement that tells the _compiler_ about the existence of an identifier and its type information. Here are some examples of declarations:
 
@@ -248,5 +251,6 @@ While it is true that all definitions are declarations, the converse is not true
 
 The ODR doesn’t apply to pure declarations (it’s the _one definition rule_, not the _one declaration rule_), so you can have as many pure declarations for an identifier as you desire (although having more than one is redundant).
 
-> [!NOTE] 作者注
-> In common language, the term “declaration” is typically used to mean “a pure declaration”, and “definition” is used to mean “a definition that also serves as a declaration”. Thus, we’d typically call _int x;_ a definition, even though it is both a definition and a declaration.
+!!! info "作者注"
+
+	In common language, the term “declaration” is typically used to mean “a pure declaration”, and “definition” is used to mean “a definition that also serves as a declaration”. Thus, we’d typically call _int x;_ a definition, even though it is both a definition and a declaration.

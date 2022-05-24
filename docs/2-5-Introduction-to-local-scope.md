@@ -54,10 +54,11 @@ int add(int x, int y)
 
 正如人的生命周期被定义为其出生到死亡的这段时间一样，变量的[[生命周期(lifetime)]]指的是该变量被创建到被销毁的这段时间。注意，变量的创建和销毁都是在程序运行的时候发生的（称为[[运行时(runtime)]]），而不是在[[编译时(compile-time)]]发生的。因此，生命是一个运行时属性。
 
->[!INFO] 扩展阅读
->The above rules around creation, initialization, and destruction are guarantees. That is, objects must be created and initialized no later than the point of definition, and destroyed no earlier than the end of the set of the curly braces in which they are defined (or, for function parameters, at the end of the function).
->
->In actuality, the C++ specification gives compilers a lot of flexibility to determine when local variables are created and destroyed. Objects may be created earlier, or destroyed later for optimization purposes. Most often, local variables are created when the function is entered, and destroyed in the opposite order of creation when the function is exited. We’ll discuss this in more detail in a future lesson, when we talk about the call stack.
+!!! info "扩展阅读"
+
+	The above rules around creation, initialization, and destruction are guarantees. That is, objects must be created and initialized no later than the point of definition, and destroyed no earlier than the end of the set of the curly braces in which they are defined (or, for function parameters, at the end of the function).
+
+	In actuality, the C++ specification gives compilers a lot of flexibility to determine when local variables are created and destroyed. Objects may be created earlier, or destroyed later for optimization purposes. Most often, local variables are created when the function is entered, and destroyed in the opposite order of creation when the function is exited. We’ll discuss this in more detail in a future lesson, when we talk about the call stack.
 
 下面这段程序展示了有关变量 `x` 生命周期更复杂的情况：
 
@@ -204,8 +205,9 @@ int main()
 
 长话短说，其实 `add` 和 `main` 这两个函数都不知道对方使用了与自己相同的变量名。因为，这些变量的作用域并没有重叠的部分，因此对于编译器来说，`x` 和  `y` 在任何时候被引用，其指代的对象都是清楚的。  
 
->[!TIP] 关键信息
->函数形参或者是局部变量在声明的时候所使用的名字，只在函数体内部可见。也就是说，函数在定义局部变量的时候，可以不考虑其他函数是否使用了某些变量名。这一特性，可以帮助函数保持独立性。
+!!! tldr 关键信息
+
+	函数形参或者是局部变量在声明的时候所使用的名字，只在函数体内部可见。也就是说，函数在定义局部变量的时候，可以不考虑其他函数是否使用了某些变量名。这一特性，可以帮助函数保持独立性。
 
 在后续的章节中，我们会探讨关于局部作用域的更多内容，同时也会谈到其他类型的作用域。
 
@@ -236,5 +238,6 @@ int main()
 
 在上面的例子中，每个变量都是在它第一次被使用时的前一行定义的。这个规定导师无需严格遵守——如果你希望将第五行和第六行的位置换一下也是可以的。
 
-> [!TIP] 最佳实践
-> 尽量在局部变量第一次被使用前最近的地方定义该局部变量。
+!!! success "最佳实践"
+
+	尽量在局部变量第一次被使用前最近的地方定义该局部变量。
