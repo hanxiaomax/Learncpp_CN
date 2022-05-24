@@ -1,3 +1,9 @@
+---
+title: 1.2 注释
+alias: 1.2 注释
+tag:
+
+---
 > [!INFO] 原文信息：
 > - 链接：[1.2 — Comments](https://www.learncpp.com/cpp-tutorial/comments/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  

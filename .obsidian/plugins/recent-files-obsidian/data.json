@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/2-1-Introduction-to-functions.md"
+    },
+    {
+      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
+      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "1-2-comments",
+      "path": "docs/1-2-comments.md"
+    },
+    {
       "basename": "翻译约定",
       "path": "docs/翻译约定.md"
     },
@@ -33,10 +57,6 @@
       "path": "docs/2-2-Function-return-values-value-returning functions.md"
     },
     {
-      "basename": "2-1-Introduction-to-functions",
-      "path": "docs/2-1-Introduction-to-functions.md"
-    },
-    {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     },
@@ -63,26 +83,6 @@
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
       "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
-    },
-    {
-      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
-      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "1-3-Introduction-to-objects-and-variables",
-      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
       "basename": "keyword",

@@ -2,7 +2,7 @@
 title: 2.1 函数简介
 alias: 2.1 函数简介
 tag:
-- gist
+
 ---
 
 
