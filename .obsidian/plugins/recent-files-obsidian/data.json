@@ -1,80 +1,96 @@
 {
   "recentFiles": [
     {
-      "basename": "2-11-Header-files",
-      "path": "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md"
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
-      "basename": "2.02 函数返回值 (带返回值的函数)",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.02 函数返回值 (带返回值的函数).md"
+      "basename": "3.1 — Syntax and semantic errors",
+      "path": "docs/3.1 — Syntax and semantic errors.md"
+    },
+    {
+      "basename": "3.x — Chapter 3 summary and quiz",
+      "path": "docs/3.x — Chapter 3 summary and quiz.md"
+    },
+    {
+      "basename": "3.10 — Finding issues before they become problems",
+      "path": "docs/3.10 — Finding issues before they become problems.md"
+    },
+    {
+      "basename": "3.2 — The debugging process",
+      "path": "docs/3.2 — The debugging process.md"
     },
     {
       "basename": "2-1-Introduction-to-functions",
-      "path": "docs/02-C++Basics-Functions-and-Files/2-1-Introduction-to-functions.md"
+      "path": "docs/2-1-Introduction-to-functions.md"
     },
     {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/01-Cpp-Basics/1-1-Statements-and-the-structure-of-a-program.md"
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
+    },
+    {
+      "basename": "2.02 函数返回值 (带返回值的函数)",
+      "path": "docs/2.02 函数返回值 (带返回值的函数).md"
     },
     {
       "basename": "1.02 注释",
-      "path": "docs/01-Cpp-Basics/1.02 注释.md"
+      "path": "docs/1.02 注释.md"
     },
     {
       "basename": "2.08 — Programs with multiple code files",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.08 — Programs with multiple code files.md"
+      "path": "docs/2.08 — Programs with multiple code files.md"
     },
     {
       "basename": "1.03 对象和变量",
-      "path": "docs/01-Cpp-Basics/1.03 对象和变量.md"
+      "path": "docs/1.03 对象和变量.md"
     },
     {
       "basename": "1.04 变量赋值和初始化",
-      "path": "docs/01-Cpp-Basics/1.04 变量赋值和初始化.md"
+      "path": "docs/1.04 变量赋值和初始化.md"
     },
     {
       "basename": "1.06 未初始化的变量和未定义行为",
-      "path": "docs/01-Cpp-Basics/1.06 未初始化的变量和未定义行为.md"
+      "path": "docs/1.06 未初始化的变量和未定义行为.md"
     },
     {
       "basename": "1.05 iostream 简介： cout，cin 和 endl",
-      "path": "docs/01-Cpp-Basics/1.05 iostream 简介： cout，cin 和 endl.md"
+      "path": "docs/1.05 iostream 简介： cout，cin 和 endl.md"
     },
     {
       "basename": "1.07 关键字和命名标识符",
-      "path": "docs/01-Cpp-Basics/1.07 关键字和命名标识符.md"
+      "path": "docs/1.07 关键字和命名标识符.md"
     },
     {
       "basename": "2.05 局部变量和局部作用域",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.05 局部变量和局部作用域.md"
+      "path": "docs/2.05 局部变量和局部作用域.md"
     },
     {
       "basename": "2.06 函数为何有用，如何高效使用函数",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.06 函数为何有用，如何高效使用函数.md"
+      "path": "docs/2.06 函数为何有用，如何高效使用函数.md"
     },
     {
       "basename": "2.04 函数的形参和实参",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.04 函数的形参和实参.md"
+      "path": "docs/2.04 函数的形参和实参.md"
     },
     {
       "basename": "2.03 Void 函数 (无返回值函数)",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.03 Void 函数 (无返回值函数).md"
+      "path": "docs/2.03 Void 函数 (无返回值函数).md"
     },
     {
       "basename": "1.10  表达式简介",
-      "path": "docs/01-Cpp-Basics/1.10  表达式简介.md"
+      "path": "docs/1.10  表达式简介.md"
     },
     {
       "basename": "1.09 字面量和运算符",
-      "path": "docs/01-Cpp-Basics/1.09 字面量和运算符.md"
+      "path": "docs/1.09 字面量和运算符.md"
     },
     {
       "basename": "1.08 空白和代码排版",
-      "path": "docs/01-Cpp-Basics/1.08 空白和代码排版.md"
+      "path": "docs/1.08 空白和代码排版.md"
     },
     {
       "basename": "keyword",
-      "path": "docs/01-Cpp-Basics/images/keyword.png"
+      "path": "docs/images/keyword.png"
     },
     {
       "basename": "翻译约定",

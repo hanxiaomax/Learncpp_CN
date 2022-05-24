@@ -1,6 +1,8 @@
 site_name: LearnCpp-cn
 theme:
   name: material
+  palette:
+    primary: amber
   features:
     - navigation.instant
     - navigation.top
@@ -22,3 +24,8 @@ plugins:
   - tags
   - ezlinks:
       wikilinks: true
+nav:
+  - 1. C++ 基础: index.md
+  - 2. C++ 基础-函数和文件: index.md
+  - 3. 调试 C++ 程序: index.md
+  - 4. 基础数据类型: index.md
