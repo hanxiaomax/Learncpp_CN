@@ -1,13 +1,10 @@
 ---
 title: 1.1 程序结构和语句
 alias: 1.1 程序结构和语句
+origin: https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/
 tag:
 
 ---
-> [!INFO] 原文信息：
-> - 链接：[1.1 — Statements and the structure of a program](https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2022-1-10
 
 ## Chapter introduction
 

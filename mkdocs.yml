@@ -1,5 +1,7 @@
 site_name: LearnCpp 中文翻译站点
 repo_url: https://github.com/hanxiaomax/Learncpp_CN
+repo_name: hanxiaomax/Learncpp_CN
+edit_uri: ""
 theme:
   name: material
   custom_dir: overrides
