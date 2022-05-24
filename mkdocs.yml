@@ -13,6 +13,7 @@ theme:
     - content.tooltips
     - header.autohide
     - navigation.indexes
+    - navigation.tabs
 extra_css:
   - stylesheets/extra.css
 markdown_extensions:
@@ -36,7 +37,6 @@ extra:
     - icon: fontawesome/brands/github 
       link: https://github.com/hanxiaomax
 nav:
-  - 翻译约定: 翻译约定.md
   - 课程内容:
     - 1. C++ 基础:
       - "1-1-Statements-and-the-structure-of-a-program.md"
@@ -84,3 +84,5 @@ nav:
     - 24. 其他话题: index.md
     - 25. C++标准更新: index.md
     - O1. 位运算: index.md
+  - 翻译约定: 翻译约定.md
+  - 关于本站: about.md

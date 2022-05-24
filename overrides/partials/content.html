@@ -9,18 +9,19 @@
 
 {% if not "\x3ch1" in page.content %}
   <h1>{{ page.meta.alias | d(config.site_name, true)}}</h1>
+  {% if page.meta.type == "translation"  %}
   <div style="background: #efefef;">
     <div >
-        <a target="_blank" href="{{page.meta.origin}}">原文链接: {{page.meta.origin_title}}</a>
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial/{{page.meta.origin}}">原文链接: {{page.meta.origin_title}}</a>
     </div>
     <div >
-        <a target="_blank" href="{{page.meta.origin}}">作者: ALEX</a>
+        <a target="_blank" href="https://www.learncpp.com/author/Alex/">作者: ALEX</a>
     </div>
     <div >
-        <a target="_blank" href="{{page.meta.origin}}">更新时间: {{page.meta.time}}</a>
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial/{{page.meta.origin}}">更新时间: {{page.meta.time}}</a>
     </div>
   </div>
-  
+  {% endif %}
 {% endif %}
 {{ page.content }}
 {% if page and page.meta and (

@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "about",
+      "path": "docs/about.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
+      "basename": "index",
+      "path": "docs/index.md"
+    },
+    {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "yaml",
+      "path": "Templates/yaml.md"
     },
     {
       "basename": "1-4-Variable-assignment-and-initialization",
@@ -11,10 +27,6 @@
     {
       "basename": "2-8-Programs-with-multiple-code-files",
       "path": "docs/2-8-Programs-with-multiple-code-files.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "docs/翻译约定.md"
     },
     {
       "basename": "2-7-Forward-declarations-and-definitions",
@@ -71,10 +83,6 @@
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
       "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
-    },
-    {
-      "basename": "yaml",
-      "path": "Templates/yaml.md"
     },
     {
       "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",

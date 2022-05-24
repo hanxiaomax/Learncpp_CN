@@ -3,6 +3,7 @@ alias: 1.1 程序结构和语句
 origin: https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/
 origin_title: 1.1 — Statements and the structure of a program
 time: 2022-1-2
+type: translation
 tags:
 - statements
 ---
