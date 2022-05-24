@@ -25,7 +25,9 @@ plugins:
   - ezlinks:
       wikilinks: true
 nav:
-  - 1. C++ 基础: index.md
+  - 翻译约定: 翻译约定.md
+  - 1. C++ 基础:
+    - "1-1-Statements-and-the-structure-of-a-program.md"
   - 2. C++ 基础-函数和文件: index.md
   - 3. 调试 C++ 程序: index.md
   - 4. 基础数据类型: index.md

@@ -22,7 +22,7 @@ int add(int x, int y) // function parameters x and y are local variables
 
 ## 局部变量生命周期
 
-在[[1.03 对象和变量]]中我们讨论了以形如 `int x;` 的方式定义变量是如何在语句执行时[[实例化(instantiated)]] 变量的。函数的[[形参(parameters)]]是在进入函数时被创建和初始化的，函数体内的函数则是在定义时创建并初始化的。
+在[[1-3-Introduction-to-objects-and-variables]]中我们讨论了以形如 `int x;` 的方式定义变量是如何在语句执行时[[实例化(instantiated)]] 变量的。函数的[[形参(parameters)]]是在进入函数时被创建和初始化的，函数体内的函数则是在定义时创建并初始化的。
 
 例如：
 

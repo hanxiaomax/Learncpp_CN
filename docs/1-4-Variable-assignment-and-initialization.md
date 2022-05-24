@@ -1,6 +1,6 @@
 # 1.4 变量赋值和初始化
 
-在上一节课  [[1.03 对象和变量]] 中，我们介绍了如何定义一个变量。在这一节课中，我们会介绍如何为变量赋值并使用它存储的值。
+在上一节课  [[1-3-Introduction-to-objects-and-variables]] 中，我们介绍了如何定义一个变量。在这一节课中，我们会介绍如何为变量赋值并使用它存储的值。
 
 首先回忆一下，下面这个代码片段中，我们在内存中为一个名为 x 的整型变量分配了内存，然后类似地，又创建了两个整型变量，分别叫做 y 和 z：
 
@@ -71,7 +71,7 @@ int d { 7 }; // 在花括号中放置初始化值
 
 ## 默认初始化
 
-在不提供任何初始化值的时候（例如上面例子中的变量 `a`），将进行默认初始化。在大多数情况下，默认初始化会导致变量存放一个[[不确定值(indeterminate)]]。相关内容我们会在[[1.06 未初始化的变量和未定义行为]]中进行介绍。
+在不提供任何初始化值的时候（例如上面例子中的变量 `a`），将进行默认初始化。在大多数情况下，默认初始化会导致变量存放一个[[不确定值(indeterminate)]]。相关内容我们会在[[1-6-Uninitialized-variables-and-undefined-behavior]]中进行介绍。
 
 ## 拷贝初始化
 
@@ -154,7 +154,7 @@ std::cin >> x; // we're immediately replacing that value
 
 关于这个话题的讨论，Bjarne Stroustrup (C++之父) 和 Herb Sutter (C++ 大师) 提供了他们的见解，详细内容请参考[这里](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#es20-always-initialize-an-object).
 
-我们会在[[1.06 未初始化的变量和未定义行为]]中详细讨论当我们试图使用一个没有被”恰当定义“的变量时会发生什么。
+我们会在[[1-6-Uninitialized-variables-and-undefined-behavior]]中详细讨论当我们试图使用一个没有被”恰当定义“的变量时会发生什么。
 
 > [!INFO] Q&A
 > 在创建变量时对其进行初始化。
