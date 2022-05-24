@@ -4,7 +4,20 @@ theme:
   features:
     - navigation.instant
     - navigation.top
+    - content.tooltips
+  icon:
+    tag:
+      html: fontawesome/brands/html5
+      js: fontawesome/brands/js
+      css:  fontawesome/brands/css3
+  extra:
+    tags:
+      HTML5: html
+      JavaScript: js
+      CSS: css
 markdown_extensions:
+  - abbr
+  - attr_list
   - admonition
   - meta
   - pymdownx.highlight:
@@ -14,5 +27,6 @@ markdown_extensions:
   - pymdownx.superfences
 plugins:
   - search
+  - tags
   - ezlinks:
       wikilinks: true

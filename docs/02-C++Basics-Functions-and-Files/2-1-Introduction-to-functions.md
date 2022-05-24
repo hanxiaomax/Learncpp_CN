@@ -1,9 +1,17 @@
+---
+title: 2.1 函数简介
+alias: 2.1 函数简介
+tag:
+- gist
+---
+
+
 > [!INFO] 原文信息：
 > - 链接： [2.1 — Introduction to functions](https://www.learncpp.com/cpp-tutorial/introduction-to-functions/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 > - 2021-12-23
 
-# 2.1 函数简介
+
 在上一章节中，我们将函数定义为一组顺序执行指令的合集。这个定义固然没错，但是它并没有表达出函数的重要性。 这里让我们重新定义函数：函数是一组为了完成某项任务而创建的可复用的顺序指令集合。
 
 你已经知道了，任何都必须包含一个名为 `main` 的函数（程序开始执行的地方）。然而，如果将程序的所有代码都塞进 `main` 函数中，那么它无疑会变得越来越长，也越来越难以维护。而函数则提供了一种将程序分割成简短的、模块化的代码段的方式。这种方式的代码更加容易管理、容易测试，也更容易使用。C++ 标准库中包含了非常多的已经编写好的函数可供你使用。不过，使用自己编写的函数也是非常常见的情形，这些函数称为用户自定义函数。
@@ -191,6 +199,3 @@ int main()
 >
 >如果你对其词源感兴趣，可以去阅读 [RFC 3092](https://datatracker.ietf.org/doc/html/rfc3092) 。
 
-[[1-1-Statements-and-the-structure-of-a-program]]
-
-http://127.0.0.1:8000/02_C%2B%2B%20基础-函数和文件/1-1-statements-and-the-structure-of-a-program

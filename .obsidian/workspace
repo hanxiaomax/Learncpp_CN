@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/02-C++Basics-Functions-and-Files/2.01 函数简介.md",
+            "file": "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md",
             "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/02-C++Basics-Functions-and-Files/2.01 函数简介.md"
+                "file": "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md"
               }
             }
           },
@@ -107,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/02-C++Basics-Functions-and-Files/2.01 函数简介.md",
+                "file": "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +129,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/02-C++Basics-Functions-and-Files/2.01 函数简介.md",
+    "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md",
+    "docs/02-C++Basics-Functions-and-Files/2.02 函数返回值 (带返回值的函数).md",
+    "docs/includes/glossary.md",
+    "docs/includes/按值传递(pass by value).md",
+    "docs/includes/前向声明(forward declaration).md",
+    "docs/includes/形参(parameters).md",
+    "docs/02-C++Basics-Functions-and-Files/2-1-Introduction-to-functions.md",
     "docs/01_C++ 基础/1-1-Statements-and-the-structure-of-a-program.md",
     "docs/01_C++ 基础/1.02 注释.md",
-    "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md",
-    "docs/02-C++Basics-Functions-and-Files/2.08 — Programs with multiple code files.md",
-    "docs/01_C++ 基础/1.03 对象和变量.md",
-    "docs/01_C++ 基础/1.04 变量赋值和初始化.md",
-    "docs/01_C++ 基础/1.06 未初始化的变量和未定义行为.md",
-    "docs/01_C++ 基础/1.05 iostream 简介： cout，cin 和 endl.md",
-    "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
+    "docs/02-C++Basics-Functions-and-Files/2.08 — Programs with multiple code files.md"
   ]
 }

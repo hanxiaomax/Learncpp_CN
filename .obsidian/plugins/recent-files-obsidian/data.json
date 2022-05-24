@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "2.01 函数简介",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.01 函数简介.md"
+      "basename": "2-11-Header-files",
+      "path": "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md"
+    },
+    {
+      "basename": "2.02 函数返回值 (带返回值的函数)",
+      "path": "docs/02-C++Basics-Functions-and-Files/2.02 函数返回值 (带返回值的函数).md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/02-C++Basics-Functions-and-Files/2-1-Introduction-to-functions.md"
     },
     {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
@@ -11,10 +19,6 @@
     {
       "basename": "1.02 注释",
       "path": "docs/01_C++ 基础/1.02 注释.md"
-    },
-    {
-      "basename": "2-11-Header-files",
-      "path": "docs/02-C++Basics-Functions-and-Files/2-11-Header-files.md"
     },
     {
       "basename": "2.08 — Programs with multiple code files",
@@ -57,10 +61,6 @@
       "path": "docs/02-C++Basics-Functions-and-Files/2.03 Void 函数 (无返回值函数).md"
     },
     {
-      "basename": "形参",
-      "path": "docs/99_glossary/形参.md"
-    },
-    {
       "basename": "1.10  表达式简介",
       "path": "docs/01_C++ 基础/1.10  表达式简介.md"
     },
@@ -75,26 +75,6 @@
     {
       "basename": "keyword",
       "path": "docs/01_C++ 基础/images/keyword.png"
-    },
-    {
-      "basename": "2.02 函数返回值 (带返回值的函数)",
-      "path": "docs/02-C++Basics-Functions-and-Files/2.02 函数返回值 (带返回值的函数).md"
-    },
-    {
-      "basename": "按值传递(pass by value)",
-      "path": "docs/99_glossary/按值传递(pass by value).md"
-    },
-    {
-      "basename": "前向声明(forward declaration)",
-      "path": "docs/99_glossary/前向声明(forward declaration).md"
-    },
-    {
-      "basename": "实参(arguments)",
-      "path": "docs/99_glossary/实参(arguments).md"
-    },
-    {
-      "basename": "词汇表",
-      "path": "docs/99_glossary/词汇表.md"
     },
     {
       "basename": "翻译约定",
