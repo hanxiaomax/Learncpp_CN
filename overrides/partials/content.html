@@ -6,11 +6,21 @@
 {% if "tags" in config.plugins %}
   {% include "partials/tags.html" %}
 {% endif %}
-<div style="float: right;">
-    <a target="_blank" href="{{page.meta.origin}}">{{page.meta.origin_title}}</a>
-</div>
+
 {% if not "\x3ch1" in page.content %}
-  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+  <h1>{{ page.meta.alias | d(config.site_name, true)}}</h1>
+  <div style="background: #efefef;">
+    <div >
+        <a target="_blank" href="{{page.meta.origin}}">原文链接: {{page.meta.origin_title}}</a>
+    </div>
+    <div >
+        <a target="_blank" href="{{page.meta.origin}}">作者: ALEX</a>
+    </div>
+    <div >
+        <a target="_blank" href="{{page.meta.origin}}">更新时间: {{page.meta.time}}</a>
+    </div>
+  </div>
+  
 {% endif %}
 {{ page.content }}
 {% if page and page.meta and (
