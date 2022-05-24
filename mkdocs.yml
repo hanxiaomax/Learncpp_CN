@@ -1,9 +1,10 @@
-site_name: LearnCpp-cn
+site_name: LearnCpp 中文翻译站点
+repo_url: https://github.com/hanxiaomax/Learncpp_CN
 theme:
   name: material
   custom_dir: overrides
   palette: 
-    primary: teal
+    primary: amber
   features:
     - navigation.instant
     - navigation.top
@@ -26,6 +27,10 @@ plugins:
   - tags
   - search
   - roamlinks 
+extra:
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/hanxiaomax
 nav:
   - 翻译约定: 翻译约定.md
   - 1. C++ 基础:
