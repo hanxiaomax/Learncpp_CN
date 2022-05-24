@@ -1,3 +1,3 @@
-!!! warning 注意
+!!! warning "注意"
 
 	<>

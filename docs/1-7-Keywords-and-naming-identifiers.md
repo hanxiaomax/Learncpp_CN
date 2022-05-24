@@ -77,7 +77,7 @@ int MyFunctionName(); // valid but incorrect (should start with lower case lette
 
 如果你的工作是在其他人的代码上进行开发，那么这些就不重要了。因为这种情况下，最好的做法是遵循他人的命名规则而不是死板的遵循上述原则。
 
-!!! note 法则
+!!! note "法则"
 
 	当基于已有的代码进行开发时，请使用该代码的命名约定（既是它的风格不符合最佳实践）。当你编写一个新的程序的时候，请遵循最佳实践。
 
