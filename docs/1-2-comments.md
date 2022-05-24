@@ -1,13 +1,13 @@
 ---
-title: 1.2 注释
-alias: 1.2 注释
-tag:
-
+alias: 1.2 - 注释
+origin: /comments/
+origin_title: 1.2 — Comments
+time: 2020-5-1
+type: translation
+tags:
+- comments
 ---
-> [!INFO] 原文信息：
-> - 链接：[1.2 — Comments](https://www.learncpp.com/cpp-tutorial/comments/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2020-5-1
+
 
 A comment is a programmer-readable note that is inserted directly into the source code of the program. Comments are ignored by the compiler and are for the programmer’s use only.
 
