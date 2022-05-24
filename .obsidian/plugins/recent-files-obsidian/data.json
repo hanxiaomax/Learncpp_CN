@@ -14,11 +14,11 @@
     },
     {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/01_C++ 基础/1-1-Statements-and-the-structure-of-a-program.md"
+      "path": "docs/01-Cpp-Basics/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
       "basename": "1.02 注释",
-      "path": "docs/01_C++ 基础/1.02 注释.md"
+      "path": "docs/01-Cpp-Basics/1.02 注释.md"
     },
     {
       "basename": "2.08 — Programs with multiple code files",
@@ -26,23 +26,23 @@
     },
     {
       "basename": "1.03 对象和变量",
-      "path": "docs/01_C++ 基础/1.03 对象和变量.md"
+      "path": "docs/01-Cpp-Basics/1.03 对象和变量.md"
     },
     {
       "basename": "1.04 变量赋值和初始化",
-      "path": "docs/01_C++ 基础/1.04 变量赋值和初始化.md"
+      "path": "docs/01-Cpp-Basics/1.04 变量赋值和初始化.md"
     },
     {
       "basename": "1.06 未初始化的变量和未定义行为",
-      "path": "docs/01_C++ 基础/1.06 未初始化的变量和未定义行为.md"
+      "path": "docs/01-Cpp-Basics/1.06 未初始化的变量和未定义行为.md"
     },
     {
       "basename": "1.05 iostream 简介： cout，cin 和 endl",
-      "path": "docs/01_C++ 基础/1.05 iostream 简介： cout，cin 和 endl.md"
+      "path": "docs/01-Cpp-Basics/1.05 iostream 简介： cout，cin 和 endl.md"
     },
     {
       "basename": "1.07 关键字和命名标识符",
-      "path": "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
+      "path": "docs/01-Cpp-Basics/1.07 关键字和命名标识符.md"
     },
     {
       "basename": "2.05 局部变量和局部作用域",
@@ -62,19 +62,19 @@
     },
     {
       "basename": "1.10  表达式简介",
-      "path": "docs/01_C++ 基础/1.10  表达式简介.md"
+      "path": "docs/01-Cpp-Basics/1.10  表达式简介.md"
     },
     {
       "basename": "1.09 字面量和运算符",
-      "path": "docs/01_C++ 基础/1.09 字面量和运算符.md"
+      "path": "docs/01-Cpp-Basics/1.09 字面量和运算符.md"
     },
     {
       "basename": "1.08 空白和代码排版",
-      "path": "docs/01_C++ 基础/1.08 空白和代码排版.md"
+      "path": "docs/01-Cpp-Basics/1.08 空白和代码排版.md"
     },
     {
       "basename": "keyword",
-      "path": "docs/01_C++ 基础/images/keyword.png"
+      "path": "docs/01-Cpp-Basics/images/keyword.png"
     },
     {
       "basename": "翻译约定",

@@ -5,16 +5,8 @@ theme:
     - navigation.instant
     - navigation.top
     - content.tooltips
-  icon:
-    tag:
-      html: fontawesome/brands/html5
-      js: fontawesome/brands/js
-      css:  fontawesome/brands/css3
-  extra:
-    tags:
-      HTML5: html
-      JavaScript: js
-      CSS: css
+    - header.autohide
+    - navigation.indexes
 markdown_extensions:
   - abbr
   - attr_list
