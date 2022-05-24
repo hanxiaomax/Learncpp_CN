@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/01_C++ 基础/4.变量赋值和初始化.md",
+            "file": "docs/01_C++ 基础/1.03 对象和变量.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/01_C++ 基础/4.变量赋值和初始化.md"
+                "file": "docs/01_C++ 基础/1.03 对象和变量.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/01_C++ 基础/4.变量赋值和初始化.md",
+                "file": "docs/01_C++ 基础/1.03 对象和变量.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,8 +128,8 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/01_C++ 基础/4.变量赋值和初始化.md",
     "docs/01_C++ 基础/1.03 对象和变量.md",
+    "docs/01_C++ 基础/1.04 变量赋值和初始化.md",
     "docs/01_C++ 基础/1.02 注释.md",
     "docs/01_C++ 基础/1.06 未初始化的变量和未定义行为.md",
     "docs/01_C++ 基础/1.05 iostream 简介： cout，cin 和 endl.md",

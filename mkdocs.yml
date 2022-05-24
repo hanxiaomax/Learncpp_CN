@@ -1,7 +1,12 @@
 site_name: LearnCpp-cn
 theme:
   name: material
+  features:
+    - navigation.instant
+    - toc.integrate
+    - navigation.top
 markdown_extensions:
+  - admonition
   - pymdownx.highlight:
       linenums: true
   - pymdownx.inlinehilite
