@@ -25,5 +25,5 @@
   "livePreview": true,
   "tabSize": 6,
   "vimMode": false,
-  "useMarkdownLinks": true
+  "useMarkdownLinks": false
 }

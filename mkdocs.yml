@@ -3,13 +3,16 @@ theme:
   name: material
   features:
     - navigation.instant
-    - toc.integrate
     - navigation.top
 markdown_extensions:
   - admonition
+  - meta
   - pymdownx.highlight:
       linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - wikilinks
+plugins:
+  - search
+  - ezlinks:
+      wikilinks: true
