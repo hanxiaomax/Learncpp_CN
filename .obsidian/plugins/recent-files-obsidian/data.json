@@ -1,16 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "rule",
+      "path": "Templates/rule.md"
+    },
+    {
+      "basename": "tip",
+      "path": "Templates/tip.md"
+    },
+    {
+      "basename": "related",
+      "path": "Templates/related.md"
+    },
+    {
+      "basename": "key-insight",
+      "path": "Templates/key-insight.md"
+    },
+    {
+      "basename": "best-practices",
+      "path": "Templates/best-practices.md"
+    },
+    {
+      "basename": "author-notes",
+      "path": "Templates/author-notes.md"
+    },
+    {
+      "basename": "aside",
+      "path": "Templates/aside.md"
+    },
+    {
+      "basename": "advanced",
+      "path": "Templates/advanced.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/2-1-Introduction-to-functions.md"
+    },
+    {
+      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
+      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
+    },
+    {
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
       "basename": "1-2-comments",
       "path": "docs/1-2-comments.md"
     },
     {
-      "basename": "yaml",
-      "path": "Templates/yaml.md"
-    },
-    {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "yaml",
+      "path": "Templates/yaml.md"
     },
     {
       "basename": "about",
@@ -23,10 +79,6 @@
     {
       "basename": "index",
       "path": "docs/index.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
     {
       "basename": "2-8-Programs-with-multiple-code-files",
@@ -53,14 +105,6 @@
       "path": "docs/2-3-Void-functions-non-value returning functions.md"
     },
     {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "2-1-Introduction-to-functions",
-      "path": "docs/2-1-Introduction-to-functions.md"
-    },
-    {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     },
@@ -85,32 +129,12 @@
       "path": "docs/1-7-Keywords-and-naming-identifiers.md"
     },
     {
-      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
-      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
-    },
-    {
       "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
       "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
     },
     {
-      "basename": "1-3-Introduction-to-objects-and-variables",
-      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
       "basename": "keyword",
       "path": "docs/images/keyword.png"
-    },
-    {
-      "basename": "add-glossary",
-      "path": "Templates/add-glossary.md"
-    },
-    {
-      "basename": "origin-link",
-      "path": "Templates/origin-link.md"
-    },
-    {
-      "basename": "key-insight",
-      "path": "Templates/key-insight.md"
     }
   ],
   "omittedPaths": [],

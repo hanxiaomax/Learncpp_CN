@@ -194,8 +194,10 @@ int main()
 }
 ```
 
->[!INFO] 题外话
->“foo” 是一个没有意义的单词，在展示某些概念的时候，如果名称不重要，那么常会使用它来作为占位符。此类单词有个专门的名字叫做：伪变量/[metasyntactic variables](https://baike.baidu.com/item/伪变量/7994371?fr=aladdin) (不过，在日常用语中大家还是喜欢称其为”名称占位符“，因为 metasyntactic variables这个单词真的很生僻)。 其他C++中常见的伪变量还包括 “bar”、“baz”以及其他以“oo”结尾的三字母单词，例如“goo”、“moo”和“boo”。
->
->如果你对其词源感兴趣，可以去阅读 [RFC 3092](https://datatracker.ietf.org/doc/html/rfc3092) 。
+
+!!! cite 题外话
+
+	“foo” 是一个没有意义的单词，在展示某些概念的时候，如果名称不重要，那么常会使用它来作为占位符。此类单词有个专门的名字叫做：伪变量/[metasyntactic variables](https://baike.baidu.com/item/伪变量/7994371?fr=aladdin) (不过，在日常用语中大家还是喜欢称其为”名称占位符“，因为 metasyntactic variables这个单词真的很生僻)。 其他C++中常见的伪变量还包括 “bar”、“baz”以及其他以“oo”结尾的三字母单词，例如“goo”、“moo”和“boo”。
+	
+	如果你对其词源感兴趣，可以去阅读 [RFC 3092](https://datatracker.ietf.org/doc/html/rfc3092) 。
 

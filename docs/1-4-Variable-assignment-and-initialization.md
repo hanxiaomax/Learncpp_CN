@@ -1,10 +1,13 @@
 ---
-title: 1.4 变量赋值和初始化
-alias: 1.4 变量赋值和初始化
-tag:
-
+alias: 1.4 - 变量赋值和初始化
+origin: /variable-assignment-and-initialization/
+origin_title: 1.4 — Variable assignment and initialization
+time: 2022-1-6
+type: translation
+tags:
+- variable
+- initialization
 ---
-
 
 
 在上一节课  [[1-3-Introduction-to-objects-and-variables|1.3 对象和变量]] 中，我们介绍了如何定义一个变量。在这一节课中，我们会介绍如何为变量赋值并使用它存储的值。

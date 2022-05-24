@@ -9,12 +9,27 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/1-2-comments.md",
+            "file": "Templates/tip.md",
             "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
-        }
+        },
+        "group": "24d391fb2347414e"
+      },
+      {
+        "id": "1771537e887c15bd",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Templates/tip.md",
+            "mode": "preview",
+            "backlinks": false,
+            "source": false
+          }
+        },
+        "group": "24d391fb2347414e"
       }
     ],
     "direction": "vertical"
@@ -41,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "custom",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +101,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/1-2-comments.md"
+                "file": "Templates/tip.md"
               }
             }
           },
@@ -107,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/1-2-comments.md",
+                "file": "Templates/tip.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +143,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/1-2-comments.md",
-    "Templates/yaml.md",
-    "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "docs/about.md",
-    "docs/翻译约定.md",
-    "docs/index.md",
-    "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/2-8-Programs-with-multiple-code-files.md",
-    "docs/2-7-Forward-declarations-and-definitions.md",
-    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
+    "Templates/tip.md",
+    "Templates/rule.md",
+    "Templates/related.md",
+    "Templates/origin-link.md",
+    "Templates/key-insight.md",
+    "Templates/best-practices.md",
+    "Templates/author-notes.md",
+    "Templates/aside.md",
+    "Templates/advanced.md",
+    "docs/2-2-Function-return-values-value-returning functions.md"
   ]
 }
