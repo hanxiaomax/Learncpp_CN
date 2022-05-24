@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "4.变量赋值和初始化",
+      "path": "docs/01_C++ 基础/4.变量赋值和初始化.md"
+    },
+    {
+      "basename": "1.03 对象和变量",
+      "path": "docs/01_C++ 基础/1.03 对象和变量.md"
+    },
+    {
+      "basename": "1.02 注释",
+      "path": "docs/01_C++ 基础/1.02 注释.md"
+    },
+    {
+      "basename": "1.06 未初始化的变量和未定义行为",
+      "path": "docs/01_C++ 基础/1.06 未初始化的变量和未定义行为.md"
+    },
+    {
+      "basename": "1.05 iostream 简介： cout，cin 和 endl",
+      "path": "docs/01_C++ 基础/1.05 iostream 简介： cout，cin 和 endl.md"
+    },
+    {
+      "basename": "1.01 程序结构和语句",
+      "path": "docs/01_C++ 基础/1.01 程序结构和语句.md"
+    },
+    {
+      "basename": "1.07 关键字和命名标识符",
+      "path": "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
+    },
+    {
       "basename": "2.05 局部变量和局部作用域",
       "path": "docs/02_C++ 基础-函数和文件/2.05 局部变量和局部作用域.md"
     },
@@ -21,40 +49,12 @@
       "path": "docs/02_C++ 基础-函数和文件/2.01 函数简介.md"
     },
     {
-      "basename": "1.07 关键字和命名标识符",
-      "path": "docs/01_C++ 基础/1.07 关键字和命名标识符.md"
-    },
-    {
       "basename": "形参",
       "path": "docs/99_glossary/形参.md"
     },
     {
-      "basename": "1.03 对象和变量",
-      "path": "docs/01_C++ 基础/1.03 对象和变量.md"
-    },
-    {
       "basename": "标识符(identifier)",
       "path": "标识符(identifier).md"
-    },
-    {
-      "basename": "1.01 程序结构和语句",
-      "path": "docs/01_C++ 基础/1.01 程序结构和语句.md"
-    },
-    {
-      "basename": "1.02 注释",
-      "path": "docs/01_C++ 基础/1.02 注释.md"
-    },
-    {
-      "basename": "1.06 未初始化的变量和未定义行为",
-      "path": "docs/01_C++ 基础/1.06 未初始化的变量和未定义行为.md"
-    },
-    {
-      "basename": "1.05 iostream 简介： cout，cin 和 endl",
-      "path": "docs/01_C++ 基础/1.05 iostream 简介： cout，cin 和 endl.md"
-    },
-    {
-      "basename": "1.04 变量赋值和初始化",
-      "path": "docs/01_C++ 基础/1.04 变量赋值和初始化.md"
     },
     {
       "basename": "1.10  表达式简介",
