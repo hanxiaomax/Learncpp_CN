@@ -2,14 +2,16 @@ site_name: LearnCpp-cn
 theme:
   name: material
   custom_dir: overrides
-  palette:
-    primary: amber
+  palette: 
+    primary: teal
   features:
     - navigation.instant
     - navigation.top
     - content.tooltips
     - header.autohide
     - navigation.indexes
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - abbr
   - attr_list
@@ -23,8 +25,7 @@ markdown_extensions:
 plugins:
   - tags
   - search
-  - ezlinks:
-      wikilinks: true
+  - roamlinks 
 nav:
   - 翻译约定: 翻译约定.md
   - 1. C++ 基础:

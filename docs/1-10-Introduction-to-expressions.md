@@ -1,9 +1,15 @@
+---
+title: 1.10 表达式简介
+alias: 1.10 表达式简介
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接：[1.10 — Introduction to expressions](https://www.learncpp.com/cpp-tutorial/introduction-to-expressions/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
 > - 2022-2-17
 
-# 1.10 表达式简介
 
 ## 表达式
 

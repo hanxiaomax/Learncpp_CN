@@ -1,9 +1,15 @@
+---
+title: 1.9 字面量和运算符
+alias: 1.9 字面量和运算符
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接：[1.9 — Introduction to literals and operators](https://www.learncpp.com/cpp-tutorial/introduction-to-literals-and-operators/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
 > - 2021-10-28
 
-# 1.9 字面量和运算符
 
 ## 字面量
 

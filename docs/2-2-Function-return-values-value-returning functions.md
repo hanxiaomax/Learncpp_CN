@@ -1,9 +1,15 @@
+---
+title: 2.2 函数返回值 (带返回值的函数)
+alias: 2.2 函数返回值 (带返回值的函数)
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接： [2.2 — Function return values (value-returning functions)](https://www.learncpp.com/cpp-tutorial/function-return-values-value-returning-functions/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 > - 2022-4-22
 
-# 2.2 函数返回值 (带返回值的函数)
 
 请考虑下面这个程序：
 

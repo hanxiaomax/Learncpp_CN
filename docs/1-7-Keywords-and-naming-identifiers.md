@@ -1,9 +1,17 @@
+---
+title: 1.7 关键字和命名标识符
+alias: 1.7 关键字和命名标识符
+tag:
+
+---
+
+
 > [!INFO] 原文信息：
 > - 链接：[1.7 — Keywords and naming identifiers](https://www.learncpp.com/cpp-tutorial/keywords-and-naming-identifiers/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
 > - 2022-2-15
 
-# 1.7 关键字和命名标识符
+
 
 ## 关键字
 

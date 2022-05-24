@@ -1,9 +1,15 @@
+---
+title: 2.6 函数为何有用，如何高效使用函数
+alias: 2.6 函数为何有用，如何高效使用函数
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接：[2.6 — Why functions are useful, and how to use them effectively](https://www.learncpp.com/cpp-tutorial/why-functions-are-useful-and-how-to-use-them-effectively/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
 > - 2022-4-15
 
-# 2.6 函数为何有用，如何高效使用函数
 
 通过前面的学习，我们已经了解了什么是函数以及函数的基本功能，接下来，让我们看看，为什么说函数非常有用。
 

@@ -1,8 +1,15 @@
+---
+title: 2.3 Void 函数 (无返回值的函数)
+alias: 2.3 Void 函数 (无返回值的函数)
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接： [2.3 — Void functions (non-value returning functions)](https://www.learncpp.com/cpp-tutorial/void-functions-non-value-returning-functions/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 > - 2022-4-15
-# 2.3 — Void 函数 (non-value returning functions)
+
 在上节课中（[[2-1-Introduction-to-functions]]），我们介绍了函数定义的语法应该像下面这样：
 
 ```

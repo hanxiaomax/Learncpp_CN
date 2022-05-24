@@ -1,9 +1,15 @@
+---
+title: 2.7 前向声明和定义
+alias: 2.7 前向声明和定义
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接：[2.7 — Forward declarations and definitions](https://www.learncpp.com/cpp-tutorial/forward-declarations/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
 > - 2022-5-19
 
-# 2.7 前向声明和定义
 
 Take a look at this seemingly innocent sample program:
 

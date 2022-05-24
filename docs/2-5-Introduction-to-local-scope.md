@@ -1,9 +1,15 @@
+---
+title: 2.5 局部变量和局部作用域
+alias: 2.5 局部变量和局部作用域
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接： [2.5 — Introduction to local scope](https://www.learncpp.com/cpp-tutorial/introduction-to-local-scope/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 > - 2022-5-21
 
-# 2.5 局部变量和局部作用域
 
 ## 局部变量
 

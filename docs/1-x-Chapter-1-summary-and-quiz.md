@@ -1,9 +1,15 @@
+---
+title: 1.x 小结与测试
+alias: 1.x 小结与测试
+tag:
+
+---
+
 > [!INFO] 原文信息：
 > - 链接： [1.x — Chapter 1 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-1-summary-and-quiz/)
 > - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 > - 2022-3-25
 
-# 1.x 小结与测试
 
 ## 章节回顾
 
