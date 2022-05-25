@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+            "file": "docs/index.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+                "file": "docs/index.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+                "file": "docs/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,6 +128,7 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/index.md",
     "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
     "docs/2-7-Forward-declarations-and-definitions.md",
     "docs/2-8-Programs-with-multiple-code-files.md",
@@ -136,7 +137,6 @@
     "docs/8-9-Introduction-to-function-overloading.md",
     "docs/one-definition-rule.md",
     "docs/linker.md",
-    "docs/definition.md",
-    "docs/declaration.md"
+    "docs/definition.md"
   ]
 }

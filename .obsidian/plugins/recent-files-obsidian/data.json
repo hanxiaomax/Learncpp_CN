@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "index",
+      "path": "docs/index.md"
+    },
+    {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
       "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     },
@@ -171,10 +175,6 @@
     {
       "basename": "about",
       "path": "docs/about.md"
-    },
-    {
-      "basename": "index",
-      "path": "docs/index.md"
     },
     {
       "basename": "2-4-Introduction-to-function-parameters-and-arguments",
