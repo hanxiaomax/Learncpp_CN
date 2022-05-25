@@ -113,27 +113,28 @@ int add(int x, int y) // 即使函数体在后面才定义
 }
 ```
 
-Now when the compiler reaches the call to _add_ in main, it will know what _add_ looks like (a function that takes two integer parameters and returns an integer), and it won’t complain.
+现在，当编译器到达`add`函数调用处是，它已经知道了`add`的原型（接收两个参数并返回一个整型），此时它便不会再报错了。
 
-It is worth noting that function prototypes do not need to specify the names of the parameters. In the above code, you can also forward declare your function like this:
+在函数原型中其实没必要提供参数的名字。在上面的例子中，你也可以像下面这样进行前向声明：
 
 ```cpp
 int add(int, int); // valid function prototype
 ```
 
-However, we prefer to name our parameters (using the same names as the actual function), because it allows you to understand what the function parameters are just by looking at the prototype. Otherwise, you’ll have to locate the function definition.
+不过，我们建议还是使用实际的变量名，因为这样可以在你看到函数原型的时候，更好地理解其含义。否则，你必须再次寻找它的定义。
+
 
 !!! success "最佳实践"
 
-    When defining function prototypes, keep the parameter names. You can easily create forward declarations by copy/pasting your function’s prototype and adding a semicolon.
+    在定义函数原型的时候，请保留函数名。你可以赋值粘贴函数的原型并在其后面加上一个分号来轻松地创建前向声明。
+    
+## 忘记函数体
 
-## Forgetting the function body
+新手程序员常常会问，如果仅仅对函数进行了前向声明，但是没有实际定义该函数时会发生什么？
 
-New programmers often wonder what happens if they forward declare a function but do not define it.
+这个问题的答案是：具体情况具体分析。如果函数具有前向声明，但是该函数并未被实际调用，那么程序是可以正常编译和运行的。不过，如果函数被实际调用了，但程序却没有定义该函数，那么只能够保证编译是可以通过的，但链接器会报错，因为它无法解析该函数调用。
 
-The answer is: it depends. If a forward declaration is made, but the function is never called, the program will compile and run fine. However, if a forward declaration is made and the function is called, but the program never defines the function, the program will compile okay, but the linker will complain that it can’t resolve the function call.
-
-Consider the following program:
+考虑下面这个程序：
 
 ```cpp
 #include <iostream>
