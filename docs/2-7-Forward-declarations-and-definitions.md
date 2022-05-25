@@ -1,17 +1,14 @@
 ---
-title: 2.7 前向声明和定义
-alias: 2.7 前向声明和定义
-tag:
-
+alias: 2.7 - 前向声明和定义
+origin: /forward-declarations/
+origin_title: "2.7 — Forward declarations and definitions"
+time: 2022-5-19
+type: translation
+tags:
+- fordward declaration
 ---
 
-> [!INFO] 原文信息：
-> - 链接：[2.7 — Forward declarations and definitions](https://www.learncpp.com/cpp-tutorial/forward-declarations/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2022-5-19
-
-
-Take a look at this seemingly innocent sample program:
+考虑如下简单程序：
 
 ```cpp
 #include <iostream>
@@ -28,20 +25,19 @@ int add(int x, int y)
 }
 ```
 
-
-You would expect this program to produce the result:
+我们期望的结果是程序有如下输出：
 
 ```
 The sum of 3 and 4 is: 7
 ```
 
-But in fact, it doesn’t compile at all! Visual Studio produces the following compile error:
+但实际上这个程序根本就不能被编译！Visual Studio 打印的错误信息如下：
 
 ```
 add.cpp(5) : error C3861: 'add': identifier not found
 ```
 
-The reason this program doesn’t compile is because the compiler compiles the contents of code files sequentially. When the compiler reaches the function call to _add_ on line 5 of _main_, it doesn’t know what _add_ is, because we haven’t defined _add_ until line 9! That produces the error, _identifier not found_.
+[[编译器(compiler)]]在编译上述程序的时候，是 reason this program doesn’t compile is because the compiler compiles the contents of code files sequentially. When the compiler reaches the function call to _add_ on line 5 of _main_, it doesn’t know what _add_ is, because we haven’t defined _add_ until line 9! That produces the error, _identifier not found_.
 
 Older versions of Visual Studio would produce an additional error:
 
