@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/1-1-Statements-and-the-structure-of-a-program.md",
+            "file": "docs/1-2-comments.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+                "file": "docs/1-2-comments.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/1-1-Statements-and-the-structure-of-a-program.md",
+                "file": "docs/1-2-comments.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/1-2-comments.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "0-8-A-few-common-C++-problems.md",
+    "docs/翻译约定.md",
+    "docs/0-8-A-few-common-C++-problems.md",
     "docs/preprocessor-directive.md",
     "Templates/add-glossary.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
     "docs/1-3-Introduction-to-objects-and-variables.md",
-    "docs/2-1-Introduction-to-functions.md",
-    "docs/1-6-Uninitialized-variables-and-undefined-behavior.md",
-    "Templates/warning.md"
+    "docs/2-1-Introduction-to-functions.md"
   ]
 }

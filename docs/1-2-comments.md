@@ -52,11 +52,10 @@ std::cout << "It is very nice to meet you!\n";
 std::cout << "Yeah!\n";
 ```
 
-COPY
 
-Author’s note
+!!! info "作者注"
 
-The statements above represent one of our first encounters with snippets of code. Because snippets aren’t full programs, they aren’t able to be compiled by themselves. Rather, they exist to demonstrate specific concepts in a concise manner.
+	The statements above represent one of our first encounters with snippets of code. Because snippets aren’t full programs, they aren’t able to be compiled by themselves. Rather, they exist to demonstrate specific concepts in a concise manner.
 
 If you would like to compile a snippet, you’ll need to turn it into a full program in order for it to compile. Typically, that program will look something like this:
 
@@ -71,9 +70,8 @@ int main()
 }
 ```
 
-COPY
 
-Multi-line comments
+## Multi-line comments
 
 The `/*` and `*/` pair of symbols denotes a C-style multi-line comment. Everything in between the symbols is ignored.
 
@@ -83,7 +81,6 @@ The `/*` and `*/` pair of symbols denotes a C-style multi-line comment. Ever
    So will this one. */
 ```
 
-COPY
 
 Since everything between the symbols is ignored, you will sometimes see programmers “beautify” their multi-line comments:
 
@@ -94,7 +91,6 @@ Since everything between the symbols is ignored, you will sometimes see programm
  */
 ```
 
-COPY
 
 Multi-line style comments can not be nested. Consequently, the following will have unexpected results:
 
@@ -103,17 +99,16 @@ Multi-line style comments can not be nested. Consequently, the following will ha
 // The above comment ends at the first */, not the second */
 ```
 
-COPY
 
 When the compiler tries to compile this, it will ignore everything from the first _/*_ to the first */. Since “_this is not inside the comment */_” is not considered part of the comment, the compiler will try to compile it. That will inevitably result in a compile error.
 
 This is one place where using a syntax highlighter can be really useful, as the different coloring for comment should make clear what’s considered part of the comment vs not.
 
-Warning
+!!! warning "注意"
 
-Don’t use multi-line comments inside other multi-line comments. Wrapping single-line comments inside a multi-line comment is okay.
+	Don’t use multi-line comments inside other multi-line comments. Wrapping single-line comments inside a multi-line comment is okay.
 
-Proper use of comments
+## Proper use of comments
 
 Typically, comments should be used for three things. First, for a given library, program, or function, comments are best used to describe _what_ the library, program, or function, does. These are typically placed at the top of the file or library, or immediately preceding the function. For example:
 
@@ -121,19 +116,16 @@ Typically, comments should be used for three things. First, for a given library,
 // This program calculates the student's final grade based on his test and homework scores.
 ```
 
-COPY
 
 ```cpp
 // This function uses Newton's method to approximate the root of a given equation.
 ```
 
-COPY
 
 ```cpp
 // The following lines generate a random item based on rarity, level, and a weight factor.
 ```
 
-COPY
 
 All of these comments give the reader a good idea of what the library, program, or function is trying to accomplish without having to look at the actual code. The user (possibly someone else, or you if you’re trying to reuse code you’ve previously written) can tell at a glance whether the code is relevant to what he or she is trying to accomplish. This is particularly important when working as part of a team, where not everybody will be familiar with all of the code.
 
@@ -145,7 +137,6 @@ Second, _within_ a library, program, or function described above, comments can
     used to calculate a letter grade. */
 ```
 
-COPY
 
 ```cpp
 // To generate a random item, we're going to do the following:
@@ -156,7 +147,6 @@ COPY
 // 5) Return the appropriate item
 ```
 
-COPY
 
 These comments give the user an idea of how the code is going to accomplish its goal without having to understand what each individual line of code does.
 
@@ -171,7 +161,6 @@ Bad comment:
 sight = 0;
 ```
 
-COPY
 
 Reason: We already can see that sight is being set to 0 by looking at the statement
 
@@ -182,7 +171,6 @@ Good comment:
 sight = 0;
 ```
 
-COPY
 
 Reason: Now we know why the player’s sight is being set to 0
 
@@ -193,7 +181,6 @@ Bad comment:
 cost = quantity * 2 * storePrice;
 ```
 
-COPY
 
 Reason: We can see that this is a cost calculation, but why is quantity multiplied by 2?
 
@@ -204,7 +191,6 @@ Good comment:
 cost = quantity * 2 * storePrice;
 ```
 
-COPY
 
 Reason: Now we know why this formula makes sense.
 
@@ -217,24 +203,23 @@ Good comments:
 // arrays do insertion too slowly.
 ```
 
-COPY
 
 ```cpp
 // We're going to use Newton's method to find the root of a number because
 // there is no deterministic way to solve these equations.
 ```
 
-COPY
 
 Finally, comments should be written in a way that makes sense to someone who has no idea what the code does. It is often the case that a programmer will say “It’s obvious what this does! There’s no way I’ll forget about this”. Guess what? It’s _not_ obvious, and you _will_ be amazed how quickly you forget. :) You (or someone else) will thank you later for writing down the what, how, and why of your code in human language. Reading individual lines of code is easy. Understanding what goal they are meant to accomplish is not.
 
-Best practice
+!!! success "最佳实践"
 
-Comment your code liberally, and write your comments as if speaking to someone who has no idea what the code does. Don’t assume you’ll remember why you made specific choices.
+	Comment your code liberally, and write your comments as if speaking to someone who has no idea what the code does. Don’t assume you’ll remember why you made specific choices.
 
-Author’s note
 
-Throughout the rest of this tutorial series, we’ll use comments inside code blocks to draw your attention to specific things, or help illustrate how things work (while ensuring the programs still compile). Astute readers will note that by the above standards, most of these comments are horrible. :) As you read through the rest of the tutorials, keep in mind that the comments are serving an intentional educational purpose, not trying to demonstrate what good comments look like.
+!!! info "作者注"
+
+	Throughout the rest of this tutorial series, we’ll use comments inside code blocks to draw your attention to specific things, or help illustrate how things work (while ensuring the programs still compile). Astute readers will note that by the above standards, most of these comments are horrible. :) As you read through the rest of the tutorials, keep in mind that the comments are serving an intentional educational purpose, not trying to demonstrate what good comments look like.
 
 Commenting out code
 
@@ -248,15 +233,12 @@ Uncommented out:
 std::cout << 1;
 ```
 
-COPY
-
 Commented out:
 
 ```cpp
 //    std::cout << 1;
 ```
 
-COPY
 
 To comment out a block of code, use // on multiple lines of code, or the /* */ style comment to turn the block of code into a comment temporarily.
 
@@ -268,8 +250,6 @@ std::cout << 2;
 std::cout << 3;
 ```
 
-COPY
-
 Commented out:
 
 ```cpp
@@ -277,8 +257,6 @@ Commented out:
 //    std::cout << 2;
 //    std::cout << 3;
 ```
-
-COPY
 
 or
 
@@ -290,7 +268,6 @@ or
 */
 ```
 
-COPY
 
 There are quite a few reasons you might want to do this:
 
@@ -309,13 +286,13 @@ For Code::Blocks users
 
 You can comment or uncomment a selection via Edit menu > Comment (or Uncomment, or Toggle comment, or any of the other comment tools).
 
-Tip
+!!! tip "小贴士"
 
-If you always use single line comments for your normal comments, then you can always use multi-line comments to comment out your code without conflict. If you use multi-line comments to document your code, then commenting-out code using comments can become more challenging.
+	If you always use single line comments for your normal comments, then you can always use multi-line comments to comment out your code without conflict. If you use multi-line comments to document your code, then commenting-out code using comments can become more challenging.
 
-If you do need to comment out a code block that contains multi-line comments, you can also consider using the `#if 0` preprocessor directive, which we discuss in lesson [2.10 -- Introduction to the preprocessor](https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/).
+	If you do need to comment out a code block that contains multi-line comments, you can also consider using the `#if 0` preprocessor directive, which we discuss in lesson [2.10 -- Introduction to the preprocessor](https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/).
 
-Summary
+## Summary
 
 -   At the library, program, or function level, use comments to describe _what_.
 -   Inside the library, program, or function, use comments to describe _how_.

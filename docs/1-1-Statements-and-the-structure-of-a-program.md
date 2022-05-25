@@ -10,9 +10,9 @@ tags:
 
 ## 章节简介
 
-欢迎来到我们C++教程的第一个主要章节！
+欢迎来到我们 C++教程的第一个主要章节！
 
-本章节将首先介绍有关 C++ 程序最基本的话题。由于本章节涉及的话题较多，因此我们只会对每一个部分都进行相对简单的介绍，其目的只是为了让你能够理解构成C++程序的基本元素有哪些。在完成本章节的学习后，你应当可以独立编写一个简单的程序了。
+本章节将首先介绍有关 C++ 程序最基本的话题。由于本章节涉及的话题较多，因此我们只会对每一个部分都进行相对简单的介绍，其目的只是为了让你能够理解构成 C++程序的基本元素有哪些。在完成本章节的学习后，你应当可以独立编写一个简单的程序了。
 
 在后续的章节中，我们会复习并深入探讨这些话题，同时介绍尤其衍生出的一些新的概念。
 
@@ -22,33 +22,33 @@ tags:
 
 计算机程序指的是控制计算机完成某件事所需要的一系列[[指令(instuction)]]。[[语句(statement)]]是指令的一种，它控制计算机完成某些操作。
 
-就目前而言，语句是C++程序中最常见的一种指令类型。这主要是因为它们是C++语言中最简单的、独立的计算单元。从这个意义上来讲，语句之于编程语言，就好比句子之于自然语言。当你需要向其他人传递信息的时候，通常我们会使用句子，而不是一些随机的词语或音节。 在C++中，我们一般也是通过语句向程序传达我们的意图的。
+就目前而言，语句是 C++程序中最常见的一种指令类型。这主要是因为它们是 C++语言中最简单的、独立的计算单元。从这个意义上来讲，语句之于编程语言，就好比句子之于自然语言。当你需要向其他人传递信息的时候，通常我们会使用句子，而不是一些随机的词语或音节。 在 C++中，我们一般也是通过语句向程序传达我们的意图的。
 
-大多数（但不是全部）的C++语句以分号结尾。如果你看到一行以分号结尾的代码，那么它多半就是一条语句了。
+大多数（但不是全部）的 C++语句以分号结尾。如果你看到一行以分号结尾的代码，那么它多半就是一条语句了。
 
-在C++这样的高级语言中，一条语句可能会被编译为多条机器指令。
+在 C++这样的高级语言中，一条语句可能会被编译为多条机器指令。
 
 !!! info "扩展阅读"
 
     C++中有很多不同类型的语句：
 
-	1.  声明语句 Declaration statements
-	2.  跳转语句 Jump statements
-	3.  表达式语句 Expression statements
-	4.  复合语句 Compound statements
-	5.  选择语句（条件）Selection statements (conditionals)
-	6.  迭代语句（循环）Iteration statements (loops)
-	7.  Try 语句块 Try blocks
-	
-	在结束本教程的学习后，你将掌握上述全部的语句类型！
+    1.  声明语句 Declaration statements
+    2.  跳转语句 Jump statements
+    3.  表达式语句 Expression statements
+    4.  复合语句 Compound statements
+    5.  选择语句（条件）Selection statements (conditionals)
+    6.  迭代语句（循环）Iteration statements (loops)
+    7.  Try 语句块 Try blocks
 
-## 函数和 `main`函数
+    在结束本教程的学习后，你将掌握上述全部的语句类型！
 
-在C++ 中，我们通常会合并使用一组语句，这一组语句称为一个函数。函数就是一组顺序执行（从上向下按顺序执行）的语句的集合。在我们学习编程程序的过程中，你会编写自己的函数，根据我们的目的混合或使用语句（具体做法将在后续的课程中介绍）。
+## 函数和 `main` 函数
+
+在 C++ 中，我们通常会合并使用一组语句，这一组语句称为一个函数。函数就是一组顺序执行（从上向下按顺序执行）的语句的集合。在我们学习编程程序的过程中，你会编写自己的函数，根据我们的目的混合或使用语句（具体做法将在后续的课程中介绍）。
 
 !!! note "法则"
 
-	每个C++程序都必须包含一个函数名为 `main` 的函数(main全部为小写字母)。当程序开始运行的时候，`main`函数中的代码会被顺序执行。
+    每个 C++程序都必须包含一个函数名为 `main` 的函数(main 全部为小写字母)。当程序开始运行的时候，`main` 函数中的代码会被顺序执行。
 
 一般情况下，程序通常会在完成 `main` 函数中最后一条语句后终止（尽管也可能提前终止或者在结束后执行一些清理操作）。
 
@@ -56,7 +56,7 @@ tags:
 
 !!! info "作者注"
 
-	当我们谈论函数时，通常会在函数名后面加上一组括号作为一种速记法。例如，当你看到 `main()` 或者 `doSomething()` 的时候，你应该清楚此时我们在谈论一个名为 _main_ 或者 _doSomething_ 的函数。这么做可以帮助我们将函数和其他类型的名称区分开来（例如变量名），同时不必每次都加上“函数”二字。
+    当我们谈论函数时，通常会在函数名后面加上一组括号作为一种速记法。例如，当你看到 `main()` 或者 `doSomething()` 的时候，你应该清楚此时我们在谈论一个名为 _main_ 或者 _doSomething_ 的函数。这么做可以帮助我们将函数和其他类型的名称区分开来（例如变量名），同时不必每次都加上“函数”二字。
 
 ## Hello world! 程序剖析
 
@@ -72,25 +72,23 @@ int main()
 }
 ```
 
-**第一行** 比较特殊，称为[[preprocessor-directive|预处理器指令 (preprocessor directive)]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std::cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[编译器(compiler)]]就不知道 `std::cout` 是什么了。
+**第一行** 比较特殊，称为[[preprocessor-directive|预处理器指令 (preprocessor directive)]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于 C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std:: cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[编译器(compiler)]]就不知道 `std:: cout` 是什么了。
 
-**第二行** 是空行，编译器会将其忽略。它的存在仅仅是为了让程序可读性变得更好（将`#include` 预处理器指令和程序的其他部分分割开来）。
+**第二行** 是空行，编译器会将其忽略。它的存在仅仅是为了让程序可读性变得更好（将 `#include` 预处理器指令和程序的其他部分分割开来）。
 
-**第三行** 告诉编译器，此处定义一个名为`main`的函数。之前我们已经了解到，每个C++程序都必须有一个 `main`函数，否则将会[[链接(link)]]失败。
+**第三行** 告诉编译器，此处定义一个名为 `main` 的函数。之前我们已经了解到，每个 C++程序都必须有一个 `main` 函数，否则将会[[链接(link)]]失败。
 
-**第四行** 和 **第七行** 告诉编译器接下来哪些行代码属于`main`函数。所有位于第四行和第七行括号内的代码，都属于`main`函数的一部分，称为函数体。
+**第四行** 和 **第七行** 告诉编译器接下来哪些行代码属于 `main` 函数。所有位于第四行和第七行括号内的代码，都属于 `main` 函数的一部分，称为函数体。
 
-**第五行** 是`main`函数的第一条语句，该语句也是程序执行的第一条语句。`std::cout`（表示“character output”，即字符输出）和  `<<` 运算符可以将字母或数字从控制台输出。在本例中，我们将字符串文本 “Hello world!” 输出到控制台。这行代码的执行效果就是为程序创建一个可视化的输出结果。
+**第五行** 是 `main` 函数的第一条语句，该语句也是程序执行的第一条语句。`std:: cout`（表示“character output”，即字符输出）和  `<<` 运算符可以将字母或数字从控制台输出。在本例中，我们将字符串文本 “Hello world!” 输出到控制台。这行代码的执行效果就是为程序创建一个可视化的输出结果。
 
-**第六行** 是一个返回语句。当程序执行完毕后，它需要向操作系统返回一个值来表明其执行的结果是成功还是失败。该返回语句向操作系统返回了0，表示"一切正常"。这是本程序执行的最后一条语句。
+**第六行** 是一个返回语句。当程序执行完毕后，它需要向操作系统返回一个值来表明其执行的结果是成功还是失败。该返回语句向操作系统返回了 0，表示"一切正常"。这是本程序执行的最后一条语句。
 
 我们编写的所有程序，都会遵循上述通用模板（或其变种版本）。
 
-
 !!! info "作者注"
 
-	如果上述解释仍然有让你困惑的地方，别担心，这很正常。这里的目的只是让你对程序有一个宏观的概念，接下来的课程将会对相关的内容进行详细解释并辅以案例。
-
+    如果上述解释仍然有让你困惑的地方，别担心，这很正常。这里的目的只是让你对程序有一个宏观的概念，接下来的课程将会对相关的内容进行详细解释并辅以案例。
 
 你可以自行编译并运行上述程序，当程序运行时，你将在控制台中看到如下打印信息：
 
@@ -100,15 +98,15 @@ Hello world!
 
 如果你在编译或运行程序时遇到了问题，请参考 [[0-8-A-few-common-C++-problems|一些典型的 C++ 问题]]
 
-## Syntax and syntax errors
+## 语法和语法错误
 
-In English, sentences are constructed according to specific grammatical rules that you probably learned in English class in school. For example, normal sentences end in a period. The rules that govern how sentences are constructed in a language is called syntax. If you forget the period and run two sentences together, this is a violation of the English language syntax.
+英语中的句子基于你所学的语法规则(grammatical rules)来构建的。例如，通常一个句子会以句号结尾。在一门语言中，规定一个句子应该如何构建的规则，称为[[句法(syntax)]]（译注：句法在后续的翻译中将使用语法代替，见[[翻译约定|翻译约定]]）。如果你忘记了在两个句子之间写下句号，那么就会违反了英语的句法。
 
-C++ has a syntax too: rules about how your programs must be constructed in order to be considered valid. When you compile your program, the compiler is responsible for making sure your program follows the basic syntax of the C++ language. If you violate a rule, the compiler will complain when you try to compile your program, and issue you a syntax error.
+C++ 也有它的[[语法(syntax)]]规则，它规定了一个程序应该如何被编写才能被认为是合法的。在编译代码的时候，编译器需要确保你的程序满足基本的 C++语法。如果你违反了某条规则，编译器就会向你报告一个错误。
 
-Let’s see what happens if we omit the semicolon on line 5 of the “Hello world” program, like this:
+如果，我们将上述程序中第五行的分号省略，会发生什么呢？
 
-```cpp
+```cpp hl_lines="5"
 #include <iostream>
 
 int main()
@@ -118,18 +116,16 @@ int main()
 }
 ```
 
-COPY
+你可以试试去编译一下该程序。
 
-Feel free to compile this ill-formed program yourself.
-
-Visual Studio produces the following error (your compiler may generate an error message with different wording):
+Visual Studio 在编译时会报告如下错误 (你的编译器在表述该错误时可能会使用不同的语言)：
 
 ```
 c:\vcprojects\test1.cpp(6): error C2143: syntax error : missing ';' before 'return'
 ```
 
-This is telling you that you have a syntax error on line 6: the compiler was expecting a semicolon before the return statement, but it didn’t find one. Although the compiler will tell you which line of code it was compiling when it encountered the syntax error, the omission may actually be on a previous line. In this case, the error is actually at the end of line 5 (the compiler didn’t discover the issue until line 6).
+该错误信息是告诉你，错误发生在第六行：程序期望在 `return` 语句前面检测到一个分号，但它却没有。尽管编译器告诉了我们该语法问题发生的行号，其实际发生的位置却在上一行。在这个例子中，问题出在**第五行**的末尾（编译器在读取到第六行时才能发现该问题）。
 
-Syntax errors are common when writing a program. Fortunately, they’re typically straightforward to find and fix, as the compiler will generally point you right at them. Compilation of a program will only complete once all syntax errors are resolved.
+语法错误在编程时很常见。幸运的是，这种类型的错误通常比较容易定位和修复，因为编译器会明确地指向错误发生的位置。程序的编译只有在所有的错误都被修复后才能够完成。
 
-You can try deleting characters or even whole lines from the “Hello world” program to see different kinds of errors that get generated. Try restoring the missing semicolon at the end of line 5, and then deleting lines 1, 3, or 4 and see what happens.
+你可以试着从上述程序中删除某些字符，甚至删除整行，然后观察编译器的报错信息。现在，将分号写在第五行的末尾并删除 1、3 或者 4 行，看看会发生什么？

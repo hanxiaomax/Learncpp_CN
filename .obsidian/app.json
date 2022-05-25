@@ -14,7 +14,7 @@
   "showUnsupportedFiles": true,
   "foldIndent": true,
   "fileSortOrder": "alphabetical",
-  "newFileFolderPath": "00_seed",
+  "newFileFolderPath": "docs",
   "pdfExportSettings": {
     "pageSize": "Letter",
     "landscape": false,

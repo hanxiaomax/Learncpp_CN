@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "1-2-comments",
+      "path": "docs/1-2-comments.md"
+    },
+    {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
       "basename": "0-8-A-few-common-C++-problems",
-      "path": "0-8-A-few-common-C++-problems.md"
+      "path": "docs/0-8-A-few-common-C++-problems.md"
     },
     {
       "basename": "preprocessor-directive",
@@ -109,20 +117,12 @@
       "path": "docs/1-9-Introduction-to-literals-and-operators.md"
     },
     {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
-    },
-    {
       "basename": "yaml",
       "path": "Templates/yaml.md"
     },
     {
       "basename": "about",
       "path": "docs/about.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "docs/翻译约定.md"
     },
     {
       "basename": "index",
