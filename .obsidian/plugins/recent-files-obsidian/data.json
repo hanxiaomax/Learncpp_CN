@@ -1,24 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "index",
-      "path": "docs/index.md"
+      "basename": "2-13-How-to-design-your-first-programs",
+      "path": "docs/2-13-How-to-design-your-first-programs.md"
+    },
+    {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
+    },
+    {
+      "basename": "2-10-Introduction-to-the-preprocessor",
+      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     },
     {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
       "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     },
     {
-      "basename": "2-7-Forward-declarations-and-definitions",
-      "path": "docs/2-7-Forward-declarations-and-definitions.md"
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "6-4-Introduction-to-global-variables",
+      "path": "docs/6-4-Introduction-to-global-variables.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     },
     {
       "basename": "2-8-Programs-with-multiple-code-files",
       "path": "docs/2-8-Programs-with-multiple-code-files.md"
     },
     {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
+      "basename": "index",
+      "path": "docs/index.md"
+    },
+    {
+      "basename": "2-7-Forward-declarations-and-definitions",
+      "path": "docs/2-7-Forward-declarations-and-definitions.md"
     },
     {
       "basename": "pure-declaration",
@@ -175,18 +199,6 @@
     {
       "basename": "about",
       "path": "docs/about.md"
-    },
-    {
-      "basename": "2-4-Introduction-to-function-parameters-and-arguments",
-      "path": "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "keyword",
-      "path": "docs/images/keyword.png"
     }
   ],
   "omittedPaths": [],

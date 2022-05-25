@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/index.md",
+            "file": "docs/2-13-How-to-design-your-first-programs.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/index.md"
+                "file": "docs/2-13-How-to-design-your-first-programs.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/index.md",
+                "file": "docs/2-13-How-to-design-your-first-programs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/index.md",
+    "docs/2-13-How-to-design-your-first-programs.md",
+    "docs/2-12-Header-guards.md",
+    "docs/2-11-Header-files.md",
+    "docs/2-10-Introduction-to-the-preprocessor.md",
     "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
-    "docs/2-7-Forward-declarations-and-definitions.md",
-    "docs/2-8-Programs-with-multiple-code-files.md",
+    "docs/2-x-Chapter-2-summary-and-quiz.md",
     "docs/6-4-Introduction-to-global-variables.md",
-    "docs/pure-declaration.md",
-    "docs/8-9-Introduction-to-function-overloading.md",
-    "docs/one-definition-rule.md",
-    "docs/linker.md",
-    "docs/definition.md"
+    "docs/1-x-Chapter-1-summary-and-quiz.md",
+    "docs/2-8-Programs-with-multiple-code-files.md",
+    "docs/index.md"
   ]
 }

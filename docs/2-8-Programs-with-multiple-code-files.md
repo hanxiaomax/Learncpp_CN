@@ -24,7 +24,7 @@ tags:
 
     选择 _C++ File (.cpp)_。为其指定一个文件名，就可以将文件添加到项目中。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem2.png?ezimgfmt=rs:699x393/rscb2/ng: webp/ngcb2)
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem2.png?ezimgfmt=rs:699x393/rscb2/ng:webp/ngcb2)
 
     注意：如果你是从 File 菜单而不是 Solution Explorer 窗口创建的文件，那么该文件不会被自动添加到项目中。因此你必须在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > Existing Item_，然后选择刚才创建的文件。
 
@@ -34,23 +34,23 @@ tags:
 
     在 Code:: Blocks 中，在 _File_ 菜单中选择 _New > File…_。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem1.png?ezimgfmt=rs:540x233/rscb2/ng: webp/ngcb2)
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem1.png?ezimgfmt=rs:540x233/rscb2/ng:webp/ngcb2)
 
     在 _New from template_ 对话框中，选择 _C/C++ source_ 并点击 _Go_。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem2.png?ezimgfmt=rs:604x453/rscb2/ng: webp/ngcb2)
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem2.png?ezimgfmt=rs:604x453/rscb2/ng:webp/ngcb2)
 
     你可能会来到一个 _welcome to the C/C++ source file wizard_ 对话框。此时点击 _Next_。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem3.png?ezimgfmt=rs:524x443/rscb2/ng: webp/ngcb2)
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem3.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
 
     在向导的下一个页面中，选择 “C++” 并点击 _Next_。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem4.png?ezimgfmt=rs:524x443/rscb2/ng: webp/ngcb2)
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem4.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
 
     接下来，为这个新文件起一个名字（不要忘了使用 `.cpp` 作为后缀名），然后点击 _All_ 按钮确保所有的构建目标都被勾选了。最后，选择 _finish_。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem5.png?ezimgfmt=rs:524x443/rscb2/ng: webp/ngcb2)
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem5.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
 
     现在，当你编译程序的时候，你就可以看到编译器在编译时列出了该文件的名字。
 
