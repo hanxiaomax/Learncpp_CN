@@ -5,62 +5,63 @@ origin_title: "2.8 — Programs with multiple code files"
 time: 2022-4-15
 type: translation
 tags:
-- 
+- program organization
 ---
 
-Adding files to your project
+## 在项目中添加文件
 
-As programs get larger, it is common to split them into multiple files for organizational or reusability purposes. One advantage of working with an IDE is that they make working with multiple files much easier. You already know how to create and compile single-file projects. Adding new files to existing projects is very easy.
+随着程序规模不断增大，程序通常会被分割为多个文件以方便组织程序或增强其可复用性。使用 IDE 可以让组织多文件项目变得更加容易。我们已经学习了如何去创建并编译一个单文件项目，为这个项目添加一个文件是非常简单的。
 
-Best practice
+!!! success "最佳实践"
 
-When you add new code files to your project, give them a .cpp extension.
+    在为项目添加代码文件时，请使用 `.cpp` 作为扩展名。
 
-For Visual Studio users
 
-In Visual Studio, right click on the _Source Files_ folder in the Solution Explorer window, and choose _Add > New Item…_.
+!!! example "For Visual Studio users"
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem1.png?ezimgfmt=rs%3Adevice%2Frscb2-1)
+    在 Visual Studio 中，在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > New Item…_.
 
-Make sure you have _C++ File (.cpp)_ selected. Give the new file a name, and it will be added to your project.
+    ![]()
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem2.png?ezimgfmt=rs:800x450/rscb2/ng:webp/ngcb2)
+    选择 _C++ File (.cpp)_。为其指定一个文件名，就可以将文件添加到项目中。
 
-Note: If you create a new file from the _File menu_ instead of from your project in the Solution Explorer, the new file won’t be added to your project automatically. You’ll have to add it to the project manually. To do so, right click on _Source Files_ in the _Solution Explorer_, choose _Add > Existing Item_, and then select your file.
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem2.png?ezimgfmt=rs:800x450/rscb2/ng: webp/ngcb2)
 
-Now when you compile your program, you should see the compiler list the name of your file as it compiles it.
+    注意：如果你是从 File 菜单而不是 Solution Explorer 窗口创建的文件，那么该文件不会被自动添加到项目中。因此你必须在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > Existing Item_，然后选择刚才创建的文件。
 
-For Code::Blocks users
+    接下来，在编译程序的时候，你会发现编译器会将该文件列出来，因为它会对其进行编译。
 
-In Code::Blocks, go to the _File menu_ and choose _New > File…_.
+!example "For Code:: Blocks users"
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem1.png?ezimgfmt=rs:540x233/rscb2/ng:webp/ngcb2)
+    In Code:: Blocks, go to the _File menu_ and choose _New > File…_.
 
-In the _New from template_ dialog, select _C/C++ source_ and click _Go_.
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem1.png?ezimgfmt=rs:540x233/rscb2/ng: webp/ngcb2)
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem2.png?ezimgfmt=rs:604x453/rscb2/ng:webp/ngcb2)
+    In the _New from template_ dialog, select _C/C++ source_ and click _Go_.
 
-You may or may not see a _welcome to the C/C++ source file wizard_ dialog at this point. If you do, click _Next_.
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem2.png?ezimgfmt=rs:604x453/rscb2/ng: webp/ngcb2)
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem3.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
+    You may or may not see a _welcome to the C/C++ source file wizard_ dialog at this point. If you do, click _Next_.
 
-On the next page of the wizard, select “C++” and click _Next_.
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem3.png?ezimgfmt=rs:524x443/rscb2/ng: webp/ngcb2)
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem4.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
+    On the next page of the wizard, select “C++” and click _Next_.
 
-Now give the new file a name (don’t forget the .cpp extension), and click the _All_ button to ensure all build targets are selected. Finally, select _finish_.
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem4.png?ezimgfmt=rs:524x443/rscb2/ng: webp/ngcb2)
 
-![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem5.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
+    Now give the new file a name (don’t forget the .cpp extension), and click the _All_ button to ensure all build targets are selected. Finally, select _finish_.
 
-Now when you compile your program, you should see the compiler list the name of your file as it compiles it.
+    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem5.png?ezimgfmt=rs:524x443/rscb2/ng: webp/ngcb2)
 
-For GCC/G++ users
+    Now when you compile your program, you should see the compiler list the name of your file as it compiles it.
 
-From the command line, you can create the additional file yourself, using your favorite editor, and give it a name. When you compile your program, you’ll need to include all of the relevant code files on the compile line. For example: _g++ main.cpp add.cpp -o main_, where _main.cpp_ and _add.cpp_ are the names of your code files, and _main_ is the name of the output file.
+!!! example "For GCC/G++ users"
+
+    From the command line, you can create the additional file yourself, using your favorite editor, and give it a name. When you compile your program, you’ll need to include all of the relevant code files on the compile line. For example: _g++ main.cpp add.cpp -o main_, where _main.cpp_ and _add.cpp_ are the names of your code files, and _main_ is the name of the output file.
 
 ## A multi-file example
 
-In lesson [2.7 -- Forward declarations and definitions](https://www.learncpp.com/cpp-tutorial/forward-declarations/), we took a look at a single-file program that wouldn’t compile:
+In lesson [2.7 -- Forward declarations and definitions](https://www.learncpp.com/cpp-tutorial/forward-declarations/) , we took a look at a single-file program that wouldn’t compile:
 
 ```cpp
 #include <iostream>
@@ -77,8 +78,6 @@ int add(int x, int y)
 }
 ```
 
-COPY
-
 When the compiler reaches the function call to _add_ on line 5 of _main_, it doesn’t know what _add_ is, because we haven’t defined _add_ until line 9! Our solution to this was to either reorder the functions (placing _add_ first) or use a forward declaration for _add_.
 
 Now let’s take a look at a similar multi-file program:
@@ -92,8 +91,6 @@ int add(int x, int y)
 }
 ```
 
-COPY
-
 main.cpp:
 
 ```cpp
@@ -105,8 +102,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 Your compiler may decide to compile either _add.cpp_ or _main.cpp_ first. Either way, _main.cpp_ will fail to compile, giving the same compiler error as the previous example:
 
@@ -155,7 +150,7 @@ Using this method, we can give files access to functions that live in another fi
 
 Try compiling _add.cpp_ and the _main.cpp_ with the forward declaration for yourself. If you get a linker error, make sure you’ve added _add.cpp_ to your project or compilation line properly.
 
-Something went wrong!
+## Something went wrong!
 
 There are plenty of things that can go wrong the first time you try to work with multiple files. If you tried the above example and ran into an error, check the following:
 
@@ -164,11 +159,11 @@ There are plenty of things that can go wrong the first time you try to work with
 
 unresolved external symbol "int __cdecl add(int,int)" (?add@@YAHHH@Z) referenced in function _main
 
-2a. …the most likely reason is that _add.cpp_ is not added to your project correctly. When you compile, you should see the compiler list both _main.cpp_ and _add.cpp_. If you only see _main.cpp_, then _add.cpp_ definitely isn’t getting compiled. If you’re using Visual Studio or Code::Blocks, you should see _add.cpp_ listed in the Solution Explorer/project pane on the left or right side of the IDE. If you don’t, right click on your project, and add the file, then try compiling again. If you’re compiling on the command line, don’t forget to include both _main.cpp_ and _add.cpp_ in your compile command.
+2a. …the most likely reason is that _add.cpp_ is not added to your project correctly. When you compile, you should see the compiler list both _main.cpp_ and _add.cpp_. If you only see _main.cpp_, then _add.cpp_ definitely isn’t getting compiled. If you’re using Visual Studio or Code:: Blocks, you should see _add.cpp_ listed in the Solution Explorer/project pane on the left or right side of the IDE. If you don’t, right click on your project, and add the file, then try compiling again. If you’re compiling on the command line, don’t forget to include both _main.cpp_ and _add.cpp_ in your compile command.
 
 2b. …it’s possible that you added _add.cpp_ to the wrong project.
 
-2c. …it’s possible that the file is set to not compile or link. Check the file properties and ensure the file is configured to be compiled/linked. In Code::Blocks, compile and link are separate checkboxes that should be checked. In Visual Studio, there’s an “exclude from build” option that should be set to “no” or left blank.
+2c. …it’s possible that the file is set to not compile or link. Check the file properties and ensure the file is configured to be compiled/linked. In Code:: Blocks, compile and link are separate checkboxes that should be checked. In Visual Studio, there’s an “exclude from build” option that should be set to “no” or left blank.
 
 3.  Do _not_ _#include “add.cpp”_ from _main.cpp_. This will cause the compiler to insert the contents of _add.cpp_ directly into _main.cpp_ instead of treating them as separate files.
 
