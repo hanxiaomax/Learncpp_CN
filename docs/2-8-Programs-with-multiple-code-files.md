@@ -114,16 +114,16 @@ main.cpp(5) : error C3861: 'add': identifier not found
 
 编译器的这种短视和健忘是有意而为之的，这样可以确保具有相同名字的函数和变量不会发生冲突。我们会在下一节课中探讨命名冲突的问题。
 
-Our options for a solution here are the same as before: place the definition of function _add_ before function _main_, or satisfy the compiler with a forward declaration. In this case, because function _add_ is in another file, the reordering option isn’t a good one.
+解决的办法也是一样的：将 `add` 函数的定义移到  `main` 函数之前，或者使用前向声明。在本例中，由于 `add` 定义在其他文件中，因此调整定义顺序是不可以的。
 
-The better solution here is to use a forward declaration:
+因此使用前向声明才是更好的办法：
 
-main.cpp (with forward declaration):
+main.cpp (包含前向声明):
 
-```cpp
+```cpp hl_lines="3"
 #include <iostream>
 
-int add(int x, int y); // needed so main.cpp knows that add() is a function declared elsewhere
+int add(int x, int y); // 这行是必须的，这样main.cpp才能够知道add()函数在其他文件中定义了
 
 int main()
 {
@@ -132,9 +132,7 @@ int main()
 }
 ```
 
-COPY
-
-add.cpp (stays the same):
+add.cpp (保持不变):
 
 ```cpp
 int add(int x, int y)
@@ -143,35 +141,30 @@ int add(int x, int y)
 }
 ```
 
-COPY
+现在，当编译器编译 _main.cpp_ 时，它会知晓标识符 _add_ 。链接器则会将 *main.cpp* 文件中的 `add` 函数调用和 _add.cpp_中的函数定义关联起来。
 
-Now, when the compiler is compiling _main.cpp_, it will know what identifier _add_ is and be satisfied. The linker will connect the function call to _add_in _main.cpp_ to the definition of function _add_ in _add.cpp_.
+使用该方法，我们就可以访问定义在其他文件中的函数了。
 
-Using this method, we can give files access to functions that live in another file.
+请自行使用前向声明并编译 _add.cpp_ 和 _main.cpp_，如果你遇到了错误，请注意是否将 *add.cpp* 加入到了项目或编译命令中。
 
-Try compiling _add.cpp_ and the _main.cpp_ with the forward declaration for yourself. If you get a linker error, make sure you’ve added _add.cpp_ to your project or compilation line properly.
+## 发生错误了！
 
-## Something went wrong!
+在创建多文件程序时，可能会遇到很多不同错误。如果你尝试了上面的例子并遇到了一些错误，可以参考以下信息：
 
-There are plenty of things that can go wrong the first time you try to work with multiple files. If you tried the above example and ran into an error, check the following:
+1.  如果你遇到了 `main` 中没有定义 `add` 的问题，和可能是因为忘记在 _main.cpp_ 中对 `add` 函数进行前向声明。
+2.  如果链接器报告了无法找到 _add_ 定义的问题，例如：
+    ```
+    unresolved external symbol "int __cdecl add(int,int)" (?add@@YAHHH@Z) referenced in function _main
+    ```
+    1. 最大的可能性是 _add.cpp_ 文件没有被正确地添加到项目中。在编译程序的时候，你应该能够看到编译器列出了 _main.cpp_ 和 _add.cpp_。如果你值看到了 _main.cpp_，那么 _add.cpp_ 肯定没有被编译。如果你使用 Visual Studio 或 Code:: Blocks，你应该能够在 Solution Explorer/project 中看到 _add.cpp_。如果你没有看到，请右键点击项目并添加文件，然后尝试重新编译。如果你使用的是命令行的方式，请将 _main.cpp_ 和 _add.cpp_ 都包含在编译命令中。
+    2. 你是不是将_add.cpp_ 添加到了错误的项目中？
+    3. 也有可能是该文件被设置为不编译链接。请检查文件属性并确保将其配置为编译/链接。在 Code:: Blocks 中，编译和链接在两个单独的选择框中，请确保它们都被选中了。对于 Visual Studio 来说，请确保 “exclude from build” 选项被设置为 no 或空白。
+3.  不要在*main.cpp*中 _#include “add.cpp”_。这么做会导致编译器将 _add.cpp_ 文件的内容直接插入 _main.cpp_ 而不是将其当做单独的文件。
 
-1.  If you get a compiler error about _add_ not being defined in _main_, you probably forgot the forward declaration for function _add_ in _main.cpp_.
-2.  If you get a linker error about _add_ not being defined, e.g.
+## 小结
 
-unresolved external symbol "int __cdecl add(int,int)" (?add@@YAHHH@Z) referenced in function _main
+当编译器在编译多文件程序时，它可能会以任意顺序来编译各个文件。不仅如此，编译器对个文件的编译还是独立的，它在编译某文件是不具备任何其他文件的信息。
 
-2a. …the most likely reason is that _add.cpp_ is not added to your project correctly. When you compile, you should see the compiler list both _main.cpp_ and _add.cpp_. If you only see _main.cpp_, then _add.cpp_ definitely isn’t getting compiled. If you’re using Visual Studio or Code:: Blocks, you should see _add.cpp_ listed in the Solution Explorer/project pane on the left or right side of the IDE. If you don’t, right click on your project, and add the file, then try compiling again. If you’re compiling on the command line, don’t forget to include both _main.cpp_ and _add.cpp_ in your compile command.
-
-2b. …it’s possible that you added _add.cpp_ to the wrong project.
-
-2c. …it’s possible that the file is set to not compile or link. Check the file properties and ensure the file is configured to be compiled/linked. In Code:: Blocks, compile and link are separate checkboxes that should be checked. In Visual Studio, there’s an “exclude from build” option that should be set to “no” or left blank.
-
-3.  Do _not_ _#include “add.cpp”_ from _main.cpp_. This will cause the compiler to insert the contents of _add.cpp_ directly into _main.cpp_ instead of treating them as separate files.
-
-## Summary
-
-When the compiler compiles a multi-file program, it may compile the files in any order. Additionally, it compiles each file individually, with no knowledge of what is in other files.
-
-We will begin working with multiple files a lot once we get into object-oriented programming, so now’s as good a time as any to make sure you understand how to add and compile multiple file projects.
+在学习到面向对象编程后，我们会大量使用多文件构建程序，所以你从现在就应该好好掌握这种fang'sWe will begin working with multiple files a lot once we get into object-oriented programming, so now’s as good a time as any to make sure you understand how to add and compile multiple file projects.
 
 Reminder: Whenever you create a new code (.cpp) file, you will need to add it to your project so that it gets compiled.
