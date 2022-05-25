@@ -165,6 +165,6 @@ int add(int x, int y)
 
 当编译器在编译多文件程序时，它可能会以任意顺序来编译各个文件。不仅如此，编译器对个文件的编译还是独立的，它在编译某文件是不具备任何其他文件的信息。
 
-在学习到面向对象编程后，我们会大量使用多文件构建程序，所以你从现在就应该好好掌握这种fang'sWe will begin working with multiple files a lot once we get into object-oriented programming, so now’s as good a time as any to make sure you understand how to add and compile multiple file projects.
+在学习到面向对象编程后，我们会大量使用多文件构建程序，所以你从现在就应该好好掌握这种方式。
 
-Reminder: Whenever you create a new code (.cpp) file, you will need to add it to your project so that it gets compiled.
+提醒一下：任何新创建的代码文件都应该被加入到项目中，这样它才会被编译。
