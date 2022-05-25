@@ -127,22 +127,22 @@ int main()
 
 `::` 符号实际上是一个运算符，称为[[scope-resolution-operator|空间解析运算符(scope resolution operator)]]。该运算符左侧是命名空间的名字，右侧则是该空间中包含的标识符。如果左侧未指定任何命名空间，则默认为全局命名空间。
 
-因此，`std:: cout`表示cout_ that lives in namespace _std_“.
+因此，`std:: cout`表示`cout`被定义在命名空间`std`中。
 
-This is the safest way to use _cout_, because there’s no ambiguity about which _cout_ we’re referencing (the one in the _std_ namespace).
+通过这种方式使用 `cout` 是最安全的，因为不存在任何歧义（`cout`是`std`中唯一的）。
 
 !!! success "最佳实践"
 
-    Use explicit namespace prefixes to access identifiers defined in a namespace.
+    使用命名空间前缀来使用命名空间中的标识符。
 
 ## using namespace std 以及为什么要避免这么做
 
-Another way to access identifiers inside a namespace is to use a _using directive_ statement. Here’s our original “Hello world” program with a _using directive_:
+另外一种使用命名空间中标识符的方式是使用 `using` 指令语句。以下例子基于该方法修改了原 “Hello world” 程序：
 
-```cpp
+```cpp hl_lines="3"
 #include <iostream>
 
-using namespace std; // this is a using directive that allows us to access names in the std namespace with no namespace prefix
+using namespace std; // 该using指令语句可以使我们访问标识符时无需使用命名空间前缀
 
 int main()
 {
@@ -151,33 +151,33 @@ int main()
 }
 ```
 
-A using directive allows us to access the names in a namespace without using a namespace prefix. So in the above example, when the compiler goes to determine what identifier _cout_ is, it will match with _std:: cout_, which, because of the using directive, is accessible as just _cout_.
+`using` 指令语句可以使我们访问标识符时无需使用命名空间前缀。因此，在上面的例子中，当编译器需要确定 `cout`的定义时，它会匹配到`std:: cout`，在使用了`using`指令后，就可以以`cout`这种形式来使用该函数了。
 
-Many texts, tutorials, and even some compilers recommend or use a using-directive at the top of the program. However, used in this way, this is a bad practice, and highly discouraged.
+很多文章、教程、甚至是一些编译器会建议在程序的开头使用`using`指令语句。其实，这并不是最佳实践，而且极为不推荐使用。
 
-Consider the following program:
+考虑下面这个例子：
 
 ```cpp
-#include <iostream> // imports the declaration of std::cout
+#include <iostream> // 导入 `std::cout` 的定义。
 
-using namespace std; // makes std::cout accessible as "cout"
+using namespace std; // 使得 std::cout 能够以 "cout" 方式使用
 
-int cout() // declares our own "cout" function in the global namespace
+int cout() // 在全局命名空间中定义我们的cout函数
 {
     return 5;
 }
 
 int main()
 {
-    cout << "Hello, world!"; // Compile error!  Which cout do we want here?  The one in the std namespace or the one we defined above?
+    cout << "Hello, world!"; // 编译报错，这里使用的cout是我们定义的，还是std定义的？
 
     return 0;
 }
 ```
 
-The above program doesn’t compile, because the compiler now can’t tell whether we want the _cout_ function that we defined, or the _cout_ that is defined inside the _std_ namespace.
+上面的代码是不能够编译的，因为此时编译器无法区分我们想要使用自定义的`cout`还是`std`命名空间中的`cout`。
 
-When using a using-directive in this manner, _any_ identifier we define may conflict with _any_ identically named identifier in the _std_ namespace. Even worse, while an identifier name may not conflict today, it may conflict with new identifiers added to the std namespace in future language revisions. This was the whole point of moving all of the identifiers in the standard library into the _std_ namespace in the first place!
+当以这种方式使用`using`指令时，我们定义的任何名称都可能和`std`命名空间中定义的任何名称发生冲突。更糟糕的是，也许此时并没有冲突，但是在新版本的C++中，由于`std`中新加入了其他标识符，则可能导致命名冲突的发生。这也是将标准库中所有标识符都移动到了`std`命名空间中的初衷。
 
 !!! warning "注意"
 
