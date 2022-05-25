@@ -5,6 +5,22 @@
       "path": "docs/2-7-Forward-declarations-and-definitions.md"
     },
     {
+      "basename": "one-definition-rule",
+      "path": "docs/one-definition-rule.md"
+    },
+    {
+      "basename": "linker",
+      "path": "docs/linker.md"
+    },
+    {
+      "basename": "definition",
+      "path": "docs/definition.md"
+    },
+    {
+      "basename": "declaration",
+      "path": "docs/declaration.md"
+    },
+    {
       "basename": "parameters",
       "path": "docs/parameters.md"
     },

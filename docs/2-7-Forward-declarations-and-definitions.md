@@ -132,14 +132,14 @@ int add(int, int); // valid function prototype
 
 新手程序员常常会问，如果仅仅对函数进行了前向声明，但是没有实际定义该函数时会发生什么？
 
-这个问题的答案是：具体情况具体分析。如果函数具有前向声明，但是该函数并未被实际调用，那么程序是可以正常编译和运行的。不过，如果函数被实际调用了，但程序却没有定义该函数，那么只能够保证编译是可以通过的，但链接器会报错，因为它无法解析该函数调用。
+这个问题的答案是：具体情况具体分析。如果函数具有前向声明，但是该函数并未被实际调用，那么程序是可以正常编译和运行的。不过，如果函数被实际调用了，但程序却没有定义该函数，那么只能够保证编译是可以通过的，但[[linker|链接器(linker)]]会报错，因为它无法解析该函数调用。
 
 考虑下面这个程序：
 
 ```cpp
 #include <iostream>
 
-int add(int x, int y); // forward declaration of add() using function prototype
+int add(int x, int y); // 使用函数原型进行前向声明
 
 int main()
 {
@@ -147,12 +147,11 @@ int main()
     return 0;
 }
 
-// note: No definition for function add
+// 注意：没有对函数进行定义
 ```
 
-COPY
 
-In this program, we forward declare _add_, and we call _add_, but we never define _add_ anywhere. When we try and compile this program, Visual Studio produces the following message:
+在这个程序中，我们对`add`进行了前向声明并且调用了`add`函数。不过，我们却没有对其进行声明。如果对程序进行编译，Visual Studio 会报告如下信息：
 
 ```
 Compiling...
@@ -162,17 +161,18 @@ add.obj : error LNK2001: unresolved external symbol "int __cdecl add(int,int)" (
 add.exe : fatal error LNK1120: 1 unresolved externals
 ```
 
-As you can see, the program compiled okay, but it failed at the link stage because _int add(int, int)_ was never defined.
+可以看到，程序是能够正确编译的，但是在[[链接(link)]]阶段却报错了，因为`int add(int, int)`没有被定义。
 
-Other types of forward declarations
+## 其他类型的前向声明
 
-Forward declarations are most often used with functions. However, forward declarations can also be used with other identifiers in C++, such as variables and user-defined types. Variables and user-defined types have a different syntax for forward declaration, so we’ll cover these in future lessons.
+前向声明最常用于函数。但是，前向声明也可以用于其他的C++标识符，例如变量或用户定义类型。不过它们的前向声明方式稍有不同，我们会在后续的课程中进行介绍。
 
-## Declarations vs. definitions
+## 声明 vs. 定义
 
-In C++, you’ll frequently hear the words “declaration” and “definition” used, and often interchangeably. What do they mean? You now have enough fundamental knowledge to understand the difference between the two.
+在 C++ 中，你时常会听到[[declaration|声明(declaration)]]和[[definition|定义(definition)]] 这两个词，有时候它们是可以互换的。现在，我们已经掌握了足够的知识，可以去理解它们之间的不同了。
 
-A definition actually implements (for functions or types) or instantiates (for variables) the identifier. Here are some examples of definitions:
+定义实际上指的是对某个[[标识符(identifier)]]的实现（对于函数或类型来说）或实例化（对于变量来说）。下面是一些有关定义的例子：
+
 
 ```cpp
 int add(int x, int y) // implements function add()
@@ -183,17 +183,15 @@ int add(int x, int y) // implements function add()
 }
 ```
 
-COPY
+<mark class="hltr-green">定义是为了满足链接器的需要</mark> 。如果你使用了未定义的标识符，链接器就会报错。
 
-A definition is needed to satisfy the _linker_. If you use an identifier without providing a definition, the linker will error.
+[[one-definition-rule|单一定义规则(one-definition-rule,ODR)]] 是C++中最著名的规则之一。
 
-The **one definition rule** (or ODR for short) is a well-known rule in C++. The ODR has three parts:
+1.  在一个文件中，一个函数、变量、类型或模板只能够被定义一次；
+2. 在一个程序中，一个变量或普通函数只能够有一个定义。和上一条的区别在于一个程序可以由多个文件组成（后面的课程会介绍）；
+3. <mark class="hltr-green">类型、模板、内联函数和内联变量可以有一样的定义，但必须位于不同的文件中</mark> 。由于我们尚未介绍这些概念，因此目前无需考虑它们。
 
-1.  Within a given _file_, a function, variable, type, or template can only have one definition.
-2.  Within a given _program_, a variable or normal function can only have one definition. This distinction is made because programs can have more than one file (we’ll cover this in the next lesson).
-3.  Types, templates, inline functions, and inline variables are allowed to have identical definitions in different files. We haven’t covered what most of these things are yet, so don’t worry about this for now -- we’ll bring it back up when it’s relevant.
-
-Violating part 1 of the ODR will cause the compiler to issue a redefinition error. Violating ODR part 2 will likely cause the linker to issue a redefinition error. Violating ODR part 3 will cause undefined behavior.
+如果违反l part 1 of the ODR will cause the compiler to issue a redefinition error. Violating ODR part 2 will likely cause the linker to issue a redefinition error. Violating ODR part 3 will cause undefined behavior.
 
 Here’s an example of a violation of part 1:
 

@@ -130,14 +130,14 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/2-7-Forward-declarations-and-definitions.md",
+    "docs/one-definition-rule.md",
+    "docs/linker.md",
+    "docs/definition.md",
+    "docs/declaration.md",
     "docs/parameters.md",
     "docs/forward-declaration.md",
     "includes/按值传递(pass by value).md",
     "docs/2-8-Programs-with-multiple-code-files.md",
-    "docs/翻译约定.md",
-    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
-    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
-    "Templates/yaml.md",
-    "docs/1-3-Introduction-to-objects-and-variables.md"
+    "docs/翻译约定.md"
   ]
 }
