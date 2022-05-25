@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
@@ -91,10 +95,6 @@
     {
       "basename": "1-9-Introduction-to-literals-and-operators",
       "path": "docs/1-9-Introduction-to-literals-and-operators.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
       "basename": "add-glossary",

@@ -8,47 +8,49 @@ tags:
 - statements
 ---
 
-## Chapter introduction
+## 章节简介
 
-Welcome to the first primary chapter of these C++ tutorials!
+欢迎来到我们C++教程的第一个主要章节！
 
-In this chapter, we’ll take a first look at a number of topics that are essential to every C++ program. Because there are quite a few topics to cover, we’ll cover most at a fairly shallow level (just enough to get by). The goal of this chapter is to help you understand how basic C++ programs are constructed. By the end of the chapter, you will be able to write your own simple programs.
+本章节将首先介绍有关 C++ 程序最基本的话题。由于本章节涉及的话题较多，因此我们只会对每一个部分都进行相对简单的介绍，其目的只是为了让你能够理解构成C++程序的基本元素有哪些。在完成本章节的学习后，你应当可以独立编写一个简单的程序了。
 
-In future chapters, we’ll revisit the majority of these topics and explore them in more detail. We’ll also introduce new concepts that build on top of these.
+在后续的章节中，我们会复习并深入探讨这些话题，同时介绍尤其衍生出的一些新的概念。
 
-In order to keep the lesson lengths manageable, topics may be split over several subsequent lessons. If you feel like some important concept isn’t covered in a lesson, it’s possible that it’s covered in the next lesson.
+为了使每节课都可以保持适当的体量，有些话题被分割成了多节课。如果你觉得有些重要的概念在一节课中尚未介绍，那么它很可能会在接下来的课程中进行讲解。
 
-## Statements
+## 语句
 
-A computer program is a sequence of instructions that tell the computer what to do. A statement is a type of instruction that causes the program to _perform some action_.
+计算机程序指的是控制计算机完成某件事所需要的一系列[[指令(instuction)]]。[[语句(statement)]]是指令的一种，它控制计算机完成某些操作。
 
-Statements are by far the most common type of instruction in a C++ program. This is because they are the smallest independent unit of computation in the C++ language. In that regard, they act much like sentences do in natural language. When we want to convey an idea to another person, we typically write or speak in sentences (not in random words or syllables). In C++, when we want to have our program do something, we typically write statements.
+就目前而言，语句是C++程序中最常见的一种指令类型。这主要是因为它们是C++语言中最简单的、独立的计算单元。从这个意义上来讲，语句之于编程语言，就好比句子之于自然语言。当你需要向其他人传递信息的时候，通常我们会使用句子，而不是一些随机的词语或音节。 在C++中，我们一般也是通过语句向程序传达我们的意图的。
 
-Most (but not all) statements in C++ end in a semicolon. If you see a line that ends in a semicolon, it’s probably a statement.
+大多数（但不是全部）的C++语句以分号结尾。如果你看到一行以分号结尾的代码，那么它多半就是一条语句了。
 
-In a high-level language such as C++, a single statement may compile into many machine language instructions.
+在C++这样的高级语言中，一条语句可能会被编译为多条机器指令。
 
-For advanced readers
+!!! info "扩展阅读"
 
-There are many different kinds of statements in C++:
+    C++中有很多不同类型的语句：
 
-1.  Declaration statements
-2.  Jump statements
-3.  Expression statements
-4.  Compound statements
-5.  Selection statements (conditionals)
-6.  Iteration statements (loops)
-7.  Try blocks
+	1.  声明语句 Declaration statements
+	2.  跳转语句 Jump statements
+	3.  表达式语句 Expression statements
+	4.  复合语句 Compound statements
+	5.  选择语句（条件）Selection statements (conditionals)
+	6.  迭代语句（循环）Iteration statements (loops)
+	7.  Try 语句块 Try blocks
+	
+	在结束本教程的学习后，你将掌握上述全部的语句类型！
 
-By the time you’re through with this tutorial series, you’ll understand what all of these are!
+## 函数和 `main`函数
 
-Functions and the main function
+在C++ 中，我们通常会合并使用一组语句，这一组语句称为一个函数。函数就是一组顺序执行（从上向下按顺序执行）的语句的集合。在我们学习编程程序的过程中，你会编写自己的函数，根据我们的目的混合或使用语句（具体做法将在后续的课程中介绍）。
 
-In C++, statements are typically grouped into units called functions. A function is a collection of statements that executes sequentially (in order, from top to bottom). As you learn to write your own programs, you’ll be able to create your own functions and mix and match statements in any way you please (we’ll show how in a future lesson).
+!!! note "法则"
 
-Rule
+	每个C++程序都必须包含一个函数名wei`main` C++ program must have a special function named main (all lower case letters). When the program is run, the statements inside of _main_ are executed in sequential order.
 
-Every C++ program must have a special function named main (all lower case letters). When the program is run, the statements inside of _main_ are executed in sequential order.
+
 
 Programs typically terminate (finish running) when the last statement inside function _main_ has executed (though programs may abort early in some circumstances, or do some cleanup afterwards).
 
@@ -88,9 +90,10 @@ Line 6 is a return statement. When an executable program finishes running, the p
 
 All of the programs we write will follow this general template, or a variation on it.
 
-Author’s note
+!!! info "作者注"
 
-If parts (or all) of the above explanation are confusing, that’s to be expected at this point. This was just to provide a quick overview. Subsequent lessons will dig into all of the above topics, with plenty of additional explanation and examples.
+	If parts (or all) of the above explanation are confusing, that’s to be expected at this point. This was just to provide a quick overview. Subsequent lessons will dig into all of the above topics, with plenty of additional explanation and examples.
+
 
 You can compile and run this program yourself, and you will see that it outputs the following to the console:
 
@@ -99,7 +102,7 @@ Hello world!
 ```
 If you run into issues compiling or executing this program, check out lesson [0.8 -- A few common C++ problems](https://www.learncpp.com/cpp-tutorial/a-few-common-cpp-problems/).
 
-Syntax and syntax errors
+## Syntax and syntax errors
 
 In English, sentences are constructed according to specific grammatical rules that you probably learned in English class in school. For example, normal sentences end in a period. The rules that govern how sentences are constructed in a language is called syntax. If you forget the period and run two sentences together, this is a violation of the English language syntax.
 
