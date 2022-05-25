@@ -5,6 +5,14 @@
       "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     },
     {
+      "basename": "scope-resolution-operator",
+      "path": "docs/scope-resolution-operator.md"
+    },
+    {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
+    },
+    {
       "basename": "scope",
       "path": "docs/scope.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "author-notes",
       "path": "Templates/author-notes.md"
-    },
-    {
-      "basename": "aside",
-      "path": "Templates/aside.md"
-    },
-    {
-      "basename": "advanced",
-      "path": "Templates/advanced.md"
     }
   ],
   "omittedPaths": [],

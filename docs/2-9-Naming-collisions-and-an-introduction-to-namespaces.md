@@ -56,13 +56,13 @@ int main()
 
 ## 命名空间是什么?
 
-回想一下刚才有个地址的例子，两条同名的街之所以会带来麻烦，只因为它们是同一个城市中的两条街。如果你想要把信寄到西红市的金融街209和芒果市的金融街417，那么根本不会有任何问题。换句话说，基于城市创建的分组可以避免同名街道产生的歧义。所谓的[[namespace|命名空间(namespace)]]就像这个例子中的城市一样。
+回想一下刚才有个地址的例子，两条同名的街之所以会带来麻烦，只因为它们是同一个城市中的两条街。如果你想要把信寄到西红市的金融街 209 和芒果市的金融街 417，那么根本不会有任何问题。换句话说，基于城市创建的分组可以避免同名街道产生的歧义。所谓的[[namespace|命名空间(namespace)]]就像这个例子中的城市一样。
 
 为了避免歧义，我们可以选择在命名空间中声明一个变量名。命名空间可以为其中定义的名称提供一个作用域范围（称为命名空间作用域），简单来说，在一个命名空间中定义的名称，不会和其他作用域中同名的标识符产生冲突。
 
 !!! tldr "关键信息"
 
-	在一个命名空间中定义的名称，不会和其他作用域中同名的标识符产生冲突。
+    在一个命名空间中定义的名称，不会和其他作用域中同名的标识符产生冲突。
 
 在一个命名空间中，所有的名称都必须是唯一的，否则照样会产生冲突。
 
@@ -74,44 +74,46 @@ int main()
 
 在 C++ 中，任何没有被定义在类、函数或命名空间中的标识符，都属于一个隐含的命名空间，称为全局命名空间（有时候也称为全局[[scope|作用域(scope)]]）。
 
-在 the example at the top of the lesson, functions main() and both versions of myFcn() are defined inside the global namespace. The naming collision encountered in the example happens because both versions of myFcn() end up inside the global namespace, which violates the rule that all names in the namespace must be unique.
+在文章开始的例子中，函数 `main()` 和两个版本的 `myFcn()` 都定义在全局命名空间中。这个例子中的命名冲突也是因为两个 `myFcn()` 都处于全局命名空间，也就违反了命名空间中标识符必须唯一的规则。
 
-Only declarations and definition statements can appear in the global namespace. This means we can define variables in the global namespace, though this should generally be avoided (we cover global variables in lesson [[6-4-Introduction-to-global-variables|6.4 - 全局变量]]). This also means that other types of statements (such as expression statements) cannot be placed in the global namespace (initializers for global variables being an exception):
+**只有声明和定义语句可以出现在全局命名空间中**。这也就意味着我们可以在全局命名空间中定义变量，尽管通常我们应该避免这么做(我们会在[[6-4-Introduction-to-global-variables|6.4 - 全局变量]]一节中详细介绍全局变量)。也同样也意味着，<mark class="hltr-green">其他类型的语句(例如表达式)不能位于全局命名空间(全局变量的初始化是一个例外)：</mark>
 
 ```cpp
 #include <iostream> // handled by preprocessor
 
-// All of the following statements are part of the global namespace
-void foo();    // okay: function forward declaration in the global namespace
-int x;         // compiles but strongly discouraged: uninitialized variable definition in the global namespace
-int y { 5 };   // compiles but discouraged: variable definition with initializer in the global namespace
-x = 5;         // compile error: executable statements not allowed in the global namespace
+// 以下所有语句都位于全局命名空间
+void foo();    // 可以这么做: 可以在全局命名空间中进行函数的前向声明
+int x;         // 可以编译但强烈建议不要这么做：未初始化的变量被定义在全局命名空间中
+int y { 5 };   // 可以编译但不推荐这么做:变量被定义在全局命名空间中且使用初始化值初始化
+x = 5;         // 编译错误：可执行的语句不能放置在全局命名空间中
 
-int main()     // okay: function definition in the global namespace
+int main()     // 可以这么做：函数定义在全局命名空间中
 {
     return 0;
 }
 
-void goo();    // okay: another function forward declaration in the global namespace
+void goo();    // 可以这么做: 在全局命名空间中对其他函数进行前向声明
+
 ```
 
-## The std namespace
+## std 命名空间
 
-When C++ was originally designed, all of the identifiers in the C++ standard library (including std:: cin and std:: cout) were available to be used without the _std:: _ prefix (they were part of the global namespace). However, this meant that any identifier in the standard library could potentially conflict with any name you picked for your own identifiers (also defined in the global namespace). Code that was working might suddenly have a naming conflict when you #included a new file from the standard library. Or worse, programs that would compile under one version of C++ might not compile under a future version of C++, as new identifiers introduced into the standard library could have a naming conflict with already written code. So C++ moved all of the functionality in the standard library into a namespace named “std” (short for standard).
+C++ 在最初设计时，所有 C++ 标准库中的标识符（包括`std::cin`和`std::cout`）都可以直接使用而无需添加`std::`前缀（都属于全局命名空间）。不过，这样也意味着标准库中的任何标识符都可能会和其他用户所使用的标识符（同样定义在全局命名空间）发生冲突。本来可以工作的代码，可能会因为`#include`了一个标准库中的新文件而出现命名冲突。更坏的是，基于老版本C++可以使用的代码，在新版本中可能无法使用，因为新添加到标准库中的标识符可能会与已有的代码发生命名冲突。因此，C++ 将所有标准库中的标识符都移动到了`std`命名空间中（std表示standard，即标准）。
 
-It turns out that _std:: cout_‘s name isn’t really _std:: cout_. It’s actually just _cout_, and _std_ is the name of the namespace that identifier _cout_ is part of. Because _cout_ is defined in the _std_ namespace, the name _cout_ won’t conflict with any objects or functions named _cout_ that we create in the global namespace.
+实际上，`std:: cout`的名字并不是 `std:: cout`而是 `cout`。`std`只是它所处命名空间的修饰符罢了。因为，`cout`定义在`std`命名空间中，因此它不会和其他任何被定义在全局命名空间中的`cout`发生冲突。
 
-Similarly, when accessing an identifier that is defined in a namespace (e.g. _std:: cout_) , you need to tell the compiler that we’re looking for an identifier defined inside the namespace (_std_).
+同样的，当需要使用定义在某个命名空间中的标识符时（例如 `std::cout`），你必须告诉编译器到哪个命名空间中去查找它（例如`std`）。
 
 !!! tldr "关键信息"
 
-    When you use an identifier that is defined inside a namespace (such as the _std_ namespace), you have to tell the compiler that the identifier lives inside the namespace.
+    当需要使用定义在某个命名空间中的标识符时（例如 `std::cout`），你必须告诉编译器该标识符被定义在命名空间中。
 
-There are a few different ways to do this.
 
-## Explicit namespace qualifier std::
+有两种方式可以完成该操作。
 
-The most straightforward way to tell the compiler that we want to use _cout_ from the _std_ namespace is by explicitly using the _std:: _ prefix. For example:
+## 命名空间修饰符 std::
+
+最直接的办法就是通过`std::`前缀告诉编译器，我们希望使用`std`命名空间中的`cout`，例如：
 
 ```cpp
 #include <iostream>
@@ -123,9 +125,9 @@ int main()
 }
 ```
 
-The :: symbol is an operator called the scope resolution operator. The identifier to the left of the :: symbol identifies the namespace that the name to the right of the :: symbol is contained within. If no identifier to the left of the :: symbol is provided, the global namespace is assumed.
+`::` 符号实际上是一个运算符，称为[[scope-resolution-operator|空间解析运算符(scope resolution operator)]]。该运算符左侧是命名空间的名字，右侧则是该空间中包含的标识符。如果左侧未指定任何命名空间，则默认为全局命名空间。
 
-So when we say _std:: cout_, we’re saying “the _cout_ that lives in namespace _std_“.
+因此，`std:: cout`表示cout_ that lives in namespace _std_“.
 
 This is the safest way to use _cout_, because there’s no ambiguity about which _cout_ we’re referencing (the one in the _std_ namespace).
 
@@ -133,7 +135,7 @@ This is the safest way to use _cout_, because there’s no ambiguity about whic
 
     Use explicit namespace prefixes to access identifiers defined in a namespace.
 
-## Using namespace std (and why to avoid it)
+## using namespace std 以及为什么要避免这么做
 
 Another way to access identifiers inside a namespace is to use a _using directive_ statement. Here’s our original “Hello world” program with a _using directive_:
 
@@ -179,8 +181,8 @@ When using a using-directive in this manner, _any_ identifier we define may co
 
 !!! warning "注意"
 
-    Avoid using-directives (such as _using namespace std;_) at the top of your program or in header files. They violate the reason why namespaces were added in the first place.
+    应该在程序或头文件中避免使用 `using` 指令 (例如 `using namespace std;`)，这么做就违背了使用命名空间的初衷。
 
 !!! info "相关内容"
 
-    We talk more about using statements (and how to use them responsibly) in lesson [6.12 -- Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/) .
+    我们会在 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]中介绍 `using` 语句以及如何使用它。
