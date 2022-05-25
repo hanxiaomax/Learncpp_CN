@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-13-How-to-design-your-first-programs.md",
+            "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-13-How-to-design-your-first-programs.md"
+                "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
               }
             }
           },
@@ -107,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-13-How-to-design-your-first-programs.md",
+                "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,11 +129,11 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
     "docs/2-13-How-to-design-your-first-programs.md",
     "docs/2-12-Header-guards.md",
     "docs/2-11-Header-files.md",
     "docs/2-10-Introduction-to-the-preprocessor.md",
-    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md",
     "docs/6-4-Introduction-to-global-variables.md",
     "docs/1-x-Chapter-1-summary-and-quiz.md",

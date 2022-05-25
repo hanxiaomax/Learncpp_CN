@@ -5,14 +5,15 @@ origin_title: "2.9 — Naming collisions and an introduction to namespaces"
 time: 2022-4-22
 type: translation
 tags:
-- 
+- namespace
 ---
 
-Let’s say you are driving to a friend’s house for the first time, and the address given to you is 245 Front Street in Mill City. Upon reaching Mill City, you take out your map, only to discover that Mill City actually has two different Front Streets across town from each other! Which one would you go to? Unless there were some additional clue to help you decide (e.g. you remember his house is near the river) you’d have to call your friend and ask for more information. Because this would be confusing and inefficient (particularly for your mailman), in most countries, all street names and house addresses within a city are required to be unique.
+想象一下，你第一次开车去朋友家，他给你的地址是西红市金融街245号。你在去之前，百度地图了一下这个地址，结果发现西红市竟然有两条金融街。那么你应该去那条街的245号呢？除非你还有一些其他的信息（例如你印象中他的房子靠着一条江），不然你只能打电话给朋友问个清楚了。在现实中，如果一个程序中的街和门牌号不是唯一的，那么无疑会非常令人困惑，也会降低城市的运行效率（例如快递效率）。
 
-Similarly, C++ requires that all identifiers be non-ambiguous. If two identical identifiers are introduced into the same program in a way that the compiler or linker can’t tell them apart, the compiler or linker will produce an error. This error is generally referred to as a naming collision (or naming conflict).
+类似的，C++需要保证其所有的标识符都是没有歧义的。如果一个程序中有两个相同的标识符，那么[[compiler|编译器(compiler)]]或者[[linker|链接]]将无法区分它们，因此必然会报告错误。这个错误通常是关于命名冲突的。
 
-## An example of a naming collision
+
+## 命名冲突实例
 
 a.cpp:
 
@@ -43,13 +44,11 @@ int main()
 }
 ```
 
-COPY
+当编译器在编译此程序时，它会独立地编译 _a.cpp_ 和 _main.cpp_ 两个文件，并且不会有任何问题。
 
-When the compiler compiles this program, it will compile _a.cpp_ and _main.cpp_ independently, and each file will compile with no problems.
+不过，当链接器开始工作时，它会把 _a.cpp_ 和 _main.cpp_ 中的定义关联起来，然后它就会发现  _myFcn_ 函数的定义冲突了。随后链接器便会因为报错而停止工作。注意，即使 _myFcn_ 始终没有被调用，错误仍然会发生！
 
-However, when the linker executes, it will link all the definitions in _a.cpp_ and _main.cpp_ together, and discover conflicting definitions for function _myFcn_. The linker will then abort with an error. Note that this error occurs even though _myFcn_ is never called!
-
-Most naming collisions occur in two cases:
+大多数命名冲突出现在一下两种情况：
 
 1.  Two (or more) definitions for a function (or global variable) are introduced into separate files that are compiled into the same program. This will result in a linker error, as shown above.
 2.  Two (or more) definitions for a function (or global variable) are introduced into the same file (often via an #include). This will result in a compiler error.

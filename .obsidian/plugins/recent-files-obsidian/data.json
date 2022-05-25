@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
+      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    },
+    {
       "basename": "2-13-How-to-design-your-first-programs",
       "path": "docs/2-13-How-to-design-your-first-programs.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "2-10-Introduction-to-the-preprocessor",
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
-    },
-    {
-      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
-      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     },
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
