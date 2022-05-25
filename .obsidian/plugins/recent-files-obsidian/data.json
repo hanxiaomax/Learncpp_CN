@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "preprocessor directive",
-      "path": "docs/preprocessor directive.md"
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "0-8-A-few-common-C++-problems.md"
+    },
+    {
+      "basename": "preprocessor-directive",
+      "path": "docs/preprocessor-directive.md"
     },
     {
       "basename": "add-glossary",
       "path": "Templates/add-glossary.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
       "basename": "1-4-Variable-assignment-and-initialization",

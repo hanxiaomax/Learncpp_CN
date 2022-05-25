@@ -72,31 +72,33 @@ int main()
 }
 ```
 
-**第一行**比较特殊，称为[[preprocessor directive|预处理器指令]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std::cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[编译器(compiler)]]就不知道 `std::cout` 是什么了。
+**第一行** 比较特殊，称为[[preprocessor-directive|预处理器指令 (preprocessor directive)]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std::cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[编译器(compiler)]]就不知道 `std::cout` 是什么了。
 
-**第二行**是空行，编译器会将其忽略。它的存在仅仅是为了让程序可读性变得更好（将`#include` 预处理器指令和程序的其他部分分割开来）。
+**第二行** 是空行，编译器会将其忽略。它的存在仅仅是为了让程序可读性变得更好（将`#include` 预处理器指令和程序的其他部分分割开来）。
 
-**第三行** tells the compiler that we’re going to write (define) a function called _main_. As you learned above, every C++ program must have a _main_function or it will fail to link.
+**第三行** 告诉编译器，此处定义一个名为`main`的函数。之前我们已经了解到，每个C++程序都必须有一个 `main`函数，否则将会[[链接(link)]]失败。
 
-Lines 4 and 7 tell the compiler which lines are part of the _main_ function. Everything between the opening curly brace on line 4 and the closing curly brace on line 7 is considered part of the _main_ function. This is called the function body.
+**第四行** 和 **第七行** 告诉编译器接下来哪些行代码属于`main`函数。所有位于第四行和第七行括号内的代码，都属于`main`函数的一部分，称为函数体。
 
-Line 5 is the first statement within function _main_, and is the first statement that will execute when we run our program. _std::cout_ (which stands for “character output”) and the `<<` operator allow us to send letters or numbers to the console to be output. In this case, we’re sending it the text “Hello world!”, which will be output to the console. This statement creates the visible output of the program.
+**第五行** 是`main`函数的第一条语句，该语句也是程序执行的第一条语句。`std::cout`（表示“character output”，即字符输出）和  `<<` 运算符可以将字母或数字从控制台输出。在本例中，我们将字符串文本 “Hello world!” 输出到控制台。这行代码的执行效果就是为程序创建一个可视化的输出结果。
 
-Line 6 is a return statement. When an executable program finishes running, the program sends a value back to the operating system in order to indicate whether it ran successfully or not. This particular return statement returns the value of 0 to the operating system, which means “everything went okay!”. This is the last statement in the program that executes.
+**第六行** 是一个返回语句。当程序执行完毕后，它需要向操作系统返回一个值来表明其执行的结果是成功还是失败。该返回语句向操作系统返回了0，表示"一切正常"。这是本程序执行的最后一条语句。
 
-All of the programs we write will follow this general template, or a variation on it.
+我们编写的所有程序，都会遵循上述通用模板（或其变种版本）。
+
 
 !!! info "作者注"
 
-	If parts (or all) of the above explanation are confusing, that’s to be expected at this point. This was just to provide a quick overview. Subsequent lessons will dig into all of the above topics, with plenty of additional explanation and examples.
+	如果上述解释仍然有让你困惑的地方，别担心，这很正常。这里的目的只是让你对程序有一个宏观的概念，接下来的课程将会对相关的内容进行详细解释并辅以案例。
 
 
-You can compile and run this program yourself, and you will see that it outputs the following to the console:
+你可以自行编译并运行上述程序，当程序运行时，你将在控制台中看到如下打印信息：
 
 ```
 Hello world!
 ```
-If you run into issues compiling or executing this program, check out lesson [0.8 -- A few common C++ problems](https://www.learncpp.com/cpp-tutorial/a-few-common-cpp-problems/).
+
+如果你在编译或运行程序时遇到了问题，请参考 [[0-8-A-few-common-C++-problems|一些典型的 C++ 问题]]
 
 ## Syntax and syntax errors
 
