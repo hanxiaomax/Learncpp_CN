@@ -10,7 +10,7 @@ tags:
 
 考虑如下简单程序：
 
-```cpp
+```cpp hl_lines="5"
 #include <iostream>
 
 int main()
@@ -37,27 +37,27 @@ The sum of 3 and 4 is: 7
 add.cpp(5) : error C3861: 'add': identifier not found
 ```
 
-[[编译器(compiler)]]在编译上述程序的时候，是 reason this program doesn’t compile is because the compiler compiles the contents of code files sequentially. When the compiler reaches the function call to _add_ on line 5 of _main_, it doesn’t know what _add_ is, because we haven’t defined _add_ until line 9! That produces the error, _identifier not found_.
+[[编译器(compiler)]]在编译上述程序的时候会顺序编译上述代码的内容。当编译器开始要编译**第五行**的 `add` 函数时，它不知道 `add` 是什么，因为我们还没有定义 `add`（它是在第九行定义的）！因此，编译器会报告一个[[标识符(identifier)]]未找到的错误（identifier not found）。
 
-Older versions of Visual Studio would produce an additional error:
+旧版本的 Visual Studio 还会报告另外一个错误：
 
 ```
 add.cpp(9) : error C2365: 'add'; : redefinition; previous definition was 'formerly unknown identifier'
 ```
 
-This is somewhat misleading, given that _add_ wasn’t ever defined in the first place. Despite this, it’s useful to generally note that it is fairly common for a single error to produce many redundant or related errors or warnings.
+这个错误信息可能会误导我们，因为 `add` 尚未被定义，又怎么会有重复定义(redefinition)的问题呢？抛开这个问题不谈，我们需要注意的是，编译器在报告错误的时候，的确会连带地报告一些冗余的或相关的错误或告警。
 
 !!! success "最佳实践"
 
-	When addressing compile errors in your programs, always resolve the first error produced first and then compile again.
+    在解决编译报错的问题时，总是先解决报告的第一个错误并重新编译。
 
-To fix this problem, we need to address the fact that the compiler doesn’t know what add is. There are two common ways to address the issue.
+为了处理掉这个报错信息，我们必须要解决编译器不知道 `add` 是什么这一问题。通常，有两种方法可以使用。
 
-## Option 1: Reorder the function definitions
+## 方案 1: 调整定义顺序
 
-One way to address the issue is to reorder the function definitions so _add_ is defined before _main_:
+解决上述问题的方法之一，就是将 `add` 的定义挪到 `main` 前面：
 
-```cpp
+```cpp hl_lines="3"
 #include <iostream>
 
 int add(int x, int y)
@@ -72,44 +72,42 @@ int main()
 }
 ```
 
-COPY
+这一样一来，当 `main` 函数调用 `add` 的时候，编译器已经知道了 `add` 的定义。对于这样一个简单的程序来说，这么做是很容易的。但是对于大型程序来说，搞清楚函数的调用顺序并依此来调整其定义顺序是非常费力的。
 
-That way, by the time _main_ calls _add_, the compiler will already know what _add_ is. Because this is such a simple program, this change is relatively easy to do. However, in a larger program, it can be tedious trying to figure out which functions call which other functions (and in what order) so they can be declared sequentially.
+不仅如此，在面对有些程序的时候，这个方法甚至是行不通的。例如，某个程序包含两个函数，A 和 B。如果函数 A 调用了函数 B，同时函数 B 又调用了函数 A，那么按照本方法来做的话，实际上是无法调整顺序使其能够编译的。如果你先定义 A，则编译器会抱怨找不到 B，如果你先定义 B，则编译器会抱怨找不到 A。
 
-Furthermore, this option is not always possible. Let’s say we’re writing a program that has two functions _A_ and _B_. If function _A_ calls function _B_, and function _B_ calls function _A_, then there’s no way to order the functions in a way that will make the compiler happy. If you define _A_ first, the compiler will complain it doesn’t know what _B_ is. If you define _B_ first, the compiler will complain that it doesn’t know what _A_ is.
+## 方案 2: 使用前向声明
 
-## Option 2: Use a forward declaration
+解决问题的方案2，是使用[[forward-declaration|前向声明(forward declaration)]]。
 
-We can also fix this by using a 前向声明（[[前向声明(forward declaration)]]）
+使用前向声明可以在实际定义该标识符前，预先告知编译器该标识符是存在的。
 
-A forward declaration allows us to tell the compiler about the existence of an identifier _before_ actually defining the identifier.
+对于函数来说，这么做可以在定义函数体之前，先告诉编译器函数名存在。因此，当编译器编译函数调用时，它知道该标识符表示一个函数，此时在进行函数调用，并检查函数调用是否正确，即使其上不知道该函数是如何定义、在哪里定义的。
 
-In the case of functions, this allows us to tell the compiler about the existence of a function before we define the function’s body. This way, when the compiler encounters a call to the function, it’ll understand that we’re making a function call, and can check to ensure we’re calling the function correctly, even if it doesn’t yet know how or where the function is defined.
+编写前向升，我们需要使用被称为[[函数原型(function prototype)]]的声明语句。函数原型包括了函数头（即函数的返回值类型、函数名和[[parameters|形参(parameters)]]类型）并以分号结尾。函数体并不属于函数原型的一部分。
 
-To write a forward declaration for a function, we use a declaration statement called a function prototype. The function prototype consists of the function header (the function’s return type, name, and parameter types), terminated with a semicolon. The function body is not included in the prototype.
-
-Here’s a function prototype for the _add_ function:
+`add`函数的函数原型如下：
 
 ```cpp
-int add(int x, int y); // function prototype includes return type, name, parameters, and semicolon.  No function body!
+// 函数原型包括返回值类型、函数名、形参和一个分号。不需要函数体！
+int add(int x, int y); 
 ```
 
-COPY
+现在，为之前不能编译的程序添加 `add` 函数的前向声明：
 
-Now, here’s our original program that didn’t compile, using a function prototype as a forward declaration for function _add_:
-
-```cpp
+```cpp hl_lines="3 8" 
 #include <iostream>
 
-int add(int x, int y); // forward declaration of add() (using a function prototype)
+int add(int x, int y); // 使用函数原型进行前向声明
 
 int main()
 {
-    std::cout << "The sum of 3 and 4 is: " << add(3, 4) << '\n'; // this works because we forward declared add() above
+    // 由于前向声明的存在，该行代码不再报错
+    std::cout << "The sum of 3 and 4 is: " << add(3, 4) << '\n'; 
     return 0;
 }
 
-int add(int x, int y) // even though the body of add() isn't defined until here
+int add(int x, int y) // 即使函数体在后面才定义
 {
     return x + y;
 }
@@ -123,12 +121,11 @@ It is worth noting that function prototypes do not need to specify the names of 
 int add(int, int); // valid function prototype
 ```
 
-
 However, we prefer to name our parameters (using the same names as the actual function), because it allows you to understand what the function parameters are just by looking at the prototype. Otherwise, you’ll have to locate the function definition.
 
 !!! success "最佳实践"
 
-	When defining function prototypes, keep the parameter names. You can easily create forward declarations by copy/pasting your function’s prototype and adding a semicolon.
+    When defining function prototypes, keep the parameter names. You can easily create forward declarations by copy/pasting your function’s prototype and adding a semicolon.
 
 ## Forgetting the function body
 
@@ -230,7 +227,7 @@ project3.cpp(15): note: see declaration of 'x'
 
 !!! info "扩展阅读"
 
-	Functions that share an identifier but have different parameters are considered to be distinct functions. We discuss this further in lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/)
+    Functions that share an identifier but have different parameters are considered to be distinct functions. We discuss this further in lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/)
 
 A declaration is a statement that tells the _compiler_ about the existence of an identifier and its type information. Here are some examples of declarations:
 
@@ -249,4 +246,4 @@ The ODR doesn’t apply to pure declarations (it’s the _one definition rule_,
 
 !!! info "作者注"
 
-	In common language, the term “declaration” is typically used to mean “a pure declaration”, and “definition” is used to mean “a definition that also serves as a declaration”. Thus, we’d typically call _int x;_ a definition, even though it is both a definition and a declaration.
+    In common language, the term “declaration” is typically used to mean “a pure declaration”, and “definition” is used to mean “a definition that also serves as a declaration”. Thus, we’d typically call _int x;_ a definition, even though it is both a definition and a declaration.

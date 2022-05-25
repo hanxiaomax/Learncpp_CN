@@ -5,6 +5,14 @@
       "path": "docs/2-7-Forward-declarations-and-definitions.md"
     },
     {
+      "basename": "parameters",
+      "path": "docs/parameters.md"
+    },
+    {
+      "basename": "forward-declaration",
+      "path": "docs/forward-declaration.md"
+    },
+    {
       "basename": "2-8-Programs-with-multiple-code-files",
       "path": "docs/2-8-Programs-with-multiple-code-files.md"
     },
