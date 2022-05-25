@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "preprocessor directive",
+      "path": "docs/preprocessor directive.md"
+    },
+    {
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
+    },
+    {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
@@ -95,10 +103,6 @@
     {
       "basename": "1-9-Introduction-to-literals-and-operators",
       "path": "docs/1-9-Introduction-to-literals-and-operators.md"
-    },
-    {
-      "basename": "add-glossary",
-      "path": "Templates/add-glossary.md"
     },
     {
       "basename": "1-2-comments",

@@ -48,21 +48,19 @@ tags:
 
 !!! note "法则"
 
-	每个C++程序都必须包含一个函数名wei`main` C++ program must have a special function named main (all lower case letters). When the program is run, the statements inside of _main_ are executed in sequential order.
+	每个C++程序都必须包含一个函数名为 `main` 的函数(main全部为小写字母)。当程序开始运行的时候，`main`函数中的代码会被顺序执行。
 
+一般情况下，程序通常会在完成 `main` 函数中最后一条语句后终止（尽管也可能提前终止或者在结束后执行一些清理操作）。
 
-
-Programs typically terminate (finish running) when the last statement inside function _main_ has executed (though programs may abort early in some circumstances, or do some cleanup afterwards).
-
-Functions are typically written to do a specific job. For example, a function named “max” might contain statements that figures out which of two numbers is larger. A function named “calculateGrade” might calculate a student’s grade from a set of test scores. We will talk a lot more about functions soon, as they are the most commonly used organizing tool in a program.
+编写的函数一般是为了完成某个特定的工作。例如，名为 "max" 的函数一般用于两个数字比大小。而名为 “calculateGrade” 的函数则用于计算学生成绩（grade）。我们会在函数一节中对其进行详细介绍，毕竟函数是构建程序的最常用的工具。
 
 !!! info "作者注"
 
-	When discussing functions, it’s fairly common shorthand to append a pair of parenthesis to the end of the function’s name. For example, if you see the term _main()_ or _doSomething()_, this is shorthand for functions named _main_ or _doSomething_ respectively. This helps differentiate functions from other things with names (such as variables) without having to write the word “function” each time.
+	当我们谈论函数时，通常会在函数名后面加上一组括号作为一种速记法。例如，当你看到 `main()` 或者 `doSomething()` 的时候，你应该清楚此时我们在谈论一个名为 _main_ 或者 _doSomething_ 的函数。这么做可以帮助我们将函数和其他类型的名称区分开来（例如变量名），同时不必每次都加上“函数”二字。
 
-## Dissecting Hello world!
+## Hello world! 程序剖析
 
-Now that you have a brief understanding of what statements and functions are, let’s return to our “Hello world” program and take a high-level look at what each line does in more detail.
+现在，你已经初步了解了什么是语句以及什么是函数，接下来，让我们回到 “Hello world” 程序并逐行对其进行分析。
 
 ```cpp
 #include <iostream>
@@ -74,13 +72,11 @@ int main()
 }
 ```
 
-COPY
+**第一行**比较特殊，称为[[preprocessor directive|预处理器指令]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std::cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[编译器(compiler)]]就不知道 `std::cout` 是什么了。
 
-Line 1 is a special type of line called a preprocessor directive. This preprocessor directive indicates that we would like to use the contents of the iostream library, which is the part of the C++ standard library that allows us to read and write text from/to the console. We need this line in order to use std::cout on line 5. Excluding this line would result in a compile error on line 5, as the compiler wouldn’t otherwise know what std::cout is.
+**第二行**是空行，编译器会将其忽略。它的存在仅仅是为了让程序可读性变得更好（将`#include` 预处理器指令和程序的其他部分分割开来）。
 
-Line 2 is blank, and is ignored by the compiler. This line exists only to help make the program more readable to humans (by separating the #include preprocessor directive and the subsequent parts of the program).
-
-Line 3 tells the compiler that we’re going to write (define) a function called _main_. As you learned above, every C++ program must have a _main_function or it will fail to link.
+**第三行** tells the compiler that we’re going to write (define) a function called _main_. As you learned above, every C++ program must have a _main_function or it will fail to link.
 
 Lines 4 and 7 tell the compiler which lines are part of the _main_ function. Everything between the opening curly brace on line 4 and the closing curly brace on line 7 is considered part of the _main_ function. This is called the function body.
 

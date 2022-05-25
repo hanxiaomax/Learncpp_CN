@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/1-1-Statements-and-the-structure-of-a-program.md",
+            "file": "docs/preprocessor directive.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+                "file": "docs/preprocessor directive.md"
               }
             }
           },
@@ -107,27 +107,28 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/1-1-Statements-and-the-structure-of-a-program.md",
+                "file": "docs/preprocessor directive.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
+                "showSearch": true,
+                "searchQuery": "glossary",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/preprocessor directive.md",
+    "Templates/add-glossary.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
@@ -135,8 +136,6 @@
     "docs/2-1-Introduction-to-functions.md",
     "docs/1-6-Uninitialized-variables-and-undefined-behavior.md",
     "Templates/warning.md",
-    "Templates/tip.md",
-    "docs/2-3-Void-functions-non-value returning functions.md",
-    "docs/2-2-Function-return-values-value-returning functions.md"
+    "Templates/tip.md"
   ]
 }
