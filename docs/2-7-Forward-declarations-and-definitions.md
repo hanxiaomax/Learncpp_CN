@@ -78,7 +78,7 @@ int main()
 
 ## 方案 2: 使用前向声明
 
-解决问题的方案2，是使用[[forward-declaration|前向声明(forward declaration)]]。
+解决问题的方案 2，是使用[[forward-declaration|前向声明(forward declaration)]]。
 
 使用前向声明可以在实际定义该标识符前，预先告知编译器该标识符是存在的。
 
@@ -86,7 +86,7 @@ int main()
 
 编写前向升，我们需要使用被称为[[函数原型(function prototype)]]的声明语句。函数原型包括了函数头（即函数的返回值类型、函数名和[[parameters|形参(parameters)]]类型）并以分号结尾。函数体并不属于函数原型的一部分。
 
-`add`函数的函数原型如下：
+`add` 函数的函数原型如下：
 
 ```cpp
 // 函数原型包括返回值类型、函数名、形参和一个分号。不需要函数体！
@@ -113,7 +113,7 @@ int add(int x, int y) // 即使函数体在后面才定义
 }
 ```
 
-现在，当编译器到达`add`函数调用处是，它已经知道了`add`的原型（接收两个参数并返回一个整型），此时它便不会再报错了。
+现在，当编译器到达 `add` 函数调用处是，它已经知道了 `add` 的原型（接收两个参数并返回一个整型），此时它便不会再报错了。
 
 在函数原型中其实没必要提供参数的名字。在上面的例子中，你也可以像下面这样进行前向声明：
 
@@ -123,11 +123,10 @@ int add(int, int); // valid function prototype
 
 不过，我们建议还是使用实际的变量名，因为这样可以在你看到函数原型的时候，更好地理解其含义。否则，你必须再次寻找它的定义。
 
-
 !!! success "最佳实践"
 
     在定义函数原型的时候，请保留函数名。你可以赋值粘贴函数的原型并在其后面加上一个分号来轻松地创建前向声明。
-    
+
 ## 忘记函数体
 
 新手程序员常常会问，如果仅仅对函数进行了前向声明，但是没有实际定义该函数时会发生什么？
@@ -150,8 +149,7 @@ int main()
 // 注意：没有对函数进行定义
 ```
 
-
-在这个程序中，我们对`add`进行了前向声明并且调用了`add`函数。不过，我们却没有对其进行声明。如果对程序进行编译，Visual Studio 会报告如下信息：
+在这个程序中，我们对 `add` 进行了前向声明并且调用了 `add` 函数。不过，我们却没有对其进行声明。如果对程序进行编译，Visual Studio 会报告如下信息：
 
 ```
 Compiling...
@@ -161,18 +159,17 @@ add.obj : error LNK2001: unresolved external symbol "int __cdecl add(int,int)" (
 add.exe : fatal error LNK1120: 1 unresolved externals
 ```
 
-可以看到，程序是能够正确编译的，但是在[[链接(link)]]阶段却报错了，因为`int add(int, int)`没有被定义。
+可以看到，程序是能够正确编译的，但是在[[链接(link)]]阶段却报错了，因为 `int add(int, int)` 没有被定义。
 
 ## 其他类型的前向声明
 
-前向声明最常用于函数。但是，前向声明也可以用于其他的C++标识符，例如变量或用户定义类型。不过它们的前向声明方式稍有不同，我们会在后续的课程中进行介绍。
+前向声明最常用于函数。但是，前向声明也可以用于其他的 C++标识符，例如变量或用户定义类型。不过它们的前向声明方式稍有不同，我们会在后续的课程中进行介绍。
 
 ## 声明 vs. 定义
 
 在 C++ 中，你时常会听到[[declaration|声明(declaration)]]和[[definition|定义(definition)]] 这两个词，有时候它们是可以互换的。现在，我们已经掌握了足够的知识，可以去理解它们之间的不同了。
 
-定义实际上指的是对某个[[标识符(identifier)]]的实现（对于函数或类型来说）或实例化（对于变量来说）。下面是一些有关定义的例子：
-
+[[definition|定义(definition)]]实际上指的是对某个[[标识符(identifier)]]的实现（对于函数或类型来说）或实例化（对于变量来说）。下面是一些有关定义的例子：
 
 ```cpp
 int add(int x, int y) // implements function add()
@@ -185,15 +182,15 @@ int add(int x, int y) // implements function add()
 
 <mark class="hltr-green">定义是为了满足链接器的需要</mark> 。如果你使用了未定义的标识符，链接器就会报错。
 
-[[one-definition-rule|单一定义规则(one-definition-rule,ODR)]] 是C++中最著名的规则之一。
+[[one-definition-rule|单一定义规则(one-definition-rule,ODR)]] 是 C++中最著名的规则之一。
 
 1.  在一个文件中，一个函数、变量、类型或模板只能够被定义一次；
-2. 在一个程序中，一个变量或普通函数只能够有一个定义。和上一条的区别在于一个程序可以由多个文件组成（后面的课程会介绍）；
-3. <mark class="hltr-green">类型、模板、内联函数和内联变量可以有一样的定义，但必须位于不同的文件中</mark> 。由于我们尚未介绍这些概念，因此目前无需考虑它们。
+2.  在一个程序中，一个变量或普通函数只能够有一个定义。和上一条的区别在于一个程序可以由多个文件组成（后面的课程会介绍）；
+3.  <mark class="hltr-green">类型、模板、内联函数和内联变量可以有一样的定义，但必须位于不同的文件中</mark> 。由于我们尚未介绍这些概念，因此目前无需考虑它们。
 
-如果违反l part 1 of the ODR will cause the compiler to issue a redefinition error. Violating ODR part 2 will likely cause the linker to issue a redefinition error. Violating ODR part 3 will cause undefined behavior.
+如果违反了 ODR 的第一条规则，会导致编译器报告重复定义的错误。如果违反了 ODR 的第二条规则，则很可能导致链接器报告重复定义错误。违反 ODR 第三条规则则会导致未定义行为。
 
-Here’s an example of a violation of part 1:
+下面例子展示了违反第一条规则的情形：
 
 ```cpp
 int add(int x, int y)
@@ -201,7 +198,7 @@ int add(int x, int y)
      return x + y;
 }
 
-int add(int x, int y) // violation of ODR, we've already defined function add
+int add(int x, int y) // 违反了ODR，因为 add 已经被定义过了
 {
      return x + y;
 }
@@ -209,13 +206,11 @@ int add(int x, int y) // violation of ODR, we've already defined function add
 int main()
 {
     int x;
-    int x; // violation of ODR, we've already defined x
+    int x; // 违反了ODR，因为 x 已经被定义过了
 }
 ```
 
-COPY
-
-Because the above program violates ODR part 1, this causes the Visual Studio compiler to issue the following compile errors:
+由于上述程序违反了ODR第一条规则，Visual Studio 的编译器会报告如下编译错误：
 
 ```
 project3.cpp(9): error C2084: function 'int add(int,int)' already has a body
@@ -226,23 +221,25 @@ project3.cpp(15): note: see declaration of 'x'
 
 !!! info "扩展阅读"
 
-    Functions that share an identifier but have different parameters are considered to be distinct functions. We discuss this further in lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/)
+	标识符相同但参数不同的函数，被看做是不同的函数。我们会在[[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]中进行介绍。
 
-A declaration is a statement that tells the _compiler_ about the existence of an identifier and its type information. Here are some examples of declarations:
+声明则是一条语句，它告诉编译器某个标识符是存在的，并提供其类型信息。声明相关的例子如下：
 
 ```cpp
 int add(int x, int y); // tells the compiler about a function named "add" that takes two int parameters and returns an int.  No body!
 int x; // tells the compiler about an integer variable named x
 ```
 
-A declaration is all that is needed to satisfy the compiler. This is why we can use a forward declaration to tell the compiler about an identifier that isn’t actually defined until later.
+[[declaration|声明(declaration)]]纯粹为了满足编译器的需要。这也是为什么在尚未进行具体定义时，可以通过前向声明告知编译器标识符的信息。
 
-In C++, all definitions also serve as declarations. This is why _int x_ appears in our examples for both definitions and declarations. Since _int x_ is a definition, it’s a declaration too. In most cases, a definition serves our purposes, as it satisfies both the compiler and linker. We only need to provide an explicit declaration when we want to use an identifier before it has been defined.
+在 C++ 中，定义也具有声明的功能。这也是为什么在上面声明和定义的例子中都出现了 `int x`，因为它既是声明也是定义。在大多数情况下，定义可以满足我们的需要，因为它既可以被编译器使用，也可以被链接器使用。只有当需要在标识符尚未定义前使用它时，才需要对其进行显式的声明。
 
-While it is true that all definitions are declarations, the converse is not true: not all declarations are definitions. An example of this is the function prototype -- it satisfies the compiler, but not the linker. These declarations that aren’t definitions are called pure declarations. Other types of pure declarations include forward declarations for variables and type declarations (you will encounter these in future lessons, no need to worry about them now).
+尽管所有的定义也都是声明，但反过来却不是的：并不是所有的声明都是定义。以函数原型为例——它只能够满足编译器的需要，但不能满足链接器的需要。对于那些只是声明，但是不是定义的声明，称为[[pure-declaration|纯声明(pure declaration)]]。<mark class="hltr-red">其他类型的纯声明包括变量的前向声明和类型声明</mark> （在后续的章节会进行介绍，目前无需操心）。
 
-The ODR doesn’t apply to pure declarations (it’s the _one definition rule_, not the _one declaration rule_), so you can have as many pure declarations for an identifier as you desire (although having more than one is redundant).
+
+ODR原则并不适用于纯声明（毕竟ODR指的是[[one-definition-rule|单一定义规则(one-definition-rule)]]而不是**单一声明规则**），因此你可以多次声明某个标识符（尽管这么做是多余的）。
 
 !!! info "作者注"
 
-    In common language, the term “declaration” is typically used to mean “a pure declaration”, and “definition” is used to mean “a definition that also serves as a declaration”. Thus, we’d typically call _int x;_ a definition, even though it is both a definition and a declaration.
+    在一般用语中，**声明**一般指纯声明，而**定义**则指的是既能做定义，也能做声明的定义。因此，我们通常会称 `int x;`为定义，尽管它既是定义也是声明。
+    

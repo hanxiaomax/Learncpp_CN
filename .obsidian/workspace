@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-7-Forward-declarations-and-definitions.md",
+            "file": "docs/pure-declaration.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-7-Forward-declarations-and-definitions.md"
+                "file": "docs/pure-declaration.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-7-Forward-declarations-and-definitions.md",
+                "file": "docs/pure-declaration.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +129,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/pure-declaration.md",
     "docs/2-7-Forward-declarations-and-definitions.md",
+    "docs/8-9-Introduction-to-function-overloading.md",
     "docs/one-definition-rule.md",
     "docs/linker.md",
     "docs/definition.md",
     "docs/declaration.md",
     "docs/parameters.md",
     "docs/forward-declaration.md",
-    "includes/按值传递(pass by value).md",
-    "docs/2-8-Programs-with-multiple-code-files.md",
-    "docs/翻译约定.md"
+    "includes/按值传递(pass by value).md"
   ]
 }

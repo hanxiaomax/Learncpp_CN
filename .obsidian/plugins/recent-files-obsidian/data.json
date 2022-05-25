@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "pure-declaration",
+      "path": "docs/pure-declaration.md"
+    },
+    {
       "basename": "2-7-Forward-declarations-and-definitions",
       "path": "docs/2-7-Forward-declarations-and-definitions.md"
+    },
+    {
+      "basename": "8-9-Introduction-to-function-overloading",
+      "path": "docs/8-9-Introduction-to-function-overloading.md"
     },
     {
       "basename": "one-definition-rule",
