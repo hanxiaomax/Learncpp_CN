@@ -230,14 +230,12 @@ C++ 给与了你选择任何你喜欢的风格的权利，但是，我们仍然�
 
 然而，当你添加、删除代码，或者修改了IDE的默认排版规则后，又或者你从其他地方拷贝了代码，这种情况下排版可能会变得一团糟。修复部分或整个文件中的排版问题是非常头疼的。幸运的是，现代DIE通常都提供了自动排版的功能，它可以对你选择的部分或者整个文件进行重新排版。
 
-!!! tip "小贴士"
+!!! tip "For Visual Studio users"
 
-	#### For Visual Studio users
 	在 Visual Studio 中，可以通过 _Edit > Advanced > Format Document_ and _Edit > Advanced > Format Selection_ 来配置自动排版。
 
-!!! tip "小贴士"
+!!! tip "For Code::Blocks users"
 
-	#### For Code::Blocks users
 	在 Code::Blocks 中，可以通过鼠标右键，选择 Format use AStyle 来使用。
 
 为了使用方便，推荐为自动排版功能绑定一个键盘快捷键。

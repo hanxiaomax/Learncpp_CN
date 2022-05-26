@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "运算符",
+                "query": "Q",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -129,14 +129,14 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/2-11-Header-files.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
+    "Templates/qa.md",
+    "docs/2-8-Programs-with-multiple-code-files.md",
+    "docs/1-2-comments.md",
+    "docs/1-8-Whitespace-and-basic-formatting.md",
     "Templates/key-takeaway.md",
     "docs/2-10-Introduction-to-the-preprocessor.md",
     "docs/Untitled.md",
-    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
-    "docs/qualifier.md",
-    "docs/preprocessor-directive.md",
-    "docs/object-like-macros.md",
-    "Templates/add-glossary.md"
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
   ]
 }
