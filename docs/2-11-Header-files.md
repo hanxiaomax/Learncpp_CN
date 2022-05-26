@@ -11,6 +11,7 @@ tags:
 ??? note "关键点速记"
 
     - 头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则，除非是符号常量
+    - 源文件应该包含其对应的头文件（如果存在的话），可以确保定义和声明不匹配的问题在编译时就能被发现
 
 ## 头文件及其用途
 
@@ -107,10 +108,10 @@ int main()
 add.h:
 
 ```cpp
-// 1) We really should have a header guard here, but will omit it for simplicity (we'll cover header guards in the next lesson)
+// 1) 这里应该是头文件包含保护，但是这个例子中只有一个头文件，为了简化这里就省略了
 
-// 2) This is the content of the .h file, which is where the declarations go
-int add(int x, int y); // function prototype for add.h -- don't forget the semicolon!
+// 2) .h 文件的内容，声明都写在这里
+int add(int x, int y); // 函数原型——不要忘记分号！
 ```
 
 为了在*main.cpp*中使用该头文件，我们需要 `#include` (这里需要使用引号而非尖括号)。
@@ -118,7 +119,7 @@ int add(int x, int y); // function prototype for add.h -- don't forget the semic
 main.cpp:
 
 ```cpp
-#include "add.h" // 将 add.h 插入到此位置，注意使用双引号
+#include "add.h" // 将 add.h 插入到此位置。注意使用双引号。
 #include <iostream>
 
 int main()
@@ -131,7 +132,7 @@ int main()
 add.cpp:
 
 ```cpp
-#include "add.h" // Insert contents of add.h at this point.  Note use of double quotes here.
+#include "add.h" // add.h 的内容会被拷贝到这里。注意使用双引号。
 
 int add(int x, int y)
 {
@@ -143,34 +144,34 @@ int add(int x, int y)
 
 现在，我们的程序就可以被正确的编译和链接了。
 
-![](https://www.learncpp.com/images/CppTutorial/Section1/IncludeHeader.png?ezimgfmt=rs:647x377/rscb2/ng: webp/ngcb2)
+![](https://www.learncpp.com/images/CppTutorial/Section1/IncludeHeader.png?ezimgfmt=rs:647x377/rscb2/ng:webp/ngcb2)
 
-## Source files should include their paired header
+## 源文件需要包含其对应的头文件
 
-In C++, it is a best practice for code files to #include their paired header file (if one exists). In the example above, _add.cpp_ includes _add.h_.
+C++ 中的最佳实践之一就是源文件应该包含其对应的头文件（如果存在的话）。在上面的例子中， _add.cpp_ 应该包含 _add.h_。
 
-This allows the compiler to catch certain kinds of errors at compile time instead of link time. For example:
+这么做可以使得有些问题可以在编译时被发现，而不是留到链接时再发现。例如：
 
 something.h:
 
 ```cpp
-int something(int); // return type of forward#33333333333333333333333444444444444444444444444444444444444444444444444444444/
+int something(int); // 声明的返回类型是 int
 
 something.cpp:
 
 ```cpp
 #include "something.h"
 
-void something(int) // error: wrong return type
+void something(int) // 错误: 错误的返回类型
 {
 }
 ```
 
-Because _something.cpp_ #includes _something.h_, the compiler will notice that function _something()_ has a mismatched return type and give us a compile error. If _something.cpp_ did not #include _something.h_, we’d have to wait until the linker discovered the discrepancy, which wastes time. For another example, see [this comment](https://www.learncpp.com/cpp-tutorial/header-files/comment-page-8/#comment-398571) .
+因为 _something.cpp_ `#includes`了 _something.h_，因此编译器可以在编译时发现  `something()`  函数的返回值类型不匹配。而如果 _something.cpp_ 没有 `#include` _something.h_，那么我们必须要等到链接时，该问题才会被链接器发现，这无疑会浪费时间。其他例子可以参考[这个评论](https://www.learncpp.com/cpp-tutorial/header-files/comment-page-8/#comment-398571) 。
 
 !!! success "最佳实践"
 
-    Source files should #include their paired header file (if one exists).
+    源文件需要包含其对应的头文件（如果有的话）。
 
 ## Troubleshooting
 
@@ -178,7 +179,7 @@ If you get a compiler error indicating that _add.h_ isn’t found, make sure t
 
 If you get a linker error about function _add_ not being defined, make sure you’ve added _add.cpp_ in your project so the definition for function _add_ can be linked into the program.
 
-## Angled brackets vs double quotes
+## 尖括号 vs 双引号
 
 You’re probably curious why we use angled brackets for `iostream`, and double quotes for `add.h`. It’s possible that a header file with the same filename might exist in multiple directories. Our use of angled brackets vs double quotes helps give the compiler a clue as to where it should look for header files.
 
@@ -190,7 +191,7 @@ When we use double-quotes, we’re telling the preprocessor that this is a heade
 
     Use double quotes to include header files that you’ve written or are expected to be found in the current directory. Use angled brackets to include headers that come with your compiler, OS, or third-party libraries you’ve installed elsewhere on your system.
 
-## Why doesn’t iostream have a .h extension?
+## 为什么 iostream 没有 .h 后缀?
 
 Another commonly asked question is “why doesn’t iostream (or any of the other standard library header files) have a .h extension?”. The answer is that _iostream.h_ is a different header file than _iostream_! To explain requires a short history lesson.
 
@@ -204,7 +205,7 @@ In addition, many of the libraries inherited from C that are still useful in C++
 
     When including a header file from the standard library, use the version without the .h extension if it exists. User-defined headers should still use a .h extension.
 
-## Including header files from other directories
+## include 其他目录中的头文件
 
 Another common question involves how to include header files from other directories.
 
@@ -237,7 +238,7 @@ Right click on your project in the _Solution Explorer_, and choose _Properties
 
 The nice thing about this approach is that if you ever change your directory structure, you only have to change a single compiler or IDE setting instead of every code file.
 
-## Headers may include other headers
+## 头文件中可以包含其他头文件
 
 It’s common that a header file will need a declaration or definition that lives in a different header file. Because of this, header files will often #include other header files.
 
@@ -257,9 +258,9 @@ Unfortunately, there is no easy way to detect when your code file is accidentall
 
     This is one of the most commonly asked questions on this site. The answer is: it’s likely working, because you included some other header (e.g. <iostream>), which itself included <someheader>. Although your program will compile, per the best practice above, you should not rely on this. What compiles for you might not compile on a friend’s machine.
 
-## The #include order of header files
+## 头文件 `#include` 的顺序
 
-If your header files are written properly and #include everything they need, the order of inclusion shouldn’t matter.
+If your header files are written properly and `#include` everything they need, the order of inclusion shouldn’t matter.
 
 Now consider the following scenario: let’s say header A needs declarations from header B, but forgets to include it. In our code file, if we include header B before header A, our code will still compile! This is because the compiler will compile all the declarations from B before it compiles the code from A that depends on those declarations.
 
@@ -278,7 +279,7 @@ However, if we include header A first, then the compiler will complain because t
 
 That way, if one of your user-defined headers is missing an #include for a 3rd party library or standard library header, it’s more likely to cause a compile error so you can fix it.
 
-## Header file best practices
+## 头文件最佳实践
 
 Here are a few more recommendations for creating and using header files.
 
@@ -287,6 +288,6 @@ Here are a few more recommendations for creating and using header files.
 - Give a header file the same name as the source file it’s associated with (e.g. _grades.h_ is paired with _grades.cpp_).
 - Each header file should have a specific job, and be as independent as possible. For example, you might put all your declarations related to functionality A in A.h and all your declarations related to functionality B in B.h. That way if you only care about A later, you can just include A.h and not get any of the stuff related to B.
 - Be mindful of which headers you need to explicitly include for the functionality that you are using in your code files
-- Every header you write should compile on its own (it should #include every dependency it needs)
-- Only #include what you need (don’t include everything just because you can).
-- Do not #include .cpp files.
+- Every header you write should compile on its own (it should `#include` every dependency it needs)
+- Only `#include` what you need (don’t include everything just because you can).
+- Do not `#include` .cpp files.
