@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "运算符",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -130,14 +129,14 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/2-10-Introduction-to-the-preprocessor.md",
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
+    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+    "docs/qualifier.md",
+    "docs/preprocessor-directive.md",
     "docs/object-like-macros.md",
     "Templates/add-glossary.md",
     "docs/function-like macros.md",
     "docs/macro.md",
-    "docs/preprocessor.md",
-    "docs/translation.md",
-    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
-    "docs/scope-resolution-operator.md",
-    "docs/6-12-Using-declarations-and-using directives.md"
+    "docs/preprocessor.md"
   ]
 }

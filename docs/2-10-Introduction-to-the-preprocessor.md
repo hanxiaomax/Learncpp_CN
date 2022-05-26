@@ -54,20 +54,20 @@ int main()
 
 **函数类型的宏**和函数很像，其功能也类似。我们并不会在这里详细讨论它，因为它常常被认为是不安全的，况且它能做的普通函数也能做，
 
-**对象类型的宏** 有两种声明方式
+**对象类型的宏**有两种声明方式：
 
 ```cpp
 #define identifier
 #define identifier substitution_text
 ```
 
-上面一种方式不会对文本进行替换，而下面一种会。因为这些The top definition has no substitution text, whereas the bottom one does. Because these are preprocessor directives (not statements), note that neither form ends with a semicolon.
+上面一种方式不会对文本进行替换，而下面一种会。因为这些都属于[[preprocessor-directive|预处理器指令]]而不是语句，因此不需要以分号结尾，
 
-Object-like macros with substitution text
+## 有替换文本的对象类型宏
 
-When the preprocessor encounters this directive, any further occurrence of the identifier is replaced by _substitution_text_. The identifier is traditionally typed in all capital letters, using underscores to represent spaces.
+当预处理器遇到该指令时，任何使用该标识符的地方都会被替换为对应的*替换文本*。一般来说，这些标识符会以全大写的形式使用，同时使用下划线代替空格。
 
-Consider the following program:
+考虑这个例子：
 
 ```cpp
 #include <iostream>
@@ -82,12 +82,10 @@ int main()
 }
 ```
 
-COPY
-
-The preprocessor converts the above into the following:
+预处理器会把上面的代码转换成下面的代码：
 
 ```cpp
-// The contents of iostream are inserted here
+// iostream 的内容会被插入到这里
 
 int main()
 {
@@ -97,39 +95,36 @@ int main()
 }
 ```
 
-COPY
+因此上述程序会打印 `My name is: Alex`。
 
-Which, when run, prints the output `My name is: Alex`.
+<mark class="hltr-red">对象类型的宏过去也被用来作定义常量（一种开销更小的方式）。随着编译器的发展和语言的更新，此类需求在现如今已经没必要了。对象类型的宏应该仅出现在历史遗留代码中才对。</mark> 
 
-Object-like macros were used as a cheaper alternative to constant variables. Those times are long gone as compilers got smarter and the language grew. Object-like macros should only be seen in legacy code anymore.
 
-We recommend avoiding these kinds of macros altogether, as there are better ways to do this kind of thing. We discuss this more in lesson [4.15 -- Symbolic constants: const and constexpr variables](https://www.learncpp.com/cpp-tutorial/const-constexpr-and-symbolic-constants/).
+我们建议彻底放弃使用此类宏定义，因为有更好的方法可以用。我们会在[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数和constexpr变量]]中进行介绍
 
-Object-like macros without substitution text
+## 无替换文本的对象类型宏
 
-_Object-like macros_ can also be defined without substitution text.
+对象类型的宏也可以在没有替换文本的情况下使用：
 
-For example:
+例如：
 
 ```cpp
 #define USE_YEN
 ```
 
-COPY
+这个宏的作用你应该能够猜到：任何遇到该标识符的地方，都会被替换为空白！
 
-Macros of this form work like you might expect: any further occurrence of the identifier is removed and replaced by nothing!
+看上去这个宏好像没什么用，确实，对于文本替换来说它确实没什么用。不过，这种类型的宏本来就不是用来进行替换的，很快你就会看到它的实际用途。
 
-This might seem pretty useless, and it _is useless_ for doing text substitution. However, that’s not what this form of the directive is generally used for. We’ll discuss the uses of this form in just a moment.
+和有替换文本的宏不同，这种类型的宏通常被认为是可以使用的。
 
-Unlike object-like macros with substitution text, macros of this form are generally considered acceptable to use.
+## 条件编译
 
-Conditional compilation
+条件编译预处理器指令使我们可以控制在何种条件下，对应的代码需要编译或者不需要编译。条件编译指令的种类有很多，这里我们只介绍三种最为常用的：`#ifdef`、`#ifndef_`和 `#endif`。
 
-The _conditional compilation_ preprocessor directives allow you to specify under what conditions something will or won’t compile. There are quite a few different conditional compilation directives, but we’ll only cover the three that are used by far the most here: _#ifdef_, _#ifndef_, and _#endif_.
+`#ifdef `指令会让预处理器检查某个标识符是否被`#define`过，如果是的话，`#ifdef`和`#endif`之间的代码将会被编译，否则这些代码会被忽略。
 
-The _#ifdef_ preprocessor directive allows the preprocessor to check whether an identifier has been previously _#define_d. If so, the code between the _#ifdef_ and matching _#endif_ is compiled. If not, the code is ignored.
-
-Consider the following program:
+考虑下面这个例子：
 
 ```cpp
 #include <iostream>
@@ -150,11 +145,10 @@ int main()
 }
 ```
 
-COPY
 
-Because PRINT_JOE has been #defined, the line `std::cout << "Joe\n"` will be compiled. Because PRINT_BOB has not been #defined, the line `std::cout << "Bob\n"`will be ignored.
+因为 `PRINT_JOE` 被 `#defined` 了，因此 `std::cout << "Joe\n"` 会被编译，而因为 `PRINT_BOB` 没有被 `#defined`，所以对应的 `std::cout << "Bob\n"` 会被忽略。
 
-_#ifndef_ is the opposite of _#ifdef_, in that it allows you to check whether an identifier has _NOT_ been _#define_d yet.
+`#ifndef` 是 `#ifdef`的反义词，它控制预处理器检查某个标识符是否**没有**被`#define`。
 
 ```cpp
 #include <iostream>
@@ -169,37 +163,34 @@ int main()
 }
 ```
 
-COPY
+上面的程序会打印 “Bob”，因为`PRINT_BOB`没有被 `#define_`过。
 
-This program prints “Bob”, because PRINT_BOB was never _#define_d.
+除了 `#ifdef PRINT_BOB` 和 `#ifndef PRINT_BOB` 这样的形式以外，你也可能会遇到 `#if defined(PRINT_BOB)` 和 `#if !defined(PRINT_BOB)` 这样的形式。它们的功能是完全一样的，只不过后者看上去和C++的语法风格更加一致。
 
-In place of `#ifdef PRINT_BOB` and `#ifndef PRINT_BOB`, you’ll also see `#if defined(PRINT_BOB)` and `#if !defined(PRINT_BOB)`. These do the same, but use a slightly more C++-style syntax.
 
-#if 0
+## `#if 0`
 
-One more common use of conditional compilation involves using _#if 0_ to exclude a block of code from being compiled (as if it were inside a comment block):
+还有一个常用的条件编译指令是 `#if 0`，它可以将它包裹范围内的代码排除在编译之外（就好像这些代码被注释掉了一样）：
 
-```cpp
+```cpp hl_lines="8 9"
 #include <iostream>
 
 int main()
 {
     std::cout << "Joe\n";
 
-#if 0 // Don't compile anything starting here
+#if 0 // 从此行开始的代码都不编译
     std::cout << "Bob\n";
     std::cout << "Steve\n";
-#endif // until this point
+#endif // 直到这一行为止
 
     return 0;
 }
 ```
 
-COPY
+上面的程序只会打印 “Joe”，因为“Bob” 和 “Steve” 均位于`#if 0`块中，所以预处理器会将其排除在编译范围外。
 
-The above code only prints “Joe”, because “Bob” and “Steve” were inside an _#if 0_ block that the preprocessor will exclude from compilation.
-
-This also provides a convenient way to “comment out” code that contains multi-line comments (which can’t be commented out using another multi-line comment due to multi-line comments being non-nestable):
+这样一来，我们就可以方便的”注释掉“某些包含了多行注释的代码了（因为多行注释不支持嵌套）：
 
 ```cpp
 #include <iostream>
@@ -221,11 +212,10 @@ int main()
 }
 ```
 
-COPY
 
-Object-like macros don’t affect other preprocessor directives
+## 对象类型的宏不会影响其他预处理器指令
 
-Now you might be wondering:
+你也许会对下面这种写法心存顾虑：
 
 ```cpp
 #define PRINT_JOE
@@ -234,27 +224,22 @@ Now you might be wondering:
 // ...
 ```
 
-COPY
+既然我们定义了 `PRINT_JOE` 为空字符串，那么为什么预处理器不会将`#ifdef PRINT_JOE`中的`PRINT_JOE`替换掉呢？
 
-Since we defined _PRINT_JOE_ to be nothing, how come the preprocessor didn’t replace _PRINT_JOE_ in _#ifdef PRINT_JOE_ with nothing?
+宏定义的替换只针对与普通代码。其他预处理器的指令是不会受到影响的，因此`#ifdef PRINT_JOE`中的`PRINT_JOE`是会保留的。
 
-Macros only cause text substitution for normal code. Other preprocessor commands are ignored. Consequently, the _PRINT_JOE_ in _#ifdef PRINT_JOE_ is left alone.
-
-For example:
-
+例如：
 ```cpp
-#define FOO 9 // Here's a macro substitution
+#define FOO 9 // 宏替换为空
 
-#ifdef FOO // This FOO does not get replaced because it’s part of another preprocessor directive
-    std::cout << FOO; // This FOO gets replaced with 9 because it's part of the normal code
+#ifdef FOO // 此处的 FOO 不会被替换因为它属于预处理器指令
+    std::cout << FOO; // 此处的FOO会被替换因为它属于普通代码
 #endif
 ```
 
-COPY
+在实际工作中，预处理器输出的结果中不包含任何预处理器指令——它们都会在编译前被处理掉，比较编译器并不知道要如何处理这些指令。
 
-In actuality, the output of the preprocessor contains no directives at all -- they are all resolved/stripped out before compilation, because the compiler wouldn’t know what to do with them.
-
-The scope of defines
+## 宏定义的作用域
 
 Directives are resolved before compilation, from top to bottom on a file-by-file basis.
 
@@ -321,6 +306,8 @@ COPY
 
 The above program will print:
 
+```
 Not printing!
+```
 
 Even though PRINT was defined in _main.cpp_, that doesn’t have any impact on any of the code in _function.cpp_ (PRINT is only #defined from the point of definition to the end of main.cpp). This will be of consequence when we discuss header guards in a future lesson.

@@ -5,6 +5,22 @@
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     },
     {
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
+    },
+    {
+      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
+      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    },
+    {
+      "basename": "qualifier",
+      "path": "docs/qualifier.md"
+    },
+    {
+      "basename": "preprocessor-directive",
+      "path": "docs/preprocessor-directive.md"
+    },
+    {
       "basename": "object-like-macros",
       "path": "docs/object-like-macros.md"
     },
@@ -27,10 +43,6 @@
     {
       "basename": "translation",
       "path": "docs/translation.md"
-    },
-    {
-      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
-      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     },
     {
       "basename": "scope-resolution-operator",
@@ -157,10 +169,6 @@
       "path": "docs/0-8-A-few-common-C++-problems.md"
     },
     {
-      "basename": "preprocessor-directive",
-      "path": "docs/preprocessor-directive.md"
-    },
-    {
       "basename": "2-1-Introduction-to-functions",
       "path": "docs/2-1-Introduction-to-functions.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "1-10-Introduction-to-expressions",
       "path": "docs/1-10-Introduction-to-expressions.md"
-    },
-    {
-      "basename": "1-7-Keywords-and-naming-identifiers",
-      "path": "docs/1-7-Keywords-and-naming-identifiers.md"
-    },
-    {
-      "basename": "related",
-      "path": "Templates/related.md"
     }
   ],
   "omittedPaths": [],
