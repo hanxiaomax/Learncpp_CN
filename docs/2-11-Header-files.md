@@ -14,6 +14,9 @@ tags:
     - 源文件应该包含其对应的头文件（如果存在的话），可以确保定义和声明不匹配的问题在编译时就能被发现
     - 使用双引号来包含你自己编写的头文件，则该文件必须位于当前目录中。使用尖括号包含编译器、操作系统或第三方提供的安装在系统其他位置的头文件。
     - 在使用标准库头文件的时候，使用没有`.h`版本的头文件。对于用户自己编写的头文件，仍然需要使用`.h`后缀。
+	- 每个头文件都应该有其特定的用途并且尽可能独立。例如，与A相关的声明应该放在 *A.h* 中，与B相关的声明应该放在 *B.h* 中。这样如果以后仅仅需要使用A相关的功能，则无需包含`B.h`，也就不会涉及到任何与B相关的函数声明；
+	- 你编写的任何头文件都应该能够独立编译（它应当`#include`它所需的全部依赖）；
+	- 不要 `#include` .cpp 文件。
 
 ## 头文件及其用途
 
@@ -210,44 +213,44 @@ void something(int) // 错误: 错误的返回类型
 
 ## include 其他目录中的头文件
 
-Another common question involves how to include header files from other directories.
+另外一个常见问题是如何包含其他目录中的头文件。
 
-One (bad) way to do this is to include a relative path to the header file you want to include as part of the #include line. For example:
+一种可行（但不好的）的方法是使用相对路径来指定 `#include` 的内容，例如：
 
 ```cpp
 #include "headers/myHeader.h"
 #include "../moreHeaders/myOtherHeader.h"
 ```
 
-While this will compile (assuming the files exist in those relative directories), the downside of this approach is that it requires you to reflect your directory structure in your code. If you ever update your directory structure, your code won’t work anymore.
+这么做程序是可以编译的（假设对应的头文件确实在这个目录下），但是它的缺点也很明显，你必须在代码中描述实际的目录结构。如果目录结构更新了，那代码也就不能工作了。
 
-A better method is to tell your compiler or IDE that you have a bunch of header files in some other location, so that it will look there when it can’t find them in the current directory. This can generally be done by setting an _include path_ or _search directory_ in your IDE project settings.
+更好的办法是告诉编译器或者 IDE有些头文件存放在其他位置，此时当它们无法在当前目录下被找到时，编译器会到指定的目录中查找。通常可以通过在 IDE 中设置项目的 _include path_ 或 _search directory_ 来实现。
 
 !!! exmaple  "For Visual Studio users"
 
-Right click on your project in the _Solution Explorer_, and choose _Properties_, then the _VC++ Directories_ tab. From here, you will see a line called _Include Directories_. Add the directories you’d like the compiler to search for additional headers there.
+	右键单击项目的 _Solution Explorer_ 然后选择 _Properties_ 然后选择 _VC++ Directories_ 选项卡。在这里你可以看到 _Include Directories_ 将你希望编译器搜索的包含了头文件的目录填写到这里即可。
 
 !!! exmaple "For Code:: Blocks users"
 
-    In Code:: Blocks, go to the _Project_ menu and select _Build Options_, then the _Search directories_ tab. Add the directories you’d like the compiler to search for additional headers there.
+    在 Code:: Blocks 中，选择 _Project_ 菜单并选择 _Build Options_，再选择 _Search directories_ 选项卡，将你希望编译器搜索的包含了头文件的目录填写到这里即可。
 
 !!! exmaple  "For GCC/G++ users"
 
-    Using g++, you can use the -I option to specify an alternate include directory.
+    使用 g++ 是，你可以通过 `-I` 选项来指明头文件搜索路径：
 
     ```cpp
     g++ -o main -I/source/includes main.cpp
     ```
 
-The nice thing about this approach is that if you ever change your directory structure, you only have to change a single compiler or IDE setting instead of every code file.
+这么做的好处是，如果你改变了目录结构，那么只需要在设置里面修改路径即可，而不必对代码中每一处使用该头文件的地方进行修改。
 
 ## 头文件中可以包含其他头文件
 
-头文件需要一来其他头文件中的定义或声明也是很常见的。因此，头文件可以使用`#include`来包含其他头文件。
+头文件需要依赖其他头文件中的定义或声明也是很常见的。因此，头文件可以使用`#include`来包含其他头文件。
 
-When your code file `#includes` the first header file, you’ll also get any other header files that the first header file includes (and any header files those include, and so on). These additional header files are sometimes called transitive includes, as they’re included implicitly rather than explicitly.
+当你的代码 `#includes` 第一个头文件时，你其实也包含了该头文件中包含的其他头文件（以及这所有头文件中包含的头文件，以此类推）。这些额外的头文件有时候称为 transitive includes，因为它们是被隐式包含进来的，我们明没有指明哪些需要被包含。
 
-The content of these transitive includes are available for use in your code file. However, you should not rely on the content of headers that are included transitively. The implementation of header files may change over time, or be different across different systems. If that happens, your code may only compile on certain systems, or may compile now but not in the future. This is easily avoided by explicitly including all of the header files the content of your code file requires.
+这些头文件中的内容在你的代码中是可用的。不过The content of these transitive includes are available for use in your code file. However, you should not rely on the content of headers that are included transitively. The implementation of header files may change over time, or be different across different systems. If that happens, your code may only compile on certain systems, or may compile now but not in the future. This is easily avoided by explicitly including all of the header files the content of your code file requires.
 
 !!! success "最佳实践"
 
@@ -286,11 +289,11 @@ That way, if one of your user-defined headers is missing an #include for a 3rd p
 
 Here are a few more recommendations for creating and using header files.
 
-- Always include header guards (we’ll cover these next lesson).
-- Do not define variables and functions in header files (global constants are an exception -- we’ll cover these later)
-- Give a header file the same name as the source file it’s associated with (e.g. _grades.h_ is paired with _grades.cpp_).
-- Each header file should have a specific job, and be as independent as possible. For example, you might put all your declarations related to functionality A in A.h and all your declarations related to functionality B in B.h. That way if you only care about A later, you can just include A.h and not get any of the stuff related to B.
-- Be mindful of which headers you need to explicitly include for the functionality that you are using in your code files
-- Every header you write should compile on its own (it should `#include` every dependency it needs)
-- Only `#include` what you need (don’t include everything just because you can).
-- 不要 `#include` .cpp files.
+- 始终使用[[2-12-Header-guards|头文件重复包含保护]] ；
+- 不要在头文件中定义变量和函数 (全局常量是个例外——稍后介绍）；
+- 头文件和其对应的源文件应该具有相同的文件名（例如，_grades.h_ 和 _grades.cpp_，注意扩展名是不同的）；
+- 每个头文件都应该有其特定的用途并且尽可能独立。例如，与A相关的声明应该放在 *A.h* 中，与B相关的声明应该放在 *B.h* 中。这样如果以后仅仅需要使用A相关的功能，则无需包含`B.h`，也就不会涉及到任何与B相关的函数声明；
+- 对于哪些函数应该包含哪些头文件要做到心中有数；
+- 你编写的任何头文件都应该能够独立编译（它应当`#include`它所需的全部依赖）；
+- 只 `#include` 必要的头文件（不要把能包含的全部包含进来）；
+- 不要 `#include` .cpp 文件。

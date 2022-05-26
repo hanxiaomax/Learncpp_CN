@@ -5,6 +5,10 @@
       "path": "docs/2-11-Header-files.md"
     },
     {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
@@ -103,10 +107,6 @@
     {
       "basename": "2-13-How-to-design-your-first-programs",
       "path": "docs/2-13-How-to-design-your-first-programs.md"
-    },
-    {
-      "basename": "2-12-Header-guards",
-      "path": "docs/2-12-Header-guards.md"
     },
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
