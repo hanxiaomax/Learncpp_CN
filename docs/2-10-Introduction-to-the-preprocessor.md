@@ -8,11 +8,11 @@ tags:
 - preprocessor
 ---
 
-## Translation and the preprocessor
+## 翻译及预处理器
 
-When you compile your code, you might expect that the compiler compiles the code exactly as you’ve written it. This actually isn’t the case.
+你可能会觉得编译器会原封不动地编译你写的代码。但实际上并不是。
 
-Prior to compilation, the code file goes through a phase known as translation. Many things happen in the translation phase to get your code ready to be compiled (if you’re curious, you can find a list of translation phases [here](https://en.cppreference.com/w/cpp/language/translation_phases)). A code file with translations applied to it is called a translation unit.
+在开始编译前，代码会经过一个叫做翻译的阶段。在这个阶段需要完成很多操作，才能使你的代码具备被编译的条件（如果有兴趣可以在 [这里](https://en.cppreference.com/w/cpp/language/translation_phases)查看有关翻译阶段的详细信息），to compilation, the code file goes through a phase known as translation. Many things happen in the translation phase to get your code ready to be compiled (if you’re curious, you can find a list of translation phases). A code file with translations applied to it is called a translation unit.
 
 The most noteworthy of the translation phases involves the preprocessor. The preprocessor is best thought of as a separate program that manipulates the text in each code file.
 

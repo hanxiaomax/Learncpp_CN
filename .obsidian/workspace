@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+            "file": "docs/2-10-Introduction-to-the-preprocessor.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+                "file": "docs/2-10-Introduction-to-the-preprocessor.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+                "file": "docs/2-10-Introduction-to-the-preprocessor.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,6 +129,7 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/2-10-Introduction-to-the-preprocessor.md",
     "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
     "docs/scope-resolution-operator.md",
     "docs/6-12-Using-declarations-and-using directives.md",
@@ -137,7 +138,6 @@
     "docs/2-13-How-to-design-your-first-programs.md",
     "docs/2-12-Header-guards.md",
     "docs/2-11-Header-files.md",
-    "docs/2-10-Introduction-to-the-preprocessor.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md"
   ]
 }
