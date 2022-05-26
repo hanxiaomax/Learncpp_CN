@@ -12,6 +12,8 @@ tags:
 
     - 头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则，除非是符号常量
     - 源文件应该包含其对应的头文件（如果存在的话），可以确保定义和声明不匹配的问题在编译时就能被发现
+    - 使用双引号来包含你自己编写的头文件，则该文件必须位于当前目录中。使用尖括号包含编译器、操作系统或第三方提供的安装在系统其他位置的头文件。
+    - 在使用标准库头文件的时候，使用没有`.h`版本的头文件。对于用户自己编写的头文件，仍然需要使用`.h`后缀。
 
 ## 头文件及其用途
 
@@ -183,27 +185,28 @@ void something(int) // 错误: 错误的返回类型
 
 你可能会好奇，为什么 `iostream` 使用的是尖括号，而 `add.h`就需要使用双引号。这是因为，同名的文件可能会分布在不同的目录中。区分使用尖括号和双引用，可以告诉编译器到哪里寻找头文件。
 
-When we use angled brackets, we’re telling the preprocessor that this is a header file we didn’t write ourselves. The compiler will search for the header only in the directories specified by the `include directories`. The `include directories` are configured as part of your project/IDE settings/compiler settings, and typically default to the directories containing the header files that come with your compiler and/or OS. The compiler will not search for the header file in your project’s source code directory.
+当使用尖括号的时候，其实是在告诉预处理器对应的头文件并不是我们编写的。编译器只会在 `include directories` 指定的目录中搜索。`include directories`是项目、IDE或编译器配置的一部分，默认的路径是由编译器或操作系统提供的。编译器并不会在你的项目目录中搜索对饮的头文件。
 
-When we use double-quotes, we’re telling the preprocessor that this is a header file that we wrote. The compiler will first search for the header file in the current directory. If it can’t find a matching header there, it will then search the `include directories`.
+当使用双引号的时候，其实是在告诉预处理器头文件是我们自己编写的。编译器首先会搜索当前目录，如果找不到所需的头文件，则会在 `include directories` 中进行查找。
 
 !!! note "法则"
 
-    Use double quotes to include header files that you’ve written or are expected to be found in the current directory. Use angled brackets to include headers that come with your compiler, OS, or third-party libraries you’ve installed elsewhere on your system.
+    使用双引号来包含你自己编写的头文件，则该文件必须位于当前目录中。使用尖括号包含编译器、操作系统或第三方提供的安装在系统其他位置的头文件。
+
 
 ## 为什么 iostream 没有 .h 后缀?
 
-Another commonly asked question is “why doesn’t iostream (or any of the other standard library header files) have a .h extension?”. The answer is that _iostream.h_ is a different header file than _iostream_! To explain requires a short history lesson.
+另外一个常见的问题是：”为什么 *iostream*（或者其他标准库头文件）没有`.h`后缀呢？“。这是因为 _iostream.h_ 和  _iostream_ 是两个不同的头文件。这涉及到一些历史知识。
 
-When C++ was first created, all of the files in the standard runtime library ended in a _.h_ suffix. Life was consistent, and it was good. The original version of _cout_ and _cin_ were declared in _iostream.h_. When the language was standardized by the ANSI committee, they decided to move all of the functionality in the standard library into the _std_namespace to help avoid naming conflicts with user-defined identifiers. However, this presented a problem: if they moved all the functionality into the _std_ namespace, none of the old programs (that included iostream.h) would work anymore!
+在 C++ 刚被创建出来的时候，所有的标准运行时库都是以`.h`结尾的。最初版本的 _cout_ 和 _cin_ 也都被定义在 _iostream.h_ 中。在ANSI委员会对语言进行标准化的时候，它们决定要将标准库中的函数都移到`std`命名空间中以避免其和用户定义的函数产生命名冲突。不过，现实问题是，如果此时将这些函数都移动到`std`命名空间中，那么之前写的代码就都不能工作了！
 
-To work around this issue, a new set of header files was introduced that use the same names but lack the _.h_ extension. These new header files have all their functionality inside the _std_ namespace. This way, older programs that include `#include <iostream.h>` do not need to be rewritten, and newer programs can `#include <iostream>`.
+为了解决这个问题，只能使用一组新的头文件，它们具有相同的名字，但没有`.h`后缀。这些新的头文件中的函数，都在`std`作用域中。这样，使用`#include <iostream.h>`的老代码就不需要进行任何修改了，而新编写的代码则需要使用 `#include <iostream>`。
 
-In addition, many of the libraries inherited from C that are still useful in C++ were given a _c_ prefix (e.g. _stdlib.h_ became _cstdlib_). The functionality from these libraries was also moved into the _std_ namespace to help avoid naming collisions.
+此外，从 C 语言继承过来的标准库则被添加了一个`c`作为前缀(例如 _stdlib.h_ 变成了 _cstdlib_)。这些库中的函数也同样被移动到了`std`标准库中。
 
 !!! success "最佳实践"
 
-    When including a header file from the standard library, use the version without the .h extension if it exists. User-defined headers should still use a .h extension.
+    在使用标准库头文件的时候，使用没有`.h`版本的头文件。对于用户自己编写的头文件，仍然需要使用`.h`后缀。
 
 ## include 其他目录中的头文件
 
@@ -240,9 +243,9 @@ The nice thing about this approach is that if you ever change your directory str
 
 ## 头文件中可以包含其他头文件
 
-It’s common that a header file will need a declaration or definition that lives in a different header file. Because of this, header files will often #include other header files.
+头文件需要一来其他头文件中的定义或声明也是很常见的。因此，头文件可以使用`#include`来包含其他头文件。
 
-When your code file #includes the first header file, you’ll also get any other header files that the first header file includes (and any header files those include, and so on). These additional header files are sometimes called transitive includes, as they’re included implicitly rather than explicitly.
+When your code file `#includes` the first header file, you’ll also get any other header files that the first header file includes (and any header files those include, and so on). These additional header files are sometimes called transitive includes, as they’re included implicitly rather than explicitly.
 
 The content of these transitive includes are available for use in your code file. However, you should not rely on the content of headers that are included transitively. The implementation of header files may change over time, or be different across different systems. If that happens, your code may only compile on certain systems, or may compile now but not in the future. This is easily avoided by explicitly including all of the header files the content of your code file requires.
 
@@ -290,4 +293,4 @@ Here are a few more recommendations for creating and using header files.
 - Be mindful of which headers you need to explicitly include for the functionality that you are using in your code files
 - Every header you write should compile on its own (it should `#include` every dependency it needs)
 - Only `#include` what you need (don’t include everything just because you can).
-- Do not `#include` .cpp files.
+- 不要 `#include` .cpp files.
