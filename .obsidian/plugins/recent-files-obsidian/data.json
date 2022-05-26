@@ -5,6 +5,18 @@
       "path": "docs/2-11-Header-files.md"
     },
     {
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
+    },
+    {
+      "basename": "symbolic-constants",
+      "path": "docs/symbolic-constants.md"
+    },
+    {
+      "basename": "forward-declaration",
+      "path": "docs/forward-declaration.md"
+    },
+    {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
@@ -35,10 +47,6 @@
     {
       "basename": "Untitled",
       "path": "docs/Untitled.md"
-    },
-    {
-      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
-      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
@@ -149,10 +157,6 @@
       "path": "docs/parameters.md"
     },
     {
-      "basename": "forward-declaration",
-      "path": "docs/forward-declaration.md"
-    },
-    {
       "basename": "翻译约定",
       "path": "docs/翻译约定.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "tip",
       "path": "Templates/tip.md"
-    },
-    {
-      "basename": "2-3-Void-functions-non-value returning functions",
-      "path": "docs/2-3-Void-functions-non-value returning functions.md"
     }
   ],
   "omittedPaths": [],

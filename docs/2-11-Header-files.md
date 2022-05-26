@@ -10,20 +10,22 @@ tags:
 
 ??? note "关键点速记"
 
+	- 头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则，除非是符号常量
+
 
 ## 头文件及其用途
 
-As programs grow larger (and make use of more files), it becomes increasingly tedious to have to forward declare every function you want to use that is defined in a different file. Wouldn’t it be nice if you could put all your forward declarations in one place and then import them when you need them?
+随着程序越来越大（以及越来越多的文件被使用），为每个被定义在其他文件中的函数创建[[forward-declaration|前向声明]] 会变得非常麻烦。如果能够将所有的前向声明都放在一个文件里，然后在需要使用的时候将其导入，岂不美哉？
 
-C++ code files (with a .cpp extension) are not the only files commonly seen in C++ programs. The other type of file is called a header file. Header files usually have a .h extension, but you will occasionally see them with a .hpp extension or no extension at all. The primary purpose of a header file is to propagate declarations to code files.
+C++ 代码文件(扩展名为`.cpp`) 并不是C++项目中唯一常见的文件类型。头文件通常以`.h`扩展名结尾，但是有时候你也会看到`.hpp`扩展名的头文件，甚至有些都没有扩展名。 这类头文件的主要作用就是放置代码的声明。
 
 !!! tldr "关键信息"
 
 	Header files allow us to put declarations in one location and then import them wherever we need them. This can save a lot of typing in multi-file programs.
 
-## Using standard library header files
+## 使用标准库的头文件
 
-Consider the following program:
+考虑如下程序：
 
 ```cpp
 #include <iostream>
@@ -35,29 +37,27 @@ int main()
 }
 ```
 
-COPY
+这个程序使用 `std::cout` 将 “Hello, world!” 打印在控制台上。不过，我们的程序并没有定义过 `std::cout`函数呀？编译器如何得知它的定义的呢？
 
-This program prints “Hello, world!” to the console using _std::cout_. However, this program never provided a definition or declaration for _std::cout_, so how does the compiler know what _std::cout_ is?
-
-The answer is that _std::cout_ has been forward declared in the “iostream” header file. When we `#include <iostream>`, we’re requesting that the preprocessor copy all of the content (including forward declarations for std::cout) from the file named “iostream” into the file doing the #include.
+实际上 `std::cout` 的声明被定义在  “iostream” 头文件中，当我们使用 `#include <iostream>` 指令的时候，其实是在告诉预处理器，将该文件的内容（其中就包括`std::cout`的前向声明）全部拷贝到此处。
 
 !!! tldr "关键信息"
 
-	When you #include a file, the content of the included file is inserted at the point of inclusion. This provides a useful way to pull in declarations from another file.
+	当我们 #include 一个文件的时候，该文件的内容会被插入到此处，这样我们就可以非常方便地从其他文件获取前向定义。
 
-Consider what would happen if the _iostream_ header did not exist. Wherever you used _std::cout_, you would have to manually type or copy in all of the declarations related to _std::cout_ into the top of each file that used _std::cout_! This would require a lot of knowledge about how _std::cout_ was implemented, and would be a ton of work. Even worse, if a function prototype changed, we’d have to go manually update all of the forward declarations. It’s much easier to just `#include <iostream>`!
+考虑一下，如果 _iostream_ 头文件不存在会怎样？那么你每次使用 `std::cout` 的时候，都必须手工将所有和 `std::cout` 相关的声明都输入或拷贝到文件的开头部分。这样不仅麻烦，还需要使用者知道 `std::cout` 实现的细节，这将会是非常非常大的工作量。更糟的是，一旦函数原型发生了改变，我们必须手动更新全部的声明。所以，最简单的方法莫过于直接使用 `#include <iostream>`！
 
-When it comes to functions and variables, it’s worth keeping in mind that header files typically only contain function and variable declarations, not function and variable definitions (otherwise a violation of the _one definition rule_ could result). _std::cout_ is forward declared in the iostream header, but defined as part of the C++ standard library, which is automatically linked into your program during the linker phase.
+对于函数和变量来说，需要注意的是，它们的头文件中通常只包含声明，而不包含函数和变量的定义（否则可能会违反 [[one-definition-rule|单一定义规则(one-definition-rule)]]）。`std::cout`被前向定义在 *iostream* 头文件中并作为C++标准库的一部分，而标准库则会在程序编译时被自动链接。
 
 ![](https://www.learncpp.com/images/CppTutorial/Section1/IncludeLibrary.png?ezimgfmt=rs%3Adevice%2Frscb2-1)
 
 !!! success "最佳实践"
 
-	Header files should generally not contain function and variable definitions, so as not to violate the one definition rule. An exception is made for symbolic constants (which we cover in lesson [4.15 -- Symbolic constants: const and constexpr variables](https://www.learncpp.com/cpp-tutorial/const-constexpr-and-symbolic-constants/)).
+	头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则。例外的是 [[symbolic-constants|符号常量]] (在[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数和constexpr变量]]中会进行介绍)。
 
-## Writing your own header files
+## 编写头文件
 
-Now let’s go back to the example we were discussing in a previous lesson. When we left off, we had two files, _add.cpp_ and _main.cpp_, that looked like this:
+现在，回想一下之前课程中使用过的程序。该程序包含两个文件 _add.cpp_ 和 _main.cpp_：
 
 add.cpp:
 
@@ -67,8 +67,6 @@ int add(int x, int y)
     return x + y;
 }
 ```
-
-COPY
 
 main.cpp:
 
@@ -84,16 +82,14 @@ int main()
 }
 ```
 
-COPY
+（如果你想要为这两个文件重新创建一个项目，不要忘记把 _add.cpp_ 文件加到项目中，这样你才能编译它）。
 
-(If you’re recreating this example from scratch, don’t forget to add _add.cpp_ to your project so it gets compiled in).
+在这个例子中，我们使用了前向声明以便让编译器在编译 _main.cpp_ 时能够知晓  _add_ 的定义。正如之前介绍的那样，如果为每一个定义在其他文件中的函数都创建前向声明，将会非常麻烦：
 
-In this example, we used a forward declaration so that the compiler will know what identifier _add_ is when compiling _main.cpp_. As previously mentioned, manually adding forward declarations for every function you want to use that lives in another file can get tedious quickly.
+其实，只需要编写一个头文件就可以一劳永逸解决上述烦恼。编写头文件比你想象的要简单的多，它只包含两部分：
 
-Let’s write a header file to relieve us of this burden. Writing a header file is surprisingly easy, as header files only consist of two parts:
-
-1.  A _header guard_, which we’ll discuss in more detail in the next lesson ([[2-12-Header-guards|2.12 - 头文件重复包含保护]]).
-2.  The actual content of the header file, which should be the forward declarations for all of the identifiers we want other files to be able to see.
+1.   _头文件包含保护_，稍后我们会详细介绍(参考：[[2-12-Header-guards|2.12 - 头文件重复包含保护]])。
+2.  头文件的实际内容，即所有我们希望能够在其他文件中被访问的标识符的前向声明。
 
 Adding a header file to a project works analogously to adding a source file (covered in lesson [[2-8-Programs-with-multiple-code-files|2.8 - 多文件程序]]). If using an IDE, go through the same steps and choose “Header” instead of “Source” when asked. If using the command line, just create a new file in your favorite editor.
 

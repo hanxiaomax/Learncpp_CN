@@ -1,5 +1,5 @@
 ---
-alias: 前向声明(forward declaration)
+alias: 前向声明
 type: glossary
 tags:
 - glossary
