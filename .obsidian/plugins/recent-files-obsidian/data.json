@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
+    },
+    {
+      "basename": "key-takeaway",
+      "path": "Templates/key-takeaway.md"
+    },
+    {
       "basename": "2-10-Introduction-to-the-preprocessor",
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
+    },
+    {
+      "basename": "Untitled",
+      "path": "docs/Untitled.md"
     },
     {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
@@ -67,10 +79,6 @@
     {
       "basename": "2-12-Header-guards",
       "path": "docs/2-12-Header-guards.md"
-    },
-    {
-      "basename": "2-11-Header-files",
-      "path": "docs/2-11-Header-files.md"
     },
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
@@ -191,14 +199,6 @@
     {
       "basename": "1-8-Whitespace-and-basic-formatting",
       "path": "docs/1-8-Whitespace-and-basic-formatting.md"
-    },
-    {
-      "basename": "rule",
-      "path": "Templates/rule.md"
-    },
-    {
-      "basename": "1-10-Introduction-to-expressions",
-      "path": "docs/1-10-Introduction-to-expressions.md"
     }
   ],
   "omittedPaths": [],

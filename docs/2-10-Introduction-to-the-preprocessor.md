@@ -8,6 +8,14 @@ tags:
 - preprocessor
 ---
 
+??? note "关键点速记"
+	- 预处理器可以看做是单独的程序，它使用的预处理指令也不同于C++的语法。
+	- 函数类型的宏不安全且可以被函数替代，因此不要使用
+	- 对象类型的宏，其作为常量定义的功能现在已经不推荐使用了
+	- `#if 0` 可以用来“注释掉”包含多行注释的代码，因为多行注释是不能嵌套的
+	- 预处理器指令之间不会互相影响。因此定义某个标识符为空不会导致后面的预处理器指令被替换为空
+	- 宏定义的作用域只在本文件中，由于预处理器不能理解C++语法，因此宏定义是否在函数内部并无区别
+
 ## 翻译及预处理器
 
 你可能会觉得编译器会原封不动地编译你写的代码。但实际上并不是。
@@ -241,9 +249,9 @@ int main()
 
 ## 宏定义的作用域
 
-Directives are resolved before compilation, from top to bottom on a file-by-file basis.
+预处理器指令的解析会在编译器完成（从上到下逐文件地）。
 
-Consider the following program:
+考虑如下例子：
 
 ```cpp
 #include <iostream>
@@ -261,13 +269,11 @@ int main()
 }
 ```
 
-COPY
+尽管看上去 `#define MY_NAME “Alex”` 像是被定义到了`foo`函数中，但预处理器并不会意识到这一点，因为它不理解”函数“以及其他C++的语法概念。因此，这段代码的效果好我们在函数之前或是之后定义 `#define MY_NAME “Alex”` 是一模一样的。处于可读性的考虑，一般`#define`不会被定义在函数内部。
 
-Even though it looks like _#define MY_NAME “Alex”_ is defined inside function _foo_, the preprocessor won’t notice, as it doesn’t understand C++ concepts like functions. Therefore, this program behaves identically to one where _#define MY_NAME “Alex”_ was defined either before or immediately after function _foo_. For general readability, you’ll generally want to #define identifiers outside of functions.
+当预处理器的工作完成后，所有这些`#define`的标识符就都被丢弃了。因此这些标识符只有在这个文件中是有效的，定义在一个文件中的宏不会影响到其他文件。
 
-Once the preprocessor has finished, all defined identifiers from that file are discarded. This means that directives are only valid from the point of definition to the end of the file in which they are defined. Directives defined in one code file do not have impact on other code files in the same project.
-
-Consider the following example:
+考虑这个例子：
 
 function.cpp:
 
@@ -285,8 +291,6 @@ void doSomething()
 }
 ```
 
-COPY
-
 main.cpp:
 
 ```cpp
@@ -302,12 +306,13 @@ int main()
 }
 ```
 
-COPY
 
-The above program will print:
+上面代码的输出结果如下：
 
 ```
 Not printing!
 ```
 
-Even though PRINT was defined in _main.cpp_, that doesn’t have any impact on any of the code in _function.cpp_ (PRINT is only #defined from the point of definition to the end of main.cpp). This will be of consequence when we discuss header guards in a future lesson.
+尽管 `PRINT` 被定义在了 _main.cpp_ 中，但是它丝毫不会影响  _function.cpp_ （对 `PRINT` 的定义只在 *main.cpp*中有效）。我们会在[[2-12-Header-guards|2.12 - 头文件重复包含保护]]中探讨其影响。
+
+
