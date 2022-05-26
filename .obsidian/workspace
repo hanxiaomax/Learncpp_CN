@@ -130,14 +130,14 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/2-10-Introduction-to-the-preprocessor.md",
+    "docs/object-like-macros.md",
+    "Templates/add-glossary.md",
+    "docs/function-like macros.md",
+    "docs/macro.md",
+    "docs/preprocessor.md",
+    "docs/translation.md",
     "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
     "docs/scope-resolution-operator.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/scope.md",
-    "docs/identifier.md",
-    "docs/2-13-How-to-design-your-first-programs.md",
-    "docs/2-12-Header-guards.md",
-    "docs/2-11-Header-files.md",
-    "docs/2-x-Chapter-2-summary-and-quiz.md"
+    "docs/6-12-Using-declarations-and-using directives.md"
   ]
 }

@@ -5,6 +5,30 @@
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     },
     {
+      "basename": "object-like-macros",
+      "path": "docs/object-like-macros.md"
+    },
+    {
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
+    },
+    {
+      "basename": "function-like macros",
+      "path": "docs/function-like macros.md"
+    },
+    {
+      "basename": "macro",
+      "path": "docs/macro.md"
+    },
+    {
+      "basename": "preprocessor",
+      "path": "docs/preprocessor.md"
+    },
+    {
+      "basename": "translation",
+      "path": "docs/translation.md"
+    },
+    {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
       "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     },
@@ -137,10 +161,6 @@
       "path": "docs/preprocessor-directive.md"
     },
     {
-      "basename": "add-glossary",
-      "path": "Templates/add-glossary.md"
-    },
-    {
       "basename": "2-1-Introduction-to-functions",
       "path": "docs/2-1-Introduction-to-functions.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "related",
       "path": "Templates/related.md"
-    },
-    {
-      "basename": "key-insight",
-      "path": "Templates/key-insight.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
-    },
-    {
-      "basename": "1-11-Developing-your-first-program",
-      "path": "docs/1-11-Developing-your-first-program.md"
-    },
-    {
-      "basename": "best-practices",
-      "path": "Templates/best-practices.md"
-    },
-    {
-      "basename": "author-notes",
-      "path": "Templates/author-notes.md"
     }
   ],
   "omittedPaths": [],

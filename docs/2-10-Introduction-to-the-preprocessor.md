@@ -12,25 +12,25 @@ tags:
 
 你可能会觉得编译器会原封不动地编译你写的代码。但实际上并不是。
 
-在开始编译前，代码会经过一个叫做翻译的阶段。在这个阶段需要完成很多操作，才能使你的代码具备被编译的条件（如果有兴趣可以在 [这里](https://en.cppreference.com/w/cpp/language/translation_phases)查看有关翻译阶段的详细信息），to compilation, the code file goes through a phase known as translation. Many things happen in the translation phase to get your code ready to be compiled (if you’re curious, you can find a list of translation phases). A code file with translations applied to it is called a translation unit.
+在开始编译前，代码会经过一个叫做[[translation|翻译(translation)]]的阶段。在这个阶段需要完成很多操作，才能使你的代码具备被编译的条件（如果有兴趣可以在 [这里](https://en.cppreference.com/w/cpp/language/translation_phases)查看有关翻译阶段的详细信息）。进行过翻译的代码文件叫做一个翻译单元。
 
-The most noteworthy of the translation phases involves the preprocessor. The preprocessor is best thought of as a separate program that manipulates the text in each code file.
+在翻译阶段中最值得我们关注的是[[preprocessor|预处理器]]，它可以被看做是一个对每个代码文件进行文本处理的单独的工具。
 
-When the preprocessor runs, it scans through the code file (from top to bottom), looking for preprocessor directives. Preprocessor directives (often just called _directives_) are instructions that start with a _#_ symbol and end with a newline (NOT a semicolon). These directives tell the preprocessor to perform specific particular text manipulation tasks. Note that the preprocessor does not understand C++ syntax -- instead, the directives have their own syntax (which in some cases resembles C++ syntax, and in other cases, not so much).
+在预处理器工作的时候，它会从头到尾扫描代码文件，查找[[preprocessor-directive|预处理器指令 (preprocessor directive)]]。预处理器指令（经常简称为指令）是一些以`#`开头，以换行（而非分号）结尾的符号。这些指令会告诉预处理器应该对文本执行哪些特定的操作。<mark class="hltr-red">需要注意的是，预处理器并不理解C++的语法——相反，预处理器指令有其自己的语法（有些和C++语法类似，有些则不然）。</mark> 
 
-The output of the preprocessor goes through several more translation phases, and then is compiled. Note that the preprocessor does not modify the original code files in any way -- rather, all text changes made by the preprocessor happen temporarily in-memory each time the code file is compiled.
+预处理器的输出会经历一些列翻译阶段，然后才会被编译。需要注意的是，预处理器并不会修改原文件——所有经预处理器修改产生的变化都是临时的（用于一次编译）
 
-In this lesson, we’ll discuss what some of the most common preprocessor directives do.
+本节课将介绍一些最为常见的预处理器指令。
 
-As an aside…
+!!! cite "题外话"
 
-`Using directives` (introduced in lesson [2.9 -- Naming collisions and an introduction to namespaces](https://www.learncpp.com/cpp-tutorial/naming-collisions-and-an-introduction-to-namespaces/)) are not preprocessor directives (and thus are not processed by the preprocessor). So while the term `directive` _usually_ means a `preprocessor directive`, this is not always the case.
+    `Using`指令 ([[2-9-Naming-collisions-and-an-introduction-to-namespaces|2.9 - 命名冲突和命名空间]]中介绍)并不属于预处理器指令（因此不会被预处理器处理）。因此，尽管指令(directive)一词多指预处理器指令，但也不是总是这样。
 
-Includes
+## Includes
 
-You’ve already seen the _#include_ directive in action (generally to #include <iostream>). When you _#include_ a file, the preprocessor replaces the #include directive with the contents of the included file. The included contents are then preprocessed (along with the rest of the file), and then compiled.
+我们已经在实际案例中接触过 `#include` 指令了（`#include <iostream>`）。在 `#include`某个文件的时候，预处理器会把 `#include`替换为该文件的实际内容，然后预处理器才会对替换后的文件内容进行预处理和编译。
 
-Consider the following program:
+考虑下面的例子：
 
 ```cpp
 #include <iostream>
@@ -42,26 +42,26 @@ int main()
 }
 ```
 
-COPY
+当预处理器处理该程序时，它会把`#include <iostream>` 替换为经过预处理的名为“iostream”的文件的内容。
 
-When the preprocessor runs on this program, the preprocessor will replace `#include <iostream>` with the preprocessed contents of the file named “iostream”.
+因为 `#include` 几乎只用来包含头文件，我们会在后续讨论头文件时再对其进行详细的介绍。（参见：[[2-11-Header-files|2.11 - 头文件]]）
 
-Since _#include_ is almost exclusively used to include header files, we’ll discuss _#include_ in more detail in the next lesson (when we discuss header files in more detail).
+## 宏定义
 
-Macro defines
+`#define` 指令可以被用来定义[[macro|宏(macro) ]]。在C++中，宏指的是一种规则，这种规则规定了一个输入文本应该如何被替换成输出文本。
 
-The _#define_ directive can be used to create a macro. In C++, a macro is a rule that defines how input text is converted into replacement output text.
+宏有两种基本类型：[[object-like-macros|对象类型的宏(object-like macros)]]和[[function-like macros|函数类型的宏 (function-like macros)]]。
 
-There are two basic types of macros: _object-like macros_, and _function-like macros_.
+**函数类型的宏**和函数很像，其功能也类似。我们并不会在这里详细讨论它，因为它常常被认为是不安全的，况且它能做的普通函数也能做，
 
-_Function-like macros_ act like functions, and serve a similar purpose. We will not discuss them here, because their use is generally considered dangerous, and almost anything they can do can be done by a normal function.
+**对象类型的宏** 有两种声明方式
 
-_Object-like macros_ can be defined in one of two ways:
-
+```cpp
 #define identifier
 #define identifier substitution_text
+```
 
-The top definition has no substitution text, whereas the bottom one does. Because these are preprocessor directives (not statements), note that neither form ends with a semicolon.
+上面一种方式不会对文本进行替换，而下面一种会。因为这些The top definition has no substitution text, whereas the bottom one does. Because these are preprocessor directives (not statements), note that neither form ends with a semicolon.
 
 Object-like macros with substitution text
 

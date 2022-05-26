@@ -1,8 +1,7 @@
 ---
-alias: 
-english:{{title}}
+alias: 宏
 type: glossary
 tags:
 - glossary
-- {{title}}
+- macro
 ---
