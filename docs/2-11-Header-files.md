@@ -173,15 +173,15 @@ void something(int) // 错误: 错误的返回类型
 
     源文件需要包含其对应的头文件（如果有的话）。
 
-## Troubleshooting
+## 错误排查
 
-If you get a compiler error indicating that _add.h_ isn’t found, make sure the file is really named _add.h_. Depending on how you created and named it, it’s possible the file could have been named something like _add_ (no extension) or _add.h.txt_ or _add.hpp_. Also make sure it’s sitting in the same directory as the rest of your code files.
+如果编译器报告了 _add.h_ 无法被找的错误，请首先确认文件名是否为 _add.h_。文件名可能会被错误地设置为 _add_ (无后缀) 或 _add.h.txt_ 或 _add.hpp_，这可能取决于你是如何创建它们的。另外，也要确保该头文件和其他文件位于相同的目录。
 
-If you get a linker error about function _add_ not being defined, make sure you’ve added _add.cpp_ in your project so the definition for function _add_ can be linked into the program.
+如果链接器报告了 `add`函数未定义的错误，请确保  _add.cpp_ 被添加到了项目中，这样`add`函数才能够被正确链接。
 
 ## 尖括号 vs 双引号
 
-You’re probably curious why we use angled brackets for `iostream`, and double quotes for `add.h`. It’s possible that a header file with the same filename might exist in multiple directories. Our use of angled brackets vs double quotes helps give the compiler a clue as to where it should look for header files.
+你可能会好奇，为什么 `iostream` 使用的是尖括号，而 `add.h`就需要使用双引号。这是因为，同名的文件可能会分布在不同的目录中。区分使用尖括号和双引用，可以告诉编译器到哪里寻找头文件。
 
 When we use angled brackets, we’re telling the preprocessor that this is a header file we didn’t write ourselves. The compiler will search for the header only in the directories specified by the `include directories`. The `include directories` are configured as part of your project/IDE settings/compiler settings, and typically default to the directories containing the header files that come with your compiler and/or OS. The compiler will not search for the header file in your project’s source code directory.
 
