@@ -31,7 +31,6 @@ plugins:
   - tags
   - search
   - roamlinks 
-  - tooltipster-links
 extra:
   search:
       language: 'zh'
