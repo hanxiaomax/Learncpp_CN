@@ -1,4 +1,5 @@
 ---
+title: 3.2 - 代码调试步骤
 alias: 3.2 - 代码调试步骤
 origin: /the-debugging-process/
 origin_title: "3.2 — The debugging process"

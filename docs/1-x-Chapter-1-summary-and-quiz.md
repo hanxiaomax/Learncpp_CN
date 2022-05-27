@@ -1,5 +1,6 @@
 ---
 title: 1.x 小结与测试
+title: 1.x 小结与测试
 alias: 1.x 小结与测试
 tag:
 

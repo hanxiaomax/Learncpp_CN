@@ -1,4 +1,5 @@
 ---
+title: 2.7 - 前向声明和定义
 alias: 2.7 - 前向声明和定义
 origin: /forward-declarations/
 origin_title: "2.7 — Forward declarations and definitions"

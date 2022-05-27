@@ -1,4 +1,5 @@
 ---
+title: 1.3 - 对象和变量
 alias: 1.3 - 对象和变量
 origin: /introduction-to-objects-and-variables/
 origin_title: 1.3 — Introduction to objects and variables

@@ -1,4 +1,5 @@
 ---
+title: 1.4 - 变量赋值和初始化
 alias: 1.4 - 变量赋值和初始化
 origin: /variable-assignment-and-initialization/
 origin_title: 1.4 — Variable assignment and initialization

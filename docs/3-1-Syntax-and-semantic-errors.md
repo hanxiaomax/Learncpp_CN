@@ -1,4 +1,5 @@
 ---
+title: 3.1 - 语法和语义错误
 alias: 3.1 - 语法和语义错误
 origin: /syntax-and-semantic-errors/
 origin_title: "3.1 — Syntax and semantic errors"

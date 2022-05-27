@@ -1,4 +1,5 @@
 ---
+title: 翻译(translation)
 alias: 翻译(translation)
 type: glossary
 tags:

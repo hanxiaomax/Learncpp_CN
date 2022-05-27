@@ -1,4 +1,5 @@
 ---
+title: 2.12 - 头文件防卫式声明
 alias: 2.12 - 头文件防卫式声明
 origin: /header-guards/
 origin_title: "2.12 — Header guards"

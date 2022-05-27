@@ -1,4 +1,5 @@
 ---
+title: 2.9 - 命名冲突和命名空间
 alias: 2.9 - 命名冲突和命名空间
 origin: /naming-collisions-and-an-introduction-to-namespaces/
 origin_title: "2.9 — Naming collisions and an introduction to namespaces"

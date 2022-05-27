@@ -1,4 +1,5 @@
 ---
+title: 单一定义规则(one-definition-rule)
 alias: 单一定义规则(one-definition-rule)
 type: glossary
 tags:

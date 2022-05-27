@@ -1,4 +1,5 @@
 ---
+title: 2.x - 小结与测试
 alias: 2.x - 小结与测试
 origin: /chapter-2-summary-and-quiz/
 origin_title: "2.x — Chapter 2 summary and quiz"

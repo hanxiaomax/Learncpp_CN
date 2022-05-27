@@ -1,4 +1,5 @@
 ---
+title: 纯声明(pure-declaration)
 alias: 纯声明(pure-declaration)
 type: glossary
 tags:

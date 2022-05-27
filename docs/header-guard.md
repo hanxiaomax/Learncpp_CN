@@ -1,4 +1,5 @@
 ---
+title: 头文件防范
 alias: 头文件防范
 english:header-guard
 type: glossary

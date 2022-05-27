@@ -1,4 +1,5 @@
 ---
+title: 3.3 - 代码调试策略
 alias: 3.3 - 代码调试策略
 origin: /a-strategy-for-debugging/
 origin_title: "3.3 — A strategy for debugging"

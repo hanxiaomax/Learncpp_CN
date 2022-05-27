@@ -1,5 +1,6 @@
 ---
 title: 2.3 Void 函数 (无返回值的函数)
+title: 2.3 Void 函数 (无返回值的函数)
 alias: 2.3 Void 函数 (无返回值的函数)
 tag:
 

@@ -1,4 +1,5 @@
 ---
+title: 关于
 alias: 关于
 origin: none
 origin_title: none

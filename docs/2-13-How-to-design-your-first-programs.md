@@ -1,4 +1,5 @@
 ---
+title: 2.13 - 如何设计第一个程序
 alias: 2.13 - 如何设计第一个程序
 origin: /how-to-design-your-first-programs/
 origin_title: "2.13 — How to design your first programs"

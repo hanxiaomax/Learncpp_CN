@@ -1,4 +1,5 @@
 ---
+title: 2.8 - 多文件程序
 alias: 2.8 - 多文件程序
 origin: /programs-with-multiple-code-files/
 origin_title: "2.8 — Programs with multiple code files"

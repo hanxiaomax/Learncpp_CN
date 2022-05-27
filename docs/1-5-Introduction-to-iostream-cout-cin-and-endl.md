@@ -1,4 +1,5 @@
 ---
+title: 1.5 - iostream 简介： cout，cin 和 endl
 alias: 1.5 - iostream 简介： cout，cin 和 endl
 origin: /introduction-to-iostream-cout-cin-and-endl/
 origin_title: "1.5 — Introduction to iostream: cout, cin, and endl"

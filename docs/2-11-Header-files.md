@@ -1,4 +1,5 @@
 ---
+title: 2.11 - 头文件
 alias: 2.11 - 头文件
 origin: /header-files/
 origin_title: "2.11 — Header files"

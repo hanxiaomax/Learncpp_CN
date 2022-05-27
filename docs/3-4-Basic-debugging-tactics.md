@@ -1,4 +1,5 @@
 ---
+title: 3.4 — 基本代码调试技术
 alias: 3.4 — 基本代码调试技术
 origin: /basic-debugging-tactics/
 origin_title: "3.4 — Basic debugging tactics"
