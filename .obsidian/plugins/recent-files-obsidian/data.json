@@ -1,54 +1,6 @@
 {
   "recentFiles": [
     {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "0-8-A-few-common-C++-problems",
-      "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "tags",
-      "path": "docs/tags.md"
-    },
-    {
-      "basename": "3-4-Basic-debugging-tactics",
-      "path": "docs/3-4-Basic-debugging-tactics.md"
-    },
-    {
-      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
-      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
-    },
-    {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
-      "basename": "2-13-How-to-design-your-first-programs",
-      "path": "docs/2-13-How-to-design-your-first-programs.md"
-    },
-    {
-      "basename": "2-12-Header-guards",
-      "path": "docs/2-12-Header-guards.md"
-    },
-    {
-      "basename": "2-10-Introduction-to-the-preprocessor",
-      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
-    },
-    {
-      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
-      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
-    },
-    {
-      "basename": "2-8-Programs-with-multiple-code-files",
-      "path": "docs/2-8-Programs-with-multiple-code-files.md"
-    },
-    {
-      "basename": "2-7-Forward-declarations-and-definitions",
-      "path": "docs/2-7-Forward-declarations-and-definitions.md"
-    },
-    {
       "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
       "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
     },
@@ -61,144 +13,20 @@
       "path": "docs/1-3-Introduction-to-objects-and-variables.md"
     },
     {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "3-1-Syntax-and-semantic-errors",
-      "path": "docs/3-1-Syntax-and-semantic-errors.md"
-    },
-    {
-      "basename": "3-3-A-strategy-for-debugging",
-      "path": "docs/3-3-A-strategy-for-debugging.md"
-    },
-    {
-      "basename": "3-2-The-debugging-process",
-      "path": "docs/3-2-The-debugging-process.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "2-11-Header-files",
-      "path": "docs/2-11-Header-files.md"
-    },
-    {
-      "basename": "header-guard",
-      "path": "docs/header-guard.md"
-    },
-    {
-      "basename": "transitive includes",
-      "path": "docs/transitive includes.md"
-    },
-    {
-      "basename": "index",
-      "path": "docs/index.md"
-    },
-    {
-      "basename": "symbolic-constants",
-      "path": "docs/symbolic-constants.md"
-    },
-    {
-      "basename": "forward-declaration",
-      "path": "docs/forward-declaration.md"
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "docs/0-8-A-few-common-C++-problems.md"
     },
     {
       "basename": "qa",
       "path": "Templates/qa.md"
     },
     {
-      "basename": "1-8-Whitespace-and-basic-formatting",
-      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
-    },
-    {
       "basename": "key-takeaway",
       "path": "Templates/key-takeaway.md"
     },
     {
-      "basename": "Untitled",
-      "path": "docs/Untitled.md"
-    },
-    {
-      "basename": "qualifier",
-      "path": "docs/qualifier.md"
-    },
-    {
-      "basename": "preprocessor-directive",
-      "path": "docs/preprocessor-directive.md"
-    },
-    {
-      "basename": "object-like-macros",
-      "path": "docs/object-like-macros.md"
-    },
-    {
       "basename": "add-glossary",
       "path": "Templates/add-glossary.md"
-    },
-    {
-      "basename": "function-like macros",
-      "path": "docs/function-like macros.md"
-    },
-    {
-      "basename": "macro",
-      "path": "docs/macro.md"
-    },
-    {
-      "basename": "preprocessor",
-      "path": "docs/preprocessor.md"
-    },
-    {
-      "basename": "translation",
-      "path": "docs/translation.md"
-    },
-    {
-      "basename": "scope-resolution-operator",
-      "path": "docs/scope-resolution-operator.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "scope",
-      "path": "docs/scope.md"
-    },
-    {
-      "basename": "identifier",
-      "path": "docs/identifier.md"
-    },
-    {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
-    },
-    {
-      "basename": "pure-declaration",
-      "path": "docs/pure-declaration.md"
-    },
-    {
-      "basename": "8-9-Introduction-to-function-overloading",
-      "path": "docs/8-9-Introduction-to-function-overloading.md"
-    },
-    {
-      "basename": "one-definition-rule",
-      "path": "docs/one-definition-rule.md"
-    },
-    {
-      "basename": "linker",
-      "path": "docs/linker.md"
-    },
-    {
-      "basename": "definition",
-      "path": "docs/definition.md"
-    },
-    {
-      "basename": "declaration",
-      "path": "docs/declaration.md"
-    },
-    {
-      "basename": "parameters",
-      "path": "docs/parameters.md"
     }
   ],
   "omittedPaths": [],
