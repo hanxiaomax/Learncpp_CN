@@ -153,7 +153,7 @@ int getSquareSides()
 
 ## 使用头文件防范更新之前的例子
 
-Let’s return to the _square.h_ example, using the _square.h_ with header guards. For good form, we’ll also add header guards to _geometry.h_.
+再回到 _square.h_ 的例子，使用头文件防护来处理 _square.h_ 。为了保持一致，我们在 _geometry.h_ 中也添加了头文件夹防护。
 
 square.h
 
@@ -193,7 +193,7 @@ int main()
 ```
 
 
-After the preprocessor resolves all of the includes, this program looks like this:
+在预处理器解析全部头文件后，程序内容变成了下面这样：
 
 main.cpp:
 
@@ -230,11 +230,13 @@ int main()
 ```
 
 
-As you can see from the example, the second inclusion of the contents of _square.h_ (from _geometry.h_) gets ignored because _SQUARE_H_ was already defined from the first inclusion. Therefore, function _getSquareSides_ only gets included once.
+从上面的例子可以看出，当第二次包含 _square.h_ 的时候，由于 _SQUARE_H_ 已经被定义过了。因此 `getSquareSides` 函数只会被包含一次。
 
-## 头文件防范不能避免头文件被多次包含到不同的文件
+## 头文件防范不能防止头文件被包含到不同的文件
 
-Note that the goal of header guards is to prevent a code file from receiving more than one copy of a guarded header. By design, header guards do _not_ prevent a given header file from being included (once) into separate code files. This can also cause unexpected problems. Consider:
+头文件防范的目标是防止头文件被多次包含。从设计上来讲，它并不能保护头文件被包含到多个代码文件中（每个文件只能包含一次）。这可能导致难以预料的问题。
+
+考虑如下情况： 
 
 square.h:
 
@@ -247,7 +249,7 @@ int getSquareSides()
     return 4;
 }
 
-int getSquarePerimeter(int sideLength); // forward declaration for getSquarePerimeter
+int getSquarePerimeter(int sideLength); // getSquarePerimeter 的前向声明
 
 #endif
 ```
@@ -255,7 +257,7 @@ int getSquarePerimeter(int sideLength); // forward declaration for getSquarePeri
 square.cpp:
 
 ```cpp
-#include "square.h"  // square.h is included once here
+#include "square.h"  // square.h 在此处被包含一次
 
 int getSquarePerimeter(int sideLength)
 {
@@ -266,7 +268,7 @@ int getSquarePerimeter(int sideLength)
 main.cpp:
 
 ```cpp
-#include "square.h" // square.h is also included once here
+#include "square.h" // square.h 在此处被包含一次
 #include <iostream>
 
 int main()
@@ -278,13 +280,13 @@ int main()
 }
 ```
 
-Note that _square.h_ is included from both _main.cpp_ and _square.cpp_. This means the contents of _square.h_ will be included once into _square.cpp_ and once into _main.cpp_.
+注意 _square.h_ 被包含到了 _main.cpp_ 和 _square.cpp_ 中。这意味着  _square.h_ 的内容被 _square.cpp_ 和  _main.cpp_ 各包含了一次。
 
-Let’s examine why this happens in more detail. When _square.h_ is included from _square.cpp_, _SQUARE_H_ is defined until the end of _square.cpp_. This define prevents _square.h_from being included into _square.cpp_ a second time (which is the point of header guards). However, once _square.cpp_ is finished, _SQUARE_H_ is no longer considered defined. This means that when the preprocessor runs on _main.cpp_, _SQUARE_H_ is not initially defined in _main.cpp_.
+让我们仔细讲解一下为什么会这样。当 _square.h_ 被包含到 _square.cpp_ 时 `_SQUARE_H_` 被定义了，它的定义到 _square.cpp_ 文件的末尾为止。该定义可以避免  _square.h_ 的内容多次被包含到  _square.cpp_ 中 。但是，_square.cpp_ 处理完成后，_SQUARE_H_ 就没有定义了。这意味当预处理器处理 _main.cpp_ 时， _SQUARE_H_ 尚未在 _main.cpp_ 中定义。
 
-The end result is that both _square.cpp_ and _main.cpp_ get a copy of the definition of _getSquareSides_. This program will compile, but the linker will complain about your program having multiple definitions for identifier _getSquareSides_!
+由于 _square.cpp_ 和 _main.cpp_ 中都包含了`getSquareSides` 函数的定义。此时，文件是可以编译的，但是在链接时链接器会报告程序存在 `getSquareSides` 函数的重复定义。
 
-The best way to work around this issue is simply to put the function definition in one of the .cpp files so that the header just contains a forward declaration:
+解决这个问题最后的方法是把函数定义放在一个`.cpp`文件中，这样头文件中就只包含函数的声明：
 
 square.h:
 
