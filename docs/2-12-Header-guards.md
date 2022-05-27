@@ -8,9 +8,9 @@ tags:
 - 
 ---
 
-## The duplicate definition problem
+## 重复定义问题
 
-In lesson [2.7 -- Forward declarations and definitions](https://www.learncpp.com/cpp-tutorial/forward-declarations/), we noted that a variable or function identifier can only have one definition (the one definition rule). Thus, a program that defines a variable identifier more than once will cause a compile error:
+在[[2-7-Forward-declarations-and-definitions|2.7 - 前向声明和定义]]中我们介绍了变量和函数的标识符只能被定义一次，即[[one-definition-rule|单一定义规则]]。因此，如果一个程序包含了对某个标识符的多次定义，将会引起编译错误：
 
 ```cpp
 int main()
@@ -22,9 +22,7 @@ int main()
 }
 ```
 
-COPY
-
-Similarly, programs that define a function more than once will also cause a compile error:
+类似地，如果一个函数在程序中被定义了多次，也会导致编译器报错：
 
 ```cpp
 #include <iostream>
@@ -46,11 +44,9 @@ int main()
 }
 ```
 
-COPY
+While these programs are easy to fix (remove the duplicate definition), with header files, it’s quite easy to end up in a situation where a definition in a header file gets included more than once. This can happen when a header file `#includes` another header file (which is common).
 
-While these programs are easy to fix (remove the duplicate definition), with header files, it’s quite easy to end up in a situation where a definition in a header file gets included more than once. This can happen when a header file #includes another header file (which is common).
-
-Consider the following academic example:
+请考虑下面这个例子：
 
 square.h:
 
@@ -63,15 +59,12 @@ int getSquareSides()
 }
 ```
 
-COPY
 
 geometry.h:
 
 ```cpp
 #include "square.h"
 ```
-
-COPY
 
 main.cpp:
 
@@ -85,7 +78,6 @@ int main()
 }
 ```
 
-COPY
 
 This seemingly innocent looking program won’t compile! Here’s what’s happening. First, _main.cpp_ #includes _square.h_, which copies the definition for function _getSquareSides_into _main.cpp_. Then _main.cpp_ #includes _geometry.h_, which #includes _square.h_ itself. This copies contents of _square.h_ (including the definition for function _getSquareSides_) into _geometry.h_, which then gets copied into _main.cpp_.
 
@@ -108,11 +100,10 @@ int main()
 }
 ```
 
-COPY
 
 Duplicate definitions and a compile error. Each file, individually, is fine. However, because _main.cpp_ ends up #including the content of _square.h_ twice, we’ve run into problems. If _geometry.h_ needs _getSquareSides()_, and _main.cpp_ needs both _geometry.h_ and _square.h_, how would you resolve this issue?
 
-Header guards
+## Header guards
 
 The good news is that we can avoid the above problem via a mechanism called a **header guard** (also called an **include guard**). Header guards are conditional compilation directives that take the following form:
 
@@ -160,13 +151,13 @@ Even the standard library headers use header guards. If you were to take a look 
 
 COPY
 
-For advanced readers
+!!! info "扩展阅读"
 
-In large programs, it’s possible to have two separate header files (included from different directories) that end up having the same filename (e.g. directoryA\config.h and directoryB\config.h). If only the filename is used for the include guard (e.g. CONFIG_H), these two files may end up using the same guard name. If that happens, any file that includes (directly or indirectly) both config.h files will not receive the contents of the include file to be included second. This will probably cause a compilation error.
+    In large programs, it’s possible to have two separate header files (included from different directories) that end up having the same filename (e.g. directoryA\config.h and directoryB\config.h). If only the filename is used for the include guard (e.g. CONFIG_H), these two files may end up using the same guard name. If that happens, any file that includes (directly or indirectly) both config.h files will not receive the contents of the include file to be included second. This will probably cause a compilation error.
 
-Because of this possibility for guard name conflicts, many developers recommend using a more complex/unique name in your header guards. Some good suggestions are a naming convention of <PROJECT>_<PATH>_<FILE>_H , <FILE>_<LARGE RANDOM NUMBER>_H, or <FILE>_<CREATION DATE>_H
+	Because of this possibility for guard name conflicts, many developers recommend using a more complex/unique name in your header guards. Some good suggestions are a naming convention of <PROJECT>_<PATH>_<FILE>_H , <FILE>_<LARGE RANDOM NUMBER>_H, or <FILE>_<CREATION DATE>_H
 
-Updating our previous example with header guards
+## Updating our previous example with header guards
 
 Let’s return to the _square.h_ example, using the _square.h_ with header guards. For good form, we’ll also add header guards to _geometry.h_.
 
@@ -253,7 +244,7 @@ COPY
 
 As you can see from the example, the second inclusion of the contents of _square.h_ (from _geometry.h_) gets ignored because _SQUARE_H_ was already defined from the first inclusion. Therefore, function _getSquareSides_ only gets included once.
 
-Header guards do not prevent a header from being included once into different code files
+## Header guards do not prevent a header from being included once into different code files
 
 Note that the goal of header guards is to prevent a code file from receiving more than one copy of a guarded header. By design, header guards do _not_ prevent a given header file from being included (once) into separate code files. This can also cause unexpected problems. Consider:
 
@@ -273,8 +264,6 @@ int getSquarePerimeter(int sideLength); // forward declaration for getSquarePeri
 #endif
 ```
 
-COPY
-
 square.cpp:
 
 ```cpp
@@ -285,8 +274,6 @@ int getSquarePerimeter(int sideLength)
     return sideLength * getSquareSides();
 }
 ```
-
-COPY
 
 main.cpp:
 
@@ -303,7 +290,6 @@ int main()
 }
 ```
 
-COPY
 
 Note that _square.h_ is included from both _main.cpp_ and _square.cpp_. This means the contents of _square.h_ will be included once into _square.cpp_ and once into _main.cpp_.
 
@@ -325,7 +311,6 @@ int getSquarePerimeter(int sideLength); // forward declaration for getSquarePeri
 #endif
 ```
 
-COPY
 
 square.cpp:
 
@@ -343,7 +328,6 @@ int getSquarePerimeter(int sideLength)
 }
 ```
 
-COPY
 
 main.cpp:
 
@@ -360,11 +344,10 @@ int main()
 }
 ```
 
-COPY
 
 Now when the program is compiled, function _getSquareSides_ will have just one definition (via _square.cpp_), so the linker is happy. File _main.cpp_ is able to call this function (even though it lives in _square.cpp_) because it includes _square.h_, which has a forward declaration for the function (the linker will connect the call to _getSquareSides_ from _main.cpp_ to the definition of _getSquareSides_ in _square.cpp_).
 
-Can’t we just avoid definitions in header files?
+## Can’t we just avoid definitions in header files?
 
 We’ve generally told you not to include function definitions in your headers. So you may be wondering why you should include header guards if they protect you from something you shouldn’t do.
 
@@ -372,7 +355,7 @@ There are quite a few cases we’ll show you in the future where it’s necessar
 
 So even though it’s not strictly necessary to have header guards at this point in the tutorial series, we’re establishing good habits now, so you don’t have to unlearn bad habits later.
 
-#pragma once
+## `#pragma` once
 
 Modern compilers support a simpler, alternate form of header guards using the _#pragma_ directive:
 
@@ -388,11 +371,11 @@ COPY
 
 For maximum compatibility, we recommend sticking to traditional header guards. They aren’t much more work and they’re guaranteed to be supported on all compilers.
 
-Best practice
+!!! success "最佳实践"
 
-Favor header guards over `#pragma once` for maximum portability.
+	Favor header guards over `#pragma once` for maximum portability.
 
-Summary
+## Summary
 
 Header guards are designed to ensure that the contents of a given header file are not copied more than once into any single file, in order to prevent duplicate definitions.
 

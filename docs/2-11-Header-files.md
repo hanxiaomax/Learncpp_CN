@@ -265,9 +265,7 @@ void something(int) // 错误: 错误的返回类型
 
 不幸的是，我们很难去甄别究竟哪些代码正在依赖那些被间接引入的头文件。
 
-!!! question "Q: 我没有include <someheader> ，但是程序仍然能正常工作！为什么？"
-
-    Q: 我没有include <someheader> ，但是程序仍然能正常工作！为什么？
+!!! question "Q: 我没有`include <someheader> `，但是程序仍然能正常工作！为什么？"
 
     这个问题也是常备问到的问题之一。这可能是因为你包含了某个头文件的时候，恰巧该文件也包含了你所需的那个头文件，所以代码可以工作。尽管你的程序可以编译，最佳实践告诉我们，这种方式并不可靠。在你的电脑上能编译，不代表在其他电脑上也能编译。
     
@@ -295,7 +293,7 @@ void something(int) // 错误: 错误的返回类型
 
 ## 头文件最佳实践
 
-Here are a few more recommendations for creating and using header files.
+关于如何使用和创建头文件，我们有如下建议：
 
 - 始终使用[[2-12-Header-guards|头文件重复包含保护]] ；
 - 不要在头文件中定义变量和函数 (全局常量是个例外——稍后介绍）；

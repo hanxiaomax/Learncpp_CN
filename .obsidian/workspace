@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-11-Header-files.md",
+            "file": "docs/index.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Q",
+                "query": "index",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,12 +66,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-11-Header-files.md"
+                "file": "docs/index.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-11-Header-files.md",
+                "file": "docs/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +129,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/index.md",
+    "docs/2-12-Header-guards.md",
     "docs/2-11-Header-files.md",
     "docs/transitive includes.md",
-    "docs/2-12-Header-guards.md",
     "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
     "docs/symbolic-constants.md",
     "docs/forward-declaration.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
     "Templates/qa.md",
-    "docs/2-8-Programs-with-multiple-code-files.md",
-    "docs/1-2-comments.md"
+    "docs/2-8-Programs-with-multiple-code-files.md"
   ]
 }

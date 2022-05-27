@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "index",
+      "path": "docs/index.md"
+    },
+    {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
       "basename": "2-11-Header-files",
       "path": "docs/2-11-Header-files.md"
     },
     {
       "basename": "transitive includes",
       "path": "docs/transitive includes.md"
-    },
-    {
-      "basename": "2-12-Header-guards",
-      "path": "docs/2-12-Header-guards.md"
     },
     {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
@@ -123,10 +127,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "index",
-      "path": "docs/index.md"
     },
     {
       "basename": "2-7-Forward-declarations-and-definitions",
