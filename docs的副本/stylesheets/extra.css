@@ -1,0 +1,14 @@
+
+.origin-link{
+    float: right;    
+    background: var(--md-default-fg-color--lightest);
+    border-radius: 0.4rem;
+}
+
+.md-grid {
+    max-width: 1960px; 
+  }
+
+  h2.tag{
+      color: aqua;
+  }
