@@ -1,4 +1,3 @@
-<style>
 /* Tooltip container */
 .tooltip {
   position: relative;
@@ -25,4 +24,9 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
-</style>
+
+.origin-link{
+    float: right;    
+    background: var(--md-default-fg-color--lightest);
+    border-radius: 0.4rem;
+}
