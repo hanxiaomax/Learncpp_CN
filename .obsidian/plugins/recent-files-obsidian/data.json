@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "2-11-Header-files",
-      "path": "docs/2-11-Header-files.md"
-    },
-    {
       "basename": "2-12-Header-guards",
       "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
     },
     {
       "basename": "header-guard",

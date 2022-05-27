@@ -5,12 +5,14 @@ origin_title: "2.12 — Header guards"
 time: 2022-4-15
 type: translation
 tags:
--
+- header guards
 ---
 
 ??? note "关键点速记"
 
-    - <>
+    - 由于头文件防范不能防止头文件被包含到不同的文件，头文件中的定义可能会导致链接器发现重定义。
+    - 对于不包含定义的头文件，虽然没必要使用头文件防范，但这其实是一个好习惯（尤其考虑到后面可能对头文件进行的改动）
+    - 处于兼容性的考虑，优先使用头文件防范而非 `#pragma once`
 
 ## 重复定义问题
 
@@ -192,7 +194,6 @@ int main()
 }
 ```
 
-
 在预处理器解析全部头文件后，程序内容变成了下面这样：
 
 main.cpp:
@@ -229,14 +230,13 @@ int main()
 }
 ```
 
-
 从上面的例子可以看出，当第二次包含 _square.h_ 的时候，由于 _SQUARE_H_ 已经被定义过了。因此 `getSquareSides` 函数只会被包含一次。
 
 ## 头文件防范不能防止头文件被包含到不同的文件
 
 头文件防范的目标是防止头文件被多次包含。从设计上来讲，它并不能保护头文件被包含到多个代码文件中（每个文件只能包含一次）。这可能导致难以预料的问题。
 
-考虑如下情况： 
+考虑如下情况：
 
 square.h:
 
@@ -284,9 +284,9 @@ int main()
 
 让我们仔细讲解一下为什么会这样。当 _square.h_ 被包含到 _square.cpp_ 时 `_SQUARE_H_` 被定义了，它的定义到 _square.cpp_ 文件的末尾为止。该定义可以避免  _square.h_ 的内容多次被包含到  _square.cpp_ 中 。但是，_square.cpp_ 处理完成后，_SQUARE_H_ 就没有定义了。这意味当预处理器处理 _main.cpp_ 时， _SQUARE_H_ 尚未在 _main.cpp_ 中定义。
 
-由于 _square.cpp_ 和 _main.cpp_ 中都包含了`getSquareSides` 函数的定义。此时，文件是可以编译的，但是在链接时链接器会报告程序存在 `getSquareSides` 函数的重复定义。
+由于 _square.cpp_ 和 _main.cpp_ 中都包含了 `getSquareSides` 函数的定义。此时，文件是可以编译的，但是在链接时链接器会报告程序存在 `getSquareSides` 函数的重复定义。
 
-解决这个问题最后的方法是把函数定义放在一个`.cpp`文件中，这样头文件中就只包含函数的声明：
+解决这个问题最后的方法是把函数定义放在一个 `.cpp` 文件中，这样头文件中就只包含函数的声明：
 
 square.h:
 
@@ -331,19 +331,19 @@ int main()
 }
 ```
 
-Now when the program is compiled, function _getSquareSides_ will have just one definition (via _square.cpp_), so the linker is happy. File _main.cpp_ is able to call this function (even though it lives in _square.cpp_) because it includes _square.h_, which has a forward declaration for the function (the linker will connect the call to _getSquareSides_ from _main.cpp_ to the definition of _getSquareSides_ in _square.cpp_).
+现在， 程序在编译的时候，`getSquareSides` 函数只有一个定义了（来自  _square.cpp_ ），因此链接器不会再报错。 _main.cpp_ 可以调用该函数 (即使它的定义在 _square.cpp_ 中) ，因为它包含了 _square.h_（包含该函数的声明），链接器会把 _main.cpp_ 中对 `getSquareSides` 函数的调用关联到 _square.cpp_ 中 `getSquareSides` 函数的定义。
 
 ## 不把定义放在头文件中不就行了？
 
-We’ve generally told you not to include function definitions in your headers. So you may be wondering why you should include header guards if they protect you from something you shouldn’t do.
+之前我们说过，不要把函数的定义放在头文件中。所以你可能会问，那为什么还要使用头文件防范呢？毕竟它要解决的问题从一开始就应该避免。
 
-There are quite a few cases we’ll show you in the future where it’s necessary to put non-function definitions in a header file. For example, C++ will let you create your own types. These user-defined types are typically defined in header files, so the type definitions can be propagated out to the code files that need to use them. Without a header guard, a code file could end up with multiple (identical) copies of a given type definition, which the compiler will flag as an error.
+其实，后面我们会向你展示一些**非函数**定义被放置在头文件中的例子。例如，C++ 允许你创建自定义类型。这些自定义类型通常被定义在头文件中，这样才能让对应的源文件使用这些定义。如果不使用头文件防范，则它们很可能会被多次拷贝，导致编译器报错。
 
-So even though it’s not strictly necessary to have header guards at this point in the tutorial series, we’re establishing good habits now, so you don’t have to unlearn bad habits later.
+因此，即便教程看到这里的时候你还没有必要使用头文件防范，能够从现在就养成习惯还是很好的。
 
-## `#pragma` once
+## `#pragma once`
 
-Modern compilers support a simpler, alternate form of header guards using the _#pragma_ directive:
+现代编译器支持一种更简单的处理方法，可以使用 `#pragma` 指令来代替头文件防范：
 
 ```cpp
 #pragma once
@@ -351,14 +351,13 @@ Modern compilers support a simpler, alternate form of header guards using the _
 // your code here
 ```
 
+`#pragma once` 的功能和头文件防范是一样的，而且更加简短且不易出错。在大多数的项目中，`#pragma once` 都可以很好的工作，因此很多开发者都倾向于使用它而不是头文件防范。不过，`#pragma once` 并不是 C++ 语言的一部分 (而且可能永远都不会成为 C++ 的一部分，因为没办法保证在仍和情况下它都能正确地工作）
 
-`#pragma once` serves the same purpose as header guards, and has the added benefit of being shorter and less error-prone. For most projects, `#pragma once` works fine, and many developers prefer to use them over header guards. However, `#pragma once` is not an official part of the C++ language (and probably will never be, because it can’t be implemented in a way that works reliably in all cases).
-
-For maximum compatibility, we recommend sticking to traditional header guards. They aren’t much more work and they’re guaranteed to be supported on all compilers.
+处于兼容性的考虑，我们还是推荐使用传统方式——头文件防范。头文件防范用起来也不复杂而且所有的编译器都支持。
 
 !!! success "最佳实践"
 
-    Favor header guards over `#pragma once` for maximum portability.
+    处于兼容性的考虑，优先使用头文件防范而非 `#pragma once`。
 
 ## 小结
 
