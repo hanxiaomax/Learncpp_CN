@@ -1,5 +1,5 @@
 ---
-alias: 2.12 - 头文件重复包含保护
+alias: 2.12 - 头文件防卫式声明
 origin: /header-guards/
 origin_title: "2.12 — Header guards"
 time: 2022-4-15
@@ -7,6 +7,10 @@ type: translation
 tags:
 - 
 ---
+
+??? note "关键点速记"
+
+	- <>
 
 ## 重复定义问题
 
@@ -51,8 +55,7 @@ int main()
 square.h:
 
 ```cpp
-// We shouldn't be including function definitions in header files
-// But for the sake of this example, we will
+// 头文件里不应该包含函数的定义，这里只是为了举例
 int getSquareSides()
 {
     return 4;
@@ -78,9 +81,9 @@ int main()
 ```
 
 
-This seemingly innocent looking program won’t compile! Here’s what’s happening. First, _main.cpp_ `#includes` _square.h_, which copies the definition for function _getSquareSides_into _main.cpp_. Then _main.cpp_ `#includes` _geometry.h_, which `#includes` _square.h_ itself. This copies contents of _square.h_ (including the definition for function _getSquareSides_) into _geometry.h_, which then gets copied into _main.cpp_.
+这个程序看上去没什么问题，但实际上却不能编译！原因如下：首先， _main.cpp_ 文件 `#includes` 了 _square.h_，因此会把函数`getSquareSides_into` 的定义拷贝到了  _main.cpp_。_main.cpp_ 文件同时还包含了 `#includes` _geometry.h_ 进而 `#includes` 了 _square.h_ 。这样 _square.h_ 的定义（包含了`getSquareSides`的定义）也被拷贝到了 _geometry.h_，进而也被拷贝到了 _main.cpp_。
 
-Thus, after resolving all of the `#includes`, _main.cpp_ ends up looking like this:
+因此，在解析了的全部的头文件后， _main.cpp_ 的内容变成了下面这样：
 
 ```cpp
 int getSquareSides()  // from square.h
@@ -100,11 +103,11 @@ int main()
 ```
 
 
-Duplicate definitions and a compile error. Each file, individually, is fine. However, because _main.cpp_ ends up #including the content of _square.h_ twice, we’ve run into problems. If _geometry.h_ needs _getSquareSides()_, and _main.cpp_ needs both _geometry.h_ and _square.h_, how would you resolve this issue?
+单独看每个函数都没有问题，不过，由于最终的结果等效于 `_main.cpp_` 包含了两次 _square.h_，所以才遇到了上述问题。 如果 _geometry.h_ 需要 `getSquareSides()` 而且 _main.cpp_ 需要 _geometry.h_ 和 _square.h_，那么应该如何解决上述问题呢？
 
-## Header guards
+## 头文件防卫式声明
 
-The good news is that we can avoid the above problem via a mechanism called a **header guard** (also called an **include guard**). Header guards are conditional compilation directives that take the following form:
+好消息是，我们可以使用[[header-guard|头文件防范header guards]]（或include防范）技术来避免上述问题。头文件防范其实是一种条件编译，它的形式如下：
 
 ```cpp
 #ifndef SOME_UNIQUE_NAME_HERE
@@ -115,9 +118,8 @@ The good news is that we can avoid the above problem via a mechanism called a *
 #endif
 ```
 
-COPY
 
-When this header is #included, the preprocessor checks whether _SOME_UNIQUE_NAME_HERE_ has been previously defined. If this is the first time we’re including the header, _SOME_UNIQUE_NAME_HERE_ will not have been defined. Consequently, it #defines _SOME_UNIQUE_NAME_HERE_ and includes the contents of the file. If the header is included again into the same file, _SOME_UNIQUE_NAME_HERE_ will already have been defined from the first time the contents of the header were included, and the contents of the header will be ignored (thanks to the #ifndef).
+当头文件被包含时，预处理器会检查 `SOME_UNIQUE_NAME_HERE` 是否已经被定义过。如果没有说明这是第一次引入该头文件，`SOME_UNIQUE_NAME_HERE`肯定尚未被定义。此时，该头文件会#defines _SOME_UNIQUE_NAME_HERE_ and includes the contents of the file. If the header is included again into the same file, _SOME_UNIQUE_NAME_HERE_ will already have been defined from the first time the contents of the header were included, and the contents of the header will be ignored (thanks to the #ifndef).
 
 All of your header files should have header guards on them. _SOME_UNIQUE_NAME_HERE_ can be any name you want, but by convention is set to the full filename of the header file, typed in all caps, using underscores for spaces or punctuation. For example, _square.h_ would have the header guard:
 

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/1-3-Introduction-to-objects-and-variables.md",
+            "file": "docs/2-12-Header-guards.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "about",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,11 +66,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -86,7 +88,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/1-3-Introduction-to-objects-and-variables.md"
+                "file": "docs/2-12-Header-guards.md"
               }
             }
           },
@@ -107,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/1-3-Introduction-to-objects-and-variables.md",
+                "file": "docs/2-12-Header-guards.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +130,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/2-12-Header-guards.md",
+    "docs/header-guard.md",
+    "docs/2-11-Header-files.md",
+    "docs/2-13-How-to-design-your-first-programs.md",
     "docs/1-3-Introduction-to-objects-and-variables.md",
     "docs/1-2-comments.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "docs/2-11-Header-files.md",
     "docs/transitive includes.md",
-    "docs/2-12-Header-guards.md",
     "docs/index.md",
-    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-    "docs/symbolic-constants.md",
-    "docs/forward-declaration.md"
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
   ]
 }

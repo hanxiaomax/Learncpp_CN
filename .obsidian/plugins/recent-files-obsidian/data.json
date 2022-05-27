@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "header-guard",
+      "path": "docs/header-guard.md"
+    },
+    {
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
+    },
+    {
+      "basename": "2-13-How-to-design-your-first-programs",
+      "path": "docs/2-13-How-to-design-your-first-programs.md"
+    },
+    {
       "basename": "1-3-Introduction-to-objects-and-variables",
       "path": "docs/1-3-Introduction-to-objects-and-variables.md"
     },
@@ -13,16 +29,8 @@
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
-      "basename": "2-11-Header-files",
-      "path": "docs/2-11-Header-files.md"
-    },
-    {
       "basename": "transitive includes",
       "path": "docs/transitive includes.md"
-    },
-    {
-      "basename": "2-12-Header-guards",
-      "path": "docs/2-12-Header-guards.md"
     },
     {
       "basename": "index",
@@ -121,10 +129,6 @@
       "path": "docs/identifier.md"
     },
     {
-      "basename": "2-13-How-to-design-your-first-programs",
-      "path": "docs/2-13-How-to-design-your-first-programs.md"
-    },
-    {
       "basename": "2-x-Chapter-2-summary-and-quiz",
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "2-1-Introduction-to-functions",
       "path": "docs/2-1-Introduction-to-functions.md"
-    },
-    {
-      "basename": "warning",
-      "path": "Templates/warning.md"
     }
   ],
   "omittedPaths": [],
