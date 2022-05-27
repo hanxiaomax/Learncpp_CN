@@ -44,7 +44,7 @@ int main()
 }
 ```
 
-While these programs are easy to fix (remove the duplicate definition), with header files, it’s quite easy to end up in a situation where a definition in a header file gets included more than once. This can happen when a header file `#includes` another header file (which is common).
+尽管这些问题修复起来并不难（移除重复定义即可），但是对于使用头文件的情况来说，如果头文件中存在定义，那么它很有可能会被重复地包含到代码中。尤其是一个头文件中还包括其他头文件的情况（很常见）。
 
 请考虑下面这个例子：
 
@@ -58,7 +58,6 @@ int getSquareSides()
     return 4;
 }
 ```
-
 
 geometry.h:
 
@@ -79,9 +78,9 @@ int main()
 ```
 
 
-This seemingly innocent looking program won’t compile! Here’s what’s happening. First, _main.cpp_ #includes _square.h_, which copies the definition for function _getSquareSides_into _main.cpp_. Then _main.cpp_ #includes _geometry.h_, which #includes _square.h_ itself. This copies contents of _square.h_ (including the definition for function _getSquareSides_) into _geometry.h_, which then gets copied into _main.cpp_.
+This seemingly innocent looking program won’t compile! Here’s what’s happening. First, _main.cpp_ `#includes` _square.h_, which copies the definition for function _getSquareSides_into _main.cpp_. Then _main.cpp_ `#includes` _geometry.h_, which `#includes` _square.h_ itself. This copies contents of _square.h_ (including the definition for function _getSquareSides_) into _geometry.h_, which then gets copied into _main.cpp_.
 
-Thus, after resolving all of the #includes, _main.cpp_ ends up looking like this:
+Thus, after resolving all of the `#includes`, _main.cpp_ ends up looking like this:
 
 ```cpp
 int getSquareSides()  // from square.h
