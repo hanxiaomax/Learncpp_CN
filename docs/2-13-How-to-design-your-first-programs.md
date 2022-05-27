@@ -8,6 +8,8 @@ tags:
 - 
 ---
 
+
+
 Now that you’ve learned some basics about programs, let’s look more closely at _how_ to design a program.
 
 When you sit down to write a program, generally you have some kind of idea, which you’d like to write a program for. New programmers often have trouble figuring out how to convert that idea into actual code. But it turns out, you have many of the problem solving skills you need already, acquired from everyday life.

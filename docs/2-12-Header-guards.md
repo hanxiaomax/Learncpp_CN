@@ -6,17 +6,21 @@ time: 2022-4-15
 type: translation
 tags:
 - header guards
+- pragma once
 ---
+
+
 
 ??? note "关键点速记"
 
-    - 由于头文件防范不能防止头文件被包含到不同的文件，头文件中的定义可能会导致链接器发现重定义。
+    - 由于头文件防范不能防止头文件被包含到不同的文件，头文件中的定义可能会导致链接器报告函数重定义。
+    - 不可能完全避免头文件中的定义，毕竟类是需要定义在头文件中的。
     - 对于不包含定义的头文件，虽然没必要使用头文件防范，但这其实是一个好习惯（尤其考虑到后面可能对头文件进行的改动）
     - 处于兼容性的考虑，优先使用头文件防范而非 `#pragma once`
 
 ## 重复定义问题
 
-在[[2-7-Forward-declarations-and-definitions|2.7 - 前向声明和定义]]中我们介绍了变量和函数的标识符只能被定义一次，即[[one-definition-rule|单一定义规则]]。因此，如果一个程序包含了对某个标识符的多次定义，将会引起编译错误：
+在[[2-7-Forward-declarations-and-definitions|2.7 - 前向声明和定义]]中我们介绍了变量和函数的标识符只能被定义一次，即[[one-definition-rule|单一定义规则]]。因此，如果一个程序包含了对某个标识符的多次定义，将会引起编译错误 ：
 
 ```cpp
 int main()
@@ -54,9 +58,8 @@ int main()
 
 请考虑下面这个例子：
 
-square.h:
 
-```cpp
+```cpp title="square.h"
 // 头文件里不应该包含函数的定义，这里只是为了举例
 int getSquareSides()
 {
@@ -64,15 +67,13 @@ int getSquareSides()
 }
 ```
 
-geometry.h:
 
-```cpp
+```cpp title="geometry.h"
 #include "square.h"
 ```
 
-main.cpp:
 
-```cpp
+```cpp title="main.cpp"
 #include "square.h"
 #include "geometry.h"
 
@@ -122,9 +123,8 @@ int main()
 
 我们使用的所有头文件，都应该使用头文件防卫式声明。`SOME_UNIQUE_NAME_HERE` 可以是任何名字，但是通常的惯例是使用头文件的**全名**、全部大写字母并使用下划线代替空格或标点，例如 _square.h_ 的头文件防范如下：
 
-square.h:
 
-```cpp
+```cpp title="square.h"
 #ifndef SQUARE_H
 #define SQUARE_H
 
@@ -138,7 +138,7 @@ int getSquareSides()
 
 标准库中也使用了头文件防范。如果你去看看 iostream 的头文件，你会发现它是这样的：
 
-```cpp
+```cpp title="iostream"
 #ifndef _IOSTREAM_
 #define _IOSTREAM_
 
@@ -157,9 +157,8 @@ int getSquareSides()
 
 再回到 _square.h_ 的例子，使用头文件防护来处理 _square.h_ 。为了保持一致，我们在 _geometry.h_ 中也添加了头文件夹防护。
 
-square.h
 
-```cpp
+```cpp title="square.h"
 #ifndef SQUARE_H
 #define SQUARE_H
 
@@ -171,9 +170,8 @@ int getSquareSides()
 #endif
 ```
 
-geometry.h:
 
-```cpp
+```cpp title="geometry.h"
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
@@ -182,9 +180,8 @@ geometry.h:
 #endif
 ```
 
-main.cpp:
 
-```cpp
+```cpp title="main.cpp"
 #include "square.h"
 #include "geometry.h"
 
@@ -196,9 +193,7 @@ int main()
 
 在预处理器解析全部头文件后，程序内容变成了下面这样：
 
-main.cpp:
-
-```cpp
+```cpp title="main.cpp"
 // Square.h included from main.cpp
 #ifndef SQUARE_H // square.h included from main.cpp
 #define SQUARE_H // SQUARE_H gets defined here
@@ -238,9 +233,8 @@ int main()
 
 考虑如下情况：
 
-square.h:
 
-```cpp
+```cpp title="square.h"
 #ifndef SQUARE_H
 #define SQUARE_H
 
@@ -254,9 +248,7 @@ int getSquarePerimeter(int sideLength); // getSquarePerimeter 的前向声明
 #endif
 ```
 
-square.cpp:
-
-```cpp
+```cpp title="square.cpp"
 #include "square.h"  // square.h 在此处被包含一次
 
 int getSquarePerimeter(int sideLength)
@@ -265,9 +257,7 @@ int getSquarePerimeter(int sideLength)
 }
 ```
 
-main.cpp:
-
-```cpp
+```cpp title="main.cpp"
 #include "square.h" // square.h 在此处被包含一次
 #include <iostream>
 
@@ -288,9 +278,8 @@ int main()
 
 解决这个问题最后的方法是把函数定义放在一个 `.cpp` 文件中，这样头文件中就只包含函数的声明：
 
-square.h:
 
-```cpp
+```cpp title="square.h"
 #ifndef SQUARE_H
 #define SQUARE_H
 
@@ -300,9 +289,7 @@ int getSquarePerimeter(int sideLength); // forward declaration for getSquarePeri
 #endif
 ```
 
-square.cpp:
-
-```cpp
+```cpp title="square.cpp"
 #include "square.h"
 
 int getSquareSides() // actual definition for getSquareSides
@@ -316,9 +303,8 @@ int getSquarePerimeter(int sideLength)
 }
 ```
 
-main.cpp:
 
-```cpp
+```cpp title="main.cpp"
 #include "square.h" // square.h is also included once here
 #include <iostream>
 
@@ -361,8 +347,9 @@ int main()
 
 ## 小结
 
-Header guards are designed to ensure that the contents of a given header file are not copied more than once into any single file, in order to prevent duplicate definitions.
+头文件防范可以确保该头文件的内容被包含到某个文件时，其内容只被拷贝一次，以避免重复定义的问题。
 
-Note that duplicate _declarations_ are fine, since a declaration can be declared multiple times without incident -- but even if your header file is composed of all declarations (no definitions) it’s still a best practice to include header guards.
+注意，重复声明是可以的，因为多次声明并不会带来任何问题。不过，即使你的头文件中只包含声明，使用头文件防范仍然是最佳实践。
 
-Note that header guards do _not_ prevent the contents of a header file from being copied (once) into separate project files. This is a good thing, because we often need to reference the contents of a given header from different project files.
+注意，头文件防范不能避免头文件的内容被拷贝到多个不同的文件中。不过，这是好事，因为我们时常需要将头文件包含到多个不同的文件中。
+

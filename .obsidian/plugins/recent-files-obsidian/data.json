@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "2-13-How-to-design-your-first-programs",
+      "path": "docs/2-13-How-to-design-your-first-programs.md"
+    },
+    {
       "basename": "2-12-Header-guards",
       "path": "docs/2-12-Header-guards.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "header-guard",
       "path": "docs/header-guard.md"
-    },
-    {
-      "basename": "2-13-How-to-design-your-first-programs",
-      "path": "docs/2-13-How-to-design-your-first-programs.md"
     },
     {
       "basename": "1-3-Introduction-to-objects-and-variables",
