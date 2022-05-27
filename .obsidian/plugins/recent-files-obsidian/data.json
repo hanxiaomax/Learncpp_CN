@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "tags.md",
+      "path": "docs/tags.md.md"
+    },
+    {
+      "basename": "3-1-Syntax-and-semantic-errors",
+      "path": "docs/3-1-Syntax-and-semantic-errors.md"
+    },
+    {
+      "basename": "3-4-Basic-debugging-tactics",
+      "path": "docs/3-4-Basic-debugging-tactics.md"
+    },
+    {
+      "basename": "3-3-A-strategy-for-debugging",
+      "path": "docs/3-3-A-strategy-for-debugging.md"
+    },
+    {
+      "basename": "3-2-The-debugging-process",
+      "path": "docs/3-2-The-debugging-process.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
       "basename": "2-13-How-to-design-your-first-programs",
       "path": "docs/2-13-How-to-design-your-first-programs.md"
     },
@@ -129,16 +157,8 @@
       "path": "docs/identifier.md"
     },
     {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
       "basename": "6-4-Introduction-to-global-variables",
       "path": "docs/6-4-Introduction-to-global-variables.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     },
     {
       "basename": "2-7-Forward-declarations-and-definitions",
@@ -179,26 +199,6 @@
     {
       "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
       "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
-    },
-    {
-      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
-      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
-    },
-    {
-      "basename": "yaml",
-      "path": "Templates/yaml.md"
-    },
-    {
-      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
-      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
-    },
-    {
-      "basename": "0-8-A-few-common-C++-problems",
-      "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "2-1-Introduction-to-functions",
-      "path": "docs/2-1-Introduction-to-functions.md"
     }
   ],
   "omittedPaths": [],

@@ -9,7 +9,7 @@ tags:
 ---
 
 
-## Chapter Review
+## 章节回顾
 
 A function is a reusable sequence of statements designed to do a particular job. Functions you write yourself are called user-defined functions.
 

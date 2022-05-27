@@ -14,6 +14,7 @@ theme:
     - header.autohide
     - navigation.indexes
     - navigation.tabs
+    - navigation.prune
 extra_css:
   - stylesheets/extra.css
 markdown_extensions:
@@ -72,7 +73,11 @@ nav:
       - "2-12-Header-guards.md"
       - "2-13-How-to-design-your-first-programs.md"
       - "2-x-Chapter-2-summary-and-quiz.md"
-    # - 3. 调试 C++ 程序: index.md
+    - 3. 调试 C++ 程序: 
+      - "3-1-Syntax-and-semantic-errors.md"
+      - "3-2-The-debugging-process.md"
+      - "3-3-A-strategy-for-debugging.md"
+      - "3-4-Basic-debugging-tactics.md"
     # - 4. 基础数据类型: index.md
     # - 5. 运算符: index.md
     # - 6. 作用域，生命周期和链接: index.md
@@ -97,4 +102,5 @@ nav:
     # - 25. C++标准更新: index.md
     # - O1. 位运算: index.md
   - 翻译约定: 翻译约定.md
-  - 关于本站: index.md
+  - 关于本站: tag.md
+  

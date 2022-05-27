@@ -8,6 +8,8 @@ tags:
 - 
 ---
 
+??? note "关键点速记"
+
 
 
 Now that you’ve learned some basics about programs, let’s look more closely at _how_ to design a program.
@@ -20,7 +22,7 @@ A little up-front planning will save you both time and frustration in the long r
 
 In this lesson, we’ll lay out a generalized approach for converting ideas into simple functional programs.
 
-Design step 1: Define your goal
+## Design step 1: Define your goal
 
 In order to write a successful program, you first need to define what your goal is. Ideally, you should be able to state this in a sentence or two. It is often useful to express this as a user-facing outcome. For example:
 
@@ -31,7 +33,7 @@ In order to write a successful program, you first need to define what your goal 
 
 Although this step seems obvious, it’s also highly important. The worst thing you can do is write a program that doesn’t actually do what you (or your boss) wanted!
 
-Design step 2: Define requirements
+## Design step 2: Define requirements
 
 While defining your problem helps you determine _what_ outcome you want, it’s still vague. The next step is to think about requirements.
 
@@ -49,7 +51,7 @@ For example:
 
 A single problem may yield many requirements, and the solution isn’t “done” until it satisfies all of them.
 
-Design step 3: Define your tools, targets, and backup plan
+## Design step 3: Define your tools, targets, and backup plan
 
 When you are an experienced programmer, there are many other steps that typically would take place at this point, including:
 
@@ -63,7 +65,7 @@ However, as a new programmer, the answers to these questions are typically simpl
 
 That said, if you are going to work on anything of non-trivial complexity, you should have a plan to backup your code. It’s not enough to just zip or copy the directory to another location on your machine (though this is better than nothing). If your system crashes, you’ll lose everything. A good backup strategy involves getting a copy of the code off of your system altogether. There are lots of easy ways to do this: Zip it up and email it to yourself, copy it to Dropbox or another cloud service, FTP it to another machine, copy it to another machine on your local network, or use a version control system residing on another machine or in the cloud (e.g. github). Version control systems have the added advantage of not only being able to restore your files, but also to roll them back to a previous version.
 
-Design step 4: Break hard problems down into easy problems
+## Design step 4: Break hard problems down into easy problems
 
 In real life, we often need to perform tasks that are very complex. Trying to figure out how to do these tasks can be very challenging. In such cases, we often make use of the **top down** method of problem solving. That is, instead of solving a single complex task, we break that task into multiple subtasks, each of which is individually easier to solve. If those subtasks are still too difficult to solve, they can be broken down further. By continuously splitting complex tasks into simpler ones, you can eventually get to a point where each individual task is manageable, if not trivial.
 
@@ -128,7 +130,7 @@ As it turns out, these task hierarchies are extremely useful in programming, bec
 
 If it turns out that one of the items (functions) is too difficult to implement, simply split that item into multiple sub-items/sub-functions. Eventually you should reach a point where each function in your program is trivial to implement.
 
-Design step 5: Figure out the sequence of events
+## Design step 5: Figure out the sequence of events
 
 Now that your program has a structure, it’s time to determine how to link all the tasks together. The first step is to determine the sequence of events that will be performed. For example, when you get up in the morning, what order do you do the above tasks? It might look like this:
 
@@ -147,7 +149,7 @@ If we were writing a calculator, we might do things in this order:
 
 At this point, we’re ready for implementation.
 
-Implementation step 1: Outlining your main function
+## Implementation step 1: Outlining your main function
 
 Now we’re ready to start implementation. The above sequences can be used to outline your main program. Don’t worry about inputs and outputs for the time being.
 
@@ -193,7 +195,7 @@ COPY
 
 Note that if you’re going to use this “outline” method for constructing your programs, your functions won’t compile because the definitions don’t exist yet. Commenting out the function calls until you’re ready to implement the function definitions is one way to address this (and the way we’ll show here). Alternatively, you can _stub out_ your functions (create placeholder functions with empty bodies) so your program will compile.
 
-Implementation step 2: Implement each function
+## Implementation step 2: Implement each function
 
 In this step, for each function, you’ll do three things:
 
@@ -250,7 +252,7 @@ Once we’re convinced the program is working as intended up to this point, we c
 
 Remember: Don’t implement your entire program in one go. Work on it in steps, testing each step along the way before proceeding.
 
-Implementation step 3: Final testing
+## Implementation step 3: Final testing
 
 Once your program is “finished”, the last step is to test the whole program and ensure it works as intended. If it doesn’t work, fix it.
 
@@ -270,6 +272,3 @@ Most new programmers will shortcut many of these steps and suggestions (because 
 
 The good news is that once you become comfortable with all of these concepts, they will start coming more naturally to you. Eventually you will get to the point where you can write entire functions without any pre-planning at all.
 
-[
-
-](https://www.learncpp.com/cpp-tutorial/chapter-2-summary-and-quiz/)
