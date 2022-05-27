@@ -130,6 +130,7 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/2-11-Header-files.md",
+    "docs/transitive includes.md",
     "docs/2-12-Header-guards.md",
     "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
     "docs/symbolic-constants.md",
@@ -137,7 +138,6 @@
     "docs/1-4-Variable-assignment-and-initialization.md",
     "Templates/qa.md",
     "docs/2-8-Programs-with-multiple-code-files.md",
-    "docs/1-2-comments.md",
-    "docs/1-8-Whitespace-and-basic-formatting.md"
+    "docs/1-2-comments.md"
   ]
 }

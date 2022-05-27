@@ -11,12 +11,18 @@ tags:
 ??? note "关键点速记"
 
     - 头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则，除非是符号常量
+    - 每个头文件都应该有其特定的用途并且尽可能独立
+    - 你编写的任何头文件都应该能够独立编译（它应当`#include`它所需的全部依赖）；
     - 源文件应该包含其对应的头文件（如果存在的话），可以确保定义和声明不匹配的问题在编译时就能被发现
     - 使用双引号来包含你自己编写的头文件，则该文件必须位于当前目录中。使用尖括号包含编译器、操作系统或第三方提供的安装在系统其他位置的头文件。
     - 在使用标准库头文件的时候，使用没有`.h`版本的头文件。对于用户自己编写的头文件，仍然需要使用`.h`后缀。
-	- 每个头文件都应该有其特定的用途并且尽可能独立。例如，与A相关的声明应该放在 *A.h* 中，与B相关的声明应该放在 *B.h* 中。这样如果以后仅仅需要使用A相关的功能，则无需包含`B.h`，也就不会涉及到任何与B相关的函数声明；
-	- 你编写的任何头文件都应该能够独立编译（它应当`#include`它所需的全部依赖）；
-	- 不要 `#include` .cpp 文件。
+    - 不要 `#include` .cpp 文件。
+    - 对于编译所需的头文件，每一个都应该被明确地使用 `#include` 包含进来。不要依赖被间接包含的头文件。
+    - 为了最大程度减少头文件没有正确包含引起的编译器报错，请按照如下顺序包含头文件：
+		 1.  先包含源文件对应的头文件
+		 2.  再包含项目所需的其他头文件
+		 3.  再包含第三方库的头文件
+		 4.  再包含标准库头文件
 
 ## 头文件及其用途
 
@@ -248,42 +254,44 @@ void something(int) // 错误: 错误的返回类型
 
 头文件需要依赖其他头文件中的定义或声明也是很常见的。因此，头文件可以使用`#include`来包含其他头文件。
 
-当你的代码 `#includes` 第一个头文件时，你其实也包含了该头文件中包含的其他头文件（以及这所有头文件中包含的头文件，以此类推）。这些额外的头文件有时候称为 transitive includes，因为它们是被隐式包含进来的，我们明没有指明哪些需要被包含。
+当你的代码 `#includes` 第一个头文件时，你其实也包含了该头文件中包含的其他头文件（以及这所有头文件中包含的头文件，以此类推）。这些额外的头文件有时候称为[[transitive includes|间接包含(transitive includes)]]，因为它们是被隐式包含进来的，我们明没有指明哪些需要被包含。
 
-这些头文件中的内容在你的代码中是可用的。不过The content of these transitive includes are available for use in your code file. However, you should not rely on the content of headers that are included transitively. The implementation of header files may change over time, or be different across different systems. If that happens, your code may only compile on certain systems, or may compile now but not in the future. This is easily avoided by explicitly including all of the header files the content of your code file requires.
+这些头文件中的内容在你的代码中是可用的。不过你并不应该依赖它们，毕竟它们是被间接包含进来的。这些头文件可能会变化，也可能在不同的系统中存在差异，这时候你的代码可能只能在某平台下才能编译，或者可能在将来无法编译。避免上述问题的方法也很简单，请明确包含你所需要的全部头文件。
 
 !!! success "最佳实践"
 
-    Each file should explicitly #include all of the header files it needs to compile. Do not rely on headers included transitively from other headers.
+    对于编译所需的头文件，每一个都应该被明确地使用 `#include` 包含进来。不要依赖被间接包含的头文件。
+    
 
-Unfortunately, there is no easy way to detect when your code file is accidentally relying on content of a header file that has been included by another header file.
+不幸的是，我们很难去甄别究竟哪些代码正在依赖那些被间接引入的头文件。
 
-!!! question "Q & A"
+!!! question "Q: 我没有include <someheader> ，但是程序仍然能正常工作！为什么？"
 
-    Q: I didn’t include <someheader> and my program worked anyway! Why?
+    Q: 我没有include <someheader> ，但是程序仍然能正常工作！为什么？
 
-    This is one of the most commonly asked questions on this site. The answer is: it’s likely working, because you included some other header (e.g. <iostream>), which itself included <someheader>. Although your program will compile, per the best practice above, you should not rely on this. What compiles for you might not compile on a friend’s machine.
-
+    这个问题也是常备问到的问题之一。这可能是因为你包含了某个头文件的时候，恰巧该文件也包含了你所需的那个头文件，所以代码可以工作。尽管你的程序可以编译，最佳实践告诉我们，这种方式并不可靠。在你的电脑上能编译，不代表在其他电脑上也能编译。
+    
 ## 头文件 `#include` 的顺序
 
-If your header files are written properly and `#include` everything they need, the order of inclusion shouldn’t matter.
+如果你的头文件内容没问题，并且也 `#include` 了它们所依赖的其他头文件，那么头文件包含的顺序其实并不重要。
 
-Now consider the following scenario: let’s say header A needs declarations from header B, but forgets to include it. In our code file, if we include header B before header A, our code will still compile! This is because the compiler will compile all the declarations from B before it compiles the code from A that depends on those declarations.
+不过，我们可以考虑如下场景：头文件 A 需要头文件 B中的声明，但是却忘记包含 B 了。这种情况下，如果我们在源文件中，先包含 B 再包含A，那么程序是可以编译的，因为编译器会首先编译到B中的声明，然后才会编译到A中对B有依赖的那些代码。 
 
-However, if we include header A first, then the compiler will complain because the code from A will be compiled before the compiler has seen the declarations from B. This is actually preferable, because the error has been surfaced, and we can then fix it.
+反之，如果我们先包含头文件 A，再包含头文件 B，那么编译器就会报错了，因为它不能在编译 A 时找到其所依赖的 B 中的声明。其实这正是我们希望的结果，因为它把问题暴露了出来，我们便可以对其进行修复。
 
 !!! success "最佳实践"
 
-    To maximize the chance that missing includes will be flagged by compiler, order your #includes as follows:
+    为了最大程度减少头文件没有正确包含引起的编译器报错，请按照如下顺序包含头文件：
 
-    1.  The paired header file
-    2.  Other headers from your project
-    3.  3rd party library headers
-    4.  Standard library headers
+    1.  先包含源文件对应的头文件
+    2.  再包含项目所需的其他头文件
+    3.  再包含第三方库的头文件
+    4.  再包含标准库头文件
 
-    The headers for each grouping should be sorted alphabetically.
+    每一组头文件都应该按照字母表顺序排序
 
-That way, if one of your user-defined headers is missing an #include for a 3rd party library or standard library header, it’s more likely to cause a compile error so you can fix it.
+这样，任何一个你定义的头文件如果没有`#include` 其所需的第三方库或标准库，那么很可能会导致编译器报错，这样我们就可以进行修复了。
+
 
 ## 头文件最佳实践
 

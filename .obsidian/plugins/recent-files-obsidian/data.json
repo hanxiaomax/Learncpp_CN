@@ -5,6 +5,10 @@
       "path": "docs/2-11-Header-files.md"
     },
     {
+      "basename": "transitive includes",
+      "path": "docs/transitive includes.md"
+    },
+    {
       "basename": "2-12-Header-guards",
       "path": "docs/2-12-Header-guards.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "warning",
       "path": "Templates/warning.md"
-    },
-    {
-      "basename": "tip",
-      "path": "Templates/tip.md"
     }
   ],
   "omittedPaths": [],
