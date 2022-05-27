@@ -5,7 +5,7 @@ origin_title: "2.13 — How to design your first programs"
 time: 2022-4-15
 type: translation
 tags:
-- 
+- desgin
 ---
 
 ??? note "关键点速记"

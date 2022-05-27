@@ -4,8 +4,6 @@ origin: /chapter-2-summary-and-quiz/
 origin_title: "2.x — Chapter 2 summary and quiz"
 time: 2022-4-23
 type: translation
-tags:
-- 
 ---
 
 

@@ -8,3 +8,7 @@
 .md-grid {
     max-width: 1960px; 
   }
+
+  h2.tag{
+      color: aqua;
+  }

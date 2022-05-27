@@ -34,7 +34,9 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
 plugins:
-  - tags
+  - tags:
+      tags_file: tags.md
+      tags_template: tags.template
   - search
   - roamlinks 
 extra:
@@ -102,5 +104,6 @@ nav:
     # - 25. C++标准更新: index.md
     # - O1. 位运算: index.md
   - 翻译约定: 翻译约定.md
-  - 关于本站: tag.md
+  - 索引: tags.md
+  - 关于本站: index.md
   

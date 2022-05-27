@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/tags.md.md",
+            "file": "docs/1-1-Statements-and-the-structure-of-a-program.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tags",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/tags.md.md"
+                "file": "docs/1-1-Statements-and-the-structure-of-a-program.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/tags.md.md",
+                "file": "docs/1-1-Statements-and-the-structure-of-a-program.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/tags.md.md",
-    "docs/3-1-Syntax-and-semantic-errors.md",
+    "docs/1-1-Statements-and-the-structure-of-a-program.md",
+    "docs/0-8-A-few-common-C++-problems.md",
+    "docs/tags.md",
     "docs/3-4-Basic-debugging-tactics.md",
-    "docs/3-3-A-strategy-for-debugging.md",
-    "docs/3-2-The-debugging-process.md",
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/1-x-Chapter-1-summary-and-quiz.md",
     "docs/2-13-How-to-design-your-first-programs.md",
     "docs/2-12-Header-guards.md",
-    "docs/2-11-Header-files.md"
+    "docs/2-10-Introduction-to-the-preprocessor.md",
+    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
   ]
 }
