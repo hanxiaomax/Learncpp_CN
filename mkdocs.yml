@@ -6,7 +6,8 @@ theme:
   name: material
   custom_dir: overrides
   palette: 
-    primary: brown
+    primary: orange
+    accent: blue
   features:
     - navigation.instant
     - navigation.top

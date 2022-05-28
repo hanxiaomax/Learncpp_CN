@@ -9,6 +9,25 @@
     max-width: 1960px; 
   }
 
-  h2.tag{
-      color: aqua;
-  }
+
+.md-typeset a{
+    font-weight: bold;
+}
+
+
+.md-typeset h2 {
+    font-size: 1.5625em;
+    line-height: 1.4;
+    /* border-bottom: 1px solid var(--md-primary-fg-color); */
+    font-weight: 400;
+}
+
+.md-typeset h2::before {
+    content: "•";
+}
+
+.md-typeset h1 {
+    color: var(--md-default-fg-color);
+    font-size: 2em;
+    line-height: 1.3;
+    margin: 0 0 1.25em;
