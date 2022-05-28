@@ -4,6 +4,6 @@ alias: 实参
 english: arguments
 type: glossary
 tags:
-- glossary
+- 词汇表
 - arguments
 ---

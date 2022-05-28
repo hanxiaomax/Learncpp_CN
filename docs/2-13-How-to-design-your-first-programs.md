@@ -13,17 +13,17 @@ tags:
 
 
 
-Now that you’ve learned some basics about programs, let’s look more closely at _how_ to design a program.
+在学习过基本的编程知识后，让我们来看看如何设计第一个程序。
 
-When you sit down to write a program, generally you have some kind of idea, which you’d like to write a program for. New programmers often have trouble figuring out how to convert that idea into actual code. But it turns out, you have many of the problem solving skills you need already, acquired from everyday life.
+当你坐下来开始编程的时候，通常你只有一些如何编写该程序的基本的想法，新手程序员通常会对如何将想法转变为代码感到不知所措。实际上，完成这件事所需要的技能与你在生活中学到的解决问题的技能并无差别。
 
-The most important thing to remember (and hardest thing to do) is to design your program _before you start coding_. In many regards, programming is like architecture. What would happen if you tried to build a house without following an architectural plan? Odds are, unless you were very talented, you’d end up with a house that had a lot of problems: walls that weren’t straight, a leaky roof, etc… Similarly, if you try to program before you have a good game-plan moving forward, you’ll likely find that your code has a lot of problems, and you’ll have to spend a lot of time fixing problems that could have been avoided altogether with a little thinking ahead.
+最需要新手程序员们记住的是（也是最难做到的是）在开始**编写**代码前，一定要先**设计**你的程序。编程和盖房子在很多方面都很相像。想象一下，我们会在没有图纸的情况下就开始盖房子吗？很可能不会，除非你是个天才，不然你盖出来的房子一定问题不少：墙是斜的、顶是漏的等等。同样的，如果毫无计划就开始编程，写出来的代码也一定是问题百出，然后你就需要花费大量的时间去修复那些你本来就可以避免的问题。
 
-A little up-front planning will save you both time and frustration in the long run.
+在开始前稍加计划，不仅可以节约时间，还能避免很多让人感到沮丧的时刻。
 
-In this lesson, we’ll lay out a generalized approach for converting ideas into simple functional programs.
+在本节课中，我们会向你介绍一种将想法转变为简单的、可用的程序的基本方法。
 
-## Design step 1: Define your goal
+## 设计步骤1：定目标
 
 In order to write a successful program, you first need to define what your goal is. Ideally, you should be able to state this in a sentence or two. It is often useful to express this as a user-facing outcome. For example:
 
@@ -34,7 +34,7 @@ In order to write a successful program, you first need to define what your goal 
 
 Although this step seems obvious, it’s also highly important. The worst thing you can do is write a program that doesn’t actually do what you (or your boss) wanted!
 
-## Design step 2: Define requirements
+## 设计步骤2：定需求
 
 While defining your problem helps you determine _what_ outcome you want, it’s still vague. The next step is to think about requirements.
 
@@ -52,7 +52,7 @@ For example:
 
 A single problem may yield many requirements, and the solution isn’t “done” until it satisfies all of them.
 
-## Design step 3: Define your tools, targets, and backup plan
+## 设计步骤3：定义工具、目标产物以及备份计划
 
 When you are an experienced programmer, there are many other steps that typically would take place at this point, including:
 
@@ -66,7 +66,7 @@ However, as a new programmer, the answers to these questions are typically simpl
 
 That said, if you are going to work on anything of non-trivial complexity, you should have a plan to backup your code. It’s not enough to just zip or copy the directory to another location on your machine (though this is better than nothing). If your system crashes, you’ll lose everything. A good backup strategy involves getting a copy of the code off of your system altogether. There are lots of easy ways to do this: Zip it up and email it to yourself, copy it to Dropbox or another cloud service, FTP it to another machine, copy it to another machine on your local network, or use a version control system residing on another machine or in the cloud (e.g. github). Version control systems have the added advantage of not only being able to restore your files, but also to roll them back to a previous version.
 
-## Design step 4: Break hard problems down into easy problems
+## 设计步骤4：将复杂问题切分为多个简单问题
 
 In real life, we often need to perform tasks that are very complex. Trying to figure out how to do these tasks can be very challenging. In such cases, we often make use of the **top down** method of problem solving. That is, instead of solving a single complex task, we break that task into multiple subtasks, each of which is individually easier to solve. If those subtasks are still too difficult to solve, they can be broken down further. By continuously splitting complex tasks into simpler ones, you can eventually get to a point where each individual task is manageable, if not trivial.
 
@@ -131,7 +131,7 @@ As it turns out, these task hierarchies are extremely useful in programming, bec
 
 If it turns out that one of the items (functions) is too difficult to implement, simply split that item into multiple sub-items/sub-functions. Eventually you should reach a point where each function in your program is trivial to implement.
 
-## Design step 5: Figure out the sequence of events
+## 设计步骤5：找到一系列事件
 
 Now that your program has a structure, it’s time to determine how to link all the tasks together. The first step is to determine the sequence of events that will be performed. For example, when you get up in the morning, what order do you do the above tasks? It might look like this:
 
@@ -150,7 +150,7 @@ If we were writing a calculator, we might do things in this order:
 
 At this point, we’re ready for implementation.
 
-## Implementation step 1: Outlining your main function
+## 实现步骤1：编写main函数框架
 
 Now we’re ready to start implementation. The above sequences can be used to outline your main program. Don’t worry about inputs and outputs for the time being.
 
@@ -196,7 +196,8 @@ COPY
 
 Note that if you’re going to use this “outline” method for constructing your programs, your functions won’t compile because the definitions don’t exist yet. Commenting out the function calls until you’re ready to implement the function definitions is one way to address this (and the way we’ll show here). Alternatively, you can _stub out_ your functions (create placeholder functions with empty bodies) so your program will compile.
 
-## Implementation step 2: Implement each function
+## 实现步骤2：实现每个函数
+
 
 In this step, for each function, you’ll do three things:
 
@@ -253,7 +254,7 @@ Once we’re convinced the program is working as intended up to this point, we c
 
 Remember: Don’t implement your entire program in one go. Work on it in steps, testing each step along the way before proceeding.
 
-## Implementation step 3: Final testing
+	## 实现步骤3：最终测试
 
 Once your program is “finished”, the last step is to test the whole program and ensure it works as intended. If it doesn’t work, fix it.
 

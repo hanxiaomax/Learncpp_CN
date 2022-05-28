@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/linker.md",
+            "file": "docs/2-13-How-to-design-your-first-programs.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tags",
+                "query": "glossary",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/linker.md"
+                "file": "docs/2-13-How-to-design-your-first-programs.md"
               }
             }
           },
@@ -107,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/linker.md",
+                "file": "docs/2-13-How-to-design-your-first-programs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,6 +129,8 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/2-13-How-to-design-your-first-programs.md",
+    "docs/实参(arguments).md",
     "docs/linker.md",
     "docs/1-7-Keywords-and-naming-identifiers.md",
     "docs/1-8-Whitespace-and-basic-formatting.md",
@@ -135,8 +138,6 @@
     "docs/1-10-Introduction-to-expressions.md",
     "docs/1-11-Developing-your-first-program.md",
     "docs/1-x-Chapter-1-summary-and-quiz.md",
-    "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/2-1-Introduction-to-functions.md",
-    "docs/0-8-A-few-common-C++-problems.md"
+    "docs/2-x-Chapter-2-summary-and-quiz.md"
   ]
 }
