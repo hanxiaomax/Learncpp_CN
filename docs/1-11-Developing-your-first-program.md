@@ -1,10 +1,11 @@
-
-
-> [!INFO] 原文信息：
-> - 链接： [1.11 — Developing your first program](https://www.learncpp.com/cpp-tutorial/developing-your-first-program/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-> - 2022-3-7
-
+---
+title: 1.11 - 开发你的第一个程序
+alias: 1.11 - 开发你的第一个程序
+origin: /developing-your-first-program/
+origin_title: "1.11 — Developing your first program"
+time: 2022-1-2
+type: translation
+---
 
 前面的课程已经介绍了不少术语和概念，这些术语和概念几乎会在我们编写的任何程序中出现。在本节课中，我们会运用所学的内容，动手编写一个简单的程序。
 

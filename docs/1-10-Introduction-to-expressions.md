@@ -1,9 +1,13 @@
-
-> [!INFO] 原文信息：
-> - 链接：[1.10 — Introduction to expressions](https://www.learncpp.com/cpp-tutorial/introduction-to-expressions/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2022-2-17
-
+---
+title: 1.10 - 表达式简介
+alias: 1.10 - 表达式简介
+origin: /introduction-to-expressions/
+origin_title: "1.10 — Introduction to expressions"
+time: 2022-1-2
+type: translation
+tags:
+- expression
+---
 
 ## 表达式
 

@@ -1,9 +1,16 @@
+---
+title: 2.2 - 函数返回值
+alias: 
+origin: /function-return-values-value-returning-functions/
+origin_title: "2.2 — Function return values (value-returning functions"
+time: 2022-4-22
+type: translation
+tags:
+- return
+- undefined behavior 
+- function
+---
 
-
-> [!INFO] 原文信息：
-> - 链接： [2.2 — Function return values (value-returning functions)](https://www.learncpp.com/cpp-tutorial/function-return-values-value-returning-functions/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-> - 2022-4-22
 
 
 请考虑下面这个程序：

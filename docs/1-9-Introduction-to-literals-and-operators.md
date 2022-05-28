@@ -1,9 +1,14 @@
-
-
-> [!INFO] 原文信息：
-> - 链接：[1.9 — Introduction to literals and operators](https://www.learncpp.com/cpp-tutorial/introduction-to-literals-and-operators/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2021-10-28
+---
+title: 1.9 - 字面量和操作符
+alias: 1.9 - 字面量和操作符
+origin: /introduction-to-literals-and-operators/
+origin_title: "1.9 — Introduction to literals and operators"
+time: 2022-1-2
+type: translation
+tags:
+- literals
+- operator
+---
 
 
 ## 字面量
@@ -19,7 +24,7 @@ int x{ 5 };
 
 字面量和变量都具有一个值（及其类型）。但是，字面量的值是固定的，而且不能被修改（所以成为常量），而变量的值是可以改变的，不论是通过初始化还是通过赋值。
 
-## 运算符
+## 操作符
 
 数学中的运算指的是一个计算操作，它涉及到0个或多个输入值（称为[[操作数(operands)]]），并能够产生一个新的值（称为输出值）。这个特定的计算操作，通过某种结构（通常是一个或一对符号）来指定，这种结构称之为[[运算符(operator)]]。
 

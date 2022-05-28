@@ -1,4 +1,5 @@
 ---
+title:
 alias: 
 english:{{title}}
 type: glossary

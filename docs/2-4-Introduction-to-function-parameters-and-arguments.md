@@ -1,10 +1,14 @@
-
-
-> [!INFO] 原文信息：
-> - 链接： [2.4 — Introduction to function parameters and arguments](https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-> - 2022-4-15
-
+---
+title: 2.4 - 函数形参和实参
+alias: 2.4 - 函数形参和实参
+origin: /introduction-to-function-parameters-and-arguments/
+origin_title: "2.4 — Introduction to function parameters and arguments"
+time: 2022-4-15
+type: translation
+tags:
+- parameter
+- argument
+---
 
 在之前的课程中，我们了解到函数可以将值返回给主调函数，基于此，我们创建了 `getValueFromUser` 函数并用于下面这段程序：
 
@@ -76,7 +80,7 @@ void printDouble()
 
 ## 函数形参和实参
 
-很多时候，我们希望能够在调用函数时将信息一并传入，这样该函数就可以基于此数据进行接下来的工作。例如，如果你希望编写一个计算两数和的函数，那么你必须有办法告诉在调用函数时，告诉函数需要相加的两个数。 否则，函数如何才能知道要将什么相加呢？通过函数的[[parameters]]和[[实参(arguments)]]可以完成上述工作。
+很多时候，我们希望能够在调用函数时将信息一并传入，这样该函数就可以基于此数据进行接下来的工作。例如，如果你希望编写一个计算两数和的函数，那么你必须有办法告诉在调用函数时，告诉函数需要相加的两个数。 否则，函数如何才能知道要将什么相加呢？通过函数的[[docs/parameters|形参]]和[[实参(arguments)|实参]]可以完成上述工作。
 
 函数的**形参**是能够在函数内部使用的变量。形参和函数内部定义的变量几乎是完全一样的，除了：形参总是由主调函数初始化并提供给被调函数。
 

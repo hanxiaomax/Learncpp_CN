@@ -1,10 +1,13 @@
-
-
-> [!INFO] 原文信息：
-> - 链接：[1.7 — Keywords and naming identifiers](https://www.learncpp.com/cpp-tutorial/keywords-and-naming-identifiers/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2022-2-15
-
+---
+title: 1.7 - 关键字和标识符
+alias: 1.7 - 关键字和标识符
+origin: keywords-and-naming-identifiers/
+origin_title: "1.7 — Keywords and naming identifiers"
+time: 2022-2-15
+type: translation
+tags:
+- identifier
+---
 
 
 ## 关键字

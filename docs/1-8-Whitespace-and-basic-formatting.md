@@ -1,10 +1,13 @@
-
-
-> [!INFO] 原文信息：
-> - 链接：[1.8 — Whitespace and basic formatting](https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/)
-> - 作者：[_ALEX_](https://www.learncpp.com/author/Alex/ "View all posts by Alex")  
-> - 2021-10-28
-
+---
+title: 1.8 - 空白符和基本排版
+alias: 1.8 - 空白符和基本排版
+origin: /whitespace-and-basic-formatting/
+origin_title: "1.8 — Whitespace and basic formatting"
+time: 2022-1-2
+type: translation
+tags:
+- formatting
+---
 
 
 [[空白(Whitespace)]]这个术语，指的是那些出于排版目的而使用的空白字符。在 C++ 中，空白指的是空格符、制表符和换行符。C++ 编译器通常会忽略空白（处理文本字面量时是一个特例）。因此我们可以说 C++ 是一个空格无关（whitespace-independent）的语言。

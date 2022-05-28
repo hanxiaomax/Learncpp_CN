@@ -1,6 +1,66 @@
 {
   "recentFiles": [
     {
+      "basename": "linker",
+      "path": "docs/linker.md"
+    },
+    {
+      "basename": "1-7-Keywords-and-naming-identifiers",
+      "path": "docs/1-7-Keywords-and-naming-identifiers.md"
+    },
+    {
+      "basename": "1-8-Whitespace-and-basic-formatting",
+      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
+    },
+    {
+      "basename": "1-9-Introduction-to-literals-and-operators",
+      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
+    },
+    {
+      "basename": "1-10-Introduction-to-expressions",
+      "path": "docs/1-10-Introduction-to-expressions.md"
+    },
+    {
+      "basename": "1-11-Developing-your-first-program",
+      "path": "docs/1-11-Developing-your-first-program.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/2-1-Introduction-to-functions.md"
+    },
+    {
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "docs/0-8-A-few-common-C++-problems.md"
+    },
+    {
+      "basename": "2-13-How-to-design-your-first-programs",
+      "path": "docs/2-13-How-to-design-your-first-programs.md"
+    },
+    {
+      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
+      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "2-3-Void-functions-non-value returning functions",
+      "path": "docs/2-3-Void-functions-non-value returning functions.md"
+    },
+    {
+      "basename": "2-4-Introduction-to-function-parameters-and-arguments",
+      "path": "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
+    },
+    {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
       "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
     },
@@ -25,16 +85,48 @@
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
-      "basename": "2-3-Void-functions-non-value returning functions",
-      "path": "docs/2-3-Void-functions-non-value returning functions.md"
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
     },
     {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
     },
     {
-      "basename": "2-1-Introduction-to-functions",
-      "path": "docs/2-1-Introduction-to-functions.md"
+      "basename": "2-10-Introduction-to-the-preprocessor",
+      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
+    },
+    {
+      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
+      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    },
+    {
+      "basename": "2-8-Programs-with-multiple-code-files",
+      "path": "docs/2-8-Programs-with-multiple-code-files.md"
+    },
+    {
+      "basename": "2-7-Forward-declarations-and-definitions",
+      "path": "docs/2-7-Forward-declarations-and-definitions.md"
+    },
+    {
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
+    },
+    {
+      "basename": "实参(arguments)",
+      "path": "docs/实参(arguments).md"
+    },
+    {
+      "basename": "add-glossary",
+      "path": "Templates/add-glossary.md"
+    },
+    {
+      "basename": "parameters",
+      "path": "docs/parameters.md"
+    },
+    {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
     },
     {
       "basename": "macro",
@@ -57,56 +149,12 @@
       "path": "docs/翻译约定.md"
     },
     {
-      "basename": "0-8-A-few-common-C++-problems",
-      "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
-      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
-    },
-    {
-      "basename": "2-4-Introduction-to-function-parameters-and-arguments",
-      "path": "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
-    },
-    {
-      "basename": "1-11-Developing-your-first-program",
-      "path": "docs/1-11-Developing-your-first-program.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "1-8-Whitespace-and-basic-formatting",
-      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
-    },
-    {
-      "basename": "1-9-Introduction-to-literals-and-operators",
-      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
-    },
-    {
-      "basename": "1-10-Introduction-to-expressions",
-      "path": "docs/1-10-Introduction-to-expressions.md"
-    },
-    {
-      "basename": "1-7-Keywords-and-naming-identifiers",
-      "path": "docs/1-7-Keywords-and-naming-identifiers.md"
-    },
-    {
       "basename": "qa",
       "path": "Templates/qa.md"
     },
     {
       "basename": "key-takeaway",
       "path": "Templates/key-takeaway.md"
-    },
-    {
-      "basename": "add-glossary",
-      "path": "Templates/add-glossary.md"
     }
   ],
   "omittedPaths": [],

@@ -1,6 +1,6 @@
 ---
-title: 形参(parameters)
-alias: 形参(parameters)
+title: 形参
+alias: 形参
 type: glossary
 tags:
 - glossary
