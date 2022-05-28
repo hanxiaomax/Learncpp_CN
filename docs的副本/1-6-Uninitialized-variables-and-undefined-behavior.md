@@ -1,14 +1,3 @@
----
-title: 1.6 - 未初始化变量和未定义行为
-alias: 
-origin: /none/
-origin_title: "1.6 — Uninitialized variables and undefined behavior"
-time: 2022-1-2
-type: translation
-tags:
-- 
----
-
 
 ## 未初始化的变量
 
