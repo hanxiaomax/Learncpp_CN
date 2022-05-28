@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/3-10-Finding-issues-before-they-become-problems.md",
+            "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "对象类型的宏",
+                "query": "x3c",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/3-10-Finding-issues-before-they-become-problems.md"
+                "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/3-10-Finding-issues-before-they-become-problems.md",
+                "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,14 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/3-10-Finding-issues-before-they-become-problems.md",
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
+    "docs/4-x-Chapter-4-summary-and-quiz.md",
+    "docs/1-x-Chapter-1-summary-and-quiz.md",
+    "docs/4-2-Void.md",
     "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
-    "docs/4.2-Void.md",
+    "docs/3-10-Finding-issues-before-they-become-problems.md",
     "docs/4-1-Introduction-to-fundamental-data-types.md",
     "Pasted image 20220528232559.png",
-    "Pasted image 20220528232616.png",
-    "docs/translation.md",
-    "docs/symbolic-constants.md",
-    "docs/tags.md",
-    "docs/stub.md"
+    "Pasted image 20220528232616.png"
   ]
 }

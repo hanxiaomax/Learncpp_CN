@@ -1,6 +1,6 @@
 ---
-title: 4.2 — Void
-alias: 4.2 — Void
+title: 4.2 - Void
+alias: 4.2 - Void
 origin: /void/
 origin_title: "4.2 — Void"
 time: 2021-5-24

@@ -1,4 +1,4 @@
-site_name: LearnCpp 中文翻译站点
+site_name: LearnC++ 中文翻译站点
 repo_url: https://github.com/hanxiaomax/Learncpp_CN
 repo_name: hanxiaomax/Learncpp_CN
 edit_uri: ""
@@ -32,13 +32,10 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.critic
   - pymdownx.caret
-  - pymdownx.keys
   - pymdownx.mark
-  - pymdownx.tilde
 plugins:
   - tags:
       tags_file: tags.md
-      tags_template: tags.template
   - search
   - roamlinks 
 extra:
@@ -91,8 +88,10 @@ nav:
       - "3-x-Chapter-3-summary-and-quiz.md"
     - 4. 基础数据类型: 
       - "4-1-Introduction-to-fundamental-data-types.md"
-      - "4-15-Symbolic-constants-const-and-constexpr-variables.md"
+      - "4-2-Void.md"
       - "4-3-Object-sizes-and-the-sizeof-operator.md"
+      - "4-15-Symbolic-constants-const-and-constexpr-variables.md"
+      - "4-x-Chapter-4-summary-and-quiz.md"
     # - 5. 运算符: index.md
     # - 6. 作用域，生命周期和链接: index.md
     # - 7. 控制流和错误处理: index.md
