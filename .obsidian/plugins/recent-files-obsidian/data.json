@@ -5,6 +5,14 @@
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
     },
     {
+      "basename": "instantiated",
+      "path": "docs/instantiated.md"
+    },
+    {
+      "basename": "pass-by-value",
+      "path": "docs/pass-by-value.md"
+    },
+    {
       "basename": "2-2-Function-return-values-value-returning functions",
       "path": "docs/2-2-Function-return-values-value-returning functions.md"
     },

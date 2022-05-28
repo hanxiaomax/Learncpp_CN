@@ -9,6 +9,8 @@ tags:
 - summary
 ---
 
+??? note "关键点速记"
+	- C++ 并没有定义函数调用时，对实参的求值是从左向右还是从右向左。
 
 ## 章节回顾
 
@@ -24,30 +26,31 @@ tags:
 
 `main` 函数的返回值称为程序的状态码。程序通过返回的状态码向操作系统表明程序是否成功执行。返回值为 0 时表示成功，返回正数则表示执行失败。
 
-践行 DRY 编程——jiprogramming -- “don’t repeat yourself”. Make use of variables and functions to remove redundant code.
+践行 **DRY** 编程——”即不要重复你做过的事“。使用变量和函数来避免冗余代码。
 
-Functions with a return type of voiddo not return a value to the caller. A function that does not return a value is called a void function or non-value returning function. Void functions can’t be called where a value is required.
+返回值类型为 `void` 的函数，不需要返回任何值给主调函数。这种类型的函数称为[[2-3-Void-functions-non-value returning functions|void 函数]]或无返回值的函数。Void 函数不能被使用在需要返回值的场合。
 
-A return statement that is not the last statement in a function is called a early return. Such a statement causes the function to return to the caller immediately.
+`return` 语句如果不是函数的最后一条语句，则称为**提前返回**。`return` 语句会导致函数提前终止并立即返回主调函数。
 
-A function parameter is a variable used in a function where the value is provided by the caller of the function. An argument is the specific value passed from the caller to the function. When an argument is copied into the parameter, this is called pass by value.
+函数的[[parameters|形参]]也是变量，可以在函数中使用，它的值由主调函数提供。函数的[[arguments|实参]]指的是就是由主调函数传递给函数的具体值。当实参通过拷贝的方式传递给形参时，称为[[pass-by-value|按值传递(pass by value)]]。
 
-C++ does not define whether function calls evaluate arguments left to right or vice-versa.
+C++ 并没有定义函数调用时，对实参的求值是从左向右还是从右向左。
 
-Function parameters and variables defined inside the function body are called local variables. The time in which a variable exists is called its lifetime. Variables are created and destroyed at runtime, which is when the program is running. A variable’s scope determines where it can be accessed. When a variable can be accessed, we say it is in scope. When it can not be accessed, we say it is out of scope. Scope is a compile-time property, meaning it is enforced at compile time.
+函数的形参和定义在函数体内的变量称为局部变量。变量存在的时间范围称为其声明周期。变量在[[运行时(runtime)]]（即程序运行的时候）被创建和销毁。变量的[[scope|作用域(scope)]]决定了它在哪里可以被访问，当变量可以被访问时，我们称其在作用域内。当它不可以被访问时，我们称其为不在作用域。作用域是一个[[编译时(compile-time)]]属性，即在编译时就会对其进行检查。
 
-Whitespace refers to characters used for formatting purposes. In C++, this includes spaces, tabs, and newlines.
+空白符指的是哪些用来排版的字符，在C++中，包括空格、制表符和换行。
 
-A forward declaration allows us to tell the compiler about the existence of an identifier before actually defining the identifier. To write a forward declaration for a function, we use a function prototype, which includes the function’s return type, name, and parameters, but no function body.
 
-A definition actually implements (for functions and types) or instantiates (for variables) an identifier. A declaration is a statement that tells the compiler about the existence of the identifier. In C++, all definitions serve as declarations. Pure declarations are declarations that are not also definitions (such as function prototypes).
+[[forward-declaration|前向声明]]使我们可以在定义标识符之前，告知编译器该标识符存在。编写函数的前向声明，需要使用函数原型，包括函数的返回值类型、函数名和形参，但不需要函数体。
 
-Most non-trivial programs contain multiple files.
+定义实际上实现（对于函数和类型而言）或[[instantiated|实例化(instantiated)]]了一个标识符。声明则是一条语句，用于告知编译器标识符是存在的。在 C++ 中，**所有的定义都是声明**。**纯声明**指的是不具有定义功能的声明（例如函数原型）。
 
-When two identifiers are introduced into the same program in a way that the compiler or linker can’t tell them apart, the compiler or linker will produce a naming collision. A namespace guarantees that all identifiers within the namespace are unique. The std namespace is one such namespace.
+大多数具有一定规模的程序都包含多个文件。
 
-The preprocessor is a process that runs on the code before it is compiled. Directives are special instructions to the preprocessor. Directives start with a # symbol and end with a newline. A macro is a rule that defines how input text is converted to a replacement output text.
+如果两个标识符被引入了同一个程序使得编译器或链接器无法对其进行区分，则会导致编译器或链接器报告[[2-9-Naming-collisions-and-an-introduction-to-namespaces|命名冲突]]。命名空间确保所有命名空间中的标识符都是独一无二的。`std`就属于命名空间的一种
 
-Header files are files designed to propagate declarations to code files. When using the _#include_ directive, the _#include_ directive is replaced by the contents of the included file. When including headers, use angled brackets when including system headers (e.g. those in the C++ standard library), and use double quotes when including user-defined headers (the ones you write). When including system headers, include the versions with no .h extension if they exist.
+预处理器是一种用于在代码编译前对文件进行预处理的程序。[[preprocessor-directive|预处理器指令]]以`#`开头，以换行结尾。[[macro|宏]]指的是一条将输入文本如何替换为输出文本的规则。
+
+[[2-11-Header-files|头文件]]指的是包含代码声明的文件。当使用 `#include` 指令时，它会把头文件的内容替换到该指令的位置。在包含头文件的时候，使用尖括号来处理系统头文件（C++标准库） directive, the _#include_ directive is replaced by the contents of the included file. When including headers, use angled brackets when including system headers (e.g. those in the C++ standard library), and use double quotes when including user-defined headers (the ones you write). When including system headers, include the versions with no .h extension if they exist.
 
 Header guards prevent the contents of a header from being included more than once into a given code file. They do not prevent the contents of a header from being included into multiple different code files.
