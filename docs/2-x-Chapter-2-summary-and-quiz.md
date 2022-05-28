@@ -12,17 +12,19 @@ tags:
 
 ## 章节回顾
 
-A function is a reusable sequence of statements designed to do a particular job. Functions you write yourself are called user-defined functions.
+**函数** 是一系列可以复用的语句，用来完成某个特定的任务。用户自己编写的函数称为自定义函数。
 
-A function call is an expression that tells the CPU to execute a function. The function initiating the function call is the caller, and the function being called is the callee or called function. Do not forget to include parenthesis when making a function call.
+**函数调用**是一种表达式，用于告诉CPU去执行一个函数。执行函数调用的函数，称为**主调函数**，被调用的函数称为**被调函数**。在调用函数的时候，不要忘记函数名后面的括号。
 
-The curly braces and statements in a function definition are called the function body.
+函数定义时使用的花括号和和语句称为**函数体**。
 
-A function that returns a value is called a value-returning function. The return type of a function indicates the type of value that the function will return. The return statement determines the specific return value that is returned to the caller. A return value is copied from the function back to the caller -- this process is called return by value. Failure to return a value from a non-void function will result in undefined behavior.
+具有返回值的函数称为**带返回值的函数**。返回值的类型指明了返回值的具体类型。`return`语句指定了要返回给主调函数的具体值。
 
-The return value from function _main_ is called a status code, and it tells the operating system (and any other programs that called yours) whether your program executed successfully or not. By consensus a return value of 0 means success, and a positive return value means failure.
+返回值是通过**拷贝**的方式返回给主调函数的，这个过程称为[[return-by-value|值返回]]。如果以非空函数没有能够返回一个值，会导致[[1-6-Uninitialized-variables-and-undefined-behavior|未定义行为]]。
 
-Practice DRY programming -- “don’t repeat yourself”. Make use of variables and functions to remove redundant code.
+`main` 函数的返回值称为程序的状态码。程序通过返回的状态码向操作系统表明程序是否成功执行。返回值为 0 时表示成功，返回正数则表示执行失败。
+
+践行 DRY 编程——jiprogramming -- “don’t repeat yourself”. Make use of variables and functions to remove redundant code.
 
 Functions with a return type of voiddo not return a value to the caller. A function that does not return a value is called a void function or non-value returning function. Void functions can’t be called where a value is required.
 

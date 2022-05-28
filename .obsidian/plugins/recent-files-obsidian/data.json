@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "return-by-value",
+      "path": "docs/return-by-value.md"
+    },
+    {
       "basename": "2-13-How-to-design-your-first-programs",
       "path": "docs/2-13-How-to-design-your-first-programs.md"
     },
@@ -85,20 +97,12 @@
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     },
     {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
       "basename": "2-1-Introduction-to-functions",
       "path": "docs/2-1-Introduction-to-functions.md"
     },
     {
       "basename": "0-8-A-few-common-C++-problems",
       "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
     },
     {
       "basename": "2-3-Void-functions-non-value returning functions",
