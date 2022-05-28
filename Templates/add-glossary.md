@@ -1,7 +1,7 @@
 ---
 title:
 alias: 
-english:{{title}}
+english: {{title}}
 type: glossary
 tags:
 - glossary

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-5-Introduction-to-local-scope.md",
+            "file": "docs/2-13-How-to-design-your-first-programs.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "glossary",
+                "query": "statement",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-5-Introduction-to-local-scope.md"
+                "file": "docs/2-13-How-to-design-your-first-programs.md"
               }
             }
           },
@@ -107,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-5-Introduction-to-local-scope.md",
+                "file": "docs/2-13-How-to-design-your-first-programs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +129,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/2-5-Introduction-to-local-scope.md",
-    "docs/global-variable.md",
-    "docs/local-variable.md",
     "docs/2-13-How-to-design-your-first-programs.md",
-    "docs/stub.md",
-    "docs/实参(arguments).md",
-    "docs/linker.md",
-    "docs/1-7-Keywords-and-naming-identifiers.md",
-    "docs/1-8-Whitespace-and-basic-formatting.md",
-    "docs/1-9-Introduction-to-literals-and-operators.md"
+    "docs/1-1-Statements-and-the-structure-of-a-program.md",
+    "docs/statement.md",
+    "docs/instuction.md",
+    "Templates/add-glossary.md",
+    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+    "docs/2-8-Programs-with-multiple-code-files.md",
+    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
+    "docs/2-5-Introduction-to-local-scope.md",
+    "docs/arguments.md"
   ]
 }

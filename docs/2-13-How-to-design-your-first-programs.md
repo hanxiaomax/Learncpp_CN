@@ -21,8 +21,6 @@ tags:
 		- 实现程序框架
 		- 实现具体函数
 
-
-
 在学习过基本的编程知识后，让我们来看看如何设计第一个程序。
 
 当你坐下来开始编程的时候，通常你只有一些如何编写该程序的基本的想法，新手程序员通常会对如何将想法转变为代码感到不知所措。实际上，完成这件事所需要的技能与你在生活中学到的解决问题的技能并无差别。
@@ -205,16 +203,15 @@ int main()
 
 ## 实现步骤2：实现每个函数
 
+在这一步，对于每个函数都需要做三件事：
 
-In this step, for each function, you’ll do three things:
+1.  定义函数的原型（输入输出）；
+2.  编写函数；
+3.  测试函数。
 
-1.  Define the function prototype (inputs and outputs)
-2.  Write the function
-3.  Test the function
+如果你的函数粒度足够细，那么每个函数都应该是非常简单和直接的。如果一个函数实现起来非常复杂，那么很可能它还需要被进一步分割为多个更容易实现的子函数（*也可能是你的任务顺序有问题，你应该重新审视一下各个步骤的顺序*）。
 
-If your functions are granular enough, each function should be fairly simple and straightforward. If a given function still seems overly-complex to implement, perhaps it needs to be broken down into subfunctions that can be more easily implemented (or it’s possible you did something in the wrong order, and need to revisit your sequencing of events).
-
-Let’s do the first function from the calculator example:
+接下来，实现计算器程序中的第一个函数：
 
 ```cpp
 #include <iostream>
@@ -231,10 +228,10 @@ int getUserInput()
 
 int main()
 {
-    // Get first number from user
-    int value{ getUserInput() }; // Note we've included code here to test the return value!
-    std::cout << value; // debug code to ensure getUserInput() is working, we'll remove this later
-
+    // 从用户获取第一个输入
+    int value{ getUserInput() }; // 注意，这里的代码本身就具备测试函数输出的功能
+    std::cout << value; // 用于确保 getUserInput() 能够正常工作的调试代码，稍后需要移除
+    
     // Get mathematical operation from user
 //    getMathematicalOperation();
 
@@ -251,11 +248,9 @@ int main()
 }
 ```
 
-COPY
+首先，确定函数 `getUserInput` 不需要接受任何[[arguments|实参]]。同时，该函数会返回一个整型值给主调函数。反映到函数原型上，即函数返回值类型为`int`，同时没有[[parameters|形参]]。接下来，编写函数体。函数体非常直接，只包含四条语句[[statement|语句]]。最后，在`main`函数中编写一些用于测试函数 `getUserInput` 功能（包括其返回值) 的临时代码，确定函数是否能够正常工作。
 
-First, we’ve determined that the _getUserInput_ function takes no arguments, and will return an int value back to the caller. That gets reflected in the function prototype having a return value of int and no parameters. Next, we’ve written the body of the function, which is a straightforward 4 statements. Finally, we’ve implemented some temporary code in function _main_ to test that function _getUserInput_ (including its return value) is working correctly.
-
-We can run this program many times with different input values and make sure that the program is behaving as we expect at this point. If we find something that doesn’t work, we know the problem is in the code we’ve just written.
+多次运行程序并使用不同的输入值，确保程序的结果都符合预期。如果发现程序不能正确工作，则 can run this program many times with different input values and make sure that the program is behaving as we expect at this point. If we find something that doesn’t work, we know the problem is in the code we’ve just written.
 
 Once we’re convinced the program is working as intended up to this point, we can remove the temporary testing code, and proceed to implementation of the next function (function _getMathematicalOperation_). We won’t finish the program in this lesson, as we need to cover some additional topics first.
 
