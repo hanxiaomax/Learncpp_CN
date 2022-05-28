@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "refactoring",
+      "path": "docs/refactoring.md"
+    },
+    {
+      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
+      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
+    },
+    {
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
+    },
+    {
       "basename": "2-x-Chapter-2-summary-and-quiz",
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "runtime",
+      "path": "docs/runtime.md"
     },
     {
       "basename": "instantiated",
@@ -47,14 +63,6 @@
     {
       "basename": "2-8-Programs-with-multiple-code-files",
       "path": "docs/2-8-Programs-with-multiple-code-files.md"
-    },
-    {
-      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
-      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
     },
     {
       "basename": "arguments",

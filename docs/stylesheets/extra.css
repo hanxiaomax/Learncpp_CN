@@ -23,7 +23,7 @@
 }
 
 .md-typeset h2::before {
-    content:"🔰 " ;
+    content:"🔰 " ;    
 }
 
 .md-typeset h1 {

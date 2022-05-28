@@ -1,6 +1,6 @@
 ---
-title: 2.5 — 局部作用域
-alias: 2.5 — 局部作用域
+title: 2.5 - 局部作用域
+alias: 2.5 - 局部作用域
 origin: /introduction-to-local-scope/
 origin_title: "2.5 — Introduction to local scope"
 time: 2022-5-21
@@ -9,6 +9,14 @@ tags:
 - scope
 ---
 
+??? note "关键点速记"
+
+    - 函数形参也是局部变量
+    - 变量的创建和销毁都是在运行时发生的，因此，生命周期是一个运行时属性。而作用域是一个编译时属性
+    - 对象的创建和初始化不晚于其定义，而销毁则不能早于花括号的结尾，这点必须保证
+    - 出于优化的目的，对象可以被早一点创建或晚一点销毁。多数时候，局部变量会在函数进入时创建，并以相反的顺序在函数退出时销毁。
+    - 超出作用域和离开作用域描述的对象不同，前者描述标识符，后者描述对象
+    - 尽量在局部变量第一次被使用前最近的地方定义该局部变量
 
 ## 局部变量
 
@@ -27,7 +35,7 @@ int add(int x, int y) // function parameters x and y are local variables
 
 ## 局部变量生命周期
 
-在[[1-3-Introduction-to-objects-and-variables]]中我们讨论了以形如 `int x;` 的方式定义变量是如何在语句执行时[[实例化(instantiated)]] 变量的。函数的[[parameters|形参]]是在进入函数时被创建和初始化的，函数体内的函数则是在定义时创建并初始化的。
+在[[1-3-Introduction-to-objects-and-variables]]中我们讨论了以形如 `int x;` 的方式定义变量是如何在语句执行时[[instantiated|实例化]] 变量的。函数的[[parameters|形参]]是在进入函数时被创建和初始化的，函数体内的函数则是在定义时创建并初始化的。
 
 例如：
 
@@ -51,13 +59,13 @@ int add(int x, int y)
 } // z, y, and x destroyed here
 ```
 
-正如人的生命周期被定义为其出生到死亡的这段时间一样，变量的生命周期(lifetime)指的是该变量被创建到被销毁的这段时间。注意，变量的创建和销毁都是在程序运行的时候发生的（称为[[运行时(runtime)]]），而不是在[[编译时(compile-time)]]发生的。因此，生命是一个运行时属性。
+正如人的生命周期被定义为其出生到死亡的这段时间一样，变量的生命周期(lifetime)指的是该变量被创建到被销毁的这段时间。注意，变量的创建和销毁都是在程序运行的时候发生的（称为[[runtime|运行时]]），而不是在[[编译时(compile-time)]]发生的。因此，生命周期是一个运行时属性。
 
 !!! info "扩展阅读"
 
-	The above rules around creation, initialization, and destruction are guarantees. That is, objects must be created and initialized no later than the point of definition, and destroyed no earlier than the end of the set of the curly braces in which they are defined (or, for function parameters, at the end of the function).
+    上面关于创建、初始化和销毁的规则是必须要满足的。也就是说，对象的创建和初始化不晚于其定义，而销毁则不能早于花括号的结尾（对于函数形参来说则是函数结尾）。
 
-	In actuality, the C++ specification gives compilers a lot of flexibility to determine when local variables are created and destroyed. Objects may be created earlier, or destroyed later for optimization purposes. Most often, local variables are created when the function is entered, and destroyed in the opposite order of creation when the function is exited. We’ll discuss this in more detail in a future lesson, when we talk about the call stack.
+    实际上，C++ 的规范给与编译器了一些灵活性，使编译器可以决定何时创建或销毁局部变量。出于优化的目的，对象可以被早一点创建或晚一点销毁。多数时候，局部变量会在函数进入时创建，并以相反的顺序在函数退出时销毁。我们会在将来的有关函数调用栈课程中对其进行详细介绍。
 
 下面这段程序展示了有关变量 `x` 生命周期更复杂的情况：
 
@@ -83,7 +91,7 @@ int main()
 
 ## 局部作用域
 
-一个[[identifier|标识符(identifier)]]的[[scope|作用域(scope)]]表明了该表示符在源码中能够被访问的位置。如果一个标识符可以被访问，则称其在作用域中。当一个标识符不能被访问时，则称其超出了作用域（Out of scope）。作用域是一个[[compile-time|编译时(compile-time)]]属性，如果在标识符的作用域之外访问它，会导致编译错误。
+一个[[identifier|标识符]]的[[scope|作用域(scope)]]表明了该表示符在源码中能够被访问的位置。如果一个标识符可以被访问，则称其在作用域中。当一个标识符不能被访问时，则称其超出了作用域（Out of scope）。作用域是一个[[compile-time|编译时(compile-time)]]属性，如果在标识符的作用域之外访问它，会导致编译错误。
 
 局部变量的作用域从该变量的定义开始，在包含了该变量定义的一组花括号的结尾终止（对于函数[[parameters|形参]]则在函数结尾终止）。这确保了变量在定义前不能被使用（即使编译器选择在此之前创建变量）。在一个函数中定义的局部变量，其作用域不能延伸到其他函数中。
 
@@ -155,7 +163,7 @@ int main()
 - 程序从 `main` 函数的顶部开始执行；
 - `main` 函数的局部变量 `a` 被创建并初始化为 5；
 - `main` 函数的局部变量 `b` 被创建并初始化为 6；
-- `add` 函数被调用，函数的[[arguments|实参]]为 5 和 6；
+- `add` 函数被调用，函数的实参为 5 和 6；
 - `add` 的变量 `x` 被创建并初始化为 5；
 - `add` 的变量 `y` 被创建并初始化为 6；
 - 表达式 `x + y` 求值得到结果 11；
@@ -202,15 +210,15 @@ int main()
 
 其次，在 `main` 函数中， 变量名 `x` 和 `y` 指的是 `main` 函数局部作用中的变量 `x` 和 `y`。这些变量只能够在 `main` 函数中被看到（被使用）。同样的，在 `add` 函数中，, 变量名 `x` 和 `y` 指的是 `add` 函数的形参 `x` 和 `y`，它们也只能够在 `add` 中被看到和使用。
 
-长话短说，其实 `add` 和 `main` 这两个函数都不知道对方使用了与自己相同的变量名。因为，这些变量的作用域并没有重叠的部分，因此对于编译器来说，`x` 和  `y` 在任何时候被引用，其指代的对象都是清楚的。  
+长话短说，其实 `add` 和 `main` 这两个函数都不知道对方使用了与自己相同的变量名。因为，这些变量的作用域并没有重叠的部分，因此对于编译器来说，`x` 和  `y` 在任何时候被引用，其指代的对象都是清楚的。
 
 !!! tldr "关键信息"
 
-	函数形参或者是局部变量在声明的时候所使用的名字，只在函数体内部可见。也就是说，函数在定义局部变量的时候，可以不考虑其他函数是否使用了某些变量名。这一特性，可以帮助函数保持独立性。
+    函数形参或者是局部变量在声明的时候所使用的名字，只在函数体内部可见。也就是说，函数在定义局部变量的时候，可以不考虑其他函数是否使用了某些变量名。这一特性，可以帮助函数保持独立性。
 
 在后续的章节中，我们会探讨关于局部作用域的更多内容，同时也会谈到其他类型的作用域。
 
-## 在何处定义局部变量 
+## 在何处定义局部变量
 
 函数体内的局部变量，其定义的位置应该尽可能解决其第一次被使用的位置：
 
@@ -234,9 +242,8 @@ int main()
 }
 ```
 
-
-在上面的例子中，每个变量都是在它第一次被使用时的前一行定义的。这个规定导师无需严格遵守——如果你希望将第五行和第六行的位置换一下也是可以的。
+在上面的例子中，每个变量都是在它第一次被使用时的前一行定义的。这个规定倒是无需严格遵守——如果你希望将第五行和第六行的位置换一下也是可以的。
 
 !!! success "最佳实践"
 
-	尽量在局部变量第一次被使用前最近的地方定义该局部变量。
+    尽量在局部变量第一次被使用前最近的地方定义该局部变量。
