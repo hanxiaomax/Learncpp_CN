@@ -30,58 +30,58 @@ tags:
 -   允许用户可以管理一些列的姓名并将其关联到电话号码；
 -   随机生成看上去很酷的洞穴场景以作为游戏中的地牢来使用；
 -   生成一个高股息股票的推荐列表；
--   对 how long it takes for a ball dropped off a tower to hit the ground.
+-   对一个球从高塔掉落到地面所需的时间进行建模。
 
-Although this step seems obvious, it’s also highly important. The worst thing you can do is write a program that doesn’t actually do what you (or your boss) wanted!
+尽管这一步所做的事情看上去都是很显然的，它的作用却不容忽视。对于编程来说，最糟糕的莫过于你写完的程序却不是你想要的（或者你老板想要的）！
 
 ## 设计步骤2：定需求
 
-While defining your problem helps you determine _what_ outcome you want, it’s still vague. The next step is to think about requirements.
+尽管，定义问题有助于你确定你期望的结果是声明，但目标仍然是不清楚的。接下来一步就是考虑如何设计需求。
 
-Requirements is a fancy word for both the constraints that your solution needs to abide by (e.g. budget, timeline, space, memory, etc…), as well as the capabilities that the program must exhibit in order to meet the users’ needs. Note that your requirements should similarly be focused on the “what”, not the “how”.
+需求一方面指的是你能够使用的有限资源（例如，预算、工期、空间和内存等等），另一方面指的是你的程序必须具备的能够满足用户需要的能力。注意，需求关注的仍然是**什么**，而不是**如何**。
 
-For example:
+例如：
 
--   Phone numbers should be saved, so they can be recalled later.
--   The randomized dungeon should always contain a way to get from the entrance to an exit.
--   The stock recommendations should leverage historical pricing data.
--   The user should be able to enter the height of the tower.
--   We need a testable version within 7 days.
--   The program should produce results within 10 seconds of the user submitting their request.
--   The program should crash in less than 0.1% of user sessions.
+-   电话号码应该能够被储存，这样以后可以用来进行回拨；
+-   随机的地牢应该总是包含一条从入口到出口的路；
+-   股票推荐应该参考历史价格信息；
+-   用户应该能够输入高塔的高度；
+-   我们需要在七天内完成可供测试的版本；
+-   程序需要在10秒内完成用户的请求； 
+-   程序在用户使用时崩溃退出的概率应该小于 0.1%。
 
-A single problem may yield many requirements, and the solution isn’t “done” until it satisfies all of them.
+一个问题可能会派生出很多需求，只有所有的需求都被满足，才能说解决方案被实现了。
 
 ## 设计步骤3：定义工具、目标产物以及备份计划
 
-When you are an experienced programmer, there are many other steps that typically would take place at this point, including:
+如果你已经是一个有经验的程序员了，在设计过程中，你可能还需要考虑其他的一些问题，例如：
 
--   Defining what target architecture and/or OS your program will run on.
--   Determining what set of tools you will be using.
--   Determining whether you will write your program alone or as part of a team.
--   Defining your testing/feedback/release strategy.
--   Determining how you will back up your code.
+-   定义程序需要运行的平台的体系结构和（或）操作系统；
+-   确定你需要使用哪些工具；
+-   确定你是独立完成代码编写还是以团队合作的方式完成；
+-   定义测试、反馈和释放策略；
+-   定义如何备份代码。
 
-However, as a new programmer, the answers to these questions are typically simple: You are writing a program for your own use, alone, on your own system, using an IDE you purchased or downloaded, and your code is probably not used by anybody but you. This makes things easy.
+不过，作为新手程序员，上面几个问题其实都很简单：你将会独立地在你自己的电脑上编写代码，所需的工具就是你下载并安装了的IDE，你编写的程序除了你自己没有其他人会使用。
 
-That said, if you are going to work on anything of non-trivial complexity, you should have a plan to backup your code. It’s not enough to just zip or copy the directory to another location on your machine (though this is better than nothing). If your system crashes, you’ll lose everything. A good backup strategy involves getting a copy of the code off of your system altogether. There are lots of easy ways to do this: Zip it up and email it to yourself, copy it to Dropbox or another cloud service, FTP it to another machine, copy it to another machine on your local network, or use a version control system residing on another machine or in the cloud (e.g. github). Version control systems have the added advantage of not only being able to restore your files, but also to roll them back to a previous version.
+即便如此，如果你编写的代码不是寥寥几行，你还是应该考虑一下如何备份你的代码。将代码拷贝或者压缩后放到电脑的其他目录中是不够的（尽管聊胜于无）。如果你的电脑坏了，你编写的代码也就付之东流了。一个好的备份策略，应该是把代码全部拷贝一份后拷到其他电脑或其他地方。有很多办法可以实现，例如将其压缩为Zip文件后发送到你自己的邮箱，拷贝到Dropbox或者网盘，或者通过FTP传到其他电脑，也可以通过局域网拷到其他电脑上，或者使用位于其他电脑或云端的版本控制系统（例如：Github）。版本控制系统除了存储文件以外，还有很多其他有用的功能，例如它可以将你的代码回退到之前的版本。
 
 ## 设计步骤4：将复杂问题切分为多个简单问题
 
-In real life, we often need to perform tasks that are very complex. Trying to figure out how to do these tasks can be very challenging. In such cases, we often make use of the **top down** method of problem solving. That is, instead of solving a single complex task, we break that task into multiple subtasks, each of which is individually easier to solve. If those subtasks are still too difficult to solve, they can be broken down further. By continuously splitting complex tasks into simpler ones, you can eventually get to a point where each individual task is manageable, if not trivial.
+在现实生活中，我们时常需要完成一些非常复杂的问题。找到的问题的解决办法，通常并不容易。在这种情况下，我们通常使用 **自顶向下(top down)** 的办法来解决问题。为了解决一个特别复杂的问题，我们通常会把这个问题分解为多个相对来说更容易解决的子问题。如果子问题仍然难以解决，它们还可以被进一步分割为更多的子问题。通过不断地将复杂问题分解成简单的子问题，你最终可以得到很多更容易被处理的子问题。
 
-Let’s take a look at an example of this. Let’s say we want to clean our house. Our task hierarchy currently looks like this:
+举例来说，如果我们需要打扫屋子，那么分解任务的结构可能会是像下面这样：
 
--   Clean the house
+-   打扫屋子
 
-Cleaning the entire house is a pretty big task to do in one sitting, so let’s break it into subtasks:
+打扫屋子是一个很大的任务，让我们将其分解为多个子任务：
 
--   Clean the house
-    -   Vacuum the carpets
-    -   Clean the bathrooms
-    -   Clean the kitchen
+-   打扫屋子
+    -   清理地毯
+    -   打扫浴室
+    -   打扫厨房
 
-That’s more manageable, as we now have subtasks that we can focus on individually. However, we can break some of these down even further:
+比之前容易处理了一些，’s more manageable, as we now have subtasks that we can focus on individually. However, we can break some of these down even further:
 
 -   Clean the house
     -   Vacuum the carpets
