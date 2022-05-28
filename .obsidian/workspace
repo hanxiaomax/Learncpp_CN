@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/2-13-How-to-design-your-first-programs.md",
-            "mode": "preview",
+            "file": "docs/2-5-Introduction-to-local-scope.md",
+            "mode": "source",
             "backlinks": false,
             "source": true
           }
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/2-13-How-to-design-your-first-programs.md"
+                "file": "docs/2-5-Introduction-to-local-scope.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/2-13-How-to-design-your-first-programs.md",
+                "file": "docs/2-5-Introduction-to-local-scope.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/2-5-Introduction-to-local-scope.md",
+    "docs/global-variable.md",
+    "docs/local-variable.md",
     "docs/2-13-How-to-design-your-first-programs.md",
     "docs/stub.md",
     "docs/实参(arguments).md",
     "docs/linker.md",
     "docs/1-7-Keywords-and-naming-identifiers.md",
     "docs/1-8-Whitespace-and-basic-formatting.md",
-    "docs/1-9-Introduction-to-literals-and-operators.md",
-    "docs/1-10-Introduction-to-expressions.md",
-    "docs/1-11-Developing-your-first-program.md",
-    "docs/1-x-Chapter-1-summary-and-quiz.md"
+    "docs/1-9-Introduction-to-literals-and-operators.md"
   ]
 }

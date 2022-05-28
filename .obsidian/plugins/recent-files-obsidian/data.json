@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
+    },
+    {
+      "basename": "global-variable",
+      "path": "docs/global-variable.md"
+    },
+    {
+      "basename": "local-variable",
+      "path": "docs/local-variable.md"
+    },
+    {
       "basename": "2-13-How-to-design-your-first-programs",
       "path": "docs/2-13-How-to-design-your-first-programs.md"
     },
@@ -115,10 +127,6 @@
     {
       "basename": "2-7-Forward-declarations-and-definitions",
       "path": "docs/2-7-Forward-declarations-and-definitions.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
     },
     {
       "basename": "add-glossary",

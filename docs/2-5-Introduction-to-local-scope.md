@@ -12,7 +12,7 @@ tags:
 
 ## 局部变量
 
-函数的[[parameters]]和函数内部定义的变量一样，都是[[局部变量(local variable)]] (局部变量是和[[全局变量(global variable)]]相对的概念，在后面的课程中我们会介绍全局变量）。
+函数的[[parameters|形参]]和函数内部定义的变量一样，都是[[local-variable|局部变量(local variable)]] (局部变量是和[[global-variable|全局变量(global variable)]]相对的概念，在后面的课程中我们会介绍全局变量）。
 
 ```cpp
 int add(int x, int y) // function parameters x and y are local variables
