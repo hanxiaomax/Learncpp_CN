@@ -1,6 +1,7 @@
 ---
-title: 作用域(scope)
-alias: 作用域(scope)
+title: 作用域
+alias: 作用域
+english: scope
 type: glossary
 tags:
 - glossary

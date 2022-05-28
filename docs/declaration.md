@@ -1,6 +1,7 @@
 ---
-title: 声明(declaration)
-alias: 声明(declaration)
+title: 声明
+alias: 声明
+english: declaration
 type: glossary
 tags:
 - glossary

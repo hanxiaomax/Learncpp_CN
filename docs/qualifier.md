@@ -1,7 +1,7 @@
 ---
 title: 限定符
 alias: 限定符
-english:qualifier
+english: qualifier
 type: glossary
 tags:
 - glossary

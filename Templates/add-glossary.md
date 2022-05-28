@@ -4,6 +4,6 @@ alias:
 english: {{title}}
 type: glossary
 tags:
-- glossary
+- 词汇表
 - {{title}}
 ---

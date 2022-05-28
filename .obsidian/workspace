@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/refactoring.md",
+            "file": "docs/translation.md",
             "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "对象类型的宏",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/refactoring.md"
+                "file": "docs/translation.md"
               }
             }
           },
@@ -107,19 +107,19 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/refactoring.md",
+                "file": "docs/translation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": true,
                 "searchQuery": "glossary",
-                "backlinkCollapsed": false,
+                "backlinkCollapsed": true,
                 "unlinkedCollapsed": true
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/refactoring.md",
-    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
-    "docs/2-5-Introduction-to-local-scope.md",
-    "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/runtime.md",
-    "docs/instantiated.md",
-    "docs/pass-by-value.md",
-    "docs/2-2-Function-return-values-value-returning functions.md",
-    "docs/return-by-value.md",
-    "docs/2-13-How-to-design-your-first-programs.md"
+    "docs/translation.md",
+    "docs/symbolic-constants.md",
+    "docs/tags.md",
+    "docs/stub.md",
+    "docs/transitive includes.md",
+    "Templates/add-glossary.md",
+    "docs/statement.md",
+    "docs/scope-resolution-operator.md",
+    "docs/scope.md",
+    "docs/runtime.md"
   ]
 }

@@ -59,7 +59,7 @@ int main()
 
 `#define` 指令可以被用来定义[[macro|宏(macro) ]]。在C++中，宏指的是一种规则，这种规则规定了一个输入文本应该如何被替换成输出文本。
 
-宏有两种基本类型：[[object-like-macros|对象类型的宏(object-like macros)]]和[[function-like macros|函数类型的宏 (function-like macros)]]。
+宏有两种基本类型：**对象类型的宏(object-like macros)** 和 **函数类型的宏 (function-like macros)**。
 
 **函数类型的宏**和函数很像，其功能也类似。我们并不会在这里详细讨论它，因为它常常被认为是不安全的，况且它能做的普通函数也能做，
 

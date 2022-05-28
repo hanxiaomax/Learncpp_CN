@@ -1,9 +1,10 @@
 ---
-title: 翻译(translation)
-alias: 翻译(translation)
+title: 翻译
+alias: 翻译
+english: translation
 type: glossary
 tags:
-- glossary
+- 词汇表
 - translation
 ---
 
