@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/translation.md",
+            "file": "docs/3-10-Finding-issues-before-they-become-problems.md",
             "mode": "source",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         }
       }
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/translation.md"
+                "file": "docs/3-10-Finding-issues-before-they-become-problems.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/translation.md",
+                "file": "docs/3-10-Finding-issues-before-they-become-problems.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/3-10-Finding-issues-before-they-become-problems.md",
+    "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
+    "docs/4.2-Void.md",
+    "docs/4-1-Introduction-to-fundamental-data-types.md",
+    "Pasted image 20220528232559.png",
+    "Pasted image 20220528232616.png",
     "docs/translation.md",
     "docs/symbolic-constants.md",
     "docs/tags.md",
-    "docs/stub.md",
-    "docs/transitive includes.md",
-    "Templates/add-glossary.md",
-    "docs/statement.md",
-    "docs/scope-resolution-operator.md",
-    "docs/scope.md",
-    "docs/runtime.md"
+    "docs/stub.md"
   ]
 }

@@ -5,6 +5,6 @@ origin: /finding-issues-before-they-become-problems/
 origin_title: "3.10 — Finding issues before they become problems"
 time: 2022-1-2
 type: translation
-tags:
-- debugging
 ---
+
+dd
