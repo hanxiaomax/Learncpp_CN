@@ -11,15 +11,11 @@ tags:
 
 ??? note "关键点速记"
 
-	- 设计五步走：
-		- 定目标
-		- 定需求
-		- 定工具、产出和备份
-		- 问题分解
-		- 确定相关事件发生的顺序
-	- 实现两步走
-		- 实现程序框架
-		- 实现具体函数
+	- 开始时一切从简
+	- 逐渐添加新的功能
+	- 一次只做一件事
+	- 一边实现、一边测试
+	- 不要过早地优化代码
 
 在学习过基本的编程知识后，让我们来看看如何设计第一个程序。
 
@@ -267,13 +263,13 @@ int main()
 
 **逐渐添加新的功能**：当上述简单的程序可以正常工作后，你就可以考虑为其增加新的功能了。例如，当上述2D区域可以被正常显示在屏幕上后，你可以添加一个能够移动的角色。当角色可以移动后，添加一些墙体限制角色的移动路径。墙体完成后，可以利用墙体来构建一个城镇地图。城镇完成后，添加一个商人NPC。通过这种循序渐进的方式为你的程序添加新功能，程序最终会变得越来越复杂，同时也不会让你在这个过程中感到不知所措。
 
-**一次只做一件事**：不要期望一次性写完全部的代码，也不要把你的注意力分散在多个任务上。一次只做一件事比Don’t try to code everything at once, and don’t divide your attention across multiple tasks. Focus on one task at a time. It is much better to have one working task and five that haven’t been started yet than six partially-working tasks. If you split your attention, you are more likely to make mistakes and forget important details.
+**一次只做一件事**：不要期望一次性写完全部的代码，也不要把你的注意力分散在多个任务上。一次只做一件事。一个正常工作的功能+五个尚未实现的功能，好过六个不能正常工作的功能。注意力被分散的时候，你会更容易犯错，也更容易忘记重要的细节。
 
-**一边实现、一边测试**. New programmers will often write the entire program in one pass. Then when they compile it for the first time, the compiler reports hundreds of errors. This can not only be intimidating, if your code doesn’t work, it may be hard to figure out why. Instead, write a piece of code, and then compile and test it immediately. If it doesn’t work, you’ll know exactly where the problem is, and it will be easy to fix. Once you are sure that the code works, move to the next piece and repeat. It may take longer to finish writing your code, but when you are done the whole thing should work, and you won’t have to spend twice as long trying to figure out why it doesn’t.
+**一边实现、一边测试**：新的程序员常常会一次性写完全部的程序，然后才对其进行编译，然后就“收获”了非常多的报错信息。写完的代码不能编译，不仅吓人，而且还难以查找其产生错误的原因。正确的做法是编写一些代码，然后就对其进行编译和测试。如果不能正常工作，那么修复起来也非常简单。当你确定这些代码可以正常工作了，再重复上述操作，开始编写接下来的代码。这么做或许会“拖累”你的进度，但是实际上当你完成后 ，代码应该是能够正确工作的，这好过你写完代码后再花费两倍多的时间去定位问题。
 
-**不要过早地优化代码**. The first draft of a feature (or program) is rarely good. Furthermore, programs tend to evolve over time, as you add capabilities and find better ways to structure things. If you invest too early in polishing your code (adding lots of documentation, full compliance with best practices, making optimizations), you risk losing all of that investment when a code change is necessary. Instead, get your features minimally working and then move on. As you gain confidence in your solutions, apply successive layers of polish. Don’t aim for perfect -- non-trivial programs are never perfect, and there’s always something more that could be done to improve them. Get to good enough and move on.
+**不要过早地优化代码**：第一版功能（或程序）很少是完美的。而且，程序本身也会随着时间不断被更新，毕竟你还要为其添加功能，或者重新组织代码。如果你在早期就花费很多时间去打磨这些代码（添加很多文档、确保满足最佳实践、优化等），那么有可能会因为必须修改代码而使得这些努力都付之东流。正确的做法是，让你的程序功能保持最简可用，然后继续其他的工作。当你对程序感到满意时，再对其进行一系列的优化。不过，不要期望其达到完美的状态，大型程序很少是完美的，它总是有这样或那样的问题需要我们优化。做到足够好就可以了。
 
-Most new programmers will shortcut many of these steps and suggestions (because it seems like a lot of work and/or it’s not as much fun as writing the code). However, for any non-trivial project, following these steps will definitely save you a lot of time in the long run. A little planning up front saves a lot of debugging at the end.
+大多数新手程序员并不能很好的遵循上述忠言（因为看上去很麻烦，也不如写代码有趣）。但是，对于具有一定规模的代码来说，完整遵循上述建议绝对可以帮助你节约很多时间（从长期来看）。简单地进行一些设计规划，就可以为后期节约大量的调试时间。
 
-The good news is that once you become comfortable with all of these concepts, they will start coming more naturally to you. Eventually you will get to the point where you can write entire functions without any pre-planning at all.
+好消息是，一旦你习惯了这么做以后，它便会慢慢地成为你的习惯。最终，你将能够不在进行任何预先设计的情况下，完成整个程序的编写。
 
