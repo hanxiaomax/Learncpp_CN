@@ -25,12 +25,12 @@ tags:
 
 ## 设计步骤1：定目标
 
-In order to write a successful program, you first need to define what your goal is. Ideally, you should be able to state this in a sentence or two. It is often useful to express this as a user-facing outcome. For example:
+为了编写一个成功的程序，你必须要首先明确你的目标是什么。理想情况下，该目标应该用一两句话就可以描述。通常来讲，从用户的角度来描述编程的结果是很有用的，例如：
 
--   Allow the user to organize a list of names and associated phone numbers.
--   Generate randomized dungeons that will produce interesting looking caverns.
--   Generate a list of stock recommendations for stocks that have high dividends.
--   Model how long it takes for a ball dropped off a tower to hit the ground.
+-   允许用户可以管理一些列的姓名并将其关联到电话号码；
+-   随机生成看上去很酷的洞穴场景以作为游戏中的地牢来使用；
+-   生成一个高股息股票的推荐列表；
+-   对 how long it takes for a ball dropped off a tower to hit the ground.
 
 Although this step seems obvious, it’s also highly important. The worst thing you can do is write a program that doesn’t actually do what you (or your boss) wanted!
 
