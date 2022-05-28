@@ -250,27 +250,28 @@ int main()
 
 首先，确定函数 `getUserInput` 不需要接受任何[[arguments|实参]]。同时，该函数会返回一个整型值给主调函数。反映到函数原型上，即函数返回值类型为`int`，同时没有[[parameters|形参]]。接下来，编写函数体。函数体非常直接，只包含四条语句[[statement|语句]]。最后，在`main`函数中编写一些用于测试函数 `getUserInput` 功能（包括其返回值) 的临时代码，确定函数是否能够正常工作。
 
-多次运行程序并使用不同的输入值，确保程序的结果都符合预期。如果发现程序不能正确工作，则 can run this program many times with different input values and make sure that the program is behaving as we expect at this point. If we find something that doesn’t work, we know the problem is in the code we’ve just written.
+多次运行程序并使用不同的输入值，确保程序的结果都符合预期。如果发现程序不能正确工作，则问题可能就出在刚才编写的代码中。
 
-Once we’re convinced the program is working as intended up to this point, we can remove the temporary testing code, and proceed to implementation of the next function (function _getMathematicalOperation_). We won’t finish the program in this lesson, as we need to cover some additional topics first.
+一旦你确定程序可以正常工作了，那么这些临时测试代码就可以被移除了，然后开始实现下一个函数（`getMathematicalOperation`）。我们并不会在本节课中实现所有函数，因为还有一些更加重要的话题需要讨论。
 
-Remember: Don’t implement your entire program in one go. Work on it in steps, testing each step along the way before proceeding.
+记住：不要期望一次性实现全部的代码。一步一步完成，并且每一步都要进行测试。
 
-	## 实现步骤3：最终测试
 
-Once your program is “finished”, the last step is to test the whole program and ensure it works as intended. If it doesn’t work, fix it.
+## 实现步骤3：最终测试
 
-Words of advice when writing programs
+当程序编写“完成”后，最后一步则是对完整的程序进行测试，确定其行为是否满足预期。如果不满足，则需要进行修复。
 
-**Keep your programs simple to start**. Often new programmers have a grand vision for all the things they want their program to do. “I want to write a role-playing game with graphics and sound and random monsters and dungeons, with a town you can visit to sell the items that you find in the dungeon” If you try to write something too complex to start, you will become overwhelmed and discouraged at your lack of progress. Instead, make your first goal as simple as possible, something that is definitely within your reach. For example, “I want to be able to display a 2-dimensional field on the screen”.
+## 编程忠言
 
-**Add features over time**. Once you have your simple program working and working well, then you can add features to it. For example, once you can display your field, add a character who can walk around. Once you can walk around, add walls that can impede your progress. Once you have walls, build a simple town out of them. Once you have a town, add merchants. By adding each feature incrementally your program will get progressively more complex without overwhelming you in the process.
+**开始时一切从简**：很多新手程序员对其要实现的程序和功能具有宏伟的蓝图：“我想要设计一款具有图形界面、配乐和随机地牢的角色扮演游戏。不仅如此，游戏地图还包括城镇，你可以在城镇里售卖你收集到的战利品”。如果你从一开始就要完成一个非常复杂的任务，你可能会在进度不佳时感到不知所措或心灰意冷。所以，你其实应该将你开始时的目标设的尽可能简单，即一些你肯定能够完成的目标。例如，“我想要在屏幕上显示一个2D的区域”。
 
-**Focus on one area at a time**. Don’t try to code everything at once, and don’t divide your attention across multiple tasks. Focus on one task at a time. It is much better to have one working task and five that haven’t been started yet than six partially-working tasks. If you split your attention, you are more likely to make mistakes and forget important details.
+**逐渐添加新的功能**：当上述简单的程序可以正常工作后，你就可以考虑为其增加新的功能了。例如，当上述2D区域可以被正常显示在屏幕上后，你可以添加一个能够移动的角色。当角色可以移动后，添加一些墙体限制角色的移动路径。墙体完成后，可以利用墙体来构建一个城镇地图。城镇完成后，添加一个商人NPC。通过这种循序渐进的方式为你的程序添加新功能，程序最终会变得越来越复杂，同时也不会让你在这个过程中感到不知所措。
 
-**Test each piece of code as you go**. New programmers will often write the entire program in one pass. Then when they compile it for the first time, the compiler reports hundreds of errors. This can not only be intimidating, if your code doesn’t work, it may be hard to figure out why. Instead, write a piece of code, and then compile and test it immediately. If it doesn’t work, you’ll know exactly where the problem is, and it will be easy to fix. Once you are sure that the code works, move to the next piece and repeat. It may take longer to finish writing your code, but when you are done the whole thing should work, and you won’t have to spend twice as long trying to figure out why it doesn’t.
+**一次只做一件事**：不要期望一次性写完全部的代码，也不要把你的注意力分散在多个任务上。一次只做一件事比Don’t try to code everything at once, and don’t divide your attention across multiple tasks. Focus on one task at a time. It is much better to have one working task and five that haven’t been started yet than six partially-working tasks. If you split your attention, you are more likely to make mistakes and forget important details.
 
-**Don’t invest in perfecting early code**. The first draft of a feature (or program) is rarely good. Furthermore, programs tend to evolve over time, as you add capabilities and find better ways to structure things. If you invest too early in polishing your code (adding lots of documentation, full compliance with best practices, making optimizations), you risk losing all of that investment when a code change is necessary. Instead, get your features minimally working and then move on. As you gain confidence in your solutions, apply successive layers of polish. Don’t aim for perfect -- non-trivial programs are never perfect, and there’s always something more that could be done to improve them. Get to good enough and move on.
+**一边实现、一边测试**. New programmers will often write the entire program in one pass. Then when they compile it for the first time, the compiler reports hundreds of errors. This can not only be intimidating, if your code doesn’t work, it may be hard to figure out why. Instead, write a piece of code, and then compile and test it immediately. If it doesn’t work, you’ll know exactly where the problem is, and it will be easy to fix. Once you are sure that the code works, move to the next piece and repeat. It may take longer to finish writing your code, but when you are done the whole thing should work, and you won’t have to spend twice as long trying to figure out why it doesn’t.
+
+**不要过早地优化代码**. The first draft of a feature (or program) is rarely good. Furthermore, programs tend to evolve over time, as you add capabilities and find better ways to structure things. If you invest too early in polishing your code (adding lots of documentation, full compliance with best practices, making optimizations), you risk losing all of that investment when a code change is necessary. Instead, get your features minimally working and then move on. As you gain confidence in your solutions, apply successive layers of polish. Don’t aim for perfect -- non-trivial programs are never perfect, and there’s always something more that could be done to improve them. Get to good enough and move on.
 
 Most new programmers will shortcut many of these steps and suggestions (because it seems like a lot of work and/or it’s not as much fun as writing the code). However, for any non-trivial project, following these steps will definitely save you a lot of time in the long run. A little planning up front saves a lot of debugging at the end.
 
