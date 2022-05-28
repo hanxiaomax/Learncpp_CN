@@ -11,6 +11,16 @@ tags:
 
 ??? note "关键点速记"
 
+	- 设计五步走：
+		- 定目标
+		- 定需求
+		- 定工具、产出和备份
+		- 问题分解
+		- 确定相关事件发生的顺序
+	- 实现两步走
+		- 实现程序框架
+		- 实现具体函数
+
 
 
 在学习过基本的编程知识后，让我们来看看如何设计第一个程序。
@@ -78,81 +88,81 @@ tags:
 
 -   打扫屋子
     -   清理地毯
-    -   打扫浴室
+    -   打扫卫生间
     -   打扫厨房
 
-比之前容易处理了一些，’s more manageable, as we now have subtasks that we can focus on individually. However, we can break some of these down even further:
+比之前容易处理了一些，因为我们可以逐项解决这些子问题了。不过，我们其实还能将这些任务继续分解：
 
--   Clean the house
-    -   Vacuum the carpets
-    -   Clean the bathrooms
-        -   Scrub the toilet (yuck!)
-        -   Wash the sink
-    -   Clean the kitchen
-        -   Clear the countertops
-        -   Clean the countertops
-        -   Scrub the sink
-        -   Take out the trash
+-   打扫屋子
+    -   清理地毯
+    -   打扫卫生间
+        -   清洗马桶
+        -   清理水池
+    -   打扫厨房
+        - 清理灶台
+        - 打扫灶台
+        - 清洗水池
+        - 倒垃圾
 
-Now we have a hierarchy of tasks, none of them particularly hard. By completing each of these relatively manageable sub-items, we can complete the more difficult overall task of cleaning the house.
+现在，我们面对的是一系列具有层次结构的问题了，而且它们中任何一项都不复杂。通过完成这些相对更容易处理的子任务之后，我们也就完成了打扫屋子这个更复杂的问题。
 
-The other way to create a hierarchy of tasks is to do so from the **bottom up**. In this method, we’ll start from a list of easy tasks, and construct the hierarchy by grouping them.
+另外一种分解任务的方式称为**自底向上(bottom)** 方法。使用这种方法时，我们会从一系列简单的任务开始，然后通过合并分组的方式构建任务列表。
 
-As an example, many people have to go to work or school on weekdays, so let’s say we want to solve the problem of “go to work”. If you were asked what tasks you did in the morning to get from bed to work, you might come up with the following list:
+大多数人平时不是上学就是上班，那么就以此来举例，假设我们要解决的是“去上班”这个问题，如果有人问你，你早上出门前都做哪些事呢？你的回答可能包含下面这些任务：
 
--   Pick out clothes
--   Get dressed
--   Eat breakfast
--   Drive to work
--   Brush your teeth
--   Get out of bed
--   Prepare breakfast
--   Get in your car
--   Take a shower
+-   拿出要穿的衣服
+-   穿衣
+-   吃早饭
+- 开车去公司
+- 刷牙
+- 起床
+- 做早餐
+- 上车
+- 洗澡
 
-Using the bottom up method, we can organize these into a hierarchy of items by looking for ways to group items with similarities together:
+使用自底向上的方法，我们可以基于它们的相似性，为这些任务创建一个层次结构：
 
--   Get from bed to work
-    -   Bedroom things
-        -   Get out of bed
-        -   Pick out clothes
-        -   Get dressed
-    -   Bathroom things
-        -   Take a shower
-        -   Brush your teeth
-    -   Breakfast things
-        -   Prepare cereal
-        -   Eat cereal
-    -   Transportation things
-        -   Get in your car
-        -   Drive to work
+-  从起床到上班要做的事
+	- 卧室要做的事
+		- 起床
+		- 拿衣服
+		- 穿衣
+	- 卫生间要做的事
+		- 洗澡
+		- 刷牙
+	- 早餐相关
+		- 准备麦片
+		- 吃麦片
+	- 通勤相关
+		- 上车
+		- 开车到公司
 
-As it turns out, these task hierarchies are extremely useful in programming, because once you have a task hierarchy, you have essentially defined the structure of your overall program. The top level task (in this case, “Clean the house” or “Go to work”) becomes main() (because it is the main problem you are trying to solve). The subitems become functions in the program.
+其实我们不难看出，这些层次结构对于编程来说是非常有用的，因为一旦任务的结构清楚了，程序的大体结构其实也已经清楚了。最上层的任务（打扫屋子或去上班）就可以是程序的`main()`函数（因为它是你要解决的主要(main)问题）。而其他子项目则可以实现为不同的函数。
 
-If it turns out that one of the items (functions) is too difficult to implement, simply split that item into multiple sub-items/sub-functions. Eventually you should reach a point where each function in your program is trivial to implement.
+如果其中某一项任务（函数）在实现时仍然过于困难，则可以继续将其分解为几个子问题。最终你就可以将程序分割为多个容易实现的函数。
 
-## 设计步骤5：找到一系列事件
+## 设计步骤5：确定相关事件发生的顺序
 
-Now that your program has a structure, it’s time to determine how to link all the tasks together. The first step is to determine the sequence of events that will be performed. For example, when you get up in the morning, what order do you do the above tasks? It might look like this:
+现在，程序的结构已经清楚了，接下来需要将这些任务关联其他。首先，我们要确定这些要任务的发生顺序。例如，你早上起来，完成上面那些任务的顺序是什么？差不多应该是这样的吧：
 
--   Bedroom things
--   Bathroom things
--   Breakfast things
--   Transportation things
+-   卧室要做的事
+-   卫生间要做的事
+-   早餐相关
+-   通勤相关
 
-If we were writing a calculator, we might do things in this order:
+如果你要编写一个计算器程序，我们可能会按照下面步骤来做：
 
--   Get first number from user
--   Get mathematical operation from user
--   Get second number from user
--   Calculate result
--   Print result
+-   从用户获取第一个数
+-   从用户获取需要执行的运算操作
+-   从用户获取第二个数
+-   计算结果
+-   打印结果
 
-At this point, we’re ready for implementation.
+完成上述设计工作后，我们就可以开始实现代码了！
 
 ## 实现步骤1：编写main函数框架
 
-Now we’re ready to start implementation. The above sequences can be used to outline your main program. Don’t worry about inputs and outputs for the time being.
+现在可以开始实现代码了。根据上面顺序结构，我们可以先完成`main`函数的框架，暂时无需担心输入输出的问题。
 
 ```cpp
 int main()
@@ -166,9 +176,7 @@ int main()
 }
 ```
 
-COPY
-
-Or in the case of the calculator:
+或者对于计算器例子来说是这样的：
 
 ```cpp
 int main()
@@ -192,9 +200,8 @@ int main()
 }
 ```
 
-COPY
+注意，如果你也使用这种“大纲框架”的方法来构建程序，这里涉及的函数都是无法编译的，毕竟它们还没有被定义。在函数被实际定义前先将其暂时先注释掉是一种方法（上面展示的就是这种方法）。此外，你还可以对函数进行[[stub|打桩(stub)]]，即为程序创建一个空的函数体，以便程序可以编译通过。
 
-Note that if you’re going to use this “outline” method for constructing your programs, your functions won’t compile because the definitions don’t exist yet. Commenting out the function calls until you’re ready to implement the function definitions is one way to address this (and the way we’ll show here). Alternatively, you can _stub out_ your functions (create placeholder functions with empty bodies) so your program will compile.
 
 ## 实现步骤2：实现每个函数
 

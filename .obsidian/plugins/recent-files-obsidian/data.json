@@ -5,6 +5,10 @@
       "path": "docs/2-13-How-to-design-your-first-programs.md"
     },
     {
+      "basename": "stub",
+      "path": "docs/stub.md"
+    },
+    {
       "basename": "实参(arguments)",
       "path": "docs/实参(arguments).md"
     },
