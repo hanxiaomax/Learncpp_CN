@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "4-14-Literal-constants",
+      "path": "docs/4-14-Literal-constants.md"
+    },
+    {
+      "basename": "4-13-An introduction-to-std-string",
+      "path": "docs/4-13-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
+      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
+    },
+    {
+      "basename": "4-11-Chars",
+      "path": "docs/4-11-Chars.md"
+    },
+    {
+      "basename": "4-10-Introduction-to-if-statements",
+      "path": "docs/4-10-Introduction-to-if-statements.md"
+    },
+    {
+      "basename": "4-9-Boolean-values",
+      "path": "docs/4-9-Boolean-values.md"
+    },
+    {
       "basename": "4-8-Floating-point-numbers",
       "path": "docs/4-8-Floating-point-numbers.md"
     },
@@ -19,10 +47,6 @@
     {
       "basename": "4-3-Object-sizes-and-the-sizeof-operator",
       "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
       "basename": "4-4-Signed-integers",
@@ -61,10 +85,6 @@
       "path": "docs/4-2-Void.md"
     },
     {
-      "basename": "4-11-Chars",
-      "path": "docs/4-11-Chars.md"
-    },
-    {
       "basename": "bit",
       "path": "docs/bit.md"
     },
@@ -83,10 +103,6 @@
     {
       "basename": "compile-time",
       "path": "docs/compile-time.md"
-    },
-    {
-      "basename": "4-13-An introduction-to-std-string",
-      "path": "docs/4-13-An introduction-to-std-string.md"
     },
     {
       "basename": "random-access-memory",
@@ -183,22 +199,6 @@
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
-      "basename": "3-1-Syntax-and-semantic-errors",
-      "path": "docs/3-1-Syntax-and-semantic-errors.md"
-    },
-    {
-      "basename": "3-9-Using-an-integrated-debugger-The-call-stack",
-      "path": "docs/3-9-Using-an-integrated-debugger-The-call-stack.md"
-    },
-    {
-      "basename": "3-8-Using-an-integrated-debugger-Watching-variables",
-      "path": "docs/3-8-Using-an-integrated-debugger-Watching-variables.md"
-    },
-    {
-      "basename": "3-7-Using-an-integrated-debugger-Running-and-breakpoints",
-      "path": "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md"
     }
   ],
   "omittedPaths": [],

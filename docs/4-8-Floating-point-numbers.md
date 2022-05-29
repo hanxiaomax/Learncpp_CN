@@ -17,10 +17,11 @@ There are three different floating point data types: **float**, **double**, an
 Floating point data types are always signed (can hold positive and negative values).
 
 
-|Category	|Type|	Minimum Size	Typical Size
-floating point	float	4 bytes	4 bytes
-double	8 bytes	8 bytes
-long double	8 bytes	8, 12, or 16 bytes
+|Category	|Type|	Minimum Size	|Typical Size|
+|---|---|---|---|
+|floating point	|float	|4 bytes	|4 bytes
+||double	|8 bytes	|8 bytes
+||long double	|8 bytes	|8, 12, or 16 bytes
 
 
 
@@ -89,35 +90,13 @@ Floating point range
 
 Assuming IEEE 754 representation:
 
-Size
 
-Range
+Size	Range	Precision
+4 bytes	±1.18 x 10-38 to ±3.4 x 1038	6-9 significant digits, typically 7
+8 bytes	±2.23 x 10-308 to ±1.80 x 10308	15-18 significant digits, typically 16
+80-bits (typically uses 12 or 16 bytes)	±3.36 x 10-4932 to ±1.18 x 104932	18-21 significant digits
+16 bytes	±3.36 x 10-4932 to ±1.18 x 104932	33-36 significant digits
 
-Precision
-
-4 bytes
-
-±1.18 x 10-38 to ±3.4 x 1038
-
-6-9 significant digits, typically 7
-
-8 bytes
-
-±2.23 x 10-308 to ±1.80 x 10308
-
-15-18 significant digits, typically 16
-
-80-bits (typically uses 12 or 16 bytes)
-
-±3.36 x 10-4932 to ±1.18 x 104932
-
-18-21 significant digits
-
-16 bytes
-
-±3.36 x 10-4932 to ±1.18 x 104932
-
-33-36 significant digits
 
 The 80-bit floating point type is a bit of a historical anomaly. On modern processors, it is typically implemented using 12 or 16 bytes (which is a more natural size for processors to handle).
 

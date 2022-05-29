@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-8-Floating-point-numbers.md",
+            "file": "docs/4-14-Literal-constants.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "x3c",
+                "query": "4-13",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-8-Floating-point-numbers.md"
+                "file": "docs/4-14-Literal-constants.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-8-Floating-point-numbers.md",
+                "file": "docs/4-14-Literal-constants.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-14-Literal-constants.md",
+    "docs/4-13-An introduction-to-std-string.md",
+    "docs/4-1-Introduction-to-fundamental-data-types.md",
+    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
+    "docs/4-11-Chars.md",
+    "docs/4-10-Introduction-to-if-statements.md",
+    "docs/4-9-Boolean-values.md",
     "docs/4-8-Floating-point-numbers.md",
     "docs/4-7-Introduction-to-scientific-notation.md",
-    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
-    "docs/4-6-Fixed-width-integers-and-size_t.md",
-    "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/4-4-Signed-integers.md",
-    "docs/1-6-Uninitialized-variables-and-undefined-behavior.md",
-    "docs/1-7-Keywords-and-naming-identifiers.md",
-    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
+    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
   ]
 }
