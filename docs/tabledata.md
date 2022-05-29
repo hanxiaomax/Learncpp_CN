@@ -1,8 +1,5 @@
-Data Type	Suffix	Meaning
-int	u or U	unsigned int
-int	l or L	long
-int	ul, uL, Ul, UL, lu, lU, Lu, or LU	unsigned long
-int	ll or LL	long long
-int	ull, uLL, Ull, ULL, llu, llU, LLu, or LLU	unsigned long long
-double	f or F	float
-double	l or L	long double
+|Decimal	|0	|1	|2	|3	|4	|5	|6	|7	|8	|9	|10	|11|
+|Octal	|0	|1	|2	|3	|4	|5	|6	|7	|10	|11	|12	|13|
+
+|Decimal	|0	|1	|2	|3	|4	|5	|6	|7	|8	|9	|10	|11	|12	|13	|14	|15	|16	|17|
+|Hexadecimal	|0	|1	|2	|3	|4	|5	|6	|7	|8	|9	|A	|B	|C	|D	|E	|F	|10	|11|

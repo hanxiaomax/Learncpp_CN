@@ -10,7 +10,7 @@ tags:
 ---
 
 
-Quick Review
+## Quick Review
 
 The smallest unit of memory is a binary digit, also called a bit. The smallest unit amount of memory that can be addressed directly is a byte. The modern standard is that a byte equals 8 bits.
 
