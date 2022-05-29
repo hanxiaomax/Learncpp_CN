@@ -12,9 +12,11 @@ tags:
 
 ??? note "关键点速记"
 
-    - 无符号整型表示超过范围的数时，实际存储的值为原值除以范围最大值加 1 后的余数。例如，`value mod 2^32`
-    - 无符号整型表示超过范围的数时不会产生未定义行为，它的行为是确定的
-    - C++ 标准明确说明无符号整型不会溢出
+    - 无符号整型表示超过范围的数时，实际存储的值为原值除以范围最大值加 1 后的余数。例如，`value mod 2^32`。称为无符号的反转。
+    - 无符号反转可以向0反转也可以向最大值反转
+    - 无符号整型表示超过范围的数时不会产生未定义行为，它的行为是确定的，因此 C++ 标准明确说明无符号整型不会"溢出"
+    - 混用无符号和有符号类型时可能产生问题，因为有符号数会被隐式转换为无符号数，此时可能发生反转。
+    - 尽量使用有符号数保存数量和进行运算
 
 ## 无符号整型
 
@@ -167,9 +169,9 @@ int main()
 
 这是因为 -2 被反转到了一个接近 4自己整型最大值的数。另外一个可能产生反转的情况是，对无符号整型使用递减运算符(`--`)。那么当变量循环递减时，最终可能会发生于上述例子中同样的问题。
 .
-此外，如果你将有符号zheSecond, unexpected behavior can result when you mix signed and unsigned integers. In a mathematical operation in C++ (e.g. arithmetic or comparison), if one signed and one unsigned integer are used, the signed integer will be converted to unsigned. And because unsigned integers can not store negative numbers, this can result in loss of data.
+此外，当将有符号整型和无符号整型混用时，也可能产生意外。在C++进行数学运算时（例如算数或比较），如果两个操作数分别为有符号和无符号整型，那么有符号的一方会被转换为无符号。然后，因为无符号整型不可以保存负数，这就有可能造成数据丢失的情况。
 
-Consider the following program demonstrating this:
+考虑下面代码：
 
 ```cpp
 #include <iostream>
@@ -179,22 +181,22 @@ int main()
     signed int s { -1 };
     unsigned int u { 1 };
 
-    if (s < u) // -1 is implicitly converted to 4294967295, and 4294967295 < 1 is false
+    if (s < u) // -1 被隐式转换成了 4294967295, 而 4294967295 < 1 是错误的
         std::cout << "-1 is less than 1\n";
     else
-        std::cout << "1 is less than -1\n"; // this statement executes
+        std::cout << "1 is less than -1\n"; // 这句语句会被执行
 
     return 0;
 }
 ```
 
-This program is well formed, compiles, and is logically consistent to the eye. But it prints the wrong answer. And while your compiler should warn you about a signed/unsigned mismatch in this case, your compiler will also generate identical warnings for other cases that do not suffer from this problem (e.g. when both numbers are positive), making it hard to detect when there is an actual problem.
+这个程序可以正常编译，看上去也符合逻辑。但是它打印的结果却是错误的。尽管编译器在检查到有符号/无符号不匹配时，会发出一个警告。但是由于还有很多其他情况下编译器也会报告完全一样的警告（例如两个数都是正数时），这会让我们很难判断真正的问题在哪里。
 
 !!! info "相关内容"
 
-    We cover if-statements in upcoming lesson [[4-10-Introduction-to-if-statements|4.10 - if 语句]]
+    我们会在[[4-10-Introduction-to-if-statements|4.10 - if 语句]]中介绍`if`语句。
 
-Additionally, there are other problematic cases that are essentially undetectable. Consider the following:
+此外，还有一些可能有问题的情况，是根本无法被检查到的。考虑下面这个例子：
 
 ```cpp
 void doSomething(unsigned int x)
@@ -212,36 +214,37 @@ int main()
 }
 ```
 
-The author of doSomething() was expecting someone to call this function with only positive numbers. But the caller is passing in _-1_ -- clearly a mistake, but one made none-the-less. What happens in this case?
+`doSomething()`函数的作者期望用户只传递正数给该函数。但是调用者犯了一个错误，它传了-1。这是个很显然的错误，但是人们仍然难免会犯。那么此时会发生什么呢？
 
-The signed argument of _-1_ gets implicitly converted to an unsigned parameter. -1 isn’t in the range of an unsigned number, so it wraps around to some large number (probably 4294967295). Then your program goes ballistic. Worse, there’s no good way to guard against this condition from happening. C++ will freely convert between signed and unsigned numbers, but it won’t do any range checking to make sure you don’t overflow your type.
+[[arguments|实参]] -1 被隐式转换成了一个无符号[[parameters|形参]]。-1 不在无符号整型的表示范围，因此必然被反转成一个非常大的数(可能是 4294967295)。然后你的程序就会出现问题。 更糟糕的是，并没有一种方法能够避免上述问题的发生。C++ 可以自由地转换有符号和无符号数，但是它并不会在转换时进行任何的范围检查以确保不发生溢出。
 
-All of these problems are commonly encountered, produce unexpected behavior, and are hard to find, even using automated tools designed to detect problem cases.
+上述这些问题都是经常会遇到的，它们产生意料之外的行为，并且难以被发现。即使使用一些被专用于查找此类问题的工具有很难发现。
 
-Given the above, the somewhat controversial best practice that we’ll advocate for is to avoid unsigned types except in specific circumstances.
+因此，一些有争议的最佳实践认为，我们应该避免使用无符号类型，除非确实有特殊的需求。
 
 !!! success "最佳实践"
 
-    Favor signed numbers over unsigned numbers for holding quantities (even quantities that should be non-negative) and mathematical operations. Avoid mixing signed and unsigned numbers.
+    尽量使用有符号数来存放数量（尽管数量可能都是非负的）和进行数学运算。避免混用有符号和无符号类型。
+    
 
 !!! info "相关内容"
 
-    Additional material in support of the above recommendations (also covers refutation of some common counter-arguments):
+    支持上述建议的一些材料(同时也驳斥了一些常见的反对意见）：
 
     1.  [Interactive C++ panel](https://www.youtube.com/watch?v=_nrly6PH6NU) (see 12:12-13:08,42:40-45:26, and 1:02:50-1:03:15)
     2.  [Subscripts and sizes should be signed](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf)
     3.  [Unsigned integers from the libtorrent blog](https://blog.libtorrent.org/2016/05/unsigned-integers/)
 
-## So when should you use unsigned numbers?
+## 那么什么时候才使用无符号数呢？
 
-There are still a few cases in C++ where it’s okay / necessary to use unsigned numbers.
+还是有一些场合是需要或者可以使用无符号数的。
 
-First, unsigned numbers are preferred when dealing with bit manipulation (covered in chapter O -- that’s a capital ‘o’, not a ‘0’). They are also useful when well-defined wrap-around behavior is required (useful in some algorithms like encryption and random number generation).
+首先，无符号数在进行位运算时是推荐使用的（在章节O中介绍）。在一些确实需要反转行为的场合，无符号数也是有用的（例如一些加密算法和随机数生成）。
 
-Second, use of unsigned numbers is still unavoidable in some cases, mainly those having to do with array indexing. We’ll talk more about this in the lessons on arrays and array indexing. In these cases, the unsigned value can be converted to a signed value.
+其次，在有些时候无符号数是无法避免的（很多与数组进行索引有关）。我们会在有关数组的课程中进行详细介绍。在这些情况下，无符号数可以被转换为有符号数。
 
 !!! info "相关内容"
 
-    We discuss how to convert unsigned values to signed values in lesson [[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]
-
-Also note that if you’re developing for an embedded system (e.g. an Arduino) or some other processor/memory limited context, use of unsigned numbers is more common and accepted (and in some cases, unavoidable) for performance reasons.
+    我们会在[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]中介绍如何将无符号数转换为有符号数。
+    
+同时请注意，如果你在开发嵌入式系统（例如 Arduino）或者其他处理器/内存比较吃紧的环境，出于性能的原因而使用无符号数是非常常见的，同时也是可以被接受的（在有些场景下也是无法避免的）。
