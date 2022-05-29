@@ -9,8 +9,10 @@ tags:
 - integer
 ---
 
-An integer is an integral type that can represent positive and negative whole numbers, including 0 (e.g. -2, -1, 0, 1, 2). C++ has _4_ different fundamental integer types available for use:
+??? note "关键点速记"
+	- 
 
+整型是一种整数类型，它可以表示正整数和负整数，当然也包括0（例如：-2、-1、0、1、2）。C++ 中有4中基础整型：
 
 | Type |	 Minimum Size	| Note |
 |-----|-----|-----|
@@ -20,29 +22,28 @@ An integer is an integral type that can represent positive and negative whole 
 |long long|	64 bits	|
 
 
-The key difference between the various integer types is that they have varying sizes -- the larger integers can hold bigger numbers.
+这些类型的主要差异是它们的大小不同——越大的整型可以表示越大的数。
 
-A reminder
+!!! tip "提醒"
 
-C++ only guarantees that integers will have a certain minimum size, not that they will have a specific size. See lesson [4.3 -- Object sizes and the sizeof operator](https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/) for information on how to determine how large each type is on your machine.
+	C++ 只保证整型大小的最小值，而不保证其最小值。请参考[[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]]来确定每种类型在你机器上的具体大小。
+	
 
-Signed integers
+## 有符号整型
 
-When writing negative numbers in everyday life, we use a negative sign. For example, _-3_ means “negative 3”. We’d also typically recognize _+3_ as “positive 3” (though common convention dictates that we typically omit plus prefixes). This attribute of being positive, negative, or zero is called the number’s sign.
+在日常生活中，如果我们要表示负整数，通常会使用负号。例如，_-3_ 表示 “负三”。我们还会使用+3来表示”正三“（尽管通常正号会被省略）。数字的这种“正负零”属性，称为数字的负号。
 
-By default, integers are signed, which means the number’s sign is stored as part of the number (using a single bit called the sign bit). Therefore, a signed integer can hold both positive and negative numbers (and 0).
+默认情况下，整型是由符号的，也就是说数字的符号是数字本身的一部分（使用一个位进行存储，称为符号位）。因此，有符号整型可以表示正数负数和0。
 
-In this lesson, we’ll focus on signed integers. We’ll discuss unsigned integers (which can only hold non-negative numbers) in the next lesson.
+在这节课中，我们会专注于介绍有符号整型。无符号整型（只能保存非负值）会在后续的课程中进行讨论。
 
-Related content
+!!! info "相关内容"
 
-We discuss how the sign bit is used when representing numbers in binary in lesson [O.4 -- Converting between binary and decimal](https://www.learncpp.com/cpp-tutorial/converting-between-binary-and-decimal/).
+	我们在[O.4 -- Converting between binary and decimal](https://www.learncpp.com/cpp-tutorial/converting-between-binary-and-decimal/) 中讨论了二进制表示法时符号位如何使用。
 
+## 定义有符号整型
 
-Defining signed integers
-
-Here is the preferred way to define the four types of signed integers:
-
+定义有符号整型时，推荐的方式如下：
 ```cpp
 short s;
 int i;
@@ -50,21 +51,17 @@ long l;
 long long ll;
 ```
 
-COPY
-
-All of the integers (except int) can take an optional _int_ suffix:
+所有的整型(除了`int`)以外，都可以带上一个可选的`int`后缀：
 
 ```cpp
-short int si;
+short int si;//short int 中的 int 即可选后缀
 long int li;
 long long int lli;
 ```
 
-COPY
+不过，并不推荐使用这些后缀。使用这些后缀不仅需要打更多字，而且添加`int`后缀后，不容易将这些类型和`int`类型的变量区分开来，而且如果不经意忘记了`short`或者`long`修饰符的话则可能会引入问题。
 
-This suffix should not be used. In addition to being more typing, adding the _int_ suffix makes the type harder to distinguish from variables of type _int_. This can lead to mistakes if the short or long modifier is inadvertently missed.
-
-The integer types can also take an optional _signed_ keyword, which by convention is typically placed before the type name:
+整型还可以添加一个可选的`singed`关键字，通常会将其放置在类型名前：
 
 ```cpp
 signed short ss;
@@ -73,23 +70,22 @@ signed long sl;
 signed long long sll;
 ```
 
-COPY
 
-However, this keyword should not be used, as it is redundant, since integers are signed by default.
+不过，这个关键字也不推荐使用，因为它是多余的，整型默认就是有符号的。
 
-Best practice
+!!! success "最佳实践"
 
-Prefer the shorthand types that do not use the _int_ suffix or signed prefix.
-
-Signed integer ranges
+	使用最精简的写法，不要使用`int`后缀或`signed`前缀。
+	
+## Signed integer ranges
 
 As you learned in the last section, a variable with _n_ bits can hold 2n possible values. But which specific values? We call the set of specific values that a data type can hold its range. The range of an integer variable is determined by two factors: its size (in bits), and whether it is signed or not.
 
 By definition, an 8-bit signed integer has a range of -128 to 127. This means a signed integer can store any integer value between -128 and 127 (inclusive) safely.
 
-As an aside…
+!!! cite "题外话"
 
-Math time: an 8-bit integer contains 8 bits. 28 is 256, so an 8-bit integer can hold 256 possible values. There are 256 possible values between -128 to 127, inclusive.
+    Math time: an 8-bit integer contains 8 bits. 28 is 256, so an 8-bit integer can hold 256 possible values. There are 256 possible values between -128 to 127, inclusive.
 
 Here’s a table containing the range of signed integers of different sizes:
 
@@ -102,11 +98,11 @@ Here’s a table containing the range of signed integers of different sizes:
 |64 bit signed	|-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
 
 
-For the math inclined, an n-bit signed variable has a range of -(2n-1) to 2n-1-1.
+For the math inclined, an n-bit signed variable has a range of $-(2^{n-1})$ to $2^{n-1}-1$
 
 For the non-math inclined… use the table. :)
 
-Integer overflow
+## 整型溢出 
 
 What happens if we try to assign the value _280_ to an 8-bit signed integer? This number is outside the range that a 8-bit signed integer can hold. The number 280 requires 9 bits (plus 1 sign bit) to be represented, but we only have 7 bits (plus 1 sign bit) available in a 8-bit signed integer.
 
@@ -114,13 +110,13 @@ Integer overflow (often called _overflow_ for short) occurs when we try to st
 
 In the case of signed integers, which bits are lost is not well defined, thus signed integer overflow leads to undefined behavior.
 
-Warning
+!!! warning "注意"
 
-Signed integer overflow will result in undefined behavior.
+	Signed integer overflow will result in undefined behavior.
 
 In general, overflow results in information being lost, which is almost never desirable. If there is _any_ suspicion that an object might need to store a value that falls outside its range, use a type with a bigger range!
 
-Integer division
+## 整型除法
 
 When dividing two integers, C++ works like you’d expect when the quotient is a whole number:
 
@@ -138,7 +134,9 @@ COPY
 
 This produces the expected result:
 
+```
 5
+```
 
 But let’s look at what happens when integer division causes a fractional result:
 
@@ -156,7 +154,9 @@ COPY
 
 This produces a possibly unexpected result:
 
+```
 1
+```
 
 When doing division with two integers (called integer division), C++ always produces an integer result. Since integers can’t hold fractional values, any fractional portion is simply dropped (not rounded!).
 
@@ -164,8 +164,8 @@ Taking a closer look at the above example, 8 / 5 produces the value 1.6. The fra
 
 Similarly, -8 / 5 results in the value -1.
 
-Warning
+!!! warning "注意"
 
-Be careful when using integer division, as you will lose any fractional parts of the quotient. However, if it’s what you want, integer division is safe to use, as the results are predictable.
+	Be careful when using integer division, as you will lose any fractional parts of the quotient. However, if it’s what you want, integer division is safe to use, as the results are predictable.
 
 If fractional results are desired, we show a method to do this in lesson [5.2 -- Arithmetic operators](https://www.learncpp.com/cpp-tutorial/arithmetic-operators/).

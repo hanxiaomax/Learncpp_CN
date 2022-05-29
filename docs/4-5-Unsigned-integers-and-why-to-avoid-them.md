@@ -10,13 +10,13 @@ tags:
 ---
 
 
-## Unsigned integers
+## 无符号整型
 
 In the previous lesson ([4.4 -- Signed integers](https://www.learncpp.com/cpp-tutorial/signed-integers/)), we covered signed integers, which are a set of types that can hold positive and negative whole numbers, including 0.
 
 C++ also supports unsigned integers. Unsigned integers are integers that can only hold non-negative whole numbers.
 
-## Defining unsigned integers
+## 定义无符号整型
 
 To define an unsigned integer, we use the _unsigned_ keyword. By convention, this is placed before the type:
 
