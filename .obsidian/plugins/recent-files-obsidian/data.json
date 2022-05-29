@@ -5,6 +5,10 @@
       "path": "docs/4-4-Signed-integers.md"
     },
     {
+      "basename": "5.2 -- Arithmetic operators",
+      "path": "docs/5.2 -- Arithmetic operators.md"
+    },
+    {
       "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
       "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "arguments",
       "path": "docs/arguments.md"
-    },
-    {
-      "basename": "3-x-Chapter-3-summary-and-quiz",
-      "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

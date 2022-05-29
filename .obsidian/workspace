@@ -130,6 +130,7 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/4-4-Signed-integers.md",
+    "docs/5.2 -- Arithmetic operators.md",
     "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
     "docs/4-x-Chapter-4-summary-and-quiz.md",
     "docs/6-4-Introduction-to-global-variables.md",
@@ -137,7 +138,6 @@
     "docs/4-14-Literal-constants.md",
     "docs/4-13-An introduction-to-std-string.md",
     "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
-    "docs/4-11-Chars.md"
+    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
   ]
 }
