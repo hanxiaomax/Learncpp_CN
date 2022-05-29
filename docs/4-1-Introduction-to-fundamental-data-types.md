@@ -12,6 +12,10 @@ tags:
 ??? note "关键点速记"
 
 	- 变量只是一段可以存放信息的内存的名称
+	- 使用**数据类型**（通常简称为类型）告诉计算机如何将内存中的数据解析为有意义的值
+	- 一个byte通常等于8个bit
+	- “整数型的类型”，包括布尔类型、字符、整型和枚举
+	- 字符串不属于 C++ 的基本类型，它属于复合类型，由 `std::string` 定义
 
 ## Bits、bytes 和内存地址
 
@@ -54,6 +58,12 @@ C++ 具有很多内置的数据类型，称为基础数据类型，也经常被�
 
 下表是一些基本数据类型，有些可能你已经见过了：
 
+| 类型|分类|含义|例子
+| ---- | ---- | ----| ----|
+| float<br>double <br>longdouble | 浮点类型 |具有小数部分的数|3.14159
+
+
+
 ![[datatype.png]]
 
 
@@ -61,14 +71,15 @@ C++ 具有很多内置的数据类型，称为基础数据类型，也经常被�
 
 !!! info "作者注"
 
-	术语 terms `integer` and `integral` are similar, but have different meanings. An `integer` is a specific data type that hold non-fractional numbers, such as whole numbers, 0, and negative whole numbers. `Integral` means “like an integer”. Most often, `integral` is used as part of the term `integral type`, which includes all of the Boolean, characters, and integer types (also enumerated types, which we’ll discuss in [chapter 9](https://www.learncpp.com/#Chapter9)). `Integral type` are named so because they are stored in memory as integers, even though their behaviors might vary (which we’ll see later in this chapter when we talk about the character types).
+	术语整型（interger）和整数的（integral）类似，但是意思并不完全相同。**整型**指的是一种用于存放非小数值的特定的数据结构，例如整数、0或者负整数。而**整数型的**则表示“像整型”。多数情况下，整型的一词被组成其他术语，例如“整数型的类型”，包括布尔类型、字符和整型（还包括枚举——在第九章会进行介绍）。“整数型的类型”之所以这么命名，是因为这些类型的数据在内存中是以整型数存放的，即使它们的行为可能不同（稍后我们会在讨论字符类型时了解其差异）。
+	
 
 !!! info "作者注"
 
-	Most modern programming languages include a fundamental `string` type (strings are a data type that lets us hold a sequence of characters, typically used to represent text). In C++, strings aren’t a fundamental type (they’re a compound type). But because basic string usage is straightforward and useful, we’ll introduce strings in this chapter as well (in lesson [4.13 -- An introduction to std::string](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdstring/)).
+	大多数现代编程语言都包含基本的字符串类型（字符串指的是包含一系列字符的数据，通常用来表示文本）。在C++中，字符串并不属于基本类型（它属于复合类型）。但是因为字符串的使用方法很直接，而且也非常有用，因此在本章中我们也会介绍字符串类型（[[4-13-An introduction-to-std-string|4.13 - std::string 简介 ]]）。
 
-## The _t suffix
+## The `_t` suffix
 
-Many of the types defined in newer versions of C++ (e.g. std::nullptr_t) use a _t suffix. This suffix means “type”, and it’s a common nomenclature applied to modern types.
+很多在新版本 C++ 中定义的数据类型（例如 `std::nullptr_t`）都包含一个`_t`后缀。这个后缀表示 type（类型），这是一种常见的用于现代类型的命名方式。
 
-If you see something with a _t suffix, it’s probably a type. But many types don’t have a _t suffix, so this isn’t consistently applied.
+如果你遇到了带有`_t`后缀的标识符，它很可能是一个类型，但是也有很多类型是不包含该后缀的，所以该命名规则并不是被一贯遵守的。

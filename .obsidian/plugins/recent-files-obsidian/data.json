@@ -5,6 +5,14 @@
       "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
+      "basename": "4-2-Void",
+      "path": "docs/4-2-Void.md"
+    },
+    {
+      "basename": "4-13-An introduction-to-std-string",
+      "path": "docs/4-13-An introduction-to-std-string.md"
+    },
+    {
       "basename": "random-access-memory",
       "path": "docs/random-access-memory.md"
     },
@@ -19,10 +27,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "4-2-Void",
-      "path": "docs/4-2-Void.md"
     },
     {
       "basename": "4-3-Object-sizes-and-the-sizeof-operator",
@@ -195,10 +199,6 @@
     {
       "basename": "linker",
       "path": "docs/linker.md"
-    },
-    {
-      "basename": "1-7-Keywords-and-naming-identifiers",
-      "path": "docs/1-7-Keywords-and-naming-identifiers.md"
     }
   ],
   "omittedPaths": [],
