@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "random-access-memory",
+      "path": "docs/random-access-memory.md"
+    },
+    {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
@@ -23,10 +31,6 @@
     {
       "basename": "3-10-Finding-issues-before-they-become-problems",
       "path": "docs/3-10-Finding-issues-before-they-become-problems.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
       "basename": "translation",
@@ -195,10 +199,6 @@
     {
       "basename": "1-7-Keywords-and-naming-identifiers",
       "path": "docs/1-7-Keywords-and-naming-identifiers.md"
-    },
-    {
-      "basename": "1-8-Whitespace-and-basic-formatting",
-      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
     }
   ],
   "omittedPaths": [],

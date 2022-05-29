@@ -9,15 +9,19 @@ tags:
 - data type
 ---
 
-## Bits, bytes, and memory addressing
+??? note "关键点速记"
 
-In lesson [[1-3-Introduction-to-objects-and-variables|1.3 - 对象和变量]], we talked about the fact that variables are names for a piece of memory that can be used to store information. To recap briefly, computers have random access memory (RAM) that is available for programs to use. When a variable is defined, a piece of that memory is set aside for that variable.
+	- 变量只是一段可以存放信息的内存的名称
 
-The smallest unit of memory is a binary digit (also called a bit), which can hold a value of 0 or 1. You can think of a bit as being like a traditional light switch -- either the light is off (0), or it is on (1). There is no in-between. If you were to look at a random segment of memory, all you would see is …011010100101010… or some combination thereof.
+## Bits、bytes 和内存地址
 
-Memory is organized into sequential units called memory addresses (or addresses for short). Similar to how a street address can be used to find a given house on a street, the memory address allows us to find and access the contents of memory at a particular location.
+在[[1-3-Introduction-to-objects-and-variables|1.3 - 对象和变量]]中我们介绍过，事实上变量只是一段可以存放信息的内存的名称。简单回忆一下，程序可以使用计算机提供的[[random-access-memory|随机访问内存(RAM)]]。当变量被定义的时候，一块内存被关联到了该变量。
 
-Perhaps surprisingly, in modern computer architectures, each bit does not get its own unique memory address. This is because the number of memory addresses are limited, and the need to access data bit-by-bit is rare. Instead, each memory address holds 1 byte of data. A byte is a group of bits that are operated on as a unit. The modern standard is that a byte is comprised of 8 sequential bits.
+内存的最小单元是一个二进制位（也称为 bit），它可以存储 0 或 1.你可以把一个 bit 看成是一个灯泡的开关——它只有开（1）和关（0）两种状态，没有其他任何中间状态。如果你去观察一段内存内容的话，你总能看到 …011010100101010… 或其他类似组合。
+
+我们将内存分割成一系列顺序表示的单元，称为内存地址。类似于街道地址可以用来查找街道上某幢建筑，通过内存地址我们也可以找到特定地址中存放的内容。 
+
+不够有件事可能出乎你的意料，对于现代计算机 surprisingly, in modern computer architectures, each bit does not get its own unique memory address. This is because the number of memory addresses are limited, and the need to access data bit-by-bit is rare. Instead, each memory address holds 1 byte of data. A byte is a group of bits that are operated on as a unit. The modern standard is that a byte is comprised of 8 sequential bits.
 
 !!! tldr "关键信息"
 
