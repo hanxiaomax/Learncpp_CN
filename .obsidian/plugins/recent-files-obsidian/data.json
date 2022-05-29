@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "4-3-Object-sizes-and-the-sizeof-operator",
+      "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
+    },
+    {
       "basename": "4-1-Introduction-to-fundamental-data-types",
       "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
+      "basename": "bit",
+      "path": "docs/bit.md"
+    },
+    {
+      "basename": "byte",
+      "path": "docs/byte.md"
+    },
+    {
       "basename": "4-2-Void",
       "path": "docs/4-2-Void.md"
+    },
+    {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
+      "basename": "compile-time",
+      "path": "docs/compile-time.md"
     },
     {
       "basename": "4-13-An introduction-to-std-string",
@@ -27,10 +51,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "4-3-Object-sizes-and-the-sizeof-operator",
-      "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
     },
     {
       "basename": "3-10-Finding-issues-before-they-become-problems",
@@ -103,10 +123,6 @@
     {
       "basename": "declaration",
       "path": "docs/declaration.md"
-    },
-    {
-      "basename": "compile-time",
-      "path": "docs/compile-time.md"
     },
     {
       "basename": "arguments",
@@ -183,22 +199,6 @@
     {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
       "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
-    },
-    {
-      "basename": "2-8-Programs-with-multiple-code-files",
-      "path": "docs/2-8-Programs-with-multiple-code-files.md"
-    },
-    {
-      "basename": "local-variable",
-      "path": "docs/local-variable.md"
-    },
-    {
-      "basename": "global-variable",
-      "path": "docs/global-variable.md"
-    },
-    {
-      "basename": "linker",
-      "path": "docs/linker.md"
     }
   ],
   "omittedPaths": [],
