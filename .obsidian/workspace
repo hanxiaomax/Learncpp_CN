@@ -129,14 +129,14 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
+    "docs/4-2-Void.md",
+    "docs/4-11-Chars.md",
     "docs/4-1-Introduction-to-fundamental-data-types.md",
     "docs/bit.md",
     "docs/byte.md",
-    "docs/4-2-Void.md",
     "docs/11-14-Void-pointers.md",
     "docs/1-3-Introduction-to-objects-and-variables.md",
     "docs/compile-time.md",
-    "docs/编译时(compile-time).md",
-    "docs/4-13-An introduction-to-std-string.md"
+    "docs/编译时(compile-time).md"
   ]
 }

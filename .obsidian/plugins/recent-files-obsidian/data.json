@@ -5,6 +5,14 @@
       "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
     },
     {
+      "basename": "4-2-Void",
+      "path": "docs/4-2-Void.md"
+    },
+    {
+      "basename": "4-11-Chars",
+      "path": "docs/4-11-Chars.md"
+    },
+    {
       "basename": "4-1-Introduction-to-fundamental-data-types",
       "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
@@ -15,10 +23,6 @@
     {
       "basename": "byte",
       "path": "docs/byte.md"
-    },
-    {
-      "basename": "4-2-Void",
-      "path": "docs/4-2-Void.md"
     },
     {
       "basename": "11-14-Void-pointers",
@@ -195,10 +199,6 @@
     {
       "basename": "instuction",
       "path": "docs/instuction.md"
-    },
-    {
-      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
-      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
     }
   ],
   "omittedPaths": [],

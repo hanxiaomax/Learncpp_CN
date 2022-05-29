@@ -18,6 +18,10 @@ theme:
     - navigation.prune
 extra_css:
   - stylesheets/extra.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 markdown_extensions:
   - abbr
   - attr_list
@@ -33,6 +37,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.mark
+  - pymdownx.arithmatex:
+      generic: true
 plugins:
   - tags:
       tags_file: tags.md
