@@ -5,6 +5,34 @@
       "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
     },
     {
+      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
+      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
+    },
+    {
+      "basename": "1-7-Keywords-and-naming-identifiers",
+      "path": "docs/1-7-Keywords-and-naming-identifiers.md"
+    },
+    {
+      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
+      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "3-10-Finding-issues-before-they-become-problems",
+      "path": "docs/3-10-Finding-issues-before-they-become-problems.md"
+    },
+    {
+      "basename": "operands",
+      "path": "docs/operands.md"
+    },
+    {
       "basename": "4-2-Void",
       "path": "docs/4-2-Void.md"
     },
@@ -55,10 +83,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "3-10-Finding-issues-before-they-become-problems",
-      "path": "docs/3-10-Finding-issues-before-they-become-problems.md"
     },
     {
       "basename": "translation",
@@ -175,30 +199,6 @@
     {
       "basename": "2-5-Introduction-to-local-scope",
       "path": "docs/2-5-Introduction-to-local-scope.md"
-    },
-    {
-      "basename": "instantiated",
-      "path": "docs/instantiated.md"
-    },
-    {
-      "basename": "pass-by-value",
-      "path": "docs/pass-by-value.md"
-    },
-    {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "2-13-How-to-design-your-first-programs",
-      "path": "docs/2-13-How-to-design-your-first-programs.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "instuction",
-      "path": "docs/instuction.md"
     }
   ],
   "omittedPaths": [],
