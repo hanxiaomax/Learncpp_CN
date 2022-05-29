@@ -11,6 +11,7 @@ tags:
 
 ??? note "关键点速记"
 	- C++ 只保证了每种基础数据类型最小的尺寸，具体大小和编译器及计算机体系结构相关
+	- CPU 按照某个长度来处理数据，只有当数据类型的大小等于该长度时才会更快，并不一定占用内存小的数据结构更快
 
 
 ## 对象的大小
@@ -62,7 +63,7 @@ tags:
 
 	新手程序员通常过分关注优化他们的代码并使其程序能够使用尽可能少的内存。大多数情况下，这其实影响不大。你的注意力应该放在编写易于维护的代码，只有当优化可以带来显著收益的时候再去做。
 	
-基础数据类型通常速度非常快。
+
 
 
 ## 基础数据类型的大小
@@ -163,12 +164,15 @@ x is 4 bytes
 
 !!! info "译者注"
 
-	对指针使用`sizeof`的结果是固定的，不取决于指针指向什么类型的数据
+	对指针使用`sizeof`的结果是固定的，不取决于指针指向什么类型的数据。通常为4或者8个字节。
 
-## Fundamental data type performance
+## 基本数据结构的性能
 
-On modern machines, objects of the fundamental data types are fast, so performance while using these types should generally not be a concern.
+
+
+在现代计算机上，基础数据类型的对象性能通常都非常好，因此这些变量的性能问题通常不需要我们特别考虑。
+
 
 !!! cite "题外话"
 
-    You might assume that types that use less memory would be faster than types that use more memory. This is not always true. CPUs are often optimized to process data of a certain size (e.g. 32 bits), and types that match that size may be processed quicker. On such a machine, a 32-bit _int_ could be faster than a 16-bit _short_ or an 8-bit _char_.
+    你可能会想当然地认为使用内存少的数据结构速度也会更快，实际上并不总是这样。CPU 通常会对数据的流程进行优化，按照某个长度来处理数据（例如32位），如果数据类型的大小恰好和该长度相同，则会更快一些。在这样的计算机上，32位的 int 会比 16为的 int 更快。

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
+            "file": "docs/4-8-Floating-point-numbers.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
+                "file": "docs/4-8-Floating-point-numbers.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
+                "file": "docs/4-8-Floating-point-numbers.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-8-Floating-point-numbers.md",
+    "docs/4-7-Introduction-to-scientific-notation.md",
+    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
+    "docs/4-6-Fixed-width-integers-and-size_t.md",
     "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
+    "docs/4-1-Introduction-to-fundamental-data-types.md",
+    "docs/4-4-Signed-integers.md",
     "docs/1-6-Uninitialized-variables-and-undefined-behavior.md",
     "docs/1-7-Keywords-and-naming-identifiers.md",
-    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
-    "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/2-2-Function-return-values-value-returning functions.md",
-    "docs/3-10-Finding-issues-before-they-become-problems.md",
-    "docs/operands.md",
-    "docs/4-2-Void.md",
-    "docs/4-11-Chars.md"
+    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
   ]
 }

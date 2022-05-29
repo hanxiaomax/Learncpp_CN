@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "4-8-Floating-point-numbers",
+      "path": "docs/4-8-Floating-point-numbers.md"
+    },
+    {
+      "basename": "4-7-Introduction-to-scientific-notation",
+      "path": "docs/4-7-Introduction-to-scientific-notation.md"
+    },
+    {
+      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
+      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "4-6-Fixed-width-integers-and-size_t",
+      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
+    },
+    {
       "basename": "4-3-Object-sizes-and-the-sizeof-operator",
       "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "4-4-Signed-integers",
+      "path": "docs/4-4-Signed-integers.md"
     },
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
@@ -39,10 +63,6 @@
     {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
       "basename": "bit",
@@ -179,26 +199,6 @@
     {
       "basename": "3-7-Using-an-integrated-debugger-Running-and-breakpoints",
       "path": "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md"
-    },
-    {
-      "basename": "3-6-Using-an-integrated-debugger-Stepping",
-      "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
-    },
-    {
-      "basename": "3-5-More-debugging-tactics",
-      "path": "docs/3-5-More-debugging-tactics.md"
-    },
-    {
-      "basename": "3-4-Basic-debugging-tactics",
-      "path": "docs/3-4-Basic-debugging-tactics.md"
-    },
-    {
-      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
-      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
     }
   ],
   "omittedPaths": [],

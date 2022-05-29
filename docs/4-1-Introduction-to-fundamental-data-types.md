@@ -63,8 +63,23 @@ C++ 具有很多内置的数据类型，称为基础数据类型，也经常被�
 | float<br>double <br>longdouble | 浮点类型 |具有小数部分的数|3.14159
 
 
-
-![[datatype.png]]
+|类型 | 分类	| 含义	| 例子|
+|----|----|----|----|
+|float|Floating Point|a number with a fractional part|3.14159
+|double|Floating Point|a number with a fractional part|3.14159
+|long double	|Floating Point	|a number with a fractional part	|3.14159
+|bool	|Integral (Boolean)	|true or false	|true
+|char|Integral (Character)|a single character of text	|‘c’
+|wchar_t|Integral (Character)|a single character of text	|‘c’
+|char8_t (C++20)|Integral (Character)|a single character of text	|‘c’
+|char16_t (C++11)|Integral (Character)|a single character of text	|‘c’
+|char32_t (C++11)	|Integral (Character)|	a single character of text	|‘c’
+|short|Integral (Integer)|positive and negative whole numbers, including 0	|64
+|int|Integral (Integer)|positive and negative whole numbers, including 0	|64
+|long|Integral (Integer)|positive and negative whole numbers, including 0	|64
+|long long (C++11)	|Integral (Integer)	|positive and negative whole numbers, including 0	|64
+|std::nullptr_t (C++11)	|Null Pointer	|a null pointer	|nullptr
+|void	|Void	|no type	|n/a
 
 
 本章将相继介绍这些基本数据类型（除了 `std::nullptr_t`，我们会在讨论指针时讨论它）。C++  也支持很多复杂类型，称为**复合类型**，我们会在后续的章节中进行介绍。
