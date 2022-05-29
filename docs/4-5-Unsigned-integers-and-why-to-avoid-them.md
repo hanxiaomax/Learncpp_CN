@@ -12,7 +12,9 @@ tags:
 
 ??? note "关键点速记"
 
-	- 
+	- 无符号整型表示超过范围的数时，实际存储的值为原值除以范围最大值加1后的余数。例如，`value mod 2^32`
+	- 无符号整型表示超过范围的数时不会产生未定义行为，它的行为是确定的
+	- C++ 标准明确说明无符号整型不会溢出
 
 ## 无符号整型
 
@@ -62,15 +64,15 @@ What happens if we try to store the number 280 (which requires 9 bits to represe
 
 !!! info "作者注"
 
-    奇怪的是，C++标准中明确写道，无符号操作数参与的运算永远不会溢出。这和我们的编程常识（无符号和有符号整型都会溢出）是矛盾的。( [参考文献](https://en.wikipedia.org/wiki/Integer_overflow#Definition_variations_and_ambiguity) ). Given that most programmers would consider this overflow, we’ll call this overflow despite C++’s statements to the contrary.
+    奇怪的是，C++标准中明确写道，无符号操作数参与的运算永远不会溢出。这和我们的编程常识（无符号和有符号整型都会溢出）是矛盾的。( [参考文献](https://en.wikipedia.org/wiki/Integer_overflow#Definition_variations_and_ambiguity) )。由于大多数的程序员都会考虑该溢出，我们这里也沿用了该说法，尽管和C++标准有所矛盾。
 
-If an unsigned value is out of range, it is divided by one greater than the largest number of the type, and only the remainder kept.
+当无符号值超过范围时，它会被除以该类型的最大值加1，且只保留余数。
 
-The number 280 is too big to fit in our 1-byte range of 0 to 255. 1 greater than the largest number of the type is 256. Therefore, we divide 280 by 256, getting 1 remainder 24. The remainder of 24 is what is stored.
+280不在0到255的范围内。该范围的最大值+1是256，所以280会除以256，余数为24。最终24会被存放到内存中。
 
-Here’s another way to think about the same thing. Any number bigger than the largest number representable by the type simply “wraps around” (sometimes called “modulo wrapping”). 255 is in range of a 1-byte integer, so 255 is fine. 256, however, is outside the range, so it wraps around to the value 0. 257 wraps around to the value 1. 280 wraps around to the value 24.
+这个问题还可以这样理解。比最大值还大的数在存放时会被“wraps around” (有时候也称为“modulo wrapping”)，即从0开始重新计算。255在1字节整型的表示范围内，所以255没问题。而256则超过了范围，因此它会被归为0。257则会归为1。280 则归为 24.
 
-Let’s take a look at this using 2-byte shorts:
+这里是一个 2字节无符号短整型（ `unsigned short`） 的例子：
 
 ```cpp
 #include <iostream>
@@ -90,11 +92,13 @@ int main()
 }
 ```
 
-COPY
+!!! note "译者注"
 
-What do you think the result of this program will be?
+	无符号不会溢出，的确是C++标准，不溢出这个说法也是合理的，因为无符号在遇到超过表示范围的情况时并不会表现出未定义行为，结果也不是简单的丢弃，而是对原值进行求模运算。英文叫 warp around，即从0开始重新计算。例如，对于32位无符号，超出范围时结果等于`value mod 2^32`
 
-(Note: If you try to compile the above program, your compiler should issue warnings about overflow or truncation -- you’ll need to disable “treat warnings as errors” to run the program)
+你觉得程序的结果会是什么呢？
+
+(注意，如果你编译上述程序的话，编译器可能会产生关于溢出或截断的告警——你需要关闭”将告警看做错误“功能，才能运行该程序）
 
 ```
 x was: 65535
@@ -102,7 +106,7 @@ x is now: 0
 x is now: 1
 ```
 
-It’s possible to wrap around the other direction as well. 0 is representable in a 2-byte unsigned integer, so that’s fine. -1 is not representable, so it wraps around to the top of the range, producing the value 65535. -2 wraps around to 65534. And so forth.
+向另一个方向wrap也是可以的，0可以被2字节大小的无符号整型表示，但是-1不可以，因此它会被wrap到最大值，结果为 65535。-2 的结果是 65534。
 
 ```cpp
 #include <iostream>
@@ -122,7 +126,6 @@ int main()
 }
 ```
 
-COPY
 
 ```
 x was: 0
