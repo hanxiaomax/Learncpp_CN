@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "4-7-Introduction-to-scientific-notation",
+      "path": "docs/4-7-Introduction-to-scientific-notation.md"
+    },
+    {
       "basename": "4-6-Fixed-width-integers-and-size_t",
       "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
+    },
+    {
+      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
+      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
     },
     {
       "basename": "4-4-Signed-integers",
@@ -11,14 +19,6 @@
     {
       "basename": "4-3-Object-sizes-and-the-sizeof-operator",
       "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
-    },
-    {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "4-7-Introduction-to-scientific-notation",
-      "path": "docs/4-7-Introduction-to-scientific-notation.md"
     },
     {
       "basename": "5.2 -- Arithmetic operators",

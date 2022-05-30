@@ -26,6 +26,7 @@ tags:
 		- 使用 8 为固定宽度整型；
 		- 使用速度或大小优先的固定宽度类型；
 		- 任何与特定编译器相关的固定整型类型——例如 Visual Studio 定义的 `__int8`，`__int16`等。
+	- `std::size_t`是无符号整型，其宽度通常等于应用程序的位数，同时其能够表示的最大值也是系统能够创建对象大小的理论上限
 
 
 上面的课程中我们介绍了整型，并且提到 C++ 只保证整型值占用空间的最小值——但是它占用的空间可以更大，这取决于具体的系统。
@@ -216,12 +217,13 @@ int main()
 4
 ```
 
-和整型的大小可以改变一样， `std::size_t` 同样可能会改变。`std::size_t` 只保证它为无符号，并且最小为16位，但是在大多数系统中，它的实际大小通常等于应用程序的[[address-width|地址宽度(address-width)]]。即对于32位应用程序，`std::size_t` 通常为 32 位无符号整型，而对于 64 位程序，`size_t`通常为64位无符号整型。`size_t` 被定义为要足够大能以便能够存放对应系统能够创建的最大的对象（以字节计）。例如，如果 `std::size_t` 是4个字节宽，则该系统能够创建的最大的对象不可能超过 4,294,967,295 bytes, because this is the largest number a 4 byte unsigned integer can store. This is only the uppermost limit of an object’s size, the real size limit can be lower depending on the compiler you’re using.
+和整型的大小可以改变一样， `std::size_t` 同样可能会改变。`std::size_t` 只保证它为无符号，并且最小为16位，但是在大多数系统中，它的实际大小通常等于应用程序的[[address-width|地址宽度(address-width)]]。即对于32位应用程序，`std::size_t` 通常为 32 位无符号整型，而对于 64 位程序，`size_t`通常为64位无符号整型。`size_t` 被定义为要足够大能以便能表示对应系统能够创建的最大的对象（以字节计）的尺寸。例如，如果 `std::size_t` 是4个字节宽，则该系统能够创建的最大的对象不可能超过 4,294,967,295 字节，因为这是4字节无符号整型能够存放的最大值。不过，这只是对象尺寸的理论上限，实际上限取决于你使用的编译器。
 
-By definition, any object with a size (in bytes) larger than the largest integral value `size_t` can hold is considered ill-formed (and will cause a compile error), as the _sizeof_operator would not be able to return the size without wrapping around.
+从定义上看，任何尺寸大于`size_t`能够表示的值的对象，都被看做是错误的（会导致编译错），因为此时`size_t`已经不能够正确表示该对象的大小（会发生无符号数翻转）。
+
 
 !!! cite "题外话"
 
-    有些编译器将最大可创建对象的大小限制为 `std::size_t` 的最大值(有兴趣可以阅读 [这篇文章](https://stackoverflow.com/a/42428240) ).
+    有些编译器将最大可创建对象的大小限制为`std::size_t`能够表示的最大值(有兴趣可以阅读[这篇文章](https://stackoverflow.com/a/42428240) ).
 
     实际上，最大可创建对象的大小可能会小于（远小于）这个值，它取决于你的计算机有多少可用的连续内存。
