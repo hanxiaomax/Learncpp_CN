@@ -88,38 +88,37 @@ int main()
 
 在第一条打印中，`std::cout` 打印 5，即使我们输入的是5.0。默认情况下 `std::cout` 不会输入小数部分的0。
 
-在第二条打印中，In the second case, the number prints as we expect.
+在第二条打印中，结果和我们期望的是一样。
 
-In the third case, it printed the number in scientific notation (if you need a refresher on scientific notation, see lesson[[4-7-Introduction-to-scientific-notation|4.7 - 科学计数法]]
+在第三条打印中，打印结果为科学计数法（如果你需要复习一下科学计数法可以参考 [[4-7-Introduction-to-scientific-notation|4.7 - 科学计数法]]）。
 
-## Floating point range
+## 浮点数的范围
 
-Assuming IEEE 754 representation:
+假定使用 IEEE 754 表示法：
+
+|大小	|范围|	精度|
+|---|---|---|
+|4 bytes	|±1.18 x 10-38 到 ±3.4 x 1038|	6-9 位有效数字，一般为7
+|8 bytes	|±2.23 x 10-308 到 ±1.80 x 10308	|15-18 位有效数字，一般为16
+|80-bits (typically uses 12 或 16 bytes)	|±3.36 x 10-4932 到 ±1.18 x 104932	|18-21 位有效数字
+|16 bytes	|±3.36 x 10-4932 到 ±1.18 x 104932|	33-36 位有效数字
 
 
-|Size	|Range	Precision|
-|---|---|
-|4 bytes	|±1.18 x 10-38 to ±3.4 x 1038|	6-9 significant digits, typically 7
-|8 bytes	|±2.23 x 10-308 to ±1.80 x 10308	|15-18 significant digits, typically 16
-|80-bits (typically uses 12 or 16 bytes)	|±3.36 x 10-4932 to ±1.18 x 104932	|18-21 significant digits
-|16 bytes	|±3.36 x 10-4932 to ±1.18 x 104932|	33-36 significant digits
+80位的浮点数类型可以看做是历史遗留问题。在现代处理器上，它通常被实现为12字节或16字节（对于处理器来说是更加方便的长度）。
 
+你可能会奇怪为什么80位的浮点数类型和16字节的浮点数类型具有相同的范围。这是因为它们中专门用来表示指数的位是相同的——不过，16字节的浮点数可以表示更多的有效数字。
 
-The 80-bit floating point type is a bit of a historical anomaly. On modern processors, it is typically implemented using 12 or 16 bytes (which is a more natural size for processors to handle).
+## 浮点数的精度
 
-It may seem a little odd that the 80-bit floating point type has the same range as the 16-byte floating point type. This is because they have the same number of bits dedicated to the exponent -- however, the 16-byte number can store more significant digits.
+考虑以下分数 1/3。它的十进制表示法为 0.33333333333333… 无限循环3。如果你在纸上一直写的话，写着写着你就受不了了。最终你写下来的可能是 0.3333333333…. (无限循环3)，但绝对不可能是全部的值。
 
-Floating point precision
+对于计算机来说，无限长度的数字需要无限大的内存才能存储，而通常我们只能使用4字节或8字节的空间。有限的内存就意味着浮点数只能存放特定长度的有效数字——其他剩余部分就被丢弃了。最终被存储下来的数字是我们能够接受的值，而不是实际值。
 
-Consider the fraction 1/3. The decimal representation of this number is 0.33333333333333… with 3’s going out to infinity. If you were writing this number on a piece of paper, your arm would get tired at some point, and you’d eventually stop writing. And the number you were left with would be close to 0.3333333333…. (with 3’s going out to infinity) but not exactly.
+浮点数的精度被定义为：在不损失信息的情况下能够表示的最多的有效数字位数。
 
-On a computer, an infinite length number would require infinite memory to store, and typically we only have 4 or 8 bytes. This limited memory means floating point numbers can only store a certain number of significant digits -- and that any additional significant digits are lost. The number that is actually stored will be close to the desired number, but not exact.
+在输出浮点数时，`std::cout`的默认精度为6——也就说它假设所有浮点数都只有6位有效数字，超过的部分都会被截断。
 
-The precision of a floating point number defines how many _significant digits_ it can represent without information loss.
-
-When outputting floating point numbers, std::cout has a default precision of 6 -- that is, it assumes all floating point variables are only significant to 6 digits (the minimum precision of a float), and hence it will truncate anything after that.
-
-The following program shows std::cout truncating to 6 digits:
+下面的程序对 `std::cout`截断到6位有效数字进行了演示：
 
 ```cpp
 #include <iostream>
@@ -136,9 +135,7 @@ int main()
 }
 ```
 
-COPY
-
-This program outputs:
+输出结果为：
 
 ```
 9.87654
@@ -148,11 +145,11 @@ This program outputs:
 9.87654e-005
 ```
 
-Note that each of these only have 6 significant digits.
+我们注意到，输出结果中的数都只有6位有效数字。
 
-Also note that std::cout will switch to outputting numbers in scientific notation in some cases. Depending on the compiler, the exponent will typically be padded to a minimum number of digits. Fear not, 9.87654e+006 is the same as 9.87654e6, just with some padding 0’s. The minimum number of exponent digits displayed is compiler-specific (Visual Studio uses 3, some others use 2 as per the C99 standard).
+同时我们注意到， `std::cout` 有些情况下会自动改用科学计数法。根据编译器的不同，指数部分会被补0到最小位数。不要担心，9.87654e+006 和 9.87654e6 是完全一样的，只是补了一些0罢了。指数的最小位数根编译器有关，Visual Studio 是 3，其他编译器可能会使用C99的标准即2。
 
-The number of digits of precision a floating point variable has depends on both the size (floats have less precision than doubles) and the particular value being stored (some values have more precision than others). Float values have between 6 and 9 digits of precision, with most float values having at least 7 significant digits. Double values have between 15 and 18 digits of precision, with most double values having at least 16 significant digits. Long double has a minimum precision of 15, 18, or 33 significant digits depending on how many bytes it occupies.
+浮点数精度取决于浮点数类型的大小（float的精度小于double）以及被存储的具体值（有些值的精度本身就比其他值高）。float 类型的精度通常位于 6 到 9之间，多数具有至少7位有效数字。Double 类型的精度通常为 15 到 18之间，多数具有至少16位有效数字。Long double 类型的精度最小为15、18或33位you'xia a minimum precision of 15, 18, or 33 significant digits depending on how many bytes it occupies.
 
 We can override the default precision that std::cout shows by using an `output manipulator` function named `std::setprecision()`. Output manipulators alter how data is output, and are defined in the _iomanip_ header.
 
@@ -170,7 +167,6 @@ int main()
 }
 ```
 
-COPY
 
 Outputs:
 
@@ -197,7 +193,6 @@ int main()
 }
 ```
 
-COPY
 
 Output:
 
@@ -274,7 +269,7 @@ COPY
 0.99999999999999989
 ```
 
-Although we might expect that d1 and d2 should be equal, we see that they are not. If we were to compare d1 and d2 in a program, the program would probably not perform as expected. Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [[5-6-Relational-operators-and-floating-point-comparisons]]
+Although we might expect that d1 and d2 should be equal, we see that they are not. If we were to compare d1 and d2 in a program, the program would probably not perform as expected. Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]]
 
 One last note on rounding errors: mathematical operations (such as addition and multiplication) tend to make rounding errors grow. So even though 0.1 has a rounding error in the 17th significant digit, when we add 0.1 ten times, the rounding error has crept into the 16th significant digit. Continued operations would cause this error to become increasingly significant.
 
@@ -284,7 +279,7 @@ One last note on rounding errors: mathematical operations (such as addition and 
 
 A corollary of this rule is: be wary of using floating point numbers for financial or currency data.
 
-## NaN and Inf
+## NaN 和 Inf
 
 There are two special categories of floating point numbers. The first is Inf, which represents infinity. Inf can be positive or negative. The second is NaN, which stands for “Not a Number”. There are several different kinds of NaN (which we won’t discuss here). NaN and Inf are only available if the compiler uses a specific format (IEEE 754) for floating point numbers. If another format is used, the following code produces undefined behavior.
 
@@ -324,7 +319,7 @@ _INF_ stands for infinity, and _IND_ stands for indeterminate. Note that the 
 
 	Avoid division by 0 altogether, even if your compiler supports it.
 
-## Conclusion
+## 结论
 
 To summarize, the two things you should remember about floating point numbers:
 
