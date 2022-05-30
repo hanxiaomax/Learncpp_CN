@@ -1,6 +1,6 @@
 ---
-title: 4.6 - 固定长度整型和 size_t
-alias: 4.6 - 固定长度整型和 size_t
+title: 4.6 - 固定宽度整型和 size_t
+alias: 4.6 - 固定宽度整型和 size_t
 origin: /fixed-width-integers-and-size-t/
 origin_title: "4.6 — Fixed-width integers and size_t"
 time: 2022-4-6
@@ -17,17 +17,15 @@ tags:
 
 简而言之，这还是从C语言继承而来的。在计算机非常慢的年代，性能是最需要被考虑的问题。C 语言选择故意不去固定整型的大小，以便编译器的实现者可以为目标计算机选择最合适的整型大小以提高性能。
 
-## 这不是很糟吗？
+## 很讨厌是吧？
 
-从现代标准的角度来讲，是的。作为程序员还要考虑类型 modern standards, yes. As a programmer, it’s a little ridiculous to have to deal with types that have uncertain ranges.
+从现代标准的角度来讲，是的。作为程序员还要处理类型范围不确定的情况确实有点荒唐。
 
-Consider the int type. The minimum size for int is 2 bytes, but it’s often 4 bytes on modern architectures. If you assume an int is 4 bytes because that’s most likely, then your program will probably misbehave on architectures where int is actually 2 bytes (since you will probably be storing values that require 4 bytes in a 2 byte variable, which will cause overflow or undefined behavior). If you assume an int is only 2 bytes to ensure maximum compatibility, then on systems where int is 4 bytes, you’re wasting 2 bytes per integer and doubling your memory usage!
+考虑`int`类型，其占用内存最小为 2字节，但是在现代计算机上却经常为4字节。如果你假设int是4个字节（确实4字节情况最有可能），那么你的程序在`int`实际只占两个字节的计算机上就会产生异常的行为（因为你很可能把一个需要4字节才能存放的值存放到了实际只有2个字节的变量中，这会导致溢出或未定义行为）。而如果你假设`int`只有两个字节以便获得最好的兼容性，那么在4字节系统上无疑会浪费两个字节，这会使得你的内存使用成倍增加！
 
-## Fixed-width integers
+## 固定宽度整型
 
-To address the above issues, C99 defined a set of fixed-width integers (in the stdint.h header) that are guaranteed to be the same size on any architecture.
-
-These are defined as follows:
+为了解决这个问题，C99定义了一组固定宽度整形（位于`stdint.h`）来确保整型在不同的计算机体系结构下都具有相同的大小。
 
 |名称 |    类型|    范围    |备注|
 |---|---|---|---|
@@ -40,7 +38,9 @@ These are defined as follows:
 |std:: int64_t    |8 byte signed    |-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807    |
 |std:: uint64_t    |8 byte unsigned    |0 到 18,446,744,073,709,551,615    |
 
-C++ officially adopted these fixed-width integers as part of C++11. They can be accessed by including the `<cstdint>` header, where they are defined inside the _std_namespace. Here’s an example:
+C++ 在 C++11中官方吸纳了这些固定宽度整型。通过包含 `<cstdint>` 头文件就可以使用它们，它们被定义在`std`命名空间中。
+
+请看下面这个例子：
 
 ```cpp
 #include <cstdint> // for fixed-width integers
@@ -54,23 +54,22 @@ int main()
 }
 ```
 
-COPY
+固定宽度整型通常来讲有两个缺陷。
 
-The fixed-width integers have two downsides that are typically raised.
+首先，固定宽度整型不能保证在所有的体系结构中都被定义了。它只存在于, They only exist on systems where there are fundamental types matching their widths and following a certain binary representation.如果体系结构不支持固定宽度整型，则你的程序是无法编译的。不过，大多数的现代体系结构都以 8/16/32/64-位的变量为标准，因此除非你需要将程序移植到某个极其特殊的大型机或嵌入式系统上，否则一般没有问题。
 
-First, the fixed-width integers are not guaranteed to be defined on all architectures. They only exist on systems where there are fundamental types matching their widths and following a certain binary representation. Your program will fail to compile on any such architecture that does not support a fixed-width integer that your program is using. However, given that most modern architectures have standardized around 8/16/32/64-bit variables, this is unlikely to be a problem unless your program needs to be portable to some exotic mainframe or embedded architectures.
+其次，如果你使用了固定宽度整型，它的性能相较于使用更宽的类型可能或稍差（在同样的体系结构下）。例如，如果你需要一个大小确定为32位的整型，你可能会使用 `std:: int32_t`，但是你的CPU可能在处理64位整形时更快。不过，即便CPU能够更快的处理某种给定的类型，也不一定意味着程序的运行速度更快——现代程序更多受限于内存使用而不是CPU处理速度。使用更大的内存足迹(memory footprint)带来的性能损失可能会超过CPU对其进行的加速。不经实际测试是很难进行对比的。
 
-Second, if you use a fixed-width integer, it may be slower than a wider type on some architectures. For example, if you need an integer that is guaranteed to be 32-bits, you might decide to use `std:: int32_t`, but your CPU might actually be faster at processing 64-bit integers. However, just because your CPU can process a given type faster doesn’t mean your program will be faster overall -- modern programs are often constrained by memory usage rather than CPU, and the larger memory footprint may slow your program more than the faster CPU processing accelerates it. It’s hard to know without actually measuring.
 
-## Fast and least integers
+## 快整型和小整型
 
-To help address the above downsides, C++ also defines two alternative sets of integers that are guaranteed to be defined.
+为了解决上述问题，C++还定义了另外两组整型，并确保它们总是具有定义。
 
-The fast types (std:: int_fast#_t and std:: uint_fast#_t) provide the fastest signed/unsigned integer type with a width of at least # bits (where # = 8,16,32, or 64). For example, _std:: int_fast32_t_ will give you the fastest signed integer type that’s at least 32 bits.
+fast types (`std:: int_fast#_t` and `std:: uint_fast#_t`) provide the fastest signed/unsigned integer type with a width of at least `#` bits (where # = 8,16,32, or 64). For example, `std:: int_fast32_t` will give you the fastest signed integer type that’s at least 32 bits.
 
-The least types (std:: int_least#_t and std:: uint_least#_t) provide the smallest signed/unsigned integer type with a width of at least # bits (where # = 8,16,32, or 64). For example, _std:: uint_least32_t_ will give you the smallest unsigned integer type that’s at least 32 bits.
+The least types (`std:: int_least#_t` and `std:: uint_least#_t`) provide the smallest signed/unsigned integer type with a width of at least `#` bits (where # = 8,16,32, or 64). For example, _std:: uint_least32_t_ will give you the smallest unsigned integer type that’s at least 32 bits.
 
-Here’s an example from the author’s Visual Studio (32-bit console application):
+以作者使用的 Visual Studio (32-bit 控制台程序)为例：
 
 ```cpp
 #include <cstdint> // for fixed-width integers
@@ -90,9 +89,7 @@ int main()
 }
 ```
 
-COPY
-
-This produced the result:
+输出结果如下：
 
 ```
 least 8:  8 bits
@@ -104,7 +101,7 @@ fast 16: 32 bits
 fast 32: 32 bits
 ```
 
-You can see that std:: int_least16_t is 16 bits, whereas std:: int_fast16_t is actually 32 bits. This is because on the author’s machine, 32-bit integers are faster to process than 16-bit integers.
+You can see that `std:: int_least16_t` is 16 bits, whereas `std:: int_fast16_t` is actually 32 bits. This is because on the author’s machine, 32-bit integers are faster to process than 16-bit integers.
 
 However, these fast and least integers have their own downsides: First, not many programmers actually use them, and a lack of familiarity can lead to errors. Second, the fast types can lead to the same kind of memory wastage that we saw with 4 byte integers. Most seriously, because the size of the fast/least integers can vary, it’s possible that your program may exhibit different behaviors on architectures where they resolve to different sizes. For example:
 
@@ -125,7 +122,7 @@ int main()
 
 COPY
 
-This code will produce different results depending on whether std:: uint_fast16_t is 16,32, or 64 bits.
+This code will produce different results depending on whether `std:: uint_fast16_t` is 16,32, or 64 bits.
 
 It’s hard to know where your program might not function as expected until you’ve rigorously tested your program on such architectures. And we imagine not many developers have access to a wide range of different architectures to test with!
 
@@ -162,7 +159,7 @@ Our stance is that it’s better to be correct than fast, better to fail at comp
 
 ## std:: size_t 是什么？
 
-Consider the following code:
+考虑如下代码：
 
 ```cpp
 #include <iostream>
@@ -175,9 +172,8 @@ int main()
 }
 ```
 
-COPY
 
-On the author’s machine, this prints:
+在作者的机器上打印结果如下：
 
 ```
 4
@@ -185,7 +181,7 @@ On the author’s machine, this prints:
 
 Pretty simple, right? We can infer that operator sizeof returns an integer value -- but what integer type is that return value? An int? A short? The answer is that sizeof (and many functions that return a size or length value) return a value of type _std:: size_t_. std:: size_t is defined as an unsigned integral type, and it is typically used to represent the size or length of objects.
 
-Amusingly, we can use the _sizeof_ operator (which returns a value of type _std:: size_t_) to ask for the size of _std:: size_t_ itself:
+Amusingly, we can use the _sizeof_ operator (which returns a value of type `std:: size_t`) to ask for the size of `std:: size_t` itself:
 
 ```cpp
 #include <cstddef> // std::size_t
@@ -199,7 +195,6 @@ int main()
 }
 ```
 
-COPY
 
 Compiled as a 32-bit (4 byte) console app on the author’s system, this prints:
 
@@ -207,12 +202,13 @@ Compiled as a 32-bit (4 byte) console app on the author’s system, this prints:
 4
 ```
 
-Much like an integer can vary in size depending on the system, _std:: size_t_ also varies in size. _std:: size_t_ is guaranteed to be unsigned and at least 16 bits, but on most systems will be equivalent to the address-width of the application. That is, for 32-bit applications, _std:: size_t_ will typically be a 32-bit unsigned integer, and for a 64-bit application, _size_t_ will typically be a 64-bit unsigned integer. _size_t_ is defined to be big enough to hold the size of the largest object creatable on your system (in bytes). For example, if _std:: size_t_ is 4 bytes wide, the largest object creatable on your system can’t be larger than 4,294,967,295 bytes, because this is the largest number a 4 byte unsigned integer can store. This is only the uppermost limit of an object’s size, the real size limit can be lower depending on the compiler you’re using.
+Much like an integer can vary in size depending on the system, `std:: size_t` also varies in size. `std:: size_t` is guaranteed to be unsigned and at least 16 bits, but on most systems will be equivalent to the address-width of the application. That is, for 32-bit applications, `std:: size_t` will typically be a 32-bit unsigned integer, and for a 64-bit application, _size_t_ will typically be a 64-bit unsigned integer. _size_t_ is defined to be big enough to hold the size of the largest object creatable on your system (in bytes). For example, if `std:: size_t` is 4 bytes wide, the largest object creatable on your system can’t be larger than 4,294,967,295 bytes, because this is the largest number a 4 byte unsigned integer can store. This is only the uppermost limit of an object’s size, the real size limit can be lower depending on the compiler you’re using.
 
-By definition, any object with a size (in bytes) larger than the largest integral value _size_t_ can hold is considered ill-formed (and will cause a compile error), as the _sizeof_operator would not be able to return the size without wrapping around.
+By definition, any object with a size (in bytes) larger than the largest integral value `size_t` can hold is considered ill-formed (and will cause a compile error), as the _sizeof_operator would not be able to return the size without wrapping around.
 
 !!! cite "题外话"
 
-    Some compilers limit the largest creatable object to half the maximum value of `std:: size_t` (a good explanation for this can be found [here](https://stackoverflow.com/a/42428240) ).
+    有些编译器将最大可创建对象的大小限制为`std:: size_t`的最大值(有兴趣可以阅读[这篇文章](https://stackoverflow.com/a/42428240) ).
 
-    In practice, the largest creatable object may be smaller than this amount (perhaps significantly so), depending on how much contiguous memory your computer has available for allocation.
+    实际上，最大可创建对象的大小可能会小于（远小于）这个值，它取决于你的计算机有多少可用的连续内存。
+    
