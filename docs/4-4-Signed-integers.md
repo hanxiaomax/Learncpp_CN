@@ -6,6 +6,7 @@ origin_title: "4.4 — Signed integers"
 time: 2021-8-5
 type: translation
 tags:
+- data type
 - integer
 - undefined behavior
 ---
@@ -155,4 +156,4 @@ int main()
 
     在使用整数除法时要小心，因为商中的小数部分会被丢弃。不过，如果这恰好是你期望的，那么可以放心使用。
     
-如果你希望保留小数部分，请参考 [[5.2 -- Arithmetic operators|5.2 - 数学运算符]] 中介绍的方法。
+如果你希望保留小数部分，请参考 [[5-2-Arithmetic operators|5.2 - 数学运算符]] 中介绍的方法。

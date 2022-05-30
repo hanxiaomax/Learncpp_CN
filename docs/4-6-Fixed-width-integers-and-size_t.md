@@ -6,6 +6,7 @@ origin_title: "4.6 — Fixed-width integers and size_t"
 time: 2022-4-6
 type: translation
 tags:
+- data type
 - fixed-width
 - integer
 - size_t

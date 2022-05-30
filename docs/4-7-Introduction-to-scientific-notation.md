@@ -6,6 +6,7 @@ origin_title: "4.7 — Introduction to scientific notation"
 time: 2021-9-5
 type: translation
 tags:
+- data type
 - scientific notation
 ---
 

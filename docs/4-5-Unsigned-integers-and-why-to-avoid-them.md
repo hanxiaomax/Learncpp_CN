@@ -6,6 +6,7 @@ origin_title: "4.5 — Unsigned integers, and why to avoid them"
 time: 2022-4-11
 type: translation
 tags:
+- data type
 - integer
 - overflow
 ---

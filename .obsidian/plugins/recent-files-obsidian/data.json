@@ -5,6 +5,10 @@
       "path": "docs/4-8-Floating-point-numbers.md"
     },
     {
+      "basename": "literals",
+      "path": "docs/literals.md"
+    },
+    {
       "basename": "4-7-Introduction-to-scientific-notation",
       "path": "docs/4-7-Introduction-to-scientific-notation.md"
     },
@@ -13,20 +17,32 @@
       "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
     },
     {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
+      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
+    },
+    {
+      "basename": "5-2-Arithmetic operators",
+      "path": "docs/5-2-Arithmetic operators.md"
+    },
+    {
+      "basename": "4-9-Boolean-values",
+      "path": "docs/4-9-Boolean-values.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
       "basename": "4-4-Signed-integers",
       "path": "docs/4-4-Signed-integers.md"
     },
     {
-      "basename": "4-3-Object-sizes-and-the-sizeof-operator",
-      "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
+      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
+      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
     },
     {
-      "basename": "5.2 -- Arithmetic operators",
-      "path": "docs/5.2 -- Arithmetic operators.md"
+      "basename": "4-3-Object-sizes-and-the-sizeof-operator",
+      "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
     },
     {
       "basename": "4-x-Chapter-4-summary-and-quiz",
@@ -49,10 +65,6 @@
       "path": "docs/4-13-An introduction-to-std-string.md"
     },
     {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
-    },
-    {
       "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
@@ -63,10 +75,6 @@
     {
       "basename": "4-10-Introduction-to-if-statements",
       "path": "docs/4-10-Introduction-to-if-statements.md"
-    },
-    {
-      "basename": "4-9-Boolean-values",
-      "path": "docs/4-9-Boolean-values.md"
     },
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
@@ -191,14 +199,6 @@
     {
       "basename": "definition",
       "path": "docs/definition.md"
-    },
-    {
-      "basename": "declaration",
-      "path": "docs/declaration.md"
-    },
-    {
-      "basename": "arguments",
-      "path": "docs/arguments.md"
     }
   ],
   "omittedPaths": [],

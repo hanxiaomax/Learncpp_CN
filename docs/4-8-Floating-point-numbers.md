@@ -6,15 +6,23 @@ origin_title: "4.8 — Floating point numbers"
 time: 2022-1-2
 type: translation
 tags:
+- data type
 - float
 ---
 
+??? note "关键点速记"
 
-Integers are great for counting whole numbers, but sometimes we need to store _very_ large numbers, or numbers with a fractional component. A **floating point** type variable is a variable that can hold a real number, such as 4320.0, -3.33, or 0.01226. The _floating_ part of the name _floating point_ refers to the fact that the decimal point can “float”; that is, it can support a variable number of digits before and after the decimal point.
+	- 浮点数数据类型有三种：**float**(4 bytes), **double**(8 byte) 和 **long double**(8、12、16byte)
+	- 浮点数数据类型始终是有符号的
+	- 在使用浮点数字面量时，请始终保留一位小数
+	- 默认情况下浮点数字面量为`double`。使用`f`后缀可以标注该字面量为`float`
+	- 请确保你使用的字面量和它赋值的类型是匹配的。否则会发生不必要的转换，导致精度丢失。
 
-There are three different floating point data types: **float**, **double**, and **long double**. As with integers, C++ does not define the actual size of these types (but it does guarantee minimum sizes). On modern architectures, floating point representation almost always follows IEEE 754 binary format. In this format, a float is 4 bytes, a double is 8, and a long double can be equivalent to a double (8 bytes), 80-bits (often padded to 12 bytes), or 16 bytes.
+整型可以很好地表示整数，但是很多时候我们需要保存非常大的数，或者小数。**浮点数**类型的变量可以用来存放实数，例如4320.0、-3.33 或 0.01226。浮点数名字中的**浮点**二字，形象地说明了小数点可以浮动；也就是说它可以支持小数点前和小数点后具有不同位的数字。
 
-Floating point data types are always signed (can hold positive and negative values).
+浮点数数据类型有三种：**float**, **double** 和 **long double**。和整型一样 C++ 并没有定义这三种类型的具体长度（只确保其最小值）。在现代计算机上，浮点数的表示方法几乎总是遵循 IEEE 754 二进制格式。在这种格式下，`float` 为4个字节，`double`则是 8 个字节，而`long double`可以和`double`相同（8字节），也可能为80位（通常会补位到12字节）或者16字节。
+
+浮点数数据类型始终是有符号的（可以保存正负数）。
 
 
 |Category	|Type|	Minimum Size	|Typical Size|
@@ -24,8 +32,7 @@ Floating point data types are always signed (can hold positive and negative valu
 ||long double	|8 bytes	|8, 12, or 16 bytes
 
 
-
-Here are some definitions of floating point numbers:
+下面是一些浮点数的例子：
 
 ```cpp
 float fValue;
@@ -33,31 +40,30 @@ double dValue;
 long double ldValue;
 ```
 
-COPY
 
-When using floating point literals, always include at least one decimal place (even if the decimal is 0). This helps the compiler understand that the number is a floating point number and not an integer.
+在使用浮点数[[literals|字面量]]时，请始终保留一位小数（即使这一位是0）。这可以帮助编译器明确该数值为浮点数而非整型数。
 
 ```cpp
-int x{5}; // 5 means integer
-double y{5.0}; // 5.0 is a floating point literal (no suffix means double type by default)
-float z{5.0f}; // 5.0 is a floating point literal, f suffix means float type
+int x{5}; // 5 表示整型数
+double y{5.0}; // 5.0 是浮点数字面量 (没有后缀的情况下默认为 double)
+float z{5.0f}; // 5.0 是浮点数字面量，f 后缀表示 float
 ```
 
-COPY
 
-Note that by default, floating point literals default to type double. An f suffix is used to denote a literal of type float.
+注意，默认情况下浮点数字面量为`double`。使用`f`后缀可以标注该字面量为`float`
 
-Best practice
 
-Always make sure the type of your literals match the type of the variables they’re being assigned to or used to initialize. Otherwise an unnecessary conversion will result, possibly with a loss of precision.
+!!! success "最佳实践"
 
-Warning
+	请确保你使用的字面量和它赋值的类型是匹配的。否则会发生不必要的转换，导致精度丢失。
 
-Make sure you don’t use integer literals where floating point literals should be used. This includes when initializing or assigning values to floating point objects, doing floating point arithmetic, and calling functions that expect floating point values.
+!!! warning "注意"
 
-Printing floating point numbers
+	请确保在应当使用浮点数字面量时，不要误用整型字面量。这可能会发生对浮点类型对象初始化、赋值、数学运算以及调用返回值应当为浮点数的函数时。
 
-Now consider this simple program:
+## 打印浮点数
+
+考虑下面这个简单的程序：
 
 ```cpp
 #include <iostream>
@@ -72,30 +78,31 @@ int main()
 }
 ```
 
-COPY
+上述程序的输出结果可能会让你感到意外：
 
-The results of this seemingly simple program may surprise you:
-
+```
 5
 6.7
 9.87654e+06
+```
 
-In the first case, the std::cout printed 5, even though we typed in 5.0. By default, std::cout will not print the fractional part of a number if the fractional part is 0.
+在第一条打印中，`std::cout` 打印 5，即使我们输入的是5.0。默认情况下 `std::cout` 不会输入小数部分的0。
 
-In the second case, the number prints as we expect.
+在第二条打印中，In the second case, the number prints as we expect.
 
-In the third case, it printed the number in scientific notation (if you need a refresher on scientific notation, see lesson [4.7 -- Introduction to scientific notation](https://www.learncpp.com/cpp-tutorial/introduction-to-scientific-notation/)).
+In the third case, it printed the number in scientific notation (if you need a refresher on scientific notation, see lesson[[4-7-Introduction-to-scientific-notation|4.7 - 科学计数法]]
 
-Floating point range
+## Floating point range
 
 Assuming IEEE 754 representation:
 
 
-Size	Range	Precision
-4 bytes	±1.18 x 10-38 to ±3.4 x 1038	6-9 significant digits, typically 7
-8 bytes	±2.23 x 10-308 to ±1.80 x 10308	15-18 significant digits, typically 16
-80-bits (typically uses 12 or 16 bytes)	±3.36 x 10-4932 to ±1.18 x 104932	18-21 significant digits
-16 bytes	±3.36 x 10-4932 to ±1.18 x 104932	33-36 significant digits
+|Size	|Range	Precision|
+|---|---|
+|4 bytes	|±1.18 x 10-38 to ±3.4 x 1038|	6-9 significant digits, typically 7
+|8 bytes	|±2.23 x 10-308 to ±1.80 x 10308	|15-18 significant digits, typically 16
+|80-bits (typically uses 12 or 16 bytes)	|±3.36 x 10-4932 to ±1.18 x 104932	|18-21 significant digits
+|16 bytes	|±3.36 x 10-4932 to ±1.18 x 104932|	33-36 significant digits
 
 
 The 80-bit floating point type is a bit of a historical anomaly. On modern processors, it is typically implemented using 12 or 16 bytes (which is a more natural size for processors to handle).
@@ -133,11 +140,13 @@ COPY
 
 This program outputs:
 
+```
 9.87654
 987.654
 987654
 9.87654e+006
 9.87654e-005
+```
 
 Note that each of these only have 6 significant digits.
 
@@ -165,8 +174,10 @@ COPY
 
 Outputs:
 
+```
 3.333333253860474
 3.333333333333334
+```
 
 Because we set the precision to 16 digits using `std::setprecision()`, each of the above numbers is printed with 16 digits. But, as you can see, the numbers certainly aren’t precise to 16 digits! And because floats are less precise than doubles, the float has more error.
 
@@ -190,17 +201,19 @@ COPY
 
 Output:
 
+```
 123456792
+```
 
 123456792 is greater than 123456789. The value 123456789.0 has 10 significant digits, but float values typically have 7 digits of precision (and the result of 123456792 is precise only to 7 significant digits). We lost some precision! When precision is lost because a number can’t be stored precisely, this is called a rounding error.
 
 Consequently, one has to be careful when using floating point numbers that require more precision than the variables can hold.
 
-Best practice
+!!! success "最佳实践"
 
-Favor double over float unless space is at a premium, as the lack of precision in a float will often lead to inaccuracies.
+	Favor double over float unless space is at a premium, as the lack of precision in a float will often lead to inaccuracies.
 
-Rounding errors make floating point comparisons tricky
+## Rounding errors make floating point comparisons tricky
 
 Floating point numbers are tricky to work with due to non-obvious differences between binary (how data is stored) and decimal (how we think) numbers. Consider the fraction 1/10. In decimal, this is easily represented as 0.1, and we are used to thinking of 0.1 as an easily representable number with 1 significant digit. However, in binary, 0.1 is represented by the infinite sequence: 0.00011001100110011… Because of this, when we assign 0.1 to a floating point number, we’ll run into precision problems.
 
@@ -225,8 +238,10 @@ COPY
 
 This outputs:
 
+```
 0.1
 0.10000000000000001
+```
 
 On the top line, std::cout prints 0.1, as we expect.
 
@@ -254,20 +269,22 @@ int main()
 
 COPY
 
+```
 1
 0.99999999999999989
+```
 
-Although we might expect that d1 and d2 should be equal, we see that they are not. If we were to compare d1 and d2 in a program, the program would probably not perform as expected. Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [5.6 -- Relational operators and floating point comparisons](https://www.learncpp.com/cpp-tutorial/relational-operators-and-floating-point-comparisons/).
+Although we might expect that d1 and d2 should be equal, we see that they are not. If we were to compare d1 and d2 in a program, the program would probably not perform as expected. Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [[5-6-Relational-operators-and-floating-point-comparisons]]
 
 One last note on rounding errors: mathematical operations (such as addition and multiplication) tend to make rounding errors grow. So even though 0.1 has a rounding error in the 17th significant digit, when we add 0.1 ten times, the rounding error has crept into the 16th significant digit. Continued operations would cause this error to become increasingly significant.
 
-Key insight
+!!! tldr "关键信息"
 
-Rounding errors occur when a number can’t be stored precisely. This can happen even with simple numbers, like 0.1. Therefore, rounding errors can, and do, happen all the time. Rounding errors aren’t the exception -- they’re the rule. Never assume your floating point numbers are exact.
+	Rounding errors occur when a number can’t be stored precisely. This can happen even with simple numbers, like 0.1. Therefore, rounding errors can, and do, happen all the time. Rounding errors aren’t the exception -- they’re the rule. Never assume your floating point numbers are exact.
 
 A corollary of this rule is: be wary of using floating point numbers for financial or currency data.
 
-NaN and Inf
+## NaN and Inf
 
 There are two special categories of floating point numbers. The first is Inf, which represents infinity. Inf can be positive or negative. The second is NaN, which stands for “Not a Number”. There are several different kinds of NaN (which we won’t discuss here). NaN and Inf are only available if the compiler uses a specific format (IEEE 754) for floating point numbers. If another format is used, the following code produces undefined behavior.
 
@@ -292,21 +309,22 @@ int main()
 }
 ```
 
-COPY
 
 And the results using Visual Studio 2008 on Windows:
 
+```
 1.#INF
 -1.#INF
 1.#IND
+```
 
 _INF_ stands for infinity, and _IND_ stands for indeterminate. Note that the results of printing _Inf_ and _NaN_ are platform specific, so your results may vary.
 
-Best practice
+!!! success "最佳实践"
 
-Avoid division by 0 altogether, even if your compiler supports it.
+	Avoid division by 0 altogether, even if your compiler supports it.
 
-Conclusion
+## Conclusion
 
 To summarize, the two things you should remember about floating point numbers:
 
