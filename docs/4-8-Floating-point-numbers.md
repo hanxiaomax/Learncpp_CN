@@ -149,9 +149,9 @@ int main()
 
 同时我们注意到， `std::cout` 有些情况下会自动改用科学计数法。根据编译器的不同，指数部分会被补0到最小位数。不要担心，9.87654e+006 和 9.87654e6 是完全一样的，只是补了一些0罢了。指数的最小位数根编译器有关，Visual Studio 是 3，其他编译器可能会使用C99的标准即2。
 
-浮点数精度取决于浮点数类型的大小（float的精度小于double）以及被存储的具体值（有些值的精度本身就比其他值高）。float 类型的精度通常位于 6 到 9之间，多数具有至少7位有效数字。Double 类型的精度通常为 15 到 18之间，多数具有至少16位有效数字。Long double 类型的精度最小为15、18或33位you'xia a minimum precision of 15, 18, or 33 significant digits depending on how many bytes it occupies.
+浮点数精度取决于浮点数类型的大小（float的精度小于double）以及被存储的具体值（有些值的精度本身就比其他值高）。float 类型的精度通常位于 6 到 9之间，多数具有至少7位有效数字。Double 类型的精度通常为 15 到 18之间，多数具有至少16位有效数字。Long double 类型的精度最小为15、18或33位有效数字，取决于它占用多少字节。
 
-We can override the default precision that std::cout shows by using an `output manipulator` function named `std::setprecision()`. Output manipulators alter how data is output, and are defined in the _iomanip_ header.
+我们可以使用名为`std::setprecision()`的[[Output-manipulators|输出操纵器(Output manipulators)]]函数来指定 `std::cout` 的精度。输出操纵器可以修改数据输出的方式，它们被定义在 _iomanip_ 头文件中.
 
 ```cpp
 #include <iostream>
@@ -159,25 +159,26 @@ We can override the default precision that std::cout shows by using an `output 
 
 int main()
 {
-    std::cout << std::setprecision(16); // show 16 digits of precision
-    std::cout << 3.33333333333333333333333333333333333333f <<'\n'; // f suffix means float
-    std::cout << 3.33333333333333333333333333333333333333 << '\n'; // no suffix means double
+    std::cout << std::setprecision(16); // 显示16位精度
+    std::cout << 3.33333333333333333333333333333333333333f <<'\n'; // f 后缀表示 float
+    std::cout << 3.33333333333333333333333333333333333333 << '\n'; // 没有后缀默认 double
 
     return 0;
 }
 ```
 
 
-Outputs:
+输出结果：
 
 ```
 3.333333253860474
 3.333333333333334
 ```
 
-Because we set the precision to 16 digits using `std::setprecision()`, each of the above numbers is printed with 16 digits. But, as you can see, the numbers certainly aren’t precise to 16 digits! And because floats are less precise than doubles, the float has more error.
+ 
+通过 `std::setprecision()`设置精度后，上述数字都被打印为16位精度。但是，如你所见，其精度并没有达到16位。而且由于`float`的精度比`double`还低，`float`类型的值被打印出来后误差也更大。
 
-Precision issues don’t just impact fractional numbers, they impact any number with too many significant digits. Let’s consider a big number:
+精度问题不仅仅影响小数，它还会影响具有很多有效数字位的数。让我们考虑如下大数：
 
 ```cpp
 #include <iomanip> // for std::setprecision()
@@ -185,8 +186,8 @@ Precision issues don’t just impact fractional numbers, they impact any number 
 
 int main()
 {
-    float f { 123456789.0f }; // f has 10 significant digits
-    std::cout << std::setprecision(9); // to show 9 digits in f
+    float f { 123456789.0f }; // f 有 10 位有效数字
+    std::cout << std::setprecision(9); // 显示 f 的 9 w
     std::cout << f << '\n';
 
     return 0;

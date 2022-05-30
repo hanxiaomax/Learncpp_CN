@@ -129,6 +129,7 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/4-8-Floating-point-numbers.md",
+    "docs/Output-manipulators.md",
     "docs/literals.md",
     "docs/4-7-Introduction-to-scientific-notation.md",
     "docs/4-6-Fixed-width-integers-and-size_t.md",
@@ -136,7 +137,6 @@
     "docs/5-2-Arithmetic operators.md",
     "docs/4-9-Boolean-values.md",
     "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/4-4-Signed-integers.md",
-    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+    "docs/4-4-Signed-integers.md"
   ]
 }

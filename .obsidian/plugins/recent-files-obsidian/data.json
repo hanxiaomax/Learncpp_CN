@@ -5,6 +5,10 @@
       "path": "docs/4-8-Floating-point-numbers.md"
     },
     {
+      "basename": "Output-manipulators",
+      "path": "docs/Output-manipulators.md"
+    },
+    {
       "basename": "literals",
       "path": "docs/literals.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "forward-declaration",
       "path": "docs/forward-declaration.md"
-    },
-    {
-      "basename": "definition",
-      "path": "docs/definition.md"
     }
   ],
   "omittedPaths": [],
