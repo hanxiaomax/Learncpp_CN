@@ -1,34 +1,41 @@
 ---
-title: 4.10 - if 语句
-alias: 4.10 - if 语句
+title: 4.10 - if 语句简介
+alias: 4.10 - if 语句简介
 origin: /introduction-to-if-statements/
 origin_title: "4.10 — Introduction to if statements"
 time: 2021-10-18
 type: translation
 tags:
 - if
+- boolean
 ---
 
-Consider a case where you’re going to go to the market, and your roommate tells you, “if they have strawberries on sale, buy some”. This is a conditional statement, meaning that you’ll execute some action (“buy some”) only if the condition (“they have strawberries on sale”) is true.
 
-Such conditions are common in programming, as they allow us to implement conditional behavior into our programs. The simplest kind of conditional statement in C++ is called an _if statement_. An if statement allows us to execute one (or more) lines of code only if some condition is true.
+??? note "关键点速记"
+	- 
 
-The simplest _if statement_ takes the following form:
+想象一下，如果你正要去超市，然后你的室友对你说：”如果有草莓的话，就买一点“。这是一个条件语句，就是说你做某个动作（"买东西"）的条件是某个条件（有草莓卖）为真。
 
+这种条件在编程中非常常见，条件语句使我们可以在程序中实现某种条件行为。C++ 中最简单的条件语句是*if*语句。*if*语句使我们可以在某个条件为真时才执行一行（或多行）代码。
+
+最简单的 _if_ 语句形式如下：
+
+```
 if (condition) true_statement;
+```
 
-For readability, this is more often written as following:
+下面这种形式可读性更好：
 
+```
 if (condition)
     true_statement;
+```
 
-A condition (also called a conditional expression) is an expression that evaluates to a Boolean value.
+所谓“条件” (也称为条件表达式)的求值结果是一个布尔值。
 
-If the _condition_ of an _if statement_ evaluates to Boolean value _true_, then _true_statement_ is executed. If the _condition_ instead evaluates to Boolean value _false_, then _true_statement_ is skipped.
+如果 _if_ 语句语句的求值结果为布尔值 _true_，则 _true_statement_ 就会执行。反之，如图条件求值的结果为布尔值 _false_，则语句 _true_statement_ 会被跳过。
 
-A sample program using an if statement
-
-Given the following program:
+一个使用了 *if* 语句的例程如下：
 
 ```cpp
 #include <iostream>
@@ -46,16 +53,16 @@ int main()
 }
 ```
 
-COPY
+输出结果如下：
 
-Here’s output from one run of this program:
-
+```
 Enter an integer: 0
 The value is zero
+```
 
-Let’s examine how this works in more detail.
+我们仔细分析一下这个程序。
 
-First, the user enters an integer. Then the condition _x == 0_ is evaluated. The _equality operator_ (==) is used to test whether two values are equal. Operator== returns _true_ if the operands are equal, and _false_ if they are not. Since _x_ has value 0, and _0 == 0_ is true, this expression evaluates to _true_.
+首先，用户输入一个整型。然后条件 `x == 0` 进行求值。 相等比较运算符 (`==`) 被用来测试两个值是否相等。如果两数相等，则等比较运算符 (`==`)  返回 _true_ ，否则返回 _false_。因为 x 的值为0，而且 _0 == 0_ is true, this expression evaluates to _true_.
 
 Because the condition has evaluated to _true_, the subsequent statement executes, printing _The value is zero_.
 

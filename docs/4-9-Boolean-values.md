@@ -12,6 +12,7 @@ tags:
 
 ??? note "关键点速记"
 	- 不能用统一初始化和一个整型数来初始化布尔变量，其他情况是可以转换的
+	- `std::cin` 不能接收`true`或者`false`，除非使用 `std::cout << std::boolalpha;`
 
 在现实中，有些问题的答案只有”是“或”不是“两种。”苹果是水果吗？“，是的。”你爱吃笋吗？“不。
 
@@ -258,8 +259,8 @@ Enter another integer: 4
 6 and 4 are equal? false
 ```
 
-原理是什么呢？首先我们从输入获取 x 和 y 的值。接下来，表达式 `isEqual(x, y)`会进行求值。在第一次yun'x is evaluated. In the first run, this results in a function call to isEqual(5, 5). Inside that function, 5 == 5 is evaluated, producing the value _true_. The value _true_ is returned back to the caller to be printed by std::cout. In the second run, the call to isEqual(6, 4) returns the value _false_.
+原理是什么呢？首先我们从输入获取 x 和 y 的值。接下来，表达式 `isEqual(x, y)`会进行求值。在第一次运行时，执行的函数相当于 `isEqual(5, 5)`。在函数中，`5 == 5`被求值，得到的结果是 _true_。随后 _true_ 被返回给主调函数并通过 `std::cout` 被打印出来。在第二次运行时，调用的函数相当于 `isEqual(6, 4)` ，返回的结果为 _false_。
 
-Boolean values take a little bit of getting used to, but once you get your mind wrapped around them, they’re quite refreshing in their simplicity! Boolean values are also a huge part of the language -- you’ll end up using them more than all the other fundamental types put together!
+使用布尔值需要熟悉一下，不过当你习惯之后，会非常喜欢它表现出来的简洁！布尔值也是编程中非常大的一部分——你使用布尔值的情况比其他基本类型加起来都多。
 
-We’ll continue our exploration of Boolean values in the next lesson.
+我们会在下一节课中继续讨论布尔值。

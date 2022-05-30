@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "4-10-Introduction-to-if-statements",
+      "path": "docs/4-10-Introduction-to-if-statements.md"
+    },
+    {
       "basename": "4-9-Boolean-values",
       "path": "docs/4-9-Boolean-values.md"
     },
@@ -87,10 +91,6 @@
     {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
-    },
-    {
-      "basename": "4-10-Introduction-to-if-statements",
-      "path": "docs/4-10-Introduction-to-if-statements.md"
     },
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-9-Boolean-values.md",
+            "file": "docs/4-10-Introduction-to-if-statements.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -88,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-9-Boolean-values.md"
+                "file": "docs/4-10-Introduction-to-if-statements.md"
               }
             }
           },
@@ -109,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-9-Boolean-values.md",
+                "file": "docs/4-10-Introduction-to-if-statements.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,6 +129,7 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-10-Introduction-to-if-statements.md",
     "docs/4-9-Boolean-values.md",
     "docs/narrowing-conversions.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
@@ -138,7 +138,6 @@
     "docs/Output-manipulators.md",
     "docs/literals.md",
     "docs/4-7-Introduction-to-scientific-notation.md",
-    "docs/4-6-Fixed-width-integers-and-size_t.md",
-    "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
+    "docs/4-6-Fixed-width-integers-and-size_t.md"
   ]
 }
