@@ -21,52 +21,56 @@ tags:
 
 如果用科学计数法表示，则可以写作 `5.9736 x 10²⁴ kg`，看上去就非常简洁了。除此之外，科学计数法还有利于对两个非常大或非常小的值比较其数量级，因为只需要比较指数部分即可。
 
-因为在C++中，输入和x指数记号会比较困难 it can be hard to type or display exponents in C++, we use the letter ‘e’ (or sometimes ‘E’) to represent the “times 10 to the power of” part of the equation. For example, `1.2 x 10⁴` would be written as `1.2e4`, and `5.9736 x 10²⁴` would be written as `5.9736e24`.
+因为在C++中，输入和显示指数记号会比较困难，所以我们使用字母`e`（有时也使用大写字母`E`）来表示10的次方。例如 `1.2 x 10⁴` 会写作 `1.2e4`，而 `5.9736 x 10²⁴` 则写作 `5.9736e24`。
 
-For numbers smaller than 1, the exponent can be negative. The number `5e-2` is equivalent to `5 * 10⁻²`, which is `5 / 10²`, or `0.05`. The mass of an electron is `9.1093822e-31 kg`.
+对于小于1的数，指数部分则是负数，例如 `5e-2` 等价于 `5 * 10⁻²`，即 `5 / 10²` 或 `0.05`。电子的质量可以表示为 `9.1093822e-31 kg`。
 
-## How to convert numbers to scientific notation
+## 如何将数字转换为科学计数法
 
-Use the following procedure:
+使用下面步骤：
 
--   Your exponent starts at zero.
--   Slide the decimal so there is only one non-zero digit to the left of the decimal.
-    -   Each place you slide the decimal to the left increases the exponent by 1.
-    -   Each place you slide the decimal to the right decreases the exponent by 1.
--   Trim off any leading zeros (on the left end of the significand)
--   Trim off any trailing zeros (on the right end of the significand) only if the original number had no decimal point. We’re assuming they’re not significant unless otherwise specified.
+-   指数部分从0开始。
+-   移动小数点，使其左边只有一位数。
+    -   每次向左移动，指数+1
+    -   每次向右移动，指数-1
+-   删除有效数字左边的0
+-   如果原数字没有小数部分，删除有效数字末尾的0，如果没有特别指明，我们认为这些0没有意义。
 
-Here’s some examples:
 
-```
-Start with: 42030
-Slide decimal left 4 spaces: 4.2030e4
-No leading zeros to trim: 4.2030e4
-Trim trailing zeros: 4.203e4 (4 significant digits)
-```
+一些例子：
 
 ```
-Start with: 0.0078900
-Slide decimal right 3 spaces: 0007.8900e-3
-Trim leading zeros: 7.8900e-3
-Don't trim trailing zeros: 7.8900e-3 (5 significant digits)
+起始值: 42030
+小数点左移4位：4.2030e4
+有效数字左侧没有需要删除的0：4.2030e4
+删除有效数字末尾的0：4.203e4 (4 位有效数字)
 ```
 
 ```
-Start with: 600.410
-Slide decimal left 2 spaces: 6.00410e2
-No leading zeros to trim: 6.00410e2
-Don't trim trailing zeros: 6.00410e2 (6 significant digits)
+起始值: 0.0078900
+小数点右移3位: 0007.8900e-3
+删除有效数字左侧的0: 7.8900e-3
+不需要删除有效数字末尾的0: 7.8900e-3 (5 位有效数字)
 ```
 
-Here’s the most important thing to understand: The digits in the significand (the part before the ‘e’) are called the **significant digits**. The number of significant digits defines a number’s **precision**. The more digits in the significand, the more precise a number is.
+```
+起始值: 600.410
+小数点左移2位: 6.00410e2
+有效数字左侧没有需要删除的0: 6.00410e2
+不需要删除有效数字末尾的0: 6.00410e2 (6 位有效数字)
+```
 
-## Precision and trailing zeros after the decimal
+重点理解：有效数字部分的位数 (‘e’前面的部分) **称为有效数字**。有效数字决定了这个数的**精度**，有效数字位数越多说明精度越高。
 
-Consider the case where we ask two lab assistants each to weigh the same apple. One returns and says the apple weighs 87 grams. The other returns and says the apple weighs 87.00 grams. Let’s assume the weighing is correct. In the former case, the actual weight of the apple could be anywhere between 86.50 and 87.49 grams. Maybe the scale was only precise to the nearest gram. Or maybe our assistant rounded a bit. In the latter case, we are confident about the actual weight of the apple to a much higher degree (it weighs between 86.9950 and 87.0049 grams, which has much less variability).
 
-So in standard scientific notation, we prefer to keep trailing zeros after a decimal point, because those digits impart useful information about the precision of the number.
+## 精度以及小数点后的0
 
-However, in C++, 87 and 87.000 are treated exactly the same, and the compiler will store the same value for each. There’s no technical reason why we should prefer one over the other (though there might be scientific reasons, if you’re using the source code as documentation).
+想象一下，如果我们就同一个苹果的重量询问两个实验室助手，一个回答苹果重为87克，另一个回答为87.00克，假设它们的结果都是对的，对于前一个回答来说，苹果的真实重量可能位于86.50 和 87.49 克之间。也许他使用的天平精度只到克，也许是他进行了四舍五入。而对于后一种情况，我们可以对其精度更加自信(重量在 86.9950 和 87.0049 克之间，变化区间更小了)。
 
-Now that we’ve covered scientific notation, we’re ready to cover floating point numbers.
+所以，在标准的科学计数法中，我们倾向于保留小数点后面尾部的0，因为这些0可以有效地表明该数值的精度。
+
+不过，在C++中，87 和 87.000 并没有任何区别，编译器存储两数的结果也是完全一样的。从技术上讲，使用两种写法没有任何区别（当然，如果你使用的是代码即文档的表示方式，也许会有出于科学上的理由）。
+
+介绍完科学计数法，我们可以开始介绍浮点数了。
+
+

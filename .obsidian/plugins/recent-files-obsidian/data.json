@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "4-8-Floating-point-numbers",
+      "path": "docs/4-8-Floating-point-numbers.md"
+    },
+    {
       "basename": "4-7-Introduction-to-scientific-notation",
       "path": "docs/4-7-Introduction-to-scientific-notation.md"
     },
@@ -63,10 +67,6 @@
     {
       "basename": "4-9-Boolean-values",
       "path": "docs/4-9-Boolean-values.md"
-    },
-    {
-      "basename": "4-8-Floating-point-numbers",
-      "path": "docs/4-8-Floating-point-numbers.md"
     },
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
