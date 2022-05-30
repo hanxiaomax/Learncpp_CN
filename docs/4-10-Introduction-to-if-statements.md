@@ -12,7 +12,7 @@ tags:
 
 
 ??? note "关键点速记"
-	- 
+	- 非布尔值在作为条件表达式使用时会被转换为布尔值，非0值被转换为布尔值 *true*，0值则被转换为 *false*
 
 想象一下，如果你正要去超市，然后你的室友对你说：”如果有草莓的话，就买一点“。这是一个条件语句，就是说你做某个动作（"买东西"）的条件是某个条件（有草莓卖）为真。
 
@@ -244,8 +244,8 @@ int main()
     return 0;
 }
 ```
-我们可以使用 *if* 语句进行gai'x
-Let’s improve this program using an _if statement_:
+
+我们可以使用 *if* 语句对上面的代码进行改写：
 
 ```cpp
 #include <iostream>
@@ -275,9 +275,8 @@ int main()
 }
 ```
 
-COPY
 
-Two runs of this program:
+两次运行上述程序：
 
 ```
 Enter an integer: 5
@@ -291,22 +290,22 @@ Enter another integer: 4
 6 and 4 are not equal
 ```
 
-In this case, our conditional expression is simply a function call to function _isEqual_, which returns a Boolean value.
+在这个例子中，我们使用的条件表达式就是 `isEqual` 函数，它的返回值是布尔类型的。
 
-## Non-Boolean conditionals
+## 非布尔类型条件
 
-In all of the examples above, our conditionals have been either Boolean values (true or false), Boolean variables, or functions that return a Boolean value. What happens if your conditional is an expression that does not evaluate to a Boolean value?
+在上述所有例子中，我们使用的条件要么是布尔值（true 或 false），要么是返回布尔值的函数。那如果我们的条件表达式求值的结果不是布尔类型呢？
 
-In such a case, the conditional expression is converted to a Boolean value: non-zero values get converted to Boolean _true_, and zero-values get converted to Boolean _false_.
+在这种情况下，条件表达式会被转换为布尔值：非0值被转换为布尔值 *true*，0值则被转换为 *false*。
 
-Therefore, if we do something like this:
+因此，我们可以这样做：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    if (4) // nonsensical, but for the sake of example...
+    if (4) // 没有实际意义，仅供举例使用
         std::cout << "hi";
     else
         std::cout << "bye";
@@ -316,6 +315,6 @@ int main()
 ```
 
 
-This will print “hi”, since 4 is a non-zero value that gets converted to Boolean _true_, causing the statement attached to the _if_ to execute.
+上述程序会打印 “hi”，因为4是一个非0值，所以被转换成了布尔值 *true*，使得对应的语句能够被执行。
 
-We’ll continue our exploration of _if statements_ in future lesson [[7.2 -- If statements and blocks|7.2 - if 语句和语句块]]
+我们会在[[7.2 -- If statements and blocks|7.2 - if 语句和语句块]]中更详细地介绍*if*语句。

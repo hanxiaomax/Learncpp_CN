@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "tabledata",
+      "path": "docs/tabledata.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "5-3-Modulus-and-Exponentiation",
+      "path": "docs/5-3-Modulus-and-Exponentiation.md"
+    },
+    {
+      "basename": "5-2-Arithmetic-operators",
+      "path": "docs/5-2-Arithmetic-operators.md"
+    },
+    {
+      "basename": "4-11-Chars",
+      "path": "docs/4-11-Chars.md"
+    },
+    {
       "basename": "4-10-Introduction-to-if-statements",
       "path": "docs/4-10-Introduction-to-if-statements.md"
     },
     {
       "basename": "4-9-Boolean-values",
       "path": "docs/4-9-Boolean-values.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
       "basename": "7.2 -- If statements and blocks",
@@ -49,10 +73,6 @@
       "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     },
     {
-      "basename": "5-2-Arithmetic operators",
-      "path": "docs/5-2-Arithmetic operators.md"
-    },
-    {
       "basename": "4-1-Introduction-to-fundamental-data-types",
       "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
@@ -91,10 +111,6 @@
     {
       "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
-    },
-    {
-      "basename": "4-11-Chars",
-      "path": "docs/4-11-Chars.md"
     },
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
@@ -183,18 +199,6 @@
     {
       "basename": "scope-resolution-operator",
       "path": "docs/scope-resolution-operator.md"
-    },
-    {
-      "basename": "scope",
-      "path": "docs/scope.md"
-    },
-    {
-      "basename": "runtime",
-      "path": "docs/runtime.md"
-    },
-    {
-      "basename": "return-by-value",
-      "path": "docs/return-by-value.md"
     }
   ],
   "omittedPaths": [],

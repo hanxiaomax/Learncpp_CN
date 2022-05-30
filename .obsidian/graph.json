@@ -1,31 +1,24 @@
 {
   "collapse-filter": false,
-  "search": "-path:Excalidraw -path:9_Templates",
+  "search": "",
   "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": true,
+  "hideUnresolved": false,
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "file:/^@.*/",
+      "query": "/type: glossary/",
       "color": {
         "a": 1,
-        "rgb": 5415904
+        "rgb": 2669869
       }
     },
     {
-      "query": "file:/.MOC/",
+      "query": "/type: translation/",
       "color": {
         "a": 1,
-        "rgb": 3728740
-      }
-    },
-    {
-      "query": "file:/^_.*/",
-      "color": {
-        "a": 1,
-        "rgb": 15728640
+        "rgb": 5660907
       }
     }
   ],
@@ -39,6 +32,6 @@
   "repelStrength": 13.9285714285714,
   "linkStrength": 0.776387117346939,
   "linkDistance": 148,
-  "scale": 0.2714946171935881,
-  "close": true
+  "scale": 0.09396997159520522,
+  "close": false
 }
