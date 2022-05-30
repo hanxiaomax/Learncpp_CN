@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -129,6 +130,7 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/4-8-Floating-point-numbers.md",
+    "docs/rounding-error.md",
     "docs/Output-manipulators.md",
     "docs/literals.md",
     "docs/4-7-Introduction-to-scientific-notation.md",
@@ -136,7 +138,6 @@
     "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
     "docs/5-2-Arithmetic operators.md",
     "docs/4-9-Boolean-values.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/4-4-Signed-integers.md"
+    "docs/4-1-Introduction-to-fundamental-data-types.md"
   ]
 }

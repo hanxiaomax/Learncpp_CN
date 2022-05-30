@@ -17,6 +17,7 @@ tags:
 	- 在使用浮点数字面量时，请始终保留一位小数
 	- 默认情况下浮点数字面量为`double`。使用`f`后缀可以标注该字面量为`float`
 	- 请确保你使用的字面量和它赋值的类型是匹配的。否则会发生不必要的转换，导致精度丢失。
+	- 如果内存空间允许，尽量使用 double 而不是 float，因为 float 的精度更低，也就有可能造成数值不准确的问题。
 
 整型可以很好地表示整数，但是很多时候我们需要保存非常大的数，或者小数。**浮点数**类型的变量可以用来存放实数，例如4320.0、-3.33 或 0.01226。浮点数名字中的**浮点**二字，形象地说明了小数点可以浮动；也就是说它可以支持小数点前和小数点后具有不同位的数字。
 
@@ -187,33 +188,33 @@ int main()
 int main()
 {
     float f { 123456789.0f }; // f 有 10 位有效数字
-    std::cout << std::setprecision(9); // 显示 f 的 9 w
+    std::cout << std::setprecision(9); // 显示 f 的 9 位有效数字。
     std::cout << f << '\n';
 
     return 0;
 }
 ```
 
-
-Output:
+输出
 
 ```
 123456792
 ```
 
-123456792 is greater than 123456789. The value 123456789.0 has 10 significant digits, but float values typically have 7 digits of precision (and the result of 123456792 is precise only to 7 significant digits). We lost some precision! When precision is lost because a number can’t be stored precisely, this is called a rounding error.
+123456792 比 123456789 要大。123456789.0 具有 10 位有效数字，但是`float`通常只有7位精度（结果123456792正号有7位有效数字）。精度丢失了！精度丢失主要是因为数没有被精确的存储，我们称其为[[rounding-error|舍入误差(rounding error)]]。
 
-Consequently, one has to be careful when using floating point numbers that require more precision than the variables can hold.
+因此，在使用的浮点数精度比对应浮点类型变量能够表示的精度更高时，要多加注意。
 
 !!! success "最佳实践"
 
-	Favor double over float unless space is at a premium, as the lack of precision in a float will often lead to inaccuracies.
+	如果内存空间允许，尽量使用 double 而不是 float，因为 float 的精度更低，也就有可能造成数值不准确的问题。
+	
 
-## Rounding errors make floating point comparisons tricky
+## 舍入误差的存在增加了浮点数比较的难度
 
-Floating point numbers are tricky to work with due to non-obvious differences between binary (how data is stored) and decimal (how we think) numbers. Consider the fraction 1/10. In decimal, this is easily represented as 0.1, and we are used to thinking of 0.1 as an easily representable number with 1 significant digit. However, in binary, 0.1 is represented by the infinite sequence: 0.00011001100110011… Because of this, when we assign 0.1 to a floating point number, we’ll run into precision problems.
+浮点数使用起来更加困难，这是因为它的二进制表示法（数据存储形式）和十进制表示法（我们的理解方式）之间的关系并不明显。对于分数 1/10 来说，十进制表示法很容易将其表示为 0.1，而我们也习惯性的认为0.1很容易表示，毕竟它只有一位有效数字。实际上，对于二进制来说，0.1需要表示为一个无穷序列：0.00011001100110011… 因此，当我们把0.1赋值给浮点数时，实际上会出现精度问题。
 
-You can see the effects of this in the following program:
+透过下面程序中你可以看到其影响：
 
 ```cpp
 #include <iomanip> // for std::setprecision()
@@ -230,20 +231,19 @@ int main()
 }
 ```
 
-COPY
 
-This outputs:
+输出结果：
 
 ```
 0.1
 0.10000000000000001
 ```
 
-On the top line, std::cout prints 0.1, as we expect.
+第一行，`std::cout` 打印了 0.1，如我们所料。
 
-On the bottom line, where we have std::cout show us 17 digits of precision, we see that d is actually _not quite_ 0.1! This is because the double had to truncate the approximation due to its limited memory. The result is a number that is precise to 16 significant digits (which type double guarantees), but the number is not _exactly_ 0.1. Rounding errors may make a number either slightly smaller or slightly larger, depending on where the truncation happens.
+第二行，我们让 `std::cout` 显示17位精度，可以看到，`d`的打印结果并不是0.1。这是因为`double`必须对数据进行截断，毕竟内存不是无限的。结果就是数据的精度编程了16位(double保证的)，但是其值却不是0.1。舍入误差可能会得到一个稍大一点或稍小一点的值，这取决于截断发生在哪里。
 
-Rounding errors can have unexpected consequences:
+舍入误差会带来非预期的结果：
 
 ```cpp
 #include <iomanip> // for std::setprecision()
@@ -263,14 +263,13 @@ int main()
 }
 ```
 
-COPY
 
 ```
 1
 0.99999999999999989
 ```
 
-Although we might expect that d1 and d2 should be equal, we see that they are not. If we were to compare d1 and d2 in a program, the program would probably not perform as expected. Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]]
+尽管我们期望 d1 的值应该等于 d2 ，但是实际上我们也看到了它们并不相等。如果我们在程序中对 d1 和 d2 进行比较，那么结果可能就会出人意料。Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]]
 
 One last note on rounding errors: mathematical operations (such as addition and multiplication) tend to make rounding errors grow. So even though 0.1 has a rounding error in the 17th significant digit, when we add 0.1 ten times, the rounding error has crept into the 16th significant digit. Continued operations would cause this error to become increasingly significant.
 
