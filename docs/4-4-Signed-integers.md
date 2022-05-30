@@ -20,7 +20,7 @@ tags:
 | Type |     Minimum Size    | Note |
 |-----|-----|-----|
 |short |16 bits    |
-|int    |16 bits    |Typically 32 bits on modern architectures
+|int    |16 bits    | 现代计算机体系结构下通常为 32 位
 |long  |    32 bits    |
 |long long|    64 bits    |
 
@@ -28,7 +28,7 @@ tags:
 
 !!! tip "提醒"
 
-    C++ 只保证整型大小的最小值，而不保证其最小值。请参考[[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]]来确定每种类型在你机器上的具体大小。
+    C++ 只保证整型占用空间的最小值，而不保证其具体值。请参考[[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]]来确定每种类型在你机器上的具体大小。
 
 ## 有符号整型
 
