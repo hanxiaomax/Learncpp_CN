@@ -10,49 +10,49 @@ tags:
 - bool
 ---
 
-In real-life, it’s common to ask or be asked questions that can be answered with “yes” or “no”. “Is an apple a fruit?” Yes. “Do you like asparagus?” No.
+??? note "关键点速记"
+	- 
 
-Now consider a similar statement that can be answered with a “true” or “false”: “Apples are a fruit”. It’s clearly true. Or how about, “I like asparagus”. Absolutely false (yuck!).
+在现实中，有些问题的答案只有”是“或”不是“两种。”苹果是水果吗？“，是的。”你爱吃笋吗？“不。
 
-These kinds of sentences that have only two possible outcomes: yes/true, or no/false are so common, that many programming languages include a special type for dealing with them. That type is called a Boolean type (note: Boolean is properly capitalized in the English language because it’s named after its inventor, George Boole).
+现在，我们考虑一个类似的语句，它只能用`true`或`false`来回答：”苹果是水果“，`true`。”我喜欢吃笋“，`false`。
 
-Boolean variables
+像这种只有两种可能答案的语句（yes/true 或 no/false）很常见，很多编程语言都有用于处理此类输出结果的特殊类型。它们称为布尔类型（注意：Boolean在英语中是大大写字母开头的，因为它的发明人是乔治布尔（George Boole））。
 
-Boolean variables are variables that can have only two possible values: _true_, and _false_.
 
-To declare a Boolean variable, we use the keyword **bool**.
+## 布尔变量
+
+布尔变量只有两种可能的值：_true_ 和 _false_。
+
+声明布尔类型的变量需要使用关键字 **bool**。
 
 ```cpp
 bool b;
 ```
 
-COPY
-
-To initialize or assign a _true_ or _false_ value to a Boolean variable, we use the keywords true and false.
+初始化布尔类型的变量或为其赋值，需要使用 `true` 或 `false`。
 
 ```cpp
 bool b1 { true };
 bool b2 { false };
 b1 = false;
-bool b3 {}; // default initialize to false
+bool b3 {}; // 默认初始化为 false
 ```
 
-COPY
 
-Just as the unary minus operator (-) can be used to make an integer negative, the logical NOT operator (!) can be used to flip a Boolean value from _true_ to _false_, or _false_ to _true_:
+和一元负号运算符(`-`)可以被用来将一个正数变成负数一样，使用逻辑**非**运算符(`!`)可以将布尔值`true`变成`false`或者把`false`变成`true`：
 
 ```cpp
-bool b1 { !true }; // b1 will be initialized with the value false
-bool b2 { !false }; // b2 will be initialized with the value true
+bool b1 { !true }; // b1 被初始化为 false
+bool b2 { !false }; // b2 被初始化为 true
 ```
 
-COPY
+布尔值通常并不会以 “true” 或 “false”来存储。实际上它是以整型来存储的：`true`会变成1，`false`会变成0。类似地，当布尔类型求值时，求值的实际结果也并不是“true” 或 “false”。通常它们会求值成_0_ (false) 或 _1_ (true)。因为布尔类型实际上是以整型存储的，因此它属于一种整形的类型(integral type)。
 
-Boolean values are not actually stored in Boolean variables as the words “true” or “false”. Instead, they are stored as integers: _true_ becomes the integer _1_, and _false_ becomes the integer _0_. Similarly, when Boolean values are evaluated, they don’t actually evaluate to “true” or “false”. They evaluate to the integers _0_ (false) or _1_ (true). Because Booleans actually store integers, they are considered an integral type.
 
-Printing Boolean variables
+## 打印布尔变量
 
-When we print Boolean values with std::cout, std::cout prints _0_ for _false_, and _1_ for _true_:
+当使用 `std::cout`打印布尔变量时， `std::cout` 会将 false 打印成 0，而把 true 打印成1：
 
 ```cpp
 #include <iostream>
@@ -69,16 +69,16 @@ int main()
 }
 ```
 
-COPY
-
 Outputs:
 
+```
 1
 0
 0
 1
+```
 
-If you want std::cout to print “true” or “false” instead of 0 or 1, you can use _std::boolalpha_. Here’s an example:
+如果你希望 `std::cout` 打印 “true” 或 “false” 而不是 0 或 1，你可以使用 `std::boolalpha`。例如：
 
 ```cpp
 #include <iostream>
@@ -96,27 +96,27 @@ int main()
 }
 ```
 
-COPY
+打印结果：
 
-This prints:
-
+```
 1
 0
 true
 false
+```
 
-You can use _std::noboolalpha_ to turn it back off.
+你可以使用 `std::noboolalpha` 来关闭此功能。
 
-Integer to Boolean conversion
+## 整型转换为布尔类型
 
-You can’t initialize a Boolean with an integer using uniform initialization:
+你不能用统一初始化和一个整型数来初始化布尔变量：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-	bool b{ 4 }; // error: narrowing conversions disallowed
+	bool b{ 4 }; // 错误：: narrowing conversions disallowed
 	std::cout << b;
 
 	return 0;
@@ -151,12 +151,14 @@ COPY
 
 This prints:
 
+```
 true
 false
+```
 
 Note: `bool b1 = 4;` may generate a warning. If so you’ll have to disable treating warnings as errors to compile the example.
 
-Inputting Boolean values
+## 输入布尔值
 
 Inputting Boolean values using _std::cin_ sometimes trips new programmers up.
 
@@ -207,9 +209,9 @@ int main()
 
 COPY
 
-However, when _std::boolalpha_ is enabled, “0” and “1” will no longer be treated as booleans.
+However, when `std::boolalpha` is enabled, “0” and “1” will no longer be treated as booleans.
 
-Boolean return values
+## 布尔类型的返回值
 
 Boolean values are often used as the return values for functions that check whether something is true or not. Such functions are typically named starting with the word _is_(e.g. isEqual) or _has_ (e.g. hasCommonDivisor).
 
@@ -243,17 +245,20 @@ int main()
 }
 ```
 
-COPY
 
 Here’s output from two runs of this program:
 
+```
 Enter an integer: 5
 Enter another integer: 5
 5 and 5 are equal? true
+```
 
+```
 Enter an integer: 6
 Enter another integer: 4
 6 and 4 are equal? false
+```
 
 How does this work? First we read in integer values for _x_ and _y_. Next, the expression “isEqual(x, y)” is evaluated. In the first run, this results in a function call to isEqual(5, 5). Inside that function, 5 == 5 is evaluated, producing the value _true_. The value _true_ is returned back to the caller to be printed by std::cout. In the second run, the call to isEqual(6, 4) returns the value _false_.
 

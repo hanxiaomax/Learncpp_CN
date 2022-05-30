@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "4-9-Boolean-values",
+      "path": "docs/4-9-Boolean-values.md"
+    },
+    {
       "basename": "4-8-Floating-point-numbers",
       "path": "docs/4-8-Floating-point-numbers.md"
     },
@@ -31,10 +39,6 @@
     {
       "basename": "5-2-Arithmetic operators",
       "path": "docs/5-2-Arithmetic operators.md"
-    },
-    {
-      "basename": "4-9-Boolean-values",
-      "path": "docs/4-9-Boolean-values.md"
     },
     {
       "basename": "4-1-Introduction-to-fundamental-data-types",
@@ -95,10 +99,6 @@
     {
       "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
       "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
     {
       "basename": "2-2-Function-return-values-value-returning functions",
