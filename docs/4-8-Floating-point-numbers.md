@@ -16,8 +16,9 @@ tags:
 	- 浮点数数据类型始终是有符号的
 	- 在使用浮点数字面量时，请始终保留一位小数
 	- 默认情况下浮点数字面量为`double`。使用`f`后缀可以标注该字面量为`float`
-	- 请确保你使用的字面量和它赋值的类型是匹配的。否则会发生不必要的转换，导致精度丢失。
-	- 如果内存空间允许，尽量使用 double 而不是 float，因为 float 的精度更低，也就有可能造成数值不准确的问题。
+	- 请确保你使用的字面量和它赋值的类型是匹配的。否则会发生不必要的转换，导致精度丢失
+	- 如果内存空间允许，尽量使用 double 而不是 float，因为 float 的精度更低，也就有可能造成数值不准确的问题
+	- 舍入误差始终存在，它是规则的一部分，永远不能假定浮点数是精确的
 
 整型可以很好地表示整数，但是很多时候我们需要保存非常大的数，或者小数。**浮点数**类型的变量可以用来存放实数，例如4320.0、-3.33 或 0.01226。浮点数名字中的**浮点**二字，形象地说明了小数点可以浮动；也就是说它可以支持小数点前和小数点后具有不同位的数字。
 
@@ -269,21 +270,22 @@ int main()
 0.99999999999999989
 ```
 
-尽管我们期望 d1 的值应该等于 d2 ，但是实际上我们也看到了它们并不相等。如果我们在程序中对 d1 和 d2 进行比较，那么结果可能就会出人意料。Because floating point numbers tend to be inexact, comparing floating point numbers is generally problematic -- we discuss the subject more (and solutions) in lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]]
+尽管我们期望 d1 的值应该等于 d2 ，但是实际上我们也看到了它们并不相等。如果我们在程序中对 d1 和 d2 进行比较，那么结果可能就会出人意料。因为浮点数的这种不精确的特性，对浮点数进行比较通常会产生问题——我们会在 [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]]中进行详细地讨论。
 
-One last note on rounding errors: mathematical operations (such as addition and multiplication) tend to make rounding errors grow. So even though 0.1 has a rounding error in the 17th significant digit, when we add 0.1 ten times, the rounding error has crept into the 16th significant digit. Continued operations would cause this error to become increasingly significant.
+关于舍入误差的最后一点叮嘱：数学运算 (例如加法和乘法) 会导致舍入误差的积累。所以即使 0.1 只在第 17位有效数字时存在误差，当我们将是个0.1相加时，舍入误差就出现在了第16位。不断地计算会导致这些误差被不断地放大。
+
 
 !!! tldr "关键信息"
 
-	Rounding errors occur when a number can’t be stored precisely. This can happen even with simple numbers, like 0.1. Therefore, rounding errors can, and do, happen all the time. Rounding errors aren’t the exception -- they’re the rule. Never assume your floating point numbers are exact.
-
-A corollary of this rule is: be wary of using floating point numbers for financial or currency data.
+	当数据不能被精确的存储时，会出现舍入误差。即使是非常简单的数字也存在该问题（例如 0.1）。因此，舍入误差总是无时无刻地发生。摄入误差并不是异常，它是规则的一部分。永远不要假设你的浮点数是精确的。
+	
+这条规则的结果就是在使用浮点数处理金融或货币数据时，一定要格外警惕。
 
 ## NaN 和 Inf
 
-There are two special categories of floating point numbers. The first is Inf, which represents infinity. Inf can be positive or negative. The second is NaN, which stands for “Not a Number”. There are several different kinds of NaN (which we won’t discuss here). NaN and Inf are only available if the compiler uses a specific format (IEEE 754) for floating point numbers. If another format is used, the following code produces undefined behavior.
+还有两类特殊的浮点数。一个是`Inf`，表示无穷。`Inf`可以是正也可以是负。第二个是`NaN`，表示”非数字“。`NaN` 的种类有很多（我们不会在此讨论）。`NaN` 和 `Inf` 只有在编译器使用特定格式(IEEE 754) 的浮点数时才可以使用。当使用其他格式的时候，下面的代码就会产生未定义行为。
 
-Here’s a program showing all three:
+下面的例程展示了上述三种浮点数：
 
 ```cpp
 #include <iostream>
@@ -291,13 +293,13 @@ Here’s a program showing all three:
 int main()
 {
     double zero {0.0};
-    double posinf { 5.0 / zero }; // positive infinity
+    double posinf { 5.0 / zero }; // 正无穷
     std::cout << posinf << '\n';
 
-    double neginf { -5.0 / zero }; // negative infinity
+    double neginf { -5.0 / zero }; // 负无穷
     std::cout << neginf << '\n';
 
-    double nan { zero / zero }; // not a number (mathematically invalid)
+    double nan { zero / zero }; // 非数字 (数学上无效)
     std::cout << nan << '\n';
 
     return 0;
@@ -305,7 +307,7 @@ int main()
 ```
 
 
-And the results using Visual Studio 2008 on Windows:
+在 Windows 上的 Visual Studio 2008 运行，输出结果如下：
 
 ```
 1.#INF
@@ -313,15 +315,16 @@ And the results using Visual Studio 2008 on Windows:
 1.#IND
 ```
 
-_INF_ stands for infinity, and _IND_ stands for indeterminate. Note that the results of printing _Inf_ and _NaN_ are platform specific, so your results may vary.
+`INF` 表示无穷，而 `IND`表示不确定（indeterminate）。注意，`Inf` 和 `NaN` 的打印结果和平台是相关的，在你的电脑上结果可能有所不同。
+
 
 !!! success "最佳实践"
 
-	Avoid division by 0 altogether, even if your compiler supports it.
-
+	 要彻底避免除0，即使你的的计算机支持这种用法。
+	 
 ## 结论
 
-To summarize, the two things you should remember about floating point numbers:
+总结一下，关于浮点数你需要记住下面两件事：
 
-1.  Floating point numbers are useful for storing very large or very small numbers, including those with fractional components.
-2.  Floating point numbers often have small rounding errors, even when the number has fewer significant digits than the precision. Many times these go unnoticed because they are so small, and because the numbers are truncated for output. However, comparisons of floating point numbers may not give the expected results. Performing mathematical operations on these values will cause the rounding errors to grow larger.
+1.  浮点数在表示很大或很小的数时非常有用，当然也适合保存有小数部分的数。
+2.  浮点数通常会有微小的舍入误差问题，即便一个数的有效数字比精度能够表示的有效数字少，也存在该问题。很多时候这些问题不会被我们注意到，因为摄入误差很小，而且输出结果会被截断，但是，对浮点数进行比较时，舍入误差的存在可能会带来意外的结果。 对浮点数进行数学运算时也可能造成舍入误差的不断增大。
