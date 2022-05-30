@@ -9,6 +9,10 @@
       "path": "docs/4-9-Boolean-values.md"
     },
     {
+      "basename": "7.2 -- If statements and blocks",
+      "path": "docs/7.2 -- If statements and blocks.md"
+    },
+    {
       "basename": "narrowing-conversions",
       "path": "docs/narrowing-conversions.md"
     },
@@ -191,14 +195,6 @@
     {
       "basename": "return-by-value",
       "path": "docs/return-by-value.md"
-    },
-    {
-      "basename": "refactoring",
-      "path": "docs/refactoring.md"
-    },
-    {
-      "basename": "qualifier",
-      "path": "docs/qualifier.md"
     }
   ],
   "omittedPaths": [],

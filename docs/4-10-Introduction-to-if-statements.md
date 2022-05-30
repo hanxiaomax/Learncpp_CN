@@ -62,25 +62,27 @@ The value is zero
 
 我们仔细分析一下这个程序。
 
-首先，用户输入一个整型。然后条件 `x == 0` 进行求值。 相等比较运算符 (`==`) 被用来测试两个值是否相等。如果两数相等，则等比较运算符 (`==`)  返回 _true_ ，否则返回 _false_。因为 x 的值为0，而且 _0 == 0_ is true, this expression evaluates to _true_.
+首先，用户输入一个整型。然后条件 `x == 0` 进行求值。 相等比较运算符 (`==`) 被用来测试两个值是否相等。如果两数相等，则等比较运算符 (`==`)  返回 _true_ ，否则返回 _false_。因为 x 的值为0，而且 `0 == 0` 为真，所以表达式求值的结果为 _true_。
 
-Because the condition has evaluated to _true_, the subsequent statement executes, printing _The value is zero_.
+因为条件表达式的求值结果为 _true_，则接下来的语句会被执行，打印 _The value is zero_。
 
-Here’s another run of this program:
+再次运行程序：
 
+```
 Enter an integer: 5
+```
 
-In this case, _x == 0_ evaluates to _false_. The subsequent statement is skipped, the program ends, and nothing else is printed.
+这种情况下，`x == 0` 求值结果为 _false_。因此接下来的语句会被跳过，然后程序就结束了，不会打印任何文本。
 
-Warning
+!!! warning "注意"
 
-_If statements_ only conditionally execute a single statement. We talk about how to conditionally execute multiple statements in lesson [7.2 -- If statements and blocks](https://www.learncpp.com/cpp-tutorial/if-statements-and-blocks/).
+	_If_ 语句只会有条件地执行一条语句。我们会在[[7.2 -- If statements and blocks|7.2 - if 语句和语句块]]中介绍如何在条件为真时执行多条语句。
 
-If-else
+## If-else
 
-Given the above example, what if we wanted to tell the user that the number they entered was non-zero?
+在上面的例子中，如果我们希望告诉用户，他们输入的值是否为非0呢？
 
-We could write something like this:
+程序可以像下面这样写：
 
 ```cpp
 #include <iostream>
@@ -100,9 +102,7 @@ int main()
 }
 ```
 
-COPY
-
-Or this:
+或者这样：
 
 ```cpp
 #include <iostream>
@@ -123,18 +123,19 @@ int main()
 }
 ```
 
-COPY
 
-Both of these programs are more complex than they need to be. Instead, we can use an alternative form of the _if statement_ called _if-else_. _If-else_ takes the following form:
+这两个程序其实没必要这么复杂，我们可以使用另一种形式的 *if* 语句——*if-else*语句。*if-else*语句的形式如下：
 
+```
 if (condition)
     true_statement;
 else
     false_statement;
+```
 
-If the _condition_ evaluates to Boolean true, _true_statement_ executes. Otherwise _false_statement_ executes.
+如果 `condition` 求值结果为 *true*，则 _true_statement_ 会执行，否则 _false_statement_ 将会执行。
 
-Let’s amend our previous program to use an _if-else_.
+让我们使用 _if-else_ 来修改一下上面的代码：
 
 ```cpp
 #include <iostream>
@@ -154,19 +155,21 @@ int main()
 }
 ```
 
-COPY
+现在，程序的输出结果如下：
 
-Now our program will produce the following output:
-
+```
 Enter an integer: 0
 The value is zero
+```
 
+```
 Enter an integer: 5
 The value is non-zero
+```
 
-Chaining if statements
+## 链式 if 语句
 
-Sometimes we want to check if several things are true or false in sequence. We can do so by chaining an _if statement_ to a prior _if-else_, like so:
+有时候我们需要连续检查一些条件是否为真。我们可以使用链式的*if*语句来完成，例如：
 
 ```cpp
 #include <iostream>
@@ -188,34 +191,39 @@ int main()
 }
 ```
 
-COPY
 
-The _less than operator_ (<) is used to test whether one value is less than another. Similarly, the _greater than operator_ (>) is used to test whether one value is greater than another. These operators both return Boolean values.
+这里的小于号(`<`) 被用来测试一个值是否小于另一个值。类似地，大于号 (`>`)则用来测试一个值是否大于另一个。这些运算符返回的都是布尔值。
 
-Here’s output from a few runs of this program:
+多次运行程序，输出结果如下：
 
+```
 Enter an integer: 4
 The value is positive
+```
 
+```
 Enter an integer: -3
 The value is negative
+```
 
+```
 Enter an integer: 0
 The value is zero
+```
 
-Note that you can chain _if statements_ as many times as you have conditions you want to evaluate. We’ll see an example in the quiz where this is useful.
+注意，你可以使用任意次链式_if_ 语句完成你所需要进行的条件判断。
 
-Boolean return values and if statements
+## 布尔类型返回值和 if 语句
 
-In the previous lesson ([4.9 -- Boolean values](https://www.learncpp.com/cpp-tutorial/boolean-values/)), we wrote this program using a function that returns a Boolean value:
+在之前的课程中（[[4-9-Boolean-values|4.9 - 布尔值]]），我们编写了一个返回布尔值的函数：
 
 ```cpp
 #include <iostream>
 
-// returns true if x and y are equal, false otherwise
+// 如果 x 和 y 相等则返回 true 否则返回 false
 bool isEqual(int x, int y)
 {
-    return (x == y); // operator== returns true if x equals y, and false otherwise
+    return (x == y); //  如果 x 和 y 相等，operator== 则返回 true 否则返回 false
 }
 
 int main()
@@ -236,9 +244,7 @@ int main()
     return 0;
 }
 ```
-
-COPY
-
+我们可以使用 *if* 语句进行gai'x
 Let’s improve this program using an _if statement_:
 
 ```cpp
@@ -273,17 +279,21 @@ COPY
 
 Two runs of this program:
 
+```
 Enter an integer: 5
 Enter another integer: 5
 5 and 5 are equal
+```
 
+```
 Enter an integer: 6
 Enter another integer: 4
 6 and 4 are not equal
+```
 
 In this case, our conditional expression is simply a function call to function _isEqual_, which returns a Boolean value.
 
-Non-Boolean conditionals
+## Non-Boolean conditionals
 
 In all of the examples above, our conditionals have been either Boolean values (true or false), Boolean variables, or functions that return a Boolean value. What happens if your conditional is an expression that does not evaluate to a Boolean value?
 
@@ -305,8 +315,7 @@ int main()
 }
 ```
 
-COPY
 
 This will print “hi”, since 4 is a non-zero value that gets converted to Boolean _true_, causing the statement attached to the _if_ to execute.
 
-We’ll continue our exploration of _if statements_ in future lesson [7.2 -- If statements and blocks](https://www.learncpp.com/cpp-tutorial/if-statements-and-blocks/).
+We’ll continue our exploration of _if statements_ in future lesson [[7.2 -- If statements and blocks|7.2 - if 语句和语句块]]
