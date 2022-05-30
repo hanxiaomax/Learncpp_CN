@@ -17,6 +17,15 @@ tags:
 	- C99和C++11提供了固定宽度整型，通过头文件`<cstdint>`可以使用。缺点是并非所有机器上都有定义且可能会影响性能
 	- C++提供了速度优先和大小优先的两类固定宽度整型
 	- 避免使用8位固定宽度整型。如果一定要使用，请注意它们的行为更类似于字符。
+	- 整型使用最佳实践
+	    - 如果整型的大小不重要（例如存放的数总是在2字节有符号整型范围内），推荐使用 `int` 。例如，如果你要求用户输入年龄，或者进行10以内的计数（此时2字节范围总是够用的）。那么使用 `int` 就足够应对绝大多数场景了；
+	    - 如果需要存储数量值，且范围必须明确时，推荐使用`std::int#_t`；
+	    - 如果需要进行位运算或想要利用无符号数的翻转特性时，使用`std::uint#_t`。
+	- 避免：
+		- 使用无符号类型保存数量值；
+		- 使用 8 为固定宽度整型；
+		- 使用速度或大小优先的固定宽度类型；
+		- 任何与特定编译器相关的固定整型类型——例如 Visual Studio 定义的 `__int8`，`__int16`等。
 
 
 上面的课程中我们介绍了整型，并且提到 C++ 只保证整型值占用空间的最小值——但是它占用的空间可以更大，这取决于具体的系统。
@@ -37,14 +46,14 @@ tags:
 
 |名称 |    类型|    范围    |备注|
 |---|---|---|---|
-|std:: int8_t      |1 byte signed    |-128 到 127| 在大多数系统上被看做有符号字符处理，见下面备注。
-|std:: uint8_t    |1 byte unsigned    |0 到 255    |在大多数系统上被看做无符号字符处理，见下面备注
-|std:: int16_t    |2 byte signed    |-32,768 到 32,767    |
-|std:: uint16_t    |2 byte unsigned    |0 到 65,535    |
-|std:: int32_t    |4 byte signed    |-2,147,483,648 到 2,147,483,647    |
-|std:: uint32_t    |4 byte unsigned    |0 到 4,294,967,295    |
-|std:: int64_t    |8 byte signed    |-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807    |
-|std:: uint64_t    |8 byte unsigned    |0 到 18,446,744,073,709,551,615    |
+|std::int8_t      |1 byte signed    |-128 到 127| 在大多数系统上被看做有符号字符处理，见下面备注。
+|std::uint8_t    |1 byte unsigned    |0 到 255    |在大多数系统上被看做无符号字符处理，见下面备注
+|std::int16_t    |2 byte signed    |-32,768 到 32,767    |
+|std::uint16_t    |2 byte unsigned    |0 到 65,535    |
+|std::int32_t    |4 byte signed    |-2,147,483,648 到 2,147,483,647    |
+|std::uint32_t    |4 byte unsigned    |0 到 4,294,967,295    |
+|std::int64_t    |8 byte signed    |-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807    |
+|std::uint64_t    |8 byte unsigned    |0 到 18,446,744,073,709,551,615    |
 
 C++ 在 C++11 中官方吸纳了这些固定宽度整型。通过包含 `<cstdint>` 头文件就可以使用它们，它们被定义在 `std` 命名空间中。
 
@@ -72,9 +81,9 @@ int main()
 
 为了解决上述问题，C++还定义了另外两组整型，并确保它们总是具有定义。
 
-速度优先的类类型(`std:: int_fast#_t` 和 `std:: uint_fast#_t`) 提供了最快的有符号和无符号整型，同时其宽度最小为 `#` 位 ( `#` = 8、16、32 或 64)。例如，`std:: int_fast32_t` 可以定义宽度最小为 32 位且速度最快的有符号整型。
+速度优先的类类型(`std::int_fast#_t` 和 `std::uint_fast#_t`) 提供了最快的有符号和无符号整型，同时其宽度最小为 `#` 位 ( `#` = 8、16、32 或 64)。例如，`std::int_fast32_t` 可以定义宽度最小为 32 位且速度最快的有符号整型。
 
-尺寸优先的类型(`std:: int_least#_t` 和 `std:: uint_least#_t`) 提供了最小的有符号和无符号整型，其宽度为 `#` 位 (`#` = 8、16、32 或 64)。例如，`std:: uint_least32_t` 可以定义宽度至少为 32 位的最小的无符号整型。
+尺寸优先的类型(`std::int_least#_t` 和 `std::uint_least#_t`) 提供了最小的有符号和无符号整型，其宽度为 `#` 位 (`#` = 8、16、32 或 64)。例如，`std::uint_least32_t` 可以定义宽度至少为 32 位的最小的无符号整型。
 
 以作者使用的 Visual Studio (32-bit 控制台程序)为例：
 
@@ -108,7 +117,7 @@ fast 16: 32 bits
 fast 32: 32 bits
 ```
 
-可以看出 `std:: int_least16_t` 是 16 位的，但是 `std:: int_fast16_t` 实际上却是 32 位。这是因为在作者的机器上，32 位整型的处理速度要比 16 位块。
+可以看出 `std::int_least16_t` 是 16 位的，但是 `std::int_fast16_t` 实际上却是 32 位。这是因为在作者的机器上，32 位整型的处理速度要比 16 位块。
 
 然而，这两种类型也有其缺点：首先，使用它们的程序员实际上并不多，不熟悉的情况使用它们会造成错误。另外，速度优先的类型同样也会带来和 4 比特宽整型一样的内存浪费问题。更严重的是，因为这两种整型类型的大小是变化的，那么可能会造成你的程序在不同体系结构的电脑上行为有所不同。例如：
 
@@ -127,17 +136,17 @@ int main()
 }
 ```
 
-上述代码的输出结果取决于 `std:: uint_fast16_t` 是 16 位、32 位还是 64 位。
+上述代码的输出结果取决于 `std::uint_fast16_t` 是 16 位、32 位还是 64 位。
 
 除非能在对应的平台上进行测试，否则我们很难预知程序在什么平台上运行时会出问题，而对于开发者来说，我们能够使用的平台种类并不会很多。
 
 ## std:: int8_t 和 std:: uint8_t 的行为可能更像字符而非整型
 
-由于对C++标准研究不够仔细，很多编译器定义和对待 `std:: int8_t` 和 `std:: uint8_t`类型(以及其对应的速度或大小优先的固定宽度类型) 的方式和 `signed char`与`unsigned char`是完全一样的。这也就意味着8位的类型可能（也可能不）与其他固定宽度类型具有不同的行为，这有可能造成错误。具体的行为和系统相关，所以在某个平台上正常工作的程序在其他平台上可能无法工作或编译。
+由于对C++标准研究不够仔细，很多编译器定义和对待 `std::int8_t` 和 `std::uint8_t`类型(以及其对应的速度或大小优先的固定宽度类型) 的方式和 `signed char`与`unsigned char`是完全一样的。这也就意味着8位的类型可能（也可能不）与其他固定宽度类型具有不同的行为，这有可能造成错误。具体的行为和系统相关，所以在某个平台上正常工作的程序在其他平台上可能无法工作或编译。
 
 我们会在[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]中举例说明。
 
-为了保持一致性，最好能够避免使用 _`std:: int8_t` 和 `std:: uint8_t` (以及其相关的速度或大小优先类型) 。可以使用 `std:: int16_t`或 `std:: uint16_t` 代替。
+为了保持一致性，最好能够避免使用 _`std::int8_t` 和 `std::uint8_t` (以及其相关的速度或大小优先类型) 。可以使用 `std::int16_t`或 `std::uint16_t` 代替。
 
 !!! warning "注意"
 
@@ -148,20 +157,21 @@ int main()
 
 由于各种基础整型类型都存在各自的优缺点，如固定宽度整型类型，速度/大小优先的固定宽度整型类型以及有符号无符号整型。我们需要在使用时参考一些最佳实践。
 
-我们的宗旨是，正确性优于速度，编译时发现错误优于运行时发现错误——基于这个指导原则，我们建议避免使用速度/大小优先的固定宽度整型类型，使用固定ce is that it’s better to be correct than fast, better to fail at compile time than runtime -- therefore, we recommend avoiding the fast/least types in favor of the fixed-width types. If you later discover the need to support a platform for which the fixed-width types won’t compile, then you can decide how to migrate your program (and thoroughly test) at that point.
+我们的宗旨是，正确性优于速度，编译时发现错误优于运行时发现错误——基于这个指导原则，我们建议避免使用速度/大小优先的固定宽度整型类型，使用固定宽度整型类型。如果将来发现某个平台上固定宽度整型不能编译，那时你可以再决定是否要修改你的程序。
+
 
 !!! success "最佳实践"
 
-    - Prefer `int` when the size of the integer doesn’t matter (e.g. the number will always fit within the range of a 2-byte signed integer). For example, if you’re asking the user to enter their age, or counting from 1 to 10, it doesn’t matter whether int is 16 or 32 bits (the numbers will fit either way). This will cover the vast majority of the cases you’re likely to run across.
-    - Prefer `std:: int#_t` when storing a quantity that needs a guaranteed range.
-    - Prefer `std:: uint#_t` when doing bit manipulation or where well-defined wrap-around behavior is required.
+    - 如果整型的大小不重要（例如存放的数总是在2字节有符号整型范围内），推荐使用 `int` 。例如，如果你要求用户输入年龄，或者进行10以内的计数（此时2字节范围总是够用的）。那么使用 `int` 就足够应对绝大多数场景了；
+    - 如果需要存储数量值，且范围必须明确时，推荐使用`std::int#_t`；
+    - 如果需要进行位运算或想要利用无符号数的翻转特性时，使用`std::uint#_t`。
 
-    Avoid the following when possible:
-
-    - Unsigned types for holding quantities
-    - The 8-bit fixed-width integer types
-    - The fast and least fixed-width types
-    - Any compiler-specific fixed-width integers -- for example, Visual Studio defines __int8, __int16, etc…
+    尽量避免：
+    
+    - 使用无符号类型保存数量值；
+    - 使用 8 为固定宽度整型；
+    - 使用速度或大小优先的固定宽度类型；
+    - 任何与特定编译器相关的固定整型类型——例如 Visual Studio 定义的 `__int8`，`__int16`等。
 
 ## std:: size_t 是什么？
 
@@ -184,9 +194,9 @@ int main()
 4
 ```
 
-Pretty simple, right? We can infer that operator sizeof returns an integer value -- but what integer type is that return value? An int? A short? The answer is that sizeof (and many functions that return a size or length value) return a value of type _std:: size_t_. std:: size_t is defined as an unsigned integral type, and it is typically used to represent the size or length of objects.
+很简单没错吧？我们知道`sizeof`运算符肯定会返回一个整型数，但是这个整型数究竟是什么类型呢？是`int`？还是`short`？。 实际上`sizeof`（以及其他返回长度或大小的函数）返回的返回值的类型为 `std::size_t`。`std::size_t`被定义为一个无符号整型，它通常被用来表示对象的大小或长度。
 
-Amusingly, we can use the _sizeof_ operator (which returns a value of type `std:: size_t`) to ask for the size of `std:: size_t` itself:
+有趣的是，我们可以使用`sizeof`运算符（返回类型为`std:: size_t`）返回`std:: size_t`本身的长度：
 
 ```cpp
 #include <cstddef> // std::size_t
@@ -200,18 +210,18 @@ int main()
 }
 ```
 
-Compiled as a 32-bit (4 byte) console app on the author’s system, this prints:
+在32位（4字节）的控制台程序中，打印结果为：
 
 ```
 4
 ```
 
-Much like an integer can vary in size depending on the system, `std:: size_t` also varies in size. `std:: size_t` is guaranteed to be unsigned and at least 16 bits, but on most systems will be equivalent to the address-width of the application. That is, for 32-bit applications, `std:: size_t` will typically be a 32-bit unsigned integer, and for a 64-bit application, _size_t_ will typically be a 64-bit unsigned integer. _size_t_ is defined to be big enough to hold the size of the largest object creatable on your system (in bytes). For example, if `std:: size_t` is 4 bytes wide, the largest object creatable on your system can’t be larger than 4,294,967,295 bytes, because this is the largest number a 4 byte unsigned integer can store. This is only the uppermost limit of an object’s size, the real size limit can be lower depending on the compiler you’re using.
+和整型的大小可以改变一样， `std::size_t` 同样可能会改变。`std::size_t` 只保证它为无符号，并且最小为16位，但是在大多数系统中，它的实际大小通常等于应用程序的[[address-width|地址宽度(address-width)]]。即对于32位应用程序，`std::size_t` 通常为 32 位无符号整型，而对于 64 位程序，`size_t`通常为64位无符号整型。`size_t` 被定义为要足够大能以便能够存放对应系统能够创建的最大的对象（以字节计）。例如，如果 `std::size_t` 是4个字节宽，则该系统能够创建的最大的对象不可能超过 4,294,967,295 bytes, because this is the largest number a 4 byte unsigned integer can store. This is only the uppermost limit of an object’s size, the real size limit can be lower depending on the compiler you’re using.
 
 By definition, any object with a size (in bytes) larger than the largest integral value `size_t` can hold is considered ill-formed (and will cause a compile error), as the _sizeof_operator would not be able to return the size without wrapping around.
 
 !!! cite "题外话"
 
-    有些编译器将最大可创建对象的大小限制为 `std:: size_t` 的最大值(有兴趣可以阅读 [这篇文章](https://stackoverflow.com/a/42428240) ).
+    有些编译器将最大可创建对象的大小限制为 `std::size_t` 的最大值(有兴趣可以阅读 [这篇文章](https://stackoverflow.com/a/42428240) ).
 
     实际上，最大可创建对象的大小可能会小于（远小于）这个值，它取决于你的计算机有多少可用的连续内存。
