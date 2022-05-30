@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/1-4-Variable-assignment-and-initialization.md",
+            "file": "docs/4-9-Boolean-values.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -71,7 +71,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -87,7 +88,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/1-4-Variable-assignment-and-initialization.md"
+                "file": "docs/4-9-Boolean-values.md"
               }
             }
           },
@@ -108,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/1-4-Variable-assignment-and-initialization.md",
+                "file": "docs/4-9-Boolean-values.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +130,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/4-9-Boolean-values.md",
+    "docs/narrowing-conversions.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/4-8-Floating-point-numbers.md",
     "docs/rounding-error.md",
     "docs/Output-manipulators.md",
     "docs/literals.md",
     "docs/4-7-Introduction-to-scientific-notation.md",
     "docs/4-6-Fixed-width-integers-and-size_t.md",
-    "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
-    "docs/5-2-Arithmetic operators.md"
+    "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
   ]
 }

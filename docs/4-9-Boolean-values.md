@@ -11,7 +11,7 @@ tags:
 ---
 
 ??? note "关键点速记"
-	- 
+	- 不能用统一初始化和一个整型数来初始化布尔变量，其他情况是可以转换的
 
 在现实中，有些问题的答案只有”是“或”不是“两种。”苹果是水果吗？“，是的。”你爱吃笋吗？“不。
 
@@ -116,18 +116,17 @@ false
 
 int main()
 {
-	bool b{ 4 }; // 错误：: narrowing conversions disallowed
+	bool b{ 4 }; // 错误：: 不允许缩窄转换
 	std::cout << b;
 
 	return 0;
 }
 ```
 
-COPY
 
-(note: some versions of g++ don’t enforce this properly)
+(注意：有些版本的g++并不会有上述限制）
 
-However, in any context where an integer can be converted to a Boolean , the integer _0_ is converted to _false_, and any other integer is converted to _true_.
+不过，在其他场景下整型是可以被转换为布尔值的。整型值0会被转换为`false`，而其他整型会被转换为`true`。
 
 ```cpp
 #include <iostream>
@@ -136,10 +135,10 @@ int main()
 {
 	std::cout << std::boolalpha; // print bools as true or false
 
-	bool b1 = 4 ; // copy initialization allows implicit conversion from int to bool
+	bool b1 = 4 ; // 拷贝初始化允许隐式转换
 	std::cout << b1 << '\n';
 
-	bool b2 = 0 ; // copy initialization allows implicit conversion from int to bool
+	bool b2 = 0 ; // 拷贝初始化允许隐式转换
 	std::cout << b2 << '\n';
 
 
@@ -147,29 +146,28 @@ int main()
 }
 ```
 
-COPY
 
-This prints:
+打印结果为：
 
 ```
 true
 false
 ```
 
-Note: `bool b1 = 4;` may generate a warning. If so you’ll have to disable treating warnings as errors to compile the example.
+注意：`bool b1 = 4;` 可以能会产生警告。这种情况下你需要关闭编译的”将告警当做错误处理“功能，这样你猜呢编译上述代码。
 
 ## 输入布尔值
 
-Inputting Boolean values using _std::cin_ sometimes trips new programmers up.
+使用 `std::cin` 来输入布尔类型常常会让新手程序员抓狂。
 
-Consider the following program:
+考虑下面的程序：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-	bool b{}; // default initialize to false
+	bool b{}; // 默认初始化为 false
 	std::cout << "Enter a boolean value: ";
 	std::cin >> b;
 	std::cout << "You entered: " << b << '\n';
@@ -178,16 +176,17 @@ int main()
 }
 ```
 
-COPY
 
+```
 Enter a Boolean value: true
 You entered: 0
+```
 
-Wait, what?
+什么！怎么会这样？
 
-It turns out that _std::cin_ only accepts two inputs for boolean variables: 0 and 1 (_not_ true or false). Any other inputs will cause _std::cin_ to silently fail. In this case, because we entered _true_, _std::cin_ silently failed. A failed input will also zero-out the variable, so _b_ also gets assigned value _false_. Consequently, when _std::cout_ prints a value for _b_, it prints 0.
+实际上，`std::cin`只能够接收两种布尔类型输入：0和1（而不是 `true` 或 `false` ）。任何其他的输入都会导致 `std::cin` 出错。在上面的例子中，因为我们输入了true，因此实际上 `std::cin`出错了，输入出错后，接受输入的变量会被清零，因此`b`就被赋值为`false`。因此，当 `std::cout` 打印`b`的时候，会打印0。
 
-To make _std::cin_ accept “false” and “true” as inputs, the _std::boolalpha_ option has to be enabled
+为了让 `std::cin` 能够接受 “false” 和 “true” 作为输入，`std::boolalpha` 必须被打开。
 
 ```cpp
 #include <iostream>
@@ -197,7 +196,7 @@ int main()
 	bool b{};
 	std::cout << "Enter a boolean value: ";
 
-	// Allow the user to enter 'true' or 'false' for boolean values
+	// 允许用户输入 'true' 或 'false' 作为布尔值
 	std::cin >> std::boolalpha;
 	std::cin >> b;
 
@@ -207,23 +206,22 @@ int main()
 }
 ```
 
-COPY
 
-However, when `std::boolalpha` is enabled, “0” and “1” will no longer be treated as booleans.
+不过，当`std::boolalpha` 打卡后，“0” 和 “1” 就不会再被看出布尔类型了。
 
 ## 布尔类型的返回值
 
-Boolean values are often used as the return values for functions that check whether something is true or not. Such functions are typically named starting with the word _is_(e.g. isEqual) or _has_ (e.g. hasCommonDivisor).
+布尔值常备用作函数的返回值，用来检查某件事(物)是否为true。这种函数命名时通常以`is`开头（例如 `isEqual`）或 `has`（例如 `hasCommonDivisor`）。
 
-Consider the following example, which is quite similar to the above:
+考虑下面这个例子，和上面有些类似：
 
 ```cpp
 #include <iostream>
 
-// returns true if x and y are equal, false otherwise
+// 如果 x 和 y 相等则返回 true 否则返回 false
 bool isEqual(int x, int y)
 {
-    return (x == y); // operator== returns true if x equals y, and false otherwise
+    return (x == y); //  如果 x 和 y 相等，operator== 则返回 true 否则返回 false
 }
 
 int main()
@@ -246,7 +244,7 @@ int main()
 ```
 
 
-Here’s output from two runs of this program:
+两次运行的输出结果如下：
 
 ```
 Enter an integer: 5
@@ -260,7 +258,7 @@ Enter another integer: 4
 6 and 4 are equal? false
 ```
 
-How does this work? First we read in integer values for _x_ and _y_. Next, the expression “isEqual(x, y)” is evaluated. In the first run, this results in a function call to isEqual(5, 5). Inside that function, 5 == 5 is evaluated, producing the value _true_. The value _true_ is returned back to the caller to be printed by std::cout. In the second run, the call to isEqual(6, 4) returns the value _false_.
+原理是什么呢？首先我们从输入获取 x 和 y 的值。接下来，表达式 `isEqual(x, y)`会进行求值。在第一次yun'x is evaluated. In the first run, this results in a function call to isEqual(5, 5). Inside that function, 5 == 5 is evaluated, producing the value _true_. The value _true_ is returned back to the caller to be printed by std::cout. In the second run, the call to isEqual(6, 4) returns the value _false_.
 
 Boolean values take a little bit of getting used to, but once you get your mind wrapped around them, they’re quite refreshing in their simplicity! Boolean values are also a huge part of the language -- you’ll end up using them more than all the other fundamental types put together!
 

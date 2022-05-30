@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
       "basename": "4-9-Boolean-values",
       "path": "docs/4-9-Boolean-values.md"
+    },
+    {
+      "basename": "narrowing-conversions",
+      "path": "docs/narrowing-conversions.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
     {
       "basename": "4-8-Floating-point-numbers",
@@ -195,10 +199,6 @@
     {
       "basename": "qualifier",
       "path": "docs/qualifier.md"
-    },
-    {
-      "basename": "2-10-Introduction-to-the-preprocessor",
-      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     }
   ],
   "omittedPaths": [],
