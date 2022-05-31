@@ -16,6 +16,7 @@ tags:
 	- 编译器会对基本数据类型进行隐式类型转换，但导致信息丢失的隐式类型转换会引发告警或错误（括号初始化时）
 	- `static_cast<new_type>(expression)` 进行显式类型转换
 	- 每当你看到有尖括号(`<>`)存在的 C++ 语法（除了预处理器指令）时，在两个尖括号中间的内容很可能是一个类型名。这是C++中处理需要可参数化类型时的方法。
+	- `static_cast` 运算符不会做任何范围检查，所以如果你在类型转换时，新类型并不能包含该值，则会产生未定义行为。
 
 ## 隐式类型转换
 
@@ -149,12 +150,11 @@ int main()
 
 !!! info "相关内容"
 
-	C++ 还支持其他类型的转换。我们会在[8.5 -- Explicit type conversion (casting) and static_cast]中信息x(https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/).
+C++ 还支持其他类型的转换。我们会在[[8.5 -- Explicit type conversion (casting) and static_cast|8.5 - 显式类型转换]]中进行详细介绍
 
 ## 使用 static_cast 将 char 转换为 int
 
-In the lesson on chars [4.11 -- Chars](https://www.learncpp.com/cpp-tutorial/chars/), we saw that printing a char value using `std::cout` results in the value being printed as a char:
-
+在 [[4-11-Chars|4.11 - 字符]] 中，我们看到使用 `std::cout` 打印字符类型时，屏幕上会打印一个字符：
 ```cpp
 #include <iostream>
 
@@ -173,15 +173,15 @@ This prints:
 a
 ```
 
-If we want to print the integral value instead of the char, we can do this by using `static_cast` to cast the value from a `char` to an `int`:
+如果我们想要打印其对应的整型值，则可以使用 `static_cast` 将 `char` 转换为 `int`：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    char ch{ 97 }; // 97 is ASCII code for 'a'
-    std::cout << ch << " has value " << static_cast<int>(ch) << '\n'; // print value of variable ch as an int
+    char ch{ 97 }; // 97 是 ASCII 码中的 'a'
+    std::cout << ch << " has value " << static_cast<int>(ch) << '\n'; // 将 ch 打印为 int
 
     return 0;
 }
@@ -193,19 +193,20 @@ int main()
 a has value 97
 ```
 
-It’s worth noting that the argument to _static_cast_ evaluates as an expression. When we pass in a variable, that variable is evaluated to produce its value, and that value is then converted to the new type. The variable itself is _not_ affected by casting its value to a new type. In the above case, variable `ch` is still a char, and still holds the same value even after we’ve cast its value to an `int`.
+请注意 `static_cast` 的形参是一个表达式。当传入变量的时候，变量首先会进行求值并得到具体的值，然后该值会被转换成新的类型。作为实参的变量本身并不会受到影响，在上面的例子中，`ch` 仍然是字符类型，它保存的值也是仍然是原来的值。
+
 
 ## 将无符号数转换为有符号数
 
-To convert an unsigned number to a signed number, you can also use the `static_cast` operator:
+将无符号类型转换为有符号类型，同样可以使用 `static_cast` 运算符：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    unsigned int u { 5u }; // 5u means the number 5 as an unsigned int
-    int s { static_cast<int>(u) }; // return value of variable u as an int
+    unsigned int u { 5u }; // 5u 表示 5 是无符号整型
+    int s { static_cast<int>(u) }; // 返回值类型为 int
 
     std::cout << s;
     return 0;
@@ -213,8 +214,7 @@ int main()
 ```
 
 
-
-The `static_cast` operator doesn’t do any range checking, so if you cast a value to a type whose range doesn’t contain that value, undefined behavior will result. Therefore, the above cast from `unsigned int` to `int` will yield unpredictable results if the value of the `unsigned int` is greater than the maximum value a signed `int` can hold.
+ `static_cast` 运算符不会做任何范围检查，所以如果你在类型转换时，新类型并不能包含该值，则会产生未定义行为。 doesn’t do any range checking, so if you cast a value to a type whose range doesn’t contain that value, undefined behavior will result. Therefore, the above cast from `unsigned int` to `int` will yield unpredictable results if the value of the `unsigned int` is greater than the maximum value a signed `int` can hold.
 
 !!! warning "注意"
 
