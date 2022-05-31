@@ -9,7 +9,7 @@ tags:
 - char
 ---
 
-To this point, the fundamental data types we’ve looked at have been used to hold numbers (integers and floating point) or true/false values (booleans). But what if we want to store letters or punctuation?
+到目前为止，我们介绍的基础数据类型都是用来保存数字的（整型或者浮点数）或者布尔值的。但是，如果我们想存放字母和标点怎么办？
 
 ```cpp
 #include <iostream>
@@ -25,7 +25,6 @@ int main()
 }
 ```
 
-COPY
 
 The char data type was designed to hold a `character`. A character can be a single letter, number, symbol, or whitespace.
 

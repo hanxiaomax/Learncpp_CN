@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/tabledata.md",
+            "file": "docs/4-11-Chars.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/tabledata.md"
+                "file": "docs/4-11-Chars.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/tabledata.md",
+                "file": "docs/4-11-Chars.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-11-Chars.md",
+    "docs/4-10-Introduction-to-if-statements.md",
+    "docs/4-9-Boolean-values.md",
+    "docs/4-8-Floating-point-numbers.md",
+    "docs/4-7-Introduction-to-scientific-notation.md",
     "docs/tabledata.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/5-3-Modulus-and-Exponentiation.md",
     "docs/5-2-Arithmetic-operators.md",
-    "docs/5.2 — Arithmetic operators.md",
-    "docs/4-11-Chars.md",
-    "docs/4-10-Introduction-to-if-statements.md",
-    "docs/4-9-Boolean-values.md",
-    "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "docs/7.2 -- If statements and blocks.md"
+    "docs/5.2 — Arithmetic operators.md"
   ]
 }
