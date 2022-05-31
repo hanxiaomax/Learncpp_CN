@@ -26,18 +26,18 @@ int main()
 ```
 
 
-The char data type was designed to hold a `character`. A character can be a single letter, number, symbol, or whitespace.
+`char`类型是用来保存`字符(character)`。字符可以是一个字母、数字、符号或空白。
 
-The char data type is an integral type, meaning the underlying value is stored as an integer. Similar to how a Boolean value `0` is interpreted as `false` and non-zero is interpreted as `true`, the integer stored by a `char` variable are intepreted as an `ASCII character`.
+char类型也属于整型类型，也就是说它底层存储的还是整型数。和布尔值将0解析为false类似，将非零值解析为true类似，char 类型将存储的整型解析为`ASCII`字符。
 
-ASCII stands for American Standard Code for Information Interchange, and it defines a particular way to represent English characters (plus a few other symbols) as numbers between 0 and 127 (called an ASCII code or code point). For example, ASCII code 97 is interpreted as the character ‘a’.
+ASCII 即美国信息交换标准代码是，它是一种将英文字母（以及少数其他符号）表示为0到127整型数字的方法。例如ASCII中97表示字母`a`。
 
-Character literals are always placed between single quotes (e.g. ‘g’, ‘1’, ‘ ‘).
+字符常量通常放置在单引号中（例如,`'g'`,`'1'`,`' '`）。
 
-Here’s a full table of ASCII characters:
+完整的 ASCII 字母表如下：
 
 
-|Code	|Symbol|	Code	|Symbol	|Code	|Symbol	|Code	|Symbol|
+|ASCII 码	|符号|	ASCII 码	|符号	|ASCII 码	|符号	|ASCII 码	|符号|
 |----|----|----|----|----|----|----|----|
 |0	|NUL (null)|	32	|(space)	|64	|@	|96	|\`|
 |1	|SOH (start of header)|	33	|!	|65	|A	|97	|a|
@@ -70,47 +70,42 @@ Here’s a full table of ASCII characters:
 |28	  | FS (file separator)|	60	|<	|92	|\\	|124	|||
 |29	|GS (group separator)|	61	|=	|93	|]	|125	|}|
 |30	|RS (record separator)|	62	|>	|94	|^	|126	|~|
-|31	|US (unit separator)|	63	|?	|95	|_	|127	|DEL (delete)|
+|31	|US (unit separator)|	63	|?	|95	|_	|127	|DEL (删除)|
 
 
-Codes 0-31 are called the unprintable chars, and they’re mostly used to do formatting and control printers. Most of these are obsolete now. If you try to print these chars, the results are dependent upon your OS (you may get some emoji-like characters).
+ASCII 码 0-31 为不可打印字符，它们大多被用来排版或控制打印机，其中很多现在已经不再使用了。如果你尝试将它们打印出来的话，打印的结果可能和你使用的系统相同（你可能会得到一些像emoji的字符）。
 
-Codes 32-127 are called the printable characters, and they represent the letters, number characters, and punctuation that most computers use to display basic English text.
+ASCII 码 32-127 为可打印字符，它们通常表示字母、数字字符和标点，多被用来表示基本的英文文本。
 
-Initializing chars
+## 初始化字符
 
-You can initialize char variables using character literals:
-
-```cpp
-char ch2{ 'a' }; // initialize with code point for 'a' (stored as integer 97) (preferred)
-```
-
-COPY
-
-You can initialize chars with integers as well, but this should be avoided if possible
+使用字符字面量可以初始化字符变量：
 
 ```cpp
-char ch1{ 97 }; // initialize with integer 97 ('a') (not preferred)
+char ch2{ 'a' }; // 使用 'a' 来初始化(被存储为 97) (推荐)
 ```
 
-COPY
-
-Warning
-
-Be careful not to mix up character numbers with integer numbers. The following two initializations are not the same:
+你也可以使用整型数来初始化字符变量，但是应该尽量避免这么做。
 
 ```cpp
-char ch{5}; // initialize with integer 5 (stored as integer 5)
-char ch{'5'}; // initialize with code point for '5' (stored as integer 53)
+char ch1{ 97 }; // 使用 97 来初始化('a') (不推荐)
 ```
 
-COPY
 
-Character numbers are intended to be used when we want to represent numbers as text, rather than as numbers to apply mathematical operations to.
+!!! warning "注意"
 
-Printing chars
+	Be careful not to mix up character numbers with integer numbers. The following two initializations are not the same:
 
-When using std::cout to print a char, std::cout outputs the char variable as an ASCII character:
+	```cpp
+	char ch{5}; // initialize with integer 5 (stored as integer 5)
+	char ch{'5'}; // initialize with code point for '5' (stored as integer 53)
+	```
+
+	Character numbers are intended to be used when we want to represent numbers as text, rather than as numbers to apply mathematical operations to.
+
+## 打印字符
+
+当使用 `std::cout` 打印字符的时候 `std::cout`会把字符变量打印成ASCII字符：
 
 ```cpp
 #include <iostream>
@@ -128,27 +123,20 @@ int main()
 }
 ```
 
-COPY
 
-This produces the result:
+输出结果：ab
 
-ab
-
-We can also output char literals directly:
+字符字面量也可以直接打印：
 
 ```cpp
 cout << 'c';
 ```
 
-COPY
+输出结果：c
 
-This produces the result:
+## 输入字符
 
-c
-
-Inputting chars
-
-The following program asks the user to input a character, then prints out the character:
+下面这个程序会提示用户输入一个字符，然后将字符打印出来：
 
 ```cpp
 #include <iostream>
@@ -165,59 +153,61 @@ int main()
 }
 ```
 
-COPY
+运行结果：
 
-Here’s the output from one run:
-
+```
 Input a keyboard character: q
 You entered q
+```
 
-Note that std::cin will let you enter multiple characters. However, variable _ch_ can only hold 1 character. Consequently, only the first input character is extracted into variable _ch_. The rest of the user input is left in the input buffer that std::cin uses, and can be extracted with subsequent calls to std::cin.
+注意， `std::cin` 允许你输入多个字符。不过变量 `ch`只能接收一个字符，因此只有第一个字符会被存放到变量中，剩下字符会被留在`std::cin`的缓冲中，可以被接下来再次调用 `std::cin` 时使用。
 
-You can see this behavior in the following example:
+以下面的程序为例：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    std::cout << "Input a keyboard character: "; // assume the user enters "abcd" (without quotes)
+    std::cout << "Input a keyboard character: "; // 假设用户输入了 "abcd" (带双引号)
 
     char ch{};
-    std::cin >> ch; // ch = 'a', "bcd" is left queued.
+    std::cin >> ch; // ch = 'a', "bcd" 被留在了缓冲中
     std::cout << "You entered: " << ch << '\n';
 
-    // Note: The following cin doesn't ask the user for input, it grabs queued input!
-    std::cin >> ch; // ch = 'b', "cd" is left queued.
+    // 注意，下面的ch没有要求用户再次输入，它可以直接从缓冲中获取输入
+    std::cin >> ch; // ch = 'b', "cd" 被流在缓冲中
     std::cout << "You entered: " << ch << '\n';
 
     return 0;
 }
 ```
 
-COPY
 
+
+```
 Input a keyboard character: abcd
 You entered: a
 You entered: b
+```
 
-If you want to read in more than one char at a time (e.g. to read in a name, word, or sentence), you’ll want to use a string instead of a char. A string is a collection of sequential characters (and thus, a string can hold multiple symbols).
+如果你想一次性读入多个字符（例如，名字、单词或者句子），你应该使用字符串而不是字符。字符串是一个字符序列（因此字符串可以保存多个符号）。
 
-Related content
+!!! info "相关内容"
 
-We discuss strings in upcoming lesson ([4.13 -- An introduction to std::string](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdstring/)).
+	我们会在[[4-13-An introduction-to-std-string|4.13 - std::string 简介]]中讨论关于字符串的内容。
 
-Char size, range, and default sign
+## 字符类型的大小、范围和默认符号
 
-Char is defined by C++ to always be 1 byte in size. By default, a char may be signed or unsigned (though it’s usually signed). If you’re using chars to hold ASCII characters, you don’t need to specify a sign (since both signed and unsigned chars can hold values between 0 and 127).
+C++ 将字符类型的大小定义为固定的1字节。默认情况下，字符可以是有符号或者无符号的（多数情况为有符号）。如果你使用字符变量来保存ASCII字符的话，你不需要指定符号，因为有符号和无符号的字符变量都可以保存0-127内的值。
 
-If you’re using a char to hold small integers (something you should not do unless you’re explicitly optimizing for space), you should always specify whether it is signed or unsigned. A signed char can hold a number between -128 and 127. An unsigned char can hold a number between 0 and 255.
+如果你使用字符变量来保存一些比较小的整型值（如非优化空间这样的特别需要，请不要这么做），你应该指定它是有符号还是无符号的。有符号的字符可以保存的整数范围为-128 到 127。无符号字符则可以保存 0 到 255 范围内的整数。
 
-Escape sequences
+## 转译序列
 
-There are some characters in C++ that have special meaning. These characters are called escape sequences. An escape sequence starts with a ‘\’ (backslash) character, and then a following letter or number.
+C++ 中的某些字符是具有特殊含义的，这些字符称为转译序列（escape sequences）。转译序列以`\`（反斜线）开头，紧接着是一个字母或数字。
 
-You’ve already seen the most common escape sequence: ‘\n’, which can be used to embed a newline in a string of text:
+你可能已经见过在常遇到的转义序列`'\n'`，它会在字符串中嵌入一个换行：
 
 ```cpp
 #include <iostream>
@@ -229,14 +219,14 @@ int main()
 }
 ```
 
-COPY
+输出结果：
 
-This outputs:
-
+```
 First line
 Second line
+```
 
-Another commonly used escape sequence is ‘\t’, which embeds a horizontal tab:
+另外一个常用的转译序列是 `'\t'`，表示一个水平制表符：
 
 ```cpp
 #include <iostream>
@@ -248,16 +238,17 @@ int main()
 }
 ```
 
-COPY
+输出结果为
 
-Which outputs:
-
+```
 First part        Second part
+```
 
-Three other notable escape sequences are:  
-\’ prints a single quote  
-\” prints a double quote  
-\\ prints a backslash
+其他一些值得注意的转译序列有：
+
+- `\'` ：打印单引号
+- `\"`：打印双引号
+- `\\` 打印fan'xie'x
 
 Here’s a table of all of the escape sequences:
 
@@ -292,19 +283,19 @@ int main()
 }
 ```
 
-COPY
+打印结果：
 
-Prints:
-
+```
 "This is quoted text"
 This string contains a single backslash \
 6F in hex is char 'o'
+```
 
-Newline (\n) vs. std::endl
+## Newline (\n) vs. std::endl
 
 We cover this topic in lesson [1.5 -- Introduction to iostream: cout, cin, and endl](https://www.learncpp.com/cpp-tutorial/introduction-to-iostream-cout-cin-and-endl/).
 
-What’s the difference between putting symbols in single and double quotes?
+## What’s the difference between putting symbols in single and double quotes?
 
 Single chars are always put in single quotes (e.g. ‘a’, ‘+’, ‘5’). A char can only represent one symbol (e.g. the letter a, the plus symbol, the number 5). Something like this is illegal:
 
@@ -324,17 +315,17 @@ std::cout << "Hello, world!"; // "Hello, world!" is a string literal
 
 COPY
 
-Best practice
+!!! success "最佳实践"
 
-Put stand-alone chars in single quotes (e.g. ‘t’ or ‘\n’, not “t” or “\n”). This helps the compiler optimize more effectively.
+	Put stand-alone chars in single quotes (e.g. ‘t’ or ‘\n’, not “t” or “\n”). This helps the compiler optimize more effectively.
 
-What about the other char types, wchar_t, char16_t, and char32_t?
+## What about the other char types, wchar_t, char16_t, and char32_t?
 
 wchar_t should be avoided in almost all cases (except when interfacing with the Windows API). Its size is implementation defined, and is not reliable. It has largely been deprecated.
 
-As an aside…
+!!! cite "题外话"
 
-The term “deprecated” means “still supported, but no longer recommended for use, because it has been replaced by something better or is no longer considered safe”.
+    The term “deprecated” means “still supported, but no longer recommended for use, because it has been replaced by something better or is no longer considered safe”.
 
 Much like ASCII maps the integers 0-127 to American English characters, other character encoding standards exist to map integers (of varying sizes) to characters in other languages. The most well-known mapping outside of ASCII is the Unicode standard, which maps over 144,000 integers to characters in many different languages. Because Unicode contains so many code points, a single Unicode code point needs 32-bits to represent a character (called UTF-32). However, Unicode characters can also be encoded using multiple 16-bit or 8-bit characters (called UTF-16 and UTF-8 respectively).
 
