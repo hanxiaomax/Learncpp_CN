@@ -130,6 +130,7 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
+    "docs/type-conversion.md",
     "docs/4-11-Chars.md",
     "docs/4-10-Introduction-to-if-statements.md",
     "docs/4-9-Boolean-values.md",
@@ -137,7 +138,6 @@
     "docs/4-7-Introduction-to-scientific-notation.md",
     "docs/tabledata.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
-    "docs/5-3-Modulus-and-Exponentiation.md",
-    "docs/5-2-Arithmetic-operators.md"
+    "docs/5-3-Modulus-and-Exponentiation.md"
   ]
 }

@@ -5,6 +5,10 @@
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
+      "basename": "type-conversion",
+      "path": "docs/type-conversion.md"
+    },
+    {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "statement",
       "path": "docs/statement.md"
-    },
-    {
-      "basename": "scope-resolution-operator",
-      "path": "docs/scope-resolution-operator.md"
     }
   ],
   "omittedPaths": [],
