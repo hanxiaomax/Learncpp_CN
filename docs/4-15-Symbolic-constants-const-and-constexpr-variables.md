@@ -143,10 +143,11 @@ int main()
 
 COPY
 
-Best practice
+!!! success "最佳实践"
 
-Any variable that should not be modifiable after initialization and whose initializer is known at compile-time should be declared as constexpr.  
-Any variable that should not be modifiable after initialization and whose initializer is not known at compile-time should be declared as const.
+	Any variable that should not be modifiable after initialization and whose initializer is known at compile-time should be declared as constexpr.  
+
+	Any variable that should not be modifiable after initialization and whose initializer is not known at compile-time should be declared as const.
 
 In reality, developers often skip making local variables in short/trivial functions const, because there is little chance of accidentally modifying a value.
 
@@ -232,15 +233,17 @@ int main()
 
 COPY
 
-Related content
+!!! info "相关内容"
 
-We cover std::string view in lesson [11.7 -- An introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdstring_view/).
+	<>
 
-Naming your const variables
+We cover std::string view in lesson [[11-7-An-introduction-to-std-string_view|11.7 - std::string_view 简介]]
+
+## Naming your const variables
 
 Some programmers prefer to use all upper-case names for const variables. Others use normal variable names with a ‘k’ prefix. However, we will use normal variable naming conventions, which is more common. Const variables act exactly like normal variables in every case except that they can not be assigned to, so there’s no particular reason they need to be denoted as special.
 
-Const function parameters and return values
+## Const function parameters and return values
 
 Const can also be used with function parameters:
 
@@ -261,15 +264,14 @@ int main()
 }
 ```
 
-COPY
 
 Making a function parameter const enlists the compiler’s help to ensure that the parameter’s value is not changed inside the function. Note that we did not provide an explicit initializer for our const parameter -- the value of the argument in the function call will be used as the initializer in this case.
 
 When arguments are passed by value, we generally don’t care if the function changes the value of the parameter (since it’s just a copy that will be destroyed at the end of the function anyway). For this reason, we usually don’t const parameters passed by value. But later on, we’ll talk about other kinds of function parameters (where changing the value of the parameter will change the value of the argument passed in). For these other types of parameters, use of const is important.
 
-Best practice
+!!! success "最佳实践"
 
-Function parameters for arguments passed by value should not be made const.
+	Function parameters for arguments passed by value should not be made const.
 
 A function’s return value may also be made const:
 
@@ -289,13 +291,12 @@ int main()
 }
 ```
 
-COPY
 
 However, since the returned value is a copy, there’s little point in making it const.
 
-Best practice
+!!! success "最佳实践"
 
-Don’t use const with return by value.
+	Don’t use const with return by value.
 
 ## Avoid using object-like preprocessor macros for symbolic constants
 
@@ -311,8 +312,6 @@ Consider the following snippet:
 #define MAX_STUDENTS_PER_CLASS 30
 int max_students { numClassrooms * MAX_STUDENTS_PER_CLASS };
 ```
-
-COPY
 
 When you compile your code, the preprocessor replaces all instances of MAX_STUDENTS_PER_CLASS with the literal value 30, which is then compiled into your executable.
 
@@ -335,15 +334,14 @@ int main()
 }
 ```
 
-COPY
 
 If `someheader.h` happened to `#define` a macro named _beta_, this simple program would break, as the preprocessor would replace the int variable beta’s name with whatever the macro’s value was. This is normally avoided by using all caps for macro names, but it can still happen.
 
 Thirdly, macros don’t follow normal scoping rules, which means in rare cases a macro defined in one part of a program can conflict with code written in another part of the program that it wasn’t supposed to interact with.
 
-Warning
+!!! warning "注意"
 
-Avoid using `#define` to create symbolic constants macros. Use const or constexpr variables instead.
+	Avoid using `#define` to create symbolic constants macros. Use const or constexpr variables instead.
 
 ## Using symbolic constants throughout a multi-file program
 
@@ -361,7 +359,6 @@ The following snippet shows an example of a magic number with an unclear meaning
 constexpr int maxStudentsPerSchool{ numClassrooms * 30 };
 ```
 
-COPY
 
 What does the literal 30 mean in this context? Although you can probably guess that in this case it’s the maximum number of students per class, it’s not totally obvious. In more complex programs, it can be very difficult to infer what a hard-coded number represents, unless there’s a comment to explain it.
 
@@ -372,7 +369,6 @@ constexpr int maxStudentsPerClass { 30 }; // now obvious what 30 is
 constexpr int maxStudentsPerSchool{ numClassrooms * maxStudentsPerClass };
 ```
 
-COPY
 
 Using magic numbers is generally considered bad practice because, in addition to not providing context as to what they are being used for, they pose problems if the value needs to change. Let’s assume that the school buys new desks that allow them to raise the class size from 30 to 35, and our program needs to reflect that. Consider the following program:
 
@@ -381,9 +377,8 @@ constexpr int maxStudents{ numClassrooms * 30 };
 setMax(30);
 ```
 
-COPY
 
-To update our program to use the new classroom size, we’d have to update the constant 30 to 35. But what about the call to setMax()? Does that 30 have the same meaning as the other 30? If so, it should be updated. If not, it should be left alone, or we might break our program somewhere else. If you do a global search-and-replace, you might inadvertently update the argument of setMax() when it wasn’t supposed to change. So you have to look through all the code for every instance of the literal 30, and then determine whether it needs to change or not. That can be seriously time consuming (and error prone).
+To update our program to use the new classroom size, we’d have to update the constant 30 to 35. But what about the call to `setMax()`? Does that 30 have the same meaning as the other 30? If so, it should be updated. If not, it should be left alone, or we might break our program somewhere else. If you do a global search-and-replace, you might inadvertently update the argument of setMax() when it wasn’t supposed to change. So you have to look through all the code for every instance of the literal 30, and then determine whether it needs to change or not. That can be seriously time consuming (and error prone).
 
 The following code (using symbolic constants) makes it much clearer that these two uses of the value 30 are not related:
 
@@ -395,8 +390,6 @@ constexpr int maxNameLength{ 30 };
 setMax(maxNameLength); // now obvious this 30 is used in a different context
 ```
 
-COPY
-
 Magic numbers aren’t always numbers -- they can also be strings or other types.
 
 Note that literals used only once, and in obvious contexts, are not considered “magic”. The values -1, 0, 0.0, and 1 are often used in contexts that are obvious:
@@ -406,7 +399,6 @@ int idGenerator { 0 };         // fine: we're starting our id generator with val
 idGenerator = idGenerator + 1; // fine: we're just incrementing our generator
 ```
 
-COPY
 
 Other numbers may also be obvious in context (and thus, not considered magic):
 
@@ -414,8 +406,7 @@ Other numbers may also be obvious in context (and thus, not considered magic):
 int kmtoM(int km) { return km * 1000; } // fine: it's obvious 1000 is a conversion factor
 ```
 
-COPY
 
-Best practice
+!!! success "最佳实践"
 
-Avoid magic numbers in your code (use symbolic constants instead).
+	Avoid magic numbers in your code (use symbolic constants instead).

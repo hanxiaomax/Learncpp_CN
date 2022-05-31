@@ -10,7 +10,7 @@ tags:
 - constants
 ---
 
-In programming, a constant is a fixed value that may not be changed. C++ has two kinds of constants: literal constants, and symbolic constants. We’ll cover literal constants in this lesson, and symbolic constants in the next lesson ([4.15 -- Symbolic constants: const and constexpr variables](https://www.learncpp.com/cpp-tutorial/const-constexpr-and-symbolic-constants/)).
+In programming, a constant is a fixed value that may not be changed. C++ has two kinds of constants: literal constants, and symbolic constants. We’ll cover literal constants in this lesson, and symbolic constants in the next lesson [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数 const 和 constexpr 变量]]
 
 Literal constants (usually just called literals) are unnamed values inserted directly into the code. For example:
 
@@ -38,7 +38,7 @@ By default:
 |C-style string	|“Hello, world!”	|const char[14]
 
 
-**Literal suffixes**
+## 字面量后缀
 
 If the default type of a literal is not as desired, you can change the type of a literal by adding a suffix:
 
@@ -84,47 +84,43 @@ Because 4.1 has no suffix, it’s treated as a double literal, not a float liter
 
 Literals are fine to use in C++ code so long as their meanings are clear. This is most often the case when used to initialize or assign a value to a variable, do math, or print some text to the screen.
 
-String literals
+## String literals
 
-In lesson [4.11 -- Chars](https://www.learncpp.com/cpp-tutorial/chars/), we defined a string as a collection of sequential characters. C++ supports string literals:
+In lesson [[4-11-Chars|4.11 - 字符]] we defined a string as a collection of sequential characters. C++ supports string literals:
 
 ```cpp
 std::cout << "Hello, world!"; // "Hello, world!" is a C-style string literal
 std::cout << "Hello," " world!"; // C++ will concatenate sequential string literals
 ```
 
-COPY
-
 String literals are handled strangely in C++ for historical reasons. For now, it’s fine to use string literals to print text with std::cout, or as initializers for std::string.
 
-For advanced readers
+!!! info "扩展阅读"
 
-C++ also has literals for std::string and std::string_view. In most cases these won’t be needed, but they may occasionally come in handy when using type deduction, either via the `auto` keyword ([8.7 -- Type deduction for objects using the auto keyword](https://www.learncpp.com/cpp-tutorial/type-deduction-for-objects-using-the-auto-keyword/)), or class template argument deduction.
+    C++ also has literals for std::string and std::string_view. In most cases these won’t be needed, but they may occasionally come in handy when using type deduction, either via the `auto` keyword ([8.7 -- Type deduction for objects using the auto keyword](https://www.learncpp.com/cpp-tutorial/type-deduction-for-objects-using-the-auto-keyword/)), or class template argument deduction.
 
-```cpp
-#include <iostream>
-#include <string>      // for std::string
-#include <string_view> // for std::string_view
+	```cpp
+	#include <iostream>
+	#include <string>      // for std::string
+	#include <string_view> // for std::string_view
+	
+	int main()
+	{
+	    using namespace std::literals; // easiest way to access the s and sv suffixes
+	
+	    std::cout << "foo\n";   // no suffix is a C-style string literal
+	    std::cout << "goo\n"s;  // s suffix is a std::string literal
+	    std::cout << "moo\n"sv; // sv suffix is a std::string_view literal
+	
+	    return 0;
+	};
+	```
 
-int main()
-{
-    using namespace std::literals; // easiest way to access the s and sv suffixes
-
-    std::cout << "foo\n";   // no suffix is a C-style string literal
-    std::cout << "goo\n"s;  // s suffix is a std::string literal
-    std::cout << "moo\n"sv; // sv suffix is a std::string_view literal
-
-    return 0;
-};
-```
-
-COPY
-
-This is one of the exception cases where `using` an entire namespace is okay.
+	This is one of the exception cases where `using` an entire namespace is okay.
 
 We’ll talk more about string literals in future lessons.
 
-Scientific notation for floating point literals
+## 浮点数字面量的科学计数法表示
 
 There are two different ways to declare floating-point literals:
 
@@ -133,7 +129,6 @@ double pi { 3.14159 }; // 3.14159 is a double literal in standard notation
 double avogadro { 6.02e23 }; // 6.02 x 10^23 is a double literal in scientific notation
 ```
 
-COPY
 
 In the second form, the number after the exponent can be negative:
 
@@ -141,9 +136,8 @@ In the second form, the number after the exponent can be negative:
 double electron { 1.6e-19 }; // charge on an electron is 1.6 x 10^-19
 ```
 
-COPY
 
-Octal and hexadecimal literals
+## 8进制和16进制字面量
 
 In everyday life, we count using decimal numbers, where each numerical digit can be 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9. Decimal is also called “base 10”, because there are 10 possible digits (0 through 9). In this system, we count like this: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, … By default, numbers in C++ programs are assumed to be decimal.
 
@@ -181,7 +175,9 @@ COPY
 
 This program prints:
 
+```
 10
+```
 
 Why 10 instead of 12? Because numbers are printed in decimal, and 12 octal = 10 decimal.
 
@@ -212,7 +208,9 @@ COPY
 
 This program prints:
 
+```
 15
+```
 
 Because there are 16 different values for a hexadecimal digit, we can say that a single hexadecimal digit encompasses 4 bits. Consequently, a pair of hexadecimal digits can be used to exactly represent a full byte.
 
@@ -244,7 +242,7 @@ int main()
 
 COPY
 
-C++14 binary literals and digit separators
+## C++14 binary literals and digit separators
 
 In C++14, we can assign binary literals by using the 0b prefix:
 
@@ -291,9 +289,9 @@ int bin { 0b'1011'0010 };  // error: ' used before first digit of value
 
 COPY
 
-Printing decimal, octal, hexadecimal, and binary numbers
+## Printing decimal, octal, hexadecimal, and binary numbers
 
-By default, C++ prints values in decimal. However, you can tell it to print in other formats. Printing in decimal, octal, or hex is easy via use of std::dec, std::oct, and std::hex:
+By default, C++ prints values in decimal. However, you can tell it to print in other formats. Printing in decimal, octal, or hex is easy via use of `std::dec`, `std::oct`, and std::hex:
 
 ```cpp
 #include <iostream>
@@ -316,14 +314,16 @@ COPY
 
 This prints:
 
+```
 12
 c
 c
 14
 12
 12
+```
 
-Printing in binary is a little harder, as std::cout doesn’t come with this capability built-in. Fortunately, the C++ standard library includes a type called std::bitset that will do this for us (in the <bitset> header). To use std::bitset, we can define a std::bitset variable and tell std::bitset how many bits we want to store. The number of bits must be a compile time constant. std::bitset can be initialized with an unsigned integral value (in any format, including decimal, octal, hex, or binary).
+Printing in binary is a little harder, as `std::cout` doesn’t come with this capability built-in. Fortunately, the C++ standard library includes a type called `std::bitset` that will do this for us (in the `<bitset>` header). To use `std::bitset`, we can define a `std::bitset` variable and tell `std::bitset` how many bits we want to store. The number of bits must be a compile time constant. `std::bitset` can be initialized with an unsigned integral value (in any format, including decimal, octal, hex, or binary).
 
 ```cpp
 #include <bitset> // for std::bitset
@@ -342,12 +342,12 @@ int main()
 }
 ```
 
-COPY
-
 This prints:
 
+```
 11000101 11000101
 1010
+```
 
 In the above code, this line:
 
@@ -357,4 +357,4 @@ std::cout << std::bitset<4>{ 0b1010 } << '\n'; // create a temporary std::bitset
 
 COPY
 
-creates a temporary (unnamed) std::bitset object with 4 bits, initializes it with _0b1010_, prints the value in binary, and then discards the temporary std::bitset.
+creates a temporary (unnamed) `std::bitset` object with 4 bits, initializes it with _0b1010_, prints the value in binary, and then discards the temporary `std::bitset`.

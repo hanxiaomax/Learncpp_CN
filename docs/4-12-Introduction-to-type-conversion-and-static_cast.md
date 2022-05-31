@@ -17,6 +17,7 @@ tags:
 	- `static_cast<new_type>(expression)` 进行显式类型转换
 	- 每当你看到有尖括号(`<>`)存在的 C++ 语法（除了预处理器指令）时，在两个尖括号中间的内容很可能是一个类型名。这是C++中处理需要可参数化类型时的方法。
 	- `static_cast` 运算符不会做任何范围检查，所以如果你在类型转换时，新类型并不能包含该值，则会产生未定义行为。
+	- 大多数编译器将 `std::int8_t` 和 `std::uint8_t` (以及对应的速度优先、大小优先的固定宽度类型) 分别当做  `signed char` 和 `unsigned char` 处理。
 
 ## 隐式类型转换
 
@@ -224,7 +225,7 @@ int main()
 
 ## std::int8_t 和 std::uint8_t 行为更像 chars 而不是整型
 
-正如 [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]中介绍的那样，大多数编译器将 `std::int8_t` 和 `std::uint8_t` (以及对应的速度优先、大小优先的固定宽度类型) 分别当做  `signed char` 和 `unsigned char` 处理。现在，既然我们已经介绍了Now that we’ve covered what chars are, we can demonstrate where this can be problematic:
+正如 [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]中介绍的那样，大多数编译器将 `std::int8_t` 和 `std::uint8_t` (以及对应的速度优先、大小优先的固定宽度类型) 分别当做  `signed char` 和 `unsigned char` 处理。现在，既然我们已经介绍了什么是字符，接下来就可以谈谈，编译器这样做会带来什么问题：
 
 ```cpp
 #include <cstdint>
@@ -240,9 +241,9 @@ int main()
 ```
 
 
-Because `std::int8_t` describes itself as an int, you might be tricked into believing that the above program will print the integral value `65`. However, on most systems, this program will print `A` instead (treating `myint` as a `signed char`). However, this is not guaranteed (on some systems, it may actually print `65`).
+因为 `std::int8_t` 自称是一种整型，所以你可能会认为上面的程序会打印 65。不过，在大多数系统上，上面的程序打印的其实是 `A`（`myint` 被当做了 `signed char`）处理。但是，这也不是绝对的（有些系统确实会打印 65）。
 
-If you want to ensure that a `std::int8_t` or `std::uint8_t` object is treated as an integer, you can convert the value to an integer using `static_cast`:
+如果你想要确保 `std::int8_t` 或 `std::uint8_t` 对象都被当做整型处理，那么你可以使用 `static_cast` 将其转换为整型：
 
 ```cpp
 #include <cstdint>
@@ -251,14 +252,14 @@ If you want to ensure that a `std::int8_t` or `std::uint8_t` object is treat
 int main()
 {
     std::int8_t myint{65};
-    std::cout << static_cast<int>(myint); // will always print 65
+    std::cout << static_cast<int>(myint); // 总是打印 65
 
     return 0;
 }
 ```
 
 
-In cases where `std::int8_t` is treated as a char, input from the console can also cause problems:
+在上面的例子中，`std::int8_t` 被当做整型处理了，但是如果从控制台获取输入，仍然会带来问题：
 
 ```cpp
 #include <cstdint>
@@ -276,13 +277,13 @@ int main()
 }
 ```
 
-A sample run of this program:
+运行程序：
 
 ```
 Enter a number between 0 and 255: 35
 You entered: 51
 ```
 
-Here’s what’s happening. When `std::int8_t` is treated as a char, the input routines interpret our input as a sequence of characters, not as an integer. So when we enter `35`, we’re actually entering two chars, `'3'` and `'5'`. Because a char object can only hold one character, the `'3'` is extracted (the `'5'` is left in the input stream for possible extraction later). Because the char `'3'` has ASCII code point 51, the value `51` is stored in `myint`, which we then print later as an int.
+这个问题是这样的，当 `std::int8_t`被看做字符时，输入函数会将输入的内容看做是一系列的字符而不是整型。当你输入35之后，你实际上数了`'3'`和`'5'`两个字符。因为字符类型只能保存一个字符，因此只`'3'`被保存到了变量中（`'5'`被留在了输入流中以便后续的使用）。因为字符`'3'`的 ASCII 码是 51，所以51就被存放到了`myint`中，最终也就被打印了出来。
 
-In contrast, the other fixed-width types will always print and input as integral values.
+与之相对的，其他固定宽度整型在输入和输出时总是会被当做整型值处理。

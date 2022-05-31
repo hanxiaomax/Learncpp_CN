@@ -9,8 +9,9 @@ tags:
 - string
 ---
 
-The very first C++ program you wrote probably looked something like this:
-
+ 
+ 你编写的第一个 C++ 程序可能是下面这样：
+ 
 ```cpp
 #include <iostream>
 
@@ -21,15 +22,13 @@ int main()
 }
 ```
 
-COPY
+那么，“Hello, world!” 究竟是什么呢？“Hello, world!” 是一组字符的集合，称为字符串。在 C++ 中，我们使用字符串来表示文本，例如名字、地址、单词和句子。字符串字面量（例如 “Hello, world!\n”）被放在双引号中间，以表明它们是字符串。
 
-So what is “Hello, world!” exactly? “Hello, world!” is a collection of sequential characters called a string. In C++, we use strings to represent text such as names, addresses, words, and sentences. String literals (such as “Hello, world!\n”) are placed between double quotes to identify them as strings.
+因为字符串在程序中很常见，所以大多数现代编程语言都包含基础字符串数据类型。不过，在 C++ 中，字符串并不是基础数据类型（它被称为**复合类型**，并被定义在 C++ 的标准库中，而不是作为C++核心的一部分）。但是，字符串很简单也很有用，所以我们准备提早介绍它而不是等到第九章介绍复合类型时再介绍它。
 
-Because strings are commonly used in programs, most modern programming languages include a fundamental string data type. In C++, strings aren’t a fundamental type (they’re actually a `compound type`, and defined in the C++ standard library rather than as part of the core language). But strings are straightforward and useful enough that we’ll introduce them here rather than wait until the chapter on compound types ([chapter 9](https://www.learncpp.com/#Chapter9)).
+## std::string
 
-std::string
-
-To use strings in C++, we first need to #include the <string> header to bring in the declarations for std::string. Once that is done, we can define variables of type std::string.
+To use strings in C++, we first need to `#include` the `<string>` header to bring in the declarations for std::string. Once that is done, we can define variables of type std::string.
 
 ```cpp
 #include <string> // allows use of std::string
@@ -58,7 +57,7 @@ COPY
 
 In string form, numbers are treated as text, not numbers, and thus they can not be manipulated as numbers (e.g. you can’t multiply them). C++ will not automatically convert string numbers to integer or floating point values.
 
-String output
+## String output
 
 Strings can be output as expected using std::cout:
 
@@ -102,7 +101,7 @@ Which prints:
 
 []
 
-String input with std::cin
+## String input with std::cin
 
 Using strings with std::cin may yield some surprises! Consider the following example:
 
@@ -130,18 +129,20 @@ COPY
 
 Here’s the results from a sample run of this program:
 
+```
 Enter your full name: John Doe
 Enter your age: Your name is John and your age is Doe
+```
 
 Hmmm, that isn’t right! What happened? It turns out that when using operator>> to extract a string from cin, operator>> only returns characters up to the first whitespace it encounters. Any other characters are left inside std::cin, waiting for the next extraction.
 
 So when we used operator>> to extract a string into variable `name`, only `"John"` was extracted, leaving `" Doe"` inside std::cin. When we then used operator>> to get variable `age`, it extracted `"Doe"` instead of waiting for us to input an age. Then the program ends.
 
-Use std::getline() to input text
+## Use std::getline() to input text
 
 To read a full line of input into a string, you’re better off using the `std::getline()` function instead. std::getline() takes two parameters: the first is std::cin, and the second is your string variable.
 
-Here’s the same program as above using std::getline():
+Here’s the same program as above using `std::getline()`:
 
 ```cpp
 #include <string> // For std::string and std::getline
@@ -167,11 +168,13 @@ COPY
 
 Now our program works as expected:
 
+```
 Enter your full name: John Doe
 Enter your age: 23
 Your name is John Doe and your age is 23
+```
 
-What the heck is std::ws?
+## What the heck is std::ws?
 
 In lesson [4.8 -- Floating point numbers](https://www.learncpp.com/cpp-tutorial/floating-point-numbers/), we discussed `output manipulators`, which allow us to alter the way output is displayed. In that lesson, we used the `output manipulator` function `std::setprecision()` to change the number of digits of precision that std::cout displayed.
 
@@ -203,8 +206,10 @@ COPY
 
 Here’s some output from this program:
 
+```
 Pick 1 or 2: 2
 Now enter your name: Hello, , you picked 2
+```
 
 This program first asks you to enter 1 or 2, and waits for you to do so. All good so far. Then it will ask you to enter your name. However, it won’t actually wait for you to enter your name! Instead, it prints the “Hello” string, and then exits. What happened?
 
@@ -236,20 +241,23 @@ COPY
 
 Now this program will function as intended.
 
+```
 Pick 1 or 2: 2
 Now enter your name: Alex
 Hello, Alex, you picked 2
+```
 
-Best practice
 
-If using `std::getline` to read strings, use the `std::ws` `input manipulator` to ignore leading whitespace.
+!!! success "最佳实践"
 
-Key insight
+	If using `std::getline` to read strings, use the `std::ws` `input manipulator` to ignore leading whitespace.
 
-Using the extraction operator (>>) with std::cin ignores leading whitespace.  
+!!! tldr "关键信息"
+
+	Using the extraction operator (>>) with std::cin ignores leading whitespace.  
 std::getline does not ignore leading whitespace unless you use input manipulator std::ws.
 
-String length
+## String length
 
 If we want to know how many characters are in a std::string, we can ask the std::string for its length. The syntax for doing this is different than you’ve seen before, but is pretty straightforward:
 
@@ -269,7 +277,9 @@ COPY
 
 This prints:
 
+```
 Alex has 4 characters
+```
 
 Note that instead of asking for the string length as `length(myName)`, we say `myName.length()`. The `length()` function isn’t a normal standalone function -- it’s a special type of function that is nested within std::string called a `member function`. Because `length()` lives within std::string, it is sometimes written as std::string::length in documentation.
 
@@ -283,6 +293,6 @@ int length = static_cast<int>(myName.length());
 
 COPY
 
-Conclusion
+## Conclusion
 
 std::string is complex, leveraging many language features that we haven’t covered yet. Fortunately, you don’t need to understand these complexities to use std::string for simple tasks, like basic string input and output. We encourage you to start experimenting with strings now, and we’ll cover additional string capabilities later.
