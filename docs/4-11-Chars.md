@@ -248,11 +248,11 @@ First part        Second part
 
 - `\'` ：打印单引号
 - `\"`：打印双引号
-- `\\` 打印fan'xie'x
+- `\\` 打印反斜线
 
-Here’s a table of all of the escape sequences:
+下表展示了全部的转义序列
 
-|Name	|Symbol|	Meaning	|
+|名称	|符号|	含义	|
 |---|---|---|
 |Alert	|\a|	Makes an alert, such as a beep	|
 |Backspace	|\b|	Moves the cursor back one space	|
@@ -268,8 +268,7 @@ Here’s a table of all of the escape sequences:
 |Octal number	|\(number)|	Translates into char represented by octal	|
 |Hex number	|\x(number)|	Translates into char represented by hex number	|
 
-
-Here are some examples:
+举例：
 
 ```cpp
 #include <iostream>
@@ -293,44 +292,41 @@ This string contains a single backslash \
 
 ## Newline (\n) vs. std::endl
 
-We cover this topic in lesson [1.5 -- Introduction to iostream: cout, cin, and endl](https://www.learncpp.com/cpp-tutorial/introduction-to-iostream-cout-cin-and-endl/).
+在[[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介： cout，cin 和 endl]]中已经介绍了。
 
-## What’s the difference between putting symbols in single and double quotes?
+## 字符放在单引号和双引号中有什么区别
 
-Single chars are always put in single quotes (e.g. ‘a’, ‘+’, ‘5’). A char can only represent one symbol (e.g. the letter a, the plus symbol, the number 5). Something like this is illegal:
+单字符总是放在单引号中 (例如 ‘a’, ‘+’, ‘5’)。字符只能表示一个符号（例如，字母、加号和数字5），下面这样的写法是不对的：
 
 ```cpp
-char ch{'56'}; // a char can only hold one symbol
+char ch{'56'}; // char 只能保持一个符号
 ```
 
-COPY
+双引号中的文本会被看做是字符串（例如 “Hello, world!”）。
 
-Text put between double quotes (e.g. “Hello, world!”) is treated as a string.
-
-For now, you’re welcome to use string literals in your code:
+你可以在代码中使用字符串字面量：
 
 ```cpp
 std::cout << "Hello, world!"; // "Hello, world!" is a string literal
 ```
 
-COPY
 
 !!! success "最佳实践"
 
-	Put stand-alone chars in single quotes (e.g. ‘t’ or ‘\n’, not “t” or “\n”). This helps the compiler optimize more effectively.
+	如果只有一个字符，请放在单引号中 (例如 ‘t’ 或 ‘\n’, 而不是 “t” 或 “\n”)。以便编译器进行优化。
+	
+## 还有其他字符类型吗？ wchar_t, char16_t, and char32_t?
 
-## What about the other char types, wchar_t, char16_t, and char32_t?
-
-wchar_t should be avoided in almost all cases (except when interfacing with the Windows API). Its size is implementation defined, and is not reliable. It has largely been deprecated.
+`wchar_t` 在几乎任何场合下都应该避免使用 (处理在使用 Windows API 时)。它的大小是实现时定义的，非常不可靠而且几乎已经废弃了。
 
 !!! cite "题外话"
 
-    The term “deprecated” means “still supported, but no longer recommended for use, because it has been replaced by something better or is no longer considered safe”.
+    术语“废弃”指的是，仍然支持，但是不再推荐使用，因为它已经被其他更好的同类替换了，同时它也是不安全的。
+    
+和 ASCII 将整型 0-127 映射到英文字母一样，也有其他字符编码标准可以将整型映射到其他语言的字符。除了 ASCII 以外最著名的字母编码是 Unicode，它将 144,000 个整型数映射到不同语言的字符。因为Because Unicode contains so many code points, a single Unicode code point needs 32-bits to represent a character (called UTF-32). However, Unicode characters can also be encoded using multiple 16-bit or 8-bit characters (called UTF-16 and UTF-8 respectively).
 
-Much like ASCII maps the integers 0-127 to American English characters, other character encoding standards exist to map integers (of varying sizes) to characters in other languages. The most well-known mapping outside of ASCII is the Unicode standard, which maps over 144,000 integers to characters in many different languages. Because Unicode contains so many code points, a single Unicode code point needs 32-bits to represent a character (called UTF-32). However, Unicode characters can also be encoded using multiple 16-bit or 8-bit characters (called UTF-16 and UTF-8 respectively).
+`char16_t` and `char32_t` were added to C++11 to provide explicit support for 16-bit and 32-bit Unicode characters. `char8_t` has been added in C++20.
 
-char16_t and char32_t were added to C++11 to provide explicit support for 16-bit and 32-bit Unicode characters. char8_t has been added in C++20.
-
-You won’t need to use char8_t, char16_t, or char32_t unless you’re planning on making your program Unicode compatible. Unicode and localization are generally outside the scope of these tutorials, so we won’t cover it further.
+You won’t need to use `char8_t`, `char16_t`, or `char32_t` unless you’re planning on making your program Unicode compatible. Unicode and localization are generally outside the scope of these tutorials, so we won’t cover it further.
 
 In the meantime, you should only use ASCII characters when working with characters (and strings). Using characters from other character sets may cause your characters to display incorrectly.
