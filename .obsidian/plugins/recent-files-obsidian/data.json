@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
+      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
+    },
+    {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
     },
@@ -107,10 +111,6 @@
     {
       "basename": "4-13-An introduction-to-std-string",
       "path": "docs/4-13-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",

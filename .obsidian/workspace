@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-11-Chars.md",
+            "file": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-11-Chars.md"
+                "file": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
               }
             }
           },
@@ -107,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-11-Chars.md",
+                "file": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,6 +129,7 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
     "docs/4-11-Chars.md",
     "docs/4-10-Introduction-to-if-statements.md",
     "docs/4-9-Boolean-values.md",
@@ -136,7 +138,6 @@
     "docs/tabledata.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/5-3-Modulus-and-Exponentiation.md",
-    "docs/5-2-Arithmetic-operators.md",
-    "docs/5.2 — Arithmetic operators.md"
+    "docs/5-2-Arithmetic-operators.md"
   ]
 }

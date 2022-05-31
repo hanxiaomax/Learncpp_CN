@@ -10,7 +10,7 @@ tags:
 - static_cast
 ---
 
-Implicit type conversion
+## Implicit type conversion
 
 Consider the following program:
 
@@ -40,7 +40,7 @@ In most cases, C++ will happily convert values of one fundamental type to anothe
 
 When the compiler does type conversion for us, we call this implicit type conversion.
 
-Implicit type conversion warnings
+## Implicit type conversion warnings
 
 Although implicit type conversion is sufficient for most cases where type conversion is needed, there are a few cases where it is not. Consider the following program, which is similar to the example above:
 
@@ -66,9 +66,9 @@ In this program, we’ve changed `print()` to take an `int` parameter, and t
 
 Unlike the initial example, when this program is compiled, your compiler will generate some kind of a warning about a possible loss of data. And because you have “treat warnings as errors” turned on (you do, right?), your compiler will abort the compilation process.
 
-Tip
+!!! tip "小贴士"
 
-You’ll need to disable “treat warnings as errors” temporarily if you want to compile this example. See lesson [0.11 -- Configuring your compiler: Warning and error levels](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/)for more information about this setting.
+	You’ll need to disable “treat warnings as errors” temporarily if you want to compile this example. See lesson [0.11 -- Configuring your compiler: Warning and error levels](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/)for more information about this setting.
 
 When compiled and run, this program prints the following:
 
@@ -94,11 +94,10 @@ int main()
 }
 ```
 
-COPY
 
-Related content
+!!! info "相关内容"
 
-Implicit type conversion is a meaty topic. We dig into this topic in more depth in future lessons, starting with lesson [8.1 -- Implicit type conversion (coercion)](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion-coercion/).
+	Implicit type conversion is a meaty topic. We dig into this topic in more depth in future lessons, starting with lesson [8.1 -- Implicit type conversion (coercion)](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion-coercion/).
 
 An introduction to explicit type conversion via the static_cast operator
 
@@ -186,7 +185,7 @@ a has value 97
 
 It’s worth noting that the argument to _static_cast_ evaluates as an expression. When we pass in a variable, that variable is evaluated to produce its value, and that value is then converted to the new type. The variable itself is _not_ affected by casting its value to a new type. In the above case, variable `ch` is still a char, and still holds the same value even after we’ve cast its value to an `int`.
 
-Converting unsigned numbers to signed numbers
+## Converting unsigned numbers to signed numbers
 
 To convert an unsigned number to a signed number, you can also use the `static_cast` operator:
 

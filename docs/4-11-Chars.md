@@ -9,6 +9,12 @@ tags:
 - char
 ---
 
+
+??? note "关键点速记"
+
+	- 
+
+
 到目前为止，我们介绍的基础数据类型都是用来保存数字的（整型或者浮点数）或者布尔值的。但是，如果我们想存放字母和标点怎么办？
 
 ```cpp
@@ -94,15 +100,14 @@ char ch1{ 97 }; // 使用 97 来初始化('a') (不推荐)
 
 !!! warning "注意"
 
-	Be careful not to mix up character numbers with integer numbers. The following two initializations are not the same:
-
+	注意不要将字符数字和整型数字搞混，下面两种初始化并不相同：
 	```cpp
-	char ch{5}; // initialize with integer 5 (stored as integer 5)
-	char ch{'5'}; // initialize with code point for '5' (stored as integer 53)
+	char ch{5}; // 使用 5 初始化(保存为整型 5)
+	char ch{'5'}; // 使用 '5' 初始化 (保存为整型 53)
 	```
 
-	Character numbers are intended to be used when we want to represent numbers as text, rather than as numbers to apply mathematical operations to.
-
+	只有当需要将数字显示成文本的时候，才使用字符数字而不是整型数字。整型数字用于数学运算。
+	
 ## 打印字符
 
 当使用 `std::cout` 打印字符的时候 `std::cout`会把字符变量打印成ASCII字符：
@@ -122,7 +127,6 @@ int main()
     return 0;
 }
 ```
-
 
 输出结果：ab
 
@@ -315,7 +319,7 @@ std::cout << "Hello, world!"; // "Hello, world!" is a string literal
 
 	如果只有一个字符，请放在单引号中 (例如 ‘t’ 或 ‘\n’, 而不是 “t” 或 “\n”)。以便编译器进行优化。
 	
-## 还有其他字符类型吗？ wchar_t, char16_t, and char32_t?
+## 还有其他字符类型吗？ wchar_t, char16_t 和 char32_t?
 
 `wchar_t` 在几乎任何场合下都应该避免使用 (处理在使用 Windows API 时)。它的大小是实现时定义的，非常不可靠而且几乎已经废弃了。
 
@@ -323,10 +327,10 @@ std::cout << "Hello, world!"; // "Hello, world!" is a string literal
 
     术语“废弃”指的是，仍然支持，但是不再推荐使用，因为它已经被其他更好的同类替换了，同时它也是不安全的。
     
-和 ASCII 将整型 0-127 映射到英文字母一样，也有其他字符编码标准可以将整型映射到其他语言的字符。除了 ASCII 以外最著名的字母编码是 Unicode，它将 144,000 个整型数映射到不同语言的字符。因为Because Unicode contains so many code points, a single Unicode code point needs 32-bits to represent a character (called UTF-32). However, Unicode characters can also be encoded using multiple 16-bit or 8-bit characters (called UTF-16 and UTF-8 respectively).
+和 ASCII 将整型 0-127 映射到英文字母一样，也有其他字符编码标准可以将整型映射到其他语言的字符。除了 ASCII 以外最著名的字母编码是 Unicode，它将 144,000 个整型数映射到不同语言的字符。因为 Unicode 的编码点非常多，所以一个 Unicode 编码点需要32位才能表示一个字符（称为 UTF-32）。不过，Unicode 字符也可以使用多个 16 位或 8位字符 (分别称为 UTF-16 和 UTF-8)。
 
-`char16_t` and `char32_t` were added to C++11 to provide explicit support for 16-bit and 32-bit Unicode characters. `char8_t` has been added in C++20.
+`char16_t` 和 `char32_t` 在 C++11 中被引入，用于支持 16 位和 32 位 Unicode 字符。`char8_t` 在 C++20 中被引入。
 
-You won’t need to use `char8_t`, `char16_t`, or `char32_t` unless you’re planning on making your program Unicode compatible. Unicode and localization are generally outside the scope of these tutorials, so we won’t cover it further.
+你不需要使用 `char8_t`、`char16_t` 或 `char32_t`，触发你希望程序兼容 Unicode。Unicode 和本地化一般来说已经超出了本教程的范围，所以我们并不会涉及相关内容。
 
-In the meantime, you should only use ASCII characters when working with characters (and strings). Using characters from other character sets may cause your characters to display incorrectly.
+同时，当你使用字符或字符串的时候，应该只使用ASCII字符。使用其他字符集的字符可能会导致字符显示错误。
