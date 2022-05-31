@@ -5,8 +5,6 @@ origin: /5-3-modulus-and-exponentiation/
 origin_title: "5.3 — Modulus and Exponentiation"
 time: 2022-4-7
 type: translation
-tags:
-- 
 ---
 
 

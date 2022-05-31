@@ -5,44 +5,48 @@
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
-      "basename": "type-conversion",
-      "path": "docs/type-conversion.md"
+      "basename": "8.1 -- Implicit type conversion (coercion)",
+      "path": "docs/8.1 -- Implicit type conversion (coercion).md"
     },
     {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
     },
     {
-      "basename": "4-10-Introduction-to-if-statements",
-      "path": "docs/4-10-Introduction-to-if-statements.md"
-    },
-    {
-      "basename": "4-9-Boolean-values",
-      "path": "docs/4-9-Boolean-values.md"
-    },
-    {
-      "basename": "4-8-Floating-point-numbers",
-      "path": "docs/4-8-Floating-point-numbers.md"
-    },
-    {
-      "basename": "4-7-Introduction-to-scientific-notation",
-      "path": "docs/4-7-Introduction-to-scientific-notation.md"
+      "basename": "5-3-Modulus-and-Exponentiation",
+      "path": "docs/5-3-Modulus-and-Exponentiation.md"
     },
     {
       "basename": "tabledata",
       "path": "docs/tabledata.md"
     },
     {
+      "basename": "5-2-Arithmetic-operators",
+      "path": "docs/5-2-Arithmetic-operators.md"
+    },
+    {
+      "basename": "type-conversion",
+      "path": "docs/type-conversion.md"
+    },
+    {
+      "basename": "4-8-Floating-point-numbers",
+      "path": "docs/4-8-Floating-point-numbers.md"
+    },
+    {
       "basename": "5-1-Operator-precedence-and-associativity",
       "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
-      "basename": "5-3-Modulus-and-Exponentiation",
-      "path": "docs/5-3-Modulus-and-Exponentiation.md"
+      "basename": "4-7-Introduction-to-scientific-notation",
+      "path": "docs/4-7-Introduction-to-scientific-notation.md"
     },
     {
-      "basename": "5-2-Arithmetic-operators",
-      "path": "docs/5-2-Arithmetic-operators.md"
+      "basename": "4-9-Boolean-values",
+      "path": "docs/4-9-Boolean-values.md"
+    },
+    {
+      "basename": "4-10-Introduction-to-if-statements",
+      "path": "docs/4-10-Introduction-to-if-statements.md"
     },
     {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
@@ -195,10 +199,6 @@
     {
       "basename": "add-glossary",
       "path": "Templates/add-glossary.md"
-    },
-    {
-      "basename": "statement",
-      "path": "docs/statement.md"
     }
   ],
   "omittedPaths": [],

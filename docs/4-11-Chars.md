@@ -294,7 +294,7 @@ This string contains a single backslash \
 6F in hex is char 'o'
 ```
 
-## Newline (\n) vs. std::endl
+## Newline (`\n`) vs. std::endl
 
 在[[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介： cout，cin 和 endl]]中已经介绍了。
 

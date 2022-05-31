@@ -10,6 +10,13 @@ tags:
 - static_cast
 ---
 
+
+??? note "关键点速记"
+
+	- 编译器会对基本数据类型进行隐式类型转换，但导致信息丢失的隐式类型转换会引发告警或错误（括号初始化时）
+	- `static_cast<new_type>(expression)` 进行显式类型转换
+	- 每当你看到有尖括号(`<>`)存在的 C++ 语法（除了预处理器指令）时，在两个尖括号中间的内容很可能是一个类型名。这是C++中处理需要可参数化类型时的方法。
+
 ## 隐式类型转换
 
 考虑如下程序：
@@ -39,7 +46,7 @@ int main()
 5
 ```
 
-当编译器帮助我们进行类型转换的时候，我们称其为隐式类型转换。
+当编译器帮助我们进行类型转换的时候，我们称其为**隐式类型转换**。
 
 ## 隐式类型转换告警
 
@@ -76,15 +83,15 @@ int main()
 5
 ```
 
-注意，尽管我们传入的值是 5.5，但打印结果却是 5。因为整型变量不能保存小数部分，所以 double 类型的值 5.5 就被转换成了一个 int，xiao's that although we passed in value `5.5`, the program printed `5`. Because integral values can’t hold fractions, when double value `5.5` is implicitly converted to an `int`, the fractional component is dropped, and only the integral value is retained.
+注意，尽管我们传入的值是 5.5，但打印结果却是 5。因为整型变量不能保存小数部分，所以 double 类型的值 5.5 就被转换成了一个 int，小数部分直接被丢弃了，只有整数部分被保留了下来。
 
-Because converting a floating point value to an integral value results in any fractional component being dropped, the compiler will warn us when it does an implicit type conversion from a floating point to an integral value. This happens even if we were to pass in a floating point value with no fractional component, like `5.0` -- no actual loss of value occurs during the conversion to integral value `5` in this specific case, but the compiler will still warn us that the conversion is unsafe.
+因为将浮点数转换成整型值会导致消失部分被丢弃，所以编译器需要在进行隐式类型转换的时候向我们发出告警。即使我们传入的浮点数本身没有小数部分，编译器仍然会发出告警，例如 5.0 被转换成整型时没有丢失小数，但是编译器仍然会提醒我们这种转换是不安全的。
 
 !!! tldr "关键信息"
 
-	Some type conversions are always safe to make (such as `int` to `double`), whereas others may result in the value being changed during conversion (such as `double`to `int`). Unsafe implicit conversions will typically either generate a compiler warning, or (in the case of brace initialization) an error.
+	有些类型转换总是安全的（例如 `int` 到 `double`），而另外一些类型在转换时会导致值的变化（例如 `double` 到 `int`）。不安全的隐式类型转换通常会导致编译器告警或报错（在括号初始化时）。
 
-This is one of the primary reasons brace initialization is the preferred initialization form. Brace initialization will ensure we don’t try to initialize a variable with a initializer that will lose value when it is implicitly type converted:
+这也是推荐使用[[1-4-Variable-assignment-and-initialization#括号初始化 Brace initialization|括号初始化]]的主要原因之一。括号初始化能够避免初始化值因为隐式类型转换而丢失信息。
 
 ```cpp
 int main()
@@ -99,27 +106,29 @@ int main()
 
 !!! info "相关内容"
 
-	Implicit type conversion is a meaty topic. We dig into this topic in more depth in future lessons, starting with lesson [8.1 -- Implicit type conversion (coercion)](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion-coercion/).
+	隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[8.1 -- Implicit type conversion (coercion)]]）。
 
-An introduction to explicit type conversion via the static_cast operator
+## 使用 static_cast 运算符进行显式类型转换
 
-Back to our most recent `print()` example, what if we _intentionally_ wanted to pass a double value to a function taking an integer (knowing that the converted value would drop any fractional component?) Turning off “treat warnings as errors” to just to make our program compile is a bad idea, as it might open the door for other issues to slip through.
+在回到的 `print()` 例子，如果我们希望主动将一个 `double` 类型的值转换成 `int` 类型后传入函数呢？（即使知道这么做会丢失小数部分）。关闭编译器的“将警告当做错误处理”功能并不是一个好主意，因它可能会造成其他本应该发现的问题被忽略。
 
-C++ supports a second type of type conversion, called explicit type conversion. Explicit type conversion allow us (the programmer) to explicitly tell the compiler to convert a value from one type to another type, and that we take full responsibility for the result of that conversion (meaning that if the conversion results in the loss of value, it’s our fault).
+C++ 还支持另外一种类型转换，称为**显式类型转换**。显式类型转换允许我们明确地告诉编译器将一种类型的值转换为另外一种类型，程序员会为此操作负责（即如果转换导致了信息的丢失，算我们的错）。
 
-To perform an explicit type conversion, in most cases we’ll use the `static_cast` operator. The syntax for the `static cast` looks a little funny:
+大多数情况下，我们会使用 `static_cast` 操作符进行显式类型转换。 `static cast` 的语法看上去有些古怪：
 
+```
 static_cast<new_type>(expression)
+```
 
-static_cast takes the value from an expression as input, and returns that value converted into the type specified by _new_type_ (e.g. int, bool, char, double).
+static_cast 将一个表达式作为数，然后返回由 `new_type` 指定的新类型的值(例如 int、bool、char、double)。
 
 !!! tldr "关键信息"
 
-	Whenever you see C++ syntax (excluding the preprocessor) that makes use of angled brackets (<>), the thing between the angled brackets will most likely be a type. This is typically how C++ deals with concepts that need a parameterizable type.
+	每当你看到有尖括号(`<>`)存在的 C++ 语法（除了预处理器指令）时，在两个尖括号中间的内容很可能是一个类型名。这是 C++ 中处理需要可参数化类型时的方法。
+	
+使用 `static_cast` 修改之前的程序：
 
-Let’s update our prior program using `static_cast`:
-
-```cpp
+```cpp hl_lines="10"
 #include <iostream>
 
 void print(int x)
@@ -136,11 +145,11 @@ int main()
 ```
 
 
-Because we’re now explicitly requesting that double value `5.5` be converted to an `int` value, the compiler will not generate a warning about a possible loss of data upon compilation (meaning we can leave “treat warnings as errors” enabled).
+在上面的例子中，因为我们显式地要求将 `double` 类型的值 5.5 转换为 `int` 类型值，所以编译器不会产生告警信息（无需关闭 “将警告当做错误处理” 功能）。
 
 !!! info "相关内容"
 
-	C++ supports other types of casts. We talk more about the different types of casts in future lesson [8.5 -- Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/).
+	C++ 还支持其他类型的转换。我们会在[8.5 -- Explicit type conversion (casting) and static_cast]中信息x(https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/).
 
 ## 使用 static_cast 将 char 转换为 int
 
