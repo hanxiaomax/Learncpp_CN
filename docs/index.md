@@ -26,5 +26,5 @@
 | 项目 | Star|
 |---|----|
 |[计算机教育中缺失的一课 - The Missing Semester](https://missing-semester-cn.github.io/) |<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/missing-semester-cn/missing-semester-cn.github.io?style=social">
-|[awesome python cn](http://jobbole.github.io/awesome-python-cn/)|<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jobbole/awesome-python-cn?style=social">
+|[awesome-python-cn](http://jobbole.github.io/awesome-python-cn/)|<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jobbole/awesome-python-cn?style=social">
 |[awesome-go-cn](https://github.com/jobbole/awesome-go-cn)|<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jobbole/awesome-go-cn?style=social">

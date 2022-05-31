@@ -155,6 +155,7 @@ C++ 还支持其他类型的转换。我们会在[[8.5 -- Explicit type conversi
 ## 使用 static_cast 将 char 转换为 int
 
 在 [[4-11-Chars|4.11 - 字符]] 中，我们看到使用 `std::cout` 打印字符类型时，屏幕上会打印一个字符：
+
 ```cpp
 #include <iostream>
 
@@ -214,15 +215,16 @@ int main()
 ```
 
 
- `static_cast` 运算符不会做任何范围检查，所以如果你在类型转换时，新类型并不能包含该值，则会产生未定义行为。 doesn’t do any range checking, so if you cast a value to a type whose range doesn’t contain that value, undefined behavior will result. Therefore, the above cast from `unsigned int` to `int` will yield unpredictable results if the value of the `unsigned int` is greater than the maximum value a signed `int` can hold.
+ `static_cast` 运算符不会做任何范围检查，所以如果你在类型转换时，新类型并不能包含该值，则会产生未定义行为。因此，在上面的例子中，如果  `unsigned int` 保存的值比`int`能够保存的最大值还大，则将 `unsigned int` 转换为 `int` 时会产生无法预计的结果。
 
 !!! warning "注意"
 
-	The static_cast operator will produce undefined behavior if the value being converted doesn’t fit in range of the new type.
+	如果被转换的值不能匹配新类型的范围，则 `static_cast` 运算符会产生未定义行为。
+	
 
 ## std::int8_t 和 std::uint8_t 行为更像 chars 而不是整型
 
-As noted in lesson [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]， most compilers define and treat `std::int8_t` and `std::uint8_t` (and the corresponding fast and least fixed-width types) identically to types `signed char` and `unsigned char` respectively. Now that we’ve covered what chars are, we can demonstrate where this can be problematic:
+正如 [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]中介绍的那样，大多数编译器将 `std::int8_t` 和 `std::uint8_t` (以及对应的速度优先、大小优先的固定宽度类型) 分别当做  `signed char` 和 `unsigned char` 处理。现在，既然我们已经介绍了Now that we’ve covered what chars are, we can demonstrate where this can be problematic:
 
 ```cpp
 #include <cstdint>
