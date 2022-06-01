@@ -10,39 +10,45 @@ tags:
 - constants
 ---
 
-In programming, a constant is a fixed value that may not be changed. C++ has two kinds of constants: literal constants, and symbolic constants. We’ll cover literal constants in this lesson, and symbolic constants in the next lesson [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数 const 和 constexpr 变量]]
+??? note "关键点速记"
+	- 常量有两种，字面量常量（简称字面量）和符号常量
+	- 字面量的类型具有默认值，可以通过后缀修改
+		- 小数字面量的默认类型为double而不是float
+		- C风格的字符串，默认类型为字符数组
+	- `std::string`和`std::string_view`类型的字面量可以通过`s`和``
 
-Literal constants (usually just called literals) are unnamed values inserted directly into the code. For example:
+
+在编程中，常量（constant）指的是不会改变的值。C++支持两种常量：字面量常量和符号常量。本节课我们会介绍字面量常量，然后下节课 [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数 const 和 constexpr 变量]]中会介绍符号常量。
+
+字面量常量（通常称为[[literals|字面量]]） 指的是直接嵌入到代码中的未命名的值，例如：
 
 ```cpp
-return 5; // 5 is an integer literal
-bool myNameIsAlex { true }; // true is a boolean literal
-std::cout << 3.4; // 3.4 is a double literal
+return 5; // 5 是一个整型字面量
+bool myNameIsAlex { true }; // true 是一个布尔字面量
+std::cout << 3.4; // 3.4 是一个 double 字面量
 ```
 
-COPY
 
-They are constants because their values can not be changed dynamically (you have to change them, and then recompile for the change to take effect).
+它们的值都是常量，因为你不能动态地改变它们的值（改变后必须重新编译才能生效）。
 
-Just like objects have a type, all literals have a type. The type of a literal is assumed from the value and format of the literal itself.
+和其他对象诶新一样，所有的字面量也有其类型。字面量的类型由其值和字面量本身的格式推定。
 
-By default:
+默认情况下：
 
-
-|Literal value|Examples	|Default type|
+|字面量值|例子	|默认类型|
 |----|----|----|
 |integral value|	5, 0, -3	|int
 |boolean value	|true, false|	bool
-|floating point value	|3.4, -2.2	|double (not float)!
+|floating point value	|3.4, -2.2	|double (不是 float)!
 |char value	|‘a’	|char
 |C-style string	|“Hello, world!”	|const char[14]
 
 
 ## 字面量后缀
 
-If the default type of a literal is not as desired, you can change the type of a literal by adding a suffix:
+如果默认类型不是你想要的，可以通过字面量的后缀改变其类型：
 
-|Data Type	|Suffix	|Meaning|
+|数据类型	|后缀	|含义|
 |----|----|----|
 |int	|u or U	|unsigned int|
 |int	|l or L	|long|
@@ -53,51 +59,49 @@ If the default type of a literal is not as desired, you can change the type of a
 |double	|l or L	|long double|
 
 
-You generally won’t need to use suffixes for integer types, but here are examples:
+通常情况下，你不需要为整型指定后缀，但是如果要做的话，可以参考下面例子：
 
 ```cpp
-std::cout << 5; // 5 (no suffix) is type int (by default)
-std::cout << 5u; // 5u is type unsigned int
-std::cout << 5L; // 5L is type long
+std::cout << 5; // 5 (无后缀) 类型为 int (默认)
+std::cout << 5u; // 5u 类型为 unsigned int
+std::cout << 5L; // 5L 类型为 long
 ```
 
-COPY
 
-By default, floating point literal constants have a type of _double_. To make them float literals instead, the f (or F) suffix should be used:
+默认情况下，浮点数字面量的类型为 double，如果希望使用 float 类型，则需要指定 `f`或`F`后缀：
 
 ```cpp
 std::cout << 5.0; // 5.0 (no suffix) is type double (by default)
 std::cout << 5.0f; // 5.0f is type float
 ```
 
-COPY
 
-New programmers are often confused about why the following causes a compile warning:
+新程序员通常会奇怪为什么下面的代码会导致编译告警：
 
 ```cpp
-float f { 4.1 }; // warning: 4.1 is a double literal, not a float literal
+float f { 4.1 }; // warning: 4.1 是 double 类型的字面量而不是 float 类型
 ```
 
-COPY
 
-Because 4.1 has no suffix, it’s treated as a double literal, not a float literal. When C++ defines the type of a literal, it does not care what you’re doing with the literal (e.g. in this case, using it to initialize a float variable). Therefore, the 4.1 must be converted from a double to a float before it can be assigned to variable f, and this could result in a loss of precision.
+因为，4.1 没有后缀所以是 double 类型的字面量，而不是 float 类型。当C++定义字面量的类型时，它不在乎该字面量的用途（例如，在这个例子中是用于初始化一个 float 变量）。因此，4.1 必须被转换为 double 类型才可以被赋值给变量 `f`，而这么做是会导致精度丢失的。
 
-Literals are fine to use in C++ code so long as their meanings are clear. This is most often the case when used to initialize or assign a value to a variable, do math, or print some text to the screen.
+在C++中，只要字面量的意思是清晰的，那么你可以放心使用。例如大多数情况下会使用字面量进行初始化或赋值、数学运算或直接打印到屏幕上。
 
-## String literals
 
-In lesson [[4-11-Chars|4.11 - 字符]] we defined a string as a collection of sequential characters. C++ supports string literals:
+## 字符串字面量
+
+在 [[4-11-Chars|4.11 - 字符]] 中我们将字符串定义为一个字符序列的集合。在 C++ 中也支持字符串字面量：
 
 ```cpp
 std::cout << "Hello, world!"; // "Hello, world!" is a C-style string literal
-std::cout << "Hello," " world!"; // C++ will concatenate sequential string literals
+std::cout << "Hello," " world!"; // C++ 会链接字符串字面量
 ```
 
-String literals are handled strangely in C++ for historical reasons. For now, it’s fine to use string literals to print text with std::cout, or as initializers for std::string.
+出于某些历史原因，C++ 处理字符串的方式有些特别。目前来讲，你可以使用字符串字面量来作为打印文本或用于初始化 `std::string`。
 
 !!! info "扩展阅读"
 
-    C++ also has literals for std::string and std::string_view. In most cases these won’t be needed, but they may occasionally come in handy when using type deduction, either via the `auto` keyword ([8.7 -- Type deduction for objects using the auto keyword](https://www.learncpp.com/cpp-tutorial/type-deduction-for-objects-using-the-auto-keyword/)), or class template argument deduction.
+	C++ 同样也支持 std::string 和 std::string_view 字面量。虽然在很多时候并不需要使用它们，但是在使用类型推断的时候，它们还是挺有用的。类型推断可以发生在使用 `auto`关键字（[[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]）或是在类模板参数推断时。
 
 	```cpp
 	#include <iostream>
@@ -109,16 +113,16 @@ String literals are handled strangely in C++ for historical reasons. For now, it
 	    using namespace std::literals; // easiest way to access the s and sv suffixes
 	
 	    std::cout << "foo\n";   // no suffix is a C-style string literal
-	    std::cout << "goo\n"s;  // s suffix is a std::string literal
-	    std::cout << "moo\n"sv; // sv suffix is a std::string_view literal
+	    std::cout << "goo\n"s;  // s 后缀表示 std::string 字面量
+	    std::cout << "moo\n"sv; // sv 后缀表示 a std::string_view 字面量
 	
 	    return 0;
 	};
 	```
 
-	This is one of the exception cases where `using` an entire namespace is okay.
+	此处使用`using`来引入整个命名空间是一个被允许的特例。
 
-We’ll talk more about string literals in future lessons.
+我们会在后续的课程中深入讨论字符串字面量。
 
 ## 浮点数字面量的科学计数法表示
 

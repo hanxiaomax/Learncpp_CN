@@ -1,6 +1,6 @@
 ---
-title: 4.15 - 符号常数 const 和 constexpr 变量
-alias: 4.15 - 符号常数 const 和 constexpr 变量
+title: 4.15 - 符号常量 const 和 constexpr 变量
+alias: 4.15 - 符号常量 const 和 constexpr 变量
 origin: /const-constexpr-and-symbolic-constants/
 origin_title: "4.15 -- Symbolic constants-const and constexpr variables"
 time: 2022-5-24

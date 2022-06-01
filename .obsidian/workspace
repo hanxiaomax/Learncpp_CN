@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-13-An introduction-to-std-string.md",
+            "file": "docs/4-14-Literal-constants.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-13-An introduction-to-std-string.md"
+                "file": "docs/4-14-Literal-constants.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-13-An introduction-to-std-string.md",
+                "file": "docs/4-14-Literal-constants.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-14-Literal-constants.md",
+    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
     "docs/4-13-An introduction-to-std-string.md",
     "docs/member-function.md",
     "docs/input-manipulators.md",
     "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md",
     "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
-    "docs/3-x-Chapter-3-summary-and-quiz.md",
-    "docs/4-x-Chapter-4-summary-and-quiz.md",
-    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-    "docs/11-7-An-introduction-to-std-string_view.md"
+    "docs/3-x-Chapter-3-summary-and-quiz.md"
   ]
 }
