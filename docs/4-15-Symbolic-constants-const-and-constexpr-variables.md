@@ -10,20 +10,18 @@ tags:
 - constexpr
 ---
 
-## Const variables
+## Const 变量
 
-So far, all of the variables we’ve seen have been non-constant -- that is, their values can be changed at any time. For example:
+到目前为止，我们看到的所有变量都是“非常量”——也就说它们的值可以在任何时间被改变，例如：
 
 ```cpp
 int x { 4 }; // initialize x with the value of 4
 x = 5; // change value of x to 5
 ```
 
-COPY
+不过，有时候需要将变量定义为不能改变。例如，地球的引力是`9.8 meters/second^2`，这个值不太可能会随时改变（如果真的会随时改变的话，你应该担心的就不是C++了）。所以将这个值定义为常量可以确保它不会被意外改变。
 
-However, it’s sometimes useful to define variables with values that can not be changed. For example, consider the gravity of Earth (near the surface): `9.8 meters/second^2`. This isn’t likely to change any time soon (and if it does, you’ve likely got bigger problems than learning C++). Defining this value as a constant helps ensure that this value isn’t accidentally changed.
-
-To make a variable constant, simply put the `const` keyword either before or after the variable type, like so:
+将变量定义为常量，只需要在类型前面或后面添加 `const` 关键字，例如：
 
 ```cpp
 const double gravity { 9.8 };  // preferred use of const before type
@@ -31,11 +29,12 @@ int const sidesInSquare { 4 }; // "east const" style, okay, but not preferred
 ```
 
 
-Although C++ will accept const either before or after the type, we recommend using _const_ before the type because it better follows standard English language convention where modifiers come before the object being modified (e.g. a “a green ball”, not a “a ball green”).
+尽管 C++ 允许你在类型前面或者后面添加` const` 关键字，我们还是推荐你把它放在类型前面，这样看上去更像是正常的英语语法。
 
-Constant variables are sometimes called symbolic constants (as opposed to literal constants, which are just values that have no name).
+const 类型的变量通常被称为符号常量（与之相对的是字符串常量，字符串常量是没有名字的）。
 
-## Const variables must be initialized
+
+## Const 变量必须初始化
 
 Const variables _must_ be initialized when you define them, and then that value can not be changed via assignment:
 
@@ -73,7 +72,7 @@ int main()
 
 COPY
 
-## Runtime vs compile-time constants
+## 运行时常量和编译时常量
 
 C++ actually has two different kinds of constants.
 
@@ -153,7 +152,7 @@ In reality, developers often skip making local variables in short/trivial functi
 
 Note that literals are also implicitly constexpr, as the value of a literal is known at compile-time.
 
-## Constant expressions 
+## 常量表达式
 
 A constant expression is an expression that can be evaluated at compile-time. For example:
 
@@ -191,7 +190,7 @@ COPY
 
 In the above example, because `x` and `y` are constexpr, the expression `x + y` is a constant expression that can be evaluated at compile-time. Similar to the literal case, the compiler can substitute in the value `7`.
 
-## Constexpr strings
+## Constexpr 字符串
 
 If you try to define a `constexpr std::string`, your compiler will generate an error:
 
@@ -239,11 +238,11 @@ COPY
 
 We cover std::string view in lesson [[11-7-An-introduction-to-std-string_view|11.7 - std::string_view 简介]]
 
-## Naming your const variables
+## const 变量的命名
 
 Some programmers prefer to use all upper-case names for const variables. Others use normal variable names with a ‘k’ prefix. However, we will use normal variable naming conventions, which is more common. Const variables act exactly like normal variables in every case except that they can not be assigned to, so there’s no particular reason they need to be denoted as special.
 
-## Const function parameters and return values
+## Const 类型的函数形参和返回值
 
 Const can also be used with function parameters:
 
@@ -298,7 +297,8 @@ However, since the returned value is a copy, there’s little point in making it
 
 	Don’t use const with return by value.
 
-## Avoid using object-like preprocessor macros for symbolic constants
+## 避免使用对象形式的预处理器宏用于符号常量
+
 
 In lesson [[2-10-Introduction-to-the-preprocessor|2.10 - 预处理器简介]], you learned that object-like macros have two forms -- one that doesn’t take a substitution parameter (generally used for conditional compilation), and one that does have a substitution parameter. We’ll talk about the case with the substitution parameter here. That takes the form:
 
@@ -343,13 +343,13 @@ Thirdly, macros don’t follow normal scoping rules, which means in rare cases a
 
 	Avoid using `#define` to create symbolic constants macros. Use const or constexpr variables instead.
 
-## Using symbolic constants throughout a multi-file program
+## 在多个文件中共用符号常量
 
 In many applications, a given symbolic constant needs to be used throughout your code (not just in one location). These can include physics or mathematical constants that don’t change (e.g. pi or Avogadro’s number), or application-specific “tuning” values (e.g. friction or gravity coefficients). Instead of redefining these every time they are needed, it’s better to declare them once in a central location and use them wherever needed. That way, if you ever need to change them, you only need to change them in one place.
 
 There are multiple ways to facilitate this within C++ we cover this topic in full detail in lesson [6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/).
 
-## Avoid magic numbers, use symbolic constants instead
+## 使用常量来避免“魔术数字” 
 
 A magic number is a literal (usually a number) that either has an unclear meaning or is used multiple times.
 
@@ -409,4 +409,4 @@ int kmtoM(int km) { return km * 1000; } // fine: it's obvious 1000 is a conversi
 
 !!! success "最佳实践"
 
-	Avoid magic numbers in your code (use symbolic constants instead).
+	在代码中避免魔术数字 (使用常量来代替)。

@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
+    },
+    {
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
+    },
+    {
       "basename": "4-14-Literal-constants",
       "path": "docs/4-14-Literal-constants.md"
     },
     {
       "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
       "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
-      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
-      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
       "basename": "4-13-An introduction-to-std-string",
@@ -39,10 +43,6 @@
     {
       "basename": "3-x-Chapter-3-summary-and-quiz",
       "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
       "basename": "11-7-An-introduction-to-std-string_view",

@@ -19,9 +19,11 @@ tags:
 	- `std::string`和`std::string_view`类型的字面量可以通过`s`和`sv`后缀指定，在类型推断时比较有用，其他情况一般不需要
 	- 声明浮点数字面量的方法有两种：`3.14159`或`1.9e10`
 	- C++14才支持了使用`0b`创建二进制字面量，同时可以用单引号作为位的分隔符，但是分隔符不能放在第一位前面
-	- 使用 `std::bitset`，我们可以定义一个 `std::bitset` 变量，并且告诉 `std::bitset` 有多少位需要存储
+	- 使用`std::dec`、`std::oct` 和 `std::hex`可以轻松打印十进制、八进制和十六进制。但不能直接打印二进制。
+		- `std::cout << std::hex << x << '\n'; // hexadecimal`
+	- 使用 `std::bitset`，我们可以定义一个 `std::bitset` 变量，并且告诉 `std::bitset` 有多少位需要存储。需要包含`<bitset>`头文件
 
-在编程中，常量（constant）指的是不会改变的值。C++支持两种常量：字面量常量和符号常量。本节课我们会介绍字面量常量，然后下节课 [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数 const 和 constexpr 变量]]中会介绍符号常量。
+在编程中，常量（constant）指的是不会改变的值。C++支持两种常量：字面量常量和符号常量。本节课我们会介绍字面量常量，然后下节课 [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]中会介绍符号常量。
 
 字面量常量（通常称为[[literals|字面量]]） 指的是直接嵌入到代码中的未命名的值，例如：
 
@@ -324,7 +326,7 @@ c
 
 int main()
 {
-	// std::bitset<8> means we want to store 8 bits
+	// std::bitset<8> 表示要存储8个位
 	std::bitset<8> bin1{ 0b1100'0101 }; // binary literal for binary 1100 0101
 	std::bitset<8> bin2{ 0xC5 }; // hexadecimal literal for binary 1100 0101
 
@@ -335,19 +337,17 @@ int main()
 }
 ```
 
-This prints:
+打印结果：
 
 ```
 11000101 11000101
 1010
 ```
 
-In the above code, this line:
+上面代码中的这一行：
 
 ```cpp
 std::cout << std::bitset<4>{ 0b1010 } << '\n'; // create a temporary std::bitset and print it
 ```
 
-COPY
-
-creates a temporary (unnamed) `std::bitset` object with 4 bits, initializes it with _0b1010_, prints the value in binary, and then discards the temporary `std::bitset`.
+创建了一个临时的4个位的 `std::bitset` 对象，然后用二进制 _0b1010_ 对其进行了初始化并打印为二进制格式，随后就丢弃了这个临时的对象。
