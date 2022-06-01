@@ -5,6 +5,30 @@
       "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
+      "basename": "4-9-Boolean-values",
+      "path": "docs/4-9-Boolean-values.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
+      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
+    },
+    {
+      "basename": "4-4-Signed-integers",
+      "path": "docs/4-4-Signed-integers.md"
+    },
+    {
+      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
+      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+    },
+    {
       "basename": "bit",
       "path": "docs/bit.md"
     },
@@ -51,10 +75,6 @@
     {
       "basename": "input-manipulators",
       "path": "docs/input-manipulators.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
@@ -113,10 +133,6 @@
       "path": "docs/4-7-Introduction-to-scientific-notation.md"
     },
     {
-      "basename": "4-9-Boolean-values",
-      "path": "docs/4-9-Boolean-values.md"
-    },
-    {
       "basename": "4-10-Introduction-to-if-statements",
       "path": "docs/4-10-Introduction-to-if-statements.md"
     },
@@ -131,10 +147,6 @@
     {
       "basename": "narrowing-conversions",
       "path": "docs/narrowing-conversions.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
     {
       "basename": "rounding-error",
@@ -155,14 +167,6 @@
     {
       "basename": "5-6-Relational-operators-and-floating-point-comparisons",
       "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
-    },
-    {
-      "basename": "4-4-Signed-integers",
-      "path": "docs/4-4-Signed-integers.md"
-    },
-    {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
     },
     {
       "basename": "6-4-Introduction-to-global-variables",
@@ -195,10 +199,6 @@
     {
       "basename": "4-2-Void",
       "path": "docs/4-2-Void.md"
-    },
-    {
-      "basename": "byte",
-      "path": "docs/byte.md"
     }
   ],
   "omittedPaths": [],

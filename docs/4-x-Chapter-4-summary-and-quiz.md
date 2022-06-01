@@ -16,31 +16,31 @@ tags:
 
 一种**数据类型** ([[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]])告诉编译器如何将内存中的数据解析成有意义的值。
 
-C++ comes with support for many fundamental data types, including floating point numbers, integers, boolean, chars, null pointers, and void.
+C++ 支持多种基础数据类型，包括浮点数、整型、布尔类型、字符、null指针和 void。
 
-**Void**（[[4-2-Void|4.2 - Void]]） is used to indicate no type. It is primarily used to indicate that a function does not return a value.
+**Void**（[[4-2-Void|4.2 - Void]]） 用于表示无类型。其最主要的作用是表明函数无返回值。
 
-Different types take different amounts of memory, and the amount of memory used may vary by machine. See [[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]]for a table indicating the minimum size for each fundamental type.
+不同数据类型占据的内存大小也不同，同时也会收到机器体系结构的影响。参考 [[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]] 中的表格了解每种基础数据类型占用的空间。
 
-The sizeof operator can be used to return the size of a type in bytes.
+`sizeof` 运算符可以返回某个类型所占用的字节数。
 
-**Signed integers**（[[4-4-Signed-integers|4.4 - 有符号整型]]） are used for holding positive and negative whole numbers, including 0. The set of values that a specific data type can hold is called its range. When using integers, keep an eye out for overflow and integer division problems.
+**有符号整型**（[[4-4-Signed-integers|4.4 - 有符号整型]]） 用于保存正数和负数，也包括0。一个特定数据类型能够保存的值，称为该类型的范围。当使用整型时，一定要注意溢出和整型除0问题。
 
-**Unsigned integers**（[[4-5-Unsigned-integers-and-why-to-avoid-them|4.5 - 无符号整型以及为什么要避免使用它]]） only hold positive numbers, and should generally be avoided unless you’re doing bit-level manipulation.
+**无符号整型**（[[4-5-Unsigned-integers-and-why-to-avoid-them|4.5 - 无符号整型以及为什么要避免使用它]]）只能保存正整数，通常应该避免使用它，除非是用于位运算。
 
-**Fixed-width integers** （[[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]）are integers with guaranteed sizes, but they may not exist on all architectures. The fast and least integers are the fastest and smallest integers that are at least some size. `std::int8_t` and `std::uint8_t` should generally be avoided, as they tend to behave like chars instead of integers.
+**固定宽度整型** （[[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]）是具有确定大小的整型，但是并不是所有的体系结构都支持。速度优先和大小优先的整型是保证某其具有某大小前提下的最快的或最小的整型。`std::int8_t` 和 `std::uint8_t` 一般不要使用，它们的行为更像字符而不是整型。
 
-**size_t** is an unsigned integral type that is used to represent the size or length of objects.
+**size_t** 是一种无符号整型，它用于表示对象的大小或长度。
 
-**Scientific notation** （[[4-7-Introduction-to-scientific-notation|4.7 - 科学计数法]]）is a shorthand way of writing lengthy numbers. C++ supports scientific notation in conjunction with floating point numbers. The digits in the significand (the part before the e) are called the significant digits.
+**科学计数法** （[[4-7-Introduction-to-scientific-notation|4.7 - 科学计数法]]）是一种表示大数的简单记法。C++ 支持科学计数法表示浮点数。科学计数法中，e前面的部分称为有效数字。
 
-**Floating point** （[[4-8-Floating-point-numbers|4.8 - 浮点数]]）is a set of types designed to hold real numbers (including those with a fractional component). The precision of a number defines how many significant digits it can represent without information loss. A rounding error can occur when too many significant digits are stored in a floating point number that can’t hold that much precision. Rounding errors happen all the time, even with simple numbers such as 0.1. Because of this, you shouldn’t compare floating point numbers directly.
+**浮点数** （[[4-8-Floating-point-numbers|4.8 - 浮点数]]）类型用于保存实数（包括哪些有小数部分的数）。数字的精度指的是在不丢失精度的前提下，可以表示多少个有效数字。[[rounding-error|舍入误差]]出现在过多的有效数字被存放在无法保存这么多有效数字的浮点数中。舍入误差一致存在，nding errors happen all the time, even with simple numbers such as 0.1. Because of this, you shouldn’t compare floating point numbers directly.
 
-The **boolean**（[[4-9-Boolean-values|4.9 - 布尔值]]） type is used to store a true or false value.
+**布尔**（[[4-9-Boolean-values|4.9 - 布尔值]]）类型用于存放 `true` 和 `false`。
 
-**If statements** [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]（allow us to execute one or more lines of code if some condition is true. The conditional expression of an _if statement_ is interpreted as a boolean value.
+**If 语句** [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]（allow us to execute one or more lines of code if some condition is true. The conditional expression of an _if statement_ is interpreted as a boolean value.
 
-**Char** （[[4-11-Chars|4.11 - 字符]]）is used to store values that are interpreted as an ASCII character. When using chars, be careful not to mix up ASCII code values and numbers. Printing a char as an integer value requires use of static_cast.
+**字符** （[[4-11-Chars|4.11 - 字符]]）is used to store values that are interpreted as an ASCII character. When using chars, be careful not to mix up ASCII code values and numbers. Printing a char as an integer value requires use of static_cast.
 
 Angled brackets are typically used in C++ to represent something that needs a parameterizable type. This is used with static_cast to determine what data type the argument should be converted to (e.g. `static_cast<int>(x)` will convert _x_ to an int).（[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]）
 
@@ -48,8 +48,9 @@ Angled brackets are typically used in C++ to represent something that needs a pa
 
 A **constant** （[[4-14-Literal-constants|4.14 - 字面量常量]]）is a fixed value that may not be changed. C++ supports two types of constants: literal constants, and symbolic constants.
 
-**Literals**（[[4-14-Literal-constants|4.14 - 字面量常量]]） are values inserted directly into the code. Literals have types, and literal suffixes can be used to change the type of a literal from default.
+**字面量**（[[4-14-Literal-constants|4.14 - 字面量常量]]） are values inserted directly into the code. Literals have types, and literal suffixes can be used to change the type of a literal from default.
 
 **Const** （[[4-14-Literal-constants|4.14 - 字面量常量]]）variables are variables that can’t be changed after being initialized. Const variables can be either runtime or compile-time constants. **constexpr** variables must be compile-time constants.
 
-Don’t use magic numbers in your code. Instead, use symbolic constants.
+
+不要在代码中使用魔术数字，应该用符号常量代替它。

@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "about",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -130,14 +129,14 @@
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
     "docs/4-x-Chapter-4-summary-and-quiz.md",
+    "docs/4-9-Boolean-values.md",
+    "docs/1-x-Chapter-1-summary-and-quiz.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
+    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
+    "docs/4-4-Signed-integers.md",
+    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
     "docs/bit.md",
     "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/5-1-Operator-precedence-and-associativity.md",
-    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
-    "docs/4-14-Literal-constants.md",
-    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
+    "docs/4-1-Introduction-to-fundamental-data-types.md"
   ]
 }
