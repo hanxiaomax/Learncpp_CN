@@ -11,7 +11,12 @@ tags:
 ---
 
 ??? note "关键点速记"
-	- 
+
+	- const 变量必须初始化，且初始化之后值不可以改变
+	- 任何在初始化后值就不能被改变，且初始化值可以在编译时确定的变量，都必须声明为 `constexpr`
+	- 任何在初始化后值就不能被改变，但是初始化值不能在编译时确定的变量，都应该声明为 `const`
+	- 字面量是隐式的 `constexpr`，因为字面量的值在编译时就可以确定
+	- 常数表达式指的是可以在运行时求值得到结果的表达式
 
 ## Const 变量
 
@@ -116,11 +121,11 @@ const int something { 1 + 2 }; // the compiler can resolve this at compiler time
 
 编译时常量可以使编译器进行编译优化，这是运行时常量做不到的。例如，每当使用 `gravity` 的时候，编译器可以直接将其替换为字面量 9.8。
 
-当你声明一个 const 变量的时候，编译器会自动追踪并判断它是运行时变量还是编译时bi you declare a const variable, the compiler will implicitly keep track of whether it’s a runtime or compile-time constant. In most cases, this doesn’t matter, but there are a few odd cases where C++ requires a compile-time constant instead of a run-time constant (we’ll cover these cases later as we introduce those topics).
+当你声明一个 const 变量的时候，编译器会自动追踪并判断它是运行时常量还是编时常量。在大多数情况下，是什么并没有关系，但是有少数情况 C++ 要求必须使用一个编译时常量而非运行时常量（我们会在后面介绍这种情况）。
 
 ## constexpr
 
-To help provide more specificity, C++11 introduced the keyword **constexpr**, which ensures that a constant must be a compile-time constant:
+为了能够更加确切，C++引入了关键字 **constexpr**，它可以确保一个常量是编译时常量：
 
 ```cpp
 #include <iostream>
@@ -134,27 +139,25 @@ int main()
     int age{};
     std::cin >> age;
 
-    constexpr int myAge { age }; // compile error: age is a runtime constant, not a compile-time constant
+    constexpr int myAge { age }; // 编译错误: age 是一个运行时常量而不是编译时常量
 
     return 0;
 }
 ```
 
-COPY
-
 !!! success "最佳实践"
 
-	Any variable that should not be modifiable after initialization and whose initializer is known at compile-time should be declared as constexpr.  
+	任何在初始化后值就不能被改变，且初始化值可以在编译时确定的变量，都必须声明为 `constexpr`。
+	任何在初始化后值就不能被改变，但是初始化值不能在编译时确定的变量，都应该声明为 `const`。
+	
 
-	Any variable that should not be modifiable after initialization and whose initializer is not known at compile-time should be declared as const.
+在现实中，程序员通常懒得将一个简单函数中的局部变量定义为 `const`类型，因为这些局部变量被不小心修改的可能性并不大。
 
-In reality, developers often skip making local variables in short/trivial functions const, because there is little chance of accidentally modifying a value.
-
-Note that literals are also implicitly constexpr, as the value of a literal is known at compile-time.
+注意，字面量是隐式的 `constexpr`，因为字面量的值在编译时就可以确定。
 
 ## 常量表达式
 
-A constant expression is an expression that can be evaluated at compile-time. For example:
+常数表达式指的是可以在运行时求值得到结果的表达式，例如：
 
 ```cpp
 #include <iostream>
@@ -167,11 +170,9 @@ int main()
 }
 ```
 
-COPY
+在上面的程序中，字面量 3 和 4 在编译时就指定，所以编译器可以对表达式 `3+4`求值，然后替换成 7。这么做可以使代码运行速度加快，因为表达式 `3+4` 无需在运行时求值了。
 
-In the above program, because the literal values `3` and `4` are known at compile-time, the compiler can evaluate the expression `3 + 4` at compile-time and substitute in the resulting value `7`. That makes the code faster because `3 + 4` no longer has to be calculated at runtime.
-
-Constexpr variables can also be used in constant expressions:
+Constexpr 变量也可以被用在常量表达式中：
 
 ```cpp
 #include <iostream>
@@ -186,13 +187,12 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, because `x` and `y` are constexpr, the expression `x + y` is a constant expression that can be evaluated at compile-time. Similar to the literal case, the compiler can substitute in the value `7`.
+在上面的例子中，因为 `x` 和 `y` 都是 `constexpr`，所以表达式 `x + y` 也是一个常量表达式，它的结果也可以在爱编译时求出。和字面量的例子一样，编译器会把它替换成7。
 
 ## Constexpr 字符串
 
-If you try to define a `constexpr std::string`, your compiler will generate an error:
+如果你尝试定义 `constexpr std::string`，你的编译器可能会报错 ：
 
 ```cpp
 #include <iostream>
@@ -210,9 +210,8 @@ int main()
 }
 ```
 
-COPY
 
-This happens because `constexpr std::string` isn’t supported in C++17 or earlier, and only has minimal support in C++20. If you need constexpr strings, use `std::string_view` instead:
+这是se `constexpr std::string` isn’t supported in C++17 or earlier, and only has minimal support in C++20. If you need constexpr strings, use `std::string_view` instead:
 
 ```cpp
 #include <iostream>
