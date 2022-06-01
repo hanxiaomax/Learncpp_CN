@@ -13,6 +13,8 @@ tags:
 ??? note "关键点速记"
 	- `std::string` 不能接收空格，为了输入一整行文本，最好是使用 `std::getline()` 函数
 	- 使用输入或输出操纵器，可以修改`std::cin`或`std::cout`的行为，`std::ws` 输入操纵器告诉`std::cin`要忽略任何前置空白
+	- 输入字符串时，敲击回车会导致输入流中填入`\n`，它可能被提取，也可能被留在流中，这取决于接收它的变量是什么类型。如果留在流中则会导致`std::getline`认为输入已经完成
+	- 使用`std::string`的成员函数`std::string::length()`获取字符串长度，它的返回值类型为`size_t`（无符号整型）
  
  你编写的第一个 C++ 程序可能是下面这样：
  
@@ -208,11 +210,11 @@ Pick 1 or 2: 2
 Now enter your name: Hello, , you picked 2
 ```
 
-程序s'ho program first asks you to enter 1 or 2, and waits for you to do so. All good so far. Then it will ask you to enter your name. However, it won’t actually wait for you to enter your name! Instead, it prints the “Hello” string, and then exits. What happened?
+程序首先提醒你输入 1 或者 2，然后等待你的输入。到目前为止都没有什么问题。然后程序又让你输入姓名，但是它并没有等待你输入就打印了"Hello"字符串，然后就退出了。 为什么会这样？
 
-It turns out, when you enter a value using operator>>, std::cin not only captures the value, it also captures the newline character (`'\n'`) that occurs when you hit the `enter` key. So when we type `2` and then hit `enter`, std::cin gets the string `"2\n"`. It then extracts the `2` to variable `choice`, leaving the newline character behind for later. Then, when std::getline() goes to read the name, it sees `"\n"` is already in the stream, and figures we must have previously entered an empty string! Definitely not what was intended.
+实际上，当你使用 `operator>>` 获取输入的时候，`std::cin` 并不是仅仅捕获值，它也捕获换行符`\n`（当你敲下回车的时候）。所以，在你输入 2 并敲击回车后，`std::cin`得到的输入字符串其实是 `"2\n"`。随后，2被提取到了 `choice`，而换行符就被留到了缓冲中。然后，当 `std::getline()` 开始读取姓名时，它发现 `"\n"` 已经在输入流中了，所以它输入在之前肯定已经完成（输入的是一个空字符串）！这当然并不是我们希望的。
 
-We can amend the above program to use the `std::ws` input manipulator, to tell `std::getline()` to ignore any leading whitespace characters:
+我们可以通过 `std::ws` 修改该程序，这样`std::getline()` 就会忽略任何前置的空白字符。
 
 ```cpp
 #include <string>
@@ -234,9 +236,7 @@ int main()
 }
 ```
 
-COPY
-
-Now this program will function as intended.
+现在， 程序就可以正常工作了。
 
 ```
 Pick 1 or 2: 2
@@ -247,16 +247,16 @@ Hello, Alex, you picked 2
 
 !!! success "最佳实践"
 
-	If using `std::getline` to read strings, use the `std::ws` `input manipulator` to ignore leading whitespace.
+	如果使用 `std::getline` 来读取字符串，请使用`std::ws`忽略前置的空白
 
 !!! tldr "关键信息"
 
-	Using the extraction operator (>>) with std::cin ignores leading whitespace.  
-std::getline does not ignore leading whitespace unless you use input manipulator std::ws.
+	使用提取操作符(`>>`) 和 std::cin 来忽略前置空白。
+	除非使用`std::ws`指明，否则 `std::getline` 并不会忽略前置空白。
+	
+## 字符串长度
 
-## String length
-
-If we want to know how many characters are in a std::string, we can ask the std::string for its length. The syntax for doing this is different than you’ve seen before, but is pretty straightforward:
+如果想要知道 `std::string` 包含多少字符，则可以查询 `std::string` 的长度，其语法可能和之前我们接触到的不太一样，但是非常简单：
 
 ```cpp
 #include <iostream>
@@ -270,26 +270,24 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 Alex has 4 characters
 ```
 
-Note that instead of asking for the string length as `length(myName)`, we say `myName.length()`. The `length()` function isn’t a normal standalone function -- it’s a special type of function that is nested within std::string called a `member function`. Because `length()` lives within std::string, it is sometimes written as std::string::length in documentation.
+注意，并不是通过 `length(myName)` 这种形式来查询，而是 `myName.length()`。因为 `length()` 函数并不是一个普通的、独立的函数——它是一类特殊的函数，它嵌入在 `std::string`，称为[[member-function|成员函数(member function)]]。因为 `length()` 存在于 std::string 内部，因此在文档中有时会写作 `std::string::length` 。
 
-We’ll cover member functions, including how to write your own, in more detail later.
+我们会在稍后介绍如何使用和编写成员函数。
 
-Also note that std::string::length() returns an unsigned integral value (most likely size_t). If you want to assign the length to an int variable, you should static_cast it to avoid compiler warnings about signed/unsigned conversions:
+同时，还要注意到 `std::string::length()` 返回的是一个无符号整型数（很可能是`size_t`）。如果你希望将它赋值给一个`int`类型的变量，你应该使用 `static_cast`，这样才能避免 signed/unsigned 转换导致的编译器告警：
 
 ```cpp
 int length = static_cast<int>(myName.length());
 ```
 
-COPY
 
-## Conclusion
 
-std::string is complex, leveraging many language features that we haven’t covered yet. Fortunately, you don’t need to understand these complexities to use std::string for simple tasks, like basic string input and output. We encourage you to start experimenting with strings now, and we’ll cover additional string capabilities later.
+## 结论
+
+`std::string` 很复杂，而且使用了我们还没有介绍到的多种语言特性。幸运的是，对于完成简单的任务来说来说，你并不需要完全理解它，比如基本的输入输出。建议你从现在开始就可以多尝试并探索z字符串的使用，我们会在后续的内容中介绍string的其他功能。

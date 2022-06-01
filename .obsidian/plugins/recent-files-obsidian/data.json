@@ -5,6 +5,10 @@
       "path": "docs/4-13-An introduction-to-std-string.md"
     },
     {
+      "basename": "member-function",
+      "path": "docs/member-function.md"
+    },
+    {
       "basename": "input-manipulators",
       "path": "docs/input-manipulators.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "1-3-Introduction-to-objects-and-variables",
       "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
-      "basename": "compile-time",
-      "path": "docs/compile-time.md"
     }
   ],
   "omittedPaths": [],
