@@ -18,6 +18,7 @@ tags:
 	- 字面量是隐式的 `constexpr`，因为字面量的值在编译时就可以确定
 	- 常数表达式指的是可以在运行时求值得到结果的表达式
 	- C++17 和之前的版本不支持 `constexpr std::string` ，只有在 C++20 中才有有限的的支持。如果你想要使用 `constexpr strings`，应该用 `std::string_view` 代替
+	- 避免使用 `#define` 来创建符号常量宏。使用 const 或者 constexpr。
 
 ## Const 变量
 
@@ -158,7 +159,7 @@ int main()
 
 ## 常量表达式
 
-常数表达式指的是可以在运行时求值得到结果的表达式，例如：
+常量表达式指的是可以在运行时求值得到结果的表达式，例如：
 
 ```cpp
 #include <iostream>
@@ -234,7 +235,7 @@ COPY
 
 !!! info "相关内容"
 
-	我们会在 [[11-7-An-introduction-to-std-string_view|11.7 - std::string_view 简介]] 中介绍`std::string_view`
+	我们会在[[11-7-An-introduction-to-std-string_view|11.7 - std::string_view 简介]] 中介绍`std::string_view`
 
 ## const 变量的命名
 
@@ -270,7 +271,7 @@ int main()
 
 	函数的形参按值传递时，没必要定义为 const。
 	
-A function’s return value may also be made const:
+函数的返回值也可以被定义为 `const`：
 
 ```cpp
 #include <iostream>
@@ -289,35 +290,37 @@ int main()
 ```
 
 
-However, since the returned value is a copy, there’s little point in making it const.
+不过，由于返回值只是拷贝，因此也没必要定义为 `const`。
 
 !!! success "最佳实践"
 
-	Don’t use const with return by value.
+	不要将返回值定义为 `const`。
 
-## 避免使用对象形式的预处理器宏用于符号常量
+## 避免将对象形式的预处理器宏用于符号常量
 
 
-In lesson [[2-10-Introduction-to-the-preprocessor|2.10 - 预处理器简介]], you learned that object-like macros have two forms -- one that doesn’t take a substitution parameter (generally used for conditional compilation), and one that does have a substitution parameter. We’ll talk about the case with the substitution parameter here. That takes the form:
+在[[2-10-Introduction-to-the-preprocessor|2.10 - 预处理器简介]]中，我们介绍了[[object-like-macros|对象类型的宏]]有两种形式——一种用于替换，一种不用于替换。这里我们会讨论一下用于替换的宏，它的形式如下：
 
-`#define` identifier substitution_text
+```
+#define identifier substitution_text
+```
 
-Whenever the preprocessor encounters this directive, any further occurrence of _identifier_ is replaced by _substitution_text_. The identifier is traditionally typed in all capital letters, using underscores to represent spaces.
+每当[[preprocessor|预处理器]]遇到该指令时，后续所有`identifier`都会被替换为`substitution_text`。这里的`identifier`通常会使用全大写形式并使用下划线代替空格。 
 
-Consider the following snippet:
+考虑下面的代码片段：
 
 ```cpp
 #define MAX_STUDENTS_PER_CLASS 30
 int max_students { numClassrooms * MAX_STUDENTS_PER_CLASS };
 ```
 
-When you compile your code, the preprocessor replaces all instances of MAX_STUDENTS_PER_CLASS with the literal value 30, which is then compiled into your executable.
+当你编译代码时，预处理器就会把 `MAX_STUDENTS_PER_CLASS` 替换为字面量 30，然后被编译到可执行文件中。
 
-So why not use `#define` to make symbolic constants? There are (at least) three major problems.
+所以，为什么不用 `#define` 定义符号常量呢？这里有（至少）三个主要问题。
 
-First, because macros are resolved by the preprocessor, all occurrences of the macro are replaced with the defined value just prior to compilation. If you are debugging your code, you won’t see the actual value (e.g. `30`) -- you’ll only see the name of the symbolic constant (e.g. `MAX_STUDENTS_PER_CLASS`). And because these `#defined` values aren’t variables, you can’t add a watch in the debugger to see their values. If you want to know what value `MAX_STUDENTS_PER_CLASS` resolves to, you’ll have to find the definition of `MAX_STUDENTS_PER_CLASS` (which could be in a different file). This can make your programs harder to debug.
+首先，因为宏的解析是预处理器负责的，所以所有的替换都发生在编译之前。当你调试代码的时候，你无法看到实际的值（例如 30），而只能看到该符号常量的名字(例如 `MAX_STUDENTS_PER_CLASS`)。而且，因为这些宏定义并不是变量，所以再调试器中你没法对其值进行监控。 如果你想要指定 `MAX_STUDENTS_PER_CLASS` 解析后的值是多少，你必须取找到 `MAX_STUDENTS_PER_CLASS` 的定义才行(该定义还可能是在别的文件中)。这样就会使你的程序难以调试。
 
-Second, macros can have naming conflicts with normal code. For example:
+另外，宏和普通代码可能会产生命名冲突，例如：
 
 ```cpp
 #include "someheader.h"
@@ -333,17 +336,17 @@ int main()
 ```
 
 
-If `someheader.h` happened to `#define` a macro named _beta_, this simple program would break, as the preprocessor would replace the int variable beta’s name with whatever the macro’s value was. This is normally avoided by using all caps for macro names, but it can still happen.
+如果 `someheader.h` 恰好 `#define` 了一个名为 _beta_ 的宏，那么这个程序就无法编译，因为预处理器会把 `int`变量的名字替换掉。通常，使用全大写的宏名可以避免此类问题，但并无法完全杜绝。
 
-Thirdly, macros don’t follow normal scoping rules, which means in rare cases a macro defined in one part of a program can conflict with code written in another part of the program that it wasn’t supposed to interact with.
+第三，宏并不遵循正常的作用域规则，这意味着定极少数情况下，定义在函数某部分的宏可能会和其他部分的代码发生冲突。
 
 !!! warning "注意"
 
-	Avoid using `#define` to create symbolic constants macros. Use const or constexpr variables instead.
+	避免使用 `#define` 来创建符号常量宏。使用 const 或者 constexpr。
 
 ## 在多个文件中共用符号常量
 
-In many applications, a given symbolic constant needs to be used throughout your code (not just in one location). These can include physics or mathematical constants that don’t change (e.g. pi or Avogadro’s number), or application-specific “tuning” values (e.g. friction or gravity coefficients). Instead of redefining these every time they are needed, it’s better to declare them once in a central location and use them wherever needed. That way, if you ever need to change them, you only need to change them in one place.
+在很多应用程序中，有些符号常量需要被所有的代码使用（而不仅仅是被局部的代码使用）。 many applications, a given symbolic constant needs to be used throughout your code (not just in one location). These can include physics or mathematical constants that don’t change (e.g. pi or Avogadro’s number), or application-specific “tuning” values (e.g. friction or gravity coefficients). Instead of redefining these every time they are needed, it’s better to declare them once in a central location and use them wherever needed. That way, if you ever need to change them, you only need to change them in one place.
 
 There are multiple ways to facilitate this within C++ we cover this topic in full detail in lesson [6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/).
 
