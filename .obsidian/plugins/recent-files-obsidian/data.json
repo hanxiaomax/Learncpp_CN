@@ -5,6 +5,10 @@
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    },
+    {
       "basename": "4-x-Chapter-4-summary-and-quiz",
       "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "byte",
       "path": "docs/byte.md"
-    },
-    {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
     }
   ],
   "omittedPaths": [],

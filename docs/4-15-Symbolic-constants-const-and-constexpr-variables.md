@@ -346,24 +346,23 @@ int main()
 
 ## 在多个文件中共用符号常量
 
-在很多应用程序中，有些符号常量需要被所有的代码使用（而不仅仅是被局部的代码使用）。 many applications, a given symbolic constant needs to be used throughout your code (not just in one location). These can include physics or mathematical constants that don’t change (e.g. pi or Avogadro’s number), or application-specific “tuning” values (e.g. friction or gravity coefficients). Instead of redefining these every time they are needed, it’s better to declare them once in a central location and use them wherever needed. That way, if you ever need to change them, you only need to change them in one place.
+在很多应用程序中，有些符号常量需要被所有的代码使用（而不仅仅是被局部的代码使用）。这些变量可能是物理常量或数学常量（例如 π 或阿伏伽德罗常数），或者是某个应用程序需要的参数（例如摩擦系数或引力系数）。与其在多个文件中各定义一遍这些变量，不如将它们集中定义在一个地方然后按需使用。这样，万一你需要修改它们的值，你只需要在一处修改即可。
 
-There are multiple ways to facilitate this within C++ we cover this topic in full detail in lesson [6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/).
+在 C++ 中有很多方法可以实现上述需求，我们会在 [[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用inline变量共享全局常量]] 中进行详细的介绍。
 
 ## 使用常量来避免“魔术数字” 
 
-A magic number is a literal (usually a number) that either has an unclear meaning or is used multiple times.
+魔术数字指的是含义不清或多次使用的字面量（通常是数字）。
 
-The following snippet shows an example of a magic number with an unclear meaning:
+下面代码展示了一种含义不清的魔术数字：
 
 ```cpp
 constexpr int maxStudentsPerSchool{ numClassrooms * 30 };
 ```
 
+这里的 30 到底是什么含义？尽管有时候你可能可以猜到它的含义，例如这里指的是每个教室最多的学生数，但是这个意义并不明显。对于更加复杂的程序来说，推测某个硬编码的数字是很难的，除非有注释。
 
-What does the literal 30 mean in this context? Although you can probably guess that in this case it’s the maximum number of students per class, it’s not totally obvious. In more complex programs, it can be very difficult to infer what a hard-coded number represents, unless there’s a comment to explain it.
-
-Fortunately, we can use symbolic constants to disambiguate magic numbers:
+幸运的是，我们可以使用符号常量来避免这种含义不清的魔术数字：
 
 ```cpp
 constexpr int maxStudentsPerClass { 30 }; // now obvious what 30 is
@@ -371,7 +370,7 @@ constexpr int maxStudentsPerSchool{ numClassrooms * maxStudentsPerClass };
 ```
 
 
-Using magic numbers is generally considered bad practice because, in addition to not providing context as to what they are being used for, they pose problems if the value needs to change. Let’s assume that the school buys new desks that allow them to raise the class size from 30 to 35, and our program needs to reflect that. Consider the following program:
+使用魔术数字通常被认为是一种不好的编码习惯，它们不仅没有提供关于其用途的上下文信息，而且还留下了一个隐患（万一需要修改则需要在多处修改）。假设，学校购买了一些新的课桌，现在一个教室能够容纳 35 人了，那么我们的程序也必须反映这一情况。考虑如下代码：
 
 ```cpp
 constexpr int maxStudents{ numClassrooms * 30 };
@@ -379,7 +378,7 @@ setMax(30);
 ```
 
 
-To update our program to use the new classroom size, we’d have to update the constant 30 to 35. But what about the call to `setMax()`? Does that 30 have the same meaning as the other 30? If so, it should be updated. If not, it should be left alone, or we might break our program somewhere else. If you do a global search-and-replace, you might inadvertently update the argument of setMax() when it wasn’t supposed to change. So you have to look through all the code for every instance of the literal 30, and then determine whether it needs to change or not. That can be seriously time consuming (and error prone).
+为了修改程序适应新的 update our program to use the new classroom size, we’d have to update the constant 30 to 35. But what about the call to `setMax()`? Does that 30 have the same meaning as the other 30? If so, it should be updated. If not, it should be left alone, or we might break our program somewhere else. If you do a global search-and-replace, you might inadvertently update the argument of setMax() when it wasn’t supposed to change. So you have to look through all the code for every instance of the literal 30, and then determine whether it needs to change or not. That can be seriously time consuming (and error prone).
 
 The following code (using symbolic constants) makes it much clearer that these two uses of the value 30 are not related:
 
