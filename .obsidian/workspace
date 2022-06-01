@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
+            "file": "docs/4-x-Chapter-4-summary-and-quiz.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,12 +66,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
+                "file": "docs/4-x-Chapter-4-summary-and-quiz.md"
               }
             }
           },
@@ -108,14 +108,14 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-                "collapseAll": false,
+                "file": "docs/4-x-Chapter-4-summary-and-quiz.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": true,
-                "searchQuery": "glossary",
-                "backlinkCollapsed": true,
-                "unlinkedCollapsed": true
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
               }
             }
           }
@@ -129,15 +129,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/4-x-Chapter-4-summary-and-quiz.md",
+    "docs/bit.md",
+    "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
+    "docs/4-1-Introduction-to-fundamental-data-types.md",
+    "docs/2-x-Chapter-2-summary-and-quiz.md",
+    "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
     "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
-    "docs/4-x-Chapter-4-summary-and-quiz.md",
     "docs/4-14-Literal-constants.md",
-    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
-    "docs/4-13-An introduction-to-std-string.md",
-    "docs/member-function.md",
-    "docs/input-manipulators.md",
-    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
-    "docs/2-x-Chapter-2-summary-and-quiz.md"
+    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
   ]
 }

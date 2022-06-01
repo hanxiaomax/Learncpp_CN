@@ -10,11 +10,11 @@ tags:
 ---
 
 
-## Quick Review
+## 章节回顾
 
-The smallest unit of memory is a binary digit, also called a bit. The smallest unit amount of memory that can be addressed directly is a byte. The modern standard is that a byte equals 8 bits.
+内存的最小单元称为[[bit|位]]。内存可寻找的最小单位是[[byte|字节]]，现代标准一个字节等于8个位。
 
-A **data type** ([[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]])tells the compiler how to interpret the contents of memory in some meaningful way.
+一种**数据类型** ([[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]])告诉编译器如何将内存中的数据解析成有意义的值。
 
 C++ comes with support for many fundamental data types, including floating point numbers, integers, boolean, chars, null pointers, and void.
 

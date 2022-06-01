@@ -1,6 +1,6 @@
 ---
-title: 比特
-alias: 比特
+title: 位
+alias: 位
 english: bit
 type: glossary
 tags:
