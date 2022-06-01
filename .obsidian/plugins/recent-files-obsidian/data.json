@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "4-13-An introduction-to-std-string",
+      "path": "docs/4-13-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "input-manipulators",
+      "path": "docs/input-manipulators.md"
+    },
+    {
+      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
+      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
+      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    },
+    {
+      "basename": "3-x-Chapter-3-summary-and-quiz",
+      "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
+    },
+    {
       "basename": "4-x-Chapter-4-summary-and-quiz",
       "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
@@ -15,14 +39,6 @@
     {
       "basename": "4-14-Literal-constants",
       "path": "docs/4-14-Literal-constants.md"
-    },
-    {
-      "basename": "4-13-An introduction-to-std-string",
-      "path": "docs/4-13-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
       "basename": "index",
@@ -183,22 +199,6 @@
     {
       "basename": "compile-time",
       "path": "docs/compile-time.md"
-    },
-    {
-      "basename": "random-access-memory",
-      "path": "docs/random-access-memory.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "translation",
-      "path": "docs/translation.md"
-    },
-    {
-      "basename": "symbolic-constants",
-      "path": "docs/symbolic-constants.md"
     }
   ],
   "omittedPaths": [],

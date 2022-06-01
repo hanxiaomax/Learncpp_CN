@@ -7,8 +7,12 @@ time: 2021-10-21
 type: translation
 tags:
 - string
+- input-manipulator
 ---
 
+??? note "关键点速记"
+	- `std::string` 不能接收空格，为了输入一整行文本，最好是使用 `std::getline()` 函数
+	- 使用输入或输出操纵器，可以修改`std::cin`或`std::cout`的行为，`std::ws` 输入操纵器告诉`std::cin`要忽略任何前置空白
  
  你编写的第一个 C++ 程序可能是下面这样：
  
@@ -28,7 +32,7 @@ int main()
 
 ## std::string
 
-To use strings in C++, we first need to `#include` the `<string>` header to bring in the declarations for std::string. Once that is done, we can define variables of type std::string.
+为了在 C++ 中使用字符串，我们首先应当 `#include`  `<string>` 头文件以便获取`std::string`的声明。这一步完成后，我们就可以定义`std::string`类型的变量了。
 
 ```cpp
 #include <string> // allows use of std::string
@@ -36,30 +40,27 @@ To use strings in C++, we first need to `#include` the `<string>` header to brin
 std::string myName {}; // empty string
 ```
 
-COPY
 
-Just like normal variables, you can initialize or assign values to strings as you would expect:
+和其他普通变量一样，你可以对字符串进行初始化和赋值：
 
 ```cpp
 std::string myName{ "Alex" }; // initialize myName with string literal "Alex"
 myName = "John"; // assign variable myName the string literal "John"
 ```
 
-COPY
 
-Note that strings can hold numbers as well:
+注意，字符串也可以表示数字：
 
 ```cpp
-std::string myID{ "45" }; // "45" is not the same as integer 45!
+std::string myID{ "45" }; // "45" 不同于整型 45!
 ```
 
-COPY
 
-In string form, numbers are treated as text, not numbers, and thus they can not be manipulated as numbers (e.g. you can’t multiply them). C++ will not automatically convert string numbers to integer or floating point values.
+在字符串中，数字被当做文本处理，因此它们不能被当做数字来使用（例如，你不能将它们相乘）。C++并不会将字符串数字自动转换为整型或浮点型的值。
 
-## String output
+## 字符串输出
 
-Strings can be output as expected using std::cout:
+字符串可以使用 `std::cout` 输出：
 
 ```cpp
 #include <iostream>
@@ -74,13 +75,13 @@ int main()
 }
 ```
 
-COPY
+运行结果为：
 
-This prints:
-
+```
 My name is: Alex
+```
 
-Empty strings will print nothing:
+如果是空字符串，则什么也不会打印：
 
 ```cpp
 #include <iostream>
@@ -95,15 +96,16 @@ int main()
 }
 ```
 
-COPY
 
-Which prints:
+运行结果为：
 
+```
 []
+```
 
-## String input with std::cin
+## 使用 `std::cin` 输入字符串
 
-Using strings with std::cin may yield some surprises! Consider the following example:
+使用`std::cin` 输入字符串可能会有一些出人意料的地方，考虑下面这个例子：
 
 ```cpp
 #include <iostream>
@@ -113,7 +115,7 @@ int main()
 {
     std::cout << "Enter your full name: ";
     std::string name{};
-    std::cin >> name; // this won't work as expected since std::cin breaks on whitespace
+    std::cin >> name; // 可能并不能如愿工作，因为 std::cin 是空格分割的
 
     std::cout << "Enter your age: ";
     std::string age{};
@@ -125,24 +127,22 @@ int main()
 }
 ```
 
-COPY
-
-Here’s the results from a sample run of this program:
+上述程序运行结果如下：
 
 ```
 Enter your full name: John Doe
 Enter your age: Your name is John and your age is Doe
 ```
 
-Hmmm, that isn’t right! What happened? It turns out that when using operator>> to extract a string from cin, operator>> only returns characters up to the first whitespace it encounters. Any other characters are left inside std::cin, waiting for the next extraction.
+完全不对嘛！为什么会这样？实际上，在使用 `operator>> ` 提取字符串到 `cin` 的时候，`operator>>` 只会返回第一个空格前的字符。其他的字符都会被留在 `std::cin` 中供下一次提取。
 
-So when we used operator>> to extract a string into variable `name`, only `"John"` was extracted, leaving `" Doe"` inside std::cin. When we then used operator>> to get variable `age`, it extracted `"Doe"` instead of waiting for us to input an age. Then the program ends.
+因此当我们用 `operator>>` 提取字符串到 `name` 时，只有`"John"` 被提取了，而 `" Doe"` 则被留在了`std::cin` 的缓冲中。随后在使用 `operator>>` 获取 `age` 的时候，它就会提取 `"Doe"` 而不是年龄。然后程序就截止了。
 
-## Use std::getline() to input text
+## 使用 std::getline() 输入文本
 
-To read a full line of input into a string, you’re better off using the `std::getline()` function instead. std::getline() takes two parameters: the first is std::cin, and the second is your string variable.
+为了输入一整行文本，最好是使用 `std::getline()` 函数。  `std::getline()` 可以接受两个参数，第一个是 `std::cin`，第二个则是字符串变量。
 
-Here’s the same program as above using `std::getline()`:
+相同的程序，使用 `std::getline()` 来进行输入：
 
 ```cpp
 #include <string> // For std::string and std::getline
@@ -164,9 +164,7 @@ int main()
 }
 ```
 
-COPY
-
-Now our program works as expected:
+现在，程序可以正常工作了：
 
 ```
 Enter your full name: John Doe
@@ -174,13 +172,14 @@ Enter your age: 23
 Your name is John Doe and your age is 23
 ```
 
-## What the heck is std::ws?
 
-In lesson [4.8 -- Floating point numbers](https://www.learncpp.com/cpp-tutorial/floating-point-numbers/), we discussed `output manipulators`, which allow us to alter the way output is displayed. In that lesson, we used the `output manipulator` function `std::setprecision()` to change the number of digits of precision that std::cout displayed.
+## std::ws 又是什么？
 
-C++ also supports input manipulators, which alter the way that input is accepted. The `std::ws` `input manipulator` tells `std::cin` to ignore any leading whitespace.
+在[[4-8-Floating-point-numbers|4.8 - 浮点数]]中我们讨论了[[Output-manipulators|输出操纵器(output manipulators)]] ，使用它可以改变输出的方式。当时，我们使用输出操纵函数 `std::setprecision()` 修改了`std::cout` 的输出精度。
 
-Let’s explore why this is useful. Consider the following program:
+C++ 当然也提供了[[input-manipulators|输入操纵器(input manipulators)]]  ，它可以修改输入的方式。`std::ws` 输入操纵器告诉`std::cin`要忽略任何前置空白。
+
+通过下面的程序，让我们看看它有什么用：
 
 ```cpp
 #include <string>
@@ -194,7 +193,7 @@ int main()
 
     std::cout << "Now enter your name: ";
     std::string name{};
-    std::getline(std::cin, name); // note: no std::ws here
+    std::getline(std::cin, name); // 注意：没有使用 std::ws 
 
     std::cout << "Hello, " << name << ", you picked " << choice << '\n';
 
@@ -202,16 +201,14 @@ int main()
 }
 ```
 
-COPY
-
-Here’s some output from this program:
+输出结果如下：
 
 ```
 Pick 1 or 2: 2
 Now enter your name: Hello, , you picked 2
 ```
 
-This program first asks you to enter 1 or 2, and waits for you to do so. All good so far. Then it will ask you to enter your name. However, it won’t actually wait for you to enter your name! Instead, it prints the “Hello” string, and then exits. What happened?
+程序s'ho program first asks you to enter 1 or 2, and waits for you to do so. All good so far. Then it will ask you to enter your name. However, it won’t actually wait for you to enter your name! Instead, it prints the “Hello” string, and then exits. What happened?
 
 It turns out, when you enter a value using operator>>, std::cin not only captures the value, it also captures the newline character (`'\n'`) that occurs when you hit the `enter` key. So when we type `2` and then hit `enter`, std::cin gets the string `"2\n"`. It then extracts the `2` to variable `choice`, leaving the newline character behind for later. Then, when std::getline() goes to read the name, it sees `"\n"` is already in the stream, and figures we must have previously entered an empty string! Definitely not what was intended.
 
