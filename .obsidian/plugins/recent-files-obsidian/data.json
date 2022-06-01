@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "index",
+      "path": "docs/index.md"
+    },
+    {
       "basename": "4-x-Chapter-4-summary-and-quiz",
       "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
+    },
+    {
+      "basename": "4-11-Chars",
+      "path": "docs/4-11-Chars.md"
+    },
+    {
+      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
+      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
       "basename": "4-9-Boolean-values",
@@ -15,10 +27,6 @@
     {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
       "basename": "4-4-Signed-integers",
@@ -89,10 +97,6 @@
       "path": "docs/11-7-An-introduction-to-std-string_view.md"
     },
     {
-      "basename": "index",
-      "path": "docs/index.md"
-    },
-    {
       "basename": "1-2-comments",
       "path": "docs/1-2-comments.md"
     },
@@ -103,10 +107,6 @@
     {
       "basename": "8.1 -- Implicit type conversion (coercion)",
       "path": "docs/8.1 -- Implicit type conversion (coercion).md"
-    },
-    {
-      "basename": "4-11-Chars",
-      "path": "docs/4-11-Chars.md"
     },
     {
       "basename": "5-3-Modulus-and-Exponentiation",

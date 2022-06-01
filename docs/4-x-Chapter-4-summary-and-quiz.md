@@ -34,23 +34,23 @@ C++ 支持多种基础数据类型，包括浮点数、整型、布尔类型、�
 
 **科学计数法** （[[4-7-Introduction-to-scientific-notation|4.7 - 科学计数法]]）是一种表示大数的简单记法。C++ 支持科学计数法表示浮点数。科学计数法中，e前面的部分称为有效数字。
 
-**浮点数** （[[4-8-Floating-point-numbers|4.8 - 浮点数]]）类型用于保存实数（包括哪些有小数部分的数）。数字的精度指的是在不丢失精度的前提下，可以表示多少个有效数字。[[rounding-error|舍入误差]]出现在过多的有效数字被存放在无法保存这么多有效数字的浮点数中。舍入误差一致存在，nding errors happen all the time, even with simple numbers such as 0.1. Because of this, you shouldn’t compare floating point numbers directly.
+**浮点数** （[[4-8-Floating-point-numbers|4.8 - 浮点数]]）类型用于保存实数（包括哪些有小数部分的数）。数字的精度指的是在不丢失精度的前提下，可以表示多少个有效数字。[[rounding-error|舍入误差]]出现在过多的有效数字被存放在无法保存这么多有效数字的浮点数中。舍入误差一致存在，即使是像 0.1 这样简单的数。因此，你不能将浮点数进行直接比较。
 
 **布尔**（[[4-9-Boolean-values|4.9 - 布尔值]]）类型用于存放 `true` 和 `false`。
 
-**If 语句** [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]（allow us to execute one or more lines of code if some condition is true. The conditional expression of an _if statement_ is interpreted as a boolean value.
+**If 语句** [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]] 允许我们满足某种条件时才执行一条或多条语句。if 语句的条件表达式会被解析为布尔值。
 
-**字符** （[[4-11-Chars|4.11 - 字符]]）is used to store values that are interpreted as an ASCII character. When using chars, be careful not to mix up ASCII code values and numbers. Printing a char as an integer value requires use of static_cast.
+**字符** （[[4-11-Chars|4.11 - 字符]]）存放的值会被解析为 ASCII 字母。当使用字符时，小心不要将 ASCII 码值和数字搞混。如果需要把字符当整型打印处理，需要使用 `static_cast`。
 
-Angled brackets are typically used in C++ to represent something that needs a parameterizable type. This is used with static_cast to determine what data type the argument should be converted to (e.g. `static_cast<int>(x)` will convert _x_ to an int).（[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]）
+尖括号在 C++ 中通常用来表示参数化类型。在 `static_cast` 中，尖括号的内容指定了目标类型。(例如 `static_cast<int>(x)`会把 `x` 转换为 `int`)。（[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]）
 
-**std::string** （[[4-13-An introduction-to-std-string|4.13 - std::string 简介]]）offers an easy and safe way to deal with text strings. String literals are always placed between double quotes. std::string lives in the `<string>` header.
+**std::string** （[[4-13-An introduction-to-std-string|4.13 - std::string 简介]]）提供了简便、安全的处理字符串的方式。字符串字面量总是放在双引号中。使用 `std::string` 需要包含 `<string>` 头文件。
 
-A **constant** （[[4-14-Literal-constants|4.14 - 字面量常量]]）is a fixed value that may not be changed. C++ supports two types of constants: literal constants, and symbolic constants.
+**常量** （[[4-14-Literal-constants|4.14 - 字面量常量]]）指的是值不会改变的变量。C++ 支持两种常量：字面量常量和符号常量
 
-**字面量**（[[4-14-Literal-constants|4.14 - 字面量常量]]） are values inserted directly into the code. Literals have types, and literal suffixes can be used to change the type of a literal from default.
+**字面量**（[[4-14-Literal-constants|4.14 - 字面量常量]]）是直接嵌入到代码中的常量。字面量是有类型的，而字面量后缀可以用来修改字面量的默认类型。
 
-**Const** （[[4-14-Literal-constants|4.14 - 字面量常量]]）variables are variables that can’t be changed after being initialized. Const variables can be either runtime or compile-time constants. **constexpr** variables must be compile-time constants.
+**Const** （[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]）变量指的是一旦初始化后就不会改变的变量。const 变量要么是编译时常量，要么是运行时常量。**constexpr** 变量必须是编译时常量。
 
 
 不要在代码中使用魔术数字，应该用符号常量代替它。
