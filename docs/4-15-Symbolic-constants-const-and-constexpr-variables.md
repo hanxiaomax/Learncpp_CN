@@ -17,6 +17,7 @@ tags:
 	- 任何在初始化后值就不能被改变，但是初始化值不能在编译时确定的变量，都应该声明为 `const`
 	- 字面量是隐式的 `constexpr`，因为字面量的值在编译时就可以确定
 	- 常数表达式指的是可以在运行时求值得到结果的表达式
+	- C++17 和之前的版本不支持 `constexpr std::string` ，只有在 C++20 中才有有限的的支持。如果你想要使用 `constexpr strings`，应该用 `std::string_view` 代替
 
 ## Const 变量
 
@@ -211,7 +212,7 @@ int main()
 ```
 
 
-这是se `constexpr std::string` isn’t supported in C++17 or earlier, and only has minimal support in C++20. If you need constexpr strings, use `std::string_view` instead:
+这是因为在C++17或之前的版本中还不支持 `constexpr std::string` ，只有在 C++20 中才有有限的的支持。如果你想要使用 `constexpr strings`，应该用 `std::string_view` 代替：
 
 ```cpp
 #include <iostream>
@@ -233,17 +234,15 @@ COPY
 
 !!! info "相关内容"
 
-	<>
-
-We cover std::string view in lesson [[11-7-An-introduction-to-std-string_view|11.7 - std::string_view 简介]]
+	我们会在 [[11-7-An-introduction-to-std-string_view|11.7 - std::string_view 简介]] 中介绍`std::string_view`
 
 ## const 变量的命名
 
-Some programmers prefer to use all upper-case names for const variables. Others use normal variable names with a ‘k’ prefix. However, we will use normal variable naming conventions, which is more common. Const variables act exactly like normal variables in every case except that they can not be assigned to, so there’s no particular reason they need to be denoted as special.
+有些程序员喜欢用全大写字母来命名  const 变量。而有些程序员则喜欢使用普通变量名加`k`前缀。本课程会使用普通变量名的命名方法。const 变量在各种情况下都和普通变量具有一样的表现，只是它们的值不能被修改而已，因此我们也没有必要对其进行特别地命名。
 
 ## Const 类型的函数形参和返回值
 
-Const can also be used with function parameters:
+const 类型也可以用于函数形参：
 
 ```cpp
 #include <iostream>
@@ -263,14 +262,14 @@ int main()
 ```
 
 
-Making a function parameter const enlists the compiler’s help to ensure that the parameter’s value is not changed inside the function. Note that we did not provide an explicit initializer for our const parameter -- the value of the argument in the function call will be used as the initializer in this case.
+将函数的形参定义为 `const` 类型，可以借助编译器来确保该参数的值再函数中不会被修改。注意，在上面的例子中我们并没有为 `const` 参数提供一个初始化值——在这个例子中，传递给函数的实参被用作初始化值。 
 
-When arguments are passed by value, we generally don’t care if the function changes the value of the parameter (since it’s just a copy that will be destroyed at the end of the function anyway). For this reason, we usually don’t const parameters passed by value. But later on, we’ll talk about other kinds of function parameters (where changing the value of the parameter will change the value of the argument passed in). For these other types of parameters, use of const is important.
+当使用[[pass-by-value|按值传递]]的方式传递实参是，我们通常不会在意函数中是否修改了该才是（毕竟它只是一份拷贝，而且在函数退出时就销毁了）。出于这个原因，通常我们不会把值传递的形参定义为 `const`。 但是，稍后我们会介绍另外一种类型的形参（改变形参会改变创的实参）。对于这种类型的形参，将其定义为 `const` 类型还是很重要的。
 
 !!! success "最佳实践"
 
-	Function parameters for arguments passed by value should not be made const.
-
+	函数的形参按值传递时，没必要定义为 const。
+	
 A function’s return value may also be made const:
 
 ```cpp
