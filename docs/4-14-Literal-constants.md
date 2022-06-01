@@ -11,12 +11,15 @@ tags:
 ---
 
 ??? note "关键点速记"
+
 	- 常量有两种，字面量常量（简称字面量）和符号常量
 	- 字面量的类型具有默认值，可以通过后缀修改
 		- 小数字面量的默认类型为double而不是float
 		- C风格的字符串，默认类型为字符数组
-	- `std::string`和`std::string_view`类型的字面量可以通过`s`和``
-
+	- `std::string`和`std::string_view`类型的字面量可以通过`s`和`sv`后缀指定，在类型推断时比较有用，其他情况一般不需要
+	- 声明浮点数字面量的方法有两种：`3.14159`或`1.9e10`
+	- C++14才支持了使用`0b`创建二进制字面量，同时可以用单引号作为位的分隔符，但是分隔符不能放在第一位前面
+	- 使用 `std::bitset`，我们可以定义一个 `std::bitset` 变量，并且告诉 `std::bitset` 有多少位需要存储
 
 在编程中，常量（constant）指的是不会改变的值。C++支持两种常量：字面量常量和符号常量。本节课我们会介绍字面量常量，然后下节课 [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数 const 和 constexpr 变量]]中会介绍符号常量。
 
@@ -126,15 +129,14 @@ std::cout << "Hello," " world!"; // C++ 会链接字符串字面量
 
 ## 浮点数字面量的科学计数法表示
 
-There are two different ways to declare floating-point literals:
+声明浮点数字面量的方法有两种：
 
 ```cpp
-double pi { 3.14159 }; // 3.14159 is a double literal in standard notation
-double avogadro { 6.02e23 }; // 6.02 x 10^23 is a double literal in scientific notation
+double pi { 3.14159 }; // 3.14159 是 double 类型字面量
+double avogadro { 6.02e23 }; // 6.02 x 10^23 是 double 类型，科学计数法表示
 ```
 
-
-In the second form, the number after the exponent can be negative:
+对于科学计数法来讲，指数部分也可以是负值：
 
 ```cpp
 double electron { 1.6e-19 }; // charge on an electron is 1.6 x 10^-19
@@ -143,26 +145,25 @@ double electron { 1.6e-19 }; // charge on an electron is 1.6 x 10^-19
 
 ## 8进制和16进制字面量
 
-In everyday life, we count using decimal numbers, where each numerical digit can be 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9. Decimal is also called “base 10”, because there are 10 possible digits (0 through 9). In this system, we count like this: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, … By default, numbers in C++ programs are assumed to be decimal.
+在日常生活中，我们习惯了数字可以有 0, 1, 2, 3, 4, 5, 6, 7, 8, 或 9。十进制也称为“base 10”，因为它可以有10种不同的数字(0 到 9)。在这个系统里，我们会按照 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, … 的方式来计数，而在 C++ 中，数字也是默认十进制表示法。
 
 ```cpp
 int x { 12 }; // 12 is assumed to be a decimal number
 ```
 
-COPY
 
-In binary, there are only 2 digits: 0 and 1, so it is called “base 2”. In binary, we count like this: 0, 1, 10, 11, 100, 101, 110, 111, …
+对于二进制来说，数字只有 0 和 1 两种可能，所以才叫做 2 （“base 2”）。二进制计数时通常是这样的：0, 1, 10, 11, 100, 101, 110, 111, …
 
-There are two other “bases” that are sometimes used in computing: octal, and hexadecimal.
+当然，计算机有时候也使用其他的进制，例如八进制和十六进制。
 
-Octal is base 8 -- that is, the only digits available are: 0, 1, 2, 3, 4, 5, 6, and 7. In Octal, we count like this: 0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, … (note: no 8 and 9, so we skip from 7 to 10).
+八进制的数字有8种可能: 0, 1, 2, 3, 4, 5, 6, 和 7。计数方式类似于 0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, … （注意，没有8和9，所以我们从7跳到了10（一零））
 
-|Decimal |0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10 |11|
+|十进制 |0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10 |11|
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|Octal |0 |1 |2 |3 |4 |5 |6 |7 |10 |11 |12 |13|
+|八进制 |0 |1 |2 |3 |4 |5 |6 |7 |10 |11 |12 |13|
 
 
-To use an octal literal, prefix your literal with a 0 (zero):
+如需使用八进制，则需要在数字前加一个`0`（零）作为前缀。
 
 ```cpp
 #include <iostream>
@@ -175,27 +176,24 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+打印结果为：
 
 ```
 10
 ```
 
-Why 10 instead of 12? Because numbers are printed in decimal, and 12 octal = 10 decimal.
+为什么打印的是 10 而不是 12？因为打印时使用的是十进制，而八进制的12等于10进制的10。
 
-Octal is hardly ever used, and we recommend you avoid it.
+八进制很难用，我建议你避免使用它。
 
-Hexadecimal is base 16. In hexadecimal, we count like this: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, 10, 11, 12, …
+十六进制有16个数：0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, 10, 11, 12, …
 
 
-|Decimal |0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10 |11 |12 |13 |14 |15 |16 |17|
+|十进制 |0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10 |11 |12 |13 |14 |15 |16 |17|
 |---|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|Hexadecimal |0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |A |B |C |D |E |F |10 |11|
+|十六进制 |0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |A |B |C |D |E |F |10 |11|
 
-
-To use a hexadecimal literal, prefix your literal with 0x.
+如需使用十六进制，则需要在数字前加一个`0x`（零x）作为前缀。
 
 ```cpp
 #include <iostream>
@@ -208,19 +206,17 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+打印结果为：
 
 ```
 15
 ```
 
-Because there are 16 different values for a hexadecimal digit, we can say that a single hexadecimal digit encompasses 4 bits. Consequently, a pair of hexadecimal digits can be used to exactly represent a full byte.
+因为16进制中每一位数字都有16种可能，所以一个十六进制的数刚好占用了4个位。因此，一对十六进制数刚好可以表示一个字节（8个位） 。
 
-Consider a 32-bit integer with value 0011 1010 0111 1111 1001 1000 0010 0110. Because of the length and repetition of digits, that’s not easy to read. In hexadecimal, this same value would be: 3A7F 9826. This makes hexadecimal values useful as a concise way to represent a value in memory. For this reason, hexadecimal values are often used to represent memory addresses or raw values in memory.
+一个32位的整型表示成二进制是这个样子的：0011 1010 0111 1111 1001 1000 0010 0110。这个二进制数非常长而且都是重复的数字，读起来就很困难。而如果写成十六进制，则变成了：3A7F 9826。这也使得十六进制数成为了一种非常适合精简地表示内存中值的方式。因此，我们通常都会使用十六进制数来表示内存地址或内存中的原始数据。
 
-Prior to C++14, there is no way to assign a binary literal. However, hexadecimal values provide us with a useful workaround:
+在 C++14之前，是没有办法直接赋值二进制字面量的，不过我们可以利用十六进制值来曲线救国：
 
 ```cpp
 #include <iostream>
@@ -244,11 +240,10 @@ int main()
 }
 ```
 
-COPY
 
-## C++14 binary literals and digit separators
+## C++14 中的二进制字面量和分隔符
 
-In C++14, we can assign binary literals by using the 0b prefix:
+在 C++14 中，可以使用`0b`前缀来创建二进制字面量：
 
 ```cpp
 #include <iostream>
@@ -265,9 +260,8 @@ int main()
 }
 ```
 
-COPY
 
-Because long literals can be hard to read, C++14 also adds the ability to use a quotation mark (‘) as a digit separator.
+因为二进制字面量一旦长了就很难阅读，C++14引入了单引号`'`作为分隔符。 
 
 ```cpp
 #include <iostream>
@@ -281,21 +275,18 @@ int main()
 }
 ```
 
-COPY
+如果你的编译器不支持 C++14，那么你使用上述表示法的时候将会报错。
 
-If your compiler isn’t C++14 compatible, your compiler will complain if you try to use either of these.
-
-Also note that the separator can not occur before the first digit of the value:
+此外，请注意分隔符不能放在第一位前面：
 
 ```cpp
 int bin { 0b'1011'0010 };  // error: ' used before first digit of value
 ```
 
-COPY
 
-## Printing decimal, octal, hexadecimal, and binary numbers
+## 十进制、八进制、十六进制和二进制数的打印
 
-By default, C++ prints values in decimal. However, you can tell it to print in other formats. Printing in decimal, octal, or hex is easy via use of `std::dec`, `std::oct`, and std::hex:
+默认情况下，C++ 会按照十进制来打印数值。不过你可以告诉它打印其他格式。使用`std::dec`、`std::oct` 和 `std::hex`可以轻松打印十进制、八进制和十六进制。
 
 ```cpp
 #include <iostream>
@@ -314,9 +305,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果为：
 
 ```
 12
@@ -327,7 +316,7 @@ c
 12
 ```
 
-Printing in binary is a little harder, as `std::cout` doesn’t come with this capability built-in. Fortunately, the C++ standard library includes a type called `std::bitset` that will do this for us (in the `<bitset>` header). To use `std::bitset`, we can define a `std::bitset` variable and tell `std::bitset` how many bits we want to store. The number of bits must be a compile time constant. `std::bitset` can be initialized with an unsigned integral value (in any format, including decimal, octal, hex, or binary).
+打印二进制有点复杂，因为 `std::cout` 本身并不支持打印二进制。幸好，C++标准库里面有一个叫做 `std::bitset` 的类型可以为我所用 (需要 `<bitset>` 头文件)。 使用 `std::bitset`，我们可以定义一个 `std::bitset` 变量，并且告诉 `std::bitset` 有多少位需要存储。这个位数必须是一个编译时常量。`std::bitset` 可以通过一个无符号字面量来初始化（任何格式都可以，十进制、八进制、十六进制或者二进制）。
 
 ```cpp
 #include <bitset> // for std::bitset
