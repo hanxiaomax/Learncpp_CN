@@ -10,6 +10,9 @@ tags:
 - constexpr
 ---
 
+??? note "关键点速记"
+	- 
+
 ## Const 变量
 
 到目前为止，我们看到的所有变量都是“非常量”——也就说它们的值可以在任何时间被改变，例如：
@@ -36,7 +39,7 @@ const 类型的变量通常被称为符号常量（与之相对的是字符串�
 
 ## Const 变量必须初始化
 
-Const variables _must_ be initialized when you define them, and then that value can not be changed via assignment:
+const 变量**必须**在定义时初始化，此后你也不能通过赋值来改变它：
 
 ```cpp
 int main()
@@ -48,7 +51,7 @@ int main()
 }
 ```
 
-Note that const variables can be initialized from other variables (including non-const ones):
+注意，const 变量可以使用其他类型的变量初始化（包括非const类型的变量）：
 
 ```cpp
 #include <iostream>
@@ -70,13 +73,13 @@ int main()
 }
 ```
 
-COPY
 
 ## 运行时常量和编译时常量
 
-C++ actually has two different kinds of constants.
+C++ 实际上有两种类型的常量。
 
-Runtime constants are constants whose initialization values can only be resolved at runtime (when your program is running). The following are examples of runtime constants:
+[[runtime|运行时]]常量的初始化值必须在运行时才能解析（当程序运行时），下面的例子展示了运行时常量：
+
 
 ```cpp
 #include <iostream>
@@ -101,22 +104,19 @@ int main()
 }
 ```
 
-COPY
 
-Variables such as _usersAge_ and _x_ in the above program above are runtime constants, because the compiler can’t determine their initial values until the program is actually run. _usersAge_ relies on user input (which can only be given at runtime) and _x_ depends on the value passed into the function (which is only known at runtime). However, once initialized, the value of these constants can’t be changed.
+上面程序中的`usersAge` 和 `x` 这样的变量，就是运行时常量，因为编译器不能确定它们的初始值，必须等到程序运行时才能确定。`usersAge` 的值依赖用户的输入（只有在运行时才能获取输入）而 `x` 的值依赖于传入函数的值（也只有在程序运行时才知道）。不过，一旦这些值被初始化之后，它们的值就不能再改变了。
 
-Compile-time constants are constants whose initialization values can be determined at compile-time (when your program is compiling). The following are examples of compile-time constants:
+编译时常量的初始化值，可以在[[compile-time|编译时]]就确定。下面的例子展示了编译时常量：
 
 ```cpp
 const double gravity { 9.8 }; // the compiler knows at compile-time that gravity will have value 9.8
 const int something { 1 + 2 }; // the compiler can resolve this at compiler time
 ```
 
-COPY
+编译时常量可以使编译器进行编译优化，这是运行时常量做不到的。例如，每当使用 `gravity` 的时候，编译器可以直接将其替换为字面量 9.8。
 
-Compile-time constants enable the compiler to perform optimizations that aren’t available with runtime constants. For example, whenever _gravity_ is used, the compiler can simply substitute the identifier _gravity_ with the literal double _9.8_.
-
-When you declare a const variable, the compiler will implicitly keep track of whether it’s a runtime or compile-time constant. In most cases, this doesn’t matter, but there are a few odd cases where C++ requires a compile-time constant instead of a run-time constant (we’ll cover these cases later as we introduce those topics).
+当你声明一个 const 变量的时候，编译器会自动追踪并判断它是运行时变量还是编译时bi you declare a const variable, the compiler will implicitly keep track of whether it’s a runtime or compile-time constant. In most cases, this doesn’t matter, but there are a few odd cases where C++ requires a compile-time constant instead of a run-time constant (we’ll cover these cases later as we introduce those topics).
 
 ## constexpr
 
