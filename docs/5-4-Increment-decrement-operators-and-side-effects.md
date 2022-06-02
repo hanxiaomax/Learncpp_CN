@@ -12,7 +12,8 @@ tags:
 
 ??? note "关键点速记"
 
-	- 后缀版本的运算符多了很多步骤（需要创建一个副本），因此它的性能不如前缀版本。
+	- 后缀版本的运算符多了很多步骤（需要创建一个副本），因此它的性能不如前缀版本
+	- 强烈推荐使用前缀版本的递增递减运算符，因为它们性能更好，而且也不容易带来问题
 
 
 ## 变量的自增自减
@@ -98,8 +99,7 @@ int main()
 }
 ```
 
-
-This produces the output:
+输出结果如下：
 
 ```
 5 5
@@ -109,21 +109,22 @@ This produces the output:
 7 3
 ```
 
-On the 8th line, we do a prefix increment and decrement. On this line, _x_ and _y_ are incremented/decremented _before_ their values are sent to std::cout, so we see their updated values reflected by std::cout.
+在第八行中，我们使用了前缀递增递减。因此这一行中 x 和 y 先递增，再打印，因此它们更新后的值被打印了出来。
 
-On the 10th line, we do a postfix increment and decrement. On this line, the copy of _x_ and _y_ (with the pre-incremented and pre-decremented values) are what is sent to std::cout, so we don’t see the increment and decrement reflected here. Those changes don’t show up until the next line, when _x_ and _y_ are evaluated again.
+
+在第十行中，我们使用的是后缀递增递减。因此这一行中，x 和 y 先被拷贝，然后打印。所以我们没有看到递增后的结果被打印出来。递增的结果只有再下一次打印时才能有所体现。
 
 !!! success "最佳实践"
 
-	Strongly favor the prefix version of the increment and decrement operators, as they are generally more performant, and you’re less likely to run into strange issues with them.
-
+	强烈推荐使用前缀版本的递增递减运算符，因为它们性能更好，而且也不容易带来问题。
+	
 ## 副作用
 
-A function or expression is said to have a side effect if it does anything that persists beyond the life of the function or expression itself.
+如果我们说一个函数或表达式具有副作用，则意味着它执行后带来了某些影响且这些影响在函数或表达式的生命周期结束后还存在。
 
-Common examples of side effects include changing the value of objects, doing input or output, or updating a graphical user interface (e.g. enabling or disabling a button).
+副作用的典型例子包括对象的值被改变、进行了输入输出或者更新了图形用户界面（例如打开或关闭某个按钮）。
 
-Most of the time, side effects are useful:
+很多时候，副作用是有用的：
 
 ```cpp
 x = 5; // the assignment operator modifies the state of x
@@ -131,7 +132,7 @@ x = 5; // the assignment operator modifies the state of x
 std::cout << x; // operator<< modifies the state of the console
 ```
 
-The assignment operator in the above example has the side effect of changing the value of _x_ permanently. Even after the statement has finished executing, _x_ will still have the value 5. Similarly with operator++, the value of _x_ is altered even after the statement has finished evaluating. The outputting of _x_ also has the side effect of modifying the state of the console, as you can now see the value of _x_ printed to the console.
+上面赋值号的副作用是永久地改变了 `x` 的值，即使在赋值语句结束执行后，`x` 的值也还是 5. Even after the statement has finished executing, _x_ will still have the value 5. Similarly with operator++, the value of _x_ is altered even after the statement has finished evaluating. The outputting of _x_ also has the side effect of modifying the state of the console, as you can now see the value of _x_ printed to the console.
 
 However, side effects can also lead to unexpected results:
 
