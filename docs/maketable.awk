@@ -1,18 +1,17 @@
 #! /usr/bin/awk -f
 BEGIN{
-    IF="\t"
+    FS="\t"
     OFS="\t|"
-    col = NF
 }
 {
     $1="|"$1;
     $NF=$NF"|";
     print;
 }
-FNR==2 {
-    print col
-    while(col>0){
-        print "|---|";
-        col--;
+FNR==1 {
+    col = NF
+    while(col-->1){
+        printf "|---"
     }
+    print "|---|"
 }

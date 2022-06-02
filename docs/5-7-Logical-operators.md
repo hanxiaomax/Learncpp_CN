@@ -16,10 +16,10 @@ Logical operators provide us with the capability to test multiple conditions.
 C++ has 3 logical operators:
 
 |Operator	|Symbol	|Form	|Operation|
-|----|----|----|----|
+|---|---|---|---|
 |Logical NOT	|!	|!x	|true if x is false, or false if x is true|
 |Logical AND	|&&	|x && y	|true if both x and y are true, false otherwise|
-|Logical OR	|||	|x || y	|true if either x or y are true, false otherwise|
+|Logical OR	| \|\|	| x \|\| y|true if either x or y are true, false otherwise|
 
 
 ## Logical NOT
@@ -103,7 +103,7 @@ If _logical NOT_ is intended to operate on the result of other operators, the 
 
 Simple uses of _logical NOT_, such as `if (!value)` do not need parentheses because precedence does not come into play.
 
-Logical OR
+## Logical OR
 
 The _logical OR_ operator is used to test whether either of two conditions is true. If the left operand evaluates to true, or the right operand evaluates to true, or both are true, then the _logical OR_ operator returns true. Otherwise it will return false.
 
@@ -113,3 +113,235 @@ The _logical OR_ operator is used to test whether either of two conditions is 
 |false	|true	|true|
 |true	|false	|true|
 |true	|true	|true|
+
+For example, consider the following program:
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a number: ";
+    int value {};
+    std::cin >> value;
+
+    if (value == 0 || value == 1)
+        std::cout << "You picked 0 or 1\n";
+    else
+        std::cout << "You did not pick 0 or 1\n";
+    return 0;
+}
+```
+
+COPY
+
+In this case, we use the logical OR operator to test whether either the left condition (value == 0) or the right condition (value == 1) is true. If either (or both) are true, the _logical OR_ operator evaluates to true, which means the _if statement_ executes. If neither are true, the _logical OR_ operator evaluates to false, which means the _else statement_ executes.
+
+You can string together many _logical OR_ statements:
+
+```cpp
+if (value == 0 || value == 1 || value == 2 || value == 3)
+     std::cout << "You picked 0, 1, 2, or 3\n";
+```
+
+COPY
+
+New programmers sometimes confuse the _logical OR_ operator (||) with the _bitwise OR_ operator (|) (Covered later). Even though they both have _OR_ in the name, they perform different functions. Mixing them up will probably lead to incorrect results.
+
+
+## Logical AND
+
+The _logical AND_ operator is used to test whether both operands are true. If both operands are true, _logical AND_ returns true. Otherwise, it returns false.
+
+|Left operand	|Right operand	|Result|
+|---|---|---|
+|false	|false	|false|
+|false	|true	|false|
+|true	|false	|false|
+|true	|true	|true|
+
+
+For example, we might want to know if the value of variable _x_ is between _10_ and _20_. This is actually two conditions: we need to know if _x_ is greater than _10_, and also whether _x_ is less than _20_.
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a number: ";
+    int value {};
+    std::cin >> value;
+
+    if (value > 10 && value < 20)
+        std::cout << "Your value is between 10 and 20\n";
+    else
+        std::cout << "Your value is not between 10 and 20\n";
+    return 0;
+}
+```
+
+COPY
+
+In this case, we use the _logical AND_ operator to test whether the left condition (value > 10) AND the right condition (value < 20) are both true. If both are true, the _logical AND_ operator evaluates to true, and the _if statement_ executes. If neither are true, or only one is true, the _logical AND_ operator evaluates to false, and the _else statement_ executes.
+
+As with _logical OR_, you can string together many _logical AND_ statements:
+
+```cpp
+if (value > 10 && value < 20 && value != 16)
+    // do something
+else
+    // do something else
+```
+
+COPY
+
+If all of these conditions are true, the _if statement_ will execute. If any of these conditions are false, the _else statement_ will execute.
+
+As with logical and bitwise OR, new programmers sometimes confuse the _logical AND_ operator (&&) with the _bitwise AND_ operator (&).
+
+Short circuit evaluation
+
+In order for _logical AND_ to return true, both operands must evaluate to true. If the first operand evaluates to false, _logical AND_ knows it must return false regardless of whether the second operand evaluates to true or false. In this case, the _logical AND_ operator will go ahead and return false immediately without even evaluating the second operand! This is known as short circuit evaluation, and it is done primarily for optimization purposes.
+
+Similarly, if the first operand for _logical OR_ is true, then the entire OR condition has to evaluate to true, and the second operand won’t be evaluated.
+
+Short circuit evaluation presents another opportunity to show why operators that cause side effects should not be used in compound expressions. Consider the following snippet:
+
+```cpp
+if (x == 1 && ++y == 2)
+    // do something
+```
+
+COPY
+
+if _x_ does not equal _1_, the whole condition must be false, so ++y never gets evaluated! Thus, _y_ will only be incremented if _x_ evaluates to 1, which is probably not what the programmer intended!
+
+
+!!! warning "注意"
+
+	Short circuit evaluation may cause _Logical OR_ and _Logical AND_ to not evaluate one operand. Avoid using expressions with side effects in conjunction with these operators.
+
+!!! tldr "关键信息"
+
+	The Logical OR and logical AND operators are an exception to the rule that the operands may evaluate in any order, as the standard explicitly states that the left operand must evaluate first.
+
+!!! info "扩展阅读"
+
+    Only the built-in versions of these operators perform short-circuit evaluation. If you overload these operators to make them work with your own types, those overloaded operators will not perform short-circuit evaluation.
+
+## Mixing ANDs and ORs
+
+Mixing _logical AND_ and _logical OR_ operators in the same expression often can not be avoided, but it is an area full of potential dangers.
+
+Many programmers assume that _logical AND_ and _logical OR_ have the same precedence (or forget that they don’t), just like addition/subtraction and multiplication/division do. However, _logical AND_ has higher precedence than _logical OR_, thus _logical AND_ operators will be evaluated ahead of _logical OR_operators (unless they have been parenthesized).
+
+New programmers will often write expressions such as `value1 || value2 && value3`. Because _logical AND_ has higher precedence, this evaluates as `value1 || (value2 && value3)`, not `(value1 || value2) && value3`. Hopefully that’s what the programmer wanted! If the programmer was assuming left to right evaluation (as happens with addition/subtraction, or multiplication/division), the programmer will get a result he or she was not expecting!
+
+When mixing _logical AND_ and _logical OR_ in the same expression, it is a good idea to explicitly parenthesize each operator and its operands. This helps prevent precedence mistakes, makes your code easier to read, and clearly defines how you intended the expression to evaluate. For example, rather than writing `value1 && value2 || value3 && value4`, it is better to write `(value1 && value2) || (value3 && value4)`.
+
+Best practice
+
+When mixing _logical AND_ and _logical OR_ in a single expression, explicitly parenthesize each operation to ensure they evaluate how you intend.
+
+De Morgan’s law
+
+Many programmers also make the mistake of thinking that `!(x && y)` is the same thing as `!x && !y`. Unfortunately, you can not “distribute” the _logical NOT_ in that manner.
+
+[De Morgan’s law](https://en.wikipedia.org/wiki/De_Morgan%27s_laws) tells us how the _logical NOT_ should be distributed in these cases:
+
+`!(x && y)` is equivalent to `!x || !y`  
+`!(x || y)` is equivalent to `!x && !y`
+
+In other words, when you distribute the _logical NOT_, you also need to flip _logical AND_ to _logical OR_, and vice-versa!
+
+This can sometimes be useful when trying to make complex expressions easier to read.
+
+
+!!! info "扩展阅读"
+
+    We can show that the first part of De Morgan’s Law is correct by proving that `!(x && y)` equals `!x || !y` for every possible value of `x` and `y`. To do so, we’ll use a mathematical concept called a truth table:
+
+	|x	|y	|!x	|!y	|!(x && y)	|!x || !y|
+	|---|---|---|---|---|---|
+	|false	|false	|true	|true	|true	|true|
+	|false	|true	|true	|false	|true	|true|
+	|true	|false	|false	|true	|true	|true|
+	|true	|true	|false	|false	|false	|false|
+
+
+	In this table, the first and second columns represent our `x` and `y` variables. Each row in the table shows one permutation of possible values for `x` and `y`. Because `x` and `y` are Boolean values, we only need 4 rows to cover every combination of possible values that `x` and `y` can hold.
+	
+	The rest of the columns in the table represent expressions that we want to evaluate based on the initial values of `x` and `y`. The third and fourth columns calculate the values of `!x` and `!y` respectively. The fifth column calculates the value of `!(x && y)`. Finally, the sixth column calculates the value of `!x || !y`.
+	
+	You’ll notice for each row, the value in the fifth column matches the value in the sixth column. This means for every possible value of `x` and `y`, the value of `!(x && y)` equals `!x || !y`, which is what we were trying to prove!
+	
+	We can do the same for the second part of De Morgan’s Law:
+
+	|x	|y	|!x	|!y	|!(x || y)	|!x && !y|
+	|---|---|---|---|---|---|
+	|false	|false	|true	|true	|true	|true|
+	|false	|true	|true	|false	|false	|false|
+	|true	|false	|false	|true	|false	|false|
+	|true	|true	|false	|false	|false	|false|
+
+
+	Similarly, for every possible value of `x` and `y`, we can see that the value of `!(x || y)` equals the value of `!x && !y`. Thus, they are equivalent.
+
+## Where’s the logical exclusive or (XOR) operator?
+
+_Logical XOR_ is a logical operator provided in some languages that is used to test whether an odd number of conditions is true.
+
+
+|Left operand	|Right operand	|Result|
+|---|---|---|
+|false	|false	|false|
+|false	|true	|true|
+|true	|false	|true|
+|true	|true	|false|
+
+C++ doesn’t provide a _logical XOR_ operator. Unlike _logical OR_ or _logical AND_, _logical XOR_ cannot be short circuit evaluated. Because of this, making a _logical XOR_ operator out of _logical OR_ and _logical AND_ operators is challenging. However, you can easily mimic _logical XOR_ using the _inequality_ operator (!=):
+
+```cpp
+if (a != b) ... // a XOR b, assuming a and b are Booleans
+```
+
+COPY
+
+This can be extended to multiple operands as follows:
+
+```cpp
+if (a != b != c != d) ... // a XOR b XOR c XOR d, assuming a, b, c, and d are Booleans
+```
+
+COPY
+
+Note that the above XOR patterns only work if the operands are Booleans (not integers). If you need a form of _logical XOR_ that works with non-Boolean operands, you can static_cast them to bool:
+
+```cpp
+if (static_cast<bool>(a) != static_cast<bool>(b) != static_cast<bool>(c) != static_cast<bool>(d)) ... // a XOR b XOR c XOR d, for any type that can be converted to bool
+```
+
+
+## Alternative operator representations
+
+Many operators in C++ (such as operator ||) have names that are just symbols. Historically, not all keyboards and language standards have supported all of the symbols needed to type these operators. As such, C++ supports an alternative set of keywords for the operators that use words instead of symbols. For example, instead of `||`, you can use the keyword `or`.
+
+The full list can be found [here](https://en.cppreference.com/w/cpp/language/operator_alternative). Of particular note are the following three:
+
+
+|Operator name	|Keyword alternate name|
+|---|---|
+|&&	|and|
+|\|\|	|or|
+|!	|not|
+
+This means the following are identical:
+
+```cpp
+std::cout << !a && (b || c);
+std::cout << not a and (b or c);
+```
+
+COPY
+
+While these alternative names might seem easier to understand right now, most experienced C++ developers prefer using the symbolic names over the keyword names. As such, we recommend learning and using the symbolic names, as this is what you will commonly find in existing code.

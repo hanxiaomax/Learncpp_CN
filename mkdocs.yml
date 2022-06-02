@@ -109,8 +109,16 @@ nav:
       - "4-14-Literal-constants.md"
       - "4-15-Symbolic-constants-const-and-constexpr-variables.md"
       - "4-x-Chapter-4-summary-and-quiz.md"
-    # - 5. 运算符: index.md
-    # - 6. 作用域，生命周期和链接: index.md
+    - 5. 运算符:
+      - "5-1-Operator-precedence-and-associativity.md"
+      - "5-2-Arithmetic-operators.md"
+      - "5-3-Modulus-and-Exponentiation.md"
+      - "5-4-Increment-decrement-operators-and-side-effects.md"
+      - "5-5-Comma-and-conditional-operators.md"
+      - "5-6-Relational-operators-and-floating-point-comparisons.md"
+      - "5-7-Logical-operators.md"
+      - "5-x-Chapter-5-summary-and-quiz.md"
+    - 6. 作用域，生命周期和链接:
     # - 7. 控制流和错误处理: index.md
     # - 8. 类型转换和函数重载: index.md
     # - 9. 复合类型-引用和指针: index.md

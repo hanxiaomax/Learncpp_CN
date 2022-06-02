@@ -9,20 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/5-7-Logical-operators.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
-        }
-      },
-      {
-        "id": "eea45d17f7ee9a1f",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "docs/tabledata.md",
+            "file": "docs/11-7-An-introduction-to-std-string_view.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -99,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/5-7-Logical-operators.md"
+                "file": "docs/11-7-An-introduction-to-std-string_view.md"
               }
             }
           },
@@ -120,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/5-7-Logical-operators.md",
+                "file": "docs/11-7-An-introduction-to-std-string_view.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,15 +128,15 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
-    "docs/5-7-Logical-operators.md",
-    "docs/tabledata.md",
-    "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
-    "docs/5-5-Comma-and-conditional-operators.md",
-    "docs/5-4-Increment-decrement-operators-and-side-effects.md",
-    "docs/5-2-Arithmetic-operators.md",
-    "docs/5-1-Operator-precedence-and-associativity.md",
-    "docs/index.md",
-    "docs/4-x-Chapter-4-summary-and-quiz.md",
-    "docs/4-11-Chars.md"
+    "docs/11-7-An-introduction-to-std-string_view.md",
+    "docs/8.5 -- Explicit type conversion (casting) and static_cast.md",
+    "docs/8.1 -- Implicit type conversion (coercion).md",
+    "docs/8-9-Introduction-to-function-overloading.md",
+    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
+    "docs/7.2 -- If statements and blocks.md",
+    "docs/7-10-Break-and-continue.md",
+    "docs/6-12-Using-declarations-and-using directives.md",
+    "docs/5-x-Chapter-5-summary-and-quiz.md",
+    "docs/1-x-Chapter-1-summary-and-quiz.md"
   ]
 }

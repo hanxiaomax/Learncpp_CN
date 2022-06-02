@@ -1,5 +1,4 @@
-Left operand	Right operand	Result
-false	false	false
-false	true	true
-true	false	true
-true	true	true
+Operator name	Keyword alternate name
+&&	and
+||	or
+!	not
