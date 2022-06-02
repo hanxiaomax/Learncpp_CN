@@ -12,9 +12,9 @@ tags:
 
 ## 求模运算符
 
-The modulus operator (also informally known as the _remainder operator_) is an operator that returns the remainder after doing an integer division. For example, 7 / 4 = 1 remainder 3. Therefore, 7 % 4 = 3. As another example, 25 / 7 = 3 remainder 4, thus 25 % 7 = 4. Modulus only works with integer operands.
+求模运算符（有时候也被叫做求余运算符）可以返回整数除法结果的余数。例如 7 / 4 = 1 余 3。因此 7 % 4 = 3。又比如，25 / 7 = 3 余 4，因此 25 % 7 = 4。求模运算只能用于整数操作数。
 
-Modulus is most useful for testing whether a number is evenly divisible by another number (meaning that after division, there is no remainder): if _x % y_evaluates to 0, then we know that _x_ is evenly divisible by _y_.
+在需要判断一个数是否能被另外一个数整除（除法结果没有余数）时求模运算非常有：如果 `x%y`结果为0，说明 `x` 可以被 `y` 整除。
 
 ```cpp
 #include <iostream>
@@ -40,7 +40,7 @@ int main()
 }
 ```
 
-Here are a couple runs of this program:
+cheng'x are a couple runs of this program:
 
 ```
 Enter an integer: 6
