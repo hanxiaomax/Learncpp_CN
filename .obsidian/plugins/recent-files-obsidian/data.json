@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
+      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
+    },
+    {
+      "basename": "5-5-Comma-and-conditional-operators",
+      "path": "docs/5-5-Comma-and-conditional-operators.md"
+    },
+    {
+      "basename": "5-4-Increment-decrement-operators-and-side-effects",
+      "path": "docs/5-4-Increment-decrement-operators-and-side-effects.md"
+    },
+    {
+      "basename": "5-2-Arithmetic-operators",
+      "path": "docs/5-2-Arithmetic-operators.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
       "basename": "index",
       "path": "docs/index.md"
     },
@@ -51,10 +71,6 @@
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
@@ -117,10 +133,6 @@
       "path": "docs/tabledata.md"
     },
     {
-      "basename": "5-2-Arithmetic-operators",
-      "path": "docs/5-2-Arithmetic-operators.md"
-    },
-    {
       "basename": "type-conversion",
       "path": "docs/type-conversion.md"
     },
@@ -165,10 +177,6 @@
       "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
     },
     {
-      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
-      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
-    },
-    {
       "basename": "6-4-Introduction-to-global-variables",
       "path": "docs/6-4-Introduction-to-global-variables.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "3-10-Finding-issues-before-they-become-problems",
       "path": "docs/3-10-Finding-issues-before-they-become-problems.md"
-    },
-    {
-      "basename": "operands",
-      "path": "docs/operands.md"
-    },
-    {
-      "basename": "4-2-Void",
-      "path": "docs/4-2-Void.md"
     }
   ],
   "omittedPaths": [],
