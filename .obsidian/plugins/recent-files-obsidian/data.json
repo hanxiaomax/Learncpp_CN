@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "5-2-Arithmetic-operators",
+      "path": "docs/5-2-Arithmetic-operators.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "5-3-Modulus-and-Exponentiation",
+      "path": "docs/5-3-Modulus-and-Exponentiation.md"
+    },
+    {
+      "basename": "5-4-Increment-decrement-operators-and-side-effects",
+      "path": "docs/5-4-Increment-decrement-operators-and-side-effects.md"
+    },
+    {
       "basename": "5-7-Logical-operators",
       "path": "docs/5-7-Logical-operators.md"
     },
@@ -17,28 +33,16 @@
       "path": "docs/5-5-Comma-and-conditional-operators.md"
     },
     {
-      "basename": "5-4-Increment-decrement-operators-and-side-effects",
-      "path": "docs/5-4-Increment-decrement-operators-and-side-effects.md"
-    },
-    {
-      "basename": "5-3-Modulus-and-Exponentiation",
-      "path": "docs/5-3-Modulus-and-Exponentiation.md"
+      "basename": "7.9 -- For statements",
+      "path": "docs/7.9 -- For statements.md"
     },
     {
       "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
-      "basename": "5-2-Arithmetic-operators",
-      "path": "docs/5-2-Arithmetic-operators.md"
-    },
-    {
       "basename": "tabledata",
       "path": "docs/tabledata.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "table2",
@@ -195,10 +199,6 @@
     {
       "basename": "4-10-Introduction-to-if-statements",
       "path": "docs/4-10-Introduction-to-if-statements.md"
-    },
-    {
-      "basename": "narrowing-conversions",
-      "path": "docs/narrowing-conversions.md"
     }
   ],
   "omittedPaths": [],

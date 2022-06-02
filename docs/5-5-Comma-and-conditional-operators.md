@@ -11,12 +11,12 @@ tags:
 
 ## 逗号运算符
 
-|Operator	|Symbol	|Form|	Operation|
+|运算符	|符号	|形式|	操作 |
 |---|---|---|---|
 |Comma|	,|	x, y	|Evaluate x then y, returns value of y
 
 
-The comma operator (,) allows you to evaluate multiple expressions wherever a single expression is allowed. The comma operator evaluates the left operand, then the right operand, and then returns the result of the right operand.
+The comma operator (`,`) allows you to evaluate multiple expressions wherever a single expression is allowed. The comma operator evaluates the left operand, then the right operand, and then returns the result of the right operand.
 
 For example:
 
@@ -63,15 +63,14 @@ int main()
 }
 ```
 
-COPY
 
-Most programmers do not use the comma operator at all, with the single exception of inside _for loops_, where its use is fairly common. We discuss for loops in future lesson [7.9 -- For statements](https://www.learncpp.com/cpp-tutorial/for-statements/).
+Most programmers do not use the comma operator at all, with the single exception of inside _for loops_, where its use is fairly common. We discuss for loops in future lesson [[7.9 -- For statements|7.9 - for 语句]].
 
 !!! success "最佳实践"
 
 	Avoid using the comma operator, except within _for loops_.
 
-## Comma as a separator
+## 逗号作为分隔符
 
 In C++, the comma symbol is often used as a separator, and these uses do not invoke the comma operator. Some examples of separator commas:
 
@@ -90,14 +89,14 @@ There is no need to avoid separator commas (except when declaring multiple varia
 ## 条件运算符
 
 
-|Operator	|Symbol|	Form	|Operation|
+|运算符	|符号|	形式	|操作|
 |---|---|---|---|
 |Conditional	|?:	|c ? x : y	|If c is nonzero (true) then evaluate x, otherwise evaluate y
 
 
-The conditional operator (?:) (also sometimes called the “arithmetic if” operator) is a ternary operator (it takes 3 operands). Because it has historically been C++’s only ternary operator, it’s also sometimes referred to as “the ternary operator”.
+The conditional operator (`?:`) (also sometimes called the “arithmetic if” operator) is a ternary operator (it takes 3 operands). Because it has historically been C++’s only ternary operator, it’s also sometimes referred to as “the ternary operator”.
 
-The ?: operator provides a shorthand method for doing a particular type of if/else statement. Please review lesson 4.10 -- Introduction to if statements if you need a brush up on if/else before proceeding.
+The `?:` operator provides a shorthand method for doing a particular type of if/else statement. Please review lesson 4.10 -- Introduction to if statements if you need a brush up on if/else before proceeding.
 
 An if/else statement takes the following form:
 
@@ -109,9 +108,9 @@ else
     statement2;
 ```
 
-If _condition_ evaluates to _true_, then _statement1_ is executed, otherwise _statement2_ is executed.
+If _condition_ evaluates to `true` , then _statement1_ is executed, otherwise _statement2_ is executed.
 
-The ?: operator takes the following form:
+The `?:` operator takes the following form:
 
 ```
 (condition) ? expression1 : expression2;
@@ -129,15 +128,12 @@ else
     larger = y;
 ```
 
-COPY
-
 can be rewritten as:
 
 ```cpp
 larger = (x > y) ? x : y;
 ```
 
-COPY
 
 In such uses, the conditional operator can help compact code without losing readability.
 
@@ -156,15 +152,12 @@ else
     std::cout << y;
 ```
 
-COPY
-
 Or we could use the conditional operator to do this:
 
 ```cpp
 std::cout << ((x > y) ? x : y);
 ```
 
-COPY
 
 Let’s examine what happens if we don’t parenthesize the whole conditional operator in the above case.
 
@@ -174,15 +167,12 @@ Because the << operator has higher precedence than the ?: operator, the statemen
 std::cout << (x > y) ? x : y;
 ```
 
-COPY
-
 would evaluate as:
 
 ```cpp
 (std::cout << (x > y)) ? x : y;
 ```
 
-COPY
 
 That would print 1 (true) if x > y, or 0 (false) otherwise!
 
@@ -190,7 +180,7 @@ That would print 1 (true) if x > y, or 0 (false) otherwise!
 
 	Always parenthesize the conditional part of the conditional operator, and consider parenthesizing the whole thing as well.
 
-## The conditional operator evaluates as an expression
+## 条件运算符作为表达式求值
 
 Because the conditional operator operands are expressions rather than statements, the conditional operator can be used in some places where if/else can not.
 
@@ -209,7 +199,6 @@ int main()
 }
 ```
 
-COPY
 
 There’s no satisfactory if/else statement for this. You might think to try something like this:
 
@@ -231,7 +220,6 @@ int main()
 }
 ```
 
-COPY
 
 However, this won’t compile, and you’ll get an error message that classSize isn’t defined. Much like how variables defined inside functions die at the end of the function, variables defined inside an if or else statement die at the end of the if or else statement. Thus, classSize has already been destroyed by the time we try to print it.
 
@@ -256,8 +244,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 This one works because we’re not defining variables inside the _if_ or _else_, we’re just returning a value back to the caller, which can then be used as the initializer.
 
@@ -285,11 +271,10 @@ int main()
 }
 ```
 
-COPY
 
 The above example won’t compile. One of the expressions is an integer, and the other is a string literal. The compiler is unable to determine a common type for expressions of these types. In such cases, you’ll have to use an if/else.
 
-## So when should you use the conditional operator?
+## 什么时候应该使用条件操作符？
 
 The conditional operator gives us a convenient way to compact some if/else statements. It’s most useful when we need a conditional initializer (or assignment) for a variable, or to pass a conditional value to a function.
 

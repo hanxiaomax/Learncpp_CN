@@ -22,7 +22,7 @@ C++ has 3 logical operators:
 |Logical OR	| \|\|	| x \|\| y|true if either x or y are true, false otherwise|
 
 
-## Logical NOT
+## 逻辑非（NOT）
 
 You have already run across the logical NOT unary operator in lesson [[4-9-Boolean-values|4.9 - 布尔值]]. We can summarize the effects of logical NOT like so:
 
@@ -105,7 +105,7 @@ This way, `x > y` will be evaluated first, and then logical NOT will flip the 
 
 Simple uses of _logical NOT_, such as `if (!value)` do not need parentheses because precedence does not come into play.
 
-## Logical OR
+## 逻辑或（OR）
 
 The _logical OR_ operator is used to test whether either of two conditions is true. If the left operand evaluates to true, or the right operand evaluates to true, or both are true, then the _logical OR_ operator returns true. Otherwise it will return false.
 
@@ -147,7 +147,7 @@ if (value == 0 || value == 1 || value == 2 || value == 3)
 New programmers sometimes confuse the _logical OR_ operator (||) with the _bitwise OR_ operator (|) (Covered later). Even though they both have _OR_ in the name, they perform different functions. Mixing them up will probably lead to incorrect results.
 
 
-## Logical AND
+## 逻辑与（AND)
 
 The `logical AND` operator is used to test whether both operands are true. If both operands are true, `logical AND` returns true. Otherwise, it returns false.
 
@@ -195,7 +195,7 @@ If all of these conditions are true, the _if statement_ will execute. If any o
 
 As with logical and bitwise OR, new programmers sometimes confuse the _logical AND_ operator (`&&`) with the _bitwise AND_ operator (`&`).
 
-## Short circuit evaluation
+## 短路求值
 
 In order for _logical AND_ to return true, both operands must evaluate to true. If the first operand evaluates to false, _logical AND_ knows it must return false regardless of whether the second operand evaluates to true or false. In this case, the _logical AND_ operator will go ahead and return false immediately without even evaluating the second operand! This is known as short circuit evaluation, and it is done primarily for optimization purposes.
 
@@ -224,7 +224,7 @@ if `x` does not equal _1_, the whole condition must be false, so `++y `never 
 
     Only the built-in versions of these operators perform short-circuit evaluation. If you overload these operators to make them work with your own types, those overloaded operators will not perform short-circuit evaluation.
 
-## Mixing ANDs and ORs
+## 混合 AND  和 OR
 
 Mixing _logical AND_ and _logical OR_ operators in the same expression often can not be avoided, but it is an area full of potential dangers.
 
@@ -238,11 +238,11 @@ When mixing _logical AND_ and _logical OR_ in the same expression, it is a g
 
 	When mixing _logical AND_ and _logical OR_ in a single expression, explicitly parenthesize each operation to ensure they evaluate how you intend.
 
-## De Morgan’s law
+## 德摩根定律（De Morgan‘s law）
 
 Many programmers also make the mistake of thinking that `!(x && y)` is the same thing as `!x && !y`. Unfortunately, you can not “distribute” the _logical NOT_ in that manner.
 
-[De Morgan’s law](https://en.wikipedia.org/wiki/De_Morgan%27s_laws) tells us how the _logical NOT_ should be distributed in these cases:
+[德摩根定律](https://baike.baidu.com/item/%E5%BE%B7%C2%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B/489073) tells us how the _logical NOT_ should be distributed in these cases:
 
 `!(x && y)` is equivalent to `!x || !y`  
 `!(x || y)` is equivalent to `!x && !y`
@@ -283,7 +283,7 @@ This can sometimes be useful when trying to make complex expressions easier to r
 	
 	Similarly, for every possible value of `x` and `y`, we can see that the value of `!(x || y)` equals the value of `!x && !y`. Thus, they are equivalent.
 
-## Where’s the logical exclusive or (XOR) operator?
+## 逻辑异或运算符在哪里？
 
 _Logical XOR_ is a logical operator provided in some languages that is used to test whether an odd number of conditions is true.
 
@@ -335,6 +335,5 @@ std::cout << !a && (b || c);
 std::cout << not a and (b or c);
 ```
 
-COPY
 
 While these alternative names might seem easier to understand right now, most experienced C++ developers prefer using the symbolic names over the keyword names. As such, we recommend learning and using the symbolic names, as this is what you will commonly find in existing code.
