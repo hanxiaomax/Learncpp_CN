@@ -15,6 +15,7 @@ tags:
 	- 后缀版本的运算符多了很多步骤（需要创建一个副本），因此它的性能不如前缀版本
 	- 强烈推荐使用前缀版本的递增递减运算符，因为它们性能更好，而且也不容易带来问题
 	- 因为 C++ 标准没有规定函数参数的求值顺序。所以 `add(x, ++x)`这样的函数调用结果是不确定的，因为函数 `add`的其中一个参数具有副作用。
+	- C++ 没有定义函数参数或运算符操作数的求值顺序。
 
 
 ## 变量的自增自减
@@ -167,8 +168,8 @@ There are other cases where the C++ standard does not specify the order in which
 
 !!! warning "注意"
 
-	C++ 没有定义han's not define the order of evaluation for function arguments or operator operands.
-
+	C++ 没有定义函数参数或运算符操作数的求值顺序。
+	
 !!! warning "注意"
 
-	Don’t use a variable that has a side effect applied to it more than once in a given statement. If you do, the result may be undefined.
+	在一个语句中，不要让副作用多次作用在一个变量上。如果这么做的话，结果可能是不确定的。’t use a variable that has a side effect applied to it more than once in a given statement. If you do, the result may be undefined.
