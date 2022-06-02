@@ -137,6 +137,18 @@ int main()
 }
 ```
 
+!!! info "译者注"
+
+	求x的n次方，最直接的算法是把x乘以x执行n次，但是这样很慢。
+	使用平方求幂的方法可以极大提高速度，它的原理如下：
+	1. 假设求x的16次方，其实没必要把x乘以x执行16次
+	2. 更快的方法是把x平方，然后再平方，再平方，再平方。即$((((x^2)^2)^2)^2)$，因为我们知道求指数的指数实际上是把两个指数相乘。所以$((((x^2)^2)^2)^2)=x^{16}$
+	3. 如果转换为更一般的形式，x的n次方其实就是看n转换成2进制之后，里面包含多少个1。假设n = 37，则转换为二进制是 `100101`。
+	4. $x^{37} = x^1 * x^{100} * x^{10000}$, 即$x^{37} = x^1 * x^{4} * x^{32}$
+	5. 所以，我们只要把指数先转变成二进制，然后一位一位的看，如果遇到1，则看该位是第几位，然后求2的几次方，假设结果为n，则再次求x的n次方，最后把所有的结果cheng'qi'l
+	
+	[视频讲解](https://www.youtube.com/watch?v=qed48E92qXc)
+
 结果为：
 
 ```
@@ -148,3 +160,6 @@ Don’t worry if you don’t understand how this function works -- you don’t n
 !!! warning "注意"
 
 	In the vast majority of cases, integer exponentiation will overflow the integral type. This is likely why such a function wasn’t included in the standard library in the first place.
+
+
+

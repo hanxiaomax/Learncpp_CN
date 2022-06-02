@@ -1,20 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "4-14-Literal-constants",
-      "path": "docs/4-14-Literal-constants.md"
-    },
-    {
       "basename": "5-3-Modulus-and-Exponentiation",
       "path": "docs/5-3-Modulus-and-Exponentiation.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "5-2-Arithmetic-operators",
       "path": "docs/5-2-Arithmetic-operators.md"
     },
     {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+      "basename": "4-14-Literal-constants",
+      "path": "docs/4-14-Literal-constants.md"
     },
     {
       "basename": "5-4-Increment-decrement-operators-and-side-effects",

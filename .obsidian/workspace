@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-14-Literal-constants.md",
+            "file": "docs/5-3-Modulus-and-Exponentiation.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-14-Literal-constants.md"
+                "file": "docs/5-3-Modulus-and-Exponentiation.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-14-Literal-constants.md",
+                "file": "docs/5-3-Modulus-and-Exponentiation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,10 +129,10 @@
   },
   "active": "56bd180b4e918b82",
   "lastOpenFiles": [
-    "docs/4-14-Literal-constants.md",
     "docs/5-3-Modulus-and-Exponentiation.md",
-    "docs/5-2-Arithmetic-operators.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
+    "docs/5-2-Arithmetic-operators.md",
+    "docs/4-14-Literal-constants.md",
     "docs/5-4-Increment-decrement-operators-and-side-effects.md",
     "docs/5-7-Logical-operators.md",
     "docs/5-x-Chapter-5-summary-and-quiz.md",
