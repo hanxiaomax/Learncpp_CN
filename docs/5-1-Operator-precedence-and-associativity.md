@@ -12,6 +12,8 @@ tags:
 ??? note "关键点速记"
 	- 使用括号来清楚地表明复杂表达式应该如何求值(尽管从技术上来讲这是多余的)。
 	- 如果表达式中只有一个赋值运算符它右边的整个表达式没必要放在括号里。
+	- 在很多情况下，符合表达式中操作数可以以任意顺序求值，包括函数调用和参数求值。
+	- 运算符优先级和结合律规定以外的情况，都只能假设会以任意顺序求值。确保你编写的表达式不依赖于这些部分的求值顺序。
 
 ## 章节简介
 
@@ -113,11 +115,11 @@ a + (b * c)
 
 !!! warning "注意"
 
-	在很多情况下，, the operands in a compound expression may evaluate in any order. This includes function calls and the arguments to those function calls.
+	在很多情况下，符合表达式中操作数可以以任意顺序求值，包括函数调用和参数求值。
+	
+对于大多数表达式，这都不是什么大事。以上面的表达式为例，几个变量哪个先求值都是可以的，结果也总是等于 7。
 
-For most expressions, this is irrelevant. In our sample expression above, it doesn’t matter whether in which order variables _a_, _b_, or _c_ are evaluated for their values: the answer will always be _7_. There is no ambiguity here.
-
-But it is possible to write expressions where the order of evaluation does matter. Consider this program, which contains a mistake often made by new C++ programmers:
+但是，确实有些表达式是有可能受影响的。考虑下面这个程序，它其中包含的错误是很多新手程序员都会犯的。
 
 ```cpp
 #include <iostream>
@@ -139,13 +141,14 @@ int main()
 ```
 
 
-If you run this program and enter inputs _1_, _2_, and _3_, you might assume that this program would print _7_. But that is making the assumption that the calls to getValue() will evaluate in left-to-right order. The compiler may choose a different order. For example, if the compiler chose a right-to-left order instead, the program would print _5_ for the same set of inputs.
+运行该程序并依次输入 1、2 和 3的话，你可能会认为输出结果应该是 7。但是，这是建立在调用`getValue()`会从左向右求值的假设上的。实际上，编译器可能会选择不同的求值顺序。例如，如果编译器采用从右向左的顺序求值，则相同的输入得到的结果就是 5 （`3+(2*1)`）。
 
 !!! success "最佳实践"
 
-	Outside of the operator precedence and associativity rules, assume that the parts of an expression could evaluate in any order. Ensure that the expressions you write are not dependent on the order of evaluation of those parts.
+	运算符优先级和结合律规定以外的情况，都只能假设会以任意顺序求值。确保你编写的表达式不依赖于这些部分的求值顺序。
+	
 
-The above program can be made unambiguous by making each function call a separate statement:
+上面的程序可以稍加修改变成没有歧义的形式，即将函数调用作为单独的语句：
 
 ```cpp
 #include <iostream>
@@ -174,4 +177,4 @@ int main()
 
 !!! info "相关内容"
 
-	There are some additional examples of cases where order of evaluation problems can occur in lesson [5.4 -- Increment/decrement operators, and side effects](https://www.learncpp.com/cpp-tutorial/increment-decrement-operators-and-side-effects/).
+	还有一些情况也会造成上述求值顺序问题，我们会在[[5-4-Increment-decrement-operators-and-side-effects|5.4 - 自增自减运算符及其副作用]]中进行介绍。
