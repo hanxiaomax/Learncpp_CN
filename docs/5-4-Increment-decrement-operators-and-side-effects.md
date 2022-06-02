@@ -9,12 +9,18 @@ tags:
 - operator
 ---
 
+
+??? note "关键点速记"
+
+	- 后缀版本的运算符多了很多步骤（需要创建一个副本），因此它的性能不如前缀版本。
+
+
 ## 变量的自增自减
 
-Incrementing (adding 1 to) and decrementing (subtracting 1 from) a variable are both so common that they have their own operators.
+将一个变量递增（加1）和递减（减1）都是非常常见的操作，因此它们有专门的运算符。
 
 
-|Operator	|Symbol	|Form	|Operation|
+|运算符	|符号	|形式	|操作|
 |---|---|---|---|
 |Prefix increment (pre-increment)	|++	|++x	|Increment x, then return x
 |Prefix decrement (pre-decrement)	|––	|––x	|Decrement x, then return x
@@ -22,9 +28,9 @@ Incrementing (adding 1 to) and decrementing (subtracting 1 from) a variable are 
 |Postfix decrement (post-decrement)|––	|x––	|Copy x, then decrement x, then return the copy
 
 
-Note that there are two versions of each operator -- a prefix version (where the operator comes before the operand) and a postfix version (where the operator comes after the operand).
+注意，每种操作符都有两个版本，一个是前缀形式（运算符在操作符前面），一个是后缀形式（运算符在操作符后面）。 
 
-The prefix increment/decrement operators are very straightforward. First, the operand is incremented or decremented, and then expression evaluates to the value of the operand. For example:
+前缀递增/递减操作符非常简单，即操作数先递增或递减，然后表达式再求值。例如：
 
 ```cpp
 #include <iostream>
@@ -39,42 +45,43 @@ int main()
 }
 ```
 
-This prints:
+打印结果：
 
 ```
 6 6
 ```
 
-The postfix increment/decrement operators are trickier. First, a copy of the operand is made. Then the operand (not the copy) is incremented or decremented. Finally, the copy (not the original) is evaluated. For example:
+后缀自增/自减稍微有点复杂。首先，它拷贝了一份操作数，然后对操作数（而不是它的拷贝）进行递增或递减。最后对拷贝的值（而非原始值）进行求值，例如：
 
-```cpp
+```cpp hl_lines="6"
 #include <iostream>
 
 int main()
 {
     int x { 5 };
-    int y = x++; // x is incremented to 6, copy of original x is evaluated to the value 5, and 5 is assigned to y
+    int y = x++; // x 自增为6，拷贝的最初的值为5,5被赋值给了y
 
     std::cout << x << ' ' << y;
     return 0;
 }
 ```
 
-This prints:
+打印结果：
 
 ```
 6 5
 ```
 
-Let’s examine how this line 6 works in more detail. First, a temporary copy of _x_ is made that starts with the same value as _x_ (5). Then the actual _x_ is incremented from _5_ to _6_. Then the copy of _x_ (which still has value _5_) is returned and assigned to _y_. Then the temporary copy is discarded.
+让我们介绍一下第六行是如何工作的。首先，创建一个 `x` 的临时拷贝，值和x一样（5）。随后，这个拷贝被返回然后赋值给 `y`。然后，这个临时的拷贝就被丢弃了。
 
-Consequently, _y_ ends up with the value of _5_ (the pre-incremented value), and _x_ ends up with the value _6_ (the post-incremented value).
+因此，`y` 最终的值就是 5（递增前的值），然后 x 的值变成了 6（递增后的值）。
 
-Note that the postfix version takes a lot more steps, and thus may not be as performant as the prefix version.
+注意，后缀版本的运算符多了很多步骤，因此它的性能不如前缀版本。
 
-Here is another example showing the difference between the prefix and postfix versions:
 
-```cpp
+下面的例子演示了前缀递增递减和后缀递增递减的不同：
+
+```cpp hl_lines="8 10"
 #include <iostream>
 
 int main()
