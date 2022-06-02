@@ -9,6 +9,10 @@ tags:
 - operator
 ---
 
+??? note "关键点速记"
+	- 使用括号来清楚地表明复杂表达式应该如何求值(尽管从技术上来讲这是多余的)。
+	- 如果表达式中只有一个赋值运算符它右边的整个表达式没必要放在括号里。
+
 ## 章节简介
 
 本章的内容建立在[[1-9-Introduction-to-literals-and-operators|1.9 - 字面量和操作符]]的基础上。首先让我们来复习一下学过的内容：
@@ -47,71 +51,69 @@ tags:
 ![[table2.png]]
 
 
-你必须You should already recognize a few of these operators, such as +, -, *, /, (), and sizeof. However, unless you have experience with another programming language, the majority of the operators in this table will probably be incomprehensible to you right now. That’s expected at this point. We’ll cover many of them in this chapter, and the rest will be introduced as there is a need for them.
+你肯定已经认识上表中的某些操作符了，例如 `+`, `-`, `*`, `/`, `()` 和 `sizeof`。不过，如果你没有其他编程语言的基础的话，其中大多是操作符你应该还不能理解其含义。这是正常的，我们本章节中介绍它们中的大多是，剩下的一些则会在遇到时再介绍。
 
-!!! question "Q: Where’s the exponent operator?"
+!!! question "Q: 为什么没有指数运算符?"
 
-	C++ doesn’t include an operator to do exponentiation (operator^ has a different function in C++). We discuss exponentiation more in lesson [5.3 -- Modulus and Exponentiation](https://www.learncpp.com/cpp-tutorial/5-3-modulus-and-exponentiation/).
+	C++ 并不支持指数运算符（`operator^ 在 C++ 中有其他的含义`）。我们会在[[5-3-Modulus-and-Exponentiation|5.3 - 求模和指数运算]]中介绍指数运算。
+	
 
 ## 加括号
 
-In normal arithmetic, you learned that you can use parentheses to change the order of application of operations. For example, we know that _4 + 2 * 3_evaluates as _4 + (2 * 3)_, but if you want it to evaluate as _(4 + 2) * 3_ instead, you can explicitly parenthesize the expression to make it evaluate the way you want. This works in C++ because parentheses have one of the highest precedence levels, so parentheses generally evaluate before whatever is inside them.
+在数学运算中，我们都知道加括号可以改变运算符执行的顺序。例如，我们知道 _4 + 2 * 3_ 会按照 _4 + (2 * 3)_ 求值。但是如果我希望按照 _(4 + 2) * 3_ 求值呢？你就可以向这个表达式一样，使用括号明确表示你希望的求值方式。C++ 中你也可以这样做，因为括号具有最高的优先级，所以括号总是先于它内部的任何符号进行求值。
 
-Now consider an expression like _x && y || z_. Does this evaluate as _(x && y) || z_ or _x && (y || z)_? You could look up in the table and see that && takes precedence over ||. But there are so many operators and precedence levels that it’s hard to remember them all.
+再考虑下面的表达式 `x && y || z`。它应该按照 `(x && y) || z` 求值还是按照  `x && (y || z)` 求值呢？你可以查看上表，发现 `&&` 的优先级高于 `||`。但是运算符毕竟太多了，你也不可能都记住。
 
-In order to reduce mistakes and make your code easier to understand without referencing a precedence table, it’s a good idea to parenthesize any non-trivial compound expression, so it’s clear what your intent is.
+为了减少错误，同时提高代码的可读性（减少查表），对于复杂的表达式使用括号明确你的目的是最好的。
 
 !!! success "最佳实践"
 
-	Use parentheses to make it clear how a non-trivial expression should evaluate (even if they are technically unnecessary).
+	使用括号来清楚地表明复杂表达式应该如何求值(尽管从技术上来讲这是多余的)。
 
-There is one notable exception to the above best practice: Expressions that have a single assignment operator do not need to have the right operand of the assignment wrapped in parenthesis.
+上面所说的最佳实践有一个例外：对于赋值运算符来说，如果表达式中只有一个赋值运算符它右边的整个表达式没必要放在括号里。
 
-For example:
+例如：
 
 ```cpp
-x = (y + z + w);   // instead of this
-x = y + z + w;     // it's okay to do this
+x = (y + z + w);   // 不需要
+x = y + z + w;     // 这样就可以
 
-x = ((y || z) && w); // instead of this
-x = (y || z) && w;   // it's okay to do this
+x = ((y || z) && w); // 不需要
+x = (y || z) && w;   // 这样就可以
 
-x = (y *= z); // expressions with multiple assignments still benefit from parenthesis
+x = (y *= z); // 有多个赋值运算符的情况下，加括号仍然很有用
 ```
 
-COPY
 
-The assignment operators have the second lowest precedence (only the comma operator is lower, and it’s rarely used). Therefore, so long as there is only one assignment (and no commas), we know the right operand will fully evaluate before the assignment.
+赋值运算符的优先级是倒数第二高的（逗号运算符的优先级最低，而且也不常用）。因此，只要表达式中只有一个赋值运算符（而且没有逗号运算符），那么可以确定赋值号右边的表达式会在赋值前完全求值。
 
 !!! success "最佳实践"
 
-	Expressions with a single assignment operator do not need to have the right operand of the assignment wrapped in parenthesis.
+	如果表达式中只有一个赋值运算符它右边的整个表达式没必要放在括号里。
 
 ## 表达式求值顺序和函数参数处理顺序大多是未指明的
 
-Consider the following expression:
+考虑下面的表达式：
 
 ```cpp
 a + b * c
 ```
 
-
-We know from the precedence and associativity rules above that this expression will evaluate as if we had typed:
+基于优先级和结合律，我们指定上面的表达式会按照下面的方式求值：
 
 ```cpp
 a + (b * c)
 ```
 
+如果 `a=1`，`b=2` ，`c=3`，则整个表达式的结果为 7。
 
-If _a_ is _1_, _b_ is _2_, and _c_ is 3, this expression will evaluate to the answer _7_.
+但是，优先级和结合律只表明运算符之间的求值顺序，但并没有说明表达式其他部分的求值顺序。例如，上面例子中 a,b,c的求值顺序是什么呢？
 
-However, the precedence and associativity rules only tell us how operators evaluate in relation to other operators. It does not tell us anything about the order in which the rest of the expression evaluates. For example, does variable _a_, _b_, or _c_ get evaluated first?
-
-Perhaps surprisingly, in many cases, the order of evaluation of any part of a compound expression (including function calls and argument evaluation) is unspecified. In such cases, the compiler is free to choose any evaluation order it believes is optimal.
+令人吃惊的是，大多数情况下，复杂表达式中各部分的求值顺序是没有明确规定的（包括函数调用和参数求值）。因此，编译器可以自由选择它认为最优的求值顺序。
 
 !!! warning "注意"
 
-	In many cases, the operands in a compound expression may evaluate in any order. This includes function calls and the arguments to those function calls.
+	在很多情况下，, the operands in a compound expression may evaluate in any order. This includes function calls and the arguments to those function calls.
 
 For most expressions, this is irrelevant. In our sample expression above, it doesn’t matter whether in which order variables _a_, _b_, or _c_ are evaluated for their values: the answer will always be _7_. There is no ambiguity here.
 
@@ -136,7 +138,6 @@ int main()
 }
 ```
 
-COPY
 
 If you run this program and enter inputs _1_, _2_, and _3_, you might assume that this program would print _7_. But that is making the assumption that the calls to getValue() will evaluate in left-to-right order. The compiler may choose a different order. For example, if the compiler chose a right-to-left order instead, the program would print _5_ for the same set of inputs.
 
@@ -170,7 +171,6 @@ int main()
 }
 ```
 
-COPY
 
 !!! info "相关内容"
 
