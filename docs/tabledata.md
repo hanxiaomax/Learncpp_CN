@@ -1,5 +1,5 @@
-|Decimal	|0	|1	|2	|3	|4	|5	|6	|7	|8	|9	|10	|11|
-|Octal	|0	|1	|2	|3	|4	|5	|6	|7	|10	|11	|12	|13|
-
-|Decimal	|0	|1	|2	|3	|4	|5	|6	|7	|8	|9	|10	|11	|12	|13	|14	|15	|16	|17|
-|Hexadecimal	|0	|1	|2	|3	|4	|5	|6	|7	|8	|9	|A	|B	|C	|D	|E	|F	|10	|11|
+Left operand	Right operand	Result
+false	false	false
+false	true	true
+true	false	true
+true	true	true

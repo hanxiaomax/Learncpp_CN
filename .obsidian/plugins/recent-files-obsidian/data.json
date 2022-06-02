@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "5-7-Logical-operators",
+      "path": "docs/5-7-Logical-operators.md"
+    },
+    {
+      "basename": "tabledata",
+      "path": "docs/tabledata.md"
+    },
+    {
       "basename": "5-6-Relational-operators-and-floating-point-comparisons",
       "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     },
@@ -129,10 +137,6 @@
       "path": "docs/5-3-Modulus-and-Exponentiation.md"
     },
     {
-      "basename": "tabledata",
-      "path": "docs/tabledata.md"
-    },
-    {
       "basename": "type-conversion",
       "path": "docs/type-conversion.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "2-2-Function-return-values-value-returning functions",
       "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "3-10-Finding-issues-before-they-become-problems",
-      "path": "docs/3-10-Finding-issues-before-they-become-problems.md"
     }
   ],
   "omittedPaths": [],

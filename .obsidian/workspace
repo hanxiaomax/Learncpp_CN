@@ -9,7 +9,20 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
+            "file": "docs/5-7-Logical-operators.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "eea45d17f7ee9a1f",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "docs/tabledata.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +99,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
+                "file": "docs/5-7-Logical-operators.md"
               }
             }
           },
@@ -107,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
+                "file": "docs/5-7-Logical-operators.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,6 +141,8 @@
   },
   "active": "96c96c2b79f727ab",
   "lastOpenFiles": [
+    "docs/5-7-Logical-operators.md",
+    "docs/tabledata.md",
     "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
     "docs/5-5-Comma-and-conditional-operators.md",
     "docs/5-4-Increment-decrement-operators-and-side-effects.md",
@@ -135,8 +150,6 @@
     "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/index.md",
     "docs/4-x-Chapter-4-summary-and-quiz.md",
-    "docs/4-11-Chars.md",
-    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
-    "docs/4-9-Boolean-values.md"
+    "docs/4-11-Chars.md"
   ]
 }
