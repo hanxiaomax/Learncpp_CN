@@ -40,7 +40,7 @@ int main()
 }
 ```
 
-cheng'x are a couple runs of this program:
+程序运行结果如下：
 
 ```
 Enter an integer: 6
@@ -56,7 +56,7 @@ The remainder is: 2
 6 is not evenly divisible by 4
 ```
 
-Now let’s try an example where the second number is bigger than the first:
+接下来，我们实时如果第二个数比第一个数大会怎么样：
 
 ```
 Enter an integer: 2
@@ -65,7 +65,8 @@ The remainder is: 2
 2 is not evenly divisible by 4
 ```
 
-A remainder of 2 might be a little non-obvious at first, but it’s simple: 2 / 4 is 0 (using integer division) remainder 2. Whenever the second number is larger than the first, the second number will divide the first 0 times, so the first number will be the remainder.
+余数是 2 ，乍一看原因可能不是很明显，但其实很简单：2 / 4 是 0 (整数除法) 余数为 2。任何时候只要第二个数大于第一个，则第一个数为余数。
+
 
 ## Modulus with negative numbers
 
