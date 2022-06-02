@@ -68,11 +68,11 @@ The remainder is: 2
 余数是 2 ，乍一看原因可能不是很明显，但其实很简单：2 / 4 是 0 (整数除法) 余数为 2。任何时候只要第二个数大于第一个，则第一个数为余数。
 
 
-## Modulus with negative numbers
+## 负数求模
 
-The modulus operator can also work with negative operands. `x % y` always returns results with the sign of _x_.
+负数也可以求模。`x % y` 的结果总是和 x 的符号一样。
 
-Running the above program:
+执行上述程序：
 
 ```
 Enter an integer: -6
@@ -88,13 +88,13 @@ The remainder is: 2
 6 is not evenly divisible by -4
 ```
 
-In both cases, you can see the remainder takes the sign of the first operand.
+在上面两种例子中可以看到余数的符号总是和第一个操作符一样。
 
-## Where’s the exponent operator?
+## 指数运算符去哪了?
 
-You’ll note that the _^_ operator (commonly used to denote exponentiation in mathematics) is a _Bitwise XOR_ operation in C++ (covered in lesson [O.3 -- Bit manipulation with bitwise operators and bit masks](https://www.learncpp.com/cpp-tutorial/bit-manipulation-with-bitwise-operators-and-bit-masks/)). C++ does not include an exponent operator.
+你可能已经注意到了 `^` 运算符(通常用于表示指数运算)在 C++ 中是异或运算符 (在[O.3 -- Bit manipulation with bitwise operators and bit masks](https://www.learncpp.com/cpp-tutorial/bit-manipulation-with-bitwise-operators-and-bit-masks/) 中介绍)。C++ 并没有指数运算符。
 
-To do exponents in C++, `#include` the `<cmath>` header, and use the pow() function:
+在 C++ 中进行指数运算需要 `#include` `<cmath>` 头文件，然后使用 pow() 函数：
 
 ```cpp
 #include <cmath>
@@ -103,9 +103,9 @@ double x{ std::pow(3.0, 4.0) }; // 3 to the 4th power
 ```
 
 
-Note that the parameters (and return value) of function pow() are of type double. Due to rounding errors in floating point numbers, the results of pow() may not be precise (even if you pass it integers or whole numbers).
+注意，参数和返回值的类型都是 double。而由于浮点数存在[[rounding-error|舍入误差]]，所以`pow()`的结果可能并不精确（即使你传入的是整数）。
 
-If you want to do integer exponentiation, you’re best off using your own function to do so. The following function implements integer exponentiation (using the non-intuitive “exponentiation by squaring” algorithm for efficiency):
+如果你想进行整数指数运算，你最好自己写一个函数。下面这个函数就实现了整型的指数运算（使用了不太直观的**平方求幂**算法以提高效率）：
 
 ```cpp
 #include <iostream>
