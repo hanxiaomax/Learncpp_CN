@@ -9,7 +9,20 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/5-1-Operator-precedence-and-associativity.md",
+            "file": "docs/5-2-Arithmetic-operators.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "0fb779cd01cd8746",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "docs/tabledata.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,7 +79,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -86,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/5-1-Operator-precedence-and-associativity.md"
+                "file": "docs/5-2-Arithmetic-operators.md"
               }
             }
           },
@@ -107,7 +121,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/5-1-Operator-precedence-and-associativity.md",
+                "file": "docs/5-2-Arithmetic-operators.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +142,15 @@
   },
   "active": "56bd180b4e918b82",
   "lastOpenFiles": [
+    "docs/5-2-Arithmetic-operators.md",
+    "docs/tabledata.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/images/table2.png",
     "docs/images/table1.png",
-    "docs/tabledata.md",
     "docs/1-9-Introduction-to-literals-and-operators.md",
     "docs/operator.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
     "docs/2-1-Introduction-to-functions.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/11-7-An-introduction-to-std-string_view.md"
+    "docs/4-1-Introduction-to-fundamental-data-types.md"
   ]
 }

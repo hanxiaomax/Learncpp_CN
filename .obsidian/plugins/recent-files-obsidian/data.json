@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "5-2-Arithmetic-operators",
+      "path": "docs/5-2-Arithmetic-operators.md"
+    },
+    {
+      "basename": "tabledata",
+      "path": "docs/tabledata.md"
+    },
+    {
       "basename": "5-1-Operator-precedence-and-associativity",
       "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
@@ -11,10 +19,6 @@
     {
       "basename": "table1",
       "path": "docs/images/table1.png"
-    },
-    {
-      "basename": "tabledata",
-      "path": "docs/tabledata.md"
     },
     {
       "basename": "1-9-Introduction-to-literals-and-operators",
@@ -91,10 +95,6 @@
     {
       "basename": "5-4-Increment-decrement-operators-and-side-effects",
       "path": "docs/5-4-Increment-decrement-operators-and-side-effects.md"
-    },
-    {
-      "basename": "5-2-Arithmetic-operators",
-      "path": "docs/5-2-Arithmetic-operators.md"
     },
     {
       "basename": "index",
