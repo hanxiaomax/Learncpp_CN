@@ -14,6 +14,7 @@ tags:
 
 	- 后缀版本的运算符多了很多步骤（需要创建一个副本），因此它的性能不如前缀版本
 	- 强烈推荐使用前缀版本的递增递减运算符，因为它们性能更好，而且也不容易带来问题
+	- 因为 C++ 标准没有规定函数参数的求值顺序。所以 `add(x, ++x)`这样的函数调用结果是不确定的，因为函数 `add`的其中一个参数具有副作用。
 
 
 ## 变量的自增自减
@@ -132,9 +133,9 @@ x = 5; // the assignment operator modifies the state of x
 std::cout << x; // operator<< modifies the state of the console
 ```
 
-上面赋值号的副作用是永久地改变了 `x` 的值，即使在赋值语句结束执行后，`x` 的值也还是 5. Even after the statement has finished executing, _x_ will still have the value 5. Similarly with operator++, the value of _x_ is altered even after the statement has finished evaluating. The outputting of _x_ also has the side effect of modifying the state of the console, as you can now see the value of _x_ printed to the console.
+上面赋值号的副作用是永久地改变了 `x` 的值，即使在赋值语句结束执行后，`x` 的值也还是 5。同样的，`++`运算符也有副作用，`++x`执行后 `x` 的值就递增了。打印 `x` 同样有副作用，它改变了控制台的状态，因为你可以看到 `x` 的值被打印到了控制台。
 
-However, side effects can also lead to unexpected results:
+不过，副作用有时候也会带来意想不到的结果：
 
 ```cpp
 #include <iostream>
@@ -147,26 +148,26 @@ int add(int x, int y)
 int main()
 {
     int x{ 5 };
-    int value{ add(x, ++x) }; // is this 5 + 6, or 6 + 6?
-    // It depends on what order your compiler evaluates the function arguments in
+    int value{ add(x, ++x) }; // 究竟是 5 + 6 还是 6 + 6?
+    // 这取决于你的编译器如何选择函数参数的求值顺序
 
-    std::cout << value << '\n'; // value could be 11 or 12, depending on how the above line evaluates!
+    std::cout << value << '\n'; // value 可能是 11 或者 12，取决于编译器
     return 0;
 }
 ```
 
 
-The C++ standard does not define the order in which function arguments are evaluated. If the left argument is evaluated first, this becomes a call to add(5, 6), which equals 11. If the right argument is evaluated first, this becomes a call to add(6, 6), which equals 12! Note that this is only a problem because one of the arguments to function add() has a side effect.
+因为 C++ 标准没有规定函数参数的求值顺序。如果左边的参数先求值，则实际调用为`add(5,6)`，结果为 11。如果右边的参数先求值，则实际调用为`add(6,6)`，结果为 12。造成这个问题的原因，是因为函数 `add`的其中一个参数具有副作用。
 
 !!! cite "题外话"
 
-    The C++ standard intentionally does not define these things so that compilers can do whatever is most natural (and thus most performant) for a given architecture.
+	C++ 标准故意没有定义这些事情，这样编译器可以根据计算机的体系结构选择最自然（一般也是最高效）的方式来处理。
 
 There are other cases where the C++ standard does not specify the order in which certain things are evaluated (such as operator operands), so different compilers may exhibit different behaviors. Even when the C++ standard does make it clear how things should be evaluated, historically this has been an area where there have been many compiler bugs. These problems can generally _all_ be avoided by ensuring that any variable that has a side-effect applied is used no more than once in a given statement.
 
 !!! warning "注意"
 
-	C++ does not define the order of evaluation for function arguments or operator operands.
+	C++ 没有定义han's not define the order of evaluation for function arguments or operator operands.
 
 !!! warning "注意"
 
