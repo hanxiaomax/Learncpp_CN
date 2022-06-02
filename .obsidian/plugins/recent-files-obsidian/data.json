@@ -1,6 +1,42 @@
 {
   "recentFiles": [
     {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "table2",
+      "path": "docs/images/table2.png"
+    },
+    {
+      "basename": "table1",
+      "path": "docs/images/table1.png"
+    },
+    {
+      "basename": "tabledata",
+      "path": "docs/tabledata.md"
+    },
+    {
+      "basename": "1-9-Introduction-to-literals-and-operators",
+      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
+    },
+    {
+      "basename": "operator",
+      "path": "docs/operator.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/2-1-Introduction-to-functions.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
       "basename": "11-7-An-introduction-to-std-string_view",
       "path": "docs/11-7-An-introduction-to-std-string_view.md"
     },
@@ -45,10 +81,6 @@
       "path": "docs/5-7-Logical-operators.md"
     },
     {
-      "basename": "tabledata",
-      "path": "docs/tabledata.md"
-    },
-    {
       "basename": "5-5-Comma-and-conditional-operators",
       "path": "docs/5-5-Comma-and-conditional-operators.md"
     },
@@ -63,10 +95,6 @@
     {
       "basename": "5-2-Arithmetic-operators",
       "path": "docs/5-2-Arithmetic-operators.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "index",
@@ -107,10 +135,6 @@
     {
       "basename": "4-3-Object-sizes-and-the-sizeof-operator",
       "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     },
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
@@ -173,32 +197,8 @@
       "path": "docs/4-10-Introduction-to-if-statements.md"
     },
     {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
       "basename": "narrowing-conversions",
       "path": "docs/narrowing-conversions.md"
-    },
-    {
-      "basename": "rounding-error",
-      "path": "docs/rounding-error.md"
-    },
-    {
-      "basename": "Output-manipulators",
-      "path": "docs/Output-manipulators.md"
-    },
-    {
-      "basename": "literals",
-      "path": "docs/literals.md"
-    },
-    {
-      "basename": "4-6-Fixed-width-integers-and-size_t",
-      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
-    },
-    {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
     }
   ],
   "omittedPaths": [],
