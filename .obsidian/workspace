@@ -15,19 +15,6 @@
             "source": false
           }
         }
-      },
-      {
-        "id": "0fb779cd01cd8746",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "docs/tabledata.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
-        }
       }
     ],
     "direction": "vertical"

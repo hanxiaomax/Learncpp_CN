@@ -11,55 +11,53 @@ tags:
 
 ## 一元数学运算符
 
-There are two unary arithmetic operators, plus (+), and minus (-). As a reminder, unary operators are operators that only take one operand.
+一元运算符有两种，正号(`+`)和负号(`-`)。提醒一下，一元运算符只需要一个[[operands|操作数]]。
 
-
-|Operator	|Symbol	|Form	|Operation|
+|运算符	|符号	|格式	|操作|
 |---|---|---|---|
-|Unary plus	|+	|+x	|Value of x|
-|Unary minus	|-	|-x	|Negation of x|
+|Unary plus	|+	|+x	| x的值 |
+|Unary minus	|-	|-x	|x的相反数|
 
 
-The unary minus operator returns the operand multiplied by -1. In other words, if x = 5, -x is -5.
+一元符号运算符返回操作数乘以-1之后的结果。换句话说，如果 x = 5，则 -x 是 -5。
 
-The unary plus operator returns the value of the operand. In other words, +5 is 5, and +x is x. Generally you won’t need to use this operator since it’s redundant. It was added largely to provide symmetry with the _unary minus_ operator.
+一元正号运算符返回操作数本身。换句话说，如果 +5 是 5 则 +x 是 x。一般来说你不需要使用它，因为是多余的。只有为了和一元负号运算符形成对称的情况下才会使用它。
 
-For best effect, both of these operators should be placed immediately preceding the operand (e.g. `-x`, not `- x`).
+这些操作符应当放置在紧邻着操作数前面的位置（例如应该写作 `-x`而不是`- x`）。
 
-Do not confuse the _unary minus_ operator with the _binary subtraction_ operator, which uses the same symbol. For example, in the expression `x = 5 - -3;`, the first minus is the _binary subtraction_ operator, and the second is the _unary minus_ operator.
+不要把一元负号运算符和减号搞混了，尽管它们的符号的确是同一个。例如，在表达式 `x = 5 - -3;`中，第一个`-`是减号，第二个`-`则是负号。
 
 ## 二元数学运算符
 
-There are 5 binary arithmetic operators. Binary operators are operators that take a left and right operand.
-
-|Operator	|Symbol	|Form	|Operation|
+ 二元数学运算符有 5 个，它们需要两个操作数。
+ 
+|运算符	|符号	|形式	|操作|
 |---|---|---|---|
-|Addition	|+	|x + y	|x plus y|
-|Subtraction	|-	|x - y	|x minus y|
-|Multiplication	|*	|x * y	|x multiplied by y|
-|Division	|/	|x / y	|x divided by y|
-|Modulus (Remainder)	|%	|x % y	|The remainder of x divided by y|
+|Addition	|+	|x + y	|x 加 y|
+|Subtraction	|-	|x - y	|x 减 y|
+|Multiplication	|*	|x * y	|x 乘 y|
+|Division	|/	|x / y	|x 除 y|
+|Modulus (Remainder)	|%	|x % y	|x 除 y 的余数|
 
+加减乘和日常生活中的用法是一样的。
 
-The addition, subtraction, and multiplication operators work just like they do in real life, with no caveats.
-
-Division and modulus (remainder) need some additional explanation. We’ll talk about division below, and modulus in the next lesson.
+除法和求模（求余数）则需要进行一些额外的说明。我们会在本节课介绍除法，下节课会介绍求余。
 
 ## 整数除法和浮点数除法
 
-It is easiest to think of the division operator as having two different “modes”.
+可以简单地认为除法运算符有两种”模式“。
 
-If either (or both) of the operands are floating point values, the _division operator_ performs floating point division. Floating point division returns a floating point value, and the fraction is kept. For example, `7.0 / 4 = 1.75`, `7 / 4.0 = 1.75`, and `7.0 / 4.0 = 1.75`. As with all floating point arithmetic operations, rounding errors may occur.
+如果任一(或全部)的操作数是浮点值，则除法操作数会执行**浮点除法**。浮点数除法会返回一个浮点值，小数部分会被保留。例如 `7.0 / 4 = 1.75`、`7 / 4.0 = 1.75` 和 `7.0 / 4.0 = 1.75`。和其他浮点运算一样，[[rounding-error|舍入误差]]可能会发生。
 
-If both of the operands are integers, the _division operator_ performs integer division instead. Integer division drops any fractions and returns an integer value. For example, `7 / 4 = 1` because the fractional portion of the result is dropped. Similarly, `-7 / 4 = -1` because the fraction is dropped.
+如果两个操作数都是整型，则除法运算符会执行整型除法。整型除法会丢弃结果的小数部分并返回一个整型数。例如 `7 / 4 = 1` ，因为小数部分被丢弃了。类似的 `-7 / 4 = -1` 因为小数部分被丢弃了。
 
-Using static_cast to do floating point division with integers
+## 使用 static_cast 对整型数进行浮点除法
 
-The above raises the question -- if we have two integers, and want to divide them without losing the fraction, how would we do so?
+如果有两个整型数，我希望不要丢失它们做除法后的小数部分，那么应该怎么做呢？
 
-In lesson [[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]], we showed how we could use the _static_cast<>_ operator to convert a char into an integer so it would print as an integer rather than a character.
+在 [[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]] 中，我们展示了如何使用 `static_cast<>` 将字符转换成整型以便打印时能够将其打印为一个整数。
 
-We can similarly use _static_cast<>_ to convert an integer to a floating point number so that we can do _floating point division_ instead of _integer division_. Consider the following code:
+这里，我们同样可以用 `static_cast<>` 将一个整型转换为浮点数以便使用浮点数除法。考虑下面的代码：
 
 ```cpp
 #include <iostream>
@@ -78,9 +76,7 @@ int main()
 }
 ```
 
-COPY
-
-This produces the result:
+打印结果如下：
 
 ```
 int / int = 1
@@ -113,16 +109,16 @@ int main()
 
 If you run the above program and enter 0, your program will either crash or terminate abnormally. Go ahead and try it, it won’t harm your computer.
 
-## Arithmetic assignment operators
+## 算数赋值运算符
 
-|Operator	|Symbol	|Form	|Operation|
+|运算符	|符号	|格式	|操作|
 |---|---|---|---|
-|Assignment	|=	|x = y	|Assign value y to x|
-|Addition assignment	|+=	|x += y	|Add y to x|
-|Subtraction assignment	|-=	|x -= y	|Subtract y from x|
-|Multiplication assignment	|\*=	| x \*= y	| Multiply x by y|
-|Division assignment	| /=	| x /= y	| Divide x by y|
-|Modulus assignment	| %=	|x %= y	|Put the remainder of x / y in x|
+|Assignment	|=	|x = y	|y 赋值给 x|
+|Addition assignment	|+=	|x += y	|把 y 加到 x 上|
+|Subtraction assignment	|-=	|x -= y	|从 x 中减去 y|
+|Multiplication assignment	|\*=	| x \*= y	| 把 x 乘上 y|
+|Division assignment	| /=	| x /= y	| 把 x 除 y|
+|Modulus assignment	| %=	|x %= y	|把 x / y 的余数赋值给 x|
 
 
 Up to this point, when you’ve needed to add 4 to a variable, you’ve likely done the following:
@@ -131,13 +127,11 @@ Up to this point, when you’ve needed to add 4 to a variable, you’ve likely d
 x = x + 4; // add 4 to existing value of x
 ```
 
-COPY
-
 This works, but it’s a little clunky, and takes two operators to execute (operator+, and operator=).
 
 Because writing statements such as `x = x + 4` is so common, C++ provides five arithmetic assignment operators for convenience. Instead of writing `x = x + 4`, you can write `x += 4`. Instead of `x = x * y`, you can write `x *= y`.
 
-Thus, the above becomes:
+因此，上述代码可以变成下面的形式：
 
 ```cpp
 x += 4; // add 4 to existing value of x
