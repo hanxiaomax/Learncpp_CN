@@ -9,7 +9,7 @@ tags:
 - operator
 ---
 
-Incrementing and decrementing variables
+## 变量的自增自减
 
 Incrementing (adding 1 to) and decrementing (subtracting 1 from) a variable are both so common that they have their own operators.
 
@@ -39,11 +39,11 @@ int main()
 }
 ```
 
-COPY
-
 This prints:
 
+```
 6 6
+```
 
 The postfix increment/decrement operators are trickier. First, a copy of the operand is made. Then the operand (not the copy) is incremented or decremented. Finally, the copy (not the original) is evaluated. For example:
 
@@ -59,8 +59,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 This prints:
 
@@ -93,7 +91,6 @@ int main()
 }
 ```
 
-COPY
 
 This produces the output:
 
@@ -113,7 +110,7 @@ On the 10th line, we do a postfix increment and decrement. On this line, the cop
 
 	Strongly favor the prefix version of the increment and decrement operators, as they are generally more performant, and you’re less likely to run into strange issues with them.
 
-## Side effects
+## 副作用
 
 A function or expression is said to have a side effect if it does anything that persists beyond the life of the function or expression itself.
 
@@ -126,8 +123,6 @@ x = 5; // the assignment operator modifies the state of x
 ++x; // operator++ modifies the state of x
 std::cout << x; // operator<< modifies the state of the console
 ```
-
-COPY
 
 The assignment operator in the above example has the side effect of changing the value of _x_ permanently. Even after the statement has finished executing, _x_ will still have the value 5. Similarly with operator++, the value of _x_ is altered even after the statement has finished evaluating. The outputting of _x_ also has the side effect of modifying the state of the console, as you can now see the value of _x_ printed to the console.
 
@@ -152,7 +147,6 @@ int main()
 }
 ```
 
-COPY
 
 The C++ standard does not define the order in which function arguments are evaluated. If the left argument is evaluated first, this becomes a call to add(5, 6), which equals 11. If the right argument is evaluated first, this becomes a call to add(6, 6), which equals 12! Note that this is only a problem because one of the arguments to function add() has a side effect.
 

@@ -9,6 +9,10 @@ tags:
 - operator
 ---
 
+??? note "关键点速记"
+	- 使用 static_cast 对整型数进行浮点除法
+		- `std::cout << "double / int = " << static_cast<double>(x) / y << '\n';`
+
 ## 一元数学运算符
 
 一元运算符有两种，正号(`+`)和负号(`-`)。提醒一下，一元运算符只需要一个[[operands|操作数]]。
@@ -85,11 +89,12 @@ int / double = 1.75
 double / double = 1.75
 ```
 
-The above illustrates that if either operand is a floating point number, the result will be floating point division, not integer division.
+从结果来看，只要有任何一个操作数是浮点数，就会执行浮点除法，而不是整数除法。 
 
 ## 除 0 错误
 
-Trying to divide by 0 (or 0.0) will generally cause your program to crash, as the results are mathematically undefined!
+除 0 (或 0.0) 很可能会导致你的程序崩溃，因为该运算的结果是没有数学定义的。
+
 
 ```cpp
 #include <iostream>
@@ -107,7 +112,7 @@ int main()
 ```
 
 
-If you run the above program and enter 0, your program will either crash or terminate abnormally. Go ahead and try it, it won’t harm your computer.
+如果你运行上述程序并输入 0，你的程序会崩溃或异常终止。你可以亲自体验一下，这不会对你电脑有什么影响的。
 
 ## 算数赋值运算符
 
@@ -120,16 +125,15 @@ If you run the above program and enter 0, your program will either crash or term
 |Division assignment	| /=	| x /= y	| 把 x 除 y|
 |Modulus assignment	| %=	|x %= y	|把 x / y 的余数赋值给 x|
 
-
-Up to this point, when you’ve needed to add 4 to a variable, you’ve likely done the following:
+学到这里，如果你需要给一个变量加上 4，你很可能会这样做：
 
 ```cpp
 x = x + 4; // add 4 to existing value of x
 ```
 
-This works, but it’s a little clunky, and takes two operators to execute (operator+, and operator=).
+这么做是没问题的，就是有些啰嗦，它需要两个运算符才能完成（`operator+` 和 `operator=`）。
 
-Because writing statements such as `x = x + 4` is so common, C++ provides five arithmetic assignment operators for convenience. Instead of writing `x = x + 4`, you can write `x += 4`. Instead of `x = x * y`, you can write `x *= y`.
+因为 `x = x + 4` 这样的表达式太常见了，所以 C++ 提供了五种同样功能但更方便的运算符。`x = x + 4` 可以替换为 `x += 4`。而对于 `x = x * y`，你可以写成 `x *= y`。
 
 因此，上述代码可以变成下面的形式：
 

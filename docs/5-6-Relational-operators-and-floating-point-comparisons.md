@@ -59,11 +59,13 @@ COPY
 
 And the results from a sample run:
 
+```
 Enter an integer: 4
 Enter another integer: 5
 4 does not equal 5
 4 is less than 5
 4 is less than or equal to 5
+```
 
 These operators are extremely straightforward to use when comparing integers.
 
@@ -78,7 +80,6 @@ Many new programmers will write statements like this one:
 if (b1 == true) ...
 ```
 
-COPY
 
 This is redundant, as the `== true` doesn’t actually add any value to the condition. Instead, we should write:
 
@@ -86,7 +87,6 @@ This is redundant, as the `== true` doesn’t actually add any value to the co
 if (b1) ...
 ```
 
-COPY
 
 Similarly, the following:
 
@@ -94,7 +94,6 @@ Similarly, the following:
 if (b1 == false) ...
 ```
 
-COPY
 
 is better written as:
 
@@ -102,11 +101,11 @@ is better written as:
 if (!b1) ...
 ```
 
-Best practice
+!!! success "最佳实践"
 
-Don’t add unnecessary == or != to conditions. It makes them harder to read without offering any additional value.
+	Don’t add unnecessary == or != to conditions. It makes them harder to read without offering any additional value.
 
-Comparison of floating point values can be problematic
+## Comparison of floating point values can be problematic
 
 Consider the following program:
 
@@ -145,15 +144,15 @@ For example, consider a game (such as Space Invaders) where you want to determin
 
 ## Floating point equality
 
-The equality operators (== and !=) are much more troublesome. Consider operator==, which returns true only if its operands are exactly equal. Because even the smallest rounding error will cause two floating point numbers to not be equal, operator== is at high risk for returning false when a true might be expected. Operator!= has the same kind of problem.
+The equality operators (`==` and `!=`) are much more troublesome. Consider `operator==`, which returns true only if its operands are exactly equal. Because even the smallest rounding error will cause two floating point numbers to not be equal, `operator==` is at high risk for returning false when a true might be expected. Operator!= has the same kind of problem.
 
 For this reason, use of these operators with floating point operands should be avoided.
 
-Warning
+!!! warning "注意"
 
-Avoid using operator== and operator!= with floating point operands.
+	Avoid using `operator==` and `operator!=` with floating point operands.
 
-Comparing floating point numbers (advanced / optional reading)
+## Comparing floating point numbers (advanced / optional reading)
 
 So how can we reasonably compare two floating point operands to see if they are equal?
 
@@ -174,17 +173,17 @@ bool approximatelyEqualAbs(double a, double b, double absEpsilon)
 
 COPY
 
-std::abs() is a function in the `<cmath> `header that returns the absolute value of its argument. So `std::abs(a - b) <= absEpsilon` checks if the distance between _a_ and _b_ is less than whatever epsilon value representing “close enough” was passed in. If _a_ and _b_ are close enough, the function returns true to indicate they’re equal. Otherwise, it returns false.
+`std::abs()` is a function in the `<cmath> `header that returns the absolute value of its argument. So `std::abs(a - b) <= absEpsilon` checks if the distance between _a_ and _b_ is less than whatever epsilon value representing “close enough” was passed in. If _a_ and _b_ are close enough, the function returns true to indicate they’re equal. Otherwise, it returns false.
 
 While this function can work, it’s not great. An epsilon of _0.00001_ is good for inputs around _1.0_, too big for inputs around _0.0000001_, and too small for inputs like _10,000_.
 
-As an aside…
+!!! cite "题外话"
 
-If we say any number that is within 0.00001 of another number should be treated as the same number, then:
+    If we say any number that is within 0.00001 of another number should be treated as the same number, then:
 
--   1 and 1.0001 would be different, but 1 and 1.00001 would be the same. That’s not unreasonable.
--   0.0000001 and 0.00001 would be the same. That doesn’t seem good, as those numbers are two orders of magnitude apart.
--   10000 and 10000.00001 would be different. That also doesn’t seem good, as those numbers are barely different given the magnitude of the number.
+	-   1 and 1.0001 would be different, but 1 and 1.00001 would be the same. That’s not unreasonable.
+	-   0.0000001 and 0.00001 would be the same. That doesn’t seem good, as those numbers are two orders of magnitude apart.
+	-   10000 and 10000.00001 would be different. That also doesn’t seem good, as those numbers are barely different given the magnitude of the number.
 
 This means every time we call this function, we have to pick an epsilon that’s appropriate for our inputs. If we know we’re going to have to scale epsilon in proportion to the magnitude of our inputs, we might as well modify the function to do that for us.
 
@@ -201,7 +200,6 @@ bool approximatelyEqualRel(double a, double b, double relEpsilon)
 }
 ```
 
-COPY
 
 In this case, instead of epsilon being an absolute number, epsilon is now relative to the magnitude of _a_ or _b_.
 
@@ -215,8 +213,6 @@ To do inequality (!=) instead of equality, simply call this function and use the
 if (!approximatelyEqualRel(a, b, 0.001))
     std::cout << a << " is not equal to " << b << '\n';
 ```
-
-COPY
 
 Note that while the approximatelyEqual() function will work for most cases, it is not perfect, especially as the numbers approach zero:
 
@@ -244,12 +240,13 @@ int main()
 }
 ```
 
-COPY
 
 Perhaps surprisingly, this returns:
 
+```
 1
 0
+```
 
 The second call didn’t perform as expected. The math simply breaks down close to zero.
 
@@ -269,7 +266,6 @@ bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relE
 }
 ```
 
-COPY
 
 In this algorithm, we first check if _a_ and _b_ are close together in absolute terms, which handles the case where _a_ and _b_ are both close to zero. The _absEpsilon_ parameter should be set to something very small (e.g. 1e-12). If that fails, then we fall back to Knuth’s algorithm, using the relative epsilon.
 
@@ -312,10 +308,12 @@ int main()
 
 COPY
 
+```
 1
 0
 1
 1
+```
 
 You can see that approximatelyEqualAbsRel() handles the small inputs correctly.
 

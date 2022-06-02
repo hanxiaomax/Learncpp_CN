@@ -5,11 +5,12 @@ origin: /5-3-modulus-and-exponentiation/
 origin_title: "5.3 — Modulus and Exponentiation"
 time: 2022-4-7
 type: translation
+tags:
+- operator
 ---
 
 
-
-## The modulus operator
+## 求模运算符
 
 The modulus operator (also informally known as the _remainder operator_) is an operator that returns the remainder after doing an integer division. For example, 7 / 4 = 1 remainder 3. Therefore, 7 % 4 = 3. As another example, 25 / 7 = 3 remainder 4, thus 25 % 7 = 4. Modulus only works with integer operands.
 
@@ -39,52 +40,60 @@ int main()
 }
 ```
 
-COPY
-
 Here are a couple runs of this program:
 
+```
 Enter an integer: 6
 Enter another integer: 3
 The remainder is: 0
 6 is evenly divisible by 3
+```
 
+```
 Enter an integer: 6
 Enter another integer: 4
 The remainder is: 2
 6 is not evenly divisible by 4
+```
 
 Now let’s try an example where the second number is bigger than the first:
 
+```
 Enter an integer: 2
 Enter another integer: 4
 The remainder is: 2
 2 is not evenly divisible by 4
+```
 
 A remainder of 2 might be a little non-obvious at first, but it’s simple: 2 / 4 is 0 (using integer division) remainder 2. Whenever the second number is larger than the first, the second number will divide the first 0 times, so the first number will be the remainder.
 
-Modulus with negative numbers
+## Modulus with negative numbers
 
 The modulus operator can also work with negative operands. `x % y` always returns results with the sign of _x_.
 
 Running the above program:
 
+```
 Enter an integer: -6
 Enter another integer: 4
 The remainder is: -2
 -6 is not evenly divisible by 4
+```
 
+```
 Enter an integer: 6
 Enter another integer: -4
 The remainder is: 2
 6 is not evenly divisible by -4
+```
 
 In both cases, you can see the remainder takes the sign of the first operand.
 
-Where’s the exponent operator?
+## Where’s the exponent operator?
 
 You’ll note that the _^_ operator (commonly used to denote exponentiation in mathematics) is a _Bitwise XOR_ operation in C++ (covered in lesson [O.3 -- Bit manipulation with bitwise operators and bit masks](https://www.learncpp.com/cpp-tutorial/bit-manipulation-with-bitwise-operators-and-bit-masks/)). C++ does not include an exponent operator.
 
-To do exponents in C++, #include the <cmath> header, and use the pow() function:
+To do exponents in C++, `#include` the `<cmath>` header, and use the pow() function:
 
 ```cpp
 #include <cmath>
@@ -92,7 +101,6 @@ To do exponents in C++, #include the <cmath> header, and use the pow() function:
 double x{ std::pow(3.0, 4.0) }; // 3 to the 4th power
 ```
 
-COPY
 
 Note that the parameters (and return value) of function pow() are of type double. Due to rounding errors in floating point numbers, the results of pow() may not be precise (even if you pass it integers or whole numbers).
 
@@ -128,14 +136,14 @@ int main()
 }
 ```
 
-COPY
+结果为：
 
-Produces:
-
+```
 13841287201
+```
 
 Don’t worry if you don’t understand how this function works -- you don’t need to understand it in order to call it.
 
-Warning
+!!! warning "注意"
 
-In the vast majority of cases, integer exponentiation will overflow the integral type. This is likely why such a function wasn’t included in the standard library in the first place.
+	In the vast majority of cases, integer exponentiation will overflow the integral type. This is likely why such a function wasn’t included in the standard library in the first place.
