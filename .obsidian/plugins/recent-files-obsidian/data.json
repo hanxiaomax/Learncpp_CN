@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "4-14-Literal-constants",
+      "path": "docs/4-14-Literal-constants.md"
+    },
+    {
       "basename": "5-3-Modulus-and-Exponentiation",
       "path": "docs/5-3-Modulus-and-Exponentiation.md"
     },
@@ -155,10 +159,6 @@
     {
       "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
       "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "4-14-Literal-constants",
-      "path": "docs/4-14-Literal-constants.md"
     },
     {
       "basename": "4-13-An introduction-to-std-string",
