@@ -184,13 +184,14 @@ std::cout << (x > y) ? x : y;
 
 !!! success "最佳实践"
 
-	Always parenthesize the conditional part of the conditional operator, and consider parenthesizing the whole thing as well.
+	总是把条件表达式的条件部分放在括号里，同时也可以考虑把整个部分都放在括号里。
+	
 
 ## 条件运算符作为表达式求值
 
-Because the conditional operator operands are expressions rather than statements, the conditional operator can be used in some places where if/else can not.
+因为条件运算符是一个表达式，而不是一个语句，所以条件运算符可以被用在无法使用 if/else 的地方。
 
-For example, when initializing a constant variable:
+例如，可以用它来初始化一个常量：
 
 ```cpp
 #include <iostream>
@@ -206,7 +207,7 @@ int main()
 ```
 
 
-There’s no satisfactory if/else statement for this. You might think to try something like this:
+这个不能通过 if/else lai’s no satisfactory if/else statement for this. You might think to try something like this:
 
 ```cpp
 #include <iostream>
