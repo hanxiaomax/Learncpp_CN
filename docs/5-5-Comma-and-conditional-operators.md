@@ -14,6 +14,7 @@ tags:
 
 	- 逗号表达式首先对它左侧的操作数求值，然后对右侧操作数求值，然后返回右侧操作数的结果。
 	- 避免使用逗号运算符，除非是在 for 循环中。
+	- 条件表达式的整个表达式都要放在括号中，此外，条件部分也要放在括号中。
 
 ## 逗号运算符
 
@@ -104,29 +105,27 @@ void foo(int x, int y) // 在函数中逗号用于分割参数
 
 `?:` 运算符提供了一种快捷的条件语句功能。如果你对条件语句还有疑问，请参考[[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]。
 
+if/else 语句的形式如下：
 
-An if/else statement takes the following form:
-
-
-```
+```cpp
 if (condition)
     statement1;
 else
     statement2;
 ```
 
-If _condition_ evaluates to `true` , then _statement1_ is executed, otherwise _statement2_ is executed.
+如果 `condition` 求值结果为 `true` ，则 `statement1` 会被执行，否则执行 `statement2`。
 
-The `?:` operator takes the following form:
+`?:` 运算符的形式如下：
 
 ```
 (condition) ? expression1 : expression2;
 ```
 
 
-If _condition_ evaluates to _true_, then _expression1_ is executed, otherwise _expression2_ is executed. Note that _expression2_ is not optional.
+如果 `condition` 求值结果为 `true` ，则 `statement1` 会被执行，否则执行 `statement2`。注意，这里的 `expression2` 是必须要有的。
 
-Consider an if/else statement that looks like this:
+下面这个 if/else 语句：
 
 ```cpp
 if (x > y)
@@ -135,22 +134,21 @@ else
     larger = y;
 ```
 
-can be rewritten as:
+可以改写成如下形式：
 
 ```cpp
 larger = (x > y) ? x : y;
 ```
 
+这样可以在不牺牲可读性的前提下，让代码变得更加紧凑。
 
-In such uses, the conditional operator can help compact code without losing readability.
+## 为条件运算符添加括号
 
-Parenthesization of the conditional operator
+根据惯例，我们一般会把条件运算符的**条件**部分放在括号里，这样不仅可读性更好，而且可以确保运算优先级是正确的。其他操作数的求值优先级，加不加括号都是一样的，所以就没必要显示地添加括号了。
 
-It is common convention to put the conditional part of the operation inside of parentheses, both to make it easier to read, and also to make sure the precedence is correct. The other operands evaluate as if they were parenthesized, so explicit parenthesization is not required for those.
+注意，`?:` 运算符的优先级非常低。除非是和赋值操作符在一个表达式里，不然整个条件运算符表达式也要放在括号中。
 
-Note that the ?: operator has a very low precedence. If doing anything other than assigning the result to a variable, the whole ?: operator also needs to be wrapped in parentheses.
-
-For example, to print the larger of values x and y to the screen, we could do this:
+例如，为了打印 x 和 y 中较大的值，可以这样做：
 
 ```cpp
 if (x > y)
@@ -159,29 +157,30 @@ else
     std::cout << y;
 ```
 
-Or we could use the conditional operator to do this:
+或者也可以使用条件运算符：
 
 ```cpp
 std::cout << ((x > y) ? x : y);
 ```
 
 
-Let’s examine what happens if we don’t parenthesize the whole conditional operator in the above case.
+让我们测试一下，上面代码中，如果不把条件运算符表达式放在一个括号中会怎样。
 
-Because the << operator has higher precedence than the ?: operator, the statement:
+因 `<< operator` 的优先级高于 `?:` 运算符，因此下面语句：
 
 ```cpp
 std::cout << (x > y) ? x : y;
 ```
 
-would evaluate as:
+等价于：
 
 ```cpp
 (std::cout << (x > y)) ? x : y;
 ```
 
 
-That would print 1 (true) if x > y, or 0 (false) otherwise!
+因此，如果 x>y 则结果会打印 1(true)，否则打印0。
+
 
 !!! success "最佳实践"
 
