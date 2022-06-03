@@ -164,7 +164,7 @@ int main()
 
 	C++ 标准故意没有定义这些事情，这样编译器可以根据计算机的体系结构选择最自然（一般也是最高效）的方式来处理。
 
-There are other cases where the C++ standard does not specify the order in which certain things are evaluated (such as operator operands), so different compilers may exhibit different behaviors. Even when the C++ standard does make it clear how things should be evaluated, historically this has been an area where there have been many compiler bugs. These problems can generally _all_ be avoided by ensuring that any variable that has a side-effect applied is used no more than once in a given statement.
+C++ 标准没有规定求值顺序的场景还有一些（例如操作数的求值顺序），所以不同的编译器行为也可能是不一样的。即使C++标准能够明确这些问题，由于历史原因，这里也是编译器bug多发之地。通常，这些问题是可以避免的，只要你避免不要让副作用多次作用在一个变量上。
 
 !!! warning "注意"
 
@@ -172,4 +172,4 @@ There are other cases where the C++ standard does not specify the order in which
 	
 !!! warning "注意"
 
-	在一个语句中，不要让副作用多次作用在一个变量上。如果这么做的话，结果可能是不确定的。’t use a variable that has a side effect applied to it more than once in a given statement. If you do, the result may be undefined.
+	在一个语句中，不要让副作用多次作用在一个变量上。如果这么做的话，结果可能是不确定的。
