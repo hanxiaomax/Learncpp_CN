@@ -9,16 +9,22 @@ tags:
 - operator
 ---
 
+
+??? note "关键点速记"
+
+	- 逗号表达式首先对它左侧的操作数求值，然后对右侧操作数求值，然后返回右侧操作数的结果。
+	- 避免使用逗号运算符，除非是在 for 循环中。
+
 ## 逗号运算符
 
 |运算符	|符号	|形式|	操作 |
 |---|---|---|---|
-|逗号运算符|	,|	x, y	|先对 x 求值，再对 y 求值，然后返回 y 的值|
+|逗号运算符|	,|	x, y	|先对 x 求值，再对 y 求值，然后返回 y 求值结果|
 
 
-逗号运算符 (`,`) 允许你在允许单独表达式的地方，对多个表达式求值。 you to evaluate multiple expressions wherever a single expression is allowed. The comma operator evaluates the left operand, then the right operand, and then returns the result of the right operand.
+逗号运算符 (`,`) 允许你在允许单独表达式的地方，对多个表达式求值。逗号表达式首先对它左侧的操作数求值，然后对右侧操作数求值，然后返回右侧操作数的结果。
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -28,25 +34,25 @@ int main()
     int x{ 1 };
     int y{ 2 };
 
-    std::cout << (++x, ++y); // increment x and y, evaluates to the right operand
+    std::cout << (++x, ++y); // 对 x 和 y 递增， 对右侧操作数求值
 
     return 0;
 }
 ```
 
-First the left operand of the comma operator is evaluated, which increments _x_ from _1_ to _2_. Next, the right operand is evaluated, which increments _y_from _2_ to _3_. The comma operator returns the result of the right operand (_3_), which is subsequently printed to the console.
+首先，逗号运算符左侧操作数求值，将 x 递增为 2。然后逗号运算符右侧操作数求值，将 y 递增为 3。然后逗号表达式返回的是右侧求值的结果（3），并打印在屏幕上。
 
-Note that comma has the lowest precedence of all the operators, even lower than assignment. Because of this, the following two lines of code do different things:
+注意，逗号运算符的优先级是最低的，甚至比赋值表达式还低。因此，下面两行代码的效果是不同的。
 
 ```cpp
-z = (a, b); // evaluate (a, b) first to get result of b, then assign that value to variable z.
-z = a, b; // evaluates as "(z = a), b", so z gets assigned the value of a, and b is evaluated and discarded.
+z = (a, b); // 先对 (a, b) 求值得到 b 的结果，然后赋值给 z
+z = a, b; // 等价于 "(z = a), b"，所以 z 首先被赋值为 a，然后 b 求值，结果丢弃。
 ```
 
 
-This makes the comma operator somewhat dangerous to use.
+这也使得逗号运算符用起来存在危险。
 
-In almost every case, a statement written using the comma operator would be better written as separate statements. For example, the above code could be written as:
+几乎任何使用逗号运算符编写的语句都可以用多个单独的语句来替换。例如，上述代码可以改写成下面的形式：
 
 ```cpp
 #include <iostream>
@@ -64,39 +70,40 @@ int main()
 ```
 
 
-Most programmers do not use the comma operator at all, with the single exception of inside _for loops_, where its use is fairly common. We discuss for loops in future lesson [[7.9 -- For statements|7.9 - for 语句]].
+大多数程序员几乎从来不会使用逗号运算符，只有在 for 循环中存在例外，我们会在 [[7.9 -- For statements|7.9 - for 语句]]中详细讨论：
 
 !!! success "最佳实践"
 
-	Avoid using the comma operator, except within _for loops_.
+	避免使用逗号运算符，除非是在 for 循环中。
 
 ## 逗号作为分隔符
 
-In C++, the comma symbol is often used as a separator, and these uses do not invoke the comma operator. Some examples of separator commas:
+在 C++，逗号常用作分隔符，这种情况下和逗号运算符并没有关系，也不具备逗号运算符的功能，例如：
+
 
 ```cpp
-void foo(int x, int y) // Comma used to separate parameters in function definition
+void foo(int x, int y) // 在函数中逗号用于分割参数
 {
     add(x, y); // Comma used to separate arguments in function call
-    constexpr int z{ 3 }, w{ 5 }; // Comma used to separate multiple variables being defined on the same line (don't do this)
+    constexpr int z{ 3 }, w{ 5 }; // 逗号用于分割同一行中定义的多个变量（不要这么做）
 }
 ```
 
 
-There is no need to avoid separator commas (except when declaring multiple variables, which you should not do).
-
+不需要避免使用逗号作为分隔符（除非是声明多个变量时，不要这么做）。
 
 ## 条件运算符
 
 
 |运算符	|符号|	形式	|操作|
 |---|---|---|---|
-|Conditional	|?:	|c ? x : y	|If c is nonzero (true) then evaluate x, otherwise evaluate y
+|条件运算符	|?:	|c ? x : y	|如果 c 非零（真）则对 x 其中，否则对 y 求值
 
 
-The conditional operator (`?:`) (also sometimes called the “arithmetic if” operator) is a ternary operator (it takes 3 operands). Because it has historically been C++’s only ternary operator, it’s also sometimes referred to as “the ternary operator”.
+条件运算符 (`?:`) (有时也称为 ”算数 if “运算符) 是一个三元运算符（有三个操作数）。因为它是 C++ 中唯一的三元运算符，因此有使用也称它为”那个三元运算符“。
 
-The `?:` operator provides a shorthand method for doing a particular type of if/else statement. Please review lesson 4.10 -- Introduction to if statements if you need a brush up on if/else before proceeding.
+`?:` 运算符提供了一种快捷的条件语句功能。如果你对条件语句还有疑问，请参考[[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]。
+
 
 An if/else statement takes the following form:
 
