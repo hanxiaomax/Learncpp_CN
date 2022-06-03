@@ -13,10 +13,10 @@ tags:
 
 |运算符	|符号	|形式|	操作 |
 |---|---|---|---|
-|Comma|	,|	x, y	|Evaluate x then y, returns value of y
+|逗号运算符|	,|	x, y	|先对 x 求值，再对 y 求值，然后返回 y 的值|
 
 
-The comma operator (`,`) allows you to evaluate multiple expressions wherever a single expression is allowed. The comma operator evaluates the left operand, then the right operand, and then returns the result of the right operand.
+逗号运算符 (`,`) 允许你在允许单独表达式的地方，对多个表达式求值。 you to evaluate multiple expressions wherever a single expression is allowed. The comma operator evaluates the left operand, then the right operand, and then returns the result of the right operand.
 
 For example:
 
