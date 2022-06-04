@@ -103,7 +103,7 @@ int main()
 
 ## 逻辑或（OR）
 
-逻辑或运算符被用来测试两个条件中是否有为真的。如果左操作数或右操作数为 `true`，或者两个都是 `true`，则逻辑或表达式会返回 `true`，否则返回`false`。
+逻辑或运算符被用来测试两个条件中是否有为真的。如果左操作数或右操作数为 `true`，或者两个都是 `true`，则逻辑或表达式会返回 `true`，否则返回 `false`。
 
 |左操作数	|右操作数	|结果|
 |---|----|----|
@@ -112,7 +112,7 @@ int main()
 |true	|false	|true|
 |true	|true	|true|
 
-For example, consider the following program:
+例如，考虑下面的代码：
 
 ```cpp
 #include <iostream>
@@ -131,21 +131,21 @@ int main()
 }
 ```
 
-In this case, we use the logical OR operator to test whether either the left condition (`value == 0`) or the right condition (`value == 1`) is true. If either (or both) are true, the _logical OR_ operator evaluates to true, which means the _if statement_ executes. If neither are true, the _logical OR_ operator evaluates to false, which means the _else statement_ executes.
+这种情况下，我们使用逻辑或运算符来判断做操作数 (`value == 0`) 或者右操作数 (`value == 1`) 是否为真。如果其一（或两个）全部为真，则逻辑或运算符的求值结果为真，if 语句就会被执行。如果两个操作数都是假，逻辑或运算符的结果就是假，那么 else 语句就会执行。
 
-You can string together many `logical OR` statements:
+你可以将多个逻辑或表达式连接起来：
 
 ```cpp
 if (value == 0 || value == 1 || value == 2 || value == 3)
      std::cout << "You picked 0, 1, 2, or 3\n";
 ```
 
-New programmers sometimes confuse the _logical OR_ operator (`||`) with the _bitwise OR_ operator (`|`) (Covered later). Even though they both have _OR_ in the name, they perform different functions. Mixing them up will probably lead to incorrect results.
+新手程序员经常会把逻辑或运算符 (`||`) 和按位或运算符搞混 (`|`) (稍后会介绍)。 即使它们的名字中都有一个或，其功能确是不同的。将它们混为一谈会带来错误的结果。
 
 
 ## 逻辑与（AND)
 
-The `logical AND` operator is used to test whether both operands are true. If both operands are true, `logical AND` returns true. Otherwise, it returns false.
+逻辑与运算符被用作测试两个操作数是否均为真。如果均为真，则逻辑与会返回 `true`，否则返回值为`false` 。
 
 |左操作数	|右操作数	|结果|
 |---|---|---|
@@ -155,7 +155,7 @@ The `logical AND` operator is used to test whether both operands are true. If b
 |true	|true	|true|
 
 
-For example, we might want to know if the value of variable _x_ is between _10_ and _20_. This is actually two conditions: we need to know if _x_ is greater than _10_, and also whether _x_ is less than _20_.
+例如，我们想要判断 x 是否在 10 到 20 之间：我们必须知道 _x_ 是否大于 _10_，**并且**是否小于 20：
 
 ```cpp
 #include <iostream>
@@ -174,10 +174,9 @@ int main()
 }
 ```
 
+在这个例子中，我们使用逻辑与运算符检测左侧的条件 (value > 10) **和**右侧的条件 (value < 20) 是否都是 `true`。如果都是真，则逻辑与运算符的求值结果为 `true`，执行 if 语句。如果左右两个条件都是假，则逻辑与运算符的求值结果为 `false`，执行 else 语句。
 
-In this case, we use the _logical AND_ operator to test whether the left condition (value > 10) AND the right condition (value < 20) are both true. If both are true, the _logical AND_ operator evaluates to true, and the _if statement_ executes. If neither are true, or only one is true, the _logical AND_ operator evaluates to false, and the _else statement_ executes.
-
-As with _logical OR_, you can string together many _logical AND_ statements:
+和逻辑或运算符一样，你可以把多个逻辑与运算符连接起来：
 
 ```cpp
 if (value > 10 && value < 20 && value != 16)
@@ -187,7 +186,7 @@ else
 ```
 
 
-If all of these conditions are true, the _if statement_ will execute. If any of these conditions are false, the _else statement_ will execute.
+如果上述所有条件都是真，则执行 if 语句。如果任何一个条件为假，则执行 else 语句。
 
 As with logical and bitwise OR, new programmers sometimes confuse the _logical AND_ operator (`&&`) with the _bitwise AND_ operator (`&`).
 
