@@ -207,7 +207,8 @@ int main()
 ```
 
 
-这个不能通过 if/else lai’s no satisfactory if/else statement for this. You might think to try something like this:
+使用 if/else 并不能用于这种常见，你可能会觉得下面这种方法是可行的：
+
 
 ```cpp
 #include <iostream>
@@ -228,9 +229,23 @@ int main()
 ```
 
 
-However, this won’t compile, and you’ll get an error message that classSize isn’t defined. Much like how variables defined inside functions die at the end of the function, variables defined inside an if or else statement die at the end of the if or else statement. Thus, classSize has already been destroyed by the time we try to print it.
+实际上，上述代码是不能编译的，你会被告知 `claseSize` 没有定义。正如定义在函数中的变量会在函数结束时销毁一样，定义在 if/else 语句块中的变量也会在 if/else 结束时销毁。因此，当我们打印 `classSize` 时，该变量实际上已经被销毁了。
 
-If you want to use an if/else, you’d have to do something like this:
+!!! info "译者注"
+
+	如果你没有一眼看出上面的问题，可能和它的表现形式有关，我们都知道，通过大括号可以限制变量的作用域，如果修改为下面这样的形式，你应该就能够看出了：
+	```cpp
+	if (inBigClassroom)
+	{
+		constexpr int classSize { 30 };
+	}
+	else
+	{
+	    constexpr int classSize { 20 };
+	}
+	```
+
+因此，如果你希望使用 if/else 完成和条件表达式一样的效果，你可能需要这样做；
 
 ```cpp
 #include <iostream>
@@ -252,19 +267,19 @@ int main()
 }
 ```
 
-This one works because we’re not defining variables inside the _if_ or _else_, we’re just returning a value back to the caller, which can then be used as the initializer.
+这种方法是可行的因为它没有在 if/else 中定义变量，我们是把值返回给了主调函数，然后该值被用于初始化。
 
-That’s a lot of extra work!
+但这么做显然需要很多额外的步骤。
 
-## The type of the expressions must match or be convertible
+## 表达式的类型必须匹配或者可转换为匹配的类型
 
-To properly comply with C++’s type checking, either the type of both expressions in a conditional statement must match, or the both expressions must be convertible to a common type.
+为了符合 C++ 类型检查的要求，条件语句中的两个表达式类型需要匹配或者可以转变为共同的类型。
 
 !!! info "扩展阅读"
 
-    The conversion rules used when the types don’t match are rather complicated. You can find them [here](https://en.cppreference.com/w/cpp/language/operator_other).
+	当类型不匹配时，使用的转换规则非常复杂，你可以在[这里](https://en.cppreference.com/w/cpp/language/operator_other)找到详细信息
 
-So while you might expect to be able to do something like this:
+也许你觉得下面这样做是可行：
 
 ```cpp
 #include <iostream>
@@ -272,21 +287,21 @@ So while you might expect to be able to do something like this:
 int main()
 {
 	constexpr int x{ 5 };
-	std::cout << (x != 5 ? x : "x is 5"); // won't compile
+	std::cout << (x != 5 ? x : "x is 5"); // 不能编译
 
 	return 0;
 }
 ```
 
 
-The above example won’t compile. One of the expressions is an integer, and the other is a string literal. The compiler is unable to determine a common type for expressions of these types. In such cases, you’ll have to use an if/else.
+其实上面的代码并不能编译。因为其中一个表达式类型是整型，而另外一个是字符串字面量。编译器不能够确定这些类型公共的类型是什么，这种情况下，你必须使用 if/else 语句。
 
 ## 什么时候应该使用条件操作符？
 
-The conditional operator gives us a convenient way to compact some if/else statements. It’s most useful when we need a conditional initializer (or assignment) for a variable, or to pass a conditional value to a function.
+条件表达式为我们提供了一种更加精简的类似 if/else 语句的功能。它在需要进行条件初始化（或赋值）或传参时尤为有效。 
 
-It should not be used for complex if/else statements, as it quickly becomes both unreadable and error prone.
+请不要尝试利用它来代替复杂的 if/else 语句，否则很快会变得复杂的难以维护。
 
 !!! success "最佳实践"
 
-	Only use the conditional operator for simple conditionals where you use the result and where it enhances readability.
+	仅对简单条件使用条件运算符 use the conditional operator for simple conditionals where you use the result and where it enhances readability.
