@@ -250,7 +250,7 @@ int main()
 
 第二个函数调用并没有符合我们的预期，当数据接近 0 时就会出问题。
 
-避免出现该问题的方式，是同时使用一个绝对 epsilon (像第一个例子那样) 和一个相对 epsilon (像 Knuth 的例子那样):
+避免出现该问题的方式，是同时使用一个绝对 epsilon (像第一个例子那样) 和一个相对 epsilon (像 Knuth 的例子那样)：
 
 ```cpp
 // return true if the difference between a and b is less than absEpsilon, or within relEpsilon percent of the larger of a and b
@@ -267,9 +267,9 @@ bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relE
 ```
 
 
-在这个算法中，我们首先检查 _a_ 和 _b_ are close together in absolute terms, which handles the case where _a_ and _b_ are both close to zero. The _absEpsilon_ parameter should be set to something very small (e.g. *1e-12*). If that fails, then we fall back to Knuth’s algorithm, using the relative epsilon.
+在这个算法中，我们首先检查 _a_ 和 _b_ 是否足够接近，用于处理 a 和 b 都非常接近 0 的情况。`absEpsilon` 参数应该被设置为一个非常小的数（例如 1e-12 ），如果这一步的判断没有成功，则使用 Knuth 的算法，使用相对的 epsilon。
 
-Here’s our previous code testing both algorithms:
+下面的程序用于对两种方法进行测试：
 
 ```cpp
 #include <algorithm>
@@ -314,6 +314,6 @@ int main()
 1
 ```
 
-You can see that `approximatelyEqualAbsRel()` handles the small inputs correctly.
+可以看到 `approximatelyEqualAbsRel()` 可以正确地处理数值很小的情况。
 
-Comparison of floating point numbers is a difficult topic, and there’s no “one size fits all” algorithm that works for every case. However, the `approximatelyEqualAbsRel()` with an absEpsilon of *1e-12* and a `relEpsilon` of *1e-8* should be good enough to handle most cases you’ll encounter.
+对浮点数进行比较是一个很复杂的问题，而且没有万能的算法可以应对所有的情形。不过，`approximatelyEqualAbsRel()` 配合 *1e-12* 的 `absEpsilon` 以及 *1e-8* 的`relEpsilon` 已经足够应对大多数情况了。

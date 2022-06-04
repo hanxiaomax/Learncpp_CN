@@ -9,7 +9,7 @@ tags:
 - operator
 ---
 
-While relational (comparison) operators can be used to test whether a particular condition is true or false, they can only test one condition at a time. Often we need to know whether multiple conditions are true simultaneously. For example, to check whether we’ve won the lottery, we have to compare whether all of the multiple numbers we picked match the winning numbers. In a lottery with 6 numbers, this would involve 6 comparisons, _all_ of which have to be true. In other cases, we need to know whether any one of multiple conditions is true. For example, we may decide to skip work today if we’re sick, or if we’re too tired, or if we won the lottery in our previous example. This would involve checking whether _any_ of 3 comparisons is true.
+尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，例如我们需要知道多个条件中是否有一个为真。 In other cases, we need to know whether any one of multiple conditions is true. For example, we may decide to skip work today if we’re sick, or if we’re too tired, or if we won the lottery in our previous example. This would involve checking whether _any_ of 3 comparisons is true.
 
 Logical operators provide us with the capability to test multiple conditions.
 
