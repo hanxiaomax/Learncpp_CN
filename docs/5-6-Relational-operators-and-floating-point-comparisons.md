@@ -129,7 +129,6 @@ int main()
 }
 ```
 
-
 变量 d1 和 d2 应该都等于 _0.01_。但是你对它们比较的话，将会产生令人意外的结果：
 
 ```
@@ -161,7 +160,7 @@ d1 > d2
 
 判断浮点数是否相等的常用方法，是使用一个函数来判断两种是不是*非常接近*。只要非常接近，我们就可以称其 *”相等“*。表示”非常接近“的传统方法是使用epsilon。它通常会被定义为一个非常小的正数（例如，*0.00000001* 有时候写作 *1e-8*）。
 
-新手程序员通常会使用自己定义的”很小的数“，例如：
+新手程序员通常会使用自己定义的”非常接近“函数，例如：
 
 ```cpp
 #include <cmath> // for std::abs()
@@ -175,21 +174,21 @@ bool approximatelyEqualAbs(double a, double b, double absEpsilon)
 ```
 
 
-`std::abs()` 是 `<cmath>` 头文件 that returns the absolute value of its argument. So `std::abs(a - b) <= absEpsilon` checks if the distance between _a_ and _b_ is less than whatever epsilon value representing “close enough” was passed in. If _a_ and _b_ are close enough, the function returns true to indicate they’re equal. Otherwise, it returns false.
+`std::abs()` 是 `<cmath>` 头文件中定义的函数，它返回的是其[[arguments|实参]]的绝对值。`std::abs(a - b) <= absEpsilon` 会检查 a 和 b 的差的绝对值是否小于传入的任何表示很接近值的 "epsilon"。如果 a 和 b 足够接近，则函数会返回 true，表示它们相等，否则则返回 false。
 
-While this function can work, it’s not great. An epsilon of _0.00001_ is good for inputs around _1.0_, too big for inputs around _0.0000001_, and too small for inputs like _10,000_.
+尽管这个函数确实可用，但并不是最佳的解决方案。_0.00001_ 对于1.0左右的输入是合适的，但是对于 _0.0000001_ 左右的数就太大了，而对于 _10000_ 这样的输入又太小了。
 
 !!! cite "题外话"
 
-    If we say any number that is within 0.00001 of another number should be treated as the same number, then:
+    如果我们说，当两个数的差距小于 0.00001 时，它们就能被看做是相同的数，那么：
+    
+	-   1 和 1.0001 是不同的，但是 1 和 1.00001 则是相同的，这并不合理；
+	-   0.0000001 和 0.00001 是相同的，这看起来并不合理，比较它们差了一个数量级；
+	-   10000 和 10000.00001 则是不同的，这看起来也并不合理，考虑到这两个数的数量级，有这么小的差异被看做是不同的两个数显然不合理。
 
-	-   1 and 1.0001 would be different, but 1 and 1.00001 would be the same. That’s not unreasonable.
-	-   0.0000001 and 0.00001 would be the same. That doesn’t seem good, as those numbers are two orders of magnitude apart.
-	-   10000 and 10000.00001 would be different. That also doesn’t seem good, as those numbers are barely different given the magnitude of the number.
+这也意味着，每次调用该函数的时候，我们都必须为输入的值挑选一个合适的 epsilon 值。既然我们已经知道了 epsilon 的值需要根据输入数据的数量级变化，那么我们就应该通过修改函数来使其自动为我们完成这个工作。
 
-This means every time we call this function, we have to pick an epsilon that’s appropriate for our inputs. If we know we’re going to have to scale epsilon in proportion to the magnitude of our inputs, we might as well modify the function to do that for us.
-
-[Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth), a famous computer scientist, suggested the following method in his book “The Art of Computer Programming, Volume II: Seminumerical Algorithms (Addison-Wesley, 1969)”:
+[Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth)是一个著名的计算机科学家，他在他的著作 “The Art of Computer Programming, Volume II: Seminumerical Algorithms (Addison-Wesley, 1969)”:
 
 ```cpp
 #include <algorithm> // std::max
