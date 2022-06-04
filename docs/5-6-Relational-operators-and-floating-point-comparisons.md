@@ -188,7 +188,7 @@ bool approximatelyEqualAbs(double a, double b, double absEpsilon)
 
 这也意味着，每次调用该函数的时候，我们都必须为输入的值挑选一个合适的 epsilon 值。既然我们已经知道了 epsilon 的值需要根据输入数据的数量级变化，那么我们就应该通过修改函数来使其自动为我们完成这个工作。
 
-[Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth)是一个著名的计算机科学家，他在他的著作 “The Art of Computer Programming, Volume II: Seminumerical Algorithms (Addison-Wesley, 1969)”:
+[Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth)是一个著名的计算机科学家，他在他的著作 “计算机程序设计艺术第二卷：半数值算法(Addison-Wesley, 1969)“ 中介绍了这样的方法：
 
 ```cpp
 #include <algorithm> // std::max
@@ -202,7 +202,7 @@ bool approximatelyEqualRel(double a, double b, double relEpsilon)
 ```
 
 
-In this case, instead of epsilon being an absolute number, epsilon is now relative to the magnitude of _a_ or _b_.
+和上面的例子中使用一个绝对的 epsilon 值相比，这里的 epsilon 是一个与 a 或 b 数量级有关的相对值。
 
 Let’s examine in more detail how this crazy looking function works. On the left side of the `<= operator`, `std::abs(a - b)` tells us the distance between _a_ and _b_ as a positive number.
 
@@ -241,15 +241,14 @@ int main()
 }
 ```
 
-
-Perhaps surprisingly, this returns:
+出人意料的是，返回的结果如下：
 
 ```
 1
 0
 ```
 
-The second call didn’t perform as expected. The math simply breaks down close to zero.
+第二个函数调用并没有符合我们的预期. The math simply breaks down close to zero.
 
 One way to avoid this is to use both an absolute epsilon (as we did in the first approach) and a relative epsilon (as we did in Knuth’s approach):
 
@@ -307,7 +306,6 @@ int main()
 }
 ```
 
-COPY
 
 ```
 1
@@ -318,4 +316,4 @@ COPY
 
 You can see that `approximatelyEqualAbsRel()` handles the small inputs correctly.
 
-Comparison of floating point numbers is a difficult topic, and there’s no “one size fits all” algorithm that works for every case. However, the `approximatelyEqualAbsRel()` with an absEpsilon of *1e-12* and a relEpsilon of *1e-8* should be good enough to handle most cases you’ll encounter.
+Comparison of floating point numbers is a difficult topic, and there’s no “one size fits all” algorithm that works for every case. However, the `approximatelyEqualAbsRel()` with an absEpsilon of *1e-12* and a `relEpsilon` of *1e-8* should be good enough to handle most cases you’ll encounter.
