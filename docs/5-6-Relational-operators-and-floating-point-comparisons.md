@@ -10,6 +10,10 @@ tags:
 - float point
 ---
 
+??? note "关键点速记"
+
+	- 请避免对浮点数使用 `operator==` 和 `operator!=`。
+
 关系运算符指的是那些允许我们比较两个数的运算符，这类运算符有 6 个：
 
 |运算符	|符号	|形式	|操作|
@@ -138,25 +142,26 @@ d1 > d2
 
 当大于小于号(`<`, `<=`, `>` 和 `>=`) 每用在浮点数比较时，通常是可以得到正确结果的（除非两个数非常接近）。因此，对浮点数使用使用此类比较运算符是可以接受的，只有当两个数非常接近的时候才有可能得到错误的结果。
 
-例如，考虑我们在设计一个游戏（比方说《太空侵略者》），此时你需要判断两个物体是否会相交（比如说导弹和外星人）。当两个物体相距甚远是，这些比较运算符可以返回正确的结果。这种情况下，If the objects are still far apart, these operators will return the correct answer. If the two objects are extremely close together, you might get an answer either way. In such cases, the wrong answer probably wouldn’t even be noticed (it would just look like a near miss, or near hit) and the game would continue.
+例如，考虑我们在设计一个游戏（比方说《太空侵略者》），此时你需要判断两个物体是否会相交（比如说导弹和外星人）。当两个物体相距甚远时，这些比较运算符可以返回正确的结果。当两个物体已经非常接近时，那你其实已经得到结果了，即使比较的结论是错误的，你可能也不会注意到（看上去是在非常近的举例命中或丢失了），也不会对你的游戏造成严重的影响。
+
 
 ## 浮点值相等
 
-The equality operators (`==` and `!=`) are much more troublesome. Consider `operator==`, which returns true only if its operands are exactly equal. Because even the smallest rounding error will cause two floating point numbers to not be equal, `operator==` is at high risk for returning false when a true might be expected. `Operator!=` has the same kind of problem.
+相等运算符(`==` 和 `!=`) 的麻烦就比较大。对于运算符 `operator==`，它只有在两个操作数完全相等时才返回 `true`。因为很小的舍入误差就会使两个浮点数不等，所以 `operator==` 有非常大的可能在你认为应该返回 `true` 的时候返回 `false`。`Operator!=` 也有类似的问题。
 
-For this reason, use of these operators with floating point operands should be avoided.
+因此，请避免对浮点数使用这两种运算符。
 
 !!! warning "注意"
 
-	Avoid using `operator==` and `operator!=` with floating point operands.
+	请避免对浮点数使用 `operator==` 和 `operator!=`。
 
 ## 比较浮点数 （扩展阅读）
 
-So how can we reasonably compare two floating point operands to see if they are equal?
+那么，对两个浮点数进行比较的合理方法是什么呢？
 
-The most common method of doing floating point equality involves using a function that looks to see if two numbers are _almost_ the same. If they are “close enough”, then we call them equal. The value used to represent “close enough” is traditionally called epsilon. Epsilon is generally defined as a small positive number (e.g. *0.00000001*, sometimes written *1e-8*).
+判断浮点数是否相等的常用方法，是使用一个函数来判断两种是不是*非常接近*。只要非常接近，我们就可以称其 *”相等“*。表示”非常接近“的传统方法是使用epsilon。它通常会被定义为一个非常小的正数（例如，*0.00000001* 有时候写作 *1e-8*）。
 
-New developers often try to write their own “close enough” function like this:
+新手程序员通常会使用自己定义的”很小的数“，例如：
 
 ```cpp
 #include <cmath> // for std::abs()
@@ -170,7 +175,7 @@ bool approximatelyEqualAbs(double a, double b, double absEpsilon)
 ```
 
 
-`std::abs()` is a function in the `<cmath> `header that returns the absolute value of its argument. So `std::abs(a - b) <= absEpsilon` checks if the distance between _a_ and _b_ is less than whatever epsilon value representing “close enough” was passed in. If _a_ and _b_ are close enough, the function returns true to indicate they’re equal. Otherwise, it returns false.
+`std::abs()` 是 `<cmath>` 头文件 that returns the absolute value of its argument. So `std::abs(a - b) <= absEpsilon` checks if the distance between _a_ and _b_ is less than whatever epsilon value representing “close enough” was passed in. If _a_ and _b_ are close enough, the function returns true to indicate they’re equal. Otherwise, it returns false.
 
 While this function can work, it’s not great. An epsilon of _0.00001_ is good for inputs around _1.0_, too big for inputs around _0.0000001_, and too small for inputs like _10,000_.
 
