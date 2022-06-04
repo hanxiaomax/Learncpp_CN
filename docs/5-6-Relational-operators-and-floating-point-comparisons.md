@@ -15,16 +15,16 @@ tags:
 |运算符	|符号	|形式	|操作|
 |----|----|----|----|
 |大于	|>	|x > y	| 如果 x 大于 y，则返回 true，否则为 false|
-|小于	|<	|x < y	|true if x is less than y, false otherwise|
-|大于等于	|>=	|x >= y	|true if x is greater than or equal to y, false otherwise|
-|小于等于	|<=	|x <= y	|true if x is less than or equal to y, false otherwise|
-|相等	|==	|x == y	|true if x equals y, false otherwise|
-|不等	|!=	|x != y	|true if x does not equal y, false otherwise|
+|小于	|<	|x < y	| 如果 x 小于 y，则返回 true，否则为 false|
+|大于等于	|>=	|x >= y	|如果 x 大于等于 y，则返回 true，否则为 false|
+|小于等于	|<=	|x <= y	|如果 x 小于等于 y，则返回 true，否则为 false|
+|相等	|==	|x == y	|如果 x 相等 y，则返回 true，否则为 false|
+|不等	|!=	|x != y	|如果 x 不等 y，则返回 true，否则为 false|
 
 
-You have already seen how most of these work, and they are pretty intuitive. Each of these operators evaluates to the boolean value `true (1)`, or `false (0)`.
+这里面大多数运算符如何工作，相比你已经见识过了，而且都非常符合常识。这些操作符的求值结果只会是 `true (1)` 或 `false (0)` 两种。
 
-Here’s some sample code using these operators with integers:
+下面例程展示了它们的使用方法：
 
 ```cpp
 #include <iostream>
@@ -56,8 +56,7 @@ int main()
 }
 ```
 
-
-And the results from a sample run:
+运行结果如下：
 
 ```
 Enter an integer: 4
@@ -67,35 +66,32 @@ Enter another integer: 5
 4 is less than or equal to 5
 ```
 
-These operators are extremely straightforward to use when comparing integers.
+在对整型进行比较的时候，这些运算符都非常简单。
 
 
 ## 布尔条件值
 
-By default, conditions in an _if statement_ or _conditional operator_ (and a few other places) evaluate as Boolean values.
+默认情况下，_if_ 语句或*条件运算符* （以及其他一些特殊场景下）中的条件求值结果总是布尔类型的值。
 
-Many new programmers will write statements like this one:
+很多程序员会使用下面的写法：
 
 ```cpp
 if (b1 == true) ...
 ```
 
-
-This is redundant, as the `== true` doesn’t actually add any value to the condition. Instead, we should write:
+但是这种写法有些冗余，因为`== true` 并没有为这个条件添加任何值，所以我们可以这么写：
 
 ```cpp
 if (b1) ...
 ```
 
-
-Similarly, the following:
+同样的，下面的代码：
 
 ```cpp
 if (b1 == false) ...
 ```
 
-
-is better written as:
+最好写成这样：
 
 ```cpp
 if (!b1) ...
@@ -103,7 +99,8 @@ if (!b1) ...
 
 !!! success "最佳实践"
 
-	Don’t add unnecessary == or != to conditions. It makes them harder to read without offering any additional value.
+	不要为条件添加没必要的 `==` 或 `!=` ，如果没有其他的值则会让可读性变得更差
+	
 
 ## 对浮点数进行比较可能会带来问题
 
@@ -114,8 +111,8 @@ if (!b1) ...
 
 int main()
 {
-    double d1{ 100.0 - 99.99 }; // should equal 0.01
-    double d2{ 10.0 - 9.99 }; // should equal 0.01
+    double d1{ 100.0 - 99.99 }; // 应该等于 0.01
+    double d2{ 10.0 - 9.99 }; // 应该等于 0.01
 
     if (d1 == d2)
         std::cout << "d1 == d2" << '\n';
@@ -129,15 +126,15 @@ int main()
 ```
 
 
-Variables d1 and d2 should both have value _0.01_. But this program prints an unexpected result:
+变量 d1 和 d2 应该都等于 _0.01_。但是你对它们比较的话，将会产生令人意外的结果：
 
 ```
 d1 > d2
 ```
 
-If you inspect the value of d1 and d2 in a debugger, you’d likely see that `d1 = 0.0100000000000005116` and `d2 = 0.0099999999999997868`. Both numbers are close to 0.01, but d1 is greater than, and d2 is less than.
+如果你使用调试器来查看两个变量，则 `d1 = 0.0100000000000005116` 和 `d2 = 0.0099999999999997868`。这两个值都接近于 0.01，但是 d1 比 0.1 大，d2 则比 0.1 小。
 
-If a high level of precision is required, comparing floating point values using any of the relational operators can be dangerous. This is because floating point values are not precise, and small rounding errors in the floating point operands may cause unexpected results. We discussed rounding errors in lesson [[4-8-Floating-point-numbers|4.8 - 浮点数]] if you need a refresher.
+如果你需要很高的📒, comparing floating point values using any of the relational operators can be dangerous. This is because floating point values are not precise, and small rounding errors in the floating point operands may cause unexpected results. We discussed rounding errors in lesson [[4-8-Floating-point-numbers|4.8 - 浮点数]] if you need a refresher.
 
 When the less than and greater than operators (`<`, `<=`, `>`, and `>=`) are used with floating point values, they will usually produce the correct answer (only potentially failing when the operands are almost identical). Because of this, use of these operators with floating point operands can be acceptable, so long as the consequence of getting a wrong answer when the operands are similar is slight.
 
