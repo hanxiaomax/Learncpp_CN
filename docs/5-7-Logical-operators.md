@@ -9,33 +9,32 @@ tags:
 - operator
 ---
 
-尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，例如我们需要知道多个条件中是否有一个为真。 In other cases, we need to know whether any one of multiple conditions is true. For example, we may decide to skip work today if we’re sick, or if we’re too tired, or if we won the lottery in our previous example. This would involve checking whether _any_ of 3 comparisons is true.
+尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，我们需要知道多个条件中是否有一个为真。例如，如果我今天生病了，或者太累了，又或者中了彩票，这三个条件只要有一条为真我就会考虑翘班。
 
-Logical operators provide us with the capability to test multiple conditions.
+逻辑运算符就为我们提供了这样的能力。
 
-C++ has 3 logical operators:
+C++ 提供了三种逻辑运算符：
 
 |运算符	|符号	|形式	|操作|
 |---|---|---|---|
-|Logical NOT	|!	|!x	|true if x is false, or false if x is true|
-|Logical AND	|&&	|x && y	|true if both x and y are true, false otherwise|
-|Logical OR	| \|\|	| x \|\| y|true if either x or y are true, false otherwise|
+|逻辑非 NOT	|!	|!x	|如果 x 为真则为 false，如果 x 为假则为 true |
+|逻辑与 AND	|&&	|x && y	|如果 x 和 y 都是真，则为 true，否则为 false|
+|逻辑或 OR	| \|\|	| x \|\| y| 如果 x 或 y 其中一个位真，则为真，否则为假|
 
 
 ## 逻辑非（NOT）
 
-You have already run across the logical NOT unary operator in lesson [[4-9-Boolean-values|4.9 - 布尔值]]. We can summarize the effects of logical NOT like so:
+在 [[4-9-Boolean-values|4.9 - 布尔值]] 一节课中你已经遇到逻辑非这个一元运算符：
 
-
-|Operand|	Result|
+|操作符|	结果|
 |---|---|
 |true|	false
 |false|	true
 
 
-If _logical NOT’s_ operand evaluates to true, _logical NOT_ evaluates to false. If _logical NOT’s_ operand evaluates to false, _logical NOT_ evaluates to true. In other words, _logical NOT_ flips a Boolean value from true to false, and vice-versa.
+如果逻辑非的操作数求值为 `true`，则逻辑非求值为 `false`。如果逻辑非的操作数求值为 `false`，逻辑非的求值为 `true`。换句话说，逻辑非可以将布尔值反转，真变成假，假变成真。
 
-Logical NOT is often used in conditionals:
+逻辑非经常被用在条件表达式中：
 
 ```cpp
 bool tooLarge { x > 100 }; // tooLarge is true if x > 100
@@ -46,7 +45,7 @@ else
 ```
 
 
-One thing to be wary of is that _logical NOT_ has a very high level of precedence. New programmers often make the following mistake:
+有件事情需要注意，那就逻辑非的优先级非常高。新手程序员经常会犯这样的错误：
 
 ```cpp
 #include <iostream>
@@ -72,9 +71,9 @@ int main()
 5 is greater than 7
 ```
 
-But _x_ is not greater than _y_, so how is this possible? The answer is that because the _logical NOT_ operator has higher precedence than the _greater than_operator, the expression `! x > y` actually evaluates as `(!x) > y`. Since _x_ is 5, !x evaluates to _0_, and `0 > y` is false, so the _else_ statement executes!
+但是 _x_ 并不比 7 大，这结果是怎么得到的？这是因为逻辑非的优先级比大于号的优先级高，因此 `! x > y` 实际上相当于`(!x) > y`。因为 `x` 是 5，`!x` 求值结果为 _0_，而  `0 > y` 是假，所以执行的是 else 的语句。
 
-The correct way to write the above snippet is:
+正确的做法应该像下面这样：
 
 ```cpp
 #include <iostream>
@@ -94,19 +93,19 @@ int main()
 ```
 
 
-This way, `x > y` will be evaluated first, and then logical NOT will flip the Boolean result.
+这样  `x > y` 会首先进行求值，然后再通过逻辑非将布尔结果反转。
 
 !!! success "最佳实践"
 
-	If _logical NOT_ is intended to operate on the result of other operators, the other operators and their operands need to be enclosed in parentheses.
-
-Simple uses of _logical NOT_, such as `if (!value)` do not need parentheses because precedence does not come into play.
+	如果逻辑非要对其他运算符的结果进行操作，那么其他运算符和它们的操作数应该放在括号中。
+	
+逻辑非的简单用法，例如 `if (!value)` 并不需要括号，因为这时不会受到优先级的影响。
 
 ## 逻辑或（OR）
 
-The _logical OR_ operator is used to test whether either of two conditions is true. If the left operand evaluates to true, or the right operand evaluates to true, or both are true, then the _logical OR_ operator returns true. Otherwise it will return false.
+逻辑或运算符被用来测试两个条件中是否有为真的。如果左操作数或右操作数为 `true`，或者两个都是 `true`，则逻辑或表达式会返回 `true`，否则返回`false`。
 
-|Left operand	|Right operand	|Result|
+|左操作数	|右操作数	|结果|
 |---|----|----|
 |false	|false	|false|
 |false	|true	|true|
@@ -148,7 +147,7 @@ New programmers sometimes confuse the _logical OR_ operator (`||`) with the _
 
 The `logical AND` operator is used to test whether both operands are true. If both operands are true, `logical AND` returns true. Otherwise, it returns false.
 
-|Left operand	|Right operand	|Result|
+|左操作数	|右操作数	|结果|
 |---|---|---|
 |false	|false	|false|
 |false	|true	|false|
@@ -284,7 +283,7 @@ This can sometimes be useful when trying to make complex expressions easier to r
 
 _Logical XOR_ is a logical operator provided in some languages that is used to test whether an odd number of conditions is true.
 
-|Left operand	|Right operand	|Result|
+|左操作数	|右操作数	|结果|
 |---|---|---|
 |false	|false	|false|
 |false	|true	|true|
@@ -319,13 +318,13 @@ Many operators in C++ (such as operator ||) have names that are just symbols. Hi
 The full list can be found [这里](https://en.cppreference.com/w/cpp/language/operator_alternative). Of particular note are the following three:
 
 
-|Operator name	|Keyword alternate name|
+|运算符|关键字替代名|
 |---|---|
 |&&	|and|
 |\|\|	|or|
 |!	|not|
 
-This means the following are identical:
+因此下面两行代码是等价的：
 
 ```cpp
 std::cout << !a && (b || c);
