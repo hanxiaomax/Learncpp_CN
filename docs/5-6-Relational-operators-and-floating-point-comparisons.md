@@ -134,11 +134,11 @@ d1 > d2
 
 如果你使用调试器来查看两个变量，则 `d1 = 0.0100000000000005116` 和 `d2 = 0.0099999999999997868`。这两个值都接近于 0.01，但是 d1 比 0.1 大，d2 则比 0.1 小。
 
-如果你需要很高的📒, comparing floating point values using any of the relational operators can be dangerous. This is because floating point values are not precise, and small rounding errors in the floating point operands may cause unexpected results. We discussed rounding errors in lesson [[4-8-Floating-point-numbers|4.8 - 浮点数]] if you need a refresher.
+如果你需要很高的精度，则对浮点数使用上述比较运算符是很危险的。这是因为浮点数并不精确，很小的[[rounding-error|舍入误差]]都有可能造成上述意外情况。 我们在 [[4-8-Floating-point-numbers|4.8 - 浮点数]] 中介绍了舍入误差的问题。
 
-When the less than and greater than operators (`<`, `<=`, `>`, and `>=`) are used with floating point values, they will usually produce the correct answer (only potentially failing when the operands are almost identical). Because of this, use of these operators with floating point operands can be acceptable, so long as the consequence of getting a wrong answer when the operands are similar is slight.
+当大于小于号(`<`, `<=`, `>` 和 `>=`) 每用在浮点数比较时，通常是可以得到正确结果的（除非两个数非常接近）。因此，对浮点数使用使用此类比较运算符是可以接受的，只有当两个数非常接近的时候才有可能得到错误的结果。
 
-For example, consider a game (such as Space Invaders) where you want to determine whether two moving objects (such as a missile and an alien) intersect. If the objects are still far apart, these operators will return the correct answer. If the two objects are extremely close together, you might get an answer either way. In such cases, the wrong answer probably wouldn’t even be noticed (it would just look like a near miss, or near hit) and the game would continue.
+例如，考虑我们在设计一个游戏（比方说《太空侵略者》），此时你需要判断两个物体是否会相交（比如说导弹和外星人）。当两个物体相距甚远是，这些比较运算符可以返回正确的结果。这种情况下，If the objects are still far apart, these operators will return the correct answer. If the two objects are extremely close together, you might get an answer either way. In such cases, the wrong answer probably wouldn’t even be noticed (it would just look like a near miss, or near hit) and the game would continue.
 
 ## 浮点值相等
 
