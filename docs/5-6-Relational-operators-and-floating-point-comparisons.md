@@ -204,18 +204,18 @@ bool approximatelyEqualRel(double a, double b, double relEpsilon)
 
 和上面的例子中使用一个绝对的 epsilon 值相比，这里的 epsilon 是一个与 a 或 b 数量级有关的相对值。
 
-让我们仔细分析一下这个看上去非常复杂的函数是如何工作的。zLet’s examine in more detail how this crazy looking function works. On the left side of the `<= operator`, `std::abs(a - b)` tells us the distance between _a_ and _b_ as a positive number.
+让我们仔细分析一下这个看上去非常复杂的函数是如何工作的。在不等号 `<= operator` 的左边 `std::abs(a - b)` 为我们求出了 a 和 b 之间的差异（以一个正数来表示）。
 
-On the right side of the `<= operator`, we need to calculate the largest value of “close enough” we’re willing to accept. To do this, the algorithm chooses the larger of _a_ and _b_ (as a rough indicator of the overall magnitude of the numbers), and then multiplies it by relEpsilon. In this function, relEpsilon represents a percentage. For example, if we want to say “close enough” means _a_ and _b_ are within 1% of the larger of _a_ and _b_, we pass in an relEpsilon of 0.01 (1% = 1/100 = 0.01). The value for relEpsilon can be adjusted to whatever is most appropriate for the circumstances (e.g. an epsilon of 0.002 means within 0.2%).
+在不等号 `<= operator` 的右边，我们需要计算那个所谓”足够接近“的值的最大值。为此，这个算法选取了 a 和 b 中较大的一个值（作为数量级的一个近似指标），然后将其乘以 `relEpsilon`。在这个函数中，`relEpsilon` 表示的是一个百分比。例如，如果我们称”足够接近“意味着 a 和 b 的差异在 1% 以内，那么我们就将 `relEpsilon` 设为 0.01 (1% = 1/100 = 0.01)，`relEpsilon` 的值可以选取最适合我们的值 (例如 epsilon 为 0.002 表示两者差异在 0.2% 以内)。
 
-To do inequality (`!=`) instead of equality, simply call this function and use the logical NOT operator (`!`) to flip the result:
+如果要判断是否不相等 (`!=`) ，也可以调用这个函数，然后在前面添加逻辑非 (`!`) 运算符，对结果取反：
 
 ```cpp
 if (!approximatelyEqualRel(a, b, 0.001))
     std::cout << a << " is not equal to " << b << '\n';
 ```
 
-Note that while the `approximatelyEqual()` function will work for most cases, it is not perfect, especially as the numbers approach zero:
+注意，尽管 `approximatelyEqual()` 函数在大多数情况下都可以正确工作，它仍然不是完美的，尤其是当两数接近0时：
 
 ```cpp
 #include <algorithm>
@@ -230,13 +230,13 @@ bool approximatelyEqualRel(double a, double b, double relEpsilon)
 
 int main()
 {
-	// a is really close to 1.0, but has rounding errors, so it's slightly smaller than 1.0
+	// a 非常接近 1.0，但是由于舍入误差的存在，它稍微小于 1.0 
 	double a{ 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 };
 
-	// First, let's compare a (almost 1.0) to 1.0.
+	// 首先, 让我们把 a 和 0.1 相比
 	std::cout << approximatelyEqualRel(a, 1.0, 1e-8) << '\n';
 
-	// Second, let's compare a-1.0 (almost 0.0) to 0.0
+	// 然后, 让我们把 a - 0.1 (几乎为 0.0) 和 0.0 相比
 	std::cout << approximatelyEqualRel(a-1.0, 0.0, 1e-8) << '\n';
 }
 ```
@@ -248,9 +248,9 @@ int main()
 0
 ```
 
-第二个函数调用并没有符合我们的预期. The math simply breaks down close to zero.
+第二个函数调用并没有符合我们的预期，当数据接近 0 时就会出问题。
 
-One way to avoid this is to use both an absolute epsilon (as we did in the first approach) and a relative epsilon (as we did in Knuth’s approach):
+避免出现该问题的方式，是同时使用一个绝对 epsilon (像第一个例子那样) 和一个相对 epsilon (像 Knuth 的例子那样):
 
 ```cpp
 // return true if the difference between a and b is less than absEpsilon, or within relEpsilon percent of the larger of a and b
@@ -267,7 +267,7 @@ bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relE
 ```
 
 
-In this algorithm, we first check if _a_ and _b_ are close together in absolute terms, which handles the case where _a_ and _b_ are both close to zero. The _absEpsilon_ parameter should be set to something very small (e.g. *1e-12*). If that fails, then we fall back to Knuth’s algorithm, using the relative epsilon.
+在这个算法中，我们首先检查 _a_ 和 _b_ are close together in absolute terms, which handles the case where _a_ and _b_ are both close to zero. The _absEpsilon_ parameter should be set to something very small (e.g. *1e-12*). If that fails, then we fall back to Knuth’s algorithm, using the relative epsilon.
 
 Here’s our previous code testing both algorithms:
 
