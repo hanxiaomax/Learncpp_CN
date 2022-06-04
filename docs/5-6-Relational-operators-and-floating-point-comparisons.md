@@ -7,21 +7,22 @@ time: 2022-4-26
 type: translation
 tags:
 - operator
+- float point
 ---
 
-Relational operators are operators that let you compare two values. There are 6 relational operators:
+关系运算符指的是那些允许我们比较两个数的运算符，这类运算符有 6 个：
 
-|Operator	|Symbol	|Form	|Operation|
+|运算符	|符号	|形式	|操作|
 |----|----|----|----|
-|Greater than	|>	|x > y	|true if x is greater than y, false otherwise|
-|Less than	|<	|x < y	|true if x is less than y, false otherwise|
-|Greater than or equals	|>=	|x >= y	|true if x is greater than or equal to y, false otherwise|
-|Less than or equals	|<=	|x <= y	|true if x is less than or equal to y, false otherwise|
-|Equality	|==	|x == y	|true if x equals y, false otherwise|
-|Inequality	|!=	|x != y	|true if x does not equal y, false otherwise|
+|大于	|>	|x > y	| 如果 x 大于 y，则返回 true，否则为 false|
+|小于	|<	|x < y	|true if x is less than y, false otherwise|
+|大于等于	|>=	|x >= y	|true if x is greater than or equal to y, false otherwise|
+|小于等于	|<=	|x <= y	|true if x is less than or equal to y, false otherwise|
+|相等	|==	|x == y	|true if x equals y, false otherwise|
+|不等	|!=	|x != y	|true if x does not equal y, false otherwise|
 
 
-You have already seen how most of these work, and they are pretty intuitive. Each of these operators evaluates to the boolean value true (1), or false (0).
+You have already seen how most of these work, and they are pretty intuitive. Each of these operators evaluates to the boolean value `true (1)`, or `false (0)`.
 
 Here’s some sample code using these operators with integers:
 
@@ -55,7 +56,6 @@ int main()
 }
 ```
 
-COPY
 
 And the results from a sample run:
 
@@ -70,7 +70,7 @@ Enter another integer: 5
 These operators are extremely straightforward to use when comparing integers.
 
 
-## Boolean conditional values
+## 布尔条件值
 
 By default, conditions in an _if statement_ or _conditional operator_ (and a few other places) evaluate as Boolean values.
 
@@ -105,9 +105,9 @@ if (!b1) ...
 
 	Don’t add unnecessary == or != to conditions. It makes them harder to read without offering any additional value.
 
-## Comparison of floating point values can be problematic
+## 对浮点数进行比较可能会带来问题
 
-Consider the following program:
+考虑下面的程序：
 
 ```cpp
 #include <iostream>
@@ -128,23 +128,24 @@ int main()
 }
 ```
 
-COPY
 
 Variables d1 and d2 should both have value _0.01_. But this program prints an unexpected result:
 
+```
 d1 > d2
+```
 
-If you inspect the value of d1 and d2 in a debugger, you’d likely see that d1 = 0.0100000000000005116 and d2 = 0.0099999999999997868. Both numbers are close to 0.01, but d1 is greater than, and d2 is less than.
+If you inspect the value of d1 and d2 in a debugger, you’d likely see that `d1 = 0.0100000000000005116` and `d2 = 0.0099999999999997868`. Both numbers are close to 0.01, but d1 is greater than, and d2 is less than.
 
-If a high level of precision is required, comparing floating point values using any of the relational operators can be dangerous. This is because floating point values are not precise, and small rounding errors in the floating point operands may cause unexpected results. We discussed rounding errors in lesson [4.8 -- Floating point numbers](https://www.learncpp.com/cpp-tutorial/floating-point-numbers/) if you need a refresher.
+If a high level of precision is required, comparing floating point values using any of the relational operators can be dangerous. This is because floating point values are not precise, and small rounding errors in the floating point operands may cause unexpected results. We discussed rounding errors in lesson [[4-8-Floating-point-numbers|4.8 - 浮点数]] if you need a refresher.
 
-When the less than and greater than operators (<, <=, >, and >=) are used with floating point values, they will usually produce the correct answer (only potentially failing when the operands are almost identical). Because of this, use of these operators with floating point operands can be acceptable, so long as the consequence of getting a wrong answer when the operands are similar is slight.
+When the less than and greater than operators (`<`, `<=`, `>`, and `>=`) are used with floating point values, they will usually produce the correct answer (only potentially failing when the operands are almost identical). Because of this, use of these operators with floating point operands can be acceptable, so long as the consequence of getting a wrong answer when the operands are similar is slight.
 
 For example, consider a game (such as Space Invaders) where you want to determine whether two moving objects (such as a missile and an alien) intersect. If the objects are still far apart, these operators will return the correct answer. If the two objects are extremely close together, you might get an answer either way. In such cases, the wrong answer probably wouldn’t even be noticed (it would just look like a near miss, or near hit) and the game would continue.
 
-## Floating point equality
+## 浮点值相等
 
-The equality operators (`==` and `!=`) are much more troublesome. Consider `operator==`, which returns true only if its operands are exactly equal. Because even the smallest rounding error will cause two floating point numbers to not be equal, `operator==` is at high risk for returning false when a true might be expected. Operator!= has the same kind of problem.
+The equality operators (`==` and `!=`) are much more troublesome. Consider `operator==`, which returns true only if its operands are exactly equal. Because even the smallest rounding error will cause two floating point numbers to not be equal, `operator==` is at high risk for returning false when a true might be expected. `Operator!=` has the same kind of problem.
 
 For this reason, use of these operators with floating point operands should be avoided.
 
@@ -152,11 +153,11 @@ For this reason, use of these operators with floating point operands should be a
 
 	Avoid using `operator==` and `operator!=` with floating point operands.
 
-## Comparing floating point numbers (advanced / optional reading)
+## 比较浮点数 （扩展阅读）
 
 So how can we reasonably compare two floating point operands to see if they are equal?
 
-The most common method of doing floating point equality involves using a function that looks to see if two numbers are _almost_ the same. If they are “close enough”, then we call them equal. The value used to represent “close enough” is traditionally called epsilon. Epsilon is generally defined as a small positive number (e.g. 0.00000001, sometimes written 1e-8).
+The most common method of doing floating point equality involves using a function that looks to see if two numbers are _almost_ the same. If they are “close enough”, then we call them equal. The value used to represent “close enough” is traditionally called epsilon. Epsilon is generally defined as a small positive number (e.g. *0.00000001*, sometimes written *1e-8*).
 
 New developers often try to write their own “close enough” function like this:
 
@@ -171,7 +172,6 @@ bool approximatelyEqualAbs(double a, double b, double absEpsilon)
 }
 ```
 
-COPY
 
 `std::abs()` is a function in the `<cmath> `header that returns the absolute value of its argument. So `std::abs(a - b) <= absEpsilon` checks if the distance between _a_ and _b_ is less than whatever epsilon value representing “close enough” was passed in. If _a_ and _b_ are close enough, the function returns true to indicate they’re equal. Otherwise, it returns false.
 
@@ -207,14 +207,14 @@ Let’s examine in more detail how this crazy looking function works. On the lef
 
 On the right side of the `<= operator`, we need to calculate the largest value of “close enough” we’re willing to accept. To do this, the algorithm chooses the larger of _a_ and _b_ (as a rough indicator of the overall magnitude of the numbers), and then multiplies it by relEpsilon. In this function, relEpsilon represents a percentage. For example, if we want to say “close enough” means _a_ and _b_ are within 1% of the larger of _a_ and _b_, we pass in an relEpsilon of 0.01 (1% = 1/100 = 0.01). The value for relEpsilon can be adjusted to whatever is most appropriate for the circumstances (e.g. an epsilon of 0.002 means within 0.2%).
 
-To do inequality (!=) instead of equality, simply call this function and use the logical NOT operator (!) to flip the result:
+To do inequality (`!=`) instead of equality, simply call this function and use the logical NOT operator (`!`) to flip the result:
 
 ```cpp
 if (!approximatelyEqualRel(a, b, 0.001))
     std::cout << a << " is not equal to " << b << '\n';
 ```
 
-Note that while the approximatelyEqual() function will work for most cases, it is not perfect, especially as the numbers approach zero:
+Note that while the `approximatelyEqual()` function will work for most cases, it is not perfect, especially as the numbers approach zero:
 
 ```cpp
 #include <algorithm>
@@ -267,7 +267,7 @@ bool approximatelyEqualAbsRel(double a, double b, double absEpsilon, double relE
 ```
 
 
-In this algorithm, we first check if _a_ and _b_ are close together in absolute terms, which handles the case where _a_ and _b_ are both close to zero. The _absEpsilon_ parameter should be set to something very small (e.g. 1e-12). If that fails, then we fall back to Knuth’s algorithm, using the relative epsilon.
+In this algorithm, we first check if _a_ and _b_ are close together in absolute terms, which handles the case where _a_ and _b_ are both close to zero. The _absEpsilon_ parameter should be set to something very small (e.g. *1e-12*). If that fails, then we fall back to Knuth’s algorithm, using the relative epsilon.
 
 Here’s our previous code testing both algorithms:
 
@@ -315,6 +315,6 @@ COPY
 1
 ```
 
-You can see that approximatelyEqualAbsRel() handles the small inputs correctly.
+You can see that `approximatelyEqualAbsRel()` handles the small inputs correctly.
 
-Comparison of floating point numbers is a difficult topic, and there’s no “one size fits all” algorithm that works for every case. However, the approximatelyEqualAbsRel() with an absEpsilon of 1e-12 and a relEpsilon of 1e-8 should be good enough to handle most cases you’ll encounter.
+Comparison of floating point numbers is a difficult topic, and there’s no “one size fits all” algorithm that works for every case. However, the `approximatelyEqualAbsRel()` with an absEpsilon of *1e-12* and a relEpsilon of *1e-8* should be good enough to handle most cases you’ll encounter.

@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
+      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
+    },
+    {
       "basename": "5-5-Comma-and-conditional-operators",
       "path": "docs/5-5-Comma-and-conditional-operators.md"
+    },
+    {
+      "basename": "5-7-Logical-operators",
+      "path": "docs/5-7-Logical-operators.md"
+    },
+    {
+      "basename": "5-x-Chapter-5-summary-and-quiz",
+      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
     },
     {
       "basename": "5-4-Increment-decrement-operators-and-side-effects",
@@ -23,18 +35,6 @@
     {
       "basename": "4-14-Literal-constants",
       "path": "docs/4-14-Literal-constants.md"
-    },
-    {
-      "basename": "5-7-Logical-operators",
-      "path": "docs/5-7-Logical-operators.md"
-    },
-    {
-      "basename": "5-x-Chapter-5-summary-and-quiz",
-      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
-    },
-    {
-      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
-      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     },
     {
       "basename": "7.9 -- For statements",

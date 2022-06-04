@@ -15,7 +15,7 @@ Logical operators provide us with the capability to test multiple conditions.
 
 C++ has 3 logical operators:
 
-|Operator	|Symbol	|Form	|Operation|
+|运算符	|符号	|形式	|操作|
 |---|---|---|---|
 |Logical NOT	|!	|!x	|true if x is false, or false if x is true|
 |Logical AND	|&&	|x && y	|true if both x and y are true, false otherwise|
@@ -45,7 +45,6 @@ else
     // print an error
 ```
 
-COPY
 
 One thing to be wary of is that _logical NOT_ has a very high level of precedence. New programmers often make the following mistake:
 
@@ -66,9 +65,8 @@ int main()
 }
 ```
 
-COPY
 
-This program prints:
+打印结果如下：
 
 ```
 5 is greater than 7
@@ -95,7 +93,6 @@ int main()
 }
 ```
 
-COPY
 
 This way, `x > y` will be evaluated first, and then logical NOT will flip the Boolean result.
 
@@ -144,7 +141,7 @@ if (value == 0 || value == 1 || value == 2 || value == 3)
      std::cout << "You picked 0, 1, 2, or 3\n";
 ```
 
-New programmers sometimes confuse the _logical OR_ operator (||) with the _bitwise OR_ operator (|) (Covered later). Even though they both have _OR_ in the name, they perform different functions. Mixing them up will probably lead to incorrect results.
+New programmers sometimes confuse the _logical OR_ operator (`||`) with the _bitwise OR_ operator (`|`) (Covered later). Even though they both have _OR_ in the name, they perform different functions. Mixing them up will probably lead to incorrect results.
 
 
 ## 逻辑与（AND)
@@ -315,11 +312,11 @@ if (static_cast<bool>(a) != static_cast<bool>(b) != static_cast<bool>(c) != stat
 ```
 
 
-## Alternative operator representations
+## 运算符的其他表示形式
 
 Many operators in C++ (such as operator ||) have names that are just symbols. Historically, not all keyboards and language standards have supported all of the symbols needed to type these operators. As such, C++ supports an alternative set of keywords for the operators that use words instead of symbols. For example, instead of `||`, you can use the keyword `or`.
 
-The full list can be found [here](https://en.cppreference.com/w/cpp/language/operator_alternative). Of particular note are the following three:
+The full list can be found [这里](https://en.cppreference.com/w/cpp/language/operator_alternative). Of particular note are the following three:
 
 
 |Operator name	|Keyword alternate name|

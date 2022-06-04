@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/5-5-Comma-and-conditional-operators.md",
+            "file": "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -86,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/5-5-Comma-and-conditional-operators.md"
+                "file": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
               }
             }
           },
@@ -107,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/5-5-Comma-and-conditional-operators.md",
+                "file": "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +129,15 @@
   },
   "active": "56bd180b4e918b82",
   "lastOpenFiles": [
+    "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
     "docs/5-5-Comma-and-conditional-operators.md",
+    "docs/5-7-Logical-operators.md",
+    "docs/5-x-Chapter-5-summary-and-quiz.md",
     "docs/5-4-Increment-decrement-operators-and-side-effects.md",
     "docs/5-3-Modulus-and-Exponentiation.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/5-2-Arithmetic-operators.md",
     "docs/4-14-Literal-constants.md",
-    "docs/5-7-Logical-operators.md",
-    "docs/5-x-Chapter-5-summary-and-quiz.md",
-    "docs/5-6-Relational-operators-and-floating-point-comparisons.md",
     "docs/7.9 -- For statements.md"
   ]
 }
