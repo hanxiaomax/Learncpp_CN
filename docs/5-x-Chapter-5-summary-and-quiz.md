@@ -10,20 +10,13 @@ tags:
 ---
 
 
-## Quick review
+## 章节回顾
 
-Always use parentheses to disambiguate the precedence of operators if there is any question or opportunity for confusion.
-
-The arithmetic operators all work like they do in normal mathematics. The modulus (%) operator returns the remainder from an integer division.
-
-The increment and decrement operators can be used to easily increment or decrement numbers. Avoid the postfix versions of these operators whenever possible.
-
-Beware of side effects, particularly when it comes to the order that function parameters are evaluated. Do not use a variable that has a side effect applied more than once in a given statement.
-
-The comma operator can compress multiple statements into one. Writing the statements separately is usually better.
-
-The conditional operator is a nice short version of an if-statement, but don’t use it as an alternative to an if-statement. Only use the conditional operator if you use its result.
-
-Relational operators can be used to compare floating point numbers. Beware using equality and inequality on floating point numbers.
-
-Logical operators allow us to form compound conditional statements.
+- 使用括号明确指定运算符的优先级，避免歧义。（[[5-1-Operator-precedence-and-associativity|5.1 - 运算符优先级和结合律]]）
+- 算数运算符的行为和普通的数学运算符是一样的。求模运算符(`%`)返回正数相除的余数（[[5-2-Arithmetic-operators|5.2 - 数学运算符]]）
+- 自增自减操作符可以对一个变量进行递增和递减操作。尽量避免使用自增自减操作符的后缀形式
+- 注意操作符的副作用，尤其是在函数参数求值时。在一个语句中，不要让副作用两次作用于一个变量
+- 逗号运算符可以将多个语句合并为一个。但是多个语句通常分开写会更好。
+- 条件运算符可以构建一个**精简版**的 if 语句，但是并不要把它当做 if 语句的代替。只有当你关系它的结果时再使用
+- 关系运算符可以被用来对浮点数进行比较，但是要小心对浮点数应用**等于**和**不等于**
+- 使用逻辑运算符我们可以构建复合条件语句

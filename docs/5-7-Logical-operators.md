@@ -21,6 +21,7 @@ tags:
 		- `!(x && y)` 等价于 `!x || !y`  
 		- `!(x || y)` 等价于 `!x && !y`
 	- C++ 没有异或运算符。可以使用不等号(`!=`)来模拟逻辑异或（相同为真）
+	- C++ 中的很多操作符 (例如 `operator ||`) 都可以使用名字来代替符号吗，因为并不是所有的键盘都支持输入符号。
 
 尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，我们需要知道多个条件中是否有一个为真。例如，如果我今天生病了，或者太累了，又或者中了彩票，这三个条件只要有一条为真我就会考虑翘班。
 
@@ -327,10 +328,9 @@ if (static_cast<bool>(a) != static_cast<bool>(b) != static_cast<bool>(c) != stat
 
 ## 运算符的其他表示形式
 
-C++ 中的很多操作符 (例如 `operator ||`) 都可以使用名字来代替符号。出于历史原因，并不是所有的键盘或者标准支持输入这些运算符的符号。因此C++提供了一组关键字用于代替符号。例如，`||` 也可以用`or`来替代。
+C++ 中的很多操作符 (例如 `operator ||`) 都有可以代替符号表示法的关键字。出于历史原因，并不是所有的键盘或者标准支持输入这些运算符的符号。因此C++提供了一组关键字用于代替符号。例如，`||` 也可以用`or`来替代。
 
-完整的列表可以参考 [这里](https://en.cppreference.com/w/cpp/language/operator_alternative)，尤其可以注意yi'xia
-
+完整的列表可以参考[这里](https://en.cppreference.com/w/cpp/language/operator_alternative)，尤其可以注意一下下面三种：
 
 |运算符|关键字替代名|
 |---|---|
@@ -346,4 +346,4 @@ std::cout << not a and (b or c);
 ```
 
 
-While these alternative names might seem easier to understand right now, most experienced C++ developers prefer using the symbolic names over the keyword names. As such, we recommend learning and using the symbolic names, as this is what you will commonly find in existing code.
+尽管这些关键字看起来可读性更好，但是大多数有经验的 C++ 程序员还是喜欢使用符号而不是关键字。因此，我们还是建议你学习这些运算符的符号表示法，这也是代码中最常见的形式。

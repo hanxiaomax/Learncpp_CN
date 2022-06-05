@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "5-7-Logical-operators",
-      "path": "docs/5-7-Logical-operators.md"
-    },
-    {
       "basename": "5-x-Chapter-5-summary-and-quiz",
       "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
+    },
+    {
+      "basename": "5-7-Logical-operators",
+      "path": "docs/5-7-Logical-operators.md"
     },
     {
       "basename": "5-2-Arithmetic-operators",
@@ -19,10 +27,6 @@
     {
       "basename": "5-5-Comma-and-conditional-operators",
       "path": "docs/5-5-Comma-and-conditional-operators.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "5-4-Increment-decrement-operators-and-side-effects",
@@ -115,10 +119,6 @@
     {
       "basename": "index",
       "path": "docs/index.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
       "basename": "4-11-Chars",
