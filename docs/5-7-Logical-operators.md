@@ -188,7 +188,7 @@ else
 
 如果上述所有条件都是真，则执行 if 语句。如果任何一个条件为假，则执行 else 语句。
 
-As with logical and bitwise OR, new programmers sometimes confuse the _logical AND_ operator (`&&`) with the _bitwise AND_ operator (`&`).
+新手程序员不仅容易把**逻辑或**和**按位或**搞混，也会把逻辑与 (`&&`) 和按位与 (`&`)搞混。
 
 ## 短路求值
 
