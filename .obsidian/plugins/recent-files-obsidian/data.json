@@ -9,6 +9,10 @@
       "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
     },
     {
+      "basename": "5-2-Arithmetic-operators",
+      "path": "docs/5-2-Arithmetic-operators.md"
+    },
+    {
       "basename": "5-6-Relational-operators-and-floating-point-comparisons",
       "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     },
@@ -17,20 +21,16 @@
       "path": "docs/5-5-Comma-and-conditional-operators.md"
     },
     {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
       "basename": "5-4-Increment-decrement-operators-and-side-effects",
       "path": "docs/5-4-Increment-decrement-operators-and-side-effects.md"
     },
     {
       "basename": "5-3-Modulus-and-Exponentiation",
       "path": "docs/5-3-Modulus-and-Exponentiation.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
-    },
-    {
-      "basename": "5-2-Arithmetic-operators",
-      "path": "docs/5-2-Arithmetic-operators.md"
     },
     {
       "basename": "4-14-Literal-constants",

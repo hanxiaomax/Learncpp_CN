@@ -11,8 +11,12 @@ tags:
 
 ??? note "关键点速记"
 
+	- 逻辑非的优先级非常高，如果使用它的目的是对整个表达式的结果取反，则要对整个表达式加括号
 	- 区分**逻辑与(`&&`)**和**按位与(`&`)**，**逻辑非(`||`)**和**按位非(`|`)**
 	- 短路求值可能会导致**逻辑与**或**逻辑非**不对第二个表达式求值。所以请避免将具有副作用的运算符和逻辑与或逻辑非一起使用。
+	- 逻辑或和逻辑与运算符的两个操作数，求值顺序是固定的，因为标准里对其进行了说明，左边的操作数总是先求值。
+	- 只有 C++ 自带的这些逻辑运算符会执行短路求值，如果你自己重载了这些操作符以便将其应用于你自己定义的类型，这些重载后的运算符是不具备短路求值功能的。
+	- 逻辑与的优先级高于逻辑或的优先级
 
 尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，我们需要知道多个条件中是否有一个为真。例如，如果我今天生病了，或者太累了，又或者中了彩票，这三个条件只要有一条为真我就会考虑翘班。
 
@@ -220,21 +224,22 @@ if (x == 1 && ++y == 2)
 
 !!! tldr "关键信息"
 
-	The Logical OR and logical AND operators are an exception to the rule that the operands may evaluate in any order, as the standard explicitly states that the left operand must evaluate first.
+	逻辑或和逻辑与运算符的两个操作数，求值顺序是固定的，因为标准里对其进行了说明，左边的操作数总是先求值。（参考：[[5-1-Operator-precedence-and-associativity#表达式求值顺序和函数参数处理顺序大多是未指明的]]）
+	
 
 !!! info "扩展阅读"
 
-    Only the built-in versions of these operators perform short-circuit evaluation. If you overload these operators to make them work with your own types, those overloaded operators will not perform short-circuit evaluation.
-
+    只有 C++ 自带的这些逻辑运算符会执行短路求值，如果你自己重载了这些操作符以便将其应用于你自己定义的类型，这些重载后的运算符是不具备短路求值功能的。
+    
 ## 混合 AND  和 OR
 
-Mixing _logical AND_ and _logical OR_ operators in the same expression often can not be avoided, but it is an area full of potential dangers.
+在一个表达式里面混合使用逻辑与和逻辑或运算符通常是无法避免的，但是这样的用法也存在一定的危险。
 
-Many programmers assume that _logical AND_ and _logical OR_ have the same precedence (or forget that they don’t), just like addition/subtraction and multiplication/division do. However, _logical AND_ has higher precedence than _logical OR_, thus _logical AND_ operators will be evaluated ahead of _logical OR_operators (unless they have been parenthesized).
+很多程序员会假定逻辑与和逻辑或具有相同的优先级（或忘记了它们的优先级是不同的），就像加/减或者乘/除那样。但是，逻辑与的优先级其实比逻辑或要高，因此逻辑与会先于逻辑或求值（除非有括号修改其优先级）。
 
-New programmers will often write expressions such as `value1 || value2 && value3`. Because _logical AND_ has higher precedence, this evaluates as `value1 || (value2 && value3)`, not `(value1 || value2) && value3`. Hopefully that’s what the programmer wanted! If the programmer was assuming left to right evaluation (as happens with addition/subtraction, or multiplication/division), the programmer will get a result he or she was not expecting!
+新手程序员通常会写出这样的表达式：`value1 || value2 && value3`。因为逻辑与的优先级更高，所以上述表达式等价于 `value1 || (value2 && value3)` 而不是 `(value1 || value2) && value3`。如果这正是你想要的，那就好了。但是如果你假设上面的表达式是按照从左向右的顺序求值，那得到的结果肯定出你所料！
 
-When mixing _logical AND_ and _logical OR_ in the same expression, it is a good idea to explicitly parenthesize each operator and its operands. This helps prevent precedence mistakes, makes your code easier to read, and clearly defines how you intended the expression to evaluate. For example, rather than writing `value1 && value2 || value3 && value4`, it is better to write `(value1 && value2) || (value3 && value4)`.
+如果在一个表达式里同时使用逻辑与和逻辑或，最好为每个When mixing _logical AND_ and _logical OR_ in the same expression, it is a good idea to explicitly parenthesize each operator and its operands. This helps prevent precedence mistakes, makes your code easier to read, and clearly defines how you intended the expression to evaluate. For example, rather than writing `value1 && value2 || value3 && value4`, it is better to write `(value1 && value2) || (value3 && value4)`.
 
 !!! success "最佳实践"
 
