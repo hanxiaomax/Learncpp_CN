@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "5-x-Chapter-5-summary-and-quiz",
-      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
+      "basename": "6-5-Variable-shadowing-name-hiding",
+      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
+    },
+    {
+      "basename": "6-3-Local-variables",
+      "path": "docs/6-3-Local-variables.md"
+    },
+    {
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+    },
+    {
+      "basename": "6-1-Compound-statements-blocks",
+      "path": "docs/6-1-Compound-statements-blocks.md"
+    },
+    {
+      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
+      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     },
     {
       "basename": "5-1-Operator-precedence-and-associativity",
       "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "5-x-Chapter-5-summary-and-quiz",
+      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
     },
     {
       "basename": "4-x-Chapter-4-summary-and-quiz",
@@ -19,10 +39,6 @@
     {
       "basename": "5-2-Arithmetic-operators",
       "path": "docs/5-2-Arithmetic-operators.md"
-    },
-    {
-      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
-      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     },
     {
       "basename": "5-5-Comma-and-conditional-operators",
@@ -183,22 +199,6 @@
     {
       "basename": "1-2-comments",
       "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "type-conversion",
-      "path": "docs/type-conversion.md"
-    },
-    {
-      "basename": "4-8-Floating-point-numbers",
-      "path": "docs/4-8-Floating-point-numbers.md"
-    },
-    {
-      "basename": "4-7-Introduction-to-scientific-notation",
-      "path": "docs/4-7-Introduction-to-scientific-notation.md"
-    },
-    {
-      "basename": "4-10-Introduction-to-if-statements",
-      "path": "docs/4-10-Introduction-to-if-statements.md"
     }
   ],
   "omittedPaths": [],
