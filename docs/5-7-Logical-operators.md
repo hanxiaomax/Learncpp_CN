@@ -9,6 +9,11 @@ tags:
 - operator
 ---
 
+??? note "关键点速记"
+
+	- 区分**逻辑与(`&&`)**和**按位与(`&`)**，**逻辑非(`||`)**和**按位非(`|`)**
+	- 短路求值可能会导致**逻辑与**或**逻辑非**不对第二个表达式求值。所以请避免将具有副作用的运算符和逻辑与或逻辑非一起使用。
+
 尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，我们需要知道多个条件中是否有一个为真。例如，如果我今天生病了，或者太累了，又或者中了彩票，这三个条件只要有一条为真我就会考虑翘班。
 
 逻辑运算符就为我们提供了这样的能力。
@@ -192,11 +197,12 @@ else
 
 ## 短路求值
 
-In order for _logical AND_ to return true, both operands must evaluate to true. If the first operand evaluates to false, _logical AND_ knows it must return false regardless of whether the second operand evaluates to true or false. In this case, the _logical AND_ operator will go ahead and return false immediately without even evaluating the second operand! This is known as short circuit evaluation, and it is done primarily for optimization purposes.
+为了让逻辑与返回 `true`，两个操作数都需要求值为真。如果第一个操作数求值为假，不论第二个操作数求值结果如何，逻辑与运算符一定求值为`false`。这种情况下，逻辑与运算符会立即返回`false`，而不会再对第二个操作数求值。这个方法称为短路求值，这么做可以优化程序性能。
 
-Similarly, if the first operand for _logical OR_ is true, then the entire OR condition has to evaluate to true, and the second operand won’t be evaluated.
 
-Short circuit evaluation presents another opportunity to show why operators that cause side effects should not be used in compound expressions. Consider the following snippet:
+类似地，如果逻辑与运算符的第一个操作数求值结果为真，则它会直接返回`true`，而不必对第二个操作数进行求值。
+
+短路求值还向我们展示了，为什么有副作用的运算符，不应该放到复合表达式中。考虑下面的代码：
 
 ```cpp
 if (x == 1 && ++y == 2)
@@ -204,12 +210,13 @@ if (x == 1 && ++y == 2)
 ```
 
 
-if `x` does not equal _1_, the whole condition must be false, so `++y `never gets evaluated! Thus, `y` will only be incremented if `x` evaluates to 1, which is probably not what the programmer intended!
+如果 `x` 不等于 1，那么整个条件一定会返回 `false`。所以 `++y` 根本不会被求值。因此，只有当 x 等于 1 时，`y` 才会递增，也许这并不是你需要的！
 
 
 !!! warning "注意"
 
-	Short circuit evaluation may cause _Logical OR_ and _Logical AND_ to not evaluate one operand. Avoid using expressions with side effects in conjunction with these operators.
+	短路求值可能会导致**逻辑与**或**逻辑非**不对第二个表达式求值。所以请避免将具有副作用的运算符和逻辑与或逻辑非一起使用。
+	
 
 !!! tldr "关键信息"
 
