@@ -20,6 +20,7 @@ tags:
 	- 德摩根定律
 		- `!(x && y)` 等价于 `!x || !y`  
 		- `!(x || y)` 等价于 `!x && !y`
+	- C++ 没有异或运算符。可以使用不等号(`!=`)来模拟逻辑异或（相同为真）
 
 尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，我们需要知道多个条件中是否有一个为真。例如，如果我今天生病了，或者太累了，又或者中了彩票，这三个条件只要有一条为真我就会考虑翘班。
 
@@ -254,8 +255,8 @@ if (x == 1 && ++y == 2)
 
 根据[德摩根定律](https://baike.baidu.com/item/%E5%BE%B7%C2%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B/489073) ，逻辑非的分配律应该是下面这种方式：
 
-`!(x && y)` 等价于 `!x || !y`  
-`!(x || y)` 等价于 `!x && !y`
+- `!(x && y)` 等价于 `!x || !y`  
+- `!(x || y)` 等价于 `!x && !y`
 
 换言之，当你分配逻辑非运算符时，必须将逻辑与替换为逻辑或，反之亦然。
 
@@ -264,7 +265,7 @@ if (x == 1 && ++y == 2)
 
 !!! info "扩展阅读"
 
-	We can show that the first part of De Morgan’s Law is correct by proving that `!(x && y)` equals `!x || !y` for every possible value of `x` and `y`. To do so, we’ll use a mathematical concept called a truth table:
+	我们可以证明德摩根定律的第一部分是正确的，即对于任何可能的`x`和`y`，`!(x && y)` 等于 `!x || !y`。为此，我们需要使用一个称为*真值表*的数学概念。
 	
 	
 	|x	|y	|!x	|!y	|!(x && y)	|!x \|\| !y|
@@ -275,13 +276,13 @@ if (x == 1 && ++y == 2)
 	|true	|true	|false	|false	|false	|false|
 	
 	
-	In this table, the first and second columns represent our `x` and `y` variables. Each row in the table shows one permutation of possible values for `x` and `y`. Because `x` and `y` are Boolean values, we only need 4 rows to cover every combination of possible values that `x` and `y` can hold.
+	在表中，第一列和第二列分别表示 `x` 和 `y`。每一行则表示一组可能的 `x` 和 `y` 组合，4行就足以表示所有的可能。
 	
-	The rest of the columns in the table represent expressions that we want to evaluate based on the initial values of `x` and `y`. The third and fourth columns calculate the values of `!x` and `!y` respectively. The fifth column calculates the value of `!(x && y)`. Finally, the sixth column calculates the value of `!x || !y`.
+	剩下的列表示基于初始 `x` 和 `y` 构造的表达式。第三列和第四列分别计算 `!x` 和 `!y`。第五列计算`!(x && y)`。第六列则计算`!x || !y`。
 	
-	You’ll notice for each row, the value in the fifth column matches the value in the sixth column. This means for every possible value of `x` and `y`, the value of `!(x && y)` equals `!x || !y`, which is what we were trying to prove!
+	可以注意到，第五列和第六列的值总是相同的。也就是说，对于任意 `x` 和 `y`，`!(x && y)` 等于 `!x || !y`，这也正是我们要证明的。
 	
-	We can do the same for the second part of De Morgan’s Law:
+	同样的，我们还能够证明德摩根定律的第二部分也是正确的：
 	
 	|x	|y	|!x	|!y	|!(x \|\| y)	|!x && !y|
 	|---|---|---|---|---|---|
@@ -291,7 +292,7 @@ if (x == 1 && ++y == 2)
 	|true	|true	|false	|false	|false	|false|
 	
 	
-	Similarly, for every possible value of `x` and `y`, we can see that the value of `!(x || y)` equals the value of `!x && !y`. Thus, they are equivalent.
+	同样的，对于任意 `x` 和 `y`，我们可以看到 `!(x || y)` 等于 `!x && !y`。
 
 ## 逻辑异或运算符在哪里？
 
@@ -317,7 +318,7 @@ if (a != b != c != d) ... // a XOR b XOR c XOR d, 假设 a, b, c, 和 d 都是�
 ```
 
 
-Note that the above XOR patterns only work if the operands are Booleans (not integers). If you need a form of _logical XOR_ that works with non-Boolean operands, you can static_cast them to bool:
+注意，上面的方法只有当操作数都是布尔类型时才有效 (不能是整型)。如果你想将逻辑异或应用于非布尔类型的操作数，你可以使用 `static_cast` 将它转换为布尔类型。
 
 ```cpp
 if (static_cast<bool>(a) != static_cast<bool>(b) != static_cast<bool>(c) != static_cast<bool>(d)) ... // a XOR b XOR c XOR d, for any type that can be converted to bool
@@ -326,9 +327,9 @@ if (static_cast<bool>(a) != static_cast<bool>(b) != static_cast<bool>(c) != stat
 
 ## 运算符的其他表示形式
 
-Many operators in C++ (such as operator ||) have names that are just symbols. Historically, not all keyboards and language standards have supported all of the symbols needed to type these operators. As such, C++ supports an alternative set of keywords for the operators that use words instead of symbols. For example, instead of `||`, you can use the keyword `or`.
+C++ 中的很多操作符 (例如 `operator ||`) 都可以使用名字来代替符号。出于历史原因，并不是所有的键盘或者标准支持输入这些运算符的符号。因此C++提供了一组关键字用于代替符号。例如，`||` 也可以用`or`来替代。
 
-The full list can be found [这里](https://en.cppreference.com/w/cpp/language/operator_alternative). Of particular note are the following three:
+完整的列表可以参考 [这里](https://en.cppreference.com/w/cpp/language/operator_alternative)，尤其可以注意yi'xia
 
 
 |运算符|关键字替代名|
