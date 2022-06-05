@@ -1,7 +1,7 @@
-Operator	Symbol	Form	Operation
-Assignment	=	x = y	Assign value y to x
-Addition assignment	+=	x += y	Add y to x
-Subtraction assignment	-=	x -= y	Subtract y from x
-Multiplication assignment	*=	x *= y	Multiply x by y
-Division assignment	/=	x /= y	Divide x by y
-Modulus assignment	%=	x %= y	Put the remainder of x / y in x
+Specifier	Meaning	Note
+extern	static (or thread_local) storage duration and external linkage	
+static	static (or thread_local) storage duration and internal linkage	
+thread_local	thread storage duration	
+mutable	object allowed to be modified even if containing class is const	
+auto	automatic storage duration	Deprecated in C++11
+register	automatic storage duration and hint to the compiler to place in a register	Deprecated in C++17

@@ -164,11 +164,11 @@ Scope and linkage may seem somewhat similar. However, scope defines where a sing
 
 !!! info "相关内容"
 
-	We discuss what happens when variables with the same name appear in nested blocks in lesson [6.5 -- Variable shadowing (name hiding)](https://www.learncpp.com/cpp-tutorial/variable-shadowing-name-hiding/).
+	We discuss what happens when variables with the same name appear in nested blocks in lesson [[6-5-Variable-shadowing-name-hiding|6.5 - 变量遮蔽]]
 
 Linkage isn’t very interesting in the context of local variables, but we’ll talk about it more in the next few lessons.
 
-Variables should be defined in the most limited scope
+## Variables should be defined in the most limited scope
 
 If a variable is only used within a nested block, it should be defined inside that nested block:
 
