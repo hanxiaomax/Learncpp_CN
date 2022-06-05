@@ -119,9 +119,24 @@ nav:
       - "5-7-Logical-operators.md"
       - "5-x-Chapter-5-summary-and-quiz.md"
     - 6. 作用域，生命周期和链接:
+      - "6-1-Compound-statements-blocks.md"
+      - "6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+      - "6-3-Local-variables.md"
       - "6-4-Introduction-to-global-variables.md"
+      - "6-5-Variable-shadowing-name-hiding.md"
+      - "6-6-Internal-linkage.md"
+      - "6-7-External-linkage-and-variable-forward-declarations.md"
+      - "6-8-Why-non-const-global-variables-are-evil.md"
       - "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+      - "6-10-Static-local-variables.md"
+      - "6-11-Scope-duration-and-linkage-summary.md"
       - "6-12-Using-declarations-and-using directives.md"
+      - "6-13-Inline-functions.md"
+      - "6-14-Constexpr-and-consteval-functions.md"
+      - "6-15-Unnamed-and-inline-namespaces.md"
+      - "6-x-Chapter-6-summary-and-quiz.md"
+
+
     # - 7. 控制流和错误处理: index.md
     # - 8. 类型转换和函数重载: index.md
     # - 9. 复合类型-引用和指针: index.md

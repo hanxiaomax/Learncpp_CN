@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/6-14-Constexpr-and-consteval-functions.md",
+            "file": "docs/6-13-Inline-functions.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-14-Constexpr-and-consteval-functions.md"
+                "file": "docs/6-13-Inline-functions.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-14-Constexpr-and-consteval-functions.md",
+                "file": "docs/6-13-Inline-functions.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "56bd180b4e918b82",
   "lastOpenFiles": [
-    "docs/6-14-Constexpr-and-consteval-functions.md",
     "docs/6-13-Inline-functions.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/6-11-Scope-duration-and-linkage-summary.md",
-    "docs/tabledata.md",
-    "docs/6-8-Why-non-const-global-variables-are-evil.md",
-    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
-    "docs/6-6-Internal-linkage.md",
+    "docs/6-10-Static-local-variables.md",
+    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
+    "docs/6-1-Compound-statements-blocks.md",
+    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
+    "docs/6-3-Local-variables.md",
+    "docs/6-4-Introduction-to-global-variables.md",
     "docs/6-5-Variable-shadowing-name-hiding.md",
-    "docs/6-4-Introduction-to-global-variables.md"
+    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+    "docs/6-8-Why-non-const-global-variables-are-evil.md"
   ]
 }

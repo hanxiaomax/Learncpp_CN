@@ -6,7 +6,7 @@ origin_title: "6.4 — Introduction to global variables"
 time: 2021-4-20
 type: translation
 tags:
-- 
+- global
 ---
 
 

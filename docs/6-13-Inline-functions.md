@@ -1,6 +1,6 @@
 ---
-title: 6.13 — 内联函数
-alias: 6.13 — 内联函数
+title: 6.13 - 内联函数
+alias: 6.13 - 内联函数
 origin: /none/
 origin_title: "6.13 — Inline functions"
 time: 2022-1-2
