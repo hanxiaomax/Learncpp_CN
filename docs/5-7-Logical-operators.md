@@ -16,7 +16,10 @@ tags:
 	- 短路求值可能会导致**逻辑与**或**逻辑非**不对第二个表达式求值。所以请避免将具有副作用的运算符和逻辑与或逻辑非一起使用。
 	- 逻辑或和逻辑与运算符的两个操作数，求值顺序是固定的，因为标准里对其进行了说明，左边的操作数总是先求值。
 	- 只有 C++ 自带的这些逻辑运算符会执行短路求值，如果你自己重载了这些操作符以便将其应用于你自己定义的类型，这些重载后的运算符是不具备短路求值功能的。
-	- 逻辑与的优先级高于逻辑或的优先级
+	- 逻辑与的优先级高于逻辑或的优先级，如果在一个表达式里同时使用逻辑与和逻辑或，最好使用括号为其明确指定优先级。
+	- 德摩根定律
+		- `!(x && y)` 等价于 `!x || !y`  
+		- `!(x || y)` 等价于 `!x && !y`
 
 尽管条件（比较）运算符可以被用来测试一个特定的表达式是否为真，但它们一次只能对一个条件进行测试。很多时候，我们需要知道多个条件是否同时为真。例如，为了确定彩票是否中奖，我们必须将购买的每一个数字和中奖号码的各个数字逐一比较。对于有6个数的彩票，这就需要6次比较，只有当它们的结果全部都是真的时候，才能看做中奖。还有一些情况，我们需要知道多个条件中是否有一个为真。例如，如果我今天生病了，或者太累了，又或者中了彩票，这三个条件只要有一条为真我就会考虑翘班。
 
@@ -239,24 +242,24 @@ if (x == 1 && ++y == 2)
 
 新手程序员通常会写出这样的表达式：`value1 || value2 && value3`。因为逻辑与的优先级更高，所以上述表达式等价于 `value1 || (value2 && value3)` 而不是 `(value1 || value2) && value3`。如果这正是你想要的，那就好了。但是如果你假设上面的表达式是按照从左向右的顺序求值，那得到的结果肯定出你所料！
 
-如果在一个表达式里同时使用逻辑与和逻辑或，最好为每个When mixing _logical AND_ and _logical OR_ in the same expression, it is a good idea to explicitly parenthesize each operator and its operands. This helps prevent precedence mistakes, makes your code easier to read, and clearly defines how you intended the expression to evaluate. For example, rather than writing `value1 && value2 || value3 && value4`, it is better to write `(value1 && value2) || (value3 && value4)`.
+如果在一个表达式里同时使用逻辑与和逻辑或，最好使用括号为其明确指定优先级。这样不仅可以避免由优先级引起的顺序，还能够增强可读性并清晰地表明你的目的。例如，`value1 && value2 || value3 && value4` 最好改写为 `(value1 && value2) || (value3 && value4)`.
 
 !!! success "最佳实践"
 
-	When mixing _logical AND_ and _logical OR_ in a single expression, explicitly parenthesize each operation to ensure they evaluate how you intend.
+	如果在一个表达式里同时使用逻辑与和逻辑或，最好使用括号为其明确指定优先级。
 
 ## 德摩根定律（De Morgan‘s law）
 
-Many programmers also make the mistake of thinking that `!(x && y)` is the same thing as `!x && !y`. Unfortunately, you can not “distribute” the _logical NOT_ in that manner.
+很多程序员会认为 `!(x && y)` 等价于 `!x && !y`。不幸的是，逻辑非运算符并不能像这样进行分配。
 
-[德摩根定律](https://baike.baidu.com/item/%E5%BE%B7%C2%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B/489073) tells us how the _logical NOT_ should be distributed in these cases:
+根据[德摩根定律](https://baike.baidu.com/item/%E5%BE%B7%C2%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B/489073) ，逻辑非的分配律应该是下面这种方式：
 
-`!(x && y)` is equivalent to `!x || !y`  
-`!(x || y)` is equivalent to `!x && !y`
+`!(x && y)` 等价于 `!x || !y`  
+`!(x || y)` 等价于 `!x && !y`
 
-In other words, when you distribute the _logical NOT_, you also need to flip _logical AND_ to _logical OR_, and vice-versa!
+换言之，当你分配逻辑非运算符时，必须将逻辑与替换为逻辑或，反之亦然。
 
-This can sometimes be useful when trying to make complex expressions easier to read.
+有时候，我们可以通过德摩根定律对复杂的表达式进行简化。
 
 
 !!! info "扩展阅读"
@@ -292,7 +295,7 @@ This can sometimes be useful when trying to make complex expressions easier to r
 
 ## 逻辑异或运算符在哪里？
 
-_Logical XOR_ is a logical operator provided in some languages that is used to test whether an odd number of conditions is true.
+有些语言提供了逻辑异或（XOR）运算符，用来测试**是否有奇数个条件为真**。
 
 |左操作数	|右操作数	|结果|
 |---|---|---|
@@ -301,17 +304,16 @@ _Logical XOR_ is a logical operator provided in some languages that is used to 
 |true	|false	|true|
 |true	|true	|false|
 
-C++ doesn’t provide a _logical XOR_ operator. Unlike _logical OR_ or _logical AND_, _logical XOR_ cannot be short circuit evaluated. Because of this, making a _logical XOR_ operator out of _logical OR_ and _logical AND_ operators is challenging. However, you can easily mimic _logical XOR_ using the _inequality_ operator (!=):
+C++ 并没有提供逻辑异或运算符。和**逻辑或**或者**逻辑与**不同，**逻辑异或**并没有短路求值特性。因此，使用逻辑或或者逻辑与来构建一个逻辑异或是很困难的。但是，你可以使用不等号(`!=`)来模拟逻辑异或：
 
 ```cpp
-if (a != b) ... // a XOR b, assuming a and b are Booleans
+if (a != b) ... // a XOR b, 假设 a 和 b 都是布尔值
 ```
 
-
-This can be extended to multiple operands as follows:
+也可以对多个操作数来使用：
 
 ```cpp
-if (a != b != c != d) ... // a XOR b XOR c XOR d, assuming a, b, c, and d are Booleans
+if (a != b != c != d) ... // a XOR b XOR c XOR d, 假设 a, b, c, 和 d 都是布尔值
 ```
 
 
