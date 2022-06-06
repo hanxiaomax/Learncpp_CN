@@ -7,21 +7,33 @@ time: 2022-6-4
 type: translation
 tags:
 - local variables
+- storage duration
+- linkage
 ---
 
-In lesson [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]], we introduced `local variables`, which are variables that are defined inside a function (including function parameters).
+??? note "关键点速记"
+	- 函数参数也是局部变量
+	- 标识符有多种属性：存储持续时间、生命周期、链接
+	- 局部变量的存储持续时间和它的生命周期是一样的，它具有自动存储持续时间，所以也称为**自动变量**
+	- 局部变量的链接属性为无链接，每个声明都指代的是一个唯一的对象
+	- 作用域和链接性看上去有点类似。其实不然，作用域定义了一个单独的声明在哪里可以被访问，而链接性定义了多个声明是否指代同一个对象。
+	- 变量应该被定义在尽可能小的作用域中
+	- 使用一个专门的语句块来限制一个变量的作用域是没必要的，不要这样做。如果一定有必要，最好还是提炼成一个单独的函数
 
-It turns out that C++ actually doesn’t have a single attribute that defines a variable as being a local variable. Instead, local variables have several different properties that differentiate how local variables behave from other kinds of (non-local) variables. We’ll explore these properties in this and upcoming lessons.
 
-In lesson [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]], we also introduced the concept of scope. An identifier’s `scope` determines where an identifier can be accessed within the source code. When an identifier can be accessed, we say it is `in scope`. When an identifier can not be accessed, we say it is `out of scope`. Scope is a compile-time property, and trying to use an identifier when it is out of scope will result in a compile error.
+在 [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]] 中，我们介绍了局部变量——定义在函数内部的变量（包括函数参数）。
 
-Local variables have block scope
+C++中并没有一个专门属性能够将变量定义为局部变量。局部变量区别于其他变量的属性有很多，我们会在后面的章节中介绍这些不同的属性。
 
-Local variables have block scope, which means they are _in scope_ from their point of definition to the end of the block they are defined within.
+在[[2-5-Introduction-to-local-scope|2.5 - 局部作用域]]中，我们介绍了[[scope|作用域]]的概念。一个[[identifier|标识符]]的作用域指的是它可以在源代码中被访问的范围。当一个标识符可以被访问时，我们称其为**在作用域中**。而当一个标识符不可以被访问时，我们称其[[out-of-scope|超出作用域]]。作用域是一个[[compile-time|编译时]]属性，当标识符超出作用域时会导致编译错误。
+
+## 局部变量的块作用域
+
+局部变量具有**块作用域**，也就是说，它们的作用域被限定在定义它们的代码块中。
 
 !!! info "相关内容"
 
-	Please review lesson [[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]] if you need a refresher on blocks.
+	如果你忘记了什么是代码块，请参考[[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]。
 
 ```cpp
 int main()
@@ -33,9 +45,8 @@ int main()
 } // i and d go out of scope here
 ```
 
-COPY
 
-Although function parameters are not defined inside the function body, for typical functions they can be considered to be part of the scope of the function body block.
+尽管函数的[[parameters|形参]]并没有被定义在函数体内，通常函数仍将其看做是函数体代码块的一部分。
 
 ```cpp
 int max(int x, int y) // x and y enter scope here
@@ -47,11 +58,10 @@ int max(int x, int y) // x and y enter scope here
 } // x, y, and max leave scope here
 ```
 
-COPY
 
-All variable names within a scope must be unique
+## 作用域中的所有变量必须具备不同的变量名
 
-Variable names must be unique within a given scope, otherwise any reference to the name will be ambiguous. Consider the following program:
+在给定作用域中，变量的名字必须是唯一的，否则在引用变量的时候就会出现歧义，考虑下面这个程序：
 
 ```cpp
 void someFunction(int x)
@@ -65,18 +75,17 @@ int main()
 }
 ```
 
+由于`x`被定义在函数体内，且同时函数的形参也是 `x`，这就造成了块作用域中出现了同名的变量，因此程序是无法编译的。
 
-The above program doesn’t compile because the variable `x` defined inside the function body and the function parameter `x` have the same name and both are in the same block scope.
+## 局部变量的存储持续时间是自动的
 
-Local variables have automatic storage duration
-
-A variable’s storage duration (usually just called duration) determines what rules govern when and how a variable will be created and destroyed. In most cases, a variable’s storage duration directly determines its `lifetime`.
+一个变量的[[storage-duration|存储持续时间]]（也称为持续时间）决定了该变量被创建和销毁应该遵循的规则。在大多数情况下，变量的存储持续时间有它的生命周期直接决定。
 
 !!! info "相关内容"
 
-	We discuss what a lifetime is in lesson [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]]
+	我们在 [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]] 中探讨了生命周期。
 
-For example, local variables have automatic storage duration, which means they are created at the point of definition and destroyed at the end of the block they are defined in. For example:
+局部变量具有自动的存储持续时间，意味着它会在定义时被创建并且在语句块结束时销毁。例如：
 
 ```cpp
 int main()
@@ -89,11 +98,11 @@ int main()
 ```
 
 
-For this reason, local variables are sometimes called automatic variables.
+正因为此，局部变量有时候也称为自动变量。
 
-## Local variables in nested blocks
+## 嵌套语句块中的局部变量
 
-Local variables can be defined inside nested blocks. This works identically to local variables in function body blocks:
+局部变量可以位于嵌套的块中。这种场景和函数体内的局部变量没有任何区别：
 
 ```cpp
 int main() // outer block
@@ -110,11 +119,10 @@ int main() // outer block
 } // x goes out of scope and is destroyed here
 ```
 
-COPY
 
-In the above example, variable `y` is defined inside a nested block. Its scope is limited from its point of definition to the end of the nested block, and its lifetime is the same. Because the scope of variable `y` is limited to the inner block in which it is defined, it’s not accessible anywhere in the outer block.
+在上面的例子中，变量 `y` 被定义在一个嵌套的块中，它的作用域范围从定义开始到嵌套块结束时结束，它的生命周期也是一样的。因此变量 `y` 的作用域被限制在了块的内部，所以在对应代码块的外部是不能够访问该变量。
 
-Note that nested blocks are considered part of the scope of the outer block in which they are defined. Consequently, variables defined in the outer block _can_ be seen inside a nested block:
+需要注意的，嵌套块被看做是它外层块的一部分，因此定义在外层块中的变量可以在嵌套块中访问：
 
 ```cpp
 #include <iostream>
@@ -137,40 +145,39 @@ int main()
 } // x goes out of scope and is destroyed here
 ```
 
-COPY
 
-## Local variables have no linkage
+## 局部变量的链接性
 
-Identifiers have another property named `linkage`. An identifier’s linkage determines whether other declarations of that name refer to the same object or not.
+标识符还有另外的一个属性——[[linkage|链接性(linkage)]]。标识符的链接性决定了相同名字的声明是否指代的是同一个对象。
 
-Local variables have `no linkage`, which means that each declaration refers to a unique object. For example:
+局部变量没有链接（`no linkage`），也就是说，每个声明都指代的是一个唯一的对象，例如：
 
 ```cpp
 int main()
 {
-    int x { 2 }; // local variable, no linkage
+    int x { 2 }; // 局部变量，没有链接性
 
     {
-        int x { 3 }; // this identifier x refers to a different object than the previous x
+        int x { 3 }; // 这里的 x 表示的是另外一个对象
     }
 
     return 0;
 }
 ```
 
-COPY
 
-Scope and linkage may seem somewhat similar. However, scope defines where a single declaration can be seen and used. Linkage defines whether multiple declarations refer to the same object or not.
+作用域和链接性看上去有点类似。其实不然，作用域定义了一个单独的声明在哪里可以被访问，而链接性定义了多个声明是否指代同一个对象。
 
 !!! info "相关内容"
 
-	We discuss what happens when variables with the same name appear in nested blocks in lesson [[6-5-Variable-shadowing-name-hiding|6.5 - 变量遮蔽]]
+	我们会在[[6-5-Variable-shadowing-name-hiding|6.5 - 变量遮蔽]]中讨论具一个变量与其嵌套语句块中的同名变量之间有什么影响。
+	
 
-Linkage isn’t very interesting in the context of local variables, but we’ll talk about it more in the next few lessons.
+局部变量的链接性没什么好讲的，我们会在后面的课程中对链接性进行详细介绍。
 
-## Variables should be defined in the most limited scope
+## 变量应该被定义在尽可能小的作用域中
 
-If a variable is only used within a nested block, it should be defined inside that nested block:
+如果变量只在某个嵌套块中使用，那么它就应该被定义在嵌套块中：
 
 ```cpp
 #include <iostream>
@@ -191,18 +198,17 @@ int main()
 }
 ```
 
-COPY
 
-By limiting the scope of a variable, you reduce the complexity of the program because the number of active variables is reduced. Further, it makes it easier to see where variables are used (or aren’t used). A variable defined inside a block can only be used within that block (or nested blocks). This can make the program easier to understand.
+通过限制变量的作用域，你可以减小程序的复杂度，因为这样可以减少活动变量的数量。不仅如此，这样还能更好的看出变量在哪里被使用了（或没被使用）。定义在一个块中的变量只能够在这个块（及其嵌套块）中被使用。这使得程序也更容易理解。
 
-If a variable is needed in an outer block, it needs to be declared in the outer block:
+如果外层块需要使用变量，那么它需要在外层块中声明：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    int y { 5 }; // we're declaring y here because we need it in this outer block later
+    int y { 5 }; // 因为外层块需要使用 y，则 y 要被定义在外层
 
     {
         int x{};
@@ -219,12 +225,11 @@ int main()
 }
 ```
 
-COPY
+上面这个例子还展示了一个例外情况，就是变量在它被使用前，早早地就声明了（参见：[[2-5-Introduction-to-local-scope#在何处定义局部变量]]）
 
-The above example shows one of the rare cases where you may need to declare a variable well before its first use.
+新手程序员经常会考虑是否有必要故意创建一个嵌套块来限制变量的作用域（强制将其及早地[[out-of-scope|超出作用域]]或销毁）。这么做的确可以使变量更简单，但是函数总体上来讲变得更长、复杂度也变高了。这么做通常来说是不划算的。如果的确需要故意创建一个语句块来限制变量的作用域，通常最好的办法还是把它放到一个单独的函数中。
 
-New developers sometimes wonder whether it’s worth creating a nested block just to intentionally limit a variable’s scope (and force it to go out of scope / be destroyed early). Doing so makes that variable simpler, but the overall function becomes longer and more complex as a result. The tradeoff generally isn’t worth it. If creating a nested block seems useful to intentionally limit the scope of a chunk of code, that code might be better to put in a separate function instead.
+!!! success "最佳实践"
 
-Best practice
-
-Define variables in the most limited existing scope. Avoid creating new blocks whose only purpose is to limit the scope of variables.
+	变量应该被定义在尽可能小的作用域中。使用一个专门的语句块来限制一个变量的作用域是没必要的，不要这样做。
+	

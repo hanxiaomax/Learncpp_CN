@@ -75,7 +75,7 @@ int main()
 ```
 
 
-大多数程序员几乎从来不会使用逗号运算符，只有在 for 循环中存在例外，我们会在 [[7.9 -- For statements|7.9 - for 语句]]中详细讨论：
+大多数程序员几乎从来不会使用逗号运算符，只有在 for 循环中存在例外，我们会在 [[7-9-For-statements|7.9 - for 语句]]中详细讨论：
 
 !!! success "最佳实践"
 
@@ -248,6 +248,7 @@ int main()
 	    constexpr int classSize { 20 };
 	}
 	```
+	参考[[6-1-Compound-statements-blocks|6.1 - 复合语句（语句块）]]和[[6-3-Local-variables|6.3 - 局部变量]]
 
 因此，如果你希望使用 if/else 完成和条件表达式一样的效果，你可能需要这样做；
 

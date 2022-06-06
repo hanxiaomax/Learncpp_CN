@@ -1,14 +1,18 @@
 ---
 title: 2.1 - 函数简介
 alias: 2.1 - 函数简介
-origin: /introduction-to-functions/
-origin_title: "2.1 — Introduction to functions
-"
+origin: 
+origin_title: "2.1 — Introduction to functions"
 time: 2022-5-19
 type: translation
 tags:
 - function
 ---
+---
+
+??? note "关键点速记"
+	
+	- 
 
 
 在上一章节中，我们将函数定义为一组顺序执行指令的合集。这个定义固然没错，但是它并没有表达出函数的重要性。 这里让我们重新定义函数：函数是一组为了完成某项任务而创建的可复用的顺序指令集合。

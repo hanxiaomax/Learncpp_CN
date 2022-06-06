@@ -17,7 +17,7 @@ An identifier with external linkage can be seen and used both from the file in
 
 Functions have external linkage by default
 
-In lesson [[2-8-Programs-with-multiple-code-files|2.8 - 多文件程序]]), you learned that you can call a function defined in one file from another file. This is because functions have external linkage by default.
+In lesson [[2-8-Programs-with-multiple-code-files|2.8 - 多文件程序]], you learned that you can call a function defined in one file from another file. This is because functions have external linkage by default.
 
 In order to call a function defined in another file, you must place a `forward declaration` for the function in any other files wishing to use the function. The forward declaration tells the compiler about the existence of the function, and the linker connects the function calls to the actual function definition.
 

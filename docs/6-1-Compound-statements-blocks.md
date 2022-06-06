@@ -9,11 +9,15 @@ tags:
 - statement
 ---
 
-复合语句（也称为语块，句块）， compound statement (also called a block, or block statement) is a group of _zero or more statements_ that is treated by the compiler as if it were a single statement.
+??? note "关键点速记"
 
-Blocks begin with a `{` symbol, end with a `}` symbol, with the statements to be executed being placed in between. Blocks can be used anywhere a single statement is allowed. No semicolon is needed at the end of a block.
+	- 函数的嵌套层数不要超过3层。如果你的函数嵌套过高，请考虑将其分解为多个子函数
 
-You have already seen an example of blocks when writing functions, as the function body is a block:
+复合语句（也称为语块，句块）指的是包含**零个**或多个语句的组合。同时，编译器会将它们看做是一个单独的语句。
+
+语句块以 `{` 开头，以 `}` 结尾，需要执行的语句放在中间。任何能够使用单独语句的地方，也都可以使用语句块。在语句块的末尾不需要添加分号。
+
+在学习函数的时候我们已经见过这样的结构了，函数体就是一个块：
 
 ```cpp
 int add(int x, int y)
@@ -33,11 +37,10 @@ int main()
 } // end block (no semicolon)
 ```
 
-COPY
 
-Blocks inside other blocks
+## 语句块嵌套
 
-Although functions can’t be nested inside other functions, blocks _can be_ nested inside other blocks:
+尽管函数体内不能嵌入其他函数，但是语句块中是可以嵌入其他语句块的：
 
 ```cpp
 int add(int x, int y)
@@ -60,15 +63,14 @@ int main()
 } // end outer block
 ```
 
-COPY
 
-When blocks are nested, the enclosing block is typically called the outer block and the enclosed block is called the inner block or nested block.
+当语句块嵌套之后，包含其他语句块的语句块称为**外层语句块**，被包含的语句块称为**内层语句块**或者嵌套语句块。
 
-Using blocks to execute multiple statements conditionally
+## 使用语句块按条件执行多条语句
 
-One of the most common use cases for blocks is in conjunction with `if statements`. By default, an `if statement`executes a single statement if the condition evaluates to `true`. However, we can replace this single statement with a block of statements if we want multiple statements to execute when the condition evaluates to `true`.
+语句块最常用的场景是配合 if 语句来使用。默认情况下，if 语句当条件求值为真时，会执行一条语句。不过，我们可以使用语句块来替换单图语句，这样 if 就能够在求值为真时，执行多条语句。
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -94,23 +96,26 @@ int main()
 } // end of outer block
 ```
 
-COPY
 
-If the user enters the number 3, this program prints:
+如果用户输入的是 3：
 
+```
 Enter an integer: 3
 3 is a positive integer (or zero)
 Double this number is 6
+```
 
-If the user enters the number -4, this program prints:
+如果用户输入的是 4：
 
+```
 Enter an integer: -4
 -4 is a negative integer
 The positive of this number is 4
+```
 
-Block nesting levels
+## 语句块嵌套的层数
 
-It is even possible to put blocks inside of blocks inside of blocks:
+在语句块中嵌套语句块，再嵌套语句块也是可以的：
 
 ```cpp
 int main()
@@ -135,14 +140,14 @@ int main()
 }
 ```
 
-COPY
 
-The nesting level (also called the nesting depth) of a function is the maximum number of nested blocks you can be inside at any point in the function (including the outer block). In the above function, there are 4 blocks, but the nesting level is 3 since in this program you can never be inside more than 3 blocks at any point.
+函数的嵌套层数 (也称为嵌套深度) 指的是函数中嵌套语句块的最大值（包括最外层语句块）。上面的代码中，一共有4个语句块，但是嵌套层数为 3，因为在这个程序中任意位置你不可能处在大于3层的嵌套中。
 
-The C++ standard says that C++ compilers should support 256 levels of nesting -- however not all do (e.g. as of the time of writing, Visual Studio supports somewhere between 100 and 110).
+C++ 标准写道，C++编译器需要支持 256 层嵌套——但是并不是所有编译器都这么做了（例如，截止到本文撰写时，Visual Studio 支持的嵌套层数在100到110之间）。
 
-Despite what C++ technically supports, it’s a good idea to keep your nesting level to 3 or less. Just as overly-long functions are good candidates for refactoring (breaking into smaller functions), overly-nested blocks are hard to read and are good candidates for refactoring (with the most-nested blocks becoming separate functions).
+不管 C++ 在技术上支持多少层嵌套，在我们编写代码时，嵌套层数最好不要超过3。就像特别长的函数应该重构（重写为更小的函数）一样，过度嵌套的函数难以阅读，嵌套最严重的语句块也应该被重构为单独的函数。
 
-Best practice
+!!! success "最佳实践"
 
-Keep the nesting level of your functions to 3 or less. If your function has a need for more nested levels, consider refactoring your function into sub-functions.
+	函数的嵌套层数不要超过3层。如果你的函数嵌套过高，请考虑将其分解为多个子函数
+	

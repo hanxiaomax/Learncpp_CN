@@ -1,6 +1,6 @@
 ---
-title: 空间解析运算符
-alias: 空间解析运算符
+title: 作用域解析运算符
+alias: 作用域解析运算符
 english: scope resolution operator
 type: glossary
 tags:

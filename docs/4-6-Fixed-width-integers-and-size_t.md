@@ -10,6 +10,7 @@ tags:
 - fixed-width
 - integer
 - size_t
+- C++11
 ---
 
 ??? note "关键点速记"

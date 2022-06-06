@@ -3,47 +3,55 @@ title: 6.5 - 变量遮蔽
 alias: 6.5 - 变量遮蔽
 origin: /variable-shadowing-name-hiding/
 origin_title: "6.5 — Variable shadowing (name hiding)"
-time: 2022-1-2
+time: 2021-6-28
 type: translation
 tags:
 - variable shadowing
 ---
 
+??? note "关键点速记"
 
-Each block defines its own scope region. So what happens when we have a variable inside a nested block that has the same name as a variable in an outer block? When this happens, the nested variable “hides” the outer variable in areas where they are both in scope. This is called name hiding or shadowing.
+	- 内外代码块中如果有同名的变量，那么在两个变量都有效的作用域中，内层定义的变量会临时屏蔽外层定义的变量
+	- 在内层嵌套块中，是没有办法直接访问已经被临时屏蔽的外层变量的。
+	- 当局部变量和全局变量重名时，它也会在局部变量的作用域中奖全局变量临时屏蔽,不过，因为全局变量属于全局命名空间的一部分，我们可以使用没有前缀的[[scope-resolution-operator|作用域解析运算符]](`::`)告诉编译器去查找全局变量而不是局部变量。
+	- 全局变量名具有“g_” 前缀的时候，不容易发生变量遮蔽
+	- 避免变量遮蔽
 
-## Shadowing of local variables
+
+各个块定义了自己的作用域。所以如果我们在一个嵌套块中定义一个变量，而在其外层块中，有一个同名的变量，此时会发生什么？当两个变量都在作用域中时，嵌套块中的变量会将外层块中的同名变量隐藏起来，称为变量隐藏或变量遮蔽（shadowing）。
+
+
+## 局部变量的遮蔽
 
 ```cpp
 #include <iostream>
 
 int main()
-{ // outer block
-    int apples { 5 }; // here's the outer block apples
+{ // 外层块
+    int apples { 5 }; // 外层块中的 apples
 
-    { // nested block
-        // apples refers to outer block apples here
-        std::cout << apples << '\n'; // print value of outer block apples
+    { // 嵌套块
+        // 此处的 apples 指的是外层的 apples
+        std::cout << apples << '\n'; // 打印外层的 apples 的值
 
-        int apples{ 0 }; // define apples in the scope of the nested block
+        int apples{ 0 }; // 在嵌套块中定义 apples
 
-        // apples now refers to the nested block apples
-        // the outer block apples is temporarily hidden
+        // 从此，apples 指的是嵌套块中的 apples
+        // 外层的 apples 暂时被屏蔽了
 
-        apples = 10; // this assigns value 10 to nested block apples, not outer block apples
+        apples = 10; // 将 10 赋值给嵌套块中的 apples
 
-        std::cout << apples << '\n'; // print value of nested block apples
-    } // nested block apples destroyed
+        std::cout << apples << '\n'; // 打印嵌套块的 apples 的值
+    } // 嵌套块的 apples 销毁
 
 
-    std::cout << apples << '\n'; // prints value of outer block apples
+    std::cout << apples << '\n'; // 打印外层的 apples 的值
 
     return 0;
-} // outer block apples destroyed
+} // 外层块的 apples 销毁
 ```
 
-
-If you run this program, it prints:
+执行上述代码，打印结果如下：
 
 ```
 5
@@ -51,11 +59,11 @@ If you run this program, it prints:
 5
 ```
 
-In the above program, we first declare a variable named `apples` in the outer block. This variable is visible within the inner block, which we can see by printing its value (`5`). Then we declare a different variable (also named `apples`) in the nested block. From this point to the end of the block, the name `apples` refers to the nested block `apples`, not the outer block `apples`.
+在上面的程序中，我们首先在外层块中声明了一个名为`apples`的变量。这个变量在嵌套块中也是可见的，可以看到它的值能够正确打印出来(5)。 然后我们在嵌套块中声明了一个不同的变量（但名字仍然是 `apples`）。从这时开始到嵌套块的结尾，`apples`指的就是嵌套层的`apples`而不是外层的 `apples`。
 
-Thus, when we assign value `10` to `apples`, we’re assigning it to the nested block `apples`. After printing this value (`10`), the nested block ends and nested block `apples` is destroyed. The existence and value of outer block `apples` is not affected, and we prove this by printing the value of outer block `apples` (`5`).
+因此，当我们将 `10` 赋值给 `apples`时，我们赋值的是内层块的`apples`。然后打印`apples`，得到结果10，等到内层块结束时，`apples`就销毁了。但是，外层块的`apples`并不会受影响，所以我们在外层块中仍然可以打印 `apples` (`5`)。
 
-Note that if the nested block `apples` had not been defined, the name `apples` in the nested block would still refer to the outer block `apples`, so the assignment of value `10` to `apples` would have applied to the outer block `apples`:
+注意，如果我们没有在内层块中定义 `apples`，那么内层块中的`apples`指的仍然是外层的`apples`。这种情况下对 `apples`赋值10，则接收该值的也是外层定义的`apples`：
 
 ```cpp
 #include <iostream>
@@ -81,8 +89,7 @@ int main()
 } // outer block apples destroyed
 ```
 
-
-The above program prints:
+执行上述代码，打印结果如下：
 
 ```
 5
@@ -90,11 +97,11 @@ The above program prints:
 10
 ```
 
-When inside the nested block, there’s no way to directly access the shadowed variable from the outer block.
+在内层嵌套块中，是没有办法直接访问已经被临时屏蔽的外层变量的。
 
-## Shadowing of global variables
+## 全局变量的遮蔽
 
-Similar to how variables in a nested block can shadow variables in an outer block, local variables with the same name as a global variable will shadow the global variable wherever the local variable is in scope:
+当局部变量和全局变量重名时，它也会在局部变量的作用域中奖全局变量临时屏蔽：
 
 ```cpp
 #include <iostream>
@@ -119,15 +126,15 @@ int main()
 } // local value is destroyed
 ```
 
-
-This code prints:
+打印结果：
 
 ```
 local variable value: 8
 global variable value: 5
 ```
 
-However, because global variables are part of the global namespace, we can use the scope operator (`::`) with no prefix to tell the compiler we mean the global variable instead of the local variable.
+不过，因为全局变量属于全局命名空间的一部分，我们可以使用没有前缀的[[scope-resolution-operator|作用域解析运算符]](`::`)告诉编译器去查找全局变量而不是局部变量。
+
 
 ```cpp
 #include <iostream>
@@ -147,20 +154,19 @@ int main()
 } // local value is destroyed
 ```
 
-
-This code prints:
+打印结果：
 
 ```
 local variable value: 8
 global variable value: 4
 ```
 
-## Avoid variable shadowing
+## 避免变量遮蔽
 
-Shadowing of local variables should generally be avoided, as it can lead to inadvertent errors where the wrong variable is used or modified. Some compilers will issue a warning when a variable is shadowed.
+通常情况下应该避免变量遮蔽， 因为它容易引起变量误用的错误。很多编译器会在检测到变量遮蔽时发出告警。
 
-For the same reason that we recommend avoiding shadowing local variables, we recommend avoiding shadowing global variables as well. This is trivially avoidable if all of your global names use a “g_” prefix.
+也正是处于这个原因，我们推荐避免局部变量和全局变量的遮蔽。不过，如果你的全局变量名具有“g_” 前缀的话，这通常是很容易避免的。
 
 !!! success "最佳实践"
 
-	Avoid variable shadowing.
+	避免变量遮蔽

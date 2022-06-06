@@ -1,8 +1,140 @@
 {
   "recentFiles": [
     {
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
+    },
+    {
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
+      "basename": "7-11-Halts-exiting-your-program-early",
+      "path": "docs/7-11-Halts-exiting-your-program-early.md"
+    },
+    {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
+    },
+    {
+      "basename": "7-9-For-statements",
+      "path": "docs/7-9-For-statements.md"
+    },
+    {
+      "basename": "7-8-Do-while-statements",
+      "path": "docs/7-8-Do-while-statements.md"
+    },
+    {
+      "basename": "7-7-Intro-to-loops-and-while-statements",
+      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
+    },
+    {
+      "basename": "7-6-Goto-statements",
+      "path": "docs/7-6-Goto-statements.md"
+    },
+    {
+      "basename": "7-5-Switch-fallthrough-and-scoping",
+      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
+    },
+    {
+      "basename": "7-4-Switch-statement-basics",
+      "path": "docs/7-4-Switch-statement-basics.md"
+    },
+    {
+      "basename": "7-3-Common-if-statement-problems",
+      "path": "docs/7-3-Common-if-statement-problems.md"
+    },
+    {
+      "basename": "7-2-If-statements-and-blocks",
+      "path": "docs/7-2-If-statements-and-blocks.md"
+    },
+    {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
+      "basename": "7-16-std-cin-and-handling-invalid-input",
+      "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
+    },
+    {
+      "basename": "7-15-Detecting-and-handling-errors",
+      "path": "docs/7-15-Detecting-and-handling-errors.md"
+    },
+    {
+      "basename": "tabledata",
+      "path": "docs/tabledata.md"
+    },
+    {
       "basename": "6-1-Compound-statements-blocks",
       "path": "docs/6-1-Compound-statements-blocks.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "5-3-Modulus-and-Exponentiation",
+      "path": "docs/5-3-Modulus-and-Exponentiation.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
+    },
+    {
+      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
+      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "3-1-Syntax-and-semantic-errors",
+      "path": "docs/3-1-Syntax-and-semantic-errors.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/2-1-Introduction-to-functions.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+    },
+    {
+      "basename": "6-6-Internal-linkage",
+      "path": "docs/6-6-Internal-linkage.md"
+    },
+    {
+      "basename": "6-5-Variable-shadowing-name-hiding",
+      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
+    },
+    {
+      "basename": "6-4-Introduction-to-global-variables",
+      "path": "docs/6-4-Introduction-to-global-variables.md"
+    },
+    {
+      "basename": "6-8-Why-non-const-global-variables-are-evil",
+      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
+    },
+    {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
     },
     {
       "basename": "6-13-Inline-functions",
@@ -13,192 +145,60 @@
       "path": "docs/6-10-Static-local-variables.md"
     },
     {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+      "basename": "static-variables",
+      "path": "docs/static-variables.md"
     },
     {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+      "basename": "storage-duration",
+      "path": "docs/storage-duration.md"
     },
     {
       "basename": "6-3-Local-variables",
       "path": "docs/6-3-Local-variables.md"
     },
     {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
+      "basename": "yaml",
+      "path": "Templates/yaml.md"
     },
     {
-      "basename": "6-5-Variable-shadowing-name-hiding",
-      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
+      "basename": "static-storage-duration",
+      "path": "docs/static-storage-duration.md"
     },
     {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
-      "basename": "6-8-Why-non-const-global-variables-are-evil",
-      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
-    },
-    {
-      "basename": "6-11-Scope-duration-and-linkage-summary",
-      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "6-14-Constexpr-and-consteval-functions",
-      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
-    },
-    {
-      "basename": "6-15-Unnamed-and-inline-namespaces",
-      "path": "docs/6-15-Unnamed-and-inline-namespaces.md"
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
     },
     {
       "basename": "6-x-Chapter-6-summary-and-quiz",
       "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
     },
     {
-      "basename": "5-x-Chapter-5-summary-and-quiz",
-      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
-    },
-    {
-      "basename": "tabledata",
-      "path": "docs/tabledata.md"
-    },
-    {
-      "basename": "6-6-Internal-linkage",
-      "path": "docs/6-6-Internal-linkage.md"
-    },
-    {
-      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
-      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
-    },
-    {
-      "basename": "5-7-Logical-operators",
-      "path": "docs/5-7-Logical-operators.md"
-    },
-    {
-      "basename": "5-2-Arithmetic-operators",
-      "path": "docs/5-2-Arithmetic-operators.md"
-    },
-    {
-      "basename": "5-5-Comma-and-conditional-operators",
-      "path": "docs/5-5-Comma-and-conditional-operators.md"
-    },
-    {
-      "basename": "5-4-Increment-decrement-operators-and-side-effects",
-      "path": "docs/5-4-Increment-decrement-operators-and-side-effects.md"
-    },
-    {
-      "basename": "5-3-Modulus-and-Exponentiation",
-      "path": "docs/5-3-Modulus-and-Exponentiation.md"
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
       "basename": "4-14-Literal-constants",
       "path": "docs/4-14-Literal-constants.md"
     },
     {
-      "basename": "7.9 -- For statements",
-      "path": "docs/7.9 -- For statements.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
-    },
-    {
-      "basename": "table2",
-      "path": "docs/images/table2.png"
-    },
-    {
-      "basename": "table1",
-      "path": "docs/images/table1.png"
-    },
-    {
-      "basename": "1-9-Introduction-to-literals-and-operators",
-      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
-    },
-    {
-      "basename": "operator",
-      "path": "docs/operator.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "2-1-Introduction-to-functions",
-      "path": "docs/2-1-Introduction-to-functions.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
-    },
-    {
-      "basename": "11-7-An-introduction-to-std-string_view",
-      "path": "docs/11-7-An-introduction-to-std-string_view.md"
-    },
-    {
-      "basename": "8.5 -- Explicit type conversion (casting) and static_cast",
-      "path": "docs/8.5 -- Explicit type conversion (casting) and static_cast.md"
-    },
-    {
-      "basename": "8.1 -- Implicit type conversion (coercion)",
-      "path": "docs/8.1 -- Implicit type conversion (coercion).md"
-    },
-    {
-      "basename": "8-9-Introduction-to-function-overloading",
-      "path": "docs/8-9-Introduction-to-function-overloading.md"
-    },
-    {
-      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
-      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
-      "basename": "7.2 -- If statements and blocks",
-      "path": "docs/7.2 -- If statements and blocks.md"
-    },
-    {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "index",
-      "path": "docs/index.md"
+      "basename": "6-11-Scope-duration-and-linkage-summary",
+      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
     },
     {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
     },
     {
-      "basename": "4-9-Boolean-values",
-      "path": "docs/4-9-Boolean-values.md"
+      "basename": "4-6-Fixed-width-integers-and-size_t",
+      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
     },
     {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
     },
     {
-      "basename": "4-4-Signed-integers",
-      "path": "docs/4-4-Signed-integers.md"
-    },
-    {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
+      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     }
   ],
   "omittedPaths": [],

@@ -8,3 +8,7 @@ type: translation
 tags:
 - 
 ---
+
+??? note "关键点速记"
+	
+	- 

@@ -1,7 +1,7 @@
-Specifier	Meaning	Note
-extern	static (or thread_local) storage duration and external linkage	
-static	static (or thread_local) storage duration and internal linkage	
-thread_local	thread storage duration	
-mutable	object allowed to be modified even if containing class is const	
-auto	automatic storage duration	Deprecated in C++11
-register	automatic storage duration and hint to the compiler to place in a register	Deprecated in C++17
+Category	Meaning	Implementated in C++ by
+Conditional statements	Conditional statements cause a sequence of code to execute only if some condition is met.	If, switch
+Jumps	Jumps tell the CPU to start executing the statements at some other location.	Goto, break, continue
+Function calls	Function calls are jumps to some other location and back.	Function calls, return
+Loops	Loops tell the program to repeatedly execute some sequence of code zero or more times, until some condition is met.	While, do-while, for, ranged-for
+Halts	Halts tell the program to quit running.	std::exit(), std::abort()
+Exceptions	Exceptions are a special kind of flow control structure designed for error handling.	Try, throw, catch

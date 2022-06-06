@@ -317,4 +317,4 @@ int main()
 
 上述程序会打印 “hi”，因为4是一个非0值，所以被转换成了布尔值 *true*，使得对应的语句能够被执行。
 
-我们会在[[7.2 -- If statements and blocks|7.2 - if 语句和语句块]]中更详细地介绍*if*语句。
+我们会在[[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]]中更详细地介绍*if*语句。

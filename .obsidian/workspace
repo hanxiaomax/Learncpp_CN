@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "56bd180b4e918b82",
+        "id": "f292debcd1bff8ab",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/6-1-Compound-statements-blocks.md",
+            "file": "docs/7-14-Common-semantic-errors-in-c.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "moc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-1-Compound-statements-blocks.md"
+                "file": "docs/7-14-Common-semantic-errors-in-c.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-1-Compound-statements-blocks.md",
+                "file": "docs/7-14-Common-semantic-errors-in-c.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,17 +126,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "56bd180b4e918b82",
+  "active": "f292debcd1bff8ab",
   "lastOpenFiles": [
-    "docs/6-1-Compound-statements-blocks.md",
-    "docs/6-13-Inline-functions.md",
-    "docs/6-10-Static-local-variables.md",
-    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
-    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
-    "docs/6-3-Local-variables.md",
-    "docs/6-4-Introduction-to-global-variables.md",
-    "docs/6-5-Variable-shadowing-name-hiding.md",
-    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
-    "docs/6-8-Why-non-const-global-variables-are-evil.md"
+    "docs/7-14-Common-semantic-errors-in-c.md",
+    "docs/7-13-Code-coverage.md",
+    "docs/7-12-Introduction-to-testing-your-code.md",
+    "docs/7-11-Halts-exiting-your-program-early.md",
+    "docs/7-10-Break-and-continue.md",
+    "docs/7-9-For-statements.md",
+    "docs/7-8-Do-while-statements.md",
+    "docs/7-7-Intro-to-loops-and-while-statements.md",
+    "docs/7-6-Goto-statements.md",
+    "docs/7-5-Switch-fallthrough-and-scoping.md"
   ]
 }

@@ -1,6 +1,6 @@
 ---
 title: 2.2 - 函数返回值
-alias: 
+alias: 2.2 - 函数返回值
 origin: /function-return-values-value-returning-functions/
 origin_title: "2.2 — Function return values (value-returning functions"
 time: 2022-4-22

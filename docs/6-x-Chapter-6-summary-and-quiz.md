@@ -7,6 +7,7 @@ time: 2022-3-29
 type: translation
 tags:
 - summary
+- C++17
 ---
 
 ## Quick review

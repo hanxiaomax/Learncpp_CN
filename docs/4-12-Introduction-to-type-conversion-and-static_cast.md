@@ -151,7 +151,7 @@ int main()
 
 !!! info "相关内容"
 
-C++ 还支持其他类型的转换。我们会在[[8.5 -- Explicit type conversion (casting) and static_cast|8.5 - 显式类型转换]]中进行详细介绍
+C++ 还支持其他类型的转换。我们会在[[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换]]中进行详细介绍
 
 ## 使用 static_cast 将 char 转换为 int
 

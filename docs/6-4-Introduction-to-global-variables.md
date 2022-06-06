@@ -7,16 +7,24 @@ time: 2021-4-20
 type: translation
 tags:
 - global
+- storage duration
 ---
 
+??? note "关键点速记"
 
-In lesson [[6-3-Local-variables|6.3 - 局部变量]], we covered that local variables are variables defined inside a function (or function parameters). Local variables have block scope (are only visible within the block they are declared in), and have automatic duration (they are created at the point of definition and destroyed when the block is exited).
+	- 考虑为全局变量添加 “g” or “g_” 前缀以区别于其他变量。
+	- 全局变量具有文件作用域和静态存储持续时间
+	- 全局变量在程序开始时被创建，并且在程序结束时被销毁——即[[static-storage-duration|静态存储持续时间]]
+	- 具有静态存储持续时间的变量称为[[static-variables|静态变量(static variables)]] 。
+	- 静态变量具有默认初始化值 0
 
-In C++, variables can also be declared _outside_ of a function. Such variables are called global variables.
+在 [[6-3-Local-variables|6.3 - 局部变量]] 中，我们介绍了局部变量。局部变量是定义在函数中（或函数参数）的变量。局部变量具有块作用域（只在定义它的块中可见），同时具有自动持续时间（在定义时创建，在块结束时销毁）。
 
-## Declaring and naming global variables
+C++ 中，变量也可以被声明在函数**外面**。这些变量称为全局变量。
 
-By convention, global variables are declared at the top of a file, below the includes, but above any code. Here’s an example of a global variable being defined:
+## 全局变量的声明和命名
+
+按照管理，全局变量会被定义在文件的开头，紧接着头文件包含的后面，但是在所有代码的前面。请看下面的例子：
 
 ```cpp
 #include <iostream>
@@ -46,7 +54,7 @@ int main()
 ```
 
 
-The above example prints:
+输出结果如下
 
 ```
 3
@@ -54,25 +62,27 @@ The above example prints:
 5
 ```
 
-By convention, many developers prefix global variable identifiers with “g” or “g_” to indicate that they are global.
+一般情况下，很多程序员喜欢为全局变量添加前缀 “g” 或 “g_” 以表明它是全局的（global）。
+
 
 !!! success "最佳实践"
 
-	Consider using a “g” or “g_” prefix for global variables to help differentiate them from local variables.
+	考虑为全局变量添加 “g” or “g_” 前缀以区别于其他变量。
+	
+## 全局变量具有文件作用域和静态存储持续时间
 
-## Global variables have file scope and static duration
+全局变量具有文件作用域（有时候也非正式地称为全局作用域或全局命名空间作用域），也就是说这类变量从声明它的文件开头，到文件结尾都是可见的。一旦声明之后，全局变量就可以在文件的任何地方使用！在上面的例子中，全局变量 `g_x` 既可以在`doSomething()` 中使用，也可以在 `main()`中使用。
 
-Global variables have file scope (also informally called global scope or global namespace scope), which means they are visible from the point of declaration until the end of the _file_ in which they are declared. Once declared, a global variable can be used anywhere in the file from that point onward! In the above example, global variable `g_x` is used in both functions `doSomething()` and `main()`.
 
-Because they are defined outside of a function, global variables are considered to be part of the global namespace (hence the term “global namespace scope”).
+因为它们被定义在函数的外面，全局变量通常被认为是属于全局命名空间。
 
-Global variables are created when the program starts, and destroyed when it ends. This is called static duration. Variables with _static duration_ are sometimes called static variables.
+全局变量在程序开始时被创建，并且在程序结束时被销毁——即[[static-storage-duration|静态存储持续时间]]，具有静态存储持续时间的变量称为[[static-variables|静态变量(static variables)]] 。
 
-Unlike local variables, which are uninitialized by default, static variables are zero-initialized by default.
+局部变量默认是未初始化的，静态变量则不同，它具有默认的初始值 0 。
 
-## Global variable initialization
+## 全局变量初始化
 
-Non-constant global variables can be optionally initialized:
+非常量类型的全局变量也可以进行初始化（可选）。
 
 ```cpp
 int g_x; // no explicit initializer (zero-initialized by default)
@@ -81,15 +91,15 @@ int g_z { 1 }; // initialized with value
 ```
 
 
-## Constant global variables
+## 常量全局变量
 
-Just like local variables, global variables can be constant. As with all constants, constant global variables must be initialized.
+和局部变量一样，全局变量也可以是常量。和所有的常量一样，常量全局变量必须被初始化。
 
 ```cpp
 #include <iostream>
 
-const int g_x; // error: constant variables must be initialized
-constexpr int g_w; // error: constexpr variables must be initialized
+const int g_x; // 错误：const 常量必须初始化
+constexpr int g_w; // 错误：constexpr 常量必须初始化
 
 const int g_y { 1 };  // const global variable g_y, initialized with a value
 constexpr int g_z { 2 }; // constexpr global variable g_z, initialized with a value
@@ -117,25 +127,25 @@ int main()
 
 !!! info "相关内容"
 
-	We discuss global constants in more detail in lesson [6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/).
+	我们会在[[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]]详细介绍常量全局变量。
 
-## A word of caution about (non-constant) global variables
+## 关于非常量类型全局变量的提醒
 
-New programmers are often tempted to use lots of global variables, because they can be used without having to explicitly pass them to every function that needs them. However, use of non-constant global variables should generally be avoided altogether! We’ll discuss why in upcoming lesson [6.8 -- Why (non-const) global variables are evil](https://www.learncpp.com/cpp-tutorial/why-non-const-global-variables-are-evil/).
+新手程序员通常会尝试定义很多全局变量，因为这样他们就可以不需要传参就能够使用这些变量。不过，通常应该避免使用非常量的全局变量！我们会在[[6-8-Why-non-const-global-variables-are-evil|6.8 - 为什么非 const 全局变量是魔鬼]]中进行详细介绍。
 
-## Quick Summary
+## 小结
 
 ```cpp
-// Non-constant global variables
-int g_x;                 // defines non-initialized global variable (zero initialized by default)
-int g_x {};              // defines explicitly zero-initialized global variable
-int g_x { 1 };           // defines explicitly initialized global variable
+// 非常量全局变量
+int g_x;                 // 定义未初始化的全局变量（默认初始化为0） 
+int g_x {};              // 显示地定义初始化为0的全局变量
+int g_x { 1 };           // 显示地初始化全局变量
 
-// Const global variables
-const int g_y;           // error: const variables must be initialized
-const int g_y { 2 };     // defines initialized global constant
+// Const 全局变量
+const int g_y;           // 错误：const 变量必须初始化
+const int g_y { 2 };     // 定义并初始化全局常量
 
-// Constexpr global variables
-constexpr int g_y;       // error: constexpr variables must be initialized
-constexpr int g_y { 3 }; // defines initialized global const
+// Constexpr 全局变量
+constexpr int g_y;       // 错误: constexpr 变量必须初始化
+constexpr int g_y { 3 }; // 定义并初始化全局 const 变量
 ```

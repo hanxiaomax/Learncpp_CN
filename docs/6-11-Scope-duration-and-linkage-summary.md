@@ -8,6 +8,7 @@ type: translation
 tags:
 - linkage
 - scope
+- C++11
 ---
 
 The concepts of scope, duration, and linkage cause a lot of confusion, so we’re going to take an extra lesson to summarize everything. Some of these things we haven’t covered yet, and they’re here just for completeness / reference later.

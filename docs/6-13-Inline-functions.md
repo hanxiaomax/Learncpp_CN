@@ -45,7 +45,7 @@ When a call to `min()` is encountered, the CPU must store the address of the c
 
 For functions that are large and/or perform complex tasks, the overhead of the function call is typically insignificant compared to the amount of time the function takes to run. However, for small functions (such as `min()` above), the overhead costs can be larger than the time needed to actually execute the function’s code! In cases where a small function is called often, using a function can result in a significant performance penalty over writing the same code in-place.
 
-## Inline expansion
+## 内联表达式
 
 Fortunately, the C++ compiler has a trick that it can use to avoid such overhead cost: Inline expansion is a process where a function call is replaced by the code from the called function’s definition.
 
@@ -66,7 +66,7 @@ COPY
 
 Note that the two calls to function `min()` have been replaced by the code in the body of the `min()` function (with the value of the arguments substituted for the parameters). This allows us to avoid the overhead of those calls, while preserving the results of the code.
 
-## The performance of inline code
+## 内联代码的性能
 
 Beyond removing the cost of function call overhead, inline expansion can also allow the compiler to optimize the resulting code more efficiently -- for example, because the expression `((5 < 6) ? 5 : 6)` is now a compile-time constant, the compiler could further optimize the first statement in `main()` to `std::cout << 5 << '\n';`.
 
@@ -76,7 +76,7 @@ The decision about whether a function would benefit from being made inline (beca
 
 Inline expansion is best suited to simple, short functions (e.g. no more than a few statements), especially cases where a single function call is executed more than once (e.g. function calls inside a loop).
 
-## When inline expansion occurs
+## 内联代码的展开时机
 
 Every function falls into one of three categories, where calls to the function:
 
@@ -88,18 +88,18 @@ A function that is eligible to have its function calls expanded is called an in
 
 Most functions fall into the “may” category: their function calls can be expanded if and when it is beneficial to do so. For functions in this category, a modern compiler will assess each function and each function call to make a determination about whether that particular function call would benefit from inline expansion. A compiler might decide to expand none, some, or all of the function calls to a given function.
 
-Tip
+!!! tip "小贴士"
 
-Modern optimizing compilers make the decision about when functions should be expanded inline.
+	Modern optimizing compilers make the decision about when functions should be expanded inline.
 
-For advanced readers
+!!! info "扩展阅读"
 
-Some types of functions are implicitly treated as inline functions. These include:
+    Some types of functions are implicitly treated as inline functions. These include:
 
 -   Functions defined inside a class, struct, or union type definition.
--   Constexpr / consteval functions ([6.14 -- Constexpr and consteval functions](https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/))
+-   Constexpr / consteval functions [[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
 
-The inline keyword, historically
+## The inline keyword, historically
 
 Historically, compilers either didn’t have the capability to determine whether inline expansion would be beneficial, or were not very good at it. For this reason, C++ provides the keyword `inline`, which was intended to be used as a hint to the compiler that a function would benefit from being expanded inline:
 
@@ -131,24 +131,25 @@ However, in modern C++, the `inline` keyword is no longer used to request that
 
 Modern optimizing compilers are typically very good at determining which functions should be made inline -- better than humans in most cases. As a result, the compiler will likely ignore or devalue any request you make to `inline` a function anyway.
 
-Best practice
+!!! success "最佳实践"
 
-Do not use the `inline` keyword to request inline expansion for your functions.
+	Do not use the `inline` keyword to request inline expansion for your functions.
 
-The inline keyword, modernly
+## The inline keyword, modernly
 
 In previous chapters, we mentioned that you should not implement functions (with external linkage) in header files, because when those headers are included into multiple .cpp files, the function definition will be copied into multiple .cpp files. These files will then be compiled, and the linker will throw an error because it will note that you’ve defined the same function more than once, which is a violation of the one-definition rule.
 
-In lesson [6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/), we noted that in modern C++, the `inline` concept has evolved to have a new meaning: multiple definitions are allowed in the program. This is true for functions as well as variables. Thus, if we mark a function as inline, then that function is allowed to have multiple definitions (in different files), as long as those definitions are identical.
+In lesson [[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]], we noted that in modern C++, the `inline` concept has evolved to have a new meaning: multiple definitions are allowed in the program. This is true for functions as well as variables. Thus, if we mark a function as inline, then that function is allowed to have multiple definitions (in different files), as long as those definitions are identical.
 
-In order to do inline expansion, the compiler needs to be able to see the full definition of an inline function wherever the function is called. Therefore, inline functions are typically defined in header files, where they can be #included into any code file that needs to see the full definition of the function.
+In order to do inline expansion, the compiler needs to be able to see the full definition of an inline function wherever the function is called. Therefore, inline functions are typically defined in header files, where they can be `#included` into any code file that needs to see the full definition of the function.
 
-Key insight
 
-The compiler needs to be able to see the full definition of an inline function wherever it is called.
+!!! tldr "关键信息"
+
+	The compiler needs to be able to see the full definition of an inline function wherever it is called.
 
 For the most part, you should not mark your functions as inline, but we’ll see examples in the future where this is useful.
 
-Best practice
+!!! success "最佳实践"
 
-Avoid the use of the `inline` keyword for functions unless you have a specific, compelling reason to do so.
+	Avoid the use of the `inline` keyword for functions unless you have a specific, compelling reason to do so.

@@ -7,6 +7,7 @@ time: 2021-12-2
 type: translation
 tags:
 - data type
+- C++11
 ---
 
 ??? note "关键点速记"

@@ -51,6 +51,7 @@ extra:
     - icon: fontawesome/brands/github 
       link: https://github.com/hanxiaomax
 nav:
+  - 总目录: MOC.md
   - 课程内容:
     - 1. C++ 基础:
       - "1-1-Statements-and-the-structure-of-a-program.md"

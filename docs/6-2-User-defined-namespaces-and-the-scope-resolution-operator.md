@@ -7,16 +7,28 @@ time: 2021-7-4
 type: translation
 tags:
 - namespace
+- namespace aliases
 - scope resolution operator
+- C++17
 ---
 
-In lesson [[2-9-Naming-collisions-and-an-introduction-to-namespaces|2.9 - 命名冲突和命名空间]], we introduced the concept of `naming collisions` and `namespaces`. As a reminder, a naming collision occurs when two identical identifiers are introduced into the same scope, and the compiler can’t disambiguate which one to use. When this happens, compiler or linker will produce an error because they do not have enough information to resolve the ambiguity. As programs become larger, the number of identifiers increases linearly, which in turn causes the probability of a naming collision occurring to increase exponentially.
+??? note "关键点速记"
 
-Let’s revisit an example of a naming collision, and then show how we can resolve it using namespaces. In the following example, `foo.cpp` and `goo.cpp` are the source files that contain functions that do different things but have the same name and parameters.
+	- 不指定命名空间的前提下，编译器首先在当前命名空间中查找，然后按照包含关系逐层查找，直到找到全局命名空间
+	- 不带前缀的作用域解析运算符表示全局命名空间中查找（`::print()`）
+	- 将命名空间的声明分成多个部分放在不同的位置是合法的（多个文件、相同文件的不同位置）。所有这些声明都被认为是对应命名空间声明的一部分。
+	- 命名空间可以嵌套，但是嵌套后引用内部的函数写起来很麻烦，可以使用命名空间别名为其创建一个简短的、临时的名字
+	- C++17 还支持`namespace foo::goo`这种方式来创建嵌套的命名空间
+	- 命名空间别名最好的一点是：如果你需要将 `foo::goo` 中的函数移动到另外的地方，那么你只需要更新一下上面例子中的 `active` 别名使其指向新的命名空间即可，而不必查找替换所有的 `foo::goo`.
+	- C++ 的命名空间不是为了像 C# 或者 Java 那样创建一个层次结构，它只是一种避免命名冲突的机制，因此不要过度嵌套。
+	- 自己编写的库，如果提供给他人使用，请放在自定义的命名空间中，这样可以避免命名冲突，也可以帮助编辑器的代码补全和提示进行工作
 
-foo.cpp:
+在[[2-9-Naming-collisions-and-an-introduction-to-namespaces|2.9 - 命名冲突和命名空间]]中我们介绍了命名冲突和命名空间。提醒一下，命名冲突发生在相同作用域中有两个相同名字的时候，这时编译器将不能够区分它们。这种情况下，编译器或者链接器会报告错误信息。当程序越变越大的时候，标识符的数量也会线性增长，这会使得命名冲突的可能性成指数倍增长。
 
-```cpp
+让我们再回顾一下命名冲突的例子，以及如何使用命名空间解决这个问题。在下面的例子中，`foo.cpp` 和 `goo.cpp` 中包含了功能不同，但函数名完全和参数完全相同的两个函数。
+
+
+```cpp title="foo.cpp"
 // This doSomething() adds the value of its parameters
 int doSomething(int x, int y)
 {
@@ -47,22 +59,24 @@ int main()
 ```
 
 
-If this project contains only `foo.cpp` _or_ `goo.cpp` (but not both), it will compile and run without incident. However, by compiling both into the same program, we have now introduced two different functions with the same name and parameters into the same scope (the global scope), which causes a naming collision. As a result, the linker will issue an error:
+如果程序中只包含 `foo.cpp` 或者 `goo.cpp` (但不是两个都有)，程序就可以顺利地编译和运行。不过，当把它们两个都编译到同一个程序中时，我们就向同一个作用域（全局作用域）中引入了两个名字和参数都完全相同的函数，这就会代码命名冲突，造成的后果就是链接器报错：
 
+```
 goo.cpp:3: multiple definition of `doSomething(int, int)'; foo.cpp:3: first defined here
+```
 
-Note that this error happens at the point of redefinition, so it doesn’t matter whether function `doSomething` is ever called.
+注意，这个问题在于**重复定义** ，所以无关是否`doSomething`被调用。
 
-One way to resolve this would be to rename one of the functions, so the names no longer collide. But this would also require changing the names of all the function calls, which can be a pain, and is subject to error. A better way to avoid collisions is to put your functions into your own namespaces. For this reason the standard library was moved into the `std` namespace.
+解决这个问题的方法之一，是对其中一个函数重命名，这样命名就不会冲突了。但是，这么做就意味着所有调用该函数的地方的代码也要对应地修改，这不仅是一项大工程，也非常容易犯错。另一个避免命名冲突的办法，是使用自定义的命名空间。也正是这样，标准库的函数都被移动到了 `std` 命名空间中。
 
-## Defining your own namespaces
 
-C++ allows us to define our own namespaces via the `namespace` keyword. Namespaces that you create for your own declarations are called user-defined namespaces. Namespaces provided by C++ (such as the `global namespace`) or by libraries (such as `namespace std`) are not considered user-defined namespaces.
+## 自定义命名空间
 
-Namespace identifiers are typically non-capitalized.
+C++ 允许我们通过`namespace`关键字创建你自己的命名空间。用户为了自己的声明创建的命名空间，称为**用户自定义命名空间**。C++ 提供的命名空间（例如 `global`和`std`）并没有考虑用户自定义命名空间。
 
-Here is an example of the files in the prior example rewritten using namespaces:
+## 命名空间的标识符通常不是大写形式
 
+我们使用命名空间重新编写了上面的几个程序：
 
 ```cpp title="foo.cpp"
 namespace foo // define a namespace named foo
@@ -87,7 +101,7 @@ namespace goo // define a namespace named goo
 ```
 
 
-Now `doSomething()` inside of `foo.cpp` is inside the `foo` namespace, and the `doSomething()` inside of `goo.cpp`is inside the `goo` namespace. Let’s see what happens when we recompile our program.
+现在 `foo.cpp` 中的 `doSomething()` 位于 `foo` 命名空间中，而`goo.cpp` 中的 `doSomething()` 则位于 `goo` 命名空间中。重新编译程序，看看会发生什么。
 
 
 ```cpp title="main.cpp"
@@ -101,23 +115,23 @@ int main()
 ```
 
 
-The answer is that we now get another error!
+结果就是我们得到了另外的错误信息！
 
 ```
 ConsoleApplication1.obj : error LNK2019: unresolved external symbol "int __cdecl doSomething(int,int)" (?doSomething@@YAHHH@Z) referenced in function _main
 ```
 
-In this case, the compiler was satisfied (by our forward declaration), but the linker could not find a definition for `doSomething` in the global namespace. This is because both of our versions of `doSomething` are no longer in the global namespace!
+在这个例子中，编译没有问题(因为我们提供了[[forward-declaration|前向声明]])，但是链接器并不能在 global 作用域中找到 `doSomething` 的定义。这是因为这两个版本的 `doSomething`都已经不在 global 作用域中了。
 
-There are two different ways to tell the compiler which version of `doSomething()` to use, via the `scope resolution operator`, or via `using statements` (which we’ll discuss in a later lesson in this chapter).
+告诉编译器使用哪个版本 `doSomething()` 的方法有两种，一种是[[scope-resolution-operator|作用域解析运算符]]，一种是using语句（参见:[[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]）。
 
-For the subsequent examples, we’ll collapse our examples down to a one-file solution for ease of reading.
+在接下来的例子中，我们还是回到单文件的场景，这样看起来更加清晰。
 
-Accessing a namespace with the scope resolution operator (::)
+## 通过作用域解析运算符(`::`)访问命名空间
 
-The best way to tell the compiler to look in a particular namespace for an identifier is to use the scope resolution operator (::). The scope resolution operator tells the compiler that the identifier specified by the right-hand operand should be looked for in the scope of the left-hand operand.
+告诉编译器在哪个命名空间中查找函数的最好的办法就是使用作用域解析运算符(`::`)。作用域解析运算符告诉编译器该运算符左面的操作数是它应该查找的命名空间。
 
-Here is an example of using the scope resolution operator to tell the compiler that we explicitly want to use the version of `doSomething()` that lives in the `foo` namespace:
+下面的例子展示了如何使用作用域解析运算符查找编译器查找 `foo` 命名空间的 `doSomething()`：
 
 ```cpp
 #include <iostream>
@@ -147,13 +161,13 @@ int main()
 }
 ```
 
-This produces the expected result:
+输出结果如下：
 
 ```
 7
 ```
 
-If we wanted to use the version of `doSomething()` that lives in `goo` instead:
+如果你希望使用 `goo` 中的 `doSomething()` ，则应该这么做：
 
 ```cpp
 #include <iostream>
@@ -183,13 +197,13 @@ int main()
 }
 ```
 
-This produces the result:
+输出结果如下：
 
 ```
 1
 ```
 
-The scope resolution operator is great because it allows us to _explicitly_ pick which namespace we want to look in, so there’s no potential ambiguity. We can even do the following:
+作用域解析运算符非常好用，它允许我们**显式地**指定一个需要查找的命名空间，不存在任何模糊的含义。我们甚至可以这么做：
 
 ```cpp
 #include <iostream>
@@ -220,17 +234,16 @@ int main()
 }
 ```
 
-
-This produces the result:
+输出结果如下：
 
 ```
 7
 1
 ```
 
-Using the scope resolution operator with no name prefix
+## 使用没有前缀的作用域解析运算符
 
-The scope resolution operator can also be used in front of an identifier without providing a namespace name (e.g. `::doSomething`). In such a case, the identifier (e.g. `doSomething`) is looked for in the global namespace.
+作用域解析运算符也可以用在一个标识符前面，但不指定命名空间（例如 `::doSomething` ）。这种情况下，编译器会在全局命名空间中查找标识符（`doSomething`） 。
 
 ```cpp
 #include <iostream>
@@ -258,11 +271,11 @@ int main()
 ```
 
 
-In the above example, the `::print()` performs the same as if we’d called `print()` with no scope resolution, so use of the scope resolution operator is superfluous in this case. But the next example will show a case where the scope resolution operator with no namespace can be useful.
+在上面的例子中，`::print()` 的效果和 `print()` （不进行作用域解析）是完全一样的，所以在这个例子中使用作用域解析运算符是多余的。但是，在接下来的例子中，我们能够看到这种无前缀作用域解析运算符的作用。
 
-Identifier resolution from within a namespace
+## 命名空间中的标识符解析
 
-If an identifier inside a namespace is used and no scope resolution is provided, the compiler will first try to find a matching declaration in that same namespace. If no matching identifier is found, the compiler will then check each containing namespace in sequence to see if a match is found, with the global namespace being checked last.
+当一个标识符位于某个命名空间时，如果不指定作用域解析，则编译器首先会在相同的命名空间中进行查找。如果没有找到，则编译器会在按照包含关系，在命名空间序列中依次查找，最后才会查找 global 命名空间：
 
 ```cpp
 #include <iostream>
@@ -294,22 +307,21 @@ int main()
 }
 ```
 
-
-This prints:
+打印结果：
 
 ```
 Hello there
 ```
 
-In the above example, `print()` is called with no scope resolution provided. Because this use of `print()` is inside the `foo` namespace, the compiler will first see if a declaration for `foo::print()` can be found. Since one exists, `foo::print()` is called.
+在上面的例子中，调用 `print()` 函数时并没有指定需要解析的作用域。因此在 `foo` 命名空间中调用 `print()`函数，编译器首先会查找 `foo::print()` 的定义。因为该定义存在，所以 `foo::print()` 被执行。
 
-If `foo::print()` had not been found, the compiler would have checked the containing namespace (in this case, the global namespace) to see if it could match a `print()` there.
+如果 `foo::print()` 并没有被找到，那么编译器就必须查找包含该作用域的作用域（在这个例子中是 global 作用域）以尝试找到 `print()` 。
 
-Note that we also make use of the scope resolution operator with no namespace (`::print()`) to explicitly call the global version of `print()`.
+注意，我们可以使用不带前缀的作用域解析运算符（`::print()`）明确指定编译器使用 global 命名空间中的 `print()`。
 
-Multiple namespace blocks are allowed
+## 命名空间定义为多个块
 
-It’s legal to declare namespace blocks in multiple locations (either across multiple files, or multiple places within the same file). All declarations within the namespace are considered part of the namespace.
+将命名空间的声明分成多个部分放在不同的位置是合法的（多个文件、相同文件的不同位置）。所有这些声明都被认为是对应命名空间声明的一部分。
 
 
 ```cpp title="circle.h"
@@ -354,23 +366,22 @@ int main()
 }
 ```
 
-
-This works exactly as you would expect:
+打印结果如我们所愿：
 
 ```
 3.14
 2.7
 ```
 
-The standard library makes extensive use of this feature, as each standard library header file contains its declarations inside a `namespace std` block contained within that header file. Otherwise the entire standard library would have to be defined in a single header file!
+标准库大量使用了这一特性，因为每个标准库的头文件都将它声明的内容放在 `namespace std` 块中。否则，全部的标准库将必须定义在一个单独的文件中了。
 
-Note that this capability also means you could add your own functionality to the `std` namespace. Doing so causes undefined behavior most of the time, because the `std` namespace has a special rule, prohibiting extension from user code.
+注意，借助这个功能，你实际上可以把自定义的函数也放到 `std` 命名空间中。不过这么做大多数情况下会导致未定义行为的发生，因为 `std` 命名空间具有特殊的规则以便禁止用户去扩展标准库的代码。
 
 !!! warning "注意"
 
-	Do not add custom functionality to the std namespace.
-
-When you separate your code into multiple files, you’ll have to use a namespace in the header and source file.
+	不要把自定义的功能定义在 `std` 命名空间中。
+	
+如果你需要把代码分散到多个文件时，你必须在头文件和源文件中使用命名空间：
 
 
 ```cpp title="add.h"
@@ -415,11 +426,11 @@ int main()
 ```
 
 
-If the namespace is omitted in the source file, the linker won’t find a definition of `basicMath::add`, because the source file only defines `add` (global namespace). If the namespace is omitted in the header file, “main.cpp” won’t be able to use `basicMath::add`, because it only sees a declaration for `add` (global namespace).
+如果你在源文件中省略了命名空间，编译器将无法找到 `basicMath::add`，因为源文件只定义了 `add` (全局命名空间)。如果该命名空间在头文件中被省略，则“main.cpp” 就无法使用 `basicMath::add`，因为它只能看到 `add` 的声明 (全局命名空间)。
 
-## Nested namespaces
+## 命名空间嵌套
 
-Namespaces can be nested inside other namespaces. For example:
+命名空间也可以嵌套，例如：
 
 ```cpp
 #include <iostream>
@@ -442,11 +453,10 @@ int main()
 }
 ```
 
-COPY
 
-Note that because namespace `goo` is inside of namespace `foo`, we access `add` as `foo::goo::add`.
+注意，因为命名空间 `goo` 定义在命名空间 `foo` 中，所以要访问 `add` 必须像这样 `foo::goo::add`。
 
-Since C++17, nested namespaces can also be declared this way:
+从 C++17开始，嵌套命名空间也可以这样声明：
 
 ```cpp
 #include <iostream>
@@ -467,9 +477,9 @@ int main()
 ```
 
 
-## Namespace aliases
+## 命名空间别名
 
-Because typing the fully qualified name of a variable or function inside a nested namespace can be painful, C++ allows you to create namespace aliases, which allow us to temporarily shorten a long sequence of namespaces into something shorter:
+在C++中完整输入嵌套命名空间的标识符是非常痛苦的一件事，所以C++允许你为命名空间创建**别名**，你可以通过别名为一个非常长的命名空间序列创建一个简短的、临时的名称：
 
 ```cpp
 #include <iostream>
@@ -492,8 +502,7 @@ int main()
 } // The active alias ends here
 ```
 
-
-One nice advantage of namespace aliases: If you ever want to move the functionality within `foo::goo` to a different place, you can just update the `active` alias to reflect the new destination, rather than having to find/replace every instance of `foo::goo`.
+命名空间别名最好的一点是：如果你需要将 `foo::goo` 中的函数移动到另外的地方，那么你只需要更新一下上面例子中的 `active` 别名使其指向新的命名空间即可，而不必查找替换所有的 `foo::goo`.
 
 ```cpp
 #include <iostream>
@@ -521,12 +530,12 @@ int main()
 ```
 
 
-It’s worth noting that namespaces in C++ were not originally designed as a way to implement an information hierarchy -- they were designed primarily as a mechanism for preventing naming collisions. As evidence of this, note that the entirety of the standard library lives under the singular namespace `std::` (with some nested namespaces used for newer library features). Some newer languages (such as C#) differ from C++ in this regard.
+值得注意的是，C++的命名空间被设计出来的目的是作为一种放置命名冲突的机制，但它并不是为了实现一种信息的层次关系。这一点我们可以从标准库中看出：几乎全部的标准库都位于`std::`命名空间中（少数新的功能放置在嵌套命名空间中）。在这一点上，其他的一些语言（例如C#）和 C++ 是截然不同的。
 
-In general, you should avoid deeply nested namespaces.
+总的来说，应当尽量避免命名空间的嵌套。
 
-## When you should use namespaces
+## 什么时候应该使用命名空间
 
-In applications, namespaces can be used to separate application-specific code from code that might be reusable later (e.g. math functions). For example, physical and math functions could go into one namespace (e.g. `math::`). Language and localization functions in another (e.g. `lang::`).
+在实际应用中，命名空间可以被用来分割与当前应用程序强相关的代码和那些可能在日后被重用的代码（例如数学函数）。例如，物理和数学函数可以定义在一个命名空间中(例如 `math::`)。语言和本地化的函数则可以定义在另外的命名空间中（例如`lang::`） 。
 
-When you write a library or code that you want to distribute to others, always place your code inside a namespace. The code your library is used in may not follow best practices -- in such a case, if your library’s declarations aren’t in a namespace, there’s an elevated chance for naming conflicts to occur. As an additional advantage, placing library code inside a namespace also allows the user to see the contents of your library by using their editor’s auto-complete and suggestion feature.
+如果你编写的是库函数或用于提供给他人使用的代码，请始终把你的函数定义在一个自定义的命名空间中。如果你不遵循这项最佳实践，即你的代码没有声明在一个特定的命名空间中，那么很有可能会造成命名冲突。将你的代码放在自定义命名空间中的另外一个好处是，你的用户可以借助编辑器的自动补全和提示功能看到你库中的的内容。

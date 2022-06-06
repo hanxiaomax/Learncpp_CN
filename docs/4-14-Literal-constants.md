@@ -8,6 +8,7 @@ type: translation
 tags:
 - literal
 - constants
+- C++14
 ---
 
 ??? note "关键点速记"
