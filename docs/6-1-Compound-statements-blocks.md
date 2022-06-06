@@ -9,7 +9,7 @@ tags:
 - statement
 ---
 
-A compound statement (also called a block, or block statement) is a group of _zero or more statements_ that is treated by the compiler as if it were a single statement.
+复合语句（也称为语块，句块）， compound statement (also called a block, or block statement) is a group of _zero or more statements_ that is treated by the compiler as if it were a single statement.
 
 Blocks begin with a `{` symbol, end with a `}` symbol, with the statements to be executed being placed in between. Blocks can be used anywhere a single statement is allowed. No semicolon is needed at the end of a block.
 

@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "6-1-Compound-statements-blocks",
+      "path": "docs/6-1-Compound-statements-blocks.md"
+    },
+    {
       "basename": "6-13-Inline-functions",
       "path": "docs/6-13-Inline-functions.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
       "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "6-1-Compound-statements-blocks",
-      "path": "docs/6-1-Compound-statements-blocks.md"
     },
     {
       "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
