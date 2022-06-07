@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/7-14-Common-semantic-errors-in-c.md",
+            "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/7-14-Common-semantic-errors-in-c.md"
+                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/7-14-Common-semantic-errors-in-c.md",
+                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "f292debcd1bff8ab",
   "lastOpenFiles": [
+    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+    "docs/6-6-Internal-linkage.md",
+    "docs/internal-variable.md",
+    "docs/external-linkage.md",
+    "docs/internal-linkage.md",
+    "docs/6-5-Variable-shadowing-name-hiding.md",
+    "docs/6-4-Introduction-to-global-variables.md",
     "docs/7-14-Common-semantic-errors-in-c.md",
     "docs/7-13-Code-coverage.md",
-    "docs/7-12-Introduction-to-testing-your-code.md",
-    "docs/7-11-Halts-exiting-your-program-early.md",
-    "docs/7-10-Break-and-continue.md",
-    "docs/7-9-For-statements.md",
-    "docs/7-8-Do-while-statements.md",
-    "docs/7-7-Intro-to-loops-and-while-statements.md",
-    "docs/7-6-Goto-statements.md",
-    "docs/7-5-Switch-fallthrough-and-scoping.md"
+    "docs/7-12-Introduction-to-testing-your-code.md"
   ]
 }

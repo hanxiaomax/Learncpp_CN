@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+    },
+    {
+      "basename": "6-6-Internal-linkage",
+      "path": "docs/6-6-Internal-linkage.md"
+    },
+    {
+      "basename": "internal-variable",
+      "path": "docs/internal-variable.md"
+    },
+    {
+      "basename": "external-linkage",
+      "path": "docs/external-linkage.md"
+    },
+    {
+      "basename": "internal-linkage",
+      "path": "docs/internal-linkage.md"
+    },
+    {
+      "basename": "6-5-Variable-shadowing-name-hiding",
+      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
+    },
+    {
+      "basename": "6-4-Introduction-to-global-variables",
+      "path": "docs/6-4-Introduction-to-global-variables.md"
+    },
+    {
       "basename": "7-14-Common-semantic-errors-in-c",
       "path": "docs/7-14-Common-semantic-errors-in-c.md"
     },
@@ -113,22 +141,6 @@
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
-      "basename": "6-6-Internal-linkage",
-      "path": "docs/6-6-Internal-linkage.md"
-    },
-    {
-      "basename": "6-5-Variable-shadowing-name-hiding",
-      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
-    },
-    {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
-    },
-    {
       "basename": "6-8-Why-non-const-global-variables-are-evil",
       "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "4-11-Chars",
       "path": "docs/4-11-Chars.md"
-    },
-    {
-      "basename": "4-6-Fixed-width-integers-and-size_t",
-      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
-    },
-    {
-      "basename": "5-6-Relational-operators-and-floating-point-comparisons",
-      "path": "docs/5-6-Relational-operators-and-floating-point-comparisons.md"
     }
   ],
   "omittedPaths": [],
