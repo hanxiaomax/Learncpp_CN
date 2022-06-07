@@ -1,7 +1,7 @@
 ---
 title: 6.8 - 为什么非 const 全局变量是魔鬼
 alias: 6.8 - 为什么非 const 全局变量是魔鬼
-origin: /none/
+origin: /why-non-const-global-variables-are-evil/
 origin_title: "6.8 — Why (non-const) global variables are evil"
 time: 2022-2-24
 type: translation
@@ -9,33 +9,35 @@ tags:
 - global variable
 ---
 
+??? note "关键点速记"
+	- 非 const 类型的全局变量可以被所有函数修改，因此会让程序变得难以预料。
 
-If you were to ask a veteran programmer for _one_ piece of advice on good programming practices, after some thought, the most likely answer would be, “Avoid global variables!”. And with good reason: global variables are one of the most historically abused concepts in the language. Although they may seem harmless in small academic programs, they are often problematic in larger ones.
+如果你向编程大佬讨教一条编程实践的建议，很多人都会在稍加思考后告诉你：“避免全局变量！”。这是因为全局变量是编程语言中最被滥用的概念。尽管在一些编程小练习中，全局变量看起来人畜无害，但是到了大型程序中就非常容易导致问题。
 
-New programmers are often tempted to use lots of global variables, because they are easy to work with, especially when many calls to different functions are involved (passing data through function parameters is a pain). However, this is generally a bad idea. Many developers believe non-const global variables should be avoided completely!
+新手程序员通常会想要使用大量的全局变量，因为全局变量用起来很方便，尤其是许多程序都需要这些变量的时候（作为参数使用的话，传参会非常痛苦）。不过，这并不是个好主意。很多程序员都认为应该坚决避免非 const 类型的全局变量！
 
-But before we go into why, we should make a clarification. When developers tell you that global variables are evil, they’re usually not talking about _all_ global variables. They’re mostly talking about non-const global variables.
+在我们深究其原因之前，首先澄清一个问题。当我们谈论“全局是魔鬼”的时候，并不是说**所有**的全局变量都是魔鬼。多数情况下我们指的是非 const 类型的全局变量。
 
-Why (non-const) global variables are evil
+## 为什么非 const 类型的全局变量是魔鬼
 
-By far the biggest reason non-const global variables are dangerous is because their values can be changed by _any_ function that is called, and there is no easy way for the programmer to know that this will happen. Consider the following program:
+ 到目前位置，非 const 类型全局变量危险的最大原因，是因为它的值可以被任何函数修改，同时也没有简单的办法可以让程序员清楚地了解到发生了什么：
 
 ```cpp
-int g_mode; // declare global variable (will be zero-initialized by default)
+int g_mode; // 声明全局变量 (默认会初始化为0)
 
 void doSomething()
 {
-    g_mode = 2; // set the global g_mode variable to 2
+    g_mode = 2; // 将全局变量设置为 2
 }
 
 int main()
 {
-    g_mode = 1; // note: this sets the global g_mode variable to 1.  It does not declare a local g_mode variable!
+    g_mode = 1; // 注意：这里又将全局变量 g_mode 变量设置为 1，而并没有声明一个局部变量 g_mode
 
     doSomething();
 
-    // Programmer still expects g_mode to be 1
-    // But doSomething changed it to 2!
+    // 程序员此时还以为 g_mode 是 1
+    // 但是 doSomething 已经将它修改为 2 了。
 
     if (g_mode == 1)
         std::cout << "No threat detected.\n";
@@ -46,15 +48,14 @@ int main()
 }
 ```
 
-COPY
 
-Note that the programmer set variable `g_mode` to _1_, and then called `doSomething()`. Unless the programmer had explicit knowledge that `doSomething()` was going to change the value of `g_mode`, he or she was probably not expecting `doSomething()` to change the value! Consequently, the rest of `main()` doesn’t work like the programmer expects (and the world is obliterated).
+注意，程序员首先将变量 `g_mode` 设置为了 _1_，然后就调用了 `doSomething()`。除非程序员明确知道 `doSomething()` 内部会修改 `g_mode` 的值，否则他可能并不会想到 `doSomething()` 会修改`g_mode` 的值！因此，接下来 `main()` 所做的事情就不像我们期望的那样了。
 
-In short, global variables make the program’s state unpredictable. Every function call becomes potentially dangerous, and the programmer has no easy way of knowing which ones are dangerous and which ones aren’t! Local variables are much safer because other functions can not affect them directly.
+简单来说，全局变量会让程序难以预料。 程序中的每个函数都可能很危险，而且程序员通常并没有简单的办法可以判断哪个函数危险哪个不危险。局部变量就安全的多，因为其他函数没有办法直接修改它。
 
-There are plenty of other good reasons not to use non-const globals.
+除此之外，还有很多其他不使用非const全局变量的理由。
 
-With global variables, it’s not uncommon to find a piece of code that looks like this:
+使用全局变量的程序中，下面这样的函数并不少见：
 
 ```cpp
 void someFunction()
@@ -65,31 +66,30 @@ void someFunction()
 }
 ```
 
-COPY
 
-After debugging, you determine that your program isn’t working correctly because `g_mode` has value `3`, not _4_. How do you fix it? Now you need to find all of the places `g_mode` could possibly be set to `3`, and trace through how it got set in the first place. It’s possible this may be in a totally unrelated piece of code!
+当程序出现问题时，你通过调试确定了问题的原因是因为 `g_mode` 的值是 3 而不是 4。此时你应该如何修复这个问题呢？为了修复这个问题，你必须找到 `g_mode` 可能被设置为 3 的所有的地方，然后追踪代码运行，判断它是什么时候被修改为 3 的。而这里面可能会涉及到很多完全不相关的代码。
 
-One of the key reasons to declare local variables as close to where they are used as possible is because doing so minimizes the amount of code you need to look through to understand what the variable does. Global variables are at the opposite end of the spectrum -- because they can be accessed anywhere, you might have to look through the entire program to understand their usage. In small programs, this might not be an issue. In large ones, it will be.
+之前我们说过，局部变量的声明应该在最接近使用它的地方，因为这么做可以在出现问题时，最大程度减少你需要分析的代码。全局变量则正号相反——因为它可以在任何地方被使用，所以你必须阅读全部的代码才能够了解它是如何工作的。在简短的程序中这也许并不是问题，但是在大型程序中，这就很麻烦了。
 
-For example, you might find `g_mode` is referenced 442 times in your program. Unless `g_mode` is well documented, you’ll potentially have to look through every use of `g_mode` to understand how it’s being used in different cases, what its valid values are, and what its overall function is.
+例如，你的程序可能有 442 处使用了 `g_mode` 的地方。除非有很好的文档说明，不然你可能需要理解每一处使用了 `g_mode` 的代码，它在不同情况下的是如何使用的、有效值是多少、主要功能是什么。
 
-Global variables also make your program less modular and less flexible. A function that utilizes nothing but its parameters and has no side effects is perfectly modular. Modularity helps both in understanding what a program does, as well as with reusability. Global variables reduce modularity significantly.
+全局变量还会破坏程序的模块性和灵活性。如果一个函数值使用其参数且不具有副作用，那么它是完全模块化的。模块性可以帮助我们理解程序，同时也能够增强程序的可复用性。全局变量会极大地降低程序的模块性。
 
-In particular, avoid using global variables for important “decision-point” variables (e.g. variables you’d use in a conditional statement, like variable `g_mode` in the example above). Your program isn’t likely to break if a global variable holding an informational value changes (e.g. like the user’s name). It is much more likely to break if you change a global variable that impacts _how_ your program actually functions.
+特别地，避免将“决策点”变量（例如条件语句中的变量，就像上文中的`g_mode`）定义为全局变量。如果一个全局变量仅仅包含某个数据，也许并不会让你的程序被破坏。而如果该全局变量可以决定程序**如何**运行，那么它造成问题的可能性就会大大提高。
 
 !!! success "最佳实践"
 
-	Use local variables instead of global variables whenever possible.
+	如果可能，尽量使用局部变量而不是全局变量。
+	
+## 全局变量的初始化顺序问题
 
-## The initialization order problem of global variables
+静态变量的初始化（其中包含全局变量）是程序启动的一部分，在执行`main`函数前就会进行。这个过程有两个阶段：
 
-Initialization of static variables (which includes global variables) happens as part of program startup, before execution of the `main` function. This proceeds in two phases.
+第一阶段称为[[static-initialization|静态初始化(static initialization)]] 。在静态初始化阶段，constexpr 类型的全局变量（包括字面量）都会被初始化成具体的值。此外，没有显式初始化的全局变量也会被初始化为0。
 
-The first phase is called `static initialization`. In the static initialization phase, global variables with constexpr initializers (including literals) are initialized to those values. Also, global variables without initializers are zero-initialized.
+第二阶段称为[[dynamic-initialization|动态初始化(dynamic initialization)]]。这个阶段要复杂的多，但是它的精髓在于具有非 constexpr *初始化值*的全局变量会被初始化。
 
-The second phase is called `dynamic initialization`. This phase is more complex and nuanced, but the gist of it is that global variables with non-constexpr initializers are initialized.
-
-Here’s an example of a non-constexpr initializer:
+非 constexpr *初始化值*的例子如下：
 
 ```cpp
 int init()
@@ -97,12 +97,11 @@ int init()
     return 5;
 }
 
-int g_something{ init() }; // non-constexpr initialization
+int g_something{ init() }; // 非 constexpr 初始化
 ```
 
-COPY
 
-Within a single file, global variables are generally initialized in order of definition (there are a few exceptions to this rule). Given this, you need to be careful not to have variables dependent on the initialization value of other variables that won’t be initialized until later. For example:
+在一个文件中，全局变量的初始化顺序和它们被定义的顺序一般是一致的（也有一些例外规则）。考虑到这一点，你需要确保变量的初始化值不依赖于后面才初始化的变量。例如：
 
 ```cpp
 #include <iostream>
@@ -110,12 +109,12 @@ Within a single file, global variables are generally initialized in order of def
 int initx();  // forward declaration
 int inity();  // forward declaration
 
-int g_x{ initx() }; // g_x is initialized first
+int g_x{ initx() }; // g_x 首先初始化
 int g_y{ inity() };
 
 int initx()
 {
-    return g_y; // g_y isn't initialized when this is called
+    return g_y; // 函数调用时，g_y 并没有初始化
 }
 
 int inity()
@@ -129,9 +128,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 0 5
@@ -143,7 +140,7 @@ Much more of a problem, the order of initialization across different files is no
 
 	Dynamic initialization of global variables causes a lot of problems in C++. Avoid dynamic initialization whenever possible.
 
-So what are very good reasons to use non-const global variables?
+## So what are very good reasons to use non-const global variables?
 
 There aren’t many. In most cases, there are other ways to solve the problem that avoids the use of non-const global variables. But in some cases, judicious use of non-const global variables _can_ actually reduce program complexity, and in these rare cases, their use may be better than the alternatives.
 
@@ -159,9 +156,9 @@ Many new programmers make the mistake of thinking that something can be implemen
 
 If you do find a good use for a non-const global variable, a few useful bits of advice will minimize the amount of trouble you can get into. This advice isn’t only for non-const global variables, but can help with all global variables.
 
-First, prefix all non-namespaced global variables with “g” or “g_”, or better yet, put them in a namespace (discussed in lesson [6.2 -- User-defined namespaces and the scope resolution operator](https://www.learncpp.com/cpp-tutorial/user-defined-namespaces-and-the-scope-resolution-operator/)), to reduce the chance of naming collisions.
+First, prefix all non-namespaced global variables with “g” or “g_”, or better yet, put them in a namespace (discussed in lesson [[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]), to reduce the chance of naming collisions.
 
-For example, instead of:
+例如，不要这么做：
 
 ```cpp
 constexpr double gravity { 9.8 }; // unclear if this is a local or global variable from the name
@@ -172,9 +169,7 @@ int main()
 }
 ```
 
-COPY
-
-Do this:
+要这么做：
 
 ```cpp
 namespace constants
@@ -188,11 +183,10 @@ int main()
 }
 ```
 
-COPY
 
 Second, instead of allowing direct access to the global variable, it’s a better practice to “encapsulate” the variable. Make sure the variable can only be accessed from within the file it’s declared in, e.g. by making the variable static or const, then provide external global “access functions” to work with the variable. These functions can ensure proper usage is maintained (e.g. do input validation, range checking, etc…). Also, if you ever decide to change the underlying implementation (e.g. move from one database to another), you only have to update the access functions instead of every piece of code that uses the global variable directly.
 
-For example, instead of:
+例如，不要这么做：
 
 ```cpp
 namespace constants
@@ -201,9 +195,8 @@ namespace constants
 }
 ```
 
-COPY
 
-Do this:
+要这么做：
 
 ```cpp
 namespace constants
@@ -219,15 +212,14 @@ double getGravity() // this function can be exported to other files to access th
 }
 ```
 
-COPY
 
-A reminder
+## 一个提醒
 
-Global `const` variables have internal linkage by default, `gravity` doesn’t need to be `static`.
+全局 `const` 变量默认具有内部链接属性，所以 `gravity` 并不需要被定义为 `static`。
 
-Third, when writing an otherwise standalone function that uses the global variable, don’t use the variable directly in your function body. Pass it in as an argument instead. That way, if your function ever needs to use a different value for some circumstance, you can simply vary the argument. This helps maintain modularity.
+第三，当函数必须使用全局变量的时候，不要直接在函数体中使用全局变量。应该将全局变量作为参数传递给函数，这样的话，不管什么时候你需要使用不同的值时，你只需要修改函数的入参就可以，这么做有助于保持函数的模块化。
 
-Instead of:
+不要这样做：
 
 ```cpp
 #include <iostream>
@@ -237,7 +229,7 @@ namespace constants
     constexpr double gravity { 9.8 };
 }
 
-// This function is only useful for calculating your instant velocity based on the global gravity
+// 这个函数只能基于全局 gravity 计算速度
 double instantVelocity(int time)
 {
     return constants::gravity * time;
@@ -249,9 +241,7 @@ int main()
 }
 ```
 
-COPY
-
-Do this:
+要这样做：
 
 ```cpp
 #include <iostream>
@@ -261,7 +251,7 @@ namespace constants
     constexpr double gravity { 9.8 };
 }
 
-// This function can calculate the instant velocity for any gravity value (more useful)
+// 这个函数可以基于任何 gravity 值计算速度（更有用）
 double instantVelocity(int time, double gravity)
 {
     return gravity * time;
@@ -269,16 +259,16 @@ double instantVelocity(int time, double gravity)
 
 int main()
 {
-    std::cout << instantVelocity(5, constants::gravity); // pass our constant to the function as a parameter
+    std::cout << instantVelocity(5, constants::gravity); // 将常量当做参数传入
 }
 ```
 
 
-## A joke
+## 一个笑话
 
-What’s the best naming prefix for a global variable?
+问：全局变量和什么前缀最配？
 
-Answer: //
+答:  // （注释）
 
-C++ jokes are the best.
+C++ 笑话最棒了！
 

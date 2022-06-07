@@ -63,7 +63,7 @@ Identifiers with external linkage will generally cause a duplicate definition li
 
 Also note that functions have external linkage by default. They can be made internal by using the static keyword.
 
-## Variable scope, duration, and linkage summary
+## 变量作用域、持续时间和链接小结
 
 Because variables have scope, duration, and linkage, let’s summarize in a chart:
 
@@ -79,7 +79,7 @@ Because variables have scope, duration, and linkage, let’s summarize in a char
 |External constant global variable	|extern const int g_x { 1 };	|File	|Static	|External	|Must be initialized|
 |Inline constant global variable (C++17)	|inline constexpr int g_x { 1 };	|File	|Static	|External	|Must be initialized|
 
-## Forward declaration summary
+## 前向声明小结
 
 You can use a forward declaration to access a function or variable in another file. The scope of the declared variable is as per usual (file scope for globals, block scope for locals).
 
@@ -91,7 +91,7 @@ You can use a forward declaration to access a function or variable in another fi
 |Constexpr variable forward declaration	|extern constexpr int g_x;	|Not allowed, constexpr cannot be forward declared|
 
 
-## What the heck is a storage class specifier?
+## 存储类型说明符到底是什么？
 
 When used as part of an identifier declaration, the `static` and `extern` keywords are called storage class specifiers. In this context, they set the storage duration and linkage of the identifier.
 
@@ -107,7 +107,3 @@ C++ supports 4 active storage class specifiers:
 |register	|automatic storage duration and hint to the compiler to place in a register	|Deprecated in C++17|
 
 The term _storage class specifier_ is typically only used in formal documentation.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)

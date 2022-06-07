@@ -148,12 +148,16 @@ COPY
 
 Remember that blocks are treated as a single statement, so this now works as expected:
 
+```
 Enter your height (in cm): 180
 You are tall enough to ride.
+```
 
+```
 Enter your height (in cm): 130
 You are not tall enough to ride.
 Too bad!
+```
 
 To block or not to block single statements
 
@@ -210,9 +214,9 @@ The best argument for not using blocks around single statements is that adding b
 
 The community seems to be more in favor of always using blocks than not, though this recommendation certainly isn’t ubiquitous.
 
-Best practice
+!!! success "最佳实践"
 
-Consider putting single statements associated with an `if` or `else` in blocks (particularly while you are learning). More experienced C++ developers sometimes disregard this practice in favor of tighter vertical spacing.
+	Consider putting single statements associated with an `if` or `else` in blocks (particularly while you are learning). More experienced C++ developers sometimes disregard this practice in favor of tighter vertical spacing.
 
 A middle-ground alternative is to put single-lines on the same line as the `if` or `else`:
 
@@ -228,13 +232,16 @@ Implicit blocks
 
 If the programmer does not declare a block in the statement portion of an `if statement` or `else statement`, the compiler will implicitly declare one. Thus:
 
+```
 if (condition)
     true_statement;
 else
     false_statement;
+```
 
 is actually the equivalent of:
 
+```
 if (condition)
 {
     true_statement;
@@ -243,6 +250,7 @@ else
 {
     false_statement;
 }
+```
 
 Most of the time, this doesn’t matter. However, new programmers sometimes try to do something like this:
 

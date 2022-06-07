@@ -7,6 +7,7 @@ time: 2022-4-12
 type: translation
 tags:
 - constexpr
+- C++20
 ---
 
 

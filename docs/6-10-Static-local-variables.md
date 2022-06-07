@@ -18,7 +18,7 @@ We also discussed how the `static` keyword gives a global identifier `interna
 
 In this lesson, we’ll explore the use of the `static` keyword when applied to a local variable.
 
-## Static local variables
+## 静态局部变量
 
 In lesson [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]], you learned that local variables have `automatic duration` by default, which means they are created at the point of definition, and destroyed when the block is exited.
 
@@ -117,7 +117,7 @@ Static variables offer some of the benefit of global variables (they don’t get
 
 	Initialize your static local variables. Static local variables are only initialized the first time the code is executed, not on subsequent calls.
 
-## Static local constants
+## 静态局部常量
 
 Static local variables can be made const. One good use for a const static local variable is when you have a function that needs to use a const value, but creating or initializing the object is expensive (e.g. you need to read the value from a database). If you used a normal local variable, the variable would be created and initialized every time the function was executed. With a const static local variable, you can create and initialize the expensive object once, and then reuse it whenever the function is called.
 

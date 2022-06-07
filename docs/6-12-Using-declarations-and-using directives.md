@@ -31,7 +31,7 @@ Some older IDEs will also auto-populate new C++ projects with a similar program 
 
 If you see this, run. Your textbook, tutorial, or compiler are probably out of date. In this lesson, we’ll explore why.
 
-A short history lesson
+## A short history lesson
 
 Back before C++ had support for namespaces, all of the names that are now in the `std` namespace were in the global namespace. This caused naming collisions between program identifiers and standard library identifiers. Programs that worked under one version of C++ might have a naming conflict with a newer version of C++.
 
@@ -45,7 +45,7 @@ C++ provides some solutions to both of these problems, in the form of `using st
 
 But first, let’s define two terms.
 
-Qualified and unqualified names
+## Qualified and unqualified names
 
 A name can be either qualified or unqualified.
 
@@ -74,7 +74,7 @@ COPY
 
 An unqualified name is a name that does not include a scoping qualifier. For example, `cout` and `x` are unqualified names, as they do not include an associated scope.
 
-Using declarations
+## Using declarations
 
 One way to reduce the repetition of typing `std::` over and over is to utilize a `using declaration` statement. A using declaration allows us to use an unqualified name (with no scope) as an alias for a qualified name.
 
@@ -129,7 +129,7 @@ The `using directive` `using namespace std;` tells the compiler to import _a
 
 `Using directives` are the solution that was provided for old pre-namespace codebases that used unqualified names for standard library functionality. Rather than having to manually update every unqualified name to a qualified name (which was risky), a single `using directive` (of `using namespace std;`) could be placed at the top of the each file, and all of the names that had been moved to the `std` namespace could still be used unqualified.
 
-Problems with using directives (a.k.a. why you should avoid “using namespace std;”) [](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/#avoidUsingNamespace)
+## Problems with using directives (a.k.a. why you should avoid “using namespace std;”) 
 
 In modern C++, `using directives` generally offer little benefit (saving some typing) compared to the risk. Because using directives import _all_ of the names from a namespace (potentially including lots of names you’ll never use), the possibility for naming collisions to occur increases significantly (especially if you import the `std` namespace).
 
@@ -320,13 +320,13 @@ COPY
 
 In this version, the call to `ns::foo()` is clearly a library call. The call to plain `foo()` is probably a call to a user-defined function (some libraries, including certain standard library headers, do put names into the global namespace, so it’s not a guarantee).
 
-The scope of using declarations and directives
+## The scope of using declarations and directives
 
 If a `using declaration` or `using directive` is used within a block, the names are applicable to just that block (it follows normal block scoping rules). This is a good thing, as it reduces the chances for naming collisions to occur to just within that block.
 
 If a `using declaration` or `using directive` is used in the global namespace, the names are applicable to the entire rest of the file (they have file scope).
 
-Cancelling or replacing a using statement
+## Cancelling or replacing a using statement
 
 Once a `using statement` has been declared, there’s no way to cancel or replace it with a different `using statement`within the scope in which it was declared.
 
@@ -367,14 +367,14 @@ COPY
 
 Of course, all of this headache can be avoided by explicitly using the scope resolution operator (::) in the first place.
 
-Best practices for using statements
+## Best practices for using statements
 
 Avoid `using directives` (particularly `using namespace std;`), except in specific circumstances. `Using declarations` are generally considered safe to use inside blocks. Limit their use in the global namespace of a code file, and never use them in the global namespace of a header file.
 
-Best practice
+!!! success "最佳实践"
 
-Prefer explicit namespaces over `using statements`. Avoid `using directives` whenever possible. `Using declarations` are okay to use inside blocks.
+	Prefer explicit namespaces over `using statements`. Avoid `using directives` whenever possible. `Using declarations` are okay to use inside blocks.
 
-Related content
+!!! info "相关内容"
 
-The `using` keyword is also used to define type aliases, which are unrelated to using statements. We cover type aliases in lesson [8.6 -- Typedefs and type aliases](https://www.learncpp.com/cpp-tutorial/typedefs-and-type-aliases/).
+	The `using` keyword is also used to define type aliases, which are unrelated to using statements. We cover type aliases in lesson [8.6 -- Typedefs and type aliases](https://www.learncpp.com/cpp-tutorial/typedefs-and-type-aliases/).

@@ -13,7 +13,7 @@ tags:
 
 C++ supports two variants of namespaces that are worth at least knowing about. We won’t build on these, so consider this lesson optional for now.
 
-## Unnamed (anonymous) namespaces
+## 匿名命名空间
 
 An unnamed namespace (also called an anonymous namespace) is a namespace that is defined without a name, like so:
 
@@ -40,7 +40,9 @@ COPY
 
 This prints:
 
+```
 v1
+```
 
 All content declared in an `unnamed namespace` is treated as if it is part of the parent namespace. So even though function `doSomething` is defined in the `unnamed namespace`, the function itself is accessible from the parent namespace (which in this case is the `global namespace`), which is why we can call `doSomething` from `main` without any qualifiers.
 
@@ -68,7 +70,7 @@ COPY
 
 `Unnamed namespaces` are typically used when you have a lot of content that you want to ensure stays local to a given file, as it’s easier to cluster such content in an `unnamed namespace` than individually mark all declarations as `static`. `Unnamed namespaces` will also keep `user-defined types` (something we’ll discuss in a later lesson) local to the file, something for which there is no alternative equivalent mechanism to do.
 
-## Inline namespaces
+## 内联命名空间
 
 Now consider the following program:
 
@@ -184,8 +186,10 @@ COPY
 
 This prints:
 
+```
 v1
 v2
 v2
+```
 
 In this example, all callers to `doSomething` will get the v2 version by default (the newer and better version). Users who still want the older version of `doSomething` can explicitly call `v1::doSomething()` to access the old behavior. This means existing programs who want the v1 version will need to globally replace `doSomething` with `v1::doSomething`, but this typically won’t be problematic if the functions are well named.

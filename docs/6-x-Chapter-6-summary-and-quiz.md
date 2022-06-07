@@ -10,7 +10,7 @@ tags:
 - C++17
 ---
 
-## Quick review
+## 章节小结
 
 We covered a lot of material in this chapter. Good job, you’re doing great!
 

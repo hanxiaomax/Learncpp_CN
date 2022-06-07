@@ -94,8 +94,10 @@ COPY
 
 This causes the above program to produce incorrect output:
 
+```
 Enter a number: 21
 21 is negative
+```
 
 To avoid such ambiguities when nesting `if statements`, it is a good idea to explicitly enclose the inner `if statement` within a block. This allows us to attach an `else` to either `if statement` without ambiguity:
 
@@ -126,7 +128,7 @@ COPY
 
 The `else statement` within the block attaches to the inner `if statement`, and the `else statement` outside of the block attaches to the outer `if statement`.
 
-Flattening nested if statements
+## Flattening nested if statements
 
 Nested `if statements` can often be flattened by either restructuring the logic or by using logical operators (covered in lesson [5.7 -- Logical operators](https://www.learncpp.com/cpp-tutorial/logical-operators/)). Code that is less nested is less error prone.
 
@@ -214,9 +216,9 @@ blowUpTheWorld(); // and this line always gets executed!
 
 COPY
 
-Warning
+!!! warning "注意"
 
-Be careful not to “terminate” your `if statement` with a semicolon, otherwise your conditional statement(s) will execute unconditionally (even if they are inside a block).
+	Be careful not to “terminate” your `if statement` with a semicolon, otherwise your conditional statement(s) will execute unconditionally (even if they are inside a block).
 
 Operator== vs Operator= inside the conditional
 
@@ -243,7 +245,9 @@ COPY
 
 This program will compile and run, but will produce the wrong result in some cases:
 
+```
 Enter 0 or 1: 0
 You entered 1
+```
 
 In fact, this program will always produce the result `You entered 1`. This happens because `x = 0` first assigns the value `0` to `x`, then evaluates to the value of `x`, which is now `0`, which is Boolean `false`. Since the conditional is always `false`, the `else statement` always executes.

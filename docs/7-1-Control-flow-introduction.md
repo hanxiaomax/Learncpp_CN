@@ -39,7 +39,7 @@ The execution path of this program includes lines 5, 7, 8, 10, and 12, in that o
 
 However, often this is not what we desire. For example, if we ask the user for input, and the user enters something invalid, ideally we’d like to ask the user to make another choice. This is not possible in a straight-line program. In fact, the user may repeatedly enter invalid input, so the number of times we might need to ask them to make another selection isn’t knowable until runtime.
 
-Fortunately, C++ provides a number of different control flow statements (also called flow control statements), which are statements that allow the programmer to change the normal path of execution through the program. You’ve already seen an example of this with `if statements` (introduced in lesson [4.10 -- Introduction to if statements](https://www.learncpp.com/cpp-tutorial/introduction-to-if-statements/)) that let us execute a statement only if a conditional expression is true.
+Fortunately, C++ provides a number of different control flow statements (also called flow control statements), which are statements that allow the programmer to change the normal path of execution through the program. You’ve already seen an example of this with `if statements` (introduced in lesson [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]) that let us execute a statement only if a conditional expression is true.
 
 When a `control flow statement` causes point of execution to change to a non-sequential statement, this is called branching.
 
@@ -55,7 +55,7 @@ Categories of flow control statements
 |Exceptions	|Exceptions are a special kind of flow control structure designed for error handling.	|Try, throw, catch|
 
 
-We’ll cover all of these categories in detail throughout this chapter, with the exception of exceptions (ha) which we’ll devote an entire future chapter to ([chapter 20](https://www.learncpp.com/#Chapter20)).
+We’ll cover all of these categories in detail throughout this chapter, with the exception of exceptions (ha) which we’ll devote an entire future chapter to ([[MOC#20 异常|第20章 - 异常]]).
 
 Prior to this chapter, the number of things you could have a program do was fairly limited. Being able to control the flow of your program (particularly using loops) makes any number of interesting things possible! No longer will you be restricted to toy programs and academic exercises -- you will be able to write programs that have real utility.
 

@@ -10,64 +10,69 @@ tags:
 - declaration
 ---
 
+??? note "关键点速记"
 
-In the prior lesson ([[6-6-Internal-linkage|6.6 - 内部链接]]), we discussed how `internal linkage` limits the use of an identifier to a single file. In this lesson, we’ll explore the concept of `external linkage`.
+	- 具有外部链接的标识符，可以在定义它们的文件中被使用，也可以通过前向声明在其他文件中使用。
+	- 链接是标识符的选项，而不是变量的属性，因此函数也有链接属性
+	- 函数是默认外部链接的，可以用`static`修改为内部链接
+	- 具有外部链接的全局变量有时候也称为外部变量。使用 `extern` 关键字可以将全局变量定义为外部变量（使其可以在其他文件中访问）。非常量的全局变量默认是外部变量。
+	- 前向声明一个定义在其他文件中的外部变量，也需要使用 `extern` 关键字
+	- 如果你希望定义一个未初始化的非const全局变量。请不要使用 `extern`关键字，否则 C++ 会认为你是在前向声明某个变量
+	- 在C++中，**所有**全局变量都具有“文件作用域”，同时链接属性则决定了它们是否可以被其他文件使用。
 
-An identifier with external linkage can be seen and used both from the file in which it is defined, and from other code files (via a forward declaration). In this sense, identifiers with external linkage are truly “global” in that they can be used anywhere in your program!
+在前面的课程中 ([[6-6-Internal-linkage|6.6 - 内部链接]])，我们讨论了如何使用[[internal-linkage|内部链接]]将标识符限定在一个单独的文件中。在本节课中，我们会探讨[[external-linkage|外部链接]]。
 
-Functions have external linkage by default
+具有外部链接的标识符，可以在定义它们的文件中被使用，也可以在其他文件中被使用（通过[[forward-declaration|前向声明]]）。从这个意义上来讲，具有外部链接的变量才是真正的*”全局“变量，因为它可以在程序的任何地方被使用。
 
-In lesson [[2-8-Programs-with-multiple-code-files|2.8 - 多文件程序]], you learned that you can call a function defined in one file from another file. This is because functions have external linkage by default.
+## 函数默认具体外部链接属性
 
-In order to call a function defined in another file, you must place a `forward declaration` for the function in any other files wishing to use the function. The forward declaration tells the compiler about the existence of the function, and the linker connects the function calls to the actual function definition.
+在[[2-8-Programs-with-multiple-code-files|2.8 - 多文件程序]]中我们介绍过，你可以在一个文件中调用另外一个文件中的函数，这是因为函数默认具有外部链接属性。
 
-Here’s an example:
+为了能够调用其他文件中的函数，必须要在使用该函数的文件中进行前向声明。前向声明告诉编译器函数的存在，然后链接器可以将函数调用关联到实际的定义。
 
-a.cpp:
+例如：
 
-```cpp
+```cpp title="a.cpp"
 #include <iostream>
 
-void sayHi() // this function has external linkage, and can be seen by other files
+void sayHi() // 函数默认具有外部链接，在其他文件中可见
 {
     std::cout << "Hi!";
 }
 ```
 
-COPY
 
-main.cpp:
-
-```cpp
-void sayHi(); // forward declaration for function sayHi, makes sayHi accessible in this file
+```cpp title="main.cpp"
+void sayHi(); // 对函数进行前向声明，使该函数在这个文件中可以被访问
 
 int main()
 {
-    sayHi(); // call to function defined in another file, linker will connect this call to the function definition
+    sayHi(); // 调用其他文件中的函数，链接器会将调用关联到函数的定义
 
     return 0;
 }
 ```
 
-COPY
+打印结果：
 
-The above program prints:
-
+```
 Hi!
+```
 
-In the above example, the forward declaration of function `sayHi()` in `main.cpp` allows `main.cpp` to access the `sayHi()` function defined in `a.cpp`. The forward declaration satisfies the compiler, and the linker is able to link the function call to the function definition.
+在上面的例子中，`sayHi()` 被前向声明在 `main.cpp` 中，这使得 `main.cpp` 可以访问定义在`a.cpp` 中的 `sayHi()` 。前向声明满足了编译器的需要，而链接器也能够将函数调用关联到函数定义。
 
-If function `sayHi()` had internal linkage instead, the linker would not be able to connect the function call to the function definition, and a linker error would result.
+如果`sayHi()`具有内部链接属性，则链接器便不能够将函数调用关联到函数定义，会产生链接错误。
 
-Global variables with external linkage
 
-Global variables with external linkage are sometimes called external variables. To make a global variable external (and thus accessible by other files), we can use the `extern` keyword to do so:
+## 具有外部链接的全局变量
+
+具有外部链接的全局变量有时候也称为[[external-variable|外部变量(external variable)]]。使用 `extern` 关键字可以将全局变量定义为外部变量（使其可以在其他文件中访问）：
 
 ```cpp
-int g_x { 2 }; // non-constant globals are external by default
+int g_x { 2 }; // 非常量的全局变量默认是外部链接
 
-extern const int g_y { 3 }; // const globals can be defined as extern, making them external
-extern constexpr int g_z { 3 }; // constexpr globals can be defined as extern, making them external (but this is useless, see the note in the next section)
+extern const int g_y { 3 }; // const 全局变量可以被定义为 extern，使其成为外部变量
+extern constexpr int g_z { 3 }; // constexpr 全局变量可以被定义为 extern，使其成为外部变量 (但是没有意义)
 
 int main()
 {
@@ -75,33 +80,27 @@ int main()
 }
 ```
 
-COPY
+非常量的全局变量默认是外部链接（即使使用 `extern`也会被忽略）。
 
-Non-const global variables are external by default (if used, the `extern` keyword will be ignored).
 
-Variable forward declarations via the extern keyword
+## 使用 extern 关键字进行变量的前向声明
 
-To actually use an external global variable that has been defined in another file, you also must place a `forward declaration` for the global variable in any other files wishing to use the variable. For variables, creating a forward declaration is also done via the `extern` keyword (with no initialization value).
+为了使用定义在其他文件中的全局[[external-variable|外部变量]]，你同样需要在使用它的文件中对其进行[[forward-declaration|前向声明]]。对于变量来说，创建前向声明还需要使用`extern`关键字（不需要初始化值）。
 
-Here is an example of using a variable forward declaration:
+下面是一个前向声明的例子：
 
-a.cpp:
-
-```cpp
-// global variable definitions
-int g_x { 2 }; // non-constant globals have external linkage by default
-extern const int g_y { 3 }; // this extern gives g_y external linkage
+```cpp title="a.cpp"
+// 全局变量定义
+int g_x { 2 }; // 非常量的全局变量默认是外部链接
+extern const int g_y { 3 }; // extern 为 g_y 创建外部链接
 ```
 
-COPY
 
-main.cpp:
-
-```cpp
+```cpp title="main.cpp"
 #include <iostream>
 
-extern int g_x; // this extern is a forward declaration of a variable named g_x that is defined somewhere else
-extern const int g_y; // this extern is a forward declaration of a const variable named g_y that is defined somewhere else
+extern int g_x; // 这个 extern 是变量 g_x的前向声明，g_x被定义在其他文件
+extern const int g_y; // 这个 extern 是 const 变量 g_y 的前向声明，它也被定义在其他文件
 
 int main()
 {
@@ -111,55 +110,49 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，`a.cpp` 和 `main.cpp` 都引用了一个相同的全局变量 `g_x`。因此，即使 `g_x` 是在 `a.cpp`中定义和初始化的，我们仍然可以在 `main.cpp` 中使用它（需要对`g_x`进行前向声明）。
 
-In the above example, `a.cpp` and `main.cpp` both reference the same global variable named `g_x`. So even though `g_x` is defined and initialized in `a.cpp`, we are able to use its value in `main.cpp` via the forward declaration of `g_x`.
+注意，`extern` 关键字在不同的语境下有不同的含义。有些语境下，`extern` 表示 “为变量创建外部链接”。而在另外的语句下，`extern` 表示 “这是一个定义在其他地方的外部变量的前向声明”。的确有点绕，所以我们会在[[6-11-Scope-duration-and-linkage-summary|6.11 - 作用域和链接小结]]中对这些问题进行详细的总结。
 
-Note that the `extern` keyword has different meanings in different contexts. In some contexts, `extern` means “give this variable external linkage”. In other contexts, `extern` means “this is a forward declaration for an external variable that is defined somewhere else”. Yes, this is confusing, so we summarize all of these usages in lesson [6.11 -- Scope, duration, and linkage summary](https://www.learncpp.com/cpp-tutorial/scope-duration-and-linkage-summary/).
+!!! warning "注意"
 
-Warning
+	如果你希望定义一个未初始化的非const全局变量。请不要使用 `extern`关键字，否则 C++ 会认为你是在前向声明某个变量。
+	
 
-If you want to define an uninitialized non-const global variable, do not use the extern keyword, otherwise C++ will think you’re trying to make a forward declaration for the variable.
+!!! warning "注意"
 
-Warning
+	尽管 constexpr 变量可以通过 `extern` 关键字赋予外部链接属性，但是由于它们并不能被前向声明，所以这么做并无意义。（[[4-15-Symbolic-constants-const-and-constexpr-variables#constexpr|4.15 - 符号常量 const 和 constexpr 变量]]）
+	
+	这是因为编译器在[[compile-time|编译时]]就必须指定 constexpr 变量的值。如果该变量被定义在其他文件中，那么编译器将无法知道它的值。
+	
 
-Although constexpr variables can be given external linkage via the `extern` keyword, they can not be forward declared, so there is no value in giving them external linkage.
-
-This is because the compiler needs to know the value of the constexpr variable (at compile time). If that value is defined in some other file, the compiler has no visibility on what value was defined in that other file.
-
-Note that function forward declarations don’t need the `extern` keyword -- the compiler is able to tell whether you’re defining a new function or making a forward declaration based on whether you supply a function body or not. Variables forward declarations _do_ need the `extern` keyword to help differentiate variables definitions from variable forward declarations (they look otherwise identical):
+注意，函数的前向声明不需要使用 `extern` 关键字——编译器可以通过是否有函数体来判断此处是在定义一个新的函数，还是在进行前向声明。变量的前向声明是需要 `extern` 关键字的，它可以帮助区分变量定义和变量前向声明（看上去可能会完全一样）：
 
 ```cpp
-// non-constant
-int g_x; // variable definition (can have initializer if desired)
-extern int g_x; // forward declaration (no initializer)
+// 非常量
+int g_x; // 变量声明也是定义 (可以初始化也可以不初始化)
+extern int g_x; // 前向声明 (无初始化值)
 
-// constant
-extern const int g_y { 1 }; // variable definition (const requires initializers)
-extern const int g_y; // forward declaration (no initializer)
+// 常量
+extern const int g_y { 1 }; // 变量定义(const必须要初始化)
+extern const int g_y; // 前向声明 (无初始化值)
 ```
 
-COPY
 
-File scope vs. global scope
+## 文件作用域 vs. 全局作用域
 
-The terms “file scope” and “global scope” tend to cause confusion, and this is partly due to the way they are informally used. Technically, in C++, _all_ global variables have “file scope”, and the linkage property controls whether they can be used in other files or not.
+“文件作用域”和“全局作用域”这两个术语可能会令人感到困惑，这主要是因为在非正式场合它们的用法不够严谨。从技术上来讲，在C++中，**所有**全局变量都具有“文件作用域”，同时链接属性则决定了它们是否可以被其他文件使用。
 
-Consider the following program:
+考虑下面程序：
 
-global.cpp:
-
-```cpp
-int g_x { 2 }; // external linkage by default
-// g_x goes out of scope here
+```cpp title="global.cpp"
+int g_x { 2 }; // 默认是外部链接
+// g_x 从这里离开作用域
 ```
 
-COPY
 
-main.cpp:
-
-```cpp
-extern int g_x; // forward declaration for g_x -- g_x can be used beyond this point in this file
+```cpp title="main.cpp"
+extern int g_x; // 对 g_x 进行前向声明，从此时开始 g_x 可以被该文件使用。
 
 int main()
 {
@@ -167,31 +160,27 @@ int main()
 
     return 0;
 }
-// the forward declaration for g_x goes out of scope here
+//  g_x 的前向声明从此离开作用域
 ```
 
-COPY
+变量 `g_x` 具有文件作用域（`global.cpp`）—— 它可以被使用的范围从定义开始，到文件结束为止，但是它不能直接在 `global.cpp` 以外的地方被使用。
 
-Variable `g_x` has file scope within `global.cpp` -- it can be used from the point of definition to the end of the file, but it can not be directly seen outside of `global.cpp`.
+在 `main.cpp` 中，`g_x` 的前向声明具有文件作用域——它可以被使用的范围从声明开始，到文件结束为止。
 
-Inside `main.cpp`, the forward declaration of `g_x` also has file scope -- it can be used from the point of declaration to the end of the file.
+不过，我们通常非正式地将“文件作用域”用来描述具有内部链接的变量，而用“全局作用域”来描具有外部链接的变量（因为这类变量可以通过前向声明在整个程序中被使用）。
 
-However, informally, the term “file scope” is more often applied to global variables with internal linkage, and “global scope” to global variables with external linkage (since they can be used across the whole program, with the appropriate forward declarations).
-
-Quick summary
+## 小结
 
 ```cpp
-// External global variable definitions:
-int g_x;                       // defines non-initialized external global variable (zero initialized by default)
-extern const int g_x{ 1 };     // defines initialized const external global variable
-extern constexpr int g_x{ 2 }; // defines initialized constexpr external global variable
+// 外部全局变量定义
+int g_x;                       // 定义外部全局变量但不初始化（默认初始化为0） 
+extern const int g_x{ 1 };     // 定义初始化的 const 外部全局变量
+extern constexpr int g_x{ 2 }; // 定义初始化的 constexpr 外部全局变量
 
 // Forward declarations
-extern int g_y;                // forward declaration for non-constant global variable
-extern const int g_y;          // forward declaration for const global variable
-extern constexpr int g_y;      // not allowed: constexpr variables can't be forward declared
+extern int g_y;                // 前向声明非常数的全局变量
+extern const int g_y;          // 前向声明 const 的全局变量
+extern constexpr int g_y;      // 不允许这样做：constexpr 变量不能前向声明
 ```
 
-COPY
-
-We provide a comprehensive summary in lesson [6.11 -- Scope, duration, and linkage summary](https://www.learncpp.com/cpp-tutorial/scope-duration-and-linkage-summary/).
+我们会在 [[6-11-Scope-duration-and-linkage-summary|6.11 - 作用域和链接小结]]中对相关内容进行更详细的总结。
