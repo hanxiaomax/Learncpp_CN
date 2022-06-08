@@ -11,6 +11,10 @@ tags:
 
 ??? note "关键点速记"
 	- 非 const 类型的全局变量可以被所有函数修改，因此会让程序变得难以预料。
+	- 静态变量初始化有两个阶段
+		- 第一阶段称为静态初始化 。在静态初始化阶段，constexpr 类型的全局变量（包括字面量）都会被初始化成具体的值。此外，没有显式初始化的全局变量也会被初始化为0。
+				-第二阶段称为动态初始化。这个阶段要复杂的多，但是它的精髓在于具有非 constexpr *初始化值*的全局变量会被初始化。
+	- 全局变量的动态初始化会造成很大问题，尽量避免动态初始化。
 
 如果你向编程大佬讨教一条编程实践的建议，很多人都会在稍加思考后告诉你：“避免全局变量！”。这是因为全局变量是编程语言中最被滥用的概念。尽管在一些编程小练习中，全局变量看起来人畜无害，但是到了大型程序中就非常容易导致问题。
 
@@ -134,21 +138,22 @@ int main()
 0 5
 ```
 
-Much more of a problem, the order of initialization across different files is not defined. Given two files, `a.cpp` and `b.cpp`, either could have its global variables initialized first. This means that if the variables in `a.cpp` are dependent upon the values in `b.cpp`, there’s a 50% chance that those variables won’t be initialized yet.
+更严重的问题是，不同文件中全局变量的初始化顺序是不确定的。给定两个文件 `a.cpp` 和 `b.cpp`，每个文件中的全局变量都可能首先初始化。这也意味着，如果文件 `a.cpp` 中的变量依赖 `b.cpp`文件中的变量，那么有 50%的几率会遇到变量未初始化的情况。
 
 !!! warning "注意"
 
-	Dynamic initialization of global variables causes a lot of problems in C++. Avoid dynamic initialization whenever possible.
+	全局变量的动态初始化会造成很大问题，尽量避免动态初始化。
+	
 
-## So what are very good reasons to use non-const global variables?
+## 什么时候可以合理使用非 const 的全局变量
 
-There aren’t many. In most cases, there are other ways to solve the problem that avoids the use of non-const global variables. But in some cases, judicious use of non-const global variables _can_ actually reduce program complexity, and in these rare cases, their use may be better than the alternatives.
+这种机会并不大。在大多数情况下，都可以避免使用非 const 类型的全局变量。但是在某些情况下，审慎地使用非 const 全局变量反到可以降低程序的复杂度。
 
-A good example is a log file, where you can dump error or debug information. It probably makes sense to define this as a global, because you’re likely to only have one log in a program and it will likely be used everywhere in your program.
+日志文件是一个很好的例子，在日志文件中，我们会存放错误信息和调试信息，因此将其定义为全局变量是合理的，因为一个程序通常只会有一个日志，并且它可能在程序中的任何部分被使用。
 
-For what it’s worth, the std::cout and std::cin objects are implemented as global variables (inside the _std_ namespace).
+不管怎么说，`std::cout` 和 `std::cin` 对象也被定义成了全局变量(在 `std` 命名空间中)。
 
-As a rule of thumb, any use of a global variable should meet at least the following two criteria: There should only ever be one of the thing the variable represents in your program, and its use should be ubiquitous throughout your program.
+一般说来，使用全局变量至少要满足下面两个条件：该变量在程序中的功能是唯一的，而且它会在程序的各个地方被使用。 
 
 Many new programmers make the mistake of thinking that something can be implemented as a global because only one is needed _right now_. For example, you might think that because you’re implementing a single player game, you only need one player. But what happens later when you want to add a multiplayer mode (versus or hotseat)?
 
