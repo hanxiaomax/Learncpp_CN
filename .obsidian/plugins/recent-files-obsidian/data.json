@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    },
+    {
       "basename": "6-8-Why-non-const-global-variables-are-evil",
       "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
     },
@@ -71,10 +75,6 @@
     {
       "basename": "6-10-Static-local-variables",
       "path": "docs/6-10-Static-local-variables.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
     },
     {
       "basename": "2-7-Forward-declarations-and-definitions",

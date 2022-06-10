@@ -153,7 +153,7 @@ Because the compiler compiles each source file individually, it can only see var
 
 Given the above downsides, prefer defining your constants in the header file. If you find that for some reason those constants are causing trouble, you can move some or all of them into a .cpp file as needed.
 
-## Global constants as inline variables (C++17)
+## 将全局常量作为内联变量 (C++17)
 
 C++17 introduced a new concept called `inline variables`. In C++, the term `inline` has evolved to mean “multiple definitions are allowed”. Thus, an inline variable is one that is allowed to be defined in multiple files without violating the one definition rule. Inline global variables have external linkage by default.
 

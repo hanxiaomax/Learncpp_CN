@@ -155,13 +155,13 @@ int main()
 
 一般说来，使用全局变量至少要满足下面两个条件：该变量在程序中的功能是唯一的，而且它会在程序的各个地方被使用。 
 
-Many new programmers make the mistake of thinking that something can be implemented as a global because only one is needed _right now_. For example, you might think that because you’re implementing a single player game, you only need one player. But what happens later when you want to add a multiplayer mode (versus or hotseat)?
+很多新手程序员会错误地认为，因为现在只需要一个全局变量，所以用用也没关系。举例来说，你现在可能在开发一个单人游戏，所以只需要一个用户。但是万一以后你需要为它添加多人模式呢？
 
-## 小心全局析构
+## 有关全局变量的忠告
 
-If you do find a good use for a non-const global variable, a few useful bits of advice will minimize the amount of trouble you can get into. This advice isn’t only for non-const global variables, but can help with all global variables.
+如果你有足够的理由而使用了一个非常量的全局变量，这里有一些忠告希望能够帮你尽可能地避免问题。当然，这些忠告不仅仅只针对非常量的全局变量，它对所有的全局变量都是有意义的。
 
-First, prefix all non-namespaced global variables with “g” or “g_”, or better yet, put them in a namespace (discussed in lesson [[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]), to reduce the chance of naming collisions.
+首先，请为不在命名空间中的全局变量添加 “g” 或者 “g_” 前缀，或者干脆将它们放到一个命名空间中（在[[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]中有相关讨论）以避免命名冲突。
 
 例如，不要这么做：
 
@@ -189,7 +189,7 @@ int main()
 ```
 
 
-Second, instead of allowing direct access to the global variable, it’s a better practice to “encapsulate” the variable. Make sure the variable can only be accessed from within the file it’s declared in, e.g. by making the variable static or const, then provide external global “access functions” to work with the variable. These functions can ensure proper usage is maintained (e.g. do input validation, range checking, etc…). Also, if you ever decide to change the underlying implementation (e.g. move from one database to another), you only have to update the access functions instead of every piece of code that uses the global variable directly.
+其次，不要允许全局变量的直接访问，最好是将它们“封装”起来。确保变量只能在定义它们的文件内部被访问，例如为变量添加`static`或`const`修饰符，然后提供一个外部的全局“访问函数”用于该变量的访问。通过这个访问函数，我们可以对变量的使用方式进行管理（例如：输入校验，范围检查等等）。此外，如果你以后希望修改底层实现（例如从一个数据库迁移到另外一个数据库时），你只需修改这个访问函数，使其访问新的变量即可，而无需替换源码中每处使用该全局变量的地。
 
 例如，不要这么做：
 
