@@ -157,7 +157,7 @@ int main()
 
 Many new programmers make the mistake of thinking that something can be implemented as a global because only one is needed _right now_. For example, you might think that because you’re implementing a single player game, you only need one player. But what happens later when you want to add a multiplayer mode (versus or hotseat)?
 
-## Protecting yourself from global destruction
+## 小心全局析构
 
 If you do find a good use for a non-const global variable, a few useful bits of advice will minimize the amount of trouble you can get into. This advice isn’t only for non-const global variables, but can help with all global variables.
 
