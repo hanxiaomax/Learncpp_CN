@@ -10,29 +10,38 @@ tags:
 - global
 - C++17
 ---
+??? note "关键点速记"
 
-In some applications, certain symbolic constants may need to be used throughout your code (not just in one location). These can include physics or mathematical constants that don’t change (e.g. pi or Avogadro’s number), or application-specific “tuning” values (e.g. friction or gravity coefficients). Instead of redefining these constants in every file that needs them (a violation of the “Don’t Repeat Yourself” rule), it’s better to declare them once in a central location and use them wherever needed. That way, if you ever need to change them, you only need to change them in one place, and those changes can be propagated out.
+	- 全局常量定义在头文件中，它是内部变量，头文件包含时会被复制到到源文件中。
+	- 当全局变量为内部变量时，会导致两个问题：
+		- 修改后所有包含该头文件的文件都要重新编译
+		- 变量复制占用大量内存
+	- 将全局变量定义在cpp文件中，并在头文件中对其进行前向声明，然后再需要它的地方包含头文件，这样可以确保全局变量为外部变量。需要注意的是，由于 `constexpr` 不能被[[forward-declaration|前向声明]]，因此只能使用 `const`
 
-This lesson discusses the most common ways to do this.
 
-## Global constants as internal variables
 
-Prior to C++17, the following is the easiest and most common solution:
+在很多应用程序中，有些符号常量需要被所有的代码使用（而不仅仅是被局部的代码使用）。这些变量可能是物理常量或数学常量（例如 π 或阿伏伽德罗常数），或者是某个应用程序需要的参数（例如摩擦系数或引力系数）。与其在多个文件中各定义一遍这些变量，不如将它们集中定义在一个地方然后按需使用。这样，万一你需要修改它们的值，你只需要在一处修改即可。
 
-1.  Create a header file to hold these constants
-2.  Inside this header file, define a namespace (discussed in lesson [[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]
-3.  Add all your constants inside the namespace (make sure they’re _constexpr_)
-4.  `#include` the header file wherever you need it
+本节课会重点介绍如何实现上述全局常量的定义。
+
+## 将全局常量作为内部变量
+
+在 C++17 之前，定义全局常量最简单的方法如下：
+
+1.  定义一个头文件来存放这些常量
+2. 在头文件中，定义一个命名空间 (参见：[[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]
+3. 将全部的常量放到该命名空间中（同时确保它们都是 `constexpr` 类型的） 
+4. 在需要使用这些常量的地方，`#include` 该头文件
 
 
 ```cpp title="constants.h"
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-// define your own namespace to hold constants
+// 定义包含常量的命名空间
 namespace constants
 {
-    // constants have internal linkage by default
+    // 默认内部链接
     constexpr double pi { 3.14159 };
     constexpr double avogadro { 6.0221413e23 };
     constexpr double myGravity { 9.2 }; // m/s^2 -- gravity is light on this planet
@@ -42,7 +51,7 @@ namespace constants
 ```
 
 
-Then use the scope resolution operator (::) with the namespace name to the left, and your variable name to the right in order to access your constants in .cpp files:
+然后在 *.cpp* 文件中使用[[scope-resolution-operator|作用域解析运算符]](`::`)来使用这些常量，运算符左侧是命名空间，右侧是常量名：
 
 
 ```cpp title="main.cpp"
@@ -62,30 +71,30 @@ int main()
 }
 ```
 
-COPY
 
-When this header gets `#included` into *a .cpp* file, each of these variables defined in the header will be copied into that code file at the point of inclusion. Because these variables live outside of a function, they’re treated as global variables within the file they are included into, which is why you can use them anywhere in that file.
+当头文件被 `#included` 到了*a .cpp* 中后，头文件中的所有常量实际上都会被**拷贝**到源文件中。因为这些变量不属于任何函数，所以它们在被包含到源文件后，会被当做全局变量对待，因此你可以在文件的任何地方使用它们。
 
-Because const globals have internal linkage, each .cpp file gets an independent version of the global variable that the linker can’t see. In most cases, because these are const, the compiler will simply optimize the variables away.
+因为 const 全局变量具有[[internal-linkage|内部链接]]属性，因此每个变量在.cpp文件之间是独立的，而且链接器并不能看到它们。在大多数情况下，由于它们是常量，所以编译器通常会将其“优化掉”。
+
 
 !!! cite "题外话"
 
-    The term “optimizing away” refers to any process where the compiler optimizes the performance of your program by removing things in a way that doesn’t affect the output of your program. For example, lets say you have some const variable `x` that’s initialized to value `4`. Wherever your code references variable `x`, the compiler can just replace `x`with `4` (since `x` is const, we know it won’t ever change to a different value) and avoid having to create and initialize a variable altogether.
+    “优化掉”这个术语，指的是编译器为了优化程序性能而删除了某些东西，但不会对程序的功能产生影响。例如，你定义了一个 const 类型的变量 `x` 并且将其初始化为 4。则编译器会将任何引用该变量的地方，直接替换为 4（因为 x 是const类型的，所以它不能被修改），从而避免了变量的定义和初始化过程。
 
-## Global constants as external variables
+## 将全局常量作为外部变量
 
-The above method has a few potential downsides.
+上面提到的方法实际上有一些缺陷。
 
-While this is simple (and fine for smaller programs), every time constants.h gets `#included` into a different code file, each of these variables is copied into the including code file. Therefore, if constants.h gets included into 20 different code files, each of these variables is duplicated 20 times. Header guards won’t stop this from happening, as they only prevent a header from being included more than once into a single including file, not from being included one time into multiple different code files. This introduces two challenges:
+尽管将 `constants.h` 头文件 `#included` 到每一个需要它的源文件中是非常简单（对于小程序来说也通常不会有什么问题）的一种方式，但毕竟这会导致变量被复制到源文件中。因此，如果 `constants.h` 被 20 个文件所包含，那么这些全局变量就会被复制 20 次。[[2-12-Header-guards|头文件防卫式声明]] 并不能防止该问题的发生，因为它只能保证头文件在一个文件中被包含一次，而不是阻止头文件被多个不同的文件包含。这样一来，我们就会面临两个问题：
 
-1.  Changing a single constant value would require recompiling every file that includes the constants header, which can lead to lengthy rebuild times for larger projects.
-2.  If the constants are large in size and can’t be optimized away, this can use a lot of memory.
+1.  修改常量会导致所有包含该头文件的文件重新编译，对于大型项目来说这会浪费很多时间；iNZ
+2.  如果常量很大，而且无法被“优化掉”，那么大量的复制会导致大量的内存占用。
 
-One way to avoid these problems is by turning these constants into external variables, since we can then have a single variable (initialized once) that is shared across all files. In this method, we’ll define the constants in a .cpp file (to ensure the definitions only exist in one place), and put forward declarations in the header (which will be included by other files).
+避免这个问题的方法之一，是将全局常量定义为[[external-variable|外部变量]]，这样一个变量（初始化一次）就可以被所有的文件“共享使用”。为此，我们必须将常量定义在一个`a.cpp`文件中（确保它只被定义一次），然后在头文件中添加其前向定义（该头文件仍需要被包含到使用了该变量的文件中）。
 
 !!! info "作者注"
 
-	We use const instead of constexpr in this method because constexpr variables can’t be forward declared, even if they have external linkage. This is because the compiler needs to know the value of the variable at compile time, and a forward declaration does not provide this information.
+	这里使用了 `const` 类型的变量，这是因为 `constexpr` 类型的变量不能被前向声明（[[6-7-External-linkage-and-variable-forward-declarations#^ce6263]]），因为编译器需要在编译时知道`constexpr` 类型变量的定义，而前向声明并不能提供定义的信息。
 
 
 ```cpp title="constants.cpp"
@@ -118,7 +127,7 @@ namespace constants
 ```
 
 
-Use in the code file stays the same:
+使用方法和之前是一样的：
 
 ```cpp title="main.cpp"
 #include "constants.h" // include all the forward declarations
@@ -137,9 +146,8 @@ int main()
 }
 ```
 
-COPY
 
-Because global symbolic constants should be namespaced (to avoid naming conflicts with other identifiers in the global namespace), the use of a “g_” naming prefix is not necessary.
+因为全局符号常量应该被放置在命名空间中（避免与其他全局命名空间中的标识符产生命名冲突），所以没必要对其使用`g_`前缀。
 
 Now the symbolic constants will get instantiated only once (in `constants.cpp`) instead of in each code file where `constants.h` is `#included`, and all uses of these constants will be linked to the version instantiated in `constants.cpp`. Any changes made to `constants.cpp` will require recompiling only `constants.cpp`.
 
@@ -215,4 +223,4 @@ This method does retain the downside of requiring every file that includes the c
 
 !!! info "注意"
 
-Use `std::string_view` for `constexpr` strings. We cover this in lesson [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]
+使用 `std::string_view` 定义 `constexpr` 字符串，我们在 [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]] 中进行了介绍。
