@@ -16,7 +16,11 @@ tags:
 	- 当全局变量为内部变量时，会导致两个问题：
 		- 修改后所有包含该头文件的文件都要重新编译
 		- 变量复制占用大量内存
-	- 将全局变量定义在cpp文件中，并在头文件中对其进行前向声明，然后再需要它的地方包含头文件，这样可以确保全局变量为外部变量。需要注意的是，由于 `constexpr` 不能被[[forward-declaration|前向声明]]，因此只能使用 `const`
+	- 将全局变量定义在cpp文件中，并在头文件中对其进行前向声明，然后再需要它的地方包含头文件，这样可以确保全局变量为外部变量。需要注意的是，由于 `constexpr` 不能被[[forward-declaration|前向声明]]，因此只能使用 `const`。
+	- 当全局变量为外部变量时，也会导致两个问题：
+		- 这些变量只有在定义它们的文件中属于编译时常量，在其他文件中都属于运行时常量。因此在需要使用编译时常量的地方不能使用它们。
+		- 运行时常量的优化不如编译时常量
+	- 为了在编译时使用某些变量（例如，数组大小），编译器必须看到变量的定义（而不仅仅是前项声明）。
 
 
 
@@ -87,7 +91,7 @@ int main()
 
 尽管将 `constants.h` 头文件 `#included` 到每一个需要它的源文件中是非常简单（对于小程序来说也通常不会有什么问题）的一种方式，但毕竟这会导致变量被复制到源文件中。因此，如果 `constants.h` 被 20 个文件所包含，那么这些全局变量就会被复制 20 次。[[2-12-Header-guards|头文件防卫式声明]] 并不能防止该问题的发生，因为它只能保证头文件在一个文件中被包含一次，而不是阻止头文件被多个不同的文件包含。这样一来，我们就会面临两个问题：
 
-1.  修改常量会导致所有包含该头文件的文件重新编译，对于大型项目来说这会浪费很多时间；iNZ
+1.  修改常量会导致所有包含该头文件的文件重新编译，对于大型项目来说这会浪费很多时间
 2.  如果常量很大，而且无法被“优化掉”，那么大量的复制会导致大量的内存占用。
 
 避免这个问题的方法之一，是将全局常量定义为[[external-variable|外部变量]]，这样一个变量（初始化一次）就可以被所有的文件“共享使用”。为此，我们必须将常量定义在一个`a.cpp`文件中（确保它只被定义一次），然后在头文件中添加其前向定义（该头文件仍需要被包含到使用了该变量的文件中）。
@@ -149,15 +153,16 @@ int main()
 
 因为全局符号常量应该被放置在命名空间中（避免与其他全局命名空间中的标识符产生命名冲突），所以没必要对其使用`g_`前缀。
 
-Now the symbolic constants will get instantiated only once (in `constants.cpp`) instead of in each code file where `constants.h` is `#included`, and all uses of these constants will be linked to the version instantiated in `constants.cpp`. Any changes made to `constants.cpp` will require recompiling only `constants.cpp`.
+这样一来，符号常量只会在 `constants.cpp` 中被初始化一次，而不是在每个 `constants.h` 被包含的地方被初始化。同时，这些常数都会被链接到 `constants.cpp`中初始化的变量，因此当这些变量被修改时，只有 `constants.cpp` 需要被重新编译。
 
-However, there are a couple of downsides to this method. First, these constants are now considered compile-time constants only within the file they are actually defined in (`constants.cpp`). In other files, the compiler will only see the forward declaration, which doesn’t define a constant value (and must be resolved by the linker). This means in other files, these are treated as runtime constant values, not compile-time constants. Thus outside of `constants.cpp`, these variables can’t be used anywhere that requires a compile-time constant. Second, because compile-time constants can typically be optimized more than runtime constants, the compiler may not be able to optimize these as much.
+不过，这种方法也不是完美的。首先，这些常量现在只会在它们被定义的文件中被看做[[compile-time|编译时]]常量。而在其他文件中，编译器只能看到它们的声明，而看不到常量具体的中（必须有链接器进行解析）。因此，在 `constants.cpp`以外的地方，这些常量都不能被看做是编译时常量，也就不能在要求使用编译时常量的地方使用它们。另外，因为编译时常量相对于运行时常量更容易优化，所以对于这些运行时常量，编译器可能无法对其进行足够的优化。
+
 
 !!! tldr "关键信息"
 
-	In order for variables to be usable in compile-time contexts, such as array sizes, the compiler has to see the variable’s definition (not just a forward declaration).
+	为了在编译时使用某些变量（例如，数组大小），编译器必须看到变量的定义（而不仅仅是前项声明）。
 
-Because the compiler compiles each source file individually, it can only see variable definitions that appear in the source file being compiled (which includes any included headers). For example, variable definitions in `constants.cpp` are not visible when the compiler compiles `main.cpp`. For this reason, `constexpr` variables cannot be separated into header and source file, they have to be defined in the header file.
+因为编译器是独立编译各个源文件的，因此它只能对源文件中存在定义的变量进行编译。例如，定义在 `constants.cpp` 的变量，在编译器编译 `main.cpp` 的时候是不可见的，出于这个原因`constexpr` 的定义和声明不能被分散到头文件和源文件中，它必须被定义在对应的头文件里。
 
 Given the above downsides, prefer defining your constants in the header file. If you find that for some reason those constants are causing trouble, you can move some or all of them into a .cpp file as needed.
 
