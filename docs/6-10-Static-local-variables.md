@@ -10,23 +10,32 @@ tags:
 - local variable
 ---
 
-The term `static` is one of the most confusing terms in the C++ language, in large part because `static` has different meanings in different contexts.
+??? note "关键点速记"
+	- 自动存储持续时间，会在变量定义时创建变量，退出语句块时销毁变量
+	- 静态存储持续时间，会在程序开始时创建变量，并且在程序结束时销毁。
+	- 具有初值0或者constexpr类型初始化值的静态变量，在程序启动时就会被初始化。而具有非constexpr类型初始化值的静态局部变量则会在第一次被定义时进行初始化(在后续的函数调用中，该变量不会被重新初始化）。
+	- 静态局部变量和全局变量一样都可以持续到程序结束前，但是它的可见范围更小，也就更安全。
+	- 对静态局部变量进行初始化。静态局部变量只会在第一次执行时被初始化，后面不会对其进行重复地初始化。
+	- 当变量创建或者初始化开销很大时，可以将其定义为静态const局部变量
+	- 除非变量永远不需要被重置，否则要避免使用静态局部变量
 
-In prior lessons, we covered that global variables have `static duration`, which means they are created when the program starts and destroyed when the program ends.
+`static` 是 C++ 中最令人困惑的术语之一，这主要是因为`static`在不同语境下的含义也是不同的。
 
-We also discussed how the `static` keyword gives a global identifier `internal linkage`, which means the identifier can only be used in the file in which it is defined.
+在之前的课程中（[[6-4-Introduction-to-global-variables|6.4 - 全局变量]]），我们介绍过全局变量具有[[static-storage-duration|静态存储持续时间]]，也就是说全局变量会在程序开始时被创建，并且在程序结束时被销毁。
 
-In this lesson, we’ll explore the use of the `static` keyword when applied to a local variable.
+我们还介绍了 `static` 关键字可以使全局变量具有[[internal-linkage|内部链接]]属性，也就是该全局变量只能在定义它的文件中使用。
+
+在本节课中，我们会讨论`static`对局部变量的影响。
 
 ## 静态局部变量
 
-In lesson [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]], you learned that local variables have `automatic duration` by default, which means they are created at the point of definition, and destroyed when the block is exited.
+在 [[2-5-Introduction-to-local-scope|2.5 - 局部作用域]] 中，我们介绍过局部变量默认具有[[automatic-storage-duration|自动存储持续时间]]，也就是说，它会在定义时被创建，在语句块退出时被销毁。
 
-Using the `static` keyword on a local variable changes its duration from `automatic duration` to `static duration`. This means the variable is now created at the start of the program, and destroyed at the end of the program (just like a global variable). As a result, the static variable will retain its value even after it goes out of scope!
+对局部变量使用 `static` 关键字，可以将局部变量的[[storage-duration|存储持续时间]]从**自动**修改为**静态**。也就是说，这种局部变量会在程序开始时被创建，然后在程序结束后被销毁（就像全局变量一样）。这样一来，静态变量可以在离开作用域后继续保持它的值。
 
-The easiest way to show the difference between `automatic duration` and `static duration` variables is by example.
+通过一个例子就可以很好的展示**自动持续时间**和**静态持续时间**的不同。
 
-Automatic duration (default):
+**自动持续时间**（默认）：
 
 ```cpp
 #include <iostream>
@@ -49,7 +58,8 @@ int main()
 ```
 
 
-Each time incrementAndPrint() is called, a variable named value is created and assigned the value of 1. incrementAndPrint() increments value to 2, and then prints the value of 2. When incrementAndPrint() is finished running, the variable goes out of scope and is destroyed. Consequently, this program outputs:
+每次调用 `incrementAndPrint()` 的时候，变量`value`都会被创建并且赋值为 1。`incrementAndPrint()` 会把`value`递增为 2，然后将 2 打印出来，当 `incrementAndPrint()`函数退出后，变量就会离开作用域并被销毁。所以，输出结果如下：
+
 
 ```
 2
@@ -57,9 +67,9 @@ Each time incrementAndPrint() is called, a variable named value is created and a
 2
 ```
 
-Now consider the static version of this program. The only difference between this and the above program is that we’ve changed the local variable from `automatic duration` to `static duration` by using the `static` keyword.
+接下来，考虑 static 版本的程序。这两个版本程序的唯一区别就是接下来我们使用`static`关键字将自动持续时间修改为静态持续时间。
 
-Static duration (using static keyword):
+**静态持续时间**（使用`static`关键字）：
 
 ```cpp
 #include <iostream>
@@ -81,13 +91,11 @@ int main()
 }
 ```
 
+在这个程序中，因为 `s_value` 被定义为 `static` 类型，因此它会在程序启动时被创建。
 
+具有初值0或者constexpr类型初始化值的静态变量，在程序启动时就会被初始化。而具有非constexpr类型初始化值的静态局部变量则会在第一次被定义时进行初始化(在后续的函数调用中，该变量不会被重新初始化）。因为 `s_value` 具有 constexpr 初始化值 `1`，所以在程序启动时 `s_value` 就会被初始化。
 
-In this program, because `s_value` has been declared as `static`, it is created at the program start.
-
-Static local variables that are zero initialized or have a constexpr initializer can be initialized at program start. Static local variables with non-constexpr initializers are initialized the first time the variable definition is encountered (the definition is skipped on subsequent calls, so no reinitialization happens). Because `s_value` has constexpr initializer `1`, `s_value`will be initialized at program start.
-
-When `s_value` goes out of scope at the end of the function, it is not destroyed. Each time the function incrementAndPrint() is called, the value of `s_value` remains at whatever we left it at previously. Consequently, this program outputs:
+当函数结束时， `s_value` 会[[out-of-scope|超出作用域]]，但是它不会被销毁。每次 `incrementAndPrint()` 被调用时，`s_value` 的值仍然为之前的值。这样一来，程序的打印结果如下：
 
 ```
 2
@@ -95,11 +103,11 @@ When `s_value` goes out of scope at the end of the function, it is not destroy
 4
 ```
 
-Just like we use “g_” to prefix global variables, it’s common to use “s_” to prefix static (static duration) local variables.
+类似 “g_” 通常作为全局变量的前缀，“s_” 常被用来作为静态局部变量的前缀。
 
-One of the most common uses for static duration local variables is for unique ID generators. Imagine a program where you have many similar objects (e.g. a game where you’re being attacked by many zombies, or a simulation where you’re displaying many triangles). If you notice a defect, it can be near impossible to distinguish which object is having problems. However, if each object is given a unique identifier upon creation, then it can be easier to differentiate the objects for further debugging.
+静态局部变量最常见的用法是最为一个唯一ID生成器。想象一下，如果有一个程序中包含了很多类似的对象（例如，在某个游戏中你被很多僵尸攻击，或者你希望模拟很多三角形）。这种情况下你几乎不可能定位是哪个对象出问题了。因此，如果你可以为每个对象都创建一个唯一的标识符，则可以在日后debug时轻松地将它们区别开来。
 
-Generating a unique ID number is very easy to do with a static duration local variable:
+使用静态局部变量可以很轻松地创建唯一ID：
 
 ```cpp
 int generateID()
@@ -109,21 +117,21 @@ int generateID()
 }
 ```
 
-The first time this function is called, it returns 0. The second time, it returns 1. Each time it is called, it returns a number one higher than the previous time it was called. You can assign these numbers as unique IDs for your objects. Because `s_itemID` is a local variable, it can not be “tampered with” by other functions.
+当函数第一次被调用时，静态局部变量被初始化为0。第二次调用时，该变量递增为了 1。每次调用该函数，静态局部变量的值都会比之前一次调用大1。你可以把这些值作为唯一ID赋值给对象。因为`s_itemID` 是局部变量，所以它并不会被其他函数“篡改”。
 
-Static variables offer some of the benefit of global variables (they don’t get destroyed until the end of the program) while limiting their visibility to block scope. This makes them safer for use even if you change their values regularly.
+静态变量相对于全局变量具有一些优势（它们都不会在程序结束前被销毁），因为它只在定义它的块中可见。这样一来它就会更加安全（当你需要频繁修改它的值的时候）。
 
 !!! success "最佳实践"
 
-	Initialize your static local variables. Static local variables are only initialized the first time the code is executed, not on subsequent calls.
-
+	对静态局部变量进行初始化。静态局部变量只会在第一次执行时被初始化，后面不会对其进行重复地初始化。
+	
 ## 静态局部常量
 
-Static local variables can be made const. One good use for a const static local variable is when you have a function that needs to use a const value, but creating or initializing the object is expensive (e.g. you need to read the value from a database). If you used a normal local variable, the variable would be created and initialized every time the function was executed. With a const static local variable, you can create and initialize the expensive object once, and then reuse it whenever the function is called.
+静态局部变量也可以被定义为常量。静态局部常量的典型使用场景是当你的函数需要一个常量值，但是创建或初始化该常量的开销非常大（例如该值是从数据库中读取的）。如果你使用一个普通的局部变量，那么这个变量就会在每次函数被调用时初始化。而使用const类型的静态局部变量，你就可以在第一次调用函数时初始化它，然后在后续的调用中对其进行重用。
 
-## Don’t use static local variables to alter flow
+## 不要使用静态局部变量来改变流程
 
-Consider the following code:
+考虑如下代码：
 
 ```cpp
 #include <iostream>
@@ -158,8 +166,7 @@ int main()
 }
 ```
 
-
-Sample output
+输出如下：
 
 ```
 Enter an integer: 5
@@ -167,11 +174,11 @@ Enter another integer: 9
 5 + 9 = 14
 ```
 
-This code does what it’s supposed to do, but because we used a static local variable, we made the code harder to understand. If someone reads the code in `main()` without reading the implementation of `getInteger()`, they’d have no reason to assume that the two calls to `getInteger()` do something different. But the two calls do something different, which can be very confusing if the difference is more than a changed prompt.
+这段代码的确能够按照预期工作，但是因为我们使用的是一个静态局部变量，这会使得程序难以理解。如果有人在不知道 `getInteger()` 函数的实现细节时，阅读 `main` 函数的代码，它完全不会认为两次调用 `getInteger()` 会产生不同的效果。但是两次调用该函数的确会产生不同的输出，这就好让人感到非常困惑，
 
-Say you press the +1 button on your microwave and the microwave adds 1 minute to the remaining time. Your meal is warm and you’re happy. Before you take your meal out of the microwave, you see a cat outside your window and watch it for a moment, because cats are cool. The moment turned out to be longer than you expected and when you take the first bite of your meal, it’s cold again. No problem, just put it back into the microwave and press +1 to run it for a minute. But this time the microwave adds only 1 second and not 1 minute. That’s when you go “I changed nothing and now it’s broken” or “It worked last time”. If you do the same thing again, you’d expect the same behavior as last time. The same goes for functions.
+	假设你的微波炉上有一个+1按钮，当你按下它的时候就会延长一分钟加热时间。你准备加热一些吃的，设定好时间，然后等着出锅。这期间你可以看看窗外的猫咪，消磨消磨时间。然后微波炉响了，你把饭拿出来长了一口，发现还有点凉。没关系，你又把饭放了回去然后按了一下+1按钮，准备再热一分钟。可是这一次，微波炉只加热了一秒钟，而不是一分钟。这种情况就像我们总说的那样“我们什么也没改，程序就不能正常工作了”或是“上次用还好好的呢”。我们总是期望，当重复一个动作时，得到的结果也应该和之前是一样的，同样的道理也适用于函数。
 
-Suppose we want to add subtraction to the calculator such that the output looks like the following:
+假设我们想要为计算器添加减法功能，期望的输出结果如下：
 
 ```
 Addition
@@ -184,7 +191,7 @@ Enter another integer: 3
 12 - 3 = 9
 ```
 
-We might try to use `getInteger()` to read in the next two integers like we did for addition.
+此时你可能会考虑使用 `getInteger()` 再读取两个整数，就像做加法时一样。
 
 ```cpp
 int main()
@@ -207,9 +214,7 @@ int main()
 }
 ```
 
-COPY
-
-But this won’t work, the output is
+但是，这样并没有用，输出如下：
 
 ```
 Addition
@@ -222,14 +227,15 @@ Enter another integer: 3
 12 - 3 = 9
 ```
 
-(“Enter another integer” instead of “Enter an integer”)
+(输出的还是 “Enter another integer” 而不是 “Enter an integer”)
 
-`getInteger()` is not reusable, because it has an internal state (The static local variable `s_isFirstCall`) which cannot be reset from the outside. `s_isFirstCall` is not a variable that should be unique in the entire program. Although our program worked great when we first wrote it, the static local variable prevents us from reusing the function later on.
+`getInteger()` 是不可重用的，因它具有某种内部状态（静态局部变量 `s_isFirstCall`），而该状态并不能够从外部被重置。`s_isFirstCall` 并不是一个需要在整个程序中保持唯一的变量，尽管上面第一个程序能够正确运行，但是静态变量阻碍了我们对函数的重用。
 
-A better way of implementing `getInteger` is to pass `s_isFirstCall` as a parameter. This allows the caller to choose which prompt will be printed.
+实现 `getInteger` 的更好的方法是将 `s_isFirstCall` 作为参数传入。这样主调函数就可以根据需求选择打印的内容。
 
-Static local variables should only be used if in your entire program and in the foreseeable future of your program, the variable is unique and it wouldn’t make sense to reset the variable.
+静态局部变量适用于该变量在整个程序中（或可预见的未来）需要保持唯一性且无需对其进行重置的情况。
 
 !!! success "最佳实践"
 
-	Avoid `static` local variables unless the variable never needs to be reset.
+	除非变量永远不需要被重置，否则要避免使用静态局部变量
+	

@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "6-10-Static-local-variables",
+      "path": "docs/6-10-Static-local-variables.md"
+    },
+    {
+      "basename": "automatic-storage-duration",
+      "path": "docs/automatic-storage-duration.md"
+    },
+    {
+      "basename": "6-4-Introduction-to-global-variables",
+      "path": "docs/6-4-Introduction-to-global-variables.md"
+    },
+    {
+      "basename": "static-storage-duration",
+      "path": "docs/static-storage-duration.md"
+    },
+    {
       "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
       "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
     },
@@ -27,10 +43,6 @@
     {
       "basename": "6-5-Variable-shadowing-name-hiding",
       "path": "docs/6-5-Variable-shadowing-name-hiding.md"
-    },
-    {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
     },
     {
       "basename": "6-3-Local-variables",
@@ -71,10 +83,6 @@
     {
       "basename": "6-11-Scope-duration-and-linkage-summary",
       "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
-    },
-    {
-      "basename": "6-10-Static-local-variables",
-      "path": "docs/6-10-Static-local-variables.md"
     },
     {
       "basename": "2-7-Forward-declarations-and-definitions",
@@ -191,14 +199,6 @@
     {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "static-variables",
-      "path": "docs/static-variables.md"
-    },
-    {
-      "basename": "storage-duration",
-      "path": "docs/storage-duration.md"
     }
   ],
   "omittedPaths": [],

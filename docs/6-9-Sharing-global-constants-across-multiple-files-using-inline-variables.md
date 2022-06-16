@@ -10,6 +10,7 @@ tags:
 - global
 - C++17
 ---
+
 ??? note "关键点速记"
 
 	- 全局常量定义在头文件中，它是内部变量，头文件包含时会被复制到到源文件中。
@@ -21,6 +22,11 @@ tags:
 		- 这些变量只有在定义它们的文件中属于编译时常量，在其他文件中都属于运行时常量。因此在需要使用编译时常量的地方不能使用它们。
 		- 运行时常量的优化不如编译时常量
 	- 为了在编译时使用某些变量（例如，数组大小），编译器必须看到变量的定义（而不仅仅是前项声明）。
+	- C++17 引入了内联变量，即可以被多处定义的变量。编译器会将它们的定义合并。同时它还具有和 constexpr 同样的属性。
+	- 内联变量有两个主要的限制，需要我们遵循：
+		1.  内联变量的所有定义必须是完全一致的（否则会产生未定义行为）。
+		2.  内联变量的定义（而非声明）必须出现在任何使用它们的文件中。
+	- 如果你的编译器支持 C++17，最好将全局变量定义为 `inline constexpr` 类型并放置在头文件中。
 
 
 
@@ -164,23 +170,23 @@ int main()
 
 因为编译器是独立编译各个源文件的，因此它只能对源文件中存在定义的变量进行编译。例如，定义在 `constants.cpp` 的变量，在编译器编译 `main.cpp` 的时候是不可见的，出于这个原因`constexpr` 的定义和声明不能被分散到头文件和源文件中，它必须被定义在对应的头文件里。
 
-Given the above downsides, prefer defining your constants in the header file. If you find that for some reason those constants are causing trouble, you can move some or all of them into a .cpp file as needed.
+出于上述原因，我们还是建议最好将常量定义在头文件中。如果因此导致了某些特定的问题，不妨到时候在把它们一起移动到.cpp文件去。
 
 ## 将全局常量作为内联变量 (C++17)
 
-C++17 introduced a new concept called `inline variables`. In C++, the term `inline` has evolved to mean “multiple definitions are allowed”. Thus, an inline variable is one that is allowed to be defined in multiple files without violating the one definition rule. Inline global variables have external linkage by default.
+C++17 引入了一个新的概念——[[inline-variables|内联变量(inline variables)]] 。在 C++ 中，[[inline|内联]]的意思逐渐引申成了“允许多处定义”。因此，内联变量可以在多个文件中被多次定义，且不会违反[[one-definition-rule|单一定义规则(one-definition-rule)]]。内联的全局变量默认具有外部链接属性。
 
-The linker will consolidate all inline definitions of a variable into a single variable definition (thus meeting the one definition rule). This allows us to define variables in a header file and have them treated as if there was only one definition in a .cpp file somewhere. Let’s say you have a normal constant that you’re `#including` into 10 code files. Without inline, you get 10 definitions. With inline, the compiler picks 1 definition to be the canonical definition, so you only get 1 definition. This means you save 9 constants worth of memory.
+链接器可以将所有的内联定义合并为一个单独的定义（这样就满足了单一定义规则）。这样一来，当我们把内联变量定义在头文件中的同时，还能够将它们在.cpp文件中的定义看做是一个定义。例如，如果一个普通的常量被定义在头文件中，同时被`#include`到了10个不同的源文件。如果它不是内联的，则此时会产生10个定义。如果是内联的，则编译器会选取一个定义作为主定义，这样一来就只会产生一个定义。这样可以帮助我们节省9个常量的内存空间。
 
-These variables will also retain their constexpr-ness in all files in which they are included, so they can be used anywhere a constexpr value is required. Constexpr values can also be more highly optimized by the compiler than runtime-const (or non-const) variables.
 
-Inline variables have two primary restrictions that must be obeyed:
+这些变量同时还保留了 constexpr 的特性，因此在任何包含它们的文件中，只要是 constexpr 可用的地方，这些变量也可用。同时，相比较于运行时常量（或非常量），编译器可以极大地优化 constexpr 类型的变量
 
-1.  All definitions of the inline variable must be identical (otherwise, undefined behavior will result).
-2.  The inline variable definition (not a forward declaration) must be present in any file that uses the variable.
+内联变量有两个主要的限制，需要我们遵循：
 
-With this, we can go back to defining our globals in a header file without the downside of duplicated variables:
+1.  内联变量的所有定义必须是完全一致的（否则会产生未定义行为）。
+2.  内联变量的定义（而非声明）必须出现在任何使用它们的文件中。
 
+这样一来，我们就可以继续沿用将全局变量定义在头文件中的方式，同时还可以避免变量的重复定义：
 
 ```cpp title="constants.h"
 #ifndef CONSTANTS_H
@@ -217,14 +223,14 @@ int main()
 
 
 
-We can include `constants.h` into as many code files as we want, but these variables will only be instantiated once and shared across all code files.
+将 `constants.h` 包含到所有需要使用它的代码文件中，但是这些变量只会被初始化一次，并且在所有文件中共享使用。
 
-This method does retain the downside of requiring every file that includes the constants header to be recompiled if any constant value is changed. If you find yourself changing constants often (e.g. for tuning purposes) and this is leading to long recompile times, moving the changing constants into their own header (to reduce the number of `#includes`) may help.
+不过，这么做仍然不能避免文件重复编译的问题。当任何常量被修改时，每个包含它的文件都需要被重新编译。所以，如果你的常量经常需要修改（出于调优的目的），这无疑会导致很长的重新编译时间，此时你可以考虑将常量引入到单独的头文件中（减少include的数量）。
 
 !!! success "最佳实践"
 
-	If you need global constants and your compiler is C++17 capable, prefer defining inline constexpr global variables in a header file.
-
+	如果你的编译器支持 C++17，最好将全局变量定义为 `inline constexpr` 类型并放置在头文件中。
+	
 
 !!! info "注意"
 
