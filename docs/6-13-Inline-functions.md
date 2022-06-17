@@ -1,7 +1,7 @@
 ---
 title: 6.13 - 内联函数
 alias: 6.13 - 内联函数
-origin: /none/
+origin: /inline-functions/
 origin_title: "6.13 — Inline functions"
 time: 2022-1-2
 type: translation
@@ -99,7 +99,7 @@ Most functions fall into the “may” category: their function calls can be exp
 -   Functions defined inside a class, struct, or union type definition.
 -   Constexpr / consteval functions [[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
 
-## The inline keyword, historically
+## 历史上的 inline 关键字
 
 Historically, compilers either didn’t have the capability to determine whether inline expansion would be beneficial, or were not very good at it. For this reason, C++ provides the keyword `inline`, which was intended to be used as a hint to the compiler that a function would benefit from being expanded inline:
 
@@ -135,7 +135,7 @@ Modern optimizing compilers are typically very good at determining which functio
 
 	Do not use the `inline` keyword to request inline expansion for your functions.
 
-## The inline keyword, modernly
+## 现代 inline 关键字
 
 In previous chapters, we mentioned that you should not implement functions (with external linkage) in header files, because when those headers are included into multiple .cpp files, the function definition will be copied into multiple .cpp files. These files will then be compiled, and the linker will throw an error because it will note that you’ve defined the same function more than once, which is a violation of the one-definition rule.
 

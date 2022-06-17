@@ -29,9 +29,7 @@ int main()
 }
 ```
 
-COPY
-
-This produces the result:
+输出结果如下：
 
 ```
 6 is greater!
@@ -66,7 +64,7 @@ This program produces the same output as the prior one. But there’s a downside
 
 So how might we address this?
 
-## Constexpr functions can be evaluated at compile-time
+## Constexpr 函数可以在编译时求值
 
 A constexpr function is a function whose return value may be computed at compile-time. To make a function a constexpr function, we simply use the `constexpr` keyword in front of the return type. Here’s a similar program to the one above, using a constexpr function:
 
@@ -92,7 +90,6 @@ int main()
 }
 ```
 
-COPY
 
 This produces the same output as the prior example, but the function `greater()` will be evaluated at compile-time instead of runtime!
 
@@ -112,7 +109,7 @@ Our `greater()` function definition and function call in the above example mee
 
 	Use a `constexpr` return type for functions that need to return a compile-time constant.
 
-## Constexpr functions are implicitly inline
+## Constexpr 函数具有隐含内联属性
 
 Because constexpr functions may be evaluated at compile-time, the compiler must be able to see the full definition of the constexpr function at all points where the function is called.
 
@@ -120,7 +117,7 @@ This means that a constexpr function called in multiple files needs to have its 
 
 As a result, constexpr functions are often defined in header files, so they can be #included into any .cpp file that requires the full definition.
 
-## Constexpr functions can also be evaluated at runtime
+## Constexpr 函数也可以在运行时求值
 
 Functions with a constexpr return value can also be evaluated at runtime, in which case they will return a non-constexpr result. For example:
 
@@ -143,7 +140,6 @@ int main()
 }
 ```
 
-COPY
 
 In this example, because arguments `x` and `y` are not constexpr, the function cannot be resolved at compile-time. However, the function will still be resolved at runtime, returning the expected value as a non-constexpr `int`.
 
@@ -151,7 +147,7 @@ In this example, because arguments `x` and `y` are not constexpr, the functi
 
 	Allowing functions with a constexpr return type to be evaluated at either compile-time or runtime was allowed so that a single function can serve both cases. Otherwise, you’d need to have separate functions (a constexpr version and a non-constexpr version) -- and since return type isn’t considered in function overload resolution, you’d have to name the functions different things!
 
-## So when is a constexpr function evaluated at compile-time?
+## 那么，constexpr 函数什么时候会在编译时求值？
 
 You might think that a constexpr function would evaluate at compile-time whenever possible, but unfortunately this is not the case.
 
@@ -181,7 +177,6 @@ int main()
 }
 ```
 
-COPY
 
 In case 1, we’re calling `greater()` with constexpr arguments, so it is eligible to be evaluated at compile-time. The initializer of constexpr variable `g` must be a constant expression, so the return value is used in a context that requires a constant expression. Thus, `greater()` must be evaluated at compile-time.
 
@@ -214,7 +209,6 @@ constexpr int someFunction()
 }
 ```
 
-COPY
 
 Used cleverly, you can have your function produce some observable difference (such as returning a special value) when evaluated at compile-time, and then infer how it evaluated from that result.
 
@@ -266,7 +260,7 @@ Just like constexpr functions, consteval functions are implicitly inline.
 
 	Use `consteval` if you have a function that must run at compile-time for some reason (e.g. performance).
 
-## Using consteval to make constexpr execute at compile-time (C++20)
+## 使用 consteval 让 constexpr 在编译时执行(C++20)
 
 The downside of consteval functions is that such functions can’t evaluate at runtime, making them less flexible than constexpr functions, which can do either. Therefore, it would still be useful to have a convenient way to force constexpr functions to evaluate at compile-time (even when the return value is being used where a constant expression is not required), so that we could have compile-time evaluation when possible, and runtime evaluation when we can’t.
 

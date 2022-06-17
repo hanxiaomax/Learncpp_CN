@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "6-14-Constexpr-and-consteval-functions",
+      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
+    },
+    {
+      "basename": "6-13-Inline-functions",
+      "path": "docs/6-13-Inline-functions.md"
+    },
+    {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
+    },
+    {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+    },
+    {
+      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
+      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    },
+    {
+      "basename": "6-11-Scope-duration-and-linkage-summary",
+      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
+    },
+    {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    },
+    {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
       "basename": "6-10-Static-local-variables",
       "path": "docs/6-10-Static-local-variables.md"
     },
@@ -15,10 +47,6 @@
     {
       "basename": "static-storage-duration",
       "path": "docs/static-storage-duration.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
     },
     {
       "basename": "6-7-External-linkage-and-variable-forward-declarations",
@@ -57,32 +85,12 @@
       "path": "docs/7-2-If-statements-and-blocks.md"
     },
     {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
-    },
-    {
       "basename": "6-x-Chapter-6-summary-and-quiz",
       "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
     },
     {
       "basename": "6-15-Unnamed-and-inline-namespaces",
       "path": "docs/6-15-Unnamed-and-inline-namespaces.md"
-    },
-    {
-      "basename": "6-14-Constexpr-and-consteval-functions",
-      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
-    },
-    {
-      "basename": "6-13-Inline-functions",
-      "path": "docs/6-13-Inline-functions.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "6-11-Scope-duration-and-linkage-summary",
-      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
     },
     {
       "basename": "2-7-Forward-declarations-and-definitions",
@@ -191,14 +199,6 @@
     {
       "basename": "2-2-Function-return-values-value-returning functions",
       "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "2-1-Introduction-to-functions",
-      "path": "docs/2-1-Introduction-to-functions.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     }
   ],
   "omittedPaths": [],

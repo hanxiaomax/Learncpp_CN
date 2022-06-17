@@ -11,9 +11,9 @@ tags:
 - C++11
 ---
 
-The concepts of scope, duration, and linkage cause a lot of confusion, so we’re going to take an extra lesson to summarize everything. Some of these things we haven’t covered yet, and they’re here just for completeness / reference later.
+作用域、持续时间和链接这些概念会带来很多困惑，所以我们利用这节课对它们进行一次整理和总结。有些内容我们还没有介绍，但是我们仍然将其罗列在这里，以便后续学习进行参考。
 
-Scope summary
+## 作用域小结
 
 An identifier’s _scope_ determines where the identifier can be accessed within the source code.
 
@@ -26,7 +26,7 @@ An identifier’s _scope_ determines where the identifier can be accessed with
     -   Functions
     -   User-defined type definitions (such as enums and classes) declared inside a namespace or in the global scope
 
-Duration summary
+## 持续时间小结
 
 A variable’s _duration_ determines when it is created and destroyed.
 
@@ -39,7 +39,7 @@ A variable’s _duration_ determines when it is created and destroyed.
 -   Variables with **dynamic duration** are created and destroyed by programmer request. This includes:
     -   Dynamically allocated variables
 
-Linkage summary
+## 链接小结
 
 An identifier’s _linkage_ determines whether multiple declarations of an identifier refer to the same identifier or not.
 
