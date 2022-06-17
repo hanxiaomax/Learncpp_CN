@@ -36,7 +36,6 @@ int main()
 }
 ```
 
-COPY
 
 This prints:
 
@@ -66,7 +65,6 @@ int main()
 }
 ```
 
-COPY
 
 `Unnamed namespaces` are typically used when you have a lot of content that you want to ensure stays local to a given file, as it’s easier to cluster such content in an `unnamed namespace` than individually mark all declarations as `static`. `Unnamed namespaces` will also keep `user-defined types` (something we’ll discuss in a later lesson) local to the file, something for which there is no alternative equivalent mechanism to do.
 
@@ -90,7 +88,6 @@ int main()
 }
 ```
 
-COPY
 
 This prints:
 
@@ -138,8 +135,6 @@ int main()
 }
 ```
 
-COPY
-
 This prints:
 
 ```
@@ -182,7 +177,6 @@ int main()
 }
 ```
 
-COPY
 
 This prints:
 
