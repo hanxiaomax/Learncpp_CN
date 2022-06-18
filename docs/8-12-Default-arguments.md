@@ -6,7 +6,7 @@ origin_title: "8.12 — Default arguments"
 time: 2022-4-4
 type: translation
 tags:
-- 
+- default
 ---
 
 ??? note "关键点速记"

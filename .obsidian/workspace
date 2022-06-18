@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "命名空间",
+                "query": "tags:",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -129,14 +129,14 @@
   "active": "f292debcd1bff8ab",
   "lastOpenFiles": [
     "docs/6-14-Constexpr-and-consteval-functions.md",
-    "docs/6-13-Inline-functions.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/6-11-Scope-duration-and-linkage-summary.md",
-    "docs/6-10-Static-local-variables.md",
+    "docs/immediate-functions.md",
+    "docs/6-8-Why-non-const-global-variables-are-evil.md",
     "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
-    "docs/6-6-Internal-linkage.md",
-    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
-    "docs/8-x-Chapter-8-summary-and-quiz.md",
-    "docs/8-15-Function-templates-with-multiple-template-types.md"
+    "docs/6-10-Static-local-variables.md",
+    "docs/6-11-Scope-duration-and-linkage-summary.md",
+    "docs/6-15-Unnamed-and-inline-namespaces.md",
+    "docs/6-x-Chapter-6-summary-and-quiz.md",
+    "docs/7-11-Halts-exiting-your-program-early.md",
+    "docs/7-9-For-statements.md"
   ]
 }
