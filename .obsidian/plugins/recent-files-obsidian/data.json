@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "6-14-Constexpr-and-consteval-functions",
+      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
+    },
+    {
+      "basename": "6-13-Inline-functions",
+      "path": "docs/6-13-Inline-functions.md"
+    },
+    {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
+    },
+    {
+      "basename": "6-11-Scope-duration-and-linkage-summary",
+      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
+    },
+    {
+      "basename": "6-10-Static-local-variables",
+      "path": "docs/6-10-Static-local-variables.md"
+    },
+    {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    },
+    {
+      "basename": "6-6-Internal-linkage",
+      "path": "docs/6-6-Internal-linkage.md"
+    },
+    {
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+    },
+    {
       "basename": "8-x-Chapter-8-summary-and-quiz",
       "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
@@ -77,32 +109,8 @@
       "path": "docs/6-15-Unnamed-and-inline-namespaces.md"
     },
     {
-      "basename": "6-14-Constexpr-and-consteval-functions",
-      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
-    },
-    {
-      "basename": "6-13-Inline-functions",
-      "path": "docs/6-13-Inline-functions.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
       "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
-    },
-    {
-      "basename": "6-11-Scope-duration-and-linkage-summary",
-      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "6-10-Static-local-variables",
-      "path": "docs/6-10-Static-local-variables.md"
     },
     {
       "basename": "automatic-storage-duration",
@@ -119,10 +127,6 @@
     {
       "basename": "6-7-External-linkage-and-variable-forward-declarations",
       "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
-      "basename": "6-6-Internal-linkage",
-      "path": "docs/6-6-Internal-linkage.md"
     },
     {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
@@ -195,10 +199,6 @@
     {
       "basename": "7-8-Do-while-statements",
       "path": "docs/7-8-Do-while-statements.md"
-    },
-    {
-      "basename": "7-7-Intro-to-loops-and-while-statements",
-      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
     }
   ],
   "omittedPaths": [],

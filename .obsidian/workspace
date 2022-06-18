@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-x-Chapter-8-summary-and-quiz.md",
+            "file": "docs/6-14-Constexpr-and-consteval-functions.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-x-Chapter-8-summary-and-quiz.md"
+                "file": "docs/6-14-Constexpr-and-consteval-functions.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-x-Chapter-8-summary-and-quiz.md",
+                "file": "docs/6-14-Constexpr-and-consteval-functions.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "f292debcd1bff8ab",
   "lastOpenFiles": [
+    "docs/6-14-Constexpr-and-consteval-functions.md",
+    "docs/6-13-Inline-functions.md",
+    "docs/6-12-Using-declarations-and-using directives.md",
+    "docs/6-11-Scope-duration-and-linkage-summary.md",
+    "docs/6-10-Static-local-variables.md",
+    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
+    "docs/6-6-Internal-linkage.md",
+    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
     "docs/8-x-Chapter-8-summary-and-quiz.md",
-    "docs/8-15-Function-templates-with-multiple-template-types.md",
-    "docs/8-14-Function-template-instantiation.md",
-    "docs/8-13-Function-templates.md",
-    "docs/8-12-Default-arguments.md",
-    "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
-    "docs/8-10-Function-overload-differentiation.md",
-    "docs/8-9-Introduction-to-function-overloading.md",
-    "docs/8-8-Type-deduction-for-functions.md",
-    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
+    "docs/8-15-Function-templates-with-multiple-template-types.md"
   ]
 }

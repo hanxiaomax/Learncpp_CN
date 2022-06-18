@@ -9,19 +9,30 @@ tags:
 - inline
 ---
 
-Consider the case where you need to write some code to perform some discrete task, like reading input from the user, or outputting something to a file, or calculating a particular value. When implementing this code, you essentially have two options:
+??? note "关键点速记"
 
-1.  Write the code as part of an existing function (called writing code “in-place” or “inline”).
-2.  Create a function (and possibly sub-functions) to handle the task.
+	- 现代编译器可以决定函数是否应当被展开。
+	- 有些函数是隐式的内联函数，包括：
+		-   定义在类、结构体或联合体中的函数；
+		-   Constexpr / consteval 函数 [[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
+	- `inline`关键字是一种*提示*，编译器可以忽略它。同时编译器也可以展开没有标记`inline`的函数。
+	- 现代`inline`关键字的含义是**允许多处定义**
+	- 内联函数定义在头文件中：为了能够展开函数，编译器必须能够在函数调用处看到函数的定义。因此，内联函数通常被定义在头文件中，这样它们就可以被包含到使用它们的源文件中，以便编译器看到函数的完整定义。
 
-Writing functions provides many potential benefits, as code in a function:
 
--   Is easier to read and understand in the context of the overall program.
--   Is easier to use, as you can call the function without understanding how it is implemented.
--   Is easier to update, as the code in a function can be updated in one place.
--   Is easier to reuse, as functions are naturally modular.
+有些时候我们需要编写代码完成一些独立的任务，例如从用户读取输入、输出到文件或者计算特定的值。通常情况下，我们有两种选择：
 
-However, one downside of using a function is that every time a function is called, there is a certain amount of performance overhead that occurs. Consider the following example:
+1.  将代码作为已有函数的一部分（称为嵌入）；
+2.  创建一个单独的函数（或者子函数）完成该任务。
+
+将这些代码作为函数能够带来很多潜在的好处，因为函数中的代码：
+
+- 可读性更好，更容易理解；
+- 可用性更好，可以在不了解函数实现细节的前提下调用函数；
+- 更容易更新，因为这些代码可以在一处修改处处更新；
+- 可复用性更好，因为函数天生是模块化的。
+
+不过，函数调用也是也有不好的地方，因为它会带来额外的性能开销。例如下列函数：
 
 ```cpp
 #include <iostream>
@@ -39,17 +50,17 @@ int main()
 }
 ```
 
-COPY
 
-When a call to `min()` is encountered, the CPU must store the address of the current instruction it is executing (so it knows where to return to later) along with the values of various CPU registers (so they can be restored upon returning). Then parameters `x` and `y` must be instantiated and then initialized. Then the execution path has to jump to the code in the `min()` function. When the function ends, the program has to jump back to the location of the function call, and the return value has to be copied so it can be output. In other words, there is a significant amount of overhead cost that is incurred with each function call.
+当 `min()`函数被调用时，CPU必须保存当前指令的地址（以便稍后返回）以及一些CPU寄存器的值（用于返回时恢复上下文）。然后[[arguments|实参]] `x` 和 `y` 必须被实例化和初始化。然后跳转到 `min()`函数执行。当函数执行完毕后，程序又会跳转回到主调函数，同时返回值被拷贝返回。换言之，每次函数调用都会产生很大的开销。
 
-For functions that are large and/or perform complex tasks, the overhead of the function call is typically insignificant compared to the amount of time the function takes to run. However, for small functions (such as `min()` above), the overhead costs can be larger than the time needed to actually execute the function’s code! In cases where a small function is called often, using a function can result in a significant performance penalty over writing the same code in-place.
+对于那些复杂的函数来说，这些开销相对于函数执行实际来讲可能是微不足道的。不过，对于很多小函数（例如这里的`min()`）。函数调用的开销甚至可能比函数内部代码执行耗时还要高。如果这些函数被频繁调用，那么和不使用代码来比性能差异会非常大。
 
-## 内联表达式
 
-Fortunately, the C++ compiler has a trick that it can use to avoid such overhead cost: Inline expansion is a process where a function call is replaced by the code from the called function’s definition.
+## 内联展开
 
-For example, if the compiler expanded the `min()` calls in the above example, the resulting code would look like this:
+好在，C++编译器有办法克服这种开销：内联展开可以将函数调用根据其定义直接替换为对应的代码。
+
+例如，如果编译器能够将上面的 `min()` 函数展开的话，将会得到如下的代码：
 
 ```cpp
 #include <iostream>
@@ -62,46 +73,44 @@ int main()
 }
 ```
 
-COPY
-
-Note that the two calls to function `min()` have been replaced by the code in the body of the `min()` function (with the value of the arguments substituted for the parameters). This allows us to avoid the overhead of those calls, while preserving the results of the code.
+注意，`min()` 函数中的函数调用被其函数体代码替换（实参数值替换了形参），这样就可以避免函数调用带来的额外开销。
 
 ## 内联代码的性能
 
-Beyond removing the cost of function call overhead, inline expansion can also allow the compiler to optimize the resulting code more efficiently -- for example, because the expression `((5 < 6) ? 5 : 6)` is now a compile-time constant, the compiler could further optimize the first statement in `main()` to `std::cout << 5 << '\n';`.
+除了能够避免函数调用的开销，内联展开还可以使编译器更加有效地优化代码——例如，因为表达式 `((5 < 6) ? 5 : 6)` 现在是编译时常量，那么编译器就可以将`main()`函数的第一条语句优化为`std::cout << 5 << '\n';`。
 
-However, inline expansion has its own potential cost: if the body of the function being expanded takes more instructions than the function call being replaced, then each inline expansion will cause the executable to grow larger. Larger executables tend to be slower (due to not fitting as well in caches).
+不过，内联展开也有它的开销：如果展开函数体所需的指令比函数调用本身还多，那么每一处内联展开将会导致可执行文件的膨胀。可执行程序越大，速度也可能会越差（由于不能匹配缓存的大小）。
 
-The decision about whether a function would benefit from being made inline (because removal of the function call overhead outweighs the cost of a larger executable) is not straightforward. Inline expansion could result in performance improvements, performance reductions, or no change to performance at all, depending on the relative cost of a function call, the size of the function, and what other optimizations can be performed.
+确定函数是否应该被定义为内联（移除函数调用开销带来的好处大于可执行文件大小增长带来的坏处）的依据并不明显。内联展开可能会导致性能的提升、性能的下降或者对性能完全没有影响，这取决于函数调用的开销，函数大小和编译器能够执行哪些优化。
 
-Inline expansion is best suited to simple, short functions (e.g. no more than a few statements), especially cases where a single function call is executed more than once (e.g. function calls inside a loop).
+内联展开最适合简单、小的函数（例如只有几行语句的函数），特别是会被多次调用的函数（例如循环中的函数）。
+
 
 ## 内联代码的展开时机
 
-Every function falls into one of three categories, where calls to the function:
+所有的函数都可以归为以下三类：
 
--   Must be expanded.
--   May be expanded (most functions are in this category).
--   Can’t be expanded.
+-   必须被展开；
+-   可能会被展开(很多函数都属于这一类).
+-   不能被展开。
 
-A function that is eligible to have its function calls expanded is called an inline function.
+能够被展开的函数称为内联函数。
 
-Most functions fall into the “may” category: their function calls can be expanded if and when it is beneficial to do so. For functions in this category, a modern compiler will assess each function and each function call to make a determination about whether that particular function call would benefit from inline expansion. A compiler might decide to expand none, some, or all of the function calls to a given function.
+大多数函数都属于第二类：“可能会被展开”。对于这些函数来说，如果展开能够带来好处，那么就可能被展开。对于这一类函数，现代编译器可以分析每个函数和每处函数调用来确定对应的函数是不是被内联展开后的收益更高。编译器最终会决定是否将它们中一些、或者全部展开。
 
 !!! tip "小贴士"
 
-	Modern optimizing compilers make the decision about when functions should be expanded inline.
-
+	现代编译器可以决定函数是否应当被展开。
+	
 !!! info "扩展阅读"
 
-    Some types of functions are implicitly treated as inline functions. These include:
-
--   Functions defined inside a class, struct, or union type definition.
--   Constexpr / consteval functions [[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
+    有些函数是隐式的内联函数，包括：
+	-   定义在类、结构体或联合体中的函数；
+	-   Constexpr / consteval 函数 [[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
 
 ## 历史上的 inline 关键字
 
-Historically, compilers either didn’t have the capability to determine whether inline expansion would be beneficial, or were not very good at it. For this reason, C++ provides the keyword `inline`, which was intended to be used as a hint to the compiler that a function would benefit from being expanded inline:
+回顾 C++ 的历史，编译器曾经要么不具备判断函数展开是否能够带来好处的能力，要么不能够很好的执行上述判断。因此，C++特意提供了 `inline` 关键字，用于*提示*编译器该函数应该被内联展开：
 
 ```cpp
 #include <iostream>
@@ -119,37 +128,38 @@ int main()
 }
 ```
 
-COPY
 
-This is where the term “inline function” comes from (because such functions had the `inline` specifier as part of the declaration syntax of the function).
+这就是所谓“内联函数”的来历（因为这些函数的声明语法中包含`inline` 关键字）。
 
-However, in modern C++, the `inline` keyword is no longer used to request that a function be expanded inline. There are quite a few reasons for this:
+但是，现代 C++ 中，`inline` 关键字已经不再被用于告诉编译器展开对应的函数，这么做的原因有很多：
 
--   Using `inline` to request inline expansion is a form of premature optimization, and misuse could actually harm performance.
--   The `inline` keyword is just a hint -- the compiler is completely free to ignore a request to inline a function. This is likely to be the result if you try to inline a lengthy function! The compiler is also free to perform inline expansion of functions that do not use the `inline` keyword as part of its normal set of optimizations.
--   The `inline` keyword is defined at the wrong level of granularity. We use the `inline` keyword on a function declaration, but inline expansion is actually determined per function call. It may be beneficial to expand some function calls and detrimental to expand others, and there is no syntax to affect this.
+-   使用 `inline` 要求内联展开是一种过早优化行为，滥用`inline`有反倒会伤害程序性能；
+-   `inline` 关键字只是一个*提示*——编译器完全可以忽略它，尤其是当你要求编译器内联展开一个很大的函数时。同时，编译器也可以展开那些并没有被标记为`inline`的函数。
+-   `inline` 关键字的定义处于一种不合适的粒度。我们在函数声明中使用该关键字，但是实际上函数的展开是基于每个函数调用的。对于一个函数的各处调用，它们中的一部分可能被展开，而另一些则不被展开，然而这个关键字却不能对此产生影响。
 
-Modern optimizing compilers are typically very good at determining which functions should be made inline -- better than humans in most cases. As a result, the compiler will likely ignore or devalue any request you make to `inline` a function anyway.
+现代编译器通常很擅长决定那些函数应该被作为内联函数——它的这种能力在大多数情况下都比人类强。 因此，编译器通常会忽略你为函数添加的`inline`标记。
 
 !!! success "最佳实践"
 
-	Do not use the `inline` keyword to request inline expansion for your functions.
-
+	不要使用`inline`关键字要求内联展开函数。
+	
 ## 现代 inline 关键字
 
-In previous chapters, we mentioned that you should not implement functions (with external linkage) in header files, because when those headers are included into multiple .cpp files, the function definition will be copied into multiple .cpp files. These files will then be compiled, and the linker will throw an error because it will note that you’ve defined the same function more than once, which is a violation of the one-definition rule.
+在之前的章节中，我们介绍过，头文件中不应该放置函数的实现，因为这些头文件中的内容会被包含到多个.cpp文件中，那么这些函数的定义也就会被复制多份。因此，这些文件编译后，链接器就会报错，因为函数的定义违反了[[one-definition-rule|单一定义规则(one-definition-rule)]]。
 
-In lesson [[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]], we noted that in modern C++, the `inline` concept has evolved to have a new meaning: multiple definitions are allowed in the program. This is true for functions as well as variables. Thus, if we mark a function as inline, then that function is allowed to have multiple definitions (in different files), as long as those definitions are identical.
 
-In order to do inline expansion, the compiler needs to be able to see the full definition of an inline function wherever the function is called. Therefore, inline functions are typically defined in header files, where they can be `#included` into any code file that needs to see the full definition of the function.
+在 [[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]]中我们介绍了，在现代 C++ 中，`inline` 概念发展出了新的含义：允许多重定义。对于函数和变量都是适用的。因此，如果你将函数标记为内联后，该函数就可以被多次定义了（在不同的函数中），只要这些定义是一致的即可。
+
+为了能够展开函数，编译器必须能够在函数调用处看到函数的定义。因此，内联函数通常被定义在头文件中，这样它们就可以被包含到使用它们的源文件中，以便编译器看到函数的完整定义。
 
 
 !!! tldr "关键信息"
 
-	The compiler needs to be able to see the full definition of an inline function wherever it is called.
+	编译器必须能够在内联函数调用处看到函数的完整定义。
 
-For the most part, you should not mark your functions as inline, but we’ll see examples in the future where this is useful.
+大多数情况下，不需要将函数定义为内联，但是我们在将来的课程中会看到它有用的场景。
 
 !!! success "最佳实践"
 
-	Avoid the use of the `inline` keyword for functions unless you have a specific, compelling reason to do so.
+	除非有特殊的、令人信服的理由，否则不要使用`inline`关键字。
+	
