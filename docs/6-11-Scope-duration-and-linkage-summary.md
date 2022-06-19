@@ -11,32 +11,32 @@ tags:
 - C++11
 ---
 
-作用域、持续时间和链接这些概念会带来很多困惑，所以我们利用这节课对它们进行一次整理和总结。有些内容我们还没有介绍，但是我们仍然将其罗列在这里，以便后续学习进行参考。
+作用域、持续时间和链接这些概念很绕人，所以我们利用这节课对它们进行一次整理和总结。有些内容我们还没有介绍，但是我们仍然将其罗列在这里，在后续学习时可以进行参考。
 
 ## 作用域小结
 
-An identifier’s _scope_ determines where the identifier can be accessed within the source code.
+变量标识符的**作用域**决定了标识符在哪里可以被访问。
 
--   Variables with **block (local) scope** can only be accessed within the block in which they are declared (including nested blocks). This includes:
-    -   Local variables
-    -   Function parameters
-    -   User-defined type definitions (such as enums and classes) declared inside a block
--   Variables and functions with **file (global) scope** can be accessed from the point of declaration until the end of the file. This includes:
-    -   Global variables
-    -   Functions
-    -   User-defined type definitions (such as enums and classes) declared inside a namespace or in the global scope
+-   具有**块（局部）作用域**的标识符，只能够在声明它们的块（及其嵌套块）中访问，这些变量包括：
+    -   [[6-3-Local-variables|局部变量]]
+    -   [[parameters|函数形参]]
+    -   定义在块中的用户自定义类型（包括枚举和类）
+-   具有**文件（全局）作用域** 的变量和函数从声明位置开始，直到文件结尾都可以被访问， 包括：
+    -   [[global-variable|全局变量]]
+    -   函数
+    -   定义在全局作用域或命名空间中的用户自定义类型（包括枚举和类）
 
 ## 持续时间小结
 
-A variable’s _duration_ determines when it is created and destroyed.
+变量的持续时间决定了它合适被创建和销毁。
 
--   Variables with **automatic duration** are created at the point of definition, and destroyed when the block they are part of is exited. This includes:
-    -   Local variables
-    -   Function parameters
--   Variables with **static duration** are created when the program begins and destroyed when the program ends. This includes:
-    -   Global variables
-    -   Static local variables
--   Variables with **dynamic duration** are created and destroyed by programmer request. This includes:
+- 具有[[automatic-storage-duration|自动存储持续时间]]的变量，在定义时被创建，而且在离开语句块时被销毁，包括：
+    - [[6-3-Local-variables|局部变量]]
+    - [[parameters|函数形参]]
+- 具有[[static-storage-duration|静态存储持续时间]]的变量，在程序开始时创建，在程序结束时销毁，包括：
+    -  [[global-variable|全局变量]]
+    -  [[static-variables|静态局部变量]]
+- 具有**动态存储持续**时间的变量在可以gen'hwith 动态存储持续dynamic duration** are created and destroyed by programmer request. This includes:
     -   Dynamically allocated variables
 
 ## 链接小结

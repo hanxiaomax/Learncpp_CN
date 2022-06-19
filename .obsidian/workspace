@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#included",
+                "query": "全局作用域",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -129,14 +130,14 @@
   "active": "f0110399c380d077",
   "lastOpenFiles": [
     "docs/6-11-Scope-duration-and-linkage-summary.md",
+    "docs/6-12-Using-declarations-and-using directives.md",
+    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
+    "docs/global-variable.md",
     "docs/6-10-Static-local-variables.md",
     "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
     "docs/6-8-Why-non-const-global-variables-are-evil.md",
     "docs/6-x-Chapter-6-summary-and-quiz.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
     "docs/6-15-Unnamed-and-inline-namespaces.md",
-    "docs/6-14-Constexpr-and-consteval-functions.md",
-    "docs/6-13-Inline-functions.md",
-    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
+    "docs/6-14-Constexpr-and-consteval-functions.md"
   ]
 }

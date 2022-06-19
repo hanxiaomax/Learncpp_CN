@@ -5,6 +5,18 @@
       "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
     },
     {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
+    },
+    {
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+    },
+    {
+      "basename": "global-variable",
+      "path": "docs/global-variable.md"
+    },
+    {
       "basename": "6-10-Static-local-variables",
       "path": "docs/6-10-Static-local-variables.md"
     },
@@ -19,10 +31,6 @@
     {
       "basename": "6-x-Chapter-6-summary-and-quiz",
       "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
     },
     {
       "basename": "6-15-Unnamed-and-inline-namespaces",
@@ -189,16 +197,8 @@
       "path": "docs/6-6-Internal-linkage.md"
     },
     {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
-    },
-    {
       "basename": "8-15-Function-templates-with-multiple-template-types",
       "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
-    },
-    {
-      "basename": "8-9-Introduction-to-function-overloading",
-      "path": "docs/8-9-Introduction-to-function-overloading.md"
     }
   ],
   "omittedPaths": [],
