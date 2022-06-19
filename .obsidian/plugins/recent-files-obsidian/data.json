@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "6-11-Scope-duration-and-linkage-summary",
+      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
+    },
+    {
+      "basename": "6-10-Static-local-variables",
+      "path": "docs/6-10-Static-local-variables.md"
+    },
+    {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    },
+    {
+      "basename": "6-8-Why-non-const-global-variables-are-evil",
+      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
+    },
+    {
       "basename": "6-x-Chapter-6-summary-and-quiz",
       "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
+    },
+    {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
     },
     {
       "basename": "6-15-Unnamed-and-inline-namespaces",
@@ -15,14 +35,6 @@
     {
       "basename": "6-13-Inline-functions",
       "path": "docs/6-13-Inline-functions.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "6-11-Scope-duration-and-linkage-summary",
-      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
     },
     {
       "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
@@ -59,18 +71,6 @@
     {
       "basename": "immediate-functions",
       "path": "docs/immediate-functions.md"
-    },
-    {
-      "basename": "6-8-Why-non-const-global-variables-are-evil",
-      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "6-10-Static-local-variables",
-      "path": "docs/6-10-Static-local-variables.md"
     },
     {
       "basename": "7-11-Halts-exiting-your-program-early",

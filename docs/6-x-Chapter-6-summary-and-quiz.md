@@ -21,24 +21,25 @@ tags:
 
 我们可以通过[[scope-resolution-operator|作用域解析运算符]](`::`)来访问命名空间中的声明。作用域解析运算符告诉编译器到运算符左操作数中去查找右操作数。如果不提供左操作数，则会使用全局作用域。
 
-局部变量（[[6-3-Local-variables|6.3 - 局部变量]]）指的是定义在函数内部的变量（包括函数的[[parameters|形参]]）。局部变量具有语句块作用域，也就是说，它的作用域从变量定义开始，到语句块结束为止。局部变量具有[[automatic-storage-duration|自动存储持续时间]]，也就是说它在定义时被创建，在离开语句块时被销毁。
+**局部变量**（[[6-3-Local-variables|6.3 - 局部变量]]）指的是定义在函数内部的变量（包括函数的[[parameters|形参]]）。局部变量具有语句块作用域，也就是说，它的作用域从变量定义开始，到语句块结束为止。局部变量具有[[automatic-storage-duration|自动存储持续时间]]，也就是说它在定义时被创建，在离开语句块时被销毁。
 
 声明在嵌套语句块中的变量会对外层语句块中的同名变量形成**变量遮蔽**（[[6-5-Variable-shadowing-name-hiding|6.5 - 变量遮蔽]]）。变量遮蔽应当被避免。
 
-全局变量（[[6-4-Introduction-to-global-variables|6.4 - 全局变量]]）指的是定义在函数外部的变量。 全局变量具有文件作用域，这也就意味着它的可见范围从变量定义开始到文件结束为止。全局变量具有[[static-storage-duration|静态存储持续时间]]，也是说该变量会在程序开始时创建，程序结束时销毁。尽可能避免对静态变量的动态 初始化。
+**全局变量**（[[6-4-Introduction-to-global-variables|6.4 - 全局变量]]）指的是定义在函数外部的变量。 全局变量具有文件作用域，这也就意味着它的可见范围从变量定义开始到文件结束为止。全局变量具有[[static-storage-duration|静态存储持续时间]]，也是说该变量会在程序开始时创建，程序结束时销毁。尽可能避免对静态变量的动态 初始化。
 
-一个标识符的链接属性，决定了该标识符的qAn identifier’s linkage determines whether other declarations of that name refer to the same object or not. Local variables have no linkage. Identifiers with internal linkage can be seen and used within a single file, but it is not accessible from other files. Identifiers with external linkage can be seen and used both from the file in which it is defined, and from other code files (via a forward declaration).
+一个标识符的**链接属性**，决定了该标识符的其他声明值得是否都是同一个对象。局部变量没有链接属性。具有内部链接（[[6-6-Internal-linkage|6.6 - 内部链接]]）属性的标识符可以在文件中被访问，但是不能在其他文件中被访问。具有外部链接（[[6-7-External-linkage-and-variable-forward-declarations|6.7 - 外部链接和变量前向声明]]）属性的标识符则可以在定义它的文件或其他文件中可见或被访问（通过[[forward-declaration|前向声明]]）。
 
-Avoid non-const global variables whenever possible. Const globals are generally seen as acceptable. Use inline variablesfor global constants if your compiler is C++17 capable.
+尽量避免使用非 const 类型的全局变量。const 全局变量通常是可以接受的。如果你的编译器支持C++17，请使用 inline 变量定义全局常量。（[[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]]）
 
-Local variables can be given static duration via the static keyword.
+局部变量可以通过`static`关键字赋予其[[static-storage-duration|静态存储持续时间]]。（[[6-10-Static-local-variables|6.10 - 静态局部变量]]）
 
-Using statements (including using declarations and using directives) can be used to avoid having to qualify identifiers with an explicit namespace. These should generally be avoided.
+using 语句包括 **using 声明**和 **using 指令**（[[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]），使用它可以避免使用限定标识符，但是我们应该避免这样做。
 
-Inline functions were originally designed as a way to request that the compiler replace your function call with inline expansion of the function code. You should not need to use the inline keyword for this purpose because the compiler will generally determine this for you. In modern C++, the `inline` keyword is used to exempt a function from the one-definition rule, allowing its definition to be imported into multiple code files. Inline functions are typically defined in header files so they can be #included into any code files that needs them.
+**内联函数**（[[6-13-Inline-functions|6.13 - 内联函数]]）最初的设计目的是提供一种方法告诉编译器将函数调用进行内联展开，但我们并不应该出于该目的而使用 `inline` 关键字，因为编译器通常会为你做决定。在现代 C++ 中，`inline` 关键字用于将函数排除到[[one-definition-rule|单一定义规则(one-definition-rule)]]的限定之外，从而使其定义可以被导入到多个源文件中能够。内联函数通常被定义在头文件中，这样它们的定义就可以在 `#included`时被一同拷贝到源文件中。
 
-A constexpr function is a function whose return value may be computed at compile-time. To make a function a constexpr function, we simply use the `constexpr` keyword in front of the return type. A constexpr function that is eligible for compile-time evaluation must be evaluated at compile-time if the return value is used in a context that requires a constexpr value. Otherwise, the compiler is free to evaluate the function at either compile-time or runtime.
+**`constexpr` 函数**（[[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]）的返回值**可能**会在[[compile-time|编译时]]求值。使用 `constexpr` 关键字可以将函数定义为 `constexpr` 类型。`constexpr` 函数**有资格**进行编译时求值，而如果它的返回值被使用在需要常量的上下文中时，则一定会进行编译时求值。其他情况下，编译器则可以自由选择是在编译时还是运行时对函数进行求值。
 
-C++20 introduces the keyword `consteval`, which is used to indicate that a function must evaluate at compile-time, otherwise a compile error will result. Such functions are called immediate functions.
 
-Finally, C++ supports unnamed namespaces, which implicitly treat all contents of the namespace as if it had internal linkage. C++ also supports inline namespaces, which provide some primitive versioning capabilities for namespaces.
+C++20 引入了新的关键字 `consteval`（[[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]），它可以要求函数必须进行编译时求值，否则就会产生编译报错。这种函数称为[[immediate-functions|即时函数]]。
+
+最后，C++ 支持**匿名命名空间**，它隐含地将其内部定义的内容赋予[[internal-linkage|内部链接]]。 C++ 同样还支持**内联命名空间**，它为命名空间提供了原生的版本机制。（[[6-15-Unnamed-and-inline-namespaces|6.15 - 未命名和内联命名空间]]）

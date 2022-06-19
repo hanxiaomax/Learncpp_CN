@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/6-x-Chapter-6-summary-and-quiz.md",
+            "file": "docs/6-11-Scope-duration-and-linkage-summary.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "exca",
+                "query": "tag:#included",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-x-Chapter-6-summary-and-quiz.md"
+                "file": "docs/6-11-Scope-duration-and-linkage-summary.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-x-Chapter-6-summary-and-quiz.md",
+                "file": "docs/6-11-Scope-duration-and-linkage-summary.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "f0110399c380d077",
   "lastOpenFiles": [
+    "docs/6-11-Scope-duration-and-linkage-summary.md",
+    "docs/6-10-Static-local-variables.md",
+    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
+    "docs/6-8-Why-non-const-global-variables-are-evil.md",
     "docs/6-x-Chapter-6-summary-and-quiz.md",
+    "docs/6-12-Using-declarations-and-using directives.md",
     "docs/6-15-Unnamed-and-inline-namespaces.md",
     "docs/6-14-Constexpr-and-consteval-functions.md",
     "docs/6-13-Inline-functions.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/6-11-Scope-duration-and-linkage-summary.md",
-    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
-    "docs/MOC.md",
-    "excalibrain.md",
-    "docs/3-5-More-debugging-tactics.md"
+    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
   ]
 }
