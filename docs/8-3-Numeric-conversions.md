@@ -30,7 +30,6 @@ long l = 3; // convert int to long
 char ch = s; // convert short to char
 ```
 
-COPY
 
 2.  Converting a floating point type to any other floating point type (excluding floating point promotions):
 
@@ -39,7 +38,6 @@ float f = 3.0; // convert double to float
 long double ld = 3.0; // convert double to long double
 ```
 
-COPY
 
 3.  Converting a floating point type to any integral type:
 
@@ -47,15 +45,12 @@ COPY
 int i = 3.5; // convert double to int
 ```
 
-COPY
 
 4.  Converting an integral type to any floating point type:
 
 ```cpp
 double d = 3; // convert int to double
 ```
-
-COPY
 
 5.  Converting an integral type or a floating point type to a bool:
 
@@ -64,13 +59,12 @@ bool b1 = 3; // convert int to bool
 bool b2 = 3.0; // convert double to bool
 ```
 
-COPY
 
 !!! cite "题外话"
 
     Because brace initialization disallows some numeric conversions (more on this in a moment), we use copy initialization in this lesson (which does not have any such limitations) in order to keep the examples simple.
 
-## Narrowing conversions
+## 缩窄转换
 
 Unlike a numeric promotion (which is always safe), a numeric conversion may (or may not) result in the loss of data or precision.
 
@@ -81,9 +75,8 @@ int i1 = 3.5; // the 0.5 is dropped, resulting in lost data
 int i2 = 3.0; // okay, will be converted to value 3, so no data is lost
 ```
 
-COPY
 
-In C++, a narrowing conversion is a numeric conversion that may result in the loss of data. Such narrowing conversions include:
+In C++, a [[narrowing-convertions|缩窄转换(narrowing conversion)]] is a numeric conversion that may result in the loss of data. Such narrowing conversions include:
 
 -   From a floating point type to an integral type.
 -   From a wider floating point type to a narrower floating point type, unless the value being converted is constexpr and is in range of the destination type (even if the narrower type doesn’t have the precision to store the whole number).
@@ -105,7 +98,6 @@ int main()
 }
 ```
 
-COPY
 
 Visual Studio produces the following warning:
 
@@ -135,7 +127,7 @@ COPY
 
 	Avoid narrowing conversions whenever possible. If you do need to perform one, use `static_cast` to make it an explicit conversion.
 
-## Brace initialization disallows narrowing conversions
+## 括号初始化不允许缩窄转换
 
 Narrowing conversions are strictly disallowed when using brace initialization (which is one of the primary reasons this initialization form is preferred):
 
@@ -152,7 +144,7 @@ Visual Studio produces the following error:
 
 error C2397: conversion from 'double' to 'int' requires a narrowing conversion
 
-## More on numeric conversions
+## 关于数值转换的更多信息
 
 The specific rules for numeric conversions are complicated and numerous, so here are the most important things to remember.
 
@@ -170,11 +162,12 @@ int main()
 }
 ```
 
-COPY
 
 In this example, we’ve assigned a large integer to a variable with type `char` (that has range -128 to 127). This causes the char to overflow, and produces an unexpected result:
 
+```
 48
+```
 
 Converting from a larger integral or floating point type to a smaller type from the same family will generally work so long as the value fits in the range of the smaller type. For example:
 
@@ -188,12 +181,13 @@ float f = d;
 std::cout << f << '\n';
 ```
 
-COPY
 
 This produces the expected result:
 
+```
 2
 0.1234
+```
 
 In the case of floating point values, some rounding may occur due to a loss of precision in the smaller type. For example:
 
@@ -202,11 +196,13 @@ float f = 0.123456789; // double value 0.123456789 has 9 significant digits, but
 std::cout << std::setprecision(9) << f << '\n'; // std::setprecision defined in iomanip header
 ```
 
-COPY
+
 
 In this case, we see a loss of precision because the `float` can’t hold as much precision as a `double`:
 
+```
 0.123456791
+```
 
 Converting from an integer to a floating point number generally works as long as the value fits within the range of the floating point type. For example:
 
@@ -216,11 +212,12 @@ float f = i;
 std::cout << f;
 ```
 
-COPY
 
 This produces the expected result:
 
+```
 10
+```
 
 Converting from a floating point to an integer works as long as the value fits within the range of the integer, but any fractional values are lost. For example:
 
@@ -229,10 +226,11 @@ int i = 3.5;
 std::cout << i << '\n';
 ```
 
-COPY
 
 In this example, the fractional value (.5) is lost, leaving the following result:
 
+```
 3
+```
 
 While the numeric conversion rules might seem scary, in reality the compiler will generally warn you if you try to do something dangerous (excluding some signed/unsigned conversions).

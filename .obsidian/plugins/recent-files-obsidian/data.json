@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
+      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+    },
+    {
+      "basename": "8-4-Arithmetic-conversions",
+      "path": "docs/8-4-Arithmetic-conversions.md"
+    },
+    {
+      "basename": "8-3-Numeric-conversions",
+      "path": "docs/8-3-Numeric-conversions.md"
+    },
+    {
+      "basename": "8-2-Floating-point-and-integral-promotion",
+      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
+    },
+    {
+      "basename": "value-preserving",
+      "path": "docs/value-preserving.md"
+    },
+    {
       "basename": "8-1-Implicit-type-conversion-coercion",
       "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
@@ -157,14 +177,6 @@
       "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
     },
     {
-      "basename": "8-3-Numeric-conversions",
-      "path": "docs/8-3-Numeric-conversions.md"
-    },
-    {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
-    },
-    {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "8-14-Function-template-instantiation",
       "path": "docs/8-14-Function-template-instantiation.md"
-    },
-    {
-      "basename": "5-7-Logical-operators",
-      "path": "docs/5-7-Logical-operators.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "1-3-Introduction-to-objects-and-variables",
-      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
     }
   ],
   "omittedPaths": [],

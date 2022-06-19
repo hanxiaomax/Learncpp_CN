@@ -1,7 +1,7 @@
 ---
 title: 8.2 - 浮点数和整型提升
 alias: 8.2 - 浮点数和整型提升
-origin: /none/
+origin: /cpp-tutorial/floating-point-and-integral-promotion/
 origin_title: "8.2 — Floating-point and integral promotion"
 time: 2021-12-30
 type: translation
@@ -22,7 +22,7 @@ This variability was allowed so that the `int` and `double` data types could
 
 But what happens when we want our 32-bit CPU to modify an 8-bit value (such as a `char`) or a 16-bit value? Some 32-bit processors (such as the x86 series) can manipulate 8-bit or 16-bit values directly. However, doing so is often slower than manipulating 32-bit values! Other 32-bit CPUs (like the PowerPC), can only operate on 32-bit values, and additional tricks must be employed to manipulate narrower values.
 
-## Numeric promotion
+## 数值提升
 
 Because C++ is designed to be portable and performant across a wide range of architectures, the language designers did not want to assume a given CPU would be able to efficiently manipulate values that were narrower than the natural data size for that CPU.
 
@@ -49,11 +49,11 @@ While this is straightforward, what happens if we want to also be able to print 
 
 Numeric promotion comes to the rescue here: we can write functions that have `int` and/or `double` parameters (such as the `printInt()` function above). That same code can then be called with arguments of types that can be numerically promoted to match the types of the function parameters.
 
-## Numeric promotion categories
+## 数值提升分类
 
 The numeric promotion rules are divided into two subcategories: `integral promotions` and `floating point promotions`.
 
-## Floating point promotions
+## 浮点数提升
 
 We’ll start with the easier one.
 
@@ -78,11 +78,9 @@ int main()
 }
 ```
 
-COPY
-
 In the second call to `printDouble()`, the `float` literal `4.0f` is promoted into a `double`, so that the type of argument matches the type of the function parameter.
 
-## Integral promotions
+## 整型提升
 
 The integral promotion rules are more complicated.
 
@@ -119,13 +117,12 @@ int main()
 }
 ```
 
-COPY
 
 There are two things worth noting here. First, on some systems, some of the integral types may be converted to `unsigned int` rather than `int`. Second, some narrower unsigned types (such as `unsigned char`) will be converted to larger signed types (such as `int`). So while integral promotion is value-preserving, it is not necessarily sign-preserving.
 
-## Not all value-preserving conversions are numeric promotions
+## 不是所有的值保留类型转换都是数值提升
 
-Some value-preserving type conversions (such as `char` to `short`, `int` to `long`, or `int` to `double`) are not considered to be numeric promotions in C++ (they are `numeric conversions`, which we’ll cover shortly in lesson [8.3 -- Numeric conversions](https://www.learncpp.com/cpp-tutorial/numeric-conversions/)). This is because such conversions do not assist in the goal of converting smaller types to larger types that can be processed more efficiently.
+Some [[value-preserving|值保留(value-preserving)]]value-preserving type conversions (such as `char` to `short`, `int` to `long`, or `int` to `double`) are not considered to be numeric promotions in C++ (they are `numeric conversions`, which we’ll cover shortly in lesson [8.3 -- Numeric conversions](https://www.learncpp.com/cpp-tutorial/numeric-conversions/)). This is because such conversions do not assist in the goal of converting smaller types to larger types that can be processed more efficiently.
 
 The distinction is mostly academic. However, in certain cases, the compiler will favor numeric promotions over numeric conversions. We’ll see examples where this makes a difference when we cover function overload resolution (in upcoming lesson [8.11 -- Function overload resolution and ambiguous matches](https://www.learncpp.com/cpp-tutorial/function-overload-resolution-and-ambiguous-matches/)).
 

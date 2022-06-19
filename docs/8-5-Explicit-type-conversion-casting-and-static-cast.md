@@ -43,7 +43,7 @@ Because integer division is used here, variable `d` will end up with the value
 
 Fortunately, C++ comes with a number of different type casting operators (more commonly called casts) that can be used by the programmer to request that the compiler perform a type conversion. Because casts are explicit requests by the programmer, this form of type conversion is often called an explicit type conversion (as opposed to implicit type conversion, where the compiler performs a type conversion automatically).
 
-## Type casting
+## 类型转换
 
 C++ supports 5 different types of casts: `C-style casts`, `static casts`, `const casts`, `dynamic casts`, and `reinterpret casts`. The latter four are sometimes referred to as named casts.
 
@@ -59,7 +59,7 @@ We’ll cover `C-style casts` and `static casts` in this lesson.
 
 	Avoid const casts and reinterpret casts unless you have a very good reason to use them.
 
-## C-style casts
+## C语言风格的类型转换
 
 In standard C programming, casts are done via the () operator, with the name of the type to convert the value placed inside the parenthesis. You may still see these used in code (or by programmers) that have been converted from C.
 
@@ -81,7 +81,6 @@ int main()
 }
 ```
 
-COPY
 
 In the above program, we use a C-style cast to tell the compiler to convert `x` to a `double`. Because the left operand of operator/ now evaluates to a floating point value, the right operand will be converted to a floating point value as well, and the division will be done using floating point division instead of integer division!
 
@@ -91,7 +90,6 @@ C++ will also let you use a `C-style cast` with a more function-call like synt
 double d { double(x) / y }; // convert x to a double so we get floating point division
 ```
 
-COPY
 
 This performs identically to the prior example, but has the benefit of parenthesizing the value being converted (making it easier to tell what is being converted).
 
@@ -105,7 +103,7 @@ Although a `C-style cast` appears to be a single cast, it can actually perform
 
 	Avoid using C-style casts.
 
-## static_cast
+## `static_cast`
 
 C++ introduces a casting operator called static_cast, which can be used to convert a value of one type to a value of another type.
 
