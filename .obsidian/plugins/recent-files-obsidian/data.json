@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "6-11-Scope-duration-and-linkage-summary",
-      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
     },
     {
       "basename": "6-4-Introduction-to-global-variables",
       "path": "docs/6-4-Introduction-to-global-variables.md"
+    },
+    {
+      "basename": "6-11-Scope-duration-and-linkage-summary",
+      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
     },
     {
       "basename": "dynamic-duration",
@@ -167,10 +171,6 @@
     {
       "basename": "8-x-Chapter-8-summary-and-quiz",
       "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
     },
     {
       "basename": "5-7-Logical-operators",
