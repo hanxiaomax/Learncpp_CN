@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "f292debcd1bff8ab",
+        "id": "f0110399c380d077",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/6-14-Constexpr-and-consteval-functions.md",
+            "file": "docs/6-15-Unnamed-and-inline-namespaces.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tags:",
+                "query": "exca",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-14-Constexpr-and-consteval-functions.md"
+                "file": "docs/6-15-Unnamed-and-inline-namespaces.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-14-Constexpr-and-consteval-functions.md",
+                "file": "docs/6-15-Unnamed-and-inline-namespaces.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,17 +126,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f292debcd1bff8ab",
+  "active": "f0110399c380d077",
   "lastOpenFiles": [
-    "docs/6-14-Constexpr-and-consteval-functions.md",
-    "docs/immediate-functions.md",
-    "docs/6-8-Why-non-const-global-variables-are-evil.md",
-    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
-    "docs/6-10-Static-local-variables.md",
-    "docs/6-11-Scope-duration-and-linkage-summary.md",
     "docs/6-15-Unnamed-and-inline-namespaces.md",
-    "docs/6-x-Chapter-6-summary-and-quiz.md",
-    "docs/7-11-Halts-exiting-your-program-early.md",
-    "docs/7-9-For-statements.md"
+    "docs/6-14-Constexpr-and-consteval-functions.md",
+    "docs/6-13-Inline-functions.md",
+    "docs/6-12-Using-declarations-and-using directives.md",
+    "docs/6-11-Scope-duration-and-linkage-summary.md",
+    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
+    "docs/MOC.md",
+    "excalibrain.md",
+    "docs/3-5-More-debugging-tactics.md",
+    "Excalidraw/ExcaliBrain Snapshot - 2-2-Function-return-values-value-returning functions.excalidraw.md"
   ]
 }

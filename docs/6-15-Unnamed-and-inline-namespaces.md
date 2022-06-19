@@ -11,7 +11,7 @@ tags:
 ---
 
 
-C++ supports two variants of namespaces that are worth at least knowing about. We won’t build on these, so consider this lesson optional for now.
+C++ z two variants of namespaces that are worth at least knowing about. We won’t build on these, so consider this lesson optional for now.
 
 ## 匿名命名空间
 
