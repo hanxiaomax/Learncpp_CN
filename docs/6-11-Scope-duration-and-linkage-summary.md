@@ -101,11 +101,11 @@ C++ 支持 4 种存储类型说明符：
 
 |说明符	|含义	|备注|
 |---|---|---|
-|`extern`	|static (或 thread_local) storage duration and external linkage	||
-|`static`	|static (or thread_local) storage duration and internal linkage	||
-|`thread_local`	|thread storage duration	||
-|`mutable`	|object allowed to be modified even if containing class is const	||
-|`auto`	|automatic storage duration	|Deprecated in C++11|
-|`register`	|automatic storage duration and hint to the compiler to place in a register	|Deprecated in C++17|
+|`extern`	|static (或 thread_local) 存储持续时间和外部链接||
+|`static`	|static (或 thread_local) 存储持续时间和内部链接	||
+|`thread_local`	|thread 存储持续时间	||
+|`mutable`	|即使类是const类型的，变量也允许修改||
+|`auto`	| 自动存储持续时间|在 C++11 中已经弃用|
+|`register`	|自动存储持续时间并且提示编译器将其存放在寄存器中|在 C++17 中已经弃用|
 
-The term _storage class specifier_ is typically only used in formal documentation.
+术语 _存储类型说明符_ 通常只会在正式的文档中使用。
