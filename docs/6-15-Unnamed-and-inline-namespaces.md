@@ -6,8 +6,8 @@ origin_title: "6.15 - 未命名和内联命名空间"
 time: 2022-5-29
 type: translation
 tags:
-- inline
-- namespace
+- inline namespace
+- unmanned namespace
 ---
 
 ??? note "关键点速记"
@@ -145,14 +145,15 @@ v2
 v1
 ```
 
-In the above example, callers to `doSomething` will get the v1 (the inline version) of `doSomething`. Callers who want to use the newer version can explicitly call `v2::dosomething()`. This preserves the function of existing programs while allowing newer programs to take advantage of newer/better variations.
+在上面的例子中，调用 `doSomething` 会使用 v1 版本的(内联版本)的`doSomething`。而任何想要使用新版本的地方，可以显式地调用`v2::dosomething()`。这样我们不仅可以使用新版本的函数，同时也能够保存老版本。
 
-Alternatively, if you want to push the newer version:
+
+或者，如果我们希望推广新版本的函数：
 
 ```cpp
 #include <iostream>
 
-namespace v1 // declare a normal namespace named v1
+namespace v1 // 声明内联命名空间 v1
 {
     void doSomething()
     {
@@ -160,7 +161,7 @@ namespace v1 // declare a normal namespace named v1
     }
 }
 
-inline namespace v2 // declare an inline namespace named v2
+inline namespace v2 // 声明内联命名空间 v2
 {
     void doSomething()
     {
@@ -179,8 +180,7 @@ int main()
 }
 ```
 
-
-This prints:
+打印：
 
 ```
 v1
@@ -188,4 +188,4 @@ v2
 v2
 ```
 
-In this example, all callers to `doSomething` will get the v2 version by default (the newer and better version). Users who still want the older version of `doSomething` can explicitly call `v1::doSomething()` to access the old behavior. This means existing programs who want the v1 version will need to globally replace `doSomething` with `v1::doSomething`, but this typically won’t be problematic if the functions are well named.
+在这个例子中，所有调用 `doSomething` 的地方都会使用 v2 版本的函数（更新更好的版本）。而那些愿意使用老版本函数的人，也可以显式地调用 `v1::doSomething()` 来使用旧版本的函数。这也意味着需要使用 `v1::doSomething` 版本的地方必须要将 `doSomething` 进行替换为 `v1::doSomething` 。不过，如果命名得当的话，也并不会带来什么大麻烦。

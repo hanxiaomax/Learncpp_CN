@@ -12,7 +12,7 @@ tags:
 
 ## 章节小结
 
-We covered a lot of material in this chapter. Good job, you’re doing great!
+本章的介绍了很多内容。你做的很好！
 
 A compound statement or block is a group of zero or more statements that is treated by the compiler as if it were a single statement. Blocks begin with a `{` symbol, end with a `}` symbol, with the statements to be executed placed in between. Blocks can be used anywhere a single statement is allowed. No semicolon is needed at the end of a block. Blocks are often used in conjunction with `if statements` to execute multiple statements.
 

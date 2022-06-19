@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/6-15-Unnamed-and-inline-namespaces.md",
+            "file": "docs/6-x-Chapter-6-summary-and-quiz.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-15-Unnamed-and-inline-namespaces.md"
+                "file": "docs/6-x-Chapter-6-summary-and-quiz.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-15-Unnamed-and-inline-namespaces.md",
+                "file": "docs/6-x-Chapter-6-summary-and-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,6 +128,7 @@
   },
   "active": "f0110399c380d077",
   "lastOpenFiles": [
+    "docs/6-x-Chapter-6-summary-and-quiz.md",
     "docs/6-15-Unnamed-and-inline-namespaces.md",
     "docs/6-14-Constexpr-and-consteval-functions.md",
     "docs/6-13-Inline-functions.md",
@@ -136,7 +137,6 @@
     "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
     "docs/MOC.md",
     "excalibrain.md",
-    "docs/3-5-More-debugging-tactics.md",
-    "Excalidraw/ExcaliBrain Snapshot - 2-2-Function-return-values-value-returning functions.excalidraw.md"
+    "docs/3-5-More-debugging-tactics.md"
   ]
 }

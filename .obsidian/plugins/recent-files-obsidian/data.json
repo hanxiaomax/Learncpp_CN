@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "6-x-Chapter-6-summary-and-quiz",
+      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
+    },
+    {
       "basename": "6-15-Unnamed-and-inline-namespaces",
       "path": "docs/6-15-Unnamed-and-inline-namespaces.md"
     },
@@ -67,10 +71,6 @@
     {
       "basename": "6-10-Static-local-variables",
       "path": "docs/6-10-Static-local-variables.md"
-    },
-    {
-      "basename": "6-x-Chapter-6-summary-and-quiz",
-      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
     },
     {
       "basename": "7-11-Halts-exiting-your-program-early",
