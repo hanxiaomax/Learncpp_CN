@@ -36,8 +36,8 @@ tags:
 - 具有[[static-storage-duration|静态存储持续时间]]的变量，在程序开始时创建，在程序结束时销毁，包括：
     -  [[global-variable|全局变量]]
     -  [[static-variables|静态局部变量]]
-- 具有**动态存储持续**时间的变量在可以gen'hwith 动态存储持续dynamic duration** are created and destroyed by programmer request. This includes:
-    -   Dynamically allocated variables
+- 具有[[dynamic-duration|动态存储持续时间]]时间的变量在可以根据程序员的需要创建和销毁，包括：
+    -   动态分配的变量
 
 ## 链接小结
 
@@ -65,19 +65,19 @@ Also note that functions have external linkage by default. They can be made inte
 
 ## 变量作用域、持续时间和链接小结
 
-Because variables have scope, duration, and linkage, let’s summarize in a chart:
+因为变量具有作用域、持续时间和链接属性，这里我们使用表格对它们进行总结：
 
-|Type	|Example	|Scope	|Duration	|Linkage	|Notes|
+|类型	|例子	|作用域	|持续时间	|链接属性	|备注|
 |---|---|---|---|---|---|
-|Local variable	|int x;	|Block	|Automatic	|None	||
-|Static local variable	|static int s_x;	|Block	|Static	|None	||
-|Dynamic variable	|int \*x { new int{} };	|Block	|Dynamic	|None	||
-|Function parameter	|void foo(int x)	|Block	|Automatic	|None	||
-|External non-constant global variable	|int g_x;	|File	|Static	|External	|Initialized or uninitialized|
-|Internal non-constant global variable	|static int g_x;	|File	|Static	|Internal	|Initialized or uninitialized|
-|Internal constant global variable	|constexpr int g_x { 1 };	|File	|Static	|Internal	|Must be initialized|
-|External constant global variable	|extern const int g_x { 1 };	|File	|Static	|External	|Must be initialized|
-|Inline constant global variable (C++17)	|inline constexpr int g_x { 1 };	|File	|Static	|External	|Must be initialized|
+|局部变量	|`int x;`	|块	|自动	|无	|      |
+|静态局部变量	|`static int s_x;`	|块	|静态	|无	| 
+|动态变量	|`int \*x { new int{} };`	|块	|动态	|无	||
+|函数形参	|`void foo(int x)`	|块	|自动	|无	||
+|外部非常量全局变量 |`int g_x;`	|文件	|静态	|外部	|Initialized or uninitialized|
+|内部 non-constant global variable	|`static int g_x;`	|文件	|静态	|内部	|Initialized or uninitialized|
+|Internal constant global variable	|`constexpr int g_x { 1 };`	|文件	|静态	|内部	|Must be initialized|
+|External constant global variable	|`extern const int g_x { 1 };`	|文件	|静态	|外部	|Must be initialized|
+|Inline constant global variable (C++17)	|`inline constexpr int g_x { 1 };`	|文件	|静态	|外部	|Must be initialized|
 
 ## 前向声明小结
 
