@@ -8,25 +8,26 @@ type: translation
 tags:
 - summary
 - C++17
+- C++20
 ---
 
 ## 章节小结
 
 本章的介绍了很多内容。你做的很好！
 
-A compound statement or block is a group of zero or more statements that is treated by the compiler as if it were a single statement. Blocks begin with a `{` symbol, end with a `}` symbol, with the statements to be executed placed in between. Blocks can be used anywhere a single statement is allowed. No semicolon is needed at the end of a block. Blocks are often used in conjunction with `if statements` to execute multiple statements.
+**复合语句**或者**语句块**（[[6-1-Compound-statements-blocks|6.1 - 复合语句（语句块）]]）是一组0个或多个语句组成的集合，它们被编译器看做一个整体，就好像一个单一的语句一样。语句块从 `{` 符号开始，到 `}` 符号结束，其中包含了所有的语句。在任何允许使用单一语句的地方，也都可以使用语句块。语句块的结束处不需要使用分号。语句块通常会和[[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]一起使用。
 
-User-defined namespaces are namespaces that are defined by you for your own declarations. Namespaces provided by C++ (such as the `global namespace`) or by libraries (such as `namespace std`) are not considered user-defined namespaces.
+**用户定义的命名空间**（[[6-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]）指的是你为了自己的声明而创建的命名空间。由C++（全局命名空间）或标准库（`std`命名空间）提供的命名空间不属于用户自定义命名空间。
 
-You can access a declaration in a namespace via the scope resolution operator (::). The scope resolution operator tells the compiler that identifier specified by the right-hand operand should be looked for in the scope of the left-hand operand. If no left-hand operand is provided, the global namespace is assumed.
+我们可以通过[[scope-resolution-operator|作用域解析运算符]](`::`)来访问命名空间中的声明。作用域解析运算符告诉编译器到运算符左操作数中去查找右操作数。如果不提供左操作数，则会使用全局作用域。
 
-Local variables are variables defined within a function (including function parameters). Local variables have block scope, meaning they are in-scope from their point of definition to the end of the block they are defined within. Local variables have automatic storage duration, meaning they are created at the point of definition and destroyed at the end of the block they are defined in.
+局部变量（[[6-3-Local-variables|6.3 - 局部变量]]）指的是定义在函数内部的变量（包括函数的[[parameters|形参]]）。局部变量具有语句块作用域，也就是说，它的作用域从变量定义开始，到语句块结束为止。局部变量具有[[automatic-storage-duration|自动存储持续时间]]，也就是说它在定义时被创建，在离开语句块时被销毁。
 
-A name declared in a nested block can shadow or name hide an identically named variable in an outer block. This should be avoided.
+声明在嵌套语句块中的变量会对外层语句块中的同名变量形成**变量遮蔽**（[[6-5-Variable-shadowing-name-hiding|6.5 - 变量遮蔽]]）。变量遮蔽应当被避免。
 
-Global variables are variables defined outside of a function. Global variables have file scope, which means they are visible from the point of declaration until the end of the file in which they are declared. Global variables have static duration, which means they are created when the program starts, and destroyed when it ends. Avoid dynamic initialization of static variables whenever possible.
+全局变量（[[6-4-Introduction-to-global-variables|6.4 - 全局变量]]）指的是定义在函数外部的变量。 全局变量具有文件作用域，这也就意味着它的可见范围从变量定义开始到文件结束为止。全局变量具有[[static-storage-duration|静态存储持续时间]]，也是说该变量会在程序开始时创建，程序结束时销毁。尽可能避免对静态变量的动态 初始化。
 
-An identifier’s linkage determines whether other declarations of that name refer to the same object or not. Local variables have no linkage. Identifiers with internal linkage can be seen and used within a single file, but it is not accessible from other files. Identifiers with external linkage can be seen and used both from the file in which it is defined, and from other code files (via a forward declaration).
+一个标识符的链接属性，决定了该标识符的qAn identifier’s linkage determines whether other declarations of that name refer to the same object or not. Local variables have no linkage. Identifiers with internal linkage can be seen and used within a single file, but it is not accessible from other files. Identifiers with external linkage can be seen and used both from the file in which it is defined, and from other code files (via a forward declaration).
 
 Avoid non-const global variables whenever possible. Const globals are generally seen as acceptable. Use inline variablesfor global constants if your compiler is C++17 capable.
 
