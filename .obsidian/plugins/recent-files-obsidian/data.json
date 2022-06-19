@@ -5,6 +5,14 @@
       "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
     {
+      "basename": "explicit-type-conversion",
+      "path": "docs/explicit-type-conversion.md"
+    },
+    {
+      "basename": "implicit-type-conversion",
+      "path": "docs/implicit-type-conversion.md"
+    },
+    {
       "basename": "bit",
       "path": "docs/bit.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "1-3-Introduction-to-objects-and-variables",
       "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     }
   ],
   "omittedPaths": [],

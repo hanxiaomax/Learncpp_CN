@@ -129,14 +129,14 @@
   "active": "f0110399c380d077",
   "lastOpenFiles": [
     "docs/8-1-Implicit-type-conversion-coercion.md",
+    "docs/explicit-type-conversion.md",
+    "docs/implicit-type-conversion.md",
     "docs/bit.md",
     "docs/8-x-Chapter-8-summary-and-quiz.md",
     "docs/4-x-Chapter-4-summary-and-quiz.md",
     "docs/7-1-Control-flow-introduction.md",
     "docs/6-11-Scope-duration-and-linkage-summary.md",
     "docs/6-x-Chapter-6-summary-and-quiz.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
-    "docs/6-4-Introduction-to-global-variables.md"
+    "docs/6-12-Using-declarations-and-using directives.md"
   ]
 }

@@ -8,7 +8,9 @@ type: translation
 tags:
 - type conversion
 ---
-
+??? note "关键点速记"
+	- 类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）
+	- C++ 中的大部分类型转换都是隐式类型转换。它会发生在如下时机：
 
 ## 类型转换简介
 
@@ -25,84 +27,85 @@ float f{ 3 }; // initialize floating point variable with int 3
 
 将一种数据类型转换为另外一种数据类型的过程，称为类型转换。
 
-类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）。我们会在本节课介绍[[隐式类型转换（implicit type conversion）]]We’ll cover implicit type conversion in this lesson, and explicit type conversions (casting) in upcoming lesson [8.5 -- Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/).
+类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）。我们会在本节课介绍[[implicit-type-conversion|隐式类型转换(implicit type conversion)]]，然后在下节课 [[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换]] 中介绍[[explicit-type-conversion|显式类型转换(Explicit type conversion)]]。
 
-## Implicit type conversion
+## 隐式类型转换
 
-Implicit type conversion (also called automatic type conversion or coercion) is performed automatically by the compiler when one data type is required, but a different data type is supplied. The vast majority of type conversions in C++ are implicit type conversions. For example, implicit type conversion happens in all of the following cases:
+隐式类型转换（也叫做自动类型转换）由编译器在需要时（需要某个变量类型但却给定了另外的类型）自动完成。C++ 中的大部分类型转换都是隐式类型转换。它会发生在如下时机：
 
-When initializing (or assigning a value to) a variable with a value of a different data type:
+当使用不同类型的变量对另外一种类型的变量进行初始化或赋值的时候：
 
 ```cpp
-double d{ 3 }; // int value 3 implicitly converted to type double
-d = 6; // int value 6 implicitly converted to type double
+double d{ 3 }; // int 3 隐式转换为 double 类型
+d = 6; // int 6 隐式转换为 double 类型
 ```
 
-
-When the type of a return value is different from the function’s declared return type:
+当函数的实际返回值类型不同于函数定义的返回值类型时：
 
 ```cpp
 float doSomething()
 {
-    return 3.0; // double value 3.0 implicitly converted to type float
+    return 3.0; // double 3.0 隐式转换为 float 类型
 }
 ```
 
-
-When using certain binary operators with operands of different types:
+当对不同类型的操作数使用某些二元操作符时：
 
 ```cpp
-double division{ 4.0 / 3 }; // int value 3 implicitly converted to type double
+double division{ 4.0 / 3 }; // int 3 隐式转换为 double 类型
 ```
 
-When using a non-Boolean value in an if-statement:
+当在if语句中使用非布尔值时：
 
 ```cpp
-if (5) // int value 5 implicitly converted to type bool
+if (5) // int 5 隐式转换为 bool 类型
 {
 }
 ```
 
 
-When an argument passed to a function is a different type than the function parameter:
+当传递给函数的实参与函数形参类型不同时：
 
 ```cpp
 void doSomething(long l)
 {
 }
 
-doSomething(3); // int value 3 implicitly converted to type long
+doSomething(3); // int 3 隐式转换为 long 类型
 ```
 
 
-## What happens when a type conversion is invoked
+## 当类型转换触发时会发生什么
 
-When a type conversion is invoked (whether implicitly or explicitly), the compiler will determine whether it can convert the value from the current type to the desired type. If a valid conversion can be found, then the compiler will produce a new value of the desired type. Note that type conversions don’t change the value or type of the value or object being converted.
+当类型转换触发时(无论是隐式还是显式)，编译器需要确定是否可以将值从当前类型转换为所需的类型。如果可以找到有效的转换，那么编译器将生成所需类型的新值。注意，类型转换不会改变被转换的值或对象的值或类型。
 
-If the compiler can’t find an acceptable conversion, then the compilation will fail with a compile error. Type conversions can fail for any number of reasons. For example, the compiler might not know how to convert a value between the original type and the desired type. In other cases, statements may disallow certain types of conversions. For example:
+如果编译器无法找到可用的转换，则会产生编译错误。类型转换失败的原因有很多。例如，编译器可能不知道如何在原始类型和所需类型之间转换值。或者，语句可能不允许某些类型的转换。例如:
 
 ```cpp
-int x { 3.5 }; // brace-initialization disallows conversions that result in data loss
+int x { 3.5 }; // 括号类型转换不允许类型转换以避免数据丢失
 ```
 
-COPY
+即使编译器知道如何将 `double` 类型转换为 `int` 类型，但在使用括号初始化时，这样的转换是不允许的。
 
-Even though the compiler knows how to convert a `double` value to an `int` value, such conversions are disallowed when using brace-initialization.
+还有一些情况下，编译器可能无法确定几种可能的类型转换中哪一种是最适合使用的。我们会在 [[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]] 中进行介绍。
 
-There are also cases where the compiler may not be able to figure out which of several possible type conversions is unambiguously the best one to use. We’ll see examples of this in lesson [8.11 -- Function overload resolution and ambiguous matches](https://www.learncpp.com/cpp-tutorial/function-overload-resolution-and-ambiguous-matches/).
+那么编译器实际上是如何确定它是否可以将一个值从一种类型转换为另一种类型的呢?
 
-So how does the compiler actually determine whether it can convert a value from one type to another?
-
-## The standard conversions
+## 标准转换
 
 The C++ language standard defines how different fundamental types (and in some cases, compound types) can be converted to other types. These conversion rules are called the standard conversions.
 
 The standard conversions can be broadly divided into 4 categories, each covering different types of conversions:
 
--   Numeric promotions (covered in lesson [8.2 -- Floating-point and integral promotion](https://www.learncpp.com/cpp-tutorial/floating-point-and-integral-promotion/))
--   Numeric conversions (covered in lesson [8.3 -- Numeric conversions](https://www.learncpp.com/cpp-tutorial/numeric-conversions/))
--   Arithmetic conversions (covered in lesson [8.4 -- Arithmetic conversions](https://www.learncpp.com/cpp-tutorial/arithmetic-conversions/))
--   Other conversions (which includes various pointer and reference conversions)
+c++语言标准定义了不同的基本类型(在某些情况下是复合类型)如何转换为其他类型。这些转换规则称为标准转换。
+
+标准换算方式大致可分为四类，每一类涵盖不同的换算方式:
+
+
+- Numeric promotions (covered in lesson [[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]])
+- Numeric conversions (covered in lesson [[8-3-Numeric-conversions|8.3 - 数值转换]])
+- Arithmetic conversions (covered in lesson [[8-4-Arithmetic-conversions|8.4 - 算数转换]])
+- Other conversions (which includes various pointer and reference conversions)
 
 When a type conversion is needed, the compiler will see if there are standard conversions that it can use to convert the value to the desired type. The compiler may apply zero, one, or more than one standard conversions in the conversion process.
 
