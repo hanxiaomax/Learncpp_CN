@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+            "file": "docs/8-1-Implicit-type-conversion-coercion.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+                "file": "docs/8-1-Implicit-type-conversion-coercion.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+                "file": "docs/8-1-Implicit-type-conversion-coercion.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "f0110399c380d077",
   "lastOpenFiles": [
-    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
-    "docs/6-4-Introduction-to-global-variables.md",
+    "docs/8-1-Implicit-type-conversion-coercion.md",
+    "docs/bit.md",
+    "docs/8-x-Chapter-8-summary-and-quiz.md",
+    "docs/4-x-Chapter-4-summary-and-quiz.md",
+    "docs/7-1-Control-flow-introduction.md",
     "docs/6-11-Scope-duration-and-linkage-summary.md",
-    "docs/dynamic-duration.md",
+    "docs/6-x-Chapter-6-summary-and-quiz.md",
     "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
-    "docs/global-variable.md",
-    "docs/6-10-Static-local-variables.md",
-    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
-    "docs/6-8-Why-non-const-global-variables-are-evil.md"
+    "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+    "docs/6-4-Introduction-to-global-variables.md"
   ]
 }

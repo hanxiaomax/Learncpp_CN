@@ -10,23 +10,22 @@ tags:
 ---
 
 
-## Introduction to type conversion
+## 类型转换简介
 
-The value of an object is stored as a sequence of bits, and the data type of the object tells the compiler how to interpret those bits into meaningful values. Different data types may represent the “same” number differently. For example, the integer value 3 might be stored as binary `0000 0000 0000 0000 0000 0000 0000 0011`, whereas floating point value 3.0 might be stored as binary `0100 0000 0100 0000 0000 0000 0000 0000`.
+对象的值是以一系列的[[bit|比特]]存放的，而数据类型则告诉编译器应该如何将这一系列比特解析成有意义的值。不同的数据类型可以以不同的方式表示*相同*的值。例如，整型值 3 可能被存放为二进制  `0000 0000 0000 0000 0000 0000 0000 0011`，而浮点数 3.0 则可能被存放为二进制 `0100 0000 0100 0000 0000 0000 0000 0000`。
 
-So what happens when we do something like this?
+那么当我们这样做的时候会发生什么呢?
 
 ```cpp
 float f{ 3 }; // initialize floating point variable with int 3
 ```
 
 
+这种情况下，编译器不能仅仅把表示`int`类型值 3 的比特拷贝到内存中表示 `float` 变量`f`。相反，它必须将整型值 3 转换为等价的浮点数，然后才能存放到内存中表示变量`f`。
 
-In such a case, the compiler can’t just copy the bits representing the `int` value `3` into the memory allocated for `float` variable `f`. Instead, it needs to convert the integer value `3` to the equivalent floating point number, which can then be stored in the memory allocated for `f`.
+将一种数据类型转换为另外一种数据类型的过程，称为类型转换。
 
-The process of converting a value from one data type to another data type is called a type conversion.
-
-Type conversion can be invoked in one of two ways: either implicitly (as needed by the compiler), or explicitly (when requested by the programmer). We’ll cover implicit type conversion in this lesson, and explicit type conversions (casting) in upcoming lesson [8.5 -- Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/).
+类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）。我们会在本节课介绍[[隐式类型转换（implicit type conversion）]]We’ll cover implicit type conversion in this lesson, and explicit type conversions (casting) in upcoming lesson [8.5 -- Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/).
 
 ## Implicit type conversion
 

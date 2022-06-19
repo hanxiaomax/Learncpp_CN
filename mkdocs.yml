@@ -136,10 +136,40 @@ nav:
       - "6-14-Constexpr-and-consteval-functions.md"
       - "6-15-Unnamed-and-inline-namespaces.md"
       - "6-x-Chapter-6-summary-and-quiz.md"
-
-
-    # - 7. 控制流和错误处理: index.md
-    # - 8. 类型转换和函数重载: index.md
+    - 7. 控制流和错误处理: 
+      - "7-1-Control-flow-introduction.md"
+      - "7-2-If-statements-and-blocks.md"
+      - "7-3-Common-if-statement-problems.md"
+      - "7-4-Switch-statement-basics.md"
+      - "7-5-Switch-fallthrough-and-scoping.md"
+      - "7-6-Goto-statements.md"
+      - "7-7-Intro-to-loops-and-while-statements.md"
+      - "7-8-Do-while-statements.md"
+      - "7-9-For-statements.md"
+      - "7-10-Break-and-continue.md"
+      - "7-11-Halts-exiting-your-program-early.md"
+      - "7-12-Introduction-to-testing-your-code.md"
+      - "7-13-Code-coverage.md"
+      - "7-14-Common-semantic-errors-in-c.md"
+      - "7-15-Detecting-and-handling-errors.md"
+      - "7-16-std-cin-and-handling-invalid-input.md"
+    - 8. 类型转换和函数重载: 
+      - "8-1-Implicit-type-conversion-coercion.md"
+      - "8-2-Floating-point-and-integral-promotion.md"
+      - "8-3-Numeric-conversions.md"
+      - "8-4-Arithmetic-conversions.md"
+      - "8-5-Explicit-type-conversion-casting-and-static-cast.md"
+      - "8-6-Typedefs-and-type-aliases.md"
+      - "8-7-Type-deduction-for-objects-using-the auto-keyword.md"
+      - "8-8-Type-deduction-for-functions.md"
+      - "8-9-Introduction-to-function-overloading.md"
+      - "8-10-Function-overload-differentiation.md"
+      - "8-11-Function-overload-resolution-and-ambiguous-matches.md"
+      - "8-12-Default-arguments.md"
+      - "8-13-Function-templates.md"
+      - "8-14-Function-template-instantiation.md"
+      - "8-15-Function-templates-with-multiple-template-types.md"
+      - "8-x-Chapter-8-summary-and-quiz.md"
     # - 9. 复合类型-引用和指针: index.md
     # - 10. 复合类型-枚举和结构体: index.md
     # - 11. 数组，字符串和动态内存分配: index.md
