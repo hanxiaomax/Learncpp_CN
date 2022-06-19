@@ -14,6 +14,7 @@ tags:
 
 	- 匿名命名空间中的内容可以在父命名空间中访问，但是它们具有内部链接，只能在该文件中访问
 	- 对于函数来说，把它们定义在匿名命名空间中的效果和把它们定义为`static`类型的效果是完全一样的
+	- 内联命名空间常用来对特定的内容进行版本管理。和匿名命名空间类似，定义在内联命名空间中的内容都属于其父命名空间。但内联命名空间并不会给其内部定义的内容赋予[[internal-linkage|内部链接]]。
 
 C++ 支持的命名空间中，只要有两种值得我们去了解。本课程不会建立在这些基础上，所以你可以把这节课当做选修。 
 
@@ -68,11 +69,11 @@ int main()
 ```
 
 
-匿名命名空间通常在有很多内容的访问需要被限定在给定文件中时，因为j`Unnamed namespaces` are typically used when you have a lot of content that you want to ensure stays local to a given file, as it’s easier to cluster such content in an `unnamed namespace` than individually mark all declarations as `static`. `Unnamed namespaces` will also keep `user-defined types` (something we’ll discuss in a later lesson) local to the file, something for which there is no alternative equivalent mechanism to do.
+在有很多内容需要被限定在给定文件中时，匿名命名空间就很有用。毕竟和将它们逐个定义为`static`相比，使用匿名命名空间要方便的多。匿名命名空间还可以把**用户定义类型**（稍后会介绍）限定在文件中，这个问题没有其他可用的方法。
 
 ## 内联命名空间
 
-Now consider the following program:
+考虑下面的程序：
 
 ```cpp
 #include <iostream>
@@ -90,27 +91,26 @@ int main()
 }
 ```
 
-
-This prints:
+打印：
 
 ```
 v1
 ```
 
-Pretty straightforward, right?
+很简单，对吧？
 
-But let’s say you’re not happy with `doSomething`, and you want to improve it in some way that changes how it behaves. But if you do this, you risk breaking existing programs using the older version. How do you handle this?
+但是，假设你想要升级一下 `doSomething` 函数并改变它的行为。但是这样的话，仍然使用老版本 `doSomething` 函数的代码就会遭到破坏。有什么办法解决这个问题呢？
 
-One way would be to create a new version of the function with a different name. But over the course of many changes, you could end up with a whole set of almost-identically named functions (`doSomething`, `doSomething_v2`, `doSomething_v3`, etc…).
+一种办法是重新定义一个名字不同的新版本的函数。但是，随着你一次次地修改函数，最终的下场就是你会拥有一堆名字几乎相同的函数（`doSomething`, `doSomething_v2`, `doSomething_v3` 等等）。
 
-An alternative is to use an inline namespace. An inline namespace is a namespace that is typically used to version content. Much like an `unnamed namespace`, anything declared inside an `inline namespace` is considered part of the parent namespace. However, `inline namespaces` don’t give everything `internal linkage`.
+另外一种方法是使用**内联命名空间**。内联命名空间常用来对特定的内容进行版本管理。和匿名命名空间类似，定义在内联命名空间中的内容都属于其父命名空间。不过，内联命名空间并不会给其内部定义的内容赋予[[internal-linkage|内部链接]]。
 
-To define an inline namespace, we use the `inline` keyword:
+定义内联命名空间，需要使用`inline`关键字：
 
 ```cpp
 #include <iostream>
 
-inline namespace v1 // declare an inline namespace named v1
+inline namespace v1 // 声明内联命名空间 v1
 {
     void doSomething()
     {
@@ -118,7 +118,7 @@ inline namespace v1 // declare an inline namespace named v1
     }
 }
 
-namespace v2 // declare a normal namespace named v2
+namespace v2 // 声明内联命名空间 v2
 {
     void doSomething()
     {
@@ -137,7 +137,7 @@ int main()
 }
 ```
 
-This prints:
+打印结果：
 
 ```
 v1
