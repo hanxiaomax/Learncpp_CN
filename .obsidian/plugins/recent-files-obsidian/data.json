@@ -5,6 +5,10 @@
       "path": "docs/8-3-Numeric-conversions.md"
     },
     {
+      "basename": "narrowing-convertions",
+      "path": "docs/narrowing-convertions.md"
+    },
+    {
       "basename": "8-1-Implicit-type-conversion-coercion",
       "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "7-4-Switch-statement-basics",
       "path": "docs/7-4-Switch-statement-basics.md"
-    },
-    {
-      "basename": "7-3-Common-if-statement-problems",
-      "path": "docs/7-3-Common-if-statement-problems.md"
     }
   ],
   "omittedPaths": [],

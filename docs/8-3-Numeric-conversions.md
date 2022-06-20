@@ -10,7 +10,17 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- 符合数值提升规则的类型转换是首先是数值提升，不是数值转换
+	- 数值转换涵盖了数值提升规则未涉及的其他类型转换
+	- 5 种基本数值转换：
+		- 整型转整型
+		- 浮点转浮点
+		- 浮点转整型
+		- 整型转浮点
+		- 整型或浮点转布尔
+	- 数值提升总是安全的，但是数值转换不一定，可能造成数据或精度丢失
+	- 缩窄转换会造成精度丢失
 
 在上一节课 ([[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]) 中，我们介绍了[[numeric promotions|数值提升]]，它属于一种类型转换，可以将更窄的数据类型转换为更宽的数据类型(通常是 `int` 或 `double`) 使其可以被更高效地处理。
 
@@ -19,57 +29,46 @@ C++ 支持另一种类数值类型转换，称为[[numeric-conversions|数值转
 
 !!! tldr "关键信息"
 
-	Any type conversion covered by the numeric promotion rules ([[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]) is a numeric promotion, not a numeric conversion.
+	任何符合**数值提升**规则（[[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]）的类型转换，都属于[[numeric promotions|数值提升]]而不是数值转换。
 
-There are five basic types of numeric conversions.
+#### 五种基本的数值转换：
 
-1.  Converting an integral type to any other integral type (excluding integral promotions):
-
-```cpp
-short s = 3; // convert int to short
-long l = 3; // convert int to long
-char ch = s; // convert short to char
-```
-
-
-2.  Converting a floating point type to any other floating point type (excluding floating point promotions):
-
-```cpp
-float f = 3.0; // convert double to float
-long double ld = 3.0; // convert double to long double
-```
-
-
-3.  Converting a floating point type to any integral type:
-
-```cpp
-int i = 3.5; // convert double to int
-```
-
-
-4.  Converting an integral type to any floating point type:
-
-```cpp
-double d = 3; // convert int to double
-```
-
-5.  Converting an integral type or a floating point type to a bool:
-
-```cpp
-bool b1 = 3; // convert int to bool
-bool b2 = 3.0; // convert double to bool
-```
+1.  把一种整型类型转换为另外一种整型类型（整型提升除外）
+	```cpp
+	short s = 3; // convert int to short
+	long l = 3; // convert int to long
+	char ch = s; // convert short to char
+	```
+1.  把一种浮点类型转换为另外一种浮点类型（浮点提升除外）:
+	```cpp
+	float f = 3.0; // convert double to float
+	long double ld = 3.0; // convert double to long double
+	```
+3.  将浮点数类型转换为任何整型类型：
+	```cpp
+	int i = 3.5; // convert double to int
+	```
+4.  将整型类型转换为任何浮点类型：
+	```cpp
+	double d = 3; // convert int to double
+	```
+1.  将整型或浮点型转换为bool类型：
+	```cpp
+	bool b1 = 3; // convert int to bool
+	bool b2 = 3.0; // convert double to bool
+	```
 
 
 !!! cite "题外话"
 
-    Because brace initialization disallows some numeric conversions (more on this in a moment), we use copy initialization in this lesson (which does not have any such limitations) in order to keep the examples simple.
+	由于大括号初始化不允许进行一些数值转换(稍后会详细介绍)，为了使示例简单，我们在本课中使用了复制初始化(这种初始化方法没有这样的限制)。
+
 
 ## 缩窄转换
 
-Unlike a numeric promotion (which is always safe), a numeric conversion may (or may not) result in the loss of data or precision.
+与数值提升(始终是安全的)不同，数值转换可能(也可能不会)导致数据或精度的丢失。
 
-Some numeric conversions are always safe (such as `int` to `long`, or `int` to `double`). Other numeric conversions, such as `double` to `int`, may result in the loss of data (depending on the specific value being converted and/or the range of the underlying types):
+有些数值转换总是安全的(例如 `int` 到 `long` ，或者 `int` 到 `double`)。其他数值转换，例如 `double` 到 `int` ，可能会导致数据丢失(取决于转换的特定值和/或基础类型的范围)：
 
 ```cpp
 int i1 = 3.5; // the 0.5 is dropped, resulting in lost data
@@ -77,20 +76,20 @@ int i2 = 3.0; // okay, will be converted to value 3, so no data is lost
 ```
 
 
-In C++, a [[narrowing-convertions|缩窄转换(narrowing conversion)]] is a numeric conversion that may result in the loss of data. Such narrowing conversions include:
+在 C++ 中[[narrowing-convertions|缩窄转换(narrowing conversion)]] 是一种可能会造成数据丢失的数值转换。这种缩窄转换包括为：
 
--   From a floating point type to an integral type.
--   From a wider floating point type to a narrower floating point type, unless the value being converted is constexpr and is in range of the destination type (even if the narrower type doesn’t have the precision to store the whole number).
--   From an integral to a floating point type, unless the value being converted is constexpr and is in range of the destination type and can be converted back into the original type without data loss.
--   From a wider integral type to a narrower integral type, unless the value being converted is constexpr and after integral promotion will fit into the destination type.
+- 浮点数类型转换为整型类型；
+- 较宽的浮点类型转换为较窄的浮点类型，除非被转换的值是 `constexpr` 类型且它的范围在目标类型范围内(即使较窄的类型不具备存放完整数据的精度）。
+- 从整数类型转换为浮点类型，除非转换的值是 `constexpr` 且在目标类型范围内，并且可以转换回原始类型而不丢失数据。
+- 从较宽的整型转换为较窄的整型，除非转换的值是 constexpr 且整型提升后适合目标类型。
 
-The good news is that you don’t need to remember these. Your compiler will usually issue a warning (or error) when it determines that an implicit narrowing conversion is required.
+好消息是你不需要记住这些。当编译器确定需要隐式缩窄转换时，它通常会发出警告(或错误)。
 
 !!! warning "注意"
 
-	Compilers will often _not_ warn when converting a signed int to an unsigned int, or vice-versa, even though these are narrowing conversions. Be extra careful of inadvertent conversions between these types (particularly when passing an argument to a function taking a parameter of the opposite sign).
-
-For example, when compiling the following program:
+	当将`signed int`转换为`unsigned int`时，编译器通常会**不会**发出警告，反之亦然，即使这些是缩窄转换。要特别小心这些类型之间无意的转换(特别是当向带相反符号形参的函数传递实参时)。
+	
+例如：For example, when compiling the following program:
 
 ```cpp
 int main()
