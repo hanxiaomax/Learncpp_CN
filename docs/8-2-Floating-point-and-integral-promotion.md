@@ -11,7 +11,12 @@ tags:
 
 ??? note "关键点速记"
 
+	- 数值提升属于一类类型转换，它将更窄的数据类型（例如`char`）转换为更宽的数据类型（例如 `int` 或 `double`）使其能够更高效地被处理，同时也更不容易溢出。
+	- 数值提升是安全的，所以编译器可以根据需要自由地使用数字提升，并且在这样做时不会发出警告。
+	- `float` 类型的值可以被转换 `double`。
 	- 
+
+
 
 在 [[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]] 中我们介绍过，C++ 只能保证每种基础类型最小的尺寸。而这些类型的具体尺寸要看具体的编译器和体系结构。
 
@@ -33,7 +38,7 @@ tags:
 所有数值提升都是[[value-preserving|值保留(value-preserving)]]的，这意味着原始类型中的所有值都可以在不损失数据或精度的情况下进行表示。因为数值提升是安全的，所以编译器可以根据需要自由地使用数字提升，并且在这样做时不会发出警告。
 
 
-## Numeric promotion reduces redundancy
+## 数值提升能够避免冗余代码
 
 数值提升还可以解决其他问题。考虑这样一个场景，如果你希望编写一个函数，打印 `int`类型的值：
 
@@ -46,21 +51,22 @@ void printInt(int x)
 }
 ```
 
-程序非常简单。但是，如果你还希望打印`short`或者`char`类型的值呢？如果没有类型转换的支持，我们就While this is straightforward, what happens if we want to also be able to print a value of type `short`, or type `char`? If type conversions did not exist, we’d have to write a different print function for `short` and another one for `char`. And don’t forget another version for `unsigned char`, `signed char`, `unsigned short`, `wchar_t`, `char8_t`, `char16_t`, and `char32_t`! You can see how this quickly becomes unmanageable.
+程序非常简单。但是，如果你还希望打印`short`或者`char`类型的值呢？如果没有类型转换的支持，我们就必须编写另外两个不同的函数分别用于打印`short`或者`char`类型的值。更不用说还有其他类型了（ `unsigned char`, `signed char`, `unsigned short`, `wchar_t`, `char8_t`, `char16_t`和`char32_t`）。很显然，这样的代码是不可维护的。
 
-Numeric promotion comes to the rescue here: we can write functions that have `int` and/or `double` parameters (such as the `printInt()` function above). That same code can then be called with arguments of types that can be numerically promoted to match the types of the function parameters.
+数值提升在这里起到了关键的作用：我们可以编写具有 `int` 和/或 `double` 形参的函数(比如上面的 `printInt()` 函数)。然后使用类型能够在调用函数是通过数值提升类型转换进行匹配的参数即可。
 
 ## 数值提升分类
 
-The numeric promotion rules are divided into two subcategories: `integral promotions` and `floating point promotions`.
+数值提升还能够进一步分为两种子类型：整型提升和浮点数提升。
+
 
 ## 浮点数提升
 
-We’ll start with the easier one.
+先从简单的开始。
 
-Using the floating point promotion rules, a value of type `float` can be converted to a value of type `double`.
+基于浮点数提升的规则，`float` 类型的值可以被转换 `double`。
 
-This means we can write a function that takes a `double` and then call it with either a `double` or a `float` value:
+这意味着我们可以编写一个接受 `double` 参数的函数，然后用 `double`或`float` 值调用它：
 
 ```cpp
 #include <iostream>
@@ -79,22 +85,23 @@ int main()
 }
 ```
 
-In the second call to `printDouble()`, the `float` literal `4.0f` is promoted into a `double`, so that the type of argument matches the type of the function parameter.
+
+在第二次调用 `printDouble()` 时 `float` 字面量 `4.0f` 被提升为 `double` ，因此实参的类型与函数形参的类型匹配。
 
 ## 整型提升
 
-The integral promotion rules are more complicated.
+整型数值提升就更加复杂了。
 
-Using the integral promotion rules, the following conversions can be made:
+基于整型数值提升的规则，可以进行如下的类型转换：
+-   无符号`char`或者有符号`char`可以被转换为`int`；
+-   无符号`char`，`char8_t` 以及无符号`short`可以被转换为 `int`，只要 `int`的范围足够表示该类型的范围，否则会转换为无符号`int`；
+-   如果 `char` 默认有符号的， 则会遵循上述有符号`char`的转换规则。如果默认是无符号的，则遵循上述无符号`char`的转换规则；
+-   `bool` 可以被转换为 `int`，`false`转换为 `0`，`true`转换为`1`。
 
--   signed char or signed short can be converted to int.
--   unsigned char, char8_t, and unsigned short can be converted to int if int can hold the entire range of the type, or unsigned int otherwise.
--   If char is signed by default, it follows the signed char conversion rules above. If it is unsigned by default, it follows the unsigned char conversion rules above.
--   bool can be converted to int, with false becoming 0 and true becoming 1.
+还有一些不常用的整型转换规则可以在[这里](https://en.cppreference.com/w/cpp/language/implicit_conversion#Integral_promotion)找到。
 
-There are a few other integral promotion rules that are used less often. These can be found at [https://en.cppreference.com/w/cpp/language/implicit_conversion#Integral_promotion](https://en.cppreference.com/w/cpp/language/implicit_conversion#Integral_promotion).
 
-In most cases, this lets us write a function taking an `int` parameter, and then use it with a wide variety of other integral types. For example:
+在大多数情况下，这允许我们编写一个接受形参类型为 `int` 的函数，然后与其他各种整型一起使用。例如:
 
 ```cpp
 #include <iostream>
