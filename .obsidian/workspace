@@ -131,14 +131,14 @@
   "active": "f0110399c380d077",
   "lastOpenFiles": [
     "docs/8-2-Floating-point-and-integral-promotion.md",
+    "docs/value-preserving.md",
+    "docs/numeric promotions.md",
     "docs/8-1-Implicit-type-conversion-coercion.md",
     "docs/index.md",
     "docs/1-2-comments.md",
     "docs/8-9-Introduction-to-function-overloading.md",
     "docs/8-8-Type-deduction-for-functions.md",
     "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
-    "docs/8-6-Typedefs-and-type-aliases.md",
-    "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
-    "docs/8-4-Arithmetic-conversions.md"
+    "docs/8-6-Typedefs-and-type-aliases.md"
   ]
 }

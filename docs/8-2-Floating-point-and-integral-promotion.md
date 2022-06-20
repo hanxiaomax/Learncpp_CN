@@ -21,19 +21,21 @@ tags:
 
 	数据类型占用的位数称为宽度。占用的位数越多，宽度也就越宽，而越窄的数据则占用的位数也越少。
 	
-但是，如果 32 位 CPU 需要修改一个 8 位的值（例如`char`类型）时会怎样？Some 32-bit processors (such as the x86 series) can manipulate 8-bit or 16-bit values directly. However, doing so is often slower than manipulating 32-bit values! Other 32-bit CPUs (like the PowerPC), can only operate on 32-bit values, and additional tricks must be employed to manipulate narrower values.
+但是，如果 32 位 CPU 需要修改一个 8 位的值（例如`char`类型）时会怎样？有些 32 位的处理器（例如 x86 系列）可以直接修改 8 位或者 16 位的值。但是这种情况比修改 32 位的数据要慢得多！其他的 32 位 CPU（例如 PowerPC），只能操作 32 位的值，而操作更窄的数据需要一些额外的技巧。
 
 ## 数值提升
 
-Because C++ is designed to be portable and performant across a wide range of architectures, the language designers did not want to assume a given CPU would be able to efficiently manipulate values that were narrower than the natural data size for that CPU.
+因为 C++ 被设计为可以在广泛的平台上进行移植，因此语言的设计者们并不想想假定给定的 CPU 能够高效地操作比自然宽度更窄的数据。
 
-To help address this challenge, C++ defines a category of type conversions informally called the `numeric promotions`. A numeric promotion is the type conversion of a narrower numeric type (such as a `char`) to a wider numeric type (typically `int` or `double`) that can be processed efficiently and is less likely to have a result that overflows.
+为了解决这个挑战，C++ 定义了一种类型的数据转换，其非正式名称叫做[[numeric promotions|数值提升(numeric promotions)]]。数值提升属于一类类型转换，它将更窄的数据类型（例如`char`）转换为更宽的数据类型（例如 `int` 或 `double`）使其能够更高效地被处理，同时也更不容易溢出。
 
-All numeric promotions are value-preserving, which means that all values in the original type are representable without loss of data or precision in the new type. Because such promotions are safe, the compiler will freely use numeric promotion as needed, and will not issue a warning when doing so.
+
+所有数值提升都是[[value-preserving|值保留(value-preserving)]]的，这意味着原始类型中的所有值都可以在不损失数据或精度的情况下进行表示。因为数值提升是安全的，所以编译器可以根据需要自由地使用数字提升，并且在这样做时不会发出警告。
+
 
 ## Numeric promotion reduces redundancy
 
-Numeric promotion solves another problem as well. Consider the case where you wanted to write a function to print a value of type `int`:
+数值提升还可以解决其他问题。考虑这样一个场景，如果你希望编写一个函数，打印 `int`类型的值：
 
 ```cpp
 #include <iostream>
@@ -44,9 +46,7 @@ void printInt(int x)
 }
 ```
 
-COPY
-
-While this is straightforward, what happens if we want to also be able to print a value of type `short`, or type `char`? If type conversions did not exist, we’d have to write a different print function for `short` and another one for `char`. And don’t forget another version for `unsigned char`, `signed char`, `unsigned short`, `wchar_t`, `char8_t`, `char16_t`, and `char32_t`! You can see how this quickly becomes unmanageable.
+程序非常简单。但是，如果你还希望打印`short`或者`char`类型的值呢？如果没有类型转换的支持，我们就While this is straightforward, what happens if we want to also be able to print a value of type `short`, or type `char`? If type conversions did not exist, we’d have to write a different print function for `short` and another one for `char`. And don’t forget another version for `unsigned char`, `signed char`, `unsigned short`, `wchar_t`, `char8_t`, `char16_t`, and `char32_t`! You can see how this quickly becomes unmanageable.
 
 Numeric promotion comes to the rescue here: we can write functions that have `int` and/or `double` parameters (such as the `printInt()` function above). That same code can then be called with arguments of types that can be numerically promoted to match the types of the function parameters.
 
