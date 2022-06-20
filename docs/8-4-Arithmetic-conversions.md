@@ -6,6 +6,7 @@ origin_title: "8.4 — Arithmetic conversions"
 time: 2022-1-2
 type: translation
 tags:
+- arithmetic conversions
 - conversions
 ---
 

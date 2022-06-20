@@ -7,6 +7,7 @@ time: 2022-1-2
 type: translation
 tags:
 - explicit-type-conversion
+- conversions
 - static-cast
 ---
 

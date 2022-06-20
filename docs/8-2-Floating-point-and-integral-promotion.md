@@ -7,6 +7,7 @@ time: 2021-12-30
 type: translation
 tags:
 - numeric promotion
+- conversions
 ---
 
 ??? note "关键点速记"

@@ -7,6 +7,7 @@ time: 2022-3-17
 type: translation
 tags:
 - numeric conversions
+- conversions
 - static_cast
 ---
 
@@ -23,6 +24,11 @@ tags:
 	- 数值提升总是安全的，但是数值转换不一定，可能造成数据或精度丢失
 	- 缩窄转换会造成精度丢失。编译器会在发生隐式缩窄转换时报告错误
 	- 尽可能避免缩窄转换。如果一定要进行转换，使用 `static_cast` 显式地进行缩窄转换。
+	- 一些需要注意的重要规则：
+		- 将值转换为其范围不支持该值的类型将可能导致意想不到的结果
+		- 只要值适合较小类型的范围，从较大的整型或浮点类型转换为同一族的较小类型通常是有效的
+		- 整数转浮点数，只要范围ok就可以
+		- 浮点数转整数，只要范围ok就可以，但是小数部分会丢失
 
 在上一节课 ([[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]) 中，我们介绍了[[numeric promotions|数值提升]]，它属于一种类型转换，可以将更窄的数据类型转换为更宽的数据类型(通常是 `int` 或 `double`) 使其可以被更高效地处理。
 
@@ -197,19 +203,18 @@ std::cout << f << '\n';
 对于浮点数的例子，在更小的类型中可能出现舍入误差，例如：
 
 ```cpp
-float f = 0.123456789; // double value 0.123456789 has 9 significant digits, but float can only support about 7
+float f = 0.123456789; // double 值 0.123456789 有 9 位有效数组，但是 float 只能支持 7 位有效数字
 std::cout << std::setprecision(9) << f << '\n'; // std::setprecision defined in iomanip header
 ```
 
 
-
-In this case, we see a loss of precision because the `float` can’t hold as much precision as a `double`:
+在这个例子中，我们可以看到由于`float`不能支持`double`类型的精度，出现了精度丢失的问题：
 
 ```
 0.123456791
 ```
 
-Converting from an integer to a floating point number generally works as long as the value fits within the range of the floating point type. For example:
+从整数到浮点数的转换通常只要值在浮点类型的范围内就可以工作。例如:
 
 ```cpp
 int i{ 10 };
@@ -217,14 +222,13 @@ float f = i;
 std::cout << f;
 ```
 
-
-This produces the expected result:
+可以输出预期的结果：
 
 ```
 10
 ```
 
-Converting from a floating point to an integer works as long as the value fits within the range of the integer, but any fractional values are lost. For example:
+从浮点数到整数的转换只要值在整数的范围内就可以工作，但是任何小数值都会丢失。例如:
 
 ```cpp
 int i = 3.5;
@@ -232,10 +236,10 @@ std::cout << i << '\n';
 ```
 
 
-In this example, the fractional value (.5) is lost, leaving the following result:
+在这个例子中，丢失了小数值(.5)，留下以下结果：
 
 ```
 3
 ```
 
-While the numeric conversion rules might seem scary, in reality the compiler will generally warn you if you try to do something dangerous (excluding some signed/unsigned conversions).
+虽然数值转换规则看起来很可怕，但实际上，如果你试图做一些危险的事情(不包括一些有符号/无符号的转换)，编译器通常会发出警告。

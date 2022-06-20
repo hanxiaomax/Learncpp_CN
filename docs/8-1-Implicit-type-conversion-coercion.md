@@ -7,6 +7,7 @@ time: 2022-2-18
 type: translation
 tags:
 - type conversion
+- conversions
 ---
 ??? note "关键点速记"
     - 类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）
