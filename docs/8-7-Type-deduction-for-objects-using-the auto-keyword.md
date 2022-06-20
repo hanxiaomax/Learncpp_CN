@@ -29,7 +29,7 @@ We discuss how literal types are determined in lesson [4.15 -- Literals](https:
 
 In cases where we want a variable and its initializer to have the same type, we’re effectively providing the same type information twice.
 
-## Type deduction for initialized variables
+## 变量初始化的类型转换
 
 Type deduction (also sometimes called type inference) is a feature that allows the compiler to deduce the type of an object from the object’s initializer. To use type deduction, the `auto` keyword is used in place of the variable’s type:
 

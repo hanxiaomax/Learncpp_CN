@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+            "file": "docs/8-9-Introduction-to-function-overloading.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+                "file": "docs/8-9-Introduction-to-function-overloading.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+                "file": "docs/8-9-Introduction-to-function-overloading.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "f0110399c380d077",
   "lastOpenFiles": [
+    "docs/8-9-Introduction-to-function-overloading.md",
+    "docs/8-8-Type-deduction-for-functions.md",
+    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
+    "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
     "docs/8-4-Arithmetic-conversions.md",
     "docs/8-3-Numeric-conversions.md",
     "docs/8-2-Floating-point-and-integral-promotion.md",
     "docs/value-preserving.md",
-    "docs/8-1-Implicit-type-conversion-coercion.md",
-    "docs/explicit-type-conversion.md",
-    "docs/implicit-type-conversion.md",
-    "docs/bit.md",
-    "docs/8-x-Chapter-8-summary-and-quiz.md"
+    "docs/8-1-Implicit-type-conversion-coercion.md"
   ]
 }

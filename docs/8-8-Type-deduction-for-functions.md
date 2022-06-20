@@ -21,7 +21,6 @@ int add(int x, int y)
 }
 ```
 
-COPY
 
 When this function is compiled, the compiler will determine that `x + y` evaluates to an `int`, then ensure that type of the return value matches the declared return type of the function (or that the return value type can be converted to the declared return type).
 
@@ -87,11 +86,11 @@ This makes sense: a forward declaration does not have enough information for the
 
 Unlike type deduction for objects, there isn’t as much consensus on best practices for function return type deduction. When using type deduction with objects, the initializer is always present as part of the same statement, so it’s usually not overly burdensome to determine what type will be deduced. With functions, that is not the case -- when looking at a function’s prototype, there is no context to help indicate what type the function returns. A good programming IDE should make clear what the deduced type of the function is, but in absence of having that available, a user would actually have to dig into the function body itself to determine what type the function returned. The odds of mistakes being made are higher. And the inability for such functions to be forward declared limits their usefulness in multi-file programs.
 
-Best practice
+!!! success "最佳实践"
 
-Favor explicit return types over function return type deduction for normal functions.
+	Favor explicit return types over function return type deduction for normal functions.
 
-Trailing return type syntax
+## Trailing return type syntax
 
 The `auto` keyword can also be used to declare functions using a trailing return syntax, where the return type is specified after the rest of the function prototype.
 
@@ -136,7 +135,7 @@ The trailing return syntax is also required for some advanced features of C++, s
 
 For now, we recommend the continued use of the traditional function return syntax except in situations that require the trailing return syntax.
 
-Type deduction can’t be used for function parameter types
+## Type deduction can’t be used for function parameter types
 
 Many new programmers who learn about type deduction try something like this:
 
@@ -155,12 +154,10 @@ int main()
 }
 ```
 
-COPY
-
 Unfortunately, type deduction doesn’t work for function parameters, and prior to C++20, the above program won’t compile (you’ll get an error about function parameters not being able to have an auto type).
 
 In C++20, the `auto` keyword was extended so that the above program will compile and function correctly -- however, `auto` is not invoking type deduction in this case. Rather, it is triggering a different feature called `function templates` that was designed to actually handle such cases.
 
-Related content
+!!! info "相关内容"
 
-We introduce function templates in lesson [8.13 -- Function templates](https://www.learncpp.com/cpp-tutorial/function-templates/), and discuss use of `auto` in the context of function templates in lesson [8.15 -- Function templates with multiple template types](https://www.learncpp.com/cpp-tutorial/function-templates-with-multiple-template-types/).
+	We introduce function templates in lesson [[8-13-Function-templates|8.13 - 函数模板]], and discuss use of `auto` in the context of function templates in lesson [[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]。

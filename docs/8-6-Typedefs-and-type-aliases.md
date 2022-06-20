@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 	
 
-Type aliases
+## Type aliases
 
 In C++, using is a keyword that creates an alias for an existing data type. To create such an alias, we use the `using` keyword, followed by a name for the alias, followed by an equals sign and an existing data type. For example:
 
@@ -69,7 +69,7 @@ Next, we define a variable named `milesToDestination` of type `distance_t`. B
 
 Finally, we print the value of `milesToDestination`, which prints as a `double` value.
 
-Type aliases are not new types
+## Type aliases are not new types
 
 An alias does not actually define a new type -- it just introduces a new identifier for an existing type. An alias is completely interchangeable with the aliased type.
 
@@ -97,23 +97,22 @@ Although conceptually we intend `miles_t` and `speed_t` to have distinct mea
 
 Because the compiler does not prevent these kinds of semantic errors for type aliases, we say that aliases are not type safe. In spite of that, they are still useful.
 
-Warning
+!!! warning "注意"
 
-Care must be taken not to mix values of aliases that are intended to be semantically distinct.
+	Care must be taken not to mix values of aliases that are intended to be semantically distinct.
 
-As an aside…
+!!! cite "题外话"
 
-Some languages support the concept of a strong typedef (or strong type alias). A strong typedef actually creates a new type that has all the original properties of the original type, but the compiler will throw an error if you try to mix values of the aliased type and the strong typedef. As of C++20, C++ does not directly support strong typedefs (though enum classes, covered in lesson [10.4 -- Scoped enumerations (enum classes)](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/), are similar), but there are quite a few 3rd party C++ libraries that implement strong typedef-like behavior.
+    Some languages support the concept of a strong typedef (or strong type alias). A strong typedef actually creates a new type that has all the original properties of the original type, but the compiler will throw an error if you try to mix values of the aliased type and the strong typedef. As of C++20, C++ does not directly support strong typedefs (though enum classes, covered in lesson [10.4 -- Scoped enumerations (enum classes)](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/), are similar), but there are quite a few 3rd party C++ libraries that implement strong typedef-like behavior.
 
-The scope of a type alias
+## The scope of a type alias
 
 Because scope is a property of an identifier, type alias identifiers follow the same scoping rules as variable identifiers: a type alias defined inside a block has block scope and is usable only within that block, whereas a type alias defined in the global namespace has file scope and is usable to the end of the file. In the above example, `miles_t` and `speed_t` are only usable in the `main()` function.
 
-If you need to use one or more type aliases across multiple files, they can be defined in a header file and #included into any code files that needs to use the definition:
+If you need to use one or more type aliases across multiple files, they can be defined in a header file and `#included` into any code files that needs to use the definition:
 
-mytypes.h:
 
-```cpp
+```cpp title="mytypes.h"
 #ifndef MYTYPES
 #define MYTYPES
 
@@ -123,13 +122,12 @@ mytypes.h:
 #endif
 ```
 
-COPY
 
 Type aliases #included this way will be imported into the global namespace and thus have global scope.
 
-Typedef
+## Typedef
 
-typedef (which is short for “type definition”) is a keyword with the same semantics as “using”, but reversed syntax.
+**typedef** (which is short for “type definition”) is a keyword with the same semantics as “using”, but reversed syntax.
 
 ```cpp
 // The following aliases are identical
@@ -165,15 +163,15 @@ In the above typedef definition, the name of the new type (`fcn_t`) is buried in
 
 Third, the name “typedef” suggests that a new type is being defined, but that’s not true. As we have seen above, an alias is interchangeable with the aliased type.
 
-Best practice
+!!! success "最佳实践"
 
-When creating aliased types, prefer the type alias syntax over the typedef syntax.
+	When creating aliased types, prefer the type alias syntax over the typedef syntax.
 
-When should we use type aliases?
+## When should we use type aliases?
 
 Now that we’ve covered what type aliases are, let’s talk about what they are useful for.
 
-Using type aliases for platform independent coding
+## Using type aliases for platform independent coding
 
 One of the uses for type aliases is that they can be used to hide platform specific details. On some platforms, an `int` is 2 bytes, and on others, it is 4 bytes. Thus, using `int` to store more than 2 bytes of information can be potentially dangerous when writing platform independent code.
 
@@ -197,7 +195,7 @@ COPY
 
 On machines where integers are only 2 bytes, `INT_2_BYTES` can be #defined, and the program will be compiled with the top set of type aliases. On machines where integers are 4 bytes, leaving `INT_2_BYTES` undefined will cause the bottom set of type aliases to be used. In this way, `int8_t` will resolve to a 1 byte integer, `int16_t` will resolve to a 2 bytes integer, and `int32_t` will resolve to a 4 byte integer using the combination of `char`, `short`, `int`, and `long` that is appropriate for the machine the program is being compiled on.
 
-The fixed-width integers (such as `std::int_fast16_t` and `std::int_least32_t`) and `size_t` type (both covered in lesson [4.6 -- Fixed-width integers and size_t](https://www.learncpp.com/cpp-tutorial/fixed-width-integers-and-size-t/)) are actually just type aliases to various fundamental types.
+The fixed-width integers (such as `std::int_fast16_t` and `std::int_least32_t`) and `size_t` type (both covered in lesson [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]) are actually just type aliases to various fundamental types.
 
 This is also why when you print an 8-bit fixed-width integer using `std::cout`, you’re likely to get a character value. For example:
 
@@ -218,7 +216,9 @@ COPY
 
 This program prints:
 
+```
 a
+```
 
 Because `std::int_least8_t` is typically defined as a type alias for one of the char types, variable `x` will be defined as a char type. And char types print their values as ASCII characters rather than as integer values.
 
@@ -278,7 +278,7 @@ Don’t worry if you don’t know what `std::vector`, `std::pair`, or all thes
 
 This is probably the best use for type aliases.
 
-Using type aliases for legibility
+## Using type aliases for legibility
 
 Type aliases can also help with code documentation and comprehension.
 
@@ -307,7 +307,7 @@ The return type of `testScore_t` makes it a little more obvious that the funct
 
 In our experience, creating a type alias just to document the return type of a single function isn’t worth it (use a comment instead). But if you have already created a type alias for other reasons, this can be a nice additional benefit.
 
-Using type aliases for easier code maintenance
+## Using type aliases for easier code maintenance
 
 Type aliases also allow you to change the underlying type of an object without having to change lots of code. For example, if you were using a `short` to hold a student’s ID number, but then later decided you needed a `long` instead, you’d have to comb through lots of code and replace `short` with `long`. It would probably be difficult to figure out which objects of type `short` were being used to hold ID numbers and which were being used for other purposes.
 
@@ -315,7 +315,7 @@ However, if you use type aliases, then changing types becomes as simple as updat
 
 While this seems like a nice benefit, caution is necessary whenever a type is changed, as the behavior of the program may also change. This is especially true when changing the type of a type alias to a type in a different type family (e.g. an integer to a floating point value, or vice versa)! The new type may have comparison or integer/floating point division issues, or other issues that the old type did not. If you change an existing type to some other type, your code should be thoroughly retested.
 
-Downsides and conclusion
+## Downsides and conclusion
 
 While type aliases offer some benefits, they also introduce yet another identifier into your code that needs to be understood. If this isn’t offset by some benefit to readability or comprehension, then the type alias is doing more harm than good.
 
@@ -323,6 +323,6 @@ A poorly utilized type alias can take a familiar type (such as `std::string`) a
 
 For this reason, type aliases should be used primarily in cases where there is a clear benefit to code readability or code maintenance. This is as much of an art as a science. Type aliases are most useful when they can be used in many places throughout your code, rather than in fewer places.
 
-Best practice
+!!! success "最佳实践"
 
-Use type aliases judiciously, when they provide a clear benefit to code readability or code maintenance.
+	Use type aliases judiciously, when they provide a clear benefit to code readability or code maintenance.

@@ -42,7 +42,7 @@ However, for best effect, this requires that you define a consistent function na
 
 And then what happens when we want to have a similar function that adds 3 integers instead of 2? Managing unique names for each function quickly becomes burdensome.
 
-## Introduction to function overloading
+## 函数重载简介
 
 Fortunately, C++ has an elegant solution to handle such cases. Function overloading allows us to create multiple functions with the same name, so long as each identically named function has different parameter types (or the functions can be otherwise differentiated). Each function sharing a name (in the same scope) is called an overloaded function (sometimes called an overload for short).
 
