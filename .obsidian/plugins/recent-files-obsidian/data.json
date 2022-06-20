@@ -5,6 +5,10 @@
       "path": "docs/8-3-Numeric-conversions.md"
     },
     {
+      "basename": "8-2-Floating-point-and-integral-promotion",
+      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
+    },
+    {
       "basename": "narrowing-convertions",
       "path": "docs/narrowing-convertions.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "numeric promotions",
       "path": "docs/numeric promotions.md"
-    },
-    {
-      "basename": "8-2-Floating-point-and-integral-promotion",
-      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
     },
     {
       "basename": "numeric-conversions",

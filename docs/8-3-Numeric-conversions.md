@@ -6,7 +6,8 @@ origin_title: "8.3 — Numeric conversions"
 time: 2022-3-17
 type: translation
 tags:
-- conversions
+- numeric conversions
+- static_cast
 ---
 
 ??? note "关键点速记"
@@ -20,7 +21,8 @@ tags:
 		- 整型转浮点
 		- 整型或浮点转布尔
 	- 数值提升总是安全的，但是数值转换不一定，可能造成数据或精度丢失
-	- 缩窄转换会造成精度丢失
+	- 缩窄转换会造成精度丢失。编译器会在发生隐式缩窄转换时报告错误
+	- 尽可能避免缩窄转换。如果一定要进行转换，使用 `static_cast` 显式地进行缩窄转换。
 
 在上一节课 ([[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]) 中，我们介绍了[[numeric promotions|数值提升]]，它属于一种类型转换，可以将更窄的数据类型转换为更宽的数据类型(通常是 `int` 或 `double`) 使其可以被更高效地处理。
 
@@ -81,7 +83,7 @@ int i2 = 3.0; // okay, will be converted to value 3, so no data is lost
 - 浮点数类型转换为整型类型；
 - 较宽的浮点类型转换为较窄的浮点类型，除非被转换的值是 `constexpr` 类型且它的范围在目标类型范围内(即使较窄的类型不具备存放完整数据的精度）。
 - 从整数类型转换为浮点类型，除非转换的值是 `constexpr` 且在目标类型范围内，并且可以转换回原始类型而不丢失数据。
-- 从较宽的整型转换为较窄的整型，除非转换的值是 constexpr 且整型提升后适合目标类型。
+- 从较宽的整型转换为较窄的整型，除非转换的值是 `constexpr` 且整型提升后适合目标类型。
 
 好消息是你不需要记住这些。当编译器确定需要隐式缩窄转换时，它通常会发出警告(或错误)。
 
@@ -89,7 +91,7 @@ int i2 = 3.0; // okay, will be converted to value 3, so no data is lost
 
 	当将`signed int`转换为`unsigned int`时，编译器通常会**不会**发出警告，反之亦然，即使这些是缩窄转换。要特别小心这些类型之间无意的转换(特别是当向带相反符号形参的函数传递实参时)。
 	
-例如：For example, when compiling the following program:
+例如，当编译下面的程序时：
 
 ```cpp
 int main()
@@ -98,12 +100,13 @@ int main()
 }
 ```
 
+Visual Studio 会产生如下告警信息：
 
-Visual Studio produces the following warning:
-
+```
 warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+```
 
-In general, narrowing conversions should be avoided, but there are situational cases where you might need to do one. In such cases, you should make the implicit narrowing conversion explicit by using `static_cast`. For example:
+一般来说，应该避免缩窄转换，但在某些情况下可能需要这样做。在这种情况下，您应该使用 `static_cast` 显式地进行缩窄转换。例如:
 
 ```cpp
 void someFcn(int i)
@@ -114,22 +117,21 @@ int main()
 {
     double d{ 5.0 };
 
-    someFcn(d); // bad: will generate compiler warning about narrowing conversion
-    someFcn(static_cast<int>(d)); // good: we're explicitly telling the compiler this narrowing conversion is expected, no warning generated
-
+    someFcn(d); // 不好: 编译器会产生缩窄转换告警
+    someFcn(static_cast<int>(d)); // 好：显式地告知编译器仅缩窄转换，不会产生告警
     return 0;
 }
 ```
 
-COPY
 
 !!! success "最佳实践"
 
-	Avoid narrowing conversions whenever possible. If you do need to perform one, use `static_cast` to make it an explicit conversion.
+	尽可能避免缩窄转换。如果一定要进行转换，使用 `static_cast` 显式地进行缩窄转换。
+	
 
 ## 括号初始化不允许缩窄转换
 
-Narrowing conversions are strictly disallowed when using brace initialization (which is one of the primary reasons this initialization form is preferred):
+在使用大括号初始化时，严格禁止缩窄转换(这也是首选此初始化形式的主要原因之一)：
 
 ```cpp
 int main()
@@ -138,17 +140,20 @@ int main()
 }
 ```
 
-COPY
 
-Visual Studio produces the following error:
+Visual Studio 会产生如下错误信息：
 
+```
 error C2397: conversion from 'double' to 'int' requires a narrowing conversion
+```
 
 ## 关于数值转换的更多信息
 
-The specific rules for numeric conversions are complicated and numerous, so here are the most important things to remember.
 
-In _all_ cases, converting a value into a type whose range doesn’t support that value will lead to results that are probably unexpected. For example:
+数值转换的具体规则又多又复杂，所以这里我们只讲最重要、最需要记忆的。
+
+在*所有*情况下，将值转换为其范围不支持该值的类型将可能导致意想不到的结果。例如:
+
 
 ```cpp
 int main()
@@ -162,14 +167,14 @@ int main()
 }
 ```
 
-
-In this example, we’ve assigned a large integer to a variable with type `char` (that has range -128 to 127). This causes the char to overflow, and produces an unexpected result:
+在本例中，我们将一个大整数赋给一个 `char` 型变量(范围为-128到127)。这会导致 `char` 溢出，并产生意想不到的结果:
 
 ```
 48
 ```
 
-Converting from a larger integral or floating point type to a smaller type from the same family will generally work so long as the value fits in the range of the smaller type. For example:
+
+只要值适合较小类型的范围，从较大的整型或浮点类型转换为同一族的较小类型通常是有效的。例如:
 
 ```cpp
 int i{ 2 };
@@ -182,14 +187,14 @@ std::cout << f << '\n';
 ```
 
 
-This produces the expected result:
+能够输出预期的结果：
 
 ```
 2
 0.1234
 ```
 
-In the case of floating point values, some rounding may occur due to a loss of precision in the smaller type. For example:
+对于浮点数的例子，在更小的类型中可能出现舍入误差，例如：
 
 ```cpp
 float f = 0.123456789; // double value 0.123456789 has 9 significant digits, but float can only support about 7

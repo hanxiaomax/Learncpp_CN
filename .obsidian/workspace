@@ -71,8 +71,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -131,10 +130,10 @@
   "active": "f0110399c380d077",
   "lastOpenFiles": [
     "docs/8-3-Numeric-conversions.md",
+    "docs/8-2-Floating-point-and-integral-promotion.md",
     "docs/narrowing-convertions.md",
     "docs/8-1-Implicit-type-conversion-coercion.md",
     "docs/numeric promotions.md",
-    "docs/8-2-Floating-point-and-integral-promotion.md",
     "docs/numeric-conversions.md",
     "docs/value-preserving.md",
     "docs/index.md",

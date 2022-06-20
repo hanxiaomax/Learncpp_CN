@@ -6,7 +6,7 @@ origin_title: "8.2 — Floating-point and integral promotion"
 time: 2021-12-30
 type: translation
 tags:
-- promotion
+- numeric promotion
 ---
 
 ??? note "关键点速记"
