@@ -12,9 +12,10 @@ tags:
 ??? note "关键点速记"
 	
 
-In the previous lesson ([[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]), we covered numeric promotions, which are conversions of specific narrower numeric types to wider numeric types (typically `int` or `double`) that can be processed efficiently.
+在上一节课 ([[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]) 中，我们介绍了[[numeric promotions|数值提升]]，它属于一种类型转换，可以将更窄的数据类型转换为更宽的数据类型(通常是 `int` 或 `double`) 使其可以被更高效地处理。
 
-C++ supports another category of numeric type conversions, called numeric conversions, that cover additional type conversions not covered by the numeric promotion rules.
+C++ 支持另一种类数值类型转换，称为[[numeric-conversions|数值转换(numeric conversions)]]，它涵盖了数值提升规则没有涵盖的其他类型转换。
+
 
 !!! tldr "关键信息"
 

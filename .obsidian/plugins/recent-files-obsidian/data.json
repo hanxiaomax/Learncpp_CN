@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "8-2-Floating-point-and-integral-promotion",
-      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
+      "basename": "8-3-Numeric-conversions",
+      "path": "docs/8-3-Numeric-conversions.md"
     },
     {
-      "basename": "value-preserving",
-      "path": "docs/value-preserving.md"
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
     {
       "basename": "numeric promotions",
       "path": "docs/numeric promotions.md"
     },
     {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
+      "basename": "8-2-Floating-point-and-integral-promotion",
+      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
+    },
+    {
+      "basename": "numeric-conversions",
+      "path": "docs/numeric-conversions.md"
+    },
+    {
+      "basename": "value-preserving",
+      "path": "docs/value-preserving.md"
     },
     {
       "basename": "index",
@@ -47,10 +55,6 @@
     {
       "basename": "8-4-Arithmetic-conversions",
       "path": "docs/8-4-Arithmetic-conversions.md"
-    },
-    {
-      "basename": "8-3-Numeric-conversions",
-      "path": "docs/8-3-Numeric-conversions.md"
     },
     {
       "basename": "explicit-type-conversion",
@@ -195,10 +199,6 @@
     {
       "basename": "7-3-Common-if-statement-problems",
       "path": "docs/7-3-Common-if-statement-problems.md"
-    },
-    {
-      "basename": "7-2-If-statements-and-blocks",
-      "path": "docs/7-2-If-statements-and-blocks.md"
     }
   ],
   "omittedPaths": [],
