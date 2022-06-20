@@ -10,17 +10,18 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
 
-In lesson [[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]], we noted that C++ has minimum size guarantees for each of the fundamental types. However, the actual size of these types can vary based on the compiler and architecture.
+	- 
 
-This variability was allowed so that the `int` and `double` data types could be set to the size that maximizes performance on a given architecture. For example, a 32-bit computer will typically be able to process 32-bits of data at a time. In such cases, an `int` would likely be set to a width of 32-bits, since this is the “natural” size of the data that the CPU operates on (and likely to be the most performant).
+在 [[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]] 中我们介绍过，C++ 只能保证每种基础类型最小的尺寸。而这些类型的具体尺寸要看具体的编译器和体系结构。
+
+正是因为允许这种变化，所以`int` 和 `double` 数据类型才能在特定体系结构的计算机上被设置为能够提供最优性能的大小。例如，对于一个 32 位计算机来说，它每次能够处理 32 位的数据。这种情况下， `int`被设置为 32 位宽度，因为这是CPU处理数据时最”自然“（也就可能是最高效的）的宽度。
 
 !!! info "提醒"
 
-	The number of bits a data type uses is called its width. A wider data type is one that uses more bits, and a narrower data type is one that uses less bits.
-
-But what happens when we want our 32-bit CPU to modify an 8-bit value (such as a `char`) or a 16-bit value? Some 32-bit processors (such as the x86 series) can manipulate 8-bit or 16-bit values directly. However, doing so is often slower than manipulating 32-bit values! Other 32-bit CPUs (like the PowerPC), can only operate on 32-bit values, and additional tricks must be employed to manipulate narrower values.
+	数据类型占用的位数称为宽度。占用的位数越多，宽度也就越宽，而越窄的数据则占用的位数也越少。
+	
+但是，如果 32 位 CPU 需要修改一个 8 位的值（例如`char`类型）时会怎样？Some 32-bit processors (such as the x86 series) can manipulate 8-bit or 16-bit values directly. However, doing so is often slower than manipulating 32-bit values! Other 32-bit CPUs (like the PowerPC), can only operate on 32-bit values, and additional tricks must be employed to manipulate narrower values.
 
 ## 数值提升
 

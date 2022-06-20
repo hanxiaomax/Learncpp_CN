@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "8-2-Floating-point-and-integral-promotion",
+      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
+    },
+    {
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
+    },
+    {
       "basename": "index",
       "path": "docs/index.md"
     },
     {
       "basename": "1-2-comments",
       "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
     {
       "basename": "8-9-Introduction-to-function-overloading",
@@ -39,10 +43,6 @@
     {
       "basename": "8-3-Numeric-conversions",
       "path": "docs/8-3-Numeric-conversions.md"
-    },
-    {
-      "basename": "8-2-Floating-point-and-integral-promotion",
-      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
     },
     {
       "basename": "value-preserving",
