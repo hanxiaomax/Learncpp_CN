@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "8-6-Typedefs-and-type-aliases",
-      "path": "docs/8-6-Typedefs-and-type-aliases.md"
-    },
-    {
       "basename": "8-4-Arithmetic-conversions",
       "path": "docs/8-4-Arithmetic-conversions.md"
+    },
+    {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
     {
       "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",

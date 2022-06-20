@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-6-Typedefs-and-type-aliases.md",
+            "file": "docs/8-4-Arithmetic-conversions.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-6-Typedefs-and-type-aliases.md"
+                "file": "docs/8-4-Arithmetic-conversions.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-6-Typedefs-and-type-aliases.md",
+                "file": "docs/8-4-Arithmetic-conversions.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,8 +129,8 @@
   },
   "active": "f0110399c380d077",
   "lastOpenFiles": [
-    "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/8-4-Arithmetic-conversions.md",
+    "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
     "docs/8-1-Implicit-type-conversion-coercion.md",
     "docs/8-2-Floating-point-and-integral-promotion.md",

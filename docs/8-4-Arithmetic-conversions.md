@@ -13,25 +13,26 @@ tags:
 ??? note "关键点速记"
 	- 
 
-In lesson [[5-1-Operator-precedence-and-associativity|5.1 - 运算符优先级和结合律]], we discussed how expressions are evaluated according to the precedence and associativity of their operators.
+在[[5-1-Operator-precedence-and-associativity|5.1 - 运算符优先级和结合律]]中我们讨论过，表达式是如何基于优先级和结合律进行运算的。
 
-Consider the following expression:
+
+考虑下面这段代码：
 
 ```cpp
 int x { 2 + 3 };
 ```
 
 
-When binary operator+ is invoked, it is given two operands, both of type `int`. Because both operands are of the same type, that type will be used to perform the calculation and to return the result. Thus, `2 + 3` will evaluate to `int` value `5`.
+当二元运算符 `operator+` 执行时，它接受了两个操作数，且均为`int`类型。因为两个操作数的类型是相同的，所以它们会被用来执行计算然后返回结果。因此 `2 + 3` 会得到 `int` 值 `5`。
 
-But what happens when the operands of a binary operator are of different types?
+但是，如果两个操作数类型不同呢？
 
 ```cpp
 ??? y { 2 + 3.5 };
 ```
 
 
-In this case, operator+ is being given one operand of type `int` and another of type `double`. Should the result of the operator be returned as an `int`, a `double`, or possibly something else altogether? When defining a variable, we can choose what type it has. In other cases, for example when using `std::cout <<`, the type the calculation evaluates to changes the behavior of what is output.
+在这个例子中，`operator+` 的两个操作数，一个是 `int`，另一个是 `double`。那么表达式的结果应该是什么类型的呢？是`int`还是`double`？还是其他的呢？在定义变量的时候，我们可以选择变量的类型。在其他情况下，例如在使用 `std::cout <<`的时候， the type the calculation evaluates to changes the behavior of what is output.
 
 In C++, certain operators require that their operands be of the same type. If one of these operators is invoked with operands of different types, one or both of the operands will be implicitly converted to matching types using a set of rules called the usual arithmetic conversions.
 
