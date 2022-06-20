@@ -13,8 +13,11 @@ tags:
 
 	- 数值提升属于一类类型转换，它将更窄的数据类型（例如`char`）转换为更宽的数据类型（例如 `int` 或 `double`）使其能够更高效地被处理，同时也更不容易溢出。
 	- 数值提升是安全的，所以编译器可以根据需要自由地使用数字提升，并且在这样做时不会发出警告。
-	- `float` 类型的值可以被转换 `double`。
-	- 
+	- 利用数值提升，可以编写函数使用某种可以被提升的类型
+	- `float`-> `double`。
+	- `unsigned char`或者`signed char` -> `int`；
+	- `unsigned char`，`char8_t` 及`unsigned short` -> `int`，只要 `int`的范围足够表示该类型的范围，否则会转换为`unsigned int`；
+	- `bool` -> `int`，`false`转换为 `0`，`true`转换为`1`。
 
 
 
@@ -101,7 +104,7 @@ int main()
 还有一些不常用的整型转换规则可以在[这里](https://en.cppreference.com/w/cpp/language/implicit_conversion#Integral_promotion)找到。
 
 
-在大多数情况下，这允许我们编写一个接受形参类型为 `int` 的函数，然后与其他各种整型一起使用。例如:
+在大多数情况下，这允许我们编写一个接受形参类型为 `int` 的函数，然后与其他各种整型类型配合使用。例如:
 
 ```cpp
 #include <iostream>
@@ -126,11 +129,10 @@ int main()
 ```
 
 
-There are two things worth noting here. First, on some systems, some of the integral types may be converted to `unsigned int` rather than `int`. Second, some narrower unsigned types (such as `unsigned char`) will be converted to larger signed types (such as `int`). So while integral promotion is value-preserving, it is not necessarily sign-preserving.
+这里有两点值得注意。首先，在某些系统上，一些整型可能会被转换为 `unsigned int` 而不是 `int`。其次，一些较窄的无符号类型(如 `unsigned char` )将被转换为较大的有符号类型(如 `int`)。因此，虽然整型提升是保值的，但不一定能保号。
 
 ## 不是所有的值保留类型转换都是数值提升
 
-Some [[value-preserving|值保留(value-preserving)]]value-preserving type conversions (such as `char` to `short`, `int` to `long`, or `int` to `double`) are not considered to be numeric promotions in C++ (they are `numeric conversions`, which we’ll cover shortly in lesson [8.3 -- Numeric conversions](https://www.learncpp.com/cpp-tutorial/numeric-conversions/)). This is because such conversions do not assist in the goal of converting smaller types to larger types that can be processed more efficiently.
+一些[[value-preserving|值保留(value-preserving)]] 的类型转换(例如 `char` 到 `short`、`int` 到 `long` 或者 `int` 到 `double`) 在 C++ 中并不被看做数值提升（它们属于**数值转换**），我们会在[[8-3-Numeric-conversions|8.3 - 数值转换]]中进行介绍)。这是因为这样的转换不能帮助实现将较小类型转换为可以更有效地处理的较大类型的目标。
 
-The distinction is mostly academic. However, in certain cases, the compiler will favor numeric promotions over numeric conversions. We’ll see examples where this makes a difference when we cover function overload resolution (in upcoming lesson [8.11 -- Function overload resolution and ambiguous matches](https://www.learncpp.com/cpp-tutorial/function-overload-resolution-and-ambiguous-matches/)).
-
+这种区别主要是学术上的。但是，在某些情况下，编译器会倾向于数值提升而不是数值转换。当我们讨论函数重载解析时，我们将看到这样做的不同之处(参见：[[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]])。
