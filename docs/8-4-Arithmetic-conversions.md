@@ -1,6 +1,6 @@
 ---
-title: 8.4 - 算数转换
-alias: 8.4 - 算数转换
+title: 8.4 - 算术转换
+alias: 8.4 - 算术转换
 origin: /arithmetic-conversions/
 origin_title: "8.4 — Arithmetic conversions"
 time: 2022-1-2
@@ -32,24 +32,24 @@ int x { 2 + 3 };
 ```
 
 
-在这个例子中，`operator+` 的两个操作数，一个是 `int`，另一个是 `double`。那么表达式的结果应该是什么类型的呢？是`int`还是`double`？还是其他的呢？在定义变量的时候，我们可以选择变量的类型。在其他情况下，例如在使用 `std::cout <<`的时候， the type the calculation evaluates to changes the behavior of what is output.
+在这个例子中，`operator+` 的两个操作数，一个是 `int`，另一个是 `double`。那么表达式的结果应该是什么类型的呢？是`int`还是`double`？还是其他的呢？如果是在定义变量的时候，我们可以选择变量的类型。在其他情况下，例如在使用 `std::cout <<`的时候，计算得到的类型会影响输出的结果。
 
-In C++, certain operators require that their operands be of the same type. If one of these operators is invoked with operands of different types, one or both of the operands will be implicitly converted to matching types using a set of rules called the usual arithmetic conversions.
+在C++中，某些操作符要求它们的操作数具有相同的类型。如果在调用运算符时，两个操作数类型不同，则使用一组称为普通算术转换的规则将其中一个或两个操作数隐式转换为匹配类型。
 
-## The operators that require operands of the same type
+## 需要操作数具有相同类型的运算符
 
-The following operators require their operands to be of the same type:
+下列运算符需要操作数具有相同类型：
 
--   The binary arithmetic operators: `+`, `-`, `*`,`/`, `%`
--   The binary relational operators: `<`,` >`, `<=`, `>=`, `==`, `!=`
--   The binary bitwise arithmetic operators: `&`, `^`, `|`
--   The conditional operator `?:` (excluding the condition, which is expected to be of type `bool`)
+-   二元算术运算符： `+`, `-`, `*`,`/`, `%`
+-   二元关系运算符：`<`,` >`, `<=`, `>=`, `==`, `!=`
+-   二元按位运算符：`&`, `^`, `|`
+-   条件运算符 `?:` (包括条件，要求为布尔类型)
 
-## The usual arithmetic conversion rules
+## 一般算术转换规则
 
-The usual arithmetic conversion rules are pretty simple. The compiler has a prioritized list of types that looks something like this:
+一般算术转换规则非常简单。编译器具有一个按照优先级排序的类型列表，就像下面这样：
 
--   long double (highest)
+-   long double (最高优先级)
 -   double
 -   float
 -   unsigned long long
@@ -57,12 +57,12 @@ The usual arithmetic conversion rules are pretty simple. The compiler has a prio
 -   unsigned long
 -   long
 -   unsigned int
--   int (lowest)
+-   int (最低优先级)
 
-There are only two rules:
+以及两条规则：
 
--   If the type of at least one of the operands is on the priority list, the operand with lower priority is converted to the type of the operand with higher priority.
--   Otherwise (the type of neither operand is on the list), both operands are numerically promoted (see [8.2 -- Floating-point and integral promotion](https://www.learncpp.com/cpp-tutorial/floating-point-and-integral-promotion/)).
+-   如果至少有一个操作数在优先级列表中，则具有较低优先级的操作数会被转换为具有较高优先级的操作数；
+-   否则 (两个操作数的类型均不在表中)，则两个操作数会进行[[numeric promotions|数值提升]](参见：[[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]])。
 
 ## 一些例子
 
