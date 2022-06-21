@@ -11,6 +11,9 @@ tags:
 - static-cast
 ---
 
+??? note "关键点速记"
+	- C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]]、[[static-casts|静态类型转换]]、[[const-cast|const 类型转换]]、[[dynamic-casts|动态类型转换]]和[[reinterpret-casts|重新解释类型转换]]。后四种类型有时称为[[named-cast|具名名类型转换(named cast)]]。
+	- 
 
 在 [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中我们介绍过，编译器可以隐式地将一种类型的值转换成另外一种类型，即[[implicit-type-conversion|隐式类型转换]]。当你想要将一个数值类型通过[[numeric promotions|数值提升]]的方式转换为更宽的类型时，使用隐式类型转换是可以的。
 
@@ -38,31 +41,34 @@ int y { 4 };
 double d = x / y; // does integer division, initializes d with value 2.0
 ```
 
-因为执行了整型除法，所以变量 `d`的值最终为`2.0`。那么我们应该如何告诉编译器，这里需要使用浮点数除法呢？字面量后缀并不能被用在变量上。我们需要一种能够将变量转换为浮点类型的方法，所以 We need some way to convert one (or both) of the variable operands to a floating point type, so that floating point division will be used instead.
+因为执行了整型除法，所以变量 `d`的值最终为`2.0`。那么我们应该如何告诉编译器，这里需要使用浮点数除法呢？字面量后缀并不能被用在变量上。因此，需要一种能够将变量转换为浮点类型的方法，以便使用浮点数除法。
 
-Fortunately, C++ comes with a number of different type casting operators (more commonly called casts) that can be used by the programmer to request that the compiler perform a type conversion. Because casts are explicit requests by the programmer, this form of type conversion is often called an explicit type conversion (as opposed to implicit type conversion, where the compiler performs a type conversion automatically).
+幸运的是，C++提供了许多不同的类型转换操作符(通常称为类型转换)，程序员可以使用它们请求编译器执行类型转换。因为类型转换是程序员的显式请求，所以这种形式的类型转换通常称为[[explicit-type-conversion|显式类型转换]](与隐式类型转换相反，隐式类型转换是编译器自动执行的类型转换)。
+
 
 ## 类型转换
 
-C++ supports 5 different types of casts: `C-style casts`, `static casts`, `const casts`, `dynamic casts`, and `reinterpret casts`. The latter four are sometimes referred to as named casts.
 
-We’ll cover `C-style casts` and `static casts` in this lesson.
+C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]]、[[static-casts|静态类型转换]]、[[const-cast|const 类型转换]]、[[dynamic-casts|动态类型转换]]和[[reinterpret-casts|重新解释类型转换]]。后四种类型有时称为[[named-cast|具名名类型转换(named cast)]]。
+
+在本课中，我们将介绍**C风格类型转换**和**静态类型转换**。
+
 
 !!! info "相关内容"
 
-	We discuss dynamic casts in lesson [18.10 -- Dynamic casting](https://www.learncpp.com/cpp-tutorial/dynamic-casting/), after we’ve covered other prerequisite topics.
+	我们会在[18.10 -- Dynamic casting](https://www.learncpp.com/cpp-tutorial/dynamic-casting/)中介绍动态类型转换，但是我们首先要介绍一些前置内容。
 
-`Const casts` and `reinterpret casts` should generally be avoided because they are only useful in rare cases and can be harmful if used incorrectly.
+通常应该避免使用**const 类型转换**和**重新解释类型转换**，因为只有很少的情况下会需要使用它们，而且使用不当是非常有害的。
 
 !!! warning "注意"
 
-	Avoid const casts and reinterpret casts unless you have a very good reason to use them.
+	除非你有充分的理由，否则请避免使用**const 类型转换**和**重新解释类型转换**
 
 ## C语言风格的类型转换
 
-In standard C programming, casts are done via the () operator, with the name of the type to convert the value placed inside the parenthesis. You may still see these used in code (or by programmers) that have been converted from C.
+在标准的C语言中，强制转换是通过`()`运算符完成的，括号内为需要转换的类型名。在C++中，你仍然可以在由C语言转换而来的代码中看到它们。
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -81,16 +87,16 @@ int main()
 ```
 
 
-In the above program, we use a C-style cast to tell the compiler to convert `x` to a `double`. Because the left operand of operator/ now evaluates to a floating point value, the right operand will be converted to a floating point value as well, and the division will be done using floating point division instead of integer division!
+在上面的程序中，我们使用了一个C语言风格的类型转换，要求编译器将`x`转换为`double`。因为，`/`左侧的操作数被转换成了浮点数，所以操作符右侧的数同样也会被转换为浮点数（[[numeric-conversions|数值转换]]），然后表达式就会按照浮点数除法而不是整型除法求值！
 
-C++ will also let you use a `C-style cast` with a more function-call like syntax:
+C++ 允许你使用一种更加类似函数调用的语法来使用C语言风格的类型转换：
 
 ```cpp
 double d { double(x) / y }; // convert x to a double so we get floating point division
 ```
 
 
-This performs identically to the prior example, but has the benefit of parenthesizing the value being converted (making it easier to tell what is being converted).
+这种方式实现的类型转换和之前一种是完全一样的，但是将需要转换的变量放在括号了，geng'roThis performs identically to the prior example, but has the benefit of parenthesizing the value being converted (making it easier to tell what is being converted).
 
 Although a `C-style cast` appears to be a single cast, it can actually perform a variety of different conversions depending on context. This can include a `static cast`, a `const cast` or a `reinterpret cast` (the latter two of which we mentioned above you should avoid). As a result, `C-style casts`are at risk for being inadvertently misused and not producing the expected behavior, something which is easily avoidable by using the C++ casts instead.
 
