@@ -12,7 +12,7 @@ tags:
 ---
 
 
-In lesson [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]], we discussed that the compiler can implicitly convert a value from one data type to another through a system called `implicit type conversion`. When you want to numerically promote a value from one data type to a wider data type, using implicit type conversion is fine.
+在 [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中个， we discussed that the compiler can implicitly convert a value from one data type to another through a system called `implicit type conversion`. When you want to numerically promote a value from one data type to a wider data type, using implicit type conversion is fine.
 
 Many new C++ programmers try something like this:
 

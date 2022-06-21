@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-4-Arithmetic-conversions.md",
+            "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:index",
+                "query": "无符号",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -71,8 +71,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -88,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-4-Arithmetic-conversions.md"
+                "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
               }
             }
           },
@@ -109,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-4-Arithmetic-conversions.md",
+                "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,15 +129,15 @@
   },
   "active": "f0110399c380d077",
   "lastOpenFiles": [
-    "docs/8-4-Arithmetic-conversions.md",
-    "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+    "docs/8-4-Arithmetic-conversions.md",
+    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
+    "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/8-1-Implicit-type-conversion-coercion.md",
     "docs/8-2-Floating-point-and-integral-promotion.md",
     "docs/8-3-Numeric-conversions.md",
     "docs/narrowing-convertions.md",
     "docs/numeric promotions.md",
-    "docs/numeric-conversions.md",
-    "docs/value-preserving.md"
+    "docs/numeric-conversions.md"
   ]
 }

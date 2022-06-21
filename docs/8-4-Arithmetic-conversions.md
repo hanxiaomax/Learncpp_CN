@@ -17,6 +17,7 @@ tags:
 		- 如果至少有一个操作数在优先级列表中，则具有较低优先级的操作数会被转换为具有较高优先级的操作数；
 		- 否则 (两个操作数的类型均不在表中)，则两个操作数会进行[[numeric promotions|数值提升]](参见：[[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]])。
 	- 使用 `typeid` 运算符 (在 `<typeinfo>` 头文件中)，来显示表达式结果所属的类型。
+	- **无符号整型**被用在算术表达式中的时候，由于优先级比**整型**高，会导致整型被转换为无符号整型，如果是符号可能出现反转。这就是为什么不要使用无符号整型的原因
 
 在[[5-1-Operator-precedence-and-associativity|5.1 - 运算符优先级和结合律]]中我们讨论过，表达式是如何基于优先级和结合律进行运算的。
 
@@ -162,6 +163,6 @@ int main()
 ```
 
 
-尽管，很显然 `5` 是比 `-3`大的。但是, when this expression evaluates, `-3` is converted to a large `unsigned int` that is larger than `5`. Thus, the above prints `false` rather than the expected result of `true`.
+尽管，很显然 `5` 是比 `-3`大的。当表达式求值时，`-3`会被转换为一个 `unsigned int` （反转成一个很大的数），这个数大于`5`。因此，上面的表达式会输出 `false` 而不是 `true`。
 
-This is one of the primary reasons to avoid unsigned integers -- when you mix them with signed integers in arithmetic expressions, you’re at risk for unexpected results. And the compiler probably won’t even issue a warning.
+这也是避免无符号整数的主要原因之一——当在算术表达式中将它们与有符号整数混合使用时，可能会出现意外结果。编译器甚至可能不会发出警告。
