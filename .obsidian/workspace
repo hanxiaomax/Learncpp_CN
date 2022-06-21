@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "无符号",
+                "query": "括号初始化",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,7 +67,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -130,14 +130,14 @@
   "active": "f0110399c380d077",
   "lastOpenFiles": [
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+    "docs/reinterpret-casts.md",
+    "docs/dynamic-casts.md",
+    "docs/const-cast.md",
+    "docs/static-casts.md",
+    "docs/C-style-casts.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
+    "docs/列表初始化.md",
     "docs/8-4-Arithmetic-conversions.md",
-    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
-    "docs/8-6-Typedefs-and-type-aliases.md",
-    "docs/8-1-Implicit-type-conversion-coercion.md",
-    "docs/8-2-Floating-point-and-integral-promotion.md",
-    "docs/8-3-Numeric-conversions.md",
-    "docs/narrowing-convertions.md",
-    "docs/numeric promotions.md",
-    "docs/numeric-conversions.md"
+    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
   ]
 }

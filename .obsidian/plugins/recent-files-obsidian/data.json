@@ -5,6 +5,34 @@
       "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
     },
     {
+      "basename": "reinterpret-casts",
+      "path": "docs/reinterpret-casts.md"
+    },
+    {
+      "basename": "dynamic-casts",
+      "path": "docs/dynamic-casts.md"
+    },
+    {
+      "basename": "const-cast",
+      "path": "docs/const-cast.md"
+    },
+    {
+      "basename": "static-casts",
+      "path": "docs/static-casts.md"
+    },
+    {
+      "basename": "C-style-casts",
+      "path": "docs/C-style-casts.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "列表初始化",
+      "path": "docs/列表初始化.md"
+    },
+    {
       "basename": "8-4-Arithmetic-conversions",
       "path": "docs/8-4-Arithmetic-conversions.md"
     },
@@ -171,34 +199,6 @@
     {
       "basename": "4-8-Floating-point-numbers",
       "path": "docs/4-8-Floating-point-numbers.md"
-    },
-    {
-      "basename": "Drawing 2022-06-19 00.48.49.excalidraw",
-      "path": "Excalidraw/Drawing 2022-06-19 00.48.49.excalidraw.md"
-    },
-    {
-      "basename": "immediate-functions",
-      "path": "docs/immediate-functions.md"
-    },
-    {
-      "basename": "7-11-Halts-exiting-your-program-early",
-      "path": "docs/7-11-Halts-exiting-your-program-early.md"
-    },
-    {
-      "basename": "7-9-For-statements",
-      "path": "docs/7-9-For-statements.md"
-    },
-    {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
-      "basename": "7-8-Do-while-statements",
-      "path": "docs/7-8-Do-while-statements.md"
-    },
-    {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     }
   ],
   "omittedPaths": [],

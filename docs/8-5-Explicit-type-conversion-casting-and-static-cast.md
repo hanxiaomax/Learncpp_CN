@@ -13,7 +13,9 @@ tags:
 
 ??? note "关键点速记"
 	- C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]]、[[static-casts|静态类型转换]]、[[const-cast|const 类型转换]]、[[dynamic-casts|动态类型转换]]和[[reinterpret-casts|重新解释类型转换]]。后四种类型有时称为[[named-cast|具名名类型转换(named cast)]]。
-	- 
+	- C 语言类型的类型转换在不同的语境下会产生不同的效果，尽量不要使用
+	- 优先使用`static_cast` ，它提供了[[runtime|运行时]]的类型检查机制，不容易犯错。
+	- 使用 `static_cast`  进行显式地缩窄转换
 
 在 [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中我们介绍过，编译器可以隐式地将一种类型的值转换成另外一种类型，即[[implicit-type-conversion|隐式类型转换]]。当你想要将一个数值类型通过[[numeric promotions|数值提升]]的方式转换为更宽的类型时，使用隐式类型转换是可以的。
 
@@ -96,23 +98,24 @@ double d { double(x) / y }; // convert x to a double so we get floating point di
 ```
 
 
-这种方式实现的类型转换和之前一种是完全一样的，但是将需要转换的变量放在括号了，geng'roThis performs identically to the prior example, but has the benefit of parenthesizing the value being converted (making it easier to tell what is being converted).
+这种方式实现的类型转换和之前一种是完全一样的，但是将需要转换的变量放在括号了，更容易看清楚被转换的对象是什么。
 
-Although a `C-style cast` appears to be a single cast, it can actually perform a variety of different conversions depending on context. This can include a `static cast`, a `const cast` or a `reinterpret cast` (the latter two of which we mentioned above you should avoid). As a result, `C-style casts`are at risk for being inadvertently misused and not producing the expected behavior, something which is easily avoidable by using the C++ casts instead.
+虽然“c风格类型转换”看起来是单一类型转换，但实际上它可以根据上下文执行各种不同的转换。这可以包括“静态类型转换”、“const类型转换”或“重新解释类型转换”(我们在上面提到的后两种类型应该避免)。因此，“C风格强制转换”有可能被无意中误用，而不会产生预期的行为，而使用c++强制转换则可以避免这种情况。
+
 
 !!! info "相关内容"
 
-	If you’re curious, [this article](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/) has more information on how C-style casts actually work.
+	如果你很好奇，C语言风格的类型转换是如何工作的，可以参考[这篇文章](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/) 。
 
 !!! success "最佳实践"
 
-	Avoid using C-style casts.
+	避免使用C语言风格的类型转换。
 
 ## `static_cast`
 
-C++ introduces a casting operator called static_cast, which can be used to convert a value of one type to a value of another type.
+C++ 引入了一个新的抢占转换运算符`static_cast`，用于将一种类型的值转换为另外一种类型。
 
-You’ve previously seen `static_cast` used to convert a `char` into an `int` so that std::cout prints it as an integer instead of a `char`:
+在之前的课中，你可能已经见识过如何使用 `static_cast` 将 `char` 转换为 `int` 使得 `std::cout`可以打印整型而不是 `char`：
 
 ```cpp
 #include <iostream>
@@ -127,7 +130,7 @@ int main()
 ```
 
 
-The `static_cast` operator takes an expression as input, and returns the evaluated value converted to the type specified inside the angled brackets. `static_cast` is best used to convert one fundamental type into another.
+`static_cast` 运算符将一个表达式作为输入，然后将表达式求值的结果转换为**尖括号**中指定的类型。`static_cast` 是将一种基础数据类型转换为另一种基础数据类型的最佳途径。
 
 ```cpp
 #include <iostream>
@@ -146,24 +149,26 @@ int main()
 ```
 
 
-The main advantage of `static_cast` is that it provides compile-time type checking, making it harder to make an inadvertent error. `static_cast` is also (intentionally) less powerful than `C-style casts`, so you can’t inadvertently remove `const` or do other things you may not have intended to do.
+`static_cast` 最大的优势是它提供了[[runtime|运行时]]的类型检查机制，这样就不容易犯下由粗心导致的问题。 `static_cast` 的功能不如 C 语言风格的类型转换（故意的），所以你不会无意间移除`const`或其他你本不希望发生的事情。
+
 
 !!! success "最佳实践"
 
-	Favor static_cast when you need to convert a value from one type to another type.
+	在需要进行类型转换时，优先使用 `static_cast`。
 
-Using static_cast to make narrowing conversions explicit
 
-Compilers will often issue warnings when a potentially unsafe (narrowing) implicit type conversion is performed. For example, consider the following program:
+## 使用 static_cast  进行显式地缩窄转换
+
+当我们进行具有潜在危险的（缩窄）隐式类型转换时，编译器通常会发出告警。例如，考虑下面这段代码：
 
 ```cpp
 int i { 48 };
-char ch = i; // implicit narrowing conversion
+char ch = i; // 隐式地缩窄转换
 ```
 
-Casting an `int` (2 or 4 bytes) to a `char` (1 byte) is potentially unsafe (as the compiler can’t tell whether the integer value will overflow the range of the `char` or not), and so the compiler will typically print a warning. If we used list initialization, the compiler would yield an error.
+将`int` (2 字节或者 4 字节) 转换为`char` (1 字节)通常是不安全的（因为编译器无法判断整型值是否会超出`char`能够表示的范围），因此编译器通常会产生警告。而如果我们使用的是[[列表初始化]]（[[1-4-Variable-assignment-and-initialization#括号初始化|括号初始化]]），编译器则通常会产生一个编译错误。([[8-3-Numeric-conversions#括号初始化不允许缩窄转换]])
 
-To get around this, we can use a static cast to explicitly convert our integer to a `char`:
+为了避免这些问题，我们可以使用 `static_cast` 显式地将整型转换为 `char`：
 
 ```cpp
 int i { 48 };
@@ -172,11 +177,10 @@ int i { 48 };
 char ch { static_cast<char>(i) };
 ```
 
+这样做时，我们显式地告诉编译器这个转换是有意的，后果自负(例如，溢出 `char` 的范围)。由于这个 `static_cast` 的输出类型为 `char`，变量 `ch` 的初始化的类型是匹配的，因此不会产生警告或错误。
 
 
-When we do this, we’re explicitly telling the compiler that this conversion is intended, and we accept responsibility for the consequences (e.g. overflowing the range of a `char` if that happens). Since the output of this `static_cast` is of type `char`, the initialization of variable `ch` doesn’t generate any type mismatches, and hence no warnings or errors.
-
-Here’s another example where the compiler will typically complain that converting a `double` to an `int` may result in loss of data:
+下面是另一个编译器通常会抱怨将 `double` 转换为 `int` 可能会导致数据丢失的例子:
 
 ```cpp
 int i { 100 };
@@ -184,8 +188,8 @@ i = i / 2.5;
 ```
 
 
+告诉编译器上述转换是有意而为之的：
 
-To tell the compiler that we explicitly mean to do this:
 
 ```cpp
 int i { 100 };
