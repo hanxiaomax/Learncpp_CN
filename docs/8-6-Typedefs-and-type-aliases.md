@@ -11,9 +11,11 @@ tags:
 ---
 
 ??? note "关键点速记"
+
 	- `using distance_t = double; // distance_t 作为 double 的别名`
 	- 类型别名并非新类型
 	- 说类型别名并不是**类型安全**的，因为编译器**语义错误**（尽管语法是正确的）
+	- 类型别名的作用域规则和变量标识符的规则是一致的
 
 ## 类型别名
 
@@ -99,14 +101,14 @@ int main()
 
 !!! cite "题外话"
 
-    Some languages support the concept of a strong typedef (or strong type alias). A strong typedef actually creates a new type that has all the original properties of the original type, but the compiler will throw an error if you try to mix values of the aliased type and the strong typedef. As of C++20, C++ does not directly support strong typedefs (though enum classes, covered in lesson [10.4 -- Scoped enumerations (enum classes)](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/), are similar), but there are quite a few 3rd party C++ libraries that implement strong typedef-like behavior.
+	有些语言支持强类型typedef(或强类型别名)的概念。强类型typedef定义实际上创建了一个具有原类型所有原始属性的新类型，但如果试图将别名类型的值和强类型定义的值混合使用，编译器将抛出错误。对于 C++20 来说，C++ 并不直接支持强类型typedef(尽管枚举类有类似之处，参见：[10.4 -- Scoped enumerations (enum classes)](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/))，但是有很多第三方的 C++ 库都实现了强typedef类似的行为。
+	
 
-## The scope of a type alias
+## 类型别名的作用域
 
-Because scope is a property of an identifier, type alias identifiers follow the same scoping rules as variable identifiers: a type alias defined inside a block has block scope and is usable only within that block, whereas a type alias defined in the global namespace has file scope and is usable to the end of the file. In the above example, `miles_t` and `speed_t` are only usable in the `main()` function.
+由于作用域是标识符的属性，类型别名标识符遵循与变量标识符相同的作用域规则：在块内定义的类型别名具有块作用域，并且仅在该块内可用，而在全局命名空间中定义的类型别名具有文件作用域，直到文件末尾都可用。在上面的例子中，`miles_t` 和 `speed_t` 只在 `main()` 函数中可用。
 
-If you need to use one or more type aliases across multiple files, they can be defined in a header file and `#included` into any code files that needs to use the definition:
-
+如果你需要在多个文件中使用一个或多个类型别名，它们可以在头文件中定义，并在任何需要使用该定义的代码文件中`#include`：
 
 ```cpp title="mytypes.h"
 #ifndef MYTYPES
@@ -118,22 +120,21 @@ If you need to use one or more type aliases across multiple files, they can be d
 #endif
 ```
 
+通过这种方法`include`的类型别名具有全局作用域。
 
-Type aliases #included this way will be imported into the global namespace and thus have global scope.
 
-## Typedef
+## `Typedef`
 
-**typedef** (which is short for “type definition”) is a keyword with the same semantics as “using”, but reversed syntax.
+**typedef** (是“type definition”的缩写) 关键字的语义和 `using`是类似的，但是语法顺序是相反的。
 
 ```cpp
-// The following aliases are identical
+// 下面两个别名是一致的
 typedef long miles_t;
 using miles_t = long;
 ```
 
-COPY
 
-Typedefs are still in C++ for historical reasons, but their use is discouraged.
+`typedef`存在于C++中仍然是出于历史原因，但是ta'mbut their use is discouraged.
 
 Typedefs have a few syntactical issues. First, it’s easy to forget whether the _typedef name_ or _aliased type name_ come first. Which is correct?
 
