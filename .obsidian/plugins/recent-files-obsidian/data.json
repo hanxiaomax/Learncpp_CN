@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+    },
+    {
+      "basename": "8-4-Arithmetic-conversions",
+      "path": "docs/8-4-Arithmetic-conversions.md"
+    },
+    {
+      "basename": "8-3-Numeric-conversions",
+      "path": "docs/8-3-Numeric-conversions.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
       "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
       "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+    },
+    {
+      "basename": "named-cast",
+      "path": "docs/named-cast.md"
     },
     {
       "basename": "reinterpret-casts",
@@ -25,24 +45,12 @@
       "path": "docs/C-style-casts.md"
     },
     {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
       "basename": "列表初始化",
       "path": "docs/列表初始化.md"
     },
     {
-      "basename": "8-4-Arithmetic-conversions",
-      "path": "docs/8-4-Arithmetic-conversions.md"
-    },
-    {
       "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
       "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "8-6-Typedefs-and-type-aliases",
-      "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
     {
       "basename": "8-1-Implicit-type-conversion-coercion",
@@ -51,10 +59,6 @@
     {
       "basename": "8-2-Floating-point-and-integral-promotion",
       "path": "docs/8-2-Floating-point-and-integral-promotion.md"
-    },
-    {
-      "basename": "8-3-Numeric-conversions",
-      "path": "docs/8-3-Numeric-conversions.md"
     },
     {
       "basename": "narrowing-convertions",
@@ -195,10 +199,6 @@
     {
       "basename": "4-7-Introduction-to-scientific-notation",
       "path": "docs/4-7-Introduction-to-scientific-notation.md"
-    },
-    {
-      "basename": "4-8-Floating-point-numbers",
-      "path": "docs/4-8-Floating-point-numbers.md"
     }
   ],
   "omittedPaths": [],

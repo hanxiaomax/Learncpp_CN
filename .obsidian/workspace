@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "f0110399c380d077",
+        "id": "2fe022bbf6ff5f64",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+            "file": "docs/8-6-Typedefs-and-type-aliases.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -67,7 +67,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+                "file": "docs/8-6-Typedefs-and-type-aliases.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+                "file": "docs/8-6-Typedefs-and-type-aliases.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,17 +127,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f0110399c380d077",
+  "active": "2fe022bbf6ff5f64",
   "lastOpenFiles": [
+    "docs/8-6-Typedefs-and-type-aliases.md",
+    "docs/8-4-Arithmetic-conversions.md",
+    "docs/8-3-Numeric-conversions.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+    "docs/named-cast.md",
     "docs/reinterpret-casts.md",
     "docs/dynamic-casts.md",
     "docs/const-cast.md",
-    "docs/static-casts.md",
-    "docs/C-style-casts.md",
-    "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/列表初始化.md",
-    "docs/8-4-Arithmetic-conversions.md",
-    "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+    "docs/static-casts.md"
   ]
 }

@@ -13,67 +13,62 @@ tags:
 ??? note "关键点速记"
 	
 
-## Type aliases
+## 类型别名
 
-In C++, using is a keyword that creates an alias for an existing data type. To create such an alias, we use the `using` keyword, followed by a name for the alias, followed by an equals sign and an existing data type. For example:
-
-```cpp
-using distance_t = double; // define distance_t as an alias for type double
-```
-
-COPY
-
-Many type alias names use a “_t” or “_type” suffix to help decrease the chance of naming collisions with other identifiers. However, such use is inconsistent at best, and many type aliases have no suffix at all.
+在 C++ 中，`using` 关键字还可以被用来为已有的类型创建一个[[type-aliases|类型别名(type aliases)]]。创建别名时，在`using`关键字后面紧接着的是别名，然后是一个等号以及一个已有的类型名，例如：
 
 ```cpp
-using distance_type = double; // Also ok, more about this in a later chapter
-using distance = double; // Also ok, but could be confused for- and collide with variable names
+using distance_t = double; // distance_t 作为 double 的别名
 ```
 
-COPY
-
-Once defined, an alias can be used anywhere a type is needed. For example, we can create a variable with the alias name as the type:
+很多类型别名会使用 “`_t`” 或 “`_type`” 后缀来减少命名冲突的几率。不过，这个习惯的一致性并不好，很多类型别名是没有后缀的。
 
 ```cpp
-distance_t milesToDestination{ 3.4 }; // defines a variable of type double
+using distance_type = double; // 没问题, 后面的章节多会使用这种形式
+using distance = double; // 这样也可以，, 但是可能会和其他变量名造成混淆或冲突
 ```
 
-COPY
 
-When the compiler encounters an alias name, it will substitute in the aliased type. For example:
+一旦完成定义后，**类型别名**可以在任何使用**类型**的地方使用。 例如，我们可以使用类型别名创建一个变量：
+
+```cpp
+distance_t milesToDestination{ 3.4 }; // 定义 double 类型的变量
+```
+
+当编译器遇到一个类型别名的时候，它会把别名替换为真正的类型，例如：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    using distance_t = double; // define distance_t as an alias for type double
+    using distance_t = double; // 定义 distance_t 作为 double 的别名
 
-    distance_t milesToDestination{ 3.4 }; // defines a variable of type double
+    distance_t milesToDestination{ 3.4 }; // 定义 double 类型变量
 
-    std::cout << milesToDestination << '\n'; // prints a double value
+    std::cout << milesToDestination << '\n'; // 打印 double 值
 
     return 0;
 }
 ```
 
-COPY
+输出结果如下：
 
-This prints:
-
+```
 3.4
+```
 
-In the above program, we first define `distance_t` as an alias for type `double`.
+在上面的程序中，我们将 `distance_t` 定义为 `double` 的别名。
 
-Next, we define a variable named `milesToDestination` of type `distance_t`. Because the compiler knows `distance_t` is an alias, it will use the aliased type, which is `double`. Thus, variable `milesToDestination` is actually compiled to be a variable of type `double`, and it will behave as a `double` in all regards.
+接下来，我们定义了一个  `distance_t`  类型的变量 `milesToDestination` 。因为编译器指定 `distance_t`是一个别名，所以它会使用真实的变量类型，即 `double`。因此，变量 `milesToDestination` 在编译时实际上是 `double` 类型的，在任何情况下它的行为也是和 `double` 类型完全一致的。
 
-Finally, we print the value of `milesToDestination`, which prints as a `double` value.
+最后，将 `milesToDestination` 的值作为`double`类型打印。
 
-## Type aliases are not new types
+## 类型别名并不是一种新的类型
 
-An alias does not actually define a new type -- it just introduces a new identifier for an existing type. An alias is completely interchangeable with the aliased type.
+类型别名在创建时并没有实际创建一个新的类型——它只是为已有的类型创建了一个新的标识符。类型别名和它对应的类型是可以完全互换的。
 
-This allows us to do things that are syntactically valid but semantically meaningless. For example:
+这使得我们可以做一些语法上正确，但是语义上没什么实际意义的操作，例如：
 
 ```cpp
 int main()
@@ -91,9 +86,8 @@ int main()
 }
 ```
 
-COPY
 
-Although conceptually we intend `miles_t` and `speed_t` to have distinct meanings, both are just aliases for type `long`. This effectively means `miles_t`, `speed_t`, and `long` can all be used interchangeably. And indeed, when we assign a value of type `speed_t` to a variable of type `miles_t`, the compiler only sees that we’re assigning a value of type `long` to a variable of type `long`, and it will not complain.
+尽管，从概念上来讲我们希望 `miles_t` 和 `speed_t` 具有不同的含义，但是它们实际上都是`long`的o have distinct meanings, both are just aliases for type `long`. This effectively means `miles_t`, `speed_t`, and `long` can all be used interchangeably. And indeed, when we assign a value of type `speed_t` to a variable of type `miles_t`, the compiler only sees that we’re assigning a value of type `long` to a variable of type `long`, and it will not complain.
 
 Because the compiler does not prevent these kinds of semantic errors for type aliases, we say that aliases are not type safe. In spite of that, they are still useful.
 
