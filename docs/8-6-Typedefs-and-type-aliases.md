@@ -134,47 +134,46 @@ using miles_t = long;
 ```
 
 
-`typedef`存在于C++中仍然是出于历史原因，但是ta'mbut their use is discouraged.
+`typedef`存在于C++中仍然是出于历史原因，并不推荐使用它。
 
-Typedefs have a few syntactical issues. First, it’s easy to forget whether the _typedef name_ or _aliased type name_ come first. Which is correct?
+`typedef`还有一些语法问题。首先，很容易忘记应该把 _typedef_ 名放在前面还是应该把别名放在前面。下面哪个是对的？
+
 
 ```cpp
-typedef distance_t double; // incorrect (typedef name first)
-typedef double distance_t; // correct (aliased type name first)
+typedef distance_t double; // 错误 (typedef 名应该放在前面)
+typedef double distance_t; // 正确 (需要创建别名的类型应该放在前面)
 ```
 
-COPY
 
-It’s easy to get backwards. Fortunately, in such cases, the compiler will complain.
+这个是很容易写反的，不过好在写反的时候编译器会报错。
 
-Second, the syntax for typedefs can get ugly with more complex types. For example, here is a hard-to-read typedef, along with an equivalent (and slightly easier to read) type alias with “using”:
+其次，在处理复杂类型时，`typedef`的语法特别丑陋。例如，下面这个`typedef`的例子就非常难以阅读，而使用`using`创建的等价的类型别名则更容易阅读：
 
 ```cpp
 typedef int (*fcn_t)(double, char); // fcn_t hard to find
 using fcn_t = int(*)(double, char); // fcn_t easier to find
 ```
 
-COPY
 
-In the above typedef definition, the name of the new type (`fcn_t`) is buried in the middle of the definition, making the definition hard to read.
+在上面的 `typedef` 定义中，新类型(`fcn_t`)被藏在了定义的中间部分，这使得该定义变得很难阅读。
 
-Third, the name “typedef” suggests that a new type is being defined, but that’s not true. As we have seen above, an alias is interchangeable with the aliased type.
+第三，“typedef” 这个看起来像是要定义一个新的类型，但是实际上并没有，从之前的例子可以看出，类型和类型别名是可以互换使用的。
 
 !!! success "最佳实践"
 
-	When creating aliased types, prefer the type alias syntax over the typedef syntax.
+	在创建类型别名时，尽量使用类型别名语法而不是`typedef`语法。
 
-## When should we use type aliases?
+## 什么时候应该使用类型别名？
 
-Now that we’ve covered what type aliases are, let’s talk about what they are useful for.
+在了解了什么是类型别名之后，是时候该聊聊，合适应该使用类型别名呢？
 
-## Using type aliases for platform independent coding
+## 在平台无关的代码中使用类型别名
 
-One of the uses for type aliases is that they can be used to hide platform specific details. On some platforms, an `int` is 2 bytes, and on others, it is 4 bytes. Thus, using `int` to store more than 2 bytes of information can be potentially dangerous when writing platform independent code.
+类型别名的一个用途是，它们可以用来隐藏平台特定的细节。在某些平台上，`int` 为2字节，而在其他平台上为 4 字节。因此，在编写与平台无关的代码时，使用 `int` 存储超过 2 字节的信息可能会有潜在的危险。
 
-Because `char`, `short`, `int`, and `long` give no indication of their size, it is fairly common for cross-platform programs to use type aliases to define aliases that include the type’s size in bits. For example, `int8_t` would be an 8-bit signed integer, `int16_t` a 16-bit signed integer, and `int32_t` a 32-bit signed integer. Using type aliases in this manner helps prevent mistakes and makes it more clear about what kind of assumptions have been made about the size of the variable.
+因为`char` 、`short`、`int` 和 `long` 没有指明它们的大小，所以跨平台程序使用类型别名来定义以位为单位包含类型大小的别名是相当常见的。例如， `int8_t`是一个 8 位有符号整数，`int16_t` 是一个 16 位有符号整数，`int32_t` 是一个32位有符号整数。以这种方式使用类型别名有助于防止错误，并更清楚地说明对变量大小的期望值是多少。
 
-In order to make sure each aliased type resolves to a type of the right size, type aliases of this kind are typically used in conjunction with preprocessor directives:
+为了确保每个别名类型解析为正确大小的类型，这类类型别名通常与预处理器指令一起使用:
 
 ```cpp
 #ifdef INT_2_BYTES
@@ -188,9 +187,8 @@ using int32_t = int;
 #endif
 ```
 
-COPY
 
-On machines where integers are only 2 bytes, `INT_2_BYTES` can be #defined, and the program will be compiled with the top set of type aliases. On machines where integers are 4 bytes, leaving `INT_2_BYTES` undefined will cause the bottom set of type aliases to be used. In this way, `int8_t` will resolve to a 1 byte integer, `int16_t` will resolve to a 2 bytes integer, and `int32_t` will resolve to a 4 byte integer using the combination of `char`, `short`, `int`, and `long` that is appropriate for the machine the program is being compiled on.
+On machines where integers are only 2 bytes, `INT_2_BYTES` can be `#defined`, and the program will be compiled with the top set of type aliases. On machines where integers are 4 bytes, leaving `INT_2_BYTES` undefined will cause the bottom set of type aliases to be used. In this way, `int8_t` will resolve to a 1 byte integer, `int16_t` will resolve to a 2 bytes integer, and `int32_t` will resolve to a 4 byte integer using the combination of `char`, `short`, `int`, and `long` that is appropriate for the machine the program is being compiled on.
 
 The fixed-width integers (such as `std::int_fast16_t` and `std::int_least32_t`) and `size_t` type (both covered in lesson [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]) are actually just type aliases to various fundamental types.
 
@@ -209,9 +207,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序打印结果为：
 
 ```
 a
@@ -219,7 +215,7 @@ a
 
 Because `std::int_least8_t` is typically defined as a type alias for one of the char types, variable `x` will be defined as a char type. And char types print their values as ASCII characters rather than as integer values.
 
-Using type aliases to make complex types simple
+## 使用类型别名简化类型
 
 Although we have only dealt with simple data types so far, in advanced C++, types can be complicated and lengthy to manually enter on your keyboard. For example, you might see a function and variable defined like this:
 
@@ -242,7 +238,6 @@ int main()
 }
 ```
 
-COPY
 
 Typing `std::vector<std::pair<std::string, int>>` everywhere you need to use that type is cumbersome, and it is easy to make a typing mistake. It’s much easier to use a type alias:
 
@@ -275,7 +270,7 @@ Don’t worry if you don’t know what `std::vector`, `std::pair`, or all thes
 
 This is probably the best use for type aliases.
 
-## Using type aliases for legibility
+## 使用类型别名让程序更清晰
 
 Type aliases can also help with code documentation and comprehension.
 
@@ -287,7 +282,6 @@ For example, given the following function:
 int gradeTest();
 ```
 
-COPY
 
 We can see that the return value is an integer, but what does the integer mean? A letter grade? The number of questions missed? The student’s ID number? An error code? Who knows! The return type of `int` does not tell us much. If we’re lucky, documentation for the function exists somewhere that we can reference. If we’re unlucky, we have to read the code and infer the purpose.
 
@@ -298,13 +292,12 @@ using testScore_t = int;
 testScore_t gradeTest();
 ```
 
-COPY
 
 The return type of `testScore_t` makes it a little more obvious that the function is returning a type that represents a test score.
 
 In our experience, creating a type alias just to document the return type of a single function isn’t worth it (use a comment instead). But if you have already created a type alias for other reasons, this can be a nice additional benefit.
 
-## Using type aliases for easier code maintenance
+## 使用类型别名提高代码可维护性
 
 Type aliases also allow you to change the underlying type of an object without having to change lots of code. For example, if you were using a `short` to hold a student’s ID number, but then later decided you needed a `long` instead, you’d have to comb through lots of code and replace `short` with `long`. It would probably be difficult to figure out which objects of type `short` were being used to hold ID numbers and which were being used for other purposes.
 
@@ -312,7 +305,7 @@ However, if you use type aliases, then changing types becomes as simple as updat
 
 While this seems like a nice benefit, caution is necessary whenever a type is changed, as the behavior of the program may also change. This is especially true when changing the type of a type alias to a type in a different type family (e.g. an integer to a floating point value, or vice versa)! The new type may have comparison or integer/floating point division issues, or other issues that the old type did not. If you change an existing type to some other type, your code should be thoroughly retested.
 
-## Downsides and conclusion
+## 缺点和结论
 
 While type aliases offer some benefits, they also introduce yet another identifier into your code that needs to be understood. If this isn’t offset by some benefit to readability or comprehension, then the type alias is doing more harm than good.
 

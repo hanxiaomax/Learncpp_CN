@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "括号初始化",
+                "query": "tag:#defined",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,7 +67,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
