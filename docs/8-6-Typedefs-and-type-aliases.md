@@ -11,7 +11,9 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- `using distance_t = double; // distance_t 作为 double 的别名`
+	- 类型别名并非新类型
+	- 说类型别名并不是**类型安全**的，因为编译器**语义错误**（尽管语法是正确的）
 
 ## 类型别名
 
@@ -87,13 +89,13 @@ int main()
 ```
 
 
-尽管，从概念上来讲我们希望 `miles_t` 和 `speed_t` 具有不同的含义，但是它们实际上都是`long`的o have distinct meanings, both are just aliases for type `long`. This effectively means `miles_t`, `speed_t`, and `long` can all be used interchangeably. And indeed, when we assign a value of type `speed_t` to a variable of type `miles_t`, the compiler only sees that we’re assigning a value of type `long` to a variable of type `long`, and it will not complain.
+尽管，从概念上来讲我们希望 `miles_t` 和 `speed_t` 具有不同的含义，但是它们实际上都是`long`类型的。这也意味着`miles_t`、`speed_t` 和 `long` 可以互换使用。的确，当我们把`speed_t` 类型的值赋值给 `miles_t` 类型的值是，编译器会认为这只是将一个`long`赋值给了另外一个`long`，所以不会产生任何警告或者报错信息。
 
-Because the compiler does not prevent these kinds of semantic errors for type aliases, we say that aliases are not type safe. In spite of that, they are still useful.
+因为编译器不会识别这些**语义错误**，所以我们说类型别名并不是**类型安全**的。不过，它们仍然非常有用。
 
 !!! warning "注意"
 
-	Care must be taken not to mix values of aliases that are intended to be semantically distinct.
+	注意不要混淆使用两个语义不同的类型别名
 
 !!! cite "题外话"
 
