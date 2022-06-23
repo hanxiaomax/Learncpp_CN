@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-6-Typedefs-and-type-aliases.md",
+            "file": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,13 +66,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -88,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-6-Typedefs-and-type-aliases.md"
+                "file": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
               }
             }
           },
@@ -109,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-6-Typedefs-and-type-aliases.md",
+                "file": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,6 +128,7 @@
   },
   "active": "2fe022bbf6ff5f64",
   "lastOpenFiles": [
+    "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
     "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/4-6-Fixed-width-integers-and-size_t.md",
     "docs/8-4-Arithmetic-conversions.md",
@@ -138,7 +137,6 @@
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
     "docs/named-cast.md",
     "docs/reinterpret-casts.md",
-    "docs/dynamic-casts.md",
-    "docs/const-cast.md"
+    "docs/dynamic-casts.md"
   ]
 }

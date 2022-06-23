@@ -16,6 +16,9 @@ tags:
 	- 类型别名并非新类型
 	- 说类型别名并不是**类型安全**的，因为编译器**语义错误**（尽管语法是正确的）
 	- 类型别名的作用域规则和变量标识符的规则是一致的
+	- 使用类型别名可以定义与平台无关的类型
+	- 类型别名可以简化复杂类型名的输入和理解
+	- 当类型别名可以提高代码可读性、代码维护性时，明智而审慎地使用它们。
 
 ## 类型别名
 
@@ -301,29 +304,25 @@ testScore_t gradeTest();
 
 ## 使用类型别名提高代码可维护性
 
-Type aliases also allow you to change the underlying type of an object without having to change lots of code. For example, if you were using a `short` to hold a student’s ID number, but then later decided you needed a `long` instead, you’d have to comb through lots of code and replace `short` with `long`. It would probably be difficult to figure out which objects of type `short` were being used to hold ID numbers and which were being used for other purposes.
-
-However, if you use type aliases, then changing types becomes as simple as updating the type alias (e.g. from `using studentID_t = short;` to `using studentID_t = long;`).
-
-While this seems like a nice benefit, caution is necessary whenever a type is changed, as the behavior of the program may also change. This is especially true when changing the type of a type alias to a type in a different type family (e.g. an integer to a floating point value, or vice versa)! The new type may have comparison or integer/floating point division issues, or other issues that the old type did not. If you change an existing type to some other type, your code should be thoroughly retested.
-
 使用类型别名还可以在不进行大量改动的情况下修改对象的基本类型。例如，学生的ID原本使用 `short` 来保存，但后来决定用 `long` 来代替，此时你就必须将大量的 `short`替换为 `long`。这个时候往往很难确定究竟哪些`short`是用来保存ID的，而哪些则用于其他目的。
 
 然而，如果你使用了类型别名，那么更改类型就像更新类型别名一样简单(例如，将 `using studentID_t = short;` 修改为 `using studentID_t = long;` )。
 
-虽然这看起来是一个非常方便的特性，但每当类型发生变化时，我们仍然需要保持谨慎，因为程序的行为也可能随之发生变化。当将类型别名的类型更改为不同类型族中的类型时尤其如此(例如，将整数更改为浮点值，或反之亦然)！新类型可能有浮点数比较或整数/浮点除法问题，或其他旧类型所没有的问题。如果你将现有的类型更改为其他类型，代码应该重新、ch测试。
+虽然这看起来是一个非常方便的特性，但每当类型发生变化时，我们仍然需要保持谨慎，因为程序的行为也可能随之发生变化。当将类型别名的类型更改为不同类型族中的类型时尤其如此(例如，将整数更改为浮点值，或反之亦然)！新类型可能有浮点数比较或整数/浮点除法问题，或其他旧类型所没有的问题。如果你将现有的类型更改为其他类型，代码应该重新、彻底地测试。
 
 
 
 
 ## 缺点和结论
 
-While type aliases offer some benefits, they also introduce yet another identifier into your code that needs to be understood. If this isn’t offset by some benefit to readability or comprehension, then the type alias is doing more harm than good.
+然类型别名提供了一些好处，但它们也在代码中引入了另一个需要理解的标识符。如果这一点没有被可读性或理解的好处所抵消，那么类型别名弊大于利。
 
-A poorly utilized type alias can take a familiar type (such as `std::string`) and hide it behind a custom name that needs to be looked up. In some cases (such as with smart pointers, which we’ll cover in a future chapter), obscuring the type information can also be harmful to understanding how the type should be expected to work.
+类型别名使用不当的话，会将熟悉的类型(例如 `std::string` )隐藏在自定义名称后面。在某些情况下(例如智能指针，我们将在以后的章节中讨论)，模糊的类型信息也可能不利于理解类型应该如何工作。
 
-For this reason, type aliases should be used primarily in cases where there is a clear benefit to code readability or code maintenance. This is as much of an art as a science. Type aliases are most useful when they can be used in many places throughout your code, rather than in fewer places.
+因此，类型别名应该主要用于对代码可读性或代码维护有明显好处的情况。这既是一门科学，也是一门艺术。当类型别名可以在代码的许多地方使用而不是在寥寥几处使用时，才是它们大放异彩的机会。
+
 
 !!! success "最佳实践"
 
-	Use type aliases judiciously, when they provide a clear benefit to code readability or code maintenance.
+	当类型别名可以提高代码可读性、代码维护性时，明智而审慎地使用它们。
+	

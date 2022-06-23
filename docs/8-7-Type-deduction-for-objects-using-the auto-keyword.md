@@ -11,27 +11,27 @@ tags:
 - auto
 ---
 
-There’s a subtle redundancy lurking in this simple variable definition:
+在下面这个简单的变量定义中，存在一个难以察觉的冗余点：
 
 ```cpp
 double d{ 5.0 };
 ```
 
-COPY
+因为 C++ 属于强类型语言，所以我们必须为每一个对象指明其类型。因此，这里我们显式地指明了变量`d`的类型为`double`。
 
-Because C++ is a strongly-typed language, we are required to provide an explicit type for all objects. Thus, we’ve specified that variable `d` is of type double.
+但是，既然被用来初始化`d`的[[literals|字面量]] `5.0` 已经是`double`类型的了，难道再为 d 指定`double`不多于吗？
 
-However, the literal value `5.0` used to initialize `d` also has type double (implicitly determined via the format of the literal).
+!!! info "相关内容"
 
-Related content
+	关于字面量的类型，参见[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]].
 
-We discuss how literal types are determined in lesson [4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/).
+如果我们希望一个变量及其初始化式具有相同的类型，那么两次提供了相同的类型信息其实是多余的。
 
-In cases where we want a variable and its initializer to have the same type, we’re effectively providing the same type information twice.
 
 ## 变量初始化的类型转换
 
-Type deduction (also sometimes called type inference) is a feature that allows the compiler to deduce the type of an object from the object’s initializer. To use type deduction, the `auto` keyword is used in place of the variable’s type:
+类型推断是一种允许编译器通过对象的初始化值推断对象类型的特性。使用 `auto` 关键字代替变量的类型就可以使用类型推断。
+
 
 ```cpp
 int main()
@@ -44,9 +44,8 @@ int main()
 }
 ```
 
-COPY
 
-In the first case, because `5.0` is a double literal, the compiler will deduce that variable `d` should be of type `double`. In the second case, the expression `1 + 2` yields an int result, so variable `i` will be of type `int`. In the third case, `i` was previously deduced to be of type `int`, so `x` will also be deduced to be of type `int`.
+在第一个例子中，因为 `5.0` 是`double`类型的字面量，所以编译器可以推断出变量`d`也应该是`double`类型的。在第二个例子中，表达式 `1 + 2` 会求值得到一个`int`类的解，因此变量 `i` 是 `int`类型的。在第三个例子中，因为`i`的类型已经被推断为 `int` 类型，因此这里的 n the third case, `i` was previously deduced to be of type `int`, so `x` will also be deduced to be of type `int`.
 
 Because function calls are valid expressions, we can even use type deduction when our initializer is a function call:
 

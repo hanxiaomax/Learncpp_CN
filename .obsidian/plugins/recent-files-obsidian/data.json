@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
+      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
+    },
+    {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
@@ -95,10 +99,6 @@
     {
       "basename": "8-8-Type-deduction-for-functions",
       "path": "docs/8-8-Type-deduction-for-functions.md"
-    },
-    {
-      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
-      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
     {
       "basename": "explicit-type-conversion",
