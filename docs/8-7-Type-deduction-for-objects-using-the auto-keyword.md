@@ -135,9 +135,9 @@ int main()
 
 ## 类型推断的优缺点
 
-Type deduction is not only convenient, but also has a number of other benefits.
+类型推断不仅方便，还有其他一些有用的地方。
 
-First, if two or more variables are defined on sequential lines, the names of the variables will be lined up, helping to increase readability:
+首先，在连续定义多个变量的情况下，使用类型推断可以让变量名对齐，提高代码的可读性：
 
 ```cpp
 // harder to read
@@ -149,22 +149,19 @@ auto c { 5 };
 auto d { 6.7 };
 ```
 
-COPY
 
-Second, type deduction only works on variables that have initializers, so if you are in the habit of using type deduction, it can help avoid unintentionally uninitialized variables:
+其次，类型推断只能够在具有变量初始化值是才能使用，如果我们养成了使用类型推断的习惯的话，可以很容易地避免未初始化的变量：
 
 ```cpp
 int x; // oops, we forgot to initialize x, but the compiler may not complain
 auto y; // the compiler will error out because it can't deduce a type for y
 ```
 
-COPY
-
-Third, you are guaranteed that there will be no unintended performance-impacting conversions:
+第三，通过类型推断，可以确保不发生对性能产生影响的类型转换：
 
 ```cpp
-double x { 5 }; // bad: implicitly converts 5 from an int to a double
-auto y { 5 }; // good: y is an int (hopefully that's what you wanted) and no conversion takes place
+double x { 5 }; // 不好: int 被隐式转换为 double
+auto y { 5 }; // 好：y 是 int 并不会发生类型转换
 ```
 
 Type deduction also has a few downsides.
