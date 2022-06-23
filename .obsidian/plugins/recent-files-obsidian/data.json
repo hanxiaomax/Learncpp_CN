@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "8-8-Type-deduction-for-functions",
+      "path": "docs/8-8-Type-deduction-for-functions.md"
+    },
+    {
       "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
       "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
@@ -107,10 +111,6 @@
     {
       "basename": "8-9-Introduction-to-function-overloading",
       "path": "docs/8-9-Introduction-to-function-overloading.md"
-    },
-    {
-      "basename": "8-8-Type-deduction-for-functions",
-      "path": "docs/8-8-Type-deduction-for-functions.md"
     },
     {
       "basename": "explicit-type-conversion",

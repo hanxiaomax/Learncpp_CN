@@ -11,6 +11,13 @@ tags:
 - auto
 ---
 
+??? note "关键点速记"
+
+	- 类型推断必须配合变量初始化值使用，这样可以忘记初始化的变量
+	- 类型推断会丢弃 `const`，必须额外添加 `const auto`
+	- 如果希望字符串推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀
+
+
 在下面这个简单的变量定义中，存在一个难以察觉的冗余点：
 
 ```cpp
@@ -93,7 +100,7 @@ int main()
 
 在上面的例子中，`x` 的类型本来是 `const int`，但是当使用 `x` 作为 `y` 的初始化值是，类型推断得到的结果是 `int` 而不是 `int const`。
 
-如果你想要一个推导的类型是 `const`，你必须自己提供 `const`。为此，只需将关键字 `const` 与 `auto` 结合使用即可：
+如果你想要一个推断的类型是 `const`，你必须自己提供 `const`。为此，只需将关键字 `const` 与 `auto` 结合使用即可：
 
 ```cpp
 int main()
@@ -115,7 +122,7 @@ int main()
 auto s { "Hello, world" }; // s will be type const char*, not std::string
 ```
 
-如果你希望推导出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀 (参考：[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]):
+如果你希望推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀 (参考：[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]):
 
 ```cpp
 #include <string>
@@ -164,19 +171,18 @@ double x { 5 }; // 不好: int 被隐式转换为 double
 auto y { 5 }; // 好：y 是 int 并不会发生类型转换
 ```
 
-Type deduction also has a few downsides.
+当然，类型推断也有一些缺点。
 
-First, type deduction obscures an object’s type information in the code. Although a good IDE should be able to show you the deduced type (e.g. when hovering a variable), it’s still a bit easier to make type-based mistakes when using type deduction.
+首先，类型推断模糊化了代码中的类型信息。尽管优秀的 IDE 可以显示推断后的类型（例如，当鼠标悬浮在变量上时），但是在使用类型推断时更容易发生与类型相关的错误。
 
-For example:
-
+例如：
 ```cpp
 auto y { 5 }; // oops, we wanted a double here but we accidentally provided an int literal
 ```
 
-In the above code, if we’d explicitly specified `y` as type double, `y` would have been a double even though we accidentally provided an int literal initializer. With type deduction, `y` will be deduced to be of type int.
+在上面的代码中，如果我们显式地将 `y` 指定为 `double` 类型，那么即使我们意外地为 `y` 提供了一个 `int` 字面量的初始化值，`y` 仍然还是 `double` 类型，而如果使用类型推演，`y` 将被推演为 `int` 类型。
 
-Here’s another example:
+再看下面这个例子：
 
 ```cpp
 #include <iostream>
@@ -192,26 +198,26 @@ int main()
 }
 ```
 
-COPY
+在这个例子中，使用类型推断就不容易看出下面进行的是整数除法而不是浮点除法。
 
-In this example, it’s less clear that we’re getting an integer division rather than a floating-point division.
+其次，如果初始化式的类型改变，使用类型演绎的变量的类型也会改变，此时可能会发生意外的问题。例如：
 
-Second, if the type of an initializer changes, the type of a variable using type deduction will also change, perhaps unexpectedly. Consider:
 
 ```cpp
 auto sum { add(5, 6) + gravity };
 ```
 
-COPY
 
-If the return type of `add` changes from int to double, or `gravity` changes from int to double, `sum` will also change types from int to double.
+如果`add`函数的返回值类型从`int`被修改为`double`了，或者 `gravity` 的类型从`int`被修改为`double`了，那么 `sum` 的类型同样会被重新推断为`double`。
 
-Overall, the modern consensus is that type deduction is generally safe to use for objects, and that doing so can help make your code more readable by de-emphasizing type information so the logic of your code stands out better.
+总的来说，现代 C++ 的共识是，类型演绎用于对象通常是安全的，这样做可以减少对类型信息的强调，从而更好地凸显代码的逻辑，依次来增强代码的可读性。
+
 
 !!! success "最佳实践"
 
-    Use type deduction for your variables, unless you need to commit to a specific type.
+	对变量使用类型演绎，除非需要确保使用特定的类型。
 
 !!! info "作者注"
 
-    In future lessons, we’ll continue to use explicit types instead of type deduction when we feel showing the type information is helpful to understanding a concept or example.
+	在以后的课程中，当我们认为显示类型信息有助于理解概念或示例时，我们将继续使用显式类型，而不是类型推断。
+	
