@@ -201,7 +201,7 @@ using int32_t = int;
 
 int main()
 {
-    std::int_least8_t x{ 97 }; // int_least8_t is actually a type alias for a char type
+    std::int_least8_t x{ 97 }; // int_least8_t 实际上是 char 的类型别名
     std::cout << x;
 
     return 0;
@@ -214,11 +214,11 @@ int main()
 a
 ```
 
-Because `std::int_least8_t` is typically defined as a type alias for one of the char types, variable `x` will be defined as a char type. And char types print their values as ASCII characters rather than as integer values.
+因为  `std::int_least8_t `通常被定义为`char` 的类型别名，变量 `x` 将被定义为 `char`。 而 `char` 类型将其值打印为ASCII字符，而不是整数值。
 
 ## 使用类型别名简化类型
 
-Although we have only dealt with simple data types so far, in advanced C++, types can be complicated and lengthy to manually enter on your keyboard. For example, you might see a function and variable defined like this:
+虽然我们目前只使用过一些简单的数据类型，但是对于高阶C++编程来说，类型通常是复杂且冗长的，如果你手动输入它们会非常费劲。例如，有些函数和变量的定义像下面这样：
 
 ```cpp
 #include <string> // for std::string
@@ -240,7 +240,7 @@ int main()
 ```
 
 
-Typing `std::vector<std::pair<std::string, int>>` everywhere you need to use that type is cumbersome, and it is easy to make a typing mistake. It’s much easier to use a type alias:
+在每个需要的地方输入`std::vector<std::pair<std::string, int>>` 不仅繁琐，而且非常容易出错。如果使用类型别名则简单的多：
 
 ```cpp
 #include <string> // for std::string
@@ -263,30 +263,30 @@ int main()
 }
 ```
 
-COPY
 
-Much better! Now we only have to type `pairlist_t` instead of `std::vector<std::pair<std::string, int>>`.
+看起来好多了对吧！现在，你需要输入的是`pairlist_t` 而不是 `std::vector<std::pair<std::string, int>>`。
 
-Don’t worry if you don’t know what `std::vector`, `std::pair`, or all these crazy angle brackets are yet. The only thing you really need to understand here is that type aliases allow you to take complex types and give them a simple name, which makes your code easier to read and saves typing.
+如果你还不知道`std::vector`、`std::pair` 或者那些看起来很吓人的尖括号是什么，也不用担心。现在你只需要知道类型别名可以简化类型、使你的代码更易读，减少繁琐的输入就可以了。
 
-This is probably the best use for type aliases.
+这也是类型别名最有用的地方。
 
 ## 使用类型别名让程序更清晰
 
-Type aliases can also help with code documentation and comprehension.
+类型别名还有助于增强代码的可读性，践行代码即文档的思想。
 
 With variables, we have the variable’s identifier to help document the purpose of the variable. But consider the case of a function’s return value. Data types such as `char`, `int`, `long`, `double`, and `bool` are good for describing what _type_ a function returns, but more often we want to know what _purpose_ a return value serves.
 
-For example, given the following function:
+变量可以通过标识符（变量名）来帮助表示它的用途。但是对于函数返回值来说，尽管 `char`、`int`、 `long`、 `double` 和 `bool`可以表明函数值的类型，但它们并没有办法很好地表明函数返回值的用途究竟是什么。
+
+对于下面的函数来说：
 
 ```cpp
 int gradeTest();
 ```
 
+函数返回值的类型是整型，但是这个整型返回值的含义到底是什么呢？是学生的分数？是没有作答的问题数？是学号？还是错误码？没有人知道，因为`int`并不能表达这层含义。如果幸运的话，也许函数有文档可供我们参考。如果不幸的话，你就必须阅读源码然后去猜测它的用途了。
 
-We can see that the return value is an integer, but what does the integer mean? A letter grade? The number of questions missed? The student’s ID number? An error code? Who knows! The return type of `int` does not tell us much. If we’re lucky, documentation for the function exists somewhere that we can reference. If we’re unlucky, we have to read the code and infer the purpose.
-
-Now let’s do an equivalent version using a type alias:
+而对于下面这个使用了类型别名的等价的例子来说：
 
 ```cpp
 using testScore_t = int;
@@ -294,9 +294,10 @@ testScore_t gradeTest();
 ```
 
 
-The return type of `testScore_t` makes it a little more obvious that the function is returning a type that represents a test score.
+返回值类型为 `testScore_t` ，它能够更好地表明函数的返回值表示一次测验的分数。
 
-In our experience, creating a type alias just to document the return type of a single function isn’t worth it (use a comment instead). But if you have already created a type alias for other reasons, this can be a nice additional benefit.
+根据我们的经验，创建类型别名只是为了记录单个函数的返回类型是不值得的(使用注释代替)。但是，如果你已经因为其他原因创建了类型别名，这可能是一个额外好处。
+
 
 ## 使用类型别名提高代码可维护性
 
@@ -305,6 +306,15 @@ Type aliases also allow you to change the underlying type of an object without h
 However, if you use type aliases, then changing types becomes as simple as updating the type alias (e.g. from `using studentID_t = short;` to `using studentID_t = long;`).
 
 While this seems like a nice benefit, caution is necessary whenever a type is changed, as the behavior of the program may also change. This is especially true when changing the type of a type alias to a type in a different type family (e.g. an integer to a floating point value, or vice versa)! The new type may have comparison or integer/floating point division issues, or other issues that the old type did not. If you change an existing type to some other type, your code should be thoroughly retested.
+
+使用类型别名还可以在不进行大量改动的情况下修改对象的基本类型。例如，学生的ID原本使用 `short` 来保存，但后来决定用 `long` 来代替，此时你就必须将大量的 `short`替换为 `long`。这个时候往往很难确定究竟哪些`short`是用来保存ID的，而哪些则用于其他目的。
+
+然而，如果你使用了类型别名，那么更改类型就像更新类型别名一样简单(例如，将 `using studentID_t = short;` 修改为 `using studentID_t = long;` )。
+
+虽然这看起来是一个非常方便的特性，但每当类型发生变化时，我们仍然需要保持谨慎，因为程序的行为也可能随之发生变化。当将类型别名的类型更改为不同类型族中的类型时尤其如此(例如，将整数更改为浮点值，或反之亦然)！新类型可能有浮点数比较或整数/浮点除法问题，或其他旧类型所没有的问题。如果你将现有的类型更改为其他类型，代码应该重新、ch测试。
+
+
+
 
 ## 缺点和结论
 
