@@ -130,6 +130,7 @@
   "active": "2fe022bbf6ff5f64",
   "lastOpenFiles": [
     "docs/8-6-Typedefs-and-type-aliases.md",
+    "docs/4-6-Fixed-width-integers-and-size_t.md",
     "docs/8-4-Arithmetic-conversions.md",
     "docs/8-3-Numeric-conversions.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
@@ -137,7 +138,6 @@
     "docs/named-cast.md",
     "docs/reinterpret-casts.md",
     "docs/dynamic-casts.md",
-    "docs/const-cast.md",
-    "docs/static-casts.md"
+    "docs/const-cast.md"
   ]
 }

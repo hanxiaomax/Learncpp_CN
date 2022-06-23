@@ -5,6 +5,10 @@
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
     {
+      "basename": "4-6-Fixed-width-integers-and-size_t",
+      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
+    },
+    {
       "basename": "8-4-Arithmetic-conversions",
       "path": "docs/8-4-Arithmetic-conversions.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "2-2-Function-return-values-value-returning functions",
       "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "4-7-Introduction-to-scientific-notation",
-      "path": "docs/4-7-Introduction-to-scientific-notation.md"
     }
   ],
   "omittedPaths": [],

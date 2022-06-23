@@ -171,7 +171,7 @@ using fcn_t = int(*)(double, char); // fcn_t easier to find
 
 类型别名的一个用途是，它们可以用来隐藏平台特定的细节。在某些平台上，`int` 为2字节，而在其他平台上为 4 字节。因此，在编写与平台无关的代码时，使用 `int` 存储超过 2 字节的信息可能会有潜在的危险。
 
-因为`char` 、`short`、`int` 和 `long` 没有指明它们的大小，所以跨平台程序使用类型别名来定义以位为单位包含类型大小的别名是相当常见的。例如， `int8_t`是一个 8 位有符号整数，`int16_t` 是一个 16 位有符号整数，`int32_t` 是一个32位有符号整数。以这种方式使用类型别名有助于防止错误，并更清楚地说明对变量大小的期望值是多少。
+因为从字面上并不能看出 `char` 、`short`、`int` 和 `long` 的大小，所以跨平台程序使用类型别名来定义以位为单位包含类型大小的别名是相当常见的。例如， `int8_t` 是一个 8 位有符号整数，`int16_t` 是一个 16 位有符号整数，`int32_t` 是一个32位有符号整数。以这种方式使用类型别名有助于防止错误，并更清楚地说明对变量大小的期望值是多少。
 
 为了确保每个别名类型解析为正确大小的类型，这类类型别名通常与预处理器指令一起使用:
 
@@ -188,11 +188,12 @@ using int32_t = int;
 ```
 
 
-On machines where integers are only 2 bytes, `INT_2_BYTES` can be `#defined`, and the program will be compiled with the top set of type aliases. On machines where integers are 4 bytes, leaving `INT_2_BYTES` undefined will cause the bottom set of type aliases to be used. In this way, `int8_t` will resolve to a 1 byte integer, `int16_t` will resolve to a 2 bytes integer, and `int32_t` will resolve to a 4 byte integer using the combination of `char`, `short`, `int`, and `long` that is appropriate for the machine the program is being compiled on.
+在某些机器上，整型只占 2 个字节，这时宏 `INT_2_BYTES` 是被 `#defined` 过的，所以程序在编译时会将这段代码的上半部分定义的类型别名进行编译。在整型占 4 个字节的机器上， 宏 `INT_2_BYTES` 不存在，因此下半部分的类型别名会被编译。 通过这种方法，可以使用`char`、`short`、`int` 和 `long` 的组合在特定的机器上将 `int8_t` 解析为 1 个字节的整数，`int16_t` 解析为 2 个字节的整数，`int32_t` 解析为 4 个字节的整数。
 
-The fixed-width integers (such as `std::int_fast16_t` and `std::int_least32_t`) and `size_t` type (both covered in lesson [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]) are actually just type aliases to various fundamental types.
+对于固定宽度整型 (例如 `std::int_fast16_t` 和 `std::int_least32_t`) 和 `size_t` 类型 (参见： [[4-6-Fixed-width-integers-and-size_t|4.6 - 固定宽度整型和 size_t]]) 其实也正是这些基础类型的别名罢了。
 
-This is also why when you print an 8-bit fixed-width integer using `std::cout`, you’re likely to get a character value. For example:
+这也是为什么在使用`std::cout`打印 8 位固定宽度整型的时候，你多半会打印出一个字符的原因。例如：
+
 
 ```cpp
 #include <cstdint> // for fixed-width integers
