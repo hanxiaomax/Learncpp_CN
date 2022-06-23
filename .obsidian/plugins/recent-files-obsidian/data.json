@@ -5,6 +5,18 @@
       "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
     {
+      "basename": "4-14-Literal-constants",
+      "path": "docs/4-14-Literal-constants.md"
+    },
+    {
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
+    },
+    {
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+    },
+    {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
-    },
-    {
-      "basename": "excalibrain",
-      "path": "excalibrain.md"
-    },
-    {
-      "basename": "3-5-More-debugging-tactics",
-      "path": "docs/3-5-More-debugging-tactics.md"
-    },
-    {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
     }
   ],
   "omittedPaths": [],

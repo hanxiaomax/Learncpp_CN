@@ -41,10 +41,10 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "后缀",
                 "matchingCase": false,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -129,14 +130,14 @@
   "active": "2fe022bbf6ff5f64",
   "lastOpenFiles": [
     "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
+    "docs/4-14-Literal-constants.md",
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
+    "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
     "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/4-6-Fixed-width-integers-and-size_t.md",
     "docs/8-4-Arithmetic-conversions.md",
     "docs/8-3-Numeric-conversions.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
-    "docs/named-cast.md",
-    "docs/reinterpret-casts.md",
-    "docs/dynamic-casts.md"
+    "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
   ]
 }
