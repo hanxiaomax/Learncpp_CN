@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "9.3 — Lvalue references",
-      "path": "docs/9.3 — Lvalue references.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9.3 — Lvalue references",
+      "path": "docs/9.3 — Lvalue references.md"
     },
     {
       "basename": "9.2 — Value categories (lvalues and rvalues)",

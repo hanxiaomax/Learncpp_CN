@@ -132,9 +132,9 @@
 
 ## 9. 复合类型-引用和指针
 
-- [[9.1 — Introduction to compound data types]]
-- [[9.2 — Value categories (lvalues and rvalues)]]
-- [[9.3 — Lvalue references]]
+- [[9.1 — Introduction to compound data types|9.1 - 复合数据类型]]
+- [[9.2 — Value categories (lvalues and rvalues)|9.2 - 值的分类（左值和右值）]]
+- [[9.3 — Lvalue references|9.3 - 左值引用]]
 - [[9.4 — Lvalue references to const]]
 - [[9.5 — Pass by lvalue reference]]
 - [[9.6 — Introduction to pointers]]
@@ -148,8 +148,41 @@
 
 
 ## 10. 复合类型-枚举和结构体
+- [[10.1 — Introduction to program-defined (user-defined) types]]
+- [[10.2 — Unscoped enumerations]] 
+- [[10.3 — Unscoped enumeration input and output]]
+- [[10.4 — Scoped enumerations (enum classes)]]
+- [[10.5 — Introduction to structs, members, and member selection]]
+- [[10.6 — Struct aggregate initialization]]
+- [[10.7 — Default member initialization]]
+- [[10.8 — Struct passing and miscellany]]
+- [[10.9 — Member selection with pointers and references]]
+- [[10.10 — Class templates]]
+- [[10.11 — Class template argument deduction (CTAD) and deduction guides]]
+- [[10.x — Chapter 10 summary and quiz]]
+- [[10.y — Using a language reference]]
 
 ## 11. 数组，字符串和动态内存分配
+- [[11.1 — Arrays (Part I)]]
+- [[11.2 — Arrays (Part II)]]
+- [[11.3 — Arrays and loops]]
+- [[11.4 — Sorting an array using selection sort]]
+- [[11.5 — Multidimensional Arrays]]
+- [[11.6 — C-style strings]]
+- [[11.7 — std::string_view (part 2)]]
+- [[11.8 — Pointers and arrays]]
+- [[11.9 — Pointer arithmetic and array indexing]]
+- [[11.10 — C-style string symbolic constants]]
+- [[11.11 — Dynamic memory allocation with new and delete]]
+- [[11.12 — Dynamically allocating arrays]]
+- [[11.13 — For-each loops]]
+- [[11.14 — Void pointers]]
+- [[11.15 — Pointers to pointers and dynamic multidimensional arrays]]
+- [[11.16 — An introduction to std::array]]
+- [[11.17 — An introduction to std::vector]]
+- [[11.18 — Introduction to iterators]]
+- [[11.19 — Introduction to standard library algorithms]]
+- [[11.x — Chapter 11 comprehensive quiz]]
 
 ## 12. 函数
 
