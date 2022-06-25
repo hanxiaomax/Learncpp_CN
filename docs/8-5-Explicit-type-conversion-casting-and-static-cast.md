@@ -1,6 +1,6 @@
 ---
-title: 8.5 - 显式类型转换
-alias: 8.5 - 显式类型转换
+title: 8.5 - 显式类型转换和static_cast
+alias: 8.5 - 显式类型转换和static_cast
 origin: /explicit-type-conversion-casting-and-static-cast/
 origin_title: "8.5 -- Explicit type conversion (casting) and static_cast"
 time: 2022-1-2
@@ -113,7 +113,7 @@ double d { double(x) / y }; // convert x to a double so we get floating point di
 
 ## `static_cast`
 
-C++ 引入了一个新的抢占转换运算符`static_cast`，用于将一种类型的值转换为另外一种类型。
+C++ 引入了一个新的强制转换运算符`static_cast`，用于将一种类型的值转换为另外一种类型。
 
 在之前的课中，你可能已经见识过如何使用 `static_cast` 将 `char` 转换为 `int` 使得 `std::cout`可以打印整型而不是 `char`：
 
@@ -149,7 +149,7 @@ int main()
 ```
 
 
-`static_cast` 最大的优势是它提供了[[runtime|运行时]]的类型检查机制，这样就不容易犯下由粗心导致的问题。 `static_cast` 的功能不如 C 语言风格的类型转换（故意的），所以你不会无意间移除`const`或其他你本不希望发生的事情。
+`static_cast` 最大的优势是它提供了[[runtime|运行时]]的类型检查机制，这样就不容易犯下由粗心导致的问题。 `static_cast` 的功能不如 C 语言风格的类型转换（故意的）强大，所以你不会无意间移除`const`或其他你本不希望发生的事情。
 
 
 !!! success "最佳实践"

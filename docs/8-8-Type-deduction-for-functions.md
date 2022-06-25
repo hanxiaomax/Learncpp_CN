@@ -7,10 +7,14 @@ time: 2022-1-20
 type: translation
 tags:
 - type deduction
+- C++14
+- C++20
 ---
 
 ??? note "关键点速记"
-	
+
+	- 在 C++14 中，`auto`可以被用于函数返回值类型，此时需要保证**所有返回值类型是一致的**，否则需要进行转换
+	- 函数返回值类型使用 `auto` 的最大缺点这些函数在使用前必须已经完整定义（只有[[forward-declaration|前向声明]]）是不够的。这也意味着`auto`类型返回值的函数通常只能够在定义它们的文件中使用。
 
 考虑下面代码：
 
@@ -22,11 +26,11 @@ int add(int x, int y)
 ```
 
 
-但编译这个函数的时候，编译器可以确定 `x + y` 的求值结果为`int`类型，然后它会确保函数的返回值类型和该类型匹配 then ensure that type of the return value matches the declared return type of the function (or that the return value type can be converted to the declared return type).
+但编译这个函数的时候，编译器可以确定 `x + y` 的求值结果为`int`类型，然后它会确保函数的返回值类型和该类型匹配（或者返回值的类型可以被转换为函数声明的返回类型）。
 
-Since the compiler already has to deduce the return type from the return statement, in C++14, the `auto` keyword was extended to do function return type deduction. This works by using the `auto` keyword in place of the function’s return type.
+因为编译器已经能够从`return`语句推断返回值的类型，所以在 C++14 中，`auto`可以被用于函数返回值类型，将`auto`关键字放置在原来用于声明函数返回值类型的地方就可以。
 
-For example:
+例如：
 
 ```cpp
 auto add(int x, int y)
@@ -35,12 +39,10 @@ auto add(int x, int y)
 }
 ```
 
-COPY
 
-Because the return statement is returning an `int` value, the compiler will deduce that the return type of this function is `int`.
+由于`return` 语句返回的是一个 `int` 类型的值，则编译器会将函数返回值的类型推断为 `int`。
 
-When using an `auto` return type, all return values must be of the same type, otherwise an error will result. For example:
-
+当使用 `auto` 返回值类型是，所有返回值的类型必须是一致的，否则会造成错误，例如：
 ```cpp
 auto someFcn(bool b)
 {
@@ -51,13 +53,12 @@ auto someFcn(bool b)
 }
 ```
 
-COPY
 
-In the above function, the two return statements return values of different types, so the compiler will give an error.
+在上面的函数中，由于两个`return`语句返回值的类型不同，所以编译器会提示错误。
 
-If such a case is desired for some reason, you can either explicitly specify a return type for your function (in which case the compiler will try to implicitly convert any non-matching return expressions to the explicit return type), or you can explicitly convert all of your return statements to the same type. In the example above, the latter could be done by changing `5` to `5.0`, but `static_cast` can also be used for non-literal types.
+如果有些情况下需要使用不同的返回值类型，那么要么你为函数显式地指明返回值类型（此时编译器会将不匹配的返回值进行[[implicit-type-conversion|隐式类型转换]]），或者你可以显式地将`return`语句的返回值转换成相同的类型。在上面的例子中，我们可以将`5` 修改为 `5.0`，或者对于非字面量的情况还可以使用 `static_cast`
 
-A major downside of functions that use an `auto` return type is that such functions must be fully defined before they can be used (a forward declaration is not sufficient). For example:
+函数返回值类型使用 `auto` 的最大缺点这些函数在使用前必须已经完整定义（只有[[forward-declaration|前向声明]]）是不够的。例如：
 
 ```cpp
 #include <iostream>
@@ -76,15 +77,17 @@ auto foo()
 }
 ```
 
-COPY
+在作者的电脑上会产生如下编译错误：
 
-On the author’s machine, this gives the following compile error:
-
+```
 error C3779: 'foo': a function that returns 'auto' cannot be used before it is defined.
+```
 
-This makes sense: a forward declaration does not have enough information for the compiler to deduce the function’s return type. This means normal functions that return `auto` are typically only callable from within the file in which they are defined.
+这是理所当然的，因为仅凭前向声明编译器无法对函数的返回值类型进行推断。这也意味着`auto`类型返回值的函数通常只能够在定义它们的文件中使用。
 
 Unlike type deduction for objects, there isn’t as much consensus on best practices for function return type deduction. When using type deduction with objects, the initializer is always present as part of the same statement, so it’s usually not overly burdensome to determine what type will be deduced. With functions, that is not the case -- when looking at a function’s prototype, there is no context to help indicate what type the function returns. A good programming IDE should make clear what the deduced type of the function is, but in absence of having that available, a user would actually have to dig into the function body itself to determine what type the function returned. The odds of mistakes being made are higher. And the inability for such functions to be forward declared limits their usefulness in multi-file programs.
+
+与对象的类型推断不同，对于函数返回类型推断的最佳实践并没有太多共识。当对对象使用类型推导时，初始化式总是作为同一语句的一部分出现，因此确定要推导的类型通常不会太麻烦。对于函数，情况就不是这样了——当查看函数的原型时，没有上下文来帮助指示函数返回的类型。一个好的编程IDE应该清楚推导出的函数类型是什么，但是如果没有这种类型，用户实际上必须深入到函数体本身来确定函数返回的类型。犯错误的几率更高。这种功能不能向前声明，限制了它们在多文件程序中的有用性。
 
 !!! success "最佳实践"
 
@@ -135,7 +138,8 @@ The trailing return syntax is also required for some advanced features of C++, s
 
 For now, we recommend the continued use of the traditional function return syntax except in situations that require the trailing return syntax.
 
-## Type deduction can’t be used for function parameter types
+## 函数形参的类型不能使用类型推断
+
 
 Many new programmers who learn about type deduction try something like this:
 

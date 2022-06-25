@@ -9,6 +9,10 @@
       "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
     {
+      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
+      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+    },
+    {
       "basename": "4-14-Literal-constants",
       "path": "docs/4-14-Literal-constants.md"
     },
@@ -39,10 +43,6 @@
     {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
     },
     {
       "basename": "named-cast",
