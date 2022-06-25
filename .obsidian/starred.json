@@ -4,6 +4,11 @@
       "type": "file",
       "title": "excalibrain",
       "path": "excalibrain.md"
+    },
+    {
+      "type": "file",
+      "title": "MOC",
+      "path": "docs/MOC.md"
     }
   ]
 }

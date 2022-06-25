@@ -94,14 +94,58 @@
 
 ## 7. 控制流和错误处理
 
+- [[7-1-Control-flow-introduction|7.1 - 控制流]]
+- [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]]
+- [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]]
+- [[7-4-Switch-statement-basics|7.4 - switch 语句基础]]
+- [[7-5-Switch-fallthrough-and-scoping|7.5 - switch 落空和作用域]]
+- [[7-6-Goto-statements|7.6 - goto 语句]]
+- [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]]
+- [[7-8-Do-while-statements|7.8 - do-while 语句]]
+- [[7-9-For-statements|7.9 - for 语句]]
+- [[7-10-Break-and-continue|7.10 - break 和 continue]]
+- [[7-11-Halts-exiting-your-program-early|7.11 - 挂起（提前结束程序]]
+- [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]
+- [[7-13-Code-coverage|7.13 - 代码覆盖率]]
+- [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
+- [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
+- [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]
 
 ## 8. 类型转换和函数重载
 
-
-
-
+- [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]
+- [[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]
+- [[8-3-Numeric-conversions|8.3 - 数值转换]]
+- [[8-4-Arithmetic-conversions|8.4 - 算术转换]]
+- [[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换和static_cast]]
+- [[8-6-Typedefs-and-type-aliases|8.6 - typedef 和类型别名]]
+- [[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]
+- [[8-8-Type-deduction-for-functions|8.8 - 函数的类型推断]]
+- [[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]
+- [[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]]
+- [[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]]
+- [[8-12-Default-arguments|8.12 - 默认参数]]
+- [[8-13-Function-templates|8.13 - 函数模板]]
+- [[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]
+- [[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]
+- [[8-x-Chapter-8-summary-and-quiz|8.x - 小结与测试]]
 
 ## 9. 复合类型-引用和指针
+
+- [[9.1 — Introduction to compound data types]]
+- [[9.2 — Value categories (lvalues and rvalues)]]
+- [[9.3 — Lvalue references]]
+- [[9.4 — Lvalue references to const]]
+- [[9.5 — Pass by lvalue reference]]
+- [[9.6 — Introduction to pointers]]
+- [[9.7 — Null pointers]]
+- [[9.8 — Pointers and const]]
+- [[9.9 — Pass by address]]
+- [[9.10 — Pass by address (part 2)]]
+- [[9.11 — Return by reference and return by address]]
+- [[9.12 — Type deduction with pointers, references, and const]]
+- [[9.x — Chapter 9 summary and quiz]]
+
 
 ## 10. 复合类型-枚举和结构体
 

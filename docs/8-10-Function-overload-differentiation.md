@@ -13,6 +13,7 @@ tags:
 	- 函数中用于区分重载函数的部分有：形参个数、形参类型、省略号。
 	- 返回值类型不能被用来区分函数
 	- 成员函数在上面的基础上还包括 `const`、`volatile`和引用限定符
+	- 当编译器编译一个函数时，它会执行[[Name-mangling|命名修饰(Name mangling)]]，这意味着根据各种条件改变编译后的函数名称(“改写”)，例如参数的数量和类型，以便链接器有唯一的名称来处理。
 
 在上一节课中 ([[8-9-Introduction-to-function-overloading|8.9 - 函数重载]])， 我们引入了函数重载的概念，使用函数重载可以创建具有相同名称的多个函数，前提是每个相同名称的函数具有不同的形参类型(或者可以用其他方式区分函数)。
 
@@ -100,11 +101,6 @@ void print(const int); // not differentiated from print(int)
 
 ## 返回值类型不能被用来区分函数
 
-
-A function’s return type is not considered when differentiating overloaded functions.
-
-Consider the case where you want to write a function that returns a random number, but you need a version that will return an int, and another version that will return a double. You might be tempted to do this:
-
 在区分重载函数时，不考虑函数的返回类型。
 
 考虑这样一种情况:您想编写一个返回随机数的函数，但是您需要一个返回整数的版本，以及另一个返回双精度数的版本。你可能会忍不住这样做:
@@ -120,20 +116,19 @@ Visual Studio 2019 中会产生如下编译错误：
 error C2556: 'double getRandomValue(void)': overloaded function differs only by return type from 'int getRandomValue(void)'
 ```
 
-This makes sense. If you were the compiler, and you saw this statement:
+这是很显然的，假设你自己是编译器，当你看到下面的定义时：
 
 ```cpp
 getRandomValue();
 ```
 
-
-Which of the two overloaded functions would you call? It’s not clear.
+你应该调用两个函数中的哪个呢？
 
 !!! cite "题外话"
 
-    This was an intentional choice, as it ensures the behavior of a function call can be determined independently from the rest of the expression, making understanding complex expressions much simpler. Put another way, we can always determine which version of a function will be called based solely on the arguments in the function call. If return values were used for differentiation, then we wouldn’t have an easy syntactic way to tell which overload of a function was being called -- we’d also have to understand how the return value was being used, which requires a lot more analysis.
+	这是一个有意的选择，因为它确保了函数调用的行为可以独立于表达式的其他部分来确定，从而使理解复杂表达式更加简单。换句话说，我们总是可以仅根据函数调用中的参数来决定调用哪个版本的函数。如果返回值用于区分，那么我们就没有一个简单的语法方法来判断调用了哪个函数的重载——我们还必须理解返回值是如何被使用的，这需要更多的分析。
 
-The best way to address this is to give the functions different names:
+解决这个问题的最好方法是给函数取不同的名字：
 
 ```cpp
 int getRandomInt();
@@ -143,14 +138,14 @@ double getRandomDouble();
 
 ## 类型签名
 
-函数的 [[type-signature|类型签名(type signature)]] (通常简称为签名) is defined as the parts of the function header that are used for differentiation of the function. In C++, this includes the function name, number of parameter, parameter type, and function-level qualifiers. It notably does _not_ include the return type.
+函数的 [[type-signature|类型签名(type signature)]] (通常简称为签名) 是函数头的一部分，被用于区分函数。在 C++ 中，签名包括函数名、参数数量、参数类型和函数级的限定符。值得注意的是，它不包括返回类型。
 
-## Name mangling
+## 命名修饰
 
 !!! cite "题外话"
 
-    When the compiler compiles a function, it performs name mangling, which means the compiled name of the function is altered (“mangled”) based on various criteria, such as the number and type of parameters, so that the linker has unique names to work with.
-
-	For example, some function with prototype `int fcn()` might compile to name `__fcn_v`, whereas `int fcn(int)` might compile to name `__fcn_i`. So while in the source code, two overloaded functions share a name, in compiled code, the names are actually unique.
-
-	There is no standardization on how names should be mangled, so different compilers will produce different mangled names.
+	当编译器编译一个函数时，它会执行[[Name-mangling|命名修饰(Name mangling)]]，这意味着根据各种条件改变编译后的函数名称(“改写”)，例如参数的数量和类型，以便链接器有唯一的名称来处理。
+	
+	例如，一些原型为 `int fcn()` 的函数可能会被编译为 `__fcn_v` ，而 `int fcn(int)`可能会被编译为 `__fcn_i`。因此，虽然在源代码中，两个重载函数共享一个名称，但在编译代码中，它们的名称实际上是唯一的。
+	
+	标准没有规定名称应该如何被修饰，因此不同的编译器将产生不同的函数名称。

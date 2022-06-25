@@ -1,8 +1,96 @@
 {
   "recentFiles": [
     {
+      "basename": "9.3 — Lvalue references",
+      "path": "docs/9.3 — Lvalue references.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9.2 — Value categories (lvalues and rvalues)",
+      "path": "docs/9.2 — Value categories (lvalues and rvalues).md"
+    },
+    {
+      "basename": "9.1 — Introduction to compound data types",
+      "path": "docs/9.1 — Introduction to compound data types.md"
+    },
+    {
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+    },
+    {
+      "basename": "8-9-Introduction-to-function-overloading",
+      "path": "docs/8-9-Introduction-to-function-overloading.md"
+    },
+    {
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
+    },
+    {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
+      "basename": "7-3-Common-if-statement-problems",
+      "path": "docs/7-3-Common-if-statement-problems.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
+      "basename": "列表初始化",
+      "path": "docs/列表初始化.md"
+    },
+    {
+      "basename": "arguments",
+      "path": "docs/arguments.md"
+    },
+    {
+      "basename": "index",
+      "path": "docs/index.md"
+    },
+    {
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+    },
+    {
+      "basename": "6-6-Internal-linkage",
+      "path": "docs/6-6-Internal-linkage.md"
+    },
+    {
+      "basename": "6-5-Variable-shadowing-name-hiding",
+      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
+    },
+    {
+      "basename": "8-4-Arithmetic-conversions",
+      "path": "docs/8-4-Arithmetic-conversions.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
+      "basename": "7-7-Intro-to-loops-and-while-statements",
+      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
+    },
+    {
+      "basename": "7-6-Goto-statements",
+      "path": "docs/7-6-Goto-statements.md"
+    },
+    {
+      "basename": "7-4-Switch-statement-basics",
+      "path": "docs/7-4-Switch-statement-basics.md"
+    },
+    {
       "basename": "8-10-Function-overload-differentiation",
       "path": "docs/8-10-Function-overload-differentiation.md"
+    },
+    {
+      "basename": "Name-mangling",
+      "path": "docs/Name-mangling.md"
     },
     {
       "basename": "type-signature",
@@ -15,14 +103,6 @@
     {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
-    },
-    {
-      "basename": "8-4-Arithmetic-conversions",
-      "path": "docs/8-4-Arithmetic-conversions.md"
     },
     {
       "basename": "4-6-Fixed-width-integers-and-size_t",
@@ -47,10 +127,6 @@
     {
       "basename": "overload-resolution",
       "path": "docs/overload-resolution.md"
-    },
-    {
-      "basename": "8-9-Introduction-to-function-overloading",
-      "path": "docs/8-9-Introduction-to-function-overloading.md"
     },
     {
       "basename": "8-8-Type-deduction-for-functions",
@@ -101,10 +177,6 @@
       "path": "docs/C-style-casts.md"
     },
     {
-      "basename": "列表初始化",
-      "path": "docs/列表初始化.md"
-    },
-    {
       "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
       "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
     },
@@ -125,80 +197,8 @@
       "path": "docs/value-preserving.md"
     },
     {
-      "basename": "index",
-      "path": "docs/index.md"
-    },
-    {
       "basename": "1-2-comments",
       "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "explicit-type-conversion",
-      "path": "docs/explicit-type-conversion.md"
-    },
-    {
-      "basename": "implicit-type-conversion",
-      "path": "docs/implicit-type-conversion.md"
-    },
-    {
-      "basename": "bit",
-      "path": "docs/bit.md"
-    },
-    {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
-    },
-    {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
-    },
-    {
-      "basename": "6-11-Scope-duration-and-linkage-summary",
-      "path": "docs/6-11-Scope-duration-and-linkage-summary.md"
-    },
-    {
-      "basename": "6-x-Chapter-6-summary-and-quiz",
-      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
-      "basename": "6-4-Introduction-to-global-variables",
-      "path": "docs/6-4-Introduction-to-global-variables.md"
-    },
-    {
-      "basename": "dynamic-duration",
-      "path": "docs/dynamic-duration.md"
-    },
-    {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
-    },
-    {
-      "basename": "global-variable",
-      "path": "docs/global-variable.md"
-    },
-    {
-      "basename": "6-10-Static-local-variables",
-      "path": "docs/6-10-Static-local-variables.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "6-8-Why-non-const-global-variables-are-evil",
-      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
     }
   ],
   "omittedPaths": [],

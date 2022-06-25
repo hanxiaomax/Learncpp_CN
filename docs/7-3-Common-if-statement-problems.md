@@ -1,6 +1,6 @@
 ---
 title: 7.3 - 常见的 if 语句错误
-alias: 
+alias: 7.3 - 常见的 if 语句错误
 origin: /common-if-statement-problems/
 origin_title: "7.3 — Common if statement problems"
 time: 2022-2-10
