@@ -13,13 +13,14 @@ tags:
 	
 
 
-In the previous lesson ([[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]]), we discussed which attributes of a function are used to differentiate overloaded functions from each other. If an overloaded function is not properly differentiated from the other overloads of the same name, then the compiler will issue a compile error.
+在上节课([[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]])中我们介绍了函数中可以被用来对重载函数进行区分的属性。如果一个重载函数不能和其他重载函数被区分开来，那么就会产生编译错误。
 
-However, having a set of differentiated overloaded functions is only half of the picture. When any function call is made, the compiler must also ensure that a matching function declaration can be found.
+不过，拥有一组能够被区分的重载函数只是解决了一半的问题。当调用任何函数时，编译器还必须确保找到匹配的函数声明。
 
-With non-overloaded functions (functions with unique names), there is only one function that can potentially match a function call. That function either matches (or can be made to match after type conversions are applied), or it doesn’t (and a compile error results). With overloaded functions, there can be many functions that can potentially match a function call. Since a function call can only resolve to one of them, the compiler has to determine which overloaded function is the best match. The process of matching function calls to a specific overloaded function is called overload resolution.
+对于非重载函数(具有惟一名称的函数)，只有一个函数可能与函数调用匹配。该函数要么匹配(或者可以在应用类型转换后匹配)，要么不匹配(结果是编译错误)。对于重载函数，可以有许多函数可能与函数调用匹配。由于函数调用只能解析到其中一个函数，因此编译器必须确定哪个重载函数是最佳匹配的。将函数调用匹配到特定重载函数的过程称为[[overload-resolution|重载解析]]。
 
-In simple cases where the type of the function arguments and type of the function parameters match exactly, this is (usually) straightforward:
+在函数**实参类型**和函数**形参类型**完全匹配的简单情况下，重载函数的匹配(通常)是很简单的:
+
 
 ```cpp
 #include <iostream>
@@ -43,9 +44,7 @@ int main()
 }
 ```
 
-COPY
-
-But what happens in cases where the argument types in the function call don’t exactly match the parameter types in any of the overloaded functions? For example:
+但是，如果函数调用中的参数类型与重载函数中的参数类型**不完全匹配**，会发生什么呢？例如:
 
 ```cpp
 #include <iostream>
@@ -69,8 +68,7 @@ int main()
 }
 ```
 
-COPY
-
+没有完全匹配的函数，不等于没有能够匹配的函数
 Just because there is no exact match here doesn’t mean a match can’t be found -- after all, a `char` or `long` can be implicitly type converted to an `int`or a `double`. But which is the best conversion to make in each case?
 
 In this lesson, we’ll explore how the compiler matches a given function call to a specific overloaded function.

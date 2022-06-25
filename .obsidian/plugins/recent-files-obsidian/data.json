@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
     },
     {
-      "basename": "9.3 — Lvalue references",
-      "path": "docs/9.3 — Lvalue references.md"
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
       "basename": "9.2 — Value categories (lvalues and rvalues)",
@@ -17,8 +17,16 @@
       "path": "docs/9.1 — Introduction to compound data types.md"
     },
     {
-      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
-      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+      "basename": "8-12-Default-arguments",
+      "path": "docs/8-12-Default-arguments.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9.3 — Lvalue references",
+      "path": "docs/9.3 — Lvalue references.md"
     },
     {
       "basename": "8-9-Introduction-to-function-overloading",
@@ -83,10 +91,6 @@
     {
       "basename": "7-4-Switch-statement-basics",
       "path": "docs/7-4-Switch-statement-basics.md"
-    },
-    {
-      "basename": "8-10-Function-overload-differentiation",
-      "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
       "basename": "Name-mangling",
@@ -195,10 +199,6 @@
     {
       "basename": "value-preserving",
       "path": "docs/value-preserving.md"
-    },
-    {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
     }
   ],
   "omittedPaths": [],
