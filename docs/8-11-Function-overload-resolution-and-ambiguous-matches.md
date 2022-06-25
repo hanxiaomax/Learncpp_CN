@@ -68,24 +68,23 @@ int main()
 }
 ```
 
-没有完全匹配的函数，不等于没有能够匹配的函数
-Just because there is no exact match here doesn’t mean a match can’t be found -- after all, a `char` or `long` can be implicitly type converted to an `int`or a `double`. But which is the best conversion to make in each case?
+没有完全匹配的函数，不等于没有能够匹配的函数——毕竟，`char` 或者 `long` 可以通过[[implicit-type-conversion|隐式类型转换]]转换为 `int` 或者 `double`。但是，在不同情况下如何选择**最佳**匹配呢？
 
-In this lesson, we’ll explore how the compiler matches a given function call to a specific overloaded function.
+在本节课中，我们会探索编译器是如何在函数调用时匹配的重载函数的。
 
-Resolving overloaded function calls
+## 解析重载函数调用
 
-When a function call is made to an overloaded function, the compiler steps through a sequence of rules to determine which (if any) of the overloaded functions is the best match.
+当对重载函数进行调用时，编译器通过一系列规则来确定哪个(如果有的话)重载函数是最佳匹配的。
 
-At each step, the compiler applies a bunch of different type conversions to the argument(s) in the function call. For each conversion applied, the compiler checks if any of the overloaded functions are now a match. After all the different type conversions have been applied and checked for matches, the step is done. The result will be one of three possible outcomes:
+在每个步骤中，编译器对函数调用中的实参应用一系列不同的类型转换。对于应用的每个转换，编译器检查重载的函数现在是否匹配。在应用了所有不同的类型转换并检查了匹配之后，这一步就完成了。结果将是以下三种可能的结果之一：
 
--   No matching functions were found. The compiler moves to the next step in the sequence.
--   A single matching function was found. This function is considered to be the best match. The matching process is now complete, and subsequent steps are not executed.
--   More than one matching function was found. The compiler will issue an ambiguous match compile error. We’ll discuss this case further in a bit.
+- 未找到匹配的函数。编译器进入下一个步骤。
+- 找到单个匹配函数。该函数被认为是最佳匹配。匹配过程现在已经完成，后续步骤不再执行。
+- 发现多个匹配函数。编译器将发出一个**匹配歧义**的编译错误。我们稍后将进一步讨论这种情况。
 
-If the compiler reaches the end of the entire sequence without finding a match, it will generate a compile error that no matching overloaded function could be found for the function call.
+如果编译器执行完一系列步骤后，仍然没有找到匹配的函数，它将生成一个编译错误，即无法为函数调用找到匹配的重载函数。
 
-The argument matching sequence
+## 参数匹配顺序
 
 Step 1) The compiler tries to find an exact match. This happens in two phases. First, the compiler will see if there is an overloaded function where the type of the arguments in the function call exactly matches the type of the parameters in the overloaded functions. For example:
 
