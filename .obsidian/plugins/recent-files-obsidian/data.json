@@ -5,32 +5,28 @@
       "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
-      "basename": "8-9-Introduction-to-function-overloading",
-      "path": "docs/8-9-Introduction-to-function-overloading.md"
+      "basename": "type-signature",
+      "path": "docs/type-signature.md"
     },
     {
-      "basename": "overload-resolution",
-      "path": "docs/overload-resolution.md"
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
     },
     {
-      "basename": "overload",
-      "path": "docs/overload.md"
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
     {
-      "basename": "8-8-Type-deduction-for-functions",
-      "path": "docs/8-8-Type-deduction-for-functions.md"
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
     {
-      "basename": "function-template",
-      "path": "docs/function-template.md"
+      "basename": "8-4-Arithmetic-conversions",
+      "path": "docs/8-4-Arithmetic-conversions.md"
     },
     {
-      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
-      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+      "basename": "4-6-Fixed-width-integers-and-size_t",
+      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
     },
     {
       "basename": "4-14-Literal-constants",
@@ -41,28 +37,44 @@
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
-      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
-      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+      "basename": "function-template",
+      "path": "docs/function-template.md"
+    },
+    {
+      "basename": "overload",
+      "path": "docs/overload.md"
+    },
+    {
+      "basename": "overload-resolution",
+      "path": "docs/overload-resolution.md"
+    },
+    {
+      "basename": "8-9-Introduction-to-function-overloading",
+      "path": "docs/8-9-Introduction-to-function-overloading.md"
+    },
+    {
+      "basename": "8-8-Type-deduction-for-functions",
+      "path": "docs/8-8-Type-deduction-for-functions.md"
+    },
+    {
+      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
+      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
     {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
     {
-      "basename": "4-6-Fixed-width-integers-and-size_t",
-      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
-    },
-    {
-      "basename": "8-4-Arithmetic-conversions",
-      "path": "docs/8-4-Arithmetic-conversions.md"
+      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
+      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
     },
     {
       "basename": "8-3-Numeric-conversions",
       "path": "docs/8-3-Numeric-conversions.md"
     },
     {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+      "basename": "8-2-Floating-point-and-integral-promotion",
+      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
     },
     {
       "basename": "named-cast",
@@ -95,14 +107,6 @@
     {
       "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
       "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
-    },
-    {
-      "basename": "8-2-Floating-point-and-integral-promotion",
-      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
     },
     {
       "basename": "narrowing-convertions",
@@ -195,10 +199,6 @@
     {
       "basename": "6-8-Why-non-const-global-variables-are-evil",
       "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
-    },
-    {
-      "basename": "6-15-Unnamed-and-inline-namespaces",
-      "path": "docs/6-15-Unnamed-and-inline-namespaces.md"
     }
   ],
   "omittedPaths": [],

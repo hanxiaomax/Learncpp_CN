@@ -10,37 +10,39 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- 函数中用于区分重载函数的部分有：形参个数、形参类型、省略号。
+	- 返回值类型不能被用来区分函数
+	- 成员函数在上面的基础上还包括 `const`、`volatile`和引用限定符
 
-In the prior lesson ([[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]), we introduced the concept of function overloading, which allows us to create multiple functions with the same name, so long as each identically named function has different parameter types (or the functions can be otherwise differentiated).
+在上一节课中 ([[8-9-Introduction-to-function-overloading|8.9 - 函数重载]])， 我们引入了函数重载的概念，使用函数重载可以创建具有相同名称的多个函数，前提是每个相同名称的函数具有不同的形参类型(或者可以用其他方式区分函数)。
 
-In this lesson, we’ll take a closer look at how overloaded functions are differentiated. Overloaded functions that are not properly differentiated will cause the compiler to issue a compile error.
+在这一课中，我们将进一步了解重载函数是如何区分开来的，不能被正确区分的重载函数将导致编译器发出编译错误。
 
-## How overloaded functions are differentiated
+## 重载函数是如何被区分的
 
-|Function property	|Used for differentiation	|Notes|
+|函数属性	|被用于区分函数	|备注|
 |---|---|---|
-|Number of parameters	|Yes	
-|Type of parameters	|Yes	|Excludes typedefs, type aliases, and const qualifier on value parameters. Includes ellipses.
-|Return type	|No	
+|形参个数	|Yes	
+|形参类型	|Yes	|不包括 `typedefs`、类型别名、`const` 限定符。包括省略号(ellipses)
+|返回值类型	|**No**	
 
-Note that a function’s return type is not used to differentiate overloaded functions. We’ll discuss this more in a bit.
+注意，函数的返回类型不用于区分重载函数。我们稍后再讨论这个问题。
 
 !!! info "扩展阅读"
 
-	For member functions, additional function-level qualifiers are also considered:
+	对于**成员函数**，还会考虑附加的函数级限定符:
 	
-	|Function-level qualifier	|Used for overloading|
+	|函数级限定符	|是否用于重载|
 	|---|---|
-	|const or volatile|	Yes
-	|Ref-qualifiers	|Yes
+	|`const` or `volatile`|	Yes
+	|[[ref-qualifier|引用限定符(Ref-qualifiers)]]	|Yes
 	
-	As an example, a const member function can be differentiated from an otherwise identical non-const member function (even if they share the same set of parameters).
+	例如，`const` 成员函数可以与其他完全相同的非 `const` 成员函数区别开来(即使它们共享相同的形参集)。
 
 
-## Overloading based on number of parameters
+## 基于参数个数进行重载
 
-An overloaded function is differentiated so long as each overloaded function has a different number of parameters. For example:
+只要每个重载函数具有不同数量的形参，就可以区分重载函数。例如:
 
 ```cpp
 int add(int x, int y)
@@ -54,22 +56,21 @@ int add(int x, int y, int z)
 }
 ```
 
+编译器可以很容易地将两个整型参数的函数调用匹配到 `add(int, int)` ，而将三个整型参数的函数调用匹配到 `add(int, int, int)`。
 
-The compiler can easily tell that a function call with two integer parameters should go to `add(int, int)` and a function call with three integer parameters should go to `add(int, int, int)`.
+## 基于参数类型进行重载
 
-## Overloading based on type of parameters
+只要每个重载函数的形参类型列表是不同的，就可以对函数进行区分。例如，以下所有的重载函数都是可以被区分的:
 
-A function can also be differentiated so long as each overloaded function’s list of parameter types is distinct. For example, all of the following overloads are differentiated:
 
 ```cpp
-int add(int x, int y); // integer version
-double add(double x, double y); // floating point version
-double add(int x, double y); // mixed version
-double add(double x, int y); // mixed version
+int add(int x, int y); // 整型版本
+double add(double x, double y); // 浮点版本
+double add(int x, double y); // 混合版本
+double add(double x, int y); // 混合版本
 ```
 
-
-Because type aliases (or typedefs) are not distinct types, overloaded functions using type aliases are not distinct from overloads using the aliased type. For example, all of the following overloads are not differentiated (and will result in a compile error):
+因为类型别名(或 `typedefs` )并不会产生不同的类型，所以使用类型别名的重载函数与使用对应类型的重载没有区别。例如，以下所有重载都是不能被区分的(并将导致编译错误)：
 
 ```cpp
 typedef int height_t; // typedef
@@ -80,41 +81,44 @@ void print(age_t value); // not differentiated from print(int)
 void print(height_t value); // not differentiated from print(int)
 ```
 
-
-For parameters passed by value, the const qualifier is also not considered. Therefore, the following functions are not considered to be differentiated:
+对于通过值传递的参数，也不考虑 `const` 限定符。因此，以下函数是不能被区分开的：
 
 ```cpp
 void print(int);
 void print(const int); // not differentiated from print(int)
 ```
 
-COPY
 
 !!! info "扩展阅读"
 
-	We haven’t covered ellipsis yet, but ellipsis parameters are considered to be a unique type of parameter:
-	
+	我们还没有涉及到省略号，但是省略号参数被认为是一种独特的参数类型:
+
 	```cpp
 	void foo(int x, int y);
-	void foo(int x, ...); // differentiated from foo(int, int)
+	void foo(int x, ...); // 和 foo(int, int)是不同的
 	```
 
-## The return type of a function is not considered for differentiation
+## 返回值类型不能被用来区分函数
+
 
 A function’s return type is not considered when differentiating overloaded functions.
 
 Consider the case where you want to write a function that returns a random number, but you need a version that will return an int, and another version that will return a double. You might be tempted to do this:
+
+在区分重载函数时，不考虑函数的返回类型。
+
+考虑这样一种情况:您想编写一个返回随机数的函数，但是您需要一个返回整数的版本，以及另一个返回双精度数的版本。你可能会忍不住这样做:
 
 ```cpp
 int getRandomValue();
 double getRandomValue();
 ```
 
-COPY
+Visual Studio 2019 中会产生如下编译错误：
 
-On Visual Studio 2019, this results in the following compiler error:
-
+```
 error C2556: 'double getRandomValue(void)': overloaded function differs only by return type from 'int getRandomValue(void)'
+```
 
 This makes sense. If you were the compiler, and you saw this statement:
 
@@ -122,7 +126,6 @@ This makes sense. If you were the compiler, and you saw this statement:
 getRandomValue();
 ```
 
-COPY
 
 Which of the two overloaded functions would you call? It’s not clear.
 
@@ -138,9 +141,9 @@ double getRandomDouble();
 ```
 
 
-## Type signature
+## 类型签名
 
-A function’s type signature (generally called a signature) is defined as the parts of the function header that are used for differentiation of the function. In C++, this includes the function name, number of parameter, parameter type, and function-level qualifiers. It notably does _not_ include the return type.
+函数的 [[type-signature|类型签名(type signature)]] (通常简称为签名) is defined as the parts of the function header that are used for differentiation of the function. In C++, this includes the function name, number of parameter, parameter type, and function-level qualifiers. It notably does _not_ include the return type.
 
 ## Name mangling
 
