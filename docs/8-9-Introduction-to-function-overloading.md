@@ -8,6 +8,14 @@ type: translation
 tags:
 - overloading
 ---
+??? note "关键点速记"
+	- 使用相同函数名但形参不同的函数，称为函数重载。
+	- 只要编译器能够区分每个重载函数，函数就可以被重载。如果不能区分重载函数，将导致编译错误。
+	- C++ 中的操作符其实也是函数，所以它们也可以被重载
+	- 重载函数能够进行编译，必须满足两个条件：
+		1. 每个重载的函数都必须能够区分。我们会在 [[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]] 中介绍它们是如何被区分的。
+		2. 每个被调用的重载函数在重载解析时必须能够定位到一个函数。我们会在[[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]]中介绍如何进行重载函
+
 
 考虑下面的函数：
 
@@ -18,13 +26,9 @@ int add(int x, int y)
 }
 ```
 
-这个简单的函数将两个整数相加并返回一个整数结果。但是，如果我们还想要一个可以将两个浮点数相加的函数呢?这个' add() '函数不合适，因为任何浮点形参都会被转换为整数，导致浮点形参丢失它们的小数值。
+这个简单的函数将两个整数相加并返回一个整数结果。但是，如果我们还需要一个可以将两个浮点数相加的函数呢？这个 `add()`函数并不能实现浮点数相加，因为任何浮点[[parameters|形参]]都会被转换为整数，导致浮点形参丢失它们的小数值。
 
 解决这个问题的一种方法是定义多个名称略有不同的函数:
-
-This trivial function adds two integers and returns an integer result. However, what if we also want a function that can add two floating point numbers? This `add()` function is not suitable, as any floating point parameters would be converted to integers, causing the floating point arguments to lose their fractional values.
-
-One way to work around this issue is to define multiple functions with slightly different names:
 
 ```cpp
 int addInteger(int x, int y)
@@ -38,17 +42,17 @@ double addDouble(double x, double y)
 }
 ```
 
-COPY
 
-However, for best effect, this requires that you define a consistent function naming standard for similar functions that have parameters of different types, remember the names of these functions, and actually call the correct one.
+但是，为了达到最佳效果，你必须为具有不同类型参数的类似函数，定义一致的命名标准，同时记住这些函数的名称，并确保使用正确的函数。
 
-And then what happens when we want to have a similar function that adds 3 integers instead of 2? Managing unique names for each function quickly becomes burdensome.
+将来，如果我们又需要一个类似的函数，将三个整数相加而不是两个整数相加的时候会发生什么？为每一个函数创建不同的名称会使代码变得难以维护。
+
 
 ## 函数重载简介
 
-Fortunately, C++ has an elegant solution to handle such cases. Function overloading allows us to create multiple functions with the same name, so long as each identically named function has different parameter types (or the functions can be otherwise differentiated). Each function sharing a name (in the same scope) is called an overloaded function (sometimes called an overload for short).
+幸运的是，C++ 提供了一个优雅的解决方案。函数重载允许我们使用相同的名称创建多个函数，只要每个相同名称的函数具有不同的形参类型(或者可以用其他方式区分函数)。每个函数都共享一个名称(在同一个作用域中)，称为[[overload|重载(overload)]]函数(有时简称重载)。
 
-To overload our `add()` function, we can simply declare another `add()` function that takes double parameters:
+对 `add()` 函数进行重载，我们可以声明另外一个`add()`函数，但是参数类型为`double`：
 
 ```cpp
 double add(double x, double y)
@@ -57,9 +61,8 @@ double add(double x, double y)
 }
 ```
 
-COPY
 
-We now have two versions of `add()` in the same scope:
+此时，在同一个作用域中，出现了两个同名的 `add()` 函数：
 
 ```cpp
 int add(int x, int y) // integer version
@@ -78,23 +81,22 @@ int main()
 }
 ```
 
-COPY
+以上程序是可以编译的。尽管你可能担心这些函数会出现命名冲突，但实际上并不会。因为这些函数的形参类型不同，所以编译器能够区分这些函数，并将它们视为共享一个名称的单独函数。
 
-The above program will compile. Although you might expect these functions to result in a naming conflict, that is not the case here. Because the parameter types of these functions differ, the compiler is able to differentiate these functions, and will treat them as separate functions that just happen to share a name.
 
 !!! tldr "关键信息"
 
-	Functions can be overloaded so long as each overloaded function can be differentiated by the compiler. If an overloaded function can not be differentiated, a compile error will result.
+	只要编译器能够区分每个重载函数，函数就可以被重载。如果不能区分重载函数，将导致编译错误。
 
 !!! info "相关内容"
 
-	Because operators in C++ are just functions, operators can also be overloaded. We’ll discuss this in [14.1 -- Introduction to operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/).
+	因为 C++ 中的操作符其实也是函数，所以它们也可以被重载，我们会在 [14.1 -- Introduction to operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/)中进行介绍。
 
-## Introduction to overload resolution
+## 函数重载解析
 
-Additionally, when a function call is made to function that has been overloaded, the compiler will try to match the function call to the appropriate overload based on the arguments used in the function call. This is called overload resolution.
+此外，当调用被重载的函数时，编译器会基于形参来匹配最合适的函数调用——称为[[overload-resolution|重载解析(overload resolution)]]。
 
-Here’s a simple example demonstrating this:
+例如：
 
 ```cpp
 #include <iostream>
@@ -119,30 +121,34 @@ int main()
 }
 ```
 
-COPY
 
-The above program compiles and produces the result:
+上述函数编译执行的结果如下：
 
+```
 3
 4.6
+```
 
-When we provide integer arguments in the call to `add(1, 2)`, the compiler will determine that we’re trying to call `add(int, int)`. And when we provide floating point arguments in the call to `add(1.2, 3.4)`, the compiler will determine that we’re trying to call `add(double, double)`.
+当提供整型形参时（`add(1, 2)`）编译器可以判断出我们需要调用的是 `add(int, int)`。而当我们提供浮点类型的形参时（ `add(1.2, 3.4)`），编译器能够确定我们调用的是`add(double, double)`。
 
-## Making it compile
+## 使重载的函数能够编译
 
-In order for a program using overloaded functions to compile, two things have to be true:
+为了使使用了重载函数的程序能够进行编译，必须满足两个条件：
 
-1.  Each overloaded function has to be differentiated from the others. We discuss how functions can be differentiated in lesson [8.10 -- Function overload differentiation](https://www.learncpp.com/cpp-tutorial/function-overload-differentiation/).
-2.  Each call to an overloaded function has to resolve to an overloaded function. We discuss how the compiler matches function calls to overloaded functions in lesson [8.11 -- Function overload resolution and ambiguous matches](https://www.learncpp.com/cpp-tutorial/function-overload-resolution-and-ambiguous-matches/).
+1. 每个重载的函数都必须能够区分。我们会在 [[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]] 中介绍它们是如何被区分的。
+2. 每个被调用的重载函数在重载解析时必须能够定位到一个函数。我们会在[[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]]中介绍如何进行重载函数的匹配。
 
-If an overloaded function is not differentiated, or if a function call to an overloaded function can not be resolved to an overloaded function, then a compile error will result.
+如果重载函数不能被区分，或者重载函数的函数调用无法解析为重载函数，则将导致编译错误。
 
-In the next lesson, we’ll explore how overloaded functions can be differentiated from each other. Then, in the following lesson, we’ll explore how the compiler resolves function calls to overloaded functions.
+在下一课中，我们将探讨如何区分重载函数。然后，在再下一课中，我们将探索编译器如何将函数调用解析为重载函数。
 
-## Conclusion
 
-Function overloading provides a great way to reduce the complexity of your program by reducing the number of function names you need to remember. It can and should be used liberally.
+## 小结
 
-Best practice
 
-Use function overloading to make your program simpler.
+函数重载通过减少需要记住的函数名的数量来降低程序的复杂性。它可以而且应该被广泛使用。
+
+
+!!! success "最佳实践"
+
+	使用函数重载可以简化程序。

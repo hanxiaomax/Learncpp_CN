@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
+    },
+    {
       "basename": "8-9-Introduction-to-function-overloading",
       "path": "docs/8-9-Introduction-to-function-overloading.md"
+    },
+    {
+      "basename": "overload-resolution",
+      "path": "docs/overload-resolution.md"
+    },
+    {
+      "basename": "overload",
+      "path": "docs/overload.md"
     },
     {
       "basename": "8-8-Type-deduction-for-functions",
@@ -187,18 +199,6 @@
     {
       "basename": "6-15-Unnamed-and-inline-namespaces",
       "path": "docs/6-15-Unnamed-and-inline-namespaces.md"
-    },
-    {
-      "basename": "6-14-Constexpr-and-consteval-functions",
-      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
-    },
-    {
-      "basename": "6-13-Inline-functions",
-      "path": "docs/6-13-Inline-functions.md"
-    },
-    {
-      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
-      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
     }
   ],
   "omittedPaths": [],

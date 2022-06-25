@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/8-9-Introduction-to-function-overloading.md",
+            "file": "docs/8-10-Function-overload-differentiation.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-9-Introduction-to-function-overloading.md"
+                "file": "docs/8-10-Function-overload-differentiation.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-9-Introduction-to-function-overloading.md",
+                "file": "docs/8-10-Function-overload-differentiation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "2fe022bbf6ff5f64",
   "lastOpenFiles": [
+    "docs/8-10-Function-overload-differentiation.md",
     "docs/8-9-Introduction-to-function-overloading.md",
+    "docs/overload-resolution.md",
+    "docs/overload.md",
     "docs/8-8-Type-deduction-for-functions.md",
     "docs/function-template.md",
     "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
     "docs/4-14-Literal-constants.md",
-    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-    "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
-    "docs/8-6-Typedefs-and-type-aliases.md",
-    "docs/4-6-Fixed-width-integers-and-size_t.md"
+    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
   ]
 }
