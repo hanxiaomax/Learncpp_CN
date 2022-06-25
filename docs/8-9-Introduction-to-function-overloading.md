@@ -9,7 +9,7 @@ tags:
 - overloading
 ---
 
-Consider the following function:
+考虑下面的函数：
 
 ```cpp
 int add(int x, int y)
@@ -18,7 +18,9 @@ int add(int x, int y)
 }
 ```
 
-COPY
+这个简单的函数将两个整数相加并返回一个整数结果。但是，如果我们还想要一个可以将两个浮点数相加的函数呢?这个' add() '函数不合适，因为任何浮点形参都会被转换为整数，导致浮点形参丢失它们的小数值。
+
+解决这个问题的一种方法是定义多个名称略有不同的函数:
 
 This trivial function adds two integers and returns an integer result. However, what if we also want a function that can add two floating point numbers? This `add()` function is not suitable, as any floating point parameters would be converted to integers, causing the floating point arguments to lose their fractional values.
 

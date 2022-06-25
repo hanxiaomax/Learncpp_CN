@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "8-9-Introduction-to-function-overloading",
+      "path": "docs/8-9-Introduction-to-function-overloading.md"
+    },
+    {
       "basename": "8-8-Type-deduction-for-functions",
       "path": "docs/8-8-Type-deduction-for-functions.md"
+    },
+    {
+      "basename": "function-template",
+      "path": "docs/function-template.md"
     },
     {
       "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
@@ -109,10 +117,6 @@
       "path": "docs/1-2-comments.md"
     },
     {
-      "basename": "8-9-Introduction-to-function-overloading",
-      "path": "docs/8-9-Introduction-to-function-overloading.md"
-    },
-    {
       "basename": "explicit-type-conversion",
       "path": "docs/explicit-type-conversion.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
       "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     }
   ],
   "omittedPaths": [],
