@@ -74,7 +74,7 @@ int main()
 
 ## 解析重载函数调用
 
-当对重载函数进行调用时，编译器通过一系列规则来确定哪个(如果有的话)重载函数是最佳匹配的。
+当对重载函数进行调用时，编译器通过一系列规则和步骤确定重载函数的最佳匹配(如果有的话)。
 
 在每个步骤中，编译器对函数调用中的实参应用一系列不同的类型转换。对于应用的每个转换，编译器检查重载的函数现在是否匹配。在应用了所有不同的类型转换并检查了匹配之后，这一步就完成了。结果将是以下三种可能的结果之一：
 
@@ -86,7 +86,7 @@ int main()
 
 ## 参数匹配顺序
 
-Step 1) The compiler tries to find an exact match. This happens in two phases. First, the compiler will see if there is an overloaded function where the type of the arguments in the function call exactly matches the type of the parameters in the overloaded functions. For example:
+第一步：编译器首先尝试精确地匹配重载函数。这个过程分为两个阶段。首先，编译器会查找是否存在一个重载函数，其调用shi实参完全匹配重载 1) The compiler tries to find an exact match. This happens in two phases. First, the compiler will see if there is an overloaded function where the type of the arguments in the function call exactly matches the type of the parameters in the overloaded functions. For example:
 
 ```cpp
 void print(int)
