@@ -12,7 +12,7 @@ tags:
 ??? note "关键点速记"
 	
 
-Consider the following program:
+考虑下面代码：
 
 ```cpp
 int add(int x, int y)
@@ -22,7 +22,7 @@ int add(int x, int y)
 ```
 
 
-When this function is compiled, the compiler will determine that `x + y` evaluates to an `int`, then ensure that type of the return value matches the declared return type of the function (or that the return value type can be converted to the declared return type).
+但编译这个函数的时候，编译器可以确定 `x + y` 的求值结果为`int`类型，然后它会确保函数的返回值类型和该类型匹配 then ensure that type of the return value matches the declared return type of the function (or that the return value type can be converted to the declared return type).
 
 Since the compiler already has to deduce the return type from the return statement, in C++14, the `auto` keyword was extended to do function return type deduction. This works by using the `auto` keyword in place of the function’s return type.
 
