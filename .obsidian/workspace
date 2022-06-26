@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "862b9bdc64239948",
+        "id": "ebacfe259c1e1920",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/MOC.md",
+            "file": "docs/4-13-Const-variables-and-symbolic-constants.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -17,12 +17,12 @@
         }
       },
       {
-        "id": "c5c463ee1a356400",
+        "id": "6e19faa8b4935ded",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4-15-Literals.md",
+            "file": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -30,7 +30,7 @@
         }
       },
       {
-        "id": "ee2ba8125a3d7348",
+        "id": "c5409ce080074208",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "const 变量",
+                "query": "π",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -93,7 +93,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-15-Literals.md"
+                "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
               }
             }
           },
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-15-Literals.md",
+                "file": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,17 +153,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "c5c463ee1a356400",
+  "active": "c5409ce080074208",
   "lastOpenFiles": [
-    "docs/4-15-Literals.md",
     "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
+    "docs/4-13-Const-variables-and-symbolic-constants.md",
     "docs/MOC.md",
     "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
-    "docs/11.6 — C-style strings.md",
+    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
     "docs/4.18 — Introduction to std-string_view.md",
     "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md",
-    "docs/4-17-An introduction-to-std-string.md",
-    "docs/4-13-Const-variables-and-symbolic-constants.md",
-    "docs/4-x-Chapter-4-summary-and-quiz.md"
+    "docs/4-15-Literals.md",
+    "docs/4-x-Chapter-4-summary-and-quiz.md",
+    "docs/11.6 — C-style strings.md"
   ]
 }

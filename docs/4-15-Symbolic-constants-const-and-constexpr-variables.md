@@ -21,8 +21,7 @@ tags:
     - 常数表达式指的是可以在运行时求值得到结果的表达式
     - C++17 和之前的版本不支持 `constexpr std:: string` ，只有在 C++20 中才有有限的的支持。如果你想要使用 `constexpr strings`，应该用 `std:: string_view` 代替
     - 避免使用 `#define` 来创建符号常量宏。使用 const 或者 constexpr
-    - 只有当一个数字（也可能是其他类型）含义不明确或多次被使用时才被看做是魔术数字。有些场合下的字面量，尤其是只使用一次的字面量，可以不被看做是魔术数字
-    - 使用常量来避免魔术数字
+    
 
 ## Const 变量
 
@@ -342,59 +341,4 @@ int main()
 
 在 C++ 中有很多方法可以实现上述需求，我们会在 [[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]] 中进行详细的介绍。
 
-## 使用常量来避免“魔术数字”
 
-魔术数字指的是含义不清或多次使用的字面量（通常是数字）。
-
-下面代码展示了一种含义不清的魔术数字：
-
-```cpp
-constexpr int maxStudentsPerSchool{ numClassrooms * 30 };
-```
-
-这里的 30 到底是什么含义？尽管有时候你可能可以猜到它的含义，例如这里指的是每个教室最多的学生数，但是这个意义并不明显。对于更加复杂的程序来说，推测某个硬编码的数字是很难的，除非有注释。
-
-幸运的是，我们可以使用符号常量来避免这种含义不清的魔术数字：
-
-```cpp
-constexpr int maxStudentsPerClass { 30 }; // now obvious what 30 is
-constexpr int maxStudentsPerSchool{ numClassrooms * maxStudentsPerClass };
-```
-
-使用魔术数字通常被认为是一种不好的编码习惯，它们不仅没有提供关于其用途的上下文信息，而且还留下了一个隐患（万一需要修改则需要在多处修改）。假设，学校购买了一些新的课桌，现在一个教室能够容纳 35 人了，那么我们的程序也必须反映这一情况。考虑如下代码：
-
-```cpp
-constexpr int maxStudents{ numClassrooms * 30 };
-setMax(30);
-```
-
-为了修改程序适应新的情况，我们必须把常量 30 修改为 35，但是 `setMax()` 怎么办？它的参数 30 和其他 30 是一个意思吗？应该更新还是应该保留啊，搞不好会导致程序出问题的。如你进行全局的查找和替换，那么你可能会替换掉本不应该被更新的 `setMax()` 中的 30。所以你可能需要逐个检查每一个 30，确保它应该被替换才执行操作。这就太费时间（而且还容易出错）。
-
-下面的代码 (使用符号常量) 则更加清晰，明显可以看出两个 30 是不是一回事：
-
-```cpp
-constexpr int maxStudentsPerClass { 30 }; // now obvious what 30 is
-constexpr int totalStudents{ numClassrooms * maxStudentsPerClass };
-
-constexpr int maxNameLength{ 30 };
-setMax(maxNameLength); // now obvious this 30 is used in a different context
-```
-
-魔术数字并不总是数字——也可能是字符串或其他类型。
-
-注意，只使用一次，且含义明确的[[literals|字面量]]通常不被认为是魔术数字。像-1、0、0.0 和 1这样的值就经常被用在含义非常明确的情境中：
-
-```cpp
-int idGenerator { 0 };         // fine: we're starting our id generator with value 0
-idGenerator = idGenerator + 1; // fine: we're just incrementing our generator
-```
-
-其他值在某些语境下含义也是明显的 (因此也可以不被看做是魔术数字)：
-
-```cpp
-int kmtoM(int km) { return km * 1000; } // 可以这么做: 很显然这里1000是km和m之间的转换系数
-```
-
-!!! success "最佳实践"
-
-    在代码中避免魔术数字 (使用常量来代替)。

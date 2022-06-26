@@ -12,12 +12,11 @@ tags:
 ??? note "关键点速记"
 	
 
+在编程中，常量（constant）指的是不会改变的值。C++支持几种类型的常量：const 变量（参见：[[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]）和[[literals|字面量]]（参见：[[4-15-Literals|4.15 - 字面量]]）
 
-In programming, a constant is a value that may not be changed. C++ supports several types of constants: const variables (which we’ll cover in this lesson and [4.14 -- Compile-time constants, constant expressions, and constexpr](https://www.learncpp.com/cpp-tutorial/compile-time-constants-constant-expressions-and-constexpr/)), and literals (which we’ll cover shortly, in lesson [4.13 -- Const variables and symbolic constants](https://www.learncpp.com/cpp-tutorial/const-variables-and-symbolic-constants/)).
+## const 变量
 
-Const variables
-
-So far, all of the variables we’ve seen have been non-constant -- that is, their values can be changed at any time (typically through assignment of a new value). For example:
+到目前为止，我们看到的所有变量都是非常量——也就是说，它们的值可以在任何时候更改(通常通过赋值)。例如:
 
 ```cpp
 int main()
@@ -29,13 +28,13 @@ int main()
 }
 ```
 
-COPY
+然而，在许多情况下，定义具有不可更改值的变量是有用的。例如，考虑地球(靠近地表)的重力:9.8米/秒。这在短时间内不太可能改变(如果改变了，您可能会遇到比学习c++更大的问题)。将该值定义为常量有助于确保该值不会意外更改。常量还有其他好处，我们稍后将探讨。
 
 However, there are many cases where it is useful to define variables with values that can not be changed. For example, consider the gravity of Earth (near the surface): 9.8 meters/second2. This isn’t likely to change any time soon (and if it does, you’ve likely got bigger problems than learning C++). Defining this value as a constant helps ensure that this value isn’t accidentally changed. Constants also have other benefits that we’ll explore momentarily.
 
 A variable whose value can not be changed is called a constant variable.
 
-The const keyword
+## The const keyword
 
 To make a variable a constant, place the `const` keyword in the variable’s declaration either before or after the variable type, like so:
 
@@ -48,17 +47,17 @@ COPY
 
 Although C++ will accept `const` either before or after the type, it’s much more common to use `const` before the type because it better follows standard English language convention where modifiers come before the object being modified (e.g. a “a green ball”, not a “a ball green”).
 
-As an aside…
+!!! cite "题外话"
 
-Due to the way that the compiler parses more complex declarations, some developers prefer placing the `const` after the type (because it is slightly more consistent). This style is called “east const”. While this style has some advocates (and some reasonable points), it has not caught on significantly.
+    Due to the way that the compiler parses more complex declarations, some developers prefer placing the `const` after the type (because it is slightly more consistent). This style is called “east const”. While this style has some advocates (and some reasonable points), it has not caught on significantly.
 
-Best practice
+!!! success "最佳实践"
 
-Place `const` before the type (because it is more idiomatic to do so).
+	Place `const` before the type (because it is more idiomatic to do so).
 
-Const variables must be initialized
+## Const variables must be initialized
 
-Const variables _must_ be initialized when you define them, and then that value can not be changed via assignment:
+const 变量**必须**在定义时初始化，此后你也不能通过赋值来改变它：
 
 ```cpp
 int main()
@@ -70,9 +69,7 @@ int main()
 }
 ```
 
-COPY
-
-Note that const variables can be initialized from other variables (including non-const ones):
+注意，const 变量可以使用其他类型的变量初始化（包括非 const 类型的变量）：
 
 ```cpp
 #include <iostream>
@@ -92,11 +89,10 @@ int main()
 }
 ```
 
-COPY
 
 In the above example, we initialize const variable `constAge` with non-const variable `age`. Because `age` is still non-const, we can change its value. However, because `constAge` is const, we cannot change the value it has after initialization.
 
-Naming your const variables
+## Naming your const variables
 
 There are a number of different naming conventions that are used for const variables.
 
@@ -104,7 +100,7 @@ Programmers who have transitioned from C often prefer underscored, upper-case na
 
 However, because const variables act like normal variables (except they can not be assigned to), there is no reason that they need a special naming convention. For this reason, we prefer using the same naming convention that we use for non-const variables (e.g. `earthGravity`).
 
-Const function parameters
+## Const function parameters
 
 Function parameters can be made constants via the `const` keyword:
 
@@ -131,13 +127,13 @@ Note that we did not provide an explicit initializer for our const parameter `x
 
 Making a function parameter constant enlists the compiler’s help to ensure that the parameter’s value is not changed inside the function. However, when arguments are passed by value, we generally don’t care if the function changes the value of the parameter (since it’s just a copy that will be destroyed at the end of the function anyway). For this reason, we usually don’t `const` parameters passed by value (as it adds clutter to our code without providing much actual value).
 
-Best practice
+!!! success "最佳实践"
 
-Don’t use `const` when passing by value.
+	Don’t use `const` when passing by value.
 
 Later in this tutorial series, we’ll talk about two other ways to pass arguments to functions: pass by reference, and pass by address. When using either of these methods, proper use of `const` is important.
 
-Const return values
+## Const return values
 
 A function’s return value may also be made const:
 
@@ -165,7 +161,7 @@ Best practice
 
 Don’t use `const` when returning by value.
 
-What is a symbolic constant?
+## What is a symbolic constant?
 
 A symbolic constant is a name that is given to a constant value. Constant variables are one type of symbolic constant, as a variable has a name (its identifier) and a constant value.
 
@@ -231,3 +227,7 @@ Using constant variables throughout a multi-file program
 In many applications, a given symbolic constant needs to be used throughout your code (not just in one location). These can include physics or mathematical constants that don’t change (e.g. pi or Avogadro’s number), or application-specific “tuning” values (e.g. friction or gravity coefficients). Instead of redefining these every time they are needed, it’s better to declare them once in a central location and use them wherever needed. That way, if you ever need to change them, you only need to change them in one place.
 
 There are multiple ways to facilitate this within C++ -- we cover this topic in full detail in lesson [6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/).
+
+[
+
+](https://www.learncpp.com/cpp-tutorial/compile-time-constants-constant-expressions-and-constexpr/)
