@@ -20,6 +20,11 @@ tags:
     - 在每一步中，如果找到且只找到一个匹配函数，则完成匹配，否则进入下一步。如果最终匹配的结果大于 1 个或者为 0，则报错。
     - 通过数值提升进行匹配的优先级高于通过数值转换匹配的优先级
     - 将非引用类型转换为引用类型（或者反过来）也属于[[简单转换(trivial conversion)]]
+    - 如果编译器在某一步找到了多个可能的匹配，则会导致**不明确匹配**。也就是说，在这一步中编译器没能找到一个比其他匹配都好的匹配。注意，在每一步中编译器都会应用所有可用的转换并进行匹配，不会找到一个匹配后就停止。
+    - 解决不明确匹配的方法是：
+	    - 定义一个能够参数完全匹配的新函数
+	    - 强制类型转换
+	    - 字面量添加后缀
 
 在上节课([[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]])中我们介绍了函数中可以被用来对重载函数进行区分的属性。如果一个重载函数不能和其他重载函数被区分开来，那么就会产生编译错误。
 
@@ -263,9 +268,7 @@ int main()
 
 而在存在重载函数的情况下，还有第三种可能：[[ambiguous-match|不明确匹配(ambiguous match)]] 。当编译器在一个步骤中找到两个或两个以上匹配的重载函数时，编译器会停止匹配并报告找到不明确匹配函数调用。
 
-为了进行编译，必须区分每个重载函数，您可能想知道一个函数调用怎么会导致多个匹配。让我们看一个例子来说明这一点:
-
-Since every overloaded function must be differentiated in order to compile, you might be wondering how it is possible that a function call could result in more than one match. Let’s take a look at an example that illustrates this:
+为了能够进行编译，编译器必须区分每个重载函数，那么，什么情况下会出现多个匹配的情况呢？请看下面这个例子：
 
 ```cpp
 void print(int x)
@@ -284,13 +287,11 @@ int main()
 }
 ```
 
-COPY
+[[literals|字面量]] `5L` 是 `long` 型的，所以编译器首先会查找是否存在完全匹配的 `print(long)`，可惜没能找到。接下来，编译器会尝试数值提升，但是`long`已经不能提升了，所以仍然没有找到匹配的函数。
 
-Since literal `5L` is of type `long`, the compiler will first look to see if it can find an exact match for `print(long)`, but it will not find one. Next, the compiler will try numeric promotion, but values of type `long` can’t be promoted, so there is no match here either.
+接下来，编译器会对 `long` 类型的实参进行数值转换。在这个过程中，它会尝试所有的数值转换规则，此时编译器会找到两个可以能的匹配。如果 `long` 实参通过数值转换转换成了 `int`，那么可以匹配 `print(int)`。如果 `long` 实参转换成了 `double`，则可以匹配 `print(double)`。因为找到了两种可能的匹配，所以该函数调用被认为是不明确的。
 
-Following that, the compiler will try to find a match by applying numeric conversions to the `long` argument. In the process of checking all the numeric conversion rules, the compiler will find two potential matches. If the `long` argument is numerically converted into an `int`, then the function call will match `print(int)`. If the `long` argument is instead converted into a `double`, then it will match `print(double)` instead. Since two possible matches via numeric conversion have been found, the function call is considered ambiguous.
-
-On Visual Studio 2019, this results in the following error message:
+在 Visual Studio 2019 上会产生如下报错信息：
 
 ```
 error C2668: 'print': ambiguous call to overloaded function
@@ -301,9 +302,9 @@ message : while trying to match the argument list '(long)'
 
 !!! tldr "关键信息"
 
-	If the compiler finds multiple matches in a given step, an ambiguous function call will result. This means no match from a given step is considered to be better than any other match from the same step.
+	如果编译器在某一步找到了多个可能的匹配，则会导致不明确匹配。也就是说，在这一步中编译器没能找到一个比其他匹配都好的匹配。
 
-Here’s another example that yields ambiguous matches:
+再来看这个例子：
 
 ```cpp
 void print(unsigned int x)
@@ -315,32 +316,29 @@ void print(float y)
 
 int main()
 {
-    print(0); // int can be numerically converted to unsigned int or to float
-    print(3.14159); // double can be numerically converted to unsigned int or to float
+    print(0); // int 可以被数值转换为 unsigned int 或 float
+    print(3.14159); // double 可以被数值转换为 unsigned int 或 float
 
     return 0;
 }
 ```
 
-COPY
 
-Although you might expect `0` to resolve to `print(unsigned int)` and `3.14159` to resolve to `print(float)`, both of these calls result in an ambiguous match. The `int` value `0` can be numerically converted to either an `unsigned int` or a `float`, so either overload matches equally well, and the result is an ambiguous function call.
+也许你会认为 `0` 会被解析为`unsigned int`进而匹配 `print(unsigned int)`。同时  `3.14159` 解析为`float`进而匹配 `print(float)`。其实它们都会产生不明确匹配。`int` 值 `0` 可以通过数值转换被转换为 `unsigned int` 或者 `float`，所以两个函数它都能匹配，这势必将导致不明确匹配产生。
 
-The same applies for the conversion of a `double` to either a `float` or `unsigned int`. Both are numeric conversions, so either overload matches equally well, and the result is again ambiguous.
+对于`double` 类型也一样，它可以被转换为 `float` 或者 `unsigned int`。不论如何转换，都属于数值转换，也都能匹配两个函数，所以是不明确匹配。
 
-## 解析不明确匹配
+## 处理不明确匹配
 
-Because ambiguous matches are a compile-time error, an ambiguous match needs to be disambiguated before your program will compile. There are a few ways to resolve ambiguous matches:
+因为不明确匹配是编译时错误，所以在程序编译之前，需要消除歧义。有几种方法可以解决该问题：
 
-1.  Often, the best way is simply to define a new overloaded function that takes parameters of exactly the type you are trying to call the function with. Then C++ will be able to find an exact match for the function call.
-2.  Alternatively, explicitly cast the ambiguous argument(s) to match the type of the function you want to call. For example, to have `print(0)` match `print(unsigned int)` in the above example, you would do this:
-
+1.  通常，最好的方法是简单地定义一个新的重载函数，该函数的形参与您试图调用该函数时使用的形参类型完全相同。然后C++就能找到与函数调用完全匹配的对象。
+2.  或者，[[explicit-type-conversion|显式类型转换]]转换不明确的参数，以匹配要调用的函数的类型。例如，要在上面的例子中使 `print(0)` 匹配 `print(unsigned int)` ，你可以这样做:
 	```cpp
 	int x{ 0 };
 	print(static_cast<unsigned int>(x)); // will call print(unsigned int)
 	```
-
-1.  If your argument is a literal, you can use the literal suffix to ensure your literal is interpreted as the correct type:
+1.  如果参数是字面量，你可以为它添加字面量后缀，使其能够被解析为正确的类型：
 
 	```cpp
 	print(0u); // will call print(unsigned int) since 'u' suffix is unsigned int, so this is now an exact match

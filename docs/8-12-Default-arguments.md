@@ -10,9 +10,9 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- 
 
-A default argument is a default value provided for a function parameter. For example:
+默认[[arguments|实参]]是为函数[[parameters|形参]]提供的默认值。例如：
 
 ```cpp
 void print(int x, int y=10) // 10 is the default argument
@@ -22,11 +22,9 @@ void print(int x, int y=10) // 10 is the default argument
 }
 ```
 
-COPY
+在进行函数调用时，调用方可以有选择地为任何具有默认实参的函数形参提供实参。如果调用方提供了参数，则使用函数调用中参数的值。如果调用方没有提供实参，则使用默认实参的值。
 
-When making a function call, the caller can optionally provide an argument for any function parameter that has a default argument. If the caller provides an argument, the value of the argument in the function call is used. If the caller does not provide an argument, the value of the default argument is used.
-
-Consider the following program:
+考虑以下程序:
 
 ```cpp
 #include <iostream>
@@ -45,9 +43,7 @@ int main()
 }
 ```
 
-COPY
-
-This program produces the following output:
+这个程序产生以下输出：
 
 ```
 x: 1
@@ -56,9 +52,9 @@ x: 3
 y: 4
 ```
 
-In the first function call, the caller supplied explicit arguments for both parameters, so those argument values are used. In the second function call, the caller omitted the second argument, so the default value of `4` was used.
+在第一个函数调用中，调用者为两个形参提供了显式参数，因此使用了这些参数值。在第二个函数调用中，调用者省略了第二个参数，因此使用了默认值 `4` 。
 
-Note that you must use the equals sign to specify a default argument. Using parenthesis or brace initialization won’t work:
+注意，必须使用等号来指定默认参数。使用圆括号或大括号初始化不起作用:
 
 ```cpp
 void foo(int x = 5);   // ok
@@ -66,9 +62,8 @@ void goo(int x ( 5 )); // compile error
 void boo(int x { 5 }); // compile error
 ```
 
-COPY
 
-## When to use default arguments
+## 何时使用默认实参
 
 Default arguments are an excellent option when a function needs a value that has a reasonable default value, but for which you want to let the caller override if they wish.
 
