@@ -10,7 +10,10 @@ tags:
 ---
 
 ??? note "关键点速记"
-	- 
+	- 默认参数：`void print(int x, int y=10) // 10 is the default argument`
+	- 默认参数只能提供给最右边的形参
+	- 如果函数有前向声明(特别是在头文件中)，则将默认参数放在那里。否则，将默认实参放入函数定义中。
+	- 带有默认参数的函数可以重载
 
 默认[[arguments|实参]]是为函数[[parameters|形参]]提供的默认值。例如：
 
@@ -65,24 +68,24 @@ void boo(int x { 5 }); // compile error
 
 ## 何时使用默认实参
 
-Default arguments are an excellent option when a function needs a value that has a reasonable default value, but for which you want to let the caller override if they wish.
+当函数需要一个合理的默认值的值时，默认参数是一个很好的选择。同时，这种方法还允许调用者修改该值(如果他们愿意的话)。
 
-For example, here are a couple of function prototypes for which default arguments might be commonly used:
+例如，下面是一些常用默认实参的函数原型:
 
 ```cpp
 int rollDie(int sides=6);
 void openLogFile(std::string filename="default.log");
 ```
 
-COPY
 
-Author’s note
+!!! info "作者注"
 
-Because the user can choose whether to supply a specific argument value or use the default value, a parameter with a default value provided is sometimes called an optional parameter. However, the term _optional parameter_ is also used to refer to several other types of parameters (including parameters passed by address, and parameters using `std::optional`), so we recommend avoiding this term.
+	因为用户可以选择是提供一个特定的实参值还是使用默认值，所以提供了默认值的形参有时被称为**可选形参**。但是，术语[[optional-parameter|可选参数(optional parameter)]]也用于指代其他几种类型的参数(包括通过[[pass-by-address|传地址(pass-by-address)]]方式传递的参数，以及使用 `std::optional` 传递的参数)，所以建议避免使用这个术语。
 
-## Multiple default arguments
 
-A function can have multiple parameters with default arguments:
+## 多个默认参数
+
+一个函数可以有多个带默认实参的形参:
 
 ```cpp
 #include <iostream>
@@ -103,9 +106,7 @@ int main()
 }
 ```
 
-COPY
-
-The following output is produced:
+上述代码输出的结果如下：
 
 ```
 Values: 1 2 3
@@ -113,25 +114,24 @@ Values: 1 2 30
 Values: 1 20 30
 Values: 10 20 30
 ```
-C++ does not (as of C++20) support a function call syntax such as `print(,,3)` (as a way to provide an explicit value for `z` while using the default arguments for `x` and `y`. This has two major consequences:
 
-1.  Default arguments can only be supplied for the rightmost parameters. The following is not allowed:
+C++ 并不支持形如 `print(,,3)` 语法的函数调用——即为 `z` 提供一个值，同时使用 `x` 和`y` 的默认值。这会带来两个问题：
+
+1.  默认参数只能提供给最右边的形参。下面的语法是不允许的：
 
 ```cpp
 void print(int x=10, int y); // not allowed
 ```
 
-COPY
-
 !!! note "法则"
 
-	Default arguments can only be provided for the rightmost parameters.
+	默认参数只能提供给最右边的形参。
 
-2.  If more than one default argument exists, the leftmost default argument should be the one most likely to be explicitly set by the user.
+2. 如果需要为函数设置多个默认参数，则最左边的默认参数应该是用户最有可能进行**主动覆盖**的参数。
 
-Default arguments can not be redeclared
+## 默认实参不能被重复声明
 
-Once declared, a default argument can not be redeclared (in the same file). That means for a function with a forward declaration and a function definition, the default argument can be declared in either the forward declaration or the function definition, but not both.
+一旦声明完成，默认实参就不能(在同一个文件中)被重新声明。也就是说，对于具有[[forward-declaration|前向声明]]和函数定义的函数，默认实参可以在前向声明或函数定义中声明，但不能同时在两者中声明。
 
 ```cpp
 #include <iostream>
@@ -145,11 +145,8 @@ void print(int x, int y=4) // error: redefinition of default argument
 }
 ```
 
-COPY
+**最佳实践**是在前向声明而不是在定义中声明默认参数，因为前向声明更容易被其他文件看到(特别是在头文件中)。
 
-Best practice is to declare the default argument in the forward declaration and not in the function definition, as the forward declaration is more likely to be seen by other files (particularly if it’s in a header file).
-
-in foo.h:
 
 ```cpp title="foo.h"
 #ifndef FOO_H
@@ -157,10 +154,6 @@ in foo.h:
 void print(int x, int y=4);
 #endif
 ```
-
-COPY
-
-in main.cpp:
 
 ```cpp title="main.cpp"
 #include "foo.h"
@@ -180,17 +173,16 @@ int main()
 }
 ```
 
-COPY
 
-Note that in the above example, we’re able to use the default argument for function `print()` because `main.cpp` #includes `foo.h`, which has the forward declaration that defines the default argument.
+注意，在上面的例子中，我们能够使用函数 `print()` 的默认实参，因为 `main.cpp`  `#include `了 `foo.h` ， `foo.h` 的前向声明定义了默认实参。
 
 !!! success "最佳实践"
 
-	If the function has a forward declaration (especially one in a header file), put the default argument there. Otherwise, put the default argument in the function definition.
+	如果函数有前向声明(特别是在头文件中)，则将默认参数放在那里。否则，将默认实参放入函数定义中。
 
-## Default arguments and function overloading
+## 默认参数和函数重载
 
-Functions with default arguments may be overloaded. For example, the following is allowed:
+带有默认参数的函数可以重载。例如，以下是允许的：
 
 ```cpp
 void print(std::string string)
@@ -211,11 +203,9 @@ int main()
 }
 ```
 
-COPY
+`print()` 函数的效果和用户显式调用 `print(' ')` 是一样的，它会匹配 `print(char)`。
 
-The function call to `print()` acts as if the user had explicitly called `print(' ')`, which resolves to `print(char)`.
-
-Now consider this case:
+再考虑下面的例子：
 
 ```cpp
 void print(int x);
@@ -223,10 +213,7 @@ void print(int x, int y = 10);
 void print(int x, double y = 20.5);
 ```
 
-COPY
-
-Parameters with default values will differentiate a function overload (meaning the above will compile).  
-However, such functions can lead to potentially ambiguous function calls. For example:
+带有默认值的参数可以用于区分函数重载(意味着上面的代码可以编译)。然而，这样的函数可能会导致潜在的[[ambiguous-match|不明确匹配]]，例如：
 
 ```cpp
 print(1, 2); // will resolve to print(int, int)
@@ -234,11 +221,12 @@ print(1, 2.5); // will resolve to print(int, double)
 print(1); // ambiguous function call
 ```
 
-COPY
+
+在最后一种情况下，编译器无法判断 `print(1)` 是应该解析为 `print(int)` 还是第二个形参有默认值的两个函数（之一）。结果就是一个不明确匹配
 
 In the last case, the compiler is unable to tell whether `print(1)` should resolve to `print(int)` or one of the two function calls where the second parameter has a default value. The result is an ambiguous function call.
 
-## Summary
+## 小结
 
-Default arguments provide a useful mechanism to specify values for parameters that the user may or may not want to override. They are frequently used in C++, and you’ll see them a lot in future lessons.
 
+默认参数提供了一种有用的机制，可以为用户希望或不希望重写的参数指定默认值，这在C++中很常见，在以后的课程中你会看到很多。

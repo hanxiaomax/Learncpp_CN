@@ -5,8 +5,20 @@
       "path": "docs/8-12-Default-arguments.md"
     },
     {
+      "basename": "ambiguous-match",
+      "path": "docs/ambiguous-match.md"
+    },
+    {
       "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
       "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+    },
+    {
+      "basename": "optional-parameter",
+      "path": "docs/optional-parameter.md"
+    },
+    {
+      "basename": "pass-by-address",
+      "path": "docs/pass-by-address.md"
     },
     {
       "basename": "4-14-Literal-constants",
@@ -15,10 +27,6 @@
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
-    },
-    {
-      "basename": "ambiguous-match",
-      "path": "docs/ambiguous-match.md"
     },
     {
       "basename": "8-10-Function-overload-differentiation",
@@ -191,14 +199,6 @@
     {
       "basename": "reinterpret-casts",
       "path": "docs/reinterpret-casts.md"
-    },
-    {
-      "basename": "dynamic-casts",
-      "path": "docs/dynamic-casts.md"
-    },
-    {
-      "basename": "const-cast",
-      "path": "docs/const-cast.md"
     }
   ],
   "omittedPaths": [],

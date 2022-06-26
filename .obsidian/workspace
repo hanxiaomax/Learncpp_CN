@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "moc",
+                "query": "tag:#includes",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -129,14 +130,14 @@
   "active": "6304f15279bf7cf2",
   "lastOpenFiles": [
     "docs/8-12-Default-arguments.md",
+    "docs/ambiguous-match.md",
     "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
+    "docs/optional-parameter.md",
+    "docs/pass-by-address.md",
     "docs/4-14-Literal-constants.md",
     "docs/MOC.md",
-    "docs/ambiguous-match.md",
     "docs/8-10-Function-overload-differentiation.md",
     "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
-    "docs/8-6-Typedefs-and-type-aliases.md",
-    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
-    "docs/9-3-Lvalue-references.md"
+    "docs/8-6-Typedefs-and-type-aliases.md"
   ]
 }
