@@ -291,13 +291,13 @@ int main()
 
 ## 避免将对象形式的预处理器宏用于符号常量
 
-在[[2-10-Introduction-to-the-preprocessor|2.10 - 预处理器简介]]中，我们介绍了[[object-like-macros|对象类型的宏]]有两种形式——一种用于替换，一种不用于替换。这里我们会讨论一下用于替换的宏，它的形式如下：
+
 
 ```
 #define identifier substitution_text
 ```
 
-每当[[preprocessor|预处理器]]遇到该指令时，后续所有 `identifier` 都会被替换为 `substitution_text`。这里的 `identifier` 通常会使用全大写形式并使用下划线代替空格。
+
 
 考虑下面的代码片段：
 
@@ -306,7 +306,7 @@ int main()
 int max_students { numClassrooms * MAX_STUDENTS_PER_CLASS };
 ```
 
-当你编译代码时，预处理器就会把 `MAX_STUDENTS_PER_CLASS` 替换为字面量 30，然后被编译到可执行文件中。
+
 
 所以，为什么不用 `#define` 定义符号常量呢？这里有（至少）三个主要问题。
 
@@ -335,10 +335,5 @@ int main()
 
     避免使用 `#define` 来创建符号常量宏。使用 const 或者 constexpr。
 
-## 在多个文件中共用符号常量
-
-在很多应用程序中，有些符号常量需要被所有的代码使用（而不仅仅是被局部的代码使用）。这些变量可能是物理常量或数学常量（例如 π 或阿伏伽德罗常数），或者是某个应用程序需要的参数（例如摩擦系数或引力系数）。与其在多个文件中各定义一遍这些变量，不如将它们集中定义在一个地方然后按需使用。这样，万一你需要修改它们的值，你只需要在一处修改即可。
-
-在 C++ 中有很多方法可以实现上述需求，我们会在 [[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]] 中进行详细的介绍。
 
 

@@ -33,11 +33,19 @@ int main()
 7
 ```
 
-However, there’s an interesting optimization possibility hidden within.
+不过，这里包含了一个不易被发现的优化点。
 
-If this program were compiled as it was written, the compiler would generate an executable that calculates the result of `3 + 4` at runtime (when the program is run). If the program were executed a million times, `3 + 4` would be evaluated a million times, and the resulting value of `7` produced a million times. But note that the result of `3 + 4` never changes -- it is always `7`. So re-evaluating `3 + 4` every time the program is run is wasteful.
+如果对上述文件原封不动地进行编译，编译器将生成一个可执行文件，并在运行时(当程序运行时)计算 3 + 4 的结果。如果程序被执行100万次，3 + 4 将被计算100万次，7 的结果值将产生100万次。但是请注意，3 + 4 的结果永远不会改变——它总是 7。因此，每次程序运行时重新计算 3 + 4 是一种浪费。
+
 
 ## 常量表达式
+
+常量表达式是可以由编译器在编译时求值的表达式。要成为常量表达式，表达式中的所有值必须在编译时已知(调用的所有操作符和函数必须支持编译时求值)。
+
+当编译器遇到常量表达式时，它将用该常量表达式的求值结果替换该常量表达式。
+
+在上面的程序中，表达式“3 + 4”是一个常量表达式。因此，当这个程序被编译时，编译器将计算常数表达式' 3 + 4 '，然后将常数表达式' 3 + 4 '替换为结果值' 7 '。换句话说，编译器实际上编译了这个:
+
 
 A constant expression is an expression that can be evaluated by the compiler at compile-time. To be a constant expression, all the values in the expression must be known at compile-time (and all of the operators and functions called must support compile-time evaluation).
 
