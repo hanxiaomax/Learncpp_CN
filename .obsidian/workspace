@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/4.18 — Introduction to std-string_view.md",
+            "file": "docs/optional-parameter.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "π",
+                "query": "/^-\\ *$/",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -67,7 +67,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4.18 — Introduction to std-string_view.md"
+                "file": "docs/optional-parameter.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4.18 — Introduction to std-string_view.md",
+                "file": "docs/optional-parameter.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +129,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/4.18 — Introduction to std-string_view.md",
-    "docs/11-7-std-string-view-part-2.md",
-    "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
-    "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
-    "docs/MOC.md",
-    "docs/4-13-Const-variables-and-symbolic-constants.md",
-    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
-    "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md",
-    "docs/4-15-Literals.md",
-    "docs/4-x-Chapter-4-summary-and-quiz.md"
+    "docs/optional-parameter.md",
+    "docs/0-8-A-few-common-C++-problems.md",
+    "docs/9.5 — Pass by lvalue reference.md",
+    "docs/9.6 — Introduction to pointers.md",
+    "docs/9.7 — Null pointers.md",
+    "docs/9.8 — Pointers and const.md",
+    "docs/11.2 — Arrays (Part II).md",
+    "docs/9.9 — Pass by address.md",
+    "docs/9.10 — Pass by address (part 2).md",
+    "docs/11.1 — Arrays (Part I).md"
   ]
 }
