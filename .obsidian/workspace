@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11.1 — Arrays (Part I).md",
+            "file": "docs/MOC.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -67,7 +67,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11.1 — Arrays (Part I).md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11.1 — Arrays (Part I).md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +129,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/11.1 — Arrays (Part I).md",
     "docs/MOC.md",
+    "docs/11.7 — std-string-view (part 2).md",
+    "docs/11.1 — Arrays (Part I).md",
     "docs/subscripts.md",
     "Templates/yaml.md",
     "docs/6-13-Inline-functions.md",
     "docs/optional-parameter.md",
     "docs/0-8-A-few-common-C++-problems.md",
     "docs/9.5 — Pass by lvalue reference.md",
-    "docs/9.6 — Introduction to pointers.md",
-    "docs/9.7 — Null pointers.md"
+    "docs/9.6 — Introduction to pointers.md"
   ]
 }

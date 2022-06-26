@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "11.1 — Arrays (Part I)",
-      "path": "docs/11.1 — Arrays (Part I).md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11.1 — Arrays (Part I)",
+      "path": "docs/11.1 — Arrays (Part I).md"
     },
     {
       "basename": "subscripts",
@@ -195,10 +195,6 @@
     {
       "basename": "8-10-Function-overload-differentiation",
       "path": "docs/8-10-Function-overload-differentiation.md"
-    },
-    {
-      "basename": "8-6-Typedefs-and-type-aliases",
-      "path": "docs/8-6-Typedefs-and-type-aliases.md"
     }
   ],
   "omittedPaths": [],
