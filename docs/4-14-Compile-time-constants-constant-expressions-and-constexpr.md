@@ -8,11 +8,10 @@ type: translation
 tags:
 - const
 - constexpr
-- C++17
 ---
 
 ??? note "关键点速记"
-	
+
 
 考虑下面的函数：
 
@@ -21,9 +20,9 @@ tags:
 
 int main()
 {
-	std::cout << 3 + 4;
+    std::cout << 3 + 4;
 
-	return 0;
+    return 0;
 }
 ```
 
@@ -35,8 +34,7 @@ int main()
 
 不过，这里包含了一个不易被发现的优化点。
 
-如果对上述文件原封不动地进行编译，编译器将生成一个可执行文件，并在运行时(当程序运行时)计算 3 + 4 的结果。如果程序被执行100万次，3 + 4 将被计算100万次，7 的结果值将产生100万次。但是请注意，3 + 4 的结果永远不会改变——它总是 7。因此，每次程序运行时重新计算 3 + 4 是一种浪费。
-
+如果对上述文件原封不动地进行编译，编译器将生成一个可执行文件，并在运行时(当程序运行时)计算 3 + 4 的结果。如果程序被执行 100 万次，3 + 4 将被计算 100 万次，7 的结果值将产生 100 万次。但是请注意，3 + 4 的结果永远不会改变——它总是 7。因此，每次程序运行时重新计算 3 + 4 是一种浪费。
 
 ## 常量表达式
 
@@ -44,90 +42,78 @@ int main()
 
 当编译器遇到常量表达式时，它将用该常量表达式的求值结果替换该常量表达式。
 
-在上面的程序中，表达式“3 + 4”是一个常量表达式。因此，当这个程序被编译时，编译器将计算常数表达式' 3 + 4 '，然后将常数表达式' 3 + 4 '替换为结果值' 7 '。换句话说，编译器实际上编译了这个:
-
-
-A constant expression is an expression that can be evaluated by the compiler at compile-time. To be a constant expression, all the values in the expression must be known at compile-time (and all of the operators and functions called must support compile-time evaluation).
-
-When the compiler encounters a constant expression, it will replace the constant expression with the result of evaluating the constant expression.
-
-In the above program, the expression `3 + 4` is a constant expression. So when this program is compiled, the compiler will evaluate constant expression `3 + 4` and then replace the constant expression `3 + 4` with the resulting value `7`. In other words, the compiler actually compiles this:
+在上面的程序中，表达式 3 + 4 是一个常量表达式。因此，当这个程序被编译时，编译器将计算常数表达式 3 + 4 ，然后将常数表达式 3 + 4 替换为结果值 7  。换句话说，编译器实际上编译的是下面的代码：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-	std::cout << 7;
+    std::cout << 7;
 
-	return 0;
+    return 0;
 }
 ```
 
-COPY
+这个程序产生相同的输出( 7 )，但最终的可执行文件不再需要在运行时花费 CPU 周期计算 3 + 4  !
 
-This program produces the same output (`7`), but the resulting executable no longer needs to spend CPU cycles calculating `3 + 4` at runtime!
+注意，替换后的表达式 `std:: cout << 7` 不是一个常量表达式，因为我们的程序不能在编译时将值输出到控制台。所以这个表达式会在运行时求值。
 
-Note that the remaining expression `std::cout << 7` is not a constant expression, because our program can’t output values to the console at compile-time. So this expression will evaluate at runtime.
+!!! tldr "关键信息"
 
-Key insight
+    在编译时对常量表达式求值会使编译花费更长的时间(因为编译器必须做更多的工作)，但是这样的表达式只需要求值一次(而不是每次程序运行时)。得到的可执行文件速度更快，使用的内存更少。
 
-Evaluating constant expressions at compile-time makes our compilation take longer (because the compiler has to do more work), but such expressions only need to be evaluated once (rather than every time the program is run). The resulting executables are faster and use less memory.
 
-## Compile-time constants
+## 编译时常数
 
-A Compile-time constant is a constant whose value is known at compile-time. Literals (e.g. ‘1’, ‘2.3’, and “Hello, world!”) are one type of compile-time constant.
+编译时常数是一个在编译时其值已知的常数。字面量(例如 `1`，`2.3` 和 `"Hello, world!"`)是一种编译时常量。
 
-But what about const variables? Const variables may or may not be compile-time constants.
+那么 `const` 变量呢？`const` 变量可能是也可能不是编译时常量。
 
-## Compile-time const
+## 编译时常量(`const`)
 
-A const variable is a compile-time constant if its initializer is a constant expression.
+如果 `const` 变量的初始化值是常量表达式，那么它就是编译时常量。
 
-Consider a program similar to the above that uses const variables:
+考虑一个与上面类似的使用 `const` 变量的程序:
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-	const int x { 3 };  // x is a compile-time const
-	const int y { 4 };  // y is a compile-time const
+    const int x { 3 };  // x 是编译时常量
+    const int y { 4 };  // y 是编译时常量
 
-	std::cout << x + y; // x + y is a compile-time expression
+    std::cout << x + y; // x + y 是编译时常量
 
-	return 0;
+    return 0;
 }
 ```
 
-COPY
+因为 `x` 和 `y` 的初始化值是常量表达式，所以 `x` 和 `y` 是编译时常量。这意味着 `x + y` 也是一个常数表达式。因此，当编译器编译这个程序时，它可以计算 `x + y` 的值，并将常量表达式替换为结果字面值 7 。
 
-Because the initialization values of `x` and `y` are constant expressions, `x` and `y` are compile-time constants. This means `x + y` is a constant expression. So when the compiler compiles this program, it can evaluate `x + y` for their values, and replace the constant expression with the resulting literal `7`.
-
-Note that the initializer of a compile-time const can be any constant expression. Both of the following will be compile-time const variables:
+请注意，编译时 `const` 的初始化式可以是任何常量表达式。以下两个都是编译时的 `const` 变量:
 
 ```cpp
 const int z { 1 + 2 };
 const int w { z * 2 };
 ```
 
-
-Compile-time const variables are often used as symbolic constants:
+编译时的 `const` 变量通常被用作符号常量:
 
 ```cpp
 const double gravity { 9.8 };
 ```
 
+编译时常量使编译器能够执行非编译时常量无法提供的优化。例如，每当使用 `gravity` 时，编译器可以简单地用双精度字面值 `9.8`  替换标识符 `gravity` ，这就避免了必须从内存中某处获取值。
 
-Compile-time constants enable the compiler to perform optimizations that aren’t available with non-compile-time constants. For example, whenever `gravity` is used, the compiler can simply substitute the identifier `gravity` with the literal double `9.8`, which avoids having to fetch the value from somewhere in memory.
+在许多情况下，编译时常量将被**优化掉**。在无法实现的情况下(或当优化关闭时)，变量仍然会在运行时创建(和初始化)。
 
-In many cases, compile-time constants will be optimized out of the program entirely. In cases where this is not possible (or when optimizations are turned off), the variable will still be created (and initialized) at runtime.
+## 运行时常量(`const`)
 
-## Runtime const
+任何用非常量表达式初始化的 `const` 变量都是运行时常量。运行时常量是在运行时才知道其初始化值的常量。
 
-Any const variable that is initialized with a non-constant expression is a runtime constant. Runtime constants are constants whose initialization values aren’t known until runtime.
-
-The following example illustrates the use of a constant that is a runtime constant:
+下面的例子演示了运行时常量的用法:
 
 ```cpp
 #include <iostream>
@@ -154,20 +140,19 @@ int main()
 }
 ```
 
+即使 `y`  是 `const`，其初始化值( `getNumber()` 的返回值)要到运行时才知道。因此， `y` 是一个运行时常量，而不是编译时常量。因此，表达式 `x + y` 是一个运行时表达式。
 
-Even though `y` is const, the initialization value (the return value of `getNumber()`) isn’t known until runtime. Thus, `y` is a runtime constant, not a compile-time constant. And as such, the expression `x + y` is a runtime expression.
+## `constexpr` 关键字
 
-## The `constexpr` keyword
+当声明 `const` 变量时，编译器将隐式地跟踪它是运行时常量还是编译时常量。在大多数情况下，除了优化目的之外，是运行时常量还是编译时常量并不重要，但也有一些奇怪的情况下，C++需要编译时常量而不是运行时常量(我们将在稍后介绍这些主题时讨论这些情况)。
 
-When you declare a const variable, the compiler will implicitly keep track of whether it’s a runtime or compile-time constant. In most cases, this doesn’t matter for anything other than optimization purposes, but there are a few odd cases where C++ requires a compile-time constant instead of a run-time constant (we’ll cover these cases later as we introduce those topics).
+因为编译时常量通常允许更好的优化(并且几乎没有缺点)，所以我们通常希望尽可能使用编译时常量。
 
-Because compile-time constants generally allow for better optimization (and have little downside), we typically want to use compile-time constants wherever possible.
+当使用 `const`  时，变量最终可能是编译时的 `const` 或运行时的 `const`，这取决于初始化式是否是编译时表达式。因为两者的定义看起来完全相同，所以我们最终得到的可能是一个运行时常量，而我们原以为得到的是一个编译时常量。在前面的例子中，很难区分 `y` 是编译时的 `const` 还是运行时的 `const`——我们必须查看 `getNumber()` 的返回值来确定。
 
-When using `const`, our variables could end up as either a compile-time const or a runtime const, depending on whether the initializer is a compile-time expression or not. Because the definitions for both look identical, we can end up with a runtime const where we thought we were getting a compile-time const. In the previous example, it’s hard to tell if `y` is a compile-time const or a runtime const -- we’d have to look at the return value of `getNumber()` to determine.
+幸运的是，我们可以得到编译器的帮助，以确保在预期的地方得到编译时的 `const`。为此，我们在变量声明中使用 `constexpr` 而不是 `const` 。`constexpr`(“常量表达式”的缩写)变量只能是编译时常量。如果 `constexpr` 变量的初始化值不是常量表达式，编译器将出错。
 
-Fortunately, we can enlist the compiler’s help to ensure we get a compile-time const where we expect one. To do so, we use the `constexpr` keyword instead of `const` in a variable’s declaration. A constexpr (which is short for “constant expression”) variable can only be a compile-time constant. If the initialization value of a constexpr variable is not a constant expression, the compiler will error.
-
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -188,15 +173,13 @@ int main()
 }
 ```
 
-
 !!! success "最佳实践"
 
     任何在初始化后值就不能被改变，且初始化值可以在编译时确定的变量，都必须声明为 `constexpr`。
     任何在初始化后值就不能被改变，但是初始化值不能在编译时确定的变量，都应该声明为 `const`。
-    
+
 Although function parameters can be `const`, function parameters cannot be `constexpr`.
 
 !!! info "相关内容"
 
-	C++ does support functions that evaluate at compile-time (and thus can be used in constant expressions) -- we discuss these in lesson [6.14 -- Constexpr and consteval functions](https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/).
-
+    C++ 也支持在编译时求值的函数(因此可以在常量表达式中使用)——我们会在[[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]中讨论这些函数。
