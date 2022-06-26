@@ -185,10 +185,12 @@
 - [[11.x — Chapter 11 comprehensive quiz]]
 
 ## 12. 函数
+- [[12.6 -- Ellipsis (and why to avoid them)|12.6 - 省略号以及为什么要避免使用它]]
 
 ## 13. 面向对象编程基础
 
 ## 14. 操作符重载
+- [[14.11 -- Overloading typecasts]]
 
 ## 16. 对象关系简介
 

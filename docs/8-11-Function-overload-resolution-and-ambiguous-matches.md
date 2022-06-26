@@ -10,8 +10,15 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
-
+    - 函数调用时匹配重载函数的过程叫做重载解析，重载解析分为**6**个步骤：
+        - 完全匹配
+        - 数值提升匹配
+        - 数值转换匹配
+	  - 自定义类型转换匹配
+	  - 
+    - 在每一步中，如果找到且只找到一个匹配函数，则完成匹配，否则进入下一步。如果最终匹配的结果大于 1 个或者为 0，则报错。
+    - 通过数值提升进行匹配的优先级高于通过数值转换匹配的优先级
+    - 将非引用类型转换为引用类型（或者反过来）也属于[[简单转换(trivial conversion)]]
 
 在上节课([[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]])中我们介绍了函数中可以被用来对重载函数进行区分的属性。如果一个重载函数不能和其他重载函数被区分开来，那么就会产生编译错误。
 
@@ -20,7 +27,6 @@ tags:
 对于非重载函数(具有惟一名称的函数)，只有一个函数可能与函数调用匹配。该函数要么匹配(或者可以在应用类型转换后匹配)，要么不匹配(结果是编译错误)。对于重载函数，可以有许多函数可能与函数调用匹配。由于函数调用只能解析到其中一个函数，因此编译器必须确定哪个重载函数是最佳匹配的。将函数调用匹配到特定重载函数的过程称为[[overload-resolution|重载解析]]。
 
 在函数**实参类型**和函数**形参类型**完全匹配的简单情况下，重载函数的匹配(通常)是很简单的:
-
 
 ```cpp
 #include <iostream>
@@ -86,7 +92,7 @@ int main()
 
 ## 参数匹配顺序
 
-第一步：编译器首先尝试精确地匹配重载函数。这个过程分为两个阶段。首先，编译器会查找是否存在一个重载函数，其调用shi实参完全匹配重载 1) The compiler tries to find an exact match. This happens in two phases. First, the compiler will see if there is an overloaded function where the type of the arguments in the function call exactly matches the type of the parameters in the overloaded functions. For example:
+第一步：编译器首先尝试对重载函数进行**完全匹配**。这个过程分为两个阶段。首先，编译器会查找是否存在一个重载函数，其调用时的实参完全匹配重载函数的形参，例如：
 
 ```cpp
 void print(int)
@@ -106,11 +112,9 @@ int main()
 }
 ```
 
-COPY
+因为 `print(0)` 中的 `0` 是一个整型，所以编译器会查找是否存在 `print(int)` 重载函数。因为的确存在，所以编译器可以确定该重载函数为被调用函数的精确匹配。
 
-Because the `0` in the function call `print(0)` is an int, the compiler will look to see if a `print(int)` overload has been declared. Since it has, the compiler determines that `print(int)` is an exact match.
-
-Second, the compiler will apply a number of trivial conversions to the arguments in the function call. The trivial conversions are a set of specific conversion rules that will modify types (without modifying the value) for purposes of finding a match. For example, a non-const type can be trivially converted to a const type:
+其次，编译器会对函数调用时的实参进行一系列的[[简单转换(trivial conversion)]]。这些简单的转换会通过修改类型（不修改值）的方式查找可能的匹配。例如，非 const 类型可能会被转换为 const 类型：
 
 ```cpp
 void print(const int)
@@ -130,20 +134,17 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，我们调用 `print(x)` 时， `x` 是一个 `int`。编译器会将其从 `int` 转换为 `const int`，这样就可以匹配到 `print(const int)`。
 
-In the above example, we’ve called `print(x)`, where `x` is an `int`. The compiler will trivially convert `x` from an `int` into a `const int`, which then matches `print(const int)`.
+!!! info "扩展阅读"
 
-For advanced readers
+    将非引用类型转换为引用类型（或者反过来）也属于[[简单转换(trivial conversion)]] 。
 
-Converting a non-reference type to a reference type (or vice-versa) is also a trivial conversion.
+通过[[简单转换(trivial conversion)]]匹配到的重载函数，也属于**完全匹配**。
 
-Matches made via the trivial conversions are considered exact matches.
+第二步：如果没有找到完全匹配的重载函数，编译器会尝试对实参进行[[numeric promotions|数值提升]]，在[[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中我介绍过，宽度较窄的整型和浮点型数值是如何被自动提升为较宽的类型的，例如 `int` 或 `double`。如果数值提升之后能够找到匹配的函数，则完成函数调用解析。
 
-Step 2) If no exact match is found, the compiler tries to find a match by applying numeric promotion to the argument(s). In lesson ([8.1 -- Implicit type conversion (coercion)](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion-coercion/)), we covered how certain narrow integral and floating point types can be automatically promoted to wider types, such as `int` or `double`. If, after numeric promotion, a match is found, the function call is resolved.
-
-For example:
-
+例如：
 ```cpp
 void print(int)
 {
@@ -163,14 +164,11 @@ int main()
 }
 ```
 
-COPY
+对于 `print('a')` 来说，编译器在第一步中不能找到能够**完全匹配**它的重载函数 `print(char)`，所以编译器会将字符 `'a'` 提升为一个整型并再次查进行匹配。此时，可以匹配到 `print(int)`，所以函数调用解析为 `print(int)`。
 
-For `print('a')`, because an exact match for `print(char)` could not be found in the prior step, the compiler promotes the char `'a'` to an `int`, and looks for a match. This matches `print(int)`, so the function call resolves to `print(int)`.
+第三步：如果通过数值提升仍不能找到匹配的函数，编译器会对函数实参进行[[numeric-conversions|数值转换]]（参见：[[8-3-Numeric-conversions|8.3 - 数值转换]]）后，再次进行匹配。
 
-Step 3) If no match is found via numeric promotion, the compiler tries to find a match by applying numeric conversions ([8.3 -- Numeric conversions](https://www.learncpp.com/cpp-tutorial/numeric-conversions/)) to the arguments.
-
-For example:
-
+例如：
 ```cpp
 #include <string> // for std::string
 
@@ -190,22 +188,20 @@ int main()
 }
 ```
 
-COPY
+在这个例子中，因为不存在 `print(char)`(完全匹配)，也不存在 `print(int)` (提升匹配)，所以 `'a'` 会被数值转换为 `double` 类型并匹配 `print(double)`。
 
-In this case, because there is no `print(char)` (exact match), and no `print(int)` (promotion match), the `'a'` is numerically converted to a double and matched with `print(double)`.
+!!! tldr "关键信息"
 
-Key insight
+    通过数值提升进行匹配的优先级高于通过数值转换匹配的优先级。
 
-Matches made by applying numeric promotions take precedence over any matches made by applying numeric conversions.
-
-Step 4) If no match is found via numeric conversion, the compiler tries to find a match through any user-defined conversions. Although we haven’t covered user-defined conversions yet, certain types (e.g. classes) can define conversions to other types that can be implicitly invoked. Here’s a example, just to illustrate the point:
+第四步：如果通过数值转换仍然没能找到匹配的函数，编译器会尝试使用用户自定义的转换。虽然我们还没有介绍什么是用户自定义转换，其实它就是一组用户定义的类型之间的隐式转换，例如：
 
 ```cpp
-// We haven't covered classes yet, so don't worry if this doesn't make sense
-class X // this defines a new type called X
+// 我们还没讲到类，所以看不懂也不用担心
+class X // 定义了一个新类型 X
 {
 public:
-    operator int() { return 0; } // Here's a user-defined conversion from X to int
+    operator int() { return 0; } // 用户自定义的将 X 转换为 int 的规则
 };
 
 void print(int)
@@ -218,32 +214,30 @@ void print(double)
 
 int main()
 {
-    X x; // Here, we're creating an object of type X (named x)
-    print(x); // x is converted to type int using the user-defined conversion from X to int
+    X x; // 创建 X 类型的变量 x
+    print(x); // x 通过用户自定义转换从 X 转换为 int
 
     return 0;
 }
 ```
 
-COPY
+在这个例子中，编译器首先会检查是否能够完全匹配 `print(X)`。由于没有找到，编译器会对 `x` 进行数值提升，但是这一步无法完成，然后编译器会尝试对 `x` 进行数值转换，同样不能完成。最后，编译器会查找是否存在用户定义的转换，因为我们定义了 `X` 类型转换为 `int` 类型的规则，所以编译器会使用该规则将 `X` 转换为 `int`，并匹配 `print(int)`。
 
-In this example, the compiler will first check whether an exact match to `print(X)` exists. We haven’t defined one. Next the compiler will check whether `x` can be numerically promoted, which it can’t. The compiler will then check if `x` can be numerically converted, which it also can’t. Finally, the compiler will then look for any user-defined conversions. Because we’ve defined a user-defined conversion from `X` to `int`, the compiler will convert `X` to an `int`to match `print(int)`.
+在进行用户自定义转换后，编译器还可能尝试额外的隐式提升或转换来查找匹配，所以如果我们定义的转换规则是将 `X` 转换为 `char`而不是`int`，编译器会继续对`char`进行数值提升使其提升为`int`。
 
-After applying a user-defined conversion, the compiler may apply additional implicit promotions or conversions to find a match. So if our user-defined conversion had been to type `char` instead of `int`, the compiler would have used the user-defined conversion to `char` and then promoted the result into an `int` to match.
+!!! info "相关内容"
 
-Related content
+我们会在[[14.11 -- Overloading typecasts|14.11 - 重载类型转换操作符]]中介绍如何通过重载类型转换操作符来创建用户自定义转换。
 
-We discuss how to create user-defined conversions for class types (by overloading the typecast operators) in lesson [14.11 -- Overloading typecasts](https://www.learncpp.com/cpp-tutorial/overloading-typecasts/).
+!!! info "扩展阅读"
 
-For advanced readers
+    The constructor of a class also acts as a user-defined conversion from other types to that class type, and can be used during this step to find matching functions.
 
-The constructor of a class also acts as a user-defined conversion from other types to that class type, and can be used during this step to find matching functions.
-
-Step 5) If no match is found via user-defined conversion, the compiler will look for a matching function that uses ellipsis.
+第五步If no match is found via user-defined conversion, the compiler will look for a matching function that uses ellipsis.
 
 Related content
 
-We cover ellipses in lesson [12.6 -- Ellipsis (and why to avoid them)](https://www.learncpp.com/cpp-tutorial/ellipsis-and-why-to-avoid-them/).
+We cover ellipses in lesson [[12.6 -- Ellipsis (and why to avoid them)|12.6 - 省略号以及为什么要避免使用它]]
 
 Step 6) If no matches have been found by this point, the compiler gives up and will issue a compile error about not being able to find a matching function.
 
@@ -352,7 +346,7 @@ print(0u); // will call print(unsigned int) since 'u' suffix is unsigned int, so
 
 COPY
 
-The list of the most used suffixes can be found in lesson [4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/).
+The list of the most used suffixes can be found in lesson [4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/) .
 
 Matching for functions with multiple arguments
 
@@ -367,22 +361,22 @@ For example:
 
 void print(char c, int x)
 {
-	std::cout << 'a';
+    std::cout << 'a';
 }
 
 void print(char c, double x)
 {
-	std::cout << 'b';
+    std::cout << 'b';
 }
 
 void print(char c, float x)
 {
-	std::cout << 'c';
+    std::cout << 'c';
 }
 
 int main()
 {
-	print('x', 'a');
+    print('x', 'a');
 }
 ```
 

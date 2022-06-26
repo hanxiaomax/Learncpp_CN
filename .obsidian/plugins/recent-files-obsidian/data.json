@@ -5,6 +5,18 @@
       "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
     },
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12.6 -- Ellipsis (and why to avoid them)",
+      "path": "docs/12.6 -- Ellipsis (and why to avoid them).md"
+    },
+    {
+      "basename": "14.11 -- Overloading typecasts",
+      "path": "docs/14.11 -- Overloading typecasts.md"
+    },
+    {
       "basename": "8-10-Function-overload-differentiation",
       "path": "docs/8-10-Function-overload-differentiation.md"
     },
@@ -19,10 +31,6 @@
     {
       "basename": "8-12-Default-arguments",
       "path": "docs/8-12-Default-arguments.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "9.3 — Lvalue references",
@@ -191,14 +199,6 @@
     {
       "basename": "numeric promotions",
       "path": "docs/numeric promotions.md"
-    },
-    {
-      "basename": "numeric-conversions",
-      "path": "docs/numeric-conversions.md"
-    },
-    {
-      "basename": "value-preserving",
-      "path": "docs/value-preserving.md"
     }
   ],
   "omittedPaths": [],

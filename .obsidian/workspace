@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -129,14 +130,14 @@
   "active": "6304f15279bf7cf2",
   "lastOpenFiles": [
     "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
+    "docs/MOC.md",
+    "docs/12.6 -- Ellipsis (and why to avoid them).md",
+    "docs/14.11 -- Overloading typecasts.md",
     "docs/8-10-Function-overload-differentiation.md",
     "docs/9.2 — Value categories (lvalues and rvalues).md",
     "docs/9.1 — Introduction to compound data types.md",
     "docs/8-12-Default-arguments.md",
-    "docs/MOC.md",
     "docs/9.3 — Lvalue references.md",
-    "docs/8-9-Introduction-to-function-overloading.md",
-    "docs/8-1-Implicit-type-conversion-coercion.md",
-    "docs/7-1-Control-flow-introduction.md"
+    "docs/8-9-Introduction-to-function-overloading.md"
   ]
 }
