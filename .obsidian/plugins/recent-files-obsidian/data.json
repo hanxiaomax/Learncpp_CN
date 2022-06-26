@@ -5,6 +5,14 @@
       "path": "docs/11.1 — Arrays (Part I).md"
     },
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "subscripts",
+      "path": "docs/subscripts.md"
+    },
+    {
       "basename": "yaml",
       "path": "Templates/yaml.md"
     },
@@ -101,10 +109,6 @@
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "4-13-Const-variables-and-symbolic-constants",
       "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
     }
   ],
   "omittedPaths": [],
