@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+    },
+    {
+      "basename": "ambiguous-match",
+      "path": "docs/ambiguous-match.md"
+    },
+    {
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
+    },
+    {
+      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
+      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+    },
+    {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+    },
+    {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
     },
@@ -49,20 +69,12 @@
       "path": "docs/8-12-Default-arguments.md"
     },
     {
-      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
-      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
-    },
-    {
       "basename": "4-14-Literal-constants",
       "path": "docs/4-14-Literal-constants.md"
     },
     {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
-    },
-    {
-      "basename": "8-10-Function-overload-differentiation",
-      "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
       "basename": "8-9-Introduction-to-function-overloading",
@@ -165,14 +177,6 @@
       "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
     {
-      "basename": "8-6-Typedefs-and-type-aliases",
-      "path": "docs/8-6-Typedefs-and-type-aliases.md"
-    },
-    {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
-    },
-    {
       "basename": "8-3-Numeric-conversions",
       "path": "docs/8-3-Numeric-conversions.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "const-cast",
       "path": "docs/const-cast.md"
-    },
-    {
-      "basename": "static-casts",
-      "path": "docs/static-casts.md"
     }
   ],
   "omittedPaths": [],

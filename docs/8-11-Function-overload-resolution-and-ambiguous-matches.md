@@ -1,6 +1,6 @@
 ---
-title: 8.11 - 函数重载解析和匹配歧义
-alias: 8.11 - 函数重载解析和匹配歧义
+title: 8.11 - 函数重载解析和不明确匹配
+alias: 8.11 - 函数重载解析和不明确匹配
 origin: /function-overload-resolution-and-ambiguous-matches/
 origin_title: "8.11 — Function overload resolution and ambiguous matches"
 time: 2022-6-16
@@ -87,7 +87,7 @@ int main()
 
 - 未找到匹配的函数。编译器进入下一个步骤。
 - 找到单个匹配函数。该函数被认为是最佳匹配。匹配过程现在已经完成，后续步骤不再执行。
-- 发现多个匹配函数。编译器将发出一个**匹配歧义**的编译错误。我们稍后将进一步讨论这种情况。
+- 发现多个匹配函数。编译器将发出一个**不明确匹配**的编译错误。我们稍后将进一步讨论这种情况。
 
 如果编译器执行完一系列步骤后，仍然没有找到匹配的函数，它将生成一个编译错误，即无法为函数调用找到匹配的重载函数。
 
@@ -243,9 +243,9 @@ int main()
 
 第六步： 如果到此还没有找到匹配的函数，编译器会放弃继续查找并产生一个没有找到匹配函数的编译错误。
 
-## 匹配歧义
+## 不明确匹配
 
-With non-overloaded functions, each function call will either resolve to a function, or no match will be found and the compiler will issue a compile error:
+在没有重载函数的情况下，一个函数调用要么解析为一个函数，要么因为找不到而产生编译报错：
 
 ```cpp
 void foo()
@@ -261,9 +261,9 @@ int main()
 }
 ```
 
-COPY
+而在存在重载函数的情况下，还有第三种可能：[[ambiguous-match|不明确匹配(ambiguous match)]] 。当编译器在一个步骤中找到两个或两个以上匹配的重载函数时，编译器会停止匹配并报告找到不明确匹配函数调用。
 
-With overloaded functions, there is a third possible outcome: an `ambiguous match` may be found. An ambiguous match occurs when the compiler finds two or more functions that can be made to match in the same step. When this occurs, the compiler will stop matching and issue a compile error stating that it has found an ambiguous function call.
+为了进行编译，必须区分每个重载函数，您可能想知道一个函数调用怎么会导致多个匹配。让我们看一个例子来说明这一点:
 
 Since every overloaded function must be differentiated in order to compile, you might be wondering how it is possible that a function call could result in more than one match. Let’s take a look at an example that illustrates this:
 
@@ -328,7 +328,7 @@ Although you might expect `0` to resolve to `print(unsigned int)` and `3.14
 
 The same applies for the conversion of a `double` to either a `float` or `unsigned int`. Both are numeric conversions, so either overload matches equally well, and the result is again ambiguous.
 
-## 解析歧义匹配
+## 解析不明确匹配
 
 Because ambiguous matches are a compile-time error, an ambiguous match needs to be disambiguated before your program will compile. There are a few ways to resolve ambiguous matches:
 

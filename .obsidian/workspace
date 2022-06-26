@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md",
+            "file": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
+                "file": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md",
+                "file": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "6304f15279bf7cf2",
   "lastOpenFiles": [
+    "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
+    "docs/ambiguous-match.md",
+    "docs/8-10-Function-overload-differentiation.md",
+    "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+    "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/9-2-Value-categories-lvalues-and-rvalues.md",
     "docs/9-3-Lvalue-references.md",
     "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
     "docs/14-11-Overloading-typecasts.md",
-    "docs/MOC.md",
-    "docs/9-1-Introduction-to-compound-data-types.md",
-    "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
-    "docs/8-x-Chapter-8-summary-and-quiz.md",
-    "docs/8-15-Function-templates-with-multiple-template-types.md",
-    "docs/8-14-Function-template-instantiation.md"
+    "docs/MOC.md"
   ]
 }
