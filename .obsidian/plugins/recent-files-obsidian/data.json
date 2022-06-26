@@ -1,40 +1,68 @@
 {
   "recentFiles": [
     {
-      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
-      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+      "basename": "9-2-Value-categories-lvalues-and-rvalues",
+      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
+    },
+    {
+      "basename": "9-3-Lvalue-references",
+      "path": "docs/9-3-Lvalue-references.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "12.6 -- Ellipsis (and why to avoid them)",
-      "path": "docs/12.6 -- Ellipsis (and why to avoid them).md"
+      "basename": "9-1-Introduction-to-compound-data-types",
+      "path": "docs/9-1-Introduction-to-compound-data-types.md"
     },
     {
-      "basename": "14.11 -- Overloading typecasts",
-      "path": "docs/14.11 -- Overloading typecasts.md"
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
     },
     {
-      "basename": "8-10-Function-overload-differentiation",
-      "path": "docs/8-10-Function-overload-differentiation.md"
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
     {
-      "basename": "9.2 — Value categories (lvalues and rvalues)",
-      "path": "docs/9.2 — Value categories (lvalues and rvalues).md"
+      "basename": "8-15-Function-templates-with-multiple-template-types",
+      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
     },
     {
-      "basename": "9.1 — Introduction to compound data types",
-      "path": "docs/9.1 — Introduction to compound data types.md"
+      "basename": "8-14-Function-template-instantiation",
+      "path": "docs/8-14-Function-template-instantiation.md"
+    },
+    {
+      "basename": "8-13-Function-templates",
+      "path": "docs/8-13-Function-templates.md"
     },
     {
       "basename": "8-12-Default-arguments",
       "path": "docs/8-12-Default-arguments.md"
     },
     {
-      "basename": "9.3 — Lvalue references",
-      "path": "docs/9.3 — Lvalue references.md"
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+    },
+    {
+      "basename": "4-14-Literal-constants",
+      "path": "docs/4-14-Literal-constants.md"
+    },
+    {
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
+    },
+    {
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
       "basename": "8-9-Introduction-to-function-overloading",
@@ -109,24 +137,12 @@
       "path": "docs/type-signature.md"
     },
     {
-      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
-      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
-    },
-    {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
     {
       "basename": "4-6-Fixed-width-integers-and-size_t",
       "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
-    },
-    {
-      "basename": "4-14-Literal-constants",
-      "path": "docs/4-14-Literal-constants.md"
-    },
-    {
-      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
-      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
       "basename": "function-template",
@@ -183,22 +199,6 @@
     {
       "basename": "static-casts",
       "path": "docs/static-casts.md"
-    },
-    {
-      "basename": "C-style-casts",
-      "path": "docs/C-style-casts.md"
-    },
-    {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "narrowing-convertions",
-      "path": "docs/narrowing-convertions.md"
-    },
-    {
-      "basename": "numeric promotions",
-      "path": "docs/numeric promotions.md"
     }
   ],
   "omittedPaths": [],

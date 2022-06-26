@@ -239,6 +239,6 @@ which is the same as the `max` function template we wrote above.
 
 In cases where you want each template type parameter to be an independent type, this form is preferred as the removal of the template parameter declaration line makes your code more concise and readable.
 
-Best practice
+!!! success "最佳实践"
 
-Feel free to use abbreviated function templates if each auto parameter should be an independent template type (and your language standard is set to C++20 or newer).
+	Feel free to use abbreviated function templates if each auto parameter should be an independent template type (and your language standard is set to C++20 or newer).

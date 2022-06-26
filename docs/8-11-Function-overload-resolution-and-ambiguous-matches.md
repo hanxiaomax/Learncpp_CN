@@ -15,7 +15,8 @@ tags:
         - 数值提升匹配
         - 数值转换匹配
 	  - 自定义类型转换匹配
-	  - 
+	  - 省略号匹配
+	  - 放弃并报错
     - 在每一步中，如果找到且只找到一个匹配函数，则完成匹配，否则进入下一步。如果最终匹配的结果大于 1 个或者为 0，则报错。
     - 通过数值提升进行匹配的优先级高于通过数值转换匹配的优先级
     - 将非引用类型转换为引用类型（或者反过来）也属于[[简单转换(trivial conversion)]]
@@ -227,21 +228,22 @@ int main()
 
 !!! info "相关内容"
 
-我们会在[[14.11 -- Overloading typecasts|14.11 - 重载类型转换操作符]]中介绍如何通过重载类型转换操作符来创建用户自定义转换。
+我们会在[[14-11-Overloading-typecasts|14.11 - 重载类型转换操作符]]中介绍如何通过重载类型转换操作符来创建用户自定义转换。
 
 !!! info "扩展阅读"
 
-    The constructor of a class also acts as a user-defined conversion from other types to that class type, and can be used during this step to find matching functions.
+    类的[[constructor|构造函数(constructor)]]同样具有自定义转换的功能，在也可以被用在第四步。
+    
 
-第五步If no match is found via user-defined conversion, the compiler will look for a matching function that uses ellipsis.
+第五步：如果通过用户自定义转换后仍然没有找到匹配的重载函数，编译器会尝试匹配使用了省略号的函数。
 
-Related content
+!!! info "相关内容"
 
-We cover ellipses in lesson [[12.6 -- Ellipsis (and why to avoid them)|12.6 - 省略号以及为什么要避免使用它]]
+	省略号的使用会在[[12.6 -- Ellipsis (and why to avoid them)|12.6 - 省略号以及为什么要避免使用它]]中介绍。
 
-Step 6) If no matches have been found by this point, the compiler gives up and will issue a compile error about not being able to find a matching function.
+第六步： 如果到此还没有找到匹配的函数，编译器会放弃继续查找并产生一个没有找到匹配函数的编译错误。
 
-Ambiguous matches
+## 匹配歧义
 
 With non-overloaded functions, each function call will either resolve to a function, or no match will be found and the compiler will issue a compile error:
 
@@ -290,14 +292,16 @@ Following that, the compiler will try to find a match by applying numeric conver
 
 On Visual Studio 2019, this results in the following error message:
 
+```
 error C2668: 'print': ambiguous call to overloaded function
 message : could be 'void print(double)'
 message : or       'void print(int)'
 message : while trying to match the argument list '(long)'
+```
 
-Key insight
+!!! tldr "关键信息"
 
-If the compiler finds multiple matches in a given step, an ambiguous function call will result. This means no match from a given step is considered to be better than any other match from the same step.
+	If the compiler finds multiple matches in a given step, an ambiguous function call will result. This means no match from a given step is considered to be better than any other match from the same step.
 
 Here’s another example that yields ambiguous matches:
 
@@ -324,37 +328,34 @@ Although you might expect `0` to resolve to `print(unsigned int)` and `3.14
 
 The same applies for the conversion of a `double` to either a `float` or `unsigned int`. Both are numeric conversions, so either overload matches equally well, and the result is again ambiguous.
 
-Resolving ambiguous matches
+## 解析歧义匹配
 
 Because ambiguous matches are a compile-time error, an ambiguous match needs to be disambiguated before your program will compile. There are a few ways to resolve ambiguous matches:
 
 1.  Often, the best way is simply to define a new overloaded function that takes parameters of exactly the type you are trying to call the function with. Then C++ will be able to find an exact match for the function call.
 2.  Alternatively, explicitly cast the ambiguous argument(s) to match the type of the function you want to call. For example, to have `print(0)` match `print(unsigned int)` in the above example, you would do this:
 
-```cpp
-int x{ 0 };
-print(static_cast<unsigned int>(x)); // will call print(unsigned int)
-```
+	```cpp
+	int x{ 0 };
+	print(static_cast<unsigned int>(x)); // will call print(unsigned int)
+	```
 
-COPY
+1.  If your argument is a literal, you can use the literal suffix to ensure your literal is interpreted as the correct type:
 
-3.  If your argument is a literal, you can use the literal suffix to ensure your literal is interpreted as the correct type:
+	```cpp
+	print(0u); // will call print(unsigned int) since 'u' suffix is unsigned int, so this is now an exact match
+	```
 
-```cpp
-print(0u); // will call print(unsigned int) since 'u' suffix is unsigned int, so this is now an exact match
-```
 
-COPY
+常用的后缀参见：[[4-14-Literal-constants#字面量后缀]]
 
-The list of the most used suffixes can be found in lesson [4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/) .
+## 多参数重载函数的匹配
 
-Matching for functions with multiple arguments
+如果有多个参数，编译器会依次对每个参数应用匹配规则。最终匹配的函数的要求是：每个参数都匹配且至少有一个参数比所有其他函数匹配得更好。换句话说，所选函数必须对至少一个参数提供比所有其他候选函数更好的匹配，而对所有其他参数不差。
 
-If there are multiple arguments, the compiler applies the matching rules to each argument in turn. The function chosen is the one for which each argument matches at least as well as all the other functions, with at least one argument matching better than all the other functions. In other words, the function chosen must provide a better match than all the other candidate functions for at least one parameter, and no worse for all of the other parameters.
+在找到这样一个函数的情况下，它显然是最好的选择。如果找不到这样的函数，则该调用将被视为二义性(或不匹配)。
 
-In the case that such a function is found, it is clearly and unambiguously the best choice. If no such function can be found, the call will be considered ambiguous (or a non-match).
-
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -380,6 +381,4 @@ int main()
 }
 ```
 
-COPY
-
-In the above program, all functions match the first argument exactly. However, the top function matches the second parameter via promotion, whereas the other functions require a conversion. Therefore, `print(char, int)` is unambiguously the best match.
+在上面的例子中，所有函数的第一个参数都能够**完全匹配**。第一个函数通过[[numeric promotions|数值提升]]可以匹配第二个参数，其他几个函数则需要进行类型转换才能匹配。因此`print(char, int)` 毋庸置疑是最佳匹配函数。

@@ -111,7 +111,9 @@
 - [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
 - [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]
 
-## 8. 类型转换和函数重载
+## 8. 类型转换和函数重载 ✅
+
+暂时跳过模板
 
 - [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]
 - [[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]
@@ -132,9 +134,9 @@
 
 ## 9. 复合类型-引用和指针
 
-- [[9.1 — Introduction to compound data types|9.1 - 复合数据类型]]
-- [[9.2 — Value categories (lvalues and rvalues)|9.2 - 值的分类（左值和右值）]]
-- [[9.3 — Lvalue references|9.3 - 左值引用]]
+- [[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]
+- [[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]
+- [[9-3-Lvalue-references|9.3 - 左值引用]]
 - [[9.4 — Lvalue references to const]]
 - [[9.5 — Pass by lvalue reference]]
 - [[9.6 — Introduction to pointers]]
@@ -185,12 +187,12 @@
 - [[11.x — Chapter 11 comprehensive quiz]]
 
 ## 12. 函数
-- [[12.6 -- Ellipsis (and why to avoid them)|12.6 - 省略号以及为什么要避免使用它]]
+- [[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]
 
 ## 13. 面向对象编程基础
 
 ## 14. 操作符重载
-- [[14.11 -- Overloading typecasts]]
+- [[14-11-Overloading-typecasts]]
 
 ## 16. 对象关系简介
 

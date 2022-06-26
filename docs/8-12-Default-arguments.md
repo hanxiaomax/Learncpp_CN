@@ -49,10 +49,12 @@ COPY
 
 This program produces the following output:
 
+```
 x: 1
 y: 2
 x: 3
 y: 4
+```
 
 In the first function call, the caller supplied explicit arguments for both parameters, so those argument values are used. In the second function call, the caller omitted the second argument, so the default value of `4` was used.
 
@@ -66,7 +68,7 @@ void boo(int x { 5 }); // compile error
 
 COPY
 
-When to use default arguments
+## When to use default arguments
 
 Default arguments are an excellent option when a function needs a value that has a reasonable default value, but for which you want to let the caller override if they wish.
 
@@ -83,7 +85,7 @@ Author’s note
 
 Because the user can choose whether to supply a specific argument value or use the default value, a parameter with a default value provided is sometimes called an optional parameter. However, the term _optional parameter_ is also used to refer to several other types of parameters (including parameters passed by address, and parameters using `std::optional`), so we recommend avoiding this term.
 
-Multiple default arguments
+## Multiple default arguments
 
 A function can have multiple parameters with default arguments:
 
@@ -110,11 +112,12 @@ COPY
 
 The following output is produced:
 
+```
 Values: 1 2 3
 Values: 1 2 30
 Values: 1 20 30
 Values: 10 20 30
-
+```
 C++ does not (as of C++20) support a function call syntax such as `print(,,3)` (as a way to provide an explicit value for `z` while using the default arguments for `x` and `y`. This has two major consequences:
 
 1.  Default arguments can only be supplied for the rightmost parameters. The following is not allowed:
@@ -125,9 +128,9 @@ void print(int x=10, int y); // not allowed
 
 COPY
 
-Rule
+!!! note "法则"
 
-Default arguments can only be provided for the rightmost parameters.
+	Default arguments can only be provided for the rightmost parameters.
 
 2.  If more than one default argument exists, the leftmost default argument should be the one most likely to be explicitly set by the user.
 
@@ -153,7 +156,7 @@ Best practice is to declare the default argument in the forward declaration and 
 
 in foo.h:
 
-```cpp
+```cpp title="foo.h"
 #ifndef FOO_H
 #define FOO_H
 void print(int x, int y=4);
@@ -164,7 +167,7 @@ COPY
 
 in main.cpp:
 
-```cpp
+```cpp title="main.cpp"
 #include "foo.h"
 #include <iostream>
 
@@ -186,11 +189,11 @@ COPY
 
 Note that in the above example, we’re able to use the default argument for function `print()` because `main.cpp` #includes `foo.h`, which has the forward declaration that defines the default argument.
 
-Best practice
+!!! success "最佳实践"
 
-If the function has a forward declaration (especially one in a header file), put the default argument there. Otherwise, put the default argument in the function definition.
+	If the function has a forward declaration (especially one in a header file), put the default argument there. Otherwise, put the default argument in the function definition.
 
-Default arguments and function overloading
+## Default arguments and function overloading
 
 Functions with default arguments may be overloaded. For example, the following is allowed:
 
@@ -240,10 +243,7 @@ COPY
 
 In the last case, the compiler is unable to tell whether `print(1)` should resolve to `print(int)` or one of the two function calls where the second parameter has a default value. The result is an ambiguous function call.
 
-Summary
+## Summary
 
 Default arguments provide a useful mechanism to specify values for parameters that the user may or may not want to override. They are frequently used in C++, and you’ll see them a lot in future lessons.
 
-[
-
-](https://www.learncpp.com/cpp-tutorial/function-templates/)
