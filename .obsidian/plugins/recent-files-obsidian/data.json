@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
+    },
+    {
+      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
+      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
+    },
+    {
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
+    },
+    {
+      "basename": "8-2-Floating-point-and-integral-promotion",
+      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
+    },
+    {
       "basename": "8-12-Default-arguments",
       "path": "docs/8-12-Default-arguments.md"
+    },
+    {
+      "basename": "8-15-Function-templates-with-multiple-template-types",
+      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
+    },
+    {
+      "basename": "8-14-Function-template-instantiation",
+      "path": "docs/8-14-Function-template-instantiation.md"
+    },
+    {
+      "basename": "8-13-Function-templates",
+      "path": "docs/8-13-Function-templates.md"
     },
     {
       "basename": "ambiguous-match",
@@ -33,10 +61,6 @@
       "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
-    },
-    {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
     },
@@ -65,32 +89,12 @@
       "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
     },
     {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "8-15-Function-templates-with-multiple-template-types",
-      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
-    },
-    {
-      "basename": "8-14-Function-template-instantiation",
-      "path": "docs/8-14-Function-template-instantiation.md"
-    },
-    {
-      "basename": "8-13-Function-templates",
-      "path": "docs/8-13-Function-templates.md"
-    },
-    {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
       "basename": "8-9-Introduction-to-function-overloading",
       "path": "docs/8-9-Introduction-to-function-overloading.md"
-    },
-    {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
     },
     {
       "basename": "7-1-Control-flow-introduction",
@@ -187,10 +191,6 @@
     {
       "basename": "8-3-Numeric-conversions",
       "path": "docs/8-3-Numeric-conversions.md"
-    },
-    {
-      "basename": "8-2-Floating-point-and-integral-promotion",
-      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
     },
     {
       "basename": "named-cast",
