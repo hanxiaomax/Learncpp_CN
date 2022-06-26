@@ -33,24 +33,22 @@ C++ 语言定义了许多基本类型之间的内置转换方式(以及一些更
 
 `auto`关键字有很多用途。首先，`auto` 可用于进行类型推断([[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]])，它将从变量的初始化值推断出变量的类型。但是，类型推断会丢弃 const 和引用，所以如果需要，请确保将它们添加回来。
 
-`auto` 也可以用作函数返回类型的推断（[[8-8-Type-deduction-for-functions|8.8 - 函数的类型推断]]），编译器可以从函数的`return`语句中推断出函数的返回类型，不过对于普通函数应该避免这样做。`auto` 被用作尾随返回语法的一部分。
+`auto` 也可以用作函数返回类型的推断（[[8-8-Type-deduction-for-functions|8.8 - 函数的类型推断]]），编译器可以从函数的`return`语句中推断出函数的返回类型，不过对于普通函数应该避免这样做。`auto` 还被用作后置返回值类型语法。
 
-Auto can also be used as a function return type to have the compiler infer the function’s return type from the function’s return statements, though this should be avoided for normal functions. Auto is used as part of the trailing return syntax.
+**函数重载**（[[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]）允许我们使用相同的名称创建多个函数，只要每个相同名称的函数具有不同的形参类型集合即可(或者可以用其他方式区分函数)。这样的函数称为重载函数(或简称[[overload|重载]])。返回类型不能被用来进行重载函数的区分。
 
-**Function overloading** allows us to create multiple functions with the same name, so long as each identically named function has different set of parameter types (or the functions can be otherwise differentiated). Such a function is called an overloaded function (or overload for short). Return types are not considered for differentiation.
+在解析重载函数时（[[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]]），如果没有找到精确匹配，编译器将优先选择可以通过数值提升匹配的重载函数，而不是那些需要数值转换的重载函数。当对已重载的函数进行函数调用时，编译器将尝试根据函数调用中使用的参数将函数调用与适当的重载匹配。这被称为[[overload-resolution|重载解析]]。
 
-When resolving overloaded functions, if an exact match isn’t found, the compiler will favor overloaded functions that can be matched via numeric promotions over those that require numeric conversions. When a function call is made to function that has been overloaded, the compiler will try to match the function call to the appropriate overload based on the arguments used in the function call. This is called overload resolution.
+当编译器发现两个或多个函数可以将函数调用与重载函数匹配，但无法确定哪一个是最好的时，就会出现[[ambiguous-match|不明确匹配]]（[[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和不明确匹配]]）。
 
-An **ambiguous match** occurs when the compiler finds two or more functions that can match a function call to an overloaded function and can’t determine which one is best.
+**默认实参**是为函数形参提供的默认值（[[8-12-Default-arguments|8.12 - 默认参数]]）。带默认实参的形参必须始终是最右边的形参，并且在解析重载函数时不使用它们来区分函数。
 
-A **default argument** is a default value provided for a function parameter. Parameters with default arguments must always be the rightmost parameters, and they are not used to differentiate functions when resolving overloaded functions.
+函数模板（[[8-13-Function-templates|8.13 - 函数模板]]）允许我们创建一个类似函数的定义，作为创建相关函数的模式。在函数模板中，我们使用**模板类型**作为以后要指定的任何类型的占位符。告诉编译器我们正在定义一个模板并声明模板类型的语法称为**模板形参声明**。
 
-**Function templates** allow us to create a function-like definition that serves as a pattern for creating related functions. In a function template, we use **template types** as placeholders for any types we want to be specified later. The syntax that tells the compiler we’re defining a template and declares the template types is called a **template parameter declaration**.
+从函数模板(使用模板类型)创建函数(使用特定类型)的过程简称为**函数模板实例化**(或实例化)。当这个过程由于函数调用而发生时，它被称为“隐式实例化”。一个实例化的函数被称为**函数实例**(或简称**实例**，有时也称为**模板函数**)。
 
-The process of creating functions (with specific types) from function templates (with template types) is called **function template instantiation** (or instantiation) for short. When this process happens due to a function call, it’s called **implicit instantiation**. An instantiated function is called a **function instance** (or **instance** for short, or sometimes a **template function**).
+模板实参推导允许编译器从函数调用的实参推导出应该用于实例化函数的实际类型。模板参数推导不进行类型转换。
 
-**Template argument deduction** allows the compiler to deduce the actual type that should be used to instantiate a function from the arguments of the function call. Template argument deduction does not do type conversion.
+模板类型有时被称为**泛型类型**，使用模板编程有时被称为**泛型编程**。
 
-Template types are sometimes called **generic types**, and programming using templates is sometimes called **generic programming**.
-
-In C++20, when the auto keyword is used as a parameter type in a normal function, the compiler will automatically convert the function into a function template with each auto parameter becoming an independent template type parameter. This method for creating a function template is called an **abbreviated function template**.
+在C++ 20中，当 `auto` 关键字在普通函数中用作形参类型时，编译器会自动将函数转换为函数模板，每个 `auto` 形参都成为一个独立的模板类型形参。这种创建函数模板的方法称为**缩写函数模板**。
