@@ -15,19 +15,6 @@
             "source": false
           }
         }
-      },
-      {
-        "id": "6e19faa8b4935ded",
-        "type": "leaf",
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
-        }
       }
     ],
     "direction": "vertical"
@@ -100,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
+                "file": "docs/4.18 — Introduction to std-string_view.md"
               }
             }
           },
@@ -121,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
+                "file": "docs/4.18 — Introduction to std-string_view.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,10 +127,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6e19faa8b4935ded",
+  "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
     "docs/4.18 — Introduction to std-string_view.md",
+    "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md",
     "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md",
     "docs/MOC.md",
     "docs/4-13-Const-variables-and-symbolic-constants.md",
