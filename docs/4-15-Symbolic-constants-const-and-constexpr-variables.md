@@ -228,7 +228,6 @@ int main()
 }
 ```
 
-COPY
 
 !!! info "相关内容"
 

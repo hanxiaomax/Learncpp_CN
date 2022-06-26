@@ -1,12 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "11.6 — C-style strings",
-      "path": "docs/11.6 — C-style strings.md"
+      "basename": "4-15-Literals",
+      "path": "docs/4-15-Literals.md"
+    },
+    {
+      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
+      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
+      "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
+    },
+    {
+      "basename": "11.6 — C-style strings",
+      "path": "docs/11.6 — C-style strings.md"
+    },
+    {
+      "basename": "4.18 — Introduction to std-string_view",
+      "path": "docs/4.18 — Introduction to std-string_view.md"
+    },
+    {
+      "basename": "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal",
+      "path": "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
+    },
+    {
+      "basename": "4-17-An introduction-to-std-string",
+      "path": "docs/4-17-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "4-13-Const-variables-and-symbolic-constants",
+      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
+    },
+    {
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
       "basename": "11.5 — Multidimensional Arrays",
@@ -137,10 +169,6 @@
       "path": "docs/pass-by-address.md"
     },
     {
-      "basename": "4-14-Literal-constants",
-      "path": "docs/4-14-Literal-constants.md"
-    },
-    {
       "basename": "8-10-Function-overload-differentiation",
       "path": "docs/8-10-Function-overload-differentiation.md"
     },
@@ -161,10 +189,6 @@
       "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
     },
     {
-      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
-      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
-    },
-    {
       "basename": "8-9-Introduction-to-function-overloading",
       "path": "docs/8-9-Introduction-to-function-overloading.md"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "7-3-Common-if-statement-problems",
       "path": "docs/7-3-Common-if-statement-problems.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "docs/翻译约定.md"
-    },
-    {
-      "basename": "列表初始化",
-      "path": "docs/列表初始化.md"
-    },
-    {
-      "basename": "arguments",
-      "path": "docs/arguments.md"
-    },
-    {
-      "basename": "index",
-      "path": "docs/index.md"
-    },
-    {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
-      "basename": "6-6-Internal-linkage",
-      "path": "docs/6-6-Internal-linkage.md"
     }
   ],
   "omittedPaths": [],

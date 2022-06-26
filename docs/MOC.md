@@ -57,9 +57,13 @@
 - [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]
 - [[4-11-Chars|4.11 - 字符]]
 - [[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]
-- [[4-13-An introduction-to-std-string|4.13 - std::string 简介]]
-- [[4-14-Literal-constants|4.14 - 字面量常量]]
+- [[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]
+- [[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]
+- [[4-15-Literals|4.15 - 字面量]]
 - [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]
+- [[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数值系统（十进制、二进制、十六进制和八进制）]]
+- [[4-17-An introduction-to-std-string|4.17 - std::string 简介]]
+- [[4.18 — Introduction to std-string_view|4.18 - std::string_view 简介]]
 - [[4-x-Chapter-4-summary-and-quiz|4.x - 小结与测试]]
 
 ## 5. 运算符 ✅

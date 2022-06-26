@@ -1,8 +1,8 @@
 ---
-title: 4.13 - std::string 简介
-alias: 4.13 - std::string 简介
+title: 4.17 - std::string 简介
+alias: 4.17 - std::string 简介
 origin: /an-introduction-to-stdstring/
-origin_title: "4.13 — An introduction to std::string"
+origin_title: "4.17 — An introduction to std::string"
 time: 2021-10-21
 type: translation
 tags:
@@ -32,7 +32,7 @@ int main()
 
 因为字符串在程序中很常见，所以大多数现代编程语言都包含基础字符串数据类型。不过，在 C++ 中，字符串并不是基础数据类型（它被称为**复合类型**，并被定义在 C++ 的标准库中，而不是作为C++核心的一部分）。但是，字符串很简单也很有用，所以我们准备提早介绍它而不是等到第九章介绍复合类型时再介绍它。
 
-## std::string
+## std::string 简介
 
 为了在 C++ 中使用字符串，我们首先应当 `#include`  `<string>` 头文件以便获取`std::string`的声明。这一步完成后，我们就可以定义`std::string`类型的变量了。
 
@@ -286,6 +286,86 @@ Alex has 4 characters
 int length = static_cast<int>(myName.length());
 ```
 
+
+In C++20, you can also use the `std::ssize()` function to get the length of a `std::string` as a signed integer:
+
+```cpp
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string name{ "Alex" };
+    std::cout << name << " has " << std::ssize(name) << " characters\n";
+
+    return 0;
+}
+```
+
+COPY
+
+`std::string` is expensive to initialize and copy
+
+Whenever a `std::string` is initialized, a copy of the string used to initialize it is made. And whenever a `std::string` is passed by value to a `std::string` parameter, another copy is made. These copies are expensive, and should be avoided if possible.
+
+Best practice
+
+Do not pass `std::string` by value, as making copies of `std::string` is expensive. Prefer `std::string_view` parameters.
+
+We’ll discuss this topic (and `std::string_view`) further in lesson [4.18 -- Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/).
+
+## Literals for `std::string`
+
+Double-quoted string literals (like “Hello, world!”) are C-style strings by default (and thus, have a strange type).
+
+We can create string literals with type `std::string` by using a `s` suffix after the double-quoted string literal.
+
+```cpp
+#include <iostream>
+#include <string>      // for std::string
+#include <string_view> // for std::string_view
+
+int main()
+{
+    using namespace std::literals; // easiest way to access the s and sv suffixes
+
+    std::cout << "foo\n";   // no suffix is a C-style string literal
+    std::cout << "goo\n"s;  // s suffix is a std::string literal
+    std::cout << "moo\n"sv; // sv suffix is a std::string_view literal
+
+    return 0;
+};
+```
+
+
+!!! tip "小贴士"
+
+	The “s” suffix lives in the namespace `std::literals::string_literals`. The easiest way to access the literal suffixes is via using directive `using namespace std::literals`. We discuss using directives in lesson [6.12 -- Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/). This is one of the exception cases where `using` an entire namespace is okay.
+
+You probably won’t need to use `std::string` literals very often (as it’s fine to initialize a `std::string` object with a C-style string literal), but we’ll see a few cases in future lessons where using `std::string` literals instead of C-style string literals makes things easier.
+
+## Constexpr strings
+
+If you try to define a `constexpr std::string`, your compiler will probably generate an error:
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std::literals;
+
+int main()
+{
+    constexpr std::string name{ "Alex"s }; // compile error
+
+    std::cout << "My name is: " << name;
+
+    return 0;
+}
+```
+
+
+This happens because `constexpr std::string` isn’t supported in C++17 or earlier, and only has minimal support in C++20. If you need constexpr strings, use `std::string_view` instead (discussed in lesson [4.18 -- Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/).
 
 
 ## 结论

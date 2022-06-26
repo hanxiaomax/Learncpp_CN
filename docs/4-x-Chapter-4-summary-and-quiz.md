@@ -44,11 +44,11 @@ C++ 支持多种基础数据类型，包括浮点数、整型、布尔类型、�
 
 尖括号在 C++ 中通常用来表示参数化类型。在 `static_cast` 中，尖括号的内容指定了目标类型。(例如 `static_cast<int>(x)`会把 `x` 转换为 `int`)。（[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]）
 
-**std::string** （[[4-13-An introduction-to-std-string|4.13 - std::string 简介]]）提供了简便、安全的处理字符串的方式。字符串字面量总是放在双引号中。使用 `std::string` 需要包含 `<string>` 头文件。
+**std::string** （[[4-17-An introduction-to-std-string|4.13 - std::string 简介]]）提供了简便、安全的处理字符串的方式。字符串字面量总是放在双引号中。使用 `std::string` 需要包含 `<string>` 头文件。
 
-**常量** （[[4-14-Literal-constants|4.14 - 字面量常量]]）指的是值不会改变的变量。C++ 支持两种常量：字面量常量和符号常量
+**常量** （[[4-15-Literals|4.14 - 字面量常量]]）指的是值不会改变的变量。C++ 支持两种常量：字面量常量和符号常量
 
-**字面量**（[[4-14-Literal-constants|4.14 - 字面量常量]]）是直接嵌入到代码中的常量。字面量是有类型的，而字面量后缀可以用来修改字面量的默认类型。
+**字面量**（[[4-15-Literals|4.14 - 字面量常量]]）是直接嵌入到代码中的常量。字面量是有类型的，而字面量后缀可以用来修改字面量的默认类型。
 
 **Const** （[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]）变量指的是一旦初始化后就不会改变的变量。const 变量要么是编译时常量，要么是运行时常量。**constexpr** 变量必须是编译时常量。
 
