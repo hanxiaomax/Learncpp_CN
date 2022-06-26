@@ -5,6 +5,10 @@
       "path": "docs/4.18 — Introduction to std-string_view.md"
     },
     {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
       "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
       "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "8-9-Introduction-to-function-overloading",
       "path": "docs/8-9-Introduction-to-function-overloading.md"
-    },
-    {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
     }
   ],
   "omittedPaths": [],
