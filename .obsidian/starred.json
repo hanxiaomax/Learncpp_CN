@@ -9,6 +9,11 @@
       "type": "file",
       "title": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "type": "search",
+      "title": "/^-\\ *$/",
+      "query": "/^-\\ *$/"
     }
   ]
 }

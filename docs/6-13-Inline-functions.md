@@ -3,7 +3,7 @@ title: 6.13 - 内联函数
 alias: 6.13 - 内联函数
 origin: /inline-functions/
 origin_title: "6.13 — Inline functions"
-time: 2022-1-2
+time: 2022-4-15
 type: translation
 tags:
 - inline
