@@ -5,6 +5,10 @@
       "path": "docs/11.2 — Arrays (Part II).md"
     },
     {
+      "basename": "11.8 — Pointers and arrays",
+      "path": "docs/11.8 — Pointers and arrays.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
