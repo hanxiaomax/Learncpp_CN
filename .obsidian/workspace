@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11.2 — Arrays (Part II).md",
+            "file": "docs/iterating.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11.2 — Arrays (Part II).md"
+                "file": "docs/iterating.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11.2 — Arrays (Part II).md",
+                "file": "docs/iterating.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,6 +129,8 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
+    "docs/iterating.md",
+    "docs/11.3 — Arrays and loops.md",
     "docs/11.2 — Arrays (Part II).md",
     "docs/11.8 — Pointers and arrays.md",
     "docs/MOC.md",
@@ -136,8 +138,6 @@
     "docs/11.7 — std-string-view (part 2).md",
     "docs/subscripts.md",
     "Templates/yaml.md",
-    "docs/6-13-Inline-functions.md",
-    "docs/optional-parameter.md",
-    "docs/0-8-A-few-common-C++-problems.md"
+    "docs/6-13-Inline-functions.md"
   ]
 }

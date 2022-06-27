@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "iterating",
+      "path": "docs/iterating.md"
+    },
+    {
+      "basename": "11.3 — Arrays and loops",
+      "path": "docs/11.3 — Arrays and loops.md"
+    },
+    {
       "basename": "11.2 — Arrays (Part II)",
       "path": "docs/11.2 — Arrays (Part II).md"
     },
@@ -145,10 +153,6 @@
       "path": "docs/11.4 — Sorting an array using selection sort.md"
     },
     {
-      "basename": "11.3 — Arrays and loops",
-      "path": "docs/11.3 — Arrays and loops.md"
-    },
-    {
       "basename": "8-x-Chapter-8-summary-and-quiz",
       "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "pass-by-address",
       "path": "docs/pass-by-address.md"
-    },
-    {
-      "basename": "8-10-Function-overload-differentiation",
-      "path": "docs/8-10-Function-overload-differentiation.md"
     }
   ],
   "omittedPaths": [],
