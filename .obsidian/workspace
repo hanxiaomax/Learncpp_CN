@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/iterating.md",
+            "file": "docs/11.4 — Sorting an array using selection sort.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,8 +66,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/iterating.md"
+                "file": "docs/11.4 — Sorting an array using selection sort.md"
               }
             }
           },
@@ -108,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/iterating.md",
+                "file": "docs/11.4 — Sorting an array using selection sort.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,15 +128,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/iterating.md",
+    "docs/11.4 — Sorting an array using selection sort.md",
     "docs/11.3 — Arrays and loops.md",
+    "docs/Off-by-one.md",
+    "docs/iterating.md",
     "docs/11.2 — Arrays (Part II).md",
     "docs/11.8 — Pointers and arrays.md",
     "docs/MOC.md",
     "docs/11.1 — Arrays (Part I).md",
     "docs/11.7 — std-string-view (part 2).md",
-    "docs/subscripts.md",
-    "Templates/yaml.md",
-    "docs/6-13-Inline-functions.md"
+    "docs/subscripts.md"
   ]
 }

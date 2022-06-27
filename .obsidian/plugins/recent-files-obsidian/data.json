@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "iterating",
-      "path": "docs/iterating.md"
+      "basename": "11.4 — Sorting an array using selection sort",
+      "path": "docs/11.4 — Sorting an array using selection sort.md"
     },
     {
       "basename": "11.3 — Arrays and loops",
       "path": "docs/11.3 — Arrays and loops.md"
+    },
+    {
+      "basename": "Off-by-one",
+      "path": "docs/Off-by-one.md"
+    },
+    {
+      "basename": "iterating",
+      "path": "docs/iterating.md"
     },
     {
       "basename": "11.2 — Arrays (Part II)",
@@ -149,10 +157,6 @@
       "path": "docs/11.5 — Multidimensional Arrays.md"
     },
     {
-      "basename": "11.4 — Sorting an array using selection sort",
-      "path": "docs/11.4 — Sorting an array using selection sort.md"
-    },
-    {
       "basename": "8-x-Chapter-8-summary-and-quiz",
       "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
       "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
-    },
-    {
-      "basename": "pass-by-address",
-      "path": "docs/pass-by-address.md"
     }
   ],
   "omittedPaths": [],
