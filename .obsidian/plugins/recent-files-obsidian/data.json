@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "11.2 — Arrays (Part II)",
+      "path": "docs/11.2 — Arrays (Part II).md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -43,10 +47,6 @@
     {
       "basename": "9.8 — Pointers and const",
       "path": "docs/9.8 — Pointers and const.md"
-    },
-    {
-      "basename": "11.2 — Arrays (Part II)",
-      "path": "docs/11.2 — Arrays (Part II).md"
     },
     {
       "basename": "9.9 — Pass by address",
