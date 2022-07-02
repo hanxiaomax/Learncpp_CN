@@ -11,6 +11,7 @@ tags:
 
 ??? note "关键点速记"
 	- 使用**嵌套大括号**初始化二维数组
+	- 带有初始化列表的二维数组只能忽略最左边的长度声明
 	
 
 数组的元素可以是任何数据类型，包括数组！数组的数组被称为**多维数组**
@@ -62,9 +63,7 @@ int array[3][5]
 };
 ```
 
-COPY
-
-Two-dimensional arrays with initializer lists can omit (only) the leftmost length specification:
+带有初始化列表的二维数组只能忽略最左边的长度声明：
 
 ```cpp
 int array[][5]
@@ -75,9 +74,7 @@ int array[][5]
 };
 ```
 
-COPY
-
-The compiler can do the math to figure out what the array length is. However, the following is not allowed:
+编译器可以计算出数组的长度。但是，下面这样是不允许的：
 
 ```cpp
 int array[][]
@@ -87,19 +84,16 @@ int array[][]
 };
 ```
 
-COPY
-
-Just like normal arrays, multidimensional arrays can still be initialized to 0 as follows:
+就像普通数组一样，多维数组仍然可以初始化为0，如下所示:
 
 ```cpp
 int array[3][5]{};
 ```
 
-COPY
 
-## Accessing elements in a two-dimensional array
+## 遍历二维数组中的元素
 
-Accessing all of the elements of a two-dimensional array requires two loops: one for the row, and one for the column. Since two-dimensional arrays are typically accessed row by row, the row index is typically used as the outer loop.
+访问二维数组的所有元素需要两个循环：一个用于行，一个用于列。由于二维数组通常是逐行访问的，所以**行索引通常用作外部循环**。
 
 ```cpp
 for (int row{ 0 }; row < numRows; ++row) // step through the rows in the array
@@ -111,33 +105,28 @@ for (int row{ 0 }; row < numRows; ++row) // step through the rows in the array
 }
 ```
 
-COPY
+在 C++11 中，`for-each` 循环也可以用于多维数组，我们会在[[11-13-For-each-loops|11.11 - for-each 循环]]中进行介绍。
 
-In C++11, _for-each_ loops can also be used with multidimensional arrays. We’ll cover for-each loops in detail later.
+## 超过二维的多维数组
 
-## Multidimensional arrays larger than two dimensions
-
-Multidimensional arrays may be larger than two dimensions. Here is a declaration of a three-dimensional array:
+多维数组的维数可以超过2维。下面是一个三维数组的声明：
 
 ```cpp
 int array[5][4][3];
 ```
 
-COPY
+三维数组没办法以符合直觉的方式使用初始化列表来初始化，所以最好将其初始化为0然后再使用嵌套循环显式地初始化。
 
-Three-dimensional arrays are hard to initialize in any kind of intuitive way using initializer lists, so it’s typically better to initialize the array to 0 and explicitly assign values using nested loops.
-
-Accessing the element of a three-dimensional array is analogous to the two-dimensional case:
+访问三维数组元素的方法个二维数组是类似的：
 
 ```cpp
 std::cout << array[3][1][2];
 ```
 
-COPY
 
-## A two-dimensional array example
+## 一个二维数组的例子
 
-Let’s take a look at a practical example of a two-dimensional array:
+让我们来看一个二维数组的实际例子：
 
 ```cpp
 #include <iostream>
@@ -174,9 +163,8 @@ int main()
 }
 ```
 
-COPY
+这个程序计算并打印1到9(包括9)之间所有值的乘法表。注意，在打印表时，for循环从1开始，而不是从0开始。输出如下:
 
-This program calculates and prints a multiplication table for all values between 1 and 9 (inclusive). Note that when printing the table, the for loops start from 1 instead of 0. This is to omit printing the 0 column and 0 row, which would just be a bunch of 0s! Here is the output:
 
 ```
 1    2    3    4    5    6    7    8    9
@@ -190,4 +178,4 @@ This program calculates and prints a multiplication table for all values between
 9    18   27   36   45   54   63   72   81
 ```
 
-Two dimensional arrays are commonly used in tile-based games, where each array element represents one tile. They’re also used in 3d computer graphics (as matrices) in order to rotate, scale, and reflect shapes.
+二维数组通常用于基于贴图的游戏中，其中每个数组元素代表一个贴图。它们也被用于3d计算机图形(作为矩阵)，以旋转、缩放和表示形状。

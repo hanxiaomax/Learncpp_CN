@@ -170,9 +170,33 @@ nav:
       - "8-14-Function-template-instantiation.md"
       - "8-15-Function-templates-with-multiple-template-types.md"
       - "8-x-Chapter-8-summary-and-quiz.md"
-    # - 9. 复合类型-引用和指针: index.md
+    - 9. 复合类型-引用和指针: 
+      - "9-x-Chapter-9-summary-and-quiz.md"
+      - "9-1-Introduction-to-compound-data-types.md"
+      - "9-2-Value-categories-lvalues-and-rvalues.md"
+      - "9-3-Lvalue-references.md"
+      - "9-4-Lvalue-references-to-const.md"
+      - "9-5-Pass-by-lvalue-reference.md"
+      - "9-6-Introduction-to-pointers.md"
+      - "9-7-Null-pointers.md"
+      - "9-8-Pointers-and-const.md"
+      - "9-9-Pass-by-address.md"
+      - "9-10-Pass-by-address-part-2.md"
+      - "9-11-Return-by-reference-and-return-by-address.md"
+      - "9-12-Type-deduction-with-pointers-references-and-const.md"
     # - 10. 复合类型-枚举和结构体: index.md
-    # - 11. 数组，字符串和动态内存分配: index.md
+    - 11. 数组，字符串和动态内存分配: 
+      - "11-1-Arrays-Part-I.md"
+      - "11-2-Arrays-Part-II.md"
+      - "11-3-Arrays-and-loops.md"
+      - "11-4-Sorting-an-array-using-selection-sort.md"
+      - "11-5-Multidimensional-Arrays.md"
+      - "11-6-C-style-strings.md"
+      - "11-7-An-introduction-to-std-string_view.md"
+      - "11-7-std-string-view-part-2.md"
+      - "11-8-Pointers-and-arrays.md"
+      - "11-13-For-each-loops.md"
+      - "11-14-Void-pointers.md"
     # - 12. 函数: index.md
     # - 13. 面向对象编程基础: index.md
     # - 14. 操作符重载: index.md

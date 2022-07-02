@@ -1,20 +1,84 @@
 {
   "recentFiles": [
     {
-      "basename": "11.5 — Multidimensional Arrays",
-      "path": "docs/11.5 — Multidimensional Arrays.md"
+      "basename": "9-11-Return-by-reference-and-return-by-address",
+      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
     },
     {
-      "basename": "11.4 — Sorting an array using selection sort",
-      "path": "docs/11.4 — Sorting an array using selection sort.md"
+      "basename": "9-10-Pass-by-address-part-2",
+      "path": "docs/9-10-Pass-by-address-part-2.md"
     },
     {
-      "basename": "11.6 — C-style strings",
-      "path": "docs/11.6 — C-style strings.md"
+      "basename": "9-8-Pointers-and-const",
+      "path": "docs/9-8-Pointers-and-const.md"
     },
     {
-      "basename": "11.3 — Arrays and loops",
-      "path": "docs/11.3 — Arrays and loops.md"
+      "basename": "4-18-Introduction-to-std-string_view",
+      "path": "docs/4-18-Introduction-to-std-string_view.md"
+    },
+    {
+      "basename": "9-9-Pass-by-address",
+      "path": "docs/9-9-Pass-by-address.md"
+    },
+    {
+      "basename": "9-7-Null-pointers",
+      "path": "docs/9-7-Null-pointers.md"
+    },
+    {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
+    },
+    {
+      "basename": "9-4-Lvalue-references-to-const",
+      "path": "docs/9-4-Lvalue-references-to-const.md"
+    },
+    {
+      "basename": "9.12 — Type deduction with pointers, references, and const",
+      "path": "docs/9.12 — Type deduction with pointers, references, and const.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "11-8-Pointers-and-arrays",
+      "path": "docs/11-8-Pointers-and-arrays.md"
+    },
+    {
+      "basename": "11-5-Multidimensional-Arrays",
+      "path": "docs/11-5-Multidimensional-Arrays.md"
+    },
+    {
+      "basename": "11-4-Sorting-an-array-using-selection-sort",
+      "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
+    },
+    {
+      "basename": "11-3-Arrays-and-loops",
+      "path": "docs/11-3-Arrays-and-loops.md"
+    },
+    {
+      "basename": "11-2-Arrays-Part-II",
+      "path": "docs/11-2-Arrays-Part-II.md"
+    },
+    {
+      "basename": "11-1-Arrays-Part-I",
+      "path": "docs/11-1-Arrays-Part-I.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "11-6-C-style-strings",
+      "path": "docs/11-6-C-style-strings.md"
     },
     {
       "basename": "Off-by-one",
@@ -25,20 +89,8 @@
       "path": "docs/iterating.md"
     },
     {
-      "basename": "11.2 — Arrays (Part II)",
-      "path": "docs/11.2 — Arrays (Part II).md"
-    },
-    {
-      "basename": "11.8 — Pointers and arrays",
-      "path": "docs/11.8 — Pointers and arrays.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
-    },
-    {
-      "basename": "11.1 — Arrays (Part I)",
-      "path": "docs/11.1 — Arrays (Part I).md"
     },
     {
       "basename": "subscripts",
@@ -61,46 +113,6 @@
       "path": "docs/0-8-A-few-common-C++-problems.md"
     },
     {
-      "basename": "9.5 — Pass by lvalue reference",
-      "path": "docs/9.5 — Pass by lvalue reference.md"
-    },
-    {
-      "basename": "9.6 — Introduction to pointers",
-      "path": "docs/9.6 — Introduction to pointers.md"
-    },
-    {
-      "basename": "9.7 — Null pointers",
-      "path": "docs/9.7 — Null pointers.md"
-    },
-    {
-      "basename": "9.8 — Pointers and const",
-      "path": "docs/9.8 — Pointers and const.md"
-    },
-    {
-      "basename": "9.9 — Pass by address",
-      "path": "docs/9.9 — Pass by address.md"
-    },
-    {
-      "basename": "9.10 — Pass by address (part 2)",
-      "path": "docs/9.10 — Pass by address (part 2).md"
-    },
-    {
-      "basename": "9.11 — Return by reference and return by address",
-      "path": "docs/9.11 — Return by reference and return by address.md"
-    },
-    {
-      "basename": "9.12 — Type deduction with pointers, references, and const",
-      "path": "docs/9.12 — Type deduction with pointers, references, and const.md"
-    },
-    {
-      "basename": "9.x — Chapter 9 summary and quiz",
-      "path": "docs/9.x — Chapter 9 summary and quiz.md"
-    },
-    {
-      "basename": "10.5 — Introduction to structs, members, and member selection",
-      "path": "docs/10.5 — Introduction to structs, members, and member selection.md"
-    },
-    {
       "basename": "9-1-Introduction-to-compound-data-types",
       "path": "docs/9-1-Introduction-to-compound-data-types.md"
     },
@@ -113,16 +125,8 @@
       "path": "docs/9-3-Lvalue-references.md"
     },
     {
-      "basename": "9.4 — Lvalue references to const",
-      "path": "docs/9.4 — Lvalue references to const.md"
-    },
-    {
       "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
       "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
-    },
-    {
-      "basename": "4.18 — Introduction to std-string_view",
-      "path": "docs/4.18 — Introduction to std-string_view.md"
     },
     {
       "basename": "11-7-std-string-view-part-2",
@@ -195,10 +199,6 @@
     {
       "basename": "ambiguous-match",
       "path": "docs/ambiguous-match.md"
-    },
-    {
-      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
-      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
     }
   ],
   "omittedPaths": [],

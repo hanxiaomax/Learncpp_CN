@@ -17,7 +17,7 @@ In lesson [[4-17-An introduction-to-std-string|4.17 - std::string 简介]], we 
 
 Modern C++ supports two different types of strings: std::string (as part of the standard library), and C-style strings (natively, as inherited from the C language). It turns out that std::string is implemented using C-style strings. In this lesson, we’ll take a closer look at C-style strings.
 
-**C-style strings**
+## C 语言风格字符串
 
 A **C-style string** is simply an array of characters that uses a null terminator. A **null terminator** is a special character (‘\0’, ascii code 0) used to indicate the end of the string. More generically, A C-style string is called a **null-terminated string**.
 
@@ -26,8 +26,6 @@ To define a C-style string, simply declare a char array and initialize it with a
 ```cpp
 char myString[]{ "string" };
 ```
-
-COPY
 
 Although “string” only has 6 letters, C++ automatically adds a null terminator to the end of the string for us (we don’t need to include it ourselves). Consequently, myString is actually an array of length 7!
 
@@ -73,7 +71,6 @@ char myString[]{ "string" }; // ok
 myString = "rope"; // not ok!
 ```
 
-COPY
 
 Since C-style strings are arrays, you can use the [] operator to change individual characters in the string:
 
@@ -89,8 +86,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 This program prints:
 
@@ -114,11 +109,10 @@ int main()
 }
 ```
 
-COPY
 
 In this case, the string “Alex” will be printed, and std::cout will stop at the null terminator. The rest of the characters in the array are ignored.
 
-**C-style strings and std::cin**
+## C 语言风格字符串和 `std::cin`
 
 There are many cases where we don’t know in advance how long our string is going to be. For example, consider the problem of writing a program where we need to ask the user to enter their name. How long is their name? We don’t know until they enter it!
 
@@ -163,7 +157,7 @@ COPY
 
 This call to `cin.getline()` will read up to 254 characters into name (leaving room for the null terminator!). Any excess characters will be discarded. In this way, we guarantee that we will not overflow the array!
 
-**Manipulating C-style strings**
+## 操作 C 语言风格字符串
 
 C++ provides many functions to manipulate C-style strings as part of the `<cstring>` header. Here are a few of the most useful:
 
@@ -293,14 +287,13 @@ int main()
 }
 ```
 
-COPY
 
 Note that we put `strlen(buffer)` outside the loop so that the string length is only calculated once, not every time the loop condition is checked.
 
-**Don’t use C-style strings**
+## 不要使用 C 语言风格的字符串
 
-It is important to know about C-style strings because they are used in a lot of code. However, now that we’ve explained how they work, we’re going to recommend that you avoid them altogether whenever possible! Unless you have a specific, compelling reason to use C-style strings, use std::string (defined in the `<string>` header) instead. std::string is easier, safer, and more flexible. In the rare case that you do need to work with fixed buffer sizes and C-style strings (e.g. for memory-limited devices), we’d recommend using a well-tested 3rd party string library designed for the purpose, or `std::string_view`, which is covered in the next lesson, instead.
+了解C语言风格字符串是很重要的，因为它们在很多代码中都有使用。然而，既然已经解释了它的工作原理，建议你尽量避免使用它们！除非有特定的、令人信服的理由使用C语言风格字符串，否则请使用std::string(定义在`<string>`头文件中)类型的字符串，它更简单、更安全也更灵活。在极少数情况下，你确实需要使用固定的缓冲区大小和C风格的字符串(例如内存有限的设备)，我们建议使用一个测试良好的第三方字符串库，或 `std::string_view`，这将在下一课中讨论。
 
 !!! note "法则"
 
-	Use `std::string` or `std::string_view` (next lesson) instead of C-style strings.
+	使用 `std::string`或 `std::string_view`来代替 C 语言风格的字符串。
