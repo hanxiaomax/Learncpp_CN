@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "11-6-C-style-strings",
+      "path": "docs/11-6-C-style-strings.md"
+    },
+    {
+      "basename": "11-5-Multidimensional-Arrays",
+      "path": "docs/11-5-Multidimensional-Arrays.md"
+    },
+    {
       "basename": "9-11-Return-by-reference-and-return-by-address",
       "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
     },
@@ -53,10 +61,6 @@
       "path": "docs/11-8-Pointers-and-arrays.md"
     },
     {
-      "basename": "11-5-Multidimensional-Arrays",
-      "path": "docs/11-5-Multidimensional-Arrays.md"
-    },
-    {
       "basename": "11-4-Sorting-an-array-using-selection-sort",
       "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
     },
@@ -75,10 +79,6 @@
     {
       "basename": "10-5-Introduction-to-structs-members-and-member-selection",
       "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
-    },
-    {
-      "basename": "11-6-C-style-strings",
-      "path": "docs/11-6-C-style-strings.md"
     },
     {
       "basename": "Off-by-one",
