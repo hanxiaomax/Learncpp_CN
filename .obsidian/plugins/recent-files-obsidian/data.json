@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "11.5 — Multidimensional Arrays",
+      "path": "docs/11.5 — Multidimensional Arrays.md"
+    },
+    {
       "basename": "11.4 — Sorting an array using selection sort",
       "path": "docs/11.4 — Sorting an array using selection sort.md"
+    },
+    {
+      "basename": "11.6 — C-style strings",
+      "path": "docs/11.6 — C-style strings.md"
     },
     {
       "basename": "11.3 — Arrays and loops",
@@ -109,10 +117,6 @@
       "path": "docs/9.4 — Lvalue references to const.md"
     },
     {
-      "basename": "11.6 — C-style strings",
-      "path": "docs/11.6 — C-style strings.md"
-    },
-    {
       "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
       "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
     },
@@ -151,10 +155,6 @@
     {
       "basename": "4-17-An introduction-to-std-string",
       "path": "docs/4-17-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "11.5 — Multidimensional Arrays",
-      "path": "docs/11.5 — Multidimensional Arrays.md"
     },
     {
       "basename": "8-x-Chapter-8-summary-and-quiz",

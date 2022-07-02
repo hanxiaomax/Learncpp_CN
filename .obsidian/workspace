@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11.4 — Sorting an array using selection sort.md",
+            "file": "docs/11.5 — Multidimensional Arrays.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11.4 — Sorting an array using selection sort.md"
+                "file": "docs/11.5 — Multidimensional Arrays.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11.4 — Sorting an array using selection sort.md",
+                "file": "docs/11.5 — Multidimensional Arrays.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
+    "docs/11.5 — Multidimensional Arrays.md",
     "docs/11.4 — Sorting an array using selection sort.md",
+    "docs/11.6 — C-style strings.md",
     "docs/11.3 — Arrays and loops.md",
     "docs/Off-by-one.md",
     "docs/iterating.md",
     "docs/11.2 — Arrays (Part II).md",
     "docs/11.8 — Pointers and arrays.md",
     "docs/MOC.md",
-    "docs/11.1 — Arrays (Part I).md",
-    "docs/11.7 — std-string-view (part 2).md",
-    "docs/subscripts.md"
+    "docs/11.1 — Arrays (Part I).md"
   ]
 }
