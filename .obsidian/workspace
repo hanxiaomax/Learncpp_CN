@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11-10-C-style-string-symbolic-constants.md",
+            "file": "docs/11-14-Void-pointers.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-10-C-style-string-symbolic-constants.md"
+                "file": "docs/11-14-Void-pointers.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-10-C-style-string-symbolic-constants.md",
+                "file": "docs/11-14-Void-pointers.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
+    "docs/11-14-Void-pointers.md",
+    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
+    "docs/11-13-For-each-loops.md",
+    "docs/11-12-Dynamically-allocating-arrays.md",
+    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
     "docs/11-10-C-style-string-symbolic-constants.md",
     "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
     "docs/11-8-Pointers-and-arrays.md",
     "docs/11-7-std-string-view-part-2.md",
-    "docs/11-x-Chapter-11-comprehensive-quiz.md",
-    "docs/11-19-Introduction-to-standard-library-algorithms.md",
-    "docs/11-18-Introduction-to-iterators.md",
-    "docs/11-17-An-introduction-to-std-vector.md",
-    "docs/11-16-An-introduction-to-std-array.md",
-    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+    "docs/11-x-Chapter-11-comprehensive-quiz.md"
   ]
 }

@@ -1,12 +1,12 @@
 ---
-title: 
-alias: 
+title: 11.10 - C 风格字符串符号常量
+alias: 11.10 - C 风格字符串符号常量
 origin: /c-style-string-symbolic-constants/
 origin_title: "11.10 — C-style string symbolic constants"
-time: 2022-1-2
+time: 2022-4-8
 type: translation
 tags:
-- unset
+- symbolic constants
 ---
 
 ??? note "关键点速记"
