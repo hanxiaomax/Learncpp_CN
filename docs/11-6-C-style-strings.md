@@ -11,7 +11,18 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- C语言字符串就是一个字符数组，最后接着一个空字符。
+	- 打印字符串时，遇到空字符会停止，如果空字符被覆盖，打印函数就会一直打印直到遇到下一个0
+	- 调用 `std::cin.getline(name, std::size(name));` 可以读取最多 254 个字符到 `name`（为空字符保留一个空间！）。超出的字符会被忽略掉。通过这个方法，可以避免数组溢出！
+	- 操作C语言字符串的常用函数：
+		- `strcpy()`  -- 将字符串拷贝到另一个字符串
+		- `strncpy()`  -- 将字符串拷贝到另一个字符串(指定buffer大小)，但不能确保null结尾  
+		- `strcpy_s()`，它添加了一个新参数来定义目标的大小（C++11）
+		- `strcat()` -- 将一个字符串拼接到另一个字符串后面（危险操作）
+		- `strncat()` -- 将一个字符串拼接到另一个字符串后面 (会检查buffer长度)  
+		- `strcmp()` -- 比较两个字符串（相等返回 0）
+		- `strncmp()` -- 比较两个字符串中特定格式的字符（相等返回 0）
+	- 不要使用 C 语言风格的字符串
 
 在[[4-17-An introduction-to-std-string|4.17 - std::string 简介]]中，我们将字符定义为一系列字符的集合，例如 “Hello, world!”。字符串c++中处理文本的主要方式，而 `std::string` 可以使C++中处理字符串变得简单。
 
@@ -150,13 +161,14 @@ int main()
 }
 ```
 
-调用 `cin.getline()` will read up to 254 characters into name (leaving room for the null terminator!). Any excess characters will be discarded. In this way, we guarantee that we will not overflow the array!
+调用 `std::cin.getline(name, std::size(name));` 可以读取最多 254 个字符到 `name`（为空字符保留一个空间！）。超出的字符会被忽略掉。通过这个方法，可以避免数组溢出！
+
 
 ## 操作 C 语言风格字符串
 
-C++ provides many functions to manipulate C-style strings as part of the `<cstring>` header. Here are a few of the most useful:
+C++提供了许多函数来操作C风格的字符串，它们是  `<cstring>` 头文件的一部分。常用的函数列举如下：
 
-strcpy() allows you to copy a string to another string. More commonly, this is used to assign a value to a string:
+`strcpy()` 可以将一个字符串复制到另一个字符串。更常见的是，它被用来给一个字符串赋值:
 
 ```cpp
 #include <cstring>
@@ -173,9 +185,7 @@ int main()
 }
 ```
 
-COPY
-
-However, `strcpy()` can easily cause array overflows if you’re not careful! In the following program, dest isn’t big enough to hold the entire string, so array overflow results.
+不过，如果不小心的话，`strcpy()` 很容易导致数组的溢出。在下面的例子中，目标地址的大小不足以容纳全部字符串，这就会导致数组溢出。
 
 ```cpp
 #include <cstring>
@@ -192,11 +202,10 @@ int main()
 }
 ```
 
-COPY
+许多程序员建议使用 `strncpy()` ，使用它可以指定缓冲区的大小，并确保不会发生溢出。不幸的是，' `strncpy()` 不能确保字符串以空字符结尾，这仍然为数组溢出留下了隐患。
 
-Many programmers recommend using `strncpy()` instead, which allows you to specify the size of the buffer, and ensures overflow doesn’t occur. Unfortunately, `strncpy()` doesn’t ensure strings are null terminated, which still leaves plenty of room for array overflow.
+在C++ 11中，首选 `strcpy_s()`，它添加了一个新参数来定义目标的大小。然而，并不是所有的编译器都支持这个函数，要使用它，你必须定义 `STDC_WANT_LIB_EXT1` 并将其定义为 1 。
 
-In C++11, `strcpy_s()` is preferred, which adds a new parameter to define the size of the destination. However, not all compilers support this function, and to use it, you have to define `STDC_WANT_LIB_EXT1` with integer value 1.
 
 ```cpp
 #define __STDC_WANT_LIB_EXT1__ 1
@@ -214,11 +223,10 @@ int main()
 }
 ```
 
-COPY
+因为并不是所有的编译器都支持 `strcpy_s()` ，所以 `strlcpy()` 是一个很受欢迎的选择——尽管它不是标准的，因此很多编译器都不包含它。它也有自己的一系列问题。简而言之，如果您需要复制C风格的字符串，这里没有普遍推荐的解决方案。
 
-Because not all compilers support `strcpy_s()`, `strlcpy()` is a popular alternative -- even though it’s non-standard, and thus not included in a lot of compilers. It also has its own set of issues. In short, there’s no universally recommended solution here if you need to copy a C-style string.
+另一个有用的函数是 `strlen()` 函数，它返回C风格字符串的长度(没有空字符)。
 
-Another useful function is the `strlen()` function, which returns the length of the C-style string (without the null terminator).
 
 ```cpp
 #include <iostream>
@@ -236,23 +244,22 @@ int main()
 }
 ```
 
-The above example prints:
-
+打印结果如下：
 ```
 My name is: Alex
 Alex has 4 letters.
 Alex has 20 characters in the array.
 ```
 
-Note the difference between `strlen()` and `std::size()`. `strlen()` prints the number of characters before the null terminator, whereas `std::size` (or the `sizeof()` trick) returns the size of the entire array, regardless of what’s in it.
+注意辨析 `strlen()` 和 `std::size()`的区别。 `strlen()` 会返回空字符前所有字符的个数，而 `std::size` (或者`sizeof()` 技巧)则会返回整个数组的大小，不管数组内部存放了什么。
 
-Other useful functions:  
-`strcat()` -- Appends one string to another (dangerous)  
-`strncat()` -- Appends one string to another (with buffer length check)  
-`strcmp()` -- Compare two strings (returns 0 if equal)  
-`strncmp()` -- Compare two strings up to a specific number of characters (returns 0 if equal)
+其他函数：
+`strcat()` -- 将一个字符串拼接到另一个字符串后面（危险操作）
+`strncat()` -- 将一个字符串拼接到另一个字符串后面 (会检查buffer长度)  
+`strcmp()` -- 比较两个字符串（相等返回 0）
+`strncmp()` -- 比较两个字符串中特定格式的字符（相等返回 0）
 
-Here’s an example program using some of the concepts in this lesson:
+下面是一个使用本课中的一些概念编写的示例程序：
 
 ```cpp
 #include <cstring>
@@ -283,7 +290,7 @@ int main()
 ```
 
 
-Note that we put `strlen(buffer)` outside the loop so that the string length is only calculated once, not every time the loop condition is checked.
+注意我们在循环外使用 `strlen(buffer)`，这样它之后计算一次，而不是每次循环都去计算。
 
 ## 不要使用 C 语言风格的字符串
 

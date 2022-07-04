@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11-6-C-style-strings.md",
+            "file": "docs/11-10-C-style-string-symbolic-constants.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,13 +66,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -88,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-6-C-style-strings.md"
+                "file": "docs/11-10-C-style-string-symbolic-constants.md"
               }
             }
           },
@@ -109,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-6-C-style-strings.md",
+                "file": "docs/11-10-C-style-string-symbolic-constants.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,15 +128,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/11-6-C-style-strings.md",
-    "docs/11-5-Multidimensional-Arrays.md",
-    "docs/9-11-Return-by-reference-and-return-by-address.md",
-    "docs/9-10-Pass-by-address-part-2.md",
-    "docs/9-8-Pointers-and-const.md",
-    "docs/4-18-Introduction-to-std-string_view.md",
-    "docs/9-9-Pass-by-address.md",
-    "docs/9-7-Null-pointers.md",
-    "docs/9-6-Introduction-to-pointers.md",
-    "docs/9-5-Pass-by-lvalue-reference.md"
+    "docs/11-10-C-style-string-symbolic-constants.md",
+    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
+    "docs/11-8-Pointers-and-arrays.md",
+    "docs/11-7-std-string-view-part-2.md",
+    "docs/11-x-Chapter-11-comprehensive-quiz.md",
+    "docs/11-19-Introduction-to-standard-library-algorithms.md",
+    "docs/11-18-Introduction-to-iterators.md",
+    "docs/11-17-An-introduction-to-std-vector.md",
+    "docs/11-16-An-introduction-to-std-array.md",
+    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
   ]
 }

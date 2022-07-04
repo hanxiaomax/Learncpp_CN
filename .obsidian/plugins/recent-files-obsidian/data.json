@@ -1,6 +1,66 @@
 {
   "recentFiles": [
     {
+      "basename": "11-10-C-style-string-symbolic-constants",
+      "path": "docs/11-10-C-style-string-symbolic-constants.md"
+    },
+    {
+      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
+      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
+    },
+    {
+      "basename": "11-8-Pointers-and-arrays",
+      "path": "docs/11-8-Pointers-and-arrays.md"
+    },
+    {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
+      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+    },
+    {
+      "basename": "11-12-Dynamically-allocating-arrays",
+      "path": "docs/11-12-Dynamically-allocating-arrays.md"
+    },
+    {
+      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
+      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+    },
+    {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "11-6-C-style-strings",
       "path": "docs/11-6-C-style-strings.md"
     },
@@ -53,14 +113,6 @@
       "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     },
     {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "11-8-Pointers-and-arrays",
-      "path": "docs/11-8-Pointers-and-arrays.md"
-    },
-    {
       "basename": "11-4-Sorting-an-array-using-selection-sort",
       "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
     },
@@ -87,10 +139,6 @@
     {
       "basename": "iterating",
       "path": "docs/iterating.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "subscripts",
@@ -129,10 +177,6 @@
       "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
     },
     {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
-    },
-    {
       "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
       "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
     },
@@ -151,54 +195,6 @@
     {
       "basename": "4-15-Literals",
       "path": "docs/4-15-Literals.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
-    },
-    {
-      "basename": "4-17-An introduction-to-std-string",
-      "path": "docs/4-17-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "8-8-Type-deduction-for-functions",
-      "path": "docs/8-8-Type-deduction-for-functions.md"
-    },
-    {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
-    },
-    {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
-    },
-    {
-      "basename": "8-2-Floating-point-and-integral-promotion",
-      "path": "docs/8-2-Floating-point-and-integral-promotion.md"
-    },
-    {
-      "basename": "8-12-Default-arguments",
-      "path": "docs/8-12-Default-arguments.md"
-    },
-    {
-      "basename": "8-15-Function-templates-with-multiple-template-types",
-      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
-    },
-    {
-      "basename": "8-14-Function-template-instantiation",
-      "path": "docs/8-14-Function-template-instantiation.md"
-    },
-    {
-      "basename": "8-13-Function-templates",
-      "path": "docs/8-13-Function-templates.md"
-    },
-    {
-      "basename": "ambiguous-match",
-      "path": "docs/ambiguous-match.md"
     }
   ],
   "omittedPaths": [],
