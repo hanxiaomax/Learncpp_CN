@@ -20,17 +20,17 @@ tags:
 
 ## C 语言风格字符串
 
-A **C-style string** is simply an array of characters that uses a null terminator. A **null terminator** is a special character (‘\0’, ascii code 0) used to indicate the end of the string. More generically, A C-style string is called a **null-terminated string**.
+**C语言风格字符串**就是一个以空字符(`\0`)结尾的字符数组。**空字符**是一个特殊的字符(`'\0'`， ascii 码为 0) ，用于表示字符的结尾。所以C语言风格字符串也被称为空字符结尾的字符串。
 
-To define a C-style string, simply declare a char array and initialize it with a string literal:
+定义C语言风格字符串，可以声明一个字符数组，然后使用字符串字面量对其进行初始化。
 
 ```cpp
 char myString[]{ "string" };
 ```
 
-Although “string” only has 6 letters, C++ automatically adds a null terminator to the end of the string for us (we don’t need to include it ourselves). Consequently, myString is actually an array of length 7!
+尽管 “string” 只有6个字母，C++会自动在其末尾添加一个空字符表明结尾（不需要程序员自己操作）。这样一来，`myString` 数组的长度实际上为 7！
 
-We can see the evidence of this in the following program, which prints out the length of the string, and then the ASCII values of all of the characters:
+我们可以在下面的程序中看到这一点的证据，它打印出字符串的长度以及所有字符的ASCII值：
 
 ```cpp
 #include <iostream>
@@ -52,20 +52,18 @@ int main()
 }
 ```
 
-COPY
-
-This produces the result:
+打印结果为：
 
 ```
 string has 7 characters.
 115 116 114 105 110 103 0
 ```
 
-That 0 is the ASCII code of the null terminator that has been appended to the end of the string.
+`0` 是添加到字符串末尾的空结束符的ASCII码。
 
-When declaring strings in this manner, it is a good idea to use [] and let the compiler calculate the length of the array. That way if you change the string later, you won’t have to manually adjust the array length.
+当以这种方式声明字符串时，最好使用`[]`，并让编译器计算数组的长度。这样，如果以后需要修改字符串，就不必手动调整数组的长度。
 
-One important point to note is that C-style strings follow _all_ the same rules as arrays. This means you can initialize the string upon creation, but you can not assign values to it using the assignment operator after that!
+需要注意的一点是，C风格的字符串遵循与数组相同的规则。这意味着你可以在创建时初始化字符串，但你不能在之后使用赋值操作符给它赋值!
 
 ```cpp
 char myString[]{ "string" }; // ok
@@ -73,7 +71,7 @@ myString = "rope"; // not ok!
 ```
 
 
-Since C-style strings are arrays, you can use the [] operator to change individual characters in the string:
+因为 C 风格字符串是数组，所以你可以使用下标运算符 `[]` 来改变字符串中的元素：
 
 ```cpp
 #include <iostream>
@@ -88,15 +86,15 @@ int main()
 }
 ```
 
-This program prints:
+程序打印：
 
 ```
 spring
 ```
 
-When printing a C-style string, std::cout prints characters until it encounters the null terminator. If you accidentally overwrite the null terminator in a string (e.g. by assigning something to myString[6]), you’ll not only get all the characters in the string, but std::cout will just keep printing everything in adjacent memory slots until it happens to hit a 0!
+在使用 C 风格字符串时，`std::cout` 会依次打印空字符。如果你不小心覆盖了字符串中的空字符（例如：给`myString[6]`赋值），那么你得到的打印结果不仅仅是完整的字符串，`std::cout`还会继续打印相邻内存中的内容，直到遇到 0。
 
-Note that it’s fine if the array is larger than the string it contains:
+注意，字符数组的大小比字符串大是可以的：
 
 ```cpp
 #include <iostream>
@@ -111,13 +109,13 @@ int main()
 ```
 
 
-In this case, the string “Alex” will be printed, and std::cout will stop at the null terminator. The rest of the characters in the array are ignored.
+在这个例子中，“Alex” 会被打印出来，然后 `std::cout` 会在遇到空字符时停止打印。数组中后续内容会被忽略。 
 
 ## C 语言风格字符串和 `std::cin`
 
-There are many cases where we don’t know in advance how long our string is going to be. For example, consider the problem of writing a program where we need to ask the user to enter their name. How long is their name? We don’t know until they enter it!
+在很多情况下我们都不知道字符串会有多长。例如，考虑这样一个问题：编写一个程序，我们需要要求用户输入他们的名字。他们的名字有多长？在用户输入被读取之前，我们都不知道！
 
-In this case, we can declare an array larger than we need:
+在本例中，我们声明一个比实际需要大的多的数组：
 
 ```cpp
 #include <iostream>
@@ -133,11 +131,9 @@ int main()
 }
 ```
 
-COPY
+在上面的程序中，我们为name分配了一个255个字符的数组并假设用户不会输入这么多字符。尽管这在C/C++编程中很常见，但这是一种糟糕的编程实践，因为并没有办法阻止用户输入超过254个字符(不管是无意的，还是恶意的)。
 
-In the above program, we’ve allocated an array of 255 characters to name, guessing that the user will not enter this many characters. Although this is commonly seen in C/C++ programming, it is poor programming practice, because nothing is stopping the user from entering more than 254 characters (either unintentionally, or maliciously).
-
-The recommended way of reading C-style strings using `std::cin` is as follows:
+使用 `std::cin` 读取C风格字符串的推荐方法如下：
 
 ```cpp
 #include <iostream>
@@ -154,9 +150,7 @@ int main()
 }
 ```
 
-COPY
-
-This call to `cin.getline()` will read up to 254 characters into name (leaving room for the null terminator!). Any excess characters will be discarded. In this way, we guarantee that we will not overflow the array!
+调用 `cin.getline()` will read up to 254 characters into name (leaving room for the null terminator!). Any excess characters will be discarded. In this way, we guarantee that we will not overflow the array!
 
 ## 操作 C 语言风格字符串
 
