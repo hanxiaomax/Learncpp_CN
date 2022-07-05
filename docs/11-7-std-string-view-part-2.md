@@ -7,21 +7,22 @@ time: 2022-1-2
 type: translation
 tags:
 - std::string_view
+- C++17
 ---
 
 ??? note "关键点速记"
-	
+	- 
 
 
 !!! info "作者注"
 
-	本课程的部分内容被移动到了[[4-18-Introduction-to-std-string_view]]Some of the content of this lesson was moved into the introduction to std::string_view lesson ([4.18 -- Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/)). As a result, this lesson contains some duplicative content that has not been cleaned up yet. This will be addressed when this chapter is rewritten (soon).
+	本课程的部分内容被移动到了[[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]] 。因此，这节课中有部分尚未清理的重复部分。
 
-In the previous lesson, we talked about C-style strings, and the dangers of using them. C-style strings are fast, but they’re not as easy to use and as safe as `std::string`.
+在上一节课中，我们介绍了C语言风格的字符串，但是使用它们的风险很高。尽管C语言风格字符串的性能很好，但是它们并不易用，安全性也不如 `std::string`。
 
-But `std::string` (which we covered in lesson [4.17 -- Introduction to std::string](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/)), has some of its own downsides, particularly when it comes to const strings.
+但是 `std::string` (在 [[4-17-An introduction-to-std-string|4.17 - std::string 简介]] 中介绍)也有它的缺点，尤其是当我们需要常量字符串的时候。
 
-Consider the following example:
+考虑下面的例子：
 
 ```cpp
 #include <iostream>
@@ -39,25 +40,27 @@ int main()
 }
 ```
 
-COPY
 
-As expected, this prints
+和期望的一样，打印结果如下：
 
+```
 hello hello hello
+```
 
-Internally, `main` copies the string “hello” 3 times, resulting in 4 copies. First, there is the string literal “hello”, which is known at compile-time and stored in the binary. One copy is created when we create the `char[]`. The following two `std::string` objects create one copy of the string each. Because `std::string` is designed to be modifiable, each `std::string` must contain its own copy of the string, so that a given `std::string` can be modified without affecting any other `std::string` object.
+`main`函数会将字符串`"hello"` 复制3次，总共得到 4个副本。首先是字符串字面量`“hello”`，它在编译时已知，并存储在二进制文件中。当我们创建 `char[]` 时，会创建一个副本。接下来的两个 `std::string` 对象分别创建一个字符串副本。因为 `std::string` 被设计为可修改的，每个`std::string` 必须包含它自己的字符串副本，这样给定的 `std::string` 可以被修改而不影响任何其他的 `std::string` 对象。
 
-This holds true for const `std::string`, even though they can’t be modified.
 
-Introducing std::string_view
+即使 const `std::string` 也存在这个问题，即使它们不能修改。
 
-Consider a window in your house, looking at a car sitting on the street. You can look through the window and see the car, but you can’t touch or move the car. Your window just provides a view to the car, which is a completely separate object.
+## `std::string_view`
 
-C++17 introduces another way of using strings, `std::string_view`, which lives in the <string_view> header.
+想象这样一个场景，你坐在家中，从窗户望向街道的时候你看到一辆汽车，你可以看到它，但你却无法触摸或者移动它。你的窗户只是为你提供了一个可以观察汽车的视图，而车则是完全独立的对象。
 
-Unlike `std::string`, which keeps its own copy of the string, `std::string_view` provides a _view_ of a string that is defined elsewhere.
+C++17 引入了使用字符串的另外一种方式——`std::string_view`，它通过`<string_view>` 头文件提供。
 
-We can re-write the above code to use `std::string_view` by replacing every `std::string` with `std::string_view`.
+和`std::string`不同的是，它不会保存一份字符串的副本，`std::string_view` 只是提供了一个被定义在**其他地方**的字符串的视图。
+
+我们可以使用 `std::string_view` 重新编写上面的代码：
 
 ```cpp
 #include <iostream>

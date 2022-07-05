@@ -1,6 +1,6 @@
 ---
-title: 4.18 - std:: string_view 简介
-alias: 4.18 - std:: string_view 简介
+title: 4.18 - std::string_view 简介
+alias: 4.18 - std::string_view 简介
 origin: /introduction-to-stdstring_view/
 origin_title: "4.18 — Introduction to std:: string_view"
 time: 2022-6-18
@@ -72,7 +72,7 @@ int main()
 }
 ```
 
-This example makes two copies of the C-style string “Hello, world!”: one when we initialize `s` in `main()`, and another when we initialize parameter `str`in `printString()`. That’s a lot of needless copying just to print a string!
+在这个例子中，C语言风格的字符串”Hello world!“ 被复制了两次。第一次是在`main()`函数中对`s`初始化的时候，另外一次是在`printString()`中初始化参数`str`的时候。为了打印一个字符串，我们需要进行很多次不必要的拷贝！
 
 ## `std:: string_view`（C++17）
 
