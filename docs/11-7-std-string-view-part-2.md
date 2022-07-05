@@ -14,6 +14,9 @@ tags:
     - `std:: string_view` 提供了一个观察字符串的视图，字符串本身存放在二进制文件中
     - 创建 `std:: string_view` 时不会发生复制，但是修改时会影响到所有的对象。
     - `remove_prefix`和`remove_suffix`分别用于从字符串视图的左侧和右侧删除字符（不会影响到原字符串）
+    - 要将`std:: string_view` 转换为C风格的字符串，我们可以先转换为`std:: string`
+    - 使用 `str.c_str()`获取C风格字符串
+    - 如果我们想写一个接受字符串形参的函数，将形参设置为 `std:: string_view` 是最灵活的选择，因为它可以高效地配合C风格的字符串参数(包括字符串字面量)、`std:: string`参数(将隐式转换为' std:: string_view ')和 `std:: string_view`参数来工作：
 
 !!! info "作者注"
 
@@ -205,10 +208,9 @@ int main()
 aeiou
 ```
 
-## 将 `std:: string_view` 转换为 C 风格字符串
+## 将 `std::string_view` 转换为 C 风格字符串
 
-Some old functions (such as the old strlen function) still expect C-style strings. To convert a `std:: string_view` to a C-style string, we can do so by first converting to a `std:: string`:
-一些旧的函数(比如旧的 `strlen` 函数)仍然期望使用C风格的字符串。要将' std:: string_view '转换为C风格的字符串，我们可以先转换为' std:: string ':
+一些旧的函数(比如旧的 `strlen` 函数)仍然期望使用C风格的字符串。要将`std:: string_view` 转换为C风格的字符串，我们可以先转换为`std:: string`：
 
 ```cpp
 #include <cstring>
@@ -241,13 +243,13 @@ int main()
 ball has 4 letter(s)
 ```
 
-However, creating a `std:: string` every time we want to pass a `std:: string_view` as a C-style string is expensive, so this should be avoided if possible.
+不过，每次`std:: string_view`需要被作为C风格字符串传递时，都需要创建一个`std::string`，这么做的开销是非常大的，因此应该尽量避免这么做。
 
-## Passing strings by const std:: string& or std:: string_view?
+## 通过 `const std:: string&` 还是 `std:: string_view` 来传递字符串？
 
-One question that often comes up: is it better to pass strings by `const std:: string&` or `std:: string_view`?
+一个经常遇到的问题是：应该通过 `const std:: string&` 还是 `std:: string_view` 传递字符串？那种方式最好？
 
-If we want to write a function that takes a string parameter, making the parameter a `std:: string_view` is the most flexible choice, because it can work efficiently with C-style string arguments (including string literals), `std:: string` arguments (which will implicitly convert to `std:: string_view`), and `std:: string_view` arguments:
+如果我们想写一个接受字符串形参的函数，将形参设置为 `std:: string_view` 是最灵活的选择，因为它可以高效地配合C风格的字符串参数(包括字符串字面量)、`std:: string`参数(将隐式转换为' std:: string_view ')和 `std:: string_view`参数来工作：
 
 ```cpp
 #include <iostream>
@@ -272,11 +274,14 @@ int main()
 }
 ```
 
-COPY
-
 Note that we pass `std:: string_view` by value instead of by const reference. This is because `std:: string_view` is typically fast to copy, and pass by value is optimal for cheap to copy types.
 
 There is one case where making the parameter a `const std:: string&` is generally better: if your function needs to call some other function that takes a C-style string or `std:: string` parameter, then `const std:: string&` may be a better choice, as `std:: string_view` is not guaranteed to be null-terminated (something that C-style string functions expect) and does not efficiently convert back to a std:: string.
+
+注意，我们通过值传递`std:: string_view`，而不是通过 `const` 引用类型来传递。这是因为`std:: string_view` 的复制速度通常较快，而[[pass-by-value|按值传递]]对于复制开销较小的类型来说是最优的。
+
+有一种情况，将形参设置为 `const std:: string&` 通常更好：如果你的函数需要调用其他接受C风格字符串或`std:: string` 形参的函数，那么 `const std:: string&` 可能是更好的选择，因为 `std:: string_view` 不能保证以空字符结束(而这是C风格字符串函数所期望的)，并且不能有效地转换回`std:: string`。
+
 
 !!! success "最佳实践"
 
@@ -286,7 +291,7 @@ There is one case where making the parameter a `const std:: string&` is genera
 
     Many examples in future lessons were written prior to the introduction of `std:: string_view`, and still use `const std:: string&` for function parameters when `std:: string_view` should be preferred. We’re working on cleaning these up.
 
-## Ownership issues
+## 所有权问题
 
 A `std:: string_view`‘s lifetime is independent of that of the string it is viewing (meaning the string being viewed can be destroyed before the `std:: string_view` object). If this happens, then accessing the `std:: string_view` will cause undefined behavior.
 
@@ -349,7 +354,7 @@ The same can happen when we create a `std:: string_view` from a `std:: string
 
     Make sure that the underlying string viewed with a `std:: string_view` does not go out of scope and isn’t modified while using the std:: string_view.
 
-## Opening the window (kinda) via the data() function
+## 使用`data()`函数来打开”窗户“
 
 The string being viewed by a `std:: string_view` can be accessed by using the `data()` function, which returns a C-style string. This provides fast access to the string being viewed (as a C-string). But it should also only be used if the `std:: string_view`‘s view hasn’t been modified (e.g. by `remove_prefix` or `remove_suffix`) and the string being viewed is null-terminated.
 
@@ -423,7 +428,7 @@ Clearly this isn’t what we’d intended, and is a consequence of trying to acc
 
     Only use `std:: string_view:: data()` if the `std:: string_view`‘s view hasn’t been modified and the string being viewed is null-terminated. Using `std:: string_view:: data()` of a non-null-terminated string can cause undefined behavior.
 
-## Incomplete implementation
+## 不完整的实现
 
 Being a relatively recent feature, `std:: string_view` isn’t implemented as well as it could be.
 
