@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "4-18-Introduction-to-std-string_view",
+      "path": "docs/4-18-Introduction-to-std-string_view.md"
+    },
+    {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
+      "basename": "11-6-C-style-strings",
+      "path": "docs/11-6-C-style-strings.md"
+    },
+    {
+      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
+      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
+    },
+    {
       "basename": "11-14-Void-pointers",
       "path": "docs/11-14-Void-pointers.md"
     },
@@ -25,16 +41,8 @@
       "path": "docs/11-10-C-style-string-symbolic-constants.md"
     },
     {
-      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
-      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
-    },
-    {
       "basename": "11-8-Pointers-and-arrays",
       "path": "docs/11-8-Pointers-and-arrays.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
     },
     {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
@@ -61,10 +69,6 @@
       "path": "docs/MOC.md"
     },
     {
-      "basename": "11-6-C-style-strings",
-      "path": "docs/11-6-C-style-strings.md"
-    },
-    {
       "basename": "11-5-Multidimensional-Arrays",
       "path": "docs/11-5-Multidimensional-Arrays.md"
     },
@@ -79,10 +83,6 @@
     {
       "basename": "9-8-Pointers-and-const",
       "path": "docs/9-8-Pointers-and-const.md"
-    },
-    {
-      "basename": "4-18-Introduction-to-std-string_view",
-      "path": "docs/4-18-Introduction-to-std-string_view.md"
     },
     {
       "basename": "9-9-Pass-by-address",

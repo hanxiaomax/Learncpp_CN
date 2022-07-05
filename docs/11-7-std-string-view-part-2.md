@@ -13,9 +13,9 @@ tags:
 	
 
 
-Author’s note
+!!! info "作者注"
 
-Some of the content of this lesson was moved into the introduction to std::string_view lesson ([4.18 -- Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/)). As a result, this lesson contains some duplicative content that has not been cleaned up yet. This will be addressed when this chapter is rewritten (soon).
+	本课程的部分内容被移动到了[[4-18-Introduction-to-std-string_view]]Some of the content of this lesson was moved into the introduction to std::string_view lesson ([4.18 -- Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/)). As a result, this lesson contains some duplicative content that has not been cleaned up yet. This will be addressed when this chapter is rewritten (soon).
 
 In the previous lesson, we talked about C-style strings, and the dangers of using them. C-style strings are fast, but they’re not as easy to use and as safe as `std::string`.
 
