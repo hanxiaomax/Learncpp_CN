@@ -274,10 +274,6 @@ int main()
 }
 ```
 
-Note that we pass `std:: string_view` by value instead of by const reference. This is because `std:: string_view` is typically fast to copy, and pass by value is optimal for cheap to copy types.
-
-There is one case where making the parameter a `const std:: string&` is generally better: if your function needs to call some other function that takes a C-style string or `std:: string` parameter, then `const std:: string&` may be a better choice, as `std:: string_view` is not guaranteed to be null-terminated (something that C-style string functions expect) and does not efficiently convert back to a std:: string.
-
 注意，我们通过值传递`std:: string_view`，而不是通过 `const` 引用类型来传递。这是因为`std:: string_view` 的复制速度通常较快，而[[pass-by-value|按值传递]]对于复制开销较小的类型来说是最优的。
 
 有一种情况，将形参设置为 `const std:: string&` 通常更好：如果你的函数需要调用其他接受C风格字符串或`std:: string` 形参的函数，那么 `const std:: string&` 可能是更好的选择，因为 `std:: string_view` 不能保证以空字符结束(而这是C风格字符串函数所期望的)，并且不能有效地转换回`std:: string`。
