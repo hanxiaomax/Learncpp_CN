@@ -5,6 +5,14 @@
       "path": "docs/11-7-std-string-view-part-2.md"
     },
     {
+      "basename": "going-out-of-scope",
+      "path": "docs/going-out-of-scope.md"
+    },
+    {
+      "basename": "dangling",
+      "path": "docs/dangling.md"
+    },
+    {
       "basename": "4-18-Introduction-to-std-string_view",
       "path": "docs/4-18-Introduction-to-std-string_view.md"
     },
@@ -191,10 +199,6 @@
     {
       "basename": "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal",
       "path": "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
-    },
-    {
-      "basename": "4-15-Literals",
-      "path": "docs/4-15-Literals.md"
     }
   ],
   "omittedPaths": [],
