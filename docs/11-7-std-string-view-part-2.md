@@ -19,7 +19,8 @@ tags:
     - 如果我们想写一个接受字符串形参的函数，将形参设置为 `std:: string_view` 是最灵活的选择，因为它可以高效地配合C风格的字符串参数(包括字符串字面量)、`std:: string`参数(将隐式转换为' std:: string_view ')和 `std:: string_view`参数来工作：
     - 优先使用`std:: string_view`([[pass-by-value|按值传递]])而不是`const std:: string&`，除非你需要调用其他要求使用C风格字符串或`std::string`的函数。
     - 确保`std::string_view`观察的字符串不会[[going-out-of-scope|离开作用域]]，也不会被修改。
-	    - 因为 `std::string_view` 的生命周期是独立于它“观察”的字符串的（也就是说该字符串对象可以在先于`std:: string_view`被销毁)。这种情况下访问`std::string_view`就会造成[[1-6-Uninitialized-variables-and-undefined-behavior|未定义行为]]。
+	    - 因为 `std::string_view` 的生命周期是独立于它“观察”的字符串的（也就是说该字符串对象可以在先于`std::string_view`被销毁)。这种情况下访问`std::string_view`就会造成[[1-6-Uninitialized-variables-and-undefined-behavior|未定义行为]]。
+    - 只有在`std::string_view`没有被修改的情况下且字符串以空结束符结尾的情况下使用`std::string_view::data()` 如果字符串没有以空结束符结尾，则`std::string_view::data()`会导致未定义行为。
 
 !!! info "作者注"
 
@@ -355,9 +356,9 @@ Your name is �P@�P@
     
 ## 使用`data()`函数来打开”窗户“
 
-`std::string_view` 观察的字符串，可以通过`data()` 函数来访问，它返回的结果是一个C风格的字符串。这种方式提供了一种快速访问被观察字符串的方法。但是它只能在`std::string_view` 视图没有被修改的时候使用(例如通过 `remove_prefix` or `remove_suffix`) and the string being viewed is null-terminated.
+`std::string_view` 观察的字符串，可以通过`data()` 函数来访问，它返回的结果是一个C风格的字符串。这种方式提供了一种快速访问被观察字符串的方法。但是它只能在`std::string_view` 视图没有被修改的时候使用(例如通过 `remove_prefix` 或 `remove_suffix`修改视图)，，该字符串是有空结束符的。
 
-In the following example, `std:: strlen` doesn’t know what a `std:: string_view` is, so we need to pass it `str.data()`:
+在下面的例子中，`std::strlen` 函数不能识别 `std:: string_view` ，因此我们必须传入 `str.data()`：
 
 ```cpp
 #include <cstring> // For std::strlen
@@ -380,14 +381,12 @@ int main()
 }
 ```
 
-COPY
-
 ```
 balloon
 7
 ```
 
-When a `std:: string_view` has been modified, `data()` doesn’t always do what we’d like it to. The following example demonstrates what happens when we access `data()` after modifying the view:
+当 `std:: string_view` 被修改后，`data()` 就不能完成我们期望的任务了。下面的例子展示了当视图被修改后`data()` 的行为：
 
 ```cpp
 #include <cstring>
@@ -413,7 +412,6 @@ int main()
 }
 ```
 
-COPY
 
 ```
 all has 6 letter(s)
@@ -421,11 +419,11 @@ str.data() is alloon
 str is all
 ```
 
-Clearly this isn’t what we’d intended, and is a consequence of trying to access the data() of a `std:: string_view` that has been modified. The length information about the string is lost when we access `data()`. `std:: strlen` and `std:: cout` keep reading characters from the underlying string until they find the null-terminator, which is at the end of “balloon”.
+这显然不是我们期望的，这是因为我们使用 `data()`来访问一个已经被修改的 `std::string_view`。字符串的长度信息在我们使用`data()`时就丢失了，`std:: strlen` 和 `std:: cout` 会持续读取直到遇到第一个空结束符，也就是“balloon”的末尾。
 
 !!! warning "注意"
 
-    Only use `std:: string_view:: data()` if the `std:: string_view`‘s view hasn’t been modified and the string being viewed is null-terminated. Using `std:: string_view:: data()` of a non-null-terminated string can cause undefined behavior.
+    只有在`std::string_view`没有被修改的情况下且字符串以空结束符结尾的情况下使用`std:: string_view:: data()` 如果字符串没有以空结束符结尾，则`std:: string_view:: data()`会导致未定义行为。
 
 ## 不完整的实现
 
