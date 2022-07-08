@@ -1,6 +1,6 @@
 ---
-title: 11.11 - for-each 循环
-alias: 11.11 - for-each 循环
+title: 11.13 - for-each 循环
+alias: 11.13 - for-each 循环
 origin: /none/
 origin_title: "none"
 time: 2022-1-2
@@ -13,7 +13,7 @@ tags:
 	
 
 
-In lesson [11.3 -- Arrays and loops](https://www.learncpp.com/cpp-tutorial/arrays-and-loops/), we showed examples where we used a _for loop_ to iterate through each element of an array.
+In lesson [[11-3-Arrays-and-loops|11.3 - 数组和循环]], we showed examples where we used a _for loop_ to iterate through each element of an array.
 
 For example:
 
@@ -41,18 +41,19 @@ int main()
 }
 ```
 
-COPY
 
 While _for loops_ provide a convenient and flexible way to iterate through an array, they are also easy to mess up and prone to off-by-one errors.
 
 There’s a simpler and safer type of loop called a **for-each** loop (also called a **range-based for-loop**) for cases where we want to iterate through every element in an array (or other list-type structure).
 
-For-each loops
+## For-each loops
 
 The _for-each_ statement has a syntax that looks like this:
 
+```
 for (element_declaration : array)
    statement;
+```
 
 When this statement is encountered, the loop will iterate through each element in array, assigning the value of the current array element to the variable declared in element_declaration. For best results, element_declaration should have the same type as the array elements, otherwise type conversion will occur.
 
@@ -79,7 +80,9 @@ COPY
 
 This prints:
 
+```
 0 1 1 2 3 5 8 13 21 34 55 89
+```
 
 Let’s take a closer look at how this works. First, the _for loop_ executes, and variable number is set to the value of the first element, which has value 0. The program executes the statement, which prints 0. Then the _for loop_ executes again, and number is set to the value of the second element, which has value 1. The statement executes again, which prints 1. The _for loop_ continues to iterate through each of the numbers in turn, executing the statement for each one, until there are no elements left in the array to iterate over. At that point, the loop terminates, and the program continues execution (returning 0 to the operating system).
 
@@ -150,9 +153,9 @@ for (const auto& element: array) // element is a const reference to the currentl
 
 COPY
 
-Best practice
+!!! success "最佳实践"
 
-In for-each loops element declarations, if your elements are non-fundamental types, use references or `const` references for performance reasons.
+	In for-each loops element declarations, if your elements are non-fundamental types, use references or `const` references for performance reasons.
 
 Rewriting the max scores example using a for-each loop
 
@@ -184,7 +187,7 @@ COPY
 
 Note that in this example, we no longer have to manually subscript the array or get its size. We can access the array element directly through variable score. The array has to have size information. An array that decayed to a pointer cannot be used in a for-each loop.
 
-For-each loops and non-arrays
+## For-each loops and non-arrays
 
 _For-each_ loops don’t only work with fixed arrays, they work with many kinds of list-like structures, such as vectors (e.g. `std::vector`), linked lists, trees, and maps. We haven’t covered any of these yet, so don’t worry if you don’t know what these are. Just remember that for each loops provide a flexible and generic way to iterate through more than just arrays.
 
@@ -252,8 +255,10 @@ Since C++20, range-based for-loops can be used with an init-statement just lik
 
 The init-statement is placed right before the loop variable:
 
+```
 for (init-statement; element_declaration : array)
    statement;
+```
 
 In the following code, we have two arrays which are correlated by index. For example, the student with the name at `names[3]` has a score of `scores[3]`. Whenever a student with a new high score is found, we print their name and difference in points to the previous high score.
 
@@ -287,14 +292,16 @@ COPY
 
 Output
 
+```
 Alex beat the previous best score of 0 by 84 points!
 Betty beat the previous best score of 84 by 8 points!
 The best score was 92
+```
 
 The `int i{ 0 };` is the init-statement, it only gets executed once when the loop starts. At the end of each iteration, we increment `i`, similar to a normal for-loop. However, if we were to use `continue` inside the loop, the `++i` would get skipped, leading to unexpected results. If you use `continue`, you need to make sure that `i` gets incremented before the `continue` is encountered.
 
 Before C++20, the index variable `i` had to be declared outside of the loop, which could lead to name conflicts when we wanted to define another variable named `i` later in the function.
 
-Conclusion
+## 结论
 
 _For-each_ loops provide a superior syntax for iterating through an array when we need to access all of the array elements in forwards sequential order. It should be preferred over the standard for loop in the cases where it can be used. To prevent making copies of each element, the element declaration can be a reference.

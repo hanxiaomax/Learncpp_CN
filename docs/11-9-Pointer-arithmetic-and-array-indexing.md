@@ -13,7 +13,7 @@ tags:
 	
 
 
-Pointer arithmetic
+## Pointer arithmetic
 
 The C++ language allows you to perform integer addition or subtraction operations on pointers. If `ptr` points to an integer, `ptr + 1` is the address of the next integer in memory after ptr. `ptr - 1` is the address of the previous integer before `ptr`.
 
@@ -44,10 +44,12 @@ COPY
 
 On the author’s machine, this output:
 
+```
 0012FF7C
 0012FF80
 0012FF84
 0012FF88
+```
 
 As you can see, each of these addresses differs by 4 (7C + 4 = 80 in hexadecimal). This is because an integer is 4 bytes on the author’s machine.
 
@@ -74,14 +76,16 @@ COPY
 
 On the author’s machine, this output:
 
+```
 0012FF7C
 0012FF7E
 0012FF80
 0012FF82
+```
 
 Because a short is 2 bytes, each address differs by 2.
 
-**Arrays are laid out sequentially in memory**
+## Arrays are laid out sequentially in memory
 
 By using the address-of operator (&), we can determine that arrays are laid out sequentially in memory. That is, elements 0, 1, 2, … are all adjacent to each other, in order.
 
@@ -105,10 +109,12 @@ COPY
 
 On the author’s machine, this printed:
 
+```
 Element 0 is at address: 0041FE9C
 Element 1 is at address: 0041FEA0
 Element 2 is at address: 0041FEA4
 Element 3 is at address: 0041FEA8
+```
 
 Note that each of these memory addresses is 4 bytes apart, which is the size of an integer on the author’s machine.
 
@@ -145,14 +151,16 @@ Note that when performing indirection through the result of pointer arithmetic, 
 
 On the author’s machine, this printed:
 
+```
 0017FB80
 0017FB80
 7
 7
+```
 
 It turns out that when the compiler sees the subscript operator ([]), it actually translates that into a pointer addition and indirection! Generalizing, `array[n]` is the same as `*(array + n)`, where n is an integer. The subscript operator [] is there both to look nice and for ease of use (so you don’t have to remember the parenthesis).
 
-Using a pointer to iterate through an array
+## Using a pointer to iterate through an array
 
 We can use a pointer and pointer arithmetic to loop through an array. Although not commonly done this way (using subscripts is generally easier to read and less error prone), the following example goes to show it is possible:
 
@@ -206,7 +214,9 @@ How does it work? This program uses a pointer to step through each of the elemen
 
 The above program produces the result:
 
+```
 Mollie has 3 vowels
+```
 
 Because counting elements is common, the algorithms library offers `std::count_if`, which counts elements that fulfill a condition. We can replace the `for`-loop with a call to `std::count_if`.
 

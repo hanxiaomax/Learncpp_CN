@@ -13,21 +13,19 @@ tags:
 ??? note "关键点速记"
 	
 
-Pointers and arrays are intrinsically related in C++.
+在 C++ 中，指针和数组本质上是相互联系的。
 
-**Array decay**
+## 数组退化
 
-In a previous lesson, you learned how to define a fixed array:
+在之前的课程中，我们学习了如何定义一个固定长度的数组：
 
 ```cpp
 int array[5]{ 9, 7, 5, 3, 1 }; // declare a fixed array of 5 integers
 ```
 
-COPY
+对于我们来说，这是一个包含五个整数的数组，但是对于编译器来说，它是一个 `int[5]`类型的数组。我们可以知道`array[0]`,` array[1]`, `array[2]`, `array[3]`, 和 `array[4]` 的值 (分别为 9、7、5、3 和 1 )。
 
-To us, the above is an array of 5 integers, but to the compiler, array is a variable of type int[5]. We know what the values of array[0], array[1], array[2], array[3], and array[4] are (9, 7, 5, 3, and 1 respectively).
-
-In all but two cases (which we’ll cover below), when a fixed array is used in an expression, the fixed array will **decay** (be implicitly converted) into a pointer that points to the first element of the array. You can see this in the following program:
+在几乎所有情况下（两种例外情况稍后介绍），当我们在表达式中使用数组时，数组会**退化**（隐式转换）为一个指针。参考下面代码：
 
 ```cpp
 #include <iostream>
@@ -36,10 +34,10 @@ int main()
 {
     int array[5]{ 9, 7, 5, 3, 1 };
 
-    // print address of the array's first element
+    // 打印数组的首地址
     std::cout << "Element 0 has address: " << &array[0] << '\n';
 
-    // print the value of the pointer the array decays to
+    // 打印数组退化后的指针
     std::cout << "The array decays to a pointer holding address: " << array << '\n';
 
 
@@ -47,14 +45,14 @@ int main()
 }
 ```
 
-COPY
+在笔者的电脑上会打印如下内容：
 
-On the author’s machine, this printed:
-
+```
 Element 0 has address: 0042FD5C
 The array decays to a pointer holding address: 0042FD5C
+```
 
-It’s a common fallacy in C++ to believe an array and a pointer to the array are identical. They’re not. In the above case, array is of type “int[5]”, and its “value” is the array elements themselves. A pointer to the array would be of type “int*”, and its value would be the address of the first element of the array.
+认为数组和指向数组的指针完全一样是一个常见的错误。它们并不是。在上面的例子中，数组的类型是“`int[5]`”它的值就是数组的各个元素。而指向数组的指针，其类型为“`int*`”，其值为数组首个元素的地址。
 
 We’ll see where this makes a difference shortly.
 
@@ -73,8 +71,6 @@ std::cout << *array; // will print 9!
 char name[]{ "Jason" }; // C-style string (also an array)
 std::cout << *name << '\n'; // will print 'J'
 ```
-
-COPY
 
 Note that we’re not _actually_ dereferencing the array itself. The array (of type int[5]) gets implicitly converted into a pointer (of type int*), and we dereference the pointer to get the value at the memory address the pointer is holding (the value of the first element of the array).
 
@@ -99,7 +95,7 @@ COPY
 
 This works because the array decays into a pointer of type int*, and our pointer (also of type int*) has the same type.
 
-**Differences between pointers and fixed arrays**
+## 指针和固定数组的差异
 
 There are a few cases where the difference in typing between fixed arrays and pointers makes a difference. These help illustrate that a fixed array and a pointer are not the same.
 
@@ -121,12 +117,12 @@ int main()
 }
 ```
 
-COPY
-
 This program prints:
 
+```
 20
 4
+```
 
 A fixed array knows how long the array it is pointing to is. A pointer to the array does not.
 
@@ -154,7 +150,7 @@ int main()
 
 COPY
 
-**Revisiting passing fixed arrays to functions**
+## Revisiting passing fixed arrays to functions
 
 Back in lesson [11.2 -- Arrays (Part II)](https://www.learncpp.com/cpp-tutorial/arrays-part-ii/), we mentioned that because copying large arrays can be very expensive, C++ does not copy an array when an array is passed into a function. When passing an array as an argument to a function, a fixed array decays into a pointer, and the pointer is passed to the function:
 
@@ -182,8 +178,10 @@ COPY
 
 This prints:
 
+```
 32
 4
+```
 
 Note that this happens even if the parameter is declared as a fixed array:
 
@@ -212,8 +210,10 @@ COPY
 
 This prints:
 
+```
 32
 4
+```
 
 In the above example, C++ implicitly converts parameters using the array syntax ([]) to the pointer syntax (*). That means the following two function declarations are identical:
 
@@ -232,8 +232,9 @@ Best practice
 
 Favor the pointer syntax (*) over the array syntax ([]) for array function parameters.
 
-**An intro to pass by address**
+## 传地址
 
+[[pass-by-address|传地址]]
 The fact that arrays decay into pointers when passed to a function explains the underlying reason why changing an array in a function changes the actual array argument passed in. Consider the following example:
 
 ```cpp
@@ -258,16 +259,16 @@ int main()
 }
 ```
 
-COPY
-
+```
 Element 0 has value: 1
 Element 0 has value: 5
+```
 
 When changeArray() is called, array decays into a pointer, and the value of that pointer (the memory address of the first element of the array) is copied into the ptr parameter of function changeArray(). Although the value in ptr is a copy of the address of the array, ptr still points at the actual array (not a copy!). Consequently, when dereferencing ptr, the element accessed is the actual first element of the array!
 
 Astute readers will note this phenomenon works with pointers to non-array values as well.
 
-**Arrays in structs and classes don’t decay**
+## 结构体和类中的数组不会退化
 
 Finally, it is worth noting that arrays that are part of structs or classes do not decay when the whole struct or class is passed to a function. This yields a useful way to prevent decay if desired, and will be valuable later when we write classes that utilize arrays.
 

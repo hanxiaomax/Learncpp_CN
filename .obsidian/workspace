@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11-7-std-string-view-part-2.md",
+            "file": "docs/11-8-Pointers-and-arrays.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-7-std-string-view-part-2.md"
+                "file": "docs/11-8-Pointers-and-arrays.md"
               }
             }
           },
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-7-std-string-view-part-2.md",
+                "file": "docs/11-8-Pointers-and-arrays.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +128,15 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/going-out-of-scope.md",
     "docs/11-7-std-string-view-part-2.md",
-    "docs/dangling.md",
-    "docs/4-18-Introduction-to-std-string_view.md",
+    "docs/11-8-Pointers-and-arrays.md",
     "docs/11-6-C-style-strings.md",
-    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
-    "docs/11-14-Void-pointers.md",
-    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
-    "docs/11-13-For-each-loops.md",
-    "docs/11-12-Dynamically-allocating-arrays.md"
+    "docs/11-3-Arrays-and-loops.md",
+    "docs/11-5-Multidimensional-Arrays.md",
+    "docs/11-4-Sorting-an-array-using-selection-sort.md",
+    "docs/11-2-Arrays-Part-II.md",
+    "docs/11-18-Introduction-to-iterators.md",
+    "docs/11-17-An-introduction-to-std-vector.md",
+    "docs/11-16-An-introduction-to-std-array.md"
   ]
 }

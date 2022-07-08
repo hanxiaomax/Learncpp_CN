@@ -45,9 +45,9 @@ Because we are allocating an array, C++ knows that it should use the array versi
 
 The length of dynamically allocated arrays has to be a type that’s convertible to `std::size_t`. In practice, using an `int` length is fine, since `int` will convert to `std::size_t`.
 
-Author’s note
+!!! info "作者注"
 
-Some might argue that because array new expects a length of type `size_t`, our lengths (e.g. such as `length` in the example above) should either be of type `size_t` or converted to a `size_t` via `static_cast`.
+	Some might argue that because array new expects a length of type `size_t`, our lengths (e.g. such as `length` in the example above) should either be of type `size_t` or converted to a `size_t` via `static_cast`.
 
 I find this argument uncompelling for a number of reasons. First, it contradicts the best practice to use signed integers over unsigned ones. Second, when creating dynamic arrays using an integral length, it’s convention to do something like this:
 
@@ -65,7 +65,7 @@ While there is nothing wrong with using `size_t` as the length of a dynamicall
 
 Note that because this memory is allocated from a different place than the memory used for fixed arrays, the size of the array can be quite large. You can run the program above and allocate an array of length 1,000,000 (or probably even 100,000,000) without issue. Try it! Because of this, programs that need to allocate a lot of memory in C++ typically do so dynamically.
 
-Dynamically deleting arrays
+## Dynamically deleting arrays
 
 When deleting a dynamically allocated array, we have to use the array version of delete, which is delete[].
 
@@ -75,11 +75,11 @@ One often asked question of array delete[] is, “How does array delete know how
 
 Dynamic arrays are almost identical to fixed arrays
 
-In lesson [11.8 -- Pointers and arrays](https://www.learncpp.com/cpp-tutorial/pointers-and-arrays/), you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via sizeof()), but otherwise there is little difference.
+In lesson [[11-8-Pointers-and-arrays|11.8 - 指针和数组]], you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via sizeof()), but otherwise there is little difference.
 
 A dynamic array starts its life as a pointer that points to the first element of the array. Consequently, it has the same limitations in that it doesn’t know its length or size. A dynamic array functions identically to a decayed fixed array, with the exception that the programmer is responsible for deallocating the dynamic array via the delete[] keyword.
 
-Initializing dynamically allocated arrays
+## Initializing dynamically allocated arrays
 
 If you want to initialize a dynamically allocated array to 0, the syntax is quite simple:
 
@@ -128,7 +128,7 @@ COPY
 
 Explicitly stating the size of the array is optional.
 
-Resizing arrays
+## Resizing arrays
 
 Dynamically allocating an array allows you to set the array length at the time of allocation. However, C++ does not provide a built-in way to resize an array that has already been allocated. It is possible to work around this limitation by dynamically allocating a new array, copying the elements over, and deleting the old array. However, this is error prone, especially when the element type is a class (which have special rules governing how they are created).
 

@@ -12,7 +12,7 @@ tags:
 ??? note "关键点速记"
 	
 
-**C-style string symbolic constants**
+## C-style string symbolic constants
 
 In a previous lesson, we discussed how you could create and initialize a C-style string, like this:
 
@@ -78,7 +78,7 @@ In the above code, `getName()` will return a pointer to C-style string “Alex
 
 C-style strings are used in a lot of old or low-level code, because they have a very small memory footprint. Modern code should favor the use `std::string` and `std::string_view`, as those provide safe and easy access to the string.
 
-**std::cout and char pointers**
+## `std::cout`和字符指针
 
 At this point, you may have noticed something interesting about the way `std::cout` handles pointers of different types.
 
@@ -105,9 +105,11 @@ COPY
 
 On the author’s machine, this printed:
 
+```
 003AF738
 Hello!
 Alex
+```
 
 Why did the int array print an address, but the character arrays printed strings?
 
@@ -131,7 +133,9 @@ COPY
 
 In this case, the programmer is intending to print the address of variable c. However, &c has type char*, so std::cout tries to print this as a string! On the author’s machine, this printed:
 
+```
 Q╠╠╠╠╜╡4;¿■A
+```
 
 Why did it do this? Well, it assumed &c (which has type char*) was a string. So it printed the ‘Q’, and then kept going. Next in memory was a bunch of garbage. Eventually, it ran into some memory holding a 0 value, which it interpreted as a null terminator, so it stopped. What you see may be different depending on what’s in memory after variable c.
 
