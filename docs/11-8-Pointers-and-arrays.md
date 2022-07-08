@@ -13,6 +13,9 @@ tags:
 ??? note "关键点速记"
 	- 在表达式中使用数组时，数组会**退化**（隐式转换）为一个指针
 	- 当定义函数的参数时，最好使用指针语法(`*`)而不是数组语法(`[]`)。
+	- 数组退化为指针传递到函数后，修改该指针会修改原数组
+	- 作为结构或类的一部分的数组不会在将整个结构或类传递给函数时发生退化。如果有需要，可以用这种方式防止数组退化为指针。
+
 
 在 C++ 中，指针和数组本质上是相互联系的。
 
@@ -256,17 +259,14 @@ Element 0 has value: 1
 Element 0 has value: 5
 ```
 
-When `changeArray()` is called, array decays into a pointer, and the value of that pointer (the memory address of the first element of the array) is copied into the ptr parameter of function `changeArray()`. Although the value in ptr is a copy of the address of the array, ptr still points at the actual array (not a copy!). Consequently, when dereferencing ptr, the element accessed is the actual first element of the array!
 
-Astute readers will note this phenomenon works with pointers to non-array values as well.
-
-当`changeArray()` 被调用时，数组退化为一个指针，该指针的值(数组第一个元素的内存地址)被复制到`changeArray()` 函数的ptr形参中。虽然ptr中的值是数组地址的副本，但ptr仍然指向实际的数组(不是副本!)因此，当对ptr解引用时，访问的元素实际上是数组的第一个元素!
+当 `changeArray()` 被调用时，数组退化为一个指针，该指针的值(数组第一个元素的内存地址)被复制到`changeArray()` 函数的`ptr`形参中。虽然`ptr`中的值是数组地址的副本，但`ptr`仍然指向实际的数组(不是副本!)因此，当对`ptr`解引用时，访问的元素实际上是数组的第一个元素!
 
 精明的读者会注意到这种现象也适用于指向非数组值的指针。
 
 
 ## 结构体和类中的数组不会退化
 
-Finally, it is worth noting that arrays that are part of structs or classes do not decay when the whole struct or class is passed to a function. This yields a useful way to prevent decay if desired, and will be valuable later when we write classes that utilize arrays.
+最后，值得注意的是，作为结构或类的一部分的数组不会在将整个结构或类传递给函数时发生退化。如果有需要，可以用这种方式防止数组退化为指针。在编写利用数组的类时，这种方法也是有用的
 
-In the next lesson, we’ll take a look at pointer arithmetic, and talk about how array indexing actually works.
+在下一课中，我们介绍指针算术，并讨论数组索引的工作原理。
