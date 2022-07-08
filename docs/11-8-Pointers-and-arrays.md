@@ -12,6 +12,7 @@ tags:
 
 ??? note "关键点速记"
 	- 在表达式中使用数组时，数组会**退化**（隐式转换）为一个指针
+	- 当定义函数的参数时，最好使用指针语法(`*`)而不是数组语法(`[]`)。
 
 在 C++ 中，指针和数组本质上是相互联系的。
 
@@ -96,14 +97,9 @@ int main()
 
 ## 指针和固定数组的差异
 
-There are a few cases where the difference in typing between fixed arrays and pointers makes a difference. These help illustrate that a fixed array and a pointer are not the same.
-
-The primary difference occurs when using the `sizeof()` operator. When used on a fixed array, sizeof returns the size of the entire array (`array length * element size`). When used on a pointer, sizeof returns the size of the pointer (in bytes). The following program illustrates this:
-
 在一些情况下，固定数组和指针之间的类型差异会带来问题。这些问题有助于我们解释固定数组和指针的不同。
 
-主要的差异发生在使用 `sizeof()` 操作符时。当用于固定数组时，`sizeof`返回整个数组的大小(`array length * element size`)。当用于指针时，sizeof返回指针的大小(以字节为单位)。下面的程序说明了这一点:
-
+主要的差异发生在使用 `sizeof()` 操作符时。当用于固定数组时，`sizeof`返回整个数组的大小(`array length * element size`)。当用于指针时，`sizeof` 返回指针的大小(以字节为单位)。下面的程序说明了这一点:
 
 ```cpp
 #include <iostream>
@@ -128,9 +124,9 @@ int main()
 4
 ```
 
-A fixed array knows how long the array it is pointing to is. A pointer to the array does not.
+固定数组知道它所指向的数组有多长，而指向数组的指针并不知道数组有多长。
 
-The second difference occurs when using the address-of operator (&). Taking the address of a pointer yields the memory address of the pointer variable. Taking the address of the array returns a pointer to the entire array. This pointer also points to the first element of the array, but the type information is different (in the above example, the type of `&array` is `int(*)[5]`). It’s unlikely you’ll ever need to use this.
+第二个区别发生在使用取地址操作符(`&`)时。对指针使用取地址操作符，会得到指针变量的内存地址。对数组使用取地址操作符，将返回指向地址的指针，这个指针指向数组的第一个元素，但是类型信息不同(在上面的例子中，`&array`的类型是`int(*)[5]`)。你不太可能会用到它。
 
 ```cpp
 #include <iostream>
@@ -138,27 +134,26 @@ The second difference occurs when using the address-of operator (&). Taking the 
 int main()
 {
     int array[5]{ 9, 7, 5, 3, 1 };
-    std::cout << array << '\n';	 // type int[5], prints 009DF9D4
-    std::cout << &array << '\n'; // type int(*)[5], prints 009DF9D4
+    std::cout << array << '\n';	 // 类型为 int[5], 打印 009DF9D4
+    std::cout << &array << '\n'; // 类型为 int(*)[5], 打印 009DF9D4
 
     std::cout << '\n';
 
     int* ptr{ array };
-    std::cout << ptr << '\n';	 // type int*, prints 009DF9D4
-    std::cout << &ptr << '\n';	 // type int**, prints 009DF9C8
+    std::cout << ptr << '\n';	 // 类型为 int*, 打印 009DF9D4
+    std::cout << &ptr << '\n';	 // 类型为 int**, 打印 009DF9C8
 
     return 0;
 }
 // h/t to reader PacMan for this example
 ```
 
-COPY
 
-## Revisiting passing fixed arrays to functions
+## 将固定数组传递给函数
 
-Back in lesson [11.2 -- Arrays (Part II)](https://www.learncpp.com/cpp-tutorial/arrays-part-ii/), we mentioned that because copying large arrays can be very expensive, C++ does not copy an array when an array is passed into a function. When passing an array as an argument to a function, a fixed array decays into a pointer, and the pointer is passed to the function:
+在[[11-2-Arrays-Part-II|11.2 - 数组（第二部分）]]中我们介绍过，拷贝大型数组的开销是很大的，C++在将数组传递给函数时，并不会将其拷贝一份。实际上，固定数组在传递给函数时也会退化为指针，该指针会被传递给函数：
 
-```cpp
+```cpp hl_lines="3"
 #include <iostream>
 
 void printSize(int* array)
@@ -178,18 +173,15 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
 
 ```
 32
 4
 ```
 
-Note that this happens even if the parameter is declared as a fixed array:
+注意，即使形参声明为固定数组，也会发生这种情况：
 
-```cpp
+```cpp hl_lines="4"
 #include <iostream>
 
 // C++ will implicitly convert parameter array[] to *array
@@ -210,36 +202,32 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果为：
 
 ```
 32
 4
 ```
 
-In the above example, C++ implicitly converts parameters using the array syntax ([]) to the pointer syntax (*). That means the following two function declarations are identical:
+在上面的例子中，C++ 隐式地将使用数组语法(`[]`)的参数转换为指针语法(`*`)。这意味着下面两个函数的声明是相同的：
 
 ```cpp
 void printSize(int array[]);
 void printSize(int* array);
 ```
 
-COPY
+有些程序员更喜欢使用`[]`语法，因为它可以清楚地表明函数需要一个数组，而不是一个指针。然而，在大多数情况下，由于指针并不知道数组有多大，所以无论如何都需要将数组大小作为一个单独的参数来传递(字符串是一个特例，因为它们以`null`结尾)。
 
-Some programmers prefer using the [] syntax because it makes it clear that the function is expecting an array, not just a pointer to a value. However, in most cases, because the pointer doesn’t know how large the array is, you’ll need to pass in the array size as a separate parameter anyway (strings being an exception because they’re null terminated).
+我们建议使用指针语法，因为它表明形参被视为指针，而不是固定的数组。此外，某些操作（如 `sizeof()`）会将该形参作为指针进行操作。
 
-We recommend using the pointer syntax, because it makes it clear that the parameter is being treated as a pointer, not a fixed array, and that certain operations, such as sizeof(), will operate as if the parameter is a pointer.
+!!! success "最佳实践"
 
-Best practice
+	当定义函数的参数时，最好使用指针语法(`*`)而不是数组语法(`[]`)。
 
-Favor the pointer syntax (*) over the array syntax ([]) for array function parameters.
 
 ## 传地址
 
-[[pass-by-address|传地址]]
-The fact that arrays decay into pointers when passed to a function explains the underlying reason why changing an array in a function changes the actual array argument passed in. Consider the following example:
+数组在传递给函数时**退化**为指针的事实，解释了为什么在函数中更改数组会更改传入的实际数组。考虑下面的例子:
 
 ```cpp
 #include <iostream>
@@ -268,9 +256,14 @@ Element 0 has value: 1
 Element 0 has value: 5
 ```
 
-When changeArray() is called, array decays into a pointer, and the value of that pointer (the memory address of the first element of the array) is copied into the ptr parameter of function changeArray(). Although the value in ptr is a copy of the address of the array, ptr still points at the actual array (not a copy!). Consequently, when dereferencing ptr, the element accessed is the actual first element of the array!
+When `changeArray()` is called, array decays into a pointer, and the value of that pointer (the memory address of the first element of the array) is copied into the ptr parameter of function `changeArray()`. Although the value in ptr is a copy of the address of the array, ptr still points at the actual array (not a copy!). Consequently, when dereferencing ptr, the element accessed is the actual first element of the array!
 
 Astute readers will note this phenomenon works with pointers to non-array values as well.
+
+当`changeArray()` 被调用时，数组退化为一个指针，该指针的值(数组第一个元素的内存地址)被复制到`changeArray()` 函数的ptr形参中。虽然ptr中的值是数组地址的副本，但ptr仍然指向实际的数组(不是副本!)因此，当对ptr解引用时，访问的元素实际上是数组的第一个元素!
+
+精明的读者会注意到这种现象也适用于指向非数组值的指针。
+
 
 ## 结构体和类中的数组不会退化
 
