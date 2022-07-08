@@ -11,7 +11,7 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- 在表达式中使用数组时，数组会**退化**（隐式转换）为一个指针
 
 在 C++ 中，指针和数组本质上是相互联系的。
 
@@ -54,13 +54,13 @@ The array decays to a pointer holding address: 0042FD5C
 
 认为数组和指向数组的指针完全一样是一个常见的错误。它们并不是。在上面的例子中，数组的类型是“`int[5]`”它的值就是数组的各个元素。而指向数组的指针，其类型为“`int*`”，其值为数组首个元素的地址。
 
-We’ll see where this makes a difference shortly.
+稍后我们就会介绍它们的具体区别体现在哪里。
 
-All elements of the array can still be accessed through the pointer (we’ll see how this works in the next lesson), but information derived from the array’s type (such as how long the array is) can not be accessed from the pointer.
+数组中的元素也可以通过指针来访问（下节课中进行详细介绍），但是我们不能通过指针来获取数组的类型信息。
 
-However, this also effectively allows us to treat fixed arrays and pointers identically in most cases.
+然而，在大多数情况下，我们还是可以以相同的方式对待固定数组和指针。
 
-For example, we can dereference the array to get the value of the first element:
+例如，可以对数组解引用以获取第一个元素的值:
 
 ```cpp
 int array[5]{ 9, 7, 5, 3, 1 };
@@ -72,9 +72,10 @@ char name[]{ "Jason" }; // C-style string (also an array)
 std::cout << *name << '\n'; // will print 'J'
 ```
 
-Note that we’re not _actually_ dereferencing the array itself. The array (of type int[5]) gets implicitly converted into a pointer (of type int*), and we dereference the pointer to get the value at the memory address the pointer is holding (the value of the first element of the array).
 
-We can also assign a pointer to point at the array:
+注意，我们没有对数组本身进行解引用。数组被隐式转换为了指针(`int*`类型)，并对指针解引用，以获得指针所保存的内存地址的值(数组第一个元素的值)。
+
+我们还可以让一个指针指向数组：
 
 ```cpp
 #include <iostream>
@@ -91,15 +92,18 @@ int main()
 }
 ```
 
-COPY
-
-This works because the array decays into a pointer of type int*, and our pointer (also of type int*) has the same type.
+数组退化为了`int*`类型的指针，而`ptr`也是此类型的指针。
 
 ## 指针和固定数组的差异
 
 There are a few cases where the difference in typing between fixed arrays and pointers makes a difference. These help illustrate that a fixed array and a pointer are not the same.
 
-The primary difference occurs when using the sizeof() operator. When used on a fixed array, sizeof returns the size of the entire array (array length * element size). When used on a pointer, sizeof returns the size of the pointer (in bytes). The following program illustrates this:
+The primary difference occurs when using the `sizeof()` operator. When used on a fixed array, sizeof returns the size of the entire array (`array length * element size`). When used on a pointer, sizeof returns the size of the pointer (in bytes). The following program illustrates this:
+
+在一些情况下，固定数组和指针之间的类型差异会带来问题。这些问题有助于我们解释固定数组和指针的不同。
+
+主要的差异发生在使用 `sizeof()` 操作符时。当用于固定数组时，`sizeof`返回整个数组的大小(`array length * element size`)。当用于指针时，sizeof返回指针的大小(以字节为单位)。下面的程序说明了这一点:
+
 
 ```cpp
 #include <iostream>
@@ -117,7 +121,7 @@ int main()
 }
 ```
 
-This program prints:
+程序打印：
 
 ```
 20
