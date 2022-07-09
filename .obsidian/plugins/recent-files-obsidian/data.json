@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
+      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
+    },
+    {
+      "basename": "scaling",
+      "path": "docs/scaling.md"
+    },
+    {
       "basename": "11-8-Pointers-and-arrays",
       "path": "docs/11-8-Pointers-and-arrays.md"
     },
@@ -63,10 +71,6 @@
     {
       "basename": "11-10-C-style-string-symbolic-constants",
       "path": "docs/11-10-C-style-string-symbolic-constants.md"
-    },
-    {
-      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
-      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
     },
     {
       "basename": "going-out-of-scope",
@@ -195,10 +199,6 @@
     {
       "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
-    },
-    {
-      "basename": "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal",
-      "path": "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
     }
   ],
   "omittedPaths": [],

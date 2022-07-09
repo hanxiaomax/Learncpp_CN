@@ -13,15 +13,15 @@ tags:
 	
 
 
-## Pointer arithmetic
+## 指针运算
 
-The C++ language allows you to perform integer addition or subtraction operations on pointers. If `ptr` points to an integer, `ptr + 1` is the address of the next integer in memory after ptr. `ptr - 1` is the address of the previous integer before `ptr`.
+在 C++ 中你可以对指针进行加减运算。如果 `ptr` 指向一个整型，那么 `ptr + 1` 则会指向下内存中下一个整型对象。`ptr - 1` 则会指向前一个整形对象。
 
-Note that `ptr + 1` does not return the _memory address_ after `ptr`, but the memory address of the _next object of the type_ that `ptr` points to. If `ptr`points to an integer (assuming 4 bytes), `ptr + 3` means 3 integers (12 bytes) after `ptr`. If `ptr` points to a `char`, which is always 1 byte, `ptr + 3`means 3 chars (3 bytes) after ptr.
+注意，`ptr + 1` 返回的并不是`ptr`指针指向的下一个内存地址，而是指针所指对象的下一个同类型对象的地址。如果指针指向整型（假设为4字节），那么`ptr+3`则返回3个整型（12字节）后的地址。如果`ptr`指向的是`char`类型的对象（总是1字节），则`ptr + 3`会返回`ptr`后面3个字节的地址。
 
-When calculating the result of a pointer arithmetic expression, the compiler always multiplies the integer operand by the size of the object being pointed to. This is called **scaling**.
+在计算指针算术表达式的结果时，编译器总是将整数操作数乘以所指向对象的大小。这叫做[[scaling|指针缩放(scaling)]]。
 
-Consider the following program:
+考虑以下程序:
 
 ```cpp
 #include <iostream>
@@ -40,9 +40,7 @@ int main()
 }
 ```
 
-COPY
-
-On the author’s machine, this output:
+在笔者的电脑上会打印如下信息：
 
 ```
 0012FF7C
@@ -51,9 +49,9 @@ On the author’s machine, this output:
 0012FF88
 ```
 
-As you can see, each of these addresses differs by 4 (7C + 4 = 80 in hexadecimal). This is because an integer is 4 bytes on the author’s machine.
+上述地址之间相差4字节(十六进制 7C + 4 = 80)，这是因为在笔者电脑上整型大小为4字节。
 
-The same program using `short` instead of `int`:
+下面这个程序中使用`short` 代替了 `int`：
 
 ```cpp
 #include <iostream>
@@ -72,9 +70,8 @@ int main()
 }
 ```
 
-COPY
 
-On the author’s machine, this output:
+在笔者的电脑上会打印如下信息：
 
 ```
 0012FF7C
@@ -83,11 +80,11 @@ On the author’s machine, this output:
 0012FF82
 ```
 
-Because a short is 2 bytes, each address differs by 2.
+因为 `short` 的长度为 2 字节，所以地址之间相差 2 字节。
 
-## Arrays are laid out sequentially in memory
+## 数组元素按顺序分布在内存中
 
-By using the address-of operator (&), we can determine that arrays are laid out sequentially in memory. That is, elements 0, 1, 2, … are all adjacent to each other, in order.
+通过取地址运算符(`&`)， we can determine that arrays are laid out sequentially in memory. That is, elements 0, 1, 2, … are all adjacent to each other, in order.
 
 ```cpp
 #include <iostream>
