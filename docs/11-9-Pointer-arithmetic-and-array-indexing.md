@@ -102,9 +102,7 @@ int main()
 }
 ```
 
-COPY
-
-On the author’s machine, this printed:
+在笔者的电脑上会打印如下信息：
 
 ```
 Element 0 is at address: 0041FE9C
