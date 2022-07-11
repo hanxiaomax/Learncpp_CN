@@ -84,7 +84,7 @@ int main()
 
 ## 数组元素按顺序分布在内存中
 
-通过取地址运算符(`&`)， we can determine that arrays are laid out sequentially in memory. That is, elements 0, 1, 2, … are all adjacent to each other, in order.
+通过取地址运算符(`&`)，我们可以检验数组元素是否是按照顺序排列在内存中的，0, 1, 2, … 元素彼此相邻，按照顺序排列在内存中。
 
 ```cpp
 #include <iostream>
