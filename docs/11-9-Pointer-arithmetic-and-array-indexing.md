@@ -142,9 +142,9 @@ int main()
 ```
 
 
-注意，在进行Note that when performing indirection through the result of pointer arithmetic, parenthesis are necessary to ensure the operator precedence is correct, since operator * has higher precedence than operator +.
+注意，当通过指针运算的结果进行间接操作时，必须使用圆括号来确保操作符的优先级是正确的，因为`operator *` 的优先级高于`operator +` 。
 
-On the author’s machine, this printed:
+在笔者的电脑上会打印如下信息：
 
 ```
 0017FB80
@@ -153,11 +153,11 @@ On the author’s machine, this printed:
 7
 ```
 
-It turns out that when the compiler sees the subscript operator ([]), it actually translates that into a pointer addition and indirection! Generalizing, `array[n]` is the same as `*(array + n)`, where n is an integer. The subscript operator [] is there both to look nice and for ease of use (so you don’t have to remember the parenthesis).
+事实证明，当编译器看到下标操作符(`[]`)时，它实际上会将其转换为指针加法和间接操作！`array[n]` 等同于`*(array + n)` ，其中`n`为整数。下标操作符`[]`的存在既是为了美观，也是为了便于使用。
 
-## Using a pointer to iterate through an array
+## 使用指针遍历数组
 
-We can use a pointer and pointer arithmetic to loop through an array. Although not commonly done this way (using subscripts is generally easier to read and less error prone), the following example goes to show it is possible:
+可以使用指针和指针算术来遍历数组。虽然这种方式不常见(使用下标通常更容易阅读和更少的错误)，但的确是可行的。请看下面的例子：
 
 ```cpp
 #include <iostream>
@@ -207,7 +207,7 @@ COPY
 
 How does it work? This program uses a pointer to step through each of the elements in an array. Remember that arrays decay to pointers to the first element of the array. So by initializing `ptr` with `name`, `ptr` will point to the first element of the array. Indirection through `ptr` is performed for each element when we call `isVowel(*ptr)`, and if the element is a vowel, `numVowels` is incremented. Then the for loop uses the ++ operator to advance the pointer to the next character in the array. The for loop terminates when all characters have been examined.
 
-The above program produces the result:
+上述程序产生的结果是：
 
 ```
 Mollie has 3 vowels
@@ -271,4 +271,4 @@ COPY
 
 Note that we’re calculating `name + nameLength`, not `name + nameLength - 1`, because we don’t want the last element, but the pseudo-element one past the last.
 
-Calculating begin and end of an array like this works for all algorithms that need a begin and end argument.
+像这样计算数组的开始和结束，适用于所有需要开始和结束参数的算法。
