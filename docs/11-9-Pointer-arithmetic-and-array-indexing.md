@@ -111,17 +111,18 @@ Element 2 is at address: 0041FEA4
 Element 3 is at address: 0041FEA8
 ```
 
-Note that each of these memory addresses is 4 bytes apart, which is the size of an integer on the author’s machine.
+注意，每个地址之间都间隔4字节，这正是笔者电脑上整型数的大小。
 
-Pointer arithmetic, arrays, and the magic behind indexing
 
-In the section above, you learned that arrays are laid out in memory sequentially.
+## 指针算数、数组和索引背后的魔法
 
-In the previous lesson, you learned that a fixed array can decay into a pointer that points to the first element (element 0) of the array.
+上面已经介绍了，数组是一系列顺序排列的内存。
 
-Also in a section above, you learned that adding 1 to a pointer returns the memory address of the next object of that type in memory.
+在之前的课程中我们还介绍了，固定数组可以退化为指针，该指针指向数组的第一个元素。
 
-Therefore, we might conclude that adding 1 to an array should point to the second element (element 1) of the array. We can verify experimentally that this is true:
+同时我们还知道，对指针加1可以得到该指针所指地址后面一个对象的地址。
+
+以你，对数组加1就可以得到第二个元素，通过下面的代码可以进行验证：
 
 ```cpp
 #include <iostream>
@@ -140,9 +141,8 @@ int main()
 }
 ```
 
-COPY
 
-Note that when performing indirection through the result of pointer arithmetic, parenthesis are necessary to ensure the operator precedence is correct, since operator * has higher precedence than operator +.
+注意，在进行Note that when performing indirection through the result of pointer arithmetic, parenthesis are necessary to ensure the operator precedence is correct, since operator * has higher precedence than operator +.
 
 On the author’s machine, this printed:
 
