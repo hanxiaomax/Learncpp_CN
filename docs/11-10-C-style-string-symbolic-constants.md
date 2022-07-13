@@ -12,7 +12,7 @@ tags:
 ??? note "关键点速记"
 	
 
-## C-style string symbolic constants
+## C 风格字符串常量
 
 In a previous lesson, we discussed how you could create and initialize a C-style string, like this:
 
