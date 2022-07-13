@@ -10,7 +10,10 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- 指针+1，移动的内存地址数取决于指针指向的对象的大小，每次移动一个对象的长度。
+	- C++的 algorithms 库提供了`std::count_if`，该函数可以基于某个条件来统计元素
+	- `std::begin`和`std::end`可以返回指向固定数组的第一个元素的迭代器和最后一个元素后面的伪元素的迭代器
+	- `std::end` 返回的迭代器只作为标记来使用，对其进行访问会导致未定义行为，因为它不指向某个实际的元素。
 
 
 ## 指针运算
@@ -203,9 +206,7 @@ int main()
 }
 ```
 
-COPY
-
-How does it work? This program uses a pointer to step through each of the elements in an array. Remember that arrays decay to pointers to the first element of the array. So by initializing `ptr` with `name`, `ptr` will point to the first element of the array. Indirection through `ptr` is performed for each element when we call `isVowel(*ptr)`, and if the element is a vowel, `numVowels` is incremented. Then the for loop uses the ++ operator to advance the pointer to the next character in the array. The for loop terminates when all characters have been examined.
+它是如何工作的？这个程序使用一个指针来遍历数组中的每个元素。记住数组会退化为指向数组第一个元素的指针。因此，通过使用`name` 初始化`ptr` ，`ptr` 将指向数组的第一个元素。当调用`isVowel(*ptr)` 时，通过`ptr`对每个元素执行间接操作，如果元素是元音，`numVowels` 将递增。然后，for循环使用`++`操作符将指针向前移动到数组中的下一个字符。当检查完所有字符时，for循环终止。
 
 上述程序产生的结果是：
 
@@ -213,7 +214,7 @@ How does it work? This program uses a pointer to step through each of the elemen
 Mollie has 3 vowels
 ```
 
-Because counting elements is common, the algorithms library offers `std::count_if`, which counts elements that fulfill a condition. We can replace the `for`-loop with a call to `std::count_if`.
+因为计数是非常常见的算法，所以C++的 algorithms 库提供了`std::count_if`，该函数可以基于某个条件来统计元素。我们可以将上面的for循环使用 `std::count_if` 进行改写。
 
 ```cpp
 #include <algorithm>
@@ -253,11 +254,10 @@ int main()
 }
 ```
 
-COPY
 
-`std::begin` returns an iterator (pointer) to the first element, while `std::end` returns an iterator to the element that would be one after the last. The iterator returned by `std::end` is only used as a marker, accessing it causes undefined behavior, because it doesn’t point to a real element.
+`std::begin` 返回一个指向第一个元素的迭代器（指针），而`std::end` 返回的是最后一个元素的后一个位置。`std::end` 返回的迭代器只作为标记来使用，对其进行访问会导致未定义行为，因为它不指向某个实际的元素。
 
-`std::begin` and `std::end` only work on arrays with a known size. If the array decayed to a pointer, we can calculate begin and end manually.
+`std::begin` 和 `std::end` 只能用于已知长度的数组，如果数组退化为指针，则需要手动计算begin和end。
 
 ```cpp
 // nameLength is the number of elements in the array.
@@ -267,8 +267,6 @@ std::count_if(name, name + nameLength, isVowel)
 // std::count_if(name, &name[nameLength], isVowel)
 ```
 
-COPY
-
-Note that we’re calculating `name + nameLength`, not `name + nameLength - 1`, because we don’t want the last element, but the pseudo-element one past the last.
+注意，我们计算的是`name + nameLength`，而不是`name + nameLength - 1`，因为我们需要的不是最后一个元素，而是最后一个元素后面的一个”伪元素“。
 
 像这样计算数组的开始和结束，适用于所有需要开始和结束参数的算法。
