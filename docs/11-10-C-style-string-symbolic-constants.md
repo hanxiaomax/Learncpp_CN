@@ -28,7 +28,6 @@ int main()
 }
 ```
 
-COPY
 
 C++ also supports a way to create C-style string symbolic constants using pointers:
 
