@@ -10,18 +10,21 @@ tags:
 ---
 
 ??? note "关键点速记"
+	- 初始化C字符串常量的两种方法——固定数组和指针
+		- `char myName[]{ "Alex" }; // 固定数组`
+		- `const char* myName{ "Alex" };//指向符号常量的指针`
 	
 
 ## C 风格字符串常量
 
-In a previous lesson, we discussed how you could create and initialize a C-style string, like this:
+在之前的课程中，我们介绍了如何初始化一个C语言风格的字符串：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    char myName[]{ "Alex" }; // fixed array
+    char myName[]{ "Alex" }; // 固定数组
     std::cout << myName << '\n';
 
     return 0;
@@ -29,7 +32,7 @@ int main()
 ```
 
 
-C++ also supports a way to create C-style string symbolic constants using pointers:
+C++ 也支持使用指针指向符号常量来创建C语言风格字符串：
 
 ```cpp
 #include <iostream>
@@ -43,9 +46,7 @@ int main()
 }
 ```
 
-COPY
-
-While these above two programs operate and produce the same results, C++ deals with the memory allocation for these slightly differently.
+尽管从层序运行的角度来看，上面两套代码的结果是一样的，但C++在处理上述两种代码时，其内存分配的处理细节是不同的。
 
 In the fixed array case, the program allocates memory for a fixed array of length 5, and initializes that memory with the string “Alex\0”. Because memory has been specifically allocated for the array, you’re free to alter the contents of the array. The array itself is treated as a normal local variable, so when the array goes out of scope, the memory used by the array is freed up for other uses.
 
