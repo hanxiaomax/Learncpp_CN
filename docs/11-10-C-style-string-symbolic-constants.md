@@ -101,7 +101,7 @@ int main()
 }
 ```
 
-COPY
+
 
 On the author’s machine, this printed:
 
