@@ -129,7 +129,7 @@ int main()
 }
 ```
 
-COPY
+
 
 In this case, the programmer is intending to print the address of variable c. However, &c has type char*, so std::cout tries to print this as a string! On the author’s machine, this printed:
 
