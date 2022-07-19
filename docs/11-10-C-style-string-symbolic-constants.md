@@ -48,7 +48,7 @@ int main()
 
 尽管从层序运行的角度来看，上面两套代码的结果是一样的，但C++在处理上述两种代码时，其内存分配的处理细节是不同的。
 
-In the fixed array case, the program allocates memory for a fixed array of length 5, and initializes that memory with the string “Alex\0”. Because memory has been specifically allocated for the array, you’re free to alter the contents of the array. The array itself is treated as a normal local variable, so when the array goes out of scope, the memory used by the array is freed up for other uses.
+对于固定长度数组的例子来说，程序会在内存中分配一个长度为5的数组，同时将内存初始化为 “`Alex\0`”，因为该内存已经被分配给该数组，所以你可以自由地修改数组的内容。这个数组会被当做一般的局部变量来对待，因此当它[[going-out-of-scope|离开作用域]]时，其所使用的内存会被释放以便其他变量使用。
 
 In the symbolic constant case, how the compiler handles this is implementation defined. What _usually_ happens is that the compiler places the string “Alex\0” into read-only memory somewhere, and then sets the pointer to point to it. Because this memory may be read-only, best practice is to make sure the string is const.
 
