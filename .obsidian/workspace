@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "/^-\\ *$/",
+                "query": "11-11",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -128,6 +129,8 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
+    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
+    "docs/11-10-C-style-string-symbolic-constants.md",
     "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
     "docs/scaling.md",
     "docs/11-8-Pointers-and-arrays.md",
@@ -135,8 +138,6 @@
     "docs/11-6-C-style-strings.md",
     "docs/11-3-Arrays-and-loops.md",
     "docs/11-5-Multidimensional-Arrays.md",
-    "docs/11-4-Sorting-an-array-using-selection-sort.md",
-    "docs/11-2-Arrays-Part-II.md",
-    "docs/11-18-Introduction-to-iterators.md"
+    "docs/11-4-Sorting-an-array-using-selection-sort.md"
   ]
 }

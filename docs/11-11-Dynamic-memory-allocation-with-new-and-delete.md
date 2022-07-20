@@ -15,7 +15,7 @@ tags:
 
 
 
-## The need for dynamic memory allocation
+## 动态内存分配的必要性
 
 C++ supports three basic types of memory allocation, of which you’ve already seen two.
 
