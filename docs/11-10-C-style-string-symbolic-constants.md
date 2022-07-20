@@ -13,6 +13,8 @@ tags:
 	- 初始化C字符串常量的两种方法——固定数组和指针
 		- `char myName[]{ "Alex" }; // 固定数组`
 		- `const char* myName{ "Alex" };//指向符号常量的指针`
+	- 符号常量方式初始化的C风格字符串，可能会位于内存中的只读区域，并且相同的字符串变量可能会指向同一块内存，因此最好定义为const
+	- 符号常量方式初始化的C风格字符串位于只读内存中时，它具有全局作用域。
 	
 
 ## C 风格字符串常量
@@ -50,20 +52,20 @@ int main()
 
 对于固定长度数组的例子来说，程序会在内存中分配一个长度为5的数组，同时将内存初始化为 “`Alex\0`”，因为该内存已经被分配给该数组，所以你可以自由地修改数组的内容。这个数组会被当做一般的局部变量来对待，因此当它[[going-out-of-scope|离开作用域]]时，其所使用的内存会被释放以便其他变量使用。
 
-In the symbolic constant case, how the compiler handles this is implementation defined. What _usually_ happens is that the compiler places the string “Alex\0” into read-only memory somewhere, and then sets the pointer to point to it. Because this memory may be read-only, best practice is to make sure the string is const.
+而对于符号常量的例子中来说，编译器如何处理取决于具体实现。*一般*来讲，编译器会把“`Alex\0`” 放在某处只读内存，然后使用一个指针指向它。因为该内存是只读的，所以最好将该字符串设置为const。
 
-For optimization purposes, multiple string literals may be consolidated into a single value. For example:
+编译器会出于性能优化的考量，将多个相同的字符串字面量合并为一个字符串值。例如：
 
 ```cpp
 const char* name1{ "Alex" };
 const char* name2{ "Alex" };
 ```
 
-COPY
 
-These are two different string literals with the same value. The compiler may opt to combine these into a single shared string literal, with both name1 and name2 pointed at the same address. Thus, if name1 was not const, making a change to name1 could also impact name2 (which might not be expected).
+这是两个具有相同值的不同字符串字面值。编译器可以选择将它们组合成一个共享的字符串字面值，`name1` 和 `name2` 都指向相同的地址。因此，如果 `name1` 不是 `const`，那么对 `name1` 进行更改也会影响 `name2` (这可能是意料之外的)。
 
-As a result of string literals being stored in a fixed location in memory, string literals have static duration rather than automatic duration (that is, they die at the end of the program, not the end of the block in which they are defined). That means that when we use string literals, we don’t have to worry about scoping issues. Thus, the following is okay:
+由于字符串字面值被存储在内存中的固定位置，因此字符串字面值具有静态持续时间，而不是自动持续时间(也就是说，它们在程序结束时销毁，而不是在定义它们的块结束时销毁)。这意味着当我们使用字符串字面量时，我们不必担心作用域问题。因此，这么做是可以的：
+
 
 ```cpp
 const char* getName()
@@ -72,17 +74,17 @@ const char* getName()
 }
 ```
 
-COPY
 
-In the above code, `getName()` will return a pointer to C-style string “Alex”. If this function were returning any other local variable by address, the variable would be destroyed at the end of `getName()`, and we’d return a dangling pointer back to the caller. However, because string literals have static duration, “Alex” will not be destroyed when `getName()` terminates, so the caller can still successfully access it.
+在上面的代码中，`getName()` 将返回一个指向C风格字符串`"Alex"`的指针。如果该函数按地址返回任何其他局部变量，则该变量将在`getName()` '结束时销毁，并返回一个悬空指针给调用者。但是，因为字符串字面值具有静态持续时间，所以当 `getName()` 终止时，`"Alex"`不会被销毁，因此调用者仍然可以访问它。
 
-C-style strings are used in a lot of old or low-level code, because they have a very small memory footprint. Modern code should favor the use `std::string` and `std::string_view`, as those provide safe and easy access to the string.
+C风格的字符串在很多旧的或底层代码中使用，因为它们占用的内存非常小。现代代码应该更倾向于使用`std::string`和 `std::string_view` ，因为它们提供了安全且易用的字符串访问。
 
-## `std::cout`和字符指针
 
-At this point, you may have noticed something interesting about the way `std::cout` handles pointers of different types.
+## `std::cout` 和字符指针
 
-Consider the following example:
+学到这一章的时候，你可能已经注意到，`std::cout` 可以处理不同类型的指针。 
+
+例如：
 
 ```cpp
 #include <iostream>
@@ -102,8 +104,7 @@ int main()
 ```
 
 
-
-On the author’s machine, this printed:
+在笔者的电脑上打印下面的信息：
 
 ```
 003AF738
@@ -111,32 +112,32 @@ Hello!
 Alex
 ```
 
-Why did the int array print an address, but the character arrays printed strings?
+为什么整型数组打印的就是地址，而字符数组就能打印字符串？
 
-The answer is that `std::cout` makes some assumptions about your intent. If you pass it a non-char pointer, it will simply print the contents of that pointer (the address that the pointer is holding). However, if you pass it an object of type `char*` or `const char*`, it will assume you’re intending to print a string. Consequently, instead of printing the pointer’s value, it will print the string being pointed to instead!
+这是因为 `std::cout` 可以推断你的意图。如果你传入了一个非字符类型的指针，它会打印该指针的内容（指针持有的地址值）。但是，如果你传递的是一个 `char*` 或 `const char*` 类型的对象，它会假定你希望打印的是一个字符串。因此，它打印的是指针指向的字符串的值而不是指针持有的地址值。
 
-While this is great 99% of the time, it can lead to unexpected results. Consider the following case:
+尽管，99%的情况下都是没问题的，但是其仍有可能产生非预期的结果。考虑下面这个例子：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    char c{ 'Q' };
+    char c{ 'Q' }; //注意这里是一个字符
     std::cout << &c;
 
     return 0;
 }
 ```
 
+在这个例子中，程序员打算打印变量C的地址。然而，`&c`的类型是`char*`，所以`std::cout`将其作为字符串打印！
 
-
-In this case, the programmer is intending to print the address of variable c. However, &c has type char*, so std::cout tries to print this as a string! On the author’s machine, this printed:
+在笔者的机器上，打印结果如下：
 
 ```
 Q╠╠╠╠╜╡4;¿■A
 ```
 
-Why did it do this? Well, it assumed &c (which has type char*) was a string. So it printed the ‘Q’, and then kept going. Next in memory was a bunch of garbage. Eventually, it ran into some memory holding a 0 value, which it interpreted as a null terminator, so it stopped. What you see may be different depending on what’s in memory after variable c.
+为什么这样呢？`std::cout`假设`&c`(类型为`char*`)是一个字符串。所以它打印了“Q”，然后继续打印接下来内存中（一堆垃圾值）。最终，它遇到了保存0值的内存中，并将其解释为空终止符。你看到的可能会不同，这取决于变量C后面的内存。
 
-This case is somewhat unlikely to occur in real-life (as you’re not likely to actually want to print memory addresses), but it is illustrative of how things work under the hood, and how programs can inadvertently go off the rails.
+这种情况在现实生活中不太可能发生(因为您不太可能真的想打印内存地址)，但它说明了事情是如何在幕后工作的，以及程序是如何在不经意间偏离轨道的。
