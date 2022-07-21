@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "11-10-C-style-string-symbolic-constants",
-      "path": "docs/11-10-C-style-string-symbolic-constants.md"
-    },
-    {
       "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
       "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+    },
+    {
+      "basename": "11-10-C-style-string-symbolic-constants",
+      "path": "docs/11-10-C-style-string-symbolic-constants.md"
     },
     {
       "basename": "11-9-Pointer-arithmetic-and-array-indexing",

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "docs/11-10-C-style-string-symbolic-constants.md",
+            "file": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-10-C-style-string-symbolic-constants.md"
+                "file": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
               }
             }
           },
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-10-C-style-string-symbolic-constants.md",
+                "file": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,8 +129,8 @@
   },
   "active": "ebacfe259c1e1920",
   "lastOpenFiles": [
-    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
     "docs/11-10-C-style-string-symbolic-constants.md",
+    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
     "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
     "docs/scaling.md",
     "docs/11-8-Pointers-and-arrays.md",
