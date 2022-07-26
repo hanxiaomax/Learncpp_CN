@@ -17,7 +17,7 @@ tags:
 
 ## 动态内存分配的必要性
 
-C++ supports three basic types of memory allocation, of which you’ve already seen two.
+C++ 支持三种基本类型的内存分配 three basic types of memory allocation, of which you’ve already seen two.
 
 -   **Static memory allocation** happens for static and global variables. Memory for these types of variables is allocated once when your program is run and persists throughout the life of your program.
 -   **Automatic memory allocation** happens for function parameters and local variables. Memory for these types of variables is allocated when the relevant block is entered, and freed when the block is exited, as many times as necessary.
