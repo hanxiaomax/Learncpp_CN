@@ -19,9 +19,9 @@ tags:
 
 C++ 支持三种基本类型的内存分配 three basic types of memory allocation, of which you’ve already seen two.
 
--   **Static memory allocation** happens for static and global variables. Memory for these types of variables is allocated once when your program is run and persists throughout the life of your program.
--   **Automatic memory allocation** happens for function parameters and local variables. Memory for these types of variables is allocated when the relevant block is entered, and freed when the block is exited, as many times as necessary.
--   **Dynamic memory allocation** is the topic of this article.
+-   **静态内存分配** happens for static and global variables. Memory for these types of variables is allocated once when your program is run and persists throughout the life of your program.
+-   **自动内存分配** happens for function parameters and local variables. Memory for these types of variables is allocated when the relevant block is entered, and freed when the block is exited, as many times as necessary.
+-   **动态内存分配** is the topic of this article.
 
 Both static and automatic allocation have two things in common:
 
