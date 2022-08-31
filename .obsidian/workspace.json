@@ -1,0 +1,149 @@
+{
+  "main": {
+    "id": "19a25a951838786f",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d4423af9e59431b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ebacfe259c1e1920",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "37740572e4927497",
+    "type": "split",
+    "children": [
+      {
+        "id": "a254ad40c4b196a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b9cdb44997e9824e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "54f64ac35b54f74b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "11-11",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4047f47d9adb4df3",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "757996903fd3a515",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 254
+  },
+  "right": {
+    "id": "2d4c7ea0a4baec3c",
+    "type": "split",
+    "children": [
+      {
+        "id": "8fc510f6b8f500ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "443be626e233958a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+              }
+            }
+          },
+          {
+            "id": "007fc127cd13d94a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "43fe58f8d0453352",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "ebacfe259c1e1920",
+  "lastOpenFiles": [
+    "docs/11-10-C-style-string-symbolic-constants.md",
+    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
+    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
+    "docs/scaling.md",
+    "docs/11-8-Pointers-and-arrays.md",
+    "docs/11-7-std-string-view-part-2.md",
+    "docs/11-6-C-style-strings.md",
+    "docs/11-3-Arrays-and-loops.md",
+    "docs/11-5-Multidimensional-Arrays.md",
+    "docs/11-4-Sorting-an-array-using-selection-sort.md"
+  ]
+}
