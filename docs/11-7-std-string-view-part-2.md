@@ -6,7 +6,7 @@ origin_title: "11.7 - std:: string_view"
 time: 2022-1-2
 type: translation
 tags:
-- std:: string_view
+- std::string_view
 - C++17
 ---
 

@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
       "basename": "9-3-Lvalue-references",
       "path": "docs/9-3-Lvalue-references.md"
     },
@@ -51,10 +55,6 @@
     {
       "basename": "11-8-Pointers-and-arrays",
       "path": "docs/11-8-Pointers-and-arrays.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
     },
     {
       "basename": "11-6-C-style-strings",
