@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "8-8-Type-deduction-for-functions",
+      "path": "docs/8-8-Type-deduction-for-functions.md"
+    },
+    {
+      "basename": "11-4-Sorting-an-array-using-selection-sort",
+      "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
+    },
+    {
+      "basename": "9-4-Lvalue-references-to-const",
+      "path": "docs/9-4-Lvalue-references-to-const.md"
+    },
+    {
       "basename": "11-7-std-string-view-part-2",
       "path": "docs/11-7-std-string-view-part-2.md"
     },
@@ -69,10 +93,6 @@
       "path": "docs/11-5-Multidimensional-Arrays.md"
     },
     {
-      "basename": "11-4-Sorting-an-array-using-selection-sort",
-      "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
-    },
-    {
       "basename": "11-2-Arrays-Part-II",
       "path": "docs/11-2-Arrays-Part-II.md"
     },
@@ -117,10 +137,6 @@
       "path": "docs/4-18-Introduction-to-std-string_view.md"
     },
     {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
       "basename": "11-19-Introduction-to-standard-library-algorithms",
       "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
     },
@@ -157,18 +173,6 @@
       "path": "docs/9-5-Pass-by-lvalue-reference.md"
     },
     {
-      "basename": "9-4-Lvalue-references-to-const",
-      "path": "docs/9-4-Lvalue-references-to-const.md"
-    },
-    {
-      "basename": "9.12 — Type deduction with pointers, references, and const",
-      "path": "docs/9.12 — Type deduction with pointers, references, and const.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
       "basename": "11-1-Arrays-Part-I",
       "path": "docs/11-1-Arrays-Part-I.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "6-13-Inline-functions",
       "path": "docs/6-13-Inline-functions.md"
-    },
-    {
-      "basename": "optional-parameter",
-      "path": "docs/optional-parameter.md"
     }
   ],
   "omittedPaths": [],
