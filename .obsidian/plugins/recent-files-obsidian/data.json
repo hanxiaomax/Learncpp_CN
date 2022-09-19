@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "9-3-Lvalue-references",
+      "path": "docs/9-3-Lvalue-references.md"
+    },
+    {
+      "basename": "8-15-Function-templates-with-multiple-template-types",
+      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
+    },
+    {
+      "basename": "7-9-For-statements",
+      "path": "docs/7-9-For-statements.md"
+    },
+    {
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-13-How-to-design-your-first-programs",
+      "path": "docs/2-13-How-to-design-your-first-programs.md"
+    },
+    {
+      "basename": "1-8-Whitespace-and-basic-formatting",
+      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "docs/0-8-A-few-common-C++-problems.md"
+    },
+    {
       "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
       "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
     },
@@ -167,38 +199,6 @@
     {
       "basename": "optional-parameter",
       "path": "docs/optional-parameter.md"
-    },
-    {
-      "basename": "0-8-A-few-common-C++-problems",
-      "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "9-1-Introduction-to-compound-data-types",
-      "path": "docs/9-1-Introduction-to-compound-data-types.md"
-    },
-    {
-      "basename": "9-2-Value-categories-lvalues-and-rvalues",
-      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
-    },
-    {
-      "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
-      "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
-    },
-    {
-      "basename": "4-15-Symbolic-constants-const-and-constexpr-variables",
-      "path": "docs/4-15-Symbolic-constants-const-and-constexpr-variables.md"
-    },
-    {
-      "basename": "4-13-Const-variables-and-symbolic-constants",
-      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     }
   ],
   "omittedPaths": [],

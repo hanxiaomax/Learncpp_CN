@@ -1,13 +1,14 @@
 {
-  "baseFontSize": 22,
-  "theme": "moonstone",
+  "baseFontSize": 19,
+  "theme": "obsidian",
   "translucency": false,
-  "cssTheme": "Deep Work",
+  "cssTheme": "",
   "baseFontSizeAction": true,
   "enabledCssSnippets": [
     "bullet-point-relationship-lines",
     "custom-icons-for-specific-folders",
     "outliner-for-the-outline-and-file-explorer",
     "supercharged-links-gen"
-  ]
+  ],
+  "accentColor": ""
 }
