@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "m-x",
+      "path": "docs/m-x.md"
+    },
+    {
+      "basename": "18-x",
+      "path": "docs/18-x.md"
+    },
+    {
+      "basename": "17-x",
+      "path": "docs/17-x.md"
+    },
+    {
       "basename": "16-x",
       "path": "docs/16-x.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "9-5-Pass-by-lvalue-reference",
       "path": "docs/9-5-Pass-by-lvalue-reference.md"
-    },
-    {
-      "basename": "11-1-Arrays-Part-I",
-      "path": "docs/11-1-Arrays-Part-I.md"
-    },
-    {
-      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
-      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
-    },
-    {
-      "basename": "Off-by-one",
-      "path": "docs/Off-by-one.md"
     }
   ],
   "omittedPaths": [],
