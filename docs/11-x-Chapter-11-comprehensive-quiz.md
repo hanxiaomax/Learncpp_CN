@@ -19,36 +19,35 @@ tags:
 
 数组可以被用来创建C语言风格的字符串。一般来讲你不应该使用这种方式创建字符串，而是应该使用 `std::string_view` 和 `std::string`。
 
-指针是那些保存着另外一个变量的地址的变量。[[address-of-operator|取地址操作符&]]可以用于获得某个变量的地址。而 are variables that store the memory address of (point at) another variable. The address-of operator (`&`) can be used to get the address of a variable. The indirection operator (`*`) can be used to get the value that a pointer points at.
+指针是那些保存着另外一个变量的地址的变量。[[address-of-operator|取地址操作符&]]可以用于获得某个变量的地址。而间接运算符（[[dereference-operator|解引用]]）则可以用于取得指针所指地址保存的值。
 
-A null pointer is a pointer that is not pointing at anything. Pointers can be made null by initializing or assigning the value `nullptr` to them. Avoid the `NULL` macro. Indirection through a null pointer can cause bad things to happen. Deleting a null pointer is okay (it doesn’t do anything).
+空指针没有指向任何地址。指针可以通过初始化或赋值为`nullptr` 的方式定义为空指针。删除空指针是没有问题的。
 
-A pointer to an array doesn’t know how large the array it is pointing to is. This means `sizeof()` and range-based for-loops won’t work.
+指向数组的指针并不知道该数组的长度是多少。这也意味着 `sizeof()` 运算符和基于范围的for循环在这种情况下无法正确工作。
 
-The `new` and `delete` operators can be used to dynamically allocate memory for a pointer variable or array. Although it’s unlikely to happen, operator `new` can fail if the operating system runs out of memory. If you’re writing software for a memory-limited system, make sure to check if `new` was successful.
+`new` 和`delete` 运算符可以为变量或数组分配动态内存。尽管概率很低，但操作符`new`是有可能会失败的（操作系统内存耗尽时）。如果你编写的软件运行在内存有限的平台上时，请确保检查`new`操作符是否成功执行。
 
-Make sure to use the array delete (`delete[]`) when deleting an array. Pointers pointing to deallocated memory are called dangling pointers. Using the wrong `delete`, or indirection through a dangling pointer causes undefined behavior.
+当需要删除数组时，请使用数组删除(`delete[]`) 。指向已经被释放的内存地址的指针，称为[[dangling|悬垂]]指针。使用错误的删除运算符`delete`或者对悬垂指针解引用会导致未定义行为。
 
-Failing to delete dynamically allocated memory can result in memory leaks when the last pointer to that memory goes out of scope.
+当指向该内存的最后一个指针超出作用域时，未能删除动态分配的内存会导致内存泄漏。
 
-Normal variables are allocated from limited memory called the stack. Dynamically allocated variables are allocated from a general pool of memory called the heap.
+一般的变量，系统会在一块有限的内存区——栈上为其分配内存。动态分配内存的变量则位于一块通用的内存区域——堆上。
 
-A pointer to a `const` value treats the value it is pointing to as `const`.
+指向const类型值的指针会将它所指的值看做常量。
 
 ```cpp
 int value{ 5 };
 const int* ptr{ &value }; // this is okay, ptr is pointing to a "const int"
 ```
 
-A `const` pointer is a pointer whose value can not be changed after initialization.
+`const` 指针则是表示指针本身的内容（持有的地址）在初始化后不能被改变。
 
 ```cpp
 int value{ 5 };
 int* const ptr{ &value }; // ptr is const, but *ptr is non-const
 ```
 
-
-A reference is an alias to another variable. References are declared using an ampersand (`&`), but this does not mean address-of in this context. References are implicitly `const` -- they must be initialized with a value, and a new value can not be assigned to them. References can be used to prevent copies from being made when passing data to or from a function.
+引用是变量的别名。引用的声明需要使用 `&` 号，但是在这个语境下并不表示[[dereference-operator|解引用]]。引用带有隐含的“常量”含义，它们必须被初始化，此后将不能够再为其赋予新的值。使用引用可以在函数传值或返回值时避免拷贝。
 
 The member selection operator (`->`) can be used to select a member from a pointer to a struct. It combines both an indirection and normal member access (`.`).
 
