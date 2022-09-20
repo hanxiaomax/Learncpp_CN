@@ -19,11 +19,11 @@ tags:
 
 当表达式不是左值时，它便是右值（rvalue）。包括字面量（字符串字面量除外）和函数和操作（当[[按值返回]]时）的返回值。
 
-**引用**是某个已经**存在**的对象的别名。引用一旦被定义，任何对引用的操作都相当于操作该引用所表示的对象。C++ 有contains two types of references: lvalue references and rvalue references. An lvalue reference (commonly just called a reference) acts as an alias for an existing lvalue (such as a variable). An lvalue reference variable is a variable that acts as a reference to an lvalue (usually another variable).
+**引用**是某个已经**存在**的对象的别名。引用一旦被定义，任何对引用的操作都相当于操作该引用所表示的对象。C++ 有两种引用，左值引用和右值引用。左值引用（简称引用）就是某个左值的别名。左值引用变量就是一个用作左值引用的变量，其引用的左值通常是另外一个变量。
 
-When a reference is initialized with an object (or function), we say it is bound to that object (or function). The object (or function) being referenced is sometimes called the referent.
+当使用对象或函数对引用进行初始化之后，我们说该引用和对象或函数绑定了。被引用的对象或者函数称为referent。
 
-Lvalue references can’t be bound to non-modifiable lvalues or rvalues (otherwise you’d be able to change those values through the reference, which would be a violation of their const-ness). For this reason, lvalue references are occasionally called lvalue references to non-const (sometimes shortened to non-const reference).
+左值引用不可以被绑定到不可修改的左值或右值Lvalue references can’t be bound to non-modifiable lvalues or rvalues (otherwise you’d be able to change those values through the reference, which would be a violation of their const-ness). For this reason, lvalue references are occasionally called lvalue references to non-const (sometimes shortened to non-const reference).
 
 Once initialized, a reference in C++ cannot be reseated, meaning it can not be changed to reference another object.
 

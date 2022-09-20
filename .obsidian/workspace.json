@@ -47,7 +47,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "identity",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -72,8 +72,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -133,7 +132,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "54f64ac35b54f74b",
+  "active": "b9cdb44997e9824e",
   "lastOpenFiles": [
     "docs/8-x-Chapter-8-summary-and-quiz.md",
     "docs/9-x-Chapter-9-summary-and-quiz.md",
