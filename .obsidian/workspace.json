@@ -19,6 +19,14 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "1b4700121d19196f",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
         ]
       }
@@ -132,17 +140,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b9cdb44997e9824e",
+  "active": "2850e43e53335e20",
   "lastOpenFiles": [
-    "docs/8-x-Chapter-8-summary-and-quiz.md",
     "docs/9-x-Chapter-9-summary-and-quiz.md",
+    "docs/8-x-Chapter-8-summary-and-quiz.md",
+    "docs/parameters.md",
     "docs/11-x-Chapter-11-comprehensive-quiz.md",
     "docs/8-8-Type-deduction-for-functions.md",
     "docs/11-4-Sorting-an-array-using-selection-sort.md",
     "docs/9-4-Lvalue-references-to-const.md",
     "docs/9.12 — Type deduction with pointers, references, and const.md",
     "docs/11-7-std-string-view-part-2.md",
-    "docs/9-3-Lvalue-references.md",
-    "docs/8-15-Function-templates-with-multiple-template-types.md"
+    "docs/9-3-Lvalue-references.md"
   ]
 }
