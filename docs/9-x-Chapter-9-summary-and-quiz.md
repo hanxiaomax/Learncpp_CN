@@ -25,18 +25,13 @@ tags:
 - 当进行[[pass-by-reference|按引用传递]]时，我们将函数的[[parameters|形参]]声明为引用或常量引用而不是普通的变量。当函数被调用时，形参中的引用会绑定到[[arguments|实参]]。因为引用只是对象的别名，所以这种情况下并不会创建实参的拷贝。
 - [[address-of-operator|取地址运算符 (&)]]会返回其操作数的地址。而[[dereference-operator |解引用(*)]]运算符则会返回给定地址存放的左值。
 - 指针是一个对象，它**持有**一个内存地址（通常是另外一个变量的地址）作为其值。使用指针我们可以将某个对象的地址保存起来以便稍后使用。和不同的变量一样，指针不会被默认初始化。而没有被初始化的指针通常被称为[[wild-pointer|野指针]]。[[dangling|悬垂]]指针则是那些保存着无效地址的指针（该地址中的对象已经被销毁）。
+- 除了内存地址，指针还可以保存一个特殊值，即空值（null）。null是一个特殊值它表示空值。当指针的值为null时，表示它没有指向任何地址。此时该指针被称为空指针。关键字[[nullptr]]是空指针的字面量。我们可以通过`nullptr`来显式地为指针初始化或赋值为空值。
+- 指针应当持有一个包含有效对象的地址，或者设置为 `nullptr`。这种情况下我们只需要判断指针是不是空即可，否则我们就认为它是有效的。
+- 指针如果指向一个const常量（有时简称为指向常量的指针），则表示一个（非常量）指针指向一个常量。
+- 而一个常量指针，则是在其持有地址被初始后，不能再改变的指针。
+- 指向常量的常量指针，其指针本身所持有的地址不能改变，也不能修改该地址所指向的对象。
 
-除了内存地址，指针还可以保存一个特殊值，即空值（null）。null是一个特殊值它表示空值。当指针的值为null时，表示它没有指向任何地址。此时该指针被称为空指针。关键字[[nullptr]]是空指针的字面量。我们可以通过`nullptr`来显式地为指针初始化或赋值为空值。
-
-A pointer should either hold the address of a valid object, or be set to `nullptr`. That way we only need to test pointers for null, and can assume any non-null pointer is valid.
-
-A pointer to a const value (sometimes called a pointer to const for short) is a (non-const) pointer that points to a constant value.
-
-A const pointer is a pointer whose address can not be changed after initialization.
-
-A const pointer to a const value can not have its address changed, nor can the value it is pointing to be changed through the pointer.
-
-With pass by address, instead of providing an object as an argument, the caller provides an object’s address (via a pointer). This pointer (holding the address of the object) is copied into a pointer parameter of the called function (which now also holds the address of the object). The function can then dereference that pointer to access the object whose address was passed.
+[[pass-by-address]]With pass by address, instead of providing an object as an argument, the caller provides an object’s address (via a pointer). This pointer (holding the address of the object) is copied into a pointer parameter of the called function (which now also holds the address of the object). The function can then dereference that pointer to access the object whose address was passed.
 
 Return by reference returns a reference that is bound to the object being returned, which avoids making a copy of the return value. Using return by reference has one major caveat: the programmer must be sure that the object being referenced outlives the function returning the reference. Otherwise, the reference being returned will be left dangling (referencing an object that has been destroyed), and use of that reference will result in undefined behavior. If a parameter is passed into a function by reference, it’s safe to return that parameter by reference.
 
