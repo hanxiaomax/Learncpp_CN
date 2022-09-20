@@ -30,13 +30,8 @@ tags:
 - 指针如果指向一个const常量（有时简称为指向常量的指针），则表示一个（非常量）指针指向一个常量。
 - 而一个常量指针，则是在其持有地址被初始后，不能再改变的指针。
 - 指向常量的常量指针，其指针本身所持有的地址不能改变，也不能修改该地址所指向的对象。
-
-[[pass-by-address]]With pass by address, instead of providing an object as an argument, the caller provides an object’s address (via a pointer). This pointer (holding the address of the object) is copied into a pointer parameter of the called function (which now also holds the address of the object). The function can then dereference that pointer to access the object whose address was passed.
-
-Return by reference returns a reference that is bound to the object being returned, which avoids making a copy of the return value. Using return by reference has one major caveat: the programmer must be sure that the object being referenced outlives the function returning the reference. Otherwise, the reference being returned will be left dangling (referencing an object that has been destroyed), and use of that reference will result in undefined behavior. If a parameter is passed into a function by reference, it’s safe to return that parameter by reference.
-
-If a function returns a reference, and that reference is used to initialize or assign to a non-reference variable, the return value will be copied (as if it had been returned by value).
-
-Type deduction for variables (via the `auto` keyword) will drop any reference or top-level const qualifiers from the deduced type. These can be reapplied as part of the variable declaration if desired.
-
-Return by address works almost identically to return by reference, except a pointer to an object is returned instead of a reference to an object.
+- 对于[[pass-by-address|传地址]]来说，调用者会使用对象的地址（通过指针）而不是对象本身作为[[arguments|实参]]。该指针（持有该对象的地址）会被拷贝到被调函数的指针参数（[[parameters|形参]]），该参数此时保存着该对象所在地址（的一份拷贝）。随后，函数可以对该指针进行[[dereference-operator|解引用]]以访问该对象。
+- [[return-by-reference|按引用返回]]时，函数返回绑定到返回对象的引用，这种情况下不会对返回值进行拷贝。在返回引用时，有一点需要注意：该引用所绑定的对象其生命周期要比函数长。否则返回的引用将变成[[dangling|悬垂]]引用（引用的对象被销毁了），此时继续使用该引用会导致未定义行为。如果实参通过引用的方式被传入，那么使用按引用返回该参数也是更安全的。
+- 如果一个函数返回引用，且该引用被用来初始化或赋值给一个非引用类型的变量，那么该返回值会被拷贝（和[[按值返回]]的效果是一样的）。
+- 使用`auto`进行类型推断时，它会移除引用标记或其他顶层常量修饰符。如果，你仍需要这些标识符，则需要将其作为变量声明的一部分进行添加。
+- [[return-by-address|按地址返回]]和[[return-by-reference|按引用返回]]的工作原理几乎是一样的，区别只在于前者返回的是指向对象的指针而后者返回的是一个对象的引用。

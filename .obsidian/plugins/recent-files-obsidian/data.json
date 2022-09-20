@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "16-x",
+      "path": "docs/16-x.md"
+    },
+    {
       "basename": "9-x-Chapter-9-summary-and-quiz",
       "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "return-by-reference",
+      "path": "docs/return-by-reference.md"
+    },
+    {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
+      "basename": "dereference-operator",
+      "path": "docs/dereference-operator.md"
     },
     {
       "basename": "8-x-Chapter-8-summary-and-quiz",
@@ -11,10 +31,6 @@
     {
       "basename": "parameters",
       "path": "docs/parameters.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
     },
     {
       "basename": "8-8-Type-deduction-for-functions",
@@ -27,10 +43,6 @@
     {
       "basename": "9-4-Lvalue-references-to-const",
       "path": "docs/9-4-Lvalue-references-to-const.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
     },
     {
       "basename": "9-3-Lvalue-references",
@@ -187,18 +199,6 @@
     {
       "basename": "Off-by-one",
       "path": "docs/Off-by-one.md"
-    },
-    {
-      "basename": "iterating",
-      "path": "docs/iterating.md"
-    },
-    {
-      "basename": "subscripts",
-      "path": "docs/subscripts.md"
-    },
-    {
-      "basename": "yaml",
-      "path": "Templates/yaml.md"
     }
   ],
   "omittedPaths": [],

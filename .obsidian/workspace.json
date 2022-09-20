@@ -21,14 +21,33 @@
             }
           },
           {
-            "id": "1b4700121d19196f",
+            "id": "702b76728f9893d3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "docs/9-x-Chapter-9-summary-and-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c67a603efe125584",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/16-x.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -100,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-x-Chapter-9-summary-and-quiz.md"
+                "file": "docs/16-x.md"
               }
             }
           },
@@ -121,7 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-x-Chapter-9-summary-and-quiz.md",
+                "file": "docs/16-x.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,17 +159,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2850e43e53335e20",
+  "active": "c67a603efe125584",
   "lastOpenFiles": [
     "docs/9-x-Chapter-9-summary-and-quiz.md",
+    "docs/11-x-Chapter-11-comprehensive-quiz.md",
+    "docs/11-x.md",
+    "docs/return-by-reference.md",
+    "docs/11-7-std-string-view-part-2.md",
+    "docs/dereference-operator.md",
     "docs/8-x-Chapter-8-summary-and-quiz.md",
     "docs/parameters.md",
-    "docs/11-x-Chapter-11-comprehensive-quiz.md",
     "docs/8-8-Type-deduction-for-functions.md",
-    "docs/11-4-Sorting-an-array-using-selection-sort.md",
-    "docs/9-4-Lvalue-references-to-const.md",
-    "docs/9.12 — Type deduction with pointers, references, and const.md",
-    "docs/11-7-std-string-view-part-2.md",
-    "docs/9-3-Lvalue-references.md"
+    "docs/11-4-Sorting-an-array-using-selection-sort.md"
   ]
 }
