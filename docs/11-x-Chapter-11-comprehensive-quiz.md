@@ -49,7 +49,7 @@ int* const ptr{ &value }; // ptr is const, but *ptr is non-const
 
 引用是变量的别名。引用的声明需要使用 `&` 号，但是在这个语境下并不表示[[dereference-operator|解引用]]。引用带有隐含的“常量”含义，它们必须被初始化，此后将不能够再为其赋予新的值。使用引用可以在函数传值或返回值时避免拷贝。
 
-The member selection operator (`->`) can be used to select a member from a pointer to a struct. It combines both an indirection and normal member access (`.`).
+成员选择运算符The member selection operator (`->`) can be used to select a member from a pointer to a struct. It combines both an indirection and normal member access (`.`).
 
 Void pointers are pointers that can point to any type of data. Indirection through them is not possible directly. You can use `static_cast` to convert them back to their original pointer type. It’s up to you to remember what type they originally were.
 
