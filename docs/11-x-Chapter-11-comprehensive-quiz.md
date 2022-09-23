@@ -51,9 +51,9 @@ int* const ptr{ &value }; // ptr is const, but *ptr is non-const
 
 成员选择运算符(`->`)用于选择指针所指结构体中的某个成员。它等效于间接运算符加上一般的成员访问符（`.`）。
 
-Void 类型的指针可以指向任何类型的数据，但是不能直接对它们使用间接运算符。 are pointers that can point to any type of data. Indirection through them is not possible directly. You can use `static_cast` to convert them back to their original pointer type. It’s up to you to remember what type they originally were.
+Void 类型的指针可以指向任何类型的数据，但是不能直接对它们使用间接运算符（[[dereference-operator|解引用]]）。你可以使用 `static_cast` 将它还原为原本的指针类型。不过这取决于你是否还记得它原本是什么类型。
 
-Pointers to pointers allow us to create a pointer that points to another pointer.
+通过指针的指针，我们可以创建指向其他zhi'zhe to pointers allow us to create a pointer that points to another pointer.
 
 `std::array` provides all of the functionality of C++ built-in arrays (and more) in a form that won’t decay into a pointer. These should generally be preferred over built-in fixed arrays.
 
