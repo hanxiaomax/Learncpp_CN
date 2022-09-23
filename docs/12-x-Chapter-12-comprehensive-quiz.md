@@ -9,22 +9,24 @@ tags:
 - summary
 ---
 
-Another chapter down! The next chapter is the best one, and you’re almost there! There’s just this pesky quiz to get past…
+函数的[[arguments|实参]]可以通过传值、传引用或者传地址的方式来传递。
+- 在传递基本数据类型和枚举量时使用[[pass-by-value|按值传递]]；
+- 在传递结构体、类或者需要函数进行修改的实参时，使用[[pass-by-reference|按引用传递]]；
+- 在传递指针或内置数组时使用[[pass-by-address|传地址]] 。
+如果可以，尽量在传递引用和地址时使用`const`。
 
-Function arguments can be passed by value, reference or address. Use pass by value for fundamental data types and enumerators. Use pass by reference for structs, classes, or when you need the function to modify an argument. Use pass by address for passing pointers or built-in arrays. Make your pass by reference and address parameters const whenever possible.
+值可以通过按值返回、按引用返回或按地址返回。大多数情况下，按值返回是可以的，不过有时候[[return-by-reference|按引用返回]]和[[return-by-address|按地址返回]]也很有用，特别是在处理动态分配的数据、结构体或类时。在使用按引用返回或按地址返回时，记得要确保返回的内容不会[[going-out-of-scope|离开作用域]]。
 
-Values can be returned by value, reference, or address. Most of the time, return by value is fine, however return by reference or address can be useful when working with dynamically allocated data, structs, or classes. If returning by reference or address, remember to make sure you’re not returning something that will go out of scope.
+函数指针允许我们将一个函数传递给另一个函数。这有助于调用者自定义函数的行为，例如列表的排序算法。
 
-Function pointers allow us to pass a function to another function. This can be useful to allow the caller to customize the behavior of a function, such as the way a list gets sorted.
+动态内存将在堆上进行分配。
 
-Dynamic memory is allocated on the heap.
+函数调用时会在调用栈中堆栈跟踪从程序开始到当前执行点的所有活动函数(那些已被调用但尚未终止的函数)。局部变量会在栈上分配，但是栈的空间是有限的。`std::vector` 可以用来模拟栈的行为。
 
-The call stack keeps track of all of the active functions (those that have been called but have not yet terminated) from the start of the program to the current point of execution. Local variables are allocated on the stack. The stack has a limited size. `std::vector` can be used to implement stack-like behavior.
+自己调用自己的函数，称为递归函数。所有的递归函数都必须有终止条件。
 
-A recursive function is a function that calls itself. All recursive functions need a termination condition.
+命令行参数允许用户或其他程序在程序启动时为其传入数据。命令行参数在任何情况下都是C语言风格的字符串，如果期望传递的是数值，则要自行转换。
 
-Command line arguments allow users or other programs to pass data into our program at startup. Command line arguments are always C-style strings, and have to be converted to numbers if numeric values are desired.
-
-Ellipsis allow you to pass a variable number of arguments to a function. However, ellipsis arguments suspend type checking, and do not know how many arguments were passed. It is up to the program to keep track of these details.
+省略号用于传递不定长参数。但是这种情况下不会进行类型检查，也不知道传递了多少参数。程序必须自行追踪相关细节。
 
 Lambda functions are functions that can be nested inside other functions. They don’t need a name and are very useful in combination with the algorithms library.

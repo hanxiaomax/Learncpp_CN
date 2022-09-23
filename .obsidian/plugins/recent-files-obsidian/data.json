@@ -5,6 +5,14 @@
       "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
     },
     {
+      "basename": "return-by-address",
+      "path": "docs/return-by-address.md"
+    },
+    {
+      "basename": "pass-by-reference",
+      "path": "docs/pass-by-reference.md"
+    },
+    {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
       "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "11-12-Dynamically-allocating-arrays",
       "path": "docs/11-12-Dynamically-allocating-arrays.md"
-    },
-    {
-      "basename": "going-out-of-scope",
-      "path": "docs/going-out-of-scope.md"
-    },
-    {
-      "basename": "dangling",
-      "path": "docs/dangling.md"
     }
   ],
   "omittedPaths": [],
