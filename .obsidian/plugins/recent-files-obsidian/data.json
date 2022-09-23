@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "16-x",
+      "path": "docs/16-x.md"
+    },
+    {
+      "basename": "Composition",
+      "path": "docs/Composition.md"
+    },
+    {
+      "basename": "aggregation",
+      "path": "docs/aggregation.md"
+    },
+    {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
       "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
     },
     {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+      "basename": "17-x",
+      "path": "docs/17-x.md"
     },
     {
-      "basename": "16-x",
-      "path": "docs/16-x.md"
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     },
     {
       "basename": "m-x",
@@ -19,10 +31,6 @@
     {
       "basename": "18-x",
       "path": "docs/18-x.md"
-    },
-    {
-      "basename": "17-x",
-      "path": "docs/17-x.md"
     },
     {
       "basename": "return-by-reference",
@@ -191,14 +199,6 @@
     {
       "basename": "9-7-Null-pointers",
       "path": "docs/9-7-Null-pointers.md"
-    },
-    {
-      "basename": "9-6-Introduction-to-pointers",
-      "path": "docs/9-6-Introduction-to-pointers.md"
-    },
-    {
-      "basename": "9-5-Pass-by-lvalue-reference",
-      "path": "docs/9-5-Pass-by-lvalue-reference.md"
     }
   ],
   "omittedPaths": [],

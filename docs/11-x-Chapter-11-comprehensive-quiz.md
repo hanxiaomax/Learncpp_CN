@@ -53,12 +53,12 @@ int* const ptr{ &value }; // ptr is const, but *ptr is non-const
 
 Void 类型的指针可以指向任何类型的数据，但是不能直接对它们使用间接运算符（[[dereference-operator|解引用]]）。你可以使用 `static_cast` 将它还原为原本的指针类型。不过这取决于你是否还记得它原本是什么类型。
 
-通过指针的指针，我们可以创建指向其他zhi'zhe to pointers allow us to create a pointer that points to another pointer.
+通过指针的指针，我们可以创建指向其他指针的指针。
 
-`std::array` provides all of the functionality of C++ built-in arrays (and more) in a form that won’t decay into a pointer. These should generally be preferred over built-in fixed arrays.
+`std::array` 提供了C++内置数组的全部（甚至）更多的功能，而且它不会退化为指针。通常来说使用它来替换内置数组是更加的选择。
 
-`std::vector` provides dynamic array functionality, handles its own memory management and remembers its size. These should generally be favored over built-in dynamic arrays.
+`std::vector` 提供了动态数组的功能，它可以自行管理内存并记录数组的大小。通常使用它来替换内置动态数组是更加的选择。
 
-Thanks to iterators, we don’t have to know how a container is implemented to loop through its elements.
+由于[[iterator|迭代器]]的存在，我们其实并不需要去了解容器的具体实现就可以完成循环遍历。
 
-The algorithms library helps us to save a lot of time by providing many off-the-shelf functions. In combination with iterators (and later lambdas), the algorithms library is an important part of C++.
+[algorithms](https://en.cppreference.com/w/cpp/algorithm) 库为我们提供了很多趁手的函数，搭配迭代器（以及后面学到的lambda函数），它们构成了C++语言非常重要的一部分。

@@ -65,7 +65,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md",
+                "file": "docs/16-x.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -145,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+                "file": "docs/16-x.md"
               }
             }
           },
@@ -166,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md",
+                "file": "docs/16-x.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,15 +187,15 @@
   },
   "active": "39dfd5be8db4d850",
   "lastOpenFiles": [
-    "docs/9-x-Chapter-9-summary-and-quiz.md",
-    "docs/11-x-Chapter-11-comprehensive-quiz.md",
+    "docs/Composition.md",
     "docs/16-x.md",
+    "docs/aggregation.md",
+    "docs/11-x-Chapter-11-comprehensive-quiz.md",
+    "docs/17-x.md",
+    "docs/9-x-Chapter-9-summary-and-quiz.md",
     "docs/m-x.md",
     "docs/18-x.md",
-    "docs/17-x.md",
     "docs/11-x.md",
-    "docs/return-by-reference.md",
-    "docs/11-7-std-string-view-part-2.md",
-    "docs/dereference-operator.md"
+    "docs/return-by-reference.md"
   ]
 }
