@@ -1,6 +1,46 @@
 {
   "recentFiles": [
     {
+      "basename": "12-x-Chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
+    },
+    {
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+    },
+    {
+      "basename": "20-x-Chapter-20-comprehensive-quiz",
+      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-summary-and-quiz",
+      "path": "docs/16-x-Chapter-16-summary-and-quiz.md"
+    },
+    {
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
+    },
+    {
       "basename": "18-x-Chapter-18-summary-and-quiz",
       "path": "docs/18-x-Chapter-18-summary-and-quiz.md"
     },
@@ -21,32 +61,12 @@
       "path": "docs/17-x-Chapter-17-summary-and-quiz.md"
     },
     {
-      "basename": "16-x-Chapter-16-summary-and-quiz",
-      "path": "docs/16-x-Chapter-16-summary-and-quiz.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
       "basename": "Composition",
       "path": "docs/Composition.md"
     },
     {
       "basename": "aggregation",
       "path": "docs/aggregation.md"
-    },
-    {
-      "basename": "m-x",
-      "path": "docs/m-x.md"
     },
     {
       "basename": "return-by-reference",
@@ -179,26 +199,6 @@
     {
       "basename": "dangling",
       "path": "docs/dangling.md"
-    },
-    {
-      "basename": "4-18-Introduction-to-std-string_view",
-      "path": "docs/4-18-Introduction-to-std-string_view.md"
-    },
-    {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
-      "basename": "9-11-Return-by-reference-and-return-by-address",
-      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
-    },
-    {
-      "basename": "9-10-Pass-by-address-part-2",
-      "path": "docs/9-10-Pass-by-address-part-2.md"
     }
   ],
   "omittedPaths": [],
