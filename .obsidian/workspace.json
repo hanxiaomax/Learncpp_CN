@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17- 小结与测试.md",
+                "file": "docs/18-x-Chapter-18-summary-and-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -92,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17- 小结与测试.md"
+                "file": "docs/18-x-Chapter-18-summary-and-quiz.md"
               }
             }
           },
@@ -113,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17- 小结与测试.md",
+                "file": "docs/18-x-Chapter-18-summary-and-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,15 +134,15 @@
   },
   "active": "39dfd5be8db4d850",
   "lastOpenFiles": [
-    "docs/16 - 小结与测试.md",
-    "docs/18 - 小结与测试.md",
-    "docs/17- 小结与测试.md",
-    "docs/Composition.md",
-    "docs/aggregation.md",
+    "docs/override.md",
+    "docs/18-x-Chapter-18-summary-and-quiz.md",
+    "docs/17-x-Chapter-17-summary-and-quiz.md",
+    "docs/16-x-Chapter-16-summary-and-quiz.md",
     "docs/11-x-Chapter-11-comprehensive-quiz.md",
     "docs/9-x-Chapter-9-summary-and-quiz.md",
-    "docs/m-x.md",
-    "docs/11-x.md",
-    "docs/return-by-reference.md"
+    "docs/8-x-Chapter-8-summary-and-quiz.md",
+    "docs/Composition.md",
+    "docs/aggregation.md",
+    "docs/m-x.md"
   ]
 }

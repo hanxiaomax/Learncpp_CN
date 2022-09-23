@@ -1,24 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "17- 小结与测试",
-      "path": "docs/17- 小结与测试.md"
+      "basename": "18-x-Chapter-18-summary-and-quiz",
+      "path": "docs/18-x-Chapter-18-summary-and-quiz.md"
     },
     {
-      "basename": "16 - 小结与测试",
-      "path": "docs/16 - 小结与测试.md"
+      "basename": "override",
+      "path": "docs/override.md"
     },
     {
-      "basename": "18 - 小结与测试",
-      "path": "docs/18 - 小结与测试.md"
+      "basename": "17-x-Chapter-17-summary-and-quiz",
+      "path": "docs/17-x-Chapter-17-summary-and-quiz.md"
     },
     {
-      "basename": "Composition",
-      "path": "docs/Composition.md"
-    },
-    {
-      "basename": "aggregation",
-      "path": "docs/aggregation.md"
+      "basename": "16-x-Chapter-16-summary-and-quiz",
+      "path": "docs/16-x-Chapter-16-summary-and-quiz.md"
     },
     {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
@@ -27,6 +23,18 @@
     {
       "basename": "9-x-Chapter-9-summary-and-quiz",
       "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
+    },
+    {
+      "basename": "Composition",
+      "path": "docs/Composition.md"
+    },
+    {
+      "basename": "aggregation",
+      "path": "docs/aggregation.md"
     },
     {
       "basename": "m-x",
@@ -43,10 +51,6 @@
     {
       "basename": "dereference-operator",
       "path": "docs/dereference-operator.md"
-    },
-    {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
     {
       "basename": "parameters",
@@ -195,10 +199,6 @@
     {
       "basename": "9-9-Pass-by-address",
       "path": "docs/9-9-Pass-by-address.md"
-    },
-    {
-      "basename": "9-7-Null-pointers",
-      "path": "docs/9-7-Null-pointers.md"
     }
   ],
   "omittedPaths": [],

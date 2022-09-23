@@ -26,19 +26,19 @@ tags:
 
 析构的顺序则正号相反，先析构派生类再析构基类。
 
-C++ 支持3个访问控制说明符：public，private 和 protected。protected 关键字修饰的成员，允许该类、you specifier allows the class the member belongs to, friends, and derived classes to access protected members, but not the public.
+C++ 支持3个访问控制说明符：public，private 和 protected。protected 关键字修饰的成员，允许该类、友类和派生类访问，但是不能被其他类访问。
 
-Classes can inherit from another class publicly, privately, or protectedly. Classes almost always inherit publicly.
+Class也可以通过公开、私有或保护的方式继承。绝大多数情况下，类的继承都是公开的。
 
-Here’s a table of all of the access specifier and inheritance types combinations:
+下表列举了不同访问说明符和继承类型的组合：
 
-|Access specifier in base class	|Access specifier when inherited publicly	|Access specifier when inherited privately	|Access specifier when inherited protectedly|
+
+|基类中的访问说明符	|公开继承时的访问说明符|私有继承时的访问说明符|保护继承时的访问说明符|
 |:----:|----:|----:|----:|
-|Public|	Public	|Private	|Protected|
-|Private|	Inaccessible|	Inaccessible|	Inaccessible|
-|Protected|	Protected|	Private|	Protected|
+|公开|	公开	|私有	|保护|
+|私有|	不可访问|	不可访问|	不可访问|
+|保护|	保护|	私有|	保护|
 
+派生类中可以添加新的函数，修改基类的函数，修改继承的成员的访问规则或者隐藏某些函数。
 
-Derived classes can add new functions, change the way functions that exist in the base class work in the derived class, change an inherited member’s access level, or hide functionality.
-
-Multiple inheritance enables a derived class to inherit members from more than one parent. You should generally avoid multiple inheritance unless alternatives lead to more complexity.
+当派生类从多个父类进行基础时，称为[[多重继承]]。一般来说应该避免多重继承，除非它能够极大地降低设计复杂度。

@@ -11,15 +11,11 @@ tags:
 
 ## 复习
 
-And so our journey through C++’s inheritance and virtual functions comes to an end. Fret not, dear reader, for there are plenty of other areas of C++ to explore as we move forward.
+C++ 允许你将基类类型的指针或引用指向派生类的对象。当我们需要编写代码使其能够配合从同一个基类继承的派生类工作时，这个特性非常有用。
 
-**Chapter summary**
+如果没有虚函数的帮助，指向派生类的基类指针和引用就只能访问基类的成员变量和基类中对应的函数。
 
-C++ allows you to set base class pointers and references to a derived object. This is useful when we want to write a function or array that can work with any type of object derived from a base class.
-
-Without virtual functions, base class pointers and references to a derived class will only have access to base class member variables and versions of functions.
-
-A virtual function is a special type of function that resolves to the most-derived version of the function (called an override) that exists between the base and derived class. To be considered an override, the derived class function must have the same signature and return type as the virtual base class function. The one exception is for covariant return types, which allow an override to return a pointer or reference to a derived class if the base class function returns a pointer or reference to the base class.
+虚函数的一种特殊类型的函数，它会解析为基类和派生类中共同存在的最后派生的函数（称为[[override|重载]]）。为了实现重载。派生类的函数和基类中的虚函数必须具有相同的函数签名和返回值类型。一个例外的情况是[[covariant|协变返回值类型]]，这种情况下重载函数的返回值which allow an override to return a pointer or reference to a derived class if the base class function returns a pointer or reference to the base class.
 
 A function that is intended to be an override should use the override specifier to ensure that it is actually an override.
 
