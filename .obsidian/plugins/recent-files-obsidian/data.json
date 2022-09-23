@@ -5,6 +5,14 @@
       "path": "docs/18-x-Chapter-18-summary-and-quiz.md"
     },
     {
+      "basename": "covariant",
+      "path": "docs/covariant.md"
+    },
+    {
+      "basename": "scope-resolution-operator",
+      "path": "docs/scope-resolution-operator.md"
+    },
+    {
       "basename": "override",
       "path": "docs/override.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "9-10-Pass-by-address-part-2",
       "path": "docs/9-10-Pass-by-address-part-2.md"
-    },
-    {
-      "basename": "9-8-Pointers-and-const",
-      "path": "docs/9-8-Pointers-and-const.md"
-    },
-    {
-      "basename": "9-9-Pass-by-address",
-      "path": "docs/9-9-Pass-by-address.md"
     }
   ],
   "omittedPaths": [],
