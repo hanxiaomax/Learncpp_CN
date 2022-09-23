@@ -8,72 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2850e43e53335e20",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/9-x-Chapter-9-summary-and-quiz.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c67a603efe125584",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/16-x.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "bb9af82cdd4e8dcc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-x.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "665324781bb8046f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-x.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "39dfd5be8db4d850",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/16-x.md",
+                "file": "docs/17- 小结与测试.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -145,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/16-x.md"
+                "file": "docs/17- 小结与测试.md"
               }
             }
           },
@@ -166,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/16-x.md",
+                "file": "docs/17- 小结与测试.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,14 +134,14 @@
   },
   "active": "39dfd5be8db4d850",
   "lastOpenFiles": [
+    "docs/16 - 小结与测试.md",
+    "docs/18 - 小结与测试.md",
+    "docs/17- 小结与测试.md",
     "docs/Composition.md",
-    "docs/16-x.md",
     "docs/aggregation.md",
     "docs/11-x-Chapter-11-comprehensive-quiz.md",
-    "docs/17-x.md",
     "docs/9-x-Chapter-9-summary-and-quiz.md",
     "docs/m-x.md",
-    "docs/18-x.md",
     "docs/11-x.md",
     "docs/return-by-reference.md"
   ]
