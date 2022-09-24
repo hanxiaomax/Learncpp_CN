@@ -29,4 +29,4 @@ tags:
 
 省略号用于传递不定长参数。但是这种情况下不会进行类型检查，也不知道传递了多少参数。程序必须自行追踪相关细节。
 
-Lambda functions are functions that can be nested inside other functions. They don’t need a name and are very useful in combination with the algorithms library.
+Lambda 函数是那些可以嵌入在其他函数中的函数。它们不需要函数名，而且可以在和 algorithms 库结合使用时非常有用。
