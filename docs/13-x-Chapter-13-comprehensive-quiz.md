@@ -31,7 +31,7 @@ tags:
 
 如果成员函数不修改类的状态，则可以（也应该）被声明为const类型。const 对象也只能调用const成员函数。
 
-Static member variables are shared among all objects of the class. Although they can be accessed from a class object, they can also be accessed directly via the scope resolution operator.
+静态成员变量在该类的所有对象间共享。虽然它们可以通过对象来访问，它们也可以使用[[scope-resolution-operator|作用域解析运算符]]来访问。
 
 Similarly, static member functions are member functions that have no *this pointer. They can only access static member variables.
 
