@@ -24,11 +24,9 @@ tags:
 
 如果你不提供拷贝构造函数，编译器会自动为你创建一个。编译器提供的拷贝构造函数会使用[[memberwise initialization|成员依次初始化]]，即该对象的每个成员都会从用于初始化它的对象的每个成员依次拷贝。拷贝构造函数可能会出于优化的目的被省略，即使它有副作用，所以不要期望拷贝构造函数一定会执行。
 
-Constructors are considered converting constructors by default, meaning that the compiler will use them to implicitly convert objects of other types into objects of your class. You can avoid this by using the explicit keyword in front of your constructor. You can also delete functions within your class, including the copy constructor and overloaded assignment operator if desired. This will cause a compiler error if a deleted function would be called.
+默认情况下，构造函数会被看做类型转换构造函数。也就是说，编译器可以使用它们隐式地将其他类型的对象转换为这种类型的对象。为了避免这种事情的发生，你可以在构造函数前面添加`explicit`关键字。你也可以删除类中的函数(`=delete`)，比如删除拷贝构造函数或重载的赋值运算符。当调用被删除的函数时，会产生编译错误。
 
-默认情况下，构造函数会被看做类型转换构造函数。也就是说，编译器可以使用它们隐式地将其他类型的对象转换为这种类型的对象。为了避免这种事情的发生，你可以在构造函数前面添加`explicit`关键字。你也可以删除类中的函数，比如删除拷贝构造函数或重载的赋值运算符。当调用被删除的函数时，会产生
-
-The assignment operator can be overloaded to allow assignment to your class. If you do not provide an overloaded assignment operator, the compiler will create one for you. Overloaded assignment operators should always include a self-assignment check (unless it’s handled naturally, or you’re using the copy and swap idiom).
+赋值运算符可以被重载并用于给你的类赋值，如果你没有提供重载的赋值操作符，则编译器会自动地为你创建一个。重载的赋值运算符应该总是进行自我赋值检查（） operator can be overloaded to allow assignment to your class. If you do not provide an overloaded assignment operator, the compiler will create one for you. Overloaded assignment operators should always include a self-assignment check (unless it’s handled naturally, or you’re using the copy and swap idiom).
 
 New programmers often mix up when the assignment operator vs copy constructor are used, but it’s fairly straightforward:
 
