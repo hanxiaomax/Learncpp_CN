@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/16-x-Chapter-16-comprehensive-quiz.md.md",
+                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -63,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "友元",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -88,7 +88,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -108,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/16-x-Chapter-16-comprehensive-quiz.md.md"
+                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md"
               }
             }
           },
@@ -129,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/16-x-Chapter-16-comprehensive-quiz.md.md",
+                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,15 +151,15 @@
   },
   "active": "96518462a2aa8b6f",
   "lastOpenFiles": [
-    "docs/M-x-chapter-M-comprehensive-review.md",
-    "docs/17-x-Chapter-17-summary-and-quiz.md",
-    "docs/11-x-Chapter-11-comprehensive-quiz.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
+    "docs/friend-function.md",
     "docs/14-x-Chapter-14-comprehensive-quiz.md",
-    "docs/14-11-Overloading-typecasts.md",
+    "docs/16-x-Chapter-16-comprehensive-quiz.md",
     "docs/20-x-Chapter-20-comprehensive-quiz.md",
     "docs/19-x-Chapter-19-comprehensive-quiz.md",
-    "docs/18-x-Chapter-18-summary-and-quiz.md",
-    "docs/11-18-Introduction-to-iterators.md",
-    "docs/12-x-Chapter-12-comprehensive-quiz.md"
+    "docs/18-x-Chapter-18-comprehensive-quiz.md",
+    "docs/17-x-Chapter-17-comprehensive-quiz.md",
+    "docs/M-x-chapter-M-comprehensive-review.md",
+    "docs/11-x-Chapter-11-comprehensive-quiz.md"
   ]
 }

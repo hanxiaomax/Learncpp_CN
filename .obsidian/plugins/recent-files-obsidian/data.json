@@ -1,28 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "16-x-Chapter-16-comprehensive-quiz.md",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md.md"
-    },
-    {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
-    },
-    {
-      "basename": "17-x-Chapter-17-summary-and-quiz",
-      "path": "docs/17-x-Chapter-17-summary-and-quiz.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
       "basename": "14-x-Chapter-14-comprehensive-quiz",
       "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
     },
     {
-      "basename": "14-11-Overloading-typecasts",
-      "path": "docs/14-11-Overloading-typecasts.md"
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
+      "basename": "friend-function",
+      "path": "docs/friend-function.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
     },
     {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
@@ -33,8 +25,24 @@
       "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
     },
     {
-      "basename": "18-x-Chapter-18-summary-and-quiz",
-      "path": "docs/18-x-Chapter-18-summary-and-quiz.md"
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "17-x-Chapter-17-comprehensive-quiz",
+      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    },
+    {
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
     },
     {
       "basename": "11-18-Introduction-to-iterators",
@@ -43,10 +51,6 @@
     {
       "basename": "12-x-Chapter-12-comprehensive-quiz",
       "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
     {
       "basename": "return-by-address",
@@ -195,10 +199,6 @@
     {
       "basename": "11-14-Void-pointers",
       "path": "docs/11-14-Void-pointers.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
     }
   ],
   "omittedPaths": [],

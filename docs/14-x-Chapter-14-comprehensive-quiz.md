@@ -9,13 +9,13 @@ tags:
 - summary
 ---
 
-Operator overloading is a variant of function overloading that lets you overload operators for your classes. When operators are overloaded, the intent of the operators should be kept as close to the original intent of the operators as possible. If the meaning of an operator when applied to a custom class is not clear and intuitive, use a named function instead.
+运算符[[overload|重载]]是函数重载的一种变形，使用它可以为你的类重载操作符。运算符重载应该尽量保持和其原本含义类似的功能。如果新的运算符的含义不明确或违反直觉，那最好还是使用一个函数来代替运算符重载。
 
-Operators can be overloaded as a normal function, a friend function, or a member function. The following rules of thumb can help you determine which form is best for a given situation:
+操作符可以被重载为普通函数、[[friend-function|友元函数]]或者成员函数。下面这些法则可以帮助你决定哪种形式更适合你：
 
--   If you’re overloading assignment (=), subscript ([]), function call (()), or member selection (->), do so as a member function.
--   If you’re overloading a unary operator, do so as a member function.
--   If you’re overloading a binary operator that modifies its left operand (e.g. operator+=), do so as a member function if you can.
+-   当重载赋值运算符(`=`)，下标运算符(`[]`)、函数调用运算符(`()`)或者成员选择运算符(`->`)时，重载为成员函数；
+-   当重载一元运算符时，重载为成员函数；
+-   当重载 you’re overloading a binary operator that modifies its left operand (e.g. operator+=), do so as a member function if you can.
 -   If you’re overloading a binary operator that does not modify its left operand (e.g. operator+), do so as a normal function or friend function.
 
 Typecasts can be overloaded to provide conversion functions, which can be used to explicitly or implicitly convert your class into another type.
