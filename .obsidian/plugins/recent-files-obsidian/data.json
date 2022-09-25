@@ -5,6 +5,10 @@
       "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
     },
     {
+      "basename": "memberwise initialization",
+      "path": "docs/memberwise initialization.md"
+    },
+    {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
       "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
       "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
-    },
-    {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
     }
   ],
   "omittedPaths": [],
