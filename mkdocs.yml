@@ -184,6 +184,7 @@ nav:
       - "9-10-Pass-by-address-part-2.md"
       - "9-11-Return-by-reference-and-return-by-address.md"
       - "9-12-Type-deduction-with-pointers-references-and-const.md"
+      - "9-x-Chapter-9-comprehensive-quiz.md"
     - 10. 复合类型-枚举和结构体:
       - "10-x-Chapter-10-comprehensive-quiz.md"
     - 11. 数组，字符串和动态内存分配: 

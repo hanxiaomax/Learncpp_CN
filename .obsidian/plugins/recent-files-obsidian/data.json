@@ -1,12 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
     {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
       "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
+    },
+    {
+      "basename": "friend-class",
+      "path": "docs/friend-class.md"
+    },
+    {
+      "basename": "destructors",
+      "path": "docs/destructors.md"
+    },
+    {
+      "basename": "Member-initializer-lists",
+      "path": "docs/Member-initializer-lists.md"
+    },
+    {
+      "basename": "constructor",
+      "path": "docs/constructor.md"
+    },
+    {
+      "basename": "Encapsulation",
+      "path": "docs/Encapsulation.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
       "basename": "19-x-Chapter-19-comprehensive-quiz",
@@ -31,10 +59,6 @@
     {
       "basename": "memberwise initialization",
       "path": "docs/memberwise initialization.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
     {
       "basename": "friend-function",
@@ -67,10 +91,6 @@
     {
       "basename": "pass-by-reference",
       "path": "docs/pass-by-reference.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     },
     {
       "basename": "8-x-Chapter-8-summary-and-quiz",
@@ -179,26 +199,6 @@
     {
       "basename": "11-6-C-style-strings",
       "path": "docs/11-6-C-style-strings.md"
-    },
-    {
-      "basename": "11-3-Arrays-and-loops",
-      "path": "docs/11-3-Arrays-and-loops.md"
-    },
-    {
-      "basename": "11-5-Multidimensional-Arrays",
-      "path": "docs/11-5-Multidimensional-Arrays.md"
-    },
-    {
-      "basename": "11-2-Arrays-Part-II",
-      "path": "docs/11-2-Arrays-Part-II.md"
-    },
-    {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
-    },
-    {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
     }
   ],
   "omittedPaths": [],
