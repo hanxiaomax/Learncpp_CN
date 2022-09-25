@@ -1,7 +1,7 @@
 ---
 title: 13.x - 小结与测试
 alias: 13.x - 小结与测试
-origin: /chapter-11-comprehensive-quiz/
+origin: /chapter-13-comprehensive-quiz/
 origin_title: "13.x — Chapter 13 comprehensive quiz"
 time: 2022-9-16
 type: translation
@@ -31,12 +31,12 @@ tags:
 
 如果成员函数不修改类的状态，则可以（也应该）被声明为const类型。const 对象也只能调用const成员函数。
 
-静态成员变量在该类的所有对象间共享。虽然它们可以通过对象来访问，它们也可以使用[[scope-resolution-operator|作用域解析运算符]]来访问。
+静态成员变量在该类的所有对象间共享。它们可以通过对象来访问，它们也可以使用[[scope-resolution-operator|作用域解析运算符]]来访问。
 
-Similarly, static member functions are member functions that have no *this pointer. They can only access static member variables.
+静态成员函数没有`this`指针，它们只能够被静态成员变量访问。
 
-Friend functions are functions that are treated like member functions of the class (and thus can access a class’s private data directly). Friend classes are classes where all members of the class are considered friend functions.
+[[friend-function|友元函数]]被当做类成员函数使用（可以直接访问类的私有数据）。[[friend-class|友元类]]的所有成员函数都被看做是友元函数。
 
-It’s possible to create anonymous class objects for the purpose of evaluation in an expression, or passing or returning a value.
+在表达式求值，或者传递、返回值时，可以使用匿名对象。
 
-You can also nest types within a class. This is often used with enums related to the class, but can be done with other types (including other classes) if desired.
+你也可以在类中嵌套类型。通常是枚举类型，不过如有需要也可以是其他类型（或者其他类）。

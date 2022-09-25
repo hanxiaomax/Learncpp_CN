@@ -197,15 +197,25 @@ nav:
       - "11-8-Pointers-and-arrays.md"
       - "11-13-For-each-loops.md"
       - "11-14-Void-pointers.md"
-    # - 12. 函数: index.md
-    # - 13. 面向对象编程基础: index.md
-    # - 14. 操作符重载: index.md
-    # - 16. 对象关系简介: index.md
-    # - 17. 继承: index.md
-    # - 18. 虚函数: index.md
-    # - 19. 模板和类: index.md
-    # - 20. 异常: index.md
-    # - 21. move和智能指针: index.md
+      - "11-x-Chapter-11-comprehensive-quiz.md"
+    - 12. 函数: 
+      - "12-x-Chapter-12-comprehensive-quiz.md"
+    - 13. 面向对象编程基础: 
+      - "13-x-Chapter-13-comprehensive-quiz.md"
+    - 14. 操作符重载: 
+      - "14-x-Chapter-14-comprehensive-quiz.md"
+    - 16. 对象关系简介:
+      - "16-x-Chapter-16-comprehensive-quiz.md"
+    - 17. 继承:
+      - "17-x-Chapter-17-summary-and-quiz.md"
+    - 18. 虚函数:
+      - "18-x-Chapter-18-summary-and-quiz.md"
+    - 19. 模板和类: 
+      - "19-x-Chapter-19-summary-and-quiz.md"
+    - 20. 异常: 
+      - "20-x-Chapter-20-summary-and-quiz.md"
+    - 21. move和智能指针: 
+      - "M-x-chapter-M-comprehensive-review.md"
     # - 22. STL: index.md
     # - 22. std字符串: index.md
     # - 23. 输入输出: index.md

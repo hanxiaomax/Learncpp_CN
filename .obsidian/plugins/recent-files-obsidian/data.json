@@ -1,36 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+      "basename": "16-x-Chapter-16-comprehensive-quiz.md",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md.md"
     },
     {
-      "basename": "12-x-Chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
     },
     {
-      "basename": "return-by-address",
-      "path": "docs/return-by-address.md"
-    },
-    {
-      "basename": "pass-by-reference",
-      "path": "docs/pass-by-reference.md"
+      "basename": "17-x-Chapter-17-summary-and-quiz",
+      "path": "docs/17-x-Chapter-17-summary-and-quiz.md"
     },
     {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
       "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
     },
     {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
     },
     {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
     },
     {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
@@ -41,16 +33,36 @@
       "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
     },
     {
-      "basename": "16-x-Chapter-16-summary-and-quiz",
-      "path": "docs/16-x-Chapter-16-summary-and-quiz.md"
-    },
-    {
-      "basename": "14-11-Overloading-typecasts",
-      "path": "docs/14-11-Overloading-typecasts.md"
-    },
-    {
       "basename": "18-x-Chapter-18-summary-and-quiz",
       "path": "docs/18-x-Chapter-18-summary-and-quiz.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
+      "basename": "12-x-Chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
+      "basename": "return-by-address",
+      "path": "docs/return-by-address.md"
+    },
+    {
+      "basename": "pass-by-reference",
+      "path": "docs/pass-by-reference.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
     {
       "basename": "covariant",
@@ -63,10 +75,6 @@
     {
       "basename": "override",
       "path": "docs/override.md"
-    },
-    {
-      "basename": "17-x-Chapter-17-summary-and-quiz",
-      "path": "docs/17-x-Chapter-17-summary-and-quiz.md"
     },
     {
       "basename": "Composition",
@@ -173,10 +181,6 @@
       "path": "docs/11-2-Arrays-Part-II.md"
     },
     {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
-    },
-    {
       "basename": "11-17-An-introduction-to-std-vector",
       "path": "docs/11-17-An-introduction-to-std-vector.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "11-13-For-each-loops",
       "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "11-12-Dynamically-allocating-arrays",
-      "path": "docs/11-12-Dynamically-allocating-arrays.md"
     }
   ],
   "omittedPaths": [],
