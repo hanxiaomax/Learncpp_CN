@@ -26,7 +26,20 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md",
+                "file": "docs/20-x-Chapter-20-comprehensive-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c6e544728db7e155",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -34,7 +47,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -88,8 +101,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -109,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md"
               }
             }
           },
@@ -130,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md",
+                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,17 +161,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "96518462a2aa8b6f",
+  "active": "c6e544728db7e155",
   "lastOpenFiles": [
-    "docs/memberwise initialization.md",
-    "docs/14-x-Chapter-14-comprehensive-quiz.md",
-    "docs/13-x-Chapter-13-comprehensive-quiz.md",
-    "docs/friend-function.md",
-    "docs/16-x-Chapter-16-comprehensive-quiz.md",
     "docs/20-x-Chapter-20-comprehensive-quiz.md",
     "docs/19-x-Chapter-19-comprehensive-quiz.md",
     "docs/18-x-Chapter-18-comprehensive-quiz.md",
     "docs/17-x-Chapter-17-comprehensive-quiz.md",
+    "docs/16-x-Chapter-16-comprehensive-quiz.md",
+    "docs/14-x-Chapter-14-comprehensive-quiz.md",
+    "docs/memberwise initialization.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
+    "docs/friend-function.md",
     "docs/M-x-chapter-M-comprehensive-review.md"
   ]
 }

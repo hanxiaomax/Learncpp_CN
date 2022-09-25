@@ -1,24 +1,8 @@
 {
   "recentFiles": [
     {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
-    },
-    {
-      "basename": "memberwise initialization",
-      "path": "docs/memberwise initialization.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
-    },
-    {
-      "basename": "friend-function",
-      "path": "docs/friend-function.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
@@ -35,6 +19,26 @@
     {
       "basename": "17-x-Chapter-17-comprehensive-quiz",
       "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
+      "basename": "memberwise initialization",
+      "path": "docs/memberwise initialization.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
+      "basename": "friend-function",
+      "path": "docs/friend-function.md"
     },
     {
       "basename": "M-x-chapter-M-comprehensive-review",
@@ -195,10 +199,6 @@
     {
       "basename": "11-16-An-introduction-to-std-array",
       "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
-      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
-      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
     }
   ],
   "omittedPaths": [],

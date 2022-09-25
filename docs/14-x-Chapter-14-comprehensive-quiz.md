@@ -26,11 +26,11 @@ tags:
 
 默认情况下，构造函数会被看做类型转换构造函数。也就是说，编译器可以使用它们隐式地将其他类型的对象转换为这种类型的对象。为了避免这种事情的发生，你可以在构造函数前面添加`explicit`关键字。你也可以删除类中的函数(`=delete`)，比如删除拷贝构造函数或重载的赋值运算符。当调用被删除的函数时，会产生编译错误。
 
-赋值运算符可以被重载并用于给你的类赋值，如果你没有提供重载的赋值操作符，则编译器会自动地为你创建一个。重载的赋值运算符应该总是进行自我赋值检查（） operator can be overloaded to allow assignment to your class. If you do not provide an overloaded assignment operator, the compiler will create one for you. Overloaded assignment operators should always include a self-assignment check (unless it’s handled naturally, or you’re using the copy and swap idiom).
+赋值运算符可以被重载并用于给你的类赋值，如果你没有提供重载的赋值操作符，编译器则会自动地为你创建一个。重载的赋值运算符应该总是进行自我赋值检查（除非它能够自然地处理，或者你选择使用[[copy-swap习语]]([what is the copy and swap idiom](https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom))）。
 
-New programmers often mix up when the assignment operator vs copy constructor are used, but it’s fairly straightforward:
+新手程序员经常会把**赋值运算符**和**拷贝构造函数**搞混，其实它们很好区分：
 
--   If a new object has to be created before the copying can occur, the copy constructor is used (note: this includes passing or returning objects by value).
--   If a new object does not have to be created before the copying can occur, the assignment operator is used.
+- 如果一个对象在拷贝前，必须先被创建，则会使用**拷贝构造函数**（注意：包括对象的按值传递和返回）；
+- 如果在拷贝前，不需要先创建一个新的对象，则会使用**赋值运算符**。
 
-By default, the copy constructor and assignment operators provided by the compiler do a memberwise initialization or assignment, which is a shallow copy. If your class dynamically allocates memory, this will likely lead to problems, as multiple objects will end up pointing to the same allocated memory. In this case, you’ll need to explicitly define these in order to do a deep copy. Even better, avoid doing your own memory management if you can and use classes from the standard library.
+默认情况下，编译器会提供一个能够进行[[memberwise initialization|成员依次初始化]]的拷贝构造函数或赋值运算符，其行为称为[[shallow-copy|浅拷贝]]。而如果你的类中包含动态分配的内存，浅拷贝可能会导致问题的发生，因为多个对象最终可能会指向同一块内存。这种情况下，你应该显式地定义对象的拷贝，即进行[[deep-copy|深拷贝]]。如果你可以避免自己进行内存管理，使用标准库中的类，那就更好了。
