@@ -9,9 +9,8 @@ tags:
 - summary
 ---
 
-Templates allow us to write functions or classes using placeholder types, so that we can stencil out identical versions of the function or class using different types. A function or class that has been instantiated is called a function or class instance.
-
-All template functions or classes must start with a template parameter declaration that tells the compiler that the following function or class is a template function or class. Within the template parameter declaration, the template type parameters or expression parameters are specified. Template type parameters are just placeholder types, normally named T, T1, T2, or other single letter names (e.g. S). Expression parameters are usually integral types, but can be a pointer or reference to a function, class object, or member function.
+- 使用[[template|模板]]可以基于[[placeholder-types|占位符类型]]来定义函数或者类，这样我们就可以定义出配合不同类型工作，但是结构完全一致的函数或者类。被实例化的函数或者类，称为[[函数实例]]或[[类实例]]
+- 所有的模板函数或模板类，都必须以[[template-parameter-declaration|模板参数声明]]开头。在模板参数声明中，我们需要指定模板的类型参数或表达式参数。[[template-type-parameters|模板类型参数]]其实就是[[placeholder-types|占位符类型]]，通常会写作`T`，`T1`，`T2`或者其他单独字母（例如`S`）。[[Expression-parameters|表达式参数]]通常是整型类型，但是也可以是指针或者引用类型（指向某个函数，对象或成员函数）。
 
 Splitting up template class definition and member function definitions doesn’t work like normal classes -- you can’t put your class definition in a header and member function definitions in a .cpp file. It’s usually best to keep all of them in a header file, with the member function definitions underneath the class.
 

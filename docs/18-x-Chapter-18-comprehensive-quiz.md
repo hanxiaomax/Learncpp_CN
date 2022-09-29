@@ -18,11 +18,11 @@ tags:
 - `final` 关键字可以用来指明某个函数不可以被重载或某个类不能被继承；
 - 如果一个类的功能是作为基类使用，那应该将其析构函数设为虚函数，这样才能确保一个指向派生类的基类类型的指针被 `delete` 的时候，能够调用正确的析构函数（子类的析构函数）；
 - 使用[[scope-resolution-operator|作用域解析运算符]]可以规避虚函数解析，它可以直接显式地指定你希望使用哪个类中的函数：例如： `base.Base::getName()`；
-- Early binding occurs when the compiler encounters a direct function call. The compiler or linker can resolve these function calls directly. Late binding occurs when a function pointer is called. In these cases, which function will be called can not be resolved until runtime. Virtual functions use late binding and a virtual table to determine which version of the function to call.
-- Using virtual functions has a cost: virtual functions take longer to call, and the necessity of the virtual table increases the size of every object containing a virtual function by one pointer.
-- A virtual function can be made pure virtual/abstract by adding “= 0” to the end of the virtual function prototype. A class containing a pure virtual function is called an abstract class, and can not be instantiated. A class that inherits pure virtual functions must concretely define them or it will also be considered abstract. Pure virtual functions can have a body, but they are still considered abstract.
-- An interface class is one with no member variables and all pure virtual functions. These are often named starting with a capital I.
-- A virtual base class is a base class that is only included once, no matter how many times it is inherited by an object.
-- When a derived class is assigned to a base class object, the base class only receives a copy of the base portion of the derived class. This is called object slicing.
-- Dynamic casting can be used to convert a pointer to a base class object into a pointer to a derived class object. This is called downcasting. A failed conversion will return a null pointer.
-- The easiest way to overload operator<< for inherited classes is to write an overloaded operator<< for the most-base class, and then call a virtual member function to do the printing.
+- 当编译器解析到函数的直接调用时，会进行[[Early binding]]。编译器或者链接器可以直接解析该函数调用。 [[Late-binding]] 则发生在通过函数指针进行调用时。在这种情况下，实际的函数调用只有在运行时才能确定。虚函数使用[[Late-binding]]和虚函数表来确定实际调用的函数。
+- 使用虚函数是有开销的：虚函数的调用更耗时，而且虚函数表也会使每一个包含虚函数的对象其大小增加一个指针的大小。
+- 虚函数可以被定义为[[pure-virtual|纯虚函数]]或抽象函数，只需在其函数原型的结尾添加”=0“即可。包含纯虚函数的类称为[[抽象类]]，它 不能被实例化。一个继承了纯虚函数的类，必须实现这些虚函数，否则该类也是抽象类。纯虚函数也可以有函数体，但即便这样它仍然是抽象的。
+- [[interface-class|接口类]]是那些没有成员变量，且所有函数均为**纯虚函数**的类，通常在命名它们的时候会使用大写字母I开头。
+- [[虚基类]]是一种基类，不论它被继承多少次，它始终只会被[[introduce]]一次。
+- 当一个派生类被赋值给一个基类对象时，基类只会得到一份包含了派生类中基类部分的拷贝。这个现象被称为[[object-slicing|对象切割]]。
+- [[dynamic-casts|动态类型转换]]可以用来将一个指向基类对象的指针转换为指向派生类对象的指针，即[[downcasting]]。如果转换失败，则会返回一个空指针。
+- 为派生类重载`<<` 运算符的最简单的办法，是重载最基础的基类的`<<`运算符，然后调用虚成员函数来进行打印。

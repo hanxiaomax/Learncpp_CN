@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "template-type-parameters",
+      "path": "docs/template-type-parameters.md"
+    },
+    {
+      "basename": "placeholder-types",
+      "path": "docs/placeholder-types.md"
+    },
+    {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "17-x-Chapter-17-comprehensive-quiz",
+      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    },
+    {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
       "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
     {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+      "basename": "Late-binding",
+      "path": "docs/Late-binding.md"
     },
     {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
@@ -43,18 +67,6 @@
     {
       "basename": "10-x-Chapter-10-comprehensive-quiz",
       "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
-      "basename": "17-x-Chapter-17-comprehensive-quiz",
-      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
-    },
-    {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
     },
     {
       "basename": "memberwise initialization",
@@ -187,18 +199,6 @@
     {
       "basename": "11-9-Pointer-arithmetic-and-array-indexing",
       "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
-    },
-    {
-      "basename": "scaling",
-      "path": "docs/scaling.md"
-    },
-    {
-      "basename": "11-8-Pointers-and-arrays",
-      "path": "docs/11-8-Pointers-and-arrays.md"
-    },
-    {
-      "basename": "11-6-C-style-strings",
-      "path": "docs/11-6-C-style-strings.md"
     }
   ],
   "omittedPaths": [],
