@@ -11,8 +11,13 @@
             "id": "025e99f382c6e031",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "docs/18-x-Chapter-18-comprehensive-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -88,7 +93,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+              }
             }
           },
           {
@@ -108,6 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/18-x-Chapter-18-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,15 +136,15 @@
   },
   "active": "025e99f382c6e031",
   "lastOpenFiles": [
-    "docs/13-x-Chapter-13-comprehensive-quiz.md",
+    "docs/19-x-Chapter-19-comprehensive-quiz.md",
     "docs/20-x-Chapter-20-comprehensive-quiz.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
     "docs/friend-class.md",
     "docs/destructors.md",
     "docs/Member-initializer-lists.md",
     "docs/constructor.md",
     "docs/Encapsulation.md",
     "docs/9-x-Chapter-9-summary-and-quiz.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    "docs/10-x-Chapter-10-comprehensive-quiz.md"
   ]
 }
