@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
+    },
+    {
+      "basename": "aggregation",
+      "path": "docs/aggregation.md"
+    },
+    {
+      "basename": "bit",
+      "path": "docs/bit.md"
+    },
+    {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
       "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
     },
@@ -125,10 +141,6 @@
       "path": "docs/Composition.md"
     },
     {
-      "basename": "aggregation",
-      "path": "docs/aggregation.md"
-    },
-    {
       "basename": "return-by-reference",
       "path": "docs/return-by-reference.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "0-8-A-few-common-C++-problems",
       "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
-      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
-    },
-    {
-      "basename": "11-10-C-style-string-symbolic-constants",
-      "path": "docs/11-10-C-style-string-symbolic-constants.md"
-    },
-    {
-      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
-      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
     }
   ],
   "omittedPaths": [],

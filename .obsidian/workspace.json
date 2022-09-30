@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/20-x-Chapter-20-comprehensive-quiz.md",
+                "file": "docs/1-4-Variable-assignment-and-initialization.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -95,7 +94,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/20-x-Chapter-20-comprehensive-quiz.md"
+                "file": "docs/1-4-Variable-assignment-and-initialization.md"
               }
             }
           },
@@ -116,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/20-x-Chapter-20-comprehensive-quiz.md",
+                "file": "docs/1-4-Variable-assignment-and-initialization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,20 +131,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "active": "025e99f382c6e031",
   "lastOpenFiles": [
+    "docs/list-initialization.md",
+    "docs/aggregation.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
+    "docs/bit.md",
+    "docs/20-x-Chapter-20-comprehensive-quiz.md",
     "docs/19-x-Chapter-19-comprehensive-quiz.md",
     "docs/template-type-parameters.md",
     "docs/placeholder-types.md",
     "docs/14-x-Chapter-14-comprehensive-quiz.md",
-    "docs/16-x-Chapter-16-comprehensive-quiz.md",
-    "docs/17-x-Chapter-17-comprehensive-quiz.md",
-    "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/Late-binding.md",
-    "docs/20-x-Chapter-20-comprehensive-quiz.md",
-    "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    "docs/16-x-Chapter-16-comprehensive-quiz.md"
   ]
 }

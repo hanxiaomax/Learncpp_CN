@@ -17,14 +17,14 @@ tags:
 
 抛出的异常可以是任意类型的，包括类。
 
-catch 语句块可以被声明为只捕获某种特定类型的异常，也可以使用省略号来声明为捕获所有类型的异常。能够捕获某种基类的 catch 语句块，也可以捕获该基类对应的派生类类型的异常。标准库中抛出的所有异常类型，都派生自 `std::exception` 类（位于`exception`头文件中）。因此，捕获 `std::exception` by reference will catch all standard library exceptions. The what() member function can be used to determine what kind of std::exception was thrown.
+catch 语句块可以被声明为只捕获某种特定类型的异常，也可以使用省略号来声明为捕获所有类型的异常。能够捕获某种基类的 catch 语句块，也可以捕获该基类对应的派生类类型的异常。标准库中抛出的所有异常类型，都派生自 `std::exception` 类（位于`exception`头文件中）。因此，捕获 `std::exception` 的 catch 的语句块，可以捕获标准库中的异常。`what()` 成员函数可以用来确定被抛出的 `std::exception` 是什么。
 
-Inside a catch block, a new exception may be thrown. Because this new exception is thrown outside of the try block associated with that catch block, it won’t be caught by the catch block it’s thrown within. Exceptions may be rethrown from a catch block by using the keyword throw by itself. Do not rethrow an exception using the exception variable that was caught, otherwise object slicing may result.
+在 catch 语句块中，还可以进一步抛出新的遗产。因为这个异常不是在 try 语句块中抛出的，所以它不会被抛出它的 catch 语句块捕获。异常可以在 catch 语句块中通过`throw`关键字将该异常重新抛出。不过，不要将捕获的的异常变量直接重新抛出，这可能会导致[[object-slicing]]。
 
-Function try blocks give you a way to catch any exception that occurs within a function or an associated member initialization list. These are typically only used with derived class constructors.
+函数中的try-block语句块使我们可以捕获发生在函数内部或成员初始化列表中发生的异常。通常只会在派生类的构造函数中使用。
 
-You should never throw an exception from a destructor.
+在任何情况下，也不要在析构函数中抛出异常。
 
-The **noexcept** exception specifier can be used to denote that a function is no-throw/no-fail.
+通过 **noexcept** 异常标识符可以将函数标记为不引发异常。
 
-Finally, exception handling does have a cost. In most cases, code using exceptions will run slightly slower, and the cost of handling an exception is very high. You should only use exceptions to handle exceptional circumstances, not for normal error handling cases (e.g. invalid input).
+异常处理是有开销的。在大多数情况下，使用异常的代码会稍慢一些，而且处理异常的开销非常高。因此，我们应该只在需要处理异常的场合下使用异常，而不要在一般的错误处理时使用异常（例如处理非法输入）。
