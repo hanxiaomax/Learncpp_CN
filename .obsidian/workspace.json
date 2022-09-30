@@ -13,14 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/1-4-Variable-assignment-and-initialization.md",
+                "file": "docs/8-x-Chapter-8-summary-and-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "954c3b30a80993bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/# 7-17-assert-and-static-assert.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -49,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "友元",
+                "query": "tag:#summary",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -94,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/1-4-Variable-assignment-and-initialization.md"
+                "file": "docs/# 7-17-assert-and-static-assert.md"
               }
             }
           },
@@ -104,8 +118,8 @@
             "state": {
               "type": "tag",
               "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true
+                "sortOrder": "alphabetical",
+                "useHierarchy": false
               }
             }
           },
@@ -115,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/1-4-Variable-assignment-and-initialization.md",
+                "file": "docs/# 7-17-assert-and-static-assert.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,23 +141,24 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "025e99f382c6e031",
+  "active": "007fc127cd13d94a",
   "lastOpenFiles": [
-    "docs/list-initialization.md",
-    "docs/aggregation.md",
+    "docs/8-x-Chapter-8-summary-and-quiz.md",
+    "docs/# 7-17-assert-and-static-assert.md",
+    "docs/MOC.md",
+    "docs/7-x-Chapter-7-summary-and-quiz.md",
+    "docs/7-12-Introduction-to-testing-your-code.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/bit.md",
-    "docs/20-x-Chapter-20-comprehensive-quiz.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md",
-    "docs/template-type-parameters.md",
-    "docs/placeholder-types.md",
-    "docs/14-x-Chapter-14-comprehensive-quiz.md",
-    "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
+    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
+    "docs/list-initialization.md",
+    "docs/aggregation.md"
   ]
 }

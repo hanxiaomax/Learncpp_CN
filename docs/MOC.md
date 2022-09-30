@@ -114,6 +114,11 @@
 - [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
 - [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
 - [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]
+- [[docs/# 7-17-assert-and-static-assert]]
+- [[7.18 - 随机数生成器简介]]
+- [[7.19 - 使用 Mersenne Twister 生成随机数]]
+- [[7-x-Chapter-7-summary-and-quiz|7.x - 小结与测试]]
+
 
 ## 8. 类型转换和函数重载 ✅
 
@@ -150,7 +155,7 @@
 - [[9-10-Pass-by-address-part-2]]
 - [[9-11-Return-by-reference-and-return-by-address]]
 - [[9.12 — Type deduction with pointers, references, and const]]
-- [[9-x-Chapter-9-summary-and-quiz]]
+[[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试]]
 
 
 ## 10. 复合类型-枚举和结构体
@@ -167,6 +172,7 @@
 - [[10.11 — Class template argument deduction (CTAD) and deduction guides]]
 - [[10.x — Chapter 10 summary and quiz]]
 - [[10.y — Using a language reference]]
+- [[10-x-Chapter-10-comprehensive-quiz|10.x - 小结与测试]]
 
 ## 11. 数组，字符串和动态内存分配
 - [[11-1-Arrays-Part-I|11.1 - 数组（第一部分）]]
@@ -188,25 +194,31 @@
 - [[11-17-An-introduction-to-std-vector]]
 - [[11-18-Introduction-to-iterators]]
 - [[11-19-Introduction-to-standard-library-algorithms]]
-- [[11-x-Chapter-11-comprehensive-quiz]]
+- [[11-x-Chapter-11-comprehensive-quiz|11.x - 小结与测试]]
 
 ## 12. 函数
 - [[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]
 
 ## 13. 面向对象编程基础
-
+- [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试]]
 ## 14. 操作符重载
 - [[14-11-Overloading-typecasts]]
+- [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试]]
 
 ## 16. 对象关系简介
+- [[16-x-Chapter-16-comprehensive-quiz|16.x - 小结与测试]]
 
 ## 17. 继承
+- [[17-x-Chapter-17-comprehensive-quiz|17.x - 小结与测试]]
 
 ## 18. 虚函数
+- [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试]]
 
 ## 19. 模板和类
+- [[19-x-Chapter-19-comprehensive-quiz|19.x - 小结与测试]]
 
 ## 20. 异常
+- [[20-x-Chapter-20-comprehensive-quiz|20.x - 小结与测试]]
 
 ## M. move 和智能指针
 
