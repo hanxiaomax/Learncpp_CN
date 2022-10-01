@@ -8,33 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "025e99f382c6e031",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/8-x-Chapter-8-summary-and-quiz.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "954c3b30a80993bd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/# 7-17-assert-and-static-assert.md",
+                "file": "docs/3-x-Chapter-3-summary-and-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -108,7 +94,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/# 7-17-assert-and-static-assert.md"
+                "file": "docs/3-x-Chapter-3-summary-and-quiz.md"
               }
             }
           },
@@ -129,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/# 7-17-assert-and-static-assert.md",
+                "file": "docs/3-x-Chapter-3-summary-and-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,10 +134,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "007fc127cd13d94a",
+  "active": "954c3b30a80993bd",
   "lastOpenFiles": [
+    "docs/7-17-assert-and-static-assert.md",
     "docs/8-x-Chapter-8-summary-and-quiz.md",
-    "docs/# 7-17-assert-and-static-assert.md",
     "docs/MOC.md",
     "docs/7-x-Chapter-7-summary-and-quiz.md",
     "docs/7-12-Introduction-to-testing-your-code.md",

@@ -9,37 +9,36 @@ tags:
 - summary
 ---
 
-Chapter Review
 
-A syntax error is an error that occurs when you write a statement that is not valid according to the grammar of the C++ language. The compiler will catch these.
+如果你的语句不符合 C++ 的语法，则会产生**语法错误**。编译器或捕获语法错误。
 
-A semantic error occurs when a statement is syntactically valid, but does not do what the programmer intended.
+当语句的语法正确，但是其行为并不符合程序员的本意，此时称为**语义错误**。
 
-The process of finding and removing errors from a program is called debugging.
+定位并修复程序错误的过程，称为debugging。
 
-We can use a five step process to approach debugging:
+可以使用五步法来定位并修复程序错误：
 
-1.  Find the root cause
-2.  Understand the problem
-3.  Determine a fix
-4.  Repair the issue
-5.  Retest
+1.  定位根因；
+2.  理解问题；
+3.  确定修复方式；
+4.  修复问题；
+5.  重新测试
 
-Finding an error is usually the hardest part of debugging.
+debug过程中最困难的部分就是找到问题所在。
 
-Static analysis tools are tools that analyze your code and look for semantic issues that may indicate problems with your code.
+静态分析工具可以用来对代码进行分析，查找可能导致问题的语义错误。
 
-Being able to reliably reproduce an issue is the first and most important step in debugging.
+debug过程中，最重要的一步就是要能够稳定地复现问题。
 
-There are a number of tactics we can use to help find issues:
+以下方法可以帮助我们定位问题：
 
--   Commenting out code
--   Using output statements to validate your code flow
--   Printing values
+-  注释掉代码；
+-  使用输出语句来验证代码流程；
+-   打印值。
 
-When using print statements, use _std::cerr_ instead of _std::cout_. But even better, avoid debugging via print statements.
+当使用打印语句时，推荐使用 `std::cerr` 来代替 `std::cout`，不过最好避免依赖打印语句来定位问题。
 
-A log file is a file that records events that occur in a program. The process of writing information to a log file is called logging.
+日志文件记录了程序中的各个事件。A log file is a file that records events that occur in a program. The process of writing information to a log file is called logging.
 
 The process of restructuring your code without changing how it behaves is called refactoring. This is typically done to make your program more organized, modular, or performant.
 
