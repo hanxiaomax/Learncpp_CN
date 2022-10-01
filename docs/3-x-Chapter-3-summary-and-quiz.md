@@ -38,33 +38,24 @@ debug过程中，最重要的一步就是要能够稳定地复现问题。
 
 当使用打印语句时，推荐使用 `std::cerr` 来代替 `std::cout`，不过最好避免依赖打印语句来定位问题。
 
-日志文件记录了程序中的各个事件。A log file is a file that records events that occur in a program. The process of writing information to a log file is called logging.
+日志文件记录了程序中的各个事件。将信息写入日志文件的过程，称为写日志（logging）。
 
-The process of restructuring your code without changing how it behaves is called refactoring. This is typically done to make your program more organized, modular, or performant.
+在保证代码行为不变的前提下，修改代码结构，称为[[refactoring|重构]]。重构经常被用来修改代码使其更加有条理、模块化或者使其性能更好。
 
-Unit testing is a software testing method by which small units of source code are tested to determine whether they are correct.
+单元测试是一种软件测试方法，它对一个个单元的源码进行测试来判断软件代码是否正确。
 
-Defensive programming is a technique whereby the programmer tries to anticipate all of the ways the software could be misused. These misuses can often be detected and mitigated.
+防御式编程思想要求程序员预测软件可能遭遇的的各种误用。这些误用通常是可以被检测和预防的。
 
-All of the information tracked in a program (variable values, which functions have been called, the current point of execution) is part of the program state.
+对程序运行进行追踪的各项信息（变量的值、被调用的函数、当前执行点）都是程序状态的第一部分。
 
-A debugger is a tool that allows the programmer to control how a program executes and examine the program state while the program is running. An integrated debuggeris a debugger that integrates into the code editor.
-
-Stepping is the name for a set of related debugging features that allow you to step through our code statement by statement.
-
-Step into executes the next statement in the normal execution path of the program, and then pauses execution. If the statement contains a function call, _step into_ causes the program to jump to the top of the function being called.
-
-Step over executes the next statement in the normal execution path of the program, and then pauses execution. If the statement contains a function call, _step over_executes the function and returns control to you after the function has been executed.
-
-Step out executes all remaining code in the function currently being executed and then returns control to you when the function has returned.
-
-Run to cursor executes the program until execution reaches the statement selected by your mouse cursor.
-
-Continue runs the program, until the program terminates or a breakpoint is hit.  
-Start is the same as continue, just from the beginning of the program.
-
-A breakpoint is a special marker that tells the debugger to stop execution of the program when the breakpoint is reached.
-
-Watching a variable allows you to inspect the value of a variable while the program is executing in debug mode. The watch window allows you to examine the value of variables or expressions.
-
-The call stack is a list of all the active functions that have been executed to get to the current point of execution. The call stack window is a debugger window that shows the call stack.
+调试器（debugger）可以帮助程序员控制程序的运以及在程序运行时查看程序状态。集成调试器指的是哪些集成在代码编辑器中的调试器。
+- 单步调试是调试器的一个功能，使用它可以逐语句地对程序进行调试；
+- 单步进入程序时，程序会运行下一个条语句然后停止。如果该语句中包含函数调用，单步进入（step into）可以跳转到该函数的顶部；
+- 单步跳过会执行下一条语句，然后停止执行。如果该语句包含函数调用，则单步跳过会执行该函数并将控制权交还给你；
+- 单步跳出会执行函数中剩下的语句然后在函数返回后将控制权交给你；
+- 运行到光标出会持续执行代码直到到达你鼠标所选处；
+- 继续执行，会持续执行程序代码直到遇到下一个断点；
+- 启动执行和继续执行类似，不过它会从程序的开始处进行执行；
+- **断点**是标记调试器应该停止执行程序的位置；
+- 监视变量允许我们在程序运行的过程中，查看变量的值。监视窗口中可以看到被监视的变量和表达式；
+- 调用栈是一个包含了当前活动函数的列表。调用栈窗口中会显示程序的调用栈。
