@@ -1,6 +1,6 @@
 ---
-title: 10.x - 小结与测试
-alias: 10.x - 小结与测试
+title: 10.x - 小结与测试 - 枚举和结构体
+alias: 10.x - 小结与测试 - 枚举和结构体
 origin: /chapter-10-comprehensive-quiz/
 origin_title: "10.x — Chapter 10 comprehensive quiz"
 time: 2022-5-2
@@ -8,9 +8,10 @@ type: translation
 tags:
 - summary
 ---
-A program-defined type (also called a user-defined type) is a custom type that we can create for use in our own programs. The enumerated types and class types (including structs, classes and unions) allow for creation of program-defined types. Program-defined types must be defined before they can be used. The definition of a program-defined type is called a type definition. Type definitions are exempt from the one-definition rule.
 
-An enumeration (also called an enumerated type or an enum) is a compound data type where every possible value is defined as a symbolic constant (called an enumerator). Enumerators are distinct types, meaning the compiler can differentiate it from other types (unlike type aliases).
+用户定义类型是一种自定义类型，我们可以在程序中创建它用于某些目的。基于枚举类型和class类型（包括结构体、类和联合）我们可以创建需要的自定义类型。自定义类型在使用前必须先定义，定义它的过程则称为[[type-definition|类型定义]]。类型定义不需要遵循[[one-definition-rule|单一定义规则(one-definition-rule)]]。
+
+枚举（称为枚举类型或enum）是一种复合数据类型，它的每个可能值都被denumeration (also called an enumerated type or an enum) is a compound data type where every possible value is defined as a symbolic constant (called an enumerator). Enumerators are distinct types, meaning the compiler can differentiate it from other types (unlike type aliases).
 
 Unscoped enumerations are named such because they put their enumerator names into the same scope as the enumeration definition itself (as opposed to creating a new scope region like a namespace does). Unscoped enumerations also provide a named scope region for their enumerators. Unscoped enumerations will implicitly convert to integral values.
 

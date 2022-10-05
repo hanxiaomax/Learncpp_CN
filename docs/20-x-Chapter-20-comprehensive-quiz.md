@@ -1,6 +1,6 @@
 ---
-title: 20.x - 小结与测试
-alias: 20.x - 小结与测试
+title: 20.x - 小结与测试 - 异常
+alias: 20.x - 小结与测试 - 异常
 origin: /chapter-20-comprehensive-quiz/
 origin_title: "20.x — Chapter 20 comprehensive quiz"
 time: 2022-7-5

@@ -1,6 +1,6 @@
 ---
-title: 5.x - 小结与测试
-alias: 5.x - 小结与测试
+title: 5.x - 小结与测试 - 运算符
+alias: 5.x - 小结与测试 - 运算符
 origin: /chapter-5-summary-and-quiz/
 origin_title: "5.x — Chapter 5 summary and quiz"
 time: 2021-6-28

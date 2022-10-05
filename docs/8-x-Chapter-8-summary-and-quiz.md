@@ -1,6 +1,6 @@
 ---
-title: 8.x - 小结与测试
-alias: 8.x - 小结与测试
+title: 8.x - 小结与测试 - 类型转换和函数重载
+alias: 8.x - 小结与测试 - 类型转换和函数重载
 origin: /chapter-8-summary-and-quiz/
 origin_title: "8.x — Chapter 8 summary and quiz"
 time: 2022-1-20

@@ -1,24 +1,100 @@
 {
   "recentFiles": [
     {
-      "basename": "3-x-Chapter-3-summary-and-quiz",
-      "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
-      "basename": "7-17-assert-and-static-assert",
-      "path": "docs/7-17-assert-and-static-assert.md"
+      "basename": "type-definition",
+      "path": "docs/type-definition.md"
+    },
+    {
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+    },
+    {
+      "basename": "20-x-Chapter-20-comprehensive-quiz",
+      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "17-x-Chapter-17-comprehensive-quiz",
+      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-x-Chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     },
     {
       "basename": "8-x-Chapter-8-summary-and-quiz",
       "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "7-x-Chapter-7-summary-and-quiz",
       "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
+    },
+    {
+      "basename": "6-x-Chapter-6-summary-and-quiz",
+      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
+    },
+    {
+      "basename": "5-x-Chapter-5-summary-and-quiz",
+      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
+    },
+    {
+      "basename": "3-x-Chapter-3-summary-and-quiz",
+      "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "7-17-assert-and-static-assert",
+      "path": "docs/7-17-assert-and-static-assert.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "7-12-Introduction-to-testing-your-code",
@@ -49,14 +125,6 @@
       "path": "docs/bit.md"
     },
     {
-      "basename": "20-x-Chapter-20-comprehensive-quiz",
-      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
       "basename": "template-type-parameters",
       "path": "docs/template-type-parameters.md"
     },
@@ -65,28 +133,8 @@
       "path": "docs/placeholder-types.md"
     },
     {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
-    },
-    {
-      "basename": "17-x-Chapter-17-comprehensive-quiz",
-      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
       "basename": "Late-binding",
       "path": "docs/Late-binding.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
     {
       "basename": "friend-class",
@@ -109,14 +157,6 @@
       "path": "docs/Encapsulation.md"
     },
     {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
       "basename": "memberwise initialization",
       "path": "docs/memberwise initialization.md"
     },
@@ -125,24 +165,12 @@
       "path": "docs/friend-function.md"
     },
     {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
       "basename": "14-11-Overloading-typecasts",
       "path": "docs/14-11-Overloading-typecasts.md"
     },
     {
       "basename": "11-18-Introduction-to-iterators",
       "path": "docs/11-18-Introduction-to-iterators.md"
-    },
-    {
-      "basename": "12-x-Chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
     },
     {
       "basename": "return-by-address",
@@ -171,34 +199,6 @@
     {
       "basename": "return-by-reference",
       "path": "docs/return-by-reference.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
-    },
-    {
-      "basename": "dereference-operator",
-      "path": "docs/dereference-operator.md"
-    },
-    {
-      "basename": "parameters",
-      "path": "docs/parameters.md"
-    },
-    {
-      "basename": "8-8-Type-deduction-for-functions",
-      "path": "docs/8-8-Type-deduction-for-functions.md"
-    },
-    {
-      "basename": "11-4-Sorting-an-array-using-selection-sort",
-      "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
-    },
-    {
-      "basename": "9-4-Lvalue-references-to-const",
-      "path": "docs/9-4-Lvalue-references-to-const.md"
-    },
-    {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
     }
   ],
   "omittedPaths": [],

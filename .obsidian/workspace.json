@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/3-x-Chapter-3-summary-and-quiz.md",
+                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -74,7 +74,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -95,7 +96,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/3-x-Chapter-3-summary-and-quiz.md"
+                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md"
               }
             }
           },
@@ -116,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/3-x-Chapter-3-summary-and-quiz.md",
+                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,15 +138,15 @@
   },
   "active": "954c3b30a80993bd",
   "lastOpenFiles": [
-    "docs/7-17-assert-and-static-assert.md",
-    "docs/8-x-Chapter-8-summary-and-quiz.md",
-    "docs/MOC.md",
-    "docs/7-x-Chapter-7-summary-and-quiz.md",
-    "docs/7-12-Introduction-to-testing-your-code.md",
-    "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md",
-    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
-    "docs/list-initialization.md",
-    "docs/aggregation.md"
+    "docs/type-definition.md",
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/M-x-chapter-M-comprehensive-review.md",
+    "docs/20-x-Chapter-20-comprehensive-quiz.md",
+    "docs/19-x-Chapter-19-comprehensive-quiz.md",
+    "docs/18-x-Chapter-18-comprehensive-quiz.md",
+    "docs/17-x-Chapter-17-comprehensive-quiz.md",
+    "docs/16-x-Chapter-16-comprehensive-quiz.md",
+    "docs/14-x-Chapter-14-comprehensive-quiz.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md"
   ]
 }

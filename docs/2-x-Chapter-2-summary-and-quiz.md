@@ -1,6 +1,6 @@
 ---
-title: 2.x - 小结与测试
-alias: 2.x - 小结与测试
+title: 2.x - 小结与测试 - 函数与文件
+alias: 2.x - 小结与测试 - 函数与文件
 origin: /chapter-2-summary-and-quiz/
 origin_title: "2.x — Chapter 2 summary and quiz"
 time: 2022-4-23

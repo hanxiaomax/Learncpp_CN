@@ -1,6 +1,6 @@
 ---
-title: 14.x - 小结与测试
-alias: 14.x - 小结与测试
+title: 14.x - 小结与测试 - 运算符重载
+alias: 14.x - 小结与测试 - 运算符重载
 origin: /chapter-14-comprehensive-quiz/
 origin_title: "14.x — Chapter 14 comprehensive quiz"
 time: 2022-9-16

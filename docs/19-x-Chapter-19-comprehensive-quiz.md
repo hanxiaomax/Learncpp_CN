@@ -1,6 +1,6 @@
 ---
-title: 19.x - 小结与测试
-alias: 19.x - 小结与测试
+title: 19.x - 小结与测试 - 模板和类
+alias: 19.x - 小结与测试 - 模板和类
 origin: /chapter-19-comprehensive-quiz/
 origin_title: "19.x — Chapter 19 comprehensive quiz"
 time: 2022-7-22

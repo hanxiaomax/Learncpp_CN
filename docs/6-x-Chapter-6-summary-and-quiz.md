@@ -1,6 +1,6 @@
 ---
-title: 6.x - 小结与测试
-alias: 6.x - 小结与测试
+title: 6.x - 小结与测试 - 作用域、持续时间和链接
+alias: 6.x - 小结与测试 - 作用域、持续时间和链接
 origin: /none/
 origin_title: "6.x — Chapter 6 summary and quiz"
 time: 2022-3-29

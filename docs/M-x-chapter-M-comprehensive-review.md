@@ -1,6 +1,6 @@
 ---
-title: M.x - 小结与测试
-alias: M.x - 小结与测试
+title: M.x - 小结与测试 - 移动和智能指针
+alias: M.x - 小结与测试 - 移动和智能指针
 origin: /chapter-m-comprehensive-review/
 origin_title: "M.x — Chapter M comprehensive review"
 time: 2022-7-23

@@ -1,6 +1,6 @@
 ---
-title: 16.x - 小结与测试
-alias: 16.x - 小结与测试
+title: 16.x - 小结与测试 - 对象关系
+alias: 16.x - 小结与测试 - 对象关系
 origin: /chapter-16-comprehensive-quiz/
 origin_title: "16.x — Chapter 16 comprehensive quiz"
 time: 2022-8-12

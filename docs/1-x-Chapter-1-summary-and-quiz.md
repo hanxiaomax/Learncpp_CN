@@ -1,6 +1,6 @@
 ---
-title: 1.x - 小结与测试
-alias: 1.x - 小结与测试
+title: 1.x - 小结与测试 - C++基础
+alias: 1.x - 小结与测试 - C++基础
 origin: /chapter-1-summary-and-quiz/
 origin_title: "1.x — Chapter 1 summary and quiz"
 time: 2022-1-2

@@ -1,6 +1,6 @@
 ---
-title: 4.x - 小结与测试
-alias: 4.x - 小结与测试
+title: 4.x - 小结与测试 - 基本数据类型
+alias: 4.x - 小结与测试 - 基本数据类型
 origin: /chapter-4-summary-and-quiz/
 origin_title: "4.x — Chapter 4 summary and quiz"
 time: 2022-4-12

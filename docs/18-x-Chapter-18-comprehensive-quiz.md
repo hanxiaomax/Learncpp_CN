@@ -1,6 +1,6 @@
 ---
-title: 18.x - 小结与测试
-alias: 18.x - 小结与测试
+title: 18.x - 小结与测试 - 虚函数
+alias: 18.x - 小结与测试 - 虚函数
 origin: /chapter-18-comprehensive-quiz/
 origin_title: "18.x — Chapter 18 comprehensive quiz"
 time: 2022-8-12
