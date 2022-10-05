@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
+                "file": "docs/smart pointer class.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -95,7 +95,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+                "file": "docs/smart pointer class.md"
               }
             }
           },
@@ -116,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
+                "file": "docs/smart pointer class.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,15 +137,15 @@
   },
   "active": "954c3b30a80993bd",
   "lastOpenFiles": [
-    "docs/aggregate-initialization.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
-    "docs/member-selection-operator.md",
-    "docs/member-variable.md",
-    "docs/type-definition.md",
     "docs/M-x-chapter-M-comprehensive-review.md",
-    "docs/20-x-Chapter-20-comprehensive-quiz.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md",
-    "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/aggregate-data-type.md",
+    "docs/non-static-member-initialization.md",
+    "docs/默认成员初始化值.md",
+    "docs/class-template-argument-deduction.md",
+    "docs/class-template.md",
+    "docs/designated-initializers.md",
+    "docs/aggregate-initialization.md",
+    "docs/member-selection-operator.md"
   ]
 }

@@ -1,8 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "smart pointer class",
+      "path": "docs/smart pointer class.md"
+    },
+    {
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+    },
+    {
       "basename": "10-x-Chapter-10-comprehensive-quiz",
       "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    },
+    {
+      "basename": "aggregate-data-type",
+      "path": "docs/aggregate-data-type.md"
+    },
+    {
+      "basename": "non-static-member-initialization",
+      "path": "docs/non-static-member-initialization.md"
+    },
+    {
+      "basename": "默认成员初始化值",
+      "path": "docs/默认成员初始化值.md"
+    },
+    {
+      "basename": "class-template-argument-deduction",
+      "path": "docs/class-template-argument-deduction.md"
+    },
+    {
+      "basename": "class-template",
+      "path": "docs/class-template.md"
+    },
+    {
+      "basename": "designated-initializers",
+      "path": "docs/designated-initializers.md"
     },
     {
       "basename": "aggregate-initialization",
@@ -19,10 +51,6 @@
     {
       "basename": "type-definition",
       "path": "docs/type-definition.md"
-    },
-    {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
     },
     {
       "basename": "20-x-Chapter-20-comprehensive-quiz",
@@ -171,34 +199,6 @@
     {
       "basename": "memberwise initialization",
       "path": "docs/memberwise initialization.md"
-    },
-    {
-      "basename": "friend-function",
-      "path": "docs/friend-function.md"
-    },
-    {
-      "basename": "14-11-Overloading-typecasts",
-      "path": "docs/14-11-Overloading-typecasts.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
-    },
-    {
-      "basename": "return-by-address",
-      "path": "docs/return-by-address.md"
-    },
-    {
-      "basename": "pass-by-reference",
-      "path": "docs/pass-by-reference.md"
-    },
-    {
-      "basename": "covariant",
-      "path": "docs/covariant.md"
-    },
-    {
-      "basename": "scope-resolution-operator",
-      "path": "docs/scope-resolution-operator.md"
     }
   ],
   "omittedPaths": [],

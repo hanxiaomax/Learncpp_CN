@@ -11,8 +11,8 @@ tags:
 
 ## 复习
 
-A smart pointer class is a composition class that is designed to manage dynamically allocated memory, and ensure that memory gets deleted when the smart pointer object goes out of scope.
-
+[[smart pointer class|智能指针类]]是一种组合类，用于对动态分配的内存进行管理并确保该内存在智能指针指向的对象[[going-out-of-scope|离开作用域]]后被释放。
+ 
 Copy semantics allow our classes to be copied. This is done primarily via the copy constructor and copy assignment operator.
 
 Move semantics mean a class will transfer ownership of the object rather than making a copy. This is done primarily via the move constructor and move assignment operator.
