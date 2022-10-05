@@ -13,14 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/smart pointer class.md",
+                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7b2de664a85423e3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -49,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "member selection operator",
+                "query": "右值",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -74,8 +88,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -95,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/smart pointer class.md"
+                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
               }
             }
           },
@@ -116,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/smart pointer class.md",
+                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,24 +141,24 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "954c3b30a80993bd",
+  "active": "7b2de664a85423e3",
   "lastOpenFiles": [
+    "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
     "docs/M-x-chapter-M-comprehensive-review.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
-    "docs/aggregate-data-type.md",
-    "docs/non-static-member-initialization.md",
-    "docs/默认成员初始化值.md",
-    "docs/class-template-argument-deduction.md",
-    "docs/class-template.md",
-    "docs/designated-initializers.md",
-    "docs/aggregate-initialization.md",
-    "docs/member-selection-operator.md"
+    "docs/rvalue-reference.md",
+    "docs/12-x-Chapter-12-comprehensive-quiz.md",
+    "docs/return-by-value.md",
+    "docs/9-x-Chapter-9-summary-and-quiz.md",
+    "docs/2-x-Chapter-2-summary-and-quiz.md",
+    "docs/2-2-Function-return-values-value-returning functions.md",
+    "docs/按值返回.md",
+    "docs/lvalue.md"
   ]
 }

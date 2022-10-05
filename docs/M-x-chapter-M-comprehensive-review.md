@@ -13,13 +13,13 @@ tags:
 
 [[smart pointer class|智能指针类]]是一种组合类，用于对动态分配的内存进行管理并确保该内存在智能指针指向的对象[[going-out-of-scope|离开作用域]]后被释放。
  
-Copy semantics allow our classes to be copied. This is done primarily via the copy constructor and copy assignment operator.
+[[copy-semantics|拷贝语义]]允许类被复制，该过程主要通过[[copy-constructor|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]来完成。
 
-Move semantics mean a class will transfer ownership of the object rather than making a copy. This is done primarily via the move constructor and move assignment operator.
+[[move-semantics|移动语义]]指的是类将对象的所有权转译给另外一个对象，而不是创建一个拷贝，该过程主要通过[[move-constructor|移动构造函数]]和 [[move assignment operator|移动赋值运算符]]来完成。
 
-std::auto_ptr is deprecated and should be avoided.
+`std::auto_ptr` 已经被弃用，应该避免使用。
 
-An r-value reference is a reference that is designed to be initialized with an r-value. An r-value reference is created using a double ampersand. It’s fine to write functions that take r-value reference parameters, but you should almost never return an r-value reference.
+一个[[rvalue-reference|右值引用]]引用应该使用一个右值来初始化。 右值引用使用双`&&`号创建。编写将右值引用作为[[parameters|形参]]的函数是可以的，但是绝对不要将右值引用作为返回值。
 
 If we construct an object or do an assignment where the argument is an l-value, the only thing we can reasonably do is copy the l-value. We can’t assume it’s safe to alter the l-value, because it may be used again later in the program. If we have an expression “a = b”, we wouldn’t reasonably expect b to be changed in any way.
 

@@ -1,12 +1,76 @@
 {
   "recentFiles": [
     {
-      "basename": "smart pointer class",
-      "path": "docs/smart pointer class.md"
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
     },
     {
       "basename": "M-x-chapter-M-comprehensive-review",
       "path": "docs/M-x-chapter-M-comprehensive-review.md"
+    },
+    {
+      "basename": "rvalue-reference",
+      "path": "docs/rvalue-reference.md"
+    },
+    {
+      "basename": "12-x-Chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "return-by-value",
+      "path": "docs/return-by-value.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "lvalue",
+      "path": "docs/lvalue.md"
+    },
+    {
+      "basename": "rvalue",
+      "path": "docs/rvalue.md"
+    },
+    {
+      "basename": "move assignment operator",
+      "path": "docs/move assignment operator.md"
+    },
+    {
+      "basename": "move-constructor",
+      "path": "docs/move-constructor.md"
+    },
+    {
+      "basename": "copy-constructor",
+      "path": "docs/copy-constructor.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "20-x-Chapter-20-comprehensive-quiz",
+      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
+    },
+    {
+      "basename": "copy-assignment-operator",
+      "path": "docs/copy-assignment-operator.md"
+    },
+    {
+      "basename": "smart pointer class",
+      "path": "docs/smart pointer class.md"
     },
     {
       "basename": "10-x-Chapter-10-comprehensive-quiz",
@@ -53,14 +117,6 @@
       "path": "docs/type-definition.md"
     },
     {
-      "basename": "20-x-Chapter-20-comprehensive-quiz",
-      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
       "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
@@ -81,16 +137,8 @@
       "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
     {
-      "basename": "12-x-Chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
-    },
-    {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
       "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     },
     {
       "basename": "8-x-Chapter-8-summary-and-quiz",
@@ -119,10 +167,6 @@
     {
       "basename": "3-x-Chapter-3-summary-and-quiz",
       "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
-    },
-    {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
     },
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
@@ -155,50 +199,6 @@
     {
       "basename": "list-initialization",
       "path": "docs/list-initialization.md"
-    },
-    {
-      "basename": "aggregation",
-      "path": "docs/aggregation.md"
-    },
-    {
-      "basename": "bit",
-      "path": "docs/bit.md"
-    },
-    {
-      "basename": "template-type-parameters",
-      "path": "docs/template-type-parameters.md"
-    },
-    {
-      "basename": "placeholder-types",
-      "path": "docs/placeholder-types.md"
-    },
-    {
-      "basename": "Late-binding",
-      "path": "docs/Late-binding.md"
-    },
-    {
-      "basename": "friend-class",
-      "path": "docs/friend-class.md"
-    },
-    {
-      "basename": "destructors",
-      "path": "docs/destructors.md"
-    },
-    {
-      "basename": "Member-initializer-lists",
-      "path": "docs/Member-initializer-lists.md"
-    },
-    {
-      "basename": "constructor",
-      "path": "docs/constructor.md"
-    },
-    {
-      "basename": "Encapsulation",
-      "path": "docs/Encapsulation.md"
-    },
-    {
-      "basename": "memberwise initialization",
-      "path": "docs/memberwise initialization.md"
     }
   ],
   "omittedPaths": [],

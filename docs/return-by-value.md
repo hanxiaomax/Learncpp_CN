@@ -1,6 +1,6 @@
 ---
-title: 值返回
-alias: 值返回
+title: 按值返回
+alias: 按值返回
 english: return-by-value
 type: glossary
 tags:
