@@ -5,6 +5,18 @@
       "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
+      "basename": "aggregate-initialization",
+      "path": "docs/aggregate-initialization.md"
+    },
+    {
+      "basename": "member-selection-operator",
+      "path": "docs/member-selection-operator.md"
+    },
+    {
+      "basename": "member-variable",
+      "path": "docs/member-variable.md"
+    },
+    {
       "basename": "type-definition",
       "path": "docs/type-definition.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "scope-resolution-operator",
       "path": "docs/scope-resolution-operator.md"
-    },
-    {
-      "basename": "override",
-      "path": "docs/override.md"
-    },
-    {
-      "basename": "Composition",
-      "path": "docs/Composition.md"
-    },
-    {
-      "basename": "return-by-reference",
-      "path": "docs/return-by-reference.md"
     }
   ],
   "omittedPaths": [],

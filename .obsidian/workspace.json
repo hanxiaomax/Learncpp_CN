@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#summary",
+                "query": "member selection operator",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -79,8 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -138,15 +137,15 @@
   },
   "active": "954c3b30a80993bd",
   "lastOpenFiles": [
-    "docs/type-definition.md",
+    "docs/aggregate-initialization.md",
     "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/member-selection-operator.md",
+    "docs/member-variable.md",
+    "docs/type-definition.md",
     "docs/M-x-chapter-M-comprehensive-review.md",
     "docs/20-x-Chapter-20-comprehensive-quiz.md",
     "docs/19-x-Chapter-19-comprehensive-quiz.md",
     "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/17-x-Chapter-17-comprehensive-quiz.md",
-    "docs/16-x-Chapter-16-comprehensive-quiz.md",
-    "docs/14-x-Chapter-14-comprehensive-quiz.md",
-    "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    "docs/17-x-Chapter-17-comprehensive-quiz.md"
   ]
 }
