@@ -4,16 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "61d42c58329b30b7",
+        "id": "ad283d7cd2910368",
         "type": "tabs",
         "children": [
           {
-            "id": "60cb4f142414027c",
+            "id": "91708e7b42f222ab",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/Template.excalidraw.md"
+                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
               }
             }
           }
@@ -71,8 +74,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -92,7 +94,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Excalidraw/Template.excalidraw.md"
+                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md"
               }
             }
           },
@@ -113,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Template.excalidraw.md",
+                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,17 +134,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "60cb4f142414027c",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "Excalidraw/Template.excalidraw.md",
-    "Excalidraw/MOC.md",
-    "docs/MOC.md",
-    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
-    "docs/8-1-Implicit-type-conversion-coercion.md",
-    "docs/1-6-Uninitialized-variables-and-undefined-behavior.md",
-    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
-    "docs/operands.md",
-    "docs/numeric promotions.md",
-    "docs/dereference-operator.md"
+    "docs/11-17-An-introduction-to-std-vector.md",
+    "docs/11-13-For-each-loops.md",
+    "docs/11-12-Dynamically-allocating-arrays.md",
+    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
+    "docs/11-10-C-style-string-symbolic-constants.md",
+    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
+    "docs/11-8-Pointers-and-arrays.md",
+    "docs/1-x-Chapter-1-summary-and-quiz.md",
+    "docs/1-1-Statements-and-the-structure-of-a-program.md",
+    "Excalidraw/moc.md"
   ]
 }

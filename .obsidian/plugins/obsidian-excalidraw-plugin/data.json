@@ -1,6 +1,6 @@
 {
   "folder": "Excalidraw",
-  "embedUseExcalidrawFolder": true,
+  "embedUseExcalidrawFolder": false,
   "templateFilePath": "Excalidraw/Template.excalidraw",
   "scriptFolderPath": "Excalidraw/Scripts",
   "compress": false,
@@ -42,18 +42,18 @@
   "exportWithTheme": true,
   "exportWithBackground": true,
   "exportPaddingSVG": 10,
-  "keepInSync": true,
-  "autoexportSVG": true,
+  "keepInSync": false,
+  "autoexportSVG": false,
   "autoexportPNG": false,
   "autoExportLightAndDark": false,
   "autoexportExcalidraw": false,
   "embedType": "excalidraw",
   "embedWikiLink": true,
   "syncExcalidraw": false,
-  "experimentalFileType": false,
+  "experimentalFileType": true,
   "experimentalFileTag": "✏️",
   "experimentalLivePreview": true,
-  "experimentalEnableFourthFont": false,
+  "experimentalEnableFourthFont": true,
   "experimantalFourthFont": "font/AaXiaoLiWo-2.ttf",
   "fieldSuggester": true,
   "compatibilityMode": false,
@@ -65,47 +65,17 @@
     "source": "https://excalidraw.com",
     "libraryItems": []
   },
-  "imageElementNotice": false,
+  "imageElementNotice": true,
   "mdSVGwidth": 500,
   "mdSVGmaxHeight": 800,
-  "mdFont": "Virgil",
+  "mdFont": "font/AaXiaoLiWo-2.ttf",
   "mdFontColor": "Black",
   "mdBorderColor": "Black",
   "mdCSS": "",
-  "scriptEngineSettings": {
-    "Downloaded/Add Link and Open Page": {
-      "New document should be an Excalidraw drawing": {
-        "value": false,
-        "description": "When adding a new document, should the new document be a blank markdown document (toggle == off) or a blank Excalidraw drawing (toggle=on)?"
-      },
-      "Link position": {
-        "value": "below",
-        "valueset": [
-          "above",
-          "below"
-        ],
-        "description": "Add link below or above the selected object?"
-      },
-      "Link font size": {
-        "value": 12
-      }
-    },
-    "Downloaded/Box Selected Elements": {
-      "Prompt for padding?": true,
-      "Default padding": {
-        "value": 10,
-        "description": "Padding between the bounding box of the selected elements, and the box the script creates"
-      }
-    }
-  },
+  "scriptEngineSettings": {},
   "defaultTrayMode": false,
   "previousRelease": "1.7.22",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
-  "mathjaxSourceURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-svg.js",
-  "fieldSuggestor": true,
-  "loadCount": 1,
-  "patchCommentBlock": false,
-  "runWYSIWYGpatch": false,
-  "fixInfinitePreviewLoop": false
+  "mathjaxSourceURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-svg.js"
 }

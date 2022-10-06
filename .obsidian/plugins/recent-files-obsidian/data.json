@@ -1,16 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "Template.excalidraw",
-      "path": "Excalidraw/Template.excalidraw.md"
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
     },
     {
-      "basename": "MOC",
-      "path": "Excalidraw/MOC.md"
+      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
+      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+    },
+    {
+      "basename": "11-10-C-style-string-symbolic-constants",
+      "path": "docs/11-10-C-style-string-symbolic-constants.md"
+    },
+    {
+      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
+      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "moc",
+      "path": "Excalidraw/moc.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "excalibrain",
+      "path": "excalibrain.md"
+    },
+    {
+      "basename": "Template.excalidraw",
+      "path": "Excalidraw/Template.excalidraw.md"
     },
     {
       "basename": "8-1-Implicit-type-conversion-coercion",
@@ -175,30 +199,6 @@
     {
       "basename": "1-9-Introduction-to-literals-and-operators",
       "path": "docs/1-9-Introduction-to-literals-and-operators.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "5-5-Comma-and-conditional-operators",
-      "path": "docs/5-5-Comma-and-conditional-operators.md"
-    },
-    {
-      "basename": "11-4-Sorting-an-array-using-selection-sort",
-      "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
-    },
-    {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
-    },
-    {
-      "basename": "rvalue-reference",
-      "path": "docs/rvalue-reference.md"
     }
   ],
   "omittedPaths": [],
