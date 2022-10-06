@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "10-3-unscoped-enumerations 1",
+      "path": "docs/10-3-unscoped-enumerations 1.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
+    },
+    {
+      "basename": "unscoped-enumerations",
+      "path": "docs/unscoped-enumerations.md"
+    },
+    {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
       "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "翻译约定",
       "path": "docs/翻译约定.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
-    },
-    {
-      "basename": "3-x-Chapter-3-summary-and-quiz",
-      "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

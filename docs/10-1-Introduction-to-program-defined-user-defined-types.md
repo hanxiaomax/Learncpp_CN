@@ -123,7 +123,7 @@ But this is no different than any other variable definition: the type (`Fraction
 
 Every code file that uses a program-defined type needs to see the full type definition before it is used. A forward declaration is not sufficient. This is required so that the compiler knows how much memory to allocate for objects of that type.
 
-To propagate type definitions into the code files that need them, program-defined types are typically defined in header files, and then `#included`  into any code file that requires that type definition. These header files are typically given the same name as the program-defined type (e.g. a program-defined type named Fraction would be defined in Fraction.h)
+To propagate type definitions into the code files that need them, program-defined types are typically defined in header files, and then `#included`  into any code file that requires that type definition. These header files are typically given the same name as the program-defined type (e.g. a program-defined type named Fraction would be defined in `Fraction.h`)
 
 !!! success "最佳实践"
 

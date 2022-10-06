@@ -21,6 +21,32 @@
             }
           },
           {
+            "id": "a9643a7548e94cdc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/10-2-unscoped-enumerations.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "43dd6ec05e031a71",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/10-3-unscoped-enumerations 1.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
             "id": "7b2de664a85423e3",
             "type": "leaf",
             "state": {
@@ -33,7 +59,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -107,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+                "file": "docs/10-3-unscoped-enumerations 1.md"
               }
             }
           },
@@ -128,7 +155,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
+                "file": "docs/10-3-unscoped-enumerations 1.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,17 +174,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "954c3b30a80993bd",
+  "active": "43dd6ec05e031a71",
   "lastOpenFiles": [
+    "docs/10-2-unscoped-enumerations.md",
+    "docs/unscoped-enumerations.md",
+    "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
     "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
     "docs/2-11-Header-files.md",
     "docs/2-12-Header-guards.md",
     "docs/1-9-Introduction-to-literals-and-operators.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
-    "docs/5-5-Comma-and-conditional-operators.md",
-    "docs/11-4-Sorting-an-array-using-selection-sort.md",
-    "docs/M-x-chapter-M-comprehensive-review.md"
+    "docs/5-5-Comma-and-conditional-operators.md"
   ]
 }
