@@ -1,8 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "C-style-casts",
+      "path": "docs/C-style-casts.md"
+    },
+    {
+      "basename": "byte",
+      "path": "docs/byte.md"
+    },
+    {
+      "basename": "bit",
+      "path": "docs/bit.md"
+    },
+    {
+      "basename": "abstract-class",
+      "path": "docs/abstract-class.md"
+    },
+    {
+      "basename": "default-member-initializer",
+      "path": "docs/default-member-initializer.md"
+    },
+    {
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    },
+    {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
       "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "scoped-enumerations",
+      "path": "docs/scoped-enumerations.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "dangling",
+      "path": "docs/dangling.md"
+    },
+    {
+      "basename": "wild-pointer",
+      "path": "docs/wild-pointer.md"
     },
     {
       "basename": "10-2-unscoped-enumerations",
@@ -19,10 +63,6 @@
     {
       "basename": "11-14-Void-pointers",
       "path": "docs/11-14-Void-pointers.md"
-    },
-    {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
       "basename": "10-10-class-templates",
@@ -71,10 +111,6 @@
     {
       "basename": "downcasting",
       "path": "docs/downcasting.md"
-    },
-    {
-      "basename": "抽象类",
-      "path": "docs/抽象类.md"
     },
     {
       "basename": "pure-virtual",
@@ -133,10 +169,6 @@
       "path": "docs/return-by-value.md"
     },
     {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
       "basename": "2-x-Chapter-2-summary-and-quiz",
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
     },
@@ -167,38 +199,6 @@
     {
       "basename": "19-x-Chapter-19-comprehensive-quiz",
       "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
-      "basename": "20-x-Chapter-20-comprehensive-quiz",
-      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
-    },
-    {
-      "basename": "copy-assignment-operator",
-      "path": "docs/copy-assignment-operator.md"
-    },
-    {
-      "basename": "smart pointer class",
-      "path": "docs/smart pointer class.md"
-    },
-    {
-      "basename": "aggregate-data-type",
-      "path": "docs/aggregate-data-type.md"
-    },
-    {
-      "basename": "non-static-member-initialization",
-      "path": "docs/non-static-member-initialization.md"
-    },
-    {
-      "basename": "默认成员初始化值",
-      "path": "docs/默认成员初始化值.md"
-    },
-    {
-      "basename": "class-template-argument-deduction",
-      "path": "docs/class-template-argument-deduction.md"
-    },
-    {
-      "basename": "class-template",
-      "path": "docs/class-template.md"
     }
   ],
   "omittedPaths": [],

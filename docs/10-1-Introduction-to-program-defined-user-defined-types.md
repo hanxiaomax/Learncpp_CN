@@ -29,9 +29,9 @@ int& ref; // define variable of compound type 'reference to int'
 int arr[5]; // define an array of 5 integers of type int[5] (we'll cover this in a future chapter)
 ```
 
-This works because the C++ language already knows what the type names (and symbols) for these types mean -- we do not need to provide or import any definitions.
+这些组合可以正确工作是因为C++语言已经知晓这些数据类型名（和符号）的含义——因此我们不必提供或导入其定义。
 
-However, consider the case of a type alias (introduced in lesson[[8-6-Typedefs-and-type-aliases|8.6 - typedef 和类型别名]]), which allows us to define a new name for an existing type. Because a type alias introduces a new identifier into the program, a type alias must be defined before it can be used:
+而对于使用类型别名（[[8-6-Typedefs-and-type-aliases|8.6 - typedef 和类型别名]]）的情况来说，类型别名使我们可以为一个已知类型定义一个新的名字，因此类型别名实际上向程序引入了一个新的标识符，所以类型别名必须先定义后使用：
 
 ```cpp
 #include <iostream>
@@ -47,11 +47,9 @@ int main()
 }
 ```
 
-COPY
+如果没有对 `length` 定义，编译器将无法知道在我们使用它定义变量时知晓其含义。对`length`的定义并没有创建一个新的对象——它只是告诉编译器 `length` 你稍后可以使用它定义变量。
 
-If we were to omit the definition of `length`, the compiler wouldn’t know what a `length` is, and would complain when we try to define a variable using that type. The definition for `length` doesn’t create an object -- it just tells the compiler what a `length` is so it can be used later.
-
-## What are user-defined / program-defined types?
+## 用户定义类型是什么？
 
 Back in the introduction to the previous chapter ([[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]), we introduced the challenge of wanting to store a fraction, which has a numerator and denominator that are conceptually linked together. In that lesson, we discussed some of the challenges with using two separate integers to store a fraction’s numerator and denominator independently.
 
@@ -59,7 +57,7 @@ If C++ had a built-in fraction type, that would have been perfect -- but it does
 
 Instead, C++ solves for such problems in a different way: by allowing us to create entirely new, custom types for use in our programs! Such types are often called user-defined types (though we think the term program-defined types is better -- we’ll discuss the difference later in this lesson). C++ has two categories of compound types that allow for this: the enumerated types (including unscoped and scoped enumerations), and the class types (including structs, classes, and unions).
 
-## Defining program-defined types
+## 定义一个程序定义类型
 
 Just like type aliases, program-defined types must also be defined before they can be used. The definition for a program-defined type is called a type definition.
 
@@ -84,7 +82,7 @@ int main()
 }
 ```
 
-COPY
+
 
 In this example, we’re using the `struct` keyword to define a new program-defined type named `Fraction` (in the global scope, so it can be used anywhere in the rest of the file). This doesn’t allocate any memory -- it just tells the compiler what a `Fraction` looks like, so we can allocate objects of a `Fraction` type later. Then, inside `main()`, we instantiate (and initialize) a variable of type `Fraction` named `f`.
 
@@ -96,7 +94,7 @@ Program-defined type definitions always end in a semicolon. Failure to include t
 
 We’ll show more examples of defining and using program-defined types in the next lesson ([10.2 -- Unscoped enumerations](https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/)), and we cover structs starting in lesson [10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/).
 
-## Naming program-defined types
+## 命名一个自定义类型
 
 By convention, program-defined types are named starting with a capital letter and don’t use a suffix (e.g. `Fraction`, not `fraction`, `fraction_t`, or `Fraction_t`).
 
@@ -110,11 +108,9 @@ New programmers sometimes find variable definitions such as the following confus
 Fraction fraction {}; // Instantiates a variable named fraction of type Fraction
 ```
 
-
-
 But this is no different than any other variable definition: the type (`Fraction`) comes first (and because Fraction is capitalized, we know it’s a program-defined type), then the variable name (`fraction`), and then an optional initializer. Because C++ is case-sensitive, there is no naming conflict here!
 
-## Using program-defined types throughout a multi-file program
+## 在多文件程序中使用自定义类型
 
 Every code file that uses a program-defined type needs to see the full type definition before it is used. A forward declaration is not sufficient. This is required so that the compiler knows how much memory to allocate for objects of that type.
 
@@ -157,7 +153,8 @@ int main()
 }
 ```
 
-## Type definitions are partially exempt from the one-definition rule
+## 类型定义部分上豁免于单一定义原则
+
 
 In lesson [[2-7-Forward-declarations-and-definitions|2.7 - 前向声明和定义]]， we discussed how the one-definition rule requires that each function and global variable only have one definition per program. To use a given function or global variable in a file that does not contain the definition, we need a forward declaration (which we typically propagate via a header file). This works because declarations are enough to satisfy the compiler when it comes to functions and non-constexpr variables, and the linker can then connect everything up.
 
@@ -169,7 +166,7 @@ You’ve already exercised this capability (likely without realizing it): if you
 
 There are two caveats that are worth knowing about. First, you can still only have one type definition per code file (this usually isn’t a problem since header guards will prevent this). Second, all of the type definitions for a given type must be identical, otherwise undefined behavior will result.
 
-## Nomenclature: user-defined types vs program-defined types
+## 命名法：用户定义类型 vs 程序定义类型
 
 The term “user-defined type” sometimes comes up in casual conversation, as well as being mentioned (but not defined) in the C++ language standard. In casual conversation, the term tends to mean “a type that you defined yourself” (such as the Fraction type example above). Sometimes this also includes type aliases.
 
@@ -178,9 +175,9 @@ However, as used in the C++ language standard, a user-defined type is intended t
 To provide additional differentiation, the C++20 language standard helpfully defines the term “program-defined type” to mean only types that you’ve defined yourself. We’ll prefer this term when talking about such types, as it is less ambiguous.
 
 
-|Type	|Meaning|	Examples|
+|类型	|含义|	例子|
 |:---:|:---:|:---:|
-|Fundamental	|A type built into the core C++ language|	int, `std::nullptr_t`
-|User-defined	|A non-fundamental type (in casual use, typically used to mean program-defined types)	|`std::string`, Fraction
-|Program-defined	|a class type or enumeration type defined yourself	|Fraction
+|基本类型	|内建于 C++ 语言的核心部分|	`int`, `std::nullptr_t`
+|用户定义类型	|A non-fundamental type (in casual use, typically used to mean program-defined types)	|`std::string`, `Fraction`
+|程序定义类型	|a class type or enumeration type defined yourself	|`Fraction`
 

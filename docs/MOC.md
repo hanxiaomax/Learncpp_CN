@@ -114,7 +114,7 @@
 - [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
 - [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
 - [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]
-- [[docs/# 7-17-assert-and-static-assert]]
+- [[7-17-assert-and-static-assert|7.17 - 断言和 static_assert]]
 - [[7.18 - 随机数生成器简介]]
 - [[7.19 - 使用 Mersenne Twister 生成随机数]]
 - [[7-x-Chapter-7-summary-and-quiz|7.x - 小结与测试]]
