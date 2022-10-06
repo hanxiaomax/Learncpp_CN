@@ -1,8 +1,180 @@
 {
   "recentFiles": [
     {
+      "basename": "3-1-Syntax-and-semantic-errors",
+      "path": "docs/3-1-Syntax-and-semantic-errors.md"
+    },
+    {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "2-10-Introduction-to-the-preprocessor",
+      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
+    },
+    {
+      "basename": "2-8-Programs-with-multiple-code-files",
+      "path": "docs/2-8-Programs-with-multiple-code-files.md"
+    },
+    {
+      "basename": "2-7-Forward-declarations-and-definitions",
+      "path": "docs/2-7-Forward-declarations-and-definitions.md"
+    },
+    {
+      "basename": "function-prototype",
+      "path": "docs/function-prototype.md"
+    },
+    {
+      "basename": "2-6-Why-functions-are-useful-and-how-to-use-them-effectively",
+      "path": "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md"
+    },
+    {
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
+    },
+    {
+      "basename": "object",
+      "path": "docs/object.md"
+    },
+    {
+      "basename": "2-4-Introduction-to-function-parameters-and-arguments",
+      "path": "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
+    },
+    {
+      "basename": "2-3-Void-functions-non-value returning functions",
+      "path": "docs/2-3-Void-functions-non-value returning functions.md"
+    },
+    {
+      "basename": "2-2-Function-return-values-value-returning functions",
+      "path": "docs/2-2-Function-return-values-value-returning functions.md"
+    },
+    {
+      "basename": "2-1-Introduction-to-functions",
+      "path": "docs/2-1-Introduction-to-functions.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "identifier",
+      "path": "docs/identifier.md"
+    },
+    {
+      "basename": "evaluation",
+      "path": "docs/evaluation.md"
+    },
+    {
+      "basename": "1-2-comments",
+      "path": "docs/1-2-comments.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "docs/0-8-A-few-common-C++-problems.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "compiler",
+      "path": "docs/compiler.md"
+    },
+    {
+      "basename": "11-1-Arrays-Part-I",
+      "path": "docs/11-1-Arrays-Part-I.md"
+    },
+    {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
+    },
+    {
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
+    },
+    {
+      "basename": "4-18-Introduction-to-std-string_view",
+      "path": "docs/4-18-Introduction-to-std-string_view.md"
+    },
+    {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "10-y-using-a-language-reference",
+      "path": "docs/10-y-using-a-language-reference.md"
+    },
+    {
+      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
+      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
+    },
+    {
+      "basename": "10-10-class-templates",
+      "path": "docs/10-10-class-templates.md"
+    },
+    {
+      "basename": "10-9-member-selection-with-pointers-and-references",
+      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
+    },
+    {
+      "basename": "10-8-struct-passing-and-miscellany",
+      "path": "docs/10-8-struct-passing-and-miscellany.md"
+    },
+    {
+      "basename": "10-7-default-member-initialization",
+      "path": "docs/10-7-default-member-initialization.md"
+    },
+    {
+      "basename": "10-6-struct-aggregate-initialization",
+      "path": "docs/10-6-struct-aggregate-initialization.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "10-4-scoped-enumerations-enum-classes",
+      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
+    },
+    {
+      "basename": "7-17-assert-and-static-assert",
+      "path": "docs/7-17-assert-and-static-assert.md"
+    },
+    {
+      "basename": "7-x-Chapter-7-summary-and-quiz",
+      "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
+    },
+    {
+      "basename": "4-17-An introduction-to-std-string",
+      "path": "docs/4-17-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal",
+      "path": "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
+    },
+    {
+      "basename": "4-13-Const-variables-and-symbolic-constants",
+      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
+    },
+    {
+      "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
+      "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
+    },
+    {
+      "basename": "4-15-Literals",
+      "path": "docs/4-15-Literals.md"
+    },
+    {
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
       "basename": "c++-basic-onepage",
@@ -27,178 +199,6 @@
     {
       "basename": "1-10-Introduction-to-expressions",
       "path": "docs/1-10-Introduction-to-expressions.md"
-    },
-    {
-      "basename": "1-9-Introduction-to-literals-and-operators",
-      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "12-5-command-line-arguments",
-      "path": "docs/12-5-command-line-arguments.md"
-    },
-    {
-      "basename": "12-4-recursion",
-      "path": "docs/12-4-recursion.md"
-    },
-    {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
-    },
-    {
-      "basename": "12-2-the-stack-and-the-heap",
-      "path": "docs/12-2-the-stack-and-the-heap.md"
-    },
-    {
-      "basename": "12-3-std-vector-capacity-and-stack-behavior",
-      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "address-of-operator",
-      "path": "docs/address-of-operator.md"
-    },
-    {
-      "basename": "iterator",
-      "path": "docs/iterator.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
-      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
-    },
-    {
-      "basename": "11-10-C-style-string-symbolic-constants",
-      "path": "docs/11-10-C-style-string-symbolic-constants.md"
-    },
-    {
-      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
-      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "excalibrain",
-      "path": "excalibrain.md"
-    },
-    {
-      "basename": "8-1-Implicit-type-conversion-coercion",
-      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
-    },
-    {
-      "basename": "0-8-A-few-common-C++-problems",
-      "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "type-definition",
-      "path": "docs/type-definition.md"
-    },
-    {
-      "basename": "overload",
-      "path": "docs/overload.md"
-    },
-    {
-      "basename": "Output-manipulators",
-      "path": "docs/Output-manipulators.md"
-    },
-    {
-      "basename": "operator",
-      "path": "docs/operator.md"
-    },
-    {
-      "basename": "operands",
-      "path": "docs/operands.md"
-    },
-    {
-      "basename": "macro",
-      "path": "docs/macro.md"
-    },
-    {
-      "basename": "C-style-casts",
-      "path": "docs/C-style-casts.md"
-    },
-    {
-      "basename": "byte",
-      "path": "docs/byte.md"
-    },
-    {
-      "basename": "bit",
-      "path": "docs/bit.md"
-    },
-    {
-      "basename": "abstract-class",
-      "path": "docs/abstract-class.md"
-    },
-    {
-      "basename": "default-member-initializer",
-      "path": "docs/default-member-initializer.md"
-    },
-    {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "scoped-enumerations",
-      "path": "docs/scoped-enumerations.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
-      "basename": "dangling",
-      "path": "docs/dangling.md"
-    },
-    {
-      "basename": "wild-pointer",
-      "path": "docs/wild-pointer.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "10-6-struct-aggregate-initialization",
-      "path": "docs/10-6-struct-aggregate-initialization.md"
-    },
-    {
-      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
-      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
     }
   ],
   "omittedPaths": [],

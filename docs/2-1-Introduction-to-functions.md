@@ -38,7 +38,7 @@ return-type identifier() // identifier replaced with the name of your function
 
 简单介绍一下其中四个主要元素：
 
-- 在本课程中，我们会使用 `int`（对于 `main()` 函数）或 `void` （对于其他函数）作为函数的返回值类型（ `return-type`）。我们会在下一节课（[[2.2 函数返回值 (带返回值的函数)]]）中介绍更多的返回值类型；
+- 在本课程中，我们会使用 `int`（对于 `main()` 函数）或 `void` （对于其他函数）作为函数的返回值类型（ `return-type`）。我们会在下一节课（[[2-2-Function-return-values-value-returning functions|2.2 - 函数返回值]]）中介绍更多的返回值类型；
 - 和变量一样，函数也有函数名。`identifier` 就是你定义的函数的函数名；
 - 标识符后面的括号告诉编译器这里是在定义一个函数；
 - 花括号以及花括号内部的语句称为**函数体**。这里就是放置函数语句的的地方。

@@ -23,16 +23,20 @@
             }
           },
           {
-            "id": "fb615abdbba7aaa2",
+            "id": "edb5d4440b3b14ac",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "docs/images/onepage/c++-basic-onepage.md"
+                "file": "docs/3-1-Syntax-and-semantic-errors.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -61,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Const 变量必须初始化",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -106,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/3-1-Syntax-and-semantic-errors.md"
               }
             }
           },
@@ -127,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/3-1-Syntax-and-semantic-errors.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -146,17 +150,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "edb5d4440b3b14ac",
   "lastOpenFiles": [
-    "docs/images/onepage/c++-basic-onepage.md",
-    "docs/images/onepage/moc-onepage.md",
-    "docs/images/onepage/1-1-c++-basic.md",
-    "docs/MOC.md",
-    "docs/Template.excalidraw.md",
-    "docs/7-1-Control-flow-introduction.md",
-    "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md",
-    "docs/3-4-Basic-debugging-tactics.md",
-    "docs/1-10-Introduction-to-expressions.md",
-    "docs/1-9-Introduction-to-literals-and-operators.md"
+    "docs/2-12-Header-guards.md",
+    "docs/2-10-Introduction-to-the-preprocessor.md",
+    "docs/2-8-Programs-with-multiple-code-files.md",
+    "docs/2-7-Forward-declarations-and-definitions.md",
+    "docs/function-prototype.md",
+    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
+    "docs/2-5-Introduction-to-local-scope.md",
+    "docs/object.md",
+    "docs/编译时(compile-time).md",
+    "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
   ]
 }

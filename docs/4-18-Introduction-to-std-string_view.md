@@ -7,7 +7,7 @@ time: 2022-6-18
 type: translation
 tags:
 - string_view
-- C++
+- C++17
 ---
 
 ??? note "关键点速记"

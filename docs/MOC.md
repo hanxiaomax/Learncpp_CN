@@ -63,7 +63,6 @@
 - [[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]
 - [[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]
 - [[4-15-Literals|4.15 - 字面量]]
-- [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]
 - [[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数值系统（十进制、二进制、十六进制和八进制）]]
 - [[4-17-An introduction-to-std-string|4.17 - std::string 简介]]
 - [[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]

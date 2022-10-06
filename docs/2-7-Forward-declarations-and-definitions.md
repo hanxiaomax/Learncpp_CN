@@ -50,7 +50,7 @@ The sum of 3 and 4 is: 7
 add.cpp(5) : error C3861: 'add': identifier not found
 ```
 
-[[编译器(compiler)]]在编译上述程序的时候会顺序编译上述代码的内容。当编译器开始要编译**第五行**的 `add` 函数时，它不知道 `add` 是什么，因为我们还没有定义 `add`（它是在第九行定义的）！因此，编译器会报告一个[[标识符(identifier)]]未找到的错误（identifier not found）。
+[[compiler|编译器]]在编译上述程序的时候会顺序编译上述代码的内容。当编译器开始要编译**第五行**的 `add` 函数时，它不知道 `add` 是什么，因为我们还没有定义 `add`（它是在第九行定义的）！因此，编译器会报告一个[[identifier|标识符(identifier)]]未找到的错误（identifier not found）。
 
 旧版本的 Visual Studio 还会报告另外一个错误：
 
@@ -97,7 +97,7 @@ int main()
 
 对于函数来说，这么做可以在定义函数体之前，先告诉编译器函数名存在。因此，当编译器编译函数调用时，它知道该标识符表示一个函数，此时在进行函数调用，并检查函数调用是否正确，即使其上不知道该函数是如何定义、在哪里定义的。
 
-编写前向升，我们需要使用被称为[[函数原型(function prototype)]]的声明语句。函数原型包括了函数头（即函数的返回值类型、函数名和[[parameters|形参]]类型）并以分号结尾。函数体并不属于函数原型的一部分。
+编写前向升，我们需要使用被称为[[function-prototype|函数原型]]的声明语句。函数原型包括了函数头（即函数的返回值类型、函数名和[[parameters|形参]]类型）并以分号结尾。函数体并不属于函数原型的一部分。
 
 `add` 函数的函数原型如下：
 
@@ -172,7 +172,7 @@ add.obj : error LNK2001: unresolved external symbol "int __cdecl add(int,int)" (
 add.exe : fatal error LNK1120: 1 unresolved externals
 ```
 
-可以看到，程序是能够正确编译的，但是在[[链接(link)]]阶段却报错了，因为 `int add(int, int)` 没有被定义。
+可以看到，程序是能够正确编译的，但是在链接阶段却报错了，因为 `int add(int, int)` 没有被定义。
 
 ## 其他类型的前向声明
 
@@ -182,7 +182,7 @@ add.exe : fatal error LNK1120: 1 unresolved externals
 
 在 C++ 中，你时常会听到[[declaration|声明(declaration)]]和[[definition|定义(definition)]] 这两个词，有时候它们是可以互换的。现在，我们已经掌握了足够的知识，可以去理解它们之间的不同了。
 
-[[definition|定义(definition)]]实际上指的是对某个[[标识符(identifier)]]的实现（对于函数或类型来说）或实例化（对于变量来说）。下面是一些有关定义的例子：
+[[definition|定义(definition)]]实际上指的是对某个[[identifier|标识符(identifier)]]的实现（对于函数或类型来说）或实例化（对于变量来说）。下面是一些有关定义的例子：
 
 ```cpp
 int add(int x, int y) // implements function add()

@@ -106,9 +106,12 @@ nav:
       - "4-10-Introduction-to-if-statements.md"
       - "4-11-Chars.md"
       - "4-12-Introduction-to-type-conversion-and-static_cast.md"
-      - "4-13-An introduction-to-std-string.md"
-      - "4-14-Literal-constants.md"
+      - "4-13-Const-variables-and-symbolic-constants.md"
+      - "4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
       - "4-15-Symbolic-constants-const-and-constexpr-variables.md"
+      - "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
+      - "4-17-An introduction-to-std-string.md"
+      - "4-18-Introduction-to-std-string_view.md"
       - "4-x-Chapter-4-summary-and-quiz.md"
     - 5. 运算符:
       - "5-1-Operator-precedence-and-associativity.md"
@@ -153,6 +156,8 @@ nav:
       - "7-14-Common-semantic-errors-in-c.md"
       - "7-15-Detecting-and-handling-errors.md"
       - "7-16-std-cin-and-handling-invalid-input.md"
+      - "7-17-assert-and-static-assert.md"
+      - "7-x-Chapter-7-summary-and-quiz.md"
     - 8. 类型转换和函数重载: 
       - "8-1-Implicit-type-conversion-coercion.md"
       - "8-2-Floating-point-and-integral-promotion.md"
@@ -186,7 +191,19 @@ nav:
       - "9-12-Type-deduction-with-pointers-references-and-const.md"
       - "9-x-Chapter-9-comprehensive-quiz.md"
     - 10. 复合类型-枚举和结构体:
+      - "10-1-Introduction-to-program-defined-user-defined-types.md"
+      - "10-2-unscoped-enumerations.md"
+      - "10-3-unscoped-enumeration-input-and-output.md"
+      - "10-4-scoped-enumerations-enum-classes.md"
+      - "10-5-Introduction-to-structs-members-and-member-selection.md"
+      - "10-6-struct-aggregate-initialization.md"
+      - "10-7-default-member-initialization.md"
+      - "10-8-struct-passing-and-miscellany.md"
+      - "10-9-member-selection-with-pointers-and-references.md"
+      - "10-10-class-templates.md"
+      - "10-11-class-template-argument-deduction-and-deduction -guides.md"
       - "10-x-Chapter-10-comprehensive-quiz.md"
+      - "10-y-using-a-language-reference.md"
     - 11. 数组，字符串和动态内存分配: 
       - "11-1-Arrays-Part-I.md"
       - "11-2-Arrays-Part-II.md"
@@ -201,7 +218,7 @@ nav:
       - "11-14-Void-pointers.md"
       - "11-x-Chapter-11-comprehensive-quiz.md"
     - 12. 函数: 
-      - "12-x-Chapter-12-comprehensive-quiz.md"
+      - "12-x-chapter-12-comprehensive-quiz.md"
     - 13. 面向对象编程基础: 
       - "13-x-Chapter-13-comprehensive-quiz.md"
     - 14. 操作符重载: 

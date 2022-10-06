@@ -9,7 +9,7 @@ tags:
 - void
 ---
 
-在上节课中（[[2-1-Introduction-to-functions]]），我们介绍了函数定义的语法应该像下面这样：
+在[[2-1-Introduction-to-functions|2.1 - 函数简介]]中，我们介绍了函数定义的语法应该像下面这样：
 
 ```
 return-type identifier() // identifier replaced with the name of your function

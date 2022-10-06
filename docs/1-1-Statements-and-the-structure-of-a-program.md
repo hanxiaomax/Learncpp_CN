@@ -73,7 +73,7 @@ int main()
 }
 ```
 
-**第一行** 比较特殊，称为[[preprocessor-directive|预处理器指令 (preprocessor directive)]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于 C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std:: cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[编译器(compiler)]]就不知道 `std:: cout` 是什么了。
+**第一行** 比较特殊，称为[[preprocessor-directive|预处理器指令 (preprocessor directive)]]。该指令表明用户需要使用 `iostream` 库的内容，该库属于 C++标准库的一部分，程序可以使用该库提供的功能从[[控制台(console)]]读写文本。我们需要这一行代码，是为了在第五行使用 `std:: cout`。如果将这一行删除，则会导致第五行编译时报错，因为这样[[compiler|编译器(compiler)]]就不知道 `std:: cout` 是什么了。
 
 **第二行** 是空行，编译器会将其忽略。它的存在仅仅是为了让程序可读性变得更好（将 `#include` 预处理器指令和程序的其他部分分割开来）。
 
