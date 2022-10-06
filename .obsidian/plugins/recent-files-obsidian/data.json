@@ -1,24 +1,72 @@
 {
   "recentFiles": [
     {
-      "basename": "10-3-unscoped-enumerations 1",
-      "path": "docs/10-3-unscoped-enumerations 1.md"
+      "basename": "10-10-class-templates",
+      "path": "docs/10-10-class-templates.md"
     },
     {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
+      "basename": "10-9-member-selection-with-pointers-and-references",
+      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
     },
     {
-      "basename": "unscoped-enumerations",
-      "path": "docs/unscoped-enumerations.md"
+      "basename": "10-8-struct-passing-and-miscellany",
+      "path": "docs/10-8-struct-passing-and-miscellany.md"
+    },
+    {
+      "basename": "10-7-default-member-initialization",
+      "path": "docs/10-7-default-member-initialization.md"
+    },
+    {
+      "basename": "10-6-struct-aggregate-initialization",
+      "path": "docs/10-6-struct-aggregate-initialization.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "10-4-scoped-enumerations-enum-classes",
+      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
+    },
+    {
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
     },
     {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
       "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
     },
     {
-      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
-      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
+    },
+    {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "introduce",
+      "path": "docs/introduce.md"
+    },
+    {
+      "basename": "downcasting",
+      "path": "docs/downcasting.md"
+    },
+    {
+      "basename": "抽象类",
+      "path": "docs/抽象类.md"
+    },
+    {
+      "basename": "pure-virtual",
+      "path": "docs/pure-virtual.md"
+    },
+    {
+      "basename": "Early binding",
+      "path": "docs/Early binding.md"
+    },
+    {
+      "basename": "unscoped-enumerations",
+      "path": "docs/unscoped-enumerations.md"
     },
     {
       "basename": "2-11-Header-files",
@@ -151,54 +199,6 @@
     {
       "basename": "member-variable",
       "path": "docs/member-variable.md"
-    },
-    {
-      "basename": "type-definition",
-      "path": "docs/type-definition.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
-      "basename": "17-x-Chapter-17-comprehensive-quiz",
-      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
-    },
-    {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "7-x-Chapter-7-summary-and-quiz",
-      "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
-    },
-    {
-      "basename": "6-x-Chapter-6-summary-and-quiz",
-      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
-    },
-    {
-      "basename": "5-x-Chapter-5-summary-and-quiz",
-      "path": "docs/5-x-Chapter-5-summary-and-quiz.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "docs/翻译约定.md"
     }
   ],
   "omittedPaths": [],

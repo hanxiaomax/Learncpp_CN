@@ -6,9 +6,8 @@ origin_title: "10.1 — Introduction to program-defined (user-defined) types"
 time: 2022-9-16
 type: translation
 tags:
-- struct
-- members
-- member selection
+- type
+
 ---
 
 ??? note "关键点速记"

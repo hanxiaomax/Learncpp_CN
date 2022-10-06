@@ -6,9 +6,8 @@ origin_title: "10.2 — Unscoped enumerations"
 time: 2022-9-16
 type: translation
 tags:
-- struct
-- members
-- member selection
+- enum 
+- unscoped enumerations
 ---
 
 ??? note "关键点速记"
