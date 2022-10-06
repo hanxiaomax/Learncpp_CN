@@ -5,6 +5,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
       "basename": "12-x-chapter-12-comprehensive-quiz",
       "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     },
@@ -71,10 +75,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "moc",
-      "path": "Excalidraw/moc.md"
     },
     {
       "basename": "excalibrain",
@@ -173,10 +173,6 @@
       "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
     },
     {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
-    },
-    {
       "basename": "10-10-class-templates",
       "path": "docs/10-10-class-templates.md"
     },
@@ -195,10 +191,6 @@
     {
       "basename": "10-y-using-a-language-reference",
       "path": "docs/10-y-using-a-language-reference.md"
-    },
-    {
-      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
-      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
     }
   ],
   "omittedPaths": [],

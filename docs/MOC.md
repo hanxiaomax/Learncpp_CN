@@ -1,3 +1,4 @@
+![](images/onepage/moc-onepage.svg)
 
 
 ## 1. C++ 基础 ✅
@@ -153,7 +154,7 @@
 - [[9-9-Pass-by-address]]
 - [[9-10-Pass-by-address-part-2]]
 - [[9-11-Return-by-reference-and-return-by-address]]
-- [[9.12 — Type deduction with pointers, references, and const]]
+- [[9-12-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和const的类型推断]]
 - [[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试 - 引用和指针]]
 
 
@@ -181,13 +182,13 @@
 - [[11-5-Multidimensional-Arrays|11.5 - 多维数组]]
 - [[11-6-C-style-strings|11.6 - C 语言风格字符串]]
 - [[11-7-std-string-view-part-2|11.7 - std::string_view（第二部分）]]
-- [[11-8-Pointers-and-arrays]]
-- [[11-9-Pointer-arithmetic-and-array-indexing]]
-- [[11-10-C-style-string-symbolic-constants]]
-- [[11-11-Dynamic-memory-allocation-with-new-and-delete]]
-- [[11-12-Dynamically-allocating-arrays]]
-- [[11-13-For-each-loops]]
-- [[11.14 — Void pointers]]
+- [[11-8-Pointers-and-arrays|11.8 - 指针和数组]]
+- [[11-9-Pointer-arithmetic-and-array-indexing|11.9 - 指针运算和数组索引]]
+- [[11-10-C-style-string-symbolic-constants|11.10 - C 风格字符串符号常量]]
+- [[11-11-Dynamic-memory-allocation-with-new-and-delete|11.11 - 使用 new 和 delete 进行动态内存分配]]
+- [[11-12-Dynamically-allocating-arrays|11.12 - 动态分配数组]]
+- [[11-13-For-each-loops|11.13 - for-each 循环]]
+- [[11-14-Void-pointers|11.4 - void 指针]]
 - [[11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays]]
 - [[11-16-An-introduction-to-std-array]]
 - [[11-17-An-introduction-to-std-vector]]
