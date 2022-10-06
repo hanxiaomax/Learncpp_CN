@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md",
+                "file": "docs/MOC.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -74,7 +74,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -94,7 +95,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -115,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-x-Chapter-11-comprehensive-quiz.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,15 +137,15 @@
   },
   "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/11-17-An-introduction-to-std-vector.md",
-    "docs/11-13-For-each-loops.md",
-    "docs/11-12-Dynamically-allocating-arrays.md",
-    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
-    "docs/11-10-C-style-string-symbolic-constants.md",
-    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
-    "docs/11-8-Pointers-and-arrays.md",
-    "docs/1-x-Chapter-1-summary-and-quiz.md",
-    "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "Excalidraw/moc.md"
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
+    "docs/12-8-lambda-captures.md",
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+    "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
+    "docs/12-5-command-line-arguments.md",
+    "docs/12-4-recursion.md",
+    "docs/12-1-function-pointers.md",
+    "docs/12-2-the-stack-and-the-heap.md",
+    "docs/12-3-std-vector-capacity-and-stack-behavior.md",
+    "docs/12-6.md"
   ]
 }

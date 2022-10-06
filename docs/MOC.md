@@ -154,7 +154,7 @@
 - [[9-10-Pass-by-address-part-2]]
 - [[9-11-Return-by-reference-and-return-by-address]]
 - [[9.12 — Type deduction with pointers, references, and const]]
-[[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试]]
+- [[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试 - 引用和指针]]
 
 
 ## 10. 复合类型-枚举和结构体
@@ -193,11 +193,18 @@
 - [[11-17-An-introduction-to-std-vector]]
 - [[11-18-Introduction-to-iterators]]
 - [[11-19-Introduction-to-standard-library-algorithms]]
-- [[11-x-Chapter-11-comprehensive-quiz|11.x - 小结与测试]]
+- [[11-x-Chapter-11-comprehensive-quiz|11.x - 小结与测试 - 数组、字符串和动态分配]]
 
 ## 12. 函数
+- [[12-1-function-pointers|12.1 - 函数指针]]
+- [[12-2-the-stack-and-the-heap|12.2 - 栈和堆]]
+- [[12-3-std-vector-capacity-and-stack-behavior|12.3 - std::vector的容量和类栈行为]]
+- [[12-4-recursion|12.4 - 递归]]
+- [[12-5-command-line-arguments|12.5 - 命令行参数]]
 - [[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]
-- [[12-x-Chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
+- [[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]
+- [[12-8-lambda-captures|12.8 - lambda 闭包]]
+- [[12-x-chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
 
 ## 13. 面向对象编程基础
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]

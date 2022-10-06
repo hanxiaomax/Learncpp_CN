@@ -1,6 +1,58 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "12-5-command-line-arguments",
+      "path": "docs/12-5-command-line-arguments.md"
+    },
+    {
+      "basename": "12-4-recursion",
+      "path": "docs/12-4-recursion.md"
+    },
+    {
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "12-2-the-stack-and-the-heap",
+      "path": "docs/12-2-the-stack-and-the-heap.md"
+    },
+    {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "address-of-operator",
+      "path": "docs/address-of-operator.md"
+    },
+    {
+      "basename": "iterator",
+      "path": "docs/iterator.md"
+    },
+    {
       "basename": "11-13-For-each-loops",
       "path": "docs/11-13-For-each-loops.md"
     },
@@ -23,10 +75,6 @@
     {
       "basename": "moc",
       "path": "Excalidraw/moc.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "excalibrain",
@@ -151,54 +199,6 @@
     {
       "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
       "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
-    },
-    {
-      "basename": "8-13-Function-templates",
-      "path": "docs/8-13-Function-templates.md"
-    },
-    {
-      "basename": "10-4-scoped-enumerations-enum-classes",
-      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
-    },
-    {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
-      "basename": "introduce",
-      "path": "docs/introduce.md"
-    },
-    {
-      "basename": "downcasting",
-      "path": "docs/downcasting.md"
-    },
-    {
-      "basename": "pure-virtual",
-      "path": "docs/pure-virtual.md"
-    },
-    {
-      "basename": "Early binding",
-      "path": "docs/Early binding.md"
-    },
-    {
-      "basename": "unscoped-enumerations",
-      "path": "docs/unscoped-enumerations.md"
-    },
-    {
-      "basename": "2-11-Header-files",
-      "path": "docs/2-11-Header-files.md"
-    },
-    {
-      "basename": "2-12-Header-guards",
-      "path": "docs/2-12-Header-guards.md"
-    },
-    {
-      "basename": "1-9-Introduction-to-literals-and-operators",
-      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
     }
   ],
   "omittedPaths": [],

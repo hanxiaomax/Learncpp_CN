@@ -3,5 +3,6 @@
   "editor": false,
   "graph": false,
   "search": false,
-  "git-view": false
+  "git-view": false,
+  "recent-files": false
 }

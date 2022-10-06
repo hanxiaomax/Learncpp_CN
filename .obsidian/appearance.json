@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 19,
+  "baseFontSize": 20,
   "theme": "moonstone",
   "translucency": false,
   "cssTheme": "",
@@ -10,5 +10,7 @@
     "outliner-for-the-outline-and-file-explorer",
     "supercharged-links-gen"
   ],
-  "accentColor": ""
+  "accentColor": "",
+  "interfaceFontFamily": "",
+  "textFontFamily": ""
 }
