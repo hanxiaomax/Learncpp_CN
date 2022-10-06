@@ -1,8 +1,48 @@
 {
   "recentFiles": [
     {
+      "basename": "Template.excalidraw",
+      "path": "Excalidraw/Template.excalidraw.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "Excalidraw/MOC.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "8-1-Implicit-type-conversion-coercion",
+      "path": "docs/8-1-Implicit-type-conversion-coercion.md"
+    },
+    {
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "docs/0-8-A-few-common-C++-problems.md"
+    },
+    {
+      "basename": "type-definition",
+      "path": "docs/type-definition.md"
+    },
+    {
+      "basename": "overload",
+      "path": "docs/overload.md"
+    },
+    {
+      "basename": "Output-manipulators",
+      "path": "docs/Output-manipulators.md"
+    },
+    {
+      "basename": "operator",
+      "path": "docs/operator.md"
+    },
+    {
+      "basename": "operands",
+      "path": "docs/operands.md"
+    },
+    {
+      "basename": "macro",
+      "path": "docs/macro.md"
     },
     {
       "basename": "C-style-casts",
@@ -159,46 +199,6 @@
     {
       "basename": "rvalue-reference",
       "path": "docs/rvalue-reference.md"
-    },
-    {
-      "basename": "12-x-Chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "return-by-value",
-      "path": "docs/return-by-value.md"
-    },
-    {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "lvalue",
-      "path": "docs/lvalue.md"
-    },
-    {
-      "basename": "rvalue",
-      "path": "docs/rvalue.md"
-    },
-    {
-      "basename": "move assignment operator",
-      "path": "docs/move assignment operator.md"
-    },
-    {
-      "basename": "move-constructor",
-      "path": "docs/move-constructor.md"
-    },
-    {
-      "basename": "copy-constructor",
-      "path": "docs/copy-constructor.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

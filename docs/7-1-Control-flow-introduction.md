@@ -55,7 +55,7 @@ Categories of flow control statements
 |Exceptions	|Exceptions are a special kind of flow control structure designed for error handling.	|Try, throw, catch|
 
 
-We’ll cover all of these categories in detail throughout this chapter, with the exception of exceptions (ha) which we’ll devote an entire future chapter to ([[MOC#20 异常|第20章 - 异常]]).
+We’ll cover all of these categories in detail throughout this chapter, with the exception of exceptions (ha) which we’ll devote an entire future chapter to ([[docs/MOC#20 异常|第20章 - 异常]]).
 
 Prior to this chapter, the number of things you could have a program do was fairly limited. Being able to control the flow of your program (particularly using loops) makes any number of interesting things possible! No longer will you be restricted to toy programs and academic exercises -- you will be able to write programs that have real utility.
 

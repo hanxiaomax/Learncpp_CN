@@ -4,19 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "ae14d74ea5f321a0",
+        "id": "61d42c58329b30b7",
         "type": "tabs",
         "children": [
           {
-            "id": "1ddb0c5803720359",
+            "id": "60cb4f142414027c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "docs/MOC.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
+                "file": "Excalidraw/Template.excalidraw.md"
               }
             }
           }
@@ -74,7 +71,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -94,7 +92,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "Excalidraw/Template.excalidraw.md"
               }
             }
           },
@@ -115,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "Excalidraw/Template.excalidraw.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,19 +129,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "1ddb0c5803720359",
+  "active": "60cb4f142414027c",
   "lastOpenFiles": [
-    "docs/C-style-casts.md",
-    "docs/byte.md",
-    "docs/bit.md",
-    "docs/abstract-class.md",
-    "docs/默认成员初始化值.md",
-    "docs/default-member-initializer.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
-    "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
-    "docs/scoped-enumerations.md",
-    "docs/9-x-Chapter-9-summary-and-quiz.md"
+    "Excalidraw/Template.excalidraw.md",
+    "Excalidraw/MOC.md",
+    "docs/MOC.md",
+    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
+    "docs/8-1-Implicit-type-conversion-coercion.md",
+    "docs/1-6-Uninitialized-variables-and-undefined-behavior.md",
+    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md",
+    "docs/operands.md",
+    "docs/numeric promotions.md",
+    "docs/dereference-operator.md"
   ]
 }

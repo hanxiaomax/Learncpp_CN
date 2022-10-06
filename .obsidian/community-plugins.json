@@ -6,12 +6,14 @@
   "obsidian-image-toolkit",
   "find-unlinked-files",
   "obsidian-pangu",
-  "flashcards-obsidian",
   "dataview",
   "wikilinks-to-mdlinks-obsidian",
   "obsidian-admonition",
   "highlightr-plugin",
   "obsidian-excalidraw-plugin",
   "excalibrain",
-  "obsidian-git"
+  "obsidian-git",
+  "obsidian-custom-frames",
+  "obsidian-hover-editor",
+  "cmenu-plugin"
 ]

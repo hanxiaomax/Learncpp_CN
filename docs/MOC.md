@@ -1,3 +1,5 @@
+![[Excalidraw/MOC]]
+
 ## 1. C++ 基础 ✅
 - [[1-1-Statements-and-the-structure-of-a-program|1.1 - 程序结构和语句]]
 - [[1-2-comments|1.2 - 注释]]
@@ -10,10 +12,9 @@
 - [[1-9-Introduction-to-literals-and-operators|1.9 - 字面量和操作符]]
 - [[1-10-Introduction-to-expressions|1.10 - 表达式简介]]
 - [[1-11-Developing-your-first-program|1.11 - 开发你的第一个程序]]
-- [[1-x-Chapter-1-summary-and-quiz|1.x - 小结与测试]]
+- [[1-x-Chapter-1-summary-and-quiz|1.x - 小结与测试 - C++基础]]
 
 ## 2. C++ 基础——函数和文件 ✅
-
 - [[2-1-Introduction-to-functions|2.1 - 函数简介]]
 - [[2-2-Function-return-values-value-returning functions|2.2 - 函数返回值]]
 - [[2-3-Void-functions-non-value returning functions|2.3 - void 函数]]
@@ -27,7 +28,7 @@
 - [[2-11-Header-files|2.11 - 头文件]]
 - [[2-12-Header-guards|2.12 - 头文件防卫式声明]]
 - [[2-13-How-to-design-your-first-programs|2.13 - 如何设计第一个程序]]
-- [[2-x-Chapter-2-summary-and-quiz|2.x - 小结与测试]]
+- [[2-x-Chapter-2-summary-and-quiz|2.x - 小结与测试 - 函数与文件]]
 
 ## 3. 调试 C++ 程序 
 
@@ -41,7 +42,7 @@
 - [[3-8-Using-an-integrated-debugger-Watching-variables|3.8 - 使用集成调试器之监控变量]]
 - [[3-9-Using-an-integrated-debugger-The-call-stack|3.9 - 使用集成调试器之调用栈]]
 - [[3-10-Finding-issues-before-they-become-problems|3.10 - 在问题发生前发现问题]]
-- [[3-x-Chapter-3-summary-and-quiz|3.x - 小结与测试]]
+- [[3-x-Chapter-3-summary-and-quiz|3.x - 小结与测试 - 代码调试]]
 
 
 ## 4. 基础数据类型 ✅ 
@@ -64,7 +65,7 @@
 - [[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数值系统（十进制、二进制、十六进制和八进制）]]
 - [[4-17-An introduction-to-std-string|4.17 - std::string 简介]]
 - [[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]
-- [[4-x-Chapter-4-summary-and-quiz|4.x - 小结与测试]]
+- [[4-x-Chapter-4-summary-and-quiz|4.x - 小结与测试 - 基本数据类型]]
 
 ## 5. 运算符 ✅
 
@@ -75,7 +76,7 @@
 - [[5-5-Comma-and-conditional-operators|5.5 - 逗号和条件运算符]]
 - [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]]
 - [[5-7-Logical-operators|5.7 - 逻辑运算符]]
-- [[5-x-Chapter-5-summary-and-quiz|5.x - 小结与测试]]
+- [[5-x-Chapter-5-summary-and-quiz|5.x - 小结与测试 - 运算符]]
 
 ## 6. 作用域、生命周期和链接 ✅
 
@@ -94,7 +95,7 @@
 - [[6-13-Inline-functions|6.13 - 内联函数]]
 - [[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
 - [[6-15-Unnamed-and-inline-namespaces|6.15 - 未命名和内联命名空间]]
-- [[6-x-Chapter-6-summary-and-quiz|6.x - 小结与测试]]
+- [[6-x-Chapter-6-summary-and-quiz|6.x - 小结与测试 - 作用域、持续时间和链接]]
 
 ## 7. 控制流和错误处理
 
@@ -117,12 +118,10 @@
 - [[7-17-assert-and-static-assert|7.17 - 断言和 static_assert]]
 - [[7.18 - 随机数生成器简介]]
 - [[7.19 - 使用 Mersenne Twister 生成随机数]]
-- [[7-x-Chapter-7-summary-and-quiz|7.x - 小结与测试]]
+- [[7-x-Chapter-7-summary-and-quiz|7.x - 小结与测试 - 控制流和错误处理]]
 
 
 ## 8. 类型转换和函数重载 ✅
-
-暂时跳过模板
 
 - [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]
 - [[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]
@@ -159,20 +158,20 @@
 
 
 ## 10. 复合类型-枚举和结构体
-- [[10.1 — Introduction to program-defined (user-defined) types]]
-- [[10.2 — Unscoped enumerations]] 
-- [[10.3 — Unscoped enumeration input and output]]
-- [[10.4 — Scoped enumerations (enum classes)]]
+
+- [[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]
+- [[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]
+- [[10-3-unscoped-enumeration-input-and-output|10.3 - 限定作用域枚举类型]]
+- [[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]
 - [[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]]
-- [[10.6 — Struct aggregate initialization]]
-- [[10.7 — Default member initialization]]
-- [[10.8 — Struct passing and miscellany]]
-- [[10.9 — Member selection with pointers and references]]
-- [[10.10 — Class templates]]
-- [[10.11 — Class template argument deduction (CTAD) and deduction guides]]
-- [[10.x — Chapter 10 summary and quiz]]
-- [[10.y — Using a language reference]]
-- [[10-x-Chapter-10-comprehensive-quiz|10.x - 小结与测试]]
+- [[10-6-struct-aggregate-initialization|10.6 - 结构体的聚合初始化]]
+- [[10-7-default-member-initialization|10.7 - 默认成员初始化]]
+- [[10-8-struct-passing-and-miscellany|10.8 - 结构体传递及其他]]
+- [[10-9-member-selection-with-pointers-and-references|10.9 - 基于指针和引用的成员选择]]
+- [[10-10-class-templates|10.10 - 类模板]]
+- [[10-11-class-template-argument-deduction-and-deduction -guides|10.11 - 类模板参数推断CTAD]] 
+- [[10-x-Chapter-10-comprehensive-quiz|10.x - 小结与测试 - 枚举和结构体]]
+- [[10-y-using-a-language-reference|10.y - 学会使用C++参考手册]]
 
 ## 11. 数组，字符串和动态内存分配
 - [[11-1-Arrays-Part-I|11.1 - 数组（第一部分）]]
@@ -198,29 +197,33 @@
 
 ## 12. 函数
 - [[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]
+- [[12-x-Chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
 
 ## 13. 面向对象编程基础
-- [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试]]
+- [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]
+
 ## 14. 操作符重载
 - [[14-11-Overloading-typecasts]]
-- [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试]]
+- [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试 - 运算符重载]]
 
 ## 16. 对象关系简介
-- [[16-x-Chapter-16-comprehensive-quiz|16.x - 小结与测试]]
+- [[16-x-Chapter-16-comprehensive-quiz|16.x - 小结与测试 - 对象关系]]
 
 ## 17. 继承
-- [[17-x-Chapter-17-comprehensive-quiz|17.x - 小结与测试]]
+- [[17-x-Chapter-17-comprehensive-quiz|17.x - 小结与测试 - 继承]]
 
 ## 18. 虚函数
-- [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试]]
+- [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试 - 虚函数]]
 
 ## 19. 模板和类
-- [[19-x-Chapter-19-comprehensive-quiz|19.x - 小结与测试]]
+- [[19-x-Chapter-19-comprehensive-quiz|19.x - 小结与测试 - 模板和类]]
 
 ## 20. 异常
-- [[20-x-Chapter-20-comprehensive-quiz|20.x - 小结与测试]]
+- [[20-x-Chapter-20-comprehensive-quiz|20.x - 小结与测试 - 异常]]
 
 ## M. move 和智能指针
+
+- [[M-x-chapter-M-comprehensive-review|M.x - 小结与测试 - 移动和智能指针]]
 
 ## 21. STL
 
