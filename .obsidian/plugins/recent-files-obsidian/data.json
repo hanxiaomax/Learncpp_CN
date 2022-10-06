@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
+    },
+    {
+      "basename": "10-6-struct-aggregate-initialization",
+      "path": "docs/10-6-struct-aggregate-initialization.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    },
+    {
       "basename": "10-10-class-templates",
       "path": "docs/10-10-class-templates.md"
     },
@@ -17,12 +41,16 @@
       "path": "docs/10-7-default-member-initialization.md"
     },
     {
-      "basename": "10-6-struct-aggregate-initialization",
-      "path": "docs/10-6-struct-aggregate-initialization.md"
+      "basename": "10-y-using-a-language-reference",
+      "path": "docs/10-y-using-a-language-reference.md"
     },
     {
-      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
-      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
+      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
+    },
+    {
+      "basename": "8-13-Function-templates",
+      "path": "docs/8-13-Function-templates.md"
     },
     {
       "basename": "10-4-scoped-enumerations-enum-classes",
@@ -31,14 +59,6 @@
     {
       "basename": "10-3-unscoped-enumeration-input-and-output",
       "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
     },
     {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
@@ -161,10 +181,6 @@
       "path": "docs/smart pointer class.md"
     },
     {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
       "basename": "aggregate-data-type",
       "path": "docs/aggregate-data-type.md"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "class-template",
       "path": "docs/class-template.md"
-    },
-    {
-      "basename": "designated-initializers",
-      "path": "docs/designated-initializers.md"
-    },
-    {
-      "basename": "aggregate-initialization",
-      "path": "docs/aggregate-initialization.md"
-    },
-    {
-      "basename": "member-selection-operator",
-      "path": "docs/member-selection-operator.md"
-    },
-    {
-      "basename": "member-variable",
-      "path": "docs/member-variable.md"
     }
   ],
   "omittedPaths": [],

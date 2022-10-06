@@ -13,16 +13,14 @@ tags:
 ??? note "关键点速记"
 	
 
-Because fundamental types are defined as part of the core C++ language, they are available for immediate use. For example, if we want to define a variable with a type of `int` or `double`, we can just do so:
+基本数据类型是 C++ 语言的核心部分，设计它们的目的就是为了可以在需要时拿来就用。例如，当我们需要定义一个`int`或者`double`类型的时候，我们只需要：
 
 ```cpp
 int x; // define variable of fundamental type 'int'
 double d; // define variable of fundamental type 'double'
 ```
 
-COPY
-
-This is also true for the compound types that are simple extensions of fundamental types (including functions, pointers, references, and arrays):
+对于那些由基本数据类型通过简单扩展而得到的[[9-1-Introduction-to-compound-data-types|复合数据类型]]也是一样的（包括函数、指针、引用和数组）：
 
 ```cpp
 void fcn(int) {}; // define a function of type void()(int)
@@ -30,8 +28,6 @@ int* ptr; // define variable of compound type 'pointer to int'
 int& ref; // define variable of compound type 'reference to int'
 int arr[5]; // define an array of 5 integers of type int[5] (we'll cover this in a future chapter)
 ```
-
-COPY
 
 This works because the C++ language already knows what the type names (and symbols) for these types mean -- we do not need to provide or import any definitions.
 
