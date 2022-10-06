@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "1-1-c++-basic",
-      "path": "docs/images/onepage/1-1-c++-basic.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "c++-basic-onepage",
+      "path": "docs/images/onepage/c++-basic-onepage.md"
     },
     {
       "basename": "moc-onepage",

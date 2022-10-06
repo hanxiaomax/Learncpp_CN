@@ -28,12 +28,11 @@
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "docs/images/onepage/1-1-c++-basic.md"
+                "file": "docs/images/onepage/c++-basic-onepage.md"
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +106,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/images/onepage/1-1-c++-basic.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -128,7 +127,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/images/onepage/1-1-c++-basic.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,17 +146,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "fb615abdbba7aaa2",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/MOC.md",
-    "docs/images/onepage/1-1-c++-basic.md",
+    "docs/images/onepage/c++-basic-onepage.md",
     "docs/images/onepage/moc-onepage.md",
+    "docs/images/onepage/1-1-c++-basic.md",
+    "docs/MOC.md",
     "docs/Template.excalidraw.md",
     "docs/7-1-Control-flow-introduction.md",
     "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md",
     "docs/3-4-Basic-debugging-tactics.md",
     "docs/1-10-Introduction-to-expressions.md",
-    "docs/1-9-Introduction-to-literals-and-operators.md",
-    "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    "docs/1-9-Introduction-to-literals-and-operators.md"
   ]
 }
