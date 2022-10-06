@@ -1,4 +1,5 @@
-![](images/onepage/moc-onepage.svg)
+??? note "Mind Map"
+	![|500](images/onepage/moc-onepage.svg)
 
 
 ## 1. C++ 基础 ✅

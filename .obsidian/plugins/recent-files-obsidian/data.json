@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "moc-onepage",
+      "path": "docs/images/onepage/moc-onepage.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
+      "basename": "3-7-Using-an-integrated-debugger-Running-and-breakpoints",
+      "path": "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md"
+    },
+    {
+      "basename": "3-4-Basic-debugging-tactics",
+      "path": "docs/3-4-Basic-debugging-tactics.md"
+    },
+    {
+      "basename": "1-10-Introduction-to-expressions",
+      "path": "docs/1-10-Introduction-to-expressions.md"
+    },
+    {
+      "basename": "1-9-Introduction-to-literals-and-operators",
+      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
     },
     {
       "basename": "11-14-Void-pointers",
@@ -79,10 +107,6 @@
     {
       "basename": "excalibrain",
       "path": "excalibrain.md"
-    },
-    {
-      "basename": "Template.excalidraw",
-      "path": "Excalidraw/Template.excalidraw.md"
     },
     {
       "basename": "8-1-Implicit-type-conversion-coercion",
@@ -175,22 +199,6 @@
     {
       "basename": "10-10-class-templates",
       "path": "docs/10-10-class-templates.md"
-    },
-    {
-      "basename": "10-9-member-selection-with-pointers-and-references",
-      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
-    },
-    {
-      "basename": "10-8-struct-passing-and-miscellany",
-      "path": "docs/10-8-struct-passing-and-miscellany.md"
-    },
-    {
-      "basename": "10-7-default-member-initialization",
-      "path": "docs/10-7-default-member-initialization.md"
-    },
-    {
-      "basename": "10-y-using-a-language-reference",
-      "path": "docs/10-y-using-a-language-reference.md"
     }
   ],
   "omittedPaths": [],

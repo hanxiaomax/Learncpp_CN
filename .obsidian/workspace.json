@@ -10,6 +10,7 @@
           {
             "id": "91708e7b42f222ab",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -17,10 +18,22 @@
                 "mode": "source",
                 "backlinks": false,
                 "source": false
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "68a76419c797f4f5",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "docs/images/onepage/moc-onepage.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +107,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/images/onepage/moc-onepage.md"
               }
             }
           },
@@ -115,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/images/onepage/moc-onepage.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,15 +149,15 @@
   },
   "active": "b9cdb44997e9824e",
   "lastOpenFiles": [
-    "Excalidraw/moc-onepage.svg",
     "docs/MOC.md",
-    "Excalidraw/moc-onepage.md",
-    "Excalidraw/MOC.svg",
-    "docs/11-14-Void-pointers.md",
-    "docs/12-x-chapter-12-comprehensive-quiz.md",
-    "docs/12-8-lambda-captures.md",
-    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
-    "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
-    "docs/12-5-command-line-arguments.md"
+    "docs/images/onepage/moc-onepage.md",
+    "docs/Template.excalidraw.md",
+    "docs/7-1-Control-flow-introduction.md",
+    "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md",
+    "docs/3-4-Basic-debugging-tactics.md",
+    "docs/1-10-Introduction-to-expressions.md",
+    "docs/1-9-Introduction-to-literals-and-operators.md",
+    "docs/1-1-Statements-and-the-structure-of-a-program.md",
+    "Excalidraw/moc-onepage.svg"
   ]
 }

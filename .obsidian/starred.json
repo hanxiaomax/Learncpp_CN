@@ -14,6 +14,11 @@
       "type": "search",
       "title": "/^-\\ *$/",
       "query": "/^-\\ *$/"
+    },
+    {
+      "type": "file",
+      "title": "moc-onepage",
+      "path": "docs/images/onepage/moc-onepage.md"
     }
   ]
 }
