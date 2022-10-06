@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "68a76419c797f4f5",
+            "id": "fb615abdbba7aaa2",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "docs/images/onepage/moc-onepage.md"
+                "file": "docs/images/onepage/1-1-c++-basic.md"
               }
             }
           }
@@ -107,7 +107,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/images/onepage/moc-onepage.md"
+                "file": "docs/images/onepage/1-1-c++-basic.md"
               }
             }
           },
@@ -128,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/images/onepage/moc-onepage.md",
+                "file": "docs/images/onepage/1-1-c++-basic.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,9 +147,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b9cdb44997e9824e",
+  "active": "fb615abdbba7aaa2",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/images/onepage/1-1-c++-basic.md",
     "docs/images/onepage/moc-onepage.md",
     "docs/Template.excalidraw.md",
     "docs/7-1-Control-flow-introduction.md",
@@ -157,7 +158,6 @@
     "docs/3-4-Basic-debugging-tactics.md",
     "docs/1-10-Introduction-to-expressions.md",
     "docs/1-9-Introduction-to-literals-and-operators.md",
-    "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "Excalidraw/moc-onepage.svg"
+    "docs/1-1-Statements-and-the-structure-of-a-program.md"
   ]
 }

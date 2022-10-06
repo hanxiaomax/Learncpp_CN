@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "moc-onepage",
-      "path": "docs/images/onepage/moc-onepage.md"
+      "basename": "1-1-c++-basic",
+      "path": "docs/images/onepage/1-1-c++-basic.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "moc-onepage",
+      "path": "docs/images/onepage/moc-onepage.md"
     },
     {
       "basename": "7-1-Control-flow-introduction",
@@ -195,10 +199,6 @@
     {
       "basename": "10-5-Introduction-to-structs-members-and-member-selection",
       "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
-    },
-    {
-      "basename": "10-10-class-templates",
-      "path": "docs/10-10-class-templates.md"
     }
   ],
   "omittedPaths": [],
