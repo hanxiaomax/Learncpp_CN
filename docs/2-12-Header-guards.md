@@ -73,7 +73,6 @@ int getSquareSides()
 #include "square.h"
 ```
 
-
 ```cpp title="main.cpp"
 #include "square.h"
 #include "geometry.h"

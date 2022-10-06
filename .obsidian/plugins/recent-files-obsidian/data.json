@@ -9,6 +9,34 @@
       "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
     },
     {
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
+    },
+    {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "1-9-Introduction-to-literals-and-operators",
+      "path": "docs/1-9-Introduction-to-literals-and-operators.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "5-5-Comma-and-conditional-operators",
+      "path": "docs/5-5-Comma-and-conditional-operators.md"
+    },
+    {
+      "basename": "11-4-Sorting-an-array-using-selection-sort",
+      "path": "docs/11-4-Sorting-an-array-using-selection-sort.md"
+    },
+    {
       "basename": "M-x-chapter-M-comprehensive-review",
       "path": "docs/M-x-chapter-M-comprehensive-review.md"
     },
@@ -171,34 +199,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "7-17-assert-and-static-assert",
-      "path": "docs/7-17-assert-and-static-assert.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
-      "basename": "7-12-Introduction-to-testing-your-code",
-      "path": "docs/7-12-Introduction-to-testing-your-code.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "8-5-Explicit-type-conversion-casting-and-static-cast",
-      "path": "docs/8-5-Explicit-type-conversion-casting-and-static-cast.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
     }
   ],
   "omittedPaths": [],
