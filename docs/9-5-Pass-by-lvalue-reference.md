@@ -41,13 +41,13 @@ int main()
 
 在上面的例子中，当 `printValue(x)` 被调用的时候，`x` 的值会被拷贝到形参`y`。当到达函数结尾的时候，`y`就会被销毁。
 
-这意味着 means that when we called the function, we made a copy of our argument’s value, only to use it briefly and then destroy it! Fortunately, because fundamental types are cheap to copy, this isn’t a problem.
+这意味着当我们调用函数的时候，我们创建了实参值的拷贝，在函数中使用后便将其销毁了！幸运地是，因为基本数据类型的拷贝开销并不大，所以这并不会带来什么问题。
 
-Some objects are expensive to copy
+## 有些对象的拷贝开销很大
 
-Most of the types provided by the standard library (such as `std::string`) are `class types`. Class types are usually expensive to copy. Whenever possible, we want to avoid making unnecessary copies of objects that are expensive to copy, especially when we will destroy those copies almost immediately.
+标准库提供的多数数据类型都属于类(例如 `std::string`)。类类型的拷贝开销通常是很大的。如果可能，应该尽可能地避免不必要的拷贝，尤其是在这些变量用完即弃的情况下。
 
-Consider the following program illustrating this point:
+下面的程序正是表明了这一点：
 
 ```cpp
 #include <iostream>
@@ -68,19 +68,19 @@ int main()
 }
 ```
 
-COPY
+程序会打印：
 
-This prints
-
+```
 Hello, world!
+```
 
-While this program behaves like we expect, it’s also inefficient. Identically to the prior example, when `printValue()` is called, argument `x` is copied into `printValue()` parameter `y`. However, in this example, the argument is a `std::string` instead of an `int`, and `std::string` is a class type that is expensive to copy. And this expensive copy is made every time `printValue()` is called!
+尽管程序运行结果和我们想的一样，但其效率是很低的。和前面的程序一样当我们调用 `printValue()`的时候，实参 `x` 会被拷贝到形参 `y`。不过，在这个例子中，实参 `std::string` 并不像 `int` 那样，`std::string` 是一种类类型，对它的拷贝开销是非常大的，更不用说每次调用 `printValue()` 都会产生这样的开销。
 
-We can do better.
+我们可以做的更好。
 
-Pass by reference
+## 按引用传递
 
-One way to avoid making an expensive copy of an argument when calling a function is to use `pass by reference` instead of `pass by value`. When using pass by reference, we declare a function parameter as a reference type (or const reference type) rather than as a normal type. When the function is called, each reference parameter is bound to the appropriate argument. Because the reference acts as an alias for the argument, no copy of the argument is made.
+避免函数调用时产生的拷贝开销，可通过[[pass-by-reference|按引用传递]]来代替[[pass-by-value|按值传递]]。当使用按引用传递时，我们将函数的形参声明为引用类型（或指向const的引用）而不是普通类型。当函数被调用时，每个引用类型的形参会被绑定到传入的实参。因为引用其实是实参的别名，所以并不会创建拷贝。
 
 Here’s the same example as above, using pass by reference instead of pass by value:
 
