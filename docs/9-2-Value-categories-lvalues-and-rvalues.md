@@ -12,6 +12,7 @@ tags:
 
 ??? note "关键点速记"
 	- 记忆窍门：左值出现在赋值运算符的左边，右值出现在赋值表达式的右边。左侧的是被赋值的一方，因此必须是可变的且具有标识符。右侧显然可以是字面量、函数和对象，它们都属于右值。需要注意的是，因为左值可以自动转换为右值，所以左值可以出现在右值的位置（即可以出现在右侧）
+	- 右值会在表达式结束后被销毁，而左值则会继续存在
 
 在开始介绍第一个复合类型[[lvalue-reference|左值引用]]前，让我们先来了解一下什么是[[lvalue|左值]]。
 
@@ -249,6 +250,6 @@ int main()
 !!! tldr "关键信息"
 
 	辨别左值表达式和右值表达式的关键法则：
+	- 左值表达式是那些求值为变量或其他具有身份标识的变量，且它们可以持续到表达式结束后。
+	- 右值表达式则是那些可以求值为字面量的表达式，或者是函数和操作符的返回值，它们会在表达式解释后被丢弃。
 	
-	左值表达式 expressions are those that evaluate to variables or other identifiable objects that persist beyond the end of the expression.  
-	rvalues expressions are those that evaluate to literals or the returned value of functions and operators that are discarded at the end of the expression.

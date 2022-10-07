@@ -13,29 +13,29 @@ tags:
 	
 	-
 
-In C++, a reference is an alias for an existing object. Once a reference has been defined, any operation on the reference is applied to the object being referenced.
+在 C++ 中，引用其实就是某个已存在对象的引用。一旦引用被定义，任何对引用的操作都会直接应用于被引用的对象。
 
-Key insight
+!!! tldr "关键信息"
 
-A reference is essentially identical to the object being referenced.
+	引用在本质上和被引用的对象是一回事。
+	
+这意味着我们可以通过引用来读取或修改被引用的对象。尽管现在引用看上去有点傻，没啥用，甚至还很多余，但实际上在C++中我们会大量地使用引用。
 
-This means we can use a reference to read or modify the object being referenced. Although references might seem silly, useless, or redundant at first, references are used everywhere in C++ (we’ll see examples of this in a few lessons).
+你也可以创建对函数的引用，尽管这个做法并不常见。
 
-You can also create references to functions, though this is done less often.
+现代C++存在两种类型的引用：[[lvalue-reference|左值引用]]和[[rvalue-reference|右值引用]]。在本章中我们会首先讨论左值引用。
 
-Modern C++ contains two types of references: `lvalue references`, and `rvalue references`. In this chapter, we’ll discuss lvalue references.
+!!! info "相关内容"
 
-Related content
+	因为我们在本章会讨论左值和右值，如果你需要复习一下的话，请参考[[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]。
 
-Because we’ll be talking about `lvalues` and `rvalues` in this lesson, please review [9.2 -- Value categories (lvalues and rvalues)](https://www.learncpp.com/cpp-tutorial/value-categories-lvalues-and-rvalues/) if you need a refresher on these terms before proceeding.
+右值引用会在[[move-semantics|移动语义]]章节进行介绍 ([chapter M](https://www.learncpp.com/#ChapterM)).
 
-Rvalue references are covered in the chapter on `move semantics` ([chapter M](https://www.learncpp.com/#ChapterM)).
+## 左值引用类型
 
-## Lvalue reference types
+左值引用（通常简称为引用因为C++11之前只有这一种类型的引用）是一个已存在左值（例如某个变量）的别名。
 
-An lvalue reference (commonly just called a `reference` since prior to C++11 there was only one type of reference) acts as an alias for an existing lvalue (such as a variable).
-
-To declare an lvalue reference type, we use an ampersand (&) in the type declaration:
+声明左值类型可以在类型声明时使用`&`符号：
 
 ```cpp
 int      // a normal int type
@@ -43,13 +43,12 @@ int&     // an lvalue reference to an int object
 double&  // an lvalue reference to a double object
 ```
 
-COPY
 
-Lvalue reference variables
+## 左值引用变量
 
-One of the things we can do with an lvalue reference type is create an lvalue reference variable. An lvalue reference variable is a variable that acts as a reference to an lvalue (usually another variable).
+左值引用类型可以用来声明一个左值引用变量。左值引用变量作为对一个左值的引用来使用（通常是另外一个变量）。
 
-To create an lvalue reference variable, we simply define a variable with an lvalue reference type:
+创建左值引用变量，只需要使用左值引用类型定义一个变量即可：
 
 ```cpp
 int main()
@@ -64,22 +63,22 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，使用 `int&` 定义`ref` 可以创建一个对`int`类型左值的引用，然后我们使用一个左值表达式 x 对其进行了初始化an lvalue reference to an int, which we then initialize with lvalue expression `x`. Thereafter, `ref`and `x` can be used synonymously. This program thus prints:
 
-In the above example, the type `int&` defines `ref` as an lvalue reference to an int, which we then initialize with lvalue expression `x`. Thereafter, `ref`and `x` can be used synonymously. This program thus prints:
-
+```
 5
 5
+```
 
 From the compiler’s perspective, it doesn’t matter whether the ampersand is “attached” to the type name (`int& ref`) or the variable’s name (`int &ref`), and which you choose is a matter of style. Modern C++ programmers tend to prefer attaching the ampersand to the type, as it makes clearer that the reference is part of the type information, not the identifier.
 
-Best practice
+!!! success "最佳实践"
 
-When defining a reference, place the ampersand next to the type (not the reference variable’s name).
+	When defining a reference, place the ampersand next to the type (not the reference variable’s name).
 
-For advanced readers
+!!! info "扩展阅读"
 
-For those of you already familiar with pointers, the ampersand in this context does not mean “address of”, it means “lvalue reference to”.
+    For those of you already familiar with pointers, the ampersand in this context does not mean “address of”, it means “lvalue reference to”.
 
 ## Modifying values through an lvalue reference
 

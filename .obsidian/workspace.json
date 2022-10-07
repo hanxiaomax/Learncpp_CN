@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md",
+                "file": "docs/9-3-Lvalue-references.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
+                "file": "docs/9-3-Lvalue-references.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md",
+                "file": "docs/9-3-Lvalue-references.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,10 +152,10 @@
   },
   "active": "21cb3ff845b9cbc0",
   "lastOpenFiles": [
+    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
     "docs/9-6-Introduction-to-pointers.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
     "docs/9-1-Introduction-to-compound-data-types.md",
-    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
     "docs/move-semantics.md",
     "docs/identity.md",
     "docs/MOC.md",
