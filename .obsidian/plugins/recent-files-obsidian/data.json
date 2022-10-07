@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
-    },
-    {
       "basename": "9-5-Pass-by-lvalue-reference",
       "path": "docs/9-5-Pass-by-lvalue-reference.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-4-Lvalue-references-to-const",
+      "path": "docs/9-4-Lvalue-references-to-const.md"
+    },
+    {
+      "basename": "9-3-Lvalue-references",
+      "path": "docs/9-3-Lvalue-references.md"
     },
     {
       "basename": "undefined-behavior",
@@ -195,10 +199,6 @@
     {
       "basename": "10-2-unscoped-enumerations",
       "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
     }
   ],
   "omittedPaths": [],

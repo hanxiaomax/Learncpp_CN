@@ -263,20 +263,19 @@ int main()
 
 这也意味着“引用变量”这个术语有些用词不当，因为变量是对象的名字，而引用并不是对象。
 
-Because references aren’t objects, they can’t be used anywhere an object is required (e.g. you can’t have a reference to a reference, since an lvalue reference must reference an identifiable object). In cases where you need a reference that is an object or a reference that can be reseated, `std::reference_wrapper` (which we cover in lesson [16.3 -- Aggregation](https://www.learncpp.com/cpp-tutorial/aggregation/)) provides a solution.
+因为引用并不是对象，所以你并不能在任何能使用对象的地方来使用它（例如，你不能创建引用的引用，因为作指引与必须引用一个有身份标识的对象）。万一你需要一个支持重新绑定的对象，你可以使用 `std::reference_wrapper` (在 [16.3 -- Aggregation](https://www.learncpp.com/cpp-tutorial/aggregation/)中介绍)。
 
-As an aside…
+!!! cite "题外话"
 
-Consider the following variables:
+     考虑下列变量：
+     
+	```cpp
+	int var{};
+	int& ref1{ var };  // an lvalue reference bound to var
+	int& ref2{ ref1 }; // an lvalue reference bound to var
+	```
 
-```cpp
-int var{};
-int& ref1{ var };  // an lvalue reference bound to var
-int& ref2{ ref1 }; // an lvalue reference bound to var
-```
 
-COPY
+因为`ref2` (是一个引用) 被初始化为 `ref1` (也是一个引用)，你可能会认为 `ref2` 是一个引用的引用。但其实它不是，因为 `ref1` 是 `var`的引用，当我们在表达式中使用它的的时候（作为初始化值），`ref1` 会求值得到 `var`。所以 `ref2` 其实只是一个普通的[[lvalue-reference|左值引用]]（正如它的类型所表明的那样），它也与 `var` 绑定。
 
-Because `ref2` (a reference) is initialized with `ref1` (a reference), you might be tempted to conclude that `ref2` is a reference to a reference. It is not. Because `ref1` is a reference to `var`, when used in an expression (such as an initializer), `ref1` evaluates to `var`. So `ref2` is just a normal lvalue reference (as indicated by its type `int&`), bound to `var`.
-
-A reference to a reference (to an `int`) would have syntax `int&&` -- but since C++ doesn’t support references to references, this syntax was repurposed in C++11 to indicate an rvalue reference (which we cover in lesson [M.2 -- R-value references](https://www.learncpp.com/cpp-tutorial/rvalue-references/)).
+ 引用的引用本来可以使用语法 `int&&` 的，可惜C++并不支持引用的引用，因此这个语法形式在 C++11中被用来表示[[rvalue-reference|右值引用]]）。
