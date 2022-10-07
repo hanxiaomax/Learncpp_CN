@@ -189,7 +189,7 @@ int main()
 
 你可能会好奇为什么 `return5()` 和 `x + 1` 属于右值：问题的答案在于这些表达式的值在产生后必须马上使用（在表达式的作用域内）或被丢弃。
 
-现在，我们可以回答前面的问题了，为什么 `x = 5` 是合法的但 `5 = x` 则是不合法：赋值运算符要求其左操作符为一个可修改 an assignment operation requires the left operand of the assignment to be a modifiable lvalue expression, and the right operand to be an rvalue expression. The latter assignment (`5 = x`) fails because the expression `5` isn’t an lvalue.
+现在，我们可以回答前面的问题了，为什么 `x = 5` 是合法的但 `5 = x` 则是不合法：赋值运算符要求其左操作符为一个可修改的 an assignment operation requires the left operand of the assignment to be a modifiable lvalue expression, and the right operand to be an rvalue expression. The latter assignment (`5 = x`) fails because the expression `5` isn’t an lvalue.
 
 ```cpp
 int main()
