@@ -63,26 +63,26 @@ int main()
 }
 ```
 
-在上面的例子中，使用 `int&` 定义`ref` 可以创建一个对`int`类型左值的引用，然后我们使用一个左值表达式 x 对其进行了初始化an lvalue reference to an int, which we then initialize with lvalue expression `x`. Thereafter, `ref`and `x` can be used synonymously. This program thus prints:
+在上面的例子中，使用 `int&` 定义`ref` 可以创建一个对`int`类型左值的引用，然后我们使用一个左值表达式 x 对其进行了初始化。从此以后，我们就可以将 `ref` 作为 `x` 的同义词来使用。程序会打印如下内容：
 
 ```
 5
 5
 ```
 
-From the compiler’s perspective, it doesn’t matter whether the ampersand is “attached” to the type name (`int& ref`) or the variable’s name (`int &ref`), and which you choose is a matter of style. Modern C++ programmers tend to prefer attaching the ampersand to the type, as it makes clearer that the reference is part of the type information, not the identifier.
+从编译器的角度来看，将`&`放在类型旁边(`int& ref`)还是变量旁边(`int &ref`)并没有什么区别，选择那种写法只关乎于风格。现代C++程序员通常会选择将`&`紧挨着类型关键字放置，因为这样做可以更清楚地表明引用是类型信息的一部分，而不是标识符的一部分。
 
 !!! success "最佳实践"
 
-	When defining a reference, place the ampersand next to the type (not the reference variable’s name).
-
+	在定义引用的时候，将`&`紧挨着类型关键词放置（而不是变量名）。
+	
 !!! info "扩展阅读"
 
-    For those of you already familiar with pointers, the ampersand in this context does not mean “address of”, it means “lvalue reference to”.
+    对于那些已经熟悉指针的开发者来说，`&`在这里含义并不是取地址而是左值引用。
+    
+## 通过左值引用来修改值
 
-## Modifying values through an lvalue reference
-
-In the above example, we showed that we can use a reference to read the value of the object being referenced. We can also use a reference to modify the value of the object being referenced:
+在上面的例子中，我们展示了如何通过引用来获取被引用对象的值。我们还可以通过引用来修改被引用对象的值：
 
 ```cpp
 #include <iostream>
@@ -106,17 +106,16 @@ int main()
 }
 ```
 
-COPY
-
-This code prints:
-
+打印结果：
+```
 556677
+```
 
-In the above example, `ref` is an alias for `x`, so we are able to change the value of `x` through either `x` or `ref`.
+在上面的例子中，`ref` 是 `x` 的别名，所以我们可以通过 `x` 或者 `ref` 来修改 `x` 的值。
 
-## Initialization of lvalue references
+## 左值引用的初始化
 
-Much like constants, all references must be initialized.
+和常量非常类似，所有的引用都必须被初始化。
 
 ```cpp
 int main()
@@ -130,11 +129,9 @@ int main()
 }
 ```
 
-COPY
+当使用一个对象(或函数)初始化引用时，我们说它被绑定到了那个对象(或函数)。绑定此类引用的过程称为引用绑定。被引用的对象(或函数)有时称为 referent。
 
-When a reference is initialized with an object (or function), we say it is bound to that object (or function). The process by which such a reference is bound is called reference binding. The object (or function) being referenced is sometimes called the referent.
-
-Lvalue references must be bound to a _modifiable_ lvalue.
+作指引与必须被绑定到一个可修改左值。
 
 ```cpp
 int main()
@@ -150,11 +147,9 @@ int main()
 }
 ```
 
-COPY
+左值引用不能被绑定到一个不可修改的左值（否则你岂不是可以通过引用来修改这个值咯，这显然违背了常量的常量性）。因此，左值引用有时也称为非const变量的左值引用（简称为非const变量的引用）。
 
-Lvalue references can’t be bound to non-modifiable lvalues or rvalues (otherwise you’d be able to change those values through the reference, which would be a violation of their const-ness). For this reason, lvalue references are occasionally called lvalue references to non-const (sometimes shortened to non-const reference).
-
-In most cases, the type of the reference must match the type of the referent (there are some exceptions to this rule that we’ll discuss when we get into inheritance):
+多数情况下，左值引用的类型必须和被引用对象的类型相匹配（例外的情况会在我们讨论继承时遇到）：
 
 ```cpp
 int main()
@@ -170,15 +165,13 @@ int main()
 }
 ```
 
-COPY
+对`void`类型的左值引用是不可以的（这么做的目的又是什么呢？）
 
-Lvalue references to `void` are disallowed (what would be the point?).
+## 引用不能被重新设置(使其引用其他对象)
 
-## References can’t be reseated (changed to refer to another object)
+引用一旦被初始化，它便不能够被重新绑定到其他对象。
 
-Once initialized, a reference in C++ cannot be reseated, meaning it cannot be changed to reference another object.
-
-New C++ programmers often try to reseat a reference by using assignment to provide the reference with another variable to reference. This will compile and run -- but not function as expected. Consider the following program:
+新手 C++ 程序员经常会尝试使用赋值运算符重新设置引用。这么做是可以编译并运行的，但是它的效果并不是我们期望的那样，考虑下面的代码：
 
 ```cpp
 #include <iostream>
@@ -199,13 +192,13 @@ int main()
 }
 ```
 
-COPY
+结果可能出人意料：
 
-Perhaps surprisingly, this prints:
-
+```
 6
+```
 
-When a reference is evaluated in an expression, it resolves to the object it’s referencing. So `ref = y` doesn’t change `ref` to now reference `y`. Rather, because `ref` is an alias for `x`, the expression evaluates as if it was written `x = y` -- and since `y` evaluates to value `6`, `x` is assigned the value `6`.
+当表达式中的引用进行求值时，它会解析成被引用的对象。所以 `ref = y` 并不会为 `ref` 重新设置为`y`的引用。实际情况是`ref`是`x`的引用，因此上面的表达式等价于`x = y` ，因为 `y` 的值为 6 ，所以 `x` 被赋值为 6 。
 
 ## Lvalue reference scope and duration
 
