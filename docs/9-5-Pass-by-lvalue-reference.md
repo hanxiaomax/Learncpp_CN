@@ -82,7 +82,7 @@ Hello, world!
 
 避免函数调用时产生的拷贝开销，可通过[[pass-by-reference|按引用传递]]来代替[[pass-by-value|按值传递]]。当使用按引用传递时，我们将函数的形参声明为引用类型（或指向const的引用）而不是普通类型。当函数被调用时，每个引用类型的形参会被绑定到传入的实参。因为引用其实是实参的别名，所以并不会创建拷贝。
 
-Here’s the same example as above, using pass by reference instead of pass by value:
+下面这段代码和上面的例子是一致的，不同之处在于其使用了按引用传递而不是按值出传递：
 
 ```cpp
 #include <iostream>
@@ -103,17 +103,18 @@ int main()
 }
 ```
 
-COPY
 
-This program is identical to the prior one, except the type of parameter `y` has been changed from `std::string` to `std::string&` (an lvalue reference). Now, when `printValue(x)` is called, lvalue reference parameter `y` is bound to argument `x`. Binding a reference is always inexpensive, and no copy of `x` needs to be made. Because a reference acts as an alias for the object being referenced, when `printValue()` uses reference `y`, it’s accessing the actual argument `x` (rather than a copy of `x`).
+这个程序和上面的程序每太大区别，除了形参 `y` 的类型从`std::string` 被改为 `std::string&` (左值引用)。现在，当 `printValue(x)` 被调用的时候，左值引用类型的形参 `y` 被绑定到实参 `x`。引用的绑定开销总是很小的，它不需要创建`x`的拷贝。因为引用是被引用对象的别名，所以当 `printValue()` 使用 `y` 时，它访问的是实参`x`本身（而不是`x`的拷贝）。
 
-Key insight
 
-Pass by reference allows us to pass arguments to a function without making copies of those arguments each time the function is called.
+!!! tldr "关键信息"
 
-Pass by reference allows us to change the value of an argument
+	按引用传递允许我们向函数传递参数而不需创建拷贝。
+	
+## 按引用传递允许函数修改实参的值
 
-When an object is passed by value, the function parameter receives a copy of the argument. This means that any changes to the value of the parameter are made to the copy of the argument, not the argument itself:
+
+当一个对象通过按值传递的方式传入函数时，函数接收到的是其拷贝。这也就意味着任何对形参的修改都是对这份拷贝的修改，而不是实参本身：
 
 ```cpp
 #include <iostream>
@@ -137,14 +138,15 @@ int main()
 }
 ```
 
-COPY
 
-In the above program, because value parameter `y` is a copy of `x`, when we increment `y`, this only affects `y`. This program outputs:
+在上面的例子中，因为形参`y` 是实参`x`的拷贝，当我们对`y`进行递增时，它只会影响到`y`，因此程序的输出为：
 
+```
 value = 5
 value = 5
+```
 
-However, since a reference acts identically to the object being referenced, when using pass by reference, any changes made to the reference parameter _will_ affect the argument:
+然而，由于引用来说，因为它就是被引用对象本身，当使用按引用传递时，对引用形参的任何更改都将影响实参：
 
 ```cpp
 #include <iostream>
@@ -168,24 +170,24 @@ int main()
 }
 ```
 
-COPY
+程序输出为：
 
-This program outputs:
-
+```
 value = 5
 value = 6
+```
 
 In the above example, `x` initially has value `5`. When `addOne(x)` is called, reference parameter `y` is bound to argument `x`. When the `addOne()`function increments reference `y`, it’s actually incrementing argument `x` from `5` to `6` (not a copy of `x`). This changed value persists even after `addOne()` has finished executing.
 
-Key insight
+!!! tldr "关键信息"
 
-Passing values by reference to non-const allows us to write functions that modify the value of arguments passed in.
+	Passing values by reference to non-const allows us to write functions that modify the value of arguments passed in.
 
 The ability for functions to modify the value of arguments passed in can be useful. Imagine you’ve written a function that determines whether a monster has successfully attacked the player. If so, the monster should do some amount of damage to the player’s health. If you pass your player object by reference, the function can directly modify the health of the actual player object that was passed in. If you pass the player object by value, you could only modify the health of a copy of the player object, which isn’t as useful.
 
-Pass by reference to non-const can only accept modifiable lvalue arguments
+## 传递指向非const类型的引用时只能接收可以修改的左值实参
 
-Because a reference to a non-const value can only bind to a modifiable lvalue (essentially a non-const variable), this means that pass by reference only works with arguments that are modifiable lvalues. In practical terms, this significantly limits the usefulness of pass by reference to non-const, as it means we can not pass const variables or literals. For example:
+因为执行非const值的引用只能绑定到一个可修改的[[lvalue|左值]]（本质上是一个非const类型变量），这也意味着按引用传递只能配合可修改左值来使用。从实用性的角度来看，这无疑极大地 a reference to a non-const value can only bind to a modifiable lvalue (essentially a non-const variable), this means that pass by reference only works with arguments that are modifiable lvalues. In practical terms, this significantly limits the usefulness of pass by reference to non-const, as it means we can not pass const variables or literals. For example:
 
 ```cpp
 #include <iostream>
@@ -214,7 +216,7 @@ COPY
 
 Fortunately, there’s an easy way around this.
 
-Pass by const reference
+## 传递指向 const 的引用
 
 Unlike a reference to non-const (which can only bind to modifiable lvalues), a reference to const can bind to modifiable lvalues, non-modifiable lvalues, and rvalues. Therefore, if we make our reference parameter const, then it will be able to bind to any type of argument:
 
@@ -258,13 +260,13 @@ COPY
 
 In most cases, we don’t want our functions modifying the value of arguments.
 
-Best practice
+!!! success "最佳实践"
 
-Favor passing by const reference over passing by non-const reference unless you have a specific reason to do otherwise (e.g. the function needs to change the value of an argument).
+	Favor passing by const reference over passing by non-const reference unless you have a specific reason to do otherwise (e.g. the function needs to change the value of an argument).
 
 Now we can understand the motivation for allowing const lvalue references to bind to rvalues: without that capability, there would be no way to pass literals (or other rvalues) to functions that used pass by reference!
 
-Mixing pass by value and pass by reference
+## 同时使用按值传递和按引用传递
 
 A function with multiple parameters can determine whether each parameter is passed by value or passed by reference individually.
 
@@ -296,11 +298,11 @@ When to pass by reference
 
 Because class types can be expensive to copy (sometimes significantly so), class types are usually passed by const reference instead of by value to avoid making an expensive copy of the argument. Fundamental types are cheap to copy, so they are typically passed by value.
 
-Best practice
+!!! success "最佳实践"
 
-Pass fundamental types by value, and class (or struct) types by const reference.
+	Pass fundamental types by value, and class (or struct) types by const reference.
 
-The cost of pass by value vs pass by reference (advanced)
+## 按值传递和按引用传递的开销比较（进阶话题）
 
 Not all class types need to be passed by reference. And you may be wondering why we don’t just pass everything by reference. In this section (which is optional reading), we discuss the cost of pass by value vs pass by reference, and refine our best practice as to when we should use each.
 
@@ -320,9 +322,9 @@ We can now answer the question of why we don’t pass everything by reference:
 -   For objects that are cheap to copy, the cost of copying is similar to the cost of binding, so we favor pass by value so the code generated will be faster.
 -   For objects that are expensive to copy, the cost of the copy dominates, so we favor pass by (const) reference to avoid making a copy.
 
-Best practice
+!!! success "最佳实践"
 
-Prefer pass by value for objects that are cheap to copy, and pass by const reference for objects that are expensive to copy. If you’re not sure whether an object is cheap or expensive to copy, favor pass by const reference.
+	Prefer pass by value for objects that are cheap to copy, and pass by const reference for objects that are expensive to copy. If you’re not sure whether an object is cheap or expensive to copy, favor pass by const reference.
 
 The last question then is, how do we define “cheap to copy”? There is no absolute answer here, as this varies by compiler, use case, and architecture. However, we can formulate a good rule of thumb: An object is cheap to copy if it uses 2 or fewer “words” of memory (where a “word” is approximated by the size of a memory address) and it has no setup costs.
 
@@ -352,19 +354,15 @@ int main()
 
 COPY
 
-As an aside…
+!!! cite "题外话"
 
-We use a preprocessor macro here so that we can substitute in a type (normal functions disallow this).
+    We use a preprocessor macro here so that we can substitute in a type (normal functions disallow this).
 
 However, it can be hard to know whether a class type object has setup costs or not. It’s best to assume that most standard library classes have setup costs, unless you know otherwise that they don’t.
 
-Tip
+!!! tip "小贴士"
 
-An object of type T is cheap to copy if `sizeof(T) <= 2 * sizeof(void*)` and has no additional setup costs.
+	An object of type T is cheap to copy if `sizeof(T) <= 2 * sizeof(void*)` and has no additional setup costs.
 
-Common types that are cheap to copy include all of the fundamental types, enumerated types, and std::string_view.  
-Common types that are expensive to copy include std::array, std::string, std::vector, and std::ostream.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/)
+- Common types that are cheap to copy include all of the fundamental types, enumerated types, and `std::string_view`.  
+- Common types that are expensive to copy include `std::array`, `std::string`, `std::vector`, and `std::ostream`.
