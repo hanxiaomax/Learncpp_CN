@@ -11,7 +11,7 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+	- 记忆窍门：左值出现在赋值运算符的左边，右值出现在赋值表达式的右边。左侧的是被赋值的一方，因此必须是可变的且具有标识符。右侧显然可以是字面量、函数和对象，它们都属于右值。需要注意的是，因为左值可以自动转换为右值，所以左值可以出现在右值的位置（即可以出现在右侧）
 
 在开始介绍第一个复合类型[[lvalue-reference|左值引用]]前，让我们先来了解一下什么是[[lvalue|左值]]。
 
@@ -189,7 +189,8 @@ int main()
 
 你可能会好奇为什么 `return5()` 和 `x + 1` 属于右值：问题的答案在于这些表达式的值在产生后必须马上使用（在表达式的作用域内）或被丢弃。
 
-现在，我们可以回答前面的问题了，为什么 `x = 5` 是合法的但 `5 = x` 则是不合法：赋值运算符要求其左操作符为一个可修改的 an assignment operation requires the left operand of the assignment to be a modifiable lvalue expression, and the right operand to be an rvalue expression. The latter assignment (`5 = x`) fails because the expression `5` isn’t an lvalue.
+现在，我们可以回答前面的问题了，为什么 `x = 5` 是合法的但 `5 = x` 则是不合法：赋值运算符要求其左操作数是一个可修改的左值表达式，且右操作数为一个右值表达式。赋值操作 `5 = x` 失败是因为 5 并不是一个左值。
+
 
 ```cpp
 int main()
@@ -204,15 +205,15 @@ int main()
 }
 ```
 
-COPY
 
-Related content
+!!! info "相关内容"
 
-A full list of lvalue and rvalue expressions can be found [here](https://en.cppreference.com/w/cpp/language/value_category). In C++11, rvalues are broken into two subtypes: prvalues and xvalues, so the rvalues we’re talking about here are the sum of both of those categories.
+	左值和右值表达式的完整列表参考[这里](https://en.cppreference.com/w/cpp/language/value_category)。在C++11中，右值被分成了两个子类别：prvalues 和 xvalues。此处我们谈论的 rvalues 综合了这两种类型的特点。
+	
 
-## L-value to r-value conversion
+## L-value 和 r-value 的转换
 
-We said above that the assignment operator expects the right operand to be an rvalue expression, so why does code like this work?
+在上面的赋值运算符中我们提到，赋值运算符的右侧运算数必须是一个右值表达式，那么为什么下面的代码可以正确运行呢？
 
 ```cpp
 int main()
@@ -220,17 +221,15 @@ int main()
     int x{ 1 };
     int y{ 2 };
 
-    x = y; // y is a modifiable lvalue, not an rvalue, but this is legal
+    x = y; // y 是一个可以修改的左值而不是右值，为什么这个表达式是合法的呢？
 
     return 0;
 }
 ```
 
-COPY
+这是因为左值可以被隐式地转换为右值，所以任何可以使用右值的地方都可以使用左值。
 
-The answer is because lvalues will implicitly convert to rvalues, so an lvalue can be used wherever an rvalue is required.
-
-Now consider this snippet:
+考虑下面代码：
 
 ```cpp
 int main()
@@ -243,15 +242,13 @@ int main()
 }
 ```
 
-COPY
+在这个语句中，变量x的使用存在两个不同的语境。赋值运算符左侧的x是一个左值表达式，它求值得到变量 x。赋值运算符右侧的 x+1 则是一个右值表达式，它求值得到3。
 
-In this statement, the variable `x` is being used in two different contexts. On the left side of the assignment operator, `x` is an lvalue expression that evaluates to variable x. On the right side of the assignment operator, `x + 1` is an rvalue expression that evaluates to the value `3`.
+现在，我们已经详细地介绍了左值，接下来就是我们要接触到的第一个复杂表达式类型：[[lvalue-reference|左值引用]]。
 
-Now that we’ve covered lvalues, we can get to our first compound type: the `lvalue reference`.
+!!! tldr "关键信息"
 
-Key insight
-
-As a rule of thumb to identify lvalue and rvalue expressions:
-
-lvalues expressions are those that evaluate to variables or other identifiable objects that persist beyond the end of the expression.  
-rvalues expressions are those that evaluate to literals or the returned value of functions and operators that are discarded at the end of the expression.
+	辨别左值表达式和右值表达式的关键法则：
+	
+	左值表达式 expressions are those that evaluate to variables or other identifiable objects that persist beyond the end of the expression.  
+	rvalues expressions are those that evaluate to literals or the returned value of functions and operators that are discarded at the end of the expression.
