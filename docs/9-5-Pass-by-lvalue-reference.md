@@ -11,7 +11,8 @@ tags:
 
 ??? note "关键点速记"
 	
-	-
+	- 对于内建的基本数据类型可以使用按值传递，其他类型为避免拷贝开销，应使用按引用传递。
+	- 形参定义为指向非const类型的引用，它只能接收非const类型的实参，无法配合非const类型和字面量使用，极大地限制了它的作用。因此一般可以定义为const类型的引用，此时就可以配合const类型、非const类型和字面量来使用。但此时你就不能在函数内部修改实参的内容。
 
 
 在前面的课程中，我们介绍了左值引用 ([[9-3-Lvalue-references|9.3 - 左值引用]]) 和指向const的左值引用 ([[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]])。单独来看，这两种引用看上去都没啥用——为什么我们能够直接访问变量却还要为其创建一个别名呢？
@@ -177,17 +178,19 @@ value = 5
 value = 6
 ```
 
-In the above example, `x` initially has value `5`. When `addOne(x)` is called, reference parameter `y` is bound to argument `x`. When the `addOne()`function increments reference `y`, it’s actually incrementing argument `x` from `5` to `6` (not a copy of `x`). This changed value persists even after `addOne()` has finished executing.
+在上面的例子中，`x` 首先被初始化为 5。当 `addOne(x)` 被调用时，引用类型形参 `y` 会被绑定到实参 `x`。当我们在 `addOne()` 函数中对 `y` 进行递增时，它实际修改了实参`x`的值（而不是它的拷贝）。因此当`addOne()`调用结束后变量的值仍然是被修改了。
 
 !!! tldr "关键信息"
 
-	Passing values by reference to non-const allows us to write functions that modify the value of arguments passed in.
+	通过按值传递，我们可以在函数中修改传入的实参。
+	
 
-The ability for functions to modify the value of arguments passed in can be useful. Imagine you’ve written a function that determines whether a monster has successfully attacked the player. If so, the monster should do some amount of damage to the player’s health. If you pass your player object by reference, the function can directly modify the health of the actual player object that was passed in. If you pass the player object by value, you could only modify the health of a copy of the player object, which isn’t as useful.
+函数修改传入参数值的能力是很有用的。假设你编写了一个函数来判断怪物是否成功攻击了玩家。如果是这样，怪物应该对玩家的生命值造成一定的伤害。如果通过引用传递玩家对象，该函数可以直接修改传入的实际玩家对象的健康状况。如果你通过值传递玩家对象，你只能修改玩家对象副本的健康值，这就没什么用了。
+
 
 ## 传递指向非const类型的引用时只能接收可以修改的左值实参
 
-因为执行非const值的引用只能绑定到一个可修改的[[lvalue|左值]]（本质上是一个非const类型变量），这也意味着按引用传递只能配合可修改左值来使用。从实用性的角度来看，这无疑极大地 a reference to a non-const value can only bind to a modifiable lvalue (essentially a non-const variable), this means that pass by reference only works with arguments that are modifiable lvalues. In practical terms, this significantly limits the usefulness of pass by reference to non-const, as it means we can not pass const variables or literals. For example:
+因为执行非const值的引用只能绑定到一个可修改的[[lvalue|左值]]（本质上是一个非const类型变量），这也意味着按引用传递只能配合可修改左值来使用。从实用性的角度来看，这无疑极大地限制了按值传递的实用性，因为我们不能够为其传递const变量和[[literals|字面量]]：
 
 ```cpp
 #include <iostream>
@@ -212,13 +215,13 @@ int main()
 }
 ```
 
-COPY
 
-Fortunately, there’s an easy way around this.
+幸运的是，我们有更好的办法。
 
 ## 传递指向 const 的引用
 
-Unlike a reference to non-const (which can only bind to modifiable lvalues), a reference to const can bind to modifiable lvalues, non-modifiable lvalues, and rvalues. Therefore, if we make our reference parameter const, then it will be able to bind to any type of argument:
+不同于指向非const的引用（只能绑定可修改左值），const类型引用可以绑定可修改左值、不可修改左值和右值。因此，如果我们把形参定义为const类型的引用，则可以将其绑定到任何类型的实参：
+
 
 ```cpp
 #include <iostream>
@@ -243,11 +246,9 @@ int main()
 }
 ```
 
-COPY
+按const引用传递提供了和按引用传递一样的优点（避免实参拷贝），同时还可以避免函数对实参进行修改。
 
-Passing by const reference offers the same primary benefit as pass by reference (avoiding making a copy of the argument), while also guaranteeing that the function can _not_ change the value being referenced.
-
-For example, the following is disallowed, because `ref` is const:
+下面的例子是无法进行的，因为 `ref` 是 const 的：
 
 ```cpp
 void addOne(const int& ref)
@@ -256,22 +257,20 @@ void addOne(const int& ref)
 }
 ```
 
-COPY
-
-In most cases, we don’t want our functions modifying the value of arguments.
+多数情况下，我们其实并不希望函数的实参被修改。
 
 !!! success "最佳实践"
 
-	Favor passing by const reference over passing by non-const reference unless you have a specific reason to do otherwise (e.g. the function needs to change the value of an argument).
+	按引用传递最好定义为const类型的引用，除非你有很好的理由（例如函数必须修改实参的值）。
+	
 
-Now we can understand the motivation for allowing const lvalue references to bind to rvalues: without that capability, there would be no way to pass literals (or other rvalues) to functions that used pass by reference!
+现在，相信你已经可以了解支持const类型左值引用的动机了，如果没有它，我们就无法使用按引用传递的函数传递字面量（或其他右值）。
 
 ## 同时使用按值传递和按引用传递
 
-A function with multiple parameters can determine whether each parameter is passed by value or passed by reference individually.
+具有多个形参的函数，可以分别指定每个参数是按值传递还是按引用传递：
 
-For example:
-
+例如：
 ```cpp
 #include <string>
 
@@ -290,13 +289,13 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, the first argument is passed by value, the second by reference, and the third by const reference.
+在上面的例子中，第一个实参是按值传递的，而第二个参数则是按引用传递的，第三个参数则是按const引用传递的。
 
-When to pass by reference
 
-Because class types can be expensive to copy (sometimes significantly so), class types are usually passed by const reference instead of by value to avoid making an expensive copy of the argument. Fundamental types are cheap to copy, so they are typically passed by value.
+## 何时使用按引用传递
+
+因为类类型的拷贝开销很大，类类型通常会按引用传递而不是 class types can be expensive to copy (sometimes significantly so), class types are usually passed by const reference instead of by value to avoid making an expensive copy of the argument. Fundamental types are cheap to copy, so they are typically passed by value.
 
 !!! success "最佳实践"
 
