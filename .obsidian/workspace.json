@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "21cb3ff845b9cbc0",
+            "id": "a8750646c55173d6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Const 变量必须初始化",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -90,7 +90,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -150,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "21cb3ff845b9cbc0",
+  "active": "a8750646c55173d6",
   "lastOpenFiles": [
-    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
-    "docs/9-6-Introduction-to-pointers.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
-    "docs/9-1-Introduction-to-compound-data-types.md",
-    "docs/move-semantics.md",
-    "docs/identity.md",
+    "docs/9-3-Lvalue-references.md",
     "docs/MOC.md",
-    "docs/value-category.md",
-    "docs/expression-type.md",
-    "docs/9-x-Chapter-9-summary-and-quiz.md"
+    "docs/undefined-behavior.md",
+    "docs/11-x-Chapter-11-comprehensive-quiz.md",
+    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
+    "docs/11-7-std-string-view-part-2.md",
+    "docs/9-x-Chapter-9-summary-and-quiz.md",
+    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",
+    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
   ]
 }

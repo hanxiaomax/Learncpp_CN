@@ -200,9 +200,9 @@ int main()
 
 当表达式中的引用进行求值时，它会解析成被引用的对象。所以 `ref = y` 并不会为 `ref` 重新设置为`y`的引用。实际情况是`ref`是`x`的引用，因此上面的表达式等价于`x = y` ，因为 `y` 的值为 6 ，所以 `x` 被赋值为 6 。
 
-## Lvalue reference scope and duration
+## 左值引用的作用域和持续时间
 
-Reference variables follow the same scoping and duration rules that normal variables do:
+引用变量的[[scope|作用域]]和[[storage-duration|存储持续时间]]所遵循的规则和一般变量是一样的：
 
 ```cpp
 #include <iostream>
@@ -216,16 +216,14 @@ int main()
 } // x and ref die here
 ```
 
-COPY
+## 引用和被引用对象具有独立的生命周期
 
-## References and referents have independent lifetimes
+除了某种例外情况（下一节会介绍）之外，引用和被引用对象具有独立的生命周期。换言之，下面两条是正确的：
 
-With one exception (that we’ll cover next lesson), the lifetime of a reference and the lifetime of its referent are independent. In other words, both of the following are true:
+- 被引用对象可以先于引用销毁；
+- 引用可以先于被引用对象销毁。
 
--   A reference can be destroyed before the object it is referencing.
--   The object being referenced can be destroyed before the reference.
-
-When a reference is destroyed before the referent, the referent is not impacted. The following program demonstrates this:
+如果引用先于被引用对象销毁，完全不会影响到被引用对象，下面程序可以表明这一点：
 
 ```cpp
 #include <iostream>
@@ -245,25 +243,25 @@ int main()
 } // x destroyed here
 ```
 
-COPY
+打印结果：
 
-The above prints:
-
+```
 55
+```
 
-When `ref` dies, variable `x` carries on as normal, blissfully unaware that a reference to it has been destroyed.
+当 `ref` 被销毁后，变量 `x` 一切如故。 全然不知打它的引用已经被销毁了。
 
-## Dangling references
+## 悬垂引用
 
-When an object being referenced is destroyed before a reference to it, the reference is left referencing an object that no longer exists. Such a reference is called a dangling reference. Accessing a dangling reference leads to undefined behavior.
+当一个对象先于它的引用被销毁，则其引用此时会绑定到一个已经不存在的对象。此时该引用会成为一个[[dangling|悬垂]]引用。访问悬垂引用会导致[[undefined-behavior|未定义行为]]。
 
-Dangling references are fairly easy to avoid, but we’ll show a case where this can happen in practice in lesson [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/).
+悬垂指针其实很容易避免，但是我们会在[[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]] 中像你展示一个由悬垂指针引发未定义行为的案例。
 
-## References aren’t objects
+## 引用不是对象
 
-Perhaps surprisingly, references are not objects in C++. A reference is not required to exist or occupy storage. If possible, the compiler will optimize references away by replacing all occurrences of a reference with the referent. However, this isn’t always possible, and in such cases, references may require storage.
+也许出乎你的意料，在C++中引用并不是一个对象。引用并不需要存在或占有存储空间。如果可能的话，编译器会尝试优化引用，使用被引用对象对其进行替换。不过，这么做并总是可行的，此时引用便需要存储空间。
 
-This also means that the term “reference variable” is a bit of a misnomer, as variables are objects with a name, and references aren’t objects.
+这也意味着“引用变量”这个术语有些用词不当，因为变量是对象的名字，而引用并不是对象。
 
 Because references aren’t objects, they can’t be used anywhere an object is required (e.g. you can’t have a reference to a reference, since an lvalue reference must reference an identifiable object). In cases where you need a reference that is an object or a reference that can be reseated, `std::reference_wrapper` (which we cover in lesson [16.3 -- Aggregation](https://www.learncpp.com/cpp-tutorial/aggregation/)) provides a solution.
 
