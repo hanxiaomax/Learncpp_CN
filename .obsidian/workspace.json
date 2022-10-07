@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "edb5d4440b3b14ac",
+            "id": "21cb3ff845b9cbc0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/3-1-Syntax-and-semantic-errors.md",
+                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/3-1-Syntax-and-semantic-errors.md"
+                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/3-1-Syntax-and-semantic-errors.md",
+                "file": "docs/9-2-Value-categories-lvalues-and-rvalues.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,17 +150,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "edb5d4440b3b14ac",
+  "active": "21cb3ff845b9cbc0",
   "lastOpenFiles": [
-    "docs/2-12-Header-guards.md",
-    "docs/2-10-Introduction-to-the-preprocessor.md",
-    "docs/2-8-Programs-with-multiple-code-files.md",
-    "docs/2-7-Forward-declarations-and-definitions.md",
-    "docs/function-prototype.md",
-    "docs/2-6-Why-functions-are-useful-and-how-to-use-them-effectively.md",
-    "docs/2-5-Introduction-to-local-scope.md",
-    "docs/object.md",
-    "docs/编译时(compile-time).md",
-    "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
+    "docs/9-6-Introduction-to-pointers.md",
+    "docs/9-5-Pass-by-lvalue-reference.md",
+    "docs/9-1-Introduction-to-compound-data-types.md",
+    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
+    "docs/move-semantics.md",
+    "docs/identity.md",
+    "docs/MOC.md",
+    "docs/value-category.md",
+    "docs/expression-type.md",
+    "docs/9-x-Chapter-9-summary-and-quiz.md"
   ]
 }

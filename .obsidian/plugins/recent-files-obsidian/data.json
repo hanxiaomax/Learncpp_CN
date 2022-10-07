@@ -1,6 +1,58 @@
 {
   "recentFiles": [
     {
+      "basename": "9-2-Value-categories-lvalues-and-rvalues",
+      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
+    },
+    {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
+    },
+    {
+      "basename": "9-1-Introduction-to-compound-data-types",
+      "path": "docs/9-1-Introduction-to-compound-data-types.md"
+    },
+    {
+      "basename": "move-semantics",
+      "path": "docs/move-semantics.md"
+    },
+    {
+      "basename": "identity",
+      "path": "docs/identity.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "value-category",
+      "path": "docs/value-category.md"
+    },
+    {
+      "basename": "expression-type",
+      "path": "docs/expression-type.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "moc-onepage",
+      "path": "docs/images/onepage/moc-onepage.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "lvalue-reference",
+      "path": "docs/lvalue-reference.md"
+    },
+    {
       "basename": "3-1-Syntax-and-semantic-errors",
       "path": "docs/3-1-Syntax-and-semantic-errors.md"
     },
@@ -77,10 +129,6 @@
       "path": "docs/0-8-A-few-common-C++-problems.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "compiler",
       "path": "docs/compiler.md"
     },
@@ -151,54 +199,6 @@
     {
       "basename": "7-x-Chapter-7-summary-and-quiz",
       "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
-    },
-    {
-      "basename": "4-17-An introduction-to-std-string",
-      "path": "docs/4-17-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal",
-      "path": "docs/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
-    },
-    {
-      "basename": "4-13-Const-variables-and-symbolic-constants",
-      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
-    },
-    {
-      "basename": "4-14-Compile-time-constants-constant-expressions-and-constexpr",
-      "path": "docs/4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
-    },
-    {
-      "basename": "4-15-Literals",
-      "path": "docs/4-15-Literals.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
-    },
-    {
-      "basename": "c++-basic-onepage",
-      "path": "docs/images/onepage/c++-basic-onepage.md"
-    },
-    {
-      "basename": "moc-onepage",
-      "path": "docs/images/onepage/moc-onepage.md"
-    },
-    {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
-    },
-    {
-      "basename": "3-7-Using-an-integrated-debugger-Running-and-breakpoints",
-      "path": "docs/3-7-Using-an-integrated-debugger-Running-and-breakpoints.md"
-    },
-    {
-      "basename": "3-4-Basic-debugging-tactics",
-      "path": "docs/3-4-Basic-debugging-tactics.md"
-    },
-    {
-      "basename": "1-10-Introduction-to-expressions",
-      "path": "docs/1-10-Introduction-to-expressions.md"
     }
   ],
   "omittedPaths": [],

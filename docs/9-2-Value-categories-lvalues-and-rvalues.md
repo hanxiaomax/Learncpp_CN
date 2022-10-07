@@ -13,10 +13,11 @@ tags:
 ??? note "关键点速记"
 	
 
-Before we talk about our first compound type (lvalue references), we’re going to take a little detour and talk about what an `lvalue` is.
+在开始介绍第一个复合类型[[lvalue-reference|左值引用]]前，让我们先来了解一下什么是[[lvalue|左值]]。
 
-In lesson [[1-10-Introduction-to-expressions|1.10 - 表达式简介]], we defined an expression as, “a combination of literals, variables, operators, and function calls that can be executed to produce a singular value”.  
-For example:
+在[[1-10-Introduction-to-expressions|1.10 - 表达式简介]]中，我们将表达式定义为：“字面量、变量、操作符和函数调用的组合并可以执行产生一个单一的值”。
+
+例如：
 
 ```cpp
 #include <iostream>
@@ -29,11 +30,9 @@ int main()
 }
 ```
 
-COPY
+在上面的程序中，表达式 `2 + 3` 求值会得到 5，然后 5 被打印到控制台上。
 
-In the above program, the expression `2 + 3` is evaluated to produce the value 5, which is then printed to the console.
-
-In lesson [[5-4-Increment-decrement-operators-and-side-effects|5.4 - 自增自减运算符及其副作用]], we also noted that expressions can produce side effects that outlive the expression:
+在 [[5-4-Increment-decrement-operators-and-side-effects|5.4 - 自增自减运算符及其副作用]] 中，我们还介绍过，表达式是可以有[[side-effects|副作用]]的，即其结果的生命周期会超过表达式本身：
 
 ```cpp
 #include <iostream>
@@ -48,19 +47,17 @@ int main()
 }
 ```
 
-COPY
+在上面的程序中，表达式 `++x` 会将 `x` 的值递增，其值的改变即使在表达式求值完成后也是存在的。
 
-In the above program, the expression `++x` increments the value of `x`, and that value remains changed even after the expression has finished evaluating.
+除了产生值和副作用之外，表达式还可以做另外一件事，它们可以求值得到对象和函数——我们稍后会介绍相关内容。
 
-Besides producing values and side effects, expressions can do one more thing: they can evaluate to objects or functions. We’ll explore this point further in just a moment.
+## 表达式的属性
 
-## The properties of an expression
+==为了确定表达式如何求值以及可以在哪里被使用，C++中的所有表达式都有两个属性：[[expression-type|表达式类型]]和[[value-category|表达式值类别]]。==
 
-To help determine how expressions should evaluate and where they can be used, all expressions in C++ have two properties: a type and a value category.
+## 表达式的类型
 
-## The type of an expression
-
-The type of an expression is equivalent to the type of the value, object, or function that results from the evaluated expression. For example:
+表达式的类型等于表达式求值得到的值、对象或函数的类型：
 
 ```cpp
 #include <iostream>
@@ -74,13 +71,12 @@ int main()
 }
 ```
 
-COPY
 
-For `v1`, the compiler will determine (at compile time) that a division with two `int` operands will produce an `int` result, so `int` is the type of this expression. Via type inference, `int` will then be used as the type of `v1`.
+对于 `v1`，编译器会在[[compile-time|编译时]]确定两个`int`的求值结果是`int`，所以`int`就是表达式的类型。通过[[type-inference|类型推断]]，`int`最终会作为 `v1` 的类型。
 
-For `v2`, the compiler will determine (at compile time) that a division with a `double` operand and an `int` operand will produce a `double` result. Remember that arithmetic operators must have operands of matching types, so in this case, the `int` operand gets converted to a `double`, and a floating point division is performed. So `double` is the type of this expression.
+对于 `v2`，编译器会在[[compile-time|编译时]]确定，一个`double` 操作数和一个 `int` 操作数的求值结果是 `double` 类型的。还记得吗，算数运算符要求两个操作数具有匹配的类型，因此在这个例子中，`int` 操作数会被转换为`double`，随后就会执行浮点数除法。所以 `double` 会成为表达式的类型。
 
-The compiler can use the type of an expression to determine whether an expression is valid in a given context. For example:
+==编译器会使用表达式的类型来判断在特定上下文中是不是合法的表达式==，例如：
 
 ```cpp
 #include <iostream>
@@ -98,15 +94,13 @@ int main()
 }
 ```
 
-COPY
+在上面的程序中， `print(int)` 函数期望一个`int`类型的[[parameters|形参]] 。不过，此处表达式的类型（字符串"foo"）并不匹配，而且没有可用的类型转换可用。所以会产生编译错误。
 
-In the above program, the `print(int)` function is expecting an `int` parameter. However, the type of the expression we’re passing in (the string literal `"foo"`) does not match, and no conversion can be found. So a compile error results.
+注意，表达式的类型必须在编译时确定（否则类型检查和类型推断将无法进行）——不过，表达式的值则可以在编译时确定（如果 表达式是constexpr）也可以在运行时确定（对于不是constexpr类型的表达式）。
 
-Note that the type of an expression must be determinable at compile time (otherwise type checking and type deduction wouldn’t work) -- however, the value of an expression may be determined at either compile time (if the expression is constexpr) or runtime (if the expression is not constexpr).
+## 表达式的值类别
 
-## The value category of an expression
-
-Now consider the following program:
+考虑下面的程序：
 
 ```cpp
 int main()
@@ -120,23 +114,21 @@ int main()
 }
 ```
 
-COPY
+其中的一个赋值语句是合法的（将 5 赋值给 x），另外一个则是合法的（将x的值赋值给字面量5是什么意思？）。可是，编译器是如何判断赋值语句中的表达式是否合法呢？
 
-One of these assignment statements is valid (assigning value `5` to variable `x`) and one is not (what would it mean to assign the value of `x` to the literal value `5`?). So how does the compiler know which expressions can legally appear on either side of an assignment statement?
+这个问题的答案就在于第二个表达式属性：表达式[[value-category|值类型]]。值类型表明一个表达式会求值得到一个值、一个函数还是一个对象。
 
-The answer lies in the second property of expressions: the `value category`. The value category of an expression indicates whether an expression resolves to a value, a function, or an object of some kind.
+在 C++11 之前，C++ 中只有啷个可能的值类型：[[lvalue|左值]]和[[rvalue|右值]]。
 
-Prior to C++11, there were only two possible value categories: `lvalue` and `rvalue`.
+在 C++11 中，新增了三个值类型 (`glvalue`、`prvalue` 和 `xvalue`)，用于支持[[move-semantics|移动语义]]。
 
-In C++11, three additional value categories (`glvalue`, `prvalue`, and `xvalue`) were added to support a new feature called `move semantics`.
+!!! info "作者注"
 
-Author’s note
+	在本节课中，我们只关注 C++11 之前的两种值类型（也是我们目前所需要的）作为简介。我们会在[[M-x-chapter-M-comprehensive-review|M.x - 小结与测试 - 移动和智能指针]]一章中介绍移动语义和其他的几种值类型。
 
-In this lesson, we’ll stick to the pre-C++11 view of value categories, as this makes for a gentler introduction to value categories (and is all that we need for the moment). We’ll cover move semantics (and the additional three value categories) in a future chapter.
+## Lvalue 和 rvalue 表达式
 
-## Lvalue and rvalue expressions
-
-An lvalue (pronounced “ell-value”, short for “left value” or “locator value”, and sometimes written as “l-value”) is an expression that evaluates to a function or object that has an identity. An object or function has an identity if it has an identifier (such as a variable or named function) or an identifiable memory address (one that can be retrieved using `operator&`, which we cover in lesson [9.6 -- Introduction to pointers](https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/)). Identifiable objects persist beyond the scope of the expression.
+左值 lvalue (是 “left value” 或 “locator value”的缩写，有时也写作 “l-value”) 是一种表达式，它最终会求值得到一个具有[[identity|身份特征]]的函数或对象。如果一个对象具有[[identifier|标识符(identifier)]]（例如变量名或函数名）或一个可被标识的内存地址（可以通过`&`运算符取地址——会在[[9-6-Introduction-to-pointers|9.6 - 指针简介]]中进行介绍）则称其具有身份特征。具有标识的对象生命周期会超过表达式本身。
 
 ```cpp
 #include <iostream>
@@ -151,11 +143,9 @@ int main()
 }
 ```
 
-COPY
+在上面的程序中，表达式 `x` 是一个左值表达式，因为它求值得到变量`x`（它具有标识符）。
 
-In the above program, the expression `x` is an lvalue expression as it evaluates to variable `x` (which has an identifier).
-
-Since the introduction of constants into the language, lvalues come in two subtypes: a modifiable lvalue is an lvalue whose value can be modified. A non-modifiable lvalue is an lvalue whose value can’t be modified (because the lvalue is const or constexpr).
+因为语言引入了常量，左值现在有两个子类型：可变左值——它的值是可以改变的和不可变左值——它的值不可以被修改（因为该左值是 const 或 constexpr）。
 
 ```cpp
 #include <iostream>
@@ -172,9 +162,7 @@ int main()
 }
 ```
 
-COPY
-
-An rvalue (pronounced “arr-value”, short for “right value”, and sometimes written as `r-value`) is an expression that is not an l-value. Commonly seen rvalues include literals (except string literals, which are lvalues) and the return value of functions or operators. Rvalues only exist within the scope of the expression in which they are used.
+rvalue (是“right value”的简称，有时候也写作`r-value`) 是一种表达式，除了左值之外的都是右值。常见的右值包括[[literals|字面量]]（除了字符串字面量，它是左值）和函数或操作符的返回值。[[rvalue|右值]]其作用域只存在于使用它的表达式中。
 
 ```cpp
 #include <iostream>
@@ -199,11 +187,9 @@ int main()
 }
 ```
 
-COPY
+你可能会好奇为什么 `return5()` 和 `x + 1` 属于右值：问题的答案在于这些表达式的值在产生后必须马上使用（在表达式的作用域内）或被丢弃。
 
-You may be wondering why `return5()` and `x + 1` are rvalues: the answer is because these expressions produce values that must be used immediately (within the scope of the expression) or they are discarded.
-
-Now we can answer the question about why `x = 5` is valid but `5 = x` is not: an assignment operation requires the left operand of the assignment to be a modifiable lvalue expression, and the right operand to be an rvalue expression. The latter assignment (`5 = x`) fails because the expression `5` isn’t an lvalue.
+现在，我们可以回答前面的问题了，为什么 `x = 5` 是合法的但 `5 = x` 则是不合法：赋值运算符要求其左操作符为一个可修改 an assignment operation requires the left operand of the assignment to be a modifiable lvalue expression, and the right operand to be an rvalue expression. The latter assignment (`5 = x`) fails because the expression `5` isn’t an lvalue.
 
 ```cpp
 int main()

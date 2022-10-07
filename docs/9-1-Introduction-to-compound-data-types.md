@@ -10,14 +10,32 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+    
+     - C++支持下列复合数据结构
+	-   函数 Functions
+	-   数组 Arrays
+	-   指针 Pointer types:
+	    -   指向对象的指针 Pointer to object
+	    -   指向函数的指针 Pointer to function
+	-   指向成员的指针 Pointer to member types:
+	    -   指向数据成员的指针 Pointer to data member
+	    -   指向成员函数的指针 Pointer to member function
+	-   引用 Reference types:
+	    -   左值引用 L-value references
+	    -   右值引用 R-value references
+	-   枚举 Enumerated types:
+	    -   [[unscoped-enumerations|非限定作用域枚举类型]] Unscoped enumerations
+	    -   [[scoped-enumerations|限定作用域枚举]] Scoped enumerations
+	-   类 Class types:
+	    -   结构体 Structs
+	    -   类 Classes
+	    -   联合体 Unions
 
+在 [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]] 中我们介绍了基础数据类型，它们是C++语言核心的一部分。
 
-In lesson [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]], we introduced the fundamental data types, which are the basic data types that C++ provides as part of the core language.
+在之前的课程中，我们已经使用这些基础数据类型编写了一些程序，尤其多地用到了`int`。尽管这些基本数据类型非常有用也非常易用，它们并不能涵盖我们所有的需求，尤其是在当我们编写复杂程序的时候。
 
-We’ve made much use of these fundamental types in our programs so far, especially the `int` data type. And while these fundamental types are extremely useful for straightforward uses, they don’t cover our full range of needs as we begin to do more complicated things.
-
-For example, imagine you were writing a math program to multiply two fractions. How would you represent a fraction in your program? You might use a pair of integers (one for the numerator, one for the denominator), like this:
+例如，当编写一个计算程序对两个分数进行相乘的时候，你该如何表示分数呢？你可能会想到使用一组整型（一个作为分子，一个作为分母），例如：
 
 ```cpp
 #include <iostream>
@@ -46,9 +64,7 @@ int main()
 }
 ```
 
-COPY
-
-And a run of this program:
+运行程序：
 
 ```
 Enter a fraction: 1/2
@@ -56,9 +72,9 @@ Enter a fraction: 3/4
 The two fractions multiplied: 3/8
 ```
 
-While this program works, it introduces a couple of challenges for us to improve upon. First, each pair of integers is only loosely linked -- outside of comments and the context of how they are used in the code, there’s little to suggest that each numerator and denominator pair are related. Second, following the DRY (don’t repeat yourself) principle, we should create a function to handle the user inputting a fraction (along with some error handling). However, functions can only return a single value, so how would we return the numerator and denominator back to the caller?
+尽管程序可以运行，但是还有很多可以改进的地方。首先，一对整型数的两个整型的联系是很松散的——离开注释和上下文之后，你很难将它们联系起来。第二，为了遵循DRY原则 ，我们应该编写一个函数专门处理分数的输入，但可惜的函数只能返回一个值，所以我们没办法将分子分母返回给主调函数。
 
-Now imagine another case where you’re writing a program that needs to keep a list of employee IDs. How might you do so? You might try something like this:
+现在，考虑这样一种清晰，你正在编写一个包含员工ID的列表。你会怎么做呢？也许是像下面这样：
 
 ```cpp
 int main()
@@ -70,40 +86,39 @@ int main()
 }
 ```
 
-COPY
+但是如果你有100多名员工怎么办？首先，你需要定义100个变量名。其次如果你需要将它们全部打印出来怎么办？你又如何将它们传递给函数呢？你需要敲很多很多的代码，这显然是不可持续的。
 
-But what if you had 100 employees? First, you’d need to type in 100 variable names. And what if you needed to print them all? Or pass them to a function? We’d be in for a lot of typing. This simply doesn’t scale.
+显然，基本数据类型只能陪我们走这么远了。
 
-Clearly fundamental types will only carry us so far.
+## 复合数据类型
 
-## Compound data types
+幸运的是，C++支持第二类数据类型，称为**复合数据类型**。复合数据类型（有时候也称为组合数据类型）是建立在基本数据类型或其他复合数据类型上的类型，每个复杂数据类型都有其独特的属性。
 
-Fortunately, C++ supports a second set of data types called `compound data types`. Compound data types (also sometimes called composite data types) are data types that can be constructed from fundamental data types (or other compound data types). Each compound data type has its own unique properties as well.
+在本章节及后续章节中，我们将会使用复杂数据类型优雅地解决上面提到的那些令我们头痛的问题。
 
-As we’ll show in this chapter and future chapters, we can use compound data types to elegantly solve all of the challenges we presented above.
 
-C++ supports the following compound types:
+#### C++ 支持下列复合数据类型：
 
--   Functions
--   Arrays
--   Pointer types:
-    -   Pointer to object
-    -   Pointer to function
--   Pointer to member types:
-    -   Pointer to data member
-    -   Pointer to member function
--   Reference types:
-    -   L-value references
-    -   R-value references
--   Enumerated types:
-    -   Unscoped enumerations
-    -   Scoped enumerations
--   Class types:
-    -   Structs
-    -   Classes
-    -   Unions
+-   函数 Functions
+-   数组 Arrays
+-   指针 Pointer types:
+    -   指向对象的指针 Pointer to object
+    -   指向函数的指针 Pointer to function
+-   指向成员的指针 Pointer to member types:
+    -   指向数据成员的指针 Pointer to data member
+    -   指向成员函数的指针 Pointer to member function
+-   引用 Reference types:
+    -   左值引用 L-value references
+    -   右值引用 R-value references
+-   枚举 Enumerated types:
+    -   [[unscoped-enumerations|非限定作用域枚举类型]] Unscoped enumerations
+    -   [[scoped-enumerations|限定作用域枚举]] Scoped enumerations
+-   类 Class types:
+    -   结构体 Structs
+    -   类 Classes
+    -   联合体 Unions
 
-You’ve already been using a one compound type regularly: functions. For example, consider this function:
+我们其实已经在频繁使用一种复合类型——函数。例如：
 
 ```cpp
 void doSomething(int x, double y)
@@ -111,10 +126,8 @@ void doSomething(int x, double y)
 }
 ```
 
-COPY
+这个函数的类型是 `void(int, double)` 注意，这个类型包含了多个基本数据类型，从而形成了复合类型。当然，函数也有其特殊的行为（例如：可以被调用）。
 
-The type of this function is `void(int, double)`. Note that this type is composed of fundamental types, making it a compound type. Of course, functions also have their own special behaviors as well (e.g. being callable).
+关于这一话题有很多内容需要介绍，因此我们会使用三个章节来介绍。在本章节中，我们会介绍一些简单直观的复合数据类型，包括[[lvalue-reference|左值引用]]和指针。在下一章节中，我们则会介绍[[unscoped-enumerations|非限定作用域枚举类型]]、[[scoped-enumerations|限定作用域枚举]]和基本的结构体。然后，再下一章节我们会更加深入地介绍非常有用的数组类型，包括 `std::string`([[4-17-An introduction-to-std-string|4.17 - std::string 简介]])，它其实是一种class类型。
 
-Because there’s a lot of material to cover here, we’ll do it over three chapters. In this chapter, we’ll cover some of the more straightforward compound types, including `l-value references`, and `pointers`. Next chapter, we’ll cover `unscoped enumerations`, `scoped enumerations`, and basic `structs`. Then, in the chapter beyond that, we’ll introduce class types and dig into some of the more useful `array` types. This includes `std::string`(introduced in lesson [4.17 -- Introduction to std::string](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/)), which is actually a class type!
-
-Got your game face on? Let’s go!
+准备好了吗！Let’s go!
