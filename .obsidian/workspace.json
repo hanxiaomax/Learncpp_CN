@@ -28,14 +28,106 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-11-Return-by-reference-and-return-by-address.md",
+                "file": "docs/13-x-Chapter-13-comprehensive-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8f67b9e62584b1a2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-1-welcome-to-object-oriented-programming.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fd54fdcb5531e43f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-2-classes-and-class-members.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c82fdf7905ec5298",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-3-public-vs-private-access-specifiers.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e7ec4243870904cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-4-access-functions-and-encapsulation.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "77dab132ffd8a812",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-5-constructors.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "afbd7985222437ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-6-constructor-member-initializer-lists.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "332c470a30eac09f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/13-6-constructor-member-initializer-lists 1.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -89,8 +181,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -110,7 +201,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/13-6-constructor-member-initializer-lists 1.md"
               }
             }
           },
@@ -131,7 +222,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/13-6-constructor-member-initializer-lists 1.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,17 +241,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "332c470a30eac09f",
   "lastOpenFiles": [
-    "docs/9-11-Return-by-reference-and-return-by-address.md",
+    "docs/13-6-constructor-member-initializer-lists.md",
+    "docs/13-5-constructors.md",
+    "docs/13-1-welcome-to-object-oriented-programming.md",
+    "docs/13-2-classes-and-class-members.md",
+    "docs/13-3-public-vs-private-access-specifiers.md",
+    "docs/13-4-access-functions-and-encapsulation.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
     "docs/MOC.md",
-    "docs/9-10-Pass-by-address-part-2.md",
-    "docs/9-9-Pass-by-address.md",
-    "docs/9-8-Pointers-and-const.md",
-    "docs/9-7-Null-pointers.md",
-    "docs/9-6-Introduction-to-pointers.md",
-    "docs/9-5-Pass-by-lvalue-reference.md",
-    "docs/9-4-Lvalue-references-to-const.md",
-    "docs/9-3-Lvalue-references.md"
+    "docs/9-11-Return-by-reference-and-return-by-address.md",
+    "docs/9-10-Pass-by-address-part-2.md"
   ]
 }
