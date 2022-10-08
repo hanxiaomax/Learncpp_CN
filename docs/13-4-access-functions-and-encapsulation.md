@@ -6,7 +6,6 @@ origin_title: "13.4 — Access functions and encapsulation"
 time: 2022-9-16
 type: translation
 tags:
-- summary
 - encapsulation
 ---
 

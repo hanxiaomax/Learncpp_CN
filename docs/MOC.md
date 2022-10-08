@@ -208,6 +208,18 @@
 - [[12-x-chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
 
 ## 13. 面向对象编程基础
+- [[13-1-welcome-to-object-oriented-programming|13.1 - 欢迎来到面向对象的世界]]
+- [[13-2-classes-and-class-members|13.2 - 类和类成员]]
+- [[13-3-public-vs-private-access-specifiers|13.3 - 访问修饰符 public 和 private]]
+- [[13-4-access-functions-and-encapsulation|13.4 - 成员访问函数与封装]]
+- [[13-5-constructors|13.5 - 构造函数]]
+- [[13-6-constructor-member-initializer-lists|13.6 - 构造函数成员初始化列表]]
+- [[13-7-non-static-member-initialization|13.7 - 非静态成员初始化列表]]
+- [[13-8-overlapping-and-delegating-constructors|13.8 - 重叠和委派构造函数]]
+- [[13-9-destructors|13.9 - 析构函数]]
+- [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]]
+- [[13-11-class-code-and-header-files|13.11 - 类代码和头文件]]
+- [[13-12-const-class-objects-and-member-functions|13.12 - const 对象和成员函数]]
 - 
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]
 

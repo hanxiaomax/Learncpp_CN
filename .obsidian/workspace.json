@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "df870f7da0f2390d",
+            "id": "f4098230bce98a37",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-x-Chapter-13-comprehensive-quiz.md",
+                "file": "docs/13-13-static-member-variables.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -36,12 +36,12 @@
             }
           },
           {
-            "id": "8f67b9e62584b1a2",
+            "id": "746272f260bd3e60",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-1-welcome-to-object-oriented-programming.md",
+                "file": "docs/13-14-static-member-functions.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -49,12 +49,12 @@
             }
           },
           {
-            "id": "fd54fdcb5531e43f",
+            "id": "52da8cdb518eaef5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-2-classes-and-class-members.md",
+                "file": "docs/13-15-friend-functions-and-classes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -62,12 +62,12 @@
             }
           },
           {
-            "id": "c82fdf7905ec5298",
+            "id": "53912283998d5b24",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-3-public-vs-private-access-specifiers.md",
+                "file": "docs/13-16-anonymous-objects.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -75,51 +75,12 @@
             }
           },
           {
-            "id": "e7ec4243870904cf",
+            "id": "bfb0233ac633ee5e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-4-access-functions-and-encapsulation.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "77dab132ffd8a812",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/13-5-constructors.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "afbd7985222437ae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "332c470a30eac09f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists 1.md",
+                "file": "docs/13-17-nested-types-in-classes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -127,7 +88,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -201,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists 1.md"
+                "file": "docs/13-17-nested-types-in-classes.md"
               }
             }
           },
@@ -222,7 +183,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists 1.md",
+                "file": "docs/13-17-nested-types-in-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -241,17 +202,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "332c470a30eac09f",
+  "active": "bfb0233ac633ee5e",
   "lastOpenFiles": [
-    "docs/13-6-constructor-member-initializer-lists.md",
-    "docs/13-5-constructors.md",
-    "docs/13-1-welcome-to-object-oriented-programming.md",
-    "docs/13-2-classes-and-class-members.md",
-    "docs/13-3-public-vs-private-access-specifiers.md",
-    "docs/13-4-access-functions-and-encapsulation.md",
-    "docs/13-x-Chapter-13-comprehensive-quiz.md",
+    "docs/13-16-anonymous-objects.md",
+    "docs/13-15-friend-functions-and-classes.md",
+    "docs/13-14-static-member-functions.md",
+    "docs/13-13-static-member-variables.md",
     "docs/MOC.md",
-    "docs/9-11-Return-by-reference-and-return-by-address.md",
-    "docs/9-10-Pass-by-address-part-2.md"
+    "docs/13-12-const-class-objects-and-member-functions.md",
+    "docs/13-10-the-hidden-this-pointer.md",
+    "docs/13-8-overlapping-and-delegating-constructors.md",
+    "docs/13-7-non-static-member-initialization.md",
+    "docs/13-5-constructors.md"
   ]
 }

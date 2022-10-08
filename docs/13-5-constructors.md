@@ -6,7 +6,6 @@ origin_title: "13.5 — Constructors"
 time: 2022-9-16
 type: translation
 tags:
-- summary
 - constructors
 ---
 

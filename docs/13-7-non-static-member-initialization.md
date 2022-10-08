@@ -1,13 +1,13 @@
 ---
-title: 13.6 - 构造函数成员初始化列表
-alias: 13.6 - 构造函数成员初始化列表
-origin: /constructor-member-initializer-lists/
-origin_title: "13.6 — Constructor member initializer lists"
+title: 13.7 - 非静态成员初始化列表
+alias: 13.7 - 非静态成员初始化列表
+origin: /non-static-member-initialization/
+origin_title: "13.7 — Non-static member initialization"
 time: 2022-9-16
 type: translation
 tags:
-- summary
-- constructors
+- static member
+- initialization
 ---
 
 When writing a class that has multiple constructors (which is most of them), having to specify default values for all members in each constructor results in redundant code. If you update the default value for a member, you need to touch each constructor.

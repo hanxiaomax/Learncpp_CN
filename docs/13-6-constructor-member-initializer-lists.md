@@ -6,8 +6,8 @@ origin_title: "13.6 — Constructor member initializer lists"
 time: 2022-9-16
 type: translation
 tags:
-- summary
 - constructors
+- initialization
 ---
 
 In the previous lesson, for simplicity, we initialized our class member data in the constructor using the assignment operator. For example:
