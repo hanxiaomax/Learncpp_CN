@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "9-5-Pass-by-lvalue-reference",
-      "path": "docs/9-5-Pass-by-lvalue-reference.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-11-Return-by-reference-and-return-by-address",
+      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
+    },
+    {
+      "basename": "9-10-Pass-by-address-part-2",
+      "path": "docs/9-10-Pass-by-address-part-2.md"
+    },
+    {
+      "basename": "9-9-Pass-by-address",
+      "path": "docs/9-9-Pass-by-address.md"
+    },
+    {
+      "basename": "9-8-Pointers-and-const",
+      "path": "docs/9-8-Pointers-and-const.md"
+    },
+    {
+      "basename": "9-7-Null-pointers",
+      "path": "docs/9-7-Null-pointers.md"
+    },
+    {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
     },
     {
       "basename": "9-4-Lvalue-references-to-const",
@@ -87,10 +111,6 @@
     {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "9-6-Introduction-to-pointers",
-      "path": "docs/9-6-Introduction-to-pointers.md"
     },
     {
       "basename": "9-1-Introduction-to-compound-data-types",
@@ -179,26 +199,6 @@
     {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
       "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "0-8-A-few-common-C++-problems",
-      "path": "docs/0-8-A-few-common-C++-problems.md"
-    },
-    {
-      "basename": "compiler",
-      "path": "docs/compiler.md"
-    },
-    {
-      "basename": "11-1-Arrays-Part-I",
-      "path": "docs/11-1-Arrays-Part-I.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
     }
   ],
   "omittedPaths": [],

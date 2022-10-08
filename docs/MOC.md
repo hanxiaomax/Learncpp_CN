@@ -147,13 +147,13 @@
 - [[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]
 - [[9-3-Lvalue-references|9.3 - 左值引用]]
 - [[9-4-Lvalue-references-to-const|9.4 - 左值引用 const]]
-- [[9-5-Pass-by-lvalue-reference]]
-- [[9-6-Introduction-to-pointers]]
-- [[9-7-Null-pointers]]
-- [[9-8-Pointers-and-const]]
-- [[9-9-Pass-by-address]]
-- [[9-10-Pass-by-address-part-2]]
-- [[9-11-Return-by-reference-and-return-by-address]]
+- [[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]
+- [[9-6-Introduction-to-pointers|9.6 - 指针简介]]
+- [[9-7-Null-pointers|9.7 - 空指针]]
+- [[9-8-Pointers-and-const|9.8 - const 指针]]
+- [[9-9-Pass-by-address|9.9 - 按地址传递]]
+- [[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
+- [[9-11-Return-by-reference-and-return-by-address|9.11 - 按引用返回和按地址返回]]
 - [[9-12-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和const的类型推断]]
 - [[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试 - 引用和指针]]
 
@@ -211,7 +211,7 @@
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]
 
 ## 14. 操作符重载
-- [[14-11-Overloading-typecasts]]
+- [[14-11-Overloading-typecasts|14.11 - 重载类型转换操作符]]
 - [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试 - 运算符重载]]
 
 ## 16. 对象关系简介

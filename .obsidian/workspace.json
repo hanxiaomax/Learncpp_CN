@@ -23,20 +23,19 @@
             }
           },
           {
-            "id": "608b017dcbdcdb73",
+            "id": "df870f7da0f2390d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-5-Pass-by-lvalue-reference.md",
+                "file": "docs/9-11-Return-by-reference-and-return-by-address.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-5-Pass-by-lvalue-reference.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -132,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-5-Pass-by-lvalue-reference.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +150,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "608b017dcbdcdb73",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/9-11-Return-by-reference-and-return-by-address.md",
     "docs/MOC.md",
-    "docs/9-4-Lvalue-references-to-const.md",
-    "docs/9-3-Lvalue-references.md",
+    "docs/9-10-Pass-by-address-part-2.md",
+    "docs/9-9-Pass-by-address.md",
+    "docs/9-8-Pointers-and-const.md",
+    "docs/9-7-Null-pointers.md",
+    "docs/9-6-Introduction-to-pointers.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
-    "docs/undefined-behavior.md",
-    "docs/11-x-Chapter-11-comprehensive-quiz.md",
-    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
-    "docs/11-7-std-string-view-part-2.md",
-    "docs/9-x-Chapter-9-summary-and-quiz.md",
-    "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    "docs/9-4-Lvalue-references-to-const.md",
+    "docs/9-3-Lvalue-references.md"
   ]
 }

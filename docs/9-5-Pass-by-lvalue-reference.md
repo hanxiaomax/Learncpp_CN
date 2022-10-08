@@ -295,7 +295,7 @@ int main()
 
 ## 何时使用按引用传递
 
-因为类类型的拷贝开销很大，类类型通常会按引用传递而不是 class types can be expensive to copy (sometimes significantly so), class types are usually passed by const reference instead of by value to avoid making an expensive copy of the argument. Fundamental types are cheap to copy, so they are typically passed by value.
+因为类类型的拷贝开销很大，类类型通常会按引用传递而不是按值传递以避免昂贵的拷贝开销。基本数据类型的拷贝开销是很小的，所以它们通常会按值传递。
 
 !!! success "最佳实践"
 
