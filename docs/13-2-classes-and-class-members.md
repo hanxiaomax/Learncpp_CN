@@ -108,11 +108,11 @@ DateClass today { 2020, 10, 14 }; // declare a variable of class DateClass
 
 COPY
 
-A reminder
+!!! tip "小贴士"
 
-Initialize the member variables of a class at the point of declaration.
+	Initialize the member variables of a class at the point of declaration.
 
-Member Functions
+## Member Functions
 
 In addition to holding data, classes (and structs) can also contain functions! Functions defined inside of a class are called **member functions** (or sometimes **methods**). Member functions can be defined inside or outside of the class definition. We’ll define them inside the class for now (for simplicity), and show how to define them outside the class later.
 
