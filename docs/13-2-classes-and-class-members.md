@@ -9,7 +9,7 @@ tags:
 - class
 ---
 
-While C++ provides a number of fundamental data types (e.g. char, int, long, float, double, etc…) that are often sufficient for solving relatively simple problems, it can be difficult to solve complex problems using just these types. One of C++’s more useful features is the ability to define your own data types that better correspond to the problem being solved. You have already seen how [enumerated types](https://www.learncpp.com/cpp-tutorial/45-enumerated-types/) and [structs](https://www.learncpp.com/cpp-tutorial/47-structs/) can be used to create your own custom data types.
+While C++ provides a number of fundamental data types (e.g. char, int, long, float, double, etc…) that are often sufficient for solving relatively simple problems, it can be difficult to solve complex problems using just these types. One of C++’s more useful features is the ability to define your own data types that better correspond to the problem being solved. You have already seen how [[unscoped-enumerations|枚举类型]]and [structs](https://www.learncpp.com/cpp-tutorial/47-structs/) can be used to create your own custom data types.
 
 Here is an example of a struct used to hold a date:
 
@@ -60,11 +60,12 @@ int main()
 }
 ```
 
-COPY
 
 This program prints:
 
+```
 2020/10/16
+```
 
 Classes
 
@@ -95,9 +96,9 @@ Note that the only significant difference is the _public:_ keyword in the clas
 
 Just like a struct declaration, a class declaration does not allocate any memory. It only defines what the class looks like.
 
-Warning
+!!! warning "注意"
 
-Just like with structs, one of the easiest mistakes to make in C++ is to forget the semicolon at the end of a class declaration. This will cause a compiler error on the _next_ line of code. Modern compilers like Visual Studio 2010 will give you an indication that you may have forgotten a semicolon, but older or less sophisticated compilers may not, which can make the actual error hard to find.
+	Just like with structs, one of the easiest mistakes to make in C++ is to forget the semicolon at the end of a class declaration. This will cause a compiler error on the _next_ line of code. Modern compilers like Visual Studio 2010 will give you an indication that you may have forgotten a semicolon, but older or less sophisticated compilers may not, which can make the actual error hard to find.
 
 Class (and struct) definitions are like a blueprint -- they describe what the resulting object will look like, but they do not actually create the object. To actually create an object of the class, a variable of that class type must be defined:
 

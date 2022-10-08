@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "13-2-classes-and-class-members",
+      "path": "docs/13-2-classes-and-class-members.md"
+    },
+    {
       "basename": "13-1-welcome-to-object-oriented-programming",
       "path": "docs/13-1-welcome-to-object-oriented-programming.md"
+    },
+    {
+      "basename": "polymorphism",
+      "path": "docs/polymorphism.md"
+    },
+    {
+      "basename": "abstraction",
+      "path": "docs/abstraction.md"
+    },
+    {
+      "basename": "inheritance",
+      "path": "docs/inheritance.md"
     },
     {
       "basename": "MOC",
@@ -71,10 +87,6 @@
     {
       "basename": "13-6-constructor-member-initializer-lists",
       "path": "docs/13-6-constructor-member-initializer-lists.md"
-    },
-    {
-      "basename": "13-2-classes-and-class-members",
-      "path": "docs/13-2-classes-and-class-members.md"
     },
     {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
@@ -187,14 +199,6 @@
     {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "9-1-Introduction-to-compound-data-types",
-      "path": "docs/9-1-Introduction-to-compound-data-types.md"
-    },
-    {
-      "basename": "move-semantics",
-      "path": "docs/move-semantics.md"
     }
   ],
   "omittedPaths": [],

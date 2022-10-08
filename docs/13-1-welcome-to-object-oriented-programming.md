@@ -17,26 +17,20 @@ tags:
 driveTo(you, work);
 ```
 
-面向对象编程又是什么呢？就像许多事情一样，也许通过类比最容易理解。看看你周围的事物——你看到的任何东西可以被称之为对象：书籍、建筑、食物甚至是你自己。对象通常包含两个主要的组成部分：1. 一组相关的属性（例如） Take a look around you -- everywhere you look are objects: books and buildings and food and even you. Objects have two major components to them: 1) A list of relevant properties (e.g. weight, color, size, solidity, shape, etc…), and 2) Some number of behaviors that they can exhibit (e.g. being opened, making something else hot, etc…). These properties and behaviors are inseparable.
+面向对象编程又是什么呢？就像许多事情一样，也许通过类比最容易理解。看看你周围的事物——你看到的任何东西可以被称之为对象：书籍、建筑、食物甚至是你自己。对象通常包含两个主要的组成部分：1. 一组相关的属性（例如：重量、颜色、尺寸、体积、形状等等）。2. 它可以表现出的一些行为（例如：被打开、加热东西等等）。这些属性和行为是密不可分的。
 
-Object-oriented programming (OOP) provides us with the ability to create objects that tie together both properties and behaviors into a self-contained, reusable package. This leads to code that looks more like this:
+面向对象编程（OOP）为程序员提供了一种将属性和行为打包成一个自包含、可重用“组件”的能力。其代码风格看上去像下面这样：
 
 ```cpp
 you.driveTo(work);
 ```
 
-COPY
+上面的代码不仅读起来更清楚，还更清楚目标是什么(`you`)，调用了什么行为(开车到某个地方)。我们不再是专注于编写函数，而是专注于定义一个包含了一系列被妥善定义的行为的对象。这就是这种范式被称为“面向对象”的原因。
 
-This not only reads more clearly, it also makes it clearer who the subject is (you) and what behavior is being invoked (driving somewhere). Rather than being focused on writing functions, we’re focused on defining objects that have a well-defined set of behaviors. This is why the paradigm is called “object-oriented”.
+这么做是程序员可以以更模块化的方式编写程序，程序也更容易编写和理解，还提供了更高程度的代码重用性。通过定义如何与对象交互，以及对象如何与其他对象交互，这些对象还提供了一种更直观的方式来处理数据。
 
-This allows programs to be written in a more modular fashion, which makes them easier to write and understand, and also provides a higher degree of code-reusability. These objects also provide a more intuitive way to work with our data by allowing us to define how we interact with the objects, and how they interact with other objects.
+注意，面向对象编程并不是要取代传统的编程方式。它只是我们处理复杂问题时的又一种工具罢了。
 
-Note that OOP doesn’t replace traditional programming methods. Rather, it gives you additional tools in your programming tool belt to manage complexity when needed.
+面向对象编程还带来了其他一些有用的概念：[[inheritance|继承]]、[[encapsulation|封装]]、[[abstraction|抽象]]和[[polymorphism|多态性]]。我们将在接下来的几章教程中涵盖所有这些概念。面向对象包含了很多新的内容，但是一旦你对它熟悉起来并对它产生兴趣，你可能再也不想回到纯粹的传统编程中去了。
 
-Object-oriented programming also brings several other useful concepts to the table: inheritance, encapsulation, abstraction, and polymorphism (language designers have a philosophy: never use a short word where a long one will do). We will be covering all of these concepts in the upcoming tutorials over the next few chapters. It’s a lot of new material, but once you’ve been properly familiarized with OOP and it clicks, you may never want to go back to pure traditional programming again.
-
-Note that the term “object” is overloaded a bit, and this causes some amount of confusion. In traditional programming, an object is a piece of memory to store values. And that’s it. In object-oriented programming, an “object” implies that it is both an object in the traditional programming sense, and that it combines both properties and behaviors. From this point forward, when we use the term “object”, we’ll be referring to “objects” in the object-oriented sense.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/classes-and-class-members/)
+注意，术语"对象"一词似乎已有些不堪负重，同时也带来了不小的混乱。在传统编程中，对象是存储值的一块内存。在面向对象编程中，“对象”意味着它既是传统编程意义上的对象，也是属性和行为的组合。从现在开始，当我们使用术语“对象”时，我们将指面向对象意义上的“对象”。
