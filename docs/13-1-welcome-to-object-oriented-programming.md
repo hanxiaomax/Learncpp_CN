@@ -9,17 +9,15 @@ tags:
 - object
 ---
 
-Back in lesson [1.3 -- Introduction to objects and variables](https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/), we defined an object in C++ as, “a piece of memory that can be used to store values”. An object with a name is called a variable.
+在 [[1-3-Introduction-to-objects-and-variables|1.3 - 对象和变量]] 中，我们将C++中的对象定义为：“一段可以被用来存储值的内存”。一个具有名字的对象称为变量。
 
-In traditional programming (what we’ve been doing prior to this point), programs are basically lists of instructions to the computer that define data (via objects) and then work with that data (via statements and functions). Data and the functions that work on that data are separate entities that are combined together to produce the desired result. Because of this separation, traditional programming often does not provide a very intuitive representation of reality. It’s up to the programmer to manage and connect the properties (variables) to the behaviors (functions) in an appropriate manner. This leads to code that looks like this:
+在传统编程领域（本节课之前介绍的内容都属于传统编程领域），程序基本上就是一系列计算机指令，它们定义了数据（通过对象），然后操作这些数据（通过语句和函数）。数据和函数共同作用同于计算所需的结果，但它们各自是独立的个体。因为这种独立性，传统的编程技术通常无法为现实世界中的事务提供直观的表示法。程序员需要将属性（变量）和行为（函数）恰当的联系起来，才能确保程序正确工作。其代码看上去多是下面这样：
 
 ```cpp
 driveTo(you, work);
 ```
 
-COPY
-
-So what is object-oriented programming? As with many things, it is perhaps understood most easily through use of an analogy. Take a look around you -- everywhere you look are objects: books and buildings and food and even you. Objects have two major components to them: 1) A list of relevant properties (e.g. weight, color, size, solidity, shape, etc…), and 2) Some number of behaviors that they can exhibit (e.g. being opened, making something else hot, etc…). These properties and behaviors are inseparable.
+面向对象编程又是什么呢？就像许多事情一样，也许通过类比最容易理解。看看你周围的事物——你看到的任何东西可以被称之为对象：书籍、建筑、食物甚至是你自己。对象通常包含两个主要的组成部分：1. 一组相关的属性（例如） Take a look around you -- everywhere you look are objects: books and buildings and food and even you. Objects have two major components to them: 1) A list of relevant properties (e.g. weight, color, size, solidity, shape, etc…), and 2) Some number of behaviors that they can exhibit (e.g. being opened, making something else hot, etc…). These properties and behaviors are inseparable.
 
 Object-oriented programming (OOP) provides us with the ability to create objects that tie together both properties and behaviors into a self-contained, reusable package. This leads to code that looks more like this:
 

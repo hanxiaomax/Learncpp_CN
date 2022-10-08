@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "13-1-welcome-to-object-oriented-programming",
+      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "13-17-nested-types-in-classes",
       "path": "docs/13-17-nested-types-in-classes.md"
+    },
+    {
+      "basename": "13-18-timing-your-code",
+      "path": "docs/13-18-timing-your-code.md"
     },
     {
       "basename": "13-16-anonymous-objects",
@@ -19,10 +31,6 @@
     {
       "basename": "13-13-static-member-variables",
       "path": "docs/13-13-static-member-variables.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "13-12-const-class-objects-and-member-functions",
@@ -63,10 +71,6 @@
     {
       "basename": "13-6-constructor-member-initializer-lists",
       "path": "docs/13-6-constructor-member-initializer-lists.md"
-    },
-    {
-      "basename": "13-1-welcome-to-object-oriented-programming",
-      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
     },
     {
       "basename": "13-2-classes-and-class-members",
@@ -191,14 +195,6 @@
     {
       "basename": "move-semantics",
       "path": "docs/move-semantics.md"
-    },
-    {
-      "basename": "identity",
-      "path": "docs/identity.md"
-    },
-    {
-      "basename": "value-category",
-      "path": "docs/value-category.md"
     }
   ],
   "omittedPaths": [],

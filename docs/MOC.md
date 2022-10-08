@@ -220,7 +220,12 @@
 - [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]]
 - [[13-11-class-code-and-header-files|13.11 - 类代码和头文件]]
 - [[13-12-const-class-objects-and-member-functions|13.12 - const 对象和成员函数]]
-- 
+- [[13-13-static-member-variables|13.13 - 静态成员变量]]
+- [[13-14-static-member-functions|13.14 - 静态成员函数]]
+- [[13-15-friend-functions-and-classes|13.15 - 友元函数和友元类]]
+- [[13-16-anonymous-objects|13.16 - 匿名对象]]
+- [[13-17-nested-types-in-classes|13.17 - 类中的嵌套类型]]
+- [[13-18-timing-your-code|13.18 - 对程序进行计时]]
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]
 
 ## 14. 操作符重载
