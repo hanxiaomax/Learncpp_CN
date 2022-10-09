@@ -152,15 +152,15 @@
   },
   "active": "3571a062b3fa1386",
   "lastOpenFiles": [
-    "docs/private-member.md",
+    "docs/access-specifiers.md",
     "docs/13-3-public-vs-private-access-specifiers.md",
+    "docs/private-member.md",
     "docs/public-member.md",
     "docs/13-2-classes-and-class-members.md",
     "docs/type-aliases.md",
     "docs/8-6-Typedefs-and-type-aliases.md",
     "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
     "docs/4-17-An introduction-to-std-string.md",
-    "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/2-10-Introduction-to-the-preprocessor.md"
+    "docs/2-x-Chapter-2-summary-and-quiz.md"
   ]
 }

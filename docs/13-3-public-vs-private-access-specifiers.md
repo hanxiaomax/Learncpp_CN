@@ -87,21 +87,21 @@ int main()
 
 因为 `DateClass` 的成员现在是公有的了，因此它们可以被 `main()`访问。
 
-public 关键字及其后面的分号，称为[[access-specifiers|成员访问修饰符]]，它可以设置谁可以访问对应的成员。, along with the following colon, is called an access specifier. [[access-specifiers|成员访问修饰符]]** determine who has access to the members that follow the specifier. Each of the members “acquires” the access level of the previous access specifier (or, if none is provided, the default access specifier).
+public 关键字及其后面的分号，称为[[access-specifiers|成员访问修饰符]]，它可以设置谁可以访问对应的成员。每个成员都可以从其前面的成员访问修饰符获取对应的访问等级（如果没有对应的修饰符，则使用默认的访问修饰符）。
 
-C++ provides 3 different access specifier keywords: public, private, and protected. Public and private are used to make the members that follow them public members or private members respectively. The third access specifier, protected, works much like private does. We will discuss the difference between the private and protected access specifier when we cover inheritance.
+C++提供了3个不同的访问说明符关键字：`public`、`private` 和 `protected`。`public` 和 `private` 分别用来使它们后面的成员成为[[public-member|公有成员]]或[[private-member|私有成员]]。第三个访问说明符 `protected` 的工作原理与 `private` 非常相似。我们将在讨论继承时讨论 `private` 和 `protected` 的区别。
 
-## Mixing access specifiers
+## 混合使用访问修饰符
 
-A class can (and almost always does) use multiple access specifiers to set the access levels of each of its members. There is no limit to the number of access specifiers you can use in a class.
+一个类可以(而且几乎总是)使用多个访问说明符来设置其成员的访问级别。一个类中可以使用的访问说明符的数量是没有限制的。
 
-In general, member variables are usually made private, and member functions are usually made public. We’ll take a closer look at why in the next lesson.
+一般来说，成员变量通常设为私有，成员函数通常设为公有。我们将在下一课中仔细研究其中的原因。
 
 !!! success "最佳实践"
 
-	Make member variables private, and member functions public, unless you have a good reason not to.
+	将成员变量设为私有，将成员函数设为公共，除非您有充分的理由不这样做。
 
-Let’s take a look at an example of a class that uses both private and public access:
+让我们看一个同时使用私有和公共访问的类的例子：
 
 ```cpp
 #include <iostream>

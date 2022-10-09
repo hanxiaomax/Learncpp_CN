@@ -5,6 +5,10 @@
       "path": "docs/13-3-public-vs-private-access-specifiers.md"
     },
     {
+      "basename": "access-specifiers",
+      "path": "docs/access-specifiers.md"
+    },
+    {
       "basename": "private-member",
       "path": "docs/private-member.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "11-x-Chapter-11-comprehensive-quiz",
       "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
-      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
     }
   ],
   "omittedPaths": [],
