@@ -5,12 +5,60 @@
       "path": "docs/13-2-classes-and-class-members.md"
     },
     {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
+      "basename": "type-aliases",
+      "path": "docs/type-aliases.md"
+    },
+    {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+    },
+    {
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+    },
+    {
+      "basename": "4-17-An introduction-to-std-string",
+      "path": "docs/4-17-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
+      "basename": "2-10-Introduction-to-the-preprocessor",
+      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     },
     {
       "basename": "13-4-access-functions-and-encapsulation",
       "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
+      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
+      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    },
+    {
+      "basename": "namespace",
+      "path": "docs/namespace.md"
+    },
+    {
+      "basename": "member-access-operator",
+      "path": "docs/member-access-operator.md"
+    },
+    {
+      "basename": "member-types",
+      "path": "docs/member-types.md"
+    },
+    {
+      "basename": "member-function",
+      "path": "docs/member-function.md"
+    },
+    {
+      "basename": "implicit-object",
+      "path": "docs/implicit-object.md"
     },
     {
       "basename": "13-3-public-vs-private-access-specifiers",
@@ -151,54 +199,6 @@
     {
       "basename": "9-x-Chapter-9-summary-and-quiz",
       "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
-    },
-    {
-      "basename": "4-8-Floating-point-numbers",
-      "path": "docs/4-8-Floating-point-numbers.md"
-    },
-    {
-      "basename": "4-6-Fixed-width-integers-and-size_t",
-      "path": "docs/4-6-Fixed-width-integers-and-size_t.md"
-    },
-    {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "4-4-Signed-integers",
-      "path": "docs/4-4-Signed-integers.md"
-    },
-    {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
-      "basename": "2-7-Forward-declarations-and-definitions",
-      "path": "docs/2-7-Forward-declarations-and-definitions.md"
-    },
-    {
-      "basename": "2-2-Function-return-values-value-returning functions",
-      "path": "docs/2-2-Function-return-values-value-returning functions.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
-      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
     }
   ],
   "omittedPaths": [],

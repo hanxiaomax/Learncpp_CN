@@ -109,7 +109,7 @@ DateClass today { 2020, 10, 14 }; // declare a variable of class DateClass
 	
 ## 成员函数
 
-除了存放数据之外，类（和结构体）同样还可以包含函数！定义在类中的函数称为成员函数（或称为方法）。成员函数的定义可以被包含在类内，也可以定义在类外。我们暂时将其定义在类内，这种形式相对更简单，稍后我们会介绍如何在类外定义类的方法。
+除了存放数据之外，类（和结构体）同样还可以包含函数！定义在类中的函数称为[[member-function|成员函数]]（或称为方法）。成员函数的定义可以被包含在类内，也可以定义在类外。我们暂时将其定义在类内，这种形式相对更简单，稍后我们会介绍如何在类外定义类的方法。
 
 具有成员函数的Data类如下：
 
@@ -128,7 +128,7 @@ public:
 };
 ```
 
-和结构体成员一样，类的成员（包括变量和函数）可以通过[[成员访问运算符]]（`.`）来访问。
+和结构体成员一样，类的成员（包括变量和函数）可以通过[[member-access-operator|成员访问运算符(.)]]来访问。
 
 
 ```cpp
@@ -181,25 +181,25 @@ void print() // defines a member function named print()
 ```
 
 
-What do `m_year`, `m_month`, and `m_day` actually refer to? They refer to the associated object (as determined by the caller).
+`m_year`、`m_month` 和 `m_day` 是谁的变量？它们指的是其函数调用时关联的对象所属的变量。
 
-So when we call “`today.print()`”, the compiler interprets `m_day` as `today.m_day`, `m_month` as `today.m_month`, and `m_year` as `today.m_year`. If we called “tomorrow.print()”, `m_day` would refer to `tomorrow.m_day` instead.
+因此当调用`today.print()`时，编译器会将 `m_day` 解析为 `today.m_day`，将`m_month` 解析为 `today.m_month` ，将 `m_year` 解析为 `today.m_year`。当调用 `tomorrow.print()`时，则 `m_day` 解析为 `tomorrow.m_day`。
 
-In this way, the associated object is essentially implicitly passed to the member function. For this reason, it is often called **the implicit object**.
+可见，相关联的对象会被隐式地传入成员函数。因此，它通常被称为[[implicit-object|隐式对象]]。
 
-We’ll talk more about how the implicit object passing works in detail in a later lesson in this chapter.
+我们会在后面的课程中详细介绍隐式对象传递的工作原理。
 
-The key point is that with non-member functions, we have to pass data to the function to work with. With member functions, we can assume we always have an implicit object of the class to work with!
+对于非成员函数来说，我们必须将它需要操作的数据传递给函数。而对于成员函数，我们可以假定它可以直接使用这个类的对象。
 
-Using the “m_” prefix for member variables helps distinguish member variables from function parameters or local variables inside member functions. This is useful for several reasons. First, when we see an assignment to a variable with the “m_” prefix, we know that we are changing the state of the class instance. Second, unlike function parameters or local variables, which are declared within the function, member variables are declared in the class definition. Consequently, if we want to know how a variable with the “m_” prefix is declared, we know that we should look in the class definition instead of within the function.
+为成员变量添加 “`m_`” 前缀可以帮助我们区分成员变量、函数参数和局部变量。这么做有诸多好处：首先，当我们看到对具有 “`m_`”前缀的变量进行赋值时，我们就可以指定该操作会改变当前类实例的状态。其次，函数[[parameters|形参]]或局部变量被声明在当前函数中，而成员变量则不同，它被定义在类中。因此，如果我们想要知道`m_`前缀的变量的具体定义，就需要去类的定义中查看，而不是在当前函数中查看。
 
-By convention, class names should begin with an upper-case letter.
+按照管理，类名通常是大写字母开头的。
 
 !!! success "最佳实践"
 
-	Name your classes starting with a capital letter.
+	对类命名时，使用大写字母开头。
 
-Here’s another example of a class:
+再看下面这个例子：
 
 ```cpp
 #include <iostream>
@@ -235,14 +235,14 @@ int main()
 }
 ```
 
-COPY
+程序输出结果为：
 
-This produces the output:
-
+```
 Name: Alex  Id: 1  Wage: $25
 Name: Joe  Id: 2  Wage: $22.25
+```
 
-With normal non-member functions, a function can’t call a function that’s defined “below” it (without a forward declaration):
+对于非成员函数来说，它不能调用被定义在它下方（即后定义）的函数，除非它能够看到该函数的[[forward-declaration|前向声明]]：
 
 ```cpp
 void x()
@@ -255,9 +255,7 @@ void y()
 }
 ```
 
-COPY
-
-With member functions, this limitation doesn’t apply:
+而对于成员函数来说，则没有该限制：
 
 ```cpp
 class foo
@@ -268,11 +266,11 @@ public:
 };
 ```
 
-COPY
 
-## Member types
 
-In addition to member variables and member functions, classes can have member types or nested types (including type aliases).
+## 成员类型
+
+除了成员变量和成员函数，类还可以具有[[member-types|成员类型]]或嵌套类型（也包括[[type-aliases|类型别名]]）。
 
 ```cpp
 class Employee
@@ -294,17 +292,19 @@ public:
 };
 ```
 
-COPY
+在上面的例子中，类名实际上成为了其嵌套类型的[[namespace|命名空间]]。在该类中，我们可以直接使用 `IDType`，而在类外，我们必须使用`Employee::IDType`来访问该类型。
 
-In such a context, the class name effectively acts like a namespace for the nested type. From inside the class, we only need reference `IDType`. From outside the class, we can access the type via `Employee::IDType`.
+如果在后续的开发中我们发现`int`类型已经无法满足需要，而必须改用 `std::string` ，此时我们只需要更新这个类型别名，而不需要将所有的`int`都替换为`std::string`。
 
-If we ever decide that an `int` no longer fulfills our needs and we want to use a `std::string` instead, we only need to update the type alias, rather than having to replace every occurrence of `int` with `std::string`.
 
-Nested types cannot be forward declared. Generally, nested types should only be used when the nested type is used exclusively within that class. Note that since classes are types, it’s possible to nest classes inside other classes -- this is uncommon and is typically only done by advanced programmers.
+嵌套类型不能被前向声明。通常情况下，嵌套类型应该只在包含它的类中使用。注意，因为类也是一种类型，所以类可以被嵌套在类中——这个做法并不常见而且通常只有高级程序员才会去使用。
 
-## A note about structs in C++
+## 关于 C++ 中结构体的一些注意事项
 
 In C, structs only have data members, not member functions. In C++, after designing classes (using the class keyword), Bjarne Stroustrup spent some amount of time considering whether structs (which were inherited from C) should be granted the ability to have member functions. Upon consideration, he determined that they should, in part to have a unified ruleset for both. So although we wrote the above programs using the class keyword, we could have used the struct keyword instead.
+
+在C语言中，结构体只有数据成员，没有成员函数。在c++中，在设计完类(使用class关键字)后，Bjarne Stroustrup花了一些时间考虑是否应该赋予结构体(继承自C)具有成员函数的能力。经过考虑，他决定类应该能够具有成员函数，这样一来可以在某种程度上为类和结构体指定统一的规则集。因此，尽管我们使用class关键字编写了上面的程序，但我们本可以使用struct关键字来代替。
+
 
 Many developers (including myself) feel this was the incorrect decision to be made, as it can lead to dangerous assumptions. For example, it’s fair to assume a class will clean up after itself (e.g. a class that allocates memory will deallocate it before being destroyed), but it’s not safe to assume a struct will. Consequently, we recommend using the struct keyword for data-only structures, and the class keyword for defining objects that require both data and functions to be bundled together.
 
@@ -334,8 +334,7 @@ int main()
 }
 ```
 
-COPY
 
-## Conclusion
+## 小结
 
-The class keyword lets us create a custom type in C++ that can contain both member variables and member functions. Classes form the basis for Object-oriented programming, and we’ll spend the rest of this chapter and many of the future chapters exploring all they have to offer!
+class关键字允许我们在C++中创建一个既可以包含成员变量又可以包含成员函数的自定义类型。类构成了面向对象编程的基础，我们将用本章的其余部分和将来的许多章节来探索类为我们提供的一切能力。
