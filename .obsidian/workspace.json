@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-3-public-vs-private-access-specifiers.md",
+                "file": "docs/13-2-classes-and-class-members.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-3-public-vs-private-access-specifiers.md"
+                "file": "docs/13-2-classes-and-class-members.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-3-public-vs-private-access-specifiers.md",
+                "file": "docs/13-2-classes-and-class-members.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,15 +152,15 @@
   },
   "active": "3571a062b3fa1386",
   "lastOpenFiles": [
-    "docs/翻译约定.md",
+    "docs/13-5-constructors.md",
+    "docs/13-4-access-functions-and-encapsulation.md",
     "docs/13-3-public-vs-private-access-specifiers.md",
+    "docs/翻译约定.md",
     "docs/13-2-classes-and-class-members.md",
     "docs/13-1-welcome-to-object-oriented-programming.md",
     "docs/polymorphism.md",
     "docs/abstraction.md",
     "docs/inheritance.md",
-    "docs/MOC.md",
-    "docs/13-17-nested-types-in-classes.md",
-    "docs/13-18-timing-your-code 1.md"
+    "docs/MOC.md"
   ]
 }

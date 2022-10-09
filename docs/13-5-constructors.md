@@ -9,260 +9,19 @@ tags:
 - constructors
 ---
 
-**Why make member variables private?**
-
-In the previous lesson, we mentioned that class member variables are typically made private. Developers who are learning about object-oriented programming often have a hard time understanding why you’d want to do this. To answer that question, let’s start with an analogy.
-
-In modern life, we have access to many electronic devices. Your TV has a remote control that you can use to turn the TV on/off. You drive a car (or scooter) to work. You take a picture on your smartphone. All three of these things use a common pattern: They provide a simple interface for you to use (a button, a steering wheel, etc…) to perform an action. However, how these devices actually operate is hidden away from you. When you press the button on your remote control, you don’t need to know what it’s doing to communicate with your TV. When you press the gas pedal on your car, you don’t need to know how the combustion engine makes the wheels turn. When you take a picture, you don’t need to know how the sensors gather light into a pixellated image. This separation of interface and implementation is extremely useful because it allows us to use objects without understanding how they work. This vastly reduces the complexity of using these objects, and increases the number of objects we’re capable of interacting with.
-
-For similar reasons, the separation of implementation and interface is useful in programming.
-
-**Encapsulation**
-
-In object-oriented programming, **Encapsulation** (also called **information hiding**) is the process of keeping the details about how an object is implemented hidden away from users of the object. Instead, users of the object access the object through a public interface. In this way, users are able to use the object without having to understand how it is implemented.
-
-In C++, we implement encapsulation via access specifiers. Typically, all member variables of the class are made private (hiding the implementation details), and most member functions are made public (exposing an interface for the user). Although requiring users of the class to use the public interface may seem more burdensome than providing public access to the member variables directly, doing so actually provides a large number of useful benefits that help encourage class re-usability and maintainability.
-
-Note: The word encapsulation is also sometimes used to refer to the packaging of data and functions that work on that data together. We prefer to just call that object-oriented programming.
-
-**Benefit: encapsulated classes are easier to use and reduce the complexity of your programs**
-
-With a fully encapsulated class, you only need to know what member functions are publicly available to use the class, what arguments they take, and what values they return. It doesn’t matter how the class was implemented internally. For example, a class holding a list of names could have been implemented using a dynamic array of C-style strings, std::array, std::vector, std::map, std::list, or one of many other data structures. In order to use the class, you don’t need to know (or care) which. This dramatically reduces the complexity of your programs, and also reduces mistakes. More than any other reason, this is the key advantage of encapsulation.
-
-All of the classes in the C++ standard library are encapsulated. Imagine how much more complicated C++ would be if you had to understand how std::string, std::vector, or std::cout were implemented in order to use them!
-
-**Benefit: encapsulated classes help protect your data and prevent misuse**
-
-Global variables are dangerous because you don’t have strict control over who has access to the global variable, or how they use it. Classes with public members suffer from the same problem, just on a smaller scale.
-
-For example, let’s say we were writing a string class. We might start out like this:
+When all members of a class (or struct) are public, we can use aggregate initialization to initialize the class (or struct) directly using list-initialization:
 
 ```cpp
-class MyString
-{
-    char* m_string; // we'll dynamically allocate our string here
-    int m_length; // we need to keep track of the string length
-};
-```
-
-COPY
-
-These two variables have an intrinsic connection: m_length should always equal the length of the string held by m_string (this connection is called an invariant). If m_length were public, anybody could change the length of the string without changing m_string (or vice-versa). This would put the class into an inconsistent state, which could cause all sorts of bizarre problems. By making both m_length and m_string private, users are forced to use whatever public member functions are available to work with the class (and those member functions can ensure that m_length and m_string are always set appropriately).
-
-We can also help protect the user from mistakes in using our class. Consider a class with a public array member variable:
-
-```cpp
-class IntArray
-{
-public:
-    int m_array[10];
-};
-```
-
-COPY
-
-If users can access the array directly, they could subscript the array with an invalid index, producing unexpected results:
-
-```cpp
-int main()
-{
-    IntArray array;
-    array.m_array[16] = 2; // invalid array index, now we overwrote memory that we don't own
-}
-```
-
-COPY
-
-However, if we make the array private, we can force the user to use a function that validates that the index is valid first:
-
-```cpp
-#include <iterator> // For std::size()
-
-class IntArray
-{
-private:
-    int m_array[10]; // user can not access this directly any more
-
-public:
-    void setValue(int index, int value)
-    {
-        // If the index is invalid, do nothing
-        if (index < 0 || index >= std::size(m_array))
-            return;
-
-        m_array[index] = value;
-    }
-};
-```
-
-COPY
-
-In this way, we’ve protected the integrity of our program. As a side note, the at() functions of std::array and std::vector do something very similar!
-
-**Benefit: encapsulated classes are easier to change**
-
-Consider this simple example:
-
-```cpp
-#include <iostream>
-
-class Something
-{
-public:
-    int m_value1;
-    int m_value2;
-    int m_value3;
-};
-
-int main()
-{
-    Something something;
-    something.m_value1 = 5;
-    std::cout << something.m_value1 << '\n';
-}
-```
-
-COPY
-
-While this program works fine, what would happen if we decided to rename m_value1, or change its type? We’d break not only this program, but likely most of the programs that use class Something as well!
-
-Encapsulation gives us the ability to change how classes are implemented without breaking all of the programs that use them.
-
-Here is the encapsulated version of this class that uses functions to access m_value1:
-
-```cpp
-#include <iostream>
-
-class Something
-{
-private:
-    int m_value1;
-    int m_value2;
-    int m_value3;
-
-public:
-    void setValue1(int value) { m_value1 = value; }
-    int getValue1() { return m_value1; }
-};
-
-int main()
-{
-    Something something;
-    something.setValue1(5);
-    std::cout << something.getValue1() << '\n';
-}
-```
-
-COPY
-
-Now, let’s change the class’s implementation:
-
-```cpp
-#include <iostream>
-
-class Something
-{
-private:
-    int m_value[3]; // note: we changed the implementation of this class!
-
-public:
-    // We have to update any member functions to reflect the new implementation
-    void setValue1(int value) { m_value[0] = value; }
-    int getValue1() { return m_value[0]; }
-};
-
-int main()
-{
-    // But our program still works just fine!
-    Something something;
-    something.setValue1(5);
-    std::cout << something.getValue1() << '\n';
-}
-```
-
-COPY
-
-Note that because we did not alter any of the function headers (return type, name, or parameters) in our class’s public interface, our program that uses the class continues to work without any changes.
-
-Similarly, if gnomes snuck into your house at night and replaced the internals of your TV remote with a different (but compatible) technology, you probably wouldn’t even notice!
-
-**Benefit: encapsulated classes are easier to debug**
-
-And finally, encapsulation helps you debug the program when something goes wrong. Often when a program does not work correctly, it is because one of our member variables has an incorrect value. If everyone is able to access the variable directly, tracking down which piece of code modified the variable can be difficult (it could be any of them, and you’ll need to breakpoint them all to figure out which). However, if everybody has to call the same public function to modify a value, then you can simply breakpoint that function and watch as each caller changes the value until you see where it goes wrong.
-
-**Access functions**
-
-Depending on the class, it can be appropriate (in the context of what the class does) for us to be able to directly get or set the value of a private member variable.
-
-An **access function** is a short public function whose job is to retrieve or change the value of a private member variable. For example, in a String class, you might see something like this:
-
-```cpp
-class MyString
-{
-private:
-    char* m_string; // we'll dynamically allocate our string here
-    int m_length; // we need to keep track of the string length
-
-public:
-    int getLength() { return m_length; } // access function to get value of m_length
-};
-```
-
-COPY
-
-getLength() is an access function that simply returns the value of m_length.
-
-Access functions typically come in two flavors: getters and setters. **Getters** (also sometimes called **accessors**) are functions that return the value of a private member variable. **Setters** (also sometimes called **mutators**) are functions that set the value of a private member variable.
-
-Here’s a sample class that has getters and setters for all of its members:
-
-```cpp
-class Date
-{
-private:
-    int m_month;
-    int m_day;
-    int m_year;
-
-public:
-    int getMonth() { return m_month; } // getter for month
-    void setMonth(int month) { m_month = month; } // setter for month
-
-    int getDay() { return m_day; } // getter for day
-    void setDay(int day) { m_day = day; } // setter for day
-
-    int getYear() { return m_year; } // getter for year
-    void setYear(int year) { m_year = year; } // setter for year
-};
-```
-
-COPY
-
-The Date class above is essentially an encapsulated struct with a trivial implementation, and a user of the class might reasonably expect to be able to get or set the day, month, or year.
-
-The MyString class above isn’t used just to transport data -- it has more complex functionality and has an invariant that needs to be maintained. No setter was provided for variable m_length because we don’t want the user to be able to set the length directly (length should only be set whenever the string is changed). In this class, it does make sense to allow the user to get the string length directly, so a getter for the length was provided.
-
-Getters should provide “read-only” access to data. Therefore, the best practice is that they should return by value or const reference (not by non-const reference). A getter that returns a non-const reference would allow the caller to modify the actual object being referenced, which violates the read-only nature of the getter (and violates encapsulation).
-
-Here’s a trivial example of what can happen if your getter returns a non-const reference:
-
-```cpp
-#include <iostream>
-
 class Foo
 {
-private:
-    int m_value{ 4 };
-
 public:
-    int& getValue() { return m_value; } // returns a non-const reference
+    int m_x {};
+    int m_y {};
 };
 
 int main()
 {
-    Foo f;                     // f.m_value is initialized to 4
-    f.getValue() = 5;          // use the non-const reference to assign value 5 to m_value
-    std::cout << f.getValue(); // prints 5
+    Foo foo { 6, 7 }; // list-initialization
 
     return 0;
 }
@@ -270,26 +29,477 @@ int main()
 
 COPY
 
-This program prints:
+However, as soon as we make any member variables private, we’re no longer able to initialize classes in this way. It does make sense: if you can’t directly access a variable (because it’s private), you shouldn’t be able to directly initialize it.
 
-5
+So then how do we initialize a class with private member variables? The answer is through constructors.
 
-Because getValue() is returning a non-const reference, we can use that reference to modify the value being referenced (m_value)!
+Constructors
+
+A **constructor** is a special kind of class member function that is automatically called when an object of that class is created. Constructors are typically used to initialize member variables of the class to appropriate user-provided values, or to do any setup steps necessary for the class to be used (e.g. open a file or database).
+
+After a constructor executes, the object should be in a well-defined, usable state.
+
+Unlike normal member functions, constructors have specific rules for how they must be named:
+
+1.  Constructors must have the same name as the class (with the same capitalization)
+2.  Constructors have no return type (not even void)
+
+Default constructors and default initialization
+
+A constructor that takes no parameters (or has parameters that all have default values) is called a **default constructor**. The default constructor is called if no user-provided initialization values are provided.
+
+Here is an example of a class that has a default constructor:
+
+```cpp
+#include <iostream>
+
+class Fraction
+{
+private:
+    int m_numerator {};
+    int m_denominator {};
+
+public:
+    Fraction() // default constructor
+    {
+        m_numerator = 0;
+        m_denominator = 1;
+    }
+
+    int getNumerator() { return m_numerator; }
+    int getDenominator() { return m_denominator; }
+    double getValue() { return static_cast<double>(m_numerator) / m_denominator; }
+};
+
+int main()
+{
+    Fraction frac{}; // calls Fraction() default constructor
+    std::cout << frac.getNumerator() << '/' << frac.getDenominator() << '\n';
+
+    return 0;
+}
+```
+
+COPY
+
+This class was designed to hold a fractional value as an integer numerator and denominator. We have defined a default constructor named Fraction (the same as the class).
+
+When the line `Fraction frac{};` executes, the compiler will see that we’re instantiating an object of type Fraction with no arguments. It then performs value-initialization of `frac`, that is, the default constructor gets called. Although technically incorrect, this is often called default initialization. The default constructor runs just like a normal function (assigning the values 0 to m_numerator and 1 to m_denominator).
+
+This program produces the result:
+
+0/1
+
+Value-initialization
+
+In the above program, we initialized our class object using value-initialization:
+
+```cpp
+Fraction frac {}; // Value initialization using empty set of braces
+```
+
+COPY
+
+We can also initialize class objects using default-initialization:
+
+```cpp
+Fraction frac; // Default-initialization, calls default constructor
+```
+
+COPY
+
+For the most part, default- and value-initialization of a class object results in the same outcome: the default constructor is called.
+
+Many programmers favor default-initialization over value-initialization for class objects. This is because when using value-initialization, the compiler may zero-initialize the class members before calling the default constructor in certain cases, which is slightly inefficient (C++ programmers don’t like paying for features they’re not using).
+
+However, favoring default-initialization also comes with a downside: you have to know whether a type will initialize itself, i.e. it is a class-type and all members have an initializer, or there is a default-constructor that initializes all member variables. If you see a defined variable without an initializer, you have to think about whether that’s a mistake or not (depending on what type the object is).
+
+For example, the following code causes undefined behavior
+
+```cpp
+#include <iostream>
+
+class Fraction
+{
+private:
+    // Removed initializers
+    int m_numerator;
+    int m_denominator;
+
+public:
+    // Removed default-constructor
+
+    int getNumerator() { return m_numerator; }
+    int getDenominator() { return m_denominator; }
+    double getValue() { return static_cast<double>(m_numerator) / m_denominator; }
+};
+
+int main()
+{
+    Fraction frac;
+    // frac is uninitialized, accessing its members causes undefined behavior
+    std::cout << frac.getNumerator() << '/' << frac.getDenominator() << '\n';
+
+    return 0;
+}
+```
+
+COPY
+
+While you might be able to initialize all members in the classes you write, it’s not feasible to read the definitions of all classes you use to make sure they do the same.
+
+Favoring value initialization for class objects is simple, consistent, and can help you catch errors, particularly while you are learning.
 
 Best practice
 
-Getters should return by value or const reference.
+Favor value-initialization over default-initialization for class objects.
 
-**Access functions concerns**
+Direct- and list-initialization using constructors with parameters
 
-There is a fair bit of discussion around in which cases access functions should be used or avoided. Although they don’t violate encapsulation, some developers would argue that use of access functions violates good OOP class design (a topic that could easily fill an entire book).
+While the default constructor is great for ensuring our classes are initialized with reasonable default values, often times we want instances of our class to have specific values that we provide. Fortunately, constructors can also be declared with parameters. Here is an example of a constructor that takes two integer parameters that are used to initialize the numerator and denominator:
 
-For now, we’ll recommend a pragmatic approach. As you create your classes, consider the following:
+```cpp
+#include <cassert>
 
--   If nobody outside your class needs to access a member, don’t provide access functions for that member.
--   If someone outside your class needs to access a member, think about whether you can expose a behavior or action instead (e.g. rather than a setAlive(bool) setter, implement a kill() function instead).
--   If you can’t, consider whether you can provide only a getter.
+class Fraction
+{
+private:
+    int m_numerator {};
+    int m_denominator {};
 
-**Summary**
+public:
+    Fraction() // default constructor
+    {
+         m_numerator = 0;
+         m_denominator = 1;
+    }
 
-As you can see, encapsulation provides a lot of benefits for just a little bit of extra effort. The primary benefit is that encapsulation allows us to use a class without having to know how it was implemented. This makes it a lot easier to use classes we’re not familiar with.
+    // Constructor with two parameters, one parameter having a default value
+    Fraction(int numerator, int denominator=1)
+    {
+        assert(denominator != 0);
+        m_numerator = numerator;
+        m_denominator = denominator;
+    }
+
+    int getNumerator() { return m_numerator; }
+    int getDenominator() { return m_denominator; }
+    double getValue() { return static_cast<double>(m_numerator) / m_denominator; }
+};
+```
+
+COPY
+
+Note that we now have two constructors: a default constructor that will be called in the default case, and a second constructor that takes two parameters. These two constructors can coexist peacefully in the same class due to function overloading. In fact, you can define as many constructors as you want, so long as each has a unique signature (number and type of parameters).
+
+So how do we use this constructor with parameters? It’s simple! We can use list or direct initialization:
+
+```cpp
+Fraction fiveThirds{ 5, 3 }; // List initialization, calls Fraction(int, int)
+Fraction threeQuarters(3, 4); // Direct initialization, also calls Fraction(int, int)
+```
+
+COPY
+
+As always, we prefer list initialization. We’ll discover reasons (templates and std::initializer_list) to use direct initialization when calling constructors later in the tutorials. There is another special constructor that might make brace initialization do something different, in that case we have to use direct initialization. We’ll talk about these constructors later.
+
+Note that we have given the second parameter of the constructor with parameters a default value, so the following is also legal:
+
+```cpp
+Fraction six{ 6 }; // calls Fraction(int, int) constructor, second parameter uses default value of 1
+```
+
+COPY
+
+Default values for constructors work exactly the same way as with any other functions, so in the above case where we call `six{ 6 }`, the `Fraction(int, int)` function is called with the second parameter defaulted to value 1.
+
+Best practice
+
+Favor brace initialization to initialize class objects.
+
+Copy initialization using equals with classes
+
+Much like with fundamental variables, it’s also possible to initialize classes using copy initialization:
+
+```cpp
+Fraction six = Fraction{ 6 }; // Copy initialize a Fraction, will call Fraction(6, 1)
+Fraction seven = 7; // Copy initialize a Fraction.  The compiler will try to find a way to convert 7 to a Fraction, which will invoke the Fraction(7, 1) constructor.
+```
+
+COPY
+
+However, we recommend you avoid this form of initialization with classes, as it may be less efficient. Although direct-initialization, list-initialization, and copy-initialization all work identically with fundamental types, copy-initialization does not work the same with classes (though the end-result is often the same). We’ll explore the differences in more detail in a future chapter.
+
+Reducing your constructors
+
+In the above two-constructor declaration of the Fraction class, the default constructor is actually somewhat redundant. We could simplify this class as follows:
+
+```cpp
+#include <cassert>
+
+class Fraction
+{
+private:
+    int m_numerator {};
+    int m_denominator {};
+
+public:
+    // Default constructor
+    Fraction(int numerator=0, int denominator=1)
+    {
+        assert(denominator != 0);
+
+        m_numerator = numerator;
+        m_denominator = denominator;
+    }
+
+    int getNumerator() { return m_numerator; }
+    int getDenominator() { return m_denominator; }
+    double getValue() { return static_cast<double>(m_numerator) / m_denominator; }
+};
+```
+
+COPY
+
+Although this constructor is still a default constructor, it has now been defined in a way that it can accept one or two user-provided values as well.
+
+```cpp
+Fraction zero; // will call Fraction(0, 1)
+Fraction zero{}; // will call Fraction(0, 1)
+Fraction six{ 6 }; // will call Fraction(6, 1)
+Fraction fiveThirds{ 5, 3 }; // will call Fraction(5, 3)
+```
+
+COPY
+
+When implementing your constructors, consider how you might keep the number of constructors down through smart defaulting of values.
+
+A reminder about default parameters
+
+The rules around defining and calling functions that have default parameters (described in lesson [8.12 -- Default arguments](https://www.learncpp.com/cpp-tutorial/default-arguments/)) apply to constructors too. To recap, when defining a function with default parameters, all default parameters must follow any non-default parameters, i.e. there cannot be non-defaulted parameters after a defaulted parameter.
+
+This may produce unexpected results for classes that have multiple default parameters of different types. Consider:
+
+```cpp
+class Something
+{
+public:
+	// Default constructor
+	Something(int n = 0, double d = 1.2) // allows us to construct a Something(int, double), Something(int), or Something()
+	{
+	}
+};
+
+int main()
+{
+	Something s1 { 1, 2.4 }; // calls Something(int, double)
+	Something s2 { 1 }; // calls Something(int, double)
+	Something s3 {}; // calls Something(int, double)
+
+	Something s4 { 2.4 }; // will not compile, as there's no constructor to handle Something(double)
+
+	return 0;
+}
+```
+
+COPY
+
+With `s4`, we’ve attempted to construct a `Something` by providing only a `double`. This won’t compile, as the rules for how arguments match with default parameters won’t allow us to skip a non-rightmost parameter (in this case, the leftmost int parameter).
+
+If we want to be able to construct a `Something` with only a `double`, we’ll need to add a second (non-default) constructor:
+
+```cpp
+class Something
+{
+public:
+	// Default constructor
+	Something(int n = 0, double d = 1.2) // allows us to construct a Something(int, double), Something(int), or Something()
+	{
+	}
+
+	Something(double d)
+	{
+	}
+};
+
+int main()
+{
+	Something s1 { 1, 2.4 }; // calls Something(int, double)
+	Something s2 { 1 }; // calls Something(int, double)
+	Something s3 {}; // calls Something(int, double)
+
+	Something s4 { 2.4 }; // calls Something(double)
+
+	return 0;
+}
+```
+
+COPY
+
+An implicitly generated default constructor
+
+If your class has no constructors, C++ will automatically generate a public default constructor for you. This is sometimes called an **implicit constructor** (or implicitly generated constructor).
+
+Consider the following class:
+
+```cpp
+class Date
+{
+private:
+    int m_year{ 1900 };
+    int m_month{ 1 };
+    int m_day{ 1 };
+
+    // No user-provided constructors, the compiler generates a default constructor.
+};
+
+int main()
+{
+    Date date{};
+
+    return 0;
+}
+```
+
+COPY
+
+The Date class has no constructors. Therefore, the compiler will generate a default constructor that allows us to create a `Date` object without arguments.
+
+When the generated default constructor is called, members will still be initialized if they have non-static member initializers (covered in lesson [10.7 -- Default member initialization](https://www.learncpp.com/cpp-tutorial/default-member-initialization/) and [13.7 -- Non-static member initialization](https://www.learncpp.com/cpp-tutorial/non-static-member-initialization/)).
+
+If your class has any other constructors, the implicitly generated constructor will not be provided. For example:
+
+```cpp
+class Date
+{
+private:
+    int m_year{ 1900 };
+    int m_month{ 1 };
+    int m_day{ 1 };
+
+public:
+    Date(int year, int month, int day) // normal non-default constructor
+    {
+        m_year = year;
+        m_month = month;
+        m_day = day;
+    }
+
+    // No implicit constructor provided because we already defined our own constructor
+};
+
+int main()
+{
+    Date date{}; // error: Can't instantiate object because default constructor doesn't exist and the compiler won't generate one
+    Date today{ 2020, 1, 19 }; // today is initialized to Jan 19th, 2020
+
+    return 0;
+}
+```
+
+COPY
+
+If your class has another constructor and you want to allow default construction, you can either add default arguments to every parameter of a constructor with parameters, or explicitly define a default constructor.
+
+There’s a third option as well: you can use the default keyword to tell the compiler to create a default constructor for us anyway:
+
+```cpp
+class Date
+{
+private:
+    int m_year{ 1900 };
+    int m_month{ 1 };
+    int m_day{ 1 };
+
+public:
+    // Tell the compiler to create a default constructor, even if
+    // there are other user-provided constructors.
+    Date() = default;
+
+    Date(int year, int month, int day) // normal non-default constructor
+    {
+        m_year = year;
+        m_month = month;
+        m_day = day;
+    }
+};
+
+int main()
+{
+    Date date{}; // date is initialized to Jan 1st, 1900
+    Date today{ 2020, 10, 14 }; // today is initialized to Oct 14th, 2020
+
+    return 0;
+}
+```
+
+COPY
+
+Using `= default` is longer than writing a constructor with an empty body, but expresses better what your intentions are (To create a default constructor), and it’s safer, because it can zero-initialize members even if they have not been initialized at their declaration. `= default` also works for other special constructors, which we’ll talk about in the future.
+
+Best practice
+
+If you have constructors in your `class` and need a default constructor that does nothing (e.g. because all your members are initialized using non-static member initialization), use `= default`.
+
+Classes containing class members
+
+A `class` may contain other class objects as member variables. By default, when the outer class is constructed, the member variables will have their default constructors called. This happens before the body of the constructor executes.
+
+This can be demonstrated thusly:
+
+```cpp
+#include <iostream>
+
+class A
+{
+public:
+    A() { std::cout << "A\n"; }
+};
+
+class B
+{
+private:
+    A m_a; // B contains A as a member variable
+
+public:
+    B() { std::cout << "B\n"; }
+};
+
+int main()
+{
+    B b;
+    return 0;
+}
+```
+
+COPY
+
+This prints:
+
+A
+B
+
+When variable `b` is constructed, the `B()` constructor is called. Before the body of the constructor executes, `m_a` is initialized, calling the `class A`default constructor. This prints “A”. Then control returns back to the `B` constructor, and the body of the B constructor executes.
+
+This makes sense when you think about it, as the `B()` constructor may want to use variable `m_a` -- so `m_a` had better be initialized first!
+
+The difference to the last example in the previous section is that `m_a` is a `class`-type. `class`-type members get initialized even if we don’t explicitly initialize them.
+
+In the next lesson, we’ll talk about how to initialize these class member variables.
+
+Constructor notes
+
+Many new programmers are confused about whether constructors create the objects or not. They do not -- the compiler sets up the memory allocation for the object prior to the constructor call.
+
+Constructors actually serve two purposes.
+
+1.  Constructors determine who is allowed to create an object of the class type. That is, an object of a class can only be created if a matching constructor can be found.
+2.  Constructors can be used to initialize objects. Whether the constructor actually does an initialization is up to the programmer. It’s syntactically valid to have a constructor that does no initialization at all (the constructor still serves the purpose of allowing the object to be created, as per the above).
+
+However, much like it is a best practice to initialize all local variables, it’s also a best practice to initialize all member variables on creation of the object. This can be done via a constructor or via non-static member initialization.
+
+Best practice
+
+Always initialize all member variables in your objects.
+
+Finally, constructors are only intended to be used for initialization when the object is created. You should not try to call a constructor to re-initialize an existing object. While it may compile, the results will not be what you intended (instead, the compiler will create a temporary object and then discard it).

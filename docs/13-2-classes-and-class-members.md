@@ -109,9 +109,9 @@ DateClass today { 2020, 10, 14 }; // declare a variable of class DateClass
 	
 ## 成员函数
 
-In addition to holding data, classes (and structs) can also contain functions! Functions defined inside of a class are called **member functions** (or sometimes **methods**). Member functions can be defined inside or outside of the class definition. We’ll define them inside the class for now (for simplicity), and show how to define them outside the class later.
+除了存放数据之外，类（和结构体）同样还可以包含函数！定义在类中的函数称为成员函数（或称为方法）。成员函数的定义可以被包含在类内，也可以定义在类外。我们暂时将其定义在类内，这种形式相对更简单，稍后我们会介绍如何在类外定义类的方法。
 
-Here is our Date class with a member function to print the date:
+具有成员函数的Data类如下：
 
 ```cpp
 class DateClass
@@ -128,9 +128,8 @@ public:
 };
 ```
 
+和结构体成员一样，类的成员（包括变量和函数）可以通过[[成员访问运算符]]（`.`）来访问。
 
-
-Just like members of a struct, members (variables and functions) of a class are accessed using the member selection operator (.):
 
 ```cpp
 #include <iostream>
@@ -160,19 +159,19 @@ int main()
 ```
 
 
-This prints:
+运行结果为：
 
 ```
 2020/10/16
 ```
 
-Note how similar this program is to the struct version we wrote above.
+观察可以发现，上述代码和之前使用结构体的版本近乎是一致的。
 
-However, there are a few differences. In the DateStruct version of print() from the example above, we needed to pass the struct itself to the print() function as the first parameter. Otherwise, print() wouldn’t know what DateStruct we wanted to use. We then had to reference this parameter inside the function explicitly.
+不过，其中还是有几处不同。在使用结构体的版本中，`print()`函数需要将结构体本身作为参数传递，否则`print()`函数就无从判断我们要打印的是哪个结构体的内容。不仅如此，我们还需要在函数中明确地使用该参数。
 
-Member functions work slightly differently: All member function calls must be associated with an object of the class. When we call “today.print()”, we’re telling the compiler to call the print() member function, associated with the today object.
+成员函数的工作方式则略有不同：所有成员函数的调用必须基于该类的一个具体对象。当我们调用 `today.print()`的时候，实际上是告诉编译器调用`today`对象的成员函数`print()`。
 
-Now let’s take a look at the definition of the print member function again:
+让我们在看一眼成员函数`print`的定义：
 
 ```cpp
 void print() // defines a member function named print()
@@ -181,11 +180,10 @@ void print() // defines a member function named print()
 }
 ```
 
-COPY
 
-What do m_year, m_month, and m_day actually refer to? They refer to the associated object (as determined by the caller).
+What do `m_year`, `m_month`, and `m_day` actually refer to? They refer to the associated object (as determined by the caller).
 
-So when we call “today.print()”, the compiler interprets `m_day` as `today.m_day`, `m_month` as `today.m_month`, and `m_year` as `today.m_year`. If we called “tomorrow.print()”, `m_day` would refer to `tomorrow.m_day` instead.
+So when we call “`today.print()`”, the compiler interprets `m_day` as `today.m_day`, `m_month` as `today.m_month`, and `m_year` as `today.m_year`. If we called “tomorrow.print()”, `m_day` would refer to `tomorrow.m_day` instead.
 
 In this way, the associated object is essentially implicitly passed to the member function. For this reason, it is often called **the implicit object**.
 

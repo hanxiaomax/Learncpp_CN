@@ -9,7 +9,8 @@ tags:
 - encapsulation
 ---
 
-**Why make member variables private?**
+
+## 为什么要定义私有成员变量
 
 In the previous lesson, we mentioned that class member variables are typically made private. Developers who are learning about object-oriented programming often have a hard time understanding why you’d want to do this. To answer that question, let’s start with an analogy.
 
@@ -17,7 +18,7 @@ In modern life, we have access to many electronic devices. Your TV has a remote 
 
 For similar reasons, the separation of implementation and interface is useful in programming.
 
-**Encapsulation**
+## 封装
 
 In object-oriented programming, **Encapsulation** (also called **information hiding**) is the process of keeping the details about how an object is implemented hidden away from users of the object. Instead, users of the object access the object through a public interface. In this way, users are able to use the object without having to understand how it is implemented.
 
@@ -190,7 +191,7 @@ Similarly, if gnomes snuck into your house at night and replaced the internals o
 
 And finally, encapsulation helps you debug the program when something goes wrong. Often when a program does not work correctly, it is because one of our member variables has an incorrect value. If everyone is able to access the variable directly, tracking down which piece of code modified the variable can be difficult (it could be any of them, and you’ll need to breakpoint them all to figure out which). However, if everybody has to call the same public function to modify a value, then you can simply breakpoint that function and watch as each caller changes the value until you see where it goes wrong.
 
-**Access functions**
+## 成员访问函数
 
 Depending on the class, it can be appropriate (in the context of what the class does) for us to be able to directly get or set the value of a private member variable.
 
@@ -276,11 +277,12 @@ This program prints:
 
 Because getValue() is returning a non-const reference, we can use that reference to modify the value being referenced (m_value)!
 
-Best practice
+!!! success "最佳实践"
 
-Getters should return by value or const reference.
+	Getters should return by value or const reference.
 
-**Access functions concerns**
+
+## 成员访问函数的相关问题
 
 There is a fair bit of discussion around in which cases access functions should be used or avoided. Although they don’t violate encapsulation, some developers would argue that use of access functions violates good OOP class design (a topic that could easily fill an entire book).
 
@@ -290,6 +292,6 @@ For now, we’ll recommend a pragmatic approach. As you create your classes, con
 -   If someone outside your class needs to access a member, think about whether you can expose a behavior or action instead (e.g. rather than a setAlive(bool) setter, implement a kill() function instead).
 -   If you can’t, consider whether you can provide only a getter.
 
-**Summary**
+## 小结
 
 As you can see, encapsulation provides a lot of benefits for just a little bit of extra effort. The primary benefit is that encapsulation allows us to use a class without having to know how it was implemented. This makes it a lot easier to use classes we’re not familiar with.
