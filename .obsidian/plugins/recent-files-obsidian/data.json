@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "13-3-public-vs-private-access-specifiers",
+      "path": "docs/13-3-public-vs-private-access-specifiers.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
       "basename": "13-2-classes-and-class-members",
       "path": "docs/13-2-classes-and-class-members.md"
     },
@@ -71,10 +79,6 @@
     {
       "basename": "13-4-access-functions-and-encapsulation",
       "path": "docs/13-4-access-functions-and-encapsulation.md"
-    },
-    {
-      "basename": "13-3-public-vs-private-access-specifiers",
-      "path": "docs/13-3-public-vs-private-access-specifiers.md"
     },
     {
       "basename": "13-11-class-code-and-header-files",
@@ -195,10 +199,6 @@
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
       "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
-    },
-    {
-      "basename": "9-2-Value-categories-lvalues-and-rvalues",
-      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
     }
   ],
   "omittedPaths": [],
