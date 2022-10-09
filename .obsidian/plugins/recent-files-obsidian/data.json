@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "13-3-public-vs-private-access-specifiers",
+      "path": "docs/13-3-public-vs-private-access-specifiers.md"
+    },
+    {
+      "basename": "private-member",
+      "path": "docs/private-member.md"
+    },
+    {
+      "basename": "public-member",
+      "path": "docs/public-member.md"
+    },
+    {
       "basename": "13-2-classes-and-class-members",
       "path": "docs/13-2-classes-and-class-members.md"
     },
@@ -59,10 +71,6 @@
     {
       "basename": "implicit-object",
       "path": "docs/implicit-object.md"
-    },
-    {
-      "basename": "13-3-public-vs-private-access-specifiers",
-      "path": "docs/13-3-public-vs-private-access-specifiers.md"
     },
     {
       "basename": "翻译约定",
@@ -191,14 +199,6 @@
     {
       "basename": "11-9-Pointer-arithmetic-and-array-indexing",
       "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

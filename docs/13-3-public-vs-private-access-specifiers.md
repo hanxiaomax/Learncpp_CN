@@ -11,10 +11,10 @@ tags:
 
 ## 公有和私有成员
 
-Consider the following struct:
+考虑下面的结构体：
 
 ```cpp
-struct DateStruct // members are public by default
+struct DateStruct // 成员默认是公有的
 {
     int month {}; // public by default, can be accessed by anyone
     int day {}; // public by default, can be accessed by anyone
@@ -32,13 +32,11 @@ int main()
 }
 ```
 
-COPY
+在上面例子的`main()`函数中，我们声明了一个 `DateStruct` 结构体，然后直接访问它的成员，以便给它们赋值。这是可行的，因为结构体的所有成员在默认情况下都是公有成员。[[public-member|公有成员]]是任何人都可以直接访问的结构或类的成员，包括从结构或类外部的代码访问。在上面的例子中，函数`main()`位于结构体外部，但它可以直接访问成员月、日和年，因为它们是公有成员。
 
-In the main() function of the example above, we declare a DateStruct and then we directly access its members in order to assign values to them. This works because all members of a struct are public members by default. **Public members** are members of a struct or class that can be accessed directly by anyone, including from code that exists outside the struct or class. In this case, function main() exists outside of the struct, but it can directly access members month, day, and year, because they are public members.
+结构体或者类外部的代码有时称为 public，public只能够访问结构体或类的公有成员。
 
-The code outside of a struct or class is sometimes called **the public**: the public is only allowed to access the public members of a struct or class, which makes sense.
-
-Now consider the following almost-identical class:
+请考虑下面这个几乎类似的class版本代码：
 
 ```cpp
 class DateClass // members are private by default
@@ -59,13 +57,12 @@ int main()
 }
 ```
 
-COPY
+编译这个程序会报错。这是因为默认情况下，类的所有成员都是私有的。[[private-member|私有成员]]只能被该类的其他成员访问(不能被public访问)。因为`main()`不是`DateClass`的成员，所以它不能访问`date`的私有成员。
 
-If you were to compile this program, you would receive errors. This is because by default, all members of a class are private. **Private members** are members of a class that can only be accessed by other members of the class (not by the public). Because main() is not a member of DateClass, it does not have access to date’s private members.
 
-## Access specifiers
+## 访问修饰符
 
-Although class members are private by default, we can make them public by using the public keyword:
+尽管类成员在默认情况下是私有的，但我们可以通过使用public关键字将它们设为公有：
 
 ```cpp
 class DateClass
@@ -88,9 +85,9 @@ int main()
 ```
 
 
-Because DateClass’s members are now public, they can be accessed directly by main().
+因为 `DateClass` 的成员现在是公有的了，因此它们可以被 `main()`访问。
 
-The public keyword, along with the following colon, is called an access specifier. **Access specifiers** determine who has access to the members that follow the specifier. Each of the members “acquires” the access level of the previous access specifier (or, if none is provided, the default access specifier).
+public 关键字及其后面的分号，称为[[access-specifiers|成员访问修饰符]]，它可以设置谁可以访问对应的成员。, along with the following colon, is called an access specifier. [[access-specifiers|成员访问修饰符]]** determine who has access to the members that follow the specifier. Each of the members “acquires” the access level of the previous access specifier (or, if none is provided, the default access specifier).
 
 C++ provides 3 different access specifier keywords: public, private, and protected. Public and private are used to make the members that follow them public members or private members respectively. The third access specifier, protected, works much like private does. We will discuss the difference between the private and protected access specifier when we cover inheritance.
 

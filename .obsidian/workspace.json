@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-2-classes-and-class-members.md",
+                "file": "docs/13-3-public-vs-private-access-specifiers.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-2-classes-and-class-members.md"
+                "file": "docs/13-3-public-vs-private-access-specifiers.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-2-classes-and-class-members.md",
+                "file": "docs/13-3-public-vs-private-access-specifiers.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,15 +152,15 @@
   },
   "active": "3571a062b3fa1386",
   "lastOpenFiles": [
+    "docs/private-member.md",
+    "docs/13-3-public-vs-private-access-specifiers.md",
+    "docs/public-member.md",
+    "docs/13-2-classes-and-class-members.md",
     "docs/type-aliases.md",
     "docs/8-6-Typedefs-and-type-aliases.md",
-    "docs/13-2-classes-and-class-members.md",
     "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
     "docs/4-17-An introduction-to-std-string.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/2-10-Introduction-to-the-preprocessor.md",
-    "docs/13-4-access-functions-and-encapsulation.md",
-    "docs/13-5-constructors.md",
-    "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
+    "docs/2-10-Introduction-to-the-preprocessor.md"
   ]
 }

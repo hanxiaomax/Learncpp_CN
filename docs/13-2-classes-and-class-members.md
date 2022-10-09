@@ -301,20 +301,18 @@ public:
 
 ## 关于 C++ 中结构体的一些注意事项
 
-In C, structs only have data members, not member functions. In C++, after designing classes (using the class keyword), Bjarne Stroustrup spent some amount of time considering whether structs (which were inherited from C) should be granted the ability to have member functions. Upon consideration, he determined that they should, in part to have a unified ruleset for both. So although we wrote the above programs using the class keyword, we could have used the struct keyword instead.
+在C语言中，结构体只有数据成员，没有成员函数。在c++中，在设计完类(使用class关键字)后，Bjarne Stroustrup花了一些时间考虑是否应该赋予结构体(继承自C)具有成员函数的能力。经过考虑，他决定类应该能够具有成员函数，这样一来可以在某种程度上为类和结构体指定统一的规则集。因此，尽管我们使用class关键字编写了上面的程序，但其实可以使用struct关键字来代替。
 
-在C语言中，结构体只有数据成员，没有成员函数。在c++中，在设计完类(使用class关键字)后，Bjarne Stroustrup花了一些时间考虑是否应该赋予结构体(继承自C)具有成员函数的能力。经过考虑，他决定类应该能够具有成员函数，这样一来可以在某种程度上为类和结构体指定统一的规则集。因此，尽管我们使用class关键字编写了上面的程序，但我们本可以使用struct关键字来代替。
-
-
-Many developers (including myself) feel this was the incorrect decision to be made, as it can lead to dangerous assumptions. For example, it’s fair to assume a class will clean up after itself (e.g. a class that allocates memory will deallocate it before being destroyed), but it’s not safe to assume a struct will. Consequently, we recommend using the struct keyword for data-only structures, and the class keyword for defining objects that require both data and functions to be bundled together.
+许多开发者(包括我自己)认为这是一个不正确的决定，因为它可能导致危险的假设。例如，假设一个类会在销毁后清理它自己是合理的(例如，一个分配内存的类会在被销毁之前释放它所使用的内存)，但假设一个结构体也会这么做则是不安全的。因此，我们建议对只有数据的结构体使用struct关键字，而对定义需要数据和函数捆绑在一起的对象时使用class关键字。
 
 !!! success "最佳实践"
 
-	Use the struct keyword for data-only structures. Use the class keyword for objects that have both data and functions.
+	struct 关键字只适用于仅包含数据的结构。而对于同时包含数据和函数的对象，请使用class关键字。
+	
 
-You have already been using classes without knowing it
+其实你已经在不知情的情况下多次使用class了。
 
-It turns out that the C++ standard library is full of classes that have been created for your benefit. std::string, std::vector, and std::array are all class types! So when you create an object of any of these types, you’re instantiating a class object. And when you call a function using these objects, you’re calling a member function.
+实际上，C++标准库里充满了各式各样的类，它们都可以方便你工作，`std::string`、`std::vector` 和 `std::array` 都是class！因此，当我们创建这些类型的对象时，你就在实例化一个类类型的对象。而当你使用这些对象调用函数时，调用的都是它们的成员函数。
 
 ```cpp
 #include <string>
