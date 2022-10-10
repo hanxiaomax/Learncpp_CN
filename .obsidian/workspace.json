@@ -23,25 +23,12 @@
             }
           },
           {
-            "id": "3571a062b3fa1386",
+            "id": "3528b3c7577d9636",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ccadcf39db2317e3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/inheritance.md",
+                "file": "docs/13-4-access-functions-and-encapsulation.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -123,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists.md"
+                "file": "docs/13-4-access-functions-and-encapsulation.md"
               }
             }
           },
@@ -144,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-6-constructor-member-initializer-lists.md",
+                "file": "docs/13-4-access-functions-and-encapsulation.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,19 +147,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "3571a062b3fa1386",
+  "active": "3528b3c7577d9636",
   "lastOpenFiles": [
-    "docs/member-initializer-list.md",
-    "docs/13-6-constructor-member-initializer-lists.md",
-    "docs/13-5-constructors.md",
-    "docs/value-initialization.md",
-    "docs/13-4-access-functions-and-encapsulation.md",
-    "docs/inheritance.md",
-    "docs/13-1-welcome-to-object-oriented-programming.md",
     "docs/13-3-public-vs-private-access-specifiers.md",
-    "docs/13-18-timing-your-code.md",
-    "docs/13-17-nested-types-in-classes.md"
+    "docs/13-2-classes-and-class-members.md",
+    "docs/13-5-constructors.md",
+    "docs/MOC.md",
+    "docs/13-4-access-functions-and-encapsulation.md",
+    "docs/13-1-welcome-to-object-oriented-programming.md",
+    "docs/4-1-Introduction-to-fundamental-data-types.md",
+    "docs/9-7-Null-pointers.md",
+    "docs/9-6-Introduction-to-pointers.md",
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
   ]
 }

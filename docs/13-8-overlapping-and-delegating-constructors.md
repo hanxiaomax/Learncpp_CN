@@ -11,7 +11,7 @@ tags:
 - constructor
 ---
 
-Constructors with overlapping functionality
+## Constructors with overlapping functionality
 
 When you instantiate a new object, the object’s constructor is called implicitly. It’s not uncommon to have a class with multiple constructors that have overlapping functionality. Consider the following class:
 
@@ -63,7 +63,7 @@ COPY
 
 However, if you try to have one constructor call another constructor in this way, it will compile and maybe cause a warning, but it will not work as you expect, and you will likely spend a long time trying to figure out why, even with a debugger. What’s happening is that `Foo();` instantiates a new `Foo`object, which is immediately discarded, because it’s not stored in a variable.
 
-Delegating constructors
+## 构造函数委派
 
 Constructors are allowed to call other constructors from the same class. This process is called **delegating constructors** (or **constructor chaining**).
 
@@ -126,9 +126,9 @@ A few additional notes about delegating constructors. First, a constructor that 
 
 Second, it’s possible for one constructor to delegate to another constructor, which delegates back to the first constructor. This forms an infinite loop, and will cause your program to run out of stack space and crash. You can avoid this by ensuring all of your constructors resolve to a non-delegating constructor.
 
-Best practice
+!!! success "最佳实践"
 
-If you have multiple constructors that have the same functionality, use delegating constructors to avoid duplicate code.
+	If you have multiple constructors that have the same functionality, use delegating constructors to avoid duplicate code.
 
 Using a normal member function for setup
 

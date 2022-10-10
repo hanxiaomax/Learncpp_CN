@@ -10,13 +10,13 @@ tags:
 ---
 
 
-A **destructor** is another special kind of class member function that is executed when an object of that class is destroyed. Whereas constructors are designed to initialize a class, destructors are designed to help clean up.
+A [[destructor|析构函数]]is another special kind of class member function that is executed when an object of that class is destroyed. Whereas constructors are designed to initialize a class, destructors are designed to help clean up.
 
 When an object goes out of scope normally, or a dynamically allocated object is explicitly deleted using the delete keyword, the class destructor is automatically called (if it exists) to do any necessary clean up before the object is removed from memory. For simple classes (those that just initialize the values of normal member variables), a destructor is not needed because C++ will automatically clean up the memory for you.
 
 However, if your class object is holding any resources (e.g. dynamic memory, or a file or database handle), or if you need to do any kind of maintenance before the object is destroyed, the destructor is the perfect place to do so, as it is typically the last thing to happen before the object is destroyed.
 
-Destructor naming
+## 析构函数命名
 
 Like constructors, destructors have specific naming rules:
 
@@ -109,7 +109,7 @@ A reminder
 
 In lesson [11.17 -- An introduction to std::vector](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdvector/), we note that parentheses based initialization should be used when initializing an array/container/list class with a length (as opposed to a list of elements). For this reason, we initialize IntArray using `IntArray ar ( 10 );`.
 
-Constructor and destructor timing
+## 构造和析构的时机
 
 As mentioned previously, the constructor is called when an object is created, and the destructor is called when an object is destroyed. In the following example, we use cout statements inside the constructor and destructor to show this:
 

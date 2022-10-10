@@ -9,6 +9,9 @@ tags:
 - class
 ---
 
+??? note "关键点速记"
+
+
 虽然 C++ 提供了不少基本数据类型（例如 char、int、long、float、double 等等），应付相对的简单问题，这些基本数据结构似乎已经足够了，但是使用它们解决复杂问题的话就会显得力不从心。C++ 最有用的一个特性就是允许用户针对要解决的问题来自定义数据类型。 [[unscoped-enumerations|枚举类型]]和[[10-5-Introduction-to-structs-members-and-member-selection|结构体]]是两种我们已经介绍过的自定义数据类型。
 
 下面的例子展示了如何使用结构体来存放日期：

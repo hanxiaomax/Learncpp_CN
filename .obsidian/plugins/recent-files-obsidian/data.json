@@ -1,6 +1,66 @@
 {
   "recentFiles": [
     {
+      "basename": "13-4-access-functions-and-encapsulation",
+      "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
+      "basename": "13-3-public-vs-private-access-specifiers",
+      "path": "docs/13-3-public-vs-private-access-specifiers.md"
+    },
+    {
+      "basename": "13-2-classes-and-class-members",
+      "path": "docs/13-2-classes-and-class-members.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-1-welcome-to-object-oriented-programming",
+      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "9-7-Null-pointers",
+      "path": "docs/9-7-Null-pointers.md"
+    },
+    {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    },
+    {
+      "basename": "13-10-the-hidden-this-pointer",
+      "path": "docs/13-10-the-hidden-this-pointer.md"
+    },
+    {
+      "basename": "13-9-destructors",
+      "path": "docs/13-9-destructors.md"
+    },
+    {
+      "basename": "destructor",
+      "path": "docs/destructor.md"
+    },
+    {
+      "basename": "13-8-overlapping-and-delegating-constructors",
+      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
+    },
+    {
+      "basename": "13-7-non-static-member-initialization",
+      "path": "docs/13-7-non-static-member-initialization.md"
+    },
+    {
       "basename": "13-6-constructor-member-initializer-lists",
       "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
@@ -9,28 +69,12 @@
       "path": "docs/member-initializer-list.md"
     },
     {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
-    },
-    {
       "basename": "value-initialization",
       "path": "docs/value-initialization.md"
     },
     {
-      "basename": "13-4-access-functions-and-encapsulation",
-      "path": "docs/13-4-access-functions-and-encapsulation.md"
-    },
-    {
       "basename": "inheritance",
       "path": "docs/inheritance.md"
-    },
-    {
-      "basename": "13-1-welcome-to-object-oriented-programming",
-      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
-    },
-    {
-      "basename": "13-3-public-vs-private-access-specifiers",
-      "path": "docs/13-3-public-vs-private-access-specifiers.md"
     },
     {
       "basename": "13-18-timing-your-code",
@@ -63,30 +107,6 @@
     {
       "basename": "13-11-class-code-and-header-files",
       "path": "docs/13-11-class-code-and-header-files.md"
-    },
-    {
-      "basename": "13-10-the-hidden-this-pointer",
-      "path": "docs/13-10-the-hidden-this-pointer.md"
-    },
-    {
-      "basename": "13-9-destructors",
-      "path": "docs/13-9-destructors.md"
-    },
-    {
-      "basename": "13-8-overlapping-and-delegating-constructors",
-      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
-    },
-    {
-      "basename": "13-7-non-static-member-initialization",
-      "path": "docs/13-7-non-static-member-initialization.md"
-    },
-    {
-      "basename": "13-2-classes-and-class-members",
-      "path": "docs/13-2-classes-and-class-members.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "access-specifiers",
@@ -179,26 +199,6 @@
     {
       "basename": "9-8-Pointers-and-const",
       "path": "docs/9-8-Pointers-and-const.md"
-    },
-    {
-      "basename": "9-7-Null-pointers",
-      "path": "docs/9-7-Null-pointers.md"
-    },
-    {
-      "basename": "9-6-Introduction-to-pointers",
-      "path": "docs/9-6-Introduction-to-pointers.md"
-    },
-    {
-      "basename": "9-5-Pass-by-lvalue-reference",
-      "path": "docs/9-5-Pass-by-lvalue-reference.md"
-    },
-    {
-      "basename": "9-4-Lvalue-references-to-const",
-      "path": "docs/9-4-Lvalue-references-to-const.md"
-    },
-    {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
     }
   ],
   "omittedPaths": [],

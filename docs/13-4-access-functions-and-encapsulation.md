@@ -9,6 +9,8 @@ tags:
 - encapsulation
 ---
 
+??? note "关键点速记"
+
 
 ## 为什么要定义私有成员变量
 
@@ -29,9 +31,9 @@ tags:
 
 ### 好处 1 ：类封装可以提高其易用性并降低程序复杂度
 
-With a fully encapsulated class, you only need to know what member functions are publicly available to use the class, what arguments they take, and what values they return. It doesn’t matter how the class was implemented internally. For example, a class holding a list of names could have been implemented using a dynamic array of C-style strings, std::array, std::vector, std::map, std::list, or one of many other data structures. In order to use the class, you don’t need to know (or care) which. This dramatically reduces the complexity of your programs, and also reduces mistakes. More than any other reason, this is the key advantage of encapsulation.
+对于一个良好封装的类来说，你只需关心该类为你提供了哪些公共接口，这些接口需要什么参数，它们的返回值是什么。而这个类的具体内部实现则完全不需要搞清楚。例如，类中保存了一个包含多个名字的列表，而这个列表的实现可以是包含C语言风格字符串的动态数组，也可以是 `std::array`、`std::vector` 、`std::map`、`std::list` 或者其他数据结构。在使用该类的对象时，不需要也不关心它使用了哪个数据结构来保存名字。这无疑极大程度地降低了你的程序的复杂度，也就减少了犯错误的机会。与其他的好处相比，这是封装带来的最大好处。
 
-All of the classes in the C++ standard library are encapsulated. Imagine how much more complicated C++ would be if you had to understand how std::string, std::vector, or std::cout were implemented in order to use them!
+C++ 标准库中的所有类都是封装过的。你可以想象一下，如果你需要了解 `std::string`, `std::vector` 或 `std::cout` 的实现才能使用它们的话，将是多么可怕的一件事！
 
 ### 好处 2 ：类封装可以保护其数据不被滥用
 

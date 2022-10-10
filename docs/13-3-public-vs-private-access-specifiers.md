@@ -9,6 +9,9 @@ tags:
 - access specifier
 ---
 
+??? note "关键点速记"
+
+
 ## 公有和私有成员
 
 考虑下面的结构体：

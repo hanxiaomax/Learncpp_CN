@@ -43,7 +43,9 @@ COPY
 
 This program produces the result:
 
+```
 length: 1.0, width: 1.0
+```
 
 Non-static member initialization (also called in-class member initializers) provides default values for your member variables that your constructors will use if the constructors do not provide initialization values for the members themselves (via the member initialization list).
 
@@ -138,8 +140,10 @@ COPY
 
 This prints:
 
+```
 length: 2.0, width: 3.0
 length: 4.0, width: 1.0
+```
 
 Note that initializing members using non-static member initialization requires using either an equals sign, or a brace (uniform) initializer -- the parenthesis initialization form doesn’t work here:
 
@@ -154,6 +158,6 @@ class A
 
 COPY
 
-Rule
+!!! note "法则"
 
-Favor use of non-static member initialization to give default values for your member variables.
+	Favor use of non-static member initialization to give default values for your member variables.

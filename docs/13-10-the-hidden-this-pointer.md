@@ -56,7 +56,7 @@ As you would expect, this program produces the result:
 
 Somehow, when we call `simple.setID(2);`, C++ knows that function setID() should operate on object simple, and that m_id actually refers to simple.m_id. Let’s examine the mechanics behind how this works.
 
-The hidden *this pointer
+## 隐藏的 `*this` 指针
 
 Take a look at the following line of code from the example above:
 
@@ -104,7 +104,7 @@ Putting it all together:
 
 The good news is that all of this happens automatically, and it doesn’t really matter whether you remember how it works or not. All you need to remember is that all normal member functions have a “this” pointer that refers to the object the function was called on.
 
-“this” always points to the object being operated on
+## “this” always points to the object being operated on
 
 New programmers are sometimes confused about how many “this” pointers exist. Each member function has a “this” pointer parameter that is set to the address of the object being operated on. Consider:
 
@@ -126,7 +126,7 @@ Note that the “this” pointer alternately holds the address of object A or B 
 
 Because “this” is just a function parameter, it doesn’t add any memory usage to your class (just to the member function call, since that parameter needs to be passed to the function and stored in memory).
 
-Explicitly referencing “this”
+## 显式地使用 this 指针
 
 Most of the time, you never need to explicitly reference the “this” pointer. However, there are a few occasions where doing so can be useful:
 
@@ -152,7 +152,7 @@ Note that our constructor is taking a parameter of the same name as a member var
 
 Some developers prefer to explicitly add this-> to all class members. We recommend that you avoid doing so, as it tends to make your code less readable for little benefit. Using the m_ prefix is a more readable way to differentiate member variables from non-member (local) variables.
 
-## Chaining member functions
+## 链式调用成员函数
 
 Second, it can sometimes be useful to have a class member function return the object it was working with as a return value. The primary reason to do this is to allow a series of member functions to be “chained” together, so several member functions can be called on the same object! You’ve actually been doing this for a long time. Consider this common example where you’re outputting more than one bit of text using `std::cout`:
 
@@ -182,7 +182,7 @@ which clearly doesn’t make any sense (and the compiler would throw an error). 
 ```
 
 
-## which then prints the user’s name.
+which then prints the user’s name.
 
 In this way, we only need to specify the object (in this case, std::cout) once, and each function call passes it on to the next function to work with, allowing us to chain multiple commands together.
 
@@ -267,7 +267,7 @@ First, calc.add(5) is called, which adds 5 to our m_value. add() then returns *t
 
 Since each function modified calc as it was executed, calc’s m_value now contains the value (((0 + 5) - 3) * 4), which is 8.
 
-Summary
+## 小结
 
 The “this” pointer is a hidden parameter implicitly added to any non-static member function. Most of the time, you will not need to access it directly, but you can if needed. It’s worth noting that “this” is a const pointer -- you can change the value of the underlying object it points to, but you can not make it point to something else!
 

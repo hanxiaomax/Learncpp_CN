@@ -209,7 +209,7 @@ Note that you can use default parameters to provide a default value in case the 
 
 	Use member initializer lists to initialize your class member variables instead of assignment.
 
-Initializing const member variables
+## 初始化 const 类型成员变量
 
 Classes can contain const member variables. Const member variables act just like normal const variables -- they must be initialized, and then their values can’t be changed thereafter.
 
@@ -256,11 +256,11 @@ Here’s the output from one run of this program:
 Enter an integer: 4
 Something(4)
 
-Rule
+!!! note "法则"
 
-Const member variables must be initialized.
+	Const member variables must be initialized.
 
-Initializing array members with member initializer lists
+## 使用成员初始化列表初始化数组
 
 Consider a class with an array member:
 
@@ -311,7 +311,8 @@ public:
 
 COPY
 
-Initializing member variables that are classes
+## 初始化类类型的成员变量
+
 
 A member initialization list can also be used to initialize members that are classes.
 
@@ -352,7 +353,7 @@ B 5
 
 When variable b is constructed, the B(int) constructor is called with value 5. Before the body of the constructor executes, m_a is initialized, calling the A(int) constructor with value 4. This prints “A 4”. Then control returns back to the B constructor, and the body of the B constructor executes, printing “B 5”.
 
-Formatting your initializer lists
+## 初始化列表排版
 
 C++ gives you a lot of flexibility in how to format your initializer lists, and it’s really up to you how you’d like to proceed. But here are some recommendations:
 
@@ -421,7 +422,7 @@ public:
 
 COPY
 
-Initializer list order
+## 初始化列表的顺序
 
 Perhaps surprisingly, variables in the initializer list are not initialized in the order that they are specified in the initializer list. Instead, they are initialized in the order in which they are declared in the class.
 
@@ -430,6 +431,6 @@ For best results, the following recommendations should be observed:
 1.  Don’t initialize member variables in such a way that they are dependent upon other member variables being initialized first (in other words, ensure your member variables will properly initialize even if the initialization ordering is different).
 2.  Initialize variables in the initializer list in the same order in which they are declared in your class. This isn’t strictly required so long as the prior recommendation has been followed, but your compiler may give you a warning if you don’t do so and you have all warnings turned on.
 
-Summary
+## 小结
 
 Member initializer lists allow us to initialize our members rather than assign values to them. This is the only way to initialize members that require values upon initialization, such as const or reference members, and it can be more performant than assigning values in the body of the constructor. Member initializer lists work both with fundamental types and members that are classes themselves.
