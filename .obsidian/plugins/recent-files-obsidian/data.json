@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "aggregate initialization",
+      "path": "docs/aggregate initialization.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
       "basename": "13-4-access-functions-and-encapsulation",
       "path": "docs/13-4-access-functions-and-encapsulation.md"
     },
@@ -11,10 +19,6 @@
     {
       "basename": "13-2-classes-and-class-members",
       "path": "docs/13-2-classes-and-class-members.md"
-    },
-    {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
     },
     {
       "basename": "MOC",
@@ -195,10 +199,6 @@
     {
       "basename": "9-9-Pass-by-address",
       "path": "docs/9-9-Pass-by-address.md"
-    },
-    {
-      "basename": "9-8-Pointers-and-const",
-      "path": "docs/9-8-Pointers-and-const.md"
     }
   ],
   "omittedPaths": [],

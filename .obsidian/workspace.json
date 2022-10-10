@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-4-access-functions-and-encapsulation.md",
+                "file": "docs/aggregate initialization.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-4-access-functions-and-encapsulation.md"
+                "file": "docs/aggregate initialization.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-4-access-functions-and-encapsulation.md",
+                "file": "docs/aggregate initialization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,15 +152,15 @@
   },
   "active": "3528b3c7577d9636",
   "lastOpenFiles": [
+    "docs/13-5-constructors.md",
+    "docs/aggregate initialization.md",
+    "docs/13-4-access-functions-and-encapsulation.md",
     "docs/13-3-public-vs-private-access-specifiers.md",
     "docs/13-2-classes-and-class-members.md",
-    "docs/13-5-constructors.md",
     "docs/MOC.md",
-    "docs/13-4-access-functions-and-encapsulation.md",
     "docs/13-1-welcome-to-object-oriented-programming.md",
     "docs/4-1-Introduction-to-fundamental-data-types.md",
     "docs/9-7-Null-pointers.md",
-    "docs/9-6-Introduction-to-pointers.md",
-    "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    "docs/9-6-Introduction-to-pointers.md"
   ]
 }

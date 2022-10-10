@@ -9,7 +9,8 @@ tags:
 - constructors
 ---
 
-When all members of a class (or struct) are public, we can use aggregate initialization to initialize the class (or struct) directly using list-initialization:
+
+如果一个类或者结构体的成员都是[[public-member|公有成员]]，则可以使用[[aggregate initialization|聚合初始化]]，通过[[list-initialization|列表初始化]]对类进行初始化：
 
 ```cpp
 class Foo
@@ -27,13 +28,11 @@ int main()
 }
 ```
 
-COPY
-
 However, as soon as we make any member variables private, we’re no longer able to initialize classes in this way. It does make sense: if you can’t directly access a variable (because it’s private), you shouldn’t be able to directly initialize it.
 
 So then how do we initialize a class with private member variables? The answer is through constructors.
 
-## Constructors
+## 构造函数
 
 A **constructor** is a special kind of class member function that is automatically called when an object of that class is created. Constructors are typically used to initialize member variables of the class to appropriate user-provided values, or to do any setup steps necessary for the class to be used (e.g. open a file or database).
 
@@ -99,7 +98,6 @@ In the above program, we initialized our class object using [[value-initializati
 Fraction frac {}; // Value initialization using empty set of braces
 ```
 
-COPY
 
 We can also initialize class objects using default-initialization:
 
@@ -107,7 +105,6 @@ We can also initialize class objects using default-initialization:
 Fraction frac; // Default-initialization, calls default constructor
 ```
 
-COPY
 
 For the most part, default- and value-initialization of a class object results in the same outcome: the default constructor is called.
 
@@ -368,7 +365,7 @@ COPY
 
 The Date class has no constructors. Therefore, the compiler will generate a default constructor that allows us to create a `Date` object without arguments.
 
-When the generated default constructor is called, members will still be initialized if they have non-static member initializers (covered in lesson [10.7 -- Default member initialization](https://www.learncpp.com/cpp-tutorial/default-member-initialization/) and [13.7 -- Non-static member initialization](https://www.learncpp.com/cpp-tutorial/non-static-member-initialization/)).
+When the generated default constructor is called, members will still be initialized if they have non-static member initializers (covered in lesson [[10-7-default-member-initialization|10.7 - 默认成员初始化]] 和 [[13-7-non-static-member-initialization|13.7 - 非静态成员初始化列表]])。
 
 If your class has any other constructors, the implicitly generated constructor will not be provided. For example:
 
@@ -475,9 +472,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+程序输出：
 
 ```
 A

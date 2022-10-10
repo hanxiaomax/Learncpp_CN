@@ -206,7 +206,7 @@ public:
 
 成员访问函数通常有两种：**getters** 和 **setters**。**Getters** (有时也称为accessor) 用于返回某个私有成员变量的值。**Setters** (有时候也称为**mutators**) 则用于为私有成员变量设置值。
 
-下面是一个示例类，它的所有成员都具有getter和setter：
+下面是一个示例类，它的所有成员都具有 getter 和 setter ：
 
 ```cpp
 class Date
@@ -228,13 +228,14 @@ public:
 };
 ```
 
-The Date class above is essentially an encapsulated struct with a trivial implementation, and a user of the class might reasonably expect to be able to get or set the day, month, or year.
+Date 类本质上是一个封装过的结构，使用者有理由认为它们能够读取和设置类中的年月日变量。
 
-The MyString class above isn’t used just to transport data -- it has more complex functionality and has an invariant that needs to be maintained. No setter was provided for variable m_length because we don’t want the user to be able to set the length directly (length should only be set whenever the string is changed). In this class, it does make sense to allow the user to get the string length directly, so a getter for the length was provided.
+`MyString` 类不仅包含数据——它有更复杂的功能，并且有一个需要维护的*不变量*。我们没有为变量 `m_length` 提供 setter，因为我们不希望用户能够直接设置字符串的(长度应该只在字符串发生更改时设置)。在这个类中，用户可以直接获取字符串长度是有意义的，因此提供了获取长度值的getter。
 
-Getters should provide “read-only” access to data. Therefore, the best practice is that they should return by value or const reference (not by non-const reference). A getter that returns a non-const reference would allow the caller to modify the actual object being referenced, which violates the read-only nature of the getter (and violates encapsulation).
+getter应该提供对数据的“只读”访问。因此，最佳实践是它们应该通过值或const引用(而不是通过非const引用)返回。返回非const引用的getter将允许调用者修改被引用的实际对象，这违反了getter的只读特性(并违反了封装)。
 
-Here’s a trivial example of what can happen if your getter returns a non-const reference:
+下面的例子展示了当getter返回一个非const引用时会发生什么：
+
 
 ```cpp
 #include <iostream>
@@ -258,29 +259,27 @@ int main()
 }
 ```
 
-COPY
+运行结果为：
 
-This program prints:
+`5`
 
-5
-
-Because getValue() is returning a non-const reference, we can use that reference to modify the value being referenced (m_value)!
+因为 `getValue()` 返回的是一个非const类型的引用，因此我们可以通过该引用直接修改被其引用的对象（`m_value`）！
 
 !!! success "最佳实践"
 
-	Getters should return by value or const reference.
+	getter 应该[[return-by-value|按值返回]]或返回const引用。
 
 
 ## 成员访问函数的相关问题
 
-There is a fair bit of discussion around in which cases access functions should be used or avoided. Although they don’t violate encapsulation, some developers would argue that use of access functions violates good OOP class design (a topic that could easily fill an entire book).
+在哪些情况下应该使用访问函数，哪些情况下应该避免访问函数，对此有相当多的讨论。尽管访问函数不违反封装原则，但一些开发人员认为使用访问函数不是良好的OOP类设计(这个主题可以写一本书来讨论)。
 
-For now, we’ll recommend a pragmatic approach. As you create your classes, consider the following:
+当下，我们将推荐一种实用的方法。在创建类时，请考虑以下几点：
 
--   If nobody outside your class needs to access a member, don’t provide access functions for that member.
--   If someone outside your class needs to access a member, think about whether you can expose a behavior or action instead (e.g. rather than a setAlive(bool) setter, implement a kill() function instead).
--   If you can’t, consider whether you can provide only a getter.
+- 如果不需要从类的外部访问成员，不要为该成员提供访问函数；
+- 如果需要从外部访问成员，考虑是否可以通过某种行为或动作来完成（例如，与其提供`setAlive(bool)` setter，不如实现一个`kill()`函数）
+- 如果可以，仅考虑提供一个getter
 
 ## 小结
 
-As you can see, encapsulation provides a lot of benefits for just a little bit of extra effort. The primary benefit is that encapsulation allows us to use a class without having to know how it was implemented. This makes it a lot easier to use classes we’re not familiar with.
+正如您所看到的，实现封装并不会很麻烦，其带来的好处却非常的多。封装的主要好处是允许用户在不了解类的内部实现的情况下，轻松地使用该类。
