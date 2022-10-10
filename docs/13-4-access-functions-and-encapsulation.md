@@ -12,6 +12,10 @@ tags:
 
 ## 为什么要定义私有成员变量
 
+在上一课中，我们提到类成员变量通常是私有的。正在学习面向对象编程的开发人员通常很难理解您为什么要这样做。为了回答这个问题，让我们从一个类比开始。
+
+在现代生活中，我们可以接触到许多电子设备。你的电视有一个遥控器，你可以用它来打开/关闭电视。你开车(或踏板车)去上班。你用智能手机拍了张照片。这三种东西都有一个共同的模式:它们为你提供一个简单的界面，让你使用(一个按钮、一个方向盘等等……)来执行一个动作。然而，这些设备的实际操作方式却不为你所知。当你按下遥控器上的按钮时，你不需要知道它在做什么来与你的电视通信。当你踩下汽车的油门时，你不需要知道内燃机是如何让轮子转动的。当你拍照时，你不需要知道传感器是如何将光线聚集成像素图像的。这种接口和实现的分离非常有用，因为它允许我们在不了解物体如何工作的情况下使用物体。这极大地降低了使用这些对象的复杂性，增加了我们能够与之交互的对象数量。
+
 In the previous lesson, we mentioned that class member variables are typically made private. Developers who are learning about object-oriented programming often have a hard time understanding why you’d want to do this. To answer that question, let’s start with an analogy.
 
 In modern life, we have access to many electronic devices. Your TV has a remote control that you can use to turn the TV on/off. You drive a car (or scooter) to work. You take a picture on your smartphone. All three of these things use a common pattern: They provide a simple interface for you to use (a button, a steering wheel, etc…) to perform an action. However, how these devices actually operate is hidden away from you. When you press the button on your remote control, you don’t need to know what it’s doing to communicate with your TV. When you press the gas pedal on your car, you don’t need to know how the combustion engine makes the wheels turn. When you take a picture, you don’t need to know how the sensors gather light into a pixellated image. This separation of interface and implementation is extremely useful because it allows us to use objects without understanding how they work. This vastly reduces the complexity of using these objects, and increases the number of objects we’re capable of interacting with.
