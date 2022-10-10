@@ -37,9 +37,11 @@ C++ 标准库中的所有类都是封装过的。你可以想象一下，如果�
 
 ### 好处 2 ：类封装可以保护其数据不被滥用
 
-Global variables are dangerous because you don’t have strict control over who has access to the global variable, or how they use it. Classes with public members suffer from the same problem, just on a smaller scale.
 
-For example, let’s say we were writing a string class. We might start out like this:
+全局变量是危险的，因为你不能严格控制谁可以访问全局变量，或者他们应该如何使用它。[[public-member|公有成员]]也有同样的问题，只是程度稍轻而已。
+
+例如，假设我们正在编写一个字符串类。我们可以这样开始:
+
 
 ```cpp
 class MyString
@@ -49,11 +51,9 @@ class MyString
 };
 ```
 
-COPY
+这两个变量存在内在的联系: `m_length` 应该总是等于 `m_string` 持有的字符串的长度(这种联系被称为不变量)。如果 `m_length` 是public 的，那么任何人都可以在不改变 `m_string` 的情况下改变字符串的长度(反之亦然)。这将使类处于不一致的状态，从而可能导致各种奇怪的问题。通过使 `m_length` 和 `m_string` 成为 private ，用户被迫使用任何可用的公共成员函数与该类进行交互(并且这些成员函数可以确保 `m_length` 和 `m_string` 总是被适当设置)。
 
-These two variables have an intrinsic connection: m_length should always equal the length of the string held by m_string (this connection is called an invariant). If m_length were public, anybody could change the length of the string without changing m_string (or vice-versa). This would put the class into an inconsistent state, which could cause all sorts of bizarre problems. By making both m_length and m_string private, users are forced to use whatever public member functions are available to work with the class (and those member functions can ensure that m_length and m_string are always set appropriately).
-
-We can also help protect the user from mistakes in using our class. Consider a class with a public array member variable:
+我们还可以防止用户在使用我们的类时犯错误。考虑一个具有公共数组成员变量的类:
 
 ```cpp
 class IntArray
@@ -63,9 +63,7 @@ public:
 };
 ```
 
-COPY
-
-If users can access the array directly, they could subscript the array with an invalid index, producing unexpected results:
+如果用户可以直接访问数组，他们可能会使用无效的索引下标数组，从而引发意想不到的结果：
 
 ```cpp
 int main()
@@ -75,9 +73,7 @@ int main()
 }
 ```
 
-COPY
-
-However, if we make the array private, we can force the user to use a function that validates that the index is valid first:
+然而，如果我们将数组设为私有，则可以强制调用一个验证索引是否有效的函数：
 
 ```cpp
 #include <iterator> // For std::size()
@@ -99,13 +95,12 @@ public:
 };
 ```
 
-COPY
+通过这种方式可以保护程序的完整性。顺带一提，`std::array` 和 `std::vector` 的 `at()`函数所做的事情和上面的函数非常类似！
 
-In this way, we’ve protected the integrity of our program. As a side note, the at() functions of std::array and std::vector do something very similar!
 
 ### 好处 3 ：封装过的类更容易修改
 
-Consider this simple example:
+考虑下面这个简单的类：
 
 ```cpp
 #include <iostream>
@@ -126,13 +121,11 @@ int main()
 }
 ```
 
-COPY
+虽然这个程序工作得很好，但如果稍后我们决定重命名 `m_value1` 或改变它的类型会发生什么？我们不仅破坏了这个程序，而且可能破坏了大多数使用 `Something` 类的程序！
 
-While this program works fine, what would happen if we decided to rename m_value1, or change its type? We’d break not only this program, but likely most of the programs that use class Something as well!
+封装使我们能够在不破坏所有使用类的程序的情况下改变类的实现方式。
 
-Encapsulation gives us the ability to change how classes are implemented without breaking all of the programs that use them.
-
-Here is the encapsulated version of this class that uses functions to access m_value1:
+下面是这个类的封装版本，它使用函数访问 `m_value1`：
 
 ```cpp
 #include <iostream>
@@ -157,9 +150,7 @@ int main()
 }
 ```
 
-COPY
-
-Now, let’s change the class’s implementation:
+现在，让我们改变类的实现：
 
 ```cpp
 #include <iostream>
@@ -184,17 +175,18 @@ int main()
 }
 ```
 
-COPY
+请注意，因为我们没有更改类的公共接口中的任何函数签名(返回类型、函数名或形参)，所以使用该类的用户不会感知到任何改变。
 
-Note that because we did not alter any of the function headers (return type, name, or parameters) in our class’s public interface, our program that uses the class continues to work without any changes.
-
-Similarly, if gnomes snuck into your house at night and replaced the internals of your TV remote with a different (but compatible) technology, you probably wouldn’t even notice!
+同样地，如果有人在晚上潜入你的房子，用不同的(但兼容的)技术替换了你的电视遥控器的内部，你在使用时可能完全不会注意到！
 
 ### 好处 4：封装的类更容易查找错误
 
-And finally, encapsulation helps you debug the program when something goes wrong. Often when a program does not work correctly, it is because one of our member variables has an incorrect value. If everyone is able to access the variable directly, tracking down which piece of code modified the variable can be difficult (it could be any of them, and you’ll need to breakpoint them all to figure out which). However, if everybody has to call the same public function to modify a value, then you can simply breakpoint that function and watch as each caller changes the value until you see where it goes wrong.
+最后，封装可以帮助你在出现错误时调试程序。通常，当一个程序不能正常工作时，其原因可能是因为我们的一个成员变量的值不正确。如果每个人都能够直接访问变量，那么跟踪哪段代码修改了变量就会很困难(可能是程序中的任何一段代码，你需要将它们全部分解以找出是哪一行)。但是，如果每个人都必须调用同一个公共函数来修改一个值，那么你就可以将该函数设为断点，并观察每个调用者更改值的过程，直到发现哪里出了问题。
+
 
 ## 成员访问函数
+
+对于某些类来说（取决于这个类要做什么），有时候我们会希望能够直接读取或设置某个[[private-member|私有成员]]变量的值。
 
 Depending on the class, it can be appropriate (in the context of what the class does) for us to be able to directly get or set the value of a private member variable.
 
