@@ -12,31 +12,28 @@ tags:
 
 ## 为什么要定义私有成员变量
 
-书接上文，我们提到，类成员变量通常是私有的。正在学习面向对象编程的开发人员通常很难理解您为什么要这样做。为了回答这个问题，让我们从一个类比开始。
+书接上文，我们提到，类成员变量通常是私有的。正在学习面向对象编程的开发人员通常很难理解这么做的目的。其实打个比方你就能够明白了。
 
-在现代生活中，我们可以接触到许多电子设备。你的电视有一个遥控器，你可以用它来打开/关闭电视。你开车(或踏板车)去上班。你用智能手机拍了张照片。这三种东西都有一个共同的模式:它们为你提供一个简单的界面，让你使用(一个按钮、一个方向盘等等……)来执行一个动作。然而，这些设备的实际操作方式却不为你所知。当你按下遥控器上的按钮时，你不需要知道它在做什么来与你的电视通信。当你踩下汽车的油门时，你不需要知道内燃机是如何让轮子转动的。当你拍照时，你不需要知道传感器是如何将光线聚集成像素图像的。这种接口和实现的分离非常有用，因为它允许我们在不了解物体如何工作的情况下使用物体。这极大地降低了使用这些对象的复杂性，增加了我们能够与之交互的对象数量。
+生活中我们可以接触到许多电子设备。例如电视遥控器，你可以用它来打开/关闭电视。你可以开车(或踏板车)去上班，用智能手机拍照。这三种看似不相关的东西却有着一个共同的模式：它们为你提供一个简单的界面使你可以(一个按钮、一个方向盘等等……)执行一个动作。然而，这些设备的实际操作方式却不为你所知。当你按下遥控器上的按钮时，你不需要知道它是如何与电视通信的。当你踩油门时，你也不需要知道内燃机是如何让轮子转动的。当你拍照时，你不需要知道传感器是如何将光线聚集成像素图像的。这种接口和实现的分离非常有用，因为它允许我们在不了解物体如何工作的情况下使用物体。这极大地降低了使用这些对象的复杂性，增加了我们能够与之交互的对象数量。
 
-In the previous lesson, we mentioned that class member variables are typically made private. Developers who are learning about object-oriented programming often have a hard time understanding why you’d want to do this. To answer that question, let’s start with an analogy.
-
-In modern life, we have access to many electronic devices. Your TV has a remote control that you can use to turn the TV on/off. You drive a car (or scooter) to work. You take a picture on your smartphone. All three of these things use a common pattern: They provide a simple interface for you to use (a button, a steering wheel, etc…) to perform an action. However, how these devices actually operate is hidden away from you. When you press the button on your remote control, you don’t need to know what it’s doing to communicate with your TV. When you press the gas pedal on your car, you don’t need to know how the combustion engine makes the wheels turn. When you take a picture, you don’t need to know how the sensors gather light into a pixellated image. This separation of interface and implementation is extremely useful because it allows us to use objects without understanding how they work. This vastly reduces the complexity of using these objects, and increases the number of objects we’re capable of interacting with.
-
-For similar reasons, the separation of implementation and interface is useful in programming.
+基于同样的原因，将实现和接口分离在软件工程中也是非常有用的。
 
 ## 封装
 
-In object-oriented programming, **Encapsulation** (also called **information hiding**) is the process of keeping the details about how an object is implemented hidden away from users of the object. Instead, users of the object access the object through a public interface. In this way, users are able to use the object without having to understand how it is implemented.
+在面向对象编程中，[[Encapsulation|封装]]（有时也称为信息屏蔽）是指将对象的实现细节对用户隐藏起来的过程。用户在使用对象的时候只需要通过公开接口访问对象即可。通过这种方式，用户可以在不了解对象实现的情况下使用该对象。
 
-In C++, we implement encapsulation via access specifiers. Typically, all member variables of the class are made private (hiding the implementation details), and most member functions are made public (exposing an interface for the user). Although requiring users of the class to use the public interface may seem more burdensome than providing public access to the member variables directly, doing so actually provides a large number of useful benefits that help encourage class re-usability and maintainability.
+在 C++ 中，我们可以通过[[access-specifiers|成员访问修饰符]]来实现封装。通常，类的所有成员变量都是私有的(隐藏实现细节)，而大多数成员函数都是公有的(暴露接口)。虽然要求类的用户使用公开接口与类交互比直接提供对成员变量的公共访问更繁琐，但这样做实际上益处颇多，有助于提高类的可重用性和可维护性。
 
-Note: The word encapsulation is also sometimes used to refer to the packaging of data and functions that work on that data together. We prefer to just call that object-oriented programming.
 
-**Benefit: encapsulated classes are easier to use and reduce the complexity of your programs**
+注意：封装一词有时候也指代对数据和函数的打包。这里我们只取其在面向对象编程中的含义。
+
+### 好处 1 ：类封装可以提高其易用性并降低程序复杂度
 
 With a fully encapsulated class, you only need to know what member functions are publicly available to use the class, what arguments they take, and what values they return. It doesn’t matter how the class was implemented internally. For example, a class holding a list of names could have been implemented using a dynamic array of C-style strings, std::array, std::vector, std::map, std::list, or one of many other data structures. In order to use the class, you don’t need to know (or care) which. This dramatically reduces the complexity of your programs, and also reduces mistakes. More than any other reason, this is the key advantage of encapsulation.
 
 All of the classes in the C++ standard library are encapsulated. Imagine how much more complicated C++ would be if you had to understand how std::string, std::vector, or std::cout were implemented in order to use them!
 
-**Benefit: encapsulated classes help protect your data and prevent misuse**
+### 好处 2 ：类封装可以保护其数据不被滥用
 
 Global variables are dangerous because you don’t have strict control over who has access to the global variable, or how they use it. Classes with public members suffer from the same problem, just on a smaller scale.
 
@@ -104,7 +101,7 @@ COPY
 
 In this way, we’ve protected the integrity of our program. As a side note, the at() functions of std::array and std::vector do something very similar!
 
-**Benefit: encapsulated classes are easier to change**
+### 好处 3 ：封装过的类更容易修改
 
 Consider this simple example:
 
@@ -191,7 +188,7 @@ Note that because we did not alter any of the function headers (return type, nam
 
 Similarly, if gnomes snuck into your house at night and replaced the internals of your TV remote with a different (but compatible) technology, you probably wouldn’t even notice!
 
-**Benefit: encapsulated classes are easier to debug**
+### 好处 4：封装的类更容易查找错误
 
 And finally, encapsulation helps you debug the program when something goes wrong. Often when a program does not work correctly, it is because one of our member variables has an incorrect value. If everyone is able to access the variable directly, tracking down which piece of code modified the variable can be difficult (it could be any of them, and you’ll need to breakpoint them all to figure out which). However, if everybody has to call the same public function to modify a value, then you can simply breakpoint that function and watch as each caller changes the value until you see where it goes wrong.
 

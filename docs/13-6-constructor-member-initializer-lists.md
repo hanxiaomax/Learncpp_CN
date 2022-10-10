@@ -78,11 +78,11 @@ COPY
 
 Assigning values to const or reference member variables in the body of the constructor is clearly not possible in some cases.
 
-Member initializer lists
+## 成员初始化列表
 
-To solve this problem, C++ provides a method for initializing class member variables (rather than assigning values to them after they are created) via a **member initializer list** (often called a “member initialization list”). Do not confuse these with the similarly named initializer list that we can use to assign values to arrays.
+To solve this problem, C++ provides a method for initializing class member variables (rather than assigning values to them after they are created) via a[[member-initializer-list|成员初始化列表]] (often called a “member initialization list”). Do not confuse these with the similarly named initializer list that we can use to assign values to arrays.
 
-In lesson [1.4 -- Variable assignment and initialization](https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/), you learned that you could initialize variables in three ways: copy, direct, and via uniform initialization.
+In lesson [[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]], you learned that you could initialize variables in three ways: copy, direct, and via uniform initialization.
 
 ```cpp
 int value1 = 1; // copy initialization
@@ -153,7 +153,9 @@ COPY
 
 This prints:
 
+```
 Something(1, 2.2, c)
+```
 
 The member initializer list is inserted after the constructor parameters. It begins with a colon (:), and then lists each variable to initialize along with the value for that variable separated by a comma.
 
@@ -197,13 +199,15 @@ COPY
 
 This prints:
 
+```
 Something(1, 2.2, c)
+```
 
 Note that you can use default parameters to provide a default value in case the user didn’t pass one in.
 
-Best practice
+!!! success "最佳实践"
 
-Use member initializer lists to initialize your class member variables instead of assignment.
+	Use member initializer lists to initialize your class member variables instead of assignment.
 
 Initializing const member variables
 

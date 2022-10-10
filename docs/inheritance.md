@@ -1,6 +1,6 @@
 ---
-title: 封装
-alias: 封装
+title: 继承
+alias: 继承
 english: inheritance
 type: glossary
 tags:

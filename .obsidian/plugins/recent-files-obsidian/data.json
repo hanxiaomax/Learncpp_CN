@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "13-6-constructor-member-initializer-lists",
+      "path": "docs/13-6-constructor-member-initializer-lists.md"
+    },
+    {
+      "basename": "member-initializer-list",
+      "path": "docs/member-initializer-list.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
+      "basename": "value-initialization",
+      "path": "docs/value-initialization.md"
+    },
+    {
       "basename": "13-4-access-functions-and-encapsulation",
       "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
+      "basename": "inheritance",
+      "path": "docs/inheritance.md"
+    },
+    {
+      "basename": "13-1-welcome-to-object-oriented-programming",
+      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
     },
     {
       "basename": "13-3-public-vs-private-access-specifiers",
@@ -57,20 +81,8 @@
       "path": "docs/13-7-non-static-member-initialization.md"
     },
     {
-      "basename": "13-6-constructor-member-initializer-lists",
-      "path": "docs/13-6-constructor-member-initializer-lists.md"
-    },
-    {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
-    },
-    {
       "basename": "13-2-classes-and-class-members",
       "path": "docs/13-2-classes-and-class-members.md"
-    },
-    {
-      "basename": "13-1-welcome-to-object-oriented-programming",
-      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
     },
     {
       "basename": "MOC",
@@ -149,10 +161,6 @@
       "path": "docs/abstraction.md"
     },
     {
-      "basename": "inheritance",
-      "path": "docs/inheritance.md"
-    },
-    {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
       "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "9-3-Lvalue-references",
       "path": "docs/9-3-Lvalue-references.md"
-    },
-    {
-      "basename": "undefined-behavior",
-      "path": "docs/undefined-behavior.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

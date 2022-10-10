@@ -33,7 +33,7 @@ However, as soon as we make any member variables private, we’re no longer able
 
 So then how do we initialize a class with private member variables? The answer is through constructors.
 
-Constructors
+## Constructors
 
 A **constructor** is a special kind of class member function that is automatically called when an object of that class is created. Constructors are typically used to initialize member variables of the class to appropriate user-provided values, or to do any setup steps necessary for the class to be used (e.g. open a file or database).
 
@@ -44,7 +44,8 @@ Unlike normal member functions, constructors have specific rules for how they mu
 1.  Constructors must have the same name as the class (with the same capitalization)
 2.  Constructors have no return type (not even void)
 
-Default constructors and default initialization
+## 默认构造函数和默认初始化
+
 
 A constructor that takes no parameters (or has parameters that all have default values) is called a **default constructor**. The default constructor is called if no user-provided initialization values are provided.
 
@@ -90,9 +91,9 @@ This program produces the result:
 
 0/1
 
-Value-initialization
+## 值初始化
 
-In the above program, we initialized our class object using value-initialization:
+In the above program, we initialized our class object using [[value-initialization|值初始化]]:
 
 ```cpp
 Fraction frac {}; // Value initialization using empty set of braces
@@ -154,7 +155,7 @@ Best practice
 
 Favor value-initialization over default-initialization for class objects.
 
-Direct- and list-initialization using constructors with parameters
+## 使用带参数的函数进行直接初始化和列表初始化
 
 While the default constructor is great for ensuring our classes are initialized with reasonable default values, often times we want instances of our class to have specific values that we provide. Fortunately, constructors can also be declared with parameters. Here is an example of a constructor that takes two integer parameters that are used to initialize the numerator and denominator:
 
@@ -213,11 +214,12 @@ COPY
 
 Default values for constructors work exactly the same way as with any other functions, so in the above case where we call `six{ 6 }`, the `Fraction(int, int)` function is called with the second parameter defaulted to value 1.
 
-Best practice
+!!! success "最佳实践"
 
-Favor brace initialization to initialize class objects.
+	Favor brace initialization to initialize class objects.
 
-Copy initialization using equals with classes
+## 使用等于号进行拷贝初始化
+
 
 Much like with fundamental variables, it’s also possible to initialize classes using copy initialization:
 
@@ -230,7 +232,7 @@ COPY
 
 However, we recommend you avoid this form of initialization with classes, as it may be less efficient. Although direct-initialization, list-initialization, and copy-initialization all work identically with fundamental types, copy-initialization does not work the same with classes (though the end-result is often the same). We’ll explore the differences in more detail in a future chapter.
 
-Reducing your constructors
+## 减少构造函数的数量
 
 In the above two-constructor declaration of the Fraction class, the default constructor is actually somewhat redundant. We could simplify this class as follows:
 
@@ -274,9 +276,9 @@ COPY
 
 When implementing your constructors, consider how you might keep the number of constructors down through smart defaulting of values.
 
-A reminder about default parameters
+## 关于默认参数的注意事项
 
-The rules around defining and calling functions that have default parameters (described in lesson [8.12 -- Default arguments](https://www.learncpp.com/cpp-tutorial/default-arguments/)) apply to constructors too. To recap, when defining a function with default parameters, all default parameters must follow any non-default parameters, i.e. there cannot be non-defaulted parameters after a defaulted parameter.
+The rules around defining and calling functions that have default parameters (described in lesson [[8-12-Default-arguments|8.12 - 默认参数]]) apply to constructors too. To recap, when defining a function with default parameters, all default parameters must follow any non-default parameters, i.e. there cannot be non-defaulted parameters after a defaulted parameter.
 
 This may produce unexpected results for classes that have multiple default parameters of different types. Consider:
 
@@ -336,7 +338,8 @@ int main()
 
 COPY
 
-An implicitly generated default constructor
+## 隐式生成的默认构造函数
+
 
 If your class has no constructors, C++ will automatically generate a public default constructor for you. This is sometimes called an **implicit constructor** (or implicitly generated constructor).
 
@@ -437,11 +440,11 @@ COPY
 
 Using `= default` is longer than writing a constructor with an empty body, but expresses better what your intentions are (To create a default constructor), and it’s safer, because it can zero-initialize members even if they have not been initialized at their declaration. `= default` also works for other special constructors, which we’ll talk about in the future.
 
-Best practice
+!!! success "最佳实践"
 
-If you have constructors in your `class` and need a default constructor that does nothing (e.g. because all your members are initialized using non-static member initialization), use `= default`.
+	If you have constructors in your `class` and need a default constructor that does nothing (e.g. because all your members are initialized using non-static member initialization), use `= default`.
 
-Classes containing class members
+## 包含类类型成员的类
 
 A `class` may contain other class objects as member variables. By default, when the outer class is constructed, the member variables will have their default constructors called. This happens before the body of the constructor executes.
 
@@ -476,8 +479,10 @@ COPY
 
 This prints:
 
+```
 A
 B
+```
 
 When variable `b` is constructed, the `B()` constructor is called. Before the body of the constructor executes, `m_a` is initialized, calling the `class A`default constructor. This prints “A”. Then control returns back to the `B` constructor, and the body of the B constructor executes.
 
@@ -487,7 +492,7 @@ The difference to the last example in the previous section is that `m_a` is a�
 
 In the next lesson, we’ll talk about how to initialize these class member variables.
 
-Constructor notes
+## 构造函数小结
 
 Many new programmers are confused about whether constructors create the objects or not. They do not -- the compiler sets up the memory allocation for the object prior to the constructor call.
 
@@ -498,8 +503,8 @@ Constructors actually serve two purposes.
 
 However, much like it is a best practice to initialize all local variables, it’s also a best practice to initialize all member variables on creation of the object. This can be done via a constructor or via non-static member initialization.
 
-Best practice
+!!! success "最佳实践"
 
-Always initialize all member variables in your objects.
+	Always initialize all member variables in your objects.
 
 Finally, constructors are only intended to be used for initialization when the object is created. You should not try to call a constructor to re-initialize an existing object. While it may compile, the results will not be what you intended (instead, the compiler will create a temporary object and then discard it).
