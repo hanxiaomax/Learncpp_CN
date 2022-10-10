@@ -188,9 +188,7 @@ int main()
 
 对于某些类来说（取决于这个类要做什么），有时候我们会希望能够直接读取或设置某个[[private-member|私有成员]]变量的值。
 
-Depending on the class, it can be appropriate (in the context of what the class does) for us to be able to directly get or set the value of a private member variable.
-
-An **access function** is a short public function whose job is to retrieve or change the value of a private member variable. For example, in a String class, you might see something like this:
+[[access-function|成员访问函数]]是一类用于获取或改变类私有成员变量值的精简函数。例如，对于 `String` 类，成员函数看上去可能会像这样：
 
 ```cpp
 class MyString
@@ -204,13 +202,11 @@ public:
 };
 ```
 
-COPY
+`getLength()` 就是上一个成员访问函数，它返回 `m_length` 的值。
 
-getLength() is an access function that simply returns the value of m_length.
+成员访问函数通常有两种：**getters** 和 **setters**。**Getters** (有时也称为accessor) 用于返回某个私有成员变量的值。**Setters** (有时候也称为**mutators**) 则用于为私有成员变量设置值。
 
-Access functions typically come in two flavors: getters and setters. **Getters** (also sometimes called **accessors**) are functions that return the value of a private member variable. **Setters** (also sometimes called **mutators**) are functions that set the value of a private member variable.
-
-Here’s a sample class that has getters and setters for all of its members:
+下面是一个示例类，它的所有成员都具有getter和setter：
 
 ```cpp
 class Date
@@ -231,8 +227,6 @@ public:
     void setYear(int year) { m_year = year; } // setter for year
 };
 ```
-
-COPY
 
 The Date class above is essentially an encapsulated struct with a trivial implementation, and a user of the class might reasonably expect to be able to get or set the day, month, or year.
 
