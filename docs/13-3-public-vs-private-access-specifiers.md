@@ -138,23 +138,21 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序运行结果：
 
 ```
 10/14/2020
 ```
 
-Note that although we can’t access date’s members variables m_month, m_day, and m_year directly from main (because they are private), we are able to access them indirectly through public member functions setDate() and print()!
+注意，尽管我们不能在`main`中直接访问变量 `m_month`、`m_day` 和 `m_year` （因为它们是私有的），但是我们可以通过公有成员函数`setDate()`和`print()`间接地访问它们！
 
-The group of public members of a class are often referred to as a **public interface**. Because only public members can be accessed from outside of the class, the public interface defines how programs using the class will interact with the class. Note that main() is restricted to setting the date and printing the date. The class protects the member variables from being accessed or edited directly.
+类中公有成员的集合通常称为该类的公开接口。因为只有公有成员才能在类外被访问，所以公开接口实际上定义了程序应该如何使用接口和类进行交互。注意，`main()` 只能够设置日期和打印日期。该类可以保护自己的成员被直接访问或修改。
 
-Some programmers prefer to list private members first, because the public members typically use the private ones, so it makes sense to define the private ones first. However, a good counterargument is that users of the class don’t care about the private members, so the public ones should come first. Either way is fine.
+有的程序员喜欢将私有成员定义在公有成员前面，因为公有成员通常会使用私有成员，所以将私有的定义在前是有道理的。但是，反方的观点也很有力，他们认为用户根本不关心类的私有成员，所以应该将公有成员定义在前面。其实两种方法都是可以的。
 
-## Access controls work on a per-class basis
+## 访问控制在类层面工作（而非对象层面）
 
-Consider the following program:
+考虑下面程序：
 
 ```cpp
 #include <iostream>
@@ -202,18 +200,16 @@ int main()
 }
 ```
 
-COPY
+==该例中包含一个 C++ 中常被忽略或误解的细节，访问控制是工作在类的层面，而不是对象层面。== 这就意味着如果一个函数可以访问**类中的某个私有成员**，那么该类所有对象中的该私有成员也都能够被该函数访问。
 
-One nuance of C++ that is often missed or misunderstood is that access control works on a per-class basis, not a per-object basis. This means that when a function has access to the private members of a class, it can access the private members of _any_ object of that class type that it can see.
+在上面的例子中，`copyFrom()`是类 `DateClass` 的成员函数，它可以访问 `DateClass` 的私有成员。因此，`copyFrom()` 函数不仅可以访问调用它的对象（`copy`），还可以直接访问它的形参（`DataClass` 类型变量 `d`）的私有成员。如果该形参d是其他类型的，则其私有成员不可以被访问。
 
-In the above example, copyFrom() is a member of DateClass, which gives it access to the private members of DateClass. This means copyFrom() can not only directly access the private members of the implicit object it is operating on (copy), it also means it has direct access to the private members of DateClass parameter d! If parameter d were some other type, this would not be the case.
+这个特性非常有用，尤其是当我们需要拷贝一个对象给与它同属一个类的对象时。在下一章中，我们还会讨论`<<`运算符的重载，到时候我们还会重新体积这个问题。
 
-This can be particularly useful when we need to copy members from one object of a class to another object of the same class. We’ll also see this topic show up again when we talk about overloading operator<< to print members of a class in the next chapter.
+## 结构体 vs 类
 
-## Structs vs classes revisited
+访问说明符介绍完毕，现在我们可以讨论C++中的类和结构之间的实际区别了。类的成员默认为private。结构体的的成员则默认为public。
 
-Now that we’ve talked about access specifiers, we can talk about the actual differences between a class and a struct in C++. A class defaults its members to private. A struct defaults its members to public.
+就是这样!
 
-That’s it!
-
-(Okay, to be pedantic, there’s one more minor difference -- structs inherit from other classes publicly and classes inherit privately. We’ll cover what this means in a future chapter, but this particular point is practically irrelevant since you should never rely on the defaults anyway).
+(好吧，迂腐一点，其实还有一个小区别——结构体默认从其他类公开继承，而类则是私有继承。我们将在以后的章节中讨论这意味着什么，但这一点实际上是无关紧要的，因为无论如何你都不应该依赖它的默认行为)。

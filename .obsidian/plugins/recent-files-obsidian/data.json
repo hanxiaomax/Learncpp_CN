@@ -1,8 +1,80 @@
 {
   "recentFiles": [
     {
+      "basename": "13-4-access-functions-and-encapsulation",
+      "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
       "basename": "13-3-public-vs-private-access-specifiers",
       "path": "docs/13-3-public-vs-private-access-specifiers.md"
+    },
+    {
+      "basename": "13-18-timing-your-code",
+      "path": "docs/13-18-timing-your-code.md"
+    },
+    {
+      "basename": "13-17-nested-types-in-classes",
+      "path": "docs/13-17-nested-types-in-classes.md"
+    },
+    {
+      "basename": "13-16-anonymous-objects",
+      "path": "docs/13-16-anonymous-objects.md"
+    },
+    {
+      "basename": "13-15-friend-functions-and-classes",
+      "path": "docs/13-15-friend-functions-and-classes.md"
+    },
+    {
+      "basename": "13-14-static-member-functions",
+      "path": "docs/13-14-static-member-functions.md"
+    },
+    {
+      "basename": "13-13-static-member-variables",
+      "path": "docs/13-13-static-member-variables.md"
+    },
+    {
+      "basename": "13-12-const-class-objects-and-member-functions",
+      "path": "docs/13-12-const-class-objects-and-member-functions.md"
+    },
+    {
+      "basename": "13-11-class-code-and-header-files",
+      "path": "docs/13-11-class-code-and-header-files.md"
+    },
+    {
+      "basename": "13-10-the-hidden-this-pointer",
+      "path": "docs/13-10-the-hidden-this-pointer.md"
+    },
+    {
+      "basename": "13-9-destructors",
+      "path": "docs/13-9-destructors.md"
+    },
+    {
+      "basename": "13-8-overlapping-and-delegating-constructors",
+      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
+    },
+    {
+      "basename": "13-7-non-static-member-initialization",
+      "path": "docs/13-7-non-static-member-initialization.md"
+    },
+    {
+      "basename": "13-6-constructor-member-initializer-lists",
+      "path": "docs/13-6-constructor-member-initializer-lists.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
+      "basename": "13-2-classes-and-class-members",
+      "path": "docs/13-2-classes-and-class-members.md"
+    },
+    {
+      "basename": "13-1-welcome-to-object-oriented-programming",
+      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "access-specifiers",
@@ -15,10 +87,6 @@
     {
       "basename": "public-member",
       "path": "docs/public-member.md"
-    },
-    {
-      "basename": "13-2-classes-and-class-members",
-      "path": "docs/13-2-classes-and-class-members.md"
     },
     {
       "basename": "type-aliases",
@@ -43,14 +111,6 @@
     {
       "basename": "2-10-Introduction-to-the-preprocessor",
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
-    },
-    {
-      "basename": "13-4-access-functions-and-encapsulation",
-      "path": "docs/13-4-access-functions-and-encapsulation.md"
-    },
-    {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
     },
     {
       "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
@@ -81,10 +141,6 @@
       "path": "docs/翻译约定.md"
     },
     {
-      "basename": "13-1-welcome-to-object-oriented-programming",
-      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
-    },
-    {
       "basename": "polymorphism",
       "path": "docs/polymorphism.md"
     },
@@ -95,62 +151,6 @@
     {
       "basename": "inheritance",
       "path": "docs/inheritance.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
-      "basename": "13-17-nested-types-in-classes",
-      "path": "docs/13-17-nested-types-in-classes.md"
-    },
-    {
-      "basename": "13-18-timing-your-code",
-      "path": "docs/13-18-timing-your-code.md"
-    },
-    {
-      "basename": "13-16-anonymous-objects",
-      "path": "docs/13-16-anonymous-objects.md"
-    },
-    {
-      "basename": "13-15-friend-functions-and-classes",
-      "path": "docs/13-15-friend-functions-and-classes.md"
-    },
-    {
-      "basename": "13-14-static-member-functions",
-      "path": "docs/13-14-static-member-functions.md"
-    },
-    {
-      "basename": "13-13-static-member-variables",
-      "path": "docs/13-13-static-member-variables.md"
-    },
-    {
-      "basename": "13-12-const-class-objects-and-member-functions",
-      "path": "docs/13-12-const-class-objects-and-member-functions.md"
-    },
-    {
-      "basename": "13-10-the-hidden-this-pointer",
-      "path": "docs/13-10-the-hidden-this-pointer.md"
-    },
-    {
-      "basename": "13-8-overlapping-and-delegating-constructors",
-      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
-    },
-    {
-      "basename": "13-7-non-static-member-initialization",
-      "path": "docs/13-7-non-static-member-initialization.md"
-    },
-    {
-      "basename": "13-11-class-code-and-header-files",
-      "path": "docs/13-11-class-code-and-header-files.md"
-    },
-    {
-      "basename": "13-9-destructors",
-      "path": "docs/13-9-destructors.md"
-    },
-    {
-      "basename": "13-6-constructor-member-initializer-lists",
-      "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
     {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
