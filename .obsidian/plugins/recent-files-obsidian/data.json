@@ -5,6 +5,14 @@
       "path": "docs/13-5-constructors.md"
     },
     {
+      "basename": "default-initialization",
+      "path": "docs/default-initialization.md"
+    },
+    {
+      "basename": "default-constructor",
+      "path": "docs/default-constructor.md"
+    },
+    {
       "basename": "aggregate-initialization",
       "path": "docs/aggregate-initialization.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "polymorphism",
       "path": "docs/polymorphism.md"
-    },
-    {
-      "basename": "abstraction",
-      "path": "docs/abstraction.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

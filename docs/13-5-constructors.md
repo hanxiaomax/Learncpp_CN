@@ -46,9 +46,9 @@ int main()
 ## 默认构造函数和默认初始化
 
 
-A constructor that takes no parameters (or has parameters that all have default values) is called a **default constructor**. The default constructor is called if no user-provided initialization values are provided.
+不接受任何参数（或所有参数都有默认值）的构造函数称为[[default-constructor|默认构造函数]]。当用户初始化对象时不提供任何参数时，默认构造函数就会被调用。
 
-Here is an example of a class that has a default constructor:
+下面例子中的类具有一个默认构造函数：
 
 ```cpp
 #include <iostream>
@@ -80,37 +80,37 @@ int main()
 }
 ```
 
-COPY
+Fraction 类用于表示一个分数（通过分子和分母），同时我们定义了一个名为 Fraction 的默认构造函数（与函数同名）。
 
-This class was designed to hold a fractional value as an integer numerator and denominator. We have defined a default constructor named Fraction (the same as the class).
+当 `Fraction frac{};` 执行时，编译器得知我们想要初始化一个 `Fraction` 类型的对象（不提供任何参数）。然后，对象 `frac` 的初始化就开始了，默认构造函数也会在此时被调用。这个过程被称为默认初始化（尽管不严谨）。默认构造函数运行时和普通函数一样（此处即将0赋值给 `m_numerator`，将 `m_denominator` 赋值为1 ）
 
-When the line `Fraction frac{};` executes, the compiler will see that we’re instantiating an object of type Fraction with no arguments. It then performs value-initialization of `frac`, that is, the default constructor gets called. Although technically incorrect, this is often called default initialization. The default constructor runs just like a normal function (assigning the values 0 to m_numerator and 1 to m_denominator).
+程序运行结果为：
 
-This program produces the result:
-
+```
 0/1
+```
 
 ## 值初始化
 
-In the above program, we initialized our class object using [[value-initialization|值初始化]]:
+在上面的程序中，我们使用[[value-initialization|值初始化]]的方式初始化对象：
 
 ```cpp
 Fraction frac {}; // Value initialization using empty set of braces
 ```
 
 
-We can also initialize class objects using default-initialization:
+我们也可以使用[[default-initialization|默认初始化]]来实现：
 
 ```cpp
 Fraction frac; // Default-initialization, calls default constructor
 ```
 
 
-For the most part, default- and value-initialization of a class object results in the same outcome: the default constructor is called.
+使用默认初始化和值初始化来初始化一个对象，其结果是一致的：即默认构造函数被调用。
 
-Many programmers favor default-initialization over value-initialization for class objects. This is because when using value-initialization, the compiler may zero-initialize the class members before calling the default constructor in certain cases, which is slightly inefficient (C++ programmers don’t like paying for features they’re not using).
+比起值初始化，很多程序员更倾向于使用默认初始化。这是因为在使用值初始化时，编译器可能会首先将类成员初始化为0，然后才调用默认构造函数，从效率的角度来讲更低效一些。
 
-However, favoring default-initialization also comes with a downside: you have to know whether a type will initialize itself, i.e. it is a class-type and all members have an initializer, or there is a default-constructor that initializes all member variables. If you see a defined variable without an initializer, you have to think about whether that’s a mistake or not (depending on what type the object is).
+不过，使用默认初始也有不好的地方However, favoring default-initialization also comes with a downside: you have to know whether a type will initialize itself, i.e. it is a class-type and all members have an initializer, or there is a default-constructor that initializes all member variables. If you see a defined variable without an initializer, you have to think about whether that’s a mistake or not (depending on what type the object is).
 
 For example, the following code causes undefined behavior
 
