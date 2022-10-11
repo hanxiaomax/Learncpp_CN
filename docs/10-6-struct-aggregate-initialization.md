@@ -62,7 +62,7 @@ To be an aggregate in C++, a type must meet the following criteria:
 
 Putting the precise definition of a C++ aggregate aside, the important thing to understand at this point is that structs with only data members (which are the only kind of structs we’ll create in these lessons) are aggregates. Arrays (which we’ll cover next chapter) are also aggregates.
 
-Aggregate initialization of a struct
+## Aggregate initialization of a struct
 
 Because a normal variable can only hold a single value, we only need to provide a single initializer:
 

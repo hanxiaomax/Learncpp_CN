@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "aggregate initialization",
-      "path": "docs/aggregate initialization.md"
-    },
-    {
       "basename": "13-5-constructors",
       "path": "docs/13-5-constructors.md"
     },
     {
+      "basename": "aggregate-initialization",
+      "path": "docs/aggregate-initialization.md"
+    },
+    {
       "basename": "13-4-access-functions-and-encapsulation",
       "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    },
+    {
+      "basename": "10-7-default-member-initialization",
+      "path": "docs/10-7-default-member-initialization.md"
+    },
+    {
+      "basename": "10-6-struct-aggregate-initialization",
+      "path": "docs/10-6-struct-aggregate-initialization.md"
     },
     {
       "basename": "13-3-public-vs-private-access-specifiers",
@@ -187,18 +199,6 @@
     {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
       "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
-    },
-    {
-      "basename": "9-11-Return-by-reference-and-return-by-address",
-      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
-    },
-    {
-      "basename": "9-10-Pass-by-address-part-2",
-      "path": "docs/9-10-Pass-by-address-part-2.md"
-    },
-    {
-      "basename": "9-9-Pass-by-address",
-      "path": "docs/9-9-Pass-by-address.md"
     }
   ],
   "omittedPaths": [],

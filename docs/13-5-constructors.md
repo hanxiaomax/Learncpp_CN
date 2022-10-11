@@ -10,7 +10,7 @@ tags:
 ---
 
 
-如果一个类或者结构体的成员都是[[public-member|公有成员]]，则可以使用[[aggregate initialization|聚合初始化]]，通过[[list-initialization|列表初始化]]对类进行初始化：
+如果一个类或者结构体的成员都是[[public-member|公有成员]]，则可以使用[[aggregate-initialization|聚合初始化]]，通过[[list-initialization|列表初始化]]对类进行初始化：
 
 ```cpp
 class Foo
@@ -28,20 +28,20 @@ int main()
 }
 ```
 
-However, as soon as we make any member variables private, we’re no longer able to initialize classes in this way. It does make sense: if you can’t directly access a variable (because it’s private), you shouldn’t be able to directly initialize it.
+但是，一旦将其中的任何成员变量设为[[private-member|私有成员]]，就不能再能够以这种方式初始化类了。道理很简单：如果你不能直接访问一个变量(因为它是私有的)，你就不应被允许直接初始化它。
 
-So then how do we initialize a class with private member variables? The answer is through constructors.
+那么，应该如何初始化包含私有成员的类呢？答案是通过构造函数。
 
 ## 构造函数
 
-A **constructor** is a special kind of class member function that is automatically called when an object of that class is created. Constructors are typically used to initialize member variables of the class to appropriate user-provided values, or to do any setup steps necessary for the class to be used (e.g. open a file or database).
+[[constructor|构造函数]] 是一类特殊的函数，它会在对象创建时被自动调用。构造函数通常用于使用用户提供值来初始化类的成员变量，或者用于为对象的使用做好相应的准备工作（例如：打开文件或数据库）。
+ 
+构造函数执行后，对象应该处于一种被良好定义、可以使用的状态。
 
-After a constructor executes, the object should be in a well-defined, usable state.
+和普通的成员函数不同，构造函数的命名必须遵循以下原则：
 
-Unlike normal member functions, constructors have specific rules for how they must be named:
-
-1.  Constructors must have the same name as the class (with the same capitalization)
-2.  Constructors have no return type (not even void)
+1. 构造函数的名字必须和类名完全一致（包括大小写）；
+2. 构造函数不返回任何类型（甚至不返回 `void` ） 
 
 ## 默认构造函数和默认初始化
 

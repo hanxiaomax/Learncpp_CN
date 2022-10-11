@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/aggregate initialization.md",
+                "file": "docs/13-5-constructors.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/aggregate initialization.md"
+                "file": "docs/13-5-constructors.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/aggregate initialization.md",
+                "file": "docs/13-5-constructors.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,20 +147,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "active": "3528b3c7577d9636",
   "lastOpenFiles": [
+    "docs/aggregate-initialization.md",
     "docs/13-5-constructors.md",
-    "docs/aggregate initialization.md",
     "docs/13-4-access-functions-and-encapsulation.md",
+    "docs/aggregate initialization.md",
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/10-7-default-member-initialization.md",
+    "docs/10-6-struct-aggregate-initialization.md",
     "docs/13-3-public-vs-private-access-specifiers.md",
     "docs/13-2-classes-and-class-members.md",
-    "docs/MOC.md",
-    "docs/13-1-welcome-to-object-oriented-programming.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/9-7-Null-pointers.md",
-    "docs/9-6-Introduction-to-pointers.md"
+    "docs/MOC.md"
   ]
 }
