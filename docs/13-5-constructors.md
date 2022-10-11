@@ -110,9 +110,9 @@ Fraction frac; // Default-initialization, calls default constructor
 
 比起值初始化，很多程序员更倾向于使用默认初始化。这是因为在使用值初始化时，编译器可能会首先将类成员初始化为0，然后才调用默认构造函数，从效率的角度来讲更低效一些。
 
-不过，使用默认初始也有不好的地方However, favoring default-initialization also comes with a downside: you have to know whether a type will initialize itself, i.e. it is a class-type and all members have an initializer, or there is a default-constructor that initializes all member variables. If you see a defined variable without an initializer, you have to think about whether that’s a mistake or not (depending on what type the object is).
+不过，使用默认初始也有不好的地方：你必须知道类是否对会初始化自身。例如，该类的所有成员是不是都具有初始化值，或者是否存在能够对所有成员进行初始化的默认构造函数。 如果你已经知道有个别变量不具有初始化值，那你就要慎重考虑，此时使用默认初始化是否会带来问题。
 
-For example, the following code causes undefined behavior
+例如，下面代码会导致[[undefined-behavior|未定义行为]]。
 
 ```cpp
 #include <iostream>
@@ -142,16 +142,15 @@ int main()
 }
 ```
 
-COPY
+虽然这个类的确初始化了类中的所有成员，但要确保项目代码中的所有类都这样做了是很困难的。
 
-While you might be able to initialize all members in the classes you write, it’s not feasible to read the definitions of all classes you use to make sure they do the same.
+优先对类对象进行值初始化是简单、一致的，并且可以帮助您捕获错误，特别是在学习时。
 
-Favoring value initialization for class objects is simple, consistent, and can help you catch errors, particularly while you are learning.
 
-Best practice
+!!! success "最佳实践"
 
-Favor value-initialization over default-initialization for class objects.
-
+	初始化对象时，推荐使用值初始化而非默认初始化
+	
 ## 使用带参数的函数进行直接初始化和列表初始化
 
 While the default constructor is great for ensuring our classes are initialized with reasonable default values, often times we want instances of our class to have specific values that we provide. Fortunately, constructors can also be declared with parameters. Here is an example of a constructor that takes two integer parameters that are used to initialize the numerator and denominator:
