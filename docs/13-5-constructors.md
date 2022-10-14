@@ -385,7 +385,7 @@ int main()
 
 如果你的类具有其他构造函数，但是你需要类支持默认初始化，则可以为构造函数的每个形参添加默认值，或者显式地定义一个默认构造函数。
 
-当然，还有第三种方式：你可以使用`default`关键字There’s a third option as well: you can use the default keyword to tell the compiler to create a default constructor for us anyway:
+当然，还有第三种方式：你可以使用`default`关键字告知编译器生成一个默认构造函数：
 
 ```cpp
 class Date
@@ -396,11 +396,11 @@ private:
     int m_day{ 1 };
 
 public:
-    // Tell the compiler to create a default constructor, even if
-    // there are other user-provided constructors.
+    // 要求编译器生成一个默认构造函数，即使
+    // 用户已经提供了构造函数
     Date() = default;
 
-    Date(int year, int month, int day) // normal non-default constructor
+    Date(int year, int month, int day) // 普通非默认构造函数
     {
         m_year = year;
         m_month = month;
@@ -417,19 +417,19 @@ int main()
 }
 ```
 
-COPY
 
-Using `= default` is longer than writing a constructor with an empty body, but expresses better what your intentions are (To create a default constructor), and it’s safer, because it can zero-initialize members even if they have not been initialized at their declaration. `= default` also works for other special constructors, which we’ll talk about in the future.
+写 `default` 比写一个空的函数体更费事，但是它能够更好地表明你的意图（创建默认构造函数），而且也更安全，因为它可以对没有初始化值的函数进行0初始化。`default`对于其他特殊构造函数也有效，等我们遇到时再讨论。
+
 
 !!! success "最佳实践"
 
-	If you have constructors in your `class` and need a default constructor that does nothing (e.g. because all your members are initialized using non-static member initialization), use `= default`.
+	如果类已经拥有构造函数，但你仍然需要一个什么都不做的构造函数(例如，所有成员函数都通过非静态成员函数初始化进行了初始化)，可以使用 = default。
 
 ## 包含类类型成员的类
 
-A `class` may contain other class objects as member variables. By default, when the outer class is constructed, the member variables will have their default constructors called. This happens before the body of the constructor executes.
+`class` 中的成员变量，也可以是其他类对象。==默认情况下，当外层对象被初始化时，内部的这些对象其默认构造函数也会被调用，而且会在执行构造函数的函数体之前发生。==
 
-This can be demonstrated thusly:
+举例来说：
 
 ```cpp
 #include <iostream>
@@ -443,7 +443,7 @@ public:
 class B
 {
 private:
-    A m_a; // B contains A as a member variable
+    A m_a; // A 是 B 的一个成员
 
 public:
     B() { std::cout << "B\n"; }
@@ -463,13 +463,14 @@ A
 B
 ```
 
-When variable `b` is constructed, the `B()` constructor is called. Before the body of the constructor executes, `m_a` is initialized, calling the `class A`default constructor. This prints “A”. Then control returns back to the `B` constructor, and the body of the B constructor executes.
+当变量 `b` 被构建时，构造函数 `B()` 会被调用，在`B()`的函数体执行前，`m_a` 就开始初始化了，此时会调用 A 的默认构造函数并打印 "A"。然后控制权返还给构造函数 `B()`并执行其函数体。
 
-This makes sense when you think about it, as the `B()` constructor may want to use variable `m_a` -- so `m_a` had better be initialized first!
+这么做是有道理的，因为构造`B()`是有可能会去使用成员变量`m_a`的，所以它应该首先被初始化。
 
-The difference to the last example in the previous section is that `m_a` is a `class`-type. `class`-type members get initialized even if we don’t explicitly initialize them.
+上面最后一个例子中，`m_a` 是一个class类型的变量。==对于class类型的对象，即使我们没有显式地初始化它们，它也会被初始化。==
 
-In the next lesson, we’ll talk about how to initialize these class member variables.
+在下节课中，我们会讨论如何初始化这些class类型的成员变量。
+
 
 ## 构造函数小结
 
