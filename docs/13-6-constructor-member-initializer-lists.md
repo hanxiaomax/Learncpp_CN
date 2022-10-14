@@ -10,7 +10,7 @@ tags:
 - initialization
 ---
 
-In the previous lesson, for simplicity, we initialized our class member data in the constructor using the assignment operator. For example:
+在上一节课中，为了简化问题，我们在构造函数中使用赋值运算符对成员变量进行初始化。例如：
 
 ```cpp
 class Something
@@ -23,7 +23,7 @@ private:
 public:
     Something()
     {
-        // These are all assignments, not initializations
+        // 都属于赋值，而不是初始化
         m_value1 = 1;
         m_value2 = 2.2;
         m_value3 = 'c';
@@ -31,9 +31,7 @@ public:
 };
 ```
 
-COPY
-
-When the class’s constructor is executed, m_value1, m_value2, and m_value3 are created. Then the body of the constructor is run, where the member data variables are assigned values. This is similar to the flow of the following code in non-object-oriented C++:
+当构造函数执行时，`m_value1`，`m_value2` 和 `m_value3` 首先被创建。然后执行构造函数的函数体，对成员变量进行赋值。上面的过程和之前的非面向对象程序是非常类似：
 
 ```cpp
 int m_value1 {};
@@ -45,11 +43,9 @@ m_value2 = 2.2;
 m_value3 = 'c';
 ```
 
-COPY
+尽管合乎语法，但是上述代码并不具有良好的编程风格（而且效率相较于初始化是不佳的）。
 
-While this is valid within the syntax of the C++ language, it does not exhibit good style (and may be less efficient than initialization).
-
-However, as you have learned in previous lessons, some types of data (e.g. const and reference variables) must be initialized on the line they are declared. Consider the following example:
+不过，在前面的课程中我们提到过，有些类型的变量（例如const变量或[[lvalue-reference|引用]]）。考虑下面的例子：
 
 ```cpp
 class Something
@@ -60,21 +56,17 @@ private:
 public:
     Something()
     {
-        m_value = 1; // error: const vars can not be assigned to
+        m_value = 1; // 错误: const 变量不能被赋值
     }
 };
 ```
 
-COPY
-
-This produces code similar to the following:
+上述代码等价于下面的代码：
 
 ```cpp
 const int m_value; // error: const vars must be initialized with a value
 m_value = 5; //  error: const vars can not be assigned to
 ```
-
-COPY
 
 Assigning values to const or reference member variables in the body of the constructor is clearly not possible in some cases.
 

@@ -474,17 +474,18 @@ B
 
 ## 构造函数小结
 
-Many new programmers are confused about whether constructors create the objects or not. They do not -- the compiler sets up the memory allocation for the object prior to the constructor call.
+很多新手程序员会有这样的困惑：构造函数会创建对象吗？实际上构造函数并不会创建对象——编译器会在构造函数调用前就为对象分配内存。
 
-Constructors actually serve two purposes.
+构造函数实际上有两个目的：
 
-1.  Constructors determine who is allowed to create an object of the class type. That is, an object of a class can only be created if a matching constructor can be found.
-2.  Constructors can be used to initialize objects. Whether the constructor actually does an initialization is up to the programmer. It’s syntactically valid to have a constructor that does no initialization at all (the constructor still serves the purpose of allowing the object to be created, as per the above).
+1. 构造函数可以决定谁能够创建这种类型的对象。也就是说，只有当能够找到匹配的构造函数时，该类型的对象才能够被创建。
+2. 构造函数可以用于初始化对象。至于构造函数是否会进行实际的初始化工作，这取决于程序员。构造函数不进行任何的初始化工作，从语法层面来讲也是合法的。
 
-However, much like it is a best practice to initialize all local variables, it’s also a best practice to initialize all member variables on creation of the object. This can be done via a constructor or via non-static member initialization.
+然而，就像初始化所有局部变量是最佳实践一样，在创建对象时初始化所有成员变量也是最佳实践。这可以通过构造函数或非静态成员初始化来完成。
+
 
 !!! success "最佳实践"
 
-	Always initialize all member variables in your objects.
+	永远要记得初始化对象的全部成员变量。
 
-Finally, constructors are only intended to be used for initialization when the object is created. You should not try to call a constructor to re-initialize an existing object. While it may compile, the results will not be what you intended (instead, the compiler will create a temporary object and then discard it).
+最后，构造函数仅用于创建对象时的初始化。不要使用构造函数来重新初始化现有对象。虽然可以编译，但结果不会是你想要的(相反，编译器将创建一个临时对象，然后丢弃它)。

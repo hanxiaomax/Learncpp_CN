@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "13-6-constructor-member-initializer-lists",
+      "path": "docs/13-6-constructor-member-initializer-lists.md"
+    },
+    {
       "basename": "13-5-constructors",
       "path": "docs/13-5-constructors.md"
     },
@@ -103,10 +107,6 @@
     {
       "basename": "13-7-non-static-member-initialization",
       "path": "docs/13-7-non-static-member-initialization.md"
-    },
-    {
-      "basename": "13-6-constructor-member-initializer-lists",
-      "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
     {
       "basename": "member-initializer-list",
