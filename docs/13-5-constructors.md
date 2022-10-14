@@ -265,7 +265,7 @@ Fraction fiveThirds{ 5, 3 }; // will call Fraction(5, 3)
 
 定义和调用具有默认参数函数的规则 (参见：[[8-12-Default-arguments|8.12 - 默认参数]]) 同样也适用于构造函数。简单复习一下，在定义具有默认参数的构造函数时，默认参数必须在非默认参数的后面。也就是说，非默认参数不能被定义在默认参数后。
 
-This may produce unexpected results for classes that have multiple default parameters of different types. Consider:
+对于具有多个默认参数，且参数类型不同的构造函数，使用不当会带来出乎意料的错误。考虑下面代码：
 
 ```cpp
 class Something
@@ -283,17 +283,16 @@ int main()
 	Something s2 { 1 }; // calls Something(int, double)
 	Something s3 {}; // calls Something(int, double)
 
-	Something s4 { 2.4 }; // will not compile, as there's no constructor to handle Something(double)
+	Something s4 { 2.4 }; // 无法编译，因为没有能匹配的构造函数 Something(double)
 
 	return 0;
 }
 ```
 
-COPY
 
-With `s4`, we’ve attempted to construct a `Something` by providing only a `double`. This won’t compile, as the rules for how arguments match with default parameters won’t allow us to skip a non-rightmost parameter (in this case, the leftmost int parameter).
+对于 `s4`，我们希望使用一个`double`类型的参数构造 `Something`。上面程序是无法编译的，因为规则不允许我们跳过默认参数前面的默认参数为后面的默认参数提供具体值（这里即最左边的`int`类型的[[parameters|形参]]不能被跳过）。
 
-If we want to be able to construct a `Something` with only a `double`, we’ll need to add a second (non-default) constructor:
+如果想基于一个`double`类型的变量构造`Something`，则必须再定义一个（非默认）构造函数：
 
 ```cpp
 class Something
@@ -321,14 +320,12 @@ int main()
 }
 ```
 
-COPY
 
 ## 隐式生成的默认构造函数
 
+如果你的类没有定义构造函数，则C++可以自动为你生成一个默认构造函数。这个构造函数被称为[[implicit-constructor|隐式构造函数]]。
 
-If your class has no constructors, C++ will automatically generate a public default constructor for you. This is sometimes called an **implicit constructor** (or implicitly generated constructor).
-
-Consider the following class:
+考虑下面的类定义：
 
 ```cpp
 class Date
@@ -338,7 +335,8 @@ private:
     int m_month{ 1 };
     int m_day{ 1 };
 
-    // No user-provided constructors, the compiler generates a default constructor.
+    // 用户没有提供构造函数，编译器自动生成默认构造函数
+
 };
 
 int main()
@@ -349,13 +347,13 @@ int main()
 }
 ```
 
-COPY
 
-The Date class has no constructors. Therefore, the compiler will generate a default constructor that allows us to create a `Date` object without arguments.
+`Date` 类没有构造函数，因此编译器会为其创建一个默认构造函数。用户可以通过该隐式构造函数，在不提供参数的情况下创建`Date`对象。
 
-When the generated default constructor is called, members will still be initialized if they have non-static member initializers (covered in lesson [[10-7-default-member-initialization|10.7 - 默认成员初始化]] 和 [[13-7-non-static-member-initialization|13.7 - 非静态成员初始化列表]])。
+当隐式构造函数被调用时，具有非静态成员初始化值的成员会被初始化(参考：[[10-7-default-member-initialization|10.7 - 默认成员初始化]] 和 [[13-7-non-static-member-initialization|13.7 - 非静态成员初始化列表]])。
 
-If your class has any other constructors, the implicitly generated constructor will not be provided. For example:
+只要你的类中有构造函数，编译器就不会为你创建默认构造函数，例如：
+
 
 ```cpp
 class Date
@@ -385,11 +383,9 @@ int main()
 }
 ```
 
-COPY
+如果你的类具有其他构造函数，但是你需要类支持默认初始化，则可以为构造函数的每个形参添加默认值，或者显式地定义一个默认构造函数。
 
-If your class has another constructor and you want to allow default construction, you can either add default arguments to every parameter of a constructor with parameters, or explicitly define a default constructor.
-
-There’s a third option as well: you can use the default keyword to tell the compiler to create a default constructor for us anyway:
+当然，还有第三种方式：你可以使用`default`关键字There’s a third option as well: you can use the default keyword to tell the compiler to create a default constructor for us anyway:
 
 ```cpp
 class Date

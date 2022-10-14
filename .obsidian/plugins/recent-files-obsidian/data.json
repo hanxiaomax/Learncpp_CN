@@ -5,6 +5,10 @@
       "path": "docs/13-5-constructors.md"
     },
     {
+      "basename": "implicit-constructor",
+      "path": "docs/implicit-constructor.md"
+    },
+    {
       "basename": "copy-initialization",
       "path": "docs/copy-initialization.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "member-access-operator",
       "path": "docs/member-access-operator.md"
-    },
-    {
-      "basename": "member-types",
-      "path": "docs/member-types.md"
     }
   ],
   "omittedPaths": [],

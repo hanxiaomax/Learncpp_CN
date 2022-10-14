@@ -155,15 +155,15 @@
   },
   "active": "4e7fdffaa8b3c7a2",
   "lastOpenFiles": [
-    "docs/copy-initialization.md",
+    "docs/implicit-constructor.md",
     "docs/13-5-constructors.md",
+    "docs/copy-initialization.md",
     "docs/list-initialization.md",
     "docs/direct-initialization.md",
     "docs/MOC.md",
     "docs/10-4-scoped-enumerations-enum-classes.md",
     "docs/default-initialization.md",
     "docs/default-constructor.md",
-    "docs/aggregate-initialization.md",
-    "docs/13-4-access-functions-and-encapsulation.md"
+    "docs/aggregate-initialization.md"
   ]
 }
