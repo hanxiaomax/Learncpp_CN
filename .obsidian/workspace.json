@@ -34,9 +34,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "a427a485166195b8",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.0.0"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -149,7 +159,10 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "3528b3c7577d9636",
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "a427a485166195b8",
   "lastOpenFiles": [
     "docs/default-initialization.md",
     "docs/13-5-constructors.md",
