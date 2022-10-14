@@ -1,6 +1,6 @@
 ---
-title: 13.7 - 非静态成员初始化列表
-alias: 13.7 - 非静态成员初始化列表
+title: 13.7 - 非静态成员初始化
+alias: 13.7 - 非静态成员初始化
 origin: /non-static-member-initialization/
 origin_title: "13.7 — Non-static member initialization"
 time: 2022-9-16
@@ -10,9 +10,9 @@ tags:
 - initialization
 ---
 
-When writing a class that has multiple constructors (which is most of them), having to specify default values for all members in each constructor results in redundant code. If you update the default value for a member, you need to touch each constructor.
+当编写具有多个构造函数(即大多数构造函数)的类时，在每个构造函数中都为所有成员指定默认值会产生冗余代码，而且如果更新成员的默认值，则需要修改所有的构造函数。
 
-It’s possible to give normal class member variables (those that don’t use the static keyword) a default initialization value directly:
+可以直接给普通的类成员变量(那些不使用static关键字的变量)一个默认初始化值：
 
 ```cpp
 #include <iostream>
@@ -20,8 +20,8 @@ It’s possible to give normal class member variables (those that don’t use th
 class Rectangle
 {
 private:
-    double m_length{ 1.0 }; // m_length has a default value of 1.0
-    double m_width{ 1.0 }; // m_width has a default value of 1.0
+    double m_length{ 1.0 }; // m_length 具有默认值 1.0
+    double m_width{ 1.0 }; // m_width 具有默认值 1.0
 
 public:
     void print()
@@ -39,17 +39,15 @@ int main()
 }
 ```
 
-COPY
-
-This program produces the result:
+程序输出结果：
 
 ```
 length: 1.0, width: 1.0
 ```
 
-Non-static member initialization (also called in-class member initializers) provides default values for your member variables that your constructors will use if the constructors do not provide initialization values for the members themselves (via the member initialization list).
+非静态成员初始化(也称为类内成员初始化)为成员变量提供默认值，如果构造函数不为成员本身提供初始化值(通过成员初始化列表)，则构造函数将使用这些默认值。
 
-However, note that constructors still determine what kind of objects may be created. Consider the following case:
+不过，决定对象创建的仍然是构造函数。考虑下面的例子：
 
 ```cpp
 #include <iostream>
@@ -62,13 +60,13 @@ private:
 
 public:
 
-    // note: No default constructor provided in this example
+    // 注意：没有默认构造函数
 
     Rectangle(double length, double width)
         : m_length{ length },
           m_width{ width }
     {
-        // m_length and m_width are initialized by the constructor (the default values aren't used)
+        // m_length 和 m_width 会被构造函数初始化（不会使用它们的默认值）
     }
 
     void print()
@@ -80,17 +78,15 @@ public:
 
 int main()
 {
-    Rectangle x{}; // will not compile, no default constructor exists, even though members have default initialization values
+    Rectangle x{}; // 无法编译，因为不存在默认构造函数，即使成员具有默认值
 
     return 0;
 }
 ```
 
-COPY
+尽管我们为所有成员提供了默认值，但由于没有提供默认构造函数，因此无法创建不带参数的 Rectangle 对象。
 
-Even though we’ve provided default values for all members, no default constructor has been provided, so we are unable to create Rectangle objects with no arguments.
-
-If a default initialization value is provided and the constructor initializes the member via the member initializer list, the member initializer list will take precedence. The following example shows this:
+如果提供了默认初始化值，且构造函数通过成员初始化列表初始化成员，则优先使用成员初始化列表。下面的例子说明了这一点：
 
 ```cpp
 #include <iostream>
@@ -107,14 +103,14 @@ public:
         : m_length{ length },
           m_width{ width }
     {
-        // m_length and m_width are initialized by the constructor (the default values aren't used)
+        // m_length 和 m_width 会被构造函数初始化（不会使用它们的默认值）
     }
 
     Rectangle(double length)
         : m_length{ length }
     {
-        // m_length is initialized by the constructor.
-        // m_width's default value (1.0) is used.
+        // m_length 被构造函数初始化
+        // m_width 则使用默认值 1.0
     }
 
     void print()
@@ -136,23 +132,19 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
-
 ```
 length: 2.0, width: 3.0
 length: 4.0, width: 1.0
 ```
 
-Note that initializing members using non-static member initialization requires using either an equals sign, or a brace (uniform) initializer -- the parenthesis initialization form doesn’t work here:
+注意，使用非静态成员初始化来初始化成员需要使用等号或大括号(统一)初始化式——**圆括号初始化形式**在这里不起作用:
 
 ```cpp
 class A
 {
-    int m_a = 1;  // ok (copy initialization)
-    int m_b{ 2 }; // ok (brace initialization)
-    int m_c(3);   // doesn't work (parenthesis initialization)
+    int m_a = 1;  // ok (拷贝初始化)
+    int m_b{ 2 }; // ok (大括号初始化)
+    int m_c(3);   // 无效 (圆括号初始化)
 };
 ```
 
@@ -160,4 +152,4 @@ COPY
 
 !!! note "法则"
 
-	Favor use of non-static member initialization to give default values for your member variables.
+	推荐使用非静态成员初始化来为成员变量提供默认值。

@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "13-8-overlapping-and-delegating-constructors",
+      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
+    },
+    {
+      "basename": "13-7-non-static-member-initialization",
+      "path": "docs/13-7-non-static-member-initialization.md"
+    },
+    {
       "basename": "13-6-constructor-member-initializer-lists",
       "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
@@ -115,14 +123,6 @@
     {
       "basename": "destructor",
       "path": "docs/destructor.md"
-    },
-    {
-      "basename": "13-8-overlapping-and-delegating-constructors",
-      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
-    },
-    {
-      "basename": "13-7-non-static-member-initialization",
-      "path": "docs/13-7-non-static-member-initialization.md"
     },
     {
       "basename": "value-initialization",

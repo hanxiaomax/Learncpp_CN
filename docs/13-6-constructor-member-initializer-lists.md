@@ -406,12 +406,10 @@ public:
 
 为了取得最佳的效果，请遵循以下建议：
 
-1. 不要初始化成员变量，使它们依赖于先初始化的其他成员变量(换句话说，确保即使初始化顺序不同，也能正确初始化成员变量)。
-2. 按照在类中声明变量的相同顺序初始化初始化列表中的变量。只要遵循了前面的建议，这不是严格要求的，但是如果您不这样做，并且您打开了所有的警告，编译器可能会给您一个警告。
+1. 初始化成员变量，不要使它们依赖于其他成员变量的初始化(换句话说，确保即使初始化顺序不同，也能正确初始化成员变量)。
+2. 按照在类中声明变量的相同顺序编写初始化列表。只要遵循了前面的建议，这不是严格要求的，但是如果你不这样做，并且打开了所有的警告，编译器可能会产生警告。
 
-4.  Don’t initialize member variables in such a way that they are dependent upon other member variables being initialized first (in other words, ensure your member variables will properly initialize even if the initialization ordering is different).
-5.  Initialize variables in the initializer list in the same order in which they are declared in your class. This isn’t strictly required so long as the prior recommendation has been followed, but your compiler may give you a warning if you don’t do so and you have all warnings turned on.
 
 ## 小结
 
-Member initializer lists allow us to initialize our members rather than assign values to them. This is the only way to initialize members that require values upon initialization, such as const or reference members, and it can be more performant than assigning values in the body of the constructor. Member initializer lists work both with fundamental types and members that are classes themselves.
+成员初始化列表对类成员进行初始化，而不是为它们赋值。这是初始化某些类型变量的(如const或reference成员)的唯一方法，而且它比在构造函数体中赋值性能更好。成员初始化器列表既适用于基本类型，也适用于作为类本身的成员。
