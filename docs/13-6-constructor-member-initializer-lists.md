@@ -197,11 +197,11 @@ Something(1, 2.2, c)
 
 ## 初始化 const 类型成员变量
 
-类可以包含 const 类型的成员变量。const 成员变量和一般的 const 变量没什么区别——它们都必须被初始化，初始化后 can contain const member variables. Const member variables act just like normal const variables -- they must be initialized, and then their values can’t be changed thereafter.
+类可以包含 const 类型的成员变量。const 成员变量和一般的 const 变量没什么区别——它们都必须被初始化，初始化后其值将不能被改变。
 
-We can initialize a const member using the constructor member initialization list (just like a non-const member), and the initialization value can be either constant or non-constant.
+我们可以使用构造函数的初始化列表对 const 类型的变量进行初始化（和非const成员一样），而且初始化值可以是常数也可以不是。
 
-Here’s an example of a class that has a const member variable. We use the constructor’s member initialization list to initialize the const member with the non-const value that the user entered.
+下例中的类，包含一个 const 类型的变量。我们使用构造函数的成员初始化列表对其进行初始化（使用用户提供的非const值）。
 
 ```cpp
 #include <iostream>
@@ -235,20 +235,21 @@ int main()
 }
 ```
 
-COPY
 
-Here’s the output from one run of this program:
+程序的输出结果：
 
+```
 Enter an integer: 4
 Something(4)
+```
 
 !!! note "法则"
 
-	Const member variables must be initialized.
+	Const 成员变量必须被初始化。
 
-## 使用成员初始化列表初始化数组
+## 使用成员初始化列表初始化数组类型成员
 
-Consider a class with an array member:
+下面例子中的类包含一个数组类型的成员：
 
 ```cpp
 class Something
@@ -259,9 +260,7 @@ private:
 };
 ```
 
-COPY
-
-Prior to C++11, you can only zero initialize an array member via a member initialization list:
+在 C++11 之前，你只能通过成员初始化列表，对数组成员进行0初始化：
 
 ```cpp
 class Something
@@ -277,9 +276,7 @@ public:
 };
 ```
 
-COPY
-
-However, since C++11, you can fully initialize a member array using uniform initialization:
+不过，从C++11开始，你可以使用[[uniform-initialization|统一初始化]]对数组成员进行初始化了：
 
 ```cpp
 class Something
@@ -295,12 +292,11 @@ public:
 };
 ```
 
-COPY
 
 ## 初始化类类型的成员变量
 
+成员初始化列表也可用于类类型成员变量的初始化：
 
-A member initialization list can also be used to initialize members that are classes.
 
 ```cpp
 #include <iostream>
@@ -330,20 +326,21 @@ int main()
 }
 ```
 
-COPY
+输出结果：
 
-This prints:
-
+```
 A 4
 B 5
+```
 
-When variable b is constructed, the B(int) constructor is called with value 5. Before the body of the constructor executes, m_a is initialized, calling the A(int) constructor with value 4. This prints “A 4”. Then control returns back to the B constructor, and the body of the B constructor executes, printing “B 5”.
+当构造变量b时，用值5调用 `B(int)`构造函数。在构造函数的函数体执行之前，`m_a` 被初始化，调用值为4的`A(int)`构造函数，打印出“A 4”。然后控制返回到B构造函数，执行B构造函数的主体，打印“B 5”。
+
 
 ## 初始化列表排版
 
-C++ gives you a lot of flexibility in how to format your initializer lists, and it’s really up to you how you’d like to proceed. But here are some recommendations:
+C++ 允许程序员灵活地排版初始化值列表。虽然你也可按照自己的喜好排版，但是我们推荐以下的方式：
 
-If the initializer list fits on the same line as the function name, then it’s fine to put everything on one line:
+如果函数名同一行中可以放得下初始化值列表，则将它们都放在这一行：
 
 ```cpp
 class Something
@@ -360,9 +357,7 @@ public:
 };
 ```
 
-COPY
-
-If the initializer list doesn’t fit on the same line as the function name, then it should go indented on the next line.
+如果放不下，则在下一行中缩进放置。
 
 ```cpp
 class Something
@@ -373,17 +368,15 @@ private:
     char m_value3;
 
 public:
-    Something(int value1, double value2, char value3='c') // this line already has a lot of stuff on it
-        : m_value1{ value1 }, m_value2{ value2 }, m_value3{ value3 } // so we can put everything indented on next line
+    Something(int value1, double value2, char value3='c') // 函数名这一行已经够长了
+        : m_value1{ value1 }, m_value2{ value2 }, m_value3{ value3 } // 所以将初始化列表放在下一行
     {
     }
 
 };
 ```
 
-COPY
-
-If all of the initializers don’t fit on a single line (or the initializers are non-trivial), then you can space them out, one per line:
+如果这样也不能将初始化值列表放在一行，则通过空格排版，每行一个初始化值：
 
 ```cpp
 class Something
@@ -406,16 +399,18 @@ public:
 };
 ```
 
-COPY
 
 ## 初始化列表的顺序
 
-Perhaps surprisingly, variables in the initializer list are not initialized in the order that they are specified in the initializer list. Instead, they are initialized in the order in which they are declared in the class.
+令人惊讶的是，初始化列表中的变量并不会按照它们在初始化列表中指定的顺序初始化。实际上，它们将按照在变量在类中声明的顺序进行初始化。
 
-For best results, the following recommendations should be observed:
+为了取得最佳的效果，请遵循以下建议：
 
-1.  Don’t initialize member variables in such a way that they are dependent upon other member variables being initialized first (in other words, ensure your member variables will properly initialize even if the initialization ordering is different).
-2.  Initialize variables in the initializer list in the same order in which they are declared in your class. This isn’t strictly required so long as the prior recommendation has been followed, but your compiler may give you a warning if you don’t do so and you have all warnings turned on.
+1. 不要初始化成员变量，使它们依赖于先初始化的其他成员变量(换句话说，确保即使初始化顺序不同，也能正确初始化成员变量)。
+2. 按照在类中声明变量的相同顺序初始化初始化列表中的变量。只要遵循了前面的建议，这不是严格要求的，但是如果您不这样做，并且您打开了所有的警告，编译器可能会给您一个警告。
+
+4.  Don’t initialize member variables in such a way that they are dependent upon other member variables being initialized first (in other words, ensure your member variables will properly initialize even if the initialization ordering is different).
+5.  Initialize variables in the initializer list in the same order in which they are declared in your class. This isn’t strictly required so long as the prior recommendation has been followed, but your compiler may give you a warning if you don’t do so and you have all warnings turned on.
 
 ## 小结
 
