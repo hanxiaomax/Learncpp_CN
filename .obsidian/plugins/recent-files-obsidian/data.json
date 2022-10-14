@@ -5,6 +5,26 @@
       "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
     {
+      "basename": "member-initializer-list",
+      "path": "docs/member-initializer-list.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
+    },
+    {
+      "basename": "括号初始化",
+      "path": "docs/括号初始化.md"
+    },
+    {
+      "basename": "uniform-initialization",
+      "path": "docs/uniform-initialization.md"
+    },
+    {
       "basename": "13-5-constructors",
       "path": "docs/13-5-constructors.md"
     },
@@ -15,10 +35,6 @@
     {
       "basename": "copy-initialization",
       "path": "docs/copy-initialization.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
     },
     {
       "basename": "direct-initialization",
@@ -109,10 +125,6 @@
       "path": "docs/13-7-non-static-member-initialization.md"
     },
     {
-      "basename": "member-initializer-list",
-      "path": "docs/member-initializer-list.md"
-    },
-    {
       "basename": "value-initialization",
       "path": "docs/value-initialization.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "2-10-Introduction-to-the-preprocessor",
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
-    },
-    {
-      "basename": "2-9-Naming-collisions-and-an-introduction-to-namespaces",
-      "path": "docs/2-9-Naming-collisions-and-an-introduction-to-namespaces.md"
-    },
-    {
-      "basename": "namespace",
-      "path": "docs/namespace.md"
-    },
-    {
-      "basename": "member-access-operator",
-      "path": "docs/member-access-operator.md"
     }
   ],
   "omittedPaths": [],

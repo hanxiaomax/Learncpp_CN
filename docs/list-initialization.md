@@ -8,3 +8,5 @@ tags:
 - list-initialization
 - initialization
 ---
+
+和[[uniform-initialization|统一初始化]]、[[括号初始化]] 是一回事

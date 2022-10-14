@@ -21,7 +21,7 @@ int y, z; // define two integer variables, named y and z
 
 ## 变量赋值
 
-变量创建完毕后，你可以使用运算符 `=` 为其赋值（在另外一个单独的语句中），这个操作称为拷贝赋值（或赋值）。
+变量创建完毕后，你可以使用运算符 = 为其赋值（在另外一个单独的语句中），这个操作称为拷贝赋值（或赋值）。
 
 ```cpp
 int width; // define an integer variable named width
@@ -30,7 +30,7 @@ width = 5; // copy assignment of value 5 into variable width
 // variable width now has value 5
 ```
 
-拷贝赋值名字的来历，源于上述操作将赋值运算符右侧的值拷贝后赋值给了左侧的变量。`=` 称为赋值运算符。
+拷贝赋值名字的来历，源于上述操作将赋值运算符右侧的值拷贝后赋值给了左侧的变量。= 称为赋值运算符。
 
 下面的例子中，我们先后两次使用了赋值操作。
 
@@ -79,7 +79,7 @@ int d { 7 }; // 在花括号中放置初始化值
 
 ## 默认初始化
 
-在不提供任何初始化值的时候（例如上面例子中的变量 `a`），将进行默认初始化。在大多数情况下，默认初始化会导致变量存放一个[[不确定值(indeterminate)]]。相关内容我们会在[[1-6-Uninitialized-variables-and-undefined-behavior]]中进行介绍。
+在不提供任何初始化值的时候（例如上面例子中的变量 `a`），将进行默认初始化。在大多数情况下，默认初始化会导致变量存放一个[[不确定值(indeterminate)]]。相关内容我们会在[[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]中进行介绍。
 
 ## 拷贝初始化
 
@@ -105,7 +105,7 @@ int width( 5 ); // direct initialization of value 5 into variable width
 
 ## 括号初始化
 
-不幸的是，直接初始化并不适用于所有类型（例如初始化一个包含一个列表的对象）。为了提供更为一致的初始化机制，C++ 支持了基于花括号的[[括号初始化]]（也称为[[统一初始化]]或[[list-initialization|列表初始化]]）。
+不幸的是，直接初始化并不适用于所有类型（例如初始化一个包含一个列表的对象）。为了提供更为一致的初始化机制，C++ 支持了基于花括号的[[括号初始化]]（也称为[[uniform-initialization|统一初始化]]或[[list-initialization|列表初始化]]）。
 
 括号初始化有三种形式。
 
@@ -166,10 +166,11 @@ int width {}; // zero initialization to value 0
 
 关于这个话题的讨论，Bjarne Stroustrup (C++之父) 和 Herb Sutter (C++ 大师) 提供了他们的见解，详细内容请参考 [这里](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#es20-always-initialize-an-object) .
 
-我们会在[[1-6-Uninitialized-variables-and-undefined-behavior]]中详细讨论当我们试图使用一个没有被”恰当定义“的变量时会发生什么。
+我们会在[[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]中详细讨论当我们试图使用一个没有被”恰当定义“的变量时会发生什么。
 
-> [!INFO] Q&A
-> 在创建变量时对其进行初始化。
+!!! question Q&A
+	
+	在创建变量时对其进行初始化。
 
 ## 初始化多个变量
 

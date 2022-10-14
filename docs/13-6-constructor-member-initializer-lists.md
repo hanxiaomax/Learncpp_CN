@@ -68,13 +68,14 @@ const int m_value; // error: const vars must be initialized with a value
 m_value = 5; //  error: const vars can not be assigned to
 ```
 
-Assigning values to const or reference member variables in the body of the constructor is clearly not possible in some cases.
+在构造函数内部对 const 变量或引用赋值显然不是一个可行的办法。
+
 
 ## 成员初始化列表
 
-To solve this problem, C++ provides a method for initializing class member variables (rather than assigning values to them after they are created) via a[[member-initializer-list|成员初始化列表]] (often called a “member initialization list”). Do not confuse these with the similarly named initializer list that we can use to assign values to arrays.
+为了解决这个问题，C++ 提供了一种对成员变量进行初始化（而不是在创建后赋值）的方法，即使用[[member-initializer-list|成员初始化列表]] 。请不要把成员初始化值列表和用于对数组进行赋值的初始化列表搞混。
 
-In lesson [[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]], you learned that you could initialize variables in three ways: copy, direct, and via uniform initialization.
+在[[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]中我们介绍过，初始化变量的方式有三种：[[copy-initialization|拷贝初始化]]、[[direct-initialization|直接初始化]]和[[uniform-initialization|统一初始化]]。
 
 ```cpp
 int value1 = 1; // copy initialization
@@ -82,11 +83,9 @@ double value2(2.2); // direct initialization
 char value3 {'c'}; // uniform initialization
 ```
 
-COPY
+使用初始化列表进行初始化基本上和[[direct-initialization|直接初始化]]或[[uniform-initialization|统一初始化]]是完全一致的。
 
-Using an initialization list is almost identical to doing direct initialization or uniform initialization.
-
-This is something that is best learned by example. Revisiting our code that does assignments in the constructor body:
+举个例子就更容易理解了。还记得之前为变量赋值的构造函数吗？
 
 ```cpp
 class Something
@@ -99,7 +98,7 @@ private:
 public:
     Something()
     {
-        // These are all assignments, not initializations
+        // 都是赋值，而不是初始化
         m_value1 = 1;
         m_value2 = 2.2;
         m_value3 = 'c';
@@ -107,9 +106,7 @@ public:
 };
 ```
 
-COPY
-
-Now let’s write the same code using an initialization list:
+接下来，重写函数，使用成员初始化值列表来初始化：
 
 ```cpp
 #include <iostream>
@@ -141,19 +138,17 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+输出结果：
 
 ```
 Something(1, 2.2, c)
 ```
 
-The member initializer list is inserted after the constructor parameters. It begins with a colon (:), and then lists each variable to initialize along with the value for that variable separated by a comma.
+成员初始化值列表位于构造函数参数列表后，以冒号`:`开头，后面是一系列变量和它们的初始化值（使用逗号分隔）。
 
-Note that we no longer need to do the assignments in the constructor body, since the initializer list replaces that functionality. Also note that the initializer list does not end in a semicolon.
+注意，函数体内不再需要对变量进行赋值，因为初始化的工作已经由成员初始化值列表完成。同时还需要注意的是，成员初始化值列表后面并没有分号。
 
-Of course, constructors are more useful when we allow the caller to pass in the initialization values:
+当然，如果能够通过构造函数来传递初始化值则会更有用：
 
 ```cpp
 #include <iostream>
@@ -167,7 +162,7 @@ private:
 
 public:
     Something(int value1, double value2, char value3='c')
-        : m_value1{ value1 }, m_value2{ value2 }, m_value3{ value3 } // directly initialize our member variables
+        : m_value1{ value1 }, m_value2{ value2 }, m_value3{ value3 } // 直接初始化成员变量
     {
     // No need for assignment here
     }
@@ -181,29 +176,28 @@ public:
 
 int main()
 {
-    Something something{ 1, 2.2 }; // value1 = 1, value2=2.2, value3 gets default value 'c'
+    Something something{ 1, 2.2 }; // value1 = 1, value2=2.2, value3 使用默认值 'c'
     something.print();
     return 0;
 }
 ```
 
-COPY
-
-This prints:
+输出结果：
 
 ```
 Something(1, 2.2, c)
 ```
 
-Note that you can use default parameters to provide a default value in case the user didn’t pass one in.
+注意，你可以使用默认形参来提供默认值，防止用户没有传递参数。
 
 !!! success "最佳实践"
 
-	Use member initializer lists to initialize your class member variables instead of assignment.
+	使用成员初始化值列表对成员进行初始化而不是依次为其赋值。
+
 
 ## 初始化 const 类型成员变量
 
-Classes can contain const member variables. Const member variables act just like normal const variables -- they must be initialized, and then their values can’t be changed thereafter.
+类可以包含 const 类型的成员变量。const 成员变量和一般的 const 变量没什么区别——它们都必须被初始化，初始化后 can contain const member variables. Const member variables act just like normal const variables -- they must be initialized, and then their values can’t be changed thereafter.
 
 We can initialize a const member using the constructor member initialization list (just like a non-const member), and the initialization value can be either constant or non-constant.
 
