@@ -5,6 +5,18 @@
       "path": "docs/13-5-constructors.md"
     },
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-4-scoped-enumerations-enum-classes",
+      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
+    },
+    {
       "basename": "default-initialization",
       "path": "docs/default-initialization.md"
     },
@@ -39,10 +51,6 @@
     {
       "basename": "13-2-classes-and-class-members",
       "path": "docs/13-2-classes-and-class-members.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "13-1-welcome-to-object-oriented-programming",
@@ -191,14 +199,6 @@
     {
       "basename": "implicit-object",
       "path": "docs/implicit-object.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "docs/翻译约定.md"
-    },
-    {
-      "basename": "polymorphism",
-      "path": "docs/polymorphism.md"
     }
   ],
   "omittedPaths": [],

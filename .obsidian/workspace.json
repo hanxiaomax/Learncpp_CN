@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "3528b3c7577d9636",
+            "id": "4e7fdffaa8b3c7a2",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,19 +34,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "a427a485166195b8",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.0.0"
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -157,22 +147,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "a427a485166195b8",
+  "active": "4e7fdffaa8b3c7a2",
   "lastOpenFiles": [
-    "docs/default-initialization.md",
+    "docs/MOC.md",
+    "docs/10-4-scoped-enumerations-enum-classes.md",
+    "docs/list-initialization.md",
     "docs/13-5-constructors.md",
+    "docs/default-initialization.md",
     "docs/default-constructor.md",
     "docs/aggregate-initialization.md",
     "docs/13-4-access-functions-and-encapsulation.md",
     "docs/aggregate initialization.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
-    "docs/10-7-default-member-initialization.md",
-    "docs/10-6-struct-aggregate-initialization.md",
-    "docs/13-3-public-vs-private-access-specifiers.md"
+    "docs/10-x-Chapter-10-comprehensive-quiz.md"
   ]
 }

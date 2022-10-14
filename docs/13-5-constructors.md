@@ -153,7 +153,8 @@ int main()
 	
 ## 使用带参数的函数进行直接初始化和列表初始化
 
-While the default constructor is great for ensuring our classes are initialized with reasonable default values, often times we want instances of our class to have specific values that we provide. Fortunately, constructors can also be declared with parameters. Here is an example of a constructor that takes two integer parameters that are used to initialize the numerator and denominator:
+尽管默认构造函数可以帮我们确保类成员具有合理的初值，但是更多时候我们还是会需要在[[instantiated|实例化]]时指定一些特殊的值。幸运的是，构造函数是可以被声明为允许接受参数的形式的。下面例子中的构造函数接受两个整型参数分别用于对分子分母进行初始化：
+
 
 ```cpp
 #include <cassert>
@@ -185,34 +186,29 @@ public:
 };
 ```
 
-COPY
 
-Note that we now have two constructors: a default constructor that will be called in the default case, and a second constructor that takes two parameters. These two constructors can coexist peacefully in the same class due to function overloading. In fact, you can define as many constructors as you want, so long as each has a unique signature (number and type of parameters).
+注意，我们现在有两个构造函数：一个默认构造函数（默认情况下调用），另一个构造函数接受两个形参。C++支持[[overload|重载]]，所以这两个构造函数可以在和平共处。事实上，您可以根据需要定义任意数量的构造函数，只要每个构造函数具有惟一的签名(形参的数量和类型)即可。
 
-So how do we use this constructor with parameters? It’s simple! We can use list or direct initialization:
-
-```cpp
-Fraction fiveThirds{ 5, 3 }; // List initialization, calls Fraction(int, int)
-Fraction threeQuarters(3, 4); // Direct initialization, also calls Fraction(int, int)
-```
-
-COPY
-
-As always, we prefer list initialization. We’ll discover reasons (templates and std::initializer_list) to use direct initialization when calling constructors later in the tutorials. There is another special constructor that might make brace initialization do something different, in that case we have to use direct initialization. We’ll talk about these constructors later.
-
-Note that we have given the second parameter of the constructor with parameters a default value, so the following is also legal:
+那么，我们应该如何调用这个具有参数的构造函数呢？很简单，使用[[list-initialization|列表初始化]]即可：
 
 ```cpp
-Fraction six{ 6 }; // calls Fraction(int, int) constructor, second parameter uses default value of 1
+Fraction fiveThirds{ 5, 3 }; // 列表初始化，调用 Fraction(int, int)
+Fraction threeQuarters(3, 4); // 直接初始化，也是调用 Fraction(int, int)
 ```
 
-COPY
+一如既往地，我们更推荐列表初始化。在后面的教程中，我们也会遇到需要使用直接初始化的情况(模板和std::initializer_list)。还有另外一种特殊的构造函数会使用括号初始化（列表初始化）做一些不同的事情，在这种情况下，我们必须使用直接初始化。
 
-Default values for constructors work exactly the same way as with any other functions, so in the above case where we call `six{ 6 }`, the `Fraction(int, int)` function is called with the second parameter defaulted to value 1.
+注意，由于构造函数的第二个[[parameters|形参]]具有默认值，所以下面的调用方式也是合法的:
+
+```cpp
+Fraction six{ 6 }; // 调用 Fraction(int, int) 构造函数，第二个形参会使用默认值1。
+```
+
+构造函数的默认参数和普通函数的默认参数没有什么区别，所以当我们调用 `six{ 6 }` 时，`Fraction(int, int)` 函数会自动使用1作为第二个形参的值。
 
 !!! success "最佳实践"
 
-	Favor brace initialization to initialize class objects.
+	推荐使用括号初始化来初始lie brace initialization to initialize class objects.
 
 ## 使用等于号进行拷贝初始化
 
