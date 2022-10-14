@@ -5,6 +5,10 @@
       "path": "docs/13-8-overlapping-and-delegating-constructors.md"
     },
     {
+      "basename": "delegating-constructors",
+      "path": "docs/delegating-constructors.md"
+    },
+    {
       "basename": "13-7-non-static-member-initialization",
       "path": "docs/13-7-non-static-member-initialization.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "2-x-Chapter-2-summary-and-quiz",
       "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
-    },
-    {
-      "basename": "2-10-Introduction-to-the-preprocessor",
-      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     }
   ],
   "omittedPaths": [],

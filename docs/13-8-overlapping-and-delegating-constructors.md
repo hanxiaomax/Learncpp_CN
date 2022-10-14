@@ -1,6 +1,6 @@
 ---
-title: 13.8 - 重叠和委派构造函数
-alias: 13.8 - 重叠和委派构造函数
+title: 13.8 - 重叠和委托构造函数
+alias: 13.8 - 重叠和委托构造函数
 origin: /overlapping-and-delegating-constructors/
 origin_title: "13.8 — Overlapping and delegating constructors"
 time: 2022-9-16
@@ -11,9 +11,10 @@ tags:
 - constructor
 ---
 
-## Constructors with overlapping functionality
+## 重叠构造函数
 
-When you instantiate a new object, the object’s constructor is called implicitly. It’s not uncommon to have a class with multiple constructors that have overlapping functionality. Consider the following class:
+当实例化一个新对象时，将隐式调用该对象的构造函数。具有多个具有重叠功能的构造函数的类并不罕见。考虑以下类:
+
 
 ```cpp
 class Foo
@@ -32,15 +33,13 @@ public:
 };
 ```
 
-COPY
+这个类有两个构造函数：一个[[default-constructor|默认构造函数]]以及一个接受一个`int`类型参数的构造函数。因为 “code to do A” 这一部分在两个构造函数中都存在，则可以说它们在每个构造函数中是重复的。
 
-This class has two constructors: a default constructor, and a constructor that takes an integer. Because the “code to do A” portion of the constructor is required by both constructors, the code is duplicated in each constructor.
+课程学到这里，相比你已经了解到，要尽可能避免重复代码，所以让我们看看解决这个问题的一些方法。
 
-As you’ve (hopefully) learned by now, having duplicate code is something to be avoided as much as possible, so let’s take a look at some ways to address this.
+## 显而易见的解决方案并不奏效
 
-The obvious solution doesn’t work
-
-The obvious solution would be to have the Foo(int) constructor call the Foo() constructor to do the A portion.
+显而易见的解决方案是让`Foo(int)`构造函数调用`Foo()`构造函数来完成A部分工作。
 
 ```cpp
 class Foo
@@ -59,15 +58,15 @@ public:
 };
 ```
 
-COPY
+不过，如果你像上面这样在一个构造函数里面调用另外一个构造函数的话，程序虽然可以编译（也许会产生告警），但是绝对不会像你想象的那样工作，然后你可能需要花费很多时间去定位问题。实际上，构造函数 `Foo();` 会实例化一个新的 `Foo` 对象。
 
-However, if you try to have one constructor call another constructor in this way, it will compile and maybe cause a warning, but it will not work as you expect, and you will likely spend a long time trying to figure out why, even with a debugger. What’s happening is that `Foo();` instantiates a new `Foo`object, which is immediately discarded, because it’s not stored in a variable.
 
 ## 构造函数委派
 
-Constructors are allowed to call other constructors from the same class. This process is called **delegating constructors** (or **constructor chaining**).
+构造函数可以调用来自同一类的其他构造函数，称为[[delegating-constructors|委托构造函数]](或**构造函数链**)。
 
-To have one constructor call another, simply call the constructor in the member initializer list. This is one case where calling another constructor directly is acceptable. Applied to our example above:
+要让一个构造函数调用另一个构造函数，只需在成员初始化列表中调用它。这是可以直接调用另一个构造函数的一种情况。应用到我们上面的例子中：
+
 
 ```cpp
 class Foo
@@ -80,7 +79,7 @@ public:
         // code to do A
     }
 
-    Foo(int value): Foo{} // use Foo() default constructor to do A
+    Foo(int value): Foo{} // 调用 Foo() 默认构造函数完成A
     {
         // code to do B
     }
@@ -88,11 +87,10 @@ public:
 };
 ```
 
-COPY
+这完全符合您的预期。确保从成员初始化列表中调用构造函数，而不是在构造函数的函数体中调用。
 
-This works exactly as you’d expect. Make sure you’re calling the constructor from the member initializer list, not in the body of the constructor.
+下面是使用委托构造函数减少冗余代码的另一个例子：
 
-Here’s another example of using delegating constructors to reduce redundant code:
 
 ```cpp
 #include <iostream>
@@ -118,13 +116,11 @@ public:
 };
 ```
 
-COPY
+这个类有两个构造函数，其中一个委托给`Employee(int, std::string_view)`。通过这种方式，冗余代码的数量被最小化了(我们只需要编写一个构造函数体而不是两个)。
 
-This class has 2 constructors, one of which delegates to Employee(int, std::string_view). In this way, the amount of redundant code is minimized (we only have to write one constructor body instead of two).
+关于委托构造函数的一些额外注意事项。首先，委托给另一个构造函数的构造函数本身不允许进行任何成员初始化。==构造函数可以委托或初始化，但不能同时委托和初始化。==
 
-A few additional notes about delegating constructors. First, a constructor that delegates to another constructor is not allowed to do any member initialization itself. So your constructors can delegate or initialize, but not both.
-
-Second, it’s possible for one constructor to delegate to another constructor, which delegates back to the first constructor. This forms an infinite loop, and will cause your program to run out of stack space and crash. You can avoid this by ensuring all of your constructors resolve to a non-delegating constructor.
+其次，如果一个构造函数委托给另一个构造函数，而另一个构造函数又委托回第一个构造函数。这将形成一个死循环，并将导致的程序耗尽堆栈空间后崩溃。可以通过确保所有构造函数解析为非委托构造函数来避免这种情况。
 
 !!! success "最佳实践"
 
@@ -307,4 +303,4 @@ In the above `reset()` function, we first create a default `Foo` object (whi
 
 Related content
 
-We cover the `this` pointer in upcoming lesson [13.10 -- The hidden “this” pointer](https://www.learncpp.com/cpp-tutorial/the-hidden-this-pointer/), and assignment of classes in upcoming lesson [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/).
+We cover the `this` pointer in upcoming lesson [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]]，and assignment of classes in upcoming lesson [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/).
