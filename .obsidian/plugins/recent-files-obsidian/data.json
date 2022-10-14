@@ -5,16 +5,24 @@
       "path": "docs/13-5-constructors.md"
     },
     {
+      "basename": "copy-initialization",
+      "path": "docs/copy-initialization.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
+    },
+    {
+      "basename": "direct-initialization",
+      "path": "docs/direct-initialization.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
       "basename": "10-4-scoped-enumerations-enum-classes",
       "path": "docs/10-4-scoped-enumerations-enum-classes.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
     },
     {
       "basename": "default-initialization",
@@ -191,14 +199,6 @@
     {
       "basename": "member-types",
       "path": "docs/member-types.md"
-    },
-    {
-      "basename": "member-function",
-      "path": "docs/member-function.md"
-    },
-    {
-      "basename": "implicit-object",
-      "path": "docs/implicit-object.md"
     }
   ],
   "omittedPaths": [],

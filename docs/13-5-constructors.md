@@ -208,25 +208,22 @@ Fraction six{ 6 }; // 调用 Fraction(int, int) 构造函数，第二个形参�
 
 !!! success "最佳实践"
 
-	推荐使用括号初始化来初始lie brace initialization to initialize class objects.
+	推荐使用大括号初始化来初始类对象。
 
 ## 使用等于号进行拷贝初始化
 
-
-Much like with fundamental variables, it’s also possible to initialize classes using copy initialization:
+就像基本变量一样，也可以使用[[copy-initialization|拷贝初始化]]来初始化类：
 
 ```cpp
 Fraction six = Fraction{ 6 }; // Copy initialize a Fraction, will call Fraction(6, 1)
 Fraction seven = 7; // Copy initialize a Fraction.  The compiler will try to find a way to convert 7 to a Fraction, which will invoke the Fraction(7, 1) constructor.
 ```
 
-COPY
-
-However, we recommend you avoid this form of initialization with classes, as it may be less efficient. Although direct-initialization, list-initialization, and copy-initialization all work identically with fundamental types, copy-initialization does not work the same with classes (though the end-result is often the same). We’ll explore the differences in more detail in a future chapter.
+不过，最好不要使用这种方式来初始化类，它可能是低效的。尽管[[direct-initialization|直接初始化]]、[[list-initialization|列表初始化]]和[[copy-initialization|拷贝初始化]]在初始化基本数据类型时的行为是一样的，但是拷贝初始化在配合类类型使用时其行为是不同的（尽管结果相同）。我们会在后面的章节中进行更为详细的介绍。
 
 ## 减少构造函数的数量
 
-In the above two-constructor declaration of the Fraction class, the default constructor is actually somewhat redundant. We could simplify this class as follows:
+像上面那样为 `Fraction` 声明两个构造函数是多余的，我们可以这么做：
 
 ```cpp
 #include <cassert>
@@ -253,9 +250,7 @@ public:
 };
 ```
 
-COPY
-
-Although this constructor is still a default constructor, it has now been defined in a way that it can accept one or two user-provided values as well.
+尽管这个构造函数仍然是默认构造函数，但是它现在也可以在需要时基于用户提供的参数进行初始化。
 
 ```cpp
 Fraction zero; // will call Fraction(0, 1)
@@ -264,13 +259,11 @@ Fraction six{ 6 }; // will call Fraction(6, 1)
 Fraction fiveThirds{ 5, 3 }; // will call Fraction(5, 3)
 ```
 
-COPY
-
-When implementing your constructors, consider how you might keep the number of constructors down through smart defaulting of values.
+在实现构造函数时，要考虑如何通过默认值来减少构造函数的数量。
 
 ## 关于默认参数的注意事项
 
-The rules around defining and calling functions that have default parameters (described in lesson [[8-12-Default-arguments|8.12 - 默认参数]]) apply to constructors too. To recap, when defining a function with default parameters, all default parameters must follow any non-default parameters, i.e. there cannot be non-defaulted parameters after a defaulted parameter.
+定义和调用具有默认参数函数的规则 (参见：[[8-12-Default-arguments|8.12 - 默认参数]]) 同样也适用于构造函数。简单复习一下，在定义具有默认参数的构造函数时，默认参数必须在非默认参数的后面。也就是说，非默认参数不能被定义在默认参数后。
 
 This may produce unexpected results for classes that have multiple default parameters of different types. Consider:
 
