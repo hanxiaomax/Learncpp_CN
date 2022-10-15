@@ -11,7 +11,7 @@ tags:
 
 ## 在类定义的外部定义类成员函数
 
-到目前为止，我们编写的类都很简单，所以可以在类的定义中直接实现成员函数。 例如，of the classes that we have written so far have been simple enough that we have been able to implement the member functions directly inside the class definition itself. For example, here’s our ubiquitous Date class:
+到目前为止，我们编写的类都很简单，所以可以在类的定义中直接实现成员函数。 例如，对于下列 `Date` 类来说：
 
 ```cpp
 class Date
@@ -40,13 +40,13 @@ public:
 };
 ```
 
-COPY
+不过，随着类越来越复杂，将所有的成员函数都直接定义在类中会导致类难以维护。使用一个已经定义好的类时，只需要关注其[[公共接口]]（[[public-member|公有成员]]函数）即可，而不需要了解类的底层工作原理。成员函数的实现细节只会对我们造成干扰。
 
-However, as classes get longer and more complicated, having all the member function definitions inside the class can make the class harder to manage and work with. Using an already-written class only requires understanding its public interface (the public member functions), not how the class works underneath the hood. The member function implementation details just get in the way.
+幸运地是，C++ 支持将类的“声明部分”和实现部分分离。This is done by defining the class member functions outside of the class definition. To do so, simply define the member functions of the class as if they were normal functions, but prefix the class name to the function using the scope resolution operator (::) (same as for a namespace).
 
-Fortunately, C++ provides a way to separate the “declaration” portion of the class from the “implementation” portion. This is done by defining the class member functions outside of the class definition. To do so, simply define the member functions of the class as if they were normal functions, but prefix the class name to the function using the scope resolution operator (::) (same as for a namespace).
+这是通过在类定义之外定义类成员函数来实现的。要做到这一点，只需将类的成员函数按照普通函数那样定义，但必须在函数前添加[[scope-resolution-operator|作用域解析运算符]](与命名空间相同)。
 
-Here is our Date class with the Date constructor and setDate() function defined outside of the class definition. Note that the prototypes for these functions still exist inside the class definition, but the actual implementation has been moved outside:
+对于下面这个 `Data` 类定义来说，其构造函数和 `setDate()` 函数被定义在了类外部。注意，函数的原型仍然在类定义中，但是其实际实现被移动到了类外部：
 
 ```cpp
 class Date
@@ -81,7 +81,9 @@ void Date::SetDate(int year, int month, int day)
 }
 ```
 
-COPY
+很简单吧。对整个类来说，因为访问函数通常只有一行，所以它们通常被保留在类定义中。
+
+在下面这个例子中，一个具[[成员构造函数被定义在了外部：
 
 This is pretty straightforward. Because access functions are often only one line, they are typically left in the class definition, even though they could be moved outside.
 
