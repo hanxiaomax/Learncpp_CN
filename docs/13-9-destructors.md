@@ -187,5 +187,5 @@ Destructing Simple 1
 
 ## 小结
 
-As you can see, when constructors and destructors are used together, your classes can initialize and clean up after themselves without the programmer having to do any special work! This reduces the probability of making an error, and makes classes easier to use.
+如你所见，当构造函数和析构函数被实现后，类就可以在初始化自己并在其销毁时完成清理工作，不需要程序员做任何特殊的工作！这降低了出错的可能性，并使类更容易使用。
 

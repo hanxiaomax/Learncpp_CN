@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "13-10-the-hidden-this-pointer",
+      "path": "docs/13-10-the-hidden-this-pointer.md"
+    },
+    {
+      "basename": "pass-by-address",
+      "path": "docs/pass-by-address.md"
+    },
+    {
       "basename": "13-9-destructors",
       "path": "docs/13-9-destructors.md"
     },
@@ -133,10 +141,6 @@
       "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
     },
     {
-      "basename": "13-10-the-hidden-this-pointer",
-      "path": "docs/13-10-the-hidden-this-pointer.md"
-    },
-    {
       "basename": "destructor",
       "path": "docs/destructor.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "type-aliases",
       "path": "docs/type-aliases.md"
-    },
-    {
-      "basename": "8-6-Typedefs-and-type-aliases",
-      "path": "docs/8-6-Typedefs-and-type-aliases.md"
     }
   ],
   "omittedPaths": [],

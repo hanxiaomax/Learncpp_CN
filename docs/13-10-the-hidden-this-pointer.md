@@ -10,9 +10,10 @@ tags:
 ---
 
 
-One of the questions about classes that new object-oriented programmers often ask is, “When a member function is called, how does C++ keep track of which object it was called on?”. The answer is that C++ utilizes a hidden pointer named “this”! Let’s take a look at “this” in more detail.
+新手面向对象程序员经常问的一个关于类的问题是，“当调用成员函数时，C++如何确定调用它的对象？“ 实际上，C++ 使用一个名为 “this”的隐藏指针来跟踪调用成员的对象。
 
-The following is a simple class that holds an integer and provides a constructor and access functions. Note that no destructor is needed because C++ can clean up integer member variables for us.
+下面是一个保存整数并提供构造函数和访问函数的简单类。注意，这个类不需要析构函数，因为C++自动清理整数成员变量。
+
 
 ```cpp
 class Simple
@@ -31,9 +32,8 @@ public:
 };
 ```
 
-COPY
 
-Here’s a sample program that uses this class:
+下面例子显示了Simple的使用方法：
 
 ```cpp
 #include <iostream>
@@ -48,43 +48,40 @@ int main()
 }
 ```
 
-COPY
 
-As you would expect, this program produces the result:
+程序输出结果如下：
 
+```
 2
+```
 
-Somehow, when we call `simple.setID(2);`, C++ knows that function setID() should operate on object simple, and that m_id actually refers to simple.m_id. Let’s examine the mechanics behind how this works.
+当我们调用 `simple.setID(2);` 时，C++ 就能够知道调用的是`simple` 的 `setID()`，而 `m_id` 则指的是 `simple.m_id` 。接下来让我们看看这背后的工作原理。
+
 
 ## 隐藏的 `*this` 指针
 
-Take a look at the following line of code from the example above:
+观察上面例子中的这一行代码：
 
 ```cpp
 simple.setID(2);
 ```
 
-COPY
-
-Although the call to function setID() looks like it only has one argument, it actually has two! When compiled, the compiler converts `simple.setID(2);`into the following:
+尽管函数 `setID()` 函数看上去只接受了一个参数，而实际上它接受了两个参数！当程序编译时，编译器会将上述代码转变成下面的形式 ：
 
 ```cpp
-setID(&simple, 2); // note that simple has been changed from an object prefix to a function argument!
+setID(&simple, 2); // 注意，作为对象的前缀现在变成了函数的实参！
 ```
 
-COPY
+注意，上面的代码已经变成了标准的函数调用，simple 对象(以前是一个对象前缀)则通过[[pass-by-address|按地址传递]]的方式传入了函数。
 
-Note that this is now just a standard function call, and the object simple (which was formerly an object prefix) is now passed by address as an argument to the function.
+但这只是答案的一半，由于函数调用现在增加了一个实参，因此需要修改成员函数定义才能接受(并使用)这个实参作为形参。因此，下面的成员函数:
 
-But that’s only half of the answer. Since the function call now has an added argument, the member function definition needs to be modified to accept (and use) this argument as a parameter. Consequently, the following member function:
 
 ```cpp
 void setID(int id) { m_id = id; }
 ```
 
-COPY
-
-is converted by the compiler into:
+会被编译器zhuan'h
 
 ```cpp
 void setID(Simple* const this, int id) { this->m_id = id; }

@@ -1,6 +1,6 @@
 ---
-title: 传地址
-alias: 传地址
+title: 按地址传递
+alias: 按地址传递
 english: pass-by-address
 type: glossary
 tags:
