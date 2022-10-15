@@ -94,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -154,6 +155,8 @@
   },
   "active": "75d4a1f19b44f687",
   "lastOpenFiles": [
+    "docs/const-member-function.md",
+    "docs/13-12-const-class-objects-and-member-functions.md",
     "docs/13-11-class-code-and-header-files.md",
     "docs/13-5-constructors.md",
     "docs/13-4-access-functions-and-encapsulation.md",
@@ -161,8 +164,6 @@
     "docs/2-7-Forward-declarations-and-definitions.md",
     "docs/MOC.md",
     "docs/Member-initializer-lists.md",
-    "docs/13-10-the-hidden-this-pointer.md",
-    "docs/13-9-destructors.md",
-    "docs/13-18-timing-your-code.md"
+    "docs/13-10-the-hidden-this-pointer.md"
   ]
 }

@@ -5,6 +5,10 @@
       "path": "docs/13-12-const-class-objects-and-member-functions.md"
     },
     {
+      "basename": "const-member-function",
+      "path": "docs/const-member-function.md"
+    },
+    {
       "basename": "13-11-class-code-and-header-files",
       "path": "docs/13-11-class-code-and-header-files.md"
     },

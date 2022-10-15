@@ -70,11 +70,9 @@ int main()
 std::cout << something.getValue();
 ```
 
-COPY
+上述代码可能会让你感到吃惊，它会导致编译错误，即使 `getValue()` 没有去改变任何成员变量！实际上，作为 const 类型的对象，它只能显式地调用 const 类型的成员函数，而 `getValue()` 并不是 const类型的。
 
-Perhaps surprisingly, this will also cause a compile error, even though getValue() doesn’t do anything to change a member variable! It turns out that const class objects can only explicitly call _const_ member functions, and getValue() has not been marked as a const member function.
-
-A **const member function** is a member function that guarantees it will not modify the object or call any non-const member functions (as they may modify the object).
+[[const-member-function|const 成员函数]] 是一类成员函数，它保证自己不会修改member function** is a member function that guarantees it will not modify the object or call any non-const member functions (as they may modify the object).
 
 To make getValue() a const member function, we simply append the const keyword to the function prototype, after the parameter list, but before the function body:
 
