@@ -11,6 +11,10 @@ tags:
 - constructor
 ---
 
+??? note "关键点速记"
+
+- 分清楚初始化和赋值
+
 ## 重叠构造函数
 
 当实例化一个新对象时，将隐式调用该对象的构造函数。具有多个具有重叠功能的构造函数的类并不罕见。考虑以下类:
@@ -124,11 +128,12 @@ public:
 
 !!! success "最佳实践"
 
-	If you have multiple constructors that have the same functionality, use delegating constructors to avoid duplicate code.
+	如果您有多个具有相同功能的构造函数，请使用委托构造函数以避免重复代码。
 
-Using a normal member function for setup
+## 使用普通成员函数进行启动配置
 
-Because a constructor can only initialize or delegate, this leads to a challenge if our default constructor does some common initialization. Consider the following class:
+因为构造函数只能用作初始化或委托，所以如果默认构造函数需要执行一些常见的初始化，就会很麻烦。考虑以下类:
+
 
 ```cpp
 class Foo
@@ -139,22 +144,20 @@ private:
 public:
     Foo()
     {
-         // code to do some common setup tasks (e.g. open a file or database)
+         // 用于任务启动配置的代码(例如打开文件或数据库)
     }
 
-    Foo(int value) : m_value { value } // we must initialize m_value since it's const
+    Foo(int value) : m_value { value } // 必须初始化 const 成员 m_value
     {
-        // how do we get to the common initialization code in Foo()?
+        // 此时应该如何执行Foo()中的启动配置代码呢？
     }
 
 };
 ```
 
-COPY
+构造函数 `Foo(int)` 要么初始化 `m_value`，要么委托给`Foo()`执行其中的代码，但鱼和熊掌不可兼得。但是如果一定要兼得呢？当然，最笨的的办法就是把需要执行的代码复制一份过来。但这无疑会带来很多重复代码，导致代码难以维护。
 
-Our `Foo(int)` constructor can either initialize `m_value`, or delegate to `Foo()` to access the setup code, but not both. But what if we need to do both? A bad solution would be to copy the setup code from our default constructor to each of our other constructors. But this will result in duplicate code, and a potential maintenance headache.
-
-Constructors are allowed to call non-constructor member functions (and non-member functions), so a better solution is to use a normal (non-constructor) member function to handle the common setup tasks, like this:
+其实构造函数是可以调用非构造成员函数（和非成员函数）的，因此更好的办法是使用一个普通函数来执行这些代码，就像下面这样：
 
 ```cpp
 #include <iostream>
@@ -164,7 +167,7 @@ class Foo
 private:
     const int m_value { 0 };
 
-    void setup() // setup is private so it can only be used by our constructors
+    void setup() // 设为私有，只有构造函数能够时
     {
         // code to do some common setup tasks (e.g. open a file or database)
         std::cout << "Setting things up...\n";
@@ -176,7 +179,7 @@ public:
         setup();
     }
 
-    Foo(int value) : m_value { value } // we must initialize m_value since it's const
+    Foo(int value) : m_value { value } // m_value 是 const 类型必须初始化
     {
         setup();
     }
@@ -192,17 +195,15 @@ int main()
 }
 ```
 
-COPY
+在这个例子中。我们定义 `setup()` 成员函数来执行启动配置相关的代码，类中的两个构造函数都可以调用它。我们将该函数定义为[[private-member|私有成员]]，所以只有这个类的成员可以访问它。
 
-In this case, we’ve created a `setup()` member function to handle various setup tasks that we need, and both of our constructors call `setup()`. We’ve made this function private so we can ensure that only members of our class can call it.
+当然，`setup()` 并不是构造函数，所以它不能初始化成员。 当构造函数调用`setup()` 时，类成员们都已经被创建了（如果提供了初始化值则甚至已经完成了初始化）。`setup()` 函数只能为成员赋值或进行一些其他操作，但都只能通过一般的语句进行（例如打开文件或数据库）。`setup()` 函数不能创建成员的[[lvalue-reference|左值引用]]，也不能为 const 类型的成员赋值（两者都需要通过初始化完成），当然也不能向任何不支持赋值操作的成员赋值。
 
-Of course, `setup()` isn’t a constructor, so it can’t initialize members. By the time the constructor calls `setup()`, the members have already been created (and initialized if an initialization value was provided). The `setup()` function can only assign values to members or do other types of setup tasks that can be done through normal statements (e.g. open files or databases). The `setup()` function can’t do things like bind a member reference or set a const value (both of which must be done on initialization), or assign values to members that don’t support assignment.
+## 重置对象
 
-Resetting a class object
+有时候你可能会想要编写一个成员函数（例如 `reset()`）将类对象重置为其初始状态。
 
-Relatedly, you may find yourself in the situation where you want to write a member function (e.g. named `reset()`) to reset a class object back to the default state.
-
-Because you probably already have a default constructor that initializes your members to the appropriate default values, you may be tempted to try to call the default constructor directly from `reset()`. However, trying to call a constructor directly will generally result in unexpected behavior as we have shown above, so that won’t work.
+因为默认构造函数可以为类成员初始化所需的值，所以你可能会尝试在`reset()`函数中调用构造函数以达到目的。不过，直接调用构造han'sBecause you probably already have a default constructor that initializes your members to the appropriate default values, you may be tempted to try to call the default constructor directly from `reset()`. However, trying to call a constructor directly will generally result in unexpected behavior as we have shown above, so that won’t work.
 
 A mediocre implementation of a `reset()` function might look like this:
 
@@ -301,6 +302,6 @@ COPY
 
 In the above `reset()` function, we first create a default `Foo` object (which will have default values). Then we assign that default `Foo` object to the object that member function `reset()` was called on (`*this`). The compiler will do a memberwise copy.
 
-Related content
+!!! info "相关内容"
 
-We cover the `this` pointer in upcoming lesson [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]]，and assignment of classes in upcoming lesson [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/).
+	We cover the `this` pointer in upcoming lesson [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]]，and assignment of classes in upcoming lesson [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/).

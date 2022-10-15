@@ -5,6 +5,10 @@
       "path": "docs/13-8-overlapping-and-delegating-constructors.md"
     },
     {
+      "basename": "5-7-Logical-operators",
+      "path": "docs/5-7-Logical-operators.md"
+    },
+    {
       "basename": "delegating-constructors",
       "path": "docs/delegating-constructors.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "4-17-An introduction-to-std-string",
       "path": "docs/4-17-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "2-x-Chapter-2-summary-and-quiz",
-      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],
