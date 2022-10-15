@@ -68,20 +68,20 @@ public:
 
 int main()
 {
-	IntArray ar ( 10 ); // 分配一个 10 integers
+	IntArray ar ( 10 ); // 分配 10 个整型
 	for (int count{ 0 }; count < ar.getLength(); ++count)
 		ar.setValue(count, count+1);
 
 	std::cout << "The value of element 5 is: " << ar.getValue(5) << '\n';
 
 	return 0;
-} // ar is destroyed here, so the ~IntArray() destructor function is called here
+} // ar 在此处被销毁，所以析构函数 ~IntArray() 会在此时被调用
 ```
 
 
 !!! tip "小贴士"
 
-	If you compile the above example and get the following error:
+	如果你在编译上面程序时产生如下报错：
 	
 	```
 	error: 'class IntArray' has pointer data members [-Werror=effc++]|
@@ -89,22 +89,22 @@ int main()
 	error:   or 'operator=(const IntArray&)' [-Werror=effc++]|
 	```
 
-	Then you can either remove the “-Weffc++” flag from your compile settings for this example, or you can add the following two lines to the class:
+	此时可以删除编译器选项 “-Weffc++”，或者在类中额外添加下面两行代码：
 	
 	```cpp
 	IntArray(const IntArray&) = delete;
 	IntArray& operator=(const IntArray&) = delete;
 	```
 	
-	We’ll discuss what these do in [14.14 -- Converting constructors, explicit, and delete](https://www.learncpp.com/cpp-tutorial/converting-constructors-explicit-and-delete/)
+	详细信息参考 [14.14 -- Converting constructors, explicit, and delete](https://www.learncpp.com/cpp-tutorial/converting-constructors-explicit-and-delete/)
 
-This program produces the result:
+输出结果：
 
 ```
 The value of element 5 is: 6
 ```
 
-On the first line of main(), we instantiate a new IntArray class object called ar, and pass in a length of 10. This calls the constructor, which dynamically allocates memory for the array member. We must use dynamic allocation here because we do not know at compile time what the length of the array is (the caller decides that).
+在 `main()` 函数的第一行，我们实例化了一个 `IntArray` 类型的对象 `ar`，并且传入了10作为长度。 and pass in a length of 10. This calls the constructor, which dynamically allocates memory for the array member. We must use dynamic allocation here because we do not know at compile time what the length of the array is (the caller decides that).
 
 At the end of main(), ar goes out of scope. This causes the ~IntArray() destructor to be called, which deletes the array that we allocated in the constructor!
 
@@ -114,7 +114,7 @@ At the end of main(), ar goes out of scope. This causes the ~IntArray() destruct
 
 ## 构造和析构的时机
 
-As mentioned previously, the constructor is called when an object is created, and the destructor is called when an object is destroyed. In the following example, we use cout statements inside the constructor and destructor to show this:
+和之前提到的一样，构造函数会在对象创建时调用，而析构函数则是在对象被销毁时调用。在下面的例子中，我们会在构造函数和析构函数中添加打印来展示这一点：
 
 ```cpp
 #include <iostream>
@@ -141,25 +141,24 @@ public:
 
 int main()
 {
-    // Allocate a Simple on the stack
+    // 在栈上分配一个 Simple 对象
     Simple simple{ 1 };
     std::cout << simple.getID() << '\n';
 
-    // Allocate a Simple dynamically
+    // 动态分配一个 Simple 对象
     Simple* pSimple{ new Simple{ 2 } };
 
     std::cout << pSimple->getID() << '\n';
 
-    // We allocated pSimple dynamically, so we have to delete it.
+    // 动态分配的 pSimple 必须要被delete
     delete pSimple;
 
     return 0;
-} // simple goes out of scope here
+} // simple 对象会在此处离开作用域
 ```
 
-COPY
 
-This program produces the following result:
+程序运行结果如下：
 
 ```
 Constructing Simple 1
@@ -170,19 +169,21 @@ Destructing Simple 2
 Destructing Simple 1
 ```
 
-Note that “Simple 1” is destroyed after “Simple 2” because we deleted pSimple before the end of the function, whereas simple was not destroyed until the end of main().
+注意，“Simple 1” 是在 “Simple 2” 之后销毁的，因为我们在`main`函数结束前删除了 pSimple ，而 simple 则是在 main() 结束时才销毁。
 
-Global variables are constructed before main() and destroyed after main().
+==全局变量会在main()函数前构造而在main()结束后销毁==。
+
 
 ## RAII
 
-RAII (Resource Acquisition Is Initialization) is a programming technique whereby resource use is tied to the lifetime of objects with automatic duration (e.g. non-dynamically allocated objects). In C++, RAII is implemented via classes with constructors and destructors. A resource (such as memory, a file or database handle, etc…) is typically acquired in the object’s constructor (though it can be acquired after the object is created if that makes sense). That resource can then be used while the object is alive. The resource is released in the destructor, when the object is destroyed. The primary advantage of RAII is that it helps prevent resource leaks (e.g. memory not being deallocated) as all resource-holding objects are cleaned up automatically.
+[[RAII (Resource Acquisition Is Initialization)|资源获取即初始化（RAII）]]是一种将资源使用与具有自动持续时间的对象的生命周期(例如，非动态分配的对象)绑定在一起的编程技术。在C++中，RAII是通过带有构造函数和析构函数的类实现的。资源(如内存、文件或数据库句柄等)通常是在对象的构造函数中获取的(不过，如果需要的话也可以在对象创建之后获取)。然后，可以在对象处于活动状态时使用该资源。当对象被销毁时，资源在析构函数中被释放。RAII的主要优点是它有助于防止资源泄漏(例如，内存没有被释放)，因为所有资源持有对象都会自动清理。
 
-The IntArray class at the top of this lesson is an example of a class that implements RAII -- allocation in the constructor, deallocation in the destructor. std::string and std::vector are examples of classes in the standard library that follow RAII -- dynamic memory is acquired on initialization, and cleaned up automatically on destruction.
+本节课开始时的`IntArray`类是实现RAII的一个例子——在构造函数中分配，在析构函数中释放。`std::string`和`std::vector`则是标准库中实现RAII的例子——动态内存在初始化时获得，在销毁时自动清除。
 
-## A warning about the `exit()` function
 
-Note that if you use the exit() function, your program will terminate and no destructors will be called. Be wary if you’re relying on your destructors to do necessary cleanup work (e.g. write something to a log file or database before exiting).
+## 有关 `exit()` 函数的警示
+
+注意：当使用 `exit()` 函数时，程序会在不调用任何构造函数的情况下退出。如果你依赖于构造函数在程序退出时完成清理工作（例如，写日志或写数据库）。
 
 ## 小结
 

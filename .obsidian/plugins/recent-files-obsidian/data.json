@@ -5,6 +5,10 @@
       "path": "docs/13-9-destructors.md"
     },
     {
+      "basename": "RAII (Resource Acquisition Is Initialization)",
+      "path": "docs/RAII (Resource Acquisition Is Initialization).md"
+    },
+    {
       "basename": "13-8-overlapping-and-delegating-constructors",
       "path": "docs/13-8-overlapping-and-delegating-constructors.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "8-6-Typedefs-and-type-aliases",
       "path": "docs/8-6-Typedefs-and-type-aliases.md"
-    },
-    {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
     }
   ],
   "omittedPaths": [],
