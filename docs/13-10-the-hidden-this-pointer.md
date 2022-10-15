@@ -153,32 +153,29 @@ std::cout << "Hello, " << userName;
 ```
 
 
-In this case, std::cout is an object, and operator<< is a member function that operates on that object. The compiler evaluates the above snippet like this:
+在这个例子中，`std::cout` 其实是一个对象，而运算符 `<<` 是该对象的一个成员函数。编译器会按照下面的方式对上述代码求值：
 
 ```cpp
 (std::cout << "Hello, ") << userName;
 ```
 
-
-First, operator<< uses std::cout and the string literal “Hello, ” to print “Hello, ” to the console. However, since this is part of an expression, operator<< also needs to return a value (or void). If operator<< returned void, you’d end up with this:
+首先，`<<`使用 `std::cout` 和字符串字面量 “Hello, ” 将 “Hello, ” 打印到终端。不过，这只是上述表达式的一部分，`<<` 还需要返回一个值（或void）。如果它返回的是 void，则结果会变为下面的形式：
 
 ```cpp
 (void) << userName;
 ```
 
-
-which clearly doesn’t make any sense (and the compiler would throw an error). Instead, operator<< returns *this, which in this context is the std::cout object. That way, after the first operator<< has been evaluated, we get:
+这显然不合逻辑（编译器会抛出错误）。实际上，`<<` 的返回值是`*this`，在上面的语境下，this 就是`std::cout`对象。因此，当第一个`<<`执行完成后，语句等价于如下形式：
 
 ```cpp
 (std::cout) << userName;
 ```
 
+上述代码进而会打印用户名。
 
-which then prints the user’s name.
+通过这种方式，我们只需要指定对象一次（此例中为 `std::cout`)，然后每次函数调用都可以把它传递给接下来的函数，是我们可以链式执行多个指令。
 
-In this way, we only need to specify the object (in this case, std::cout) once, and each function call passes it on to the next function to work with, allowing us to chain multiple commands together.
-
-We can implement this kind of behavior ourselves. Consider the following class:
+在用户自定义类中我们也可以实现上述行为：
 
 ```cpp
 class Calc
@@ -196,9 +193,7 @@ public:
 };
 ```
 
-COPY
-
-If you wanted to add 5, subtract 3, and multiply by 4, you’d have to do this:
+如果你希望先加5，再减3，然后再乘以4，那么可以像下面这样做：
 
 ```cpp
 #include <iostream>
@@ -215,9 +210,7 @@ int main()
 }
 ```
 
-COPY
-
-However, if we make each function return *this, we can chain the calls together. Here is the new version of Calc with “chainable” functions:
+不过，如果每个函数都返回 `*this` 的话，在可以链式地调用它们，下面是一个可链式调用的例子：
 
 ```cpp
 class Calc
@@ -234,7 +227,7 @@ public:
 };
 ```
 
-COPY
+注意，函数`add()` ，`sub()`和 `mult()` 现在都返回`*this`。这样一来就可以xiang
 
 Note that add(), sub() and mult() are now returning *this. Consequently, this allows us to do the following:
 
