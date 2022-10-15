@@ -5,12 +5,28 @@
       "path": "docs/13-12-const-class-objects-and-member-functions.md"
     },
     {
-      "basename": "const-member-function",
-      "path": "docs/const-member-function.md"
+      "basename": "3-9-Using-an-integrated-debugger-The-call-stack",
+      "path": "docs/3-9-Using-an-integrated-debugger-The-call-stack.md"
+    },
+    {
+      "basename": "9-2-Value-categories-lvalues-and-rvalues",
+      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "13-11-class-code-and-header-files",
       "path": "docs/13-11-class-code-and-header-files.md"
+    },
+    {
+      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
+      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
+    },
+    {
+      "basename": "const-member-function",
+      "path": "docs/const-member-function.md"
     },
     {
       "basename": "13-5-constructors",
@@ -27,10 +43,6 @@
     {
       "basename": "2-7-Forward-declarations-and-definitions",
       "path": "docs/2-7-Forward-declarations-and-definitions.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "13-10-the-hidden-this-pointer",
@@ -187,18 +199,6 @@
     {
       "basename": "destructor",
       "path": "docs/destructor.md"
-    },
-    {
-      "basename": "value-initialization",
-      "path": "docs/value-initialization.md"
-    },
-    {
-      "basename": "inheritance",
-      "path": "docs/inheritance.md"
-    },
-    {
-      "basename": "access-specifiers",
-      "path": "docs/access-specifiers.md"
     }
   ],
   "omittedPaths": [],
