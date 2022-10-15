@@ -10,31 +10,29 @@ tags:
 - const class
 ---
 
-In lesson [[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]], you learned that fundamental data types (int, double, char, etc…) can be made const via the const keyword, and that all const variables must be initialized at time of creation.
-
-In the case of const fundamental data types, initialization can be done through copy, direct, or uniform initialization:
-
-```cpp
-const int value1 = 5; // copy initialization
-const int value2(7); // direct initialization
-const int value3 { 9 }; // uniform initialization (C++11)
-```
-
-COPY
-
-## Const classes
-
-Similarly, instantiated class objects can also be made const by using the const keyword. Initialization is done via class constructors:
+ 通过学习 [[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]] ，我们知道基本数据类型(`int`, `double`, `char` 等)，可以通过`const`关键字被定义为const类型。同时所有的const变量都必须在创建时被初始化。
+ 
+对于 const 类型的基本数据类型，初始化可以通过[[copy-initialization|拷贝初始化]]、[[direct-initialization|直接初始化]]或[[uniform-initialization|统一初始化]]来完成：
 
 ```cpp
-const Date date1; // initialize using default constructor
-const Date date2(2020, 10, 16); // initialize using parameterized constructor
-const Date date3 { 2020, 10, 16 }; // initialize using parameterized constructor (C++11)
+const int value1 = 5; // 拷贝初始化
+const int value2(7); //  直接初始化
+const int value3 { 9 }; // 统一初始化 (C++11)
 ```
 
-COPY
 
-Once a const class object has been initialized via constructor, any attempt to modify the member variables of the object is disallowed, as it would violate the const-ness of the object. This includes both changing member variables directly (if they are public), or calling member functions that set the value of member variables. Consider the following class:
+## const 类
+
+同样的，被[[instantiated|实例化]]的对象也可以通过const关键字被创建为 const 类型。初始化则是通过[[constructor|构造函数]]完成的：
+
+```cpp
+const Date date1; // 使用默认构造函数初始化
+const Date date2(2020, 10, 16); // 使用带参数的构造函数进行初始化
+const Date date3 { 2020, 10, 16 }; // 使用带参数的构造函数进行初始化(C++11)
+```
+
+const 类型的对象，一旦通过构造函数初始化，其任何成员变量都不再可以被修改，否则显然违背了其“常量性”。不论是直接修改[[public-member|公有成员]]还是通过公有成员函数为成员变量赋值都是不可以的。考虑下面的例子：
+
 
 ```cpp
 class Something
@@ -59,15 +57,14 @@ int main()
 }
 ```
 
-COPY
+上面涉及变量`something`的两行都是非法的，因为它们要么试图直接更改成员变量，要么调用试图更改成员变量的成员函数，从而违反了`something`的常量性。
 
-Both of the above lines involving variable something are illegal because they violate the constness of something by either attempting to change a member variable directly, or by calling a member function that attempts to change a member variable.
+与普通变量一样，当需要确保类对象在创建后不再被修改时，可以将它们设置为const。
 
-Just like with normal variables, you’ll generally want to make your class objects const when you need to ensure they aren’t modified after creation.
 
-## Const member functions
+## const 成员函数
 
-Now, consider the following line of code:
+考虑下面这行代码：
 
 ```cpp
 std::cout << something.getValue();
@@ -287,6 +284,6 @@ Overloading a function with a const and non-const version is typically done when
 
 The const version of getValue() will work with either const or non-const objects, but returns a const reference, to ensure we can’t modify the const object’s data.
 
-## Summary
+## 小结
 
 Because passing objects by const reference is common, your classes should be const-friendly. That means making any member function that does not modify the state of the class object const!
