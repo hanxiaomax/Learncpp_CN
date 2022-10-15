@@ -12,7 +12,7 @@ tags:
 
 **Review of static keyword uses**
 
-In the lesson on [file scope and the static keyword](https://www.learncpp.com/cpp-tutorial/43-file-scope-and-the-static-keyword/), you learned that static variables keep their values and are not destroyed even after they go out of scope. For example:
+In the lesson on [[6-10-Static-local-variables|6.10 - 静态局部变量]], you learned that static variables keep their values and are not destroyed even after they go out of scope. For example:
 
 ```cpp
 #include <iostream>
@@ -37,15 +37,17 @@ COPY
 
 This program prints:
 
+```
 1
 2
 3
+```
 
 Note that s_id has kept its value across multiple function calls.
 
 The static keyword has another meaning when applied to global variables -- it gives them internal linkage (which restricts them from being seen/used outside of the file they are defined in). Because global variables are typically avoided, the static keyword is not often used in this capacity.
 
-**Static member variables**
+## 静态成员变量
 
 C++ introduces two more uses for the static keyword when applied to classes: static member variables, and static member functions. Fortunately, these uses are fairly straightforward. We’ll talk about static member variables in this lesson, and static member functions in the next.
 
@@ -116,7 +118,8 @@ This program produces the following output:
 
 Because s_value is a static member variable, s_value is shared between all objects of the class. Consequently, first.s_value is the same variable as second.s_value. The above program shows that the value we set using first can be accessed using second!
 
-**Static members are not associated with class objects**
+## 静态成员变量并不和类对象关联
+
 
 Although you can access static members through objects of the class (as shown with first.s_value and second.s_value in the example above), it turns out that static members exist even if no objects of the class have been instantiated! Much like global variables, they are created when the program starts, and destroyed when the program ends.
 
@@ -151,7 +154,8 @@ In the above snippet, s_value is referenced by class name rather than through an
 
 	Access static members by class name (using the scope resolution operator) rather than through an object of the class (using the member selection operator).
 
-**Defining and initializing static member variables**
+## 定义和初始化静态成员变量
+
 
 When we declare a static member variable inside a class, we’re telling the compiler about the existence of a static member variable, but not actually defining it (much like a forward declaration). Because static member variables are not part of the individual class objects (they are treated similarly to global variables, and get initialized when the program starts), you must explicitly define the static member outside of the class, in the global scope.
 
@@ -169,7 +173,7 @@ Note that this static member definition is not subject to access controls: you c
 
 If the class is defined in a .h file, the static member definition is usually placed in the associated code file for the class (e.g. Something.cpp). If the class is defined in a .cpp file, the static member definition is usually placed directly underneath the class. Do not put the static member definition in a header file (much like a global variable, if that header file gets included more than once, you’ll end up with multiple definitions, which will cause a linker error).
 
-**Inline initialization of static member variables**
+## 静态成员变量的内联初始化
 
 There are a few shortcuts to the above. First, when the static member is a const integral type (which includes char and bool) or a const enum, the static member can be initialized inside the class definition:
 
@@ -212,7 +216,7 @@ public:
 
 COPY
 
-**An example of static member variables**
+## 静态成员变量案例
 
 Why use static variables inside classes? One useful example is to assign a unique ID to every instance of the class. Here’s an example of that:
 

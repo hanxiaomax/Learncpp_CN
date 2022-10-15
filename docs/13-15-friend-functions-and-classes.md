@@ -18,7 +18,7 @@ In situations like this, there are two options:
 1.  Have the display code use the publicly exposed functions of the storage class. However, this has several potential downsides. First, these public member functions have to be defined, which takes time, and can clutter up the interface of the storage class. Second, the storage class may have to expose functions for the display code that it doesn’t really want accessible to anybody else. There is no way to say “this function is meant to be used by the display class only”.
 2.  Alternatively, using friend classes and friend functions, you can give your display code access to the private details of the storage class. This lets the display code directly access all the private members and functions of the storage class, while keeping everyone else out! In this lesson, we’ll take a closer look at how this is done.
 
-**Friend functions**
+## 友元函数
 
 A **friend function** is a function that can access the private members of a class as though it was a member of that class. In all other regards, the friend function is just like a normal function. A friend function may be either a normal function, or a member function of another class. To declare a friend function, simply use the _friend_ keyword in front of the prototype of the function you wish to be a friend of the class. It does not matter whether you declare the friend function in the private or public section of the class.
 
@@ -100,7 +100,7 @@ In this example, we declare the isEqual() function to be a friend of the Value c
 
 While both of the above examples are fairly contrived, the latter example is very similar to cases we’ll encounter later when we discuss operator overloading!
 
-**Multiple friends**
+## 多个友元
 
 A function can be a friend of more than one class at the same time. For example, consider the following example:
 
@@ -166,7 +166,7 @@ COPY
 
 This is a class prototype that tells the compiler that we are going to define a class called Humidity in the future. Without this line, the compiler would tell us it doesn’t know what a Humidity is when parsing the prototype for printWeather() inside the Temperature class. Class prototypes serve the same role as function prototypes -- they tell the compiler what something looks like so it can be used now and defined later. However, unlike functions, classes have no return types or parameters, so class prototypes are always simply `class ClassName`, where ClassName is the name of the class.
 
-**Friend classes**
+## 友元类
 
 It is also possible to make an entire class a friend of another class. This gives all of the members of the friend class access to the private members of the other class. Here is an example:
 
@@ -229,7 +229,7 @@ A few additional notes on friend classes. First, even though Display is a friend
 
 Be careful when using friend functions and classes, because it allows the friend function or class to violate encapsulation. If the details of the class change, the details of the friend will also be forced to change. Consequently, limit your use of friend functions and classes to a minimum.
 
-**Friend member functions**
+## 友元成员函数
 
 Instead of making an entire class a friend, you can make a single member function a friend. This is done similarly to making a normal function a friend, except using the name of the member function with the className:: prefix included (e.g. Display::displayItem).
 
@@ -389,7 +389,7 @@ Now everything will compile properly: the forward declaration of class Storage i
 
 If this seems like a pain -- it is. Fortunately, this dance is only necessary because we’re trying to do everything in a single file. A better solution is to put each class definition in a separate header file, with the member function definitions in corresponding .cpp files. That way, all of the class definitions would have been visible immediately in the .cpp files, and no rearranging of classes or functions is necessary!
 
-**Summary**
+## 小结
 
 A friend function or class is a function or class that can access the private members of another class as though it was a member of that class. This allows the friend function or friend class to work intimately with the other class, without making the other class expose its private members (e.g. via access functions).
 

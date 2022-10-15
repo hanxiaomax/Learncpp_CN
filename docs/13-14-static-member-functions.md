@@ -11,9 +11,10 @@ tags:
 ---
 
 
-Static member functions
+## 静态成员函数
 
-In the previous lesson on [13.13 -- Static member variables](https://www.learncpp.com/cpp-tutorial/static-member-variables/), you learned that static member variables are member variables that belong to the class rather than objects of the class. If the static member variables are public, we can access them directly using the class name and the scope resolution operator. But what if the static member variables are private? Consider the following example:
+
+In the previous lesson on [[13-13-static-member-variables|13.13 - 静态成员变量]], you learned that static member variables are member variables that belong to the class rather than objects of the class. If the static member variables are public, we can access them directly using the class name and the scope resolution operator. But what if the static member variables are private? Consider the following example:
 
 ```cpp
 class Something
@@ -60,7 +61,7 @@ COPY
 
 Because static member functions are not attached to a particular object, they can be called directly by using the class name and the scope resolution operator. Like static member variables, they can also be called through objects of the class type, though this is not recommended.
 
-Static member functions have no *this pointer
+## 静态成员变量没有`*this`指针
 
 Static member functions have two interesting quirks worth noting. First, because static member functions are not attached to an object, they have no _this_pointer! This makes sense when you think about it -- the _this_ pointer always points to the object that the member function is working on. Static member functions do not work on an object, so the _this_ pointer is not needed.
 
@@ -104,11 +105,13 @@ COPY
 
 This program prints:
 
+```
 The next ID is: 1
 The next ID is: 2
 The next ID is: 3
 The next ID is: 4
 The next ID is: 5
+```
 
 Note that because all the data and functions in this class are static, we don’t need to instantiate an object of the class to make use of its functionality! This class utilizes a static member variable to hold the value of the next ID to be assigned, and provides a static member function to return that ID and increment it.
 
@@ -196,7 +199,7 @@ COPY
 
 When static member s_initializer is defined, the init_static() default constructor will be called (because s_initializer is of type init_static). We can use this constructor to initialize any static member variables. The nice thing about this solution is that all of the initialization code is kept hidden inside the original class with the static member.
 
-Summary
+## Summary
 
 Static member functions can be used to work with static member variables in the class. An object of the class is not required to call them.
 

@@ -9,9 +9,9 @@ tags:
 - class
 ---
 
-**Defining member functions outside the class definition**
+## 在类定义的外部定义类成员函数
 
-All of the classes that we have written so far have been simple enough that we have been able to implement the member functions directly inside the class definition itself. For example, here’s our ubiquitous Date class:
+到目前为止，我们编写的类都很简单，所以可以在类的定义中直接实现成员函数。 例如，of the classes that we have written so far have been simple enough that we have been able to implement the member functions directly inside the class definition itself. For example, here’s our ubiquitous Date class:
 
 ```cpp
 class Date
@@ -149,9 +149,9 @@ Calc& Calc::mult(int value)
 
 COPY
 
-**Putting class definitions in a header file**
+## 将类的定义放置于头文件中
 
-In the lesson on [header files](https://www.learncpp.com/cpp-tutorial/19-header-files/), you learned that you can put function declarations inside header files in order to use those functions in multiple files or even multiple projects. Classes are no different. Class definitions can be put in header files in order to facilitate reuse in multiple files or multiple projects. Traditionally, the class definition is put in a header file of the same name as the class, and the member functions defined outside of the class are put in a .cpp file of the same name as the class.
+In the lesson on [[2-11-Header-files|2.11 - 头文件]], you learned that you can put function declarations inside header files in order to use those functions in multiple files or even multiple projects. Classes are no different. Class definitions can be put in header files in order to facilitate reuse in multiple files or multiple projects. Traditionally, the class definition is put in a header file of the same name as the class, and the member functions defined outside of the class are put in a .cpp file of the same name as the class.
 
 Here’s our Date class again, broken into a .cpp and .h file:
 
@@ -207,19 +207,23 @@ COPY
 
 Now any other header or code file that wants to use the Date class can simply `#include "Date.h"`. Note that Date.cpp also needs to be compiled into any project that uses Date.h so the linker knows how Date is implemented.
 
-## Doesn’t defining a class in a header file violate the one-definition rule?
+## 将类定义在头文件中难道不会违反单一定义规则吗？
+
+[[one-definition-rule|单一定义规则(one-definition-rule)]]
 
 It shouldn’t. If your header file has proper header guards, it shouldn’t be possible to include the class definition more than once into the same file.
 
 Types (which include classes), are exempt from the part of the one-definition rule that says you can only have one definition per program. Therefore, there isn’t an issue `#including` class definitions into multiple code files (if there was, classes wouldn’t be of much use).
 
-## Doesn’t defining member functions in the header violate the one-definition rule?
+## 将成员函数定义在头文件中难道不会违反单一定义规则吗？
+
 
 It depends. Member functions defined inside the class definition are considered implicitly inline. Inline functions are exempt from the one definition per program part of the one-definition rule. This means there is no problem defining trivial member functions (such as access functions) inside the class definition itself.
 
 Member functions defined outside the class definition are treated like normal functions, and are subject to the one definition per program part of the one-definition rule. Therefore, those functions should be defined in a code file, not inside the header. One exception is for template functions, which are also implicitly inline.
 
-**So what should I define in the header file vs the cpp file, and what inside the class definition vs outside?**
+## 何时定义在头文件或源文件？又何时定义在类内或类外？
+
 
 You might be tempted to put all of your member function definitions into the header file, inside the class. While this will compile, there are a couple of downsides to doing so. First, as mentioned above, this clutters up your class definition. Second, if you change anything about the code in the header, then you’ll need to recompile every file that includes that header. This can have a ripple effect, where one minor change causes the entire program to need to recompile (which can be slow). If you change the code in a .cpp file, only that .cpp file needs to be recompiled!
 
@@ -232,11 +236,11 @@ Therefore, we recommend the following:
 
 In future lessons, most of our classes will be defined in the .cpp file, with all the functions implemented directly in the class definition. This is just for convenience and to keep the examples short. In real projects, it is much more common for classes to be put in their own code and header files, and you should get used to doing so.
 
-**Default parameters**
+## 默认参数
 
 Default parameters for member functions should be declared in the class definition (in the header file), where they can be seen by whomever `#includes` the header.
 
-**Libraries**
+## 库
 
 Separating the class definition and class implementation is very common for libraries that you can use to extend your program. Throughout your programs, you’ve `#included` headers that belong to the standard library, such as iostream, string, vector, array, and other. Notice that you haven’t needed to add iostream.cpp, string.cpp, vector.cpp, or array.cpp into your projects. Your program needs the declarations from the header files in order for the compiler to validate you’re writing programs that are syntactically correct. However, the implementations for the classes that belong to the C++ standard library are contained in a precompiled file that is linked in at the link stage. You never see the code.
 

@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-10-the-hidden-this-pointer.md",
+                "file": "docs/13-11-class-code-and-header-files.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -94,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -111,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-10-the-hidden-this-pointer.md"
+                "file": "docs/13-11-class-code-and-header-files.md"
               }
             }
           },
@@ -132,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-10-the-hidden-this-pointer.md",
+                "file": "docs/13-11-class-code-and-header-files.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,15 +155,15 @@
   },
   "active": "4e7fdffaa8b3c7a2",
   "lastOpenFiles": [
-    "docs/pass-by-address.md",
     "docs/13-10-the-hidden-this-pointer.md",
     "docs/13-9-destructors.md",
-    "docs/RAII (Resource Acquisition Is Initialization).md",
-    "docs/13-8-overlapping-and-delegating-constructors.md",
-    "docs/memberwise-copy.md",
-    "docs/5-7-Logical-operators.md",
-    "docs/delegating-constructors.md",
-    "docs/13-7-non-static-member-initialization.md",
-    "docs/13-6-constructor-member-initializer-lists.md"
+    "docs/13-18-timing-your-code.md",
+    "docs/13-17-nested-types-in-classes.md",
+    "docs/13-16-anonymous-objects.md",
+    "docs/13-15-friend-functions-and-classes.md",
+    "docs/13-14-static-member-functions.md",
+    "docs/13-13-static-member-variables.md",
+    "docs/13-12-const-class-objects-and-member-functions.md",
+    "docs/13-11-class-code-and-header-files.md"
   ]
 }

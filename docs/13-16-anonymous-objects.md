@@ -103,7 +103,7 @@ In this case, the expression 5 + 3 is evaluated to produce the result 8, which i
 
 Note how much cleaner this keeps our code -- we don’t have to litter the code with temporary variables that are only used once.
 
-**Anonymous class objects**
+## 匿名类对象
 
 Although our prior examples have been with built-in data types, it is possible to construct anonymous objects of our own class types as well. This is done by creating objects like normal, but omitting the variable name.
 
@@ -300,7 +300,7 @@ int main()
 
 COPY
 
-**Summary**
+## 小结
 
 In C++, anonymous objects are primarily used either to pass or return values without having to create lots of temporary variables to do so. Memory allocated dynamically is also done so anonymously (which is why its address must be assigned to a pointer, otherwise we’d have no way to refer to it).
 

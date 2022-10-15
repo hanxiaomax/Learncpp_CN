@@ -227,9 +227,7 @@ public:
 };
 ```
 
-注意，函数`add()` ，`sub()`和 `mult()` 现在都返回`*this`。这样一来就可以xiang
-
-Note that add(), sub() and mult() are now returning *this. Consequently, this allows us to do the following:
+注意，函数`add()` ，`sub()`和 `mult()` 现在都返回`*this`。这样一来就可以向下面这样调用函数：
 
 ```cpp
 #include <iostream>
@@ -244,16 +242,14 @@ int main()
 }
 ```
 
-COPY
+三行代码被压缩成了一行！我们再仔细研究一下它是如何工作的。
 
-We have effectively condensed three lines into one expression! Let’s take a closer look at how this works.
+首先，调用`calc.add(5)` 将 5 加到 `m_value`，然后返回 `*this`，它是 `calc` 的引用，所以 `calc` 会被用于调用接下来的函数。再接下来，对 `calc.sub(3)` 求值，它将 3 从 `m_value` 减去后，继续返回`calc`。最后，`calc.mult(4)` 将 `m_value` 乘以四并返回`calc`，由于不需要继续调用函数，这个返回值也就被忽略掉了。
 
-First, calc.add(5) is called, which adds 5 to our m_value. add() then returns *this, which is just a reference to calc, so calc will be the object used in the subsequent evaluation. Next calc.sub(3) evaluates, which subtracts 3 from m_value and again returns calc. Finally, calc.mult(4) multiplies m_value by 4 and returns calc, which isn’t used further, and is thus ignored.
-
-Since each function modified calc as it was executed, calc’s m_value now contains the value (((0 + 5) - 3) * 4), which is 8.
+因为每个函数都会修改对象 `calc` ，所以`calc`的成员 `m_value` 的值此时为 `(((0 + 5) - 3) * 4)`，即8。
 
 ## 小结
 
-The “this” pointer is a hidden parameter implicitly added to any non-static member function. Most of the time, you will not need to access it directly, but you can if needed. It’s worth noting that “this” is a const pointer -- you can change the value of the underlying object it points to, but you can not make it point to something else!
+“this” 指针是一个被编译器隐式添加到非静态成员函数的隐藏参数。多数情况下你并不会直接访问它，但是当有需要时你会用的着的。需要注意的是，this是一个常量指针，你可以通过它修改它所指的对象，但是你不能让它指向别的对象。
 
-By having functions that would otherwise return void return *this instead, you can make those functions chainable. This is most often used when overloading operators for your classes (something we’ll talk about more in [chapter 14](https://www.learncpp.com/#Chapter14)).
+如果我们让原本返回 void 的函数返回`*this`，则可以使这些函数能够被链式调用。==通常在重载类的运算符时会用到这个特性==（14章中会详细介绍运算符重载）。

@@ -56,7 +56,7 @@ COPY
 
 There’s nothing wrong with this program. But because enum FruitType is meant to be used in conjunction with the Fruit class, it’s a little weird to have it exist independently from the class itself.
 
-## Nesting types
+## 嵌套类型
 
 Much like functions and data can be members of a class, in C++, types can also be defined (nested) inside of a class. To do this, you simply define the type inside the class, under the appropriate access specifier.
 
@@ -113,7 +113,7 @@ Classes essentially act as a namespace for any nested types, much as enum classe
 
 Note that because enum classes also act like namespaces, if we’d nested FruitType inside Fruit as an enum class instead of an enum, we’d access the enumeration via a Fruit::FruitType:: scope qualifier. This double-scoping is unnecessary, so we’ve used a normal enum.
 
-## Other types can be nested too
+## 其他可嵌套类型
 
 Although enumerations are probably the most common type that is nested inside a class, C++ will let you define other types within a class, such as typedefs, type aliases, and even other classes!
 
