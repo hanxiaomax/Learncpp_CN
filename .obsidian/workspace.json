@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-8-overlapping-and-delegating-constructors.md",
+                "file": "docs/13-9-destructors.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-8-overlapping-and-delegating-constructors.md"
+                "file": "docs/13-9-destructors.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-8-overlapping-and-delegating-constructors.md",
+                "file": "docs/13-9-destructors.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,15 +155,15 @@
   },
   "active": "4e7fdffaa8b3c7a2",
   "lastOpenFiles": [
-    "docs/5-7-Logical-operators.md",
     "docs/13-8-overlapping-and-delegating-constructors.md",
+    "docs/memberwise-copy.md",
+    "docs/5-7-Logical-operators.md",
     "docs/delegating-constructors.md",
     "docs/13-7-non-static-member-initialization.md",
     "docs/13-6-constructor-member-initializer-lists.md",
     "docs/member-initializer-list.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
     "docs/list-initialization.md",
-    "docs/括号初始化.md",
-    "docs/uniform-initialization.md"
+    "docs/括号初始化.md"
   ]
 }

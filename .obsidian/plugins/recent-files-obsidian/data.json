@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "13-9-destructors",
+      "path": "docs/13-9-destructors.md"
+    },
+    {
       "basename": "13-8-overlapping-and-delegating-constructors",
       "path": "docs/13-8-overlapping-and-delegating-constructors.md"
+    },
+    {
+      "basename": "memberwise-copy",
+      "path": "docs/memberwise-copy.md"
     },
     {
       "basename": "5-7-Logical-operators",
@@ -125,10 +133,6 @@
       "path": "docs/13-10-the-hidden-this-pointer.md"
     },
     {
-      "basename": "13-9-destructors",
-      "path": "docs/13-9-destructors.md"
-    },
-    {
       "basename": "destructor",
       "path": "docs/destructor.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
       "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
-    },
-    {
-      "basename": "4-17-An introduction-to-std-string",
-      "path": "docs/4-17-An introduction-to-std-string.md"
     }
   ],
   "omittedPaths": [],

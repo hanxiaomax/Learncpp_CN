@@ -203,9 +203,10 @@ int main()
 
 有时候你可能会想要编写一个成员函数（例如 `reset()`）将类对象重置为其初始状态。
 
-因为默认构造函数可以为类成员初始化所需的值，所以你可能会尝试在`reset()`函数中调用构造函数以达到目的。不过，直接调用构造han'sBecause you probably already have a default constructor that initializes your members to the appropriate default values, you may be tempted to try to call the default constructor directly from `reset()`. However, trying to call a constructor directly will generally result in unexpected behavior as we have shown above, so that won’t work.
+因为默认构造函数可以为类成员初始化所需的值，所以你可能会尝试在`reset()`函数中调用构造函数以达到目的。不过，直接调用构造函数通常会导致非预期的行为，就像之前展示的那样，它并不能正确的工作。
 
-A mediocre implementation of a `reset()` function might look like this:
+`reset()`函数的一般实现可能是这样的：
+
 
 ```cpp
 #include <iostream>
@@ -249,11 +250,9 @@ int main()
 }
 ```
 
-COPY
+虽然这种实现可以工作，但是违反了DRY验证，因为“默认”值出现在了两个位置：非静态成员初始化和`reset()`函数体中。不过，也的确没有办法能够让`reset()`直接获取非静态成员初始化值。
 
-While this works, it violates the DRY principle, as we have our “default” values in two places: once in the non-static member initializers, and again in the body of `reset()`. There is no way for the `reset()` function to get the default values from the non-static initializer.
-
-However, if the class is assignable (meaning it has an accessible assignment operator), we can create a new class object, and then use assignment to overwrite the values in the object we want to reset:
+但是，如果一个类是**可赋值的**（即可以访问其赋值操作符），我们可以先创建一个新的对象，然后将新对象赋值给老对象，实现重置。
 
 ```cpp
 #include <iostream>
@@ -298,10 +297,8 @@ int main()
 }
 ```
 
-COPY
-
-In the above `reset()` function, we first create a default `Foo` object (which will have default values). Then we assign that default `Foo` object to the object that member function `reset()` was called on (`*this`). The compiler will do a memberwise copy.
+在上面的例子中，我们首先创建了一个默认的 `Foo` 对象(包含默认初值)。然后我们将这个新 `Foo` 对象赋值给调用`reset()`成员函数的对象 (`*this`)。此时编译器会进行[[memberwise-copy|成员依次拷贝]]。
 
 !!! info "相关内容"
 
-	We cover the `this` pointer in upcoming lesson [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]]，and assignment of classes in upcoming lesson [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/).
+	我们会在 [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]] 中介绍this指针，类对象的赋值则会在 [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/) 中进行介绍。
