@@ -81,23 +81,21 @@ setID(&simple, 2); // 注意，作为对象的前缀现在变成了函数的实�
 void setID(int id) { m_id = id; }
 ```
 
-会被编译器zhuan'h
+会被编译器转换为下面的形式：
 
 ```cpp
 void setID(Simple* const this, int id) { this->m_id = id; }
 ```
 
-COPY
+编译器在编译普通的成员函数时，会隐式地为其添加一个新的参数`this`。`this`指针是一个隐藏的常量指针，它保存着该函数对应对象的地址。
 
-When the compiler compiles a normal member function, it implicitly adds a new parameter to the function named “this”. The **this pointer** is a hidden const pointer that holds the address of the object the member function was called on.
-
-There’s just one more detail to take care of. Inside the member function, any class members (functions and variables) also need to be updated so they refer to the object the member function was called on. This is easily done by adding a “this->” prefix to each of them. Thus, in the body of function setID(), `m_id` (which is a class member variable) has been converted to `this->m_id`. Thus, when “this” points to the address of simple, this->m_id will resolve to simple.m_id.
+此外，还有一点需要注意。在成员函数中，在成员函数中，任何类成员（包括函数和变量）也需要被更新为引用对象的形式。要完成这一点很简单，只需要为它们添加`this->`前缀即可。因此在函数体中，`m_id` (成员变量)被转变成 `this->m_id`。由于 this 指针指向的是`simple`对象的地址，因此 `this->m_id` 会被解析为 `simple.m_id`。
 
 Putting it all together:
 
-1.  When we call `simple.setID(2)`, the compiler actually calls setID(&simple, 2).
-2.  Inside setID(), the “this” pointer holds the address of object simple.
-3.  Any member variables inside setID() are prefixed with “this->”. So when we say `m_id = id`, the compiler is actually executing `this->m_id = id`, which in this case updates simple.m_id to id.
+1.  When we call `simple.setID(2)`, the compiler actually calls `setID(&simple, 2)`.
+2.  Inside `setID()`, the “this” pointer holds the address of object simple.
+3.  Any member variables inside `setID()` are prefixed with “`this->`”. So when we say `m_id = id`, the compiler is actually executing `this->m_id = id`, which in this case updates `simple.m_id` to id.
 
 The good news is that all of this happens automatically, and it doesn’t really matter whether you remember how it works or not. All you need to remember is that all normal member functions have a “this” pointer that refers to the object the function was called on.
 
