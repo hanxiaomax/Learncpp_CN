@@ -9,6 +9,12 @@ tags:
 - class
 ---
 
+
+??? note "关键点速记"
+
+	- 类内的函数是内联的，不受[[one-definition-rule|单一定义规则(one-definition-rule)]]第二条的限制（定义在程序中只能出现一次），所以可以被定义到头文件中。
+	- 被分离到类外的函数定义是普通函数，受限于单一定义规则，因此只能被定义在源文件中。
+
 ## 在类定义的外部定义类成员函数
 
 到目前为止，我们编写的类都很简单，所以可以在类的定义中直接实现成员函数。 例如，对于下列 `Date` 类来说：
@@ -42,9 +48,7 @@ public:
 
 不过，随着类越来越复杂，将所有的成员函数都直接定义在类中会导致类难以维护。使用一个已经定义好的类时，只需要关注其[[公共接口]]（[[public-member|公有成员]]函数）即可，而不需要了解类的底层工作原理。成员函数的实现细节只会对我们造成干扰。
 
-幸运地是，C++ 支持将类的“声明部分”和实现部分分离。This is done by defining the class member functions outside of the class definition. To do so, simply define the member functions of the class as if they were normal functions, but prefix the class name to the function using the scope resolution operator (::) (same as for a namespace).
-
-这是通过在类定义之外定义类成员函数来实现的。要做到这一点，只需将类的成员函数按照普通函数那样定义，但必须在函数前添加[[scope-resolution-operator|作用域解析运算符]](与命名空间相同)。
+幸运地是，C++ 支持将类的“声明部分”和实现部分分离。这是通过在类定义之外定义类成员函数来实现的。要做到这一点，只需将类的成员函数按照普通函数那样定义，但必须在函数前添加[[scope-resolution-operator|作用域解析运算符]](与命名空间相同)。
 
 对于下面这个 `Data` 类定义来说，其构造函数和 `setDate()` 函数被定义在了类外部。注意，函数的原型仍然在类定义中，但是其实际实现被移动到了类外部：
 
@@ -81,13 +85,10 @@ void Date::SetDate(int year, int month, int day)
 }
 ```
 
-很简单吧。对整个类来说，因为访问函数通常只有一行，所以它们通常被保留在类定义中。
+很简单吧。对于这个类来说，因为访问函数通常只有一行，所以它们通常被保留在类定义中。
 
-在下面这个例子中，一个具[[成员构造函数被定义在了外部：
+在下面这个例子中，一个具[[member-initializer-list|成员初始化值列表]]构造函数被定义在了外部：
 
-This is pretty straightforward. Because access functions are often only one line, they are typically left in the class definition, even though they could be moved outside.
-
-Here is another example that includes an externally defined constructor with a member initialization list:
 
 ```cpp
 class Calc
@@ -106,9 +107,7 @@ public:
 };
 ```
 
-COPY
-
-becomes:
+改写为：
 
 ```cpp
 class Calc
@@ -149,17 +148,14 @@ Calc& Calc::mult(int value)
 }
 ```
 
-COPY
 
 ## 将类的定义放置于头文件中
 
-In the lesson on [[2-11-Header-files|2.11 - 头文件]], you learned that you can put function declarations inside header files in order to use those functions in multiple files or even multiple projects. Classes are no different. Class definitions can be put in header files in order to facilitate reuse in multiple files or multiple projects. Traditionally, the class definition is put in a header file of the same name as the class, and the member functions defined outside of the class are put in a .cpp file of the same name as the class.
+在 [[2-11-Header-files|2.11 - 头文件]] 中我们介绍过，函数的声明可以被放置在头文件中，这样我们就可以在多个文件或者项目中使用这些函数。对于类来说也是这样的。类的定义可以被放置在头文件中，这样做同样有助于在多个文件或项目中使用该类。一般来讲，类的定义会被放置与其同名的头文件中，而其成员函数则被定义在与类同名的`.cpp`文件中。
 
-Here’s our Date class again, broken into a .cpp and .h file:
+下面这个类的定义被分散在了头文件和源文件中：
 
-Date.h:
-
-```cpp
+```cpp title="Date.h"
 #ifndef DATE_H
 #define DATE_H
 
@@ -183,11 +179,8 @@ public:
 #endif
 ```
 
-COPY
 
-Date.cpp:
-
-```cpp
+```cpp title="Date.cpp"
 #include "Date.h"
 
 // Date constructor
@@ -205,31 +198,28 @@ void Date::SetDate(int year, int month, int day)
 }
 ```
 
-COPY
-
-Now any other header or code file that wants to use the Date class can simply `#include "Date.h"`. Note that Date.cpp also needs to be compiled into any project that uses Date.h so the linker knows how Date is implemented.
+现在，任何其他的需要使用`Date`类的头文件和源文件只有 `#include "Date.h"`即可。注意，`Date.cpp` 必须被编译到任何使用了 `Date.h` 的项目中，这样链接器才能知晓`Date`的实现。
 
 ## 将类定义在头文件中难道不会违反单一定义规则吗？
 
-[[one-definition-rule|单一定义规则(one-definition-rule)]]
 
-It shouldn’t. If your header file has proper header guards, it shouldn’t be possible to include the class definition more than once into the same file.
+并不会。如果你的头文件包含了合适的[[2-12-Header-guards|头文件防卫式声明]]，那么类的定义并不会被多次包含到一个文件中。
 
-Types (which include classes), are exempt from the part of the one-definition rule that says you can only have one definition per program. Therefore, there isn’t an issue `#including` class definitions into multiple code files (if there was, classes wouldn’t be of much use).
+类型(包括类)不受[[one-definition-rule|单一定义规则(one-definition-rule)]]第二条限制（即在一个程序中，一个变量或普通函数只能够有一个定义）。因此，将类定义`#include`类定义到到多个代码文件中并不存在问题(如果存在问题，类就没有多大用处了)。
+
 
 ## 将成员函数定义在头文件中难道不会违反单一定义规则吗？
 
+视情况而定。在类定义中定义的成员函数被认为是隐式内联的。[[6-13-Inline-functions|内联函数]]不受单定义规则中每个程序一个定义部分的限制。这意味着在类定义本身中定义普通成员函数(如访问函数)没有问题。
 
-It depends. Member functions defined inside the class definition are considered implicitly inline. Inline functions are exempt from the one definition per program part of the one-definition rule. This means there is no problem defining trivial member functions (such as access functions) inside the class definition itself.
-
-Member functions defined outside the class definition are treated like normal functions, and are subject to the one definition per program part of the one-definition rule. Therefore, those functions should be defined in a code file, not inside the header. One exception is for template functions, which are also implicitly inline.
+==在类定义之外定义的成员函数被视为普通函数，并且服从单定义规则中每个程序部分的一个定义。== 因此，这些函数应该定义在代码文件中，而不是在头文件中。一个例外是模板函数，它们也是隐式内联的。
 
 ## 何时定义在头文件或源文件？又何时定义在类内或类外？
 
 
-You might be tempted to put all of your member function definitions into the header file, inside the class. While this will compile, there are a couple of downsides to doing so. First, as mentioned above, this clutters up your class definition. Second, if you change anything about the code in the header, then you’ll need to recompile every file that includes that header. This can have a ripple effect, where one minor change causes the entire program to need to recompile (which can be slow). If you change the code in a .cpp file, only that .cpp file needs to be recompiled!
+您可能会倾向于将所有成员函数定义放在类内部的头文件中。虽然这样做可以编译，但是这样做有一些缺点。首先，如上所述，这会使类定义变得混乱。其次，如果更改了头文件中的任何代码，则需要重新编译包含该头文件的每个文件。这可能会产生连锁反应，一个微小的更改就会导致整个程序需要重新编译(这可能会很慢)。如果您更改了.cpp文件中的代码，则只需要重新编译`.cpp`文件！
 
-Therefore, we recommend the following:
+因此我们推荐下面的做法：
 
 -   For classes used in only one file that aren’t generally reusable, define them directly in the single .cpp file they’re used in.
 -   For classes used in multiple files, or intended for general reuse, define them in a .h file that has the same name as the class.

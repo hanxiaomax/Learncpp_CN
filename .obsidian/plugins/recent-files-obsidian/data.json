@@ -5,6 +5,26 @@
       "path": "docs/13-11-class-code-and-header-files.md"
     },
     {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
+      "basename": "13-4-access-functions-and-encapsulation",
+      "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
+      "basename": "one-definition-rule",
+      "path": "docs/one-definition-rule.md"
+    },
+    {
+      "basename": "2-7-Forward-declarations-and-definitions",
+      "path": "docs/2-7-Forward-declarations-and-definitions.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "13-10-the-hidden-this-pointer",
       "path": "docs/13-10-the-hidden-this-pointer.md"
     },
@@ -39,18 +59,6 @@
     {
       "basename": "13-12-const-class-objects-and-member-functions",
       "path": "docs/13-12-const-class-objects-and-member-functions.md"
-    },
-    {
-      "basename": "one-definition-rule",
-      "path": "docs/one-definition-rule.md"
-    },
-    {
-      "basename": "2-7-Forward-declarations-and-definitions",
-      "path": "docs/2-7-Forward-declarations-and-definitions.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "pass-by-address",
@@ -105,10 +113,6 @@
       "path": "docs/uniform-initialization.md"
     },
     {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
-    },
-    {
       "basename": "implicit-constructor",
       "path": "docs/implicit-constructor.md"
     },
@@ -135,10 +139,6 @@
     {
       "basename": "aggregate-initialization",
       "path": "docs/aggregate-initialization.md"
-    },
-    {
-      "basename": "13-4-access-functions-and-encapsulation",
-      "path": "docs/13-4-access-functions-and-encapsulation.md"
     },
     {
       "basename": "10-x-Chapter-10-comprehensive-quiz",
@@ -195,10 +195,6 @@
     {
       "basename": "access-specifiers",
       "path": "docs/access-specifiers.md"
-    },
-    {
-      "basename": "private-member",
-      "path": "docs/private-member.md"
     }
   ],
   "omittedPaths": [],
