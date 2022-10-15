@@ -91,17 +91,19 @@ void setID(Simple* const this, int id) { this->m_id = id; }
 
 此外，还有一点需要注意。在成员函数中，在成员函数中，任何类成员（包括函数和变量）也需要被更新为引用对象的形式。要完成这一点很简单，只需要为它们添加`this->`前缀即可。因此在函数体中，`m_id` (成员变量)被转变成 `this->m_id`。由于 this 指针指向的是`simple`对象的地址，因此 `this->m_id` 会被解析为 `simple.m_id`。
 
-Putting it all together:
+总结一下：
 
-1.  When we call `simple.setID(2)`, the compiler actually calls `setID(&simple, 2)`.
-2.  Inside `setID()`, the “this” pointer holds the address of object simple.
-3.  Any member variables inside `setID()` are prefixed with “`this->`”. So when we say `m_id = id`, the compiler is actually executing `this->m_id = id`, which in this case updates `simple.m_id` to id.
+1.  当调用 `simple.setID(2)` 时，编译器实际调用的是`setID(&simple, 2)`；
+2.  在 `setID()` 中，this 指针保存着`simple`对象的地址；
+3.  `setID()`函数中的任何成员都会被添加 “`this->`” 前缀，所以，对于`m_id = id`这条语句，编译器实际上执行的是 `this->m_id = id`，在这个例子中即将 `simple.m_id` 的值更新为 `id`。
 
-The good news is that all of this happens automatically, and it doesn’t really matter whether you remember how it works or not. All you need to remember is that all normal member functions have a “this” pointer that refers to the object the function was called on.
+好消息是，所有这些都是自动发生的，你是否记得它是如何工作的并不重要。你只需记住，所有普通成员函数都有一个“this”指针，该指针指向调用函数的对象。
 
-## “this” always points to the object being operated on
 
-New programmers are sometimes confused about how many “this” pointers exist. Each member function has a “this” pointer parameter that is set to the address of the object being operated on. Consider:
+## “this” 指针总是指向操作对象自己
+
+
+新程序员有时会对存在多少个“this”指针感到困惑。每个成员函数都有一个“this”指针形参，它被设置为正在操作的对象的地址。例如：
 
 ```cpp
 int main()
@@ -115,17 +117,15 @@ int main()
 }
 ```
 
-COPY
+在上面的代码中，this指针交替地指代对象A或者B的地址，取决于调用成员函数的是A还是B。
 
-Note that the “this” pointer alternately holds the address of object A or B depending on whether we’ve called a member function on object A or B.
-
-Because “this” is just a function parameter, it doesn’t add any memory usage to your class (just to the member function call, since that parameter needs to be passed to the function and stored in memory).
+因为“this”只是一个函数形参，它不会给类增加任何内存使用量(只是给成员函数调用增加内存使用量，因为这个形参需要传递给函数并存储在内存中)。
 
 ## 显式地使用 this 指针
 
-Most of the time, you never need to explicitly reference the “this” pointer. However, there are a few occasions where doing so can be useful:
+大多数情况下，你不需要显式引用“this”指针。然而，在一些情况下直接使用 this 指针也是有用的。
 
-First, if you have a constructor (or member function) that has a parameter with the same name as a member variable, you can disambiguate them by using “this”:
+首先，如果构造函数(或成员函数)的形参与成员变量同名，你可以使用" this "来消除歧义：
 
 ```cpp
 class Something
@@ -141,15 +141,12 @@ public:
 };
 ```
 
-COPY
+上面代码中的构造函数，其[[parameters|形参]]和类成员变量同名。在这种情况下，`data`将表示形参，所以你必须使用 “this->data” 来表示成员变量。尽管这么做也是可以被接受的编程风格，但是使用`m_`作为成员变量的前缀就可以从源头上消除这种歧义。
 
-Note that our constructor is taking a parameter of the same name as a member variable. In this case, “data” refers to the parameter, and “this->data” refers to the member variable. Although this is acceptable coding practice, we find using the “m_” prefix on all member variable names provides a better solution by preventing duplicate names altogether!
-
-Some developers prefer to explicitly add this-> to all class members. We recommend that you avoid doing so, as it tends to make your code less readable for little benefit. Using the m_ prefix is a more readable way to differentiate member variables from non-member (local) variables.
 
 ## 链式调用成员函数
 
-Second, it can sometimes be useful to have a class member function return the object it was working with as a return value. The primary reason to do this is to allow a series of member functions to be “chained” together, so several member functions can be called on the same object! You’ve actually been doing this for a long time. Consider this common example where you’re outputting more than one bit of text using `std::cout`:
+另一方面，有时候让类成员函数返回对象本身也是很有用的。这么做的一个主要原因就是可以允许函数的链式调用，使得多个成员函数可以作用于一个相同的对象！其实你已经多次使用该特性了。对于下面这个例子来说，`std::cout` 输出了不止一个字符串。
 
 ```cpp
 std::cout << "Hello, " << userName;
