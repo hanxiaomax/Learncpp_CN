@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "13-12-const-class-objects-and-member-functions",
+      "path": "docs/13-12-const-class-objects-and-member-functions.md"
+    },
+    {
       "basename": "13-11-class-code-and-header-files",
       "path": "docs/13-11-class-code-and-header-files.md"
     },
@@ -55,10 +59,6 @@
     {
       "basename": "13-13-static-member-variables",
       "path": "docs/13-13-static-member-variables.md"
-    },
-    {
-      "basename": "13-12-const-class-objects-and-member-functions",
-      "path": "docs/13-12-const-class-objects-and-member-functions.md"
     },
     {
       "basename": "pass-by-address",

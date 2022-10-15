@@ -14,6 +14,7 @@ tags:
 
 	- 类内的函数是内联的，不受[[one-definition-rule|单一定义规则(one-definition-rule)]]第二条的限制（定义在程序中只能出现一次），所以可以被定义到头文件中。
 	- 被分离到类外的函数定义是普通函数，受限于单一定义规则，因此只能被定义在源文件中。
+	- 成员函数的默认参数应该被声明在类定义中（在头文件内），这些参数可以被任何包含了该头文件的代码看到
 
 ## 在类定义的外部定义类成员函数
 
@@ -221,22 +222,27 @@ void Date::SetDate(int year, int month, int day)
 
 因此我们推荐下面的做法：
 
--   For classes used in only one file that aren’t generally reusable, define them directly in the single .cpp file they’re used in.
--   For classes used in multiple files, or intended for general reuse, define them in a .h file that has the same name as the class.
--   Trivial member functions (trivial constructors or destructors, access functions, etc…) can be defined inside the class.
--   Non-trivial member functions should be defined in a .cpp file that has the same name as the class.
+- 对于只在一个文件中使用而不需要重用的类来说，可以直接在使用它们的`.cpp`文件中定义；
+- 对于会在多个文件中使用或者期望被重用的类来说，将它们定义在同名头文件中。
+- 对于简单的成员函数（简单的构造函数、析构函数或成员访问函数）来说，它们可以被定义在类中；
+- 对于较复杂的成员函数来说，它们应该被定义在与类同名的`cpp`文件中。
 
-In future lessons, most of our classes will be defined in the .cpp file, with all the functions implemented directly in the class definition. This is just for convenience and to keep the examples short. In real projects, it is much more common for classes to be put in their own code and header files, and you should get used to doing so.
+在后面的课程中，大多数的类都将被定义在`.cpp`文件中，同时所有函数都会被直接定义在类内。这只是为了方便，同时可以保持示例简短。在实际项目中，将类放在它们自己的代码和头文件中要常见得多，你应该习惯于这样做。
+
+
 
 ## 默认参数
 
-Default parameters for member functions should be declared in the class definition (in the header file), where they can be seen by whomever `#includes` the header.
+==成员函数的默认参数应该被声明在类定义中（在头文件内），这些参数可以被任何包含了该头文件的代码看到。==
 
 ## 库
 
-Separating the class definition and class implementation is very common for libraries that you can use to extend your program. Throughout your programs, you’ve `#included` headers that belong to the standard library, such as iostream, string, vector, array, and other. Notice that you haven’t needed to add iostream.cpp, string.cpp, vector.cpp, or array.cpp into your projects. Your program needs the declarations from the header files in order for the compiler to validate you’re writing programs that are syntactically correct. However, the implementations for the classes that belong to the C++ standard library are contained in a precompiled file that is linked in at the link stage. You never see the code.
+分离类定义和类实现对于库来说是非常常见的。在编写程序时，程序中会存在很多被 `#included` 标准库的头文件，如 `iostream`、`string`、`vector`、`array` 等。注意，你不需要在你的项目中添加 `iostream.cpp`, `string.cpp`, `vector.cpp`或`array.cpp`。你的程序需要来自头文件的声明，以便编译器验证你写的程序是语法正确的。但是，属于C++标准库的类的**实现**包含在预编译文件中，该文件会在链接阶段被链接进去。你永远看不到代码。
 
-Outside of some open source software (where both .h and .cpp files are provided), most 3rd party libraries provide only header files, along with a precompiled library file. There are several reasons for this: 1) It’s faster to link a precompiled library than to recompile it every time you need it, 2) a single copy of a precompiled library can be shared by many applications, whereas compiled code gets compiled into every executable that uses it (inflating file sizes), and 3) intellectual property reasons (you don’t want people stealing your code).
+除了一些开放源码软件(其中提供`.h`和`.cpp`文件)之外，大多数第三方库只提供头文件以及预编译的库文件。这有几个原因：
+1. 链接预编译库比每次需要时重新编译它更快；
+2. 预编译库的一个副本可以被许多应用程序共享，而编译后的代码被编译到每个使用它的可执行文件中(膨胀文件大小)；
+3. 知识产权原因(你不希望别人窃取你的代码)。
 
-Having your own files separated into declaration (header) and implementation (code file) is not only good form, it also makes creating your own custom libraries easier. Creating your own libraries is beyond the scope of these tutorials, but separating your declaration and implementation is a prerequisite to doing so.
+将自己的文件分离为声明(头文件)和实现(代码文件)不仅是一种很好的形式，还可以使创建自己的自定义库更容易。创建自己的库超出了本教程的范围，但是将声明和实现分离是这样做的先决条件。
 
