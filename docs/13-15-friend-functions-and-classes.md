@@ -10,7 +10,7 @@ tags:
 - friend
 ---
 
-
+本章中很大部分篇幅中我们都在强调封装（数据私有）的
 For much of this chapter, we’ve been preaching the virtues of keeping your data private. However, you may occasionally find situations where you will find you have classes and functions outside of those classes that need to work very closely together. For example, you might have a class that stores data, and a function (or another class) that displays the data on the screen. Although the storage class and display code have been separated for easier maintenance, the display code is really intimately tied to the details of the storage class. Consequently, there isn’t much to gain by hiding the details of the storage class from the display code.
 
 In situations like this, there are two options:

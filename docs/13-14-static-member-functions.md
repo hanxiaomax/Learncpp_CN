@@ -124,11 +124,11 @@ The next ID is: 5
 其次，在关于全局变量的一课中，你已经了解到了全局变量的危险性，因为任何一段代码都可能改变全局变量的值，并最终破坏另一段看起来不相关的代码。对于纯静态类也是如此。因为所有成员都属于类(而不是类的对象)，而且类声明通常具有全局作用域，所以纯静态类本质上相当于在全局可访问的名称空间中声明函数和全局变量，并具有全局变量所具有的所有必要缺点。
 
 
-## C++ does not support static constructors
+## C++ 不支持静态构造函数
 
-If you can initialize normal member variables via a constructor, then by extension it makes sense that you should be able to initialize static member variables via a static constructor. And while some modern languages do support static constructors for precisely this purpose, C++ is unfortunately not one of them.
+既然可以通过构造函数初始化普通成员变量，那么也应该能够通过静态构造函数初始化静态成员变量。虽然一些现代语言确实出于这个目的添加了对静态构造函数的支持，但不幸的是C++不是其中之一。
 
-If your static variable can be directly initialized, no constructor is needed: you can initialize the static member variable at the point of definition (even if it is private). We do this in the IDGenerator example above. Here’s another example:
+如果可以直接初始化静态变量，则不需要构造函数：可以在定义点初始化静态成员变量(即使它是私有的)。我们在上面的IDGenerator示例中正是这样做的。这是另一个例子:
 
 ```cpp
 class MyClass
@@ -137,11 +137,11 @@ public:
 	static std::vector<char> s_mychars;
 };
 
-std::vector<char> MyClass::s_mychars{ 'a', 'e', 'i', 'o', 'u' }; // initialize static variable at point of definition
+std::vector<char> MyClass::s_mychars{ 'a', 'e', 'i', 'o', 'u' }; // 在定义时初始化静态变量
 ```
 
+如果需要执行代码(例如循环)才能初始化静态成员变量的话，有许多不同的、笨拙的方法可以实现这一点。有一种处理方法适用于所有变量(静态或非静态)，即使用lambda函数并立即调用它。
 
-If initializing your static member variable requires executing code (e.g. a loop), there are many different, somewhat obtuse ways of doing this. One way that works with all variables, static or not, is to use a lambda and call it immediately.
 
 ```cpp
 class MyClass
@@ -165,9 +165,8 @@ std::vector<char> MyClass::s_mychars{
 };
 ```
 
-COPY
+下面的代码给出了一个行为更像常规构造函数的方法。但是，您可能永远都不需要它，所以如果您愿意，可以随意跳过本节的其余部分。
 
-The following code presents a method that behaves more like a regular constructor. However, it is a little tricky, and you’ll probably never need it, so feel free to skip the remainder of this section if you desire.
 
 ```cpp
 class MyClass
@@ -195,11 +194,11 @@ std::vector<char> MyClass::s_mychars{}; // define our static member variable
 MyClass::init_static MyClass::s_initializer{}; // define our static initializer, which will call the init_static constructor, which will initialize s_mychars
 ```
 
+当定义静态成员 `s_initializer` 时，将调用 `init_static()` 默认构造函数(因为 `s_initializer` 是 `init_static` 类型)。我们可以使用这个构造函数初始化任何静态成员变量。这个解决方案的优点是，所有初始化代码都隐藏在带有静态成员的原始类中。
 
-When static member s_initializer is defined, the init_static() default constructor will be called (because s_initializer is of type init_static). We can use this constructor to initialize any static member variables. The nice thing about this solution is that all of the initialization code is kept hidden inside the original class with the static member.
 
-## Summary
+## 小结
 
-Static member functions can be used to work with static member variables in the class. An object of the class is not required to call them.
+静态成员函数可用于配合类中的静态成员变量来工作。类对象不需要调用它们。
 
-Classes can be created with all static member variables and static functions. However, such classes are essentially the equivalent of declaring functions and global variables in a globally accessible namespace, and should generally be avoided unless you have a particularly good reason to use them.
+一个类的所有成员变量和成员函数可以都是静态的。然而，此类类本质上相当于在全局可访问的名称空间中声明函数和全局变量，通常应该避免使用它们，除非有特别好的理由使用它们。
