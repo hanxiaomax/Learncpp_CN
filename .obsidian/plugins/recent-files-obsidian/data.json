@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "13-14-static-member-functions",
+      "path": "docs/13-14-static-member-functions.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "13-13-static-member-variables",
       "path": "docs/13-13-static-member-variables.md"
     },
@@ -23,10 +31,6 @@
     {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "13-11-class-code-and-header-files",
@@ -79,10 +83,6 @@
     {
       "basename": "13-15-friend-functions-and-classes",
       "path": "docs/13-15-friend-functions-and-classes.md"
-    },
-    {
-      "basename": "13-14-static-member-functions",
-      "path": "docs/13-14-static-member-functions.md"
     },
     {
       "basename": "pass-by-address",

@@ -77,10 +77,12 @@ int main()
 当我们实例化对象的时候，对象各自创建其成员函数的一份拷贝。在这个例子中，因为我们创建了两个 `Something` 类型的对象，最终我们会得到两份 `m_value`: `first.m_value`和`second.m_value`。它们两个是各自独立的，因此上述程序的输出结果为：
 
 
+```
 2
 1
+```
 
-Member variables of a class can be made static by using the static keyword. Unlike normal member variables, static member variables are shared by all objects of the class. Consider the following program, similar to the above:
+使用 `static` 关键字可以创建静态成员变量。和普通成员变量不同的是，静态成员变量在同一个类的对象间是共享的。考虑下面代码：
 
 ```cpp
 #include <iostream>
@@ -106,21 +108,23 @@ int main()
 }
 ```
 
-COPY
 
-This program produces the following output:
+输出结果如下：
 
+```
 2
 2
+```
 
-Because s_value is a static member variable, s_value is shared between all objects of the class. Consequently, first.s_value is the same variable as second.s_value. The above program shows that the value we set using first can be accessed using second!
+因为 `s_value` 是静态成员变量，所以 `s_value` 在各个对象间是共享的。其结果就是，`first.s_value` is 与 `second.s_value` 实际上是同一个。因此在上面的代码中我们可以通过`first`设置`s_value`的值，并通过`second`访问它。
 
 ## 静态成员变量并不和类对象关联
 
 
-Although you can access static members through objects of the class (as shown with first.s_value and second.s_value in the example above), it turns out that static members exist even if no objects of the class have been instantiated! Much like global variables, they are created when the program starts, and destroyed when the program ends.
+尽管你可以通过对象来访问静态成员(例如：`first.s_value` 和  `second.s_value`)，但实际上这些静态成员在对象被实例化前就存在了。它们更像是全局变量，会在程序启动时创建，在程序退出时销毁。
 
-Consequently, it is better to think of static members as belonging to the class itself, not to the objects of the class. Because s_value exists independently of any class objects, it can be accessed directly using the class name and the scope resolution operator (in this case, Something::s_value):
+因此，最好认为静态成员是属于类本身的，而不是类的某个实例对象。因为 `s_value` 独立于任何类对象而存在，所以可以直接使用类名和[[scope-resolution-operator|作用域解析运算符]](在本例中为`Something::s_value`)访问它:
+
 
 ```cpp
 #include <iostream>
@@ -128,51 +132,46 @@ Consequently, it is better to think of static members as belonging to the class 
 class Something
 {
 public:
-    static int s_value; // declares the static member variable
+    static int s_value; // 声明静态成员变量
 };
 
-int Something::s_value{ 1 }; // defines the static member variable (we'll discuss this section below)
-
+int Something::s_value{ 1 }; // 定义静态成员变量
 int main()
 {
-    // note: we're not instantiating any objects of type Something
-
+    // 注意：没有实例化任何对象
+    
     Something::s_value = 2;
     std::cout << Something::s_value << '\n';
     return 0;
 }
 ```
 
-COPY
-
-In the above snippet, s_value is referenced by class name rather than through an object. Note that we have not even instantiated an object of type Something, but we are still able to access and use Something::s_value. This is the preferred method for accessing static members.
+在上面的例子中，`s_value` 是使用类名进行访问的，而没有通过任何该类的变量去访问。我们甚至都还没有实例化任何该类的对象，但是仍然可以通过`Something::s_value` 来访问它。这种方式是更为推荐的使用静态成员的方法。
 
 !!! success "最佳实践"
 
-	Access static members by class name (using the scope resolution operator) rather than through an object of the class (using the member selection operator).
-
+	通过类名（和作用域解析运算符）来访问静态成员变量而不是通过对象来访问（使用成员选择运算符）。
+	
 ## 定义和初始化静态成员变量
 
+当我们在类内部**声明**静态成员变量时，我们是在告诉编译器静态成员变量的存在，而不是真正定义它(类似[[forward-declaration|前向声明]])。因为静态成员变量不是单个类对象的一部分(它们与全局变量处理相似，并在程序启动时初始化)，所以必须在类外部的全局作用域中显式地定义静态成员。
 
-When we declare a static member variable inside a class, we’re telling the compiler about the existence of a static member variable, but not actually defining it (much like a forward declaration). Because static member variables are not part of the individual class objects (they are treated similarly to global variables, and get initialized when the program starts), you must explicitly define the static member outside of the class, in the global scope.
-
-In the example above, we do so via this line:
+在上面的例子中，我们通过这一行来实现静态成员的定义
 
 ```cpp
-int Something::s_value{ 1 }; // defines the static member variable
+int Something::s_value{ 1 }; // 定义静态成员变量
 ```
 
-COPY
+这一行有两个目的：实例化静态成员变量(就像全局变量一样)，并可选地初始化它。在本例中，我们提供了初始化值1。如果没有提供初始化值，C++将该值初始化为0。
 
-This line serves two purposes: it instantiates the static member variable (just like a global variable), and optionally initializes it. In this case, we’re providing the initialization value 1. If no initializer is provided, C++ initializes the value to 0.
+注意，静态成员的**定义**不受[[access-specifiers|成员访问修饰符]]的限制，您可以定义和初始化变量，即使它在类中声明为private(或protected)。
 
-Note that this static member definition is not subject to access controls: you can define and initialize the variable even if it’s declared as private (or protected) in the class.
+如果类定义在头文件中，静态成员定义通常放在类的相关代码文件中(例如`Something.cpp`)。如果类定义在`.cpp`文件中，则静态成员定义通常直接放在类的下面。不要将静态成员定义放在头文件中(很像全局变量，如果头文件被包含不止一次，最终将得到多个定义，这将导致链接器错误)。
 
-If the class is defined in a .h file, the static member definition is usually placed in the associated code file for the class (e.g. Something.cpp). If the class is defined in a .cpp file, the static member definition is usually placed directly underneath the class. Do not put the static member definition in a header file (much like a global variable, if that header file gets included more than once, you’ll end up with multiple definitions, which will cause a linker error).
 
 ## 静态成员变量的内联初始化
 
-There are a few shortcuts to the above. First, when the static member is a const integral type (which includes char and bool) or a const enum, the static member can be initialized inside the class definition:
+有一些捷径可以实现上述目标。首先，当静态成员是const整型类型(包括char和bool)或const enum时，可以在类定义中初始化静态成员:
 
 ```cpp
 class Whatever
@@ -182,11 +181,10 @@ public:
 };
 ```
 
-COPY
 
-In the above example, because the static member variable is a const int, no explicit definition line is needed.
+在上面的例子中，因为静态成员变量是 const 的，所以不需要显式地定义它。
 
-Second, static constexpr members can be initialized inside the class definition:
+其次，`static constexpr` 成员可以在类定义中初始化：
 
 ```cpp
 #include <array>
@@ -199,9 +197,8 @@ public:
 };
 ```
 
-COPY
 
-Finally, as of C++17, we can also initialize non-const static members in the class definition by declaring them inline:
+最后，对于 C++17 来说，非 const 静态成员也可以在类定义中内联地初始化：
 
 ```cpp
 class Whatever
@@ -211,11 +208,10 @@ public:
 };
 ```
 
-COPY
 
 ## 静态成员变量案例
 
-Why use static variables inside classes? One useful example is to assign a unique ID to every instance of the class. Here’s an example of that:
+为什么我们要在类中使用静态变量呢？一个比较有用的例子是为类的每个实例设置一个唯一的ID，请看下面的例子：
 
 ```cpp
 #include <iostream>
@@ -224,12 +220,12 @@ class Something
 {
 private:
     static inline int s_idGenerator { 1 }; // C++17
-//  static int s_idGenerator;              // Use this instead for C++14 or older
+//  static int s_idGenerator;              // 在 C++14 或之前的版本中使用这一行代码
     int m_id { };
 
 public:
     Something()
-    : m_id { s_idGenerator++ } // grab the next value from the id generator
+    : m_id { s_idGenerator++ } // 从 id 生成器获取下一个 id
     {}
 
     int getID() const { return m_id; }
@@ -253,9 +249,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序输出结果：
 
 ```
 1
@@ -263,7 +257,8 @@ This program prints:
 3
 ```
 
-Because s_idGenerator is shared by all Something objects, when a new Something object is created, the constructor grabs the current value out of s_idGenerator and then increments the value for the next object. This guarantees that each instantiated Something object receives a unique id (incremented in the order of creation). This can really help when debugging multiple items in an array, as it provides a way to tell multiple objects of the same class type apart!
+因为 `s_idGenerator` 由所有 `Something` 对象共享，所以当创建一个新的 `Something` 对象时，构造函数从 `s_idGenerator` 中获取当前值，将其递增后作为下一个对象的ID。这保证了每个实例化的 `Something` 对象可以获取唯一的id(按创建顺序递增)。这在调试数组中的多个项时非常有帮助，因为它提供了一种方法来区分具有相同类类型的多个对象!
 
-Static member variables can also be useful when the class needs to utilize an internal lookup table (e.g. an array used to store a set of pre-calculated values). By making the lookup table static, only one copy exists for all objects, rather than making a copy for each object instantiated. This can save substantial amounts of memory.
+当类需要创建类内部的查找表(例如，用于存储一组预计算值的数组)时，静态成员变量也很有用。通过将查找表设置为静态的，所有对象只存在一个副本，而不是为每个实例化的对象都创建一个副本。这可以节省大量的内存。
+
 
