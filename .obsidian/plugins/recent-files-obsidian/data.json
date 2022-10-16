@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "13-18-timing-your-code",
+      "path": "docs/13-18-timing-your-code.md"
+    },
+    {
       "basename": "13-17-nested-types-in-classes",
       "path": "docs/13-17-nested-types-in-classes.md"
+    },
+    {
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
     },
     {
       "basename": "MOC",
@@ -79,10 +87,6 @@
     {
       "basename": "13-9-destructors",
       "path": "docs/13-9-destructors.md"
-    },
-    {
-      "basename": "13-18-timing-your-code",
-      "path": "docs/13-18-timing-your-code.md"
     },
     {
       "basename": "pass-by-address",
@@ -195,10 +199,6 @@
     {
       "basename": "9-7-Null-pointers",
       "path": "docs/9-7-Null-pointers.md"
-    },
-    {
-      "basename": "9-6-Introduction-to-pointers",
-      "path": "docs/9-6-Introduction-to-pointers.md"
     }
   ],
   "omittedPaths": [],

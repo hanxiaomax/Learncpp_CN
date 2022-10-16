@@ -1,6 +1,6 @@
 ---
-title: 10.3 - 限定作用域枚举类型
-alias: 10.3 - 限定作用域枚举类型
+title: 10.3 - 限定作用域枚举类型的输入输出
+alias: 10.3 - 限定作用域枚举类型的输入输出
 origin: /unscoped-enumeration-input-and-output/
 origin_title: "10.3 — Unscoped enumeration input and output"
 time: 2022-8-25

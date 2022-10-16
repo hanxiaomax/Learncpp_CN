@@ -10,11 +10,11 @@ tags:
 - friend
 ---
 
-When writing your code, sometimes you’ll run across cases where you’re not sure whether one method or another will be more performant. So how do you tell?
+在编写代码时，有时候我们需要判断一个方法的性能是否满足要求。此时应该如何判断呢？
 
-One easy way is to time your code to see how long it takes to run. C++11 comes with some functionality in the chrono library to do just that. However, using the chrono library is a bit arcane. The good news is that we can easily encapsulate all the timing functionality we need into a class that we can then use in our own programs.
+一个简单的方法是计算代码的运行时间。C++ 11在 `chrono` 库中提供了一些功能用于实现计时。然而，使用 `chrono` 库有点大材小用了，我们可以很容易地将所有需要的计时功能封装到一个类中，然后在我们自己的程序中使用该类。
 
-Here’s the class:
+下面是计时类的例子：
 
 ```cpp
 #include <chrono> // for std::chrono functions

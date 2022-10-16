@@ -53,13 +53,14 @@ int main()
 ```
 
 
-There’s nothing wrong with this program. But because enum FruitType is meant to be used in conjunction with the Fruit class, it’s a little weird to have it exist independently from the class itself.
+这个程序并没有任何问题。但是因为[[scoped-enumerations|限定作用域枚举]]（枚举类） `FruitType` 只会在 `Fruit` 类中使用，所以将它定义在类外作为一个独立的枚举类多少有些不妥。
+
 
 ## 嵌套类型
 
-Much like functions and data can be members of a class, in C++, types can also be defined (nested) inside of a class. To do this, you simply define the type inside the class, under the appropriate access specifier.
+数据和函数可以称为类的成员，在C++中，类型也可以被嵌套地定义在类内。为此，你只需要将类型定义在内合适的[[access-specifiers|成员访问修饰符]]下方即可。
 
-Here’s the same program as above, with FruitType defined inside the class:
+下面的程序类似于之前的例子，只不过枚举被定义在了类内（此处使用了[[unscoped-enumerations|非限定作用域枚举类型]]）。
 
 ```cpp
 #include <iostream>
@@ -67,8 +68,8 @@ Here’s the same program as above, with FruitType defined inside the class:
 class Fruit
 {
 public:
-	// Note: we've moved FruitType inside the class, under the public access specifier
-	// We've also changed it from an enum class to an enum
+	// 注意：FruitType 被移动到了类中，位于pubic部分
+	// 同时我们将枚举类变成了枚举
 	enum FruitType
 	{
 		apple,
@@ -92,7 +93,7 @@ public:
 
 int main()
 {
-	// Note: we access the FruitType via Fruit now
+	// 注意，我们此处是通过 Fruit 来访问 FruitType
 	Fruit apple { Fruit::apple };
 
 	if (apple.getType() == Fruit::apple)
@@ -104,20 +105,20 @@ int main()
 }
 ```
 
-COPY
 
-First, note that FruitType is now defined inside the class. Second, note that we’ve defined it under the public access specifier, so the type definition can be accessed from outside the class.
+首先，`FruitType` 的定义现在位于类内。其次，我们将其定义为public，以便能够从类的外部访问它。
 
-Classes essentially act as a namespace for any nested types, much as enum classes do. In the prior example, because we used an enum class, we had to qualify our enumerators with the FruitType:: scope qualifier. In this example, because FruitType is a normal enum that is part of the class, we access our enumerators using the Fruit:: scope qualifier.
+此时的类名实际上充当着所有嵌套类型的[[namespace|命名空间]]，和么枚举类有些类似。在之前的例子中，因为我们使用了枚举类，所以在使用枚举时必须添加 `FruitType:: ` 作用域限定符。在这个例子中，因为`FruitType` 是一个普通的枚举，但是它作为该类的一部分，在访问时也必须添加 `FruitType:: ` 作用域限定符。
 
-Note that because enum classes also act like namespaces, if we’d nested FruitType inside Fruit as an enum class instead of an enum, we’d access the enumeration via a Fruit::FruitType:: scope qualifier. This double-scoping is unnecessary, so we’ve used a normal enum.
+注意，因为枚举类也可以充当命名空间，所以如果在上面的例子中使用枚举类而不是枚举，则在访问时必须添加 `Fruit::FruitType::` 作用域限定符。这实在是没有以，所以我们选择使用普通枚举。
 
 ## 其他可嵌套类型
 
-Although enumerations are probably the most common type that is nested inside a class, C++ will let you define other types within a class, such as typedefs, type aliases, and even other classes!
+虽然枚举可能是最常被嵌套在类中的类型，但C++允许你在类中定义其他类型，例如类型定义、类型别名，甚至其他类!
 
-Like any normal member of a class, nested classes have the same access to members of the enclosing class that the enclosing class does. However, the nested class does not have any special access to the “this” pointer of the enclosing class.
+与类的任何普通成员一样，嵌套类对外围类的成员具有与外围类相同的访问权限。然而，嵌套类对外围类的“this”指针没有任何特殊的访问权限。
 
-One other limitation of nested types -- they can’t be forward declared. However, this is rarely a problem in practice since the entire class definition (including the nested type) can generally be `#included` where needed.
+嵌套类型的另一个限制是它们不能被[[向前声明]]。然而，在实践中这很少会带来问题，因为整个类定义(包括嵌套类型)通常可以在需要的地方使用被“`#include`”。
 
-Defining nested classes isn’t very common, but the C++ standard library does do so in some cases, such as with iterator classes.
+定义嵌套类并不常见，但C++标准库在某些情况下确实会这样做，比如迭代器类。
+
