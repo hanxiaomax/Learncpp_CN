@@ -275,11 +275,9 @@ public:
 };
 ```
 
-COPY
+很遗憾，这么做并不能正确工作。为了让一个成员函数称为友元，编译器必须看到该成员函数的完整定义而不仅仅是[[forward-declaration|前向声明]]。因为 `Storage` 还没有看到`Display` 的完整定义，所以当我们在此处声明友元函数时会，编译器会报错。
 
-However, it turns out this won’t work. In order to make a member function a friend, the compiler has to have seen the full definition for the class of the friend member function (not just a forward declaration). Since class Storage hasn’t seen the full definition for class Display yet, the compiler will error at the point where we try to make the member function a friend.
-
-Fortunately, this is easily resolved simply by moving the definition of class Display before the definition of class Storage.
+幸运的是，我们只要将 `Display` 的定义移动到 `Storage` 前面即可。
 
 ```cpp
 #include <iostream>
@@ -320,18 +318,17 @@ public:
 };
 ```
 
-COPY
 
-However, we now have another problem. Because member function Display::displayItem() uses Storage as a reference parameter, and we just moved the definition of Storage below the definition of Display, the compiler will complain it doesn’t know what a Storage is. We can’t fix this one by rearranging the definition order, because then we’ll undo our previous fix.
+不过， 这样一来会带来另外的问题，因为 `Display::displayItem()` 使用 `Storage` 作为引用参数。而当我们将`Storage`的定义移动到`Display`后面时，`编译器就会抱怨它不知道Storage` 是什么，我们不能再调整顺序了，不然又会出现之前的问题。
 
-Fortunately, this is also fixable in a couple of simple steps. First, we can add class Storage as a forward declaration. Second, we can move the definition of Display::displayItem() out of the class, after the full definition of Storage class.
+幸运地是，只需要几步就可以解决该问题。首先，我们可以添加对于`Storage`的前向声明。第二，我们可以将 `Display::displayItem()` 移动到类外部，放在`Storage`类完整定义的后。
 
-Here’s what this looks like:
+看上去是这样的：
 
 ```cpp
 #include <iostream>
 
-class Storage; // forward declaration for class Storage
+class Storage; // Storage 的前向声明
 
 class Display
 {
@@ -344,10 +341,10 @@ public:
 	{
 	}
 
-	void displayItem(const Storage& storage); // forward declaration above needed for this declaration line
+	void displayItem(const Storage& storage); // 上面的前向声明就是为了这一句声明
 };
 
-class Storage // full definition of Storage class
+class Storage // Storage 类的完整定义
 {
 private:
 	int m_nValue {};
@@ -358,11 +355,11 @@ public:
 	{
 	}
 
-	// Make the Display::displayItem member function a friend of the Storage class (requires seeing the full definition of class Display, as above)
+	// 将 Display::displayItem 声明为 Storage 类的友元 (必须看到 Display 的完整定义)
 	friend void Display::displayItem(const Storage& storage);
 };
 
-// Now we can define Display::displayItem, which needs to have seen the full definition of class Storage
+// 现在，我们可以定义 Display::displayItem 了，它必须看到 Storage 的完整定义
 void Display::displayItem(const Storage& storage)
 {
 	if (m_displayIntFirst)
@@ -382,9 +379,8 @@ int main()
 }
 ```
 
-COPY
 
-Now everything will compile properly: the forward declaration of class Storage is enough to satisfy the declaration of Display::displayItem(), the full definition of Display satisfies declaring Display::displayItem() as a friend of Storage, and the full definition of class Storage is enough to satisfy the definition of member function Display::displayItem(). If that’s a bit confusing, see the comments in the program above.
+Now everything will compile properly: the forward declaration of class Storage is enough to satisfy the declaration of `Display::displayItem()`, the full definition of Display satisfies declaring `Display::displayItem()` as a friend of Storage, and the full definition of class Storage is enough to satisfy the definition of member function Display::displayItem(). If that’s a bit confusing, see the comments in the program above.
 
 If this seems like a pain -- it is. Fortunately, this dance is only necessary because we’re trying to do everything in a single file. A better solution is to put each class definition in a separate header file, with the member function definitions in corresponding .cpp files. That way, all of the class definitions would have been visible immediately in the .cpp files, and no rearranging of classes or functions is necessary!
 
