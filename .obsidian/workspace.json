@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-15-friend-functions-and-classes.md",
+                "file": "docs/13-16-anonymous-objects.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-15-friend-functions-and-classes.md"
+                "file": "docs/13-16-anonymous-objects.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-15-friend-functions-and-classes.md",
+                "file": "docs/13-16-anonymous-objects.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",

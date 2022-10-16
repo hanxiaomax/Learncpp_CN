@@ -10,8 +10,8 @@ tags:
 - friend
 ---
 
+在某些情况下，我们只需要一个临时的变量。例如，考虑以下情况:
 
-In certain cases, we need a variable only temporarily. For example, consider the following situation:
 
 ```cpp
 #include <iostream>
@@ -30,13 +30,13 @@ int main()
 }
 ```
 
-COPY
 
-In the add() function, note that the sum variable is really only used as a temporary placeholder variable. It doesn’t contribute much -- rather, its only function is to transfer the result of the expression to the return value.
 
-There is actually an easier way to write the add() function using an anonymous object. An **anonymous object** is essentially a value that has no name. Because they have no name, there’s no way to refer to them beyond the point where they are created. Consequently, they have “expression scope”, meaning they are created, evaluated, and destroyed all within a single expression.
+在`add()` 函数中，变量 `sum` 只被当做一个临时的占位符变量来使用。它并没有其他特别的功能——它唯一的功能就是保存表达式的结果并作为返回值返回。
 
-Here is the add() function rewritten using an anonymous object:
+实际上，我们可以通过匿名对象编写一个更加简单的 `add()` 函数。[[anonymous-object|匿名对象]]本质上是一个没有名称的值。因为它们没有名字，所以在它们被创建后，我们没有办法去引用它们。因此，匿名对象只能具有“表达式作用域”，即它们在一个表达式中被创建、求值和销毁。
+
+下面例子中的 `add()` 函数使用了匿名对象：
 
 ```cpp
 #include <iostream>
@@ -54,11 +54,11 @@ int main()
 }
 ```
 
-COPY
 
-When the expression `x + y` is evaluated, the result is placed in an anonymous object. A copy of the anonymous object is then returned to the caller by value, and the anonymous object is destroyed.
+当表达式 `x + y` 求值时，它的结果会被存放到一个匿名对象中。然后，该对象的一个拷贝会被返回给主调函数，然后这个匿名对象就会被销毁。
 
-This works not only with return values, but also with function parameters. For example, instead of this:
+这不仅适用于返回值，也适用于函数形参。例如，与其这样做：
+
 
 ```cpp
 #include <iostream>
@@ -77,9 +77,7 @@ int main()
 }
 ```
 
-COPY
-
-We can write this:
+不如这样做：
 
 ```cpp
 #include <iostream>
@@ -97,24 +95,21 @@ int main()
 }
 ```
 
-COPY
+在这个例子中，表达式 `5+3` 被求值为 8 ，然后结果被存放在匿名对象时。这个匿名对象的拷贝随后被传递给 `printValue()` 函数，然后被销毁。
 
-In this case, the expression 5 + 3 is evaluated to produce the result 8, which is placed in an anonymous object. A copy of this anonymous object is then passed to the printValue() function, (which prints the value 8) and then is destroyed.
+注意，这使我们的代码变得非常简洁——我们不必用只使用一次的临时变量来弄乱代码。
 
-Note how much cleaner this keeps our code -- we don’t have to litter the code with temporary variables that are only used once.
 
 ## 匿名类对象
 
-Although our prior examples have been with built-in data types, it is possible to construct anonymous objects of our own class types as well. This is done by creating objects like normal, but omitting the variable name.
+尽管我们前面的例子都是内置数据类型，但是我们也可以构造自定义类型的匿名对象。方法和创建普通对象类似，只需要省略变量名即可。
 
 ```cpp
-Cents cents{ 5 }; // normal variable
-Cents{ 7 }; // anonymous object
+Cents cents{ 5 }; // 普通变量
+Cents{ 7 }; // 匿名对象
 ```
 
-COPY
-
-In the above code, `Cents{ 7 }` will create an anonymous Cents object, initialize it with the value 7, and then destroy it. In this context, that isn’t going to do us much good. So let’s take a look at an example where it can be put to good use:
+在上面的例子中，`Cents{ 7 }` 会创建一个匿名对象并使用7作为其初始值，然后该对象就被销毁了。在这个例子中，匿名对象看上去没什么用。让我们看另一个例子吧：
 
 ```cpp
 #include <iostream>
@@ -146,11 +141,10 @@ int main()
 }
 ```
 
-COPY
+注意，此示例与前面使用整数的示例非常相似。在本例中，我们的 `main()`函数向`print()`函数传递了一个`Cents`类型的对象(名为cents)。
 
-Note that this example is very similar to the prior one using integers. In this case, our main() function is passing a Cents object (named cents) to function print().
+我们可以通过使用匿名对象来简化这个程序:
 
-We can simplify this program by using anonymous objects:
 
 ```cpp
 #include <iostream>
@@ -181,13 +175,14 @@ int main()
 }
 ```
 
-COPY
 
-As you’d expect, this prints:
+你可能希望程序打印如下内容：
 
+```
 6 cents
+```
 
-Now let’s take a look at a slightly more complex example:
+现在，让我们再看一个更复杂的例子：
 
 ```cpp
 #include <iostream>
@@ -222,11 +217,9 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，我们使用了很多命名为Cents的值。在`add()` 函数中，我们有一个名为`sum`的`Cents`对象，我们使用它作为中间值，在返回·之前保存它。在函数`main()` 中，我们有另一个名为`sum`的`Cents`对象，也用作中间值。
 
-In the above example, we’re using quite a few named Cents values. In the add() function, we have a Cents value named sum that we’re using as an intermediary value to hold the sum before we return it. And in function main(), we have another Cents value named sum also used as an intermediary value.
-
-We can make our program simpler by using anonymous values:
+我们可以通过使用匿名值来简化程序:
 
 ```cpp
 #include <iostream>
@@ -248,7 +241,7 @@ Cents add(const Cents& c1, const Cents& c2)
 {
     // List initialization looks at the return type of the function
     // and creates the correct object accordingly.
-    return { c1.getCents() + c2.getCents() }; // return anonymous Cents value
+    return { c1.getCents() + c2.getCents() }; // 返回匿名的 Cents value
 }
 
 int main()
@@ -263,7 +256,7 @@ int main()
 
 COPY
 
-This version of add() functions identically to the one above, except it uses an anonymous Cents value instead of a named variable. Also note that in main(), we no longer use a named “sum” variable as temporary storage. Instead, we use the return value of add() anonymously!
+This version of `add()` functions identically to the one above, except it uses an anonymous Cents value instead of a named variable. Also note that in `main()`, we no longer use a named “sum” variable as temporary storage. Instead, we use the return value of `add()` anonymously!
 
 As a result, our program is shorter, cleaner, and generally easier to follow (once you understand the concept).
 
@@ -298,7 +291,6 @@ int main()
 }
 ```
 
-COPY
 
 ## 小结
 

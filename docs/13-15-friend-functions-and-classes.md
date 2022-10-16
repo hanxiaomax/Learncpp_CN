@@ -380,14 +380,14 @@ int main()
 ```
 
 
-现在，代码可以正常编译了：`Storage` 的前向声明对于 `Display::displayItem()` 的声明来说足够了。`Display` 的完整定义可以确保`Display::displayItem()` a friend of Storage, and the full definition of class Storage is enough to satisfy the definition of member function Display::displayItem(). If that’s a bit confusing, see the comments in the program above.
+现在，代码可以正常编译了：`Storage` 的前向声明对于 `Display::displayItem()` 的声明来说足够了。`Display` 的完整定义可以确保`Display::displayItem()`被定义为`Storage`的友元函数，如果你还是感到困惑，请仔细看看上面代码中的注释。
 
-If this seems like a pain -- it is. Fortunately, this dance is only necessary because we’re trying to do everything in a single file. A better solution is to put each class definition in a separate header file, with the member function definitions in corresponding .cpp files. That way, all of the class definitions would have been visible immediately in the .cpp files, and no rearranging of classes or functions is necessary!
+如果这令你感到困难——的确是的。幸运的是，这么做的原因只是因为我们试图在一个文件中完成所有工作。更好的解决方案是将每个类定义放在单独的头文件中，成员函数定义放在相应的.cpp文件中。这样，所有的类定义都将立即在.cpp文件中可见，并且不需要重新排列类或函数!
 
 ## 小结
 
-A friend function or class is a function or class that can access the private members of another class as though it was a member of that class. This allows the friend function or friend class to work intimately with the other class, without making the other class expose its private members (e.g. via access functions).
+友元函数或友元类是可以访问另一个类的私有成员的函数或类，就好像它是该类的成员一样。这允许友元函数或友元类与另一个类紧密地一起工作，而不必暴露一个私有成员(例如通过访问函数)。
 
-Friending is commonly used when defining overloaded operators (which we’ll cover in the next chapter), or less commonly, when two or more classes need to work together in an intimate way.
+友元通常在定义重载操作符(我们将在下一章讨论)时使用，或者（少数时候）在两个或多个类需要以亲密的方式一起工作时。
 
-Note that making a specific member function a friend requires the full definition for the class of the member function to have been seen first.
+注意，要使特定的成员函数成为友元，首先需要看到成员函数类的完整定义。
