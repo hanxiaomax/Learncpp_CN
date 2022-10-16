@@ -10,19 +10,18 @@ tags:
 - friend
 ---
 
-本章中很大部分篇幅中我们都在强调封装（数据私有）的
-For much of this chapter, we’ve been preaching the virtues of keeping your data private. However, you may occasionally find situations where you will find you have classes and functions outside of those classes that need to work very closely together. For example, you might have a class that stores data, and a function (or another class) that displays the data on the screen. Although the storage class and display code have been separated for easier maintenance, the display code is really intimately tied to the details of the storage class. Consequently, there isn’t much to gain by hiding the details of the storage class from the display code.
+本章中很大部分篇幅中我们都在强调封装（数据私有）的重要性。不过，有时候我们也会发现，有些类和函数会和其他其他外部类密切配合工作。例如，有一个类负责存放数据，而另外一个函数（或另外一个类）用于将数据打印到屏幕上。尽管存储类和显示代码出于便于维护的目的而被分割开来，但是显示代码实际上非常紧密地依靠着存储类。这样一来，将存储类的细节对显示代码隐藏起来并无太多帮助。
 
-In situations like this, there are two options:
+在这种情况下，我们有两种选择：
 
-1.  Have the display code use the publicly exposed functions of the storage class. However, this has several potential downsides. First, these public member functions have to be defined, which takes time, and can clutter up the interface of the storage class. Second, the storage class may have to expose functions for the display code that it doesn’t really want accessible to anybody else. There is no way to say “this function is meant to be used by the display class only”.
-2.  Alternatively, using friend classes and friend functions, you can give your display code access to the private details of the storage class. This lets the display code directly access all the private members and functions of the storage class, while keeping everyone else out! In this lesson, we’ll take a closer look at how this is done.
+1. 让显示代码使用存储类的公有函数。然而，这么做有几个潜在的缺点。首先，必须定义这些公共成员函数，这需要时间，而且可能会打乱存储类的接口。其次，存储类可能必须暴露一些接口给显示代码，但是这些代码并不应该暴露给其他模块，我们不希望其他任何人都能访问这些函数。没有办法指定这个函数只能被显示类使用。
+2. 或者，使用友元类和友元函数，你可以让显示代码访问存储类的私有细节。这允许显示代码直接访问存储类的所有私有成员和函数，同时将其他所有人排除在外！在这节课中，我们将仔细看看这是如何做到的。
 
 ## 友元函数
 
-A **friend function** is a function that can access the private members of a class as though it was a member of that class. In all other regards, the friend function is just like a normal function. A friend function may be either a normal function, or a member function of another class. To declare a friend function, simply use the _friend_ keyword in front of the prototype of the function you wish to be a friend of the class. It does not matter whether you declare the friend function in the private or public section of the class.
+[[friend-function|友元函数]]可以像成员函数一样访问一个类的[[private-member|私有成员]]。从各个方面来看，友元函数都和普通函数没什么区别。友元函数可以是普通函数，也可以是其他类的成员函数。声明一个友元函数，只需要在你希望成为友元的函数原型前添加`friend`关键字即可。将友元函数定义在private还是public下没什么区别。
 
-Here’s an example of using a friend function:
+下面是一个使用友元函数的例子：
 
 ```cpp
 class Accumulator
@@ -33,14 +32,14 @@ private:
 public:
     void add(int value) { m_value += value; }
 
-    // Make the reset() function a friend of this class
+    // 使 reset() 函数成为该类的友元函数
     friend void reset(Accumulator& accumulator);
 };
 
-// reset() is now a friend of the Accumulator class
+// reset() 现在是 Accumulator 类的友元
 void reset(Accumulator& accumulator)
 {
-    // And can access the private data of Accumulator objects
+    // 可以访问 Accumulator 的私有成员
     accumulator.m_value = 0;
 }
 
@@ -54,13 +53,12 @@ int main()
 }
 ```
 
-COPY
 
-In this example, we’ve declared a function named reset() that takes an object of class Accumulator, and sets the value of m_value to 0. Because reset() is not a member of the Accumulator class, normally reset() would not be able to access the private members of Accumulator. However, because Accumulator has specifically declared this reset() function to be a friend of the class, the reset() function is given access to the private members of Accumulator.
+在这个例子中，我们声明了一个名为 `reset()` 的函数，它接受 `Accumulator` 类的对象，并将 `m_value` 的值设置为0。因为`reset()`不是 `Accumulator` 类的成员，通常情况下，`reset()` 不能访问 `Accumulator` 的私有成员。但是，因为 `Accumulator` 已经特别声明了这个 `reset()` 函数是这个类的友元，所以让 `reset()` 函数访问 `Accumulator` 的私有成员。
 
-Note that we have to pass an Accumulator object to reset(). This is because reset() is not a member function. It does not have a *this pointer, nor does it have an Accumulator object to work with, unless given one.
+注意，我们必须向 `reset()` 传递一个 `Accumulator` 对象。这是因为 `reset()` 不是成员函数。它没有`*this` 指针，也没有 `Accumulator` 对象可以用来操作，除非给定一个。
 
-Here’s another example:
+再看下面的例子：
 
 ```cpp
 #include <iostream>
@@ -94,15 +92,15 @@ int main()
 }
 ```
 
-COPY
+在这个例子中我们将函数 `isEqual()` 函数声明为 `Value` 类的友元。`isEqual()` 接受两个`Value`对象作为[[parameters|形参]] 。因为 `isEqual()` 是`Value`的友元函数，所以它可以访问 `Value` 对象的所有私有成员。在这个例子中，该函数可以用来比较两个对象，如果相等则返回 true。
 
-In this example, we declare the isEqual() function to be a friend of the Value class. isEqual() takes two Value objects as parameters. Because isEqual() is a friend of the Value class, it can access the private members of all Value objects. In this case, it uses that access to do a comparison on the two objects, and returns true if they are equal.
+虽然上面的两个例子都是刻意设计的，但第二个例子与我们稍后会讨论运算符重载时遇到的情况非常相似!
 
-While both of the above examples are fairly contrived, the latter example is very similar to cases we’ll encounter later when we discuss operator overloading!
 
 ## 多个友元
 
-A function can be a friend of more than one class at the same time. For example, consider the following example:
+一个函数可以同时成为多个类的友元。例如，考虑下面的例子:
+
 
 ```cpp
 #include <iostream>
