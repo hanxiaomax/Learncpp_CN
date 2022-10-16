@@ -11,7 +11,7 @@ tags:
 ---
 
 
-Consider the following short program:
+考虑下面这个简短的程序：
 
 ```cpp
 #include <iostream>
@@ -52,7 +52,6 @@ int main()
 }
 ```
 
-COPY
 
 There’s nothing wrong with this program. But because enum FruitType is meant to be used in conjunction with the Fruit class, it’s a little weird to have it exist independently from the class itself.
 

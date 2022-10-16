@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "13-16-anonymous-objects",
-      "path": "docs/13-16-anonymous-objects.md"
+      "basename": "13-17-nested-types-in-classes",
+      "path": "docs/13-17-nested-types-in-classes.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-16-anonymous-objects",
+      "path": "docs/13-16-anonymous-objects.md"
     },
     {
       "basename": "13-15-friend-functions-and-classes",
@@ -79,10 +83,6 @@
     {
       "basename": "13-18-timing-your-code",
       "path": "docs/13-18-timing-your-code.md"
-    },
-    {
-      "basename": "13-17-nested-types-in-classes",
-      "path": "docs/13-17-nested-types-in-classes.md"
     },
     {
       "basename": "pass-by-address",

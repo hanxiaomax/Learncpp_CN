@@ -239,8 +239,8 @@ public:
 
 Cents add(const Cents& c1, const Cents& c2)
 {
-    // List initialization looks at the return type of the function
-    // and creates the correct object accordingly.
+    // 列表初始化会参考函数返回值的类型
+    // 然后创建所需的对象
     return { c1.getCents() + c2.getCents() }; // 返回匿名的 Cents value
 }
 
@@ -254,13 +254,11 @@ int main()
 }
 ```
 
-COPY
+这个版本的`add()` 函数与上面的函数相同，只是它使用了一个匿名的Cents值而不是一个命名变量。还要注意的是，在`main()` 中，我们不再使用命名的`sum`变量作为临时存储。相反，我们会匿名使用 `add()` 的返回值！
 
-This version of `add()` functions identically to the one above, except it uses an anonymous Cents value instead of a named variable. Also note that in `main()`, we no longer use a named “sum” variable as temporary storage. Instead, we use the return value of `add()` anonymously!
+因此，我们的程序更短、更清晰，而且通常更容易理解(一旦你理解了这个概念)。
 
-As a result, our program is shorter, cleaner, and generally easier to follow (once you understand the concept).
-
-In fact, because cents1 and cents2 are only used in one place, we can anonymize this even further:
+事实上，因为cent1和cent2只在一个地方使用，我们可以进一步匿名化:
 
 ```cpp
 #include <iostream>
@@ -294,7 +292,6 @@ int main()
 
 ## 小结
 
-In C++, anonymous objects are primarily used either to pass or return values without having to create lots of temporary variables to do so. Memory allocated dynamically is also done so anonymously (which is why its address must be assigned to a pointer, otherwise we’d have no way to refer to it).
+在C++中，匿名对象主要用于传递参数或返回值而不必为此创建大量临时变量。动态分配的内存也是匿名完成的(这就是为什么它的地址必须分配给指针，否则我们就没有办法引用它)。
 
-It is also worth noting that because anonymous objects have expression scope, they can only be used once (unless bound to a constant l-value reference, which will extend the lifetime of the temporary object to match the lifetime of the reference). If you need to reference a value in multiple expressions, you should use a named variable instead.
-
+另外值得注意的是，因为匿名对象具有表达式作用域，所以它们只能使用一次(除非绑定到一个固定的[[lvalue-reference|左值引用]]，这将延长临时对象的生命周期，以匹配引用的生命周期)。如果需要在多个表达式中引用一个值，则应该使用命名变量。

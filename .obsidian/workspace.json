@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-16-anonymous-objects.md",
+                "file": "docs/13-17-nested-types-in-classes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-16-anonymous-objects.md"
+                "file": "docs/13-17-nested-types-in-classes.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-16-anonymous-objects.md",
+                "file": "docs/13-17-nested-types-in-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,6 +157,7 @@
   "active": "89c07b0fa44f6cea",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/13-16-anonymous-objects.md",
     "docs/13-15-friend-functions-and-classes.md",
     "docs/13-14-static-member-functions.md",
     "docs/13-13-static-member-variables.md",
@@ -164,7 +165,6 @@
     "docs/static-member-variables.md",
     "docs/13-12-const-class-objects-and-member-functions.md",
     "docs/3-9-Using-an-integrated-debugger-The-call-stack.md",
-    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
-    "docs/13-11-class-code-and-header-files.md"
+    "docs/9-2-Value-categories-lvalues-and-rvalues.md"
   ]
 }
