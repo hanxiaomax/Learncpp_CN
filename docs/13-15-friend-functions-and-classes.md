@@ -380,7 +380,7 @@ int main()
 ```
 
 
-Now everything will compile properly: the forward declaration of class Storage is enough to satisfy the declaration of `Display::displayItem()`, the full definition of Display satisfies declaring `Display::displayItem()` as a friend of Storage, and the full definition of class Storage is enough to satisfy the definition of member function Display::displayItem(). If that’s a bit confusing, see the comments in the program above.
+现在，代码可以正常编译了：`Storage` 的前向声明对于 `Display::displayItem()` 的声明来说足够了。`Display` 的完整定义可以确保`Display::displayItem()` a friend of Storage, and the full definition of class Storage is enough to satisfy the definition of member function Display::displayItem(). If that’s a bit confusing, see the comments in the program above.
 
 If this seems like a pain -- it is. Fortunately, this dance is only necessary because we’re trying to do everything in a single file. A better solution is to put each class definition in a separate header file, with the member function definitions in corresponding .cpp files. That way, all of the class definitions would have been visible immediately in the .cpp files, and no rearranging of classes or functions is necessary!
 
