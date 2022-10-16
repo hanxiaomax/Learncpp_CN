@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "13-13-static-member-variables",
+      "path": "docs/13-13-static-member-variables.md"
+    },
+    {
+      "basename": "static-member-functions",
+      "path": "docs/static-member-functions.md"
+    },
+    {
+      "basename": "static-member-variables",
+      "path": "docs/static-member-variables.md"
+    },
+    {
       "basename": "13-12-const-class-objects-and-member-functions",
       "path": "docs/13-12-const-class-objects-and-member-functions.md"
     },
@@ -71,10 +83,6 @@
     {
       "basename": "13-14-static-member-functions",
       "path": "docs/13-14-static-member-functions.md"
-    },
-    {
-      "basename": "13-13-static-member-variables",
-      "path": "docs/13-13-static-member-variables.md"
     },
     {
       "basename": "pass-by-address",
@@ -191,14 +199,6 @@
     {
       "basename": "9-6-Introduction-to-pointers",
       "path": "docs/9-6-Introduction-to-pointers.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "destructor",
-      "path": "docs/destructor.md"
     }
   ],
   "omittedPaths": [],

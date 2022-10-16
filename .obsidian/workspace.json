@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-12-const-class-objects-and-member-functions.md",
+                "file": "docs/13-13-static-member-variables.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-12-const-class-objects-and-member-functions.md"
+                "file": "docs/13-13-static-member-variables.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-12-const-class-objects-and-member-functions.md",
+                "file": "docs/13-13-static-member-variables.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,15 +156,15 @@
   },
   "active": "75d4a1f19b44f687",
   "lastOpenFiles": [
+    "docs/static-member-functions.md",
+    "docs/13-13-static-member-variables.md",
+    "docs/static-member-variables.md",
+    "docs/13-12-const-class-objects-and-member-functions.md",
     "docs/3-9-Using-an-integrated-debugger-The-call-stack.md",
     "docs/9-2-Value-categories-lvalues-and-rvalues.md",
     "docs/MOC.md",
-    "docs/13-12-const-class-objects-and-member-functions.md",
     "docs/13-11-class-code-and-header-files.md",
     "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
-    "docs/const-member-function.md",
-    "docs/13-5-constructors.md",
-    "docs/13-4-access-functions-and-encapsulation.md",
-    "docs/one-definition-rule.md"
+    "docs/const-member-function.md"
   ]
 }

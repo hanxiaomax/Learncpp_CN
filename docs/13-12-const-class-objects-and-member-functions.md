@@ -241,7 +241,7 @@ public:
 
 ## 重载 const 和 非 const 函数
 
-Finally, although it is not done very often, it is possible to overload a function in such a way to have a const and non-const version of the same function. This works because the const qualifier is considered part of the function’s signature, so two functions which differ only in their const-ness are considered distinct.
+最后，尽管不常用，但我们的确可以通过重载获得同一函数的const和非const版本。因为const限定符被认为是函数签名的一部分，所以当两个函数具有不同的 const 签名的函数会被认为是两个不同的函数。
 
 ```cpp
 #include <string>
@@ -259,8 +259,8 @@ public:
 };
 ```
 
+当使用const对象调用成员函数时，调用的便是 const 版本的函数。对于非const成员而言，则调用的是非const成员函数：
 
-The const version of the function will be called on any const objects, and the non-const version will be called on any non-const objects:
 
 ```cpp
 int main()
@@ -275,11 +275,12 @@ int main()
 }
 ```
 
+当返回值需要不同的“常量性”时（即常量或非常量），则需要重载const和非const版本的函数。在上面的例子中，`getValue()` 的非const版本只能配合非const对象来使用，但是它更灵活，因为我们可以使用它来读 `m_value`，或者写`m_value`(通过赋值字符串" Hi "来实现)。
 
-Overloading a function with a const and non-const version is typically done when the return value needs to differ in constness. In the example above, the non-const version of getValue() will only work with non-const objects, but is more flexible in that we can use it to both read and write m_value (which we do by assigning the string “Hi”).
+`getValue()`的const版本既可以处理const对象也可以处理非const对象，但返回const引用，以确保不能修改const对象的数据。
 
-The const version of getValue() will work with either const or non-const objects, but returns a const reference, to ensure we can’t modify the const object’s data.
 
 ## 小结
 
-Because passing objects by const reference is common, your classes should be const-friendly. That means making any member function that does not modify the state of the class object const!
+因为通过const引用传递对象是常见的，所以类应该是const友好的。这意味着应该将任何不修改类对象的状态的成员函数设置为const！
+

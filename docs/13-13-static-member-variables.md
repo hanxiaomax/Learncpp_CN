@@ -10,9 +10,9 @@ tags:
 - static member variable
 ---
 
-**Review of static keyword uses**
+## 重温 static 关键字
 
-In the lesson on [[6-10-Static-local-variables|6.10 - 静态局部变量]], you learned that static variables keep their values and are not destroyed even after they go out of scope. For example:
+在 [[6-10-Static-local-variables|6.10 - 静态局部变量]] 中我们学习了 `static` 关键字，它可以定义一个变量并确保它不会在[[going-out-of-scope|离开作用域]]后被销毁，例如：
 
 ```cpp
 #include <iostream>
@@ -33,9 +33,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+打印结果：
 
 ```
 1
@@ -43,15 +41,15 @@ This program prints:
 3
 ```
 
-Note that s_id has kept its value across multiple function calls.
+注意，`s_id` 的值在多次函数调用间得以保留。
 
-The static keyword has another meaning when applied to global variables -- it gives them internal linkage (which restricts them from being seen/used outside of the file they are defined in). Because global variables are typically avoided, the static keyword is not often used in this capacity.
+`static` 关键字在用于[[global-variable|全局变量]]时，还有另外的含义—— 它会赋予该变量[[internal-linkage|内部链接]]属性（不能在定义它们的文件外使用）。因为全局变量应该被杜绝，所以`static`的这方面应用并不常见。
 
 ## 静态成员变量
 
-C++ introduces two more uses for the static keyword when applied to classes: static member variables, and static member functions. Fortunately, these uses are fairly straightforward. We’ll talk about static member variables in this lesson, and static member functions in the next.
+`static` 关键字在应用于类成员时，有两个额外的用途：[[static-member-variables|静态成员变量]]和[[static-member-functions|静态成员函数]]。不过，这两种`static`用法都非常简单直接。我们会在本章介绍静态成员变量，然后在下一章介绍静态成员函数。
 
-Before we go into the static keyword as applied to member variables, first consider the following class:
+在开始学习为成员变量添加`static`关键字之前，请先考虑下面的类：
 
 ```cpp
 #include <iostream>
@@ -76,9 +74,8 @@ int main()
 }
 ```
 
-COPY
+当我们实例化对象的时候，对象各自创建其成员函数的一份拷贝。在这个例子中，因为我们创建了两个 `Something` 类型的对象，最终我们会得到两份 `m_value`: `first.m_value`和`second.m_value`。它们两个是各自独立的，因此上述程序的输出结果为：
 
-When we instantiate a class object, each object gets its own copy of all normal member variables. In this case, because we have declared two Something class objects, we end up with two copies of m_value: first.m_value, and second.m_value. first.m_value is distinct from second.m_value. Consequently, the program above prints:
 
 2
 1
