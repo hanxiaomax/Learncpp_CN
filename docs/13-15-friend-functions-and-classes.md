@@ -152,21 +152,19 @@ int main()
 }
 ```
 
-COPY
-
-There are two things worth noting about this example. First, because printWeather is a friend of both classes, it can access the private data from objects of both classes. Second, note the following line at the top of the example:
+关于这个示例，有两点值得注意。首先，因为 `printWeather` 是这两个类的友元函数，所以它可以访问这两个类的对象的私有数据。其次，注意示例中顶部的这一行：
 
 ```cpp
 class Humidity;
 ```
 
-COPY
+这是一个类原型，它告诉编译器我们将在未来定义一个名为`Humidity`的类。如果没有这一行，编译器在解析 `Temperature` 类中 `printWeather()` 的原型时就不知道 `Humidity` 是什么。类原型的作用与函数原型相同——它们告诉编译器某个东西是什么样子的，以便现在可以使用它，以后可以定义它。然而，与函数不同的是，类没有返回类型或参数，因此类原型总是简单的`class ClassName` ，其中`ClassName`是类的名称。
 
-This is a class prototype that tells the compiler that we are going to define a class called Humidity in the future. Without this line, the compiler would tell us it doesn’t know what a Humidity is when parsing the prototype for printWeather() inside the Temperature class. Class prototypes serve the same role as function prototypes -- they tell the compiler what something looks like so it can be used now and defined later. However, unlike functions, classes have no return types or parameters, so class prototypes are always simply `class ClassName`, where ClassName is the name of the class.
 
 ## 友元类
 
-It is also possible to make an entire class a friend of another class. This gives all of the members of the friend class access to the private members of the other class. Here is an example:
+也可以让整个类成为另一个类的友元。这使友元类的所有成员都可以访问另一个类的私有成员。下面是一个例子：
+
 
 ```cpp
 #include <iostream>
@@ -182,7 +180,7 @@ public:
     {
     }
 
-    // Make the Display class a friend of Storage
+    // 使 Display 类称为 Storage 的友元
     friend class Display;
 };
 
@@ -217,26 +215,29 @@ int main()
 }
 ```
 
-COPY
 
-Because the Display class is a friend of Storage, any of Display’s members that use a Storage class object can access the private members of Storage directly. This program produces the following result:
+因为 `Display` 类是 `Storage` 的友元，所以 `Display` 的任何成员都可以 `Storage` 的私有成员。上述程序输出结果为：
 
+```
 6.7 5
+```
 
-A few additional notes on friend classes. First, even though Display is a friend of Storage, Display has no direct access to the *this pointer of Storage objects. Second, just because Display is a friend of Storage, that does not mean Storage is also a friend of Display. If you want two classes to be friends of each other, both must declare the other as a friend. Finally, if class A is a friend of B, and B is a friend of C, that does not mean A is a friend of C.
+有关友元类，还有一些事情需要注意。首先，即便 `Display` 是 `Storage` 的友元，但是 `Display` 并不能直接访问`Storage`对象的 `*this` 指针。其次，因为`Display` 是 `Storage` 的友元类，但是这不代表 `Storage` 也是 `Display` 的友元。如果你希望两个类互为友元，阿么必须分别在类中将对方声明为友元。最后，如果A是B的友元，而B是C的友元，但不代表A是C的友元。
 
-Be careful when using friend functions and classes, because it allows the friend function or class to violate encapsulation. If the details of the class change, the details of the friend will also be forced to change. Consequently, limit your use of friend functions and classes to a minimum.
+在使用友函数和类时要小心，因为它允许友函数或类打破封装。如果类改变了，友元的也需要被迫改变。因此，尽量减少对友函数和友元类的使用。
+
 
 ## 友元成员函数
 
-Instead of making an entire class a friend, you can make a single member function a friend. This is done similarly to making a normal function a friend, except using the name of the member function with the className:: prefix included (e.g. Display::displayItem).
 
-However, in actuality, this can be a little trickier than expected. Let’s convert the previous example to make Display::displayItem a friend member function. You might try something like this:
+可以将单个成员函数设为友元，而不是将整个类设为友元。这与将普通函数设为友元类似，只是在使用成员函数的名称时包含了`className::`前缀（例如`Display::displayItem`)。
+
+不过，这么做比预期的要复杂一些。让我们改写一下前面的示例，使`Display::displayItem`成为友元成员函数。我们可以这样做:
 
 ```cpp
 #include <iostream>
 
-class Display; // forward declaration for class Display
+class Display; // Display 的前向声明
 
 class Storage
 {
@@ -249,8 +250,8 @@ public:
 	{
 	}
 
-	// Make the Display::displayItem member function a friend of the Storage class
-	friend void Display::displayItem(const Storage& storage); // error: Storage hasn't seen the full definition of class Display
+	// 使 Display::displayItem 成员函数成为 Storage 的友元
+	friend void Display::displayItem(const Storage& storage); // 错误: Storage 此时并不知道 Display 类的完整定义。
 };
 
 class Display
