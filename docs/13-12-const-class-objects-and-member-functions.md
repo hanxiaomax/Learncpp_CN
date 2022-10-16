@@ -150,13 +150,9 @@ public:
 
 尽管实例化const类对象是创建const对象的一种方法，但获得const对象更常见的方法是通过const引用将对象传递给函数。
 
-在 [[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用] 中我们介绍了 we covered the merits of passing class arguments by const reference instead of by value. To recap, passing a class argument by value causes a copy of the class to be made (which is slow) -- most of the time, we don’t need a copy, a reference to the original argument works just fine, and is more performant because it avoids the needless copy. We typically make the reference const in order to ensure the function does not inadvertently change the argument, and to allow the function to work with R-values (e.g. literals), which can be passed as const references, but not non-const references.
+在 [[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]] 中我们介绍了通过常量引用传递类参数时的特性。回忆一下，[[pass-by-value|按值传递]]对象会导致对象被赋值（效率低）——大多数情况下，我们并不需要一份拷贝，使用原始对象的引用就可以了，而且由于避免了不必要的拷贝，性能自然也更好。通常情况下，我们会使用 const 类型的引用来确保实参不被修改，而且使得函数可以配合[[rvalue|右值]]来使用（例如字面量），因为右值只能通过const引用传递。
 
-
-我们讨论了用const引用而不是用值传递类参数的优点。总结一下，按值传递类实参会导致生成类的副本(这很慢)——大多数时候，我们不需要复制，对原始实参的引用工作得很好，而且性能更好，因为它避免了不必要的复制。我们通常将引用设为const，以确保函数不会无意中更改实参，并允许函数使用r值(例如字面量)，这些r值可以作为const引用传递，但不能作为非const引用传递。
-
-
-Can you figure out what’s wrong with the following code?
+你能看出下面代码中的问题吗？
 
 ```cpp
 #include <iostream>
@@ -186,7 +182,7 @@ public:
     int getDay() { return m_day; }
 };
 
-// note: We're passing date by const reference here to avoid making a copy of date
+// 注意：我们通过传 const 引用来避免拷贝 data
 void printDate(const Date& date)
 {
     std::cout << date.getYear() << '/' << date.getMonth() << '/' << date.getDay() << '\n';
@@ -201,10 +197,9 @@ int main()
 }
 ```
 
+这里的问题在于，在函数`printDate` 函数中，`date` 被当做const对象，因此基于const对象`date`调用 `getYear()`、`getMonth()` 和 `getDay()`这些非const成员函数的时候，就会导致编译器报错。
 
-The answer is that inside of the printDate function, date is treated as a const object. And with that const date, we’re calling functions `getYear()`, `getMonth()`, and `getDay()`, which are all non-const. Since we can’t call non-const member functions on const objects, this will cause a compile error.
-
-The fix is simple: make `getYear()`, `getMonth()`, and `getDay()` const:
+为了解决这个问题，需要将 `getYear()`、`getMonth()` 和  `getDay()` 定义为 const：
 
 ```cpp
 class Date
@@ -236,15 +231,15 @@ public:
 ```
 
 
-Now in function printDate(), const date will be able to successfully call `getYear()`, `getMonth()`, and `getDay()`.
+这样一来 `printDate()` 函数中的 const `date` 就可以正常调用 `getYear()`、`getMonth()` 和 `getDay()` 了。
 
-## Const members can not return non-const references to members
+## const 成员不能返回非const引用成员
 
-When a member function is const, the hidden *this pointer is also const, which means all members are treated as const within that function. Therefore, a const member function can not return a non-const reference to a member, as that would allow the caller to have non-const access to that const member. Const member functions can return const references to members.
+如果成员函数是 const 的，则 `*this` 指针也是const的，这就意味着在这个函数中，所有类成员都会被当做是const的。因此一个 const 成员函数不能返回非const引用成员。const成员函数只能返回const引用成员。
 
-We’ll see an example of this in the next section.
+在下一个章节我们会看到具体的例子。
 
-## Overloading const and non-const function
+## 重载 const 和 非 const 函数
 
 Finally, although it is not done very often, it is possible to overload a function in such a way to have a const and non-const version of the same function. This works because the const qualifier is considered part of the function’s signature, so two functions which differ only in their const-ness are considered distinct.
 
