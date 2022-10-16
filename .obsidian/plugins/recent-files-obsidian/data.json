@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "14-1-introduction-to-operator-overloading",
+      "path": "docs/14-1-introduction-to-operator-overloading.md"
+    },
+    {
+      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
+      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
+    },
+    {
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
       "basename": "13-18-timing-your-code",
       "path": "docs/13-18-timing-your-code.md"
     },
@@ -11,10 +35,6 @@
     {
       "basename": "10-3-unscoped-enumeration-input-and-output",
       "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "13-16-anonymous-objects",
@@ -179,26 +199,6 @@
     {
       "basename": "10-6-struct-aggregate-initialization",
       "path": "docs/10-6-struct-aggregate-initialization.md"
-    },
-    {
-      "basename": "13-3-public-vs-private-access-specifiers",
-      "path": "docs/13-3-public-vs-private-access-specifiers.md"
-    },
-    {
-      "basename": "13-2-classes-and-class-members",
-      "path": "docs/13-2-classes-and-class-members.md"
-    },
-    {
-      "basename": "13-1-welcome-to-object-oriented-programming",
-      "path": "docs/13-1-welcome-to-object-oriented-programming.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
-    },
-    {
-      "basename": "9-7-Null-pointers",
-      "path": "docs/9-7-Null-pointers.md"
     }
   ],
   "omittedPaths": [],
