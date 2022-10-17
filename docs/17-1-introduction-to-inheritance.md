@@ -31,16 +31,15 @@ tags:
 
 这是另一个层次结构的例子：正方形是矩形，矩形是四边形，四边形是一种形状。直角三角形是三角形，三角形也是一种形状。将其放入层次图中，看起来像这样:
 
-Here’s another example of a hierarchy: a square is a rectangle, which is a quadrilateral, which is a shape. A right triangle is a triangle, which is also a shape. Put into a hierarchy diagram, that would look like this:
 
 ![](http://learncpp.com/images/CppTutorial/Section11/ShapesInheritance.gif)
 
-This diagram goes from general (top) to specific (bottom), with each item in the hierarchy inheriting the properties and behaviors of the item above it.
+这个图从一般的(上)到特殊的(下)，层次结构中的每个项目继承上面项目的属性和行为。
 
-## A look ahead**
+## 先睹为快
 
-In this chapter, we’ll explore the basics of how inheritance works in C++.
+在本章中，我们会讨论使用 C++ 中继承的基本方式。
 
-Next chapter, we’ll explore how inheritance enables polymorphism (one of object-oriented programming’s big buzzwords) through virtual functions.
+在下一章中，我们会讨论继承如何基于[[virtual-function|虚函数]]来[[polymorphism|多态]]（面向对象中最常见的概念之一）。
 
-As we progress, we’ll also talk about inheritance’s key benefits, as well as some of the downsides.
+随后，我们还会讨论使用继承而带来的一些优势和劣势。

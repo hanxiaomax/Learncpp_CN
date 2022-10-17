@@ -23,110 +23,6 @@
             }
           },
           {
-            "id": "48ec4da8acf08e73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-x-Chapter-17-comprehensive-quiz.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "565a629adaadf2fe",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-1-introduction-to-inheritance.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "37ab33ddebc4aff3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-2-basic-inheritance-in-c++.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2f6f406b6bf374e4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-3-order-of-construction-of-derived-classes.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "fa2372555adb3b3d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f8f87e766280a6c4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-5-inheritance-and-access-specifiers.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2bbfd7469c4fe116",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e49974732d51ca68",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "6fc2e06e8c27891d",
             "type": "leaf",
             "state": {
@@ -145,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-1-introduction-to-inheritance.md",
+                "file": "docs/17-2-basic-inheritance-in-c++.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -153,7 +49,7 @@
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -227,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-1-introduction-to-inheritance.md"
+                "file": "docs/17-2-basic-inheritance-in-c++.md"
               }
             }
           },
@@ -248,7 +144,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-1-introduction-to-inheritance.md",
+                "file": "docs/17-2-basic-inheritance-in-c++.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -272,15 +168,15 @@
   },
   "active": "e15a4d36e47763cc",
   "lastOpenFiles": [
-    "docs/object-composition.md",
-    "docs/17-1-introduction-to-inheritance.md",
+    "docs/MOC.md",
     "docs/17-3-order-of-construction-of-derived-classes.md",
     "docs/17-2-basic-inheritance-in-c++.md",
-    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
-    "docs/17-5-inheritance-and-access-specifiers.md",
-    "docs/17-6-adding-new-functionality-to-a-derived-class.md",
-    "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
-    "docs/17-8-Hiding-inherited-functionality.md",
-    "docs/17-9-multiple-inheritance.md"
+    "docs/public-inheritance.md",
+    "docs/derived-class.md",
+    "docs/child-class.md",
+    "docs/super-class.md",
+    "docs/base-class.md",
+    "docs/parent-class.md",
+    "docs/17-1-introduction-to-inheritance.md"
   ]
 }

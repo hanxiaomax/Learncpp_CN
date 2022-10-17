@@ -1,20 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "17-1-introduction-to-inheritance",
-      "path": "docs/17-1-introduction-to-inheritance.md"
+      "basename": "17-2-basic-inheritance-in-c++",
+      "path": "docs/17-2-basic-inheritance-in-c++.md"
     },
     {
-      "basename": "object-composition",
-      "path": "docs/object-composition.md"
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "17-3-order-of-construction-of-derived-classes",
       "path": "docs/17-3-order-of-construction-of-derived-classes.md"
     },
     {
-      "basename": "17-2-basic-inheritance-in-c++",
-      "path": "docs/17-2-basic-inheritance-in-c++.md"
+      "basename": "public-inheritance",
+      "path": "docs/public-inheritance.md"
+    },
+    {
+      "basename": "derived-class",
+      "path": "docs/derived-class.md"
+    },
+    {
+      "basename": "child-class",
+      "path": "docs/child-class.md"
+    },
+    {
+      "basename": "super-class",
+      "path": "docs/super-class.md"
+    },
+    {
+      "basename": "base-class",
+      "path": "docs/base-class.md"
+    },
+    {
+      "basename": "parent-class",
+      "path": "docs/parent-class.md"
+    },
+    {
+      "basename": "17-1-introduction-to-inheritance",
+      "path": "docs/17-1-introduction-to-inheritance.md"
+    },
+    {
+      "basename": "virtual-function",
+      "path": "docs/virtual-function.md"
+    },
+    {
+      "basename": "object-composition",
+      "path": "docs/object-composition.md"
     },
     {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
@@ -133,10 +165,6 @@
       "path": "docs/side-effects.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "direct-initialization",
       "path": "docs/direct-initialization.md"
     },
@@ -171,34 +199,6 @@
     {
       "basename": "14-10-overloading-the-parenthesis-operator",
       "path": "docs/14-10-overloading-the-parenthesis-operator.md"
-    },
-    {
-      "basename": "14-7-overloading-the-comparison-operators",
-      "path": "docs/14-7-overloading-the-comparison-operators.md"
-    },
-    {
-      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
-      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
-    },
-    {
-      "basename": "14-3-overloading-operators-using-normal-functions",
-      "path": "docs/14-3-overloading-operators-using-normal-functions.md"
-    },
-    {
-      "basename": "14-6-overloading-unary-operators-+--and-!",
-      "path": "docs/14-6-overloading-unary-operators-+--and-!.md"
-    },
-    {
-      "basename": "14-5-overloading-operators-using-member-functions",
-      "path": "docs/14-5-overloading-operators-using-member-functions.md"
-    },
-    {
-      "basename": "14-4-overloading-the-IO-operators",
-      "path": "docs/14-4-overloading-the-IO-operators.md"
-    },
-    {
-      "basename": "14-1-introduction-to-operator-overloading",
-      "path": "docs/14-1-introduction-to-operator-overloading.md"
     }
   ],
   "omittedPaths": [],

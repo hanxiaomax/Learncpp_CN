@@ -13,26 +13,27 @@ tags:
 	
 	-
 
-Now that we’ve talked about what inheritance is in an abstract sense, let’s talk about how it’s used within C++.
+从抽象层面讨论过继承之后，让我们来看看 C++ 中的继承吧。
 
-Inheritance in C++ takes place between classes. In an inheritance (is-a) relationship, the class being inherited from is called the **parent class**, **base class**, or **superclass**, and the class doing the inheriting is called the **child class**, **derived class**, or **subclass**.
+C++的继承发生在类与类之间。在继承关系中，被继承的类称为[[parent-class|父类(parent class)]]、[[base-class|基类(base class)]]或[[super-class|超类(super class)]]。而继承父类的类，则称为[[child-class|子类(child class / sub class)]]、[[derived-class|派生类]]。
 
 ![](http://learncpp.com/images/CppTutorial/Section11/FruitInheritance.gif)
 
-In the above diagram, Fruit is the parent, and both Apple and Banana are children.
+在上图中，水果是父类，苹果和香蕉都是子类。
 
 ![](http://learncpp.com/images/CppTutorial/Section11/ShapesInheritance.gif)
 
-In this diagram, Triangle is both a child (to Shape) and a parent (to Right Triangle).
+在上图中，三角形既是子类（*形状*的子类），也是父类（对直角三角形而言）。
 
-A child class inherits both behaviors (member functions) and properties (member variables) from the parent (subject to some access restrictions that we’ll cover in a future lesson).  
-These variables and functions become members of the derived class.
+子类从父类继承行为(成员函数)和属性(成员变量)(需要遵守访问限制，我们将在以后的课程中讨论)。
+这些变量和函数成为派生类的成员。
 
-Because child classes are full-fledged classes, they can (of course) have their own members that are specific to that class. We’ll see an example of this in a moment.
+因为子类也是一个标准的类，所以它们(当然)可以有自己的类成员。
 
-## A Person class**
 
-Here’s a simple class to represent a generic person:
+## `Person` 类**
+
+下面的例子中使用 `Person` 表示一个”人类“：
 
 ```cpp
 #include <string>
@@ -55,17 +56,18 @@ public:
 };
 ```
 
-COPY
+因为这个`Person`类被设计用来表示一般的人，所以我们只定义了任何类型的人都通用的成员。每个人(不论性别、职业等)都有名字和年龄，所以在这里表示出来。
 
-Because this Person class is designed to represent a generic person, we’ve only defined members that would be common to any type of person. Every person (regardless of gender, profession, etc…) has a name and age, so those are represented here.
+注意，在本例中，我们将所有变量和函数设置为公共的。这纯粹是为了使这些示例保持简单。通常我们会将变量设为私有。我们将在本章后面讨论访问控制以及它们如何与继承交互。
 
-Note that in this example, we’ve made all of our variables and functions public. This is purely for the sake of keeping these examples simple right now. Normally we would make the variables private. We will talk about access controls and how those interact with inheritance later in this chapter.
 
-## A BaseballPlayer class**
+## `BaseballPlayer` 类
 
 Let’s say we wanted to write a program that keeps track of information about some baseball players. Baseball players need to contain information that is specific to baseball players -- for example, we might want to store a player’s batting average, and the number of home runs they’ve hit.
 
-Here’s our incomplete Baseball player class:
+假设我们想要编写一个程序来记录棒球运动员的信息。棒球运动员需要包含特定的关于棒球运动员的信息——例如，球员的击球率和本垒打数。
+
+下面是一个不完整的版本：
 
 ```cpp
 class BaseballPlayer
@@ -82,19 +84,18 @@ public:
 };
 ```
 
-COPY
+我们同时还需要记录运动员的姓名和年龄，而 `Person`类中正好包含这些信息。
 
-Now, we also want to keep track of a baseball player’s name and age, and we already have that information as part of our Person class.
+我们有三种方式可以为 `BaseballPlayer` 类添加姓名和年龄：
 
-We have three choices for how to add name and age to BaseballPlayer:
+1. 直接将姓名和年龄作为成员添加到`BaseballPlayer`类中。这可能是最糟糕的选择，因为我们复制的是`Person`类中已经存在的代码。对`Person`的任何更新都必须在`BaseballPlayer`中进行。
+2. 使用组合将`Person`添加为`BaseballPlayer`的成员。但我们必须问自己，“一个棒球运动员有一个人吗？” 并不是。所以这不是正确的范式。
+3. 让`BaseballPlayer`从`Person`继承这些属性。记住，继承表示`is-a`关系。棒球运动员是人吗？当然是。所以继承是一个很好的选择。
 
-1.  Add name and age to the BaseballPlayer class directly as members. This is probably the worst choice, as we’re duplicating code that already exists in our Person class. Any updates to Person will have to be made in BaseballPlayer too.
-2.  Add Person as a member of BaseballPlayer using composition. But we have to ask ourselves, “does a BaseballPlayer have a Person”? No, it doesn’t. So this isn’t the right paradigm.
-3.  Have BaseballPlayer inherit those attributes from Person. Remember that inheritance represents an is-a relationship. Is a BaseballPlayer a Person? Yes, it is. So inheritance is a good choice here.
 
-## Making BaseballPlayer a derived class**
+## 让 `BaseballPlayer` 成为派生类
 
-To have BaseballPlayer inherit from our Person class, the syntax is fairly simple. After the `class BaseballPlayer` declaration, we use a colon, the word “public”, and the name of the class we wish to inherit. This is called _public inheritance_. We’ll talk more about what public inheritance means in a future lesson.
+让 `BaseballPlayer` 继承 `Person` 类的语法很简单。在完成 `class BaseballPlayer` 声明后，使用一个冒号，外加 `public`关键字，接上需要继承的类的名字即可。这种方式称为[[public-inheritance|公开继承]]。我们会在后面的课程中再详细讨论公开继承的话题。
 
 ```cpp
 // BaseballPlayer publicly inheriting Person
@@ -111,17 +112,16 @@ public:
 };
 ```
 
-COPY
 
-Using a derivation diagram, our inheritance looks like this:
+使用派生关系图，我们的继承看起来像这样：
 
 ![](https://www.learncpp.com/images/CppTutorial/Section11/BaseballPlayerInheritance.gif)
 
-When BaseballPlayer inherits from Person, BaseballPlayer acquires the member functions and variables from Person. Additionally, BaseballPlayer defines two members of its own: m_battingAverage and m_homeRuns. This makes sense, since these properties are specific to a BaseballPlayer, not to any Person.
+当 `BaseballPlayer` 继承 `Person`后，`BaseballPlayer` 就获取了 `Person` 的[[member-variable|成员变量]]和[[member-function|成员函数]]。此外，`BaseballPlayer` 还定义了两个自己特有的成员：`m_battingAverage` 和 `m_homeRuns`。这么做的原因很简单，因为这些属性是属于 `BaseballPlayer` 的，而不是任何 `Person` 所共有的。
 
-Thus, BaseballPlayer objects will have 4 member variables: m_battingAverage and m_homeRuns from BaseballPlayer, and m_name and m_age from Person.
+因此，`BaseballPlayer` 对象最终会包含4个成员变量：`m_battingAverage` 和 `m_homeRuns` 是 `BaseballPlayer` 特有的，`m_name` 和 `m_age` 是继承自 `Person` 的。
 
-This is easy to prove:
+上面论述很容易证明：
 
 ```cpp
 #include <iostream>
@@ -169,9 +169,7 @@ int main()
 }
 ```
 
-COPY
-
-Which prints the value:
+程序输出：
 
 ```
 Joe
@@ -179,7 +177,7 @@ Joe
 
 This compiles and runs because joe is a BaseballPlayer, and all BaseballPlayer objects have a m_name member variable and a getName() member function inherited from the Person class.
 
-## An Employee derived class**
+## `Employee` 派生类
 
 Now let’s write another class that also inherits from Person. This time, we’ll write an Employee class. An employee “is a” person, so using inheritance is appropriate:
 
