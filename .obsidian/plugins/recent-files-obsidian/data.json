@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "14-14-converting-constructors-explicit-and-delete",
+      "path": "docs/14-14-converting-constructors-explicit-and-delete.md"
+    },
+    {
+      "basename": "converting-constructors",
+      "path": "docs/converting-constructors.md"
+    },
+    {
+      "basename": "14-15-overloading-the-assignment-operator",
+      "path": "docs/14-15-overloading-the-assignment-operator.md"
+    },
+    {
+      "basename": "14-16-shallow-vs-deep-copying",
+      "path": "docs/14-16-shallow-vs-deep-copying.md"
+    },
+    {
       "basename": "14-13-copy-initialization",
       "path": "docs/14-13-copy-initialization.md"
     },
@@ -75,18 +91,6 @@
     {
       "basename": "14-17-overloading-operators-and-function-templates",
       "path": "docs/14-17-overloading-operators-and-function-templates.md"
-    },
-    {
-      "basename": "14-16-shallow-vs-deep-copying",
-      "path": "docs/14-16-shallow-vs-deep-copying.md"
-    },
-    {
-      "basename": "14-15-overloading-the-assignment-operator",
-      "path": "docs/14-15-overloading-the-assignment-operator.md"
-    },
-    {
-      "basename": "14-14-converting-constructors-explicit-and-delete",
-      "path": "docs/14-14-converting-constructors-explicit-and-delete.md"
     },
     {
       "basename": "14-11-Overloading-typecasts",
@@ -195,10 +199,6 @@
     {
       "basename": "const-member-function",
       "path": "docs/const-member-function.md"
-    },
-    {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
     }
   ],
   "omittedPaths": [],

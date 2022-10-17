@@ -93,9 +93,7 @@ Fraction six(Fraction(6));
 
 还有其他一些地方使用了拷贝初始化，其中有两个地方值得一提。当[[pass-by-value|按值传递]]或[[return-by-value|按值返回]]类时，会使用拷贝初始化。
 
-There are a few other places copy initialization is used, but two of them are worth mentioning explicitly. When you pass or return a class by value, that process uses copy initialization.
-
-Consider:
+考虑下面代码：
 
 ```cpp
 #include <cassert>
@@ -149,17 +147,17 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，函数 `makeNegative` 将 `Fraction` 类型的对象作为参数，同时返回按值返回 `Fraction` 对象。程序执行后，输出结果如下：
 
-In the above program, function makeNegative takes a Fraction by value and also returns a Fraction by value. When we run this program, we get:
-
+```
 Copy constructor called
 Copy constructor called
 -5/3
+```
 
-The first copy constructor call happens when fiveThirds is passed as an argument into makeNegative() parameter f. The second call happens when the return value from makeNegative() is passed back to main().
+第一次调用拷贝构造函数是在 `fiveThirds` 被传入 `makeNegative()` 作为形参 `f`的时候。第二次调用是在 `makeNegative()` 按值返回时。
 
-In the above case, both the argument passed by value and the return value can not be elided. However, in other cases, if the argument or return value meet specific criteria, the compiler may opt to elide the copy constructor. For example:
+在上面的例子中，实参和返回值都是**按值**传递或返回的，所以拷贝构造不会被省略。但是，在其他的一些场合，如果实参和返回值满足某些条件，编译器仍然可能省略拷贝构造函数。例如：
 
 ```cpp
 #include <iostream>
@@ -193,6 +191,7 @@ int main()
 }
 ```
 
-COPY
 
-The above program would normally call the copy constructor 4 times -- however, due to copy elision, it’s likely that your compiler will elide most or all of the cases. Visual Studio 2019 elides 3 (it doesn’t elide the case where goo() is returned), and GCC elides all 4.
+The above program would normally call the copy constructor 4 times -- however, due to copy elision, it’s likely that your compiler will elide most or all of the cases. Visual Studio 2019 elides 3 (it doesn’t elide the case where goo() is returned), and GCC elides all 4
+
+上面的程序通常会调用拷贝构造函数4次——然而，由于省略，编译器很可能会省略大部分或所有调用。Visual Studio 2019省略了3个(它没有省略返回`goo()`的情况)，而GCC省略了所有4个。
