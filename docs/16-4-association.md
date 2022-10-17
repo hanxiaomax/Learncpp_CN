@@ -1,6 +1,6 @@
 ---
-title: 16.4 - 联合关系
-alias: 16.4 - 联合关系
+title: 16.4 - 关联关系
+alias: 16.4 - 关联关系
 origin: /association/
 origin_title: "16.4 — Association"
 time: 2022-5-31
@@ -19,7 +19,7 @@ In the previous two lessons, we’ve looked at two types of object composition, 
 
 In this lesson, we’ll take a look at a weaker type of relationship between two otherwise unrelated objects, called an association. Unlike object composition relationships, in an association, there is no implied whole/part relationship.
 
-## 联合
+## 关联
 
 To qualify as an **association**, an object and another object must have the following relationship:
 
@@ -34,7 +34,7 @@ The relationship between doctors and patients is a great example of an associati
 
 We can say that association models as “uses-a” relationship. The doctor “uses” the patient (to earn income). The patient uses the doctor (for whatever health purposes they need).
 
-## 实现联合关系
+## 实现关联关系
 
 Because associations are a broad type of relationship, they can be implemented in many different ways. However, most often, associations are implemented using pointers, where the object points at the associated object.
 
