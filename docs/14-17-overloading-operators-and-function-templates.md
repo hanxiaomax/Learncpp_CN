@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 	
 	-
-In lesson [8.14 -- Function template instantiation](https://www.learncpp.com/cpp-tutorial/function-template-instantiation/), we discussed how the compiler will use function templates to instantiate functions, which are then compiled. We also noted that these functions may not compile, if the code in the function template tries to perform some operation that the actual type doesn’t support (such as adding integer value `1` to a `std::string`).
+In lesson[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]，we discussed how the compiler will use function templates to instantiate functions, which are then compiled. We also noted that these functions may not compile, if the code in the function template tries to perform some operation that the actual type doesn’t support (such as adding integer value `1` to a `std::string`).
 
 In this lesson, we’ll take a look at a few examples where our instantiated functions won’t compile because our actual class types don’t support those operators, and show how we can define those operators so that the instantiated functions will then compile.
 
@@ -94,7 +94,6 @@ int main()
 }
 ```
 
-COPY
 
 C++ will create a template instance for max() that looks like this:
 
@@ -106,7 +105,6 @@ const Cents& max(const Cents& x, const Cents& y)
 }
 ```
 
-COPY
 
 And then it will try to compile this function. See the problem here? C++ has no idea how to evaluate `x < y` when `x` and `y` are of type `Cents`! Consequently, this will produce a compile error.
 
@@ -155,13 +153,14 @@ int main()
 }
 ```
 
-COPY
 
 This works as expected, and prints:
 
+```
 10 is bigger
+```
 
-Another example
+## Another example
 
 Let’s do one more example of a function template not working because of missing overloaded operators.
 
@@ -197,8 +196,10 @@ COPY
 
 This produces the values:
 
+```
 3
 5.535
+```
 
 As you can see, it works great for built-in types!
 
@@ -238,11 +239,13 @@ int main()
 }
 ```
 
-COPY
+
 
 The compiler goes berserk and produces a ton of error messages! The first error message will be something like this:
 
+```
 error C2679: binary << : no operator found which takes a right-hand operand of type Cents (or there is no acceptable conversion)
+```
 
 Remember that `average()` returns a `Cents` object, and we are trying to stream that object to `std::cout` using `operator<<`. However, we haven’t defined the `operator<<` for our `Cents` class yet. Let’s do that:
 
@@ -286,11 +289,12 @@ int main()
 }
 ```
 
-COPY
 
 If we compile again, we will get another error:
 
+```
 error C2676: binary += : Cents does not define this operator or a conversion to a type acceptable to the predefined operator
+```
 
 This error is actually being caused by the function template instance created when we call `average(const Cents*, int)`. Remember that when we call a templated function, the compiler “stencils” out a copy of the function where the template type parameters (the placeholder types) have been replaced with the actual types in the function call. Here is the function template instance for `average()` when `T` is a `Cents` object:
 
@@ -375,6 +379,8 @@ COPY
 
 Finally, our code will compile and run! Here is the result:
 
+```
 11 cents
+```
 
 Note that we didn’t have to modify `average()` at all to make it work with objects of type `Cents`. We simply had to define the operators used to implement `average()` for the `Cents` class, and the compiler took care of the rest!

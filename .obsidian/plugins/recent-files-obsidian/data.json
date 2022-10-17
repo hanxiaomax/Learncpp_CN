@@ -1,28 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-16-shallow-vs-deep-copying",
+      "path": "docs/14-16-shallow-vs-deep-copying.md"
+    },
+    {
+      "basename": "14-17-overloading-operators-and-function-templates",
+      "path": "docs/14-17-overloading-operators-and-function-templates.md"
+    },
+    {
       "basename": "16-x-Chapter-16-comprehensive-quiz",
       "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
     },
     {
-      "basename": "container-class",
-      "path": "docs/container-class.md"
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
     {
-      "basename": "Associations",
-      "path": "docs/Associations.md"
+      "basename": "16-6-container-classes",
+      "path": "docs/16-6-container-classes.md"
     },
     {
       "basename": "16-4-association",
       "path": "docs/16-4-association.md"
-    },
-    {
-      "basename": "16-2-composition",
-      "path": "docs/16-2-composition.md"
-    },
-    {
-      "basename": "composite-types",
-      "path": "docs/composite-types.md"
     },
     {
       "basename": "16-5-dependencies",
@@ -33,8 +37,24 @@
       "path": "docs/16-7-std-initializer_list.md"
     },
     {
-      "basename": "16-6-container-classes",
-      "path": "docs/16-6-container-classes.md"
+      "basename": "17-x-Chapter-17-comprehensive-quiz",
+      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    },
+    {
+      "basename": "container-class",
+      "path": "docs/container-class.md"
+    },
+    {
+      "basename": "Associations",
+      "path": "docs/Associations.md"
+    },
+    {
+      "basename": "16-2-composition",
+      "path": "docs/16-2-composition.md"
+    },
+    {
+      "basename": "composite-types",
+      "path": "docs/composite-types.md"
     },
     {
       "basename": "16-3-aggregation",
@@ -43,14 +63,6 @@
     {
       "basename": "16-1-object-relationships",
       "path": "docs/16-1-object-relationships.md"
-    },
-    {
-      "basename": "14-17-overloading-operators-and-function-templates",
-      "path": "docs/14-17-overloading-operators-and-function-templates.md"
-    },
-    {
-      "basename": "14-16-shallow-vs-deep-copying",
-      "path": "docs/14-16-shallow-vs-deep-copying.md"
     },
     {
       "basename": "14-15-overloading-the-assignment-operator",
@@ -83,10 +95,6 @@
     {
       "basename": "direct-initialization",
       "path": "docs/direct-initialization.md"
-    },
-    {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
     },
     {
       "basename": "copy-swap习语",
@@ -191,14 +199,6 @@
     {
       "basename": "13-12-const-class-objects-and-member-functions",
       "path": "docs/13-12-const-class-objects-and-member-functions.md"
-    },
-    {
-      "basename": "3-9-Using-an-integrated-debugger-The-call-stack",
-      "path": "docs/3-9-Using-an-integrated-debugger-The-call-stack.md"
-    },
-    {
-      "basename": "9-2-Value-categories-lvalues-and-rvalues",
-      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
     }
   ],
   "omittedPaths": [],

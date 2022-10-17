@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/16-x-Chapter-16-comprehensive-quiz.md",
+                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/16-x-Chapter-16-comprehensive-quiz.md",
+                "file": "docs/14-x-Chapter-14-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,15 +155,15 @@
   },
   "active": "48ec4da8acf08e73",
   "lastOpenFiles": [
-    "docs/container-class.md",
+    "docs/14-16-shallow-vs-deep-copying.md",
+    "docs/14-17-overloading-operators-and-function-templates.md",
+    "docs/14-x-Chapter-14-comprehensive-quiz.md",
     "docs/16-x-Chapter-16-comprehensive-quiz.md",
-    "docs/Associations.md",
+    "docs/18-x-Chapter-18-comprehensive-quiz.md",
+    "docs/16-6-container-classes.md",
     "docs/16-4-association.md",
-    "docs/16-2-composition.md",
-    "docs/composite-types.md",
     "docs/16-5-dependencies.md",
     "docs/16-7-std-initializer_list.md",
-    "docs/16-6-container-classes.md",
-    "docs/16-3-aggregation.md"
+    "docs/17-x-Chapter-17-comprehensive-quiz.md"
   ]
 }
