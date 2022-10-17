@@ -300,4 +300,4 @@ int main()
 
 当函数被`delete`之后，任何对该构造函数的使用都会导致编译报错。
 
-注意，拷贝构造函数和重载运算符也可以被`delete`，以Note that the copy constructor and overloaded operators may also be deleted in order to prevent those functions from being used.
+注意，拷贝构造函数和重载运算符也可以被`delete`，以避免对应的操作。

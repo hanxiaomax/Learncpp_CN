@@ -15,11 +15,11 @@ tags:
 	-
 
 
-**Shallow copying**
+## 浅拷贝
 
-Because C++ does not know much about your class, the default copy constructor and default assignment operators it provides use a copying method known as a memberwise copy (also known as a **shallow copy**). This means that C++ copies each member of the class individually (using the assignment operator for overloaded operator=, and direct initialization for the copy constructor). When classes are simple (e.g. do not contain any dynamically allocated memory), this works very well.
+因为 C++ 并不了解你的类，所以默认的拷贝构造函数以及默认的赋值运算符会使用[[memberwise-copy|成员依次拷贝]]（也称为[[shallow-copy|浅拷贝]]）的方式信息拷贝。也就是说，C++ 会依次拷贝类的每一个成员（使用等号是调用赋值运算符、在使用拷贝构造时，使用直接初始化）。对于简单类（例如，不包含动态内存的类），这么做非常合适。
 
-For example, let’s take a look at our Fraction class:
+考虑下面的例子：
 
 ```cpp
 #include <cassert>
@@ -50,9 +50,7 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f1)
 }
 ```
 
-COPY
-
-The default copy constructor and default assignment operator provided by the compiler for this class look something like this:
+这里默认的拷贝构造函数和默认赋值运算符形式像下面这样：
 
 ```cpp
 #include <cassert>
@@ -65,7 +63,7 @@ private:
     int m_denominator { 1 };
 
 public:
-    // Default constructor
+    // 默认构造函数
     Fraction(int numerator = 0, int denominator = 1)
         : m_numerator{ numerator }
         , m_denominator{ denominator }
@@ -73,25 +71,25 @@ public:
         assert(denominator != 0);
     }
 
-    // Possible implementation of implicit copy constructor
+    // 隐式拷贝构造函数的一种可能实现
     Fraction(const Fraction& f)
         : m_numerator{ f.m_numerator }
         , m_denominator{ f.m_denominator }
     {
     }
 
-    // Possible implementation of implicit assignment operator
+    // 隐式赋值运算符的一种可能实现
     Fraction& operator= (const Fraction& fraction)
     {
-        // self-assignment guard
+        // 避免自我赋值
         if (this == &fraction)
             return *this;
 
-        // do the copy
+        // 拷贝
         m_numerator = fraction.m_numerator;
         m_denominator = fraction.m_denominator;
 
-        // return the existing object so we can chain this operator
+        // 返回对象本身，使操作符可以链式调用
         return *this;
     }
 
@@ -103,14 +101,11 @@ public:
 };
 ```
 
-COPY
+注意，在这个例子中，因为默认版本的构造函数可以很好地完成拷贝，我们完全没有必要编写自己的版本。
 
-Note that because these default versions work just fine for copying this class, there’s really no reason to write our own version of these functions in this case.
+但是，在设计持有动态内存的类时，浅拷贝会带来很多问题！因为浅拷贝在拷贝指针时，只是拷贝了指针的地址——它并没有分配新的地址或拷贝指针所指的内容。
 
-However, when designing classes that handle dynamically allocated memory, memberwise (shallow) copying can get us in a lot of trouble! This is because shallow copies of a pointer just copy the address of the pointer -- it does not allocate any memory or copy the contents being pointed to!
-
-Let’s take a look at an example of this:
-
+请看下面的例子：
 ```cpp
 #include <cstring> // for strlen()
 #include <cassert> // for assert()
@@ -149,9 +144,7 @@ public:
 };
 ```
 
-COPY
-
-The above is a simple string class that allocates memory to hold a string that we pass in. Note that we have not defined a copy constructor or overloaded assignment operator. Consequently, C++ will provide a default copy constructor and default assignment operator that do a shallow copy. The copy constructor will look something like this:
+上面的例子中是一个简单的字符串类，它分配了一段内存用于保存传入的字符串。注意，我们并没有定义[[copy-constructors|拷贝构造函数]]或者重载赋值操作符。因此，C++会提供一个默认的拷贝构造函数和默认赋值运算符以便执行浅拷贝。其拷贝构造函数看上去应该是这样的：
 
 ```cpp
 MyString::MyString(const MyString& source)
@@ -161,11 +154,10 @@ MyString::MyString(const MyString& source)
 }
 ```
 
-COPY
 
-Note that m_data is just a shallow pointer copy of source.m_data, meaning they now both point to the same thing.
+注意，`m_data` 只是`source.m_data`的一个浅拷贝指针，所以它们指向同一块内存。
 
-Now, consider the following snippet of code:
+现在， 考虑下面这段代码：
 
 ```cpp
 #include <iostream>
@@ -174,36 +166,31 @@ int main()
 {
     MyString hello{ "Hello, world!" };
     {
-        MyString copy{ hello }; // use default copy constructor
-    } // copy is a local variable, so it gets destroyed here.  The destructor deletes copy's string, which leaves hello with a dangling pointer
+        MyString copy{ hello }; // 使用默认拷贝构造函数
+    } // copy 是一个局部变量，在此处会销毁。所以其析构函数UI删除copy持有的字符串，所以hello此时持有一个悬垂指针
 
-    std::cout << hello.getString() << '\n'; // this will have undefined behavior
+    std::cout << hello.getString() << '\n'; // 导致未定义行为
 
     return 0;
 }
 ```
 
-COPY
+虽然这段代码看起来没啥问题，但它包含一个潜在的问题，将导致程序出现[[undefined-behavior|未定义行为]]！
 
-While this code looks harmless enough, it contains an insidious problem that will cause the program to exhibit undefined behavior!
-
-Let’s break down this example line by line:
+让我们逐行分析这个例子:
 
 ```cpp
 MyString hello{ "Hello, world!" };
 ```
 
-COPY
-
-This line is harmless enough. This calls the MyString constructor, which allocates some memory, sets hello.m_data to point to it, and then copies the string “Hello, world!” into it.
+这一行没什么问题。它调用 `MyString` 构造函数，分配一段内存，然后让 `hello.m_data` 指向它，然后拷贝字符串“Hello, world!” 到该内存。
 
 ```cpp
-MyString copy{ hello }; // use default copy constructor
+MyString copy{ hello }; // 使用默认拷贝构造函数
 ```
 
-COPY
 
-This line seems harmless enough as well, but it’s actually the source of our problem! When this line is evaluated, C++ will use the default copy constructor (because we haven’t provided our own). This copy constructor will do a shallow copy, initializing copy.m_data to the same address of hello.m_data. As a result, copy.m_data and hello.m_data are now both pointing to the same piece of memory!
+这一行代码看上去也人畜无害，但是它其实是问题的根源！这行代码在求值时，C++会使用默认的拷贝构造函数（因为我们没有提供自己的） line seems harmless enough as well, but it’s actually the source of our problem! When this line is evaluated, C++ will use the default copy constructor (because we haven’t provided our own). This copy constructor will do a shallow copy, initializing copy.m_data to the same address of hello.m_data. As a result, copy.m_data and hello.m_data are now both pointing to the same piece of memory!
 
 ```cpp
 } // copy gets destroyed here

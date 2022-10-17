@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/14-14-converting-constructors-explicit-and-delete.md",
+                "file": "docs/14-16-shallow-vs-deep-copying.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/14-14-converting-constructors-explicit-and-delete.md"
+                "file": "docs/14-16-shallow-vs-deep-copying.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/14-14-converting-constructors-explicit-and-delete.md",
+                "file": "docs/14-16-shallow-vs-deep-copying.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,9 +155,9 @@
   },
   "active": "48ec4da8acf08e73",
   "lastOpenFiles": [
-    "docs/converting-constructors.md",
-    "docs/14-14-converting-constructors-explicit-and-delete.md",
     "docs/14-15-overloading-the-assignment-operator.md",
+    "docs/14-14-converting-constructors-explicit-and-delete.md",
+    "docs/converting-constructors.md",
     "docs/14-16-shallow-vs-deep-copying.md",
     "docs/14-13-copy-initialization.md",
     "docs/14-12-the-copy-constructor.md",
