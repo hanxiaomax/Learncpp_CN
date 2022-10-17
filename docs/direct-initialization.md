@@ -8,3 +8,5 @@ tags:
 - direct-initialization
 - initialization
 ---
+
+使用圆括号的初始化

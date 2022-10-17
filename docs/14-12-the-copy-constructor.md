@@ -15,11 +15,11 @@ tags:
 	-
 
 
-**Recapping the types of initialization**
+## 初始化回顾
 
-Since we’re going to talk a lot about initialization in the next few lessons, let’s first recap the types of initialization that C++ supports: direct (parenthesis) initialization, uniform (brace) initialization or copy (equals) initialization.
+由于我们将在接下来的几节课中讨论初始化，所以有必要先回顾一下 C++ 支持的几种初始化方式：[[direct-initialization|直接初始化]]（使用括号）、[[uniform-initialization|统一初始化]]（大括号）和[[copy-initialization|拷贝初始化]]（使用等于号）。
 
-Here are examples of all of those, using our Fraction class:
+下面的例子中，我们同时使用了上述三种初始化：
 
 ```cpp
 #include <cassert>
@@ -49,41 +49,35 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f1)
 }
 ```
 
-COPY
-
-We can do a direct initialization:
+直接初始化：
 
 ```cpp
-int x(5); // Direct initialize an integer
-Fraction fiveThirds(5, 3); // Direct initialize a Fraction, calls Fraction(int, int) constructor
+int x(5); // 直接初始化一个整型
+Fraction fiveThirds(5, 3); // 直接初始化 Fraction，即调用构造函数 Fraction(int, int) 
 ```
 
-COPY
-
-In C++11, we can do a uniform initialization:
+在 C++11 中，我们还可以使用统一初始化：
 
 ```cpp
-int x { 5 }; // Uniform initialization of an integer
-Fraction fiveThirds {5, 3}; // Uniform initialization of a Fraction, calls Fraction(int, int) constructor
+int x { 5 }; // 统一初始化一个整型
+Fraction fiveThirds {5, 3}; // 统一初始化 Fraction ，仍然是调用构造函数 Fraction(int, int) 
 ```
 
-COPY
 
-And finally, we can do a copy initialization:
+最后，我们也可以使用拷贝初始化：
 
 ```cpp
-int x = 6; // Copy initialize an integer
-Fraction six = Fraction(6); // Copy initialize a Fraction, will call Fraction(6, 1)
-Fraction seven = 7; // Copy initialize a Fraction.  The compiler will try to find a way to convert 7 to a Fraction, which will invoke the Fraction(7, 1) constructor.
+int x = 6; // 拷贝初始化一个整型
+Fraction six = Fraction(6); // 拷贝初始化 Fraction, 会调用 Fraction(6, 1)
+Fraction seven = 7; // 拷贝初始化 Fraction，编译器会尝试寻找将 7 转换为 Fraction 的方法，因此会调用构造函数 Fraction(7, 1)
 ```
 
-COPY
 
-With direct and uniform initialization, the object being created is directly initialized. However, copy initialization is a little more complicated. We’ll explore copy initialization in more detail in the next lesson. But in order to do that effectively, we need to take a short detour.
+通过直接初始化或者统一初始化，对象会被创建并初始化。而当使用拷贝初始化时，问题就有一点复杂了。我们会在下一节课仔细探讨拷贝初始化。为了更好的效果，让我们先看看另外一个话题。
 
-**The copy constructor**
+## 拷贝构造函数
 
-Now consider the following program:
+考虑下面的程序：
 
 ```cpp
 #include <cassert>
@@ -114,25 +108,21 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f1)
 
 int main()
 {
-	Fraction fiveThirds { 5, 3 }; // Brace initialize a Fraction, calls Fraction(int, int) constructor
-	Fraction fCopy { fiveThirds }; // Brace initialize a Fraction -- with what constructor?
+	Fraction fiveThirds { 5, 3 }; // 统一初始化 Fraction, 调用 Fraction(int, int) 
+	Fraction fCopy { fiveThirds }; // 统一初始化 Fraction -- 这里调用的是哪个构造函数？
 	std::cout << fCopy << '\n';
 }
 ```
 
-COPY
-
-If you compile this program, you’ll see that it compiles just fine, and produces the result:
+当我们编译执行上面程序时，一切正常，程序打印：
 
 ```cpp
 5/3
 ```
 
-COPY
+接下来，让我们看看上面代码是如何工作的。
 
-Let’s take a closer look at how this program works.
-
-The initialization of variable fiveThirds is just a standard brace initialization that calls the Fraction(int, int) constructor. No surprises there. But what about the next line? The initialization of variable fCopy is also clearly an initialization, and you know that constructor functions are used to initialize classes. So what constructor is this line calling?
+变量 `fiveThirds` 的初始化使用了标准的统一初始化方式，因此会调用构造函数 `Fraction(int, int)` ，没什么好说的。但是下一行呢？`fCopy` 显然也是在初始化，而且初始化会调用类的构造函数，那么你知道它调用的是什么构造函数吗？
 
 The answer is that this line is calling Fraction’s copy constructor. A **copy constructor** is a special type of constructor used to create a new object as a copy of an existing object (of the same type). And much like a default constructor, if you do not provide a copy constructor for your classes, C++ will create a public copy constructor for you. Because the compiler does not know much about your class, by default, the created copy constructor utilizes a method of initialization called memberwise initialization. **Memberwise initialization** simply means that each member of the copy is initialized directly from the member of the class being copied. In the above example, fCopy.m_numerator would be initialized from fiveThirds.m_numerator, etc…
 

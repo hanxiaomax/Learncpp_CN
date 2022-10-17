@@ -28,7 +28,7 @@ We’ve also explored some primitive forms of hierarchy, such as arrays (which a
 
 However, we haven’t yet focused much on the relationship between objects, particularly as it relates to programming.
 
-**Relationships between objects**
+## Relationships between objects
 
 There are many different kinds of relationships two objects may have in real-life, and we use specific “relation type” words to describe these relationships. For example: a square “is-a” shape. A car “has-a” steering wheel. A computer programmer “uses-a” keyboard. A flower “depends-on” a bee for pollination. A student is a “member-of” a class. And your brain exists as “part-of” you (at least, we can reasonably assume so if you’ve gotten this far).
 

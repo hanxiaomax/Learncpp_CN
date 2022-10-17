@@ -15,7 +15,7 @@ tags:
 	
 	-
 
-Object composition
+## Object composition
 
 In real-life, complex objects are often built from smaller, simpler objects. For example, a car is built using a metal frame, an engine, some tires, a transmission, a steering wheel, and a large number of other parts. A personal computer is built from a CPU, a motherboard, some memory, etc… Even you are built from smaller parts: you have a head, a body, some legs, arms, and so on. This process of building complex objects from simpler ones is called **object composition**.
 
@@ -25,13 +25,13 @@ In C++, you’ve already seen that structs and classes can have data members of 
 
 Object Composition is useful in a C++ context because it allows us to create complex classes by combining simpler, more easily manageable parts. This reduces complexity, and allows us to write code faster and with less errors because we can reuse code that has already been written, tested, and verified as working.
 
-Types of object composition
+## Types of object composition
 
 There are two basic subtypes of object composition: composition and aggregation. We’ll examine composition in this lesson, and aggregation in the next.
 
 A note on terminology: the term “composition” is often used to refer to both composition and aggregation, not just to the composition subtype. In this tutorial, we’ll use the term “object composition” when we’re referring to both, and “composition” when we’re referring specifically to the composition subtype.
 
-Composition
+## Composition
 
 To qualify as a **composition**, an object and a part must have the following relationship:
 
@@ -75,7 +75,7 @@ While object composition models has-a type relationships (a body has-a heart, a 
 
 The parts of a composition can be singular or multiplicative -- for example, a heart is a singular part of the body, but a body contains 10 fingers (which could be modeled as an array).
 
-Implementing compositions
+## Implementing compositions
 
 Compositions are one of the easiest relationship types to implement in C++. They are typically created as structs or classes with normal data members. Because these data members exist directly as part of the struct/class, their lifetimes are bound to that of the class instance itself.
 
@@ -83,7 +83,7 @@ Compositions that need to do dynamic allocation or deallocation may be implement
 
 In general, if you _can_ design a class using composition, you _should_ design a class using composition. Classes designed using composition are straightforward, flexible, and robust (in that they clean up after themselves nicely).
 
-More examples
+## More examples
 
 Many games and simulations have creatures or objects that move around a board, map, or screen. One thing that all of these creatures/objects have in common is that they all have a location. In this example, we are going to create a creature class that uses a point class to hold the creature’s location.
 
@@ -226,6 +226,7 @@ COPY
 
 Here’s a transcript of this code being run:
 
+```
 Enter a name for your creature: Marvin
 Marvin is at (4, 7)
 Enter new X location for creature (-1 to quit): 6
@@ -235,6 +236,7 @@ Enter new X location for creature (-1 to quit): 3
 Enter new Y location for creature (-1 to quit): 2
 Marvin is at (3, 2)
 Enter new X location for creature (-1 to quit): -1
+```
 
 Variants on the composition theme
 
@@ -248,7 +250,7 @@ For example:
 
 The key point here is that the composition should manage its parts without the user of the composition needing to manage anything.
 
-Composition and class members
+## Composition and class members
 
 One question that new programmers often ask when it comes to object composition is, “When should I use a class member instead of direct implementation of a feature?”. For example, instead of using the Point2D class to implement the Creature’s location, we could have instead just added 2 integers to the Creature class and written code in the Creature class to handle the positioning. However, making Point2D its own class (and a member of Creature) has a number of benefits:
 
