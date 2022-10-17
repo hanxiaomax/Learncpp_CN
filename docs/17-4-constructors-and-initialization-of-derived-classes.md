@@ -91,7 +91,7 @@ Here’s what actually happens when derived is instantiated:
 
 The only real difference between this case and the non-inherited case is that before the Derived constructor can do anything substantial, the Base constructor is called first. The Base constructor sets up the Base portion of the object, control is returned to the Derived constructor, and the Derived constructor is allowed to finish up its job.
 
-**Initializing base class members**
+## Initializing base class members**
 
 One of the current shortcomings of our Derived class as written is that there is no way to initialize m_id when we create a Derived object. What if we want to set both m_cost (from the Derived portion of the object) and m_id (from the Base portion of the object) when we create a Derived object?
 
@@ -191,8 +191,10 @@ The base class constructor Base(int) will be used to initialize m_id to 5, and t
 
 Thus, the program will print:
 
+```
 Id: 5
 Cost: 1.3
+```
 
 In more detail, here’s what happens:
 
@@ -210,7 +212,7 @@ This may seem somewhat complex, but it’s actually very simple. All that’s ha
 
 Note that it doesn’t matter where in the Derived constructor member initializer list the Base constructor is called -- it will always execute first.
 
-**Now we can make our members private**
+## Now we can make our members private**
 
 Now that you know how to initialize base class members, there’s no need to keep our member variables public. We make our member variables private again, as they should be.
 
@@ -273,7 +275,7 @@ Cost: 1.3
 
 We’ll talk more about access specifiers in the next lesson.
 
-## Another example**
+## Another example
 
 Let’s take a look at another pair of classes we’ve previously worked with:
 
@@ -382,14 +384,16 @@ COPY
 
 This outputs:
 
+```
 Pedro Cerrano
 32
 0.342
 42
+```
 
 As you can see, the name and age from the base class were properly initialized, as was the number of home runs and batting average from the derived class.
 
-**Inheritance chains**
+## 继承链
 
 Classes in an inheritance chain work in exactly the same way.
 
@@ -441,17 +445,19 @@ First, main() calls C(int, double, char). The C constructor calls B(int, double)
 
 Thus, this program prints:
 
+```
 A: 5
 B: 4.3
 C: R
+```
 
 It is worth mentioning that constructors can only call constructors from their immediate parent/base class. Consequently, the C constructor could not call or pass parameters to the A constructor directly. The C constructor can only call the B constructor (which has the responsibility of calling the A constructor).
 
-**Destructors**
+## 析构函数
 
 When a derived class is destroyed, each destructor is called in the _reverse_ order of construction. In the above example, when c is destroyed, the C destructor is called first, then the B destructor, then the A destructor.
 
-**Summary**
+## 小结
 
 When constructing a derived class, the derived class constructor is responsible for determining which base class constructor is called. If no base class constructor is specified, the default base class constructor will be used. In that case, if no default base class constructor can be found (or created by default), the compiler will display an error. The classes are then constructed in order from most base to most derived.
 

@@ -30,7 +30,7 @@ These variables and functions become members of the derived class.
 
 Because child classes are full-fledged classes, they can (of course) have their own members that are specific to that class. We’ll see an example of this in a moment.
 
-**A Person class**
+## A Person class**
 
 Here’s a simple class to represent a generic person:
 
@@ -61,7 +61,7 @@ Because this Person class is designed to represent a generic person, we’ve onl
 
 Note that in this example, we’ve made all of our variables and functions public. This is purely for the sake of keeping these examples simple right now. Normally we would make the variables private. We will talk about access controls and how those interact with inheritance later in this chapter.
 
-**A BaseballPlayer class**
+## A BaseballPlayer class**
 
 Let’s say we wanted to write a program that keeps track of information about some baseball players. Baseball players need to contain information that is specific to baseball players -- for example, we might want to store a player’s batting average, and the number of home runs they’ve hit.
 
@@ -92,7 +92,7 @@ We have three choices for how to add name and age to BaseballPlayer:
 2.  Add Person as a member of BaseballPlayer using composition. But we have to ask ourselves, “does a BaseballPlayer have a Person”? No, it doesn’t. So this isn’t the right paradigm.
 3.  Have BaseballPlayer inherit those attributes from Person. Remember that inheritance represents an is-a relationship. Is a BaseballPlayer a Person? Yes, it is. So inheritance is a good choice here.
 
-**Making BaseballPlayer a derived class**
+## Making BaseballPlayer a derived class**
 
 To have BaseballPlayer inherit from our Person class, the syntax is fairly simple. After the `class BaseballPlayer` declaration, we use a colon, the word “public”, and the name of the class we wish to inherit. This is called _public inheritance_. We’ll talk more about what public inheritance means in a future lesson.
 
@@ -173,11 +173,13 @@ COPY
 
 Which prints the value:
 
+```
 Joe
+```
 
 This compiles and runs because joe is a BaseballPlayer, and all BaseballPlayer objects have a m_name member variable and a getName() member function inherited from the Person class.
 
-**An Employee derived class**
+## An Employee derived class**
 
 Now let’s write another class that also inherits from Person. This time, we’ll write an Employee class. An employee “is a” person, so using inheritance is appropriate:
 
@@ -265,9 +267,11 @@ COPY
 
 This prints:
 
+```
 Frank: 20.25
+```
 
-**Inheritance chains**
+## 继承链
 
 It’s possible to inherit from a class that is itself derived from another class. There is nothing noteworthy or special when doing so -- everything proceeds as in the examples above.
 
@@ -292,12 +296,12 @@ All Supervisor objects inherit the functions and variables from both Employee an
 
 By constructing such inheritance chains, we can create a set of reusable classes that are very general (at the top) and become progressively more specific at each level of inheritance.
 
-**Why is this kind of inheritance useful?**
+## 为什么此类继承是有用的？
 
 Inheriting from a base class means we don’t have to redefine the information from the base class in our derived classes. We automatically receive the member functions and member variables of the base class through inheritance, and then simply add the additional functions or member variables we want. This not only saves work, but also means that if we ever update or modify the base class (e.g. add new functions, or fix a bug), all of our derived classes will automatically inherit the changes!
 
 For example, if we ever added a new function to Person, both Employee and Supervisor would automatically gain access to it. If we added a new variable to Employee, Supervisor would also gain access to it. This allows us to construct new classes in an easy, intuitive, and low-maintenance way!
 
-**Conclusion**
+## 结论
 
 Inheritance allows us to reuse classes by having other classes inherit their members. In future lessons, we’ll continue to explore how this works.

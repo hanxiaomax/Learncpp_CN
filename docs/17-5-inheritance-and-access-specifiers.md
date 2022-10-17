@@ -34,7 +34,7 @@ COPY
 
 This is pretty straightforward, and you should be quite used to it by now.
 
-The protected access specifier
+## The protected access specifier
 
 When dealing with inherited classes, things get a bit more complex.
 
@@ -87,9 +87,9 @@ Making your members private means the public and derived classes can’t directl
 
 In general, it’s better to make your members private if you can, and only use protected when derived classes are planned and the cost to build and maintain an interface to those private members is too high.
 
-Best practice
+!!! info "扩展阅读"
 
-Favor private members over protected members.
+    Favor private members over protected members.
 
 Different kinds of inheritance, and their impact on access
 

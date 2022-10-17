@@ -136,15 +136,17 @@ COPY
 
 This program produces the following result:
 
+```
 Instantiating Base
 Base
 Instantiating Derived
 Base
 Derived
+```
 
 As you can see, when we constructed Derived, the Base portion of Derived got constructed first. This makes sense: logically, a child can not exist without a parent. It’s also the safe way to do things: the child class often uses variables and functions from the parent, but the parent class knows nothing about the child. Instantiating the parent class first ensures those variables are already initialized by the time the derived class is created and ready to use them.
 
-**Order of construction for inheritance chains**
+## 继承链的构造顺序
 
 It is sometimes the case that classes are derived from other classes, which are themselves derived from other classes. For example:
 
@@ -215,6 +217,7 @@ COPY
 
 This code prints the following:
 
+```
 Constructing A:
 A
 Constructing B:
@@ -229,8 +232,9 @@ A
 B
 C
 D
+```
 
-**Conclusion**
+## 结论
 
 C++ constructs derived classes in phases, starting with the most-base class (at the top of the inheritance tree) and finishing with the most-child class (at the bottom of the inheritance tree). As each class is constructed, the appropriate constructor from that class is called to initialize that part of the class.
 

@@ -145,7 +145,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
+                "file": "docs/17-1-introduction-to-inheritance.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -227,7 +227,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
+                "file": "docs/17-1-introduction-to-inheritance.md"
               }
             }
           },
@@ -248,7 +248,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
+                "file": "docs/17-1-introduction-to-inheritance.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -272,15 +272,15 @@
   },
   "active": "e15a4d36e47763cc",
   "lastOpenFiles": [
-    "docs/17-8-Hiding-inherited-functionality.md",
-    "docs/17-9-multiple-inheritance.md",
-    "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
-    "docs/17-6-adding-new-functionality-to-a-derived-class.md",
-    "docs/17-5-inheritance-and-access-specifiers.md",
-    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+    "docs/object-composition.md",
+    "docs/17-1-introduction-to-inheritance.md",
     "docs/17-3-order-of-construction-of-derived-classes.md",
     "docs/17-2-basic-inheritance-in-c++.md",
-    "docs/17-1-introduction-to-inheritance.md",
-    "docs/14-16-shallow-vs-deep-copying.md"
+    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+    "docs/17-5-inheritance-and-access-specifiers.md",
+    "docs/17-6-adding-new-functionality-to-a-derived-class.md",
+    "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
+    "docs/17-8-Hiding-inherited-functionality.md",
+    "docs/17-9-multiple-inheritance.md"
   ]
 }

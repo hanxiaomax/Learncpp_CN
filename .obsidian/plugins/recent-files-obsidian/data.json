@@ -1,28 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
-      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
+      "basename": "17-1-introduction-to-inheritance",
+      "path": "docs/17-1-introduction-to-inheritance.md"
     },
     {
-      "basename": "17-8-Hiding-inherited-functionality",
-      "path": "docs/17-8-Hiding-inherited-functionality.md"
-    },
-    {
-      "basename": "17-9-multiple-inheritance",
-      "path": "docs/17-9-multiple-inheritance.md"
-    },
-    {
-      "basename": "17-6-adding-new-functionality-to-a-derived-class",
-      "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
-    },
-    {
-      "basename": "17-5-inheritance-and-access-specifiers",
-      "path": "docs/17-5-inheritance-and-access-specifiers.md"
-    },
-    {
-      "basename": "17-4-constructors-and-initialization-of-derived-classes",
-      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
+      "basename": "object-composition",
+      "path": "docs/object-composition.md"
     },
     {
       "basename": "17-3-order-of-construction-of-derived-classes",
@@ -33,8 +17,28 @@
       "path": "docs/17-2-basic-inheritance-in-c++.md"
     },
     {
-      "basename": "17-1-introduction-to-inheritance",
-      "path": "docs/17-1-introduction-to-inheritance.md"
+      "basename": "17-4-constructors-and-initialization-of-derived-classes",
+      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
+    },
+    {
+      "basename": "17-5-inheritance-and-access-specifiers",
+      "path": "docs/17-5-inheritance-and-access-specifiers.md"
+    },
+    {
+      "basename": "17-6-adding-new-functionality-to-a-derived-class",
+      "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
+    },
+    {
+      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
+      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
+    },
+    {
+      "basename": "17-8-Hiding-inherited-functionality",
+      "path": "docs/17-8-Hiding-inherited-functionality.md"
+    },
+    {
+      "basename": "17-9-multiple-inheritance",
+      "path": "docs/17-9-multiple-inheritance.md"
     },
     {
       "basename": "14-16-shallow-vs-deep-copying",
@@ -195,10 +199,6 @@
     {
       "basename": "14-1-introduction-to-operator-overloading",
       "path": "docs/14-1-introduction-to-operator-overloading.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

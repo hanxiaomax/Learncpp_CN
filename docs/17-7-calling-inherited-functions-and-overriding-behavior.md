@@ -157,7 +157,7 @@ int main()
 
 COPY
 
-**Adding to existing functionality**
+## Adding to existing functionality**
 
 Sometimes we don’t want to completely replace a base class function, but instead want to add additional functionality to it. In the above example, note that Derived::identify() completely hides Base::identify()! This may not be what we want. It is possible to have our derived function call the base version of the function of the same name (in order to reuse code) and then add additional functionality to it.
 
@@ -203,9 +203,11 @@ int main()
 
 COPY
 
+```
 I am a Base
 I am a Base
 I am a Derived
+```
 
 When `derived.identify()` is executed, it resolves to Derived::identify(). However, the first thing Derived::identify() does is call Base::identify(), which prints “I am a Base”. When Base::identify() returns, Derived::identify() continues executing and prints “I am a Derived”.
 
@@ -295,6 +297,8 @@ Because a Derived is-a Base, we can static_cast our Derived object into a Base, 
 
 This prints:
 
+```
 In Derived
 In Base
 7
+```

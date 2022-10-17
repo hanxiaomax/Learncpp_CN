@@ -53,7 +53,7 @@ public:
 
 COPY
 
-**Adding new functionality to a derived class**
+## Adding new functionality to a derived class**
 
 In the above example, because we have access to the source code of the Base class, we can add functionality directly to Base if we desire.
 
