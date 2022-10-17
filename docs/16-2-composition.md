@@ -17,40 +17,44 @@ tags:
 
 ## 对象组合
 
-In real-life, complex objects are often built from smaller, simpler objects. For example, a car is built using a metal frame, an engine, some tires, a transmission, a steering wheel, and a large number of other parts. A personal computer is built from a CPU, a motherboard, some memory, etc… Even you are built from smaller parts: you have a head, a body, some legs, arms, and so on. This process of building complex objects from simpler ones is called **object composition**.
+在现实生活中，复杂的东西往往都基于更小的、更简单的东西构建。例如，汽车是基于车架、引起、轮胎、变速箱、方向盘和很多其他部件构建的。个人电脑则是基于CPU、主板、内存等构建的。甚至你自己也可以分为更小的部分：头、身体、腿、手臂等等。通过简单对象构建复杂对象的过程称为对象[[composition|组合]]。
 
-Broadly speaking, object composition models a “has-a” relationship between two objects. A car “has-a” transmission. Your computer “has-a” CPU. You “have-a” heart. The complex object is sometimes called the whole, or the parent. The simpler object is often called the part, child, or component.
+一般来说，对象组合模型中的对象之间是“有一个（has-a）”的关系。汽车“有一个”变速箱。电脑“有一个”CPU，你“有一个”心脏。复杂对象通常被称为**整体**。而简单的对象通常被称为部件或组件。
 
-In C++, you’ve already seen that structs and classes can have data members of various types (such as fundamental types or other classes). When we build classes with data members, we’re essentially constructing a complex object from simpler parts, which is object composition. For this reason, structs and classes are sometimes referred to as **composite types**.
+在C++中，你已经看到结构和类可以拥有各种类型的数据成员(例如基本类型或其他类)。当使用数据成员构建类时，就是在用更简单的部分构造复杂的对象，这就是对象组合。因此，结构和类有时被称为[[composite-types|组合类型]]。
 
-Object Composition is useful in a C++ context because it allows us to create complex classes by combining simpler, more easily manageable parts. This reduces complexity, and allows us to write code faster and with less errors because we can reuse code that has already been written, tested, and verified as working.
+对象组合在C++中很有用，因为它允许我们通过将更简单、更容易管理的部分来组合起来创建复杂的类。这降低了复杂性，并使我们可以更快地编写代码，也更不容易出错，因为我们可以重用已经编写、测试和验证过的代码。
+
 
 ## 对象组合的类型
 
-There are two basic subtypes of object composition: composition and aggregation. We’ll examine composition in this lesson, and aggregation in the next.
+对象组合有两种基本的子类型：组合和聚合。这节课我们将讨论组合，下节课我们将讨论[[16-3-aggregation|聚合关系]]。
 
-A note on terminology: the term “composition” is often used to refer to both composition and aggregation, not just to the composition subtype. In this tutorial, we’ll use the term “object composition” when we’re referring to both, and “composition” when we’re referring specifically to the composition subtype.
+关于术语的说明：术语“组合”通常同时指组合和聚合，而不仅仅指组合子类型。在本教程中，当我们提到两者时，我们将使用术语“对象组合”，当我们专门提到组合子类型时，我们将使用术语“组合”。
+
 
 ## 组合
 
-To qualify as a **composition**, an object and a part must have the following relationship:
+合格的组合关系需要满足如下条件：
 
--   The part (member) is part of the object (class)
--   The part (member) can only belong to one object (class) at a time
--   The part (member) has its existence managed by the object (class)
--   The part (member) does not know about the existence of the object (class)
+- 部分(成员)是对象(类)的一部分
+- 部件(成员)一次只能属于一个对象(类)
+- 部分(成员)的存在由对象(类)管理
+- 部分(成员)不知道对象(类)的存在
 
-A good real-life example of a composition is the relationship between a person’s body and a heart. Let’s examine these in more detail.
 
-Composition relationships are part-whole relationships where the part must constitute part of the whole object. For example, a heart is a part of a person’s body. The part in a composition can only be part of one object at a time. A heart that is part of one person’s body can not be part of someone else’s body at the same time.
+现实生活中一个很好的组合例子是一个人的身体和心脏之间的关系。让我们更详细地研究这些内容。
 
-In a composition relationship, the object is responsible for the existence of the parts. Most often, this means the part is created when the object is created, and destroyed when the object is destroyed. But more broadly, it means the object manages the part’s lifetime in such a way that the user of the object does not need to get involved. For example, when a body is created, the heart is created too. When a person’s body is destroyed, their heart is destroyed too. Because of this, composition is sometimes called a “death relationship”.
+组合关系是“部分-整体”的关系，其中部分必须构成整个对象的一部分。例如，心脏是一个人身体的一部分。组合中的部分只能是属于**一个对象**的一部分。作为一个人身体一部分的心脏不可能同时是另一个人身体的一部分。
 
-And finally, the part doesn’t know about the existence of the whole. Your heart operates blissfully unaware that it is part of a larger structure. We call this a **unidirectional** relationship, because the body knows about the heart, but not the other way around.
+在组合关系中，对象负责管理各个部件的存在。通常情况下，这意味着在创建对象时创建该部件，在销毁对象时销毁该部分。但更广泛地说，它意味着对象以一种不需要对象的用户参与的方式管理部件的生命周期。例如，当一个身体被创造出来时，心脏也被创造出来了。当一个人的身体被摧毁时，他的心也会被摧毁。正因为如此，组合有时被称为“死亡关系”。
 
-Note that composition has nothing to say about the transferability of parts. A heart can be transplanted from one body to another. However, even after being transplanted, it still meets the requirements for a composition (the heart is now owned by the recipient, and can only be part of the recipient object unless transferred again).
+最后，部分不知道整体的存在。你的心在幸福地运转着，却没有意识到它是一个更大结构的一部分。我们称之为单向关系，因为身体了解心脏，但心脏不了解身体。
 
-Our ubiquitous Fraction class is a great example of a composition:
+注意，组合关系与部件的可移植性无关。心脏可以从一个身体移植到另一个身上。然而，即使在移植后，它仍然满足组合的定义(心脏现在属于接受者，除非再次移植，否则只能是接受者对象的一部分)。
+
+我们的`Fraction`类就是一个很好的组合例子:
+
 
 ```cpp
 class Fraction
@@ -67,7 +71,6 @@ public:
 };
 ```
 
-COPY
 
 This class has two data members: a numerator and a denominator. The numerator and denominator are part of the Fraction (contained within it). They can not belong to more than one Fraction at a time. The numerator and denominator don’t know they are part of a Fraction, they just hold integers. When a Fraction instance is created, the numerator and denominator are created. When the fraction instance is destroyed, the numerator and denominator are destroyed as well.
 

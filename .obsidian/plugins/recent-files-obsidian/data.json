@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "16-2-composition",
-      "path": "docs/16-2-composition.md"
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "container-class",
+      "path": "docs/container-class.md"
+    },
+    {
+      "basename": "Associations",
+      "path": "docs/Associations.md"
     },
     {
       "basename": "16-4-association",
       "path": "docs/16-4-association.md"
+    },
+    {
+      "basename": "16-2-composition",
+      "path": "docs/16-2-composition.md"
+    },
+    {
+      "basename": "composite-types",
+      "path": "docs/composite-types.md"
     },
     {
       "basename": "16-5-dependencies",
@@ -67,10 +83,6 @@
     {
       "basename": "direct-initialization",
       "path": "docs/direct-initialization.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
     },
     {
       "basename": "14-x-Chapter-14-comprehensive-quiz",
@@ -187,18 +199,6 @@
     {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "13-11-class-code-and-header-files",
-      "path": "docs/13-11-class-code-and-header-files.md"
-    },
-    {
-      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
-      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
-    },
-    {
-      "basename": "const-member-function",
-      "path": "docs/const-member-function.md"
     }
   ],
   "omittedPaths": [],
