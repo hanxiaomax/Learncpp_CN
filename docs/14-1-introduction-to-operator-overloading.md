@@ -1,13 +1,13 @@
 ---
-title: 14.11 - 重载类型转换操作符
-alias: 14.11 - 重载类型转换操作符
+title: 14.1 - 运算符重载简介
+alias: 14.1 - 运算符重载简介
 origin: /introduction-to-operator-overloading/
 origin_title: "14.1 — Introduction to operator overloading"
-time: 2022-1-2
+time: 2022-4-8
 type: translation
 tags:
+- operator
 - overload
-- typecast
 ---
 
 ??? note "关键点速记"

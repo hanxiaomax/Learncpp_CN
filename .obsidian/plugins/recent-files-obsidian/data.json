@@ -1,28 +1,112 @@
 {
   "recentFiles": [
     {
-      "basename": "14-1-introduction-to-operator-overloading",
-      "path": "docs/14-1-introduction-to-operator-overloading.md"
+      "basename": "16-2-composition",
+      "path": "docs/16-2-composition.md"
     },
     {
-      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
-      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
+      "basename": "16-1-object-relationships",
+      "path": "docs/16-1-object-relationships.md"
     },
     {
-      "basename": "14-11-Overloading-typecasts",
-      "path": "docs/14-11-Overloading-typecasts.md"
+      "basename": "14-12-the-copy-constructor",
+      "path": "docs/14-12-the-copy-constructor.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
+      "basename": "copy-swap习语",
+      "path": "docs/copy-swap习语.md"
+    },
+    {
+      "basename": "deep-copy",
+      "path": "docs/deep-copy.md"
+    },
+    {
+      "basename": "shallow-copy",
+      "path": "docs/shallow-copy.md"
+    },
+    {
+      "basename": "copy-constructors",
+      "path": "docs/copy-constructors.md"
+    },
+    {
+      "basename": "14-17-overloading-operators-and-function-templates",
+      "path": "docs/14-17-overloading-operators-and-function-templates.md"
+    },
+    {
+      "basename": "14-16-shallow-vs-deep-copying",
+      "path": "docs/14-16-shallow-vs-deep-copying.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+      "basename": "14-15-overloading-the-assignment-operator",
+      "path": "docs/14-15-overloading-the-assignment-operator.md"
     },
     {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+      "basename": "14-14-converting-constructors-explicit-and-delete",
+      "path": "docs/14-14-converting-constructors-explicit-and-delete.md"
+    },
+    {
+      "basename": "14-13-copy-initialization",
+      "path": "docs/14-13-copy-initialization.md"
+    },
+    {
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
+    },
+    {
+      "basename": "14-9-overloading-the-subscript-operator",
+      "path": "docs/14-9-overloading-the-subscript-operator.md"
+    },
+    {
+      "basename": "14-8-overloading-the-increment-and-decrement-operators",
+      "path": "docs/14-8-overloading-the-increment-and-decrement-operators.md"
+    },
+    {
+      "basename": "14-10-overloading-the-parenthesis-operator",
+      "path": "docs/14-10-overloading-the-parenthesis-operator.md"
+    },
+    {
+      "basename": "14-7-overloading-the-comparison-operators",
+      "path": "docs/14-7-overloading-the-comparison-operators.md"
+    },
+    {
+      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
+      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
+    },
+    {
+      "basename": "14-3-overloading-operators-using-normal-functions",
+      "path": "docs/14-3-overloading-operators-using-normal-functions.md"
+    },
+    {
+      "basename": "14-6-overloading-unary-operators-+--and-!",
+      "path": "docs/14-6-overloading-unary-operators-+--and-!.md"
+    },
+    {
+      "basename": "14-5-overloading-operators-using-member-functions",
+      "path": "docs/14-5-overloading-operators-using-member-functions.md"
+    },
+    {
+      "basename": "14-4-overloading-the-IO-operators",
+      "path": "docs/14-4-overloading-the-IO-operators.md"
+    },
+    {
+      "basename": "14-1-introduction-to-operator-overloading",
+      "path": "docs/14-1-introduction-to-operator-overloading.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
     },
     {
       "basename": "13-18-timing-your-code",
@@ -115,90 +199,6 @@
     {
       "basename": "RAII (Resource Acquisition Is Initialization)",
       "path": "docs/RAII (Resource Acquisition Is Initialization).md"
-    },
-    {
-      "basename": "13-8-overlapping-and-delegating-constructors",
-      "path": "docs/13-8-overlapping-and-delegating-constructors.md"
-    },
-    {
-      "basename": "memberwise-copy",
-      "path": "docs/memberwise-copy.md"
-    },
-    {
-      "basename": "5-7-Logical-operators",
-      "path": "docs/5-7-Logical-operators.md"
-    },
-    {
-      "basename": "delegating-constructors",
-      "path": "docs/delegating-constructors.md"
-    },
-    {
-      "basename": "13-7-non-static-member-initialization",
-      "path": "docs/13-7-non-static-member-initialization.md"
-    },
-    {
-      "basename": "13-6-constructor-member-initializer-lists",
-      "path": "docs/13-6-constructor-member-initializer-lists.md"
-    },
-    {
-      "basename": "member-initializer-list",
-      "path": "docs/member-initializer-list.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
-    },
-    {
-      "basename": "括号初始化",
-      "path": "docs/括号初始化.md"
-    },
-    {
-      "basename": "uniform-initialization",
-      "path": "docs/uniform-initialization.md"
-    },
-    {
-      "basename": "implicit-constructor",
-      "path": "docs/implicit-constructor.md"
-    },
-    {
-      "basename": "copy-initialization",
-      "path": "docs/copy-initialization.md"
-    },
-    {
-      "basename": "direct-initialization",
-      "path": "docs/direct-initialization.md"
-    },
-    {
-      "basename": "10-4-scoped-enumerations-enum-classes",
-      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
-    },
-    {
-      "basename": "default-initialization",
-      "path": "docs/default-initialization.md"
-    },
-    {
-      "basename": "default-constructor",
-      "path": "docs/default-constructor.md"
-    },
-    {
-      "basename": "aggregate-initialization",
-      "path": "docs/aggregate-initialization.md"
-    },
-    {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
-      "basename": "10-7-default-member-initialization",
-      "path": "docs/10-7-default-member-initialization.md"
-    },
-    {
-      "basename": "10-6-struct-aggregate-initialization",
-      "path": "docs/10-6-struct-aggregate-initialization.md"
     }
   ],
   "omittedPaths": [],
