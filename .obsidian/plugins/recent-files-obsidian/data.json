@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "16-7-std-initializer_list",
+      "path": "docs/16-7-std-initializer_list.md"
+    },
+    {
       "basename": "16-6-container-classes",
       "path": "docs/16-6-container-classes.md"
     },
@@ -63,10 +67,6 @@
     {
       "basename": "direct-initialization",
       "path": "docs/direct-initialization.md"
-    },
-    {
-      "basename": "16-7-std-initializer_list",
-      "path": "docs/16-7-std-initializer_list.md"
     },
     {
       "basename": "16-x-Chapter-16-comprehensive-quiz",

@@ -33,13 +33,13 @@ Sometimes certain container classes will omit some of this functionality. For ex
 
 Container classes implement a member-of relationship. For example, elements of an array are members-of (belong to) the array. Note that we’re using “member-of” in the conventional sense, not the C++ class member sense.
 
-## Types of containers**
+## 容器类型
 
 Container classes generally come in two different varieties. **Value containers** are [compositions](https://www.learncpp.com/cpp-tutorial/102-composition/) that store copies of the objects that they are holding (and thus are responsible for creating and destroying those copies). **Reference containers** are [aggregations](https://www.learncpp.com/cpp-tutorial/103-aggregation/) that store pointers or references to other objects (and thus are not responsible for creation or destruction of those objects).
 
 Unlike in real life, where containers can hold whatever types of objects you put in them, in C++, containers typically only hold one type of data. For example, if you have an array of integers, it will only hold integers. Unlike some other languages, many C++ containers do not allow you to arbitrarily mix types. If you need containers to hold integers and doubles, you will generally have to write two separate containers to do this (or use templates, which is an advanced C++ feature). Despite the restrictions on their use, containers are immensely useful, and they make programming easier, safer, and faster.
 
-## An array container class**
+## 数组容器类
 
 In this example, we are going to write an integer array class from scratch that implements most of the common functionality that containers should have. This array class is going to be a value container, which will hold copies of the elements it’s organizing. As the name suggests, the container will hold an array of integers, similar to `std::vector<int>`.
 
@@ -323,9 +323,7 @@ COPY
 
 Here is our IntArray container class in its entirety.
 
-IntArray.h:
-
-```cpp
+```cpp title="IntArray.h"
 #ifndef INTARRAY_H
 #define INTARRAY_H
 
@@ -532,8 +530,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 This produces the result:
 
