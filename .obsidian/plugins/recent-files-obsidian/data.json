@@ -1,20 +1,68 @@
 {
   "recentFiles": [
     {
-      "basename": "14-x-Chapter-14-comprehensive-quiz",
-      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
+      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
+    },
+    {
+      "basename": "17-8-Hiding-inherited-functionality",
+      "path": "docs/17-8-Hiding-inherited-functionality.md"
+    },
+    {
+      "basename": "17-9-multiple-inheritance",
+      "path": "docs/17-9-multiple-inheritance.md"
+    },
+    {
+      "basename": "17-6-adding-new-functionality-to-a-derived-class",
+      "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
+    },
+    {
+      "basename": "17-5-inheritance-and-access-specifiers",
+      "path": "docs/17-5-inheritance-and-access-specifiers.md"
+    },
+    {
+      "basename": "17-4-constructors-and-initialization-of-derived-classes",
+      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
+    },
+    {
+      "basename": "17-3-order-of-construction-of-derived-classes",
+      "path": "docs/17-3-order-of-construction-of-derived-classes.md"
+    },
+    {
+      "basename": "17-2-basic-inheritance-in-c++",
+      "path": "docs/17-2-basic-inheritance-in-c++.md"
+    },
+    {
+      "basename": "17-1-introduction-to-inheritance",
+      "path": "docs/17-1-introduction-to-inheritance.md"
     },
     {
       "basename": "14-16-shallow-vs-deep-copying",
       "path": "docs/14-16-shallow-vs-deep-copying.md"
     },
     {
-      "basename": "14-17-overloading-operators-and-function-templates",
-      "path": "docs/14-17-overloading-operators-and-function-templates.md"
+      "basename": "17-x-Chapter-17-comprehensive-quiz",
+      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
     },
     {
       "basename": "16-x-Chapter-16-comprehensive-quiz",
       "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "dependency",
+      "path": "docs/dependency.md"
+    },
+    {
+      "basename": "16-1-object-relationships",
+      "path": "docs/16-1-object-relationships.md"
+    },
+    {
+      "basename": "14-x-Chapter-14-comprehensive-quiz",
+      "path": "docs/14-x-Chapter-14-comprehensive-quiz.md"
+    },
+    {
+      "basename": "14-17-overloading-operators-and-function-templates",
+      "path": "docs/14-17-overloading-operators-and-function-templates.md"
     },
     {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
@@ -37,10 +85,6 @@
       "path": "docs/16-7-std-initializer_list.md"
     },
     {
-      "basename": "17-x-Chapter-17-comprehensive-quiz",
-      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
-    },
-    {
       "basename": "container-class",
       "path": "docs/container-class.md"
     },
@@ -59,10 +103,6 @@
     {
       "basename": "16-3-aggregation",
       "path": "docs/16-3-aggregation.md"
-    },
-    {
-      "basename": "16-1-object-relationships",
-      "path": "docs/16-1-object-relationships.md"
     },
     {
       "basename": "14-15-overloading-the-assignment-operator",
@@ -159,46 +199,6 @@
     {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
       "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
-    },
-    {
-      "basename": "13-18-timing-your-code",
-      "path": "docs/13-18-timing-your-code.md"
-    },
-    {
-      "basename": "13-17-nested-types-in-classes",
-      "path": "docs/13-17-nested-types-in-classes.md"
-    },
-    {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
-    },
-    {
-      "basename": "13-16-anonymous-objects",
-      "path": "docs/13-16-anonymous-objects.md"
-    },
-    {
-      "basename": "13-15-friend-functions-and-classes",
-      "path": "docs/13-15-friend-functions-and-classes.md"
-    },
-    {
-      "basename": "13-14-static-member-functions",
-      "path": "docs/13-14-static-member-functions.md"
-    },
-    {
-      "basename": "13-13-static-member-variables",
-      "path": "docs/13-13-static-member-variables.md"
-    },
-    {
-      "basename": "static-member-functions",
-      "path": "docs/static-member-functions.md"
-    },
-    {
-      "basename": "static-member-variables",
-      "path": "docs/static-member-variables.md"
-    },
-    {
-      "basename": "13-12-const-class-objects-and-member-functions",
-      "path": "docs/13-12-const-class-objects-and-member-functions.md"
     }
   ],
   "omittedPaths": [],
