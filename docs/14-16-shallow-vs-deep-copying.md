@@ -190,49 +190,49 @@ MyString copy{ hello }; // 使用默认拷贝构造函数
 ```
 
 
-这一行代码看上去也人畜无害，但是它其实是问题的根源！这行代码在求值时，C++会使用默认的拷贝构造函数（因为我们没有提供自己的） line seems harmless enough as well, but it’s actually the source of our problem! When this line is evaluated, C++ will use the default copy constructor (because we haven’t provided our own). This copy constructor will do a shallow copy, initializing copy.m_data to the same address of hello.m_data. As a result, copy.m_data and hello.m_data are now both pointing to the same piece of memory!
+这一行代码看上去也人畜无害，但是它其实是问题的根源！这行代码在求值时，C++会使用默认的拷贝构造函数（因为我们没有提供自己的拷贝构造函数）。该拷贝构造函数会执行浅拷贝，将 `copy.m_data` 初始化为 `hello.m_data` 持有的地址。因此，`copy.m_data` 和 `hello.m_data` 指向一块相同的内存！
+
 
 ```cpp
-} // copy gets destroyed here
+} // copy 在此处销毁
 ```
 
-COPY
 
-When copy goes out of scope, the MyString destructor is called on copy. The destructor deletes the dynamically allocated memory that both copy.m_data and hello.m_data are pointing to! Consequently, by deleting copy, we’ve also (inadvertently) affected hello. Variable copy then gets destroyed, but hello.m_data is left pointing to the deleted (invalid) memory!
+当 `copy` [[going-out-of-scope|离开作用域]]时，`MyString` 的析构函数会被调用。析构函数会删除`copy.m_data` 和 `hello.m_data` 所指的那段内存！因此，当`copy`被删除时，其析构过程不可避免地影响了`hello`。变量 `copy` 随后就被销毁了，但是`hello.m_data` 仍然指向这块被删除的内存（非法内存）！
 
 ```cpp
-std::cout << hello.getString() << '\n'; // this will have undefined behavior
+std::cout << hello.getString() << '\n'; // 产生未定义行为
 ```
 
-COPY
+现在你能明白为什么程序会产生未定义行为了吧。我们已经删除了`hello`所指的字符串，然后又尝试打印这块内存的内容。
 
-Now you can see why this program has undefined behavior. We deleted the string that hello was pointing to, and now we are trying to print the value of memory that is no longer allocated.
+这个问题的根源是由拷贝构造函数执行的浅拷贝导致的——在√构造函数或重载赋值操作符中对指针值进行浅几乎总是会带来麻烦。
 
-The root of this problem is the shallow copy done by the copy constructor -- doing a shallow copy on pointer values in a copy constructor or overloaded assignment operator is almost always asking for trouble.
 
-**Deep copying**
+## 深拷贝
 
-One answer to this problem is to do a deep copy on any non-null pointers being copied. A **deep copy** allocates memory for the copy and then copies the actual value, so that the copy lives in distinct memory from the source. This way, the copy and source are distinct and will not affect each other in any way. Doing deep copies requires that we write our own copy constructors and overloaded assignment operators.
+解决上述问题的办法是对任何非空指针进行深拷贝。[[deep-copy|深拷贝]]会首先为副本分配内存，然后再拷贝实际的值，这样一来副本持有的内存就和源内存不同了。副本和原本由于持有不同的内存，所以便不会互相影响。要执行拷贝构造函数，则必须编写我们自己的拷贝构造函数和重载赋值运算符。
 
-Let’s go ahead and show how this is done for our MyString class:
+以 `MyString` 为了，让我们看看如何进行深拷贝：
 
 ```cpp
 // assumes m_data is initialized
 void MyString::deepCopy(const MyString& source)
 {
-    // first we need to deallocate any value that this string is holding!
+    // 首先应该释放当前存放的字符串
     delete[] m_data;
 
-    // because m_length is not a pointer, we can shallow copy it
+    // 因为 m_length 不是指针，所以浅拷贝即可
     m_length = source.m_length;
 
-    // m_data is a pointer, so we need to deep copy it if it is non-null
+    // m_data 是指针，所以当它不是空指针是就必须进行深拷贝
+
     if (source.m_data)
     {
-        // allocate memory for our copy
+        // 为副本分配内存
         m_data = new char[m_length];
 
-        // do the copy
+        // 拷贝
         for (int i{ 0 }; i < m_length; ++i)
             m_data[i] = source.m_data[i];
     }
@@ -247,11 +247,10 @@ MyString::MyString(const MyString& source)
 }
 ```
 
-COPY
+从上面的代码可以看出，深拷贝被浅拷贝要复杂不少！首先，我们必须原本含有字符串（11行）。如果有的话，则必须为副本分配足够的内存用于保存字符串的副本（14行）。最后，我们必须手动拷贝字符串（17行和18行）。
 
-As you can see, this is quite a bit more involved than a simple shallow copy! First, we have to check to make sure source even has a string (line 11). If it does, then we allocate enough memory to hold a copy of that string (line 14). Finally, we have to manually copy the string (lines 17 and 18).
+接下来，让我们重载赋值运算符：
 
-Now let’s do the overloaded assignment operator. The overloaded assignment operator is slightly trickier:
 
 ```cpp
 // Assignment operator
