@@ -124,9 +124,9 @@ int main()
 
 变量 `fiveThirds` 的初始化使用了标准的统一初始化方式，因此会调用构造函数 `Fraction(int, int)` ，没什么好说的。但是下一行呢？`fCopy` 显然也是在初始化，而且初始化会调用类的构造函数，那么你知道它调用的是什么构造函数吗？
 
-The answer is that this line is calling Fraction’s copy constructor. A **copy constructor** is a special type of constructor used to create a new object as a copy of an existing object (of the same type). And much like a default constructor, if you do not provide a copy constructor for your classes, C++ will create a public copy constructor for you. Because the compiler does not know much about your class, by default, the created copy constructor utilizes a method of initialization called memberwise initialization. **Memberwise initialization** simply means that each member of the copy is initialized directly from the member of the class being copied. In the above example, fCopy.m_numerator would be initialized from fiveThirds.m_numerator, etc…
+实际上，这行代码会调用 `Fraction` 的拷贝构造函数。 [[copy-constructor|拷贝构造函数]]是一类特殊的构造函数，它会通过一个已经存在的对象来创建一个新的对象（相同类型）。类似于默认构造函数，如果你不提供一个拷贝构造函数的话，C++ 会为你创建一个public的拷贝构造函数。由于编译器并不很了解你的类，所以默认情况下拷贝构造函数会进行[[memberwise initialization|成员依次初始化]]。成员依次初始化意思就是每个成员都会通过被拷贝对象中的对应成员进行拷贝初始化。在上面的例子中，`fCopy.m_numerator` 会通过`fiveThirds.m_numerator` 来初始化，以此类推。
 
-Just like we can explicitly define a default constructor, we can also explicitly define a copy constructor. The copy constructor looks just like you’d expect it to:
+和默认构造函数类似，我们也可以显式地定义一个拷贝构造函数，它的形式想必你应该可以猜到：
 
 ```cpp
 #include <cassert>
@@ -139,17 +139,17 @@ private:
     int m_denominator{};
 
 public:
-    // Default constructor
+    // 默认构造函数
     Fraction(int numerator=0, int denominator=1)
         : m_numerator{numerator}, m_denominator{denominator}
     {
         assert(denominator != 0);
     }
 
-    // Copy constructor
+    // 拷贝构造函数
     Fraction(const Fraction& fraction)
         : m_numerator{fraction.m_numerator}, m_denominator{fraction.m_denominator}
-        // Note: We can access the members of parameter fraction directly, because we're inside the Fraction class
+        // 注意：我们可以直接访问参数 fraction 的成员变量，因为它们都是 Fraction 类的
     {
         // no need to check for a denominator of 0 here since fraction must already be a valid Fraction
         std::cout << "Copy constructor called\n"; // just to prove it works
@@ -166,32 +166,34 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f1)
 
 int main()
 {
-	Fraction fiveThirds { 5, 3 }; // Direct initialize a Fraction, calls Fraction(int, int) constructor
-	Fraction fCopy { fiveThirds }; // Direct initialize -- with Fraction copy constructor
+	Fraction fiveThirds { 5, 3 }; // 直接初始化，调用 Fraction(int, int) 构造函数
+	Fraction fCopy { fiveThirds }; // 直接初始化——使用拷贝构造函数 
 	std::cout << fCopy << '\n';
 }
 ```
 
-COPY
+程序运行结果如下：
 
-When this program is run, you get:
-
+```
 Copy constructor called
 5/3
+```
 
-The copy constructor we defined in the example above uses memberwise initialization, and is functionally equivalent to the one we’d get by default, except we’ve added an output statement to prove the copy constructor is being called.
+我们在上面的例子中定义的拷贝构造函数使用成员依次初始化方式进行初始化，在功能上与编译器默认创建的拷贝构造函数相同，只是我们添加了一个输出语句来证明正在调用拷贝构造函数。
 
-Unlike with default constructors, it’s fine to use the default copy constructor if it meets your needs.
+与默认构造函数不同的是，如果拷贝构造函数能够满足你的需要，那么尽管使用它。
 
-One interesting note: You’ve already seen a few examples of overloaded operator<<, where we’re able to access the private members of parameter f1 because the function is a friend of the Fraction class. Similarly, member functions of a class can access the private members of parameters of the same class type. Since our Fraction copy constructor takes a parameter of the class type (to make a copy of), we’re able to access the members of parameter fraction directly, even though it’s not the implicit object.
+有一个地方需要注意：在之前我们已经看到了一些重载操作符`<<`的例子，在这些例子中，我们能够访问形参`f1`的私有成员，因为该函数是`Fraction`类的友元。类似地，类的成员函数可以访问相同类形参的私有成员。因为`Fraction`的拷贝构造函数接受同类型的形参(用于复制)，所以我们能够直接访问形参 `Fraction` 的成员。
 
-The copy constructor’s parameter must be a reference
+拷贝构造函数的形参必须是引用类型
 
-It is a requirement that the parameter of a copy constructor be a (const) reference. This makes sense: if the argument were passed by value, then we’d need the copy constructor to copy the argument into the parameter of the copy constructor (which would result in an infinite recursion).
+复制构造函数的形参必须是(const)引用。这是有意义的：如果实参是按值传递的，那么我们需要复制构造函数将实拷贝到拷贝构造函数的形参中(这将导致无限递归)。
 
-**Preventing copies**
 
-We can prevent copies of our classes from being made by making the copy constructor private:
+
+## 阻止拷贝
+
+通过将拷贝构造函数设为[[private-member|私有成员]]，我们可以阻止类的拷贝：
 
 ```cpp
 #include <cassert>
@@ -203,7 +205,7 @@ private:
     int m_numerator{};
     int m_denominator{};
 
-    // Copy constructor (private)
+    // 私有拷贝构造函数
     Fraction(const Fraction& fraction)
         : m_numerator{fraction.m_numerator}, m_denominator{fraction.m_denominator}
     {
@@ -230,19 +232,18 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f1)
 
 int main()
 {
-	Fraction fiveThirds { 5, 3 }; // Direct initialize a Fraction, calls Fraction(int, int) constructor
-	Fraction fCopy { fiveThirds }; // Copy constructor is private, compile error on this line
+	Fraction fiveThirds { 5, 3 }; // 直接初始化 Fraction，调用 Fraction(int, int)
+	Fraction fCopy { fiveThirds }; // 拷贝构造函数是私有的，编译器会报错。
 	std::cout << fCopy << '\n';
 }
 ```
 
-COPY
 
-Now when we try to compile our program, we’ll get a compile error since fCopy needs to use the copy constructor, but can not see it since the copy constructor has been declared as private.
+编译程序时，编译器会报错，因为 `fCopy` 需要用到拷贝构造函数，但是由于拷贝构造函数是私有的，它无权访问。
 
-**The copy constructor may be elided**
+## 拷贝构造函数可能会被省略
 
-Now consider the following example:
+考虑下面的例子：
 
 ```cpp
 #include <cassert>
@@ -287,43 +288,41 @@ int main()
 }
 ```
 
-COPY
+考虑上述程序的运行逻辑。首先，我们直接初始化了一个匿名的 `Fraction` 对象（使用 `Fraction(int, int)` 构造函数）。随后，我们将该匿名对象作为初始化值，用于初始化 `Fraction fiveThirds`。因为匿名对象也是 `Fraction` 类型的，所以会调用拷贝构造函数，这么分析没错吧？
 
-Consider how this program works. First, we direct initialize an anonymous Fraction object, using the Fraction(int, int) constructor. Then we use that anonymous Fraction object as an initializer for Fraction fiveThirds. Since the anonymous object is a Fraction, as is fiveThirds, this should call the copy constructor, right?
+编译并执行上述代码，你可以会认为其输出结果如下：
 
-Run this and compile it for yourself. You’d probably expect to get this result (and you may):
-
+```
 copy constructor called
 5/3
+```
 
-But in actuality, you’re more likely to get this result:
+而实际上结果更可能是：
 
+```
 5/3
+```
 
-Why didn’t our copy constructor get called?
+为什么拷贝构造函数没有被调用？
 
-Note that initializing an anonymous object and then using that object to direct initialize our defined object takes two steps (one to create the anonymous object, one to call the copy constructor). However, the end result of initializing our defined object is essentially identical to just doing a direct initialization, which only takes one step.
+注意，初始化匿名对象，然后使用该对象直接初始化定义的对象需要两个步骤(首先创建匿名对象，然调用复制构造函数)。然而，初始化已定义对象的最终结果基本上与直接初始化相同，后者只需要一个步骤。
 
-For this reason, in such cases, the compiler is allowed to opt out of calling the copy constructor and just do a direct initialization instead. The process of omitting certain copy (or move) steps for performance purposes is called **elision**.
+因此，在这种情况下，编译器可以选择不调用复制构造函数，而直接进行初始化。为了性能目的而省略某些复制(或移动)步骤的过程称为**省略**
 
-So although you wrote:
+所以尽管代码是这样写的：
 
 ```cpp
 Fraction fiveThirds { Fraction{ 5, 3 } };
 ```
 
-COPY
-
-The compiler may change this to:
+编译器可能会将其优化为：
 
 ```cpp
 Fraction fiveThirds{ 5, 3 };
 ```
 
-COPY
+上面的形式只需要一次构造函数调用(`Fraction(int, int)`)。需要注意的是，当省略发生时，拷贝构造函数其函数体内的任何语句都不会被执行，即使它们会产生[[side-effects|副作用]]（例如输出信息到屏幕）！
 
-which only requires one constructor call (to Fraction(int, int)). Note that in cases where elision is used, any statements in the body of the copy constructor are not executed, even if they would have produced side effects (like printing to the screen)!
+在 C++17 之前，编译器被允许（但不是必须）在某些情况下执行拷贝省略。在这种情况下，拷贝构造函数仍然是必须可访问的（非私有），即使拷贝构造函数实际上并没有被调用。
 
-Prior to C++17, compilers are permitted (but not required) to perform copy elision in certain cases. In such cases, a copy constructor must be accessible (e.g. non-private), even if the actual copy is elided.
-
-As of C++17, some cases of copy elision (including the example above) have been made mandatory. In these mandatory elision cases, the copy constructor does not need to be accessible (or even present) since it is guaranteed not to be needed!
+到了 C++17，有些拷贝省略已经是强制的了（包括上面例子中的这种情况）。对于这些强制省略的情况，拷贝构造函数不需要是可访问的，甚至不需要被定义，因为编译器保证不调用它！

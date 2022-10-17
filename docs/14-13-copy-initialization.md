@@ -14,21 +14,20 @@ tags:
 	-
 
 
-Consider the following line of code:
+考虑下面代码：
 
 ```cpp
 int x = 5;
 ```
 
-COPY
+该语句使用拷贝初始化的方式将一个新创建的整型变量 x 的值设置为 5。
 
-This statement uses copy initialization to initialize newly created integer variable x to the value of 5.
+而对于类来说，问题则会变得稍微复杂一些，因为类在初始化时需要使用构造函数。本节课我们会介绍与类的拷贝初始化相关的问题。
 
-However, classes are a little more complicated, since they use constructors for initialization. This lesson will examine topics related to copy initialization for classes.
 
-**Copy initialization for classes**
+## 类的拷贝初始化
 
-Given our Fraction class:
+考虑下面的  `Fraction` 类：
 
 ```cpp
 #include <cassert>
@@ -58,9 +57,7 @@ std::ostream& operator<<(std::ostream& out, const Fraction& f1)
 }
 ```
 
-COPY
-
-Consider the following:
+考虑下下面代码：
 
 ```cpp
 int main()
@@ -71,27 +68,30 @@ int main()
 }
 ```
 
-COPY
 
-If you were to compile and run this, you’d see that it produces the expected output:
+编译运行代码，结果如你所以想的那样：
 
+```
 6/1
+```
 
-This form of copy initialization is evaluated the same way as the following:
+这种形式的拷贝构造，其求值方式和下面的代码是一样的：
 
 ```cpp
 Fraction six(Fraction(6));
 ```
 
-COPY
+在上一节课中（[[14-12-the-copy-constructor|14.12 - 拷贝构造函数]]）我们学到，上面的代码可能会调用 `Fraction(int, int)` 以及 `Fraction` 的拷贝构造函数（可能会被优化掉）。不过，由于省略不被保证一定发生，所以最好避免使用拷贝初始化来初始化类，而改用[[uniform-initialization|统一初始化]]。
 
-And as you learned in the previous lesson, this can potentially make calls to both Fraction(int, int) and the Fraction copy constructor (which may be elided for performance reasons). However, because eliding isn’t guaranteed (prior to C++17, where elision in this particular case is now mandatory), it’s better to avoid copy initialization for classes, and use uniform initialization instead.
 
-Best practice
+!!! success "最佳实践"
 
-Avoid using copy initialization, and use uniform initialization instead.
+	避免使用拷贝初始化，使用统一初始化
 
-**Other places copy initialization is used**
+
+## 拷贝初始化的其他使用场景
+
+还有其他一些地方使用了拷贝初始化，其中有两个地方值得一提。当[[pass-by-value|按值传递]]或[[return-by-value|按值返回]]类时，会使用拷贝初始化。
 
 There are a few other places copy initialization is used, but two of them are worth mentioning explicitly. When you pass or return a class by value, that process uses copy initialization.
 
