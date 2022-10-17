@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "16-6-container-classes",
+      "path": "docs/16-6-container-classes.md"
+    },
+    {
+      "basename": "16-5-dependencies",
+      "path": "docs/16-5-dependencies.md"
+    },
+    {
+      "basename": "16-4-association",
+      "path": "docs/16-4-association.md"
+    },
+    {
+      "basename": "16-3-aggregation",
+      "path": "docs/16-3-aggregation.md"
+    },
+    {
+      "basename": "16-2-composition",
+      "path": "docs/16-2-composition.md"
+    },
+    {
+      "basename": "16-1-object-relationships",
+      "path": "docs/16-1-object-relationships.md"
+    },
+    {
+      "basename": "14-17-overloading-operators-and-function-templates",
+      "path": "docs/14-17-overloading-operators-and-function-templates.md"
+    },
+    {
       "basename": "14-16-shallow-vs-deep-copying",
       "path": "docs/14-16-shallow-vs-deep-copying.md"
     },
@@ -33,36 +61,12 @@
       "path": "docs/MOC.md"
     },
     {
-      "basename": "16-5-dependencies",
-      "path": "docs/16-5-dependencies.md"
-    },
-    {
-      "basename": "16-4-association",
-      "path": "docs/16-4-association.md"
-    },
-    {
-      "basename": "16-3-aggregation",
-      "path": "docs/16-3-aggregation.md"
-    },
-    {
-      "basename": "16-2-composition",
-      "path": "docs/16-2-composition.md"
-    },
-    {
-      "basename": "16-1-object-relationships",
-      "path": "docs/16-1-object-relationships.md"
-    },
-    {
       "basename": "direct-initialization",
       "path": "docs/direct-initialization.md"
     },
     {
       "basename": "16-7-std-initializer_list",
       "path": "docs/16-7-std-initializer_list.md"
-    },
-    {
-      "basename": "16-6-container-classes",
-      "path": "docs/16-6-container-classes.md"
     },
     {
       "basename": "16-x-Chapter-16-comprehensive-quiz",
@@ -87,10 +91,6 @@
     {
       "basename": "copy-constructors",
       "path": "docs/copy-constructors.md"
-    },
-    {
-      "basename": "14-17-overloading-operators-and-function-templates",
-      "path": "docs/14-17-overloading-operators-and-function-templates.md"
     },
     {
       "basename": "14-11-Overloading-typecasts",

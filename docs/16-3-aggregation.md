@@ -20,7 +20,7 @@ In the previous lesson [[16-2-composition|16.2 - 组合关系]], we noted that 
 
 In this lesson, we’ll take a look at the other subtype of object composition, called aggregation.
 
-## Aggregation
+## 聚合
 
 To qualify as an **aggregation**, a whole object and its parts must have the following relationship:
 
@@ -41,7 +41,7 @@ We can say that aggregation models “has-a” relationships (a department has t
 
 Similar to a composition, the parts of an aggregation can be singular or multiplicative.
 
-## Implementing aggregations
+## 实现组合关系
 
 Because aggregations are similar to compositions in that they are both part-whole relationships, they are implemented almost identically, and the difference between them is mostly semantic. In a composition, we typically add our parts to the composition using normal member variables (or pointers where the allocation and deallocation process is handled by the composition class).
 
@@ -117,13 +117,13 @@ For example, if you’re writing a body shop simulator, you may want to implemen
 
 Summarizing composition and aggregation
 
-Compositions:
+组合:
 
 -   Typically use normal member variables
 -   Can use pointer members if the class handles object allocation/deallocation itself
 -   Responsible for creation/destruction of parts
 
-Aggregations:
+聚合:
 
 -   Typically use pointer or reference members that point to or reference objects that live outside the scope of the aggregate class
 -   Not responsible for creating/destroying parts
@@ -138,9 +138,9 @@ A few warnings/errata
 
 For a variety of historical and contextual reasons, unlike a composition, the definition of an aggregation is not precise -- so you may see other reference material define it differently from the way we do. That’s fine, just be aware.
 
-One final note: In the lesson [10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/), we defined aggregate data types (such as structs and classes) as data types that group multiple variables together. You may also run across the term aggregate class in your C++ journeys, which is defined as a struct or class that has no provided constructors, destructors, or overloaded assignment, has all public members, and does not use inheritance -- essentially a plain-old-data struct. Despite the similarities in naming, aggregates and aggregation are different and should not be confused.
+One final note: In the lesson [[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]] we defined aggregate data types (such as structs and classes) as data types that group multiple variables together. You may also run across the term aggregate class in your C++ journeys, which is defined as a struct or class that has no provided constructors, destructors, or overloaded assignment, has all public members, and does not use inheritance -- essentially a plain-old-data struct. Despite the similarities in naming, aggregates and aggregation are different and should not be confused.
 
-std::reference_wrapper
+## `std::reference_wrapper`
 
 In the `Department`/`Teacher` example above, we used a reference in the `Department` to store the `Teacher`. This works fine if there is only one `Teacher`, but what if a Department has multiple Teachers? We’d like to store those Teachers in a list of some kind (e.g. a `std::vector`) but fixed arrays and the various standard library lists can’t hold references (because list elements must be assignable, and references can’t be reassigned).
 

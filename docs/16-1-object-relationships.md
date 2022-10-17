@@ -14,28 +14,30 @@ tags:
 	
 	-
 
-Life is full of recurring patterns, relationships, and hierarchies between objects. By exploring and understanding these, we can gain insight into how real-life objects behave, enhancing our understanding of those objects.
+生活中充满了反复出现的模式、关系和等级关系。通过探索和理解这些关系，我们可以洞察现实生活中的对象是如何运作的以增强我们对这些对象的理解。
 
-For example, let’s say one day you’re walking down the street, and you see a bright yellow object attached to a green shrubby object. You’d probably recognize that the bright yellow thing is a flower, and the green shrubby thing is a plant. Even though you’d never seen this particular type of plant before, you’d know that the green things are leaves, collecting sunlight. You’d know that the flower helps the plant propagate itself. You’d also know that if you killed the plant, the flower would die too.
+例如，假设有一天你走在街上，看到一个亮黄色的物体连接在一个绿色灌木状的物体上。你可能会认出亮黄色的东西是花，而绿色灌木状的东西是植物。即使你以前从未见过这种特殊类型的植物，你也知道这些绿色的东西是树叶，它们收集阳光。你知道这种花能帮助植物繁殖。你还会知道，如果你杀死了植物，花也会死去。
 
-But how can you know all of this without ever encountering a plant of this type before? You know this because you understand the abstract concept of plants, and recognize that this plant is an instantiation of that abstraction. You know that most plants are composed (in part) of leaves, and some have flowers. You know that the leaves interact with the sunlight (even if you don’t know how, exactly), and that the flower’s existence depends on the plant. Because you know all of these things about plants in general, you can infer a lot about this plant.
+但你以前从未见过这种植物，你怎么知道这些呢？你知道这一点是因为你理解植物的抽象概念，并且认识到这个植物是这个抽象概念的一个实例。你知道大多数植物(部分)是由叶子组成的，有些植物有花。你知道叶子会与阳光相互作用(即使你不知道具体是如何作用的)，你也知道花的存在依赖于植物。因为你知道所有这些关于植物的抽象概念，所以你可以推断出很多关于这种植物的进一步信息。
 
-Similarly, programming is also full of recurring patterns, relationships and hierarchies. Particularly when it comes to programming objects, the same patterns that govern real-life objects are applicable to the programming objects we create ourselves. By examining these in more detail, we can better understand how to improve code reusability and write classes that are more extensible.
+类似地，编程也充满了重复的模式、关系和层次结构。特别是当涉及到对象时，管理现实生活对象的相同模式也适用于我们自己在程序中创建的对象。通过仔细分析，我们可以更好地理解如何提高代码的可重用性，并编写更具可扩展性的类。
 
-In previous chapters, we’ve already explored some ideas around recurring patterns: we’ve created loops and functions to allow us to do a particular task many times. Additionally, we’ve created our own enums, structs, and classes to allow us to instantiate objects of a given type.
+在前几章中，我们已经探讨了一些关于循环模式的想法：我们创建了循环和函数，以允许我们多次执行特定的任务。此外，我们还创建了自己的枚举、结构和类，以允许我们实例化给定类型的对象。
 
-We’ve also explored some primitive forms of hierarchy, such as arrays (which allow us to group elements into a larger structure) and recursion, where a function calls a derivative version of itself.
+我们还探讨了层次结构的一些基本形式，例如数组(它允许我们将元素分组到更大的结构中)和递归(函数调用自身的派生版本)。
 
-However, we haven’t yet focused much on the relationship between objects, particularly as it relates to programming.
+但是，我们还没有过多地关注对象之间的关系，特别是与编程相关的关系。
 
-## Relationships between objects
 
-There are many different kinds of relationships two objects may have in real-life, and we use specific “relation type” words to describe these relationships. For example: a square “is-a” shape. A car “has-a” steering wheel. A computer programmer “uses-a” keyboard. A flower “depends-on” a bee for pollination. A student is a “member-of” a class. And your brain exists as “part-of” you (at least, we can reasonably assume so if you’ve gotten this far).
+## 对象之间的关系
 
-All of these relation types have useful analogies in C++.
+在现实生活中，两个对象之间可能存在许多不同类型的关系，我们使用特定的“关系类型”词汇来描述这些关系。例如：正方形”是（is-a）”一种形状。汽车“有（has-a）“方向盘。计算机程序员“使用（uses-a）”键盘。一朵花“依赖（depends-on）”蜜蜂授粉。学生是班级的“成员（member-of）”。你的大脑作为你的“一部分（part-of）”存在(至少，如果你已经走到这一步，我们可以合理地假设是这样)。
 
-In this chapter, we’ll explore the nuances of the relation types “part-of”, “has-a”, “uses-a”, “depends-on”, and “member-of”, and show how they can be useful in the context of C++ classes. We’ll also explore a couple of related topics that don’t fit nicely anywhere else.
+所有这些关系类型在 C++ 中都有有用的类比。
 
-Then we’ll devote the following two chapters to exploring “is-a” relationships, via C++’s inheritance model and virtual functions. Yup, it’s a biggie.
+在本章中，我们将探索关系类型“part-of”、“has-a”、“uses-a”、“depends-on”和“member-of”的细微差别，并展示它们在 C++ 类语境中是如何使用的。我们还将探讨一些其他地方不太适合的相关主题。
 
-Alright, enough context setting. Let’s get to it.
+然后，我们将在接下来的两章中通过 C++ 的继承模型和虚函数来探索“is-a”关系。是的，这是一个大问题。
+
+好了，背景介绍到此为止。让我们开始吧。
+

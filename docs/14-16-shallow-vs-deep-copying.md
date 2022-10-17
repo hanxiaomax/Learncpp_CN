@@ -267,22 +267,22 @@ MyString& MyString::operator=(const MyString& source)
 }
 ```
 
-COPY
+注意，拷贝赋值运算符和拷贝构造函数非常类似，但是有三处明显的不同：
 
-Note that our assignment operator is very similar to our copy constructor, but there are three major differences:
+-  添加了一个自我复制检查；
+-  返回 `*this` 指针一般能够链式调用赋值运算符；
+-  必须显式地释放已经持有的字符串（避免`m_data`重新分配时导致内存泄漏） 。该操作是在`deepCopy`在完成的
 
--   We added a self-assignment check.
--   We return *this so we can chain the assignment operator.
--   We need to explicitly deallocate any value that the string is already holding (so we don’t have a memory leak when m_data is reallocated later). This is handled inside deepCopy().
+当调用重载赋值操作符时，被赋值的项可能已经包含了以前的值，需要确保在为新值分配内存之前将其清除。对于非动态分配的变量(大小固定)，我们不必费心，因为新值只是覆盖旧值。但是，对于动态分配的变量，在分配新内存之前需要显式地释放旧内存。如果我们不这样做，代码不会崩溃但会造成内存泄漏——每次赋值都会吞噬可用的内存。
 
-When the overloaded assignment operator is called, the item being assigned to may already contain a previous value, which we need to make sure we clean up before we assign memory for new values. For non-dynamically allocated variables (which are a fixed size), we don’t have to bother because the new value just overwrites the old one. However, for dynamically allocated variables, we need to explicitly deallocate any old memory before we allocate any new memory. If we don’t, the code will not crash, but we will have a memory leak that will eat away our free memory every time we do an assignment!
 
-**A better solution**
+## 更好的解决方案
 
-Classes in the standard library that deal with dynamic memory, such as std::string and std::vector, handle all of their memory management, and have overloaded copy constructors and assignment operators that do proper deep copying. So instead of doing your own memory management, you can just initialize or assign them like normal fundamental variables! That makes these classes simpler to use, less error-prone, and you don’t have to spend time writing your own overloaded functions!
+标准库中处理动态内存的类，如`std::string` 和`std::vector`，它们会管理自己所有的内存，并具有执行深拷贝的拷贝构造函数和赋值操作符。因此，你不必自己管理它们的内存，只需像普通基本变量一样初始化或分配它们！这使得这些类更容易使用，更不容易出错，而且你不必花时间编写自己的重载函数!
 
-**Summary**
 
--   The default copy constructor and default assignment operators do shallow copies, which is fine for classes that contain no dynamically allocated variables.
--   Classes with dynamically allocated variables need to have a copy constructor and assignment operator that do a deep copy.
--   Favor using classes in the standard library over doing your own memory management.
+## 小结
+
+- 默认拷贝构造函数和默认赋值操作符执行浅复制，这对于不包含动态分配变量的类来说没有问题；
+- 具有动态分配变量的类需要有一个拷贝构造函数和赋值操作符来执行深拷贝；
+- 最好使用标准库中的类，而不是自己进行内存管理。
