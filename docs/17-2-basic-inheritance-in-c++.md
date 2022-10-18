@@ -175,7 +175,7 @@ int main()
 Joe
 ```
 
-This compiles and runs because joe is a BaseballPlayer, and all BaseballPlayer objects have a m_name member variable and a getName() member function inherited from the Person class.
+代码可以正确地编译运行，因为`joe` 是 `BaseballPlayer`，而所有的 `BaseballPlayer` 对象都具有 `m_name` 成员变量和 `getName()` 成员函数，它们是从 `Person` 类继承过来的。
 
 ## `Employee` 派生类
 
