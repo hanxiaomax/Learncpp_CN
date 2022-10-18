@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "17-5-inheritance-and-access-specifiers",
+      "path": "docs/17-5-inheritance-and-access-specifiers.md"
+    },
+    {
+      "basename": "private-inheritance",
+      "path": "docs/private-inheritance.md"
+    },
+    {
+      "basename": "protected-inheritance",
+      "path": "docs/protected-inheritance.md"
+    },
+    {
+      "basename": "protected-members",
+      "path": "docs/protected-members.md"
+    },
+    {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
       "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
     },
@@ -63,10 +79,6 @@
     {
       "basename": "object-composition",
       "path": "docs/object-composition.md"
-    },
-    {
-      "basename": "17-5-inheritance-and-access-specifiers",
-      "path": "docs/17-5-inheritance-and-access-specifiers.md"
     },
     {
       "basename": "17-6-adding-new-functionality-to-a-derived-class",
@@ -187,18 +199,6 @@
     {
       "basename": "shallow-copy",
       "path": "docs/shallow-copy.md"
-    },
-    {
-      "basename": "copy-constructors",
-      "path": "docs/copy-constructors.md"
-    },
-    {
-      "basename": "14-11-Overloading-typecasts",
-      "path": "docs/14-11-Overloading-typecasts.md"
-    },
-    {
-      "basename": "14-9-overloading-the-subscript-operator",
-      "path": "docs/14-9-overloading-the-subscript-operator.md"
     }
   ],
   "omittedPaths": [],

@@ -450,10 +450,6 @@ C: R
 
 ## 小结
 
-When constructing a derived class, the derived class constructor is responsible for determining which base class constructor is called. If no base class constructor is specified, the default base class constructor will be used. In that case, if no default base class constructor can be found (or created by default), the compiler will display an error. The classes are then constructed in order from most base to most derived.
+在构造派生类时，派生类构造函数负责确定调用哪个基类构造函数。如果没有指定基类构造函数，将使用默认基类构造函数。在这种情况下，如果找不到缺省基类构造函数(或缺省创建基类构造函数)，编译器将报错。然后按照从最基类到最派生类的顺序构造类。
 
-At this point, you now understand enough about C++ inheritance to create your own inherited classes!
-
-在构造派生类时，派生类构造函数负责确定调用哪个基类构造函数。如果没有指定基类构造函数，将使用默认基类构造函数。在这种情况下，如果找不到缺省基类构造函数(或缺省创建基类构造函数)，编译器将显示错误。然后按照从最基类到最派生类的顺序构造类。
-
-至此，您已经足够了解c++继承，可以创建自己的继承类了!
+至此，您已经足够了解C++继承，可以创建自己的继承类了!
