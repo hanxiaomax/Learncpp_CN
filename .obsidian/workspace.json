@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
+                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -123,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
+                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
               }
             }
           },
@@ -144,7 +144,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
+                "file": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -168,6 +168,7 @@
   },
   "active": "58fab8864f880e54",
   "lastOpenFiles": [
+    "docs/17-6-adding-new-functionality-to-a-derived-class.md",
     "docs/17-5-inheritance-and-access-specifiers.md",
     "docs/17-4-constructors-and-initialization-of-derived-classes.md",
     "docs/17-2-basic-inheritance-in-c++.md",
@@ -176,7 +177,6 @@
     "docs/成员访问说明符.md",
     "docs/private-inheritance.md",
     "docs/protected-inheritance.md",
-    "docs/protected-members.md",
-    "docs/17-3-order-of-construction-of-derived-classes.md"
+    "docs/protected-members.md"
   ]
 }

@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
+      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
+    },
+    {
       "basename": "17-6-adding-new-functionality-to-a-derived-class",
       "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
     },
@@ -83,10 +87,6 @@
     {
       "basename": "object-composition",
       "path": "docs/object-composition.md"
-    },
-    {
-      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
-      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
     },
     {
       "basename": "17-9-multiple-inheritance",

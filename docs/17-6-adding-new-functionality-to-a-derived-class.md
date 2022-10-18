@@ -61,7 +61,7 @@ public:
 
 基类中没有包括用于公共代码访问`m_value`的方法。我们可以通过在基类中添加一个访问函数来补救这个问题——但为了举例，我们将把它添加到派生类中。因为`m_value`在基类中被声明为受保护的，`Derived` 可以直接访问它。
 
-要向派生类添加新功能，只需在派生类中像正常一样声明该功能:
+要向派生类添加新功能，只需在派生类中像正常一样声明该函数：
 
 ```cpp
 class Derived: public Base
@@ -76,8 +76,7 @@ public:
 };
 ```
 
-现在`public`将能够在`Derived`类型的对象上调用`getValue()`来访问`m_value`的值。
-Now the public will be able to call getValue() on an object of type Derived to access the value of m_value.
+现在 `public` 将能够在 `Derived` 类型的对象上调用 `getValue()` 来访问 `m_value` 的值。
 
 ```cpp
 int main()
@@ -89,13 +88,13 @@ int main()
 }
 ```
 
-COPY
+程序运行结果如下：
 
-This produces the result:
-
+```
 derived has value 5
+```
 
-Although it may be obvious, objects of type Base have no access to the getValue() function in Derived. The following does not work:
+需要注意的是，`Base` 对象并不能访问 `Derived` 中的 `getValue()` 函数，所以下面的代码是不能工作的：
 
 ```cpp
 int main()
@@ -107,7 +106,6 @@ int main()
 }
 ```
 
-COPY
 
-This is because there is no getValue() function in Base. Function getValue() belongs to Derived. Because Derived is a Base, Derived has access to stuff in Base. However, Base does not have access to anything in Derived.
+这是因为`Base`类中并没有 `getValue()` 函数，它属于`Derived`类。因为 `Derived` 是 `Base`，所以它能够访问`Base`的属性。但是，`Base` 不能访问 `Derived` 的任何属性。
 
