@@ -78,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "成员访问函数",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -103,7 +103,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -168,15 +169,15 @@
   },
   "active": "e15a4d36e47763cc",
   "lastOpenFiles": [
+    "docs/13-4-access-functions-and-encapsulation.md",
+    "docs/access-function.md",
+    "docs/17-2-basic-inheritance-in-c++.md",
     "docs/MOC.md",
     "docs/17-3-order-of-construction-of-derived-classes.md",
-    "docs/17-2-basic-inheritance-in-c++.md",
     "docs/public-inheritance.md",
     "docs/derived-class.md",
     "docs/child-class.md",
     "docs/super-class.md",
-    "docs/base-class.md",
-    "docs/parent-class.md",
-    "docs/17-1-introduction-to-inheritance.md"
+    "docs/base-class.md"
   ]
 }

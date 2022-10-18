@@ -175,11 +175,11 @@ int main()
 Joe
 ```
 
-代码可以正确地编译运行，因为`joe` 是 `BaseballPlayer`，而所有的 `BaseballPlayer` 对象都具有 `m_name` 成员变量和 `getName()` 成员函数，它们是从 `Person` 类继承过来的。
+代码可以正确地编译运行，因为`joe` 是 `BaseballPlayer`，而所有的 `BaseballPlayer` 类型的对象都具有 `m_name` 成员变量和 `getName()` 成员函数，它们是从 `Person` 类继承过来的。
 
 ## `Employee` 派生类
 
-Now let’s write another class that also inherits from Person. This time, we’ll write an Employee class. An employee “is a” person, so using inheritance is appropriate:
+接下来，我们再编写另外一个类并继承 `Person`。这次，我们编写一个 `Employee` 类。雇员显然”是一个“人，所以使其继承 `Person`类似是合适的：
 
 ```cpp
 // Employee publicly inherits from Person
@@ -201,17 +201,15 @@ public:
 };
 ```
 
-COPY
+`Employee` 从 `Person` 继承了 `m_name` 和 `m_age` (以及两个[[access-function|成员访问函数]])，同时它还添加了两个额外的成员变量和成员函数。注意，`printNameAndSalary()` 同时使用了来自两个类的变量(`Employee::m_hourlySalary` 和 `Person::m_name`)。
 
-Employee inherits m_name and m_age from Person (as well as the two access functions), and adds two more member variables and a member function of its own. Note that printNameAndSalary() uses variables both from the class it belongs to (Employee::m_hourlySalary) and the parent class (Person::m_name).
-
-This gives us a derivation chart that looks like this:
+派生结构图如下：
 
 ![](https://www.learncpp.com/images/CppTutorial/Section11/EmployeeInheritance.gif)
 
-Note that Employee and BaseballPlayer don’t have any direct relationship, even though they both inherit from Person.
+如图所示，`Employee` 和 `BaseballPlayer` 并没有直接关系，即使它们都派生自 `Person`。
 
-Here’s a full example using Employee:
+基于 `Employee` 类编写下面的程序：
 
 ```cpp
 #include <iostream>
@@ -232,7 +230,7 @@ public:
     }
 };
 
-// Employee publicly inherits from Person
+// Employee 公开继承了 Person
 class Employee: public Person
 {
 public:
@@ -253,7 +251,7 @@ public:
 int main()
 {
     Employee frank{20.25, 12345};
-    frank.m_name = "Frank"; // we can do this because m_name is public
+    frank.m_name = "Frank"; // 可以这么做是因为  m_name 是 public
 
     frank.printNameAndSalary();
 
@@ -261,9 +259,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+运行结果：
 
 ```
 Frank: 20.25
@@ -271,9 +267,9 @@ Frank: 20.25
 
 ## 继承链
 
-It’s possible to inherit from a class that is itself derived from another class. There is nothing noteworthy or special when doing so -- everything proceeds as in the examples above.
+派生类本身也是可以被继承的。而且在操作和使用上都没有什么特别之处。
 
-For example, let’s write a Supervisor class. A Supervisor is an Employee, which is a Person. We’ve already written an Employee class, so let’s use that as the base class from which to derive Supervisor:
+例如  `Supervisor` 类本身是 `Employee` 类的派生类，同时也是 `Person`. We’ve already written an Employee class, so let’s use that as the base class from which to derive Supervisor:
 
 ```cpp
 class Supervisor: public Employee

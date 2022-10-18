@@ -5,6 +5,14 @@
       "path": "docs/17-2-basic-inheritance-in-c++.md"
     },
     {
+      "basename": "13-4-access-functions-and-encapsulation",
+      "path": "docs/13-4-access-functions-and-encapsulation.md"
+    },
+    {
+      "basename": "access-function",
+      "path": "docs/access-function.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "14-9-overloading-the-subscript-operator",
       "path": "docs/14-9-overloading-the-subscript-operator.md"
-    },
-    {
-      "basename": "14-8-overloading-the-increment-and-decrement-operators",
-      "path": "docs/14-8-overloading-the-increment-and-decrement-operators.md"
-    },
-    {
-      "basename": "14-10-overloading-the-parenthesis-operator",
-      "path": "docs/14-10-overloading-the-parenthesis-operator.md"
     }
   ],
   "omittedPaths": [],
