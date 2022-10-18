@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "17-8-Hiding-inherited-functionality",
+      "path": "docs/17-8-Hiding-inherited-functionality.md"
+    },
+    {
       "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
       "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "17-2-basic-inheritance-in-c++",
       "path": "docs/17-2-basic-inheritance-in-c++.md"
-    },
-    {
-      "basename": "17-8-Hiding-inherited-functionality",
-      "path": "docs/17-8-Hiding-inherited-functionality.md"
     },
     {
       "basename": "MOC",

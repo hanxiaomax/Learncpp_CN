@@ -237,11 +237,12 @@ public:
 
 
 
-不使用作用域解析限定符而调用`identify()` 的话，默认情况会调用当前类中的 `identify()` ，这样调用的就是 `Derived::identify()`. This would cause Derived::identify() to call itself, which would lead to an infinite loop!
+不使用作用域解析限定符而调用`identify()` 的话，默认情况会调用当前类中的 `identify()` ，这样调用的就是 `Derived::identify()`，于是 `Derived::identify()` 会自己调用自己，导致死循环！
 
-There’s one bit of trickiness that we can run into when trying to call friend functions in base classes, such as operator<<. Because friend functions of the base class aren’t actually part of the base class, using the scope resolution qualifier won’t work. Instead, we need a way to make our Derived class temporarily look like the Base class so that the right version of the function can be called.
+在尝试调用基类中的友元函数时，比如操作符`<<`，可能会遇到一点麻烦。==因为基类的友函数实际上不是基类的一部分，所以使用范围解析限定符不起作用==。我们需要一种方法使我们的派生类临时看起来像基类，以便可以调用函数的正确版本。
 
-Fortunately, that’s easy to do, using static_cast. Here’s an example:
+幸运的是，这很容易做到，只需使用 `static_cast` 进行转换即可。请看下面这个例子：
+
 
 ```cpp
 #include <iostream>
@@ -292,11 +293,10 @@ int main()
 }
 ```
 
-COPY
 
-Because a Derived is-a Base, we can static_cast our Derived object into a Base, so that the appropriate version of operator<< that uses a Base is called.
+因为`Derived` ”是一个“ `Base`，所以我们可以使用 `static_cast` 将 `Derived` 转换为 `Base`，然后就可以调用`Base`的`<<`操作符了。
 
-This prints:
+打印结果如下：
 
 ```
 In Derived
