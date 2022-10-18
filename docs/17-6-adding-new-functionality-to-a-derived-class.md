@@ -14,10 +14,9 @@ tags:
 	-
 
 
-[[17-1-introduction-to-inheritance|17.1 - 继承简介]], we mentioned that one of the biggest benefits of using derived classes is the ability to reuse already written code. You can inherit the base class functionality and then add new functionality, modify existing functionality, or hide functionality you don’t want. In this and the next few lessons, we’ll take a closer look at how each of these things is done.
+在[[17-1-introduction-to-inheritance|17.1 - 继承简介]]中我们提到，使用派生类最大的好处在于可以重用代码。你可以继承基类的功能并在派生类中添加需要的新功能、修改已经存在的功能或者隐藏你不需要的功能。在接下来的几节课中，我们会详细介绍如何做到这些。
 
-First, let’s start with a simple base class:
-
+首先编写一个简单的类：
 ```cpp
 #include <iostream>
 
@@ -36,9 +35,8 @@ public:
 };
 ```
 
-COPY
+现在，让我们创建一个继承自`Base`的派生类。因为我们希望派生类能够在派生对象实例化时设置`m_value`的值，所以需要在`Derived`的[[member-initializer-list|成员初始化值列表]]中调用`Base`的构造函数。
 
-Now, let’s create a derived class that inherits from Base. Because we want the derived class to be able to set the value of m_value when derived objects are instantiated, we’ll make the Derived constructor call the Base constructor in the initialization list.
 
 ```cpp
 class Derived: public Base
@@ -51,21 +49,19 @@ public:
 };
 ```
 
-COPY
+## 向派生类中添加新的功能
 
-## Adding new functionality to a derived class**
+在上面的例子中，因为我们可以访问`Base`类的源代码，所以如果需要，我们可以直接向`Base`添加功能。
 
-In the above example, because we have access to the source code of the Base class, we can add functionality directly to Base if we desire.
+有时候，虽然基类的代码可以访问，但我们不想修改它。考虑这样一种情况，您刚刚从第三方供应商购买了一个代码库，但需要一些额外的功能。您可以添加到原始代码中，但这不是最好的解决方案。如果供应商远程发布了新版本怎么办？添加的内容要么被覆盖，要么必须手动将它们迁移到更新中，这既耗时又有风险。
 
-There may be times when we have access to a base class but do not want to modify it. Consider the case where you have just purchased a library of code from a 3rd party vendor, but need some extra functionality. You could add to the original code, but this isn’t the best solution. What if the vendor sends you an update? Either your additions will be overwritten, or you’ll have to manually migrate them into the update, which is time-consuming and risky.
+或者，有时甚至不可能修改基类。考虑标准库中的代码。我们无法修改作为标准库一部分的代码。但是我们能够从这些类继承，然后将我们自己的功能添加到我们的派生类中。同样的情况也发生在第三方库中，在那里你可以访问头文件，但是代码是预编译的。
 
-Alternatively, there may be times when it’s not even possible to modify the base class. Consider the code in the standard library. We aren’t able to modify the code that’s part of the standard library. But we are able to inherit from those classes, and then add our own functionality into our derived classes. The same goes for 3rd party libraries where you are provided with headers but the code comes precompiled.
+在任何一种情况下，最好的答案是创建一个自己的派生类，并向派生类添加你想要的功能。
 
-In either case, the best answer is to derive your own class, and add the functionality you want to the derived class.
+基类中没有包括用于公共代码访问`m_value`的方法。我们可以通过在基类中添加一个访问函数来补救这个问题——但为了举例，我们将把它添加到派生类中。因为`m_value`在基类中被声明为受保护的，`Derived` 可以直接访问它。
 
-One obvious omission from the Base class is a way for the public to access m_value. We could remedy this by adding an access function in the Base class -- but for the sake of example we’re going to add it to the derived class instead. Because m_value has been declared as protected in the Base class, Derived has direct access to it.
-
-To add new functionality to a derived class, simply declare that functionality in the derived class like normal:
+要向派生类添加新功能，只需在派生类中像正常一样声明该功能:
 
 ```cpp
 class Derived: public Base
@@ -80,8 +76,7 @@ public:
 };
 ```
 
-COPY
-
+现在`public`将能够在`Derived`类型的对象上调用`getValue()`来访问`m_value`的值。
 Now the public will be able to call getValue() on an object of type Derived to access the value of m_value.
 
 ```cpp
