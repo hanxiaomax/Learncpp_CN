@@ -127,25 +127,26 @@ This might seem a little confusing, but it’s not that bad. We’ll spend the r
 
 Keep in mind the following rules as we step through the examples:
 
-如果不选择继承类型，c++默认为私有继承(就像如果不指定其他类型，成员默认为私有访问一样)。
+如果不选择继承类型，C++默认为私有继承(就像如果不指定其他类型，成员默认为私有访问一样)。
 
-这为我们提供了9种组合:3个成员访问说明符(公共、私有和受保护)和3种继承类型(公共、私有和受保护)。
+这为我们提供了9种组合：3个[[access-specifiers|成员访问修饰符]](公共、私有和受保护)和3种继承类型(公共、私有和受保护)。
 
-那么它们的区别是什么呢?简而言之，当成员被继承时，继承成员的访问说明符可以根据所使用的继承类型更改(仅在派生类中)。换句话说，基类中公共的或受保护的成员可以更改派生类中的访问说明符。
+那么它们的区别是什么呢？简而言之，当成员被继承时，继承成员的访问说明符可以根据所使用的继承类型更改(仅在派生类中)。换句话说，基类中公共的或受保护的成员，在派生类中可能是其他类型的。
 
-这可能看起来有点令人困惑，但它并没有那么糟糕。这节课剩下的时间我们将详细探讨这个问题。
+这可能看起来有点令人困惑，不过不要担心，这节课剩下的时间我们将详细探讨这个问题。
 
 在我们逐步学习这些例子时，请记住以下规则:
 
+-  一个类总是能访问其自己的成员（非继承而来的）；
+-  外部在访问一个类的成员时，基于该成员的访问修饰符判断是否能访问；
+-  派生类在访问继承来的成员时，基于它从基类继承来的访问修饰符。这一点会根据访问说明符的不同和继承类型的不同而改变。
 
--   A class can always access its own (non-inherited) members.
--   The public accesses the members of a class based on the access specifiers of the class it is accessing.
--   A derived class accesses inherited members based on the access specifier inherited from the parent class. This varies depending on the access specifier and type of inheritance used.
 
-## Public inheritance
+## 公开继承
 
 Public inheritance is by far the most commonly used type of inheritance. In fact, very rarely will you see or use the other types of inheritance, so your primary focus should be on understanding this section. Fortunately, public inheritance is also the easiest to understand. When you inherit a base class publicly, inherited public members stay public, and inherited protected members stay protected. Inherited private members, which were inaccessible because they were private in the base class, stay inaccessible.
 
+[[public-inheritance|公开继承]]是最常用的继承类型。事实上，你很少会看到或使用其他类型的继承，因此你的主要关注点应该放在理解这一节上。幸运的是，公开继承也是最容易理解的。当公开继承基类时，继承的[[public-member|公有成员]]保持公有，继承的[[受保持受保护。继承的私有成员由于在基类中是私有的而不可访问，因此仍然不可访问。
 
 Access specifier in base class	Access specifier when inherited publicly
 Public	Public

@@ -5,6 +5,22 @@
       "path": "docs/17-5-inheritance-and-access-specifiers.md"
     },
     {
+      "basename": "17-4-constructors-and-initialization-of-derived-classes",
+      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
+    },
+    {
+      "basename": "17-2-basic-inheritance-in-c++",
+      "path": "docs/17-2-basic-inheritance-in-c++.md"
+    },
+    {
+      "basename": "17-8-Hiding-inherited-functionality",
+      "path": "docs/17-8-Hiding-inherited-functionality.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "private-inheritance",
       "path": "docs/private-inheritance.md"
     },
@@ -17,28 +33,12 @@
       "path": "docs/protected-members.md"
     },
     {
-      "basename": "17-4-constructors-and-initialization-of-derived-classes",
-      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
-    },
-    {
       "basename": "17-3-order-of-construction-of-derived-classes",
       "path": "docs/17-3-order-of-construction-of-derived-classes.md"
     },
     {
       "basename": "17-1-introduction-to-inheritance",
       "path": "docs/17-1-introduction-to-inheritance.md"
-    },
-    {
-      "basename": "17-2-basic-inheritance-in-c++",
-      "path": "docs/17-2-basic-inheritance-in-c++.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
-      "basename": "17-8-Hiding-inherited-functionality",
-      "path": "docs/17-8-Hiding-inherited-functionality.md"
     },
     {
       "basename": "13-4-access-functions-and-encapsulation",
@@ -195,10 +195,6 @@
     {
       "basename": "deep-copy",
       "path": "docs/deep-copy.md"
-    },
-    {
-      "basename": "shallow-copy",
-      "path": "docs/shallow-copy.md"
     }
   ],
   "omittedPaths": [],

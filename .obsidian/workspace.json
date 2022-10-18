@@ -36,25 +36,12 @@
             }
           },
           {
-            "id": "e15a4d36e47763cc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-5-inheritance-and-access-specifiers.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "58fab8864f880e54",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-2-basic-inheritance-in-c++.md",
+                "file": "docs/17-5-inheritance-and-access-specifiers.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -179,17 +166,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "e15a4d36e47763cc",
+  "active": "58fab8864f880e54",
   "lastOpenFiles": [
-    "docs/private-inheritance.md",
+    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+    "docs/17-2-basic-inheritance-in-c++.md",
+    "docs/17-8-Hiding-inherited-functionality.md",
+    "docs/MOC.md",
+    "docs/成员访问说明符.md",
     "docs/17-5-inheritance-and-access-specifiers.md",
+    "docs/private-inheritance.md",
     "docs/protected-inheritance.md",
     "docs/protected-members.md",
-    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
-    "docs/17-3-order-of-construction-of-derived-classes.md",
-    "docs/17-1-introduction-to-inheritance.md",
-    "docs/17-2-basic-inheritance-in-c++.md",
-    "docs/MOC.md",
-    "docs/17-8-Hiding-inherited-functionality.md"
+    "docs/17-3-order-of-construction-of-derived-classes.md"
   ]
 }
