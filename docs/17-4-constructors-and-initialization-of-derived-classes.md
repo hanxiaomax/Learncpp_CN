@@ -61,11 +61,13 @@ int main()
 
 1.  为 `base` 分配内存；
 2.  调用合适的构造函数；
-3.  使用[[member-initializer-list|成员初始化值列表]]来初始化变量；member initializer list initializes variables
-4.  The body of the constructor executes
-5.  Control is returned to the caller
+3.  使用[[member-initializer-list|成员初始化值列表]]来初始化变量；
+4.  构造函数执行其函数体内语句；
+5.  控制权返还给调用者。
 
-This is pretty straightforward. With derived classes, things are slightly more complex:
+很简单。
+
+对于派生类，事情稍微复杂一些：
 
 ```cpp
 int main()
@@ -76,24 +78,23 @@ int main()
 }
 ```
 
-COPY
 
-Here’s what actually happens when derived is instantiated:
+在派生类实例化时会有如下步骤：
 
-1.  Memory for derived is set aside (enough for both the Base and Derived portions)
-2.  The appropriate Derived constructor is called
-3.  **The Base object is constructed first using the appropriate Base constructor**. If no base constructor is specified, the default constructor will be used.
-4.  The member initializer list initializes variables
-5.  The body of the constructor executes
-6.  Control is returned to the caller
+1.  分配内存(满足 `Base` 和 `Derived` 的需要)；
+2.  调用 `Derived` 的构造函数；
+3.  `Base` 对象会使用合适的`Base`构造函数首先初始化。如果没有指定构造函数，则调用默认构造函数；
+4.  使用[[member-initializer-list|成员初始化值列表]]初始化变量；
+5.  构造函数执行其函数体内语句；
+5.  控制权返还给调用者。
 
-The only real difference between this case and the non-inherited case is that before the Derived constructor can do anything substantial, the Base constructor is called first. The Base constructor sets up the Base portion of the object, control is returned to the Derived constructor, and the Derived constructor is allowed to finish up its job.
+两个例子中的不同之处在于，在 `Derived` 的构造函数可以做任何事之前，`Base`的构造函数首先会被调用，它会初始化该对象的`Base`部分，然后将控制权返还给 `Derived` 构造函数，然后 `Derived` 才能去完成它自己的工作。
 
-## Initializing base class members**
+## 初始化基类成员
 
-One of the current shortcomings of our Derived class as written is that there is no way to initialize m_id when we create a Derived object. What if we want to set both m_cost (from the Derived portion of the object) and m_id (from the Base portion of the object) when we create a Derived object?
+我们所编写的派生类目前的缺点之一是，在创建派生对象时没有办法初始化 `m_id`。如果我们想在创建派生对象时同时设置 `m_cost` (来自对象的`Derived`部分)和 `m_id` (来自对象的`Base`部分)，该怎么办?
 
-New programmers often attempt to solve this problem as follows:
+新手程序员会尝试这么做：
 
 ```cpp
 class Derived: public Base
@@ -112,17 +113,16 @@ public:
 };
 ```
 
-COPY
 
-This is a good attempt, and is almost the right idea. We definitely need to add another parameter to our constructor, otherwise C++ will have no way of knowing what value we want to initialize m_id to.
+想法很好但并不完全正确。我们的确需要为构造函数添加额外的参数，否则C++无从知晓我们希望用什么值来初始化`m_id`。
 
-However, C++ prevents classes from initializing inherited member variables in the member initializer list of a constructor. In other words, the value of a member variable can only be set in a member initializer list of a constructor belonging to the same class as the variable.
+但是，C++不允许我们在成员初始化列表中的初始化继承来的成员变量。换句话说，成员变量的值只能在它所属类的构造函数的成员初始化列表中设置。
 
-Why does C++ do this? The answer has to do with const and reference variables. Consider what would happen if m_id were const. Because const variables must be initialized with a value at the time of creation, the base class constructor must set its value when the variable is created. However, when the base class constructor finishes, the derived class constructor’s member initializer lists are then executed. Each derived class would then have the opportunity to initialize that variable, potentially changing its value! By restricting the initialization of variables to the constructor of the class those variables belong to, C++ ensures that all variables are initialized only once.
+为什么C++要这样做？答案与const变量和引用变量有关。考虑一下如果`m_id`是`const`会发生什么。因为const变量必须在创建时用一个值初始化，所以基类构造函数必须在创建变量时设置它的值。但是，当基类构造函数完成时，将执行派生类构造函数的成员初始化列表。然后每个派生类都有机会初始化该变量，可能会改变它的值!通过将变量的初始化限制在这些变量所属类的构造函数中，C++需要确保所有变量只初始化一次。
 
-The end result is that the above example does not work because m_id was inherited from Base, and only non-inherited variables can be initialized in the member initializer list.
+最终的结果是上面的示例不起作用，因为`m_id`是从`Base`继承的，并且只有非继承的变量可以在成员初始化器列表中初始化。
 
-However, inherited variables can still have their values changed in the body of the constructor using an assignment. Consequently, new programmers often also try this:
+但是，继承的变量仍然可以在构造函数体中使用赋值操作更改其值。因此，新程序员通常也会这样做:
 
 ```cpp
 class Derived: public Base
@@ -140,15 +140,15 @@ public:
 };
 ```
 
-COPY
 
-While this actually works in this case, it wouldn’t work if m_id were a const or a reference (because const values and references have to be initialized in the member initializer list of the constructor). It’s also inefficient because m_id gets assigned a value twice: once in the member initializer list of the Base class constructor, and then again in the body of the Derived class constructor. And finally, what if the Base class needed access to this value during construction? It has no way to access it, since it’s not set until the Derived constructor is executed (which pretty much happens last).
+虽然这在本例中实际上是可行的，但如果`m_id`是`const`或引用，则不可行(因为`const`值和引用必须在构造函数的成员初始化列表中初始化)。它的效率也很低，因为`m_id`被分配了两次值：一次是在基类构造函数的成员初始化列表中，然后是在派生类构造函数的主体中。最后，如果基类在构造过程中需要访问这个值怎么办？它没有办法访问它，因为它是在执行`Derived`构造函数之前才设置的(这基本上是在最后执行)。
 
-So how do we properly initialize m_id when creating a Derived class object?
 
-In all of the examples so far, when we instantiate a Derived class object, the Base class portion has been created using the default Base constructor. Why does it always use the default Base constructor? Because we never told it to do otherwise!
+那么，我们应该如何子创建`Derived`类对象时正确初始化 `m_id` 呢？
 
-Fortunately, C++ gives us the ability to explicitly choose which Base class constructor will be called! To do this, simply add a call to the Base class constructor in the member initializer list of the derived class:
+在上面的这些例子中，当我们初始化 `Derived` 类的对象时，`Base` 类的部分都是通过它的默认构造函数来创建的。为什么它总是会调用默认构造函数呢？因为我们没有让他不要这么做啊！
+
+所幸，C++ 允许我们显式地指定创建`Base`类时应该使用的构造函数！我们只需要在派生类的[[member-initializer-list|成员初始化值列表]]中调用所需的`Base`的构造函数就可以了：
 
 ```cpp
 class Derived: public Base
@@ -166,9 +166,7 @@ public:
 };
 ```
 
-COPY
-
-Now, when we execute this code:
+再次执行代码：
 
 ```cpp
 #include <iostream>
@@ -183,11 +181,10 @@ int main()
 }
 ```
 
-COPY
 
-The base class constructor Base(int) will be used to initialize m_id to 5, and the derived class constructor will be used to initialize m_cost to 1.3!
+基类的构造函数 `Base(int)` 将会被用来初始化成员`m_id`（5）然后派生类的构造函数会被用来初始化 `m_cost` 到 `1.3`！
 
-Thus, the program will print:
+因此，程序会打印：
 
 ```
 Id: 5
