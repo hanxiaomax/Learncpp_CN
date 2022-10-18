@@ -41,6 +41,19 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "58fab8864f880e54",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "docs/17-2-basic-inheritance-in-c++.md",
                 "mode": "source",
                 "backlinks": false,
@@ -103,8 +116,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -124,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-2-basic-inheritance-in-c++.md"
+                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
               }
             }
           },
@@ -145,7 +157,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-2-basic-inheritance-in-c++.md",
+                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -169,15 +181,15 @@
   },
   "active": "e15a4d36e47763cc",
   "lastOpenFiles": [
-    "docs/13-4-access-functions-and-encapsulation.md",
-    "docs/access-function.md",
+    "docs/17-3-order-of-construction-of-derived-classes.md",
+    "docs/17-1-introduction-to-inheritance.md",
     "docs/17-2-basic-inheritance-in-c++.md",
     "docs/MOC.md",
-    "docs/17-3-order-of-construction-of-derived-classes.md",
+    "docs/17-8-Hiding-inherited-functionality.md",
+    "docs/13-4-access-functions-and-encapsulation.md",
+    "docs/access-function.md",
     "docs/public-inheritance.md",
     "docs/derived-class.md",
-    "docs/child-class.md",
-    "docs/super-class.md",
-    "docs/base-class.md"
+    "docs/child-class.md"
   ]
 }

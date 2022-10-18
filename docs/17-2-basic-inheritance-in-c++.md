@@ -31,7 +31,7 @@ C++的继承发生在类与类之间。在继承关系中，被继承的类称�
 因为子类也是一个标准的类，所以它们(当然)可以有自己的类成员。
 
 
-## `Person` 类**
+## `Person` 类
 
 下面的例子中使用 `Person` 表示一个”人类“：
 
@@ -269,7 +269,7 @@ Frank: 20.25
 
 派生类本身也是可以被继承的。而且在操作和使用上都没有什么特别之处。
 
-例如  `Supervisor` 类本身是 `Employee` 类的派生类，同时也是 `Person`. We’ve already written an Employee class, so let’s use that as the base class from which to derive Supervisor:
+例如  `Supervisor` 类本身是 `Employee` 类的派生类， `Employee` 类则是 `Person` 类的子类：
 
 ```cpp
 class Supervisor: public Employee
@@ -280,22 +280,25 @@ public:
 };
 ```
 
-COPY
+派生结构图如下：
 
-Now our derivation chart looks like this:
 
 ![](https://www.learncpp.com/images/CppTutorial/Section11/SupervisorInheritance.gif)
 
-All Supervisor objects inherit the functions and variables from both Employee and Person, and add their own m_overseesIDs member variable.
 
-By constructing such inheritance chains, we can create a set of reusable classes that are very general (at the top) and become progressively more specific at each level of inheritance.
+所有的`Supervisor`对象都继承`Employee`和`Person`的函数和变量，并添加自己的`m_overseesIDs`成员变量。
+
+通过构建这样的继承链，我们可以创建一组可重用的类，这些类非常通用(位于派生层次结构的顶部)，并在每个继承级别上逐渐变得更加具体。
+
 
 ## 为什么此类继承是有用的？
 
-Inheriting from a base class means we don’t have to redefine the information from the base class in our derived classes. We automatically receive the member functions and member variables of the base class through inheritance, and then simply add the additional functions or member variables we want. This not only saves work, but also means that if we ever update or modify the base class (e.g. add new functions, or fix a bug), all of our derived classes will automatically inherit the changes!
+从基类继承意味着不必在派生类中重新定义基类的信息。我们通过继承自动接收基类的成员函数和成员变量，然后简单地添加所需的附加函数或成员变量。这不仅节省了工作，而且还意味着如果我们更新或修改基类(例如添加新函数，或修复bug)，我们所有的派生类将自动继承更改!
 
-For example, if we ever added a new function to Person, both Employee and Supervisor would automatically gain access to it. If we added a new variable to Employee, Supervisor would also gain access to it. This allows us to construct new classes in an easy, intuitive, and low-maintenance way!
+例如，如果我们向`Person`添加了一个新功能，`Employee`和`Supervisor`都会自动获得对它的访问权限。如果我们向`Employee`添加一个新变量，`Supervisor`也将获得对它的访问权。这允许我们以一种简单、直观和低维护的方式构造新类!
+
 
 ## 结论
 
-Inheritance allows us to reuse classes by having other classes inherit their members. In future lessons, we’ll continue to explore how this works.
+通过继承，我们可以从其他类中获取其成员以实现代码的重用。在以后的课程中，我们将继续探索继承的工作原理。
+
