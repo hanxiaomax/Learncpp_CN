@@ -14,10 +14,8 @@ tags:
 	-
 
 
-在前面两节课中，我们探讨了C++中继承的一些基础知识以及派生类初始化的顺序。本节课，我们将进一步了解构造函数在派生类初始化中的作用。为此，我们将继续使用上一课中开发的简单的Base和Derived类:
+在前面两节课中，我们探讨了C++中继承的一些基础知识以及派生类初始化的顺序。本节课，我们将进一步了解构造函数在派生类初始化中的作用。为此，我们将继续使用上一课中开发的`Base`和`Derived`类：
 
-
-In the past two lessons, we’ve explored some basics around inheritance in C++ and the order that derived classes are initialized. In this lesson, we’ll take a closer look at the role of constructors in the initialization of derived classes. To do so, we will continue to use the simple Base and Derived classes we developed in the previous lesson:
 
 ```cpp
 class Base
@@ -47,9 +45,7 @@ public:
 };
 ```
 
-COPY
-
-With non-derived classes, constructors only have to worry about their own members. For example, consider Base. We can create a Base object like this:
+对于非派生类来说，构造函数只需要关心它自己的成员即可。例如，对于`Base`类，我们可以像这样创建一个对象：
 
 ```cpp
 int main()
@@ -60,13 +56,12 @@ int main()
 }
 ```
 
-COPY
 
-Here’s what actually happens when base is instantiated:
+下面是实例化base时实际发生的情况：
 
-1.  Memory for base is set aside
-2.  The appropriate Base constructor is called
-3.  The member initializer list initializes variables
+1.  为 `base` 分配内存；
+2.  调用合适的构造函数；
+3.  使用[[member-initializer-list|成员初始化值列表]]来初始化变量；member initializer list initializes variables
 4.  The body of the constructor executes
 5.  Control is returned to the caller
 
