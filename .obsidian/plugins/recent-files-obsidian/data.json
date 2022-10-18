@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "17-6-adding-new-functionality-to-a-derived-class",
+      "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
+    },
+    {
       "basename": "17-5-inheritance-and-access-specifiers",
       "path": "docs/17-5-inheritance-and-access-specifiers.md"
     },
@@ -79,10 +83,6 @@
     {
       "basename": "object-composition",
       "path": "docs/object-composition.md"
-    },
-    {
-      "basename": "17-6-adding-new-functionality-to-a-derived-class",
-      "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
     },
     {
       "basename": "17-7-calling-inherited-functions-and-overriding-behavior",

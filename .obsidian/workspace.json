@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-5-inheritance-and-access-specifiers.md",
+                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -123,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-5-inheritance-and-access-specifiers.md"
+                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
               }
             }
           },
@@ -144,7 +144,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-5-inheritance-and-access-specifiers.md",
+                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -168,12 +168,12 @@
   },
   "active": "58fab8864f880e54",
   "lastOpenFiles": [
+    "docs/17-5-inheritance-and-access-specifiers.md",
     "docs/17-4-constructors-and-initialization-of-derived-classes.md",
     "docs/17-2-basic-inheritance-in-c++.md",
     "docs/17-8-Hiding-inherited-functionality.md",
     "docs/MOC.md",
     "docs/成员访问说明符.md",
-    "docs/17-5-inheritance-and-access-specifiers.md",
     "docs/private-inheritance.md",
     "docs/protected-inheritance.md",
     "docs/protected-members.md",

@@ -14,7 +14,7 @@ tags:
 	-
 
 
-In the [introduction to inheritance](https://www.learncpp.com/cpp-tutorial/111-introduction-to-inheritance/) lesson, we mentioned that one of the biggest benefits of using derived classes is the ability to reuse already written code. You can inherit the base class functionality and then add new functionality, modify existing functionality, or hide functionality you don’t want. In this and the next few lessons, we’ll take a closer look at how each of these things is done.
+[[17-1-introduction-to-inheritance|17.1 - 继承简介]], we mentioned that one of the biggest benefits of using derived classes is the ability to reuse already written code. You can inherit the base class functionality and then add new functionality, modify existing functionality, or hide functionality you don’t want. In this and the next few lessons, we’ll take a closer look at how each of these things is done.
 
 First, let’s start with a simple base class:
 
