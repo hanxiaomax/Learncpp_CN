@@ -256,13 +256,11 @@ class Copier: public Scanner, public Printer
 
 事实证明，可以使用多重继承解决的大多数问题也可以使用单一继承解决。许多面向对象语言(如。Smalltalk, PHP)甚至不支持多重继承。许多相对现代的语言，如Java和c#，将类限制为普通类的单一继承，但允许接口类的多重继承(我们将在后面讨论)。在这些语言中禁止多重继承的背后的驱动思想是，它只会使语言过于复杂，最终导致的问题比解决的问题更多。
 
+许多作者和有经验的程序员认为，应该不惜一切代价避免C++中的多重继承，因为它会带来许多潜在的问题。笔者并不同意这种观点，因为在某些时候和情况下，多重继承是进行的最佳方式。然而，多重继承应该非常明智地使用。
 
-As it turns out, most of the problems that can be solved using multiple inheritance can be solved using single inheritance as well. Many object-oriented languages (eg. Smalltalk, PHP) do not even support multiple inheritance. Many relatively modern languages such as Java and C# restrict classes to single inheritance of normal classes, but allow multiple inheritance of interface classes (which we will talk about later). The driving idea behind disallowing multiple inheritance in these languages is that it simply makes the language too complex, and ultimately causes more problems than it fixes.
+有趣的是，你已经在使用基于多重继承编写的类而不自知，`std:iostream`库对象`std::cin`和`std::cout`都是使用多重继承实现的！
 
-Many authors and experienced programmers believe multiple inheritance in C++ should be avoided at all costs due to the many potential problems it brings. Your author does not agree with this approach, because there are times and situations when multiple inheritance is the best way to proceed. However, multiple inheritance should be used extremely judiciously.
-
-As an interesting aside, you have already been using classes written using multiple inheritance without knowing it: the iostream library objects std::cin and std::cout are both implemented using multiple inheritance!
 
 !!! success "最佳实践"
 
-	Avoid multiple inheritance unless alternatives lead to more complexity.
+	避免多重继承，除非备选方案使问题变得更复杂。

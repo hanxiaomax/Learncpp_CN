@@ -239,7 +239,7 @@
 - [[17-x-Chapter-17-comprehensive-quiz|17.x - 小结与测试 - 继承]]
 
 ## 18. 虚函数
-- [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试 - 虚函数]]
+- [[18-2-virtual-functions-and-polymorphism|18.x - 小结与测试 - 虚函数]]
 
 ## 19. 模板和类
 - [[19-x-Chapter-19-comprehensive-quiz|19.x - 小结与测试 - 模板和类]]

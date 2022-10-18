@@ -41,7 +41,46 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-9-multiple-inheritance.md",
+                "file": "docs/18-2-virtual-functions-and-polymorphism.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f2e88f6fdab9080e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "43c0365cae1fe1ff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e4b75f4b358c5740",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -49,7 +88,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -123,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-9-multiple-inheritance.md"
+                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
               }
             }
           },
@@ -144,7 +183,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-9-multiple-inheritance.md",
+                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -166,17 +205,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "58fab8864f880e54",
+  "active": "e4b75f4b358c5740",
   "lastOpenFiles": [
-    "docs/mixin.md",
-    "docs/17-9-multiple-inheritance.md",
-    "docs/Multiple inheritance.md",
-    "docs/17-8-Hiding-inherited-functionality.md",
-    "docs/17-7-calling-inherited-functions-and-overriding-behavior.md",
-    "docs/17-6-adding-new-functionality-to-a-derived-class.md",
     "docs/17-5-inheritance-and-access-specifiers.md",
     "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+    "docs/17-3-order-of-construction-of-derived-classes.md",
     "docs/17-2-basic-inheritance-in-c++.md",
-    "docs/MOC.md"
+    "docs/17-1-introduction-to-inheritance.md",
+    "docs/16-7-std-initializer_list.md",
+    "docs/16-6-container-classes.md",
+    "docs/16-5-dependencies.md",
+    "docs/16-4-association.md",
+    "docs/16-3-aggregation.md"
   ]
 }
