@@ -191,29 +191,29 @@ Id: 5
 Cost: 1.3
 ```
 
-In more detail, here’s what happens:
+具体来说：
 
-1.  Memory for derived is allocated.
-2.  The Derived(double, int) constructor is called, where cost = 1.3, and id = 5.
-3.  The compiler looks to see if we’ve asked for a particular Base class constructor. We have! So it calls Base(int) with id = 5.
-4.  The base class constructor member initializer list sets m_id to 5.
-5.  The base class constructor body executes, which does nothing.
-6.  The base class constructor returns.
-7.  The derived class constructor member initializer list sets m_cost to 1.3.
-8.  The derived class constructor body executes, which does nothing.
-9.  The derived class constructor returns.
+1.  内存分配；
+2.  构造函数 `Derived(double, int)` 被调用，`cost = 1.3`， `id = 5`。
+3.  编译器查看你是否指定了`Base`类的构造函数。这里我们指定了，所以它会调用 `Base(int)` 且 `id = 5`。
+4.  基类构造函数的成员初始化值列表将`m_id`设置为5；
+5.  基类构造函数的函数体执行，什么都没做；
+6.  基类构造函数返回；
+7.  派生类构造函数的成员初始化值列表将 `m_cost` 设置为 1.3；
+8.  派生类构造函数的函数体执行，什么都没做；
+9.  派生类构造函数返回。
 
-This may seem somewhat complex, but it’s actually very simple. All that’s happening is that the Derived constructor is calling a specific Base constructor to initialize the Base portion of the object. Because m_id lives in the Base portion of the object, the Base constructor is the only constructor that can initialize that value.
+看起来有点复杂，但实际上非常简单。所发生的一切就是`Derived`构造函数调用指定的`Base`构造函数来初始化对象的`Base`部分。因为`m_id`位于对象的`Base`部分，所以`Base`构造函数是唯一可以初始化该值的构造函数。
 
-Note that it doesn’t matter where in the Derived constructor member initializer list the Base constructor is called -- it will always execute first.
+注意，Base构造函数在`Derived`构造函数成员初始化列表中的什么位置被调用并不重要——它总是首先执行。
 
-## Now we can make our members private**
+## 将成员设为私有
 
-Now that you know how to initialize base class members, there’s no need to keep our member variables public. We make our member variables private again, as they should be.
+既然已经知道了如何初始化基类成员，就没有必要将成员变量保持为`public`。我们再次将成员变量设为私有，因为它们应该是私有的。
 
-As a quick refresher, public members can be accessed by anybody. Private members can only be accessed by member functions of the same class. Note that this means derived classes can not access private members of the base class directly! Derived classes will need to use access functions to access private members of the base class.
+快速回顾一下，公共成员可以被任何人访问。私有成员只能由同一类的成员函数访问。注意，==这意味着派生类不能直接访问基类的私有成员==！派生类将需要使用访问函数来访问基类的私有成员。
 
-Consider:
+考虑下面代码：
 
 ```cpp
 #include <iostream>
@@ -257,22 +257,22 @@ int main()
 }
 ```
 
-COPY
 
-In the above code, we made m_id and m_cost private. This is fine, since we use the relevant constructors to initialize them, and use a public accessor to get the values.
+在上面的例子中，我们将 `m_id` 和 `m_cost` 设为私有。这么做完全没有问题，因为我们可以使用相关的构造函数初始化这些成员，并通过公有的[[access-function|成员访问函数]]来访问它们。
 
-This prints, as expected:
+
+打印结果如我们所想的那样：
 
 ```
 Id: 5
 Cost: 1.3
 ```
 
-We’ll talk more about access specifiers in the next lesson.
+我们将在下一课中更多地讨论访问说明符。
 
-## Another example
+## 另外一个例子
 
-Let’s take a look at another pair of classes we’ve previously worked with:
+再看看之前我们使用过的一个例子：
 
 ```cpp
 #include <string>
@@ -308,11 +308,10 @@ public:
 };
 ```
 
-COPY
 
-As we’d previously written it, BaseballPlayer only initializes its own members and does not specify a Person constructor to use. This means every BaseballPlayer we create is going to use the default Person constructor, which will initialize the name to blank and age to 0. Because it makes sense to give our BaseballPlayer a name and age when we create them, we should modify this constructor to add those parameters.
+在之前的例子中， `BaseballPlayer` 只会初始化它自己的成员，也并没有指定 `Person` 的构造函数。这意味着 `BaseballPlayer` 在创建时，调用的都是 `Person` 的默认构造函数，它会将名字初始化为空白并将年龄初始化为0。因为，因为在创建`BaseballPlayer`时给它们一个名称和年龄是有意义的，所以我们应该修改这个构造函数来添加这些参数。
 
-Here’s our updated classes that use private members, with the BaseballPlayer class calling the appropriate Person constructor to initialize the inherited Person member variables:
+更新代码，让类使用私有成员，同时让 `BaseballPlayer` 类调用适当的 `Person` 构造函数来初始化继承的 `Person` 成员变量：
 
 ```cpp
 #include <iostream>
@@ -335,7 +334,7 @@ public:
     int getAge() const { return m_age; }
 
 };
-// BaseballPlayer publicly inheriting Person
+// BaseballPlayer 公开继承 Person
 class BaseballPlayer : public Person
 {
 private:
@@ -345,7 +344,7 @@ private:
 public:
     BaseballPlayer(const std::string_view name = "", int age = 0,
         double battingAverage = 0.0, int homeRuns = 0)
-        : Person{ name, age } // call Person(const std::string_view, int) to initialize these fields
+        : Person{ name, age } // 调用 Person(const std::string_view, int) 来初始化相应的成员
         , m_battingAverage{ battingAverage }, m_homeRuns{ homeRuns }
     {
     }
@@ -355,9 +354,7 @@ public:
 };
 ```
 
-COPY
-
-Now we can create baseball players like this:
+现在，像下面这样创建一个对象：
 
 ```cpp
 #include <iostream>
@@ -375,9 +372,7 @@ int main()
 }
 ```
 
-COPY
-
-This outputs:
+程序运行结果：
 
 ```
 Pedro Cerrano
@@ -386,11 +381,12 @@ Pedro Cerrano
 42
 ```
 
-As you can see, the name and age from the base class were properly initialized, as was the number of home runs and batting average from the derived class.
+可以看到，基类的名称和年龄已正确初始化，派生类的本垒打数和击球率也已初始化。
+
 
 ## 继承链
 
-Classes in an inheritance chain work in exactly the same way.
+继承链中的类以完全相同的方式工作。
 
 ```cpp
 #include <iostream>
@@ -432,13 +428,11 @@ int main()
 }
 ```
 
-COPY
+在这个例子中，类C是由类B派生而来的，而类B又是由类A派生而来的。那么当我们实例化类C的对象时会发生什么呢?
 
-In this example, class C is derived from class B, which is derived from class A. So what happens when we instantiate an object of class C?
+首先 `main()` 会调用 `C(int, double, char)`。C 的构造函数会调用 `B(int, double)`。B的构造函数调用`A(int)`。因为A没有继承任何类，所以它会被第一个构造。A 被构造后打印了 5，然后控制权返回给B。B被构造时打印值 4.3，然后返回控制权给C。C被构造时打印‘R’，然后将控制权返回给 `main()`。构造结束！
 
-First, main() calls C(int, double, char). The C constructor calls B(int, double). The B constructor calls A(int). Because A does not inherit from anybody, this is the first class we’ll construct. A is constructed, prints the value 5, and returns control to B. B is constructed, prints the value 4.3, and returns control to C. C is constructed, prints the value ‘R’, and returns control to main(). And we’re done!
-
-Thus, this program prints:
+因此程序打印结果如下：
 
 ```
 A: 5
@@ -446,14 +440,20 @@ B: 4.3
 C: R
 ```
 
-It is worth mentioning that constructors can only call constructors from their immediate parent/base class. Consequently, the C constructor could not call or pass parameters to the A constructor directly. The C constructor can only call the B constructor (which has the responsibility of calling the A constructor).
+值得一提的是，构造函数只能调用**直接**父类（基类）中的构造函数。因此，C构造函数不能直接调用或将参数传递给A构造函数。C构造函数只能调用B构造函数(B构造函数负责调用A构造函数)。
+
 
 ## 析构函数
 
-When a derived class is destroyed, each destructor is called in the _reverse_ order of construction. In the above example, when c is destroyed, the C destructor is called first, then the B destructor, then the A destructor.
+当派生类被销毁时，每个析构函数将按构造的**逆顺序调用**。在上面的例子中，当C被销毁时，首先调用C析构函数，然后是B析构函数，然后是A析构函数。
+
 
 ## 小结
 
 When constructing a derived class, the derived class constructor is responsible for determining which base class constructor is called. If no base class constructor is specified, the default base class constructor will be used. In that case, if no default base class constructor can be found (or created by default), the compiler will display an error. The classes are then constructed in order from most base to most derived.
 
 At this point, you now understand enough about C++ inheritance to create your own inherited classes!
+
+在构造派生类时，派生类构造函数负责确定调用哪个基类构造函数。如果没有指定基类构造函数，将使用默认基类构造函数。在这种情况下，如果找不到缺省基类构造函数(或缺省创建基类构造函数)，编译器将显示错误。然后按照从最基类到最派生类的顺序构造类。
+
+至此，您已经足够了解c++继承，可以创建自己的继承类了!
