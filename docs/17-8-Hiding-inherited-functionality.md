@@ -162,23 +162,22 @@ int main()
 }
 ```
 
-在上面的例子中，`getValue()` 函数被标记为`delete`。这意味着调用派生类的函数的调用都会导致编译器报错。 This means that the compiler will complain when we try to call the derived version of the function. Note that the Base version of getValue() is still accessible though. We can call Base::getValue() in one of two ways:
+在上面的例子中，`getValue()` 函数被标记为`delete`。这意味着调用派生类中的该函数时会导致编译器报错。==注意，基类中的`getValue()` 函数仍然可以使用==。我们可以通过两种方式调用 `Base::getValue()`：
 
 ```cpp
 int main()
 {
 	Derived derived { 7 };
 
-	// We can call the Base::getValue() function directly
+	// 可以直接调用 Base::getValue()
 	std::cout << derived.Base::getValue();
 
-	// Or we can upcast Derived to a Base reference and getValue() will resolve to Base::getValue()
+	// 将子类转换为基类然后调用 getValue() 就会解析到 Base::getValue()
 	std::cout << static_cast<Base&>(derived).getValue();
 
 	return 0;
 }
 ```
 
-COPY
 
-If using the casting method, we cast to a Base& rather than a Base to avoid making a copy of the Base portion of `derived`.
+==如果使用强制转换方法，则强制转换为Base&而不是Base，以避免生成 `derived` 的`Base`部分的副本。==

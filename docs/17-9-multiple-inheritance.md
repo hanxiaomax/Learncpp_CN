@@ -14,9 +14,9 @@ tags:
 	
 	-
 
-So far, all of the examples of inheritance we’ve presented have been single inheritance -- that is, each inherited class has one and only one parent. However, C++ provides the ability to do multiple inheritance. **Multiple inheritance** enables a derived class to inherit members from more than one parent.
+到目前为止，我们介绍的所有继承示例都是单继承——也就是说，每个继承的类都有且只有一个父类。不过，C++其实还支持多重继承。[[Multiple inheritance|多重继承]]使得派生类可以从多个父类继承成员。
 
-Let’s say we wanted to write a program to keep track of a bunch of teachers. A teacher is a person. However, a teacher is also an employee (they are their own employer if working for themselves). Multiple inheritance can be used to create a Teacher class that inherits properties from both Person and Employee. To use multiple inheritance, simply specify each base class (just like in single inheritance), separated by a comma.
+假设我们想写一个程序来记录一群老师的信息。老师”是一个“人。然而，教师也是雇员(如果为自己工作，他们就是自己的雇主)。多重继承可用于创建从`Person`和`Employee`继承属性的`Teacher`类。要使用多重继承，只需一次指定每个基类(就像单继承一样)，用逗号分隔。
 
 ![](https://www.learncpp.com/images/CppTutorial/Section11/PersonTeacher.gif)
 
@@ -81,9 +81,9 @@ int main()
 
 ## Mixins
 
-A mixin (also spelled “mix-in”) is a small class that can be inherited from in order to add properties to a class. The name mixin indicates that the class is intended to be mixed into other classes, not instantiated on its own.
+[[mixin]] (也拼作 “mix-in”) 是一个小的类，它可以被类继承以便为其添加一些属性。它的名字mixin（混入）说明，它的用途是被添加到其他类中，而不是单独被实例化。
 
-In the following example, the `Box` and `Label` classes are mixins that we inherit from in order to create a new `Button` class.
+在下面的例子中，`Box` 和 `Label` 类都是 mixin，我们可以通过继承它们来创建新的`Button` class.
 
 ```cpp
 // h/t to reader Waldo for this example
@@ -131,9 +131,9 @@ COPY
 
 !!! info "扩展阅读"
 
-    Because mixins are designed to add functionality to the derived class, not to provide an interface, mixins typically do not use virtual functions (covered in the next chapter). Instead, if a mixin class needs to be customized to work in a particular way, templates are typically used. For this reason, mixin classes are often templatized.
+	因为mixin被设计为向派生类添加功能，而不是提供接口，所以mixin通常不使用虚函数(下一章将讨论)。相反，如果需要自定义mixin类以特定的方式工作，则通常使用模板。由于这个原因，mixin类通常是模板化的。
 
-	Perhaps surprisingly, a derived class can inherit from a mixin base class using the derived class as a template type parameter. Such inheritance is called Curiously Recurring Template Pattern (CRTP for short), which looks like this:
+	也许令人惊讶的是，派生类可以使用派生类作为模板类型参数从mixin基类继承。这样的继承被称为奇怪的循环模板模式(简称CRTP)，它看起来像这样:
 	
 	```cpp
 	// The Curiously Recurring Template Pattern (CRTP)
@@ -150,13 +150,14 @@ COPY
 	};
 	```
 
-	You can find a simple example using CRTP [here](https://en.cppreference.com/w/cpp/language/crtp).
+	使用 CRTP 的简单例子可以看[这里](https://en.cppreference.com/w/cpp/language/crtp).
 
-## Problems with multiple inheritance
+## 多重继承带来的问题
 
-While multiple inheritance seems like a simple extension of single inheritance, multiple inheritance introduces a lot of issues that can markedly increase the complexity of programs and make them a maintenance nightmare. Let’s take a look at some of these situations.
+虽然多重继承似乎是单继承的简单扩展，但多重继承引入了许多问题，这些问题可能显著增加程序的复杂性，并使其成为维护的噩梦。让我们来看看一些具体情况。
 
-First, ambiguity can result when multiple base classes contain a function with the same name. For example:
+首先，当多个基类包含具有相同名称的函数时，可能会产生歧义。例如:
+
 
 ```cpp
 #include <iostream>
@@ -207,11 +208,8 @@ int main()
 }
 ```
 
-COPY
 
-When `c54G.getID()` is compiled, the compiler looks to see if WirelessAdapter contains a function named getID(). It doesn’t. The compiler then looks to see if any of the parent classes have a function named getID(). See the problem here? The problem is that c54G actually contains TWO getID() functions: one inherited from USBDevice, and one inherited from NetworkDevice. Consequently, this function call is ambiguous, and you will receive a compiler error if you try to compile it.
-
-However, there is a way to work around this problem: you can explicitly specify which version you meant to call:
+当 `c54G.getID()` 编译的时候，编译器会查看 `WirelessAdapter` 中是否有名为 `getID()`的函数。没有。所以编译器会查看父类中是否具有名为 `getID()` 的函数。看到问题了吗？问题是`c54G`实际上包含两个`getID()`函数：一个继承自`USBDevice`，`另一个继承自NetworkDevice`。因此，这个函数调用是模糊的，如果试图编译它，你将收到一个编译器错误。
 
 ```cpp
 int main()
@@ -223,13 +221,11 @@ int main()
 }
 ```
 
-COPY
+虽然上述解决方法非常简单，但是当您的类继承4个或6个基类(这些基类本身继承其他类)时，你可以看到事情会变得多么复杂。随着继承的类越来越多，命名冲突的可能性呈指数级增长，需要显式地解决每一个命名冲突。
 
-While this workaround is pretty simple, you can see how things can get complex when your class inherits from four or six base classes, which inherit from other classes themselves. The potential for naming conflicts increases exponentially as you inherit more classes, and each of these naming conflicts needs to be resolved explicitly.
+其次，[[the-diamond-problem|菱形继承问题]]更加严重，笔者将其称为”菱形末日“。当一个类从两个类继承，而这两个类又继承自一个共同的类时，就会出现菱形继承问题。其继承层次结构看上去像一个菱形。
 
-Second, and more serious is the [diamond problem](https://en.wikipedia.org/wiki/Diamond_problem), which your author likes to call the “diamond of doom”. This occurs when a class multiply inherits from two classes which each inherit from a single base class. This leads to a diamond shaped inheritance pattern.
-
-For example, consider the following set of classes:
+例如，考虑下面的代码：
 
 ```cpp
 class PoweredDevice
@@ -249,15 +245,17 @@ class Copier: public Scanner, public Printer
 };
 ```
 
-COPY
 
 ![](https://www.learncpp.com/images/CppTutorial/Section11/PoweredDevice.gif)
 
-Scanners and printers are both powered devices, so they derived from PoweredDevice. However, a copy machine incorporates the functionality of both Scanners and Printers.
+扫描仪和打印机都是电器，因此它们继承 `PoweredDevice`。然而，复印机结合了扫描仪和打印机的功能。
 
-There are many issues that arise in this context, including whether Copier should have one or two copies of PoweredDevice, and how to resolve certain types of ambiguous references. While most of these issues can be addressed through explicit scoping, the maintenance overhead added to your classes in order to deal with the added complexity can cause development time to skyrocket. We’ll talk more about ways to resolve the diamond problem in the next chapter (lesson [18.8 -- Virtual base classes](https://www.learncpp.com/cpp-tutorial/virtual-base-classes/)).
+在这种情况下会出现许多问题：例如，复印机中是否应该有两份PoweredDevice，以及如何解决某些类型的模糊引用。虽然这些问题中的大多数都可以通过显式作用域来解决，但为了处理增加的复杂性而向类添加的维护开销可能会导致开发时间急剧增加。我们将在下一章中讨论更多解决菱形继承问题的方法([18.8 -- Virtual base classes](https://www.learncpp.com/cpp-tutorial/virtual-base-classes/))。
 
-## Is multiple inheritance more trouble than it’s worth?**
+## 多重继承是否弊大于利？
+
+事实证明，可以使用多重继承解决的大多数问题也可以使用单一继承解决。许多面向对象语言(如。Smalltalk, PHP)甚至不支持多重继承。许多相对现代的语言，如Java和c#，将类限制为普通类的单一继承，但允许接口类的多重继承(我们将在后面讨论)。在这些语言中禁止多重继承的背后的驱动思想是，它只会使语言过于复杂，最终导致的问题比解决的问题更多。
+
 
 As it turns out, most of the problems that can be solved using multiple inheritance can be solved using single inheritance as well. Many object-oriented languages (eg. Smalltalk, PHP) do not even support multiple inheritance. Many relatively modern languages such as Java and C# restrict classes to single inheritance of normal classes, but allow multiple inheritance of interface classes (which we will talk about later). The driving idea behind disallowing multiple inheritance in these languages is that it simply makes the language too complex, and ultimately causes more problems than it fixes.
 

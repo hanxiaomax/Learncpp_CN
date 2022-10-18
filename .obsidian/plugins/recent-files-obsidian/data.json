@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "17-9-multiple-inheritance",
+      "path": "docs/17-9-multiple-inheritance.md"
+    },
+    {
+      "basename": "mixin",
+      "path": "docs/mixin.md"
+    },
+    {
+      "basename": "Multiple inheritance",
+      "path": "docs/Multiple inheritance.md"
+    },
+    {
       "basename": "17-8-Hiding-inherited-functionality",
       "path": "docs/17-8-Hiding-inherited-functionality.md"
     },
@@ -87,10 +99,6 @@
     {
       "basename": "object-composition",
       "path": "docs/object-composition.md"
-    },
-    {
-      "basename": "17-9-multiple-inheritance",
-      "path": "docs/17-9-multiple-inheritance.md"
     },
     {
       "basename": "14-16-shallow-vs-deep-copying",
@@ -191,10 +199,6 @@
     {
       "basename": "copy-swap习语",
       "path": "docs/copy-swap习语.md"
-    },
-    {
-      "basename": "deep-copy",
-      "path": "docs/deep-copy.md"
     }
   ],
   "omittedPaths": [],
