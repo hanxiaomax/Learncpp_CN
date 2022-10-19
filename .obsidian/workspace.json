@@ -80,7 +80,20 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
+                "file": "docs/19-x-Chapter-19-comprehensive-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4441be543cecda9b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/18-x-Chapter-18-comprehensive-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -88,7 +101,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -162,7 +175,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
+                "file": "docs/18-x-Chapter-18-comprehensive-quiz.md"
               }
             }
           },
@@ -183,7 +196,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/17-6-adding-new-functionality-to-a-derived-class.md",
+                "file": "docs/18-x-Chapter-18-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -205,17 +218,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "e4b75f4b358c5740",
+  "active": "4441be543cecda9b",
   "lastOpenFiles": [
-    "docs/17-5-inheritance-and-access-specifiers.md",
-    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
-    "docs/17-3-order-of-construction-of-derived-classes.md",
+    "docs/19-x-Chapter-19-comprehensive-quiz.md",
+    "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+    "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
+    "docs/18-2-virtual-functions-and-polymorphism.md",
+    "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md",
+    "docs/17-x-Chapter-17-comprehensive-quiz.md",
+    "docs/16-x-Chapter-16-comprehensive-quiz.md",
     "docs/17-2-basic-inheritance-in-c++.md",
-    "docs/17-1-introduction-to-inheritance.md",
-    "docs/16-7-std-initializer_list.md",
-    "docs/16-6-container-classes.md",
-    "docs/16-5-dependencies.md",
-    "docs/16-4-association.md",
-    "docs/16-3-aggregation.md"
+    "docs/17-9-multiple-inheritance.md",
+    "docs/17-8-Hiding-inherited-functionality.md"
   ]
 }

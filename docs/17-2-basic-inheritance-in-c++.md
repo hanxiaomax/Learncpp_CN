@@ -63,8 +63,6 @@ public:
 
 ## `BaseballPlayer` 类
 
-Let’s say we wanted to write a program that keeps track of information about some baseball players. Baseball players need to contain information that is specific to baseball players -- for example, we might want to store a player’s batting average, and the number of home runs they’ve hit.
-
 假设我们想要编写一个程序来记录棒球运动员的信息。棒球运动员需要包含特定的关于棒球运动员的信息——例如，球员的击球率和本垒打数。
 
 下面是一个不完整的版本：

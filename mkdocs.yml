@@ -272,6 +272,10 @@ nav:
       - "17-3-order-of-construction-of-derived-classes.md"
       - "17-4-constructors-and-initialization-of-derived-classes.md"
       - "17-5-inheritance-and-access-specifiers.md"
+      - "17-6-adding-new-functionality-to-a-derived-class.md"
+      - "17-7-calling-inherited-functions-and-overriding-behavior.md"
+      - "17-8-Hiding-inherited-functionality.md"
+      - "17-9-multiple-inheritance.md"
       - "17-x-Chapter-17-comprehensive-quiz.md"
     - 18. 虚函数:
       - "18-x-Chapter-18-comprehensive-quiz.md"

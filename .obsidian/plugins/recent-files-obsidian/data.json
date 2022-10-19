@@ -1,6 +1,54 @@
 {
   "recentFiles": [
     {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
+      "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+    },
+    {
+      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
+      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
+    },
+    {
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+    },
+    {
+      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
+      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
+    },
+    {
+      "basename": "17-x-Chapter-17-comprehensive-quiz",
+      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
+    },
+    {
+      "basename": "16-x-Chapter-16-comprehensive-quiz",
+      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
+    },
+    {
+      "basename": "17-2-basic-inheritance-in-c++",
+      "path": "docs/17-2-basic-inheritance-in-c++.md"
+    },
+    {
+      "basename": "17-9-multiple-inheritance",
+      "path": "docs/17-9-multiple-inheritance.md"
+    },
+    {
+      "basename": "17-8-Hiding-inherited-functionality",
+      "path": "docs/17-8-Hiding-inherited-functionality.md"
+    },
+    {
+      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
+      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
+    },
+    {
       "basename": "17-6-adding-new-functionality-to-a-derived-class",
       "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
     },
@@ -15,10 +63,6 @@
     {
       "basename": "17-3-order-of-construction-of-derived-classes",
       "path": "docs/17-3-order-of-construction-of-derived-classes.md"
-    },
-    {
-      "basename": "17-2-basic-inheritance-in-c++",
-      "path": "docs/17-2-basic-inheritance-in-c++.md"
     },
     {
       "basename": "17-1-introduction-to-inheritance",
@@ -121,44 +165,12 @@
       "path": "docs/14-1-introduction-to-operator-overloading.md"
     },
     {
-      "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
-      "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
-    },
-    {
-      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
-      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
-    },
-    {
-      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
-      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
-    },
-    {
-      "basename": "17-x-Chapter-17-comprehensive-quiz",
-      "path": "docs/17-x-Chapter-17-comprehensive-quiz.md"
-    },
-    {
-      "basename": "17-9-multiple-inheritance",
-      "path": "docs/17-9-multiple-inheritance.md"
-    },
-    {
       "basename": "mixin",
       "path": "docs/mixin.md"
     },
     {
       "basename": "Multiple inheritance",
       "path": "docs/Multiple inheritance.md"
-    },
-    {
-      "basename": "17-8-Hiding-inherited-functionality",
-      "path": "docs/17-8-Hiding-inherited-functionality.md"
-    },
-    {
-      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
-      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
     },
     {
       "basename": "MOC",
@@ -187,18 +199,6 @@
     {
       "basename": "public-inheritance",
       "path": "docs/public-inheritance.md"
-    },
-    {
-      "basename": "derived-class",
-      "path": "docs/derived-class.md"
-    },
-    {
-      "basename": "child-class",
-      "path": "docs/child-class.md"
-    },
-    {
-      "basename": "super-class",
-      "path": "docs/super-class.md"
     }
   ],
   "omittedPaths": [],
