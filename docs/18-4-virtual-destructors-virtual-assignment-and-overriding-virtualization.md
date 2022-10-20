@@ -12,13 +12,17 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- 析构函数的调用顺序和构造函数相反，而且是向基类方向逐级调用。
 	- 基类的析构函数必须是[[virtual-function|虚函数]]。如果不这样做，当基于派生类中基类部分的指针或引用时销毁对象时，调用的是基类的析构函数，子类成员不能被正确销毁。
+	- 所有的析构函数都设置为虚可以避免上述问题，但是会有性能损失（时间和空间，每个类对象都多了一个指针）
+	- 如果一个类允许被其他类继承，确保其析构函数是虚函数。
+	- 如果一个类**不允许**被其他类继承，将其标记为 `final`。这将从根本上防止其他类对它的继承，而不会对类本身施加其他限制
 
 ## 虚构析构函数
 
  
-尽管 C++ 可以提供默认的构造函数，但我们时常也会想要提供自定义的析构函数（尤其是当类需要释放内存的情况）。当一个类涉及到[[inheritance|继承]]的时候，其析构函数应该总是为[[virtual-destructor|虚析构函数]]。考虑下面的例子：
+尽管 C++ 可以提供默认的构造函数，但我们时常也会想要提供自定义的析构函数（尤其是当类需要释放内存的情况）。==当一个类涉及到[[inheritance|继承]]的时候，其析构函数应该总是为[[virtual-destructor|虚析构函数]]。==考虑下面的例子：
 
 ```cpp
 #include <iostream>
@@ -132,13 +136,15 @@ virtual ~Base() = default; // generate a virtual default destructor
 ```
 
 
+
 ## 虚赋值
 
-It is possible to make the assignment operator virtual. However, unlike the destructor case where virtualization is always a good idea, virtualizing the assignment operator really opens up a bag full of worms and gets into some advanced topics outside of the scope of this tutorial. Consequently, we are going to recommend you leave your assignments non-virtual for now, in the interest of simplicity.
+可以将赋值操作符设为`virtual`。然而，与析构函数的情况(虚拟化总是一个好主意)不同，虚拟化赋值操作符会带来一大堆麻烦，并涉及本教程范围之外的一些高级主题。因此，为了简单起见，我们建议你暂时不要使用虚赋值。
 
-**Ignoring virtualization**
 
-Very rarely you may want to ignore the virtualization of a function. For example, consider the following code:
+## 忽略虚化
+
+极少数情况下我们需要忽略函数的虚化，例如下面代码：
 
 ```cpp
 class Base
@@ -155,9 +161,8 @@ public:
 };
 ```
 
-COPY
 
-There may be cases where you want a Base pointer to a Derived object to call Base::getName() instead of Derived::getName(). To do so, simply use the scope resolution operator:
+可能在某些情况下，你需要指向`Derived`对象的`Base` 指针能够调用 `Base::getName()` 而不是 `Derived::getName()`。此时可以使用[[scope-resolution-operator|作用域解析运算符]]：
 
 ```cpp
 #include <iostream>
@@ -172,20 +177,19 @@ int main()
 }
 ```
 
-COPY
+这个操作并不常用，但是知道总比不知道好。
 
-You probably won’t use this very often, but it’s good to know it’s at least possible.
+## 应该将所有的析构函数都设置为虚函数吗？
 
-**Should we make all destructors virtual?**
 
-This is a common question asked by new programmers. As noted in the top example, if the base class destructor isn’t marked as virtual, then the program is at risk for leaking memory if a programmer later deletes a base class pointer that is pointing to a derived object. One way to avoid this is to mark all your destructors as virtual. But should you?
+这是新程序员经常会问的问题。如上面的例子所述，如果基类析构函数没有被标记为虚函数，那么如果程序员稍后删除指向派生对象的基类指针，则程序有内存泄漏的风险。避免这种情况的一种方法是将所有析构函数标记为虚函数。但是我们真的需要这么做吗？
 
-It’s easy to say yes, so that way you can later use any class as a base class -- but there’s a performance penalty for doing so (a virtual pointer added to every instance of your class). So you have to balance that cost, as well as your intent.
+说“是”很容易，这样以后就可以使用任何类作为基类了——但是这样做会有性能损失(向类的每个实例添加一个虚拟指针)。所以你必须权衡轻重，尤其是它是否符合你的意图。
 
-Conventional wisdom (as initially put forth by Herb Sutter, a highly regarded C++ guru) has suggested avoiding the non-virtual destructor memory leak situation as follows, “A base class destructor should be either public and virtual, or protected and nonvirtual.” A class with a protected destructor can’t be deleted via a pointer, thus preventing the accidental deleting of a derived class through a base pointer when the base class has a non-virtual destructor. Unfortunately, this also means the base class can’t be deleted through a base class pointer, which essentially means the class can’t be dynamically allocated or deleted except by a derived class. This also precludes using smart pointers (such as std::unique_ptr and std::shared_ptr) for such classes, which limits the usefulness of that rule (we cover smart pointers in a later chapter). It also means the base class can’t be allocated on the stack. That’s a pretty heavy set of penalties.
+著名的C++大师Herb Sutter提出了一种能够避免由非虚析构函数导致的内存泄漏的方法：“基类析构函数应该是**公共的虚析构函数**，或者是**受保护的非虚析构函数**。” 有受保护析构函数的类不能通过指针删除，因此，当基类具有非虚析构函数时，可以防止通过基指针意外删除派生类。不幸的是，这也意味着基类不能通过基类指针删除，这实际上意味着类只能由派生类动态分配或删除。这也使得这些类不能使用智能指针(例如`std::unique_ptr`和`std::shared_ptr`)，从而限制了该规则的有用性(我们将在后面的章节讨论智能指针)。这也意味着这样的基类不能被分配在栈上。代价有点大！
 
-Now that the final specifier has been introduced into the language, our recommendations are as follows:
+既然已经在语言中引入了`final`修饰符，我们的建议如下:
 
--   If you intend your class to be inherited from, make sure your destructor is virtual.
--   If you do not intend your class to be inherited from, mark your class as final. This will prevent other classes from inheriting from it in the first place, without imposing any other use restrictions on the class itself.
+- ==如果一个类允许被其他类继承，确保其析构函数是虚函数。==
+- 如果一个类**不允许**被其他类继承，将其标记为 `final`。这将从根本上防止其他类对它的继承，而不会对类本身施加其他限制
 

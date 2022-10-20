@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "17-4-constructors-and-initialization-of-derived-classes",
-      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
+      "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
+      "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
+    },
+    {
+      "basename": "18-6-the-virtual-table",
+      "path": "docs/18-6-the-virtual-table.md"
+    },
+    {
+      "basename": "18-5-early-binding-and-late-binding",
+      "path": "docs/18-5-early-binding-and-late-binding.md"
     },
     {
       "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
       "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+    },
+    {
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+    },
+    {
+      "basename": "17-4-constructors-and-initialization-of-derived-classes",
+      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
     },
     {
       "basename": "17-3-order-of-construction-of-derived-classes",
@@ -35,10 +51,6 @@
     {
       "basename": "virtual-destructor",
       "path": "docs/virtual-destructor.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     },
     {
       "basename": "17-8-Hiding-inherited-functionality",
@@ -187,18 +199,6 @@
     {
       "basename": "14-3-overloading-operators-using-normal-functions",
       "path": "docs/14-3-overloading-operators-using-normal-functions.md"
-    },
-    {
-      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
-      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
-    },
-    {
-      "basename": "14-1-introduction-to-operator-overloading",
-      "path": "docs/14-1-introduction-to-operator-overloading.md"
-    },
-    {
-      "basename": "mixin",
-      "path": "docs/mixin.md"
     }
   ],
   "omittedPaths": [],
