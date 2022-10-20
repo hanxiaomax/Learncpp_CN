@@ -11,13 +11,13 @@ tags:
 ---
 
 
-In the previous chapter, you learned all about how to use inheritance to derive new classes from existing classes. In this chapter, we are going to focus on one of the most important and powerful aspects of inheritance -- virtual functions.
+在前面的章节中，我们学习了如何通过[[inheritance|继承]]来派生新的类。在本章中，我们将介绍继承中最重要也是最强大的一面——虚函数。
 
-But before we discuss what virtual functions are, let’s first set the table for why we need them.
+在我们讨论虚函数之前，先来了解一下，为什么虚函数是有用的。
 
-In the chapter on [construction of derived classes](https://www.learncpp.com/cpp-tutorial/113-order-of-construction-of-derived-classes/), you learned that when you create a derived class, it is composed of multiple parts: one part for each inherited class, and a part for itself.
+通过[[17-3-order-of-construction-of-derived-classes|17.3 - 派生类的构造顺序]] 的学习，我们指定，当创建一个派生类时，派生类实际上是由多个部分组成的：一部分属于其父类，另一部分属于它自己。
 
-For example, here’s a simple case:
+例如，这里个简单的例子：
 
 ```cpp
 #include <string_view>
@@ -50,13 +50,12 @@ public:
 };
 ```
 
-COPY
 
-When we create a Derived object, it contains a Base part (which is constructed first), and a Derived part (which is constructed second). Remember that inheritance implies an is-a relationship between two classes. Since a Derived is-a Base, it is appropriate that Derived contain a Base part.
+当我们创建 `Derived` 对象时，它包含 `Base` 的部分（首先构建）以及属于 `Derived` 的部分 (随后构建)。注意，继承关系隐含的是对象A“是一种”对象B的含义。因为 `Derived` 是一个 `Base`，所以 `Derived` 包含 `Base` 的部分是合理的。
 
-**Pointers, references, and derived classes**
+## 指针，引用和派生类
 
-It should be fairly intuitive that we can set Derived pointers and references to Derived objects:
+创建一个指向 `Derived` 对象的指针和引用很简单：
 
 ```cpp
 #include <iostream>
@@ -76,15 +75,15 @@ int main()
 }
 ```
 
-COPY
+输出结果如下：
 
-This produces the following output:
-
+```
 derived is a Derived and has value 5
 rDerived is a Derived and has value 5
 pDerived is a Derived and has value 5
+```
 
-However, since Derived has a Base part, a more interesting question is whether C++ will let us set a Base pointer or reference to a Derived object. It turns out, we can!
+不过，由于 `Derived` 中包含属于 `Base` 的部分，那么我们不禁要问：C++允许我们将`Base`类型指针指向`Derived` 对象吗？答案是可以的！
 
 ```cpp
 #include <iostream>
@@ -105,21 +104,22 @@ int main()
 }
 ```
 
-COPY
+程序运行结果如下：
 
-This produces the result:
-
+```
 derived is a Derived and has value 5
 rBase is a Base and has value 5
 pBase is a Base and has value 5
+```
 
-This result may not be quite what you were expecting at first!
+输出结果可能和你想的并不一样！
 
-It turns out that because rBase and pBase are a Base reference and pointer, they can only see members of Base (or any classes that Base inherited). So even though Derived::getName() shadows (hides) Base::getName() for Derived objects, the Base pointer/reference can not see Derived::getName(). Consequently, they call Base::getName(), which is why rBase and pBase report that they are a Base rather than a Derived.
+事实证明，由于`rBase`和`pBase`是`Base`引用和指针，它们只能看到`Base`的成员(或`Base`父类们的成员)。因此，即使`Derived::getName()`遮蔽(隐藏)了`Derived`对象的`Base::getName()`， `Base`指针/引用也不能看到`Derived::getName()`。因此，它会调用`Base::getName()`，这就是`rBase`和`pBase`打印它们是`Base`而不是`Derived`的原因。
 
-Note that this also means it is not possible to call Derived::getValueDoubled() using rBase or pBase. They are unable to see anything in Derived.
 
-Here’s another slightly more complex example that we’ll build on in the next lesson:
+注意，这也意味着你不能通过`rBase`或者`pBase`来调用`Derived::getValueDoubled()` 。因为它们看不到该函数。
+
+这是另一个稍微复杂一点的例子，我们会在下一节课中使用它：
 
 ```cpp
 #include <iostream>
@@ -131,9 +131,9 @@ class Animal
 protected:
     std::string m_name;
 
-    // We're making this constructor protected because
-    // we don't want people creating Animal objects directly,
-    // but we still want derived classes to be able to use it.
+    // 将这个构造函数设置为受保护的，因为
+    // 我们不希望用户能够直接创建 Animal 对象，
+    // 但是我们仍然希望能够使用它来派生类。
     Animal(std::string_view name)
         : m_name{ name }
     {
@@ -188,24 +188,26 @@ int main()
 }
 ```
 
-COPY
 
-This produces the result:
+打印结果
 
+```
 cat is named Fred, and it says Meow
 dog is named Garbo, and it says Woof
 pAnimal is named Fred, and it says ???
 pAnimal is named Garbo, and it says ???
+```
 
-We see the same issue here. Because pAnimal is an Animal pointer, it can only see the Animal portion of the class. Consequently, `pAnimal->speak()`calls Animal::speak() rather than the Dog::Speak() or Cat::speak() function.
+和之前的问题类似，因为 `pAnimal` 是一个 `Animal` 类型的指针，所以它可以看到 `Animal` 的部分。其结果就是`pAnimal->speak()`调用的是 `Animal::speak()` 而不是 `Dog::Speak()` 或者 `Cat::speak()`。
 
-**Use for pointers and references to base classes**
+## 使用指向基类的指针和引用
 
-Now you might be saying, “The above examples seem kind of silly. Why would I set a pointer or reference to the base class of a derived object when I can just use the derived object?” It turns out that there are quite a few good reasons.
+现在你可能会说，“上面的例子看起来有点傻。当我可以直接使用派生对象时，为什么要设置指向派生对象基类的指针或引用呢?”事实证明，这么做很有用。
 
-First, let’s say you wanted to write a function that printed an animal’s name and sound. Without using a pointer to a base class, you’d have to write it using overloaded functions, like this:
+首先，假设你想要编写一个函数来打印动物的名字和声音。如果不使用指向基类的指针，你就必须使用重载函数来编写它，像这样:
 
 ```cpp
+//函数重载（签名不同）
 void report(const Cat& cat)
 {
     std::cout << cat.getName() << " says " << cat.speak() << '\n';
@@ -217,11 +219,9 @@ void report(const Dog& dog)
 }
 ```
 
-COPY
+好像没啥问题，但想想如果我们不止有两种动物而是有30种会发生什么。你必须编写30个几乎相同的函数！另外，如果你添加了一种新的动物类型，你也必须为它写一个新的函数。考虑到这些函数的唯一区别就是参数不同，这是无疑是一种巨大的浪费。
 
-Not too difficult, but consider what would happen if we had 30 different animal types instead of 2. You’d have to write 30 almost identical functions! Plus, if you ever added a new type of animal, you’d have to write a new function for that one too. This is a huge waste of time considering the only real difference is the type of the parameter.
-
-However, because Cat and Dog are derived from Animal, Cat and Dog have an Animal part. Therefore, it makes sense that we should be able to do something like this:
+不过，因为 `Cat` 和 `Dog` 都派生自`Animal`，`Cat` 和 `Dog` 中一定具有属于`Animal` 的部分。因此，如果能像下面这么做就好了：
 
 ```cpp
 void report(const Animal& rAnimal)
@@ -230,13 +230,11 @@ void report(const Animal& rAnimal)
 }
 ```
 
-COPY
+这将允许我们传入从`Animal`派生的任何类，甚至是在编写函数之后创建的类！不需要为每个派生类编写一个函数，而是与所有派生自`Animal`的类可以共用的一个函数！
 
-This would let us pass in any class derived from Animal, even ones that we created after we wrote the function! Instead of one function per derived class, we get one function that works with all classes derived from Animal!
+当然，这么做最大的问题在于 `rAnimal`是`Animal` 的引用，所以 `rAnimal.speak()` 会调用 `Animal::speak()` 而不是派生类中的 `speak()`。
 
-The problem is, of course, that because rAnimal is an Animal reference, `rAnimal.speak()` will call Animal::speak() instead of the derived version of speak().
-
-Second, let’s say you had 3 cats and 3 dogs that you wanted to keep in an array for easy access. Because arrays can only hold objects of one type, without a pointer or reference to a base class, you’d have to create a different array for each derived type, like this:
+其次，假设你有3只猫和3只狗，你想把它们放在一个数组中以便于访问。因为数组只能保存一种类型的对象，没有指向基类的指针或引用，你必须为每个派生类型创建不同的数组，像这样:
 
 ```cpp
 #include <array>
@@ -267,11 +265,10 @@ int main()
 }
 ```
 
-COPY
+如果有30种不同的动物呢？岂不是要定义30个数组，每个动物都需要一个数组！
 
-Now, consider what would happen if you had 30 different types of animals. You’d need 30 arrays, one for each type of animal!
+不过，因为`Cat`和`Dog`都派生自于`Animal`，所以可以这样做:
 
-However, because both Cat and Dog are derived from Animal, it makes sense that we should be able to do something like this:
 
 ```cpp
 #include <array>
@@ -305,17 +302,18 @@ int main()
 }
 ```
 
-COPY
 
-While this compiles and executes, unfortunately the fact that each element of array “animals” is a pointer to an Animal means that `animal->speak()`will call Animal::speak() instead of the derived class version of speak() that we want. The output is
+尽管上述代码可以编译和执行，但可惜的是，由于每个元素都是 `Animal` 类型的指针，那就意味着`animal->speak()`调用的会是 `Animal::speak()` 而不是派生类各自的 `speak()` 函数。输出结果是这样的：
 
+```
 Fred says ???
 Garbo says ???
 Misty says ???
 Pooky says ???
 Truffle says ???
 Zeke says ???
+```
 
-Although both of these techniques could save us a lot of time and energy, they have the same problem. The pointer or reference to the base class calls the base version of the function rather than the derived version. If only there was some way to make those base pointers call the derived version of a function instead of the base version…
+虽然这两种方法可以节省大量的时间和精力，但它们都有相同的问题。基类的指针或引用调用函数的基类版本而不是派生版本。要是有办法让这些基指针调用函数的派生版本而不是基版本就好了…
 
-Want to take a guess what virtual functions are for? :)
+你猜，虚函数是做什么用的？（不会那么巧吧）。

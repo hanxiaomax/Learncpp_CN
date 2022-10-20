@@ -11,15 +11,23 @@ tags:
 - covariant-return-types
 ---
 
-To address some common challenges with inheritance, there are two special identifiers: override and final. Note that these identifiers are not considered keywords -- they are normal identifiers that have special meaning in certain contexts.
+??? note "关键点速记"
+	- 派生类虚函数只有在其签名和返回类型完全匹配的情况下才被认为是重写，使用关键字 `override` 可以防止错误 
+	- 在基类的虚函数中使用 `virtual` 关键字。在派生类中对应的函数中使用`override`关键字（无需使用`virtual`关键字）。
+	- 因为`override`修饰符意味着该函数是虚函数，所以不需要使用`virtual`关键字重复标记已经被标记为`override`的函数
+	- 如果虚函数的返回值是指向相同类的指针或引用，其重写函数也可以返回指向派生类的指针和引用。这个机制称为[[covariant|协变返回值类型]]
 
-Although final isn’t used very much, override is a fantastic addition that you should use regularly. In this lesson, we’ll take a look at both, as well as one exception to the rule that virtual function override return types must match.
 
-The override specifier
+为了解决继承方面的一些常见问题，C++提供了两个特殊标识符：`override` 和 `final`。注意，==这些标识符不被认为是关键字==——它们是在某些上下文中具有特殊含义的普通标识符。
 
-As we mentioned in the previous lesson, a derived class virtual function is only considered an override if its signature and return types match exactly. That can lead to inadvertent issues, where a function that was intended to be an override actually isn’t.
+`final`使用得不多，但`override`是一个很好的功能，应该经常使用。在这一课中，我们会分别介绍二者，以及虚函数重写返回类型必须匹配的规则的一个例外。
 
-Consider the following example:
+
+## `override` 修饰符
+
+正如我们在上一课中提到的，==派生类虚函数只有在其签名和返回类型完全匹配的情况下才被认为是重写==。这可能会导致容易被忽略的问题，即打算被重写的函数实际上并没有被重写。
+
+考虑下面的例子:
 
 ```cpp
 #include <iostream>
@@ -35,8 +43,8 @@ public:
 class B : public A
 {
 public:
-	virtual std::string_view getName1(short int x) { return "B"; } // note: parameter is a short int
-	virtual std::string_view getName2(int x) const { return "B"; } // note: function is const
+	virtual std::string_view getName1(short int x) { return "B"; } // 注意: 参数是 short int
+	virtual std::string_view getName2(int x) const { return "B"; } // 注意: 函数是 const
 };
 
 int main()
@@ -50,18 +58,20 @@ int main()
 }
 ```
 
-COPY
 
-Because rBase is an A reference to a B object, the intention here is to use virtual functions to access B::getName1() and B::getName2(). However, because B::getName1() takes a different parameter (a short int instead of an int), it’s not considered an override of A::getName1(). More insidiously, because B::getName2() is const and A::getName2() isn’t, B::getName2() isn’t considered an override of A::getName2().
+因为 `rBase` 是B中A部分的引用，所以这里的本意是使用虚函数来访问 `B::getName1()` 和 `B::getName2()`。但是，由于`B::getName1()` 的参数并不同所以没有被看做是对 `A::getName1()`的重写。更隐蔽的是，因为`B::getName2()` 是 const 而 `A::getName2()`不是，所以 `B::getName2()` 也不会被看做是 `A::getName2()`的重写。
 
-Consequently, this program prints:
+因此，程序打印结果如下：
 
+```
 A
 A
+```
 
-In this particular case, because A and B just print their names, it’s fairly easy to see that we messed up our overrides, and that the wrong virtual function is being called. However, in a more complicated program, where the functions have behaviors or return values that aren’t printed, such issues can be very difficult to debug.
+在本例中，因为A和B只是打印了它们各自的名称，所以很容易发现错误，即因为重写没有生效而调用了错误的虚函数。然而，在更复杂的程序中，函数的行为或返回值没有打印出来，这样的问题很难调试。
 
-To help address the issue of functions that are meant to be overrides but aren’t, the override specifier can be applied to any virtual function by placing the specifier in the same place const would go. If the function does not override a base class function (or is applied to a non-virtual function), the compiler will flag the function as an error.
+为了帮助解决本该被重写但却没有被重写的函数的问题，可以将`override`修饰符放置在const将要放置的位置，从而将`override`应用于任何虚函数。如果基类函数没有重写(或应用于非虚函数)，编译器将会错误。
+
 
 ```cpp
 #include <string_view>
@@ -89,21 +99,23 @@ int main()
 }
 ```
 
-COPY
 
-The above program produces two compile errors: one for B::getName1(), and one for B::getName2(), because neither override a prior function. B::getName3() does override A::getName3(), so no error is produced for that line.
+上面的程序会报告两个编译错误：第一个是 `B::getName1()`相关错误，第二个是`B::getName2()`相关错误。因它们都没有成功地重写基类中的函数。`B::getName3()` 重写成功，所以没有问题。
 
-Because there is no performance penalty for using the override specifier and it helps ensure you’ve actually overridden the function you think you have, all virtual override functions should be tagged using the override specifier. Additionally, because the override specifier implies virtual, there’s no need to tag functions using the override specifier with the virtual keyword.
+因为使用`override`说明符不会影响性能，而且它有助于确保重写实际发生，所以应该使用该修饰符标记所有虚函数。此外，因为`override`修饰符意味着该函数是虚函数，所以不需要使用`virtual`关键字重复标记已经被标记为`override`的函数。
 
-Best practice
 
-Use the virtual keyword on virtual functions in a base class. Use the override specifier (but not the virtual keyword) on override functions in derived classes.
+!!! success "最佳实践"
 
-The final specifier
+	在基类的虚函数中使用 `virtual` 关键字。在派生类中对应的函数中使用`override`关键字（无需使用`virtual`关键字）。
+	
 
-There may be cases where you don’t want someone to be able to override a virtual function, or inherit from a class. The final specifier can be used to tell the compiler to enforce this. If the user tries to override a function or inherit from a class that has been specified as final, the compiler will give a compile error.
+## `final` 修饰符
 
-In the case where we want to restrict the user from overriding a function, the **final specifier** is used in the same place the override specifier is, like so:
+在某些情况下，你可能不希望有人能够重写虚函数或不希望类被继承。`final` 修饰符可以用来告诉编译器确保这一点。如果用户试图重写被标记为`final`的函数或继承已指定为`final`的类，编译器将给出编译错误。
+
+在我们想要限制用户重写函数的情况下，`final` 修饰符用在`override`修饰符的相同位置，如下所示:
+
 
 ```cpp
 #include <string_view>
@@ -118,21 +130,21 @@ class B : public A
 {
 public:
 	// note use of final specifier on following line -- that makes this function no longer overridable
-	std::string_view getName() override final { return "B"; } // okay, overrides A::getName()
+	std::string_view getName() override final { return "B"; } // okay, 重写 A::getName()
 };
 
 class C : public B
 {
 public:
-	std::string_view getName() override { return "C"; } // compile error: overrides B::getName(), which is final
+	std::string_view getName() override { return "C"; } // 编译错误: 试图重写被标记为 final 的 B::getName()
 };
 ```
 
-COPY
 
-In the above code, B::getName() overrides A::getName(), which is fine. But B::getName() has the final specifier, which means that any further overrides of that function should be considered an error. And indeed, C::getName() tries to override B::getName() (the override specifier here isn’t relevant, it’s just there for good practice), so the compiler will give a compile error.
+在上面的代码中，`B::getName()` 重写了 `A::getName()`，这里没有任何问题。但是由于 `B::getName()` 具有 `final` 修饰符，所以任何对它的重写都是不允许的，会被认为是错误。 `C::getName()` 对 B::getName() (与这里的`override`说明符并不相关，这里只是一个好习惯罢了) 来说是重写，所以编译器会报错。
 
-In the case where we want to prevent inheriting from a class, the final specifier is applied after the class name:
+在我们想要防止从一个类继承的情况下，`final`修饰符应用在类名之后：
+
 
 ```cpp
 #include <string_view>
@@ -156,13 +168,15 @@ public:
 };
 ```
 
-COPY
+在上面的例子中，类B被声明为final。因此，当C试图从B继承时，编译器将给出一个编译错误。
 
-In the above example, class B is declared final. Thus, when C tries to inherit from B, the compiler will give a compile error.
 
-Covariant return types
+## 协变返回值类型
 
-There is one special case in which a derived class virtual function override can have a different return type than the base class and still be considered a matching override. If the return type of a virtual function is a pointer or a reference to some class, override functions can return a pointer or a reference to a derived class. These are called **covariant return types**. Here is an example:
+
+有一种情况下，派生类中重写的虚函数，可以和基类中的虚函数具有不同的返回值，但仍然被认为是有效的重写。==如果虚函数的返回值是指向相同类的指针或引用，其重写函数也可以返回指向派生类的指针和引用。这个机制称为[[covariant|协变返回值类型]]==。
+
+例如：
 
 ```cpp
 #include <iostream>
@@ -189,30 +203,29 @@ int main()
 {
 	Derived d{};
 	Base* b{ &d };
-	d.getThis()->printType(); // calls Derived::getThis(), returns a Derived*, calls Derived::printType
-	b->getThis()->printType(); // calls Derived::getThis(), returns a Base*, calls Base::printType
+	d.getThis()->printType(); // 调用 Derived::getThis(), 返回 Derived*, 调用 Derived::printType
+	b->getThis()->printType(); // 调用 Derived::getThis(), 返回 Base*, 调用 Base::printType
 
 	return 0;
 }
 ```
 
-COPY
+打印结果：
 
-This prints:
-
+```
 called Derived::getThis()
 returned a Derived
 called Derived::getThis()
 returned a Base
+```
 
-One interesting note about covariant return types: C++ can’t dynamically select types, so you’ll always get the type that matches the actual version of the function being called.
 
-In the above example, we first call d.getThis(). Since d is a Derived, this calls Derived::getThis(), which returns a Derived*. This Derived* is then used to call non-virtual function Derived::printType().
+关于协变返回类型有一个有趣的注意事项：C++不支持动态类型，因此你总是得到与所调用函数的实际版本相匹配的类返回值型。
 
-Now the interesting case. We then call b->getThis(). Variable b is a Base pointer to a Derived object. Base::getThis() is a virtual function, so this calls Derived::getThis(). Although Derived::getThis() returns a Derived*, because Base version of the function returns a Base*, the returned Derived* is upcast to a Base*. Because Base::printType() is non-virtual, Base::printType() is called.
+在上面的例子中，我们首先调用`d.getThis()`。因为`d`是派生的，所以调用`Derived::getThis()`，它返回一个`Derived*`。然后这个`Derived*`被用来调用非虚函数`Derived::printType()`。
 
-In other words, in the above example, you only get a Derived* if you call getThis() with an object that is typed as a Derived object in the first place.
+换言之，在上面的例子中，如果你使用 `Derived` 类型的对象调用 `getThis()`，那你得到的就是 `Derived*` 类型的返回值。
 
-Note that if printType() were virtual instead of non-virtual, the result of b->getThis() (an object of type Base*) would have undergone virtual function resolution, and Derived::printType() would have been called.
+如果 `printType()` 是虚函数的话情况则不同，则 `b->getThis()` (`Base*`的对象) 就会进行虚函数解析，调用 `Derived::printType()`。
 
-Covariant return types are often used in cases where a virtual member function returns a pointer or reference to the class containing the member function (e.g. Base::getThis() returns a Base*, and Derived::getThis() returns a Derived*). However, this isn’t strictly necessary. Covariant return types can be used in any case where the return type of the override member function is derived from the return type of the base virtual member function.
+协变返回类型通常用于虚成员函数返回包含该成员函数的类的指针或引用(例如`Base::getThis()`返回`Base*`， `Derived::getThis()`返回`Derived*`)的情况。然而，这并不是严格必要的。在覆盖成员函数的返回类型派生自基本虚成员函数的返回类型的任何情况下，都可以使用协变返回类型。

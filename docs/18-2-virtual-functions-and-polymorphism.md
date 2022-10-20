@@ -10,10 +10,15 @@ tags:
 - polymorphism
 ---
 
-In the previous lesson on [pointers and references to the base class of derived objects](https://www.learncpp.com/cpp-tutorial/121-pointers-and-references-to-the-base-class-of-derived-objects/), we took a look at a number of examples where using pointers or references to a base class had the potential to simplify code. However, in every case, we ran up against the problem that the base pointer or reference was only able to call the base version of a function, not a derived version.
+??? note "关键点速记"
 
-Here’s a simple example of this behavior:
+	- 虚函数将解析为最后被派生的版本（在原始对象和引用对象之间的派生链上查找）
+	- 龙生龙凤生凤，虚函数的重写函数虚函数
+	- 解析虚函数调用的时间比解析常规函数调用的时间长。此外，编译器还必须为每个具有一个或多个虚函数的类对象分配一个额外的指针
 
+在[[18-1-pointers-and-references-to-the-base-class-of-derived-objects|18.1 - 基类的指针和引用]]中，我们介绍了一些可以使用基类指针或引用简化代码的例子。但是，在这些例子中，最大的问题就在于基类的指针只能够调用基类版本的函数，无法调用派生类的函数。
+
+例如：
 ```cpp
 #include <iostream>
 #include <string_view>
@@ -40,23 +45,21 @@ int main()
 }
 ```
 
-COPY
+打印：
 
-This example prints the result:
+`rBase is a Base`
 
-rBase is a Base
+因为 `rBase` 是 `Base` 类型的引用，它会调用 `Base::getName()`，即便它实际上引用的是`Derived`类型中的`Base`部分。
 
-Because rBase is a Base reference, it calls Base::getName(), even though it’s actually referencing the Base portion of a Derived object.
+在这节课中，我们会使用[[virtual-function|虚函数]]来解决该问题。
 
-In this lesson, we will show how to address this issue using virtual functions.
+## 虚函数和多态
 
-**Virtual functions and polymorphism**
+[[virtual-function|虚函数]]是一类特殊的函数，当它被调用时，实际解析到的是最后派生类中对应版本的函数（需要同时存在于派生类和基类中）。这个机制称为[[polymorphism|多态]]。如果派生类中有具有相同[[signature|签名]] (函数名、参数类型、是否为const）并且返回值类型一样的函数，则这些函数称为[[override|重写函数（override）]]。
 
-A **virtual function** is a special type of function that, when called, resolves to the most-derived version of the function that exists between the base and derived class. This capability is known as **polymorphism**. A derived function is considered a match if it has the same signature (name, parameter types, and whether it is const) and return type as the base version of the function. Such functions are called **overrides**.
+定义虚函数时，只需在函数声明前添加“virtual”关键字。
 
-To make a function virtual, simply place the “virtual” keyword before the function declaration.
-
-Here’s the above example with a virtual function:
+使用虚函数改写上面的例子：
 
 ```cpp
 #include <iostream>
@@ -84,15 +87,16 @@ int main()
 }
 ```
 
-COPY
 
-This example prints the result:
+打印结果：
 
+```
 rBase is a Derived
+```
 
-Because rBase is a reference to the Base portion of a Derived object, when _rBase.getName()_ is evaluated, it would normally resolve to Base::getName(). However, Base::getName() is virtual, which tells the program to go look and see if there are any more-derived versions of the function available between Base and Derived. In this case, it will resolve to Derived::getName()!
+因为 `rBase` 是 `Derived` 类型对象中 `Base` 部分的引用，因此当`rBase.getName()` 被调用时，它会解析为`Base::getName()`。不过，由于该函数是虚函数，所以程序会继续沿着派生的方向查找，如果在`Base`和`Derived`中存在该函数进一步派生的版本，则会调用该函数。在本例中，实际调用的是 `Derived::getName()`！
 
-Let’s take a look at a slightly more complex example:
+再看一个更复杂的例子：
 
 ```cpp
 #include <iostream>
@@ -125,26 +129,27 @@ public:
 int main()
 {
     C c;
-    A& rBase{ c };
+    A& rBase{ c }; //C类型中的A基类部分
     std::cout << "rBase is a " << rBase.getName() << '\n';
 
     return 0;
 }
 ```
 
-COPY
 
-What do you think this program will output?
+你觉得程序的输出结果会是什么？
 
-Let’s look at how this works. First, we instantiate a C class object. rBase is an A reference, which we set to reference the A portion of the C object. Finally, we call rBase.getName(). rBase.getName() evaluates to A::getName(). However, A::getName() is virtual, so the compiler will call the most-derived match between A and C. In this case, that is C::getName(). Note that it will not call D::getName(), because our original object was a C, not a D, so only functions between A and C are considered.
+来看看它是如何工作的。首先，实例化一个C类型的对象。`rBase` 是一个A类型的引用，使用它可以引用C类型对象中的A类型对象。然后，当 `rBase.getName()` 被调用时，它会求值得到 `A::getName()`。但是由于 `A::getName()` 是虚函数，所以编译器会尝试调用A类型和C类型中最后被派生的该函数版本。在这个例子中显然是 `C::getName()`。注意，它不会解析到 `D::getName()`，因为原始对象是 C，而不是D，所以D的成员不在考虑范围内。
 
-As a result, our program outputs:
+程序运行结果如下：
 
+```
 rBase is a C
+```
 
-**A more complex example**
+## 更复杂的例子
 
-Let’s take another look at the Animal example we were working with in the previous lesson. Here’s the original class, along with some test code:
+再来看看我们在上一课中使用的动物的例子。下面是原始的代码，以及一些测试代码:
 
 ```cpp
 #include <iostream>
@@ -208,14 +213,14 @@ int main()
 }
 ```
 
-COPY
+运行结果
 
-This prints:
-
+```
 Fred says ???
 Garbo says ???
+```
 
-Here’s the equivalent class with the speak() function made virtual:
+接下来的例子中，`speak()` 函数被定义为虚函数：
 
 ```cpp
 #include <iostream>
@@ -237,7 +242,7 @@ protected:
 
 public:
     const std::string& getName() const { return m_name; }
-    virtual std::string_view speak() const { return "???"; }
+    virtual std::string_view speak() const { return "???"; } //虚函数
 };
 
 class Cat: public Animal
@@ -279,20 +284,21 @@ int main()
 }
 ```
 
-COPY
 
-This program produces the result:
+程序运行结果如下：
 
+```
 Fred says Meow
 Garbo says Woof
+```
 
-It works!
+可以正确工作了。
 
-When animal.speak() is evaluated, the program notes that Animal::speak() is a virtual function. In the case where animal is referencing the Animal portion of a Cat object, the program looks at all the classes between Animal and Cat to see if it can find a more derived function. In that case, it finds Cat::speak(). In the case where animal references the Animal portion of a Dog object, the program resolves the function call to Dog::speak().
+当 `animal.speak()` 求职时，程序会注意到 `Animal::speak()` 是一个虚函数。在这个例子中，`animal` 引用的是`Cat` 类中的`Animal` 部分。程序会在Animal 和 Cat 之间所有的派生类中查看是否有该函数进一步被派生的版本。在本例中，`Cat::speak()` 就会被调用。对于`Dog`也类似，程序解析到的函数是 `Dog::speak()`。
 
-Note that we didn’t make Animal::getName() virtual. This is because getName() is never overridden in any of the derived classes, therefore there is no need.
+注意，我们没有将 `Animal::getName()` 定义为虚函数。这是因为 `getName()` 并没有在任何派生类中被[[override|重写]]，所以没有必要设置为虚函数。
 
-Similarly, the following array example now works as expected:
+同样地，下面的代码也能够按照我们的需要正常工作了：
 
 ```cpp
 Cat fred{ "Fred" };
@@ -310,26 +316,27 @@ for (const auto* animal : animals)
     std::cout << animal->getName() << " says " << animal->speak() << '\n';
 ```
 
-COPY
+输出结果如下：
 
-Which produces the result:
-
+```
 Fred says Meow
 Garbo says Woof
 Misty says Meow
 Pooky says Woof
 Truffle says Woof
 Zeke says Meow
+```
 
-Even though these two examples only use Cat and Dog, any other classes we derive from Animal would also work with our report() function and animal array without further modification! This is perhaps the biggest benefit of virtual functions -- the ability to structure your code in such a way that newly derived classes will automatically work with the old code without modification!
+尽管这两个例子只使用了`Cat`和`Dog`，但我们从`Animal`派生的任何其他类也可以使用`report()`函数和`Animal`数组，无需进一步修改！这可能是虚函数的最大好处——能够以这样一种方式构造代码，即新派生的类将自动与旧代码一起工作，而无需修改!
 
-A word of warning: the signature of the derived class function must _exactly_ match the signature of the base class virtual function in order for the derived class function to be used. If the derived class function has different parameter types, the program will likely still compile fine, but the virtual function will not resolve as intended. In the next lesson, we’ll discuss how to guard against this.
+注意：要使用派生类函数，==派生类函数的签名必须与基类虚函数的签名完全匹配==（返回值不是签名的一部分）。如果派生类函数具有不同的形参类型，则程序仍可能编译，但虚函数将不能按预期解析。在下一课中，我们将讨论如何防范这种情况。
 
-Also note that if a function is marked as virtual, all matching overrides are also considered virtual, even if they are not explicitly marked as such.
+还要注意，==如果一个函数被标记为虚函数，那么所有的匹配[[override|重写]]函数也被认为是虚函数==，即使它们没有被显式地标记为虚函数。
 
-**Return types of virtual functions**
 
-Under normal circumstances, the return type of a virtual function and its override must match. Consider the following example:
+## 虚函数的返回值
+
+正常情况下，虚函数的函数的返回值和[[override|重写]]函数的返回值必须要匹配。考虑下面的例子：
 
 ```cpp
 class Base
@@ -345,22 +352,23 @@ public:
 };
 ```
 
-COPY
 
-In this case, Derived::getValue() is not considered a matching override for Base::getValue() and compilation will fail.
+在这个例子中，`Derived::getValue()` is 并不会被认为是对 `Base::getValue()` 的重写，==因此编译会失败==。
 
-**Do not call virtual functions from constructors or destructors**
 
-Here’s another gotcha that often catches unsuspecting new programmers. You should not call virtual functions from constructors or destructors. Why?
+## 不要在构造函数或析构函数中调用虚函数
 
-Remember that when a Derived class is created, the Base portion is constructed first. If you were to call a virtual function from the Base constructor, and Derived portion of the class hadn’t even been created yet, it would be unable to call the Derived version of the function because there’s no Derived object for the Derived function to work on. In C++, it will call the Base version instead.
+这是另一个经常伤到菜鸟们的陷阱是——不应该从构造函数或析构函数调用虚函数。
 
-A similar issue exists for destructors. If you call a virtual function in a Base class destructor, it will always resolve to the Base class version of the function, because the Derived portion of the class will already have been destroyed.
+记住，在创建派生类时，首先构造基类部分。如果在`Base`构造函数调用虚函数，而类的派生部分甚至还没有创建，则无法调用函数的派生版本，因为没有派生对象供派生函数处理。在C++中，它会调用Base版本。（[[17-3-order-of-construction-of-derived-classes|17.3 - 派生类的构造顺序]]）
 
-Best practice
+析构函数也存在类似的问题。==如果在基类析构函数中调用虚函数，它将始终解析为该函数的基类版本==，因为类的派生部分将已经被销毁。
 
-Never call virtual functions from constructors or destructors.
 
-**The downside of virtual functions**
+!!! success "最佳实践"
 
-Since most of the time you’ll want your functions to be virtual, why not just make all functions virtual? The answer is because it’s inefficient -- resolving a virtual function call takes longer than resolving a regular one. Furthermore, the compiler also has to allocate an extra pointer for each class object that has one or more virtual functions. We’ll talk about this more in future lessons in this chapter.
+	永远不要在构造函数或析构函数中调用虚函数
+
+## 虚函数的缺点
+
+既然大多数时候你会希望函数是虚函数，为什么不让所有的函数都是虚的呢？因为这么做效率很低——==解析虚函数调用的时间比解析常规函数调用的时间长。此外，编译器还必须为每个具有一个或多个虚函数的类对象分配一个额外的指针==。我们将在本章以后的课程中详细讨论这个问题。

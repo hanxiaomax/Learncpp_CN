@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
+      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
+    },
+    {
+      "basename": "covariant",
+      "path": "docs/covariant.md"
+    },
+    {
+      "basename": "17-8-Hiding-inherited-functionality",
+      "path": "docs/17-8-Hiding-inherited-functionality.md"
+    },
+    {
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+    },
+    {
+      "basename": "override",
+      "path": "docs/override.md"
+    },
+    {
+      "basename": "signature",
+      "path": "docs/signature.md"
+    },
+    {
+      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
+      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
+    },
+    {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
       "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
@@ -11,18 +39,6 @@
     {
       "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
       "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
-    },
-    {
-      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
-      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
-    },
-    {
-      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
-      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
     },
     {
       "basename": "17-x-Chapter-17-comprehensive-quiz",
@@ -39,10 +55,6 @@
     {
       "basename": "17-9-multiple-inheritance",
       "path": "docs/17-9-multiple-inheritance.md"
-    },
-    {
-      "basename": "17-8-Hiding-inherited-functionality",
-      "path": "docs/17-8-Hiding-inherited-functionality.md"
     },
     {
       "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
@@ -187,18 +199,6 @@
     {
       "basename": "protected-members",
       "path": "docs/protected-members.md"
-    },
-    {
-      "basename": "13-4-access-functions-and-encapsulation",
-      "path": "docs/13-4-access-functions-and-encapsulation.md"
-    },
-    {
-      "basename": "access-function",
-      "path": "docs/access-function.md"
-    },
-    {
-      "basename": "public-inheritance",
-      "path": "docs/public-inheritance.md"
     }
   ],
   "omittedPaths": [],
