@@ -145,7 +145,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/18-5-early-binding-and-late-binding.md",
+                "file": "docs/18-6-the-virtual-table.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -227,7 +227,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/18-5-early-binding-and-late-binding.md"
+                "file": "docs/18-6-the-virtual-table.md"
               }
             }
           },
@@ -248,7 +248,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/18-5-early-binding-and-late-binding.md",
+                "file": "docs/18-6-the-virtual-table.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -272,15 +272,15 @@
   },
   "active": "5ca1d0e2307656ec",
   "lastOpenFiles": [
-    "docs/Early-binding.md",
+    "docs/virtual-table.md",
+    "docs/18-6-the-virtual-table.md",
     "docs/18-5-early-binding-and-late-binding.md",
+    "docs/Late-binding.md",
+    "docs/18-x-Chapter-18-comprehensive-quiz.md",
+    "docs/Early-binding.md",
     "docs/Binding.md",
     "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
     "docs/18-9-object-slicing.md",
-    "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/virtual-base-class.md",
-    "docs/interface-class.md",
-    "docs/Late-binding.md",
-    "docs/object-slicing.md"
+    "docs/virtual-base-class.md"
   ]
 }

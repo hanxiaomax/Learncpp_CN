@@ -1,6 +1,6 @@
 ---
-title: 18.5 - 早期绑定和延迟绑定
-alias: 18.5 - 早期绑定和延迟绑定
+title: 18.5 - 早期绑定和后期绑定
+alias: 18.5 - 早期绑定和后期绑定
 origin: /early-binding-and-late-binding/
 origin_title: "18.5 — Early binding and late binding"
 time: 2022-5-9
@@ -101,11 +101,9 @@ int main()
 
 ## 延迟绑定 Late Binding
 
-让我们看一个使用早期绑定的简单计算器程序:在一些程序中，在运行时(程序运行时)之前不可能知道调用哪个函数。这被称为后期绑定**(或动态绑定)。在c++中，获得后期绑定的一种方法是使用函数指针。简单回顾一下函数指针，函数指针是一种指向函数而不是变量的指针。函数指针所指向的函数可以通过在指针上使用函数调用操作符(())来调用。
+在某些程序中，在[[runtime|运行时]](程序运行时)之前不可能知道将调用哪个函数。这被称为[[Late-binding|后期绑定]](或动态绑定)。在C++中，获得后期绑定的一种方法是使用[[12-1-function-pointers|函数指针]]。简单回顾一下函数指针，函数指针是一种指向函数而不是变量的指针。函数指针所指向的函数可以通过在指针上使用函数调用操作符(`()`)来调用。
 
-In some programs, it is not possible to know which function will be called until runtime (when the program is run). This is known as **late binding** (or dynamic binding). In C++, one way to get late binding is to use function pointers. To review function pointers briefly, a function pointer is a type of pointer that points to a function instead of a variable. The function that a function pointer points to can be called by using the function call operator (()) on the pointer.
-
-For example, the following code calls the add() function:
+例如，下面代码通过函数指针来调用`add()`函数：
 
 ```cpp
 #include <iostream>
@@ -125,9 +123,8 @@ int main()
 }
 ```
 
-COPY
+通过函数指针调用函数也称为间接函数调用。下面的计算器程序在函数上与上面的计算器示例相同，只不过它使用函数指针而不是直接的函数调用:
 
-Calling a function via a function pointer is also known as an indirect function call. The following calculator program is functionally identical to the calculator example above, except it uses a function pointer instead of a direct function call:
 
 ```cpp
 #include <iostream>
@@ -183,10 +180,9 @@ int main()
 }
 ```
 
-COPY
 
-In this example, instead of calling the add(), subtract(), or multiply() function directly, we’ve instead set pFcn to point at the function we wish to call. Then we call the function through the pointer. The compiler is unable to use early binding to resolve the function call `pFcn(x, y)` because it can not tell which function pFcn will be pointing to at compile time!
+在这个例子中，我们没有直接调用 `add()`、`subtract()` 或 `multiply()` ，而是让函数指针指向需要调用的函数。然后再使用该函数指针调用函数。很显然，编译器没办法通过早期绑定来解析函数调用 `pFcn(x, y)` 因为在编译时它并不知道 `pFcn` 会指向哪个函数。
 
-Late binding is slightly less efficient since it involves an extra level of indirection. With early binding, the CPU can jump directly to the function’s address. With late binding, the program has to read the address held in the pointer and then jump to that address. This involves one extra step, making it slightly slower. However, the advantage of late binding is that it is more flexible than early binding, because decisions about what function to call do not need to be made until run time.
+后期绑定的效率略低，因为它涉及额外的间接逻辑层。使用早期绑定，CPU可以直接跳转到函数的地址。使用后期绑定，程序必须读取指针中保存的地址，然后跳转到该地址。这需要一个额外的步骤，使它稍微慢一些。但是，后期绑定的优点是它比早期绑定更灵活，因为直到运行时才需要决定调用什么函数。
 
-In the next lesson, we’ll take a look at how late binding is used to implement virtual functions.
+在下一课中，我们将了解如何使用后期绑定来实现虚函数。

@@ -1,6 +1,6 @@
 ---
-title: 晚绑定
-alias: 晚绑定
+title: 后期绑定
+alias: 后期绑定
 english: Late binding
 type: glossary
 tags:

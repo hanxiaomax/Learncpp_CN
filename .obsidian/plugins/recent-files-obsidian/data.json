@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "18-6-the-virtual-table",
+      "path": "docs/18-6-the-virtual-table.md"
+    },
+    {
+      "basename": "virtual-table",
+      "path": "docs/virtual-table.md"
+    },
+    {
       "basename": "18-5-early-binding-and-late-binding",
       "path": "docs/18-5-early-binding-and-late-binding.md"
+    },
+    {
+      "basename": "Late-binding",
+      "path": "docs/Late-binding.md"
+    },
+    {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
     {
       "basename": "Early-binding",
@@ -21,20 +37,12 @@
       "path": "docs/18-9-object-slicing.md"
     },
     {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
       "basename": "virtual-base-class",
       "path": "docs/virtual-base-class.md"
     },
     {
       "basename": "interface-class",
       "path": "docs/interface-class.md"
-    },
-    {
-      "basename": "Late-binding",
-      "path": "docs/Late-binding.md"
     },
     {
       "basename": "object-slicing",
@@ -59,10 +67,6 @@
     {
       "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
       "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
-    },
-    {
-      "basename": "18-6-the-virtual-table",
-      "path": "docs/18-6-the-virtual-table.md"
     },
     {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
@@ -195,10 +199,6 @@
     {
       "basename": "14-14-converting-constructors-explicit-and-delete",
       "path": "docs/14-14-converting-constructors-explicit-and-delete.md"
-    },
-    {
-      "basename": "14-13-copy-initialization",
-      "path": "docs/14-13-copy-initialization.md"
     }
   ],
   "omittedPaths": [],
