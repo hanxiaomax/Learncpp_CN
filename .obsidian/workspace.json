@@ -23,59 +23,7 @@
             }
           },
           {
-            "id": "6fc2e06e8c27891d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/17-8-Hiding-inherited-functionality.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4441be543cecda9b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "626830e915a91f68",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-5-early-binding-and-late-binding.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "1d9b9935ffac39fe",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-6-the-virtual-table.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6c3f51ff164385f7",
+            "id": "14136ab0bfea84af",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -86,74 +34,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "7d23f8facd026335",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-8-virtual-base-classes.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7cdf6c262099eb53",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-9-object-slicing.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "689ebbfb53a5205d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-10-dynamic-casting.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "948372fd45e48055",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-11-printing-inherited-classes-using-operator<<.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5ca1d0e2307656ec",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/18-6-the-virtual-table.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 10
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -227,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/18-6-the-virtual-table.md"
+                "file": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
               }
             }
           },
@@ -248,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/18-6-the-virtual-table.md",
+                "file": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -270,17 +153,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "5ca1d0e2307656ec",
+  "active": "14136ab0bfea84af",
   "lastOpenFiles": [
-    "docs/virtual-table.md",
-    "docs/18-6-the-virtual-table.md",
+    "docs/MOC.md",
     "docs/18-5-early-binding-and-late-binding.md",
-    "docs/Late-binding.md",
+    "docs/18-6-the-virtual-table.md",
     "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/Early-binding.md",
-    "docs/Binding.md",
-    "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+    "docs/18-11-printing-inherited-classes-using-operator<<.md",
+    "docs/18-10-dynamic-casting.md",
     "docs/18-9-object-slicing.md",
-    "docs/virtual-base-class.md"
+    "docs/18-8-virtual-base-classes.md",
+    "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md",
+    "docs/virtual-table.md"
   ]
 }

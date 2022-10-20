@@ -11,11 +11,11 @@ tags:
 
 ??? note "关键点速记"
 
-Last chapter, in lesson [17.9 -- Multiple inheritance](https://www.learncpp.com/cpp-tutorial/multiple-inheritance/), we left off talking about the “diamond problem”. In this section, we will resume this discussion.
+Last chapter, in lesson [[17-9-multiple-inheritance|17.9 - 多重继承]], we left off talking about the “diamond problem”. In this section, we will resume this discussion.
 
 Note: This section is an advanced topic and can be skipped or skimmed if desired.
 
-**The diamond problem**
+## 菱形继承问题
 
 Here is our example from the previous lesson (with some constructors) illustrating the diamond problem:
 
@@ -95,7 +95,7 @@ As you can see, PoweredDevice got constructed twice.
 
 While this is often desired, other times you may want only one copy of PoweredDevice to be shared by both Scanner and Printer.
 
-**Virtual base classes**
+## 虚基类
 
 To share a base class, simply insert the “virtual” keyword in the inheritance list of the derived class. This creates what is called a **virtual base class**, which means there is only one base object. The base object is shared between all objects in the inheritance tree and it is only constructed once. Here is an example (without constructors for simplicity) showing how to use the virtual keyword to create a shared base class:
 
@@ -183,9 +183,11 @@ COPY
 
 produces the result:
 
+```
 PoweredDevice: 3
 Scanner: 1
 Printer: 2
+```
 
 As you can see, PoweredDevice only gets constructed once.
 
@@ -201,6 +203,3 @@ Fourth, all classes inheriting a virtual base class will have a virtual table, e
 
 Because Scanner and Printer derive virtually from PoweredDevice, Copier will only be one PoweredDevice subobject. Scanner and Printer both need to know how to find that single PoweredDevice subobject, so they can access its members (because after all, they are derived from it). This is typically done through some virtual table magic (which essentially stores the offset from each subclass to the PoweredDevice subobject).
 
-[
-
-](https://www.learncpp.com/cpp-tutorial/object-slicing/)

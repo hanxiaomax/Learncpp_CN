@@ -71,7 +71,7 @@ std::cout << "b is a " << b << '\n'; // much better
 
 COPY
 
-**The challenges with operator<<**
+## The challenges with operator`<<`
 
 Let’s start by overloading operator<< in the typical way:
 
@@ -118,8 +118,10 @@ COPY
 
 Because there is no need for virtual function resolution here, this program works as we’d expect, and prints:
 
+```
 Base
 Derived
+```
 
 Now, consider the following main() function instead:
 
@@ -150,17 +152,17 @@ If this issue is that operator<< isn’t virtual, can’t we simply make it virt
 
 The short answer is no. There are a number of reasons for this.
 
-First, only member functions can be virtualized -- this makes sense, since only classes can inherit from other classes, and there’s no way to override a function that lives outside of a class (you can overload non-member functions, but not override them). Because we typically implement operator<< as a friend, and friends aren’t considered member functions, a friend version of operator<< is ineligible to be virtualized. (For a review of why we implement operator<< this way, please revisit lesson [14.5 -- Overloading operators using member functions](https://www.learncpp.com/cpp-tutorial/overloading-operators-using-member-functions/)).
+First, only member functions can be virtualized -- this makes sense, since only classes can inherit from other classes, and there’s no way to override a function that lives outside of a class (you can overload non-member functions, but not override them). Because we typically implement operator<< as a friend, and friends aren’t considered member functions, a friend version of operator<< is ineligible to be virtualized. (For a review of why we implement operator<< this way, please revisit lesson [[14-5-overloading-operators-using-member-functions|14.5 - 使用成员函数重载运算符]])。
 
-Second, even if we could virtualize operator<< there’s the problem that the function parameters for Base::operator<< and Derived::operator<< differ (the Base version would take a Base parameter and the Derived version would take a Derived parameter). Consequently, the Derived version wouldn’t be considered an override of the Base version, and thus be ineligible for virtual function resolution.
+Second, even if we could virtualize `operator<<` there’s the problem that the function parameters for `Base::operator<<` and `Derived::operator<<` differ (the Base version would take a Base parameter and the Derived version would take a Derived parameter). Consequently, the Derived version wouldn’t be considered an override of the Base version, and thus be ineligible for virtual function resolution.
 
 So what’s a programmer to do?
 
-**The solution**
+## 解决办法
 
 The answer, as it turns out, is surprisingly simple.
 
-First, we set up operator<< as a friend in our base class as usual. But instead of having operator<< do the printing itself, we delegate that responsibility to a normal member function that _can_ be virtualized!
+First, we set up `operator<<` as a friend in our base class as usual. But instead of having `operator<<` do the printing itself, we delegate that responsibility to a normal member function that _can_ be virtualized!
 
 Here’s the full solution that works:
 
@@ -216,9 +218,11 @@ COPY
 
 The above program works in all three cases:
 
+```
 Base
 Derived
 Derived
+```
 
 Let’s examine how in more detail.
 

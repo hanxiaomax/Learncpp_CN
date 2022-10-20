@@ -1,24 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "18-6-the-virtual-table",
-      "path": "docs/18-6-the-virtual-table.md"
+      "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
+      "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
     },
     {
-      "basename": "virtual-table",
-      "path": "docs/virtual-table.md"
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "18-5-early-binding-and-late-binding",
       "path": "docs/18-5-early-binding-and-late-binding.md"
     },
     {
-      "basename": "Late-binding",
-      "path": "docs/Late-binding.md"
+      "basename": "18-6-the-virtual-table",
+      "path": "docs/18-6-the-virtual-table.md"
     },
     {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
       "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "18-11-printing-inherited-classes-using-operator<<",
+      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
+    },
+    {
+      "basename": "18-10-dynamic-casting",
+      "path": "docs/18-10-dynamic-casting.md"
+    },
+    {
+      "basename": "18-9-object-slicing",
+      "path": "docs/18-9-object-slicing.md"
+    },
+    {
+      "basename": "18-8-virtual-base-classes",
+      "path": "docs/18-8-virtual-base-classes.md"
+    },
+    {
+      "basename": "virtual-table",
+      "path": "docs/virtual-table.md"
+    },
+    {
+      "basename": "Late-binding",
+      "path": "docs/Late-binding.md"
     },
     {
       "basename": "Early-binding",
@@ -31,10 +55,6 @@
     {
       "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
       "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
-    },
-    {
-      "basename": "18-9-object-slicing",
-      "path": "docs/18-9-object-slicing.md"
     },
     {
       "basename": "virtual-base-class",
@@ -51,22 +71,6 @@
     {
       "basename": "18-2-virtual-functions-and-polymorphism",
       "path": "docs/18-2-virtual-functions-and-polymorphism.md"
-    },
-    {
-      "basename": "18-11-printing-inherited-classes-using-operator<<",
-      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
-    },
-    {
-      "basename": "18-8-virtual-base-classes",
-      "path": "docs/18-8-virtual-base-classes.md"
-    },
-    {
-      "basename": "18-10-dynamic-casting",
-      "path": "docs/18-10-dynamic-casting.md"
-    },
-    {
-      "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
-      "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
     },
     {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
@@ -195,10 +199,6 @@
     {
       "basename": "14-15-overloading-the-assignment-operator",
       "path": "docs/14-15-overloading-the-assignment-operator.md"
-    },
-    {
-      "basename": "14-14-converting-constructors-explicit-and-delete",
-      "path": "docs/14-14-converting-constructors-explicit-and-delete.md"
     }
   ],
   "omittedPaths": [],

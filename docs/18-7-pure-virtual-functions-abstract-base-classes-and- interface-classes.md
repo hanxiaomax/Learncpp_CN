@@ -16,31 +16,30 @@ tags:
 
 
 
-## pure virtual (abstract) functions and abstract base classes**
+## 纯虚（抽象）函数和纯虚基类
 
-So far, all of the virtual functions we have written have a body (a definition). However, C++ allows you to create a special kind of virtual function called a **pure virtual function** (or **abstract function**) that has no body at all! A pure virtual function simply acts as a placeholder that is meant to be redefined by derived classes.
+到目前位置，我们看到的[[virtual-function|虚函数]]都是由函数体（函数定义）的。但是，C++ 允许我们创建一种特殊的虚函数——[[pure-virtual|纯虚函数]]（抽象函数），它没有函数体！纯虚函数只是一个占位而已，它必须在[[derived-class|派生类]]中重定义。
 
-To create a pure virtual function, rather than define a body for the function, we simply assign the function the value 0.
+创建纯虚函数，不需要定义函数体，只需要将函数赋值为0即可。
 
 ```cpp
 class Base
 {
 public:
-    const char* sayHi() const { return "Hi"; } // a normal non-virtual function
+    const char* sayHi() const { return "Hi"; } // 普通函数
 
-    virtual const char* getName() const { return "Base"; } // a normal virtual function
+    virtual const char* getName() const { return "Base"; } // 普通虚函数
 
-    virtual int getValue() const = 0; // a pure virtual function
+    virtual int getValue() const = 0; // 纯虚函数
 
-    int doSomething() = 0; // Compile error: can not set non-virtual functions to 0
+    int doSomething() = 0; // 编译错误: 不能给非虚函数赋值为0
 };
 ```
 
-COPY
+当我们向类中添加一个纯虚函数时，实际上是在说，“要由派生类来实现这个函数”。
 
-When we add a pure virtual function to our class, we are effectively saying, “it is up to the derived classes to implement this function”.
+使用纯虚函数有两个主要后果：首先，任何具有一个或多个纯虚函数的类都变成了[[abstract-class|抽象类]]，这意味着它不能被实例化！考虑一下，如果我们可以创建一个`Base`实例会发生什么:
 
-Using a pure virtual function has two main consequences: First, any class with one or more pure virtual functions becomes an **abstract base class**, which means that it can not be instantiated! Consider what would happen if we could create an instance of Base:
 
 ```cpp
 int main()
@@ -52,13 +51,12 @@ int main()
 }
 ```
 
-COPY
 
-Because there’s no definition for getValue(), what would base.getValue() resolve to?
+因为没有 `getValue()` 的定义，那么 `base.getValue()` 应该如何解析？
 
 Second, any derived class must define a body for this function, or that derived class will be considered an abstract base class as well.
 
-**A pure virtual function example**
+## 一个纯虚函数的例子
 
 Let’s take a look at an example of a pure virtual function in action. In a previous lesson, we wrote a simple Animal base class and derived a Cat and a Dog class from it. Here’s the code as we left it:
 
@@ -142,7 +140,9 @@ COPY
 
 This will print:
 
+```
 Betsy says ???
+```
 
 What happened? We forgot to redefine function speak(), so cow.Speak() resolved to Animal.speak(), which isn’t what we wanted.
 
@@ -200,11 +200,15 @@ COPY
 
 The compiler will give us a warning because Cow is an abstract base class and we can not create instances of abstract base classes (Line numbers are wrong, because the Animal class was omitted from the above example):
 
-<source>(33): error C2259: 'Cow': cannot instantiate abstract class
-<source>(20): note: see declaration of 'Cow'
-<source>(33): note: due to following members:
-<source>(33): note: 'const char *Animal::speak(void) const': is abstract
-<source>(15): note: see declaration of 'Animal::speak'
+
+```bash
+(33): error C2259: 'Cow': cannot instantiate abstract class
+(20): note: see declaration of 'Cow'
+(33): note: due to following members:
+(33): note: 'const char *Animal::speak(void) const': is abstract
+(15): note: see declaration of 'Animal::speak'
+```
+
 
 This tells us that we will only be able to instantiate Cow if Cow provides a body for speak().
 
@@ -273,13 +277,12 @@ int main()
 }
 ```
 
-COPY
 
 In the above example, `a.speak()` resolves to `Cow::speak()` via virtual function resolution.
 
 Since classes with pure virtual functions have a virtual function, don’t forget to make your destructor virtual too.
 
-**Pure virtual functions with definitions**
+## 有定义的纯虚函数
 
 It turns out that we can create pure virtual functions that have definitions:
 
@@ -393,7 +396,7 @@ This capability isn’t used very commonly.
 
 A destructor can be made pure virtual, but must be given a definition so that it can be called when a derived object is destructed.
 
-**Interface classes**
+## 接口类
 
 An **interface class** is a class that has no member variables, and where _all_ of the functions are pure virtual! In other words, the class is purely a definition, and has no actual implementation. Interfaces are useful when you want to define the functionality that derived classes must implement, but leave the details of how the derived class implements that functionality entirely up to the derived class.
 
@@ -463,6 +466,6 @@ Don’t forget to include a virtual destructor for your interface classes, so th
 
 Interface classes have become extremely popular because they are easy to use, easy to extend, and easy to maintain. In fact, some modern languages, such as Java and C#, have added an “interface” keyword that allows programmers to directly define an interface class without having to explicitly mark all of the member functions as abstract. Furthermore, although Java (prior to version 8) and C# will not let you use multiple inheritance on normal classes, they will let you multiple inherit as many interfaces as you like. Because interfaces have no data and no function bodies, they avoid a lot of the traditional problems with multiple inheritance while still providing much of the flexibility.
 
-**Pure virtual functions and the virtual table**
+## 纯虚函数和虚表
 
 Abstract classes still have virtual tables, as these can still be used if you have a pointer or reference to the abstract class. The virtual table entry for a class with a pure virtual function will generally either contain a null pointer, or point to a generic function that prints an error (sometimes this function is named __purecall).

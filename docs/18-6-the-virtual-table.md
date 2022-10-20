@@ -149,6 +149,4 @@ int main()
 
 调用虚函数比调用非虚函数要慢，这有几个原因：首先，我们必须使用`*__vptr`来获得适当的虚表。其次，我们必须对虚拟表建立索引，以找到要调用的函数。因此，我们必须执行3个操作才能找到要调用的函数，而普通的间接函数调用则需要执行2个操作，直接函数调用则需要执行1个操作。然而，在现代计算机中，这增加的时间通常是相当微不足道的。
 
-Calling a virtual function is slower than calling a non-virtual function for a couple of reasons: First, we have to use the `*__vptr` to get to the appropriate virtual table. Second, we have to index the virtual table to find the correct function to call. Only then can we call the function. As a result, we have to do 3 operations to find the function to call, as opposed to 2 operations for a normal indirect function call, or one operation for a direct function call. However, with modern computers, this added time is usually fairly insignificant.
-
-Also as a reminder, any class that uses virtual functions has a `*__vptr`, and thus each object of that class will be bigger by one pointer. Virtual functions are powerful, but they do have a performance cost.
+另外需要提醒的是，任何使用虚函数的类都有`*__vptr` ，因此该类的每个对象都将增加一个指针。虚函数功能强大，但它们确实有性能代价。

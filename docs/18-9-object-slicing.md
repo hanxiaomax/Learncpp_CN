@@ -63,9 +63,11 @@ COPY
 
 In the above example, ref references and ptr points to derived, which has a Base part, and a Derived part. Because ref and ptr are of type Base, ref and ptr can only see the Base part of derived -- the Derived part of derived still exists, but simply can’t be seen through ref or ptr. However, through use of virtual functions, we can access the most-derived version of a function. Consequently, the above program prints:
 
+```
 derived is a Derived and has value 5
 ref is a Derived and has value 5
 ptr is a Derived and has value 5
+```
 
 But what happens if instead of setting a Base reference or pointer to a Derived object, we simply _assign_ a Derived object to a Base object?
 
@@ -92,7 +94,7 @@ base is a Base and has value 5
 
 Used conscientiously, slicing can be benign. However, used improperly, slicing can cause unexpected results in quite a few different ways. Let’s examine some of those cases.
 
-**Slicing and functions**
+## Slicing and functions
 
 Now, you might think the above example is a bit silly. After all, why would you assign derived to base like that? You probably wouldn’t. However, slicing is much more likely to occur accidentally with functions.
 
@@ -154,7 +156,7 @@ This prints:
 
 I am a Derived
 
-**Slicing vectors**
+## Slicing vectors
 
 Yet another area where new programmers run into trouble with slicing is trying to implement polymorphism with std::vector. Consider the following program:
 
@@ -179,8 +181,10 @@ COPY
 
 This program compiles just fine. But when run, it prints:
 
+```
 I am a Base with value 5
 I am a Base with value 6
+```
 
 Similar to the previous examples, because the std::vector was declared to be a vector of type Base, when Derived(6) was added to the vector, it was sliced.
 
@@ -222,8 +226,10 @@ COPY
 
 This prints:
 
+```
 I am a Base with value 5
 I am a Derived with value 6
+```
 
 which works! A few comments about this. First, nullptr is now a valid option, which may or may not be desirable. Second, you now have to deal with pointer semantics, which can be awkward. But on the upside, this also allows the possibility of dynamic memory allocation, which is useful if your objects might otherwise go out of scope.
 
@@ -281,7 +287,7 @@ int main()
 
 COPY
 
-**The Frankenobject**
+## The Frankenobject
 
 In the above examples, we’ve seen cases where slicing lead to the wrong result because the derived class had been sliced off. Now let’s take a look at another dangerous case where the derived object still exists!
 
@@ -308,6 +314,6 @@ The fourth line is where things go astray. Since b points at d2, and we’re ass
 
 As a result, you’ll discover that d2 now has the Base portion of d1 and the Derived portion of d2. In this particular example, that’s not a problem (because the Derived class has no data of its own), but in most cases, you’ll have just created a Frankenobject -- composed of parts of multiple objects. Worse, there’s no easy way to prevent this from happening (other than avoiding assignments like this as much as possible).
 
-**Conclusion**
+## 结论
 
 Although C++ supports assigning derived objects to base objects via object slicing, in general, this is likely to cause nothing but headaches, and you should generally try to avoid slicing. Make sure your function parameters are references (or pointers) and try to avoid any kind of pass-by-value when it comes to derived classes.

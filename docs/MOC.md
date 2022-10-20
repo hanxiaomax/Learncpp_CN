@@ -48,6 +48,7 @@
 
 
 ## 4. 基础数据类型 ✅ 
+
 - [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]
 - [[4-2-Void|4.2 - Void]]
 - [[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]]
@@ -110,7 +111,7 @@
 - [[7-8-Do-while-statements|7.8 - do-while 语句]]
 - [[7-9-For-statements|7.9 - for 语句]]
 - [[7-10-Break-and-continue|7.10 - break 和 continue]]
-- [[7-11-Halts-exiting-your-program-early|7.11 - 挂起（提前结束程序]]
+- [[7-11-Halts-exiting-your-program-early|7.11 - 挂起（提前结束程序）]]
 - [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]
 - [[7-13-Code-coverage|7.13 - 代码覆盖率]]
 - [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
@@ -175,6 +176,7 @@
 - [[10-y-using-a-language-reference|10.y - 学会使用C++参考手册]]
 
 ## 11. 数组，字符串和动态内存分配
+
 - [[11-1-Arrays-Part-I|11.1 - 数组（第一部分）]]
 - [[11-2-Arrays-Part-II|11.2 - 数组（第二部分）]]
 - [[11-3-Arrays-and-loops|11.3 - 数组和循环]]
@@ -207,7 +209,8 @@
 - [[12-8-lambda-captures|12.8 - lambda 闭包]]
 - [[12-x-chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
 
-## 13. 面向对象编程基础
+## 13. 面向对象编程基础✅ 
+
 - [[13-1-welcome-to-object-oriented-programming|13.1 - 欢迎来到面向对象的世界]]
 - [[13-2-classes-and-class-members|13.2 - 类和类成员]]
 - [[13-3-public-vs-private-access-specifiers|13.3 - 访问修饰符 public 和 private]]
@@ -229,16 +232,57 @@
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]
 
 ## 14. 操作符重载
+
+- [[14-1-introduction-to-operator-overloading|14.1 - 运算符重载简介]]
+- [[14-2-overloading-the-arithmetic-operators-using-friend-functions|14.2 - 使用友元重载算数运算符]]
+- [[14-3-overloading-operators-using-normal-functions|14.3 - 使用普通函数重载运算符]]
+- [[14-4-overloading-the-IO-operators|14.4 - 重载输入输出运算符]]
+- [[14-5-overloading-operators-using-member-functions|14.5 - 使用成员函数重载运算符]]
+- [[14-6-overloading-unary-operators-+--and-!|14.6 - 重载一元运算符+，- 和 !]]
+- [[14-7-overloading-the-comparison-operators|14.7 - 重载比较运算符]]
+- [[14-8-overloading-the-increment-and-decrement-operators|14.8 - 重载递增递减运算符]]
+- [[14-9-overloading-the-subscript-operator|14.9 - 重载下标运算符]]
+- [[14-10-overloading-the-parenthesis-operator|14.10 - 重载括号运算符]]
 - [[14-11-Overloading-typecasts|14.11 - 重载类型转换操作符]]
 - [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试 - 运算符重载]]
 
 ## 16. 对象关系简介
+
+- [[16-1-object-relationships|16.1 - 对象关系]]
+- [[16-2-composition|16.2 - 组合关系]]
+- [[16-3-aggregation|16.3 - 聚合关系]]
+- [[16-4-association|16.4 - 关联关系]]
+- [[16-5-dependencies|16.5 - 依赖关系]]
+- [[16-6-container-classes|16.6 - 容器类]]
+- [[16-7-std-initializer_list|16.7 - std::initializer_list]]
 - [[16-x-Chapter-16-comprehensive-quiz|16.x - 小结与测试 - 对象关系]]
 
-## 17. 继承
+## 17. 继承 ✅ 
+
+- [[17-1-introduction-to-inheritance|17.1 - 继承简介]]
+- [[17-2-basic-inheritance-in-c++|17.2 - C++继承基础]]
+- [[17-3-order-of-construction-of-derived-classes|17.3 - 派生类的构造顺序]]
+- [[17-4-constructors-and-initialization-of-derived-classes|17.4 - 派生类的构造和初始化]]
+- [[17-5-inheritance-and-access-specifiers|17.5 - 继承和访问说明符]]
+- [[17-6-adding-new-functionality-to-a-derived-class|17.6 - 为派生类添加新功能]]
+- [[17-7-calling-inherited-functions-and-overriding-behavior|17.7 - 调用继承函数和重写]]
+- [[17-8-Hiding-inherited-functionality|17.8 - 隐藏继承的函数]]
+- [[17-9-multiple-inheritance|17.9 - 多重继承]]
 - [[17-x-Chapter-17-comprehensive-quiz|17.x - 小结与测试 - 继承]]
 
-## 18. 虚函数
+## 18. 虚函数 ✅ 
+
+- [[18-1-pointers-and-references-to-the-base-class-of-derived-objects|18.1 - 基类的指针和引用]]
+- [[18-2-virtual-functions-and-polymorphism|18.2 - 虚函数和多态]]
+- [[18-3-the-override-and-final-specifiers-and-covariant-return-types|18.3 - override、final标识符以及协变返回类型]]
+- [[18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization|18.4 - 虚构造函数、虚赋值和重载虚拟化]]
+- [[18-5-early-binding-and-late-binding|18.5 - 早期绑定和后期绑定]]
+- [[18-6-the-virtual-table|18.6 - 虚函数表]]
+- [[18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes|18.7 - 纯虚函数，抽象基类和接口类]]
+- [[18-8-virtual-base-classes|18.8 - 虚基类]]
+- [[18-9-object-slicing|18.9 - 对象切片]]
+- [[18-10-dynamic-casting|18.10 - 动态类型转换]]
+- [[18-11-printing-inherited-classes-using-operator<<|18.11 - 使用<<运算符打印继承类]]
 - [[18-2-virtual-functions-and-polymorphism|18.x - 小结与测试 - 虚函数]]
 
 ## 19. 模板和类
