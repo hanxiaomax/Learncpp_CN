@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+                "file": "docs/13-9-destructors.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+                "file": "docs/13-9-destructors.md"
               }
             }
           },
@@ -157,7 +157,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+                "file": "docs/13-9-destructors.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -181,15 +181,15 @@
   },
   "active": "43c0365cae1fe1ff",
   "lastOpenFiles": [
+    "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+    "docs/virtual-destructor.md",
     "docs/18-2-virtual-functions-and-polymorphism.md",
     "docs/17-8-Hiding-inherited-functionality.md",
-    "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
     "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
     "docs/covariant.md",
     "docs/override.md",
     "docs/signature.md",
     "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md",
-    "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    "docs/18-x-Chapter-18-comprehensive-quiz.md"
   ]
 }

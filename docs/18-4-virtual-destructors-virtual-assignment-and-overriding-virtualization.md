@@ -18,7 +18,7 @@ tags:
 ## 虚构析构函数
 
  
- 尽管 C++ 可以提供默认的构造函数，但我们时常也会想要提供自定义的虚构函数（尤其是当类需要释放内存的情况）。当一个类涉及到[[inheritance|继承]]的时候，其析构函数应该总是为[[virtual-function|虚函数]]。考虑下面的例子：
+尽管 C++ 可以提供默认的构造函数，但我们时常也会想要提供自定义的析构函数（尤其是当类需要释放内存的情况）。当一个类涉及到[[inheritance|继承]]的时候，其析构函数应该总是为[[virtual-destructor|虚析构函数]]。考虑下面的例子：
 
 ```cpp
 #include <iostream>
@@ -71,7 +71,7 @@ int main()
 Calling ~Base()
 ```
 
-但是，实际上我们希望能够调用 `Derived`的析构函数（进而调用 `Base` 的析构函数)，否则 `m_array` 是没办法被删除的。为此我们需要将 `Base` 的析构函数设置为虚函数：
+但是，实际上我们希望能够调用 `Derived` 的析构函数（进而调用 `Base` 的析构函数)，否则 `m_array` 是没办法被删除的。为此我们需要将 `Base` 的析构函数设置为虚函数：
 
 ```cpp
 #include <iostream>
@@ -113,30 +113,27 @@ int main()
 }
 ```
 
-COPY
-
-Now this program produces the following result:
+此时，程序打印结果如下：
 
 ```
 Calling ~Derived()
 Calling ~Base()
 ```
 
-Rule
+!!! note "法则"
 
-Whenever you are dealing with inheritance, you should make any explicit destructors virtual.
+	在处理涉及继承的类时，其析构函数必须显式定义为虚函数
+	
+和普通的虚函数一样，如果基类的函数是虚函数，其派生类中所有[[override|重写]]函数都被认为是虚函数，不管有么有标记为`virtual`。所以没有必要定义一个空的派生类析构函数并将其标记为`virtual`。
 
-As with normal virtual member functions, if a base class function is virtual, all derived overrides will be considered virtual regardless of whether they are specified as such. It is not necessary to create an empty derived class destructor just to mark it as virtual.
-
-Note that if you want your base class to have a virtual destructor that is otherwise empty, you can define your destructor this way:
-
+注意，如果你希望基类的虚构造函数是空的，可以这样定义：
 ```cpp
 virtual ~Base() = default; // generate a virtual default destructor
 ```
 
-COPY
+[[13-9-destructors|13.9 - 析构函数]]
 
-**Virtual assignment**
+## 虚赋值
 
 It is possible to make the assignment operator virtual. However, unlike the destructor case where virtualization is always a good idea, virtualizing the assignment operator really opens up a bag full of worms and gets into some advanced topics outside of the scope of this tutorial. Consequently, we are going to recommend you leave your assignments non-virtual for now, in the interest of simplicity.
 

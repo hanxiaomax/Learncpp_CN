@@ -104,13 +104,13 @@ int main()
 The value of element 5 is: 6
 ```
 
-在 `main()` 函数的第一行，我们实例化了一个 `IntArray` 类型的对象 `ar`，并且传入了10作为长度。 and pass in a length of 10. This calls the constructor, which dynamically allocates memory for the array member. We must use dynamic allocation here because we do not know at compile time what the length of the array is (the caller decides that).
+在 `main()` 函数的第一行，我们实例化了一个 `IntArray` 类型的对象 `ar`，并且传入了10作为长度。 此时会调用构造函数，动态分配数组所需的内存。内存必须动态分配因为在[[compile-time|编译时]]无法知道数组的长度。
 
-At the end of main(), ar goes out of scope. This causes the ~IntArray() destructor to be called, which deletes the array that we allocated in the constructor!
+在`main()`末尾，`ar` [[going-out-of-scope|离开作用域]]，调用析构函数 `~IntArray()` ，删除构造函数中为数组申请的内存。
 
 !!! info "提醒"
 
-	In lesson [[11-7-std-string-view-part-2|11.7 - std::string_view（第二部分）]], we note that parentheses based initialization should be used when initializing an array/container/list class with a length (as opposed to a list of elements). For this reason, we initialize IntArray using `IntArray ar ( 10 );`.
+	在[[11-7-std-string-view-part-2|11.7 - std::string_view（第二部分）]]中，我们讲过，括号初始化应该被用于初始化基于长度创建的数组、容器和列表（相对于基于一组元素创建）。因此，初始化 `IntArray` 时使用了 `IntArray ar ( 10 );`.
 
 ## 构造和析构的时机
 

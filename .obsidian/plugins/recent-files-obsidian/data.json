@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "13-9-destructors",
+      "path": "docs/13-9-destructors.md"
+    },
+    {
       "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
       "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+    },
+    {
+      "basename": "virtual-destructor",
+      "path": "docs/virtual-destructor.md"
     },
     {
       "basename": "18-2-virtual-functions-and-polymorphism",
@@ -191,14 +199,6 @@
     {
       "basename": "private-inheritance",
       "path": "docs/private-inheritance.md"
-    },
-    {
-      "basename": "protected-inheritance",
-      "path": "docs/protected-inheritance.md"
-    },
-    {
-      "basename": "protected-members",
-      "path": "docs/protected-members.md"
     }
   ],
   "omittedPaths": [],
