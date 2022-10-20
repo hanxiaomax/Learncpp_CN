@@ -54,11 +54,13 @@ int main()
 
 因为没有 `getValue()` 的定义，那么 `base.getValue()` 应该如何解析？
 
-Second, any derived class must define a body for this function, or that derived class will be considered an abstract base class as well.
+第二，任何派生类都必须为这个函数定义一个主体，否则派生类也会被认为是一个抽象基类。
+
 
 ## 一个纯虚函数的例子
 
-Let’s take a look at an example of a pure virtual function in action. In a previous lesson, we wrote a simple Animal base class and derived a Cat and a Dog class from it. Here’s the code as we left it:
+让我们看一个纯虚函数的例子。在上一课中，我们编写了一个简单的`Animal`基类，并从中派生了`Cat`和`Dog`类：
+
 
 ```cpp
 #include <string>
@@ -80,7 +82,7 @@ public:
     std::string getName() const { return m_name; }
     virtual const char* speak() const { return "???"; }
 
-    virtual ~Animal() = default;
+    virtual ~Animal() = default; //默认析构函数（虚函数）
 };
 
 class Cat: public Animal
@@ -106,11 +108,11 @@ public:
 };
 ```
 
-COPY
 
-We’ve prevented people from allocating objects of type Animal by making the constructor protected. However, it is still possible to create derived classes that do not redefine function speak().
+我们将构造函数定义为[[protected-members|受保护成员]]以防止分配`Animal`类型的对象。但是，仍然可以创建不重新定义 `speak()` 的派生类。
 
-For example:
+
+例如：
 
 ```cpp
 #include <iostream>
@@ -124,7 +126,7 @@ public:
     {
     }
 
-    // We forgot to redefine speak
+    // 没有重新定义 speak
 };
 
 int main()
@@ -136,22 +138,22 @@ int main()
 }
 ```
 
-COPY
-
-This will print:
+打印结果：
 
 ```
 Betsy says ???
 ```
 
-What happened? We forgot to redefine function speak(), so cow.Speak() resolved to Animal.speak(), which isn’t what we wanted.
 
-A better solution to this problem is to use a pure virtual function:
+发生了什么事?我们忘记重新定义函数speak()，所以`cow.Speak()`解析为`Animal.speak()`，这不是我们想要的。
+
+解决这个问题的一个更好的办法是使用纯虚函数：我们通过将构造函数定义为[[protected-members|受保护成员]]，放置人为地分配`Animal`类型的对象。但是，仍然可以创建不重新定义`speak()`的派生类。
+
 
 ```cpp
 #include <string>
 
-class Animal // This Animal is an abstract base class
+class Animal // Animal 是一个抽象类
 {
 protected:
     std::string m_name;
@@ -163,15 +165,14 @@ public:
     }
 
     const std::string& getName() const { return m_name; }
-    virtual const char* speak() const = 0; // note that speak is now a pure virtual function
+    virtual const char* speak() const = 0; // 纯虚函数
 
     virtual ~Animal() = default;
 };
 ```
 
-COPY
+这里有几点需要注意。首先，`speak()` 现在是一个纯虚函数。这意味着`Animal`现在是一个抽象基类，不能被实例化。因此，我们不需要将构造函数定义为受保护成员(尽管这样做没有坏处)。第二，因为我们的`Cow`类是从`Animal`派生的，但是我们没有定义`Cow::speak()`，所以`Cow`也是一个抽象基类。现在，当我们试图编译这段代码时:
 
-There are a couple of things to note here. First, speak() is now a pure virtual function. This means Animal is now an abstract base class, and can not be instantiated. Consequently, we do not need to make the constructor protected any longer (though it doesn’t hurt). Second, because our Cow class was derived from Animal, but we did not define Cow::speak(), Cow is also an abstract base class. Now when we try to compile this code:
 
 ```cpp
 #include <iostream>
@@ -196,10 +197,8 @@ int main()
 }
 ```
 
-COPY
 
-The compiler will give us a warning because Cow is an abstract base class and we can not create instances of abstract base classes (Line numbers are wrong, because the Animal class was omitted from the above example):
-
+编译器会给我们一个警告，因为`Cow`是一个抽象基类，我们不能创建抽象基类的实例(行号是错误的，因为上面的例子中省略了`Animal`类):
 
 ```bash
 (33): error C2259: 'Cow': cannot instantiate abstract class
@@ -209,10 +208,9 @@ The compiler will give us a warning because Cow is an abstract base class and we
 (15): note: see declaration of 'Animal::speak'
 ```
 
+上面信息表明，只有当`Cow`为`speak()`提供了定义，`Cow`才能够被实例化。
 
-This tells us that we will only be able to instantiate Cow if Cow provides a body for speak().
-
-Let’s go ahead and do that:
+让我们继续这样做：
 
 ```cpp
 #include <iostream>
@@ -255,15 +253,15 @@ int main()
 }
 ```
 
-COPY
+编译并运行程序：
 
-Now this program will compile and print:
-
+```
 Betsy says Moo
+```
 
-A pure virtual function is useful when we have a function that we want to put in the base class, but only the derived classes know what it should return. A pure virtual function makes it so the base class can not be instantiated, and the derived classes are forced to define these functions before they can be instantiated. This helps ensure the derived classes do not forget to redefine functions that the base class was expecting them to.
+==当我们有一个想要放在基类中的函数，但只有派生类知道它应该返回什么时，纯虚函数是有用的==。纯虚函数使得基类不能被实例化，派生类在被实例化之前必须定义这些函数。这有助于确保派生类不会忘记重新定义基类希望它们重新定义的函数。
 
-Just like with normal virtual functions, pure virtual functions can be called using a reference (or pointer) to a base class:
+就像普通虚函数一样，纯虚函数可以使用基类的引用(或指针)来调用:
 
 ```cpp
 int main()
@@ -277,14 +275,14 @@ int main()
 }
 ```
 
+在上面的例子中，`a.speak()` 通过虚函数解析解析为 `Cow::speak()` 。
 
-In the above example, `a.speak()` resolves to `Cow::speak()` via virtual function resolution.
+由于带有纯虚函数的类具有虚函数，所以不要忘记将析构函数也设置为虚函数。
 
-Since classes with pure virtual functions have a virtual function, don’t forget to make your destructor virtual too.
 
-## 有定义的纯虚函数
+## 有函数体（定义）的纯虚函数
 
-It turns out that we can create pure virtual functions that have definitions:
+事实证明我们可以创建具有函数体的纯虚函数：
 
 ```cpp
 #include <string>
@@ -301,40 +299,39 @@ public:
     }
 
     std::string getName() { return m_name; }
-    virtual const char* speak() const = 0; // The = 0 means this function is pure virtual
+    virtual const char* speak() const = 0; // = 0 意味着这是纯虚函数
 
     virtual ~Animal() = default;
 };
 
-const char* Animal::speak() const  // even though it has a definition
+const char* Animal::speak() const  // 即使该函数有定义
 {
     return "buzz";
 }
 ```
 
-COPY
 
 In this case, speak() is still considered a pure virtual function because of the “= 0” (even though it has been given a definition) and Animal is still considered an abstract base class (and thus can’t be instantiated). Any class that inherits from Animal needs to provide its own definition for speak() or it will also be considered an abstract base class.
 
 When providing a definition for a pure virtual function, the definition must be provided separately (not inline).
 
-For Visual Studio users
+!!! tip "小贴士"
 
-Visual Studio mistakenly allows pure virtual function declarations to be definitions, for example
+	For Visual Studio users
 
-```cpp
-// wrong!
-virtual const char* speak() const = 0
-{
-  return "buzz";
-}
-```
+	Visual Studio mistakenly allows pure virtual function declarations to be definitions, for example
+	
+	```cpp
+	// wrong!
+	virtual const char* speak() const = 0
+	{
+	  return "buzz";
+	}
+	```
+	This is wrong and cannot be disabled.
 
-COPY
 
-This is wrong and cannot be disabled.
-
-This paradigm can be useful when you want your base class to provide a default implementation for a function, but still force any derived classes to provide their own implementation. However, if the derived class is happy with the default implementation provided by the base class, it can simply call the base class implementation directly. For example:
+当您希望基类为函数提供默认实现，但仍然强制任何派生类提供它们自己的实现时，此范例可能很有用。但是，如果派生类对基类提供的默认实现感到满意，它可以直接调用基类实现。例如:
 
 ```cpp
 #include <string>
@@ -359,7 +356,7 @@ public:
 
 const char* Animal::speak() const
 {
-    return "buzz"; // some default implementation
+    return "buzz"; // 默认实现
 }
 
 class Dragonfly: public Animal
@@ -371,9 +368,10 @@ public:
     {
     }
 
-    const char* speak() const override// this class is no longer abstract because we defined this function
+    const char* speak() const override// 提供纯虚函数定义后该类已经不是抽象类了
+    
     {
-        return Animal::speak(); // use Animal's default implementation
+        return Animal::speak(); // 使用 Animal 的默认实现
     }
 };
 
@@ -386,19 +384,21 @@ int main()
 }
 ```
 
-COPY
+输出：
 
-The above code prints:
-
+```
 Sally says buzz
+```
 
-This capability isn’t used very commonly.
+这个功能并不常用。
 
-A destructor can be made pure virtual, but must be given a definition so that it can be called when a derived object is destructed.
+==析构函数可以是纯虚的，但必须给出一个定义，以便在派生对象析构时调用它。==
+
 
 ## 接口类
 
-An **interface class** is a class that has no member variables, and where _all_ of the functions are pure virtual! In other words, the class is purely a definition, and has no actual implementation. Interfaces are useful when you want to define the functionality that derived classes must implement, but leave the details of how the derived class implements that functionality entirely up to the derived class.
+[[interface-class|接口类]]没有成员变量，
+a class that has no member variables, and where _all_ of the functions are pure virtual! In other words, the class is purely a definition, and has no actual implementation. Interfaces are useful when you want to define the functionality that derived classes must implement, but leave the details of how the derived class implements that functionality entirely up to the derived class.
 
 Interface classes are often named beginning with an I. Here’s a sample interface class:
 
