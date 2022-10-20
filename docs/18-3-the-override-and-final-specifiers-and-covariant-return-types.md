@@ -226,6 +226,6 @@ returned a Base
 
 换言之，在上面的例子中，如果你使用 `Derived` 类型的对象调用 `getThis()`，那你得到的就是 `Derived*` 类型的返回值。
 
-如果 `printType()` 是虚函数的话情况则不同，则 `b->getThis()` (`Base*`的对象) 就会进行虚函数解析，调用 `Derived::printType()`。
+如果 `printType()` 是虚函数的话情况则不同，此时 `b->getThis()` (`Base*`的对象) 就会进行虚函数解析，调用 `Derived::printType()`。
 
 协变返回类型通常用于虚成员函数返回包含该成员函数的类的指针或引用(例如`Base::getThis()`返回`Base*`， `Derived::getThis()`返回`Derived*`)的情况。然而，这并不是严格必要的。在覆盖成员函数的返回类型派生自基本虚成员函数的返回类型的任何情况下，都可以使用协变返回类型。
