@@ -1,6 +1,6 @@
 ---
-title: 18.x - 虚函数和多态
-alias: 18.x - 虚函数和多态
+title: 18.2 - 虚函数和多态
+alias: 18.2 - 虚函数和多态
 origin: /virtual-functions/
 origin_title: "18.2 — Virtual functions and polymorphism"
 time: 2022-8-12

@@ -16,7 +16,7 @@ tags:
 
 
 
-##p ure virtual (abstract) functions and abstract base classes**
+## pure virtual (abstract) functions and abstract base classes**
 
 So far, all of the virtual functions we have written have a body (a definition). However, C++ allows you to create a special kind of virtual function called a **pure virtual function** (or **abstract function**) that has no body at all! A pure virtual function simply acts as a placeholder that is meant to be redefined by derived classes.
 

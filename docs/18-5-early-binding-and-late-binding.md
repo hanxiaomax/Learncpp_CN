@@ -1,6 +1,6 @@
 ---
-title: 18.5 - 早绑定和晚绑定
-alias: 18.5 - 早绑定和晚绑定
+title: 18.5 - 早期绑定和延迟绑定
+alias: 18.5 - 早期绑定和延迟绑定
 origin: /early-binding-and-late-binding/
 origin_title: "18.5 — Early binding and late binding"
 time: 2022-5-9
@@ -14,17 +14,18 @@ tags:
 
 	
 
-In this lesson and the next, we are going to take a closer look at how virtual functions are implemented. While this information is not strictly necessary to effectively use virtual functions, it is interesting. Nevertheless, you can consider both sections optional reading.
+在本节课和下节课中，我们会仔细研究[[virtual-function|虚函数]]的实现方式。尽管这些内容对于你高效地使用虚函数来说并不是必须的，但是它真的很有意思。当然，你也可以把这些内容当做选修课。
 
-When a C++ program is executed, it executes sequentially, beginning at the top of main(). When a function call is encountered, the point of execution jumps to the beginning of the function being called. How does the CPU know to do this?
+当C++程序被执行时，它是按顺序执行的，从`main()`的顶部开始。当遇到函数调用时，执行点跳转到被调用函数的开始。CPU是怎么知道要这么做的?
 
-When a program is compiled, the compiler converts each statement in your C++ program into one or more lines of machine language. Each line of machine language is given its own unique sequential address. This is no different for functions -- when a function is encountered, it is converted into machine language and given the next available address. Thus, each function ends up with a unique address.
+编译程序时，编译器将C++程序中的每个语句转换为一行或多行机器语言。机器语言的每一行都有自己唯一的顺序地址。函数也不例外——当遇到一个函数时，它被转换成机器语言并给出下一个可用地址。因此，每个函数最终都有一个唯一的地址。
 
-**Binding** refers to the process that is used to convert identifiers (such as variable and function names) into addresses. Although binding is used for both variables and functions, in this lesson we’re going to focus on function binding.
+[[Binding|绑定]]指定就是将[[identifier|标识符]]（变量名或函数名）转换为地址的过程。虽然绑定适用于变量和函数，但是在本节课中，我们会重点讨论函数的绑定。
 
-**Early binding**
+## 早绑定 Early binding
 
-Most of the function calls the compiler encounters will be direct function calls. A direct function call is a statement that directly calls a function. For example:
+编译器遇到的大多数函数调用都是函数直接调用。直接调用是直接调用函数的语句。例如:
+
 
 ```cpp
 #include <iostream>
@@ -41,11 +42,9 @@ int main()
 }
 ```
 
-COPY
+直接函数调用可以使用称为早期绑定的过程来解决。==[[Early-binding|早期绑定]](也称为静态绑定)意味着编译器(或链接器)能够直接将标识符名(如函数名或变量名)与机器地址关联起来==。记住，所有函数都有唯一的地址。因此，当编译器(或链接器)遇到函数调用时，它会用一个机器语言指令替换函数调用，该指令告诉CPU跳转到函数的地址。
 
-Direct function calls can be resolved using a process known as early binding. **Early binding** (also called static binding) means the compiler (or linker) is able to directly associate the identifier name (such as a function or variable name) with a machine address. Remember that all functions have a unique address. So when the compiler (or linker) encounters a function call, it replaces the function call with a machine language instruction that tells the CPU to jump to the address of the function.
-
-Let’s take a look at a simple calculator program that uses early binding:
+让我们来看看一个使用早期绑定的简单计算器程序:
 
 ```cpp
 #include <iostream>
@@ -97,11 +96,12 @@ int main()
 }
 ```
 
-COPY
 
-Because add(), subtract(), and multiply() are all direct function calls, the compiler will use early binding to resolve the add(), subtract(), and multiply() function calls. The compiler will replace the add() function call with an instruction that tells the CPU to jump to the address of the add() function. The same holds true for subtract() and multiply().
+因为 `add()`、`subtract()`和 `multiply()` 都是直接函数调用，因此编译器使用[[Early-binding|早期绑定]]的方式来解析它们的调用。编译器会将 `add()` 函数的调用替换为一个指令，告诉CPU如何跳转到`add()`函数的地址。对于 `subtract()` 和 `multiply()` 也是类似的道理。
 
-**Late Binding**
+## 延迟绑定 Late Binding
+
+让我们看一个使用早期绑定的简单计算器程序:在一些程序中，在运行时(程序运行时)之前不可能知道调用哪个函数。这被称为后期绑定**(或动态绑定)。在c++中，获得后期绑定的一种方法是使用函数指针。简单回顾一下函数指针，函数指针是一种指向函数而不是变量的指针。函数指针所指向的函数可以通过在指针上使用函数调用操作符(())来调用。
 
 In some programs, it is not possible to know which function will be called until runtime (when the program is run). This is known as **late binding** (or dynamic binding). In C++, one way to get late binding is to use function pointers. To review function pointers briefly, a function pointer is a type of pointer that points to a function instead of a variable. The function that a function pointer points to can be called by using the function call operator (()) on the pointer.
 

@@ -1,24 +1,68 @@
 {
   "recentFiles": [
     {
-      "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
-      "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
-    },
-    {
-      "basename": "18-6-the-virtual-table",
-      "path": "docs/18-6-the-virtual-table.md"
-    },
-    {
       "basename": "18-5-early-binding-and-late-binding",
       "path": "docs/18-5-early-binding-and-late-binding.md"
+    },
+    {
+      "basename": "Early-binding",
+      "path": "docs/Early-binding.md"
+    },
+    {
+      "basename": "Binding",
+      "path": "docs/Binding.md"
     },
     {
       "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
       "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
     },
     {
+      "basename": "18-9-object-slicing",
+      "path": "docs/18-9-object-slicing.md"
+    },
+    {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "virtual-base-class",
+      "path": "docs/virtual-base-class.md"
+    },
+    {
+      "basename": "interface-class",
+      "path": "docs/interface-class.md"
+    },
+    {
+      "basename": "Late-binding",
+      "path": "docs/Late-binding.md"
+    },
+    {
+      "basename": "object-slicing",
+      "path": "docs/object-slicing.md"
+    },
+    {
       "basename": "18-2-virtual-functions-and-polymorphism",
       "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+    },
+    {
+      "basename": "18-11-printing-inherited-classes-using-operator<<",
+      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
+    },
+    {
+      "basename": "18-8-virtual-base-classes",
+      "path": "docs/18-8-virtual-base-classes.md"
+    },
+    {
+      "basename": "18-10-dynamic-casting",
+      "path": "docs/18-10-dynamic-casting.md"
+    },
+    {
+      "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
+      "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
+    },
+    {
+      "basename": "18-6-the-virtual-table",
+      "path": "docs/18-6-the-virtual-table.md"
     },
     {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
@@ -75,10 +119,6 @@
     {
       "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
       "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
     {
       "basename": "19-x-Chapter-19-comprehensive-quiz",
@@ -159,46 +199,6 @@
     {
       "basename": "14-13-copy-initialization",
       "path": "docs/14-13-copy-initialization.md"
-    },
-    {
-      "basename": "14-12-the-copy-constructor",
-      "path": "docs/14-12-the-copy-constructor.md"
-    },
-    {
-      "basename": "14-11-Overloading-typecasts",
-      "path": "docs/14-11-Overloading-typecasts.md"
-    },
-    {
-      "basename": "14-10-overloading-the-parenthesis-operator",
-      "path": "docs/14-10-overloading-the-parenthesis-operator.md"
-    },
-    {
-      "basename": "14-9-overloading-the-subscript-operator",
-      "path": "docs/14-9-overloading-the-subscript-operator.md"
-    },
-    {
-      "basename": "14-8-overloading-the-increment-and-decrement-operators",
-      "path": "docs/14-8-overloading-the-increment-and-decrement-operators.md"
-    },
-    {
-      "basename": "14-7-overloading-the-comparison-operators",
-      "path": "docs/14-7-overloading-the-comparison-operators.md"
-    },
-    {
-      "basename": "14-6-overloading-unary-operators-+--and-!",
-      "path": "docs/14-6-overloading-unary-operators-+--and-!.md"
-    },
-    {
-      "basename": "14-5-overloading-operators-using-member-functions",
-      "path": "docs/14-5-overloading-operators-using-member-functions.md"
-    },
-    {
-      "basename": "14-4-overloading-the-IO-operators",
-      "path": "docs/14-4-overloading-the-IO-operators.md"
-    },
-    {
-      "basename": "14-3-overloading-operators-using-normal-functions",
-      "path": "docs/14-3-overloading-operators-using-normal-functions.md"
     }
   ],
   "omittedPaths": [],
