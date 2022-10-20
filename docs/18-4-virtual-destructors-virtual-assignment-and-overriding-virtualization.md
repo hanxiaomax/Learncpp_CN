@@ -131,7 +131,6 @@ Calling ~Base()
 virtual ~Base() = default; // generate a virtual default destructor
 ```
 
-[[13-9-destructors|13.9 - 析构函数]]
 
 ## 虚赋值
 

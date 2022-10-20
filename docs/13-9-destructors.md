@@ -110,7 +110,7 @@ The value of element 5 is: 6
 
 !!! info "提醒"
 
-	在[[11-7-std-string-view-part-2|11.7 - std::string_view（第二部分）]]中，我们讲过，括号初始化应该被用于初始化基于长度创建的数组、容器和列表（相对于基于一组元素创建）。因此，初始化 `IntArray` 时使用了 `IntArray ar ( 10 );`.
+	在[[11-7-std-string-view-part-2|11.7 - std::string_view（第二部分）]]中，我们讲过，括号初始化应该被用于初始化基于长度创建的数组、容器和列表（相对于基于一组元素创建）。因此，初始化 `IntArray` 时使用了 `IntArray ar ( 10 );`。
 
 ## 构造和析构的时机
 

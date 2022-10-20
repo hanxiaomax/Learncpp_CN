@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "13-9-destructors",
-      "path": "docs/13-9-destructors.md"
+      "basename": "17-4-constructors-and-initialization-of-derived-classes",
+      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
     },
     {
       "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
       "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+    },
+    {
+      "basename": "17-3-order-of-construction-of-derived-classes",
+      "path": "docs/17-3-order-of-construction-of-derived-classes.md"
+    },
+    {
+      "basename": "17-5-inheritance-and-access-specifiers",
+      "path": "docs/17-5-inheritance-and-access-specifiers.md"
+    },
+    {
+      "basename": "13-9-destructors",
+      "path": "docs/13-9-destructors.md"
+    },
+    {
+      "basename": "destructor",
+      "path": "docs/destructor.md"
+    },
+    {
+      "basename": "13-11-class-code-and-header-files",
+      "path": "docs/13-11-class-code-and-header-files.md"
+    },
+    {
+      "basename": "13-10-the-hidden-this-pointer",
+      "path": "docs/13-10-the-hidden-this-pointer.md"
     },
     {
       "basename": "virtual-destructor",
@@ -71,18 +95,6 @@
     {
       "basename": "17-6-adding-new-functionality-to-a-derived-class",
       "path": "docs/17-6-adding-new-functionality-to-a-derived-class.md"
-    },
-    {
-      "basename": "17-5-inheritance-and-access-specifiers",
-      "path": "docs/17-5-inheritance-and-access-specifiers.md"
-    },
-    {
-      "basename": "17-4-constructors-and-initialization-of-derived-classes",
-      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
-    },
-    {
-      "basename": "17-3-order-of-construction-of-derived-classes",
-      "path": "docs/17-3-order-of-construction-of-derived-classes.md"
     },
     {
       "basename": "17-1-introduction-to-inheritance",
@@ -187,18 +199,6 @@
     {
       "basename": "mixin",
       "path": "docs/mixin.md"
-    },
-    {
-      "basename": "Multiple inheritance",
-      "path": "docs/Multiple inheritance.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
-      "basename": "private-inheritance",
-      "path": "docs/private-inheritance.md"
     }
   ],
   "omittedPaths": [],

@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-9-destructors.md",
+                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -91,7 +91,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "成员访问函数",
+                "query": "析构",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -116,7 +116,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -136,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-9-destructors.md"
+                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
               }
             }
           },
@@ -157,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-9-destructors.md",
+                "file": "docs/17-4-constructors-and-initialization-of-derived-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -182,14 +183,14 @@
   "active": "43c0365cae1fe1ff",
   "lastOpenFiles": [
     "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+    "docs/17-3-order-of-construction-of-derived-classes.md",
+    "docs/17-5-inheritance-and-access-specifiers.md",
+    "docs/13-9-destructors.md",
+    "docs/destructor.md",
+    "docs/13-11-class-code-and-header-files.md",
+    "docs/13-10-the-hidden-this-pointer.md",
     "docs/virtual-destructor.md",
-    "docs/18-2-virtual-functions-and-polymorphism.md",
-    "docs/17-8-Hiding-inherited-functionality.md",
-    "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
-    "docs/covariant.md",
-    "docs/override.md",
-    "docs/signature.md",
-    "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md",
-    "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    "docs/18-2-virtual-functions-and-polymorphism.md"
   ]
 }
