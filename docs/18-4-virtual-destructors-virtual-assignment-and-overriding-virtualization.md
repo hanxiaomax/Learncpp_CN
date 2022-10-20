@@ -11,16 +11,21 @@ tags:
 - overriding-virtualization
 ---
 
-**Virtual destructors**
+??? note "关键点速记"
+	
+	- 基类的析构函数必须是[[virtual-function|虚函数]]。如果不这样做，当基于派生类中基类部分的指针或引用时销毁对象时，调用的是基类的析构函数，子类成员不能被正确销毁。
 
-Although C++ provides a default destructor for your classes if you do not provide one yourself, it is sometimes the case that you will want to provide your own destructor (particularly if the class needs to deallocate memory). You should **always** make your destructors virtual if you’re dealing with inheritance. Consider the following example:
+## 虚构析构函数
+
+ 
+ 尽管 C++ 可以提供默认的构造函数，但我们时常也会想要提供自定义的虚构函数（尤其是当类需要释放内存的情况）。当一个类涉及到[[inheritance|继承]]的时候，其析构函数应该总是为[[virtual-function|虚函数]]。考虑下面的例子：
 
 ```cpp
 #include <iostream>
 class Base
 {
 public:
-    ~Base() // note: not virtual
+    ~Base() // note: 不是虚函数
     {
         std::cout << "Calling ~Base()\n";
     }
@@ -37,7 +42,7 @@ public:
     {
     }
 
-    ~Derived() // note: not virtual (your compiler may warn you about this)
+    ~Derived() // note: 不是 virtual (编译器可能会发出告警)
     {
         std::cout << "Calling ~Derived()\n";
         delete[] m_array;
@@ -49,21 +54,24 @@ int main()
     Derived* derived { new Derived(5) };
     Base* base { derived };
 
-    delete base;
+    delete base;//调用基类的析构函数，同时因为它不是虚函数，则子类的析构函数不会被调用，子类成员无法析构
 
     return 0;
 }
 ```
 
-COPY
 
-Note: If you compile the above example, your compiler may warn you about the non-virtual destructor (which is intentional for this example). You may need to disable the compiler flag that treats warnings as errors to proceed.
+注意：如果你在编译上述代码时，编译器警告你使用了非虚的析构函数。你需要关闭编译器选项：将告警当做错误对待。
 
-Because base is a Base pointer, when base is deleted, the program looks to see if the Base destructor is virtual. It’s not, so it assumes it only needs to call the Base destructor. We can see this in the fact that the above example prints:
+因为 `base` 是一个 `Base` 类型的指针，则当`base`被删除时，程序会查看`Base`的析构函数是否为虚函数。如果不是的话，它会认为你需要调用的就是`Base`的析构函数。
 
+程序运行结果能够证明这一点：
+
+```
 Calling ~Base()
+```
 
-However, we really want the delete function to call Derived’s destructor (which will call Base’s destructor in turn), otherwise m_array will not be deleted. We do this by making Base’s destructor virtual:
+但是，实际上我们希望能够调用 `Derived`的析构函数（进而调用 `Base` 的析构函数)，否则 `m_array` 是没办法被删除的。为此我们需要将 `Base` 的析构函数设置为虚函数：
 
 ```cpp
 #include <iostream>
@@ -109,8 +117,10 @@ COPY
 
 Now this program produces the following result:
 
+```
 Calling ~Derived()
 Calling ~Base()
+```
 
 Rule
 

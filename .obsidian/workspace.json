@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
+                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -120,8 +120,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -137,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
+                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
               }
             }
           },
@@ -158,7 +157,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
+                "file": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -182,15 +181,15 @@
   },
   "active": "43c0365cae1fe1ff",
   "lastOpenFiles": [
-    "docs/covariant.md",
-    "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
-    "docs/17-8-Hiding-inherited-functionality.md",
     "docs/18-2-virtual-functions-and-polymorphism.md",
+    "docs/17-8-Hiding-inherited-functionality.md",
+    "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md",
+    "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md",
+    "docs/covariant.md",
     "docs/override.md",
     "docs/signature.md",
     "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md",
     "docs/18-x-Chapter-18-comprehensive-quiz.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md",
-    "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+    "docs/19-x-Chapter-19-comprehensive-quiz.md"
   ]
 }

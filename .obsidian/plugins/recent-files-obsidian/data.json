@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
-      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
+      "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
+      "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
     },
     {
-      "basename": "covariant",
-      "path": "docs/covariant.md"
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     },
     {
       "basename": "17-8-Hiding-inherited-functionality",
       "path": "docs/17-8-Hiding-inherited-functionality.md"
     },
     {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
+      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
+    },
+    {
+      "basename": "covariant",
+      "path": "docs/covariant.md"
     },
     {
       "basename": "override",
@@ -35,10 +39,6 @@
     {
       "basename": "19-x-Chapter-19-comprehensive-quiz",
       "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
-      "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
-      "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
     },
     {
       "basename": "17-x-Chapter-17-comprehensive-quiz",
