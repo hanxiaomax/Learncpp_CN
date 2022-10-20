@@ -73,22 +73,21 @@ public:
 ```
 
 
+==当一个类对象被创建时，`*__vptr `被设置为指向该类的虚表==。例如，当`Base`类型的对象创建时，`*__vptr` 指向`Base`的虚表、当 D1 或 D2 构建时，`*__vptr` 则分别指向 D1 或 D2 的虚表。
 
-When a class object is created, `*__vptr `is set to point to the virtual table for that class. For example, when an object of type Base is created, `*__vptr` is set to point to the virtual table for Base. When objects of type D1 or D2 are constructed, `*__vptr` is set to point to the virtual table for D1 or D2 respectively.
+现在，让我们讨论一下如何填充这些虚拟表。因为这里只有两个虚函数，==**每个虚表**将有两个条目(一个用于`function1()`，一个用于`function2()`))。请记住，在填写这些虚表时，每个条目都用该类类型的对象可以调用的最后派生的函数填写。==
 
-Now, let’s talk about how these virtual tables are filled out. Because there are only two virtual functions here, each virtual table will have two entries (one for function1() and one for function2()). Remember that when these virtual tables are filled out, each entry is filled out with the most-derived function an object of that class type can call.
+`Base` 对象的虚表很简单，任何`Base`对象都只能访问`Base`的成员，而不能访问 `D1` 或者 `D2` 。这样一来，虚表中条目`function1` 指向`Base::function1()` 并且 `function2` 指向 `Base::function2()`.
 
-The virtual table for Base objects is simple. An object of type Base can only access the members of Base. Base has no access to D1 or D2 functions. Consequently, the entry for function1 points to `Base::function1()` and the entry for function2 points to `Base::function2()`.
+D1 的虚表稍微复杂一些。D1 类型的对象可以访问 D1 和 `Base`的成员，D1 [[override|重写]]了 `function1()`，使得 `D1::function1()` 相较于 `Base::function1()`是更晚被派生的函数。因此，`function1` 指向 `D1::function1()`。因为 D1 没有重写 `function2()`，所以条目 `function2` 指向`Base::function2()`。
 
-The virtual table for D1 is slightly more complex. An object of type D1 can access members of both D1 and Base. However, D1 has overridden `function1()`, making `D1::function1()` more derived than `Base::function1()`. Consequently, the entry for function1 points to `D1::function1()`. D1 hasn’t overridden `function2()`, so the entry for function2 will point to `Base::function2()`.
-
-The virtual table for D2 is similar to D1, except the entry for function1 points to `Base::function1()`, and the entry for function2 points to `D2::function2()`.
+D2 的虚表类似于 D1 的虚表。只不过 `function1` 指向 `Base::function1()`而 `function2` 指向 `D2::function2()`。
 
 Here’s a picture of this graphically:
 
-Although this diagram is kind of crazy looking, it’s really quite simple: the `*__vptr` in each class points to the virtual table for that class. The entries in the virtual table point to the most-derived version of the function that objects of that class are allowed to call.
+尽管看上去有些复杂，每个类的`*__vptr`都指向该类的[[virtual-table|虚表]]，虚表的条目指向该对象能够调用的最后被派生的函数。 
 
-So consider what happens when we create an object of type D1:
+考虑一下当我们创建一个D1类型的对象时会发生什么:
 
 ```cpp
 int main()
@@ -97,11 +96,10 @@ int main()
 }
 ```
 
-COPY
 
-Because d1 is a D1 object, d1 has its `*__vptr` set to the D1 virtual table.
+因为 `d1` 是一个 `D1` 对象，`d1` 的 `*__vptr` 指向 D1 的虚表。
 
-Now, let’s set a base pointer to D1:
+现在，创建一个指向D1的基类指针：
 
 ```cpp
 int main()
@@ -113,11 +111,10 @@ int main()
 }
 ```
 
-COPY
 
-Note that because `dPtr` is a base pointer, it only points to the Base portion of d1. However, also note that `___vptr` is in the Base portion of the class, so dPtr has access to this pointer. Finally, note that `dPtr->__vptr` points to the D1 virtual table! Consequently, even though `dPtr` is of type Base_, it still has access to D1’s virtual table (through `__vptr`).
+因为`dPtr` 是一个基类指针，所以它指向的是`d1`中的`Base`部分。不过，由于 `__vptr` 位于`Base`部分，所以`dPtr` 是可以访问该指针的。最终，==一定要注意 `dPtr->__vptr`  指向的是 D1 的虚表！ 因此，即使`dPtr` 是`Base`类型指针，它仍然能够访问 D1’的虚表(通过 `__vptr`)。==
 
-So what happens when we try to call `dPtr->function1()`?
+那么，当我们尝试调用`dPtr->function1()`时会发生什么？
 
 ```cpp
 int main()
@@ -130,29 +127,28 @@ int main()
 }
 ```
 
-COPY
+首先，程序识别到 `function1()` 是一个[[virtual-function|虚函数]]。其次，程序使用 `dPtr->__vptr` 获取 D1 的虚函数表。然后，它会在虚表中查找 `function1()` 对应的版本——即 `D1::function1()`。因此 `dPtr->function1()` 会解析为 `D1::function1()`！
 
-First, the program recognizes that `function1()` is a virtual function. Second, the program uses `dPtr->__vptr` to get to D1’s virtual table. Third, it looks up which version of function1() to call in D1’s virtual table. This has been set to `D1::function1()`. Therefore, `dPtr->function1()` resolves to `D1::function1()`!
-
-Now, you might be saying, “But what if dPtr really pointed to a Base object instead of a D1 object. Would it still call `D1::function1()`?”. The answer is no.
+你可能会有这样的疑问：“如果 `dPtr` 指向的是一个`Base`类的对象，而不是 D1 类型的对象会怎样？它仍然会调用`D1::function1()`吗？答案是否定的。
 
 ```cpp
 int main()
 {
     Base b;
-    Base* bPtr = &b;
+    Base* bPtr = &b;//指向一个Base对象
     bPtr->function1();
 
     return 0;
 }
 ```
 
-COPY
 
-In this case, when b is created, `__vptr` points to Base’s virtual table, not D1’s virtual table. Consequently, `bPtr->__vptr` will also be pointing to Base’s virtual table. Base’s virtual table entry for `function1()` points to `Base::function1()`. Thus, `bPtr->function1()` resolves to `Base::function1()`, which is the most-derived version of `function1()` that a Base object should be able to call.
+在这个例子中，`b` 被创建后， `__vptr` 就被指向了`Base`的虚表而不是D1的虚表。这样一来，`bPtr->__vptr` 也同样指向`Base`的虚表。`Base`虚表的`function1()` 条目指向 `Base::function1()`。因此 `bPtr->function1()` 解析到 `Base::function1()`，因为它是能看到的最后派生的函数。
 
-By using these tables, the compiler and program are able to ensure function calls resolve to the appropriate virtual function, even if you’re only using a pointer or reference to a base class!
+通过使用这些表，编译器和程序能够确保函数调用解析为适当的虚函数，即使你只使用指向基类的指针或引用！
 
-Calling a virtual function is slower than calling a non-virtual function for a couple of reasons: First, we have to use the *__vptr to get to the appropriate virtual table. Second, we have to index the virtual table to find the correct function to call. Only then can we call the function. As a result, we have to do 3 operations to find the function to call, as opposed to 2 operations for a normal indirect function call, or one operation for a direct function call. However, with modern computers, this added time is usually fairly insignificant.
+调用虚函数比调用非虚函数要慢，这有几个原因：首先，我们必须使用`*__vptr`来获得适当的虚表。其次，我们必须对虚拟表建立索引，以找到要调用的函数。因此，我们必须执行3个操作才能找到要调用的函数，而普通的间接函数调用则需要执行2个操作，直接函数调用则需要执行1个操作。然而，在现代计算机中，这增加的时间通常是相当微不足道的。
 
-Also as a reminder, any class that uses virtual functions has a *__vptr, and thus each object of that class will be bigger by one pointer. Virtual functions are powerful, but they do have a performance cost.
+Calling a virtual function is slower than calling a non-virtual function for a couple of reasons: First, we have to use the `*__vptr` to get to the appropriate virtual table. Second, we have to index the virtual table to find the correct function to call. Only then can we call the function. As a result, we have to do 3 operations to find the function to call, as opposed to 2 operations for a normal indirect function call, or one operation for a direct function call. However, with modern computers, this added time is usually fairly insignificant.
+
+Also as a reminder, any class that uses virtual functions has a `*__vptr`, and thus each object of that class will be bigger by one pointer. Virtual functions are powerful, but they do have a performance cost.
