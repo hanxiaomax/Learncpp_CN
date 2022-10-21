@@ -13,6 +13,7 @@ tags:
 
 ??? note "关键点速记"
 
+	- 接口类也有虚表，但是纯虚函数的虚表条目要么是空指针的要么是打印报错函数
 
 
 
@@ -397,10 +398,9 @@ Sally says buzz
 
 ## 接口类
 
-[[interface-class|接口类]]没有成员变量，
-a class that has no member variables, and where _all_ of the functions are pure virtual! In other words, the class is purely a definition, and has no actual implementation. Interfaces are useful when you want to define the functionality that derived classes must implement, but leave the details of how the derived class implements that functionality entirely up to the derived class.
+[[interface-class|接口类]]没有成员变量，而且**所有**函数都是[[pure-virtual|纯虚函数]]！换言之，这个类就是一个纯定义，并没有实际实现。当我们需要定义出派生类必须实现的功能时，并且将这些功能都留给派生类实现时，使用接口类是很有用的。
 
-Interface classes are often named beginning with an I. Here’s a sample interface class:
+接口类命名通常以`I`开头，下面是一个示例接口类：
 
 ```cpp
 class IErrorLog
@@ -415,16 +415,14 @@ public:
 };
 ```
 
-COPY
+任何从`IErrorLog`继承的类都必须实现这三个函数，以便被能够被实例化。你可以派生一个名为`FileErrorLog`的类，其中`openLog()`打开磁盘上的文件，`closeLog()`关闭文件，`writeError()`将消息写入文件。然后可派生另一个名为`ScreenErrorLog`的类，其中`openLog()`和`closeLog()`不执行任何操作，而`writeError()`在屏幕上的弹出消息框中打印消息。
 
-Any class inheriting from IErrorLog must provide implementations for all three functions in order to be instantiated. You could derive a class named FileErrorLog, where openLog() opens a file on disk, closeLog() closes the file, and writeError() writes the message to the file. You could derive another class called ScreenErrorLog, where openLog() and closeLog() do nothing, and writeError() prints the message in a pop-up message box on the screen.
-
-Now, let’s say you need to write some code that uses an error log. If you write your code so it includes FileErrorLog or ScreenErrorLog directly, then you’re effectively stuck using that kind of error log (at least without recoding your program). For example, the following function effectively forces callers of mySqrt() to use a FileErrorLog, which may or may not be what they want.
+现在，假设你需要编写一些代码并需要使用错误日志功能。如果你编写的代码直接包使用 `FileErrorLog` 或 `ScreenErrorLog`，那么你将**只能**使用这种指定的错误日志类型(在不修改代码的情况下)。例如，下面的函数迫使`mySqrt()`的调用者使用`FileErrorLog`，但调用者可能并不想使用这种错误日志。
 
 ```cpp
 #include <cmath> // for sqrt()
 
-double mySqrt(double value, FileErrorLog& log)
+double mySqrt(double value, FileErrorLog& log) //注意参数使用的是FileErrorLog类型
 {
     if (value < 0.0)
     {
@@ -438,9 +436,7 @@ double mySqrt(double value, FileErrorLog& log)
 }
 ```
 
-COPY
-
-A much better way to implement this function is to use IErrorLog instead:
+更加灵活的办法是将该函数实现为使用 `IErrorLog` 类型的参数：
 
 ```cpp
 #include <cmath> // for sqrt()
@@ -458,14 +454,12 @@ double mySqrt(double value, IErrorLog& log)
 }
 ```
 
-COPY
+这样一来，调用者可以传入符合 `IErrorLog` 接口的任何类。如果它们希望将错误日志写到文件，则可以传入 `FileErrorLog` 的实例。如果想错误信息打印到屏幕上，则可以传入一个 `ScreenErrorLog` 的实例。如果他们想做一些你甚至没有想过的事情，比如在出现错误时向某人发送电子邮件，则可以从`IErrorLog`(例如EmailErrorLog)派生一个新类并使用它的实例！通过使用IErrorLog，您的函数变得更加独立和灵活。
 
-Now the caller can pass in _any_ class that conforms to the IErrorLog interface. If they want the error to go to a file, they can pass in an instance of FileErrorLog. If they want it to go to the screen, they can pass in an instance of ScreenErrorLog. Or if they want to do something you haven’t even thought of, such as sending an email to someone when there’s an error, they can derive a new class from IErrorLog (e.g. EmailErrorLog) and use an instance of that! By using IErrorLog, your function becomes more independent and flexible.
+不要忘记为接口类定义虚析构函数，以便在**删除指向接口的指针**时调用适当的派生析构函数。
 
-Don’t forget to include a virtual destructor for your interface classes, so that the proper derived destructor will be called if a pointer to the interface is deleted.
-
-Interface classes have become extremely popular because they are easy to use, easy to extend, and easy to maintain. In fact, some modern languages, such as Java and C#, have added an “interface” keyword that allows programmers to directly define an interface class without having to explicitly mark all of the member functions as abstract. Furthermore, although Java (prior to version 8) and C# will not let you use multiple inheritance on normal classes, they will let you multiple inherit as many interfaces as you like. Because interfaces have no data and no function bodies, they avoid a lot of the traditional problems with multiple inheritance while still providing much of the flexibility.
+接口类非常常用，因为它们易于使用、易于扩展和易于维护。事实上，一些现代语言，如Java和C#，已经添加了 `interface` 关键字，允许程序员直接定义接口类，而不必显式地将所有成员函数标记为抽象。此外，尽管Java(版本8之前的版本)和C#不允许对普通类使用多重继承，但它们允许您根据需要对任意多的接口进行多重继承。因为接口没有数据也没有函数体，所以它们避免了许多传统的多重继承问题，同时仍然提供了很大的灵活性。
 
 ## 纯虚函数和虚表
 
-Abstract classes still have virtual tables, as these can still be used if you have a pointer or reference to the abstract class. The virtual table entry for a class with a pure virtual function will generally either contain a null pointer, or point to a generic function that prints an error (sometimes this function is named __purecall).
+==抽象类仍然有虚表，因为如果您有指向抽象类的指针或引用，这些虚表仍然有用==。带有纯虚函数的类的虚表项通常要么包含空指针，要么指向打印错误的泛型函数(有时该函数被命名为`__purecall`)。
