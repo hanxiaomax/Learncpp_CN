@@ -7,10 +7,14 @@ time: 2022-8-26
 type: translation
 tags:
 - inheritance
+- operator<<
 ---
 
 ??? note "关键点速记"
 
+	- [[friend-function|友元函数]]不属于[[member-function|成员函数]]，因此不能是[[virtual-function|虚函数]]
+	- 不同类`<<`需要传入不同类的对象，所以即使能定义为虚函数，派生类也没法重写它
+	- 友元的运算符可以将实际工作委派给一个普通的成员函数（[[virtual-function|虚函数]]），而且无需在派生类中实现该运算符，只需要实现该虚函数的重写函数即可
 
 下面这个程序使用了[[virtual-function|虚函数]]：
 
@@ -53,7 +57,7 @@ int main()
 	Base& b{ d };
 
 	std::cout << "b is a ";
-	b.print(); // xian'de'za'luanmessy, we have to break our print statement to call this function
+	b.print(); // 显得杂乱，与一般的输出语句格格不入
 	std::cout << '\n';
 
 	return 0;
@@ -61,17 +65,16 @@ int main()
 ```
 
 
-In this lesson, we’ll look at how to override `operator<<` for classes using inheritance, so that we can use `operator<<` as expected, like this:
+在这节课中，我们会学习如何使用 `operator<<` 打印继承类的信息，使我们可以使用下面的风格来使用：
 
 ```cpp
 std::cout << "b is a " << b << '\n'; // much better
 ```
 
-COPY
 
-## The challenges with operator`<<`
+## 挑战
 
-Let’s start by overloading `operator<<` in the typical way:
+首先我们使用[[overload|重载]]的方式实现 `operator<<` ：
 
 ```cpp
 #include <iostream>
@@ -112,16 +115,14 @@ int main()
 }
 ```
 
-COPY
-
-Because there is no need for virtual function resolution here, this program works as we’d expect, and prints:
+由于不需要[[virtual-function|虚函数]]解析，所以程序能够正确地工作并打印：
 
 ```
 Base
 Derived
 ```
 
-Now, consider the following `main()` function instead:
+再考虑下面的 `main()` ：
 
 ```cpp
 int main()
@@ -134,37 +135,34 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
-
+打印结果：
 ```
 Base
 ```
 
-That’s probably not what we were expecting. This happens because our version of `operator<<` that handles Base objects isn’t virtual, so `std::cout << bref` calls the version of `operator<<` that handles Base objects rather than Derived objects.
+显然输出结果不是我们想要的。当配合`Base`使用非虚的 `operator<<` 时，`std::cout << bref` 会调用基类的 `operator<<` 。
 
-Therein lies the challenge.
+这就是我们要面临的挑战。
 
 ## Operator << 可以是虚函数吗？
 
-If this issue is that `operator<<` isn’t virtual, can’t we simply make it virtual?
+如果问题的原因在于 `operator<<` 不是虚函数，那么可以把它设为 `virtual`吗？
 
-The short answer is no. There are a number of reasons for this.
+不行！而且有很多原因：
 
-First, only member functions can be virtualized -- this makes sense, since only classes can inherit from other classes, and there’s no way to override a function that lives outside of a class (you can overload non-member functions, but not override them). Because we typically implement operator<< as a friend, and friends aren’t considered member functions, a friend version of operator<< is ineligible to be virtualized. (For a review of why we implement operator<< this way, please revisit lesson [[14-5-overloading-operators-using-member-functions|14.5 - 使用成员函数重载运算符]])。
+首先，只有成员函数可以被虚拟化——这是有意义的，因为只有类可以从其他类继承，没有办法重写存在于类外部的函数(可以重载非成员函数，但不能重写它们)。因为我们通常将操作符`<<`实现为友元，==而友元不被视为成员函数==，所以操作符<<的友元版本不符合称为虚函数的条件。(要了解为什么要以这种方式实现操作符<<，请看[[14-5-overloading-operators-using-member-functions|14.5 -使用成员函数重载运算符]])。
 
-Second, even if we could virtualize `operator<<` there’s the problem that the function parameters for `Base::operator<<` and `Derived::operator<<` differ (the Base version would take a Base parameter and the Derived version would take a Derived parameter). Consequently, the Derived version wouldn’t be considered an override of the Base version, and thus be ineligible for virtual function resolution.
+其次，即使我们可以把 `operator<<` 定义为虚函数，也存在 `Base::operator<<` 和 `Derived::operator<<` 的函数形参不同的问题(Base版本将接受Base形参，而Derived版本将接受Derived形参)。因此，`Derived` 版本不会被认为是`Base`版本的[[override|重写]]，因此不符合虚函数解析的条件。
 
-So what’s a programmer to do?
+那么应该怎么做呢？
 
 ## 解决办法
 
-The answer, as it turns out, is surprisingly simple.
+答案非常简单。
 
-First, we set up `operator<<` as a friend in our base class as usual. But instead of having `operator<<` do the printing itself, we delegate that responsibility to a normal member function that _can_ be virtualized!
+首先，在类中添加[[friend-function|友元函数]] `operator<<`  。但是，不要让 `operator<<`自己否则实际的打印，而是将这打印工作委托给一个可以被虚化的普通成员函数！
 
-Here’s the full solution that works:
+以下是有效的解决方案:
 
 ```cpp
 #include <iostream>
@@ -172,15 +170,15 @@ Here’s the full solution that works:
 class Base
 {
 public:
-	// Here's our overloaded operator<<
+	// 重载的 operator<<
 	friend std::ostream& operator<<(std::ostream& out, const Base& b)
 	{
-		// Delegate printing responsibility for printing to member function print()
+		// 委派给成员函数 print()
 		return b.print(out);
 	}
 
-	// We'll rely on member function print() to do the actual printing
-	// Because print is a normal member function, it can be virtualized
+	// 我们依赖 print() 函数进行实际的打印工作
+	// 因为 print 是一个普通的成员函数，所以可以是虚函数
 	virtual std::ostream& print(std::ostream& out) const
 	{
 		out << "Base";
@@ -191,12 +189,13 @@ public:
 class Derived : public Base
 {
 public:
-	// Here's our override print function to handle the Derived case
+	// 重写的 print 函数
 	std::ostream& print(std::ostream& out) const override
 	{
 		out << "Derived";
 		return out;
 	}
+	//不需要实现operator<<
 };
 
 int main()
@@ -205,7 +204,7 @@ int main()
 	std::cout << b << '\n';
 
 	Derived d{};
-	std::cout << d << '\n'; // note that this works even with no operator<< that explicitly handles Derived objects
+	std::cout << d << '\n'; // 注意，这一行代码可以正确工作，即使派生类都没有实现该运算符
 
 	Base& bref{ d };
 	std::cout << bref << '\n';
@@ -214,9 +213,7 @@ int main()
 }
 ```
 
-COPY
-
-The above program works in all three cases:
+三条语句都能正确执行：
 
 ```
 Base
@@ -224,14 +221,14 @@ Derived
 Derived
 ```
 
-Let’s examine how in more detail.
+让我们更详细地研究一下如何做到这一点。
 
-First, in the `Base` case, we call `operator<<`, which calls virtual function `print()`. Since our `Base` reference parameter points to a Base object, `b.print()` resolves to `Base::print()`, which does the printing. Nothing too special here.
+首先，对于 `Base` 的例子，调用 `operator<<` 时会调用虚函数 `print()` 。因为的`Base` 引用参数指向一个`Base`对象，`b.print()` 解析为`Base::print()` 并执行打印。这里没什么特别的。
 
-In the `Derived` case, the compiler first looks to see if there’s an `operator<<` that takes a `Derived` object. There isn’t one, because we didn’t define one. Next the compiler looks to see if there’s an operator<< that takes a `Base` object. There is, so the compiler does an implicit upcast of our `Derived` object to a `Base&` and calls the function (we could have done this upcast ourselves, but the compiler is helpful in this regard). This function then calls virtual `print()`, which resolves to `Derived::print()`.
+在对于`Derived`的例子，编译器首先查看是否有接受 `Derived`对象的 `<<` 。没有，因为我们没有定义，接下来，编译器查看是否有接受`Base` 对象的`<<`。有，所以编译器将`Derived` 对象隐式上转换为`Base&` 并调用函数，然后调用虚`print()` ，解析为`Derived::print()`。
 
-Note that we don’t need to define an `operator<<` for each derived class! The version that handles `Base` objects works just fine for both `Base` objects and any class derived from `Base`!
+注意，我们不需要为每个派生类定义`operator<<`，处理 `Base` 对象的版本对`Base` 及其派生的任何类可用！
 
-The third case proceeds as a mix of the first two. First, the compiler matches variable bref with `operator<<` that takes a `Base`. That calls our virtual `print()` function. Since the Base reference is actually pointing to a `Derived` object, this resolves to `Derived::print()`, as we intended.
+第三种情况是前两种情况的混合。首先，编译器将变量`bref`与带有 Base  参数的 `operator<<` 匹配。它调用了虚函数`print()`。因为`Base`引用实际上是指向一个`Derived` 对象，所以它解析为`Derived::print()` ，正如我们期望的那样。
 
-Problem solved.
+问题搞定！

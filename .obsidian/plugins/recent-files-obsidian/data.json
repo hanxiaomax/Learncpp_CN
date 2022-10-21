@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "20-x-Chapter-20-comprehensive-quiz",
+      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
       "basename": "18-11-printing-inherited-classes-using-operator<<",
       "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
     },
     {
-      "basename": "18-8-virtual-base-classes",
-      "path": "docs/18-8-virtual-base-classes.md"
-    },
-    {
       "basename": "18-x-Chapter-18-comprehensive-quiz",
       "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "18-8-virtual-base-classes",
+      "path": "docs/18-8-virtual-base-classes.md"
     },
     {
       "basename": "18-10-dynamic-casting",
@@ -151,10 +159,6 @@
     {
       "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
       "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
     },
     {
       "basename": "17-x-Chapter-17-comprehensive-quiz",
