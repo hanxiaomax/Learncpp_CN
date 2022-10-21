@@ -190,9 +190,10 @@ Printer: 2
 - 首先，虚基类总是在非虚基类之前创建，这确保了所有基类都在它们的派生类之前创建。
 - 其次，请注意 `Scanner` 和 `Printer` 构造函数仍然有对 `PoweredDevice` 构造函数的调用。在创建`Copier`的实例时，这些构造函数调用将被忽略，因为 `Copier` 负责创建 `PoweredDevice`，而不是 `Scanner` 或 `Printer` 。但是，如果我们要创建`Scanner`或`Printer`的实例，就会使用这些构造函数调用，并应用正常的继承规则。
 
-Third, if a class inherits one or more classes that have virtual parents, the _most_ derived class is responsible for constructing the virtual base class. In this case, Copier inherits Printer and Scanner, both of which have a PoweredDevice virtual base class. Copier, the most derived class, is responsible for creation of PoweredDevice. Note that this is true even in a single inheritance case: if Copier singly inherited from Printer, and Printer was virtually inherited from PoweredDevice, Copier is still responsible for creating PoweredDevice.
+第三，如果一个类继承了一个或多个具有虚父类的类，则最后被派生的类会负责构造虚基类。在本例中，`Copier` 继承了`Printer`和`Scanner`，它们都有一个`PoweredDevice`虚基类。最最后被派生的类，负责`PoweredDevice`的创建。注意，即使在单一继承的情况下也是这样：如果`Copier`从`Printer`单独继承，而`Printer`从`PoweredDevice`虚继承，那么`Copier`仍然负责创建`PoweredDevice`。
 
-Fourth, all classes inheriting a virtual base class will have a virtual table, even if they would normally not have one otherwise, and thus instances of the class will be larger by a pointer.
+第四，所有继承虚基类的类都将有一个虚表，即使它们通常没有虚表，因此类的实例其大小会增加一个指针。
 
-Because Scanner and Printer derive virtually from PoweredDevice, Copier will only be one PoweredDevice subobject. Scanner and Printer both need to know how to find that single PoweredDevice subobject, so they can access its members (because after all, they are derived from it). This is typically done through some virtual table magic (which essentially stores the offset from each subclass to the PoweredDevice subobject).
+因为`Scanner`和`Printer`实际上是从`PoweredDevice`派生的，所以`Copier`只是一个`PoweredDevice`子对象(subobject)。`Scanner`和`Printer`都需要知道如何找到单个`PoweredDevice`子对象，这样它们才能访问它的成员(因为它们毕竟是从它派生的)。这通常是通过一些虚表操作来完成的(它实际上存储了从每个子类到`PoweredDevice`子对象的偏移量)。
+
 

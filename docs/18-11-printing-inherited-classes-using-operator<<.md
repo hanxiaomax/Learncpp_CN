@@ -12,7 +12,8 @@ tags:
 ??? note "关键点速记"
 
 
-Consider the following program that makes use of a virtual function:
+下面这个程序使用了[[virtual-function|虚函数]]：
+
 
 ```cpp
 #include <iostream>
@@ -39,11 +40,9 @@ int main()
 }
 ```
 
-COPY
+`b.print()` 会调用 `Derived::print()` (因为 `b` 指向 `Derived` 类型的对象 object，`Base::print()`是一个虚函数，而且 `Derived::print()` 是[[override|重写]]函数)。
 
-By now, you should be comfortable with the fact that `b.print()` will call `Derived::print()` (because b is pointing to a Derived class object, `Base::print()` is a virtual function, and `Derived::print()` is an override).
-
-While calling member functions like this to do output is okay, this style of function doesn’t mix well with `std::cout`:
+虽然调用`print()`这样的成员函数来执行输出是可以的，但这种类型的函数不能很好地与`std::cout`一起使用：
 
 ```cpp
 #include <iostream>
@@ -54,14 +53,13 @@ int main()
 	Base& b{ d };
 
 	std::cout << "b is a ";
-	b.print(); // messy, we have to break our print statement to call this function
+	b.print(); // xian'de'za'luanmessy, we have to break our print statement to call this function
 	std::cout << '\n';
 
 	return 0;
 }
 ```
 
-COPY
 
 In this lesson, we’ll look at how to override `operator<<` for classes using inheritance, so that we can use `operator<<` as expected, like this:
 

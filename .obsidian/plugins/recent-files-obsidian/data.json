@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "18-11-printing-inherited-classes-using-operator<<",
+      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
+    },
+    {
       "basename": "18-8-virtual-base-classes",
       "path": "docs/18-8-virtual-base-classes.md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "upcasting",
       "path": "docs/upcasting.md"
-    },
-    {
-      "basename": "18-11-printing-inherited-classes-using-operator<<",
-      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
     },
     {
       "basename": "18-9-object-slicing",
