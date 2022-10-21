@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "18-8-virtual-base-classes",
+      "path": "docs/18-8-virtual-base-classes.md"
+    },
+    {
       "basename": "18-10-dynamic-casting",
       "path": "docs/18-10-dynamic-casting.md"
+    },
+    {
+      "basename": "Run-time-type-information-RTTI",
+      "path": "docs/Run-time-type-information-RTTI.md"
     },
     {
       "basename": "downcasting",
@@ -21,16 +29,8 @@
       "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
     {
-      "basename": "Run-time-type-information-RTTI",
-      "path": "docs/Run-time-type-information-RTTI.md"
-    },
-    {
       "basename": "18-9-object-slicing",
       "path": "docs/18-9-object-slicing.md"
-    },
-    {
-      "basename": "18-8-virtual-base-classes",
-      "path": "docs/18-8-virtual-base-classes.md"
     },
     {
       "basename": "Frankenobject",

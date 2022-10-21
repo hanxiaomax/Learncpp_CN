@@ -29,7 +29,7 @@ class PoweredDevice
 public:
     PoweredDevice(int power)
     {
-		std::cout << "PoweredDevice: " << power << '\n';
+	std::cout << "PoweredDevice: " << power << '\n';
     }
 };
 
@@ -39,7 +39,7 @@ public:
     Scanner(int scanner, int power)
         : PoweredDevice{ power }
     {
-		std::cout << "Scanner: " << scanner << '\n';
+	std::cout << "Scanner: " << scanner << '\n';
     }
 };
 
@@ -49,7 +49,7 @@ public:
     Printer(int printer, int power)
         : PoweredDevice{ power }
     {
-		std::cout << "Printer: " << printer << '\n';
+	std::cout << "Printer: " << printer << '\n';
     }
 };
 
@@ -63,17 +63,14 @@ public:
 };
 ```
 
-COPY
-
-Although you might expect to get an inheritance diagram that looks like this:
+也许你会认为上述代码会得到下面这样的继承结构：
 
 ![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22287%22%20height=%22213%22%3E%3C/svg%3E)
 
-If you were to create a Copier class object, by default you would end up with two copies of the PoweredDevice class -- one from Printer, and one from Scanner. This has the following structure:
-
+如果要创建一个 `Copier` 类对象，默认情况下最终会得到`PoweredDevice`类的两个副本——一个来自`Printer`，一个来自`Scanner`。它有以下结构:
 ![](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22344%22%20height=%22213%22%3E%3C/svg%3E)
 
-We can create a short example that will show this in action:
+我们可以创建一个简短的示例来演示这一点：
 
 ```cpp
 int main()
@@ -84,16 +81,17 @@ int main()
 }
 ```
 
-COPY
 
-This produces the result:
-
+```
 PoweredDevice: 3
 Scanner: 1
 PoweredDevice: 3
 Printer: 2
+```
 
-As you can see, PoweredDevice got constructed twice.
+看到了吗？`PoweredDevice` 被构建了两次。
+
+虽然这通常是期望的结果，但在有时你可能只想让 Scanner 和打印机共享PoweredDevice的一个副本。
 
 While this is often desired, other times you may want only one copy of PoweredDevice to be shared by both Scanner and Printer.
 
