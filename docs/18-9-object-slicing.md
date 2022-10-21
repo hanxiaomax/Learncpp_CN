@@ -12,6 +12,7 @@ tags:
 ??? note "关键点速记"
 
 	- [[pass-by-value|按值传递]]对象时，如果形参是基类，实参是派生类，则会被切片，导致派生类中虚函数无法调用。最保险的是[[pass-by-reference|按引用传递]]，此时即使转换成了基类的引用，也是不妨碍虚函数工作。
+	- 确保函数形参是引用(或指针)，并在派生类中尽量避免任何形式的值传递。
 
 让我们回到我们之前的一个例子:
 
@@ -187,9 +188,9 @@ I am a Base with value 6
 std::vector<Base&> v{};
 ```
 
-可惜，上面的代码根本就不能编译。`std::vector` 中的对象是必须 be assignable, whereas references can’t be reassigned (only initialized).
+可惜，上面的代码根本就不能编译。==`std::vector` 中的对象是必须可以赋值的，显然[[lvalue-reference|左值引用]]不满足要求。==
 
-One way to address this is to make a vector of pointers:
+解决这个问题的唯一办法是将类型定义为基类的指针类型。
 
 ```cpp
 #include <iostream>
@@ -199,7 +200,7 @@ int main()
 {
 	std::vector<Base*> v{};
 
-	Base b{ 5 }; // b and d can't be anonymous objects
+	Base b{ 5 }; // b 和 d 不能是匿名对象（指针不能指向匿名对象）
 	Derived d{ 6 };
 
 	v.push_back(&b); // add a Base object to our vector
@@ -213,18 +214,17 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印：
 
 ```
 I am a Base with value 5
 I am a Derived with value 6
 ```
 
-which works! A few comments about this. First, nullptr is now a valid option, which may or may not be desirable. Second, you now have to deal with pointer semantics, which can be awkward. But on the upside, this also allows the possibility of dynamic memory allocation, which is useful if your objects might otherwise go out of scope.
+搞定！对此有几点还需要注意。首先，nullptr 现在也可以被存进去，这可能是你想要的结果也可能不是。其次，你现在必须处理指针语义，这可能会很麻烦。好的方面是，这样一来就可以使用动态内存分配，如果对象需要超出作用域，这是很有用的。
 
-Another option is to use std::reference_wrapper, which is a class that mimics an reassignable reference:
+==另一个选择是使用`std::reference_wrapper`，它是一个类，可模拟出可赋值的引用类型：==
+
 
 ```cpp
 #include <functional> // for std::reference_wrapper
@@ -259,7 +259,7 @@ public:
 
 int main()
 {
-	std::vector<std::reference_wrapper<Base>> v{}; // a vector of reassignable references to Base
+	std::vector<std::reference_wrapper<Base>> v{}; // 存放 Base 的可赋值引用的容器
 
 	Base b{ 5 }; // b and d can't be anonymous objects
 	Derived d{ 6 };
@@ -276,13 +276,13 @@ int main()
 }
 ```
 
-COPY
 
-## 畸形对象 Frankenobject
 
-In the above examples, we’ve seen cases where slicing lead to the wrong result because the derived class had been sliced off. Now let’s take a look at another dangerous case where the derived object still exists!
+## 缝合怪对象 Frankenobject
 
-Consider the following code:
+在上面的例子中，我们已经看到了对象切片可能导致错误的情况（由于派生类被切掉所引起）。现在让我们来看另一种危险的情况，其中派生对象仍然存在！
+
+考虑下面代码：
 
 ```cpp
 int main()
@@ -291,25 +291,21 @@ int main()
     Derived d2{ 6 };
     Base& b{ d2 };
 
-    b = d1; // this line is problematic
+    b = d1; // 问题所在（通过b给d2赋值为d1，注意这里不是给引用重新赋值）
 
     return 0;
 }
 ```
 
-函数的前三行非常简单。创建两个Derived对象，并对第二个对象设置Base引用。
+函数的前三行非常简单。创建两个`Derived`对象，并创建一个第二个对象的`Base`类型引用。
 
-第四行是出错的地方。因为b指向d2，我们把d1赋值给b，你可能认为结果是d1会被复制到d2中，如果b是派生的。但是b是Base, c++为类提供的操作符=在默认情况下不是虚的。因此，只有d1的Base部分被复制到d2中。
+第四行是出错的地方。因为`b`指向`d2`，我们把`d1`赋值给`b`（相当于`d2=d1`），你可能认为结果是`d1`会被复制到`d2`中。但是`b`是`Base`, 而C++为类提供的操作符=在默认情况下不是虚函数的。因此，只有`d1`的`Base`部分被复制到`d2`中。
 
-结果，你会发现d2现在有d1的基部分和d2的派生部分。在这个特定的例子中，这不是问题(因为Derived类本身没有数据)，但是在大多数情况下，您只需要创建一个Frankenobject——由多个对象的部分组成。更糟糕的是，没有什么简单的方法可以避免这种情况的发生(除了尽可能避免这样的任务)。
+就是`d2`现在有`d1`的基部分和`d2`的派生部分。在这个特定的例子中，这不是问题(因为`Derived`类本身没有数据)，但是在大多数情况下，你实际创建一个[[Frankenobject|缝合怪对象]]——由多个对象的部分组成。更糟糕的是，没有什么简单的方法可以避免这种情况的发生(只能尽量避免这样的赋值)。
 
-
-The first three lines in the function are pretty straightforward. Create two Derived objects, and set a Base reference to the second one.
-
-The fourth line is where things go astray. Since b points at d2, and we’re assigning d1 to b, you might think that the result would be that d1 would get copied into d2 -- and it would, if b were a Derived. But b is a Base, and the operator= that C++ provides for classes isn’t virtual by default. Consequently, only the Base portion of d1 is copied into d2.
-
-As a result, you’ll discover that d2 now has the Base portion of d1 and the Derived portion of d2. In this particular example, that’s not a problem (because the Derived class has no data of its own), but in most cases, you’ll have just created a Frankenobject -- composed of parts of multiple objects. Worse, there’s no easy way to prevent this from happening (other than avoiding assignments like this as much as possible).
 
 ## 结论
 
-Although C++ supports assigning derived objects to base objects via object slicing, in general, this is likely to cause nothing but headaches, and you should generally try to avoid slicing. Make sure your function parameters are references (or pointers) and try to avoid any kind of pass-by-value when it comes to derived classes.
+尽管C++支持通过对象切片将派生对象分配给基对象，但这么做多数情况下会带来问题，因此应该尽量避免切片。==确保函数形参是引用(或指针)，并在派生类中尽量避免任何形式的值传递。==
+
+

@@ -5,6 +5,10 @@
       "path": "docs/18-9-object-slicing.md"
     },
     {
+      "basename": "Frankenobject",
+      "path": "docs/Frankenobject.md"
+    },
+    {
       "basename": "18-2-virtual-functions-and-polymorphism",
       "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "14-17-overloading-operators-and-function-templates",
       "path": "docs/14-17-overloading-operators-and-function-templates.md"
-    },
-    {
-      "basename": "14-16-shallow-vs-deep-copying",
-      "path": "docs/14-16-shallow-vs-deep-copying.md"
     }
   ],
   "omittedPaths": [],
