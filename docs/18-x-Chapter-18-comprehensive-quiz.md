@@ -46,7 +46,7 @@ tags:
 
 [[18-8-virtual-base-classes|18.8 - 虚基类]]
 
-- [[virtual-base-class|虚基类]]是一种基类，不论它被继承多少次，它始终只会被[[introduce]]一次。
+- [[virtual-base-class|虚基类]]是一种基类，不论它被继承多少次，它始终只会被构造一次。
 
 [[18-9-object-slicing|18.9 - 对象切片]]
 

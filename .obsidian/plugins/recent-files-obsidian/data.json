@@ -5,6 +5,10 @@
       "path": "docs/18-8-virtual-base-classes.md"
     },
     {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
       "basename": "18-10-dynamic-casting",
       "path": "docs/18-10-dynamic-casting.md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "18-11-printing-inherited-classes-using-operator<<",
       "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
     },
     {
       "basename": "18-9-object-slicing",
@@ -195,10 +195,6 @@
     {
       "basename": "16-4-association",
       "path": "docs/16-4-association.md"
-    },
-    {
-      "basename": "16-3-aggregation",
-      "path": "docs/16-3-aggregation.md"
     }
   ],
   "omittedPaths": [],

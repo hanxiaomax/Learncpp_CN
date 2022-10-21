@@ -91,13 +91,12 @@ Printer: 2
 
 看到了吗？`PoweredDevice` 被构建了两次。
 
-虽然这通常是期望的结果，但在有时你可能只想让 Scanner 和打印机共享PoweredDevice的一个副本。
+虽然这通常是期望的结果，但在有时你可能只想让 `Scanner` 和 `Printer` 共享 `PoweredDevice` 的一个副本。
 
-While this is often desired, other times you may want only one copy of PoweredDevice to be shared by both Scanner and Printer.
 
 ## 虚基类
 
-To share a base class, simply insert the “virtual” keyword in the inheritance list of the derived class. This creates what is called a **virtual base class**, which means there is only one base object. The base object is shared between all objects in the inheritance tree and it is only constructed once. Here is an example (without constructors for simplicity) showing how to use the virtual keyword to create a shared base class:
+要共享基类，只需在派生类的继承列表中插入" virtual "关键字。这将创建所谓的[[virtual-base-class|虚基类]]，这意味着只有一个基类对象。基类对象在继承树中的所有对象之间共享，并且只构造一次。下面是一个示例(为了简单起见，没有构造函数)，演示如何使用 `virtual` 关键字创建共享基类:
 
 ```cpp
 class PoweredDevice
@@ -117,11 +116,10 @@ class Copier: public Scanner, public Printer
 };
 ```
 
-COPY
+现在，当你创建一个 `Copier` 类对象时，每个`Copier`将只获得一个由`Scanner`和`Printer`共享的`PoweredDevice`副本。
 
-Now, when you create a Copier class object, you will get only one copy of PoweredDevice per Copier that will be shared by both Scanner and Printer.
+但是，这又导致了另一个问题：如果`Scanner`和`Printer`共享一个`PoweredDevice`基类，那么谁负责创建它呢？事实证明，答案是 `Copier` 。 `Copier` 的构造函数负责创建 `PoweredDevice`。因此， `Copier` 可以直接调用非直接父类(non-immediate-parent构造函数一次：
 
-However, this leads to one more problem: if Scanner and Printer share a PoweredDevice base class, who is responsible for creating it? The answer, as it turns out, is Copier. The Copier constructor is responsible for creating PoweredDevice. Consequently, this is one time when Copier is allowed to call a non-immediate-parent constructor directly:
 
 ```cpp
 #include <iostream>
@@ -166,9 +164,7 @@ public:
 };
 ```
 
-COPY
-
-This time, our previous example:
+再看前面的例子：
 
 ```cpp
 int main()
@@ -179,15 +175,22 @@ int main()
 }
 ```
 
-COPY
-
-produces the result:
+结果：
 
 ```
 PoweredDevice: 3
 Scanner: 1
 Printer: 2
 ```
+
+如您所见，`PoweredDevice` 只构造一次。
+
+有几个容易忽视的细节：
+
+首先，虚基类总是在非虚基类之前创建，这确保了所有基类都在它们的派生类之前创建。
+
+其次，请注意 `Scanner` 和 `Printer` 构造函数仍然有对 `PoweredDevice` 构造函数的调用。在创建copy的实例时，这些构造函数调用将被忽略，因为copy负责创建PoweredDevice，而不是Scanner或Printer。但是，如果我们要创建Scanner或Printer的实例，就会使用这些构造函数调用，并应用正常的继承规则。
+
 
 As you can see, PoweredDevice only gets constructed once.
 
