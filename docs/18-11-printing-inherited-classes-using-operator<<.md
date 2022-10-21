@@ -1,6 +1,6 @@
 ---
-title: 18.11 - 使用<<运算符打印继承类
-alias: 18.11 - 使用<<运算符打印继承类
+title: 18.11 - 使用 << 运算符打印继承类
+alias: 18.11 - 使用 << 运算符打印继承类
 origin: /printing-inherited-classes-using-operator/
 origin_title: "18.11 — Printing inherited classes using operator<<"
 time: 2022-8-26
@@ -41,9 +41,9 @@ int main()
 
 COPY
 
-By now, you should be comfortable with the fact that b.print() will call Derived::print() (because b is pointing to a Derived class object, Base::print() is a virtual function, and Derived::print() is an override).
+By now, you should be comfortable with the fact that `b.print()` will call `Derived::print()` (because b is pointing to a Derived class object, `Base::print()` is a virtual function, and `Derived::print()` is an override).
 
-While calling member functions like this to do output is okay, this style of function doesn’t mix well with std::cout:
+While calling member functions like this to do output is okay, this style of function doesn’t mix well with `std::cout`:
 
 ```cpp
 #include <iostream>
@@ -63,7 +63,7 @@ int main()
 
 COPY
 
-In this lesson, we’ll look at how to override operator<< for classes using inheritance, so that we can use operator<< as expected, like this:
+In this lesson, we’ll look at how to override `operator<<` for classes using inheritance, so that we can use `operator<<` as expected, like this:
 
 ```cpp
 std::cout << "b is a " << b << '\n'; // much better
@@ -73,7 +73,7 @@ COPY
 
 ## The challenges with operator`<<`
 
-Let’s start by overloading operator<< in the typical way:
+Let’s start by overloading `operator<<` in the typical way:
 
 ```cpp
 #include <iostream>
@@ -123,7 +123,7 @@ Base
 Derived
 ```
 
-Now, consider the following main() function instead:
+Now, consider the following `main()` function instead:
 
 ```cpp
 int main()
@@ -140,15 +140,17 @@ COPY
 
 This program prints:
 
+```
 Base
+```
 
-That’s probably not what we were expecting. This happens because our version of operator<< that handles Base objects isn’t virtual, so std::cout << bref calls the version of operator<< that handles Base objects rather than Derived objects.
+That’s probably not what we were expecting. This happens because our version of `operator<<` that handles Base objects isn’t virtual, so `std::cout << bref` calls the version of `operator<<` that handles Base objects rather than Derived objects.
 
 Therein lies the challenge.
 
-**Can we make Operator << virtual?**
+## Operator << 可以是虚函数吗？
 
-If this issue is that operator<< isn’t virtual, can’t we simply make it virtual?
+If this issue is that `operator<<` isn’t virtual, can’t we simply make it virtual?
 
 The short answer is no. There are a number of reasons for this.
 
@@ -226,12 +228,12 @@ Derived
 
 Let’s examine how in more detail.
 
-First, in the Base case, we call operator<<, which calls virtual function print(). Since our Base reference parameter points to a Base object, b.print() resolves to Base::print(), which does the printing. Nothing too special here.
+First, in the `Base` case, we call `operator<<`, which calls virtual function `print()`. Since our `Base` reference parameter points to a Base object, `b.print()` resolves to `Base::print()`, which does the printing. Nothing too special here.
 
-In the Derived case, the compiler first looks to see if there’s an operator<< that takes a Derived object. There isn’t one, because we didn’t define one. Next the compiler looks to see if there’s an operator<< that takes a Base object. There is, so the compiler does an implicit upcast of our Derived object to a Base& and calls the function (we could have done this upcast ourselves, but the compiler is helpful in this regard). This function then calls virtual print(), which resolves to Derived::print().
+In the `Derived` case, the compiler first looks to see if there’s an `operator<<` that takes a `Derived` object. There isn’t one, because we didn’t define one. Next the compiler looks to see if there’s an operator<< that takes a `Base` object. There is, so the compiler does an implicit upcast of our `Derived` object to a `Base&` and calls the function (we could have done this upcast ourselves, but the compiler is helpful in this regard). This function then calls virtual `print()`, which resolves to `Derived::print()`.
 
-Note that we don’t need to define an operator<< for each derived class! The version that handles Base objects works just fine for both Base objects and any class derived from Base!
+Note that we don’t need to define an `operator<<` for each derived class! The version that handles `Base` objects works just fine for both `Base` objects and any class derived from `Base`!
 
-The third case proceeds as a mix of the first two. First, the compiler matches variable bref with operator<< that takes a Base. That calls our virtual print() function. Since the Base reference is actually pointing to a Derived object, this resolves to Derived::print(), as we intended.
+The third case proceeds as a mix of the first two. First, the compiler matches variable bref with `operator<<` that takes a `Base`. That calls our virtual `print()` function. Since the Base reference is actually pointing to a `Derived` object, this resolves to `Derived::print()`, as we intended.
 
 Problem solved.

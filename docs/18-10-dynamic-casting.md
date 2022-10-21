@@ -13,15 +13,15 @@ tags:
 
 
 
-Way back in lesson [8.5 -- Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/), we examined the concept of casting, and the use of static_cast to convert variables from one type to another.
+早在 [[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换和static_cast]] 中我们就讨论过类型转换的话题，当时我们使用[[static-casts|静态类型转换]]—— `static_cast` 将变量转换为其他类型。
 
-In this lesson, we’ll continue by examining another type of cast: dynamic_cast.
+本节课我们会讨论另外一种类型的转换：[[dynamic-casts|动态类型转换]]——`dynamic_cast`.
 
-## The need for dynamic_cast**
+## `dynamic_cast` 的必要性
 
-When dealing with polymorphism, you’ll often encounter cases where you have a pointer to a base class, but you want to access some information that exists only in a derived class.
+在处理[[polymorphism|多态]]时经常会遇到这样的情况：你有一个指向基类的指针，但需要访问存在于派生类中的一些信息。
 
-Consider the following (slightly contrived) program:
+考虑以下程序：
 
 ```cpp
 #include <iostream>
@@ -33,8 +33,7 @@ protected:
 	int m_value{};
 
 public:
-	Base(int value)
-		: m_value{value}
+	Base(int value): m_value{value}
 	{
 	}
 
@@ -67,7 +66,7 @@ int main()
 {
 	Base* b{ getObject(true) };
 
-	// how do we print the Derived object's name here, having only a Base pointer?
+	// 在这里如何打印派生类对象的名字呢？此时只有一个基类的指针
 
 	delete b;
 
@@ -75,11 +74,11 @@ int main()
 }
 ```
 
-COPY
+在这个程序中，函数`getObject()`总是返回一个`Base`指针，但该指针可以指向`Base`对象或`Derived`对象。在指针指向派生对象的情况下，如何调用`Derived::getName()`?
 
-In this program, function getObject() always returns a Base pointer, but that pointer may be pointing to either a Base or a Derived object. In the case where the pointer is pointing to a Derived object, how would we call Derived::getName()?
+一种方法是向`Base`添加一个名为`getName()`的虚函数(这样我们就可以用 `Base` 指针/引用调用它，并动态解析为`Derived::getName()`)。但是如果你用一个指向 `Base` 对象的 `Base` 指针/引用调用它，这个函数又应该返回什么呢？返回什么值都是没有实际意义的。这个函数对基类是没有意义的，只有派生类需要考虑实现该函数，那么我们为什么要用这个函数来“污染”基类呢？
 
-One way would be to add a virtual function to Base called getName() (so we could call it with a Base pointer/reference, and have it dynamically resolve to Derived::getName()). But what would this function return if you called it with a Base pointer/reference that was actually pointing to a Base object? There isn’t really any value that makes sense. Furthermore, we would be polluting our Base class with things that really should only be the concern of the Derived class.
+我们知道，C++ 允许你将 `Derived` 指针隐式地转换为 `Base` 指针(实际上，`getObject()`正是这样做的)。这个过程有时被称为**上升**。但是，如果有一种方法可以将基类指针转换回派生类指针呢?然后，我们可以直接使用该指针调用Derived::getName()，而完全不必担心虚函数解析。
 
 We know that C++ will implicitly let you convert a Derived pointer into a Base pointer (in fact, getObject() does just that). This process is sometimes called **upcasting**. However, what if there was a way to convert a Base pointer back into a Derived pointer? Then we could call Derived::getName() directly using that pointer, and not have to worry about virtual function resolution at all.
 
@@ -104,13 +103,13 @@ int main()
 }
 ```
 
-COPY
+打印：
 
-This prints:
-
+```
 The name of the Derived is: Apple
+```
 
-## dynamic_cast failure**
+## dynamic_cast 失败
 
 The above example works because b is actually pointing to a Derived object, so converting b into a Derived pointer is successful.
 
@@ -140,9 +139,9 @@ int main()
 
 COPY
 
-Rule
+!!! note "法则"
 
-Always ensure your dynamic casts actually succeeded by checking for a null pointer result.
+	Always ensure your dynamic casts actually succeeded by checking for a null pointer result.
 
 Note that because dynamic_cast does some consistency checking at runtime (to ensure the conversion can be made), use of dynamic_cast does incur a performance penalty.
 
@@ -230,7 +229,7 @@ COPY
 
 But if you’re going to go through all of the trouble to implement this (and pay the cost of calling a virtual function and processing the result), you might as well just use dynamic_cast.
 
-## dynamic_cast and references**
+## dynamic_cast 和引用
 
 Although all of the above examples show dynamic casting of pointers (which is more common), dynamic_cast can also be used with references. This works analogously to how dynamic_cast works with pointers.
 
@@ -282,11 +281,11 @@ COPY
 
 Because C++ does not have a “null reference”, dynamic_cast can’t return a null reference upon failure. Instead, if the dynamic_cast of a reference fails, an exception of type std::bad_cast is thrown. We talk about exceptions later in this tutorial.
 
-## dynamic_cast vs static_cast**
+## `dynamic_cast` vs `static_cast`
 
 New programmers are sometimes confused about when to use static_cast vs dynamic_cast. The answer is quite simple: use static_cast unless you’re downcasting, in which case dynamic_cast is usually a better choice. However, you should also consider avoiding casting altogether and just use virtual functions.
 
-## Downcasting vs virtual functions**
+## Downcasting vs 虚函数
 
 There are some developers who believe dynamic_cast is evil and indicative of a bad class design. Instead, these programmers say you should use virtual functions.
 
@@ -296,6 +295,6 @@ In general, using a virtual function _should_ be preferred over downcasting. H
 -   When you need access to something that is derived-class specific (e.g. an access function that only exists in the derived class)
 -   When adding a virtual function to your base class doesn’t make sense (e.g. there is no appropriate value for the base class to return). Using a pure virtual function may be an option here if you don’t need to instantiate the base class.
 
-## A warning about dynamic_cast and RTTI**
+## 对 `dynamic_cast` 和 RTTI 的一些警示
 
-Run-time type information (RTTI) is a feature of C++ that exposes information about an object’s data type at runtime. This capability is leveraged by dynamic_cast. Because RTTI has a pretty significant space performance cost, some compilers allow you to turn RTTI off as an optimization. Needless to say, if you do this, dynamic_cast won’t function correctly.
+[[Run-time-type-information-RTTI]] is a feature of C++ that exposes information about an object’s data type at runtime. This capability is leveraged by dynamic_cast. Because RTTI has a pretty significant space performance cost, some compilers allow you to turn RTTI off as an optimization. Needless to say, if you do this, dynamic_cast won’t function correctly.

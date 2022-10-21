@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "18-10-dynamic-casting",
+      "path": "docs/18-10-dynamic-casting.md"
+    },
+    {
+      "basename": "18-11-printing-inherited-classes-using-operator<<",
+      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
+    },
+    {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "Run-time-type-information-RTTI",
+      "path": "docs/Run-time-type-information-RTTI.md"
+    },
+    {
       "basename": "18-9-object-slicing",
       "path": "docs/18-9-object-slicing.md"
+    },
+    {
+      "basename": "18-8-virtual-base-classes",
+      "path": "docs/18-8-virtual-base-classes.md"
     },
     {
       "basename": "Frankenobject",
@@ -15,10 +35,6 @@
     {
       "basename": "object-slicing",
       "path": "docs/object-slicing.md"
-    },
-    {
-      "basename": "18-8-virtual-base-classes",
-      "path": "docs/18-8-virtual-base-classes.md"
     },
     {
       "basename": "the-diamond-problem",
@@ -47,18 +63,6 @@
     {
       "basename": "18-6-the-virtual-table",
       "path": "docs/18-6-the-virtual-table.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
-      "basename": "18-11-printing-inherited-classes-using-operator<<",
-      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
-    },
-    {
-      "basename": "18-10-dynamic-casting",
-      "path": "docs/18-10-dynamic-casting.md"
     },
     {
       "basename": "virtual-table",
@@ -195,10 +199,6 @@
     {
       "basename": "16-1-object-relationships",
       "path": "docs/16-1-object-relationships.md"
-    },
-    {
-      "basename": "14-17-overloading-operators-and-function-templates",
-      "path": "docs/14-17-overloading-operators-and-function-templates.md"
     }
   ],
   "omittedPaths": [],
