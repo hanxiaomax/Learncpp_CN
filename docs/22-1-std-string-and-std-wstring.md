@@ -105,24 +105,23 @@ Although you will directly use std::string and std::wstring, all of the string f
 
 Here’s a list of all the functions in the string class. Most of these functions have multiple flavors to handle different types of inputs, which we will cover in more depth in the next lessons.
 
-Creation and destruction
+**Creation and destruction**
 |Function	|Effect|
 |:--:|:--:|
-|`(constructor)` |Create or copy a string
-|`(destructor)`	|Destroy a string
+|[(constructor)](https://www.learncpp.com/cpp-tutorial/17-2-ststring-construction-and-destruction/) |Create or copy a string
+|[(destructor)](https://www.learncpp.com/cpp-tutorial/17-2-ststring-construction-and-destruction/)|Destroy a string
 
-Size and capacity
-
+**Size and capacity**
 |Function	|Effect|
 |:--:|:--:|
-|`capacity()` |Returns the number of characters that can be held without reallocation|
-|`empty()` |Returns a boolean indicating whether the string is empty
-|`length()`, `size()` |Returns the number of characters in string
-|`max_size()` |Returns the maximum string size that can be allocated
-|`reserve()`	|Expand or shrink the capacity of the string
+|[capacity()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |Returns the number of characters that can be held without reallocation|
+|[empty()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/)|Returns a boolean indicating whether the string is empty
+|[length(), size()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |Returns the number of characters in string
+|[max_size()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |Returns the maximum string size that can be allocated
+|[reserve()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/)	|Expand or shrink the capacity of the string
 
 
-Element access
+**Element access**
 |Function	|Effect|
 |:--:|:--:|
 |`[]`, `at()`	|Accesses the character at a particular index
@@ -132,23 +131,69 @@ Element access
 
 |Function	|Effect|
 |:--:|:--:|
-[=, assign()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)  
-[+=, append(), push_back()](https://www.learncpp.com/uncategorized/17-6-stdstring-appending/)  
-[insert()](https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting/)  
-clear()  
-erase()  
-replace()  
-resize()  
-[swap()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)
+|[=, assign()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)  |Assigns a new value to the string  
+|[+=, append(), push_back()](https://www.learncpp.com/uncategorized/17-6-stdstring-appending/)  |Concatenates characters to end of the string  
+|[insert()](https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting/)  |Inserts characters at an arbitrary index in string  
+|`clear()`  |Delete all characters in the string  
+|`erase()`  |Erase characters at an arbitrary index in string  
+|`replace()`  |Replace characters at an arbitrary index with other characters  
+|`resize()`  |Expand or shrink the string (truncates or adds characters at end of string)  
+|[swap()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)|Swaps the value of two strings
 
-Assigns a new value to the string  
-Concatenates characters to end of the string  
-Inserts characters at an arbitrary index in string  
-Delete all characters in the string  
-Erase characters at an arbitrary index in string  
-Replace characters at an arbitrary index with other characters  
-Expand or shrink the string (truncates or adds characters at end of string)  
-Swaps the value of two strings
+
+**Input and Output**
+|Function	|Effect|
+|:--:|:--:|
+|`>>`, `getline()`  |Reads values from the input stream into the string  
+|`<<`   |Writes string value to the output stream  
+|[c_str()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)  |Returns the contents of the string as a NULL-terminated C-style string  
+|[copy()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)  |Copies contents (not NULL-terminated) to a character array  
+|[data()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)|Same as c_str(). The non-const overload allows writing to the returned string.
+
+
+**String comparison**
+
+|Function	|Effect|
+|:--:|:--:|
+|`==`, `!=`  |Compares whether two strings are equal/unequal (returns bool)  
+|`<`, `<=`, `>` ,`>=`  |Compares whether two strings are less than / greater than each other (returns bool)  
+|`compare()`|Compares whether two strings are equal/unequal (returns -1, 0, or 1)
+
+**Substrings and concatenation**
+
+|Function	|Effect|
+|:--:|:--:|
+|`+`  |Concatenates two strings  
+|`substr()`|Returns a substring
+
+**Searching**
+
+|Function	|Effect|
+|:--:|:--:|
+|`find()`|Find index of first character/substring
+|`find_first_of()`|Find index of first character from a set of characters
+|`find_first_not_of()`|Find index of first character not from a set of characters
+|`find_last_of()`|Find index of last character from a set of characters
+|`find_last_not_of()`|Find index of last character not from a set of characters
+|`rfind()`	|Find index of last character/substring
+
+**Iterator and allocator support**
+|Function	|Effect|
+|:--:|:--:|
+|begin(), end()|Forward-direction iterator support for beginning/end of string
+|get_allocator()|Returns the allocator
+|rbegin(), rend()|	Reverse-direction iterator support for beginning/end of string
+
+
+
+
+
+
+
+
+
+
+
 
 While the standard library string classes provide a lot of functionality, there are a few notable omissions:
 

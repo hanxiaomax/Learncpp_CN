@@ -278,6 +278,17 @@ nav:
       - "17-9-multiple-inheritance.md"
       - "17-x-Chapter-17-comprehensive-quiz.md"
     - 18. 虚函数:
+      - "18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
+      - "18-2-virtual-functions-and-polymorphism.md"
+      - "18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
+      - "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
+      - "18-5-early-binding-and-late-binding.md"
+      - "18-6-the-virtual-table.md"
+      - "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
+      - "18-8-virtual-base-classes.md"
+      - "18-9-object-slicing.md"
+      - "18-10-dynamic-casting.md"
+      - "18-11-printing-inherited-classes-using-operator<<.md"
       - "18-x-Chapter-18-comprehensive-quiz.md"
     - 19. 模板和类: 
       - "19-x-Chapter-19-comprehensive-quiz.md"
