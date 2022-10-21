@@ -27,14 +27,22 @@ tags:
 
 - 结构体是一种自定义类型，使用它可以将多个变量打包为一个单独的类型。变量是结构体（或类）的一部分，称为数据成员或[[member-variable|成员变量]]。访问成员函数需要在结构体变量名（普通结构体或结构体引用）和成员名之间使用[[member-selection-operator|成员选择运算符]]（`operator .`），或者使用指针运算符(`operator->`) （对于结构体指针而言）。
 
-==在一般编程领域，[[aggregate-data-type|聚合数据类型]]（通常称为聚合）是指任何可以包含多个数据成员的类型。在 C++ 中，只包含数据成员的数组和结构体是聚合。==
+[[10-6-struct-aggregate-initialization|10.6 - 结构体的聚合初始化]]
 
-聚合使用一种被称为[[aggregate-initialization|聚合初始化]]的初始化形式，使用聚合初始化可以直接初始化聚合的成员。为此，我们需要提供一个初始化列表作为初始化值，而所谓初始化列表就是一个以逗号分割值的列表。聚合初始化使用[[memberwise initialization|成员依次初始化]]方式，即结构体的每个成员依照其声明顺序进行初始化。
+- ==在一般编程领域，[[aggregate-data-type|聚合数据类型]]（通常称为聚合）是指任何可以包含多个数据成员的类型。在 C++ 中，只包含数据成员的数组和结构体是聚合。==
+- 聚合使用一种被称为[[aggregate-initialization|聚合初始化]]的初始化形式，使用聚合初始化可以直接初始化聚合的成员。为此，我们需要提供一个初始化列表作为初始化值，而所谓初始化列表就是一个以逗号分割值的列表。聚合初始化使用[[memberwise initialization|成员依次初始化]]方式，即结构体的每个成员依照其声明顺序进行初始化。
+- ==在 C++20 中，使用[[designated-initializers|指定初始化]]可以显式地指定将初始化值映射到哪个成员。结构体成员必须按照声明的顺序初始化，否则会报错。==
 
-==在 C++20 中，使用[[designated-initializers|指定初始化]]可以显式地指定将初始化值映射到哪个成员。结构体成员必须按照声明的顺序初始化，否则会报错。==
+[[10-7-default-member-initialization|10.7 - 默认成员初始化]]
 
-定义结构(或类)类型时，可以为每个成员提供默认初始化值，作为类型定义的一部分。这个过程称为[[non-static-member-initialization|非静态成员初始化]]，初始化值称为[[default-member-initializer|默认成员初始化值]]。
+- 定义结构(或类)类型时，可以为每个成员提供默认初始化值，作为类型定义的一部分。这个过程称为[[non-static-member-initialization|非静态成员初始化]]，初始化值称为[[default-member-initializer|默认成员初始化值]]。
+- 
+[[10-8-struct-passing-and-miscellany|10.8 - 结构体传递及其他]]
 
-出于性能原因，编译器有时会在结构中添加间隙(这称为填充)，因此结构体的大小可能大于其成员的大小之和。
+- 出于性能原因，编译器有时会在结构中添加间隙(这称为填充)，因此结构体的大小可能大于其成员的大小之和。
 
-[[class-template|类模板]]是实例化类类型(结构、类或联合)的模板定义。[[class-template-argument-deduction|类模板实参推断(CTAD)]]是 C++17的一个特性，它允许编译器从初始化式中推断模板类型实参。
+[[10-9-member-selection-with-pointers-and-references|10.9 - 基于指针和引用的成员选择]]
+
+[[10-11-class-template-argument-deduction-and-deduction -guides|10.11 - 类模板参数推断CTAD]]
+
+- [[class-template|类模板]]是实例化类类型(结构、类或联合)的模板定义。[[class-template-argument-deduction|类模板实参推断(CTAD)]]是 C++17的一个特性，它允许编译器从初始化式中推断模板类型实参。

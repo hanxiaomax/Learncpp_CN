@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "a4043e5062bc329c",
+            "id": "3cc2b2c2c7e0531f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
+                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-x-Chapter-10-comprehensive-quiz.md",
+                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,9 +153,10 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "a4043e5062bc329c",
+  "active": "3cc2b2c2c7e0531f",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
     "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
     "docs/9-7-Null-pointers.md",
     "docs/8-8-Type-deduction-for-functions.md",
@@ -163,7 +164,6 @@
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
     "docs/syntax.md",
     "docs/link.md",
-    "docs/控制台(console).md",
-    "docs/18-11-printing-inherited-classes-using-operator<<.md"
+    "docs/控制台(console).md"
   ]
 }

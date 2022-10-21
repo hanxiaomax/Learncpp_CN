@@ -51,17 +51,18 @@ int main()
 
 ## 用户定义类型是什么？
 
-Back in the introduction to the previous chapter ([[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]), we introduced the challenge of wanting to store a fraction, which has a numerator and denominator that are conceptually linked together. In that lesson, we discussed some of the challenges with using two separate integers to store a fraction’s numerator and denominator independently.
+在 [[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]] 一课中，我们曾经介绍过如何存储一个分数。对于分数来说，它包括分子和分母两个部分，而且它们之间是存在概念性联系的。在本节课中，我们会讨论使用两个整型分别表示分子分母可能带来的问题。
 
-If C++ had a built-in fraction type, that would have been perfect -- but it doesn’t. And there are hundreds of other potentially useful types that C++ doesn’t include because it’s just not possible to anticipate everything that someone might need (let alone implement and test those things).
+如果C++有能够表示分数的内建类型就好了——但可惜并没有。还有数百种其他可能有用的类型C++没有包含，因为它不可能预测人们可能需要的所有东西(更不用说实现和测试那些东西了)。
 
-Instead, C++ solves for such problems in a different way: by allowing us to create entirely new, custom types for use in our programs! Such types are often called user-defined types (though we think the term program-defined types is better -- we’ll discuss the difference later in this lesson). C++ has two categories of compound types that allow for this: the enumerated types (including unscoped and scoped enumerations), and the class types (including structs, classes, and unions).
+相反，C++提供了解决该问题的另外一种途径：允许我们在程序中创建全新的自定义类型！这样的类型通常称为用户定义类型(尽管我们认为术语程序定义类型更好——我们将在本课后面讨论其区别)。C++有两类复合类型可以实现这一点：枚举类型(包括[[unscoped-enumerations|非限定作用域枚举类型]]和[[scoped-enumerations|限定作用域枚举]])和类类型(包括结构体、类和联合体)。
+
 
 ## 定义一个程序定义类型
 
-Just like type aliases, program-defined types must also be defined before they can be used. The definition for a program-defined type is called a type definition.
+就像[[type-aliases|类型别名]]一样，程序定义类型也必须先定义后使用。程序定义类型的定义称为类型定义。
 
-Although we haven’t covered what a struct is yet, here’s an example showing the definition of custom Fraction type and an instantiation of an object using that type:
+尽管结构体还尚未介绍，但我们可以先从下面的例子中了解到，自定义类型`Fraction`和该类型对象是如何初始化的。
 
 ```cpp
 // Define a program-defined type named Fraction so the compiler understands what a Fraction is
@@ -83,45 +84,49 @@ int main()
 ```
 
 
+在本例中，我们使用`struct` 关键字来定义一个名为`Fraction` 的新程序定义类型(在全局作用域中，因此它可以在文件的其他地方使用)。这不会分配任何内存——它只是告诉编译器`Fraction` 是什么样子的，所以我们可以稍后再为`Fraction`类型的对象分配内存。然后，在`main()`内部，实例化(并初始化)一个名为`f`的`Fraction`类型变量。
 
-In this example, we’re using the `struct` keyword to define a new program-defined type named `Fraction` (in the global scope, so it can be used anywhere in the rest of the file). This doesn’t allocate any memory -- it just tells the compiler what a `Fraction` looks like, so we can allocate objects of a `Fraction` type later. Then, inside `main()`, we instantiate (and initialize) a variable of type `Fraction` named `f`.
+类型定义总是以分号结尾。没有在类型定义的末尾包含分号是一个常见的程序员错误，而且这个错误很难调试，因为编译器通常会在类型定义后面的行报错。例如，如果你从上面例子的`Fraction`定义(第8行)末尾删除分号，编译器可能会因为`main()`的定义(第11行)报错。
 
-Program-defined type definitions always end in a semicolon. Failure to include the semicolon at the end of a type definition is a common programmer error, and one that can be hard to debug because the compiler will usually error on the line _after_ the type definition. For example, if you remove the semicolon from the end of the `Fraction` definition (line 8) of the example above, the compiler will probably complain about the definition of `main()`(line 11).
 
 !!! warning "注意"
 
-	Don’t forget to end your type definitions with a semicolon, otherwise the compiler will typically error on the next line of code.
+	不要忘记以分号结束类型定义，否则编译器通常会在下一行代码中出错。
 
-We’ll show more examples of defining and using program-defined types in the next lesson ([10.2 -- Unscoped enumerations](https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/)), and we cover structs starting in lesson [10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/).
+我们将在下一课([[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]中展示更多定义和使用程序定义类型的例子，并且我们将从[[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]]开始介绍结构体。
+
 
 ## 命名一个自定义类型
 
-By convention, program-defined types are named starting with a capital letter and don’t use a suffix (e.g. `Fraction`, not `fraction`, `fraction_t`, or `Fraction_t`).
+按照管理，自定义类型的名字应该以大写字母开头，而且不要添加任何的后缀(例如：`Fraction`，而不是 `fraction`，`fraction_t` 或者 `Fraction_t`)。
 
 !!! success "最佳实践"
 
-	Name your program-defined types starting with a capital letter and do not use a suffix.
+	以大写字母开始命名自定义类型，不要使用后缀。
 
-New programmers sometimes find variable definitions such as the following confusing because of the similarity between the type name and variable name:
+由于类型名和变量名之间的相似性，新手程序员时常会觉得下面这样的变量定义令人困惑:
 
 ```cpp
-Fraction fraction {}; // Instantiates a variable named fraction of type Fraction
+Fraction fraction {}; // 实例化一个名为 fraction 的 Fraction 类型的对象
 ```
 
-But this is no different than any other variable definition: the type (`Fraction`) comes first (and because Fraction is capitalized, we know it’s a program-defined type), then the variable name (`fraction`), and then an optional initializer. Because C++ is case-sensitive, there is no naming conflict here!
+但这与其他类型的变量定义并没有什么区别：类型(`Fraction`)在前(因为 `Fraction` 是大写的，我们知道它是一个自定义类型)，然后是变量名(`fraction`)，然后是一个可选的初始化值。因为C++是区分大小写的，所以这里不存在命名冲突!
+
 
 ## 在多文件程序中使用自定义类型
 
-Every code file that uses a program-defined type needs to see the full type definition before it is used. A forward declaration is not sufficient. This is required so that the compiler knows how much memory to allocate for objects of that type.
 
-To propagate type definitions into the code files that need them, program-defined types are typically defined in header files, and then `#included`  into any code file that requires that type definition. These header files are typically given the same name as the program-defined type (e.g. a program-defined type named Fraction would be defined in `Fraction.h`)
+每个使用程序定义类型的代码文件在使用之前都需要看到完整的类型定义。[[forward-declaration|前向声明]]是不够的。看到完整定义是必需的，因为编译器需要知道要为该类型的对象分配多少内存。
+
+为了能将定义引入需要使用该类型定义的文件，自定义类型通常被定义在头文件中，然后使用 `#included` 导入任何需要该定义的文件。这些头文件通常和类型具有相同的名字（例如 `Fraction`应该定义在`Fraction.h`中）。
 
 !!! success "最佳实践"
 
-	A program-defined type used in only one code file should be defined in that code file as close to the first point of use as possible.
-	A program-defined type used in multiple code files should be defined in a header file with the same name as the program-defined type and then `#included` into each code file as needed.
+	- 只在一个代码文件中使用的程序定义类型应该在该代码文件中尽可能靠近第一个使用点定义。
+	- 在多个代码文件中使用的程序定义类型应该在与程序定义类型同名的头文件中定义，然后根据需要在每个代码文件中使用“#included”。
 
-Here’s an example of what our Fraction type would look like if we moved it to a header file (named Fraction.h) so that it could be included into multiple code files:
+
+下面是一个例子，如果我们把我们的`Fraction`类型移动到一个头文件(名为`Fraction.h`)，这样它就可以包含在多个代码文件中:
 
 
 ```cpp title="Fraction.h"
