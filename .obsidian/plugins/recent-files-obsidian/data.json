@@ -5,6 +5,14 @@
       "path": "docs/18-10-dynamic-casting.md"
     },
     {
+      "basename": "downcasting",
+      "path": "docs/downcasting.md"
+    },
+    {
+      "basename": "upcasting",
+      "path": "docs/upcasting.md"
+    },
+    {
       "basename": "18-11-printing-inherited-classes-using-operator<<",
       "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "16-3-aggregation",
       "path": "docs/16-3-aggregation.md"
-    },
-    {
-      "basename": "16-2-composition",
-      "path": "docs/16-2-composition.md"
-    },
-    {
-      "basename": "16-1-object-relationships",
-      "path": "docs/16-1-object-relationships.md"
     }
   ],
   "omittedPaths": [],

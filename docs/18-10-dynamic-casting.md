@@ -78,15 +78,14 @@ int main()
 
 一种方法是向`Base`添加一个名为`getName()`的虚函数(这样我们就可以用 `Base` 指针/引用调用它，并动态解析为`Derived::getName()`)。但是如果你用一个指向 `Base` 对象的 `Base` 指针/引用调用它，这个函数又应该返回什么呢？返回什么值都是没有实际意义的。这个函数对基类是没有意义的，只有派生类需要考虑实现该函数，那么我们为什么要用这个函数来“污染”基类呢？
 
-我们知道，C++ 允许你将 `Derived` 指针隐式地转换为 `Base` 指针(实际上，`getObject()`正是这样做的)。这个过程有时被称为**上升**。但是，如果有一种方法可以将基类指针转换回派生类指针呢?然后，我们可以直接使用该指针调用Derived::getName()，而完全不必担心虚函数解析。
+我们知道，C++ 允许你将 `Derived` 指针隐式地转换为 `Base` 指针(实际上，`getObject()`正是这样做的)。这个过程有时被称为[[upcasting|向上转换(upcasting|)]]。那么，是否有一种方法可以将 `Base` 指针转换回 `Derived` 类指针呢？这样的话，我们就可以直接使用该指针调用`Derived::getName()`，而不必依赖虚函数解析。
 
-We know that C++ will implicitly let you convert a Derived pointer into a Base pointer (in fact, getObject() does just that). This process is sometimes called **upcasting**. However, what if there was a way to convert a Base pointer back into a Derived pointer? Then we could call Derived::getName() directly using that pointer, and not have to worry about virtual function resolution at all.
 
 ## `dynamic_cast`
 
-C++ provides a casting operator named **dynamic_cast** that can be used for just this purpose. Although dynamic casts have a few different capabilities, by far the most common use for dynamic casting is for converting base-class pointers into derived-class pointers. This process is called **downcasting**.
+C++ 提供了一个名为 `dynamic_cast` 的强制转换操作符，可用于此目的。尽管动态强制转换有一些不同的功能，但到目前为止，动态强制转换最常见的用途是将基类指针转换为派生类指针。这个过程被称为[[downcasting|向下转换（downcasting）]]。
 
-Using dynamic_cast works just like static_cast. Here’s our example main() from above, using a dynamic_cast to convert our Base pointer back into a Derived pointer:
+使用 `dynamic_cast` 和 `static_cast` 类似。基于上面的例子，我们可以使用 `dynamic_cast` 将 `Base` 指针转换为 `Derived` 指针：
 
 ```cpp
 int main()
