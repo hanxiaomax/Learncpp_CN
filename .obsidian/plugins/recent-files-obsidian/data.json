@@ -5,6 +5,10 @@
       "path": "docs/18-9-object-slicing.md"
     },
     {
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+    },
+    {
       "basename": "object-slicing",
       "path": "docs/object-slicing.md"
     },
@@ -75,10 +79,6 @@
     {
       "basename": "virtual-base-class",
       "path": "docs/virtual-base-class.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     },
     {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
