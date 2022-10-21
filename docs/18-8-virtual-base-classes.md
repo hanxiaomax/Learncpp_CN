@@ -187,18 +187,8 @@ Printer: 2
 
 有几个容易忽视的细节：
 
-首先，虚基类总是在非虚基类之前创建，这确保了所有基类都在它们的派生类之前创建。
-
-其次，请注意 `Scanner` 和 `Printer` 构造函数仍然有对 `PoweredDevice` 构造函数的调用。在创建copy的实例时，这些构造函数调用将被忽略，因为copy负责创建PoweredDevice，而不是Scanner或Printer。但是，如果我们要创建Scanner或Printer的实例，就会使用这些构造函数调用，并应用正常的继承规则。
-
-
-As you can see, PoweredDevice only gets constructed once.
-
-There are a few details that we would be remiss if we did not mention.
-
-First, virtual base classes are always created before non-virtual base classes, which ensures all bases get created before their derived classes.
-
-Second, note that the Scanner and Printer constructors still have calls to the PoweredDevice constructor. When creating an instance of Copier, these constructor calls are simply ignored because Copier is responsible for creating the PoweredDevice, not Scanner or Printer. However, if we were to create an instance of Scanner or Printer, those constructor calls would be used, and normal inheritance rules apply.
+- 首先，虚基类总是在非虚基类之前创建，这确保了所有基类都在它们的派生类之前创建。
+- 其次，请注意 `Scanner` 和 `Printer` 构造函数仍然有对 `PoweredDevice` 构造函数的调用。在创建`Copier`的实例时，这些构造函数调用将被忽略，因为 `Copier` 负责创建 `PoweredDevice`，而不是 `Scanner` 或 `Printer` 。但是，如果我们要创建`Scanner`或`Printer`的实例，就会使用这些构造函数调用，并应用正常的继承规则。
 
 Third, if a class inherits one or more classes that have virtual parents, the _most_ derived class is responsible for constructing the virtual base class. In this case, Copier inherits Printer and Scanner, both of which have a PoweredDevice virtual base class. Copier, the most derived class, is responsible for creation of PoweredDevice. Note that this is true even in a single inheritance case: if Copier singly inherited from Printer, and Printer was virtually inherited from PoweredDevice, Copier is still responsible for creating PoweredDevice.
 
