@@ -23,77 +23,12 @@
             }
           },
           {
-            "id": "14136ab0bfea84af",
+            "id": "1b02677ef0084bce",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8dc16379d5de5e10",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/M-2-R-value-references.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ec5f62f0b10f740b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/M-3-move-constructors-and-move-assignment.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0112df5cf010939f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/M-4-std-move.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9c38048766d66d38",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/M-5-std-move-if-noexcept.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3e530254314f24c9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/M-6-std-unique-ptr.md",
+                "file": "docs/22-1-std-string-and-std-wstring.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -101,7 +36,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -175,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/M-6-std-unique-ptr.md"
+                "file": "docs/22-1-std-string-and-std-wstring.md"
               }
             }
           },
@@ -196,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/M-6-std-unique-ptr.md",
+                "file": "docs/22-1-std-string-and-std-wstring.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -218,17 +153,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "3e530254314f24c9",
+  "active": "1b02677ef0084bce",
   "lastOpenFiles": [
-    "docs/M-5-std-move-if-noexcept.md",
-    "docs/M-6-std-unique-ptr.md",
-    "docs/M-4-std-move.md",
-    "docs/M-3-move-constructors-and-move-assignment.md",
-    "docs/M-2-R-value-references.md",
-    "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
-    "docs/M-x-chapter-M-comprehensive-review.md",
-    "docs/17-5-inheritance-and-access-specifiers.md",
     "docs/MOC.md",
-    "docs/20-x-Chapter-20-comprehensive-quiz.md"
+    "docs/22-1-std-string-and-std-wstring.md",
+    "docs/22-7-std-string-inserting.md",
+    "docs/22-6-std-string-appending.md",
+    "docs/22-5-std-string-assignment-and-swapping.md",
+    "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md",
+    "docs/22-3-std-string-length-and-capacity.md",
+    "docs/22-2-std-string-construction-and-destruction.md",
+    "docs/21-1-the-standard-library.md",
+    "docs/21-3-STL-iterators-overview.md"
   ]
 }

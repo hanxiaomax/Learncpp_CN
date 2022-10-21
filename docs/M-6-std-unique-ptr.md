@@ -1,9 +1,9 @@
 ---
 title: M.6 — std::unique_ptr
 alias: M.6 — std::unique_ptr
-origin: /stdmove_if_noexcept/
+origin: /stdunique_ptr/
 origin_title: "M.6 — std::unique_ptr"
-time: 2022-8-23
+time: 2022-8-9
 type: translation
 tags:
 - move
@@ -12,139 +12,306 @@ tags:
 ??? note "关键点速记"
 
 
-(h/t to reader Koe for providing the first draft of this lesson!)
-
-In lesson [20.9 -- Exception specifications and noexcept](https://www.learncpp.com/cpp-tutorial/exception-specifications-and-noexcept/), we covered the `noexcept` exception specifier and operator, which this lesson builds on.
-
-We also covered the `strong exception guarantee`, which guarantees that if a function is interrupted by an exception, no memory will be leaked and the program state will not be changed. In particular, all constructors should uphold the strong exception guarantee, so that the rest of the program won’t be left in an altered state if construction of an object fails.
-
-The move constructors exception problem
-
-Consider the case where we are copying some object, and the copy fails for some reason (e.g. the machine is out of memory). In such a case, the object being copied is not harmed in any way, because the source object doesn’t need to be modified to create a copy. We can discard the failed copy, and move on. The `strong exception guarantee` is upheld.
-
-Now consider the case where we are instead moving an object. A move operation transfers ownership of a given resource from the source to the destination object. If the move operation is interrupted by an exception after the transfer of ownership occurs, then our source object will be left in a modified state. This isn’t a problem if the source object is a temporary object and going to be discarded after the move anyway -- but for non-temporary objects, we’ve now damaged the source object. To comply with the `strong exception guarantee`, we’d need to move the resource back to the source object, but if the move failed the first time, there’s no guarantee the move back will succeed either.
-
-How can we give move constructors the `strong exception guarantee`? It is simple enough to avoid throwing exceptions in the body of a move constructor, but a move constructor may invoke other constructors that are `potentially throwing`. Take for example the move constructor for `std::pair`, which must try to move each subobject in the source pair into the new pair object.
+At the beginning of the chapter, we discussed how the use of pointers can lead to bugs and memory leaks in some situations. For example, this can happen when a function early returns, or throws an exception, and the pointer is not properly deleted.
 
 ```cpp
-// Example move constructor definition for std::pair
-// Take in an 'old' pair, and then move construct the new pair's 'first' and 'second' subobjects from the 'old' ones
-template <typename T1, typename T2>
-pair<T1,T2>::pair(pair&& old)
-  : first(std::move(old.first)),
-    second(std::move(old.second))
-{}
+#include <iostream>
+
+void someFunction()
+{
+    auto* ptr{ new Resource() };
+
+    int x{};
+    std::cout << "Enter an integer: ";
+    std::cin >> x;
+
+    if (x == 0)
+        throw 0; // the function returns early, and ptr won’t be deleted!
+
+    // do stuff with ptr here
+
+    delete ptr;
+}
 ```
 
 COPY
 
-Now lets use two classes, `MoveClass` and `CopyClass`, which we will `pair` together to demonstrate the `strong exception guarantee` problem with move constructors:
+Now that we’ve covered the fundamentals of move semantics, we can return to the topic of smart pointer classes. As a reminder, a smart pointer is a class that manages a dynamically allocated object. Although smart pointers can offer other features, the defining characteristic of a smart pointer is that it manages a dynamically allocated resource, and ensures the dynamically allocated object is properly cleaned up at the appropriate time (usually when the smart pointer goes out of scope).
+
+Because of this, smart pointers should never be dynamically allocated themselves (otherwise, there is the risk that the smart pointer may not be properly deallocated, which means the object it owns would not be deallocated, causing a memory leak). By always allocating smart pointers on the stack (as local variables or composition members of a class), we’re guaranteed that the smart pointer will properly go out of scope when the function or object it is contained within ends, ensuring the object the smart pointer owns is properly deallocated.
+
+C++11 standard library ships with 4 smart pointer classes: std::auto_ptr (removed in C++17), std::unique_ptr, std::shared_ptr, and std::weak_ptr. std::unique_ptr is by far the most used smart pointer class, so we’ll cover that one first. In the following lessons, we’ll cover std::shared_ptr and std::weak_ptr.
+
+std::unique_ptr
+
+std::unique_ptr is the C++11 replacement for std::auto_ptr. It should be used to manage any dynamically allocated object that is not shared by multiple objects. That is, std::unique_ptr should completely own the object it manages, not share that ownership with other classes. `std::unique_ptr` lives in the `<memory>` header.
+
+Let’s take a look at a simple smart pointer example:
 
 ```cpp
 #include <iostream>
-#include <utility> // For std::pair, std::make_pair, std::move, std::move_if_noexcept
-#include <stdexcept> // std::runtime_error
+#include <memory> // for std::unique_ptr
 
-class MoveClass
-{
-private:
-  int* m_resource{};
-
-public:
-  MoveClass() = default;
-
-  MoveClass(int resource)
-    : m_resource{ new int{ resource } }
-  {}
-
-  // Copy constructor
-  MoveClass(const MoveClass& that)
-  {
-    // deep copy
-    if (that.m_resource != nullptr)
-    {
-      m_resource = new int{ *that.m_resource };
-    }
-  }
-
-  // Move constructor
-  MoveClass(MoveClass&& that) noexcept
-    : m_resource{ that.m_resource }
-  {
-    that.m_resource = nullptr;
-  }
-
-  ~MoveClass()
-  {
-    std::cout << "destroying " << *this << '\n';
-
-    delete m_resource;
-  }
-
-  friend std::ostream& operator<<(std::ostream& out, const MoveClass& moveClass)
-  {
-    out << "MoveClass(";
-
-    if (moveClass.m_resource == nullptr)
-    {
-      out << "empty";
-    }
-    else
-    {
-      out << *moveClass.m_resource;
-    }
-
-    out << ')';
-
-    return out;
-  }
-};
-
-
-class CopyClass
+class Resource
 {
 public:
-  bool m_throw{};
-
-  CopyClass() = default;
-
-  // Copy constructor throws an exception when copying from a CopyClass object where its m_throw is 'true'
-  CopyClass(const CopyClass& that)
-    : m_throw{ that.m_throw }
-  {
-    if (m_throw)
-    {
-      throw std::runtime_error{ "abort!" };
-    }
-  }
+	Resource() { std::cout << "Resource acquired\n"; }
+	~Resource() { std::cout << "Resource destroyed\n"; }
 };
 
 int main()
 {
-  // We can make a std::pair without any problems:
-  std::pair my_pair{ MoveClass{ 13 }, CopyClass{} };
+	// allocate a Resource object and have it owned by std::unique_ptr
+	std::unique_ptr<Resource> res{ new Resource() };
 
-  std::cout << "my_pair.first: " << my_pair.first << '\n';
+	return 0;
+} // res goes out of scope here, and the allocated Resource is destroyed
+```
 
-  // But the problem arises when we try to move that pair into another pair.
-  try
-  {
-    my_pair.second.m_throw = true; // To trigger copy constructor exception
+COPY
 
-    // The following line will throw an exception
-    std::pair moved_pair{ std::move(my_pair) }; // We'll comment out this line later
-    // std::pair moved_pair{ std::move_if_noexcept(my_pair) }; // We'll uncomment this line later
+Because the std::unique_ptr is allocated on the stack here, it’s guaranteed to eventually go out of scope, and when it does, it will delete the Resource it is managing.
 
-    std::cout << "moved pair exists\n"; // Never prints
-  }
-  catch (const std::exception& ex)
-  {
-      std::cerr << "Error found: " << ex.what() << '\n';
-  }
+Unlike std::auto_ptr, std::unique_ptr properly implements move semantics.
 
-  std::cout << "my_pair.first: " << my_pair.first << '\n';
+```cpp
+#include <iostream>
+#include <memory> // for std::unique_ptr
+#include <utility> // for std::move
 
-  return 0;
+class Resource
+{
+public:
+	Resource() { std::cout << "Resource acquired\n"; }
+	~Resource() { std::cout << "Resource destroyed\n"; }
+};
+
+int main()
+{
+	std::unique_ptr<Resource> res1{ new Resource{} }; // Resource created here
+	std::unique_ptr<Resource> res2{}; // Start as nullptr
+
+	std::cout << "res1 is " << (res1 ? "not null\n" : "null\n");
+	std::cout << "res2 is " << (res2 ? "not null\n" : "null\n");
+
+	// res2 = res1; // Won't compile: copy assignment is disabled
+	res2 = std::move(res1); // res2 assumes ownership, res1 is set to null
+
+	std::cout << "Ownership transferred\n";
+
+	std::cout << "res1 is " << (res1 ? "not null\n" : "null\n");
+	std::cout << "res2 is " << (res2 ? "not null\n" : "null\n");
+
+	return 0;
+} // Resource destroyed here when res2 goes out of scope
+```
+
+COPY
+
+This prints:
+
+Resource acquired
+res1 is not null
+res2 is null
+Ownership transferred
+res1 is null
+res2 is not null
+Resource destroyed
+
+Because std::unique_ptr is designed with move semantics in mind, copy initialization and copy assignment are disabled. If you want to transfer the contents managed by std::unique_ptr, you must use move semantics. In the program above, we accomplish this via std::move (which converts res1 into an r-value, which triggers a move assignment instead of a copy assignment).
+
+Accessing the managed object
+
+std::unique_ptr has an overloaded operator* and operator-> that can be used to return the resource being managed. Operator* returns a reference to the managed resource, and operator-> returns a pointer.
+
+Remember that std::unique_ptr may not always be managing an object -- either because it was created empty (using the default constructor or passing in a nullptr as the parameter), or because the resource it was managing got moved to another std::unique_ptr. So before we use either of these operators, we should check whether the std::unique_ptr actually has a resource. Fortunately, this is easy: std::unique_ptr has a cast to bool that returns true if the std::unique_ptr is managing a resource.
+
+Here’s an example of this:
+
+```cpp
+#include <iostream>
+#include <memory> // for std::unique_ptr
+
+class Resource
+{
+public:
+	Resource() { std::cout << "Resource acquired\n"; }
+	~Resource() { std::cout << "Resource destroyed\n"; }
+	friend std::ostream& operator<<(std::ostream& out, const Resource &res)
+	{
+		out << "I am a resource";
+		return out;
+	}
+};
+
+int main()
+{
+	std::unique_ptr<Resource> res{ new Resource{} };
+
+	if (res) // use implicit cast to bool to ensure res contains a Resource
+		std::cout << *res << '\n'; // print the Resource that res is owning
+
+	return 0;
+}
+```
+
+COPY
+
+This prints:
+
+Resource acquired
+I am a resource
+Resource destroyed
+
+In the above program, we use the overloaded operator* to get the Resource object owned by std::unique_ptr res, which we then send to std::cout for printing.
+
+std::unique_ptr and arrays
+
+Unlike std::auto_ptr, std::unique_ptr is smart enough to know whether to use scalar delete or array delete, so std::unique_ptr is okay to use with both scalar objects and arrays.
+
+However, std::array or std::vector (or std::string) are almost always better choices than using std::unique_ptr with a fixed array, dynamic array, or C-style string.
+
+Best practice
+
+Favor std::array, std::vector, or std::string over a smart pointer managing a fixed array, dynamic array, or C-style string.
+
+**std::make_unique**
+
+C++14 comes with an additional function named std::make_unique(). This templated function constructs an object of the template type and initializes it with the arguments passed into the function.
+
+```cpp
+#include <memory> // for std::unique_ptr and std::make_unique
+#include <iostream>
+
+class Fraction
+{
+private:
+	int m_numerator{ 0 };
+	int m_denominator{ 1 };
+
+public:
+	Fraction(int numerator = 0, int denominator = 1) :
+		m_numerator{ numerator }, m_denominator{ denominator }
+	{
+	}
+
+	friend std::ostream& operator<<(std::ostream& out, const Fraction &f1)
+	{
+		out << f1.m_numerator << '/' << f1.m_denominator;
+		return out;
+	}
+};
+
+
+int main()
+{
+	// Create a single dynamically allocated Fraction with numerator 3 and denominator 5
+	// We can also use automatic type deduction to good effect here
+	auto f1{ std::make_unique<Fraction>(3, 5) };
+	std::cout << *f1 << '\n';
+
+	// Create a dynamically allocated array of Fractions of length 4
+	auto f2{ std::make_unique<Fraction[]>(4) };
+	std::cout << f2[0] << '\n';
+
+	return 0;
+}
+```
+
+COPY
+
+The code above prints:
+
+3/5
+0/1
+
+Use of std::make_unique() is optional, but is recommended over creating std::unique_ptr yourself. This is because code using std::make_unique is simpler, and it also requires less typing (when used with automatic type deduction). Furthermore it resolves an exception safety issue that can result from C++ leaving the order of evaluation for function arguments unspecified.
+
+Best practice
+
+Use std::make_unique() instead of creating std::unique_ptr and using new yourself.
+
+The exception safety issue in more detail [](https://www.learncpp.com/cpp-tutorial/stdunique_ptr/#smartpointerexceptionsafety)
+
+For those wondering what the “exception safety issue” mentioned above is, here’s a description of the issue.
+
+Consider an expression like this one:
+
+```cpp
+some_function(std::unique_ptr<T>(new T), function_that_can_throw_exception());
+```
+
+COPY
+
+The compiler is given a lot of flexibility in terms of how it handles this call. It could create a new T, then call function_that_can_throw_exception(), then create the std::unique_ptr that manages the dynamically allocated T. If function_that_can_throw_exception() throws an exception, then the T that was allocated will not be deallocated, because the smart pointer to do the deallocation hasn’t been created yet. This leads to T being leaked.
+
+std::make_unique() doesn’t suffer from this problem because the creation of the object T and the creation of the std::unique_ptr happen inside the std::make_unique() function, where there’s no ambiguity about order of execution.
+
+Returning std::unique_ptr from a function
+
+std::unique_ptr can be safely returned from a function by value:
+
+```cpp
+#include <memory> // for std::unique_ptr
+
+std::unique_ptr<Resource> createResource()
+{
+     return std::make_unique<Resource>();
+}
+
+int main()
+{
+    auto ptr{ createResource() };
+
+    // do whatever
+
+    return 0;
+}
+```
+
+COPY
+
+In the above code, createResource() returns a std::unique_ptr by value. If this value is not assigned to anything, the temporary return value will go out of scope and the Resource will be cleaned up. If it is assigned (as shown in main()), in C++14 or earlier, move semantics will be employed to transfer the Resource from the return value to the object assigned to (in the above example, ptr), and in C++17 or newer, the return will be elided. This makes returning a resource by std::unique_ptr much safer than returning raw pointers!
+
+In general, you should not return std::unique_ptr by pointer (ever) or reference (unless you have a specific compelling reason to).
+
+Passing std::unique_ptr to a function
+
+If you want the function to take ownership of the contents of the pointer, pass the std::unique_ptr by value. Note that because copy semantics have been disabled, you’ll need to use std::move to actually pass the variable in.
+
+```cpp
+#include <iostream>
+#include <memory> // for std::unique_ptr
+#include <utility> // for std::move
+
+class Resource
+{
+public:
+	Resource() { std::cout << "Resource acquired\n"; }
+	~Resource() { std::cout << "Resource destroyed\n"; }
+	friend std::ostream& operator<<(std::ostream& out, const Resource &res)
+	{
+		out << "I am a resource";
+		return out;
+	}
+};
+
+void takeOwnership(std::unique_ptr<Resource> res)
+{
+     if (res)
+          std::cout << *res << '\n';
+} // the Resource is destroyed here
+
+int main()
+{
+    auto ptr{ std::make_unique<Resource>() };
+
+//    takeOwnership(ptr); // This doesn't work, need to use move semantics
+    takeOwnership(std::move(ptr)); // ok: use move semantics
+
+    std::cout << "Ending program\n";
+
+    return 0;
 }
 ```
 
@@ -152,63 +319,94 @@ COPY
 
 The above program prints:
 
-destroying MoveClass(empty)
-my_pair.first: MoveClass(13)
-destroying MoveClass(13)
-Error found: abort!
-my_pair.first: MoveClass(empty)
-destroying MoveClass(empty)
+Resource acquired
+I am a resource
+Resource destroyed
+Ending program
 
-Let’s explore what happened. The first printed line shows the temporary `MoveClass` object used to initialize `my_pair` gets destroyed as soon as the `my_pair` instantiation statement has been executed. It is `empty` since the `MoveClass` subobject in `my_pair` was move constructed from it, demonstrated by the next line which shows `my_pair.first` contains the `MoveClass` object with value `13`.
+Note that in this case, ownership of the Resource was transferred to takeOwnership(), so the Resource was destroyed at the end of takeOwnership() rather than the end of main().
 
-It gets interesting in the third line. We created `moved_pair` by copy constructing its `CopyClass` subobject (it doesn’t have a move constructor), but that copy construction threw an exception since we changed the Boolean flag. Construction of `moved_pair` was aborted by the exception, and its already-constructed members were destroyed. In this case, the `MoveClass` member was destroyed, printing `destroying MoveClass(13) variable`. Next we see the `Error found: abort!` message printed by `main()`.
+However, most of the time, you won’t want the function to take ownership of the resource. Although you can pass a std::unique_ptr by reference (which will allow the function to use the object without assuming ownership), you should only do so when the called function might alter or change the object being managed.
 
-When we try to print `my_pair.first` again, it shows the `MoveClass` member is empty. Since `moved_pair` was initialized with `std::move`, the `MoveClass` member (which has a move constructor) got move constructed and `my_pair.first` was nulled.
-
-Finally, `my_pair` was destroyed at the end of main().
-
-To summarize the above results: the move constructor of `std::pair` used the throwing copy constructor of `CopyClass`. This copy constructor threw an exception, causing the creation of `moved_pair` to abort, and `my_pair.first` to be permanently damaged. The `strong exception guarantee`was not preserved.
-
-std::move_if_noexcept to the rescue
-
-Note that the above problem could have been avoided if `std::pair` had tried to do a copy instead of a move. In that case, `moved_pair` would have failed to construct, but `my_pair` would not have been altered.
-
-But copying instead of moving has a performance cost that we don’t want to pay for all objects -- ideally we want to do a move if we can do so safely, and a copy otherwise.
-
-Fortunately, C++ has a two mechanisms that, when used in combination, let us do exactly that. First, because `noexcept` functions are no-throw/no-fail, they implicitly meet the criteria for the `strong exception guarantee`. Thus, a `noexcept` move constructor is guaranteed to succeed.
-
-Second, we can use the standard library function `std::move_if_noexcept()` to determine whether a move or a copy should be performed. `std::move_if_noexcept` is a counterpart to `std::move`, and is used in the same way.
-
-If the compiler can tell that an object passed as an argument to `std::move_if_noexcept` won’t throw an exception when it is move constructed (or if the object is move-only and has no copy constructor), then `std::move_if_noexcept` will perform identically to `std::move()` (and return the object converted to an r-value). Otherwise, `std::move_if_noexcept` will return a normal l-value reference to the object.
-
-Key insight
-
-`std::move_if_noexcept` will return a movable r-value if the object has a noexcept move constructor, otherwise it will return a copyable l-value. We can use the `noexcept` specifier in conjunction with `std::move_if_noexcept` to use move semantics only when a strong exception guarantee exists (and use copy semantics otherwise).
-
-Let’s update the code in the previous example as follows:
+Instead, it’s better to just pass the resource itself (by pointer or reference, depending on whether null is a valid argument). This allows the function to remain agnostic of how the caller is managing its resources. To get a raw resource pointer from a std::unique_ptr, you can use the get() member function:
 
 ```cpp
-//std::pair moved_pair{std::move(my_pair)}; // comment out this line now
-std::pair moved_pair{std::move_if_noexcept(my_pair)}; // and uncomment this line
+#include <memory> // for std::unique_ptr
+#include <iostream>
+
+class Resource
+{
+public:
+	Resource() { std::cout << "Resource acquired\n"; }
+	~Resource() { std::cout << "Resource destroyed\n"; }
+
+	friend std::ostream& operator<<(std::ostream& out, const Resource &res)
+	{
+		out << "I am a resource";
+		return out;
+	}
+};
+
+// The function only uses the resource, so we'll accept a pointer to the resource, not a reference to the whole std::unique_ptr<Resource>
+void useResource(Resource* res)
+{
+	if (res)
+		std::cout << *res << '\n';
+	else
+		std::cout << "No resource\n";
+}
+
+int main()
+{
+	auto ptr{ std::make_unique<Resource>() };
+
+	useResource(ptr.get()); // note: get() used here to get a pointer to the Resource
+
+	std::cout << "Ending program\n";
+
+	return 0;
+} // The Resource is destroyed here
 ```
 
 COPY
 
-Running the program again prints:
+The above program prints:
 
-destroying MoveClass(empty)
-my_pair.first: MoveClass(13)
-destroying MoveClass(13)
-Error found: abort!
-my_pair.first: MoveClass(13)
-destroying MoveClass(13)
+Resource acquired
+I am a resource
+Ending program
+Resource destroyed
 
-As you can see, after the exception was thrown, the subobject `my_pair.first` still points to the value `13`.
+std::unique_ptr and classes
 
-The move constructor of `std::pair` isn’t `noexcept` (as of C++20), so `std::move_if_noexcept` returns `my_pair` as an l-value reference. This causes `moved_pair` to be created via the copy constructor (rather than the move constructor). The copy constructor can throw safely, because it doesn’t modify the source object.
+You can, of course, use std::unique_ptr as a composition member of your class. This way, you don’t have to worry about ensuring your class destructor deletes the dynamic memory, as the std::unique_ptr will be automatically destroyed when the class object is destroyed.
 
-The standard library uses `std::move_if_noexcept` often to optimize for functions that are `noexcept`. For example, `std::vector::resize` will use move semantics if the element type has a `noexcept` move constructor, and copy semantics otherwise. This means `std::vector` will generally operate faster with objects that have a `noexcept` move constructor.
+However, if the class object is not destroyed properly (e.g. it is dynamically allocated and not deallocated properly), then the std::unique_ptr member will not be destroyed either, and the object being managed by the std::unique_ptr will not be deallocated.
 
-Warning
+Misusing std::unique_ptr
 
-If a type has both potentially throwing move semantics and deleted copy semantics (the copy constructor and copy assignment operator are unavailable), then `std::move_if_noexcept` will waive the strong guarantee and invoke move semantics. This conditional waiving of the strong guarantee is ubiquitous in the standard library container classes, since they use std::move_if_noexcept often.
+There are two easy ways to misuse std::unique_ptrs, both of which are easily avoided. First, don’t let multiple classes manage the same resource. For example:
+
+```cpp
+Resource* res{ new Resource() };
+std::unique_ptr<Resource> res1{ res };
+std::unique_ptr<Resource> res2{ res };
+```
+
+COPY
+
+While this is legal syntactically, the end result will be that both res1 and res2 will try to delete the Resource, which will lead to undefined behavior.
+
+Second, don’t manually delete the resource out from underneath the std::unique_ptr.
+
+```cpp
+Resource* res{ new Resource() };
+std::unique_ptr<Resource> res1{ res };
+delete res;
+```
+
+COPY
+
+If you do, the std::unique_ptr will try to delete an already deleted resource, again leading to undefined behavior.
+
+Note that std::make_unique() prevents both of the above cases from happening inadvertently.

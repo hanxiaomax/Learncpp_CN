@@ -293,18 +293,32 @@
 
 ## M. move 和智能指针
 
+- [[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]
+- [[M-2-R-value-references|M.2 - 右值引用]]
+- [[M-3-move-constructors-and-move-assignment|M.3 - 移动构造函数和移动赋值]]
+- [[M-4-std-move|M.4 - std::move]]
+- [[M-5-std-move-if-noexcept|M.5 - std::move_if_noexcept]]
+- [[M-6-std-unique-ptr|M.6 — std::unique_ptr]]
+- [[M-7-std-shared-ptr|M.7 — std::shared_ptr]]
+- [[M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|M.8 — 智能指针带来的循环依赖问题]]
 - [[M-x-chapter-M-comprehensive-review|M.x - 小结与测试 - 移动和智能指针]]
 
 ## 21. STL
 
+- [[21-1-the-standard-library|21.1 - 标准库]]
+- [[21-2-STL-containers-overview|21.2 - STL容器]]
+- [[21-3-STL-iterators-overview|21.3 - STL迭代器]]
+- [[21.4 — STL algorithms overview|21.4 - STL算法]]
+
 ## 22. std 字符串
-- [[22.1 — std::string and std::wstring]]
-- [[22.2 — std::string construction and destruction]]
-- [[22.3 — std::string length and capacity]]
-- [[22.4 — std::string character access and conversion to C-style arrays]]
-- [[22.5 — std::string assignment and swapping]]
-- [[22.6 — std::string appending]]
-- [[22.7 — std::string inserting]]
+
+- [[22-1-std-string-and-std-wstring]]
+- [[22-2-std-string-construction-and-destruction]]
+- [[22-3-std-string-length-and-capacity]]
+- [[22-4-std-string-character-access-and-conversion-to-C-style-arrays]]
+- [[22-5-std-string-assignment-and-swapping]]
+- [[22-6-std-string-appending]]
+- [[22-7-std-string-inserting]]
 
 
 ## 23. 输入输出
