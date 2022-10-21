@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "18-9-object-slicing",
+      "path": "docs/18-9-object-slicing.md"
+    },
+    {
+      "basename": "object-slicing",
+      "path": "docs/object-slicing.md"
+    },
+    {
+      "basename": "18-8-virtual-base-classes",
+      "path": "docs/18-8-virtual-base-classes.md"
+    },
+    {
+      "basename": "the-diamond-problem",
+      "path": "docs/the-diamond-problem.md"
+    },
+    {
+      "basename": "17-9-multiple-inheritance",
+      "path": "docs/17-9-multiple-inheritance.md"
+    },
+    {
       "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
       "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
     },
@@ -33,14 +53,6 @@
       "path": "docs/18-10-dynamic-casting.md"
     },
     {
-      "basename": "18-9-object-slicing",
-      "path": "docs/18-9-object-slicing.md"
-    },
-    {
-      "basename": "18-8-virtual-base-classes",
-      "path": "docs/18-8-virtual-base-classes.md"
-    },
-    {
       "basename": "virtual-table",
       "path": "docs/virtual-table.md"
     },
@@ -63,10 +75,6 @@
     {
       "basename": "virtual-base-class",
       "path": "docs/virtual-base-class.md"
-    },
-    {
-      "basename": "object-slicing",
-      "path": "docs/object-slicing.md"
     },
     {
       "basename": "18-2-virtual-functions-and-polymorphism",
@@ -145,10 +153,6 @@
       "path": "docs/17-2-basic-inheritance-in-c++.md"
     },
     {
-      "basename": "17-9-multiple-inheritance",
-      "path": "docs/17-9-multiple-inheritance.md"
-    },
-    {
       "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
       "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "14-16-shallow-vs-deep-copying",
       "path": "docs/14-16-shallow-vs-deep-copying.md"
-    },
-    {
-      "basename": "14-15-overloading-the-assignment-operator",
-      "path": "docs/14-15-overloading-the-assignment-operator.md"
     }
   ],
   "omittedPaths": [],

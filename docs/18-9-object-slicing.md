@@ -12,8 +12,8 @@ tags:
 ??? note "关键点速记"
 
 
+让我们回到我们之前的一个例子:
 
-Let’s go back to an example we looked at previously:
 
 ```cpp
 #include <iostream>
@@ -59,9 +59,7 @@ int main()
 }
 ```
 
-COPY
-
-In the above example, ref references and ptr points to derived, which has a Base part, and a Derived part. Because ref and ptr are of type Base, ref and ptr can only see the Base part of derived -- the Derived part of derived still exists, but simply can’t be seen through ref or ptr. However, through use of virtual functions, we can access the most-derived version of a function. Consequently, the above program prints:
+在上面的例子中，`ref`引用和`ptr`指向 `derived`，它有一个 `Base` 部分和一个 `derived` 部分。因为`ref`和`ptr`是`Base`类型，所以`ref`和`ptr`只能看到 `derived` 的 `Base` 部分——`derived` 的 `derived` 部分仍然存在，但不能通过 `ref` 或 `ptr` 看到。但是，通过使用虚函数，我们可以访问函数的最后派生的版本。因此，上面的程序输出:
 
 ```
 derived is a Derived and has value 5
@@ -69,7 +67,7 @@ ref is a Derived and has value 5
 ptr is a Derived and has value 5
 ```
 
-But what happens if instead of setting a Base reference or pointer to a Derived object, we simply _assign_ a Derived object to a Base object?
+但是，如果`Base`不引用或指针指向 `Derived` 对象，而是简单地将 `Derived` 对象**赋值**给`Base`对象，会发生什么情况呢?
 
 ```cpp
 int main()
@@ -82,19 +80,23 @@ int main()
 }
 ```
 
-COPY
+`derived`包含一个`Base`部分和`Derived`部分。当将`Derived`对象赋值给`Base`对象时，只会复制派生对象中的`Base`部分，而`Derived`则不会被赋值。在上面的例子中，`base`接收了`derived`的`base`部分的副本，但不会获取`derived`部分的副本，也就是说`Derived`部分实际上已经被“切掉了”。因此，将派生类对象赋值给基类对象称为[[object-slicing|对象切片]](或简称切片)。
 
-Remember that derived has a Base part and a Derived part. When we assign a Derived object to a Base object, only the Base portion of the Derived object is copied. The Derived portion is not. In the example above, base receives a copy of the Base portion of derived, but not the Derived portion. That Derived portion has effectively been “sliced off”. Consequently, the assigning of a Derived class object to a Base class object is called **object slicing** (or slicing for short).
+因为`base`变量没有`Derived`部分，`base.getName()`只能解析为`base::getName()`。
 
-Because variable base does not have a Derived part, base.getName() resolves to Base::getName().
+上面的程序打印出：
 
-The above example prints:
-
+```
 base is a Base and has value 5
+```
 
-Used conscientiously, slicing can be benign. However, used improperly, slicing can cause unexpected results in quite a few different ways. Let’s examine some of those cases.
+使用得当的话，对象切片是很有用的。然而，如果使用不当，切片会以不同的方式导致意想不到的结果。让我们来看看其中的一些案例。
 
-## Slicing and functions
+
+## 切片和函数
+
+现在，你可能会认为上面的例子有点傻。毕竟，为什么要这样把 `derived` 赋值给 `base` 呢？一般很少会这么做。但是，对于函数，
+
 
 Now, you might think the above example is a bit silly. After all, why would you assign derived to base like that? You probably wouldn’t. However, slicing is much more likely to occur accidentally with functions.
 
@@ -154,9 +156,11 @@ COPY
 
 This prints:
 
+```
 I am a Derived
+```
 
-## Slicing vectors
+## 切片向量 Slicing vectors
 
 Yet another area where new programmers run into trouble with slicing is trying to implement polymorphism with std::vector. Consider the following program:
 
@@ -287,7 +291,7 @@ int main()
 
 COPY
 
-## The Frankenobject
+## 畸形对象 Frankenobject
 
 In the above examples, we’ve seen cases where slicing lead to the wrong result because the derived class had been sliced off. Now let’s take a look at another dangerous case where the derived object still exists!
 

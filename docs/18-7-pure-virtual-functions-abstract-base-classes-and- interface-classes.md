@@ -13,6 +13,10 @@ tags:
 
 ??? note "关键点速记"
 
+	- 包含纯虚函数的类是抽象类，不能被实例化，其派生类如果实现了所有的虚函数则变成正常类
+	- 即使纯虚函数有函数体，也是纯虚函数，而且它的定义需要单独定义，而不能是声明时定义
+	- 有实现的纯虚函数用于提供默认实现，派生类在实现纯虚函数时中可以显式地调用该纯虚函数实现
+	- 析构函数可以是纯虚的，但必须给出一个定义，以便在派生对象析构时调用它
 	- 接口类也有虚表，但是纯虚函数的虚表条目要么是空指针的要么是打印报错函数
 
 
@@ -311,17 +315,15 @@ const char* Animal::speak() const  // 即使该函数有定义
 }
 ```
 
+在这种情况下，`speak()` 仍然被认为是一个纯虚函数因为“= 0”(即使已经给了它一个定义)，`Animal` 仍然被认为是一个抽象基类(因此不能实例化)。任何继承自`Animal`的类都需要为`speak()`提供自己的定义，否则也会被认为是抽象基类。
 
-In this case, speak() is still considered a pure virtual function because of the “= 0” (even though it has been given a definition) and Animal is still considered an abstract base class (and thus can’t be instantiated). Any class that inherits from Animal needs to provide its own definition for speak() or it will also be considered an abstract base class.
-
-When providing a definition for a pure virtual function, the definition must be provided separately (not inline).
+在为纯虚函数提供定义时，必须单独提供定义(不能是[[6-13-Inline-functions|内联函数]])。
 
 !!! tip "小贴士"
 
-	For Visual Studio users
+	对于 Visual Studio 用户的提示
 
-	Visual Studio mistakenly allows pure virtual function declarations to be definitions, for example
-	
+	Visual Studio 错误地允许纯虚函数在声明时定义；
 	```cpp
 	// wrong!
 	virtual const char* speak() const = 0
@@ -329,16 +331,16 @@ When providing a definition for a pure virtual function, the definition must be 
 	  return "buzz";
 	}
 	```
-	This is wrong and cannot be disabled.
+	这其实是错误的，但是无法关闭。
+	
 
-
-当您希望基类为函数提供默认实现，但仍然强制任何派生类提供它们自己的实现时，此范例可能很有用。但是，如果派生类对基类提供的默认实现感到满意，它可以直接调用基类实现。例如:
+当您希望基类为函数提供默认实现，但仍然强制任何派生类提供它们自己的实现时，此范例可能很有用。但是，如果派生类对基类提供的默认实现感到满意，它可以直接调用基类实现。例如：
 
 ```cpp
 #include <string>
 #include <iostream>
 
-class Animal // This Animal is an abstract base class
+class Animal // Animal 是抽象基类
 {
 protected:
     std::string m_name;
@@ -350,7 +352,7 @@ public:
     }
 
     const std::string& getName() const { return m_name; }
-    virtual const char* speak() const = 0; // note that speak is a pure virtual function
+    virtual const char* speak() const = 0; // speak 是一个纯虚函数
 
     virtual ~Animal() = default;
 };

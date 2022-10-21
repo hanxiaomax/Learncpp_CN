@@ -11,13 +11,16 @@ tags:
 
 ??? note "关键点速记"
 
-Last chapter, in lesson [[17-9-multiple-inheritance|17.9 - 多重继承]], we left off talking about the “diamond problem”. In this section, we will resume this discussion.
 
-Note: This section is an advanced topic and can be skipped or skimmed if desired.
+
+在上一章 [[17-9-multiple-inheritance|17.9 - 多重继承]] 一课中，我们谈论了[[the-diamond-problem|菱形继承问题]]。本章我们会继续该话题。
+
+*注意：本节是高级主题，可以作为选修。*
 
 ## 菱形继承问题
 
-Here is our example from the previous lesson (with some constructors) illustrating the diamond problem:
+下面是我们上一课中的例子(多了一些构造函数)，说明菱形继承问题：
+
 
 ```cpp
 #include <iostream>
