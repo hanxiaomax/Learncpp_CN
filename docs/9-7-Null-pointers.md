@@ -9,8 +9,12 @@ tags:
 - pointer
 ---
 
+??? note "关键点速记"
 
-In the previous lesson ([9.6 -- Introduction to pointers](https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/)), we covered the basics of pointers, which are objects that hold the address of another object. This address can be dereferenced using the dereference operator (*) to get the value at that address:
+	- 指针可以通过值初始化设为空值。`int* ptr{};`
+	- 当需要空指针字面量用于指针的初始化、赋值或作为参数时，可以使用 `nullptr`。
+
+在上节课中 ([[9-6-Introduction-to-pointers|9.6 - 指针简介]])，我们介绍了指针的基本知识——指针是一个对象，它持有另外一个对象的地址。我们可以使用[[dereference-operator|解引用操作符]]对地址进行解引用以获得该地址存放的值：
 
 ```cpp
 #include <iostream>
@@ -27,20 +31,20 @@ int main()
 }
 ```
 
-COPY
+输出结果：
 
-The above example prints:
-
+```
 5
 5
+```
 
-In the prior lesson, we also noted that pointers do not need to point to anything. In this lesson, we’ll explore such pointers (and the various implications of pointing to nothing) further.
+在上一课中，我们还注意到指针可以不指向任何东西。在这节课中，我们将进一步探索这种指针(以及指向虚无的各种含义)。
 
-Null pointers
+## 空指针（Null）
 
-Besides a memory address, there is one additional value that a pointer can hold: a null value. A null value (often shortened to null) is a special value that means something has no value. When a pointer is holding a null value, it means the pointer is not pointing at anything. Such a pointer is called a null pointer.
+除了内存地址，指针还可以保存一个额外的值：空值。空值(通常缩写为null)是一种特殊值，表示某物没有值。当指针持有空值时，意味着该指针不指向任何东西。这样的指针称为空指针。
 
-The easiest way to create a null pointer is to use value initialization:
+创建空指针最简单的方法是使用值初始化:
 
 ```cpp
 int main()
@@ -51,13 +55,13 @@ int main()
 }
 ```
 
-COPY
 
-Best practice
 
-Value initialize your pointers (to be null pointers) if you are not initializing them with the address of a valid object.
+!!! success "最佳实践"
 
-Because we can use assignment to change what a pointer is pointing at, a pointer that is initially set to null can later be changed to point at a valid object:
+	如果你不能将指针初始化为一个有效的地址，请使用值初始化将其初始化为空指针
+	
+因为我们可以使用赋值来改变指针所指向的对象，所以最初被设置为空的指针以后可以被更改为指向一个有效的对象:
 
 ```cpp
 #include <iostream>
@@ -75,11 +79,9 @@ int main()
 }
 ```
 
-COPY
+## nullptr 关键字
 
-The nullptr keyword
-
-Much like the keywords `true` and `false` represent Boolean literal values, the nullptr keyword represents a null pointer literal. We can use `nullptr`to explicitly initialize or assign a pointer a null value.
+类似于 `true` 和 `false` 用于表示布尔字面量值，`nullptr` 关键字则用于表示空指针字面量。因此我们可以使用`nullptr`显式地将指针初始化或赋值为空值。
 
 ```cpp
 int main()
@@ -96,17 +98,15 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，我们将指针 `ptr2` 的值设置为 `nullptr`，这使得`ptr2`称为一个空指针。
 
-In the above example, we use assignment to set the value of `ptr2` to `nullptr`, making `ptr2` a null pointer.
+!!! success "最佳实践"
 
-Best practice
+	当需要空指针字面量用于指针的初始化、赋值或作为参数时，可以使用 `nullptr`。
 
-Use `nullptr` when you need a null pointer literal for initialization, assignment, or passing a null pointer to a function.
+## 对空指针解引用会导致未定义行为
 
-Dereferencing a null pointer results in undefined behavior
-
-Much like dereferencing a dangling (or wild) pointer leads to undefined behavior, dereferencing a null pointer also leads to undefined behavior. In most cases, it will crash your application.
+类似于对悬垂指针或野指针解引用，对空指针解引用也会导致未定义行为。大多数情况下， like dereferencing a dangling (or wild) pointer leads to undefined behavior, dereferencing a null pointer also leads to undefined behavior. In most cases, it will crash your application.
 
 The following program illustrates this, and will probably crash or terminate your application abnormally when you run it (go ahead, try it, you won’t harm your machine):
 

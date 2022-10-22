@@ -430,36 +430,35 @@ int *
 
 ## 指针的大小
 
-指针的大小取决于该可执行程序编译的ti'x
-
-The size of a pointer is dependent upon the architecture the executable is compiled for -- a 32-bit executable uses 32-bit memory addresses -- consequently, a pointer on a 32-bit machine is 32 bits (4 bytes). With a 64-bit executable, a pointer would be 64 bits (8 bytes). Note that this is true regardless of the size of the object being pointed to:
+==指针的大小取决于该可执行程序编译的体系结构——32位可执行程序使用32位地址——则一个指针在32位机器上的大小是4个字节。对于64位可执行程序，指针大小为64位（8字节）。注意，不论指针所指对象的大小是多少，指针本身的大小总是符合上面的规则。==
 
 ```cpp
 #include <iostream>
 
-int main() // assume a 32-bit application
+int main() // 假设为32位程序
 {
-    char* chPtr{};        // chars are 1 byte
-    int* iPtr{};          // ints are usually 4 bytes
-    long double* ldPtr{}; // long doubles are usually 8 or 12 bytes
+    char* chPtr{};        // char 为1个字节
+    int* iPtr{};          // int通常是4字节
+    long double* ldPtr{}; // long doubles 通常是8字节或12字节
 
-    std::cout << sizeof(chPtr) << '\n'; // prints 4
-    std::cout << sizeof(iPtr) << '\n';  // prints 4
-    std::cout << sizeof(ldPtr) << '\n'; // prints 4
+    std::cout << sizeof(chPtr) << '\n'; // 打印 4
+    std::cout << sizeof(iPtr) << '\n';  // 打印 4
+    std::cout << sizeof(ldPtr) << '\n'; // 打印 4
 
     return 0;
 }
 ```
 
-COPY
 
-The size of the pointer is always the same. This is because a pointer is just a memory address, and the number of bits needed to access a memory address is constant.
+指针的大小总是相同的。这是因为指针只是一个内存地址，而访问内存地址所需的比特数是恒定的。
 
-## Dangling pointers
 
-Much like a dangling reference, a dangling pointer is a pointer that is holding the address of an object that is no longer valid (e.g. because it has been destroyed). Dereferencing a dangling pointer will lead to undefined results.
+## 悬垂指针
 
-Here’s an example of creating a dangling pointer:
+就像悬垂引用一样，悬垂指针是保存不再有效的对象地址的指针(例如，对象已被销毁)。对悬浮指针的解引用将导致[[undefined-behavior|未定义行为]]。
+
+下面是一个创建悬浮指针的例子:
+
 
 ```cpp
 #include <iostream>
@@ -484,9 +483,7 @@ int main()
 }
 ```
 
-COPY
-
-The above program will probably print:
+程序运行结果：
 
 ```
 5
@@ -494,10 +491,13 @@ The above program will probably print:
 6
 ```
 
-But it may not, as the object that `ptr` was pointing at went out of scope and was destroyed at the end of the inner block, leaving `ptr` dangling.
+但是，结果也可能不是上面这样，因为 `ptr` 所指的对象在[[going-out-of-scope|离开作用域]]时(内层语句块)以及被销毁了，此时的`ptr`是一个悬垂指针。
 
-## Conclusion
 
-Pointers are variables that hold a memory address. They can be dereferenced using the dereference operator (*) to retrieve the value at the address they are holding. Dereferencing a wild or dangling (or null) pointer will result in undefined behavior and will probably crash your application.
+## 小结
 
-Pointers are both more flexible than references and more dangerous. We’ll continue to explore this in the upcoming lessons.
+
+
+指针是保存内存地址的变量。可以使用[[dereference-operator|解引用运算符]]对它们进行解引用，以获取指针所持有的地址的值。对[[wild-pointer|野指针]]或[[dangling|悬垂]]指针(或空指针)的解引用会导致未定义行为，并可能导致应用程序崩溃。
+
+指针比引用更灵活，也更危险。我们将在接下来的课程中继续探讨这个问题。

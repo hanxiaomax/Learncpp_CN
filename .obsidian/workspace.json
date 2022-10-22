@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-6-Introduction-to-pointers.md",
+                "file": "docs/9-7-Null-pointers.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -94,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -110,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-6-Introduction-to-pointers.md"
+                "file": "docs/9-7-Null-pointers.md"
               }
             }
           },
@@ -131,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-6-Introduction-to-pointers.md",
+                "file": "docs/9-7-Null-pointers.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,14 +156,14 @@
   },
   "active": "491edb803dc8f89e",
   "lastOpenFiles": [
-    "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/9-6-Introduction-to-pointers.md",
-    "docs/bitwise-and.md",
     "docs/MOC.md",
-    "docs/9-5-Pass-by-lvalue-reference.md",
     "docs/9-3-Lvalue-references.md",
-    "docs/word.md",
     "docs/9-7-Null-pointers.md",
+    "docs/9-6-Introduction-to-pointers.md",
+    "docs/2-x-Chapter-2-summary-and-quiz.md",
+    "docs/bitwise-and.md",
+    "docs/9-5-Pass-by-lvalue-reference.md",
+    "docs/word.md",
     "docs/9-2-Value-categories-lvalues-and-rvalues.md",
     "docs/9-1-Introduction-to-compound-data-types.md"
   ]
