@@ -29,28 +29,23 @@ int main()
 
 使用普通(非`const`)指针，既可以更改指针所指向的对象(通过为指针分配一个新地址来保存)，也可以更改被保存地址处的值(通过为解引用指针分配一个新值)。
 
-但是，如果我们要指向的值是const，会发生什么呢?
+但是，如果我们要指向的值是`const`，会发生什么呢?
 
-
-With normal (non-const) pointers, we can change both what the pointer is pointing at (by assigning the pointer a new address to hold) or change the value at the address being held (by assigning a new value to the dereferenced pointer).
-
-However, what happens if the value we want to point at is const?
 
 ```cpp
 int main()
 {
-    const int x { 5 }; // x is now const
-    int* ptr { &x };   // compile error: cannot convert from const int* to int*
+    const int x { 5 }; // x 是 const
+    int* ptr { &x };   // 编译错误：不能把const int* 转换为 int*
 
     return 0;
 }
 ```
 
-COPY
+上面的代码片段无法编译——普通指针不能指向const变量。这样的限制是有必要的，因为const变量的值是不能更改的。允许程序员将非const指针设置为const值将允许程序员解引用该指针并更改该值。这将违反变量的常量性。
 
-The above snippet won’t compile -- we can’t set a normal pointer to point at a const variable. This makes sense: a const variable is one whose value cannot be changed. Allowing the programmer to set a non-const pointer to a const value would allow the programmer to dereference the pointer and change the value. That would violate the const-ness of the variable.
 
-Pointer to const value
+## 指向常量的指针
 
 A pointer to a const value (sometimes called a `pointer to const` for short) is a (non-const) pointer that points to a constant value.
 
