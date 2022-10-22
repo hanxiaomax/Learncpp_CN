@@ -12,7 +12,11 @@ tags:
 ??? note "关键点速记"
 
 	- 指针可以通过值初始化设为空值。`int* ptr{};`
-	- 当需要空指针字面量用于指针的初始化、赋值或作为参数时，可以使用 `nullptr`。
+	- 当需要空指针字面量用于指针的初始化、赋值或作为参数时，可以使用 `nullptr`
+	- 对空指针解引用会导致未定义行为
+	- 整型值会被隐式地转换为布尔值：整型值0会被转换为布尔值`false`，而其他任何整型值都会被转换为布尔值`true`
+	- 如果指针是空指针则会被转换为布尔类型false，如果不是非空指针则转换为true
+	- 条件判断只能用于区分空指针与非空指针。没有方便的方法来确定非空指针是指向有效对象还是悬空指针(指向无效对象)。指针应该保存有效对象的地址，或者设置为nullptr。这样我们只需要测试指针是否为空，并且可以假设任何非空指针都是有效的。
 
 在上节课中 ([[9-6-Introduction-to-pointers|9.6 - 指针简介]])，我们介绍了指针的基本知识——指针是一个对象，它持有另外一个对象的地址。我们可以使用[[dereference-operator|解引用操作符]]对地址进行解引用以获得该地址存放的值：
 
@@ -106,9 +110,9 @@ int main()
 
 ## 对空指针解引用会导致未定义行为
 
-类似于对悬垂指针或野指针解引用，对空指针解引用也会导致未定义行为。大多数情况下， like dereferencing a dangling (or wild) pointer leads to undefined behavior, dereferencing a null pointer also leads to undefined behavior. In most cases, it will crash your application.
+类似于对悬垂指针或野指针解引用，对空指针解引用也会导致未定义行为。大多数情况下，这会使你的程序崩溃。
 
-The following program illustrates this, and will probably crash or terminate your application abnormally when you run it (go ahead, try it, you won’t harm your machine):
+下面的程序说明了这一点，当你运行程序时，它可能会崩溃或异常终止(来吧，尝试一下，不会搞坏你的机器的)：
 
 ```cpp
 #include <iostream>
@@ -122,19 +126,19 @@ int main()
 }
 ```
 
-COPY
+从概念上讲，这是有道理的。对指针的解引用意味着“到指针所指向的地址并访问那里的值”。空指针没有地址。因此，当你试图访问该地址的值时，它应该做什么?
 
-Conceptually, this makes sense. Dereferencing a pointer means “go to the address the pointer is pointing at and access the value there”. A null pointer doesn’t have an address. So when you try to access the value at that address, what should it do?
+意外地解引用空指针和悬空指针是C++程序员最常犯的错误之一，并且可能是C++程序在实践中崩溃的最常见原因。
 
-Accidentally dereferencing null and dangling pointers is one of the most common mistakes C++ programmers make, and is probably the most common reason that C++ programs crash in practice.
 
-Warning
+!!! warning "注意"
 
-Whenever you are using pointers, you’ll need to be extra careful that your code isn’t dereferencing null or dangling pointers, as this will cause undefined behavior (probably an application crash).
+	无论何时使用指针，都需要格外小心，确保代码没有解引用空指针或悬浮指针，因为这将导致未定义的行为(可能导致应用程序崩溃)。
+	
 
-Checking for null pointers
+## 检查空指针
 
-Much like we can use a conditional to test Boolean values for `true` or `false`, we can use a conditional to test whether a pointer has value `nullptr` or not:
+正如可以使用条件测试判断布尔值是`true` 还是`false` 那样，我们也可以判断一个指针的值是否是`nullptr` ：
 
 ```cpp
 #include <iostream>
@@ -157,16 +161,16 @@ int main()
 }
 ```
 
-COPY
+程序输出接过为：
 
-The above program prints:
-
+```
 ptr is non-null
 nullPtr is null
+```
 
-In lesson [4.9 -- Boolean values](https://www.learncpp.com/cpp-tutorial/boolean-values/), we noted that integral values will implicitly convert into Boolean values: an integral value of `0` converts to Boolean value `false`, and any other integral value converts to Boolean value `true`.
+在[[4-9-Boolean-values|4.9 - 布尔值]]一课中，我们知道==整型值会被隐式地转换为布尔值：整型值0会被转换为布尔值`false`，而其他任何整型值都会被转换为布尔值`true`。==
 
-Similarly, pointers will also implicitly convert to Boolean values: a null pointer converts to Boolean value `false`, and a non-null pointer converts to Boolean value `true`. This allows us to skip explicitly testing for `nullptr` and just use the implicit conversion to Boolean to test whether a pointer is a null pointer. The following program is equivalent to the prior one:
+类似地，指针也会隐式转换为布尔值：空指针转换为布尔值`false` ，非空指针转换为布尔值`true` 。这样一来我们可以不必显式地测试 `nullptr` ，只使用隐式转换到布尔值来测试指针是否为空指针即可。下面的程序和之前的程序效果一样：
 
 ```cpp
 #include <iostream>
@@ -176,7 +180,7 @@ int main()
     int x { 5 };
     int* ptr { &x };
 
-    // pointers convert to Boolean false if they are null, and Boolean true if they are non-null
+    // 如果指针是空指针则会被转换为布尔类型false，如果不是非空指针则转换为true
     if (ptr) // implicit conversion to Boolean
         std::cout << "ptr is non-null\n";
     else
@@ -189,17 +193,16 @@ int main()
 }
 ```
 
-COPY
+!!! warning "注意"
 
-Warning
+	条件判断只能用于区分空指针与非空指针。没有方便的方法来确定非空指针是指向有效对象还是悬空指针(指向无效对象)。
 
-Conditionals can only be used to differentiate null pointers from non-null pointers. There is no convenient way to determine whether a non-null pointer is pointing to a valid object or dangling (pointing to an invalid object).
 
-Use nullptr to avoid dangling pointers
+## 使用 `nullptr` 避免悬垂指针
 
-Above, we mentioned that dereferencing a pointer that is either null or dangling will result in undefined behavior. Therefore, we need to ensure our code does not do either of these things.
+对空指针或悬空指针的解引用将导致未定义的行为。因此，我们需要确保不在代码中做这两件事。
 
-We can easily avoid dereferencing a null pointer by using a conditional to ensure a pointer is non-null before trying to dereference it:
+我们可以很容易地避免对空指针的解引用，在尝试解引用之前先对指针进行判空即可：
 
 ```cpp
 // Assume ptr is some pointer that may or may not be a null pointer
@@ -209,23 +212,22 @@ else
     // do something else that doesn't involve dereferencing ptr (print an error message, do nothing at all, etc...)
 ```
 
-COPY
+但是，悬垂指针如何判断呢？因为没有办法检测指针是否是[[dangling|悬垂]]状态，所以必须从源头上避免在程序中出现任何悬浮指针。为此，我们需要确保任何不指向有效对象的指针都被设置为`nullptr`。
 
-But what about dangling pointers? Because there is no way to detect whether a pointer is dangling, we need to avoid having any dangling pointers in our program in the first place. We do that by ensuring that any pointer that is not pointing at a valid object is set to `nullptr`.
+这样，在对指针进行解引用之前，我们只需要测试它是否为空——如果它非空，我们就假定该指针不是[[dangling|悬垂]]的。
 
-That way, before dereferencing a pointer, we only need to test whether it is null -- if it is non-null, we assume the pointer is not dangling.
+!!! success "最佳实践"
 
-Best practice
+	指针应该保存有效对象的地址，或者设置为nullptr。这样我们只需要测试指针是否为空，并且可以假设任何非空指针都是有效的。
 
-A pointer should either hold the address of a valid object, or be set to nullptr. That way we only need to test pointers for null, and can assume any non-null pointer is valid.
 
 Unfortunately, avoiding dangling pointers isn’t always easy: when an object is destroyed, any pointers to that object will be left dangling. Such pointers are _not_ nulled automatically! It is the programmer’s responsibility to ensure that all pointers to an object that has just been destroyed are properly set to `nullptr`.
 
-Warning
+!!! warning "注意"
 
-When an object is destroyed, any pointers to the destroyed object will be left dangling (they will not be automatically set to `nullptr`). It is your responsibility to detect these cases and ensure those pointers are subsequently set to `nullptr`.
+	When an object is destroyed, any pointers to the destroyed object will be left dangling (they will not be automatically set to `nullptr`). It is your responsibility to detect these cases and ensure those pointers are subsequently set to `nullptr`.
 
-Legacy null pointer literals: 0 and NULL
+## Legacy null pointer literals: 0 and NULL
 
 In older code, you may see two other literal values used instead of `nullptr`.
 
@@ -243,13 +245,12 @@ int main()
 }
 ```
 
-COPY
 
-As an aside…
+!!! cite "题外话"
 
-On modern architectures, the address `0` is typically used to represent a null pointer. However, this value is not guaranteed by the C++ standard, and some architectures use other values. The literal `0`, when used in the context of a null pointer, will be translated into whatever address the architecture uses to represent a null pointer.
+    On modern architectures, the address `0` is typically used to represent a null pointer. However, this value is not guaranteed by the C++ standard, and some architectures use other values. The literal `0`, when used in the context of a null pointer, will be translated into whatever address the architecture uses to represent a null pointer.
 
-Additionally, there is a preprocessor macro named `NULL` (defined in the <cstddef> header). This macro is inherited from C, where it is commonly used to indicate a null pointer.
+Additionally, there is a preprocessor macro named `NULL` (defined in the `<cstddef>` header). This macro is inherited from C, where it is commonly used to indicate a null pointer.
 
 ```cpp
 #include <cstddef> // for NULL
@@ -267,7 +268,7 @@ COPY
 
 Both `0` and `NULL` should be avoided in modern C++ (use `nullptr` instead). We discuss why in lesson [9.10 -- Pass by address (part 2)](https://www.learncpp.com/cpp-tutorial/pass-by-address-part-2/).
 
-Favor references over pointers whenever possible
+## Favor references over pointers whenever possible
 
 Pointers and references both give us the ability to access some other object indirectly.
 
@@ -287,12 +288,11 @@ int main()
 }
 ```
 
-COPY
 
 Since references can’t be bound to null, we don’t have to worry about null references. And because references must be bound to a valid object upon creation and then can not be reseated, dangling references are harder to create.
 
 Because they are safer, references should be favored over pointers, unless the additional capabilities provided by pointers are required.
 
-Best practice
+!!! success "最佳实践"
 
-Favor references over pointers unless the additional capabilities provided by pointers are needed.
+	Favor references over pointers unless the additional capabilities provided by pointers are needed.
