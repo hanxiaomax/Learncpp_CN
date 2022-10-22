@@ -283,31 +283,29 @@ int* ptr{ 0x0012FF7C }; // 不可以, 0x0012FF7C 被看做整型字面量
 int main()
 {
     int x{ 5 };
-    int* ptr{ &x }; // ptr initialized to point at x
+    int* ptr{ &x }; // ptr 初始化为指向 x
 
-    std::cout << *ptr << '\n'; // print the value at the address being pointed to (x's address)
+    std::cout << *ptr << '\n'; // 打印地址值(x的地址)
 
     int y{ 6 };
-    ptr = &y; // // change ptr to point at y
+    ptr = &y; // // ptr 更改为指向 y
 
-    std::cout << *ptr << '\n'; // print the value at the address being pointed to (y's address)
+    std::cout << *ptr << '\n'; // 打印地址值 (y的地址)
 
     return 0;
 }
 ```
 
-COPY
-
-The above prints:
+打印：
 
 ```
 5
 6
 ```
 
-In the above example, we define pointer `ptr`, initialize it with the address of `x`, and dereference the pointer to print the value being pointed to (`5`). We then use the assignment operator to change the address that `ptr` is holding to the address of `y`. We then dereference the pointer again to print the value being pointed to (which is now `6`).
+在上面的例子中，我们定义了指针`ptr` 并用x的地址初始化它。对指针解引用以打印被指向的值(`5`)。然后使用赋值操作符将`ptr` 保存的地址更改为y的地址。然后再次解引用该指针以打印被指向的值(现在是`6` )。
 
-Now let’s look at how we can also use a pointer to change the value being pointed at:
+现在让我们看看如何使用指针来改变被指向的值：
 
 ```cpp
 #include <iostream>
@@ -329,9 +327,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+输出结果：
 
 ```
 5
@@ -340,7 +336,7 @@ This program prints:
 6
 ```
 
-In this example, we define pointer `ptr`, initialize it with the address of `x`, and then print the value of both `x` and `*ptr` (`5`). Because `*ptr` returns an lvalue, we can use this on the left hand side of an assignment statement, which we do to change the value being pointed at by `ptr` to `6`. We then print the value of both `x` and `*ptr` again to show that the value has been updated as expected.
+在这个例子中，我们首先定义了指针`ptr`，它的初始化为变量`x`的地址，然后打印了 `x` 和 `*ptr` 的值(`5`)。因为`*ptr` 返回的是左值，所我们可以把它用在赋值号的左侧，这样就可以将`ptr` 所指的变量的值修改为 `6`。然后，再次打印 `x` 和 `*ptr`以便确定我们的修改是否生效。
 
 !!! tldr "关键信息"
 
@@ -348,7 +344,7 @@ In this example, we define pointer `ptr`, initialize it with the address of `x
 
 	When we dereference a pointer (`*ptr`), we are accessing the object being pointed at. Modifying this (`*ptr = 6;`) changes the value of the object being pointed at.
 
-## Pointers behave much like lvalue references
+## 指针和左值引用很像
 
 Pointers and lvalue references behave similarly. Consider the following program:
 
