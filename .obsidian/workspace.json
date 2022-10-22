@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "6b2f13528b61d307",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/9-5-Pass-by-lvalue-reference.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +96,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-5-Pass-by-lvalue-reference.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -131,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-5-Pass-by-lvalue-reference.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,17 +139,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "6b2f13528b61d307",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/9-3-Lvalue-references.md",
     "docs/MOC.md",
     "docs/9-6-Introduction-to-pointers.md",
+    "docs/9-5-Pass-by-lvalue-reference.md",
+    "docs/word.md",
     "docs/9-7-Null-pointers.md",
-    "docs/9-3-Lvalue-references.md",
     "docs/9-2-Value-categories-lvalues-and-rvalues.md",
     "docs/9-1-Introduction-to-compound-data-types.md",
     "docs/8-10-Function-overload-differentiation.md",
-    "docs/7-14-Common-semantic-errors-in-c.md",
-    "docs/7-1-Control-flow-introduction.md",
-    "docs/10-3-unscoped-enumeration-input-and-output.md"
+    "docs/7-14-Common-semantic-errors-in-c.md"
   ]
 }

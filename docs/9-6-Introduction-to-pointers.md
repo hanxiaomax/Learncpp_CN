@@ -9,6 +9,9 @@ tags:
 - pointer
 ---
 
+??? note "关键点速记"
+	
+	-
 
 Pointers are one of C++’s historical boogeymen, and a place where many aspiring C++ learners have gotten stuck. However, as you’ll see shortly, pointers are nothing to be scared of.
 

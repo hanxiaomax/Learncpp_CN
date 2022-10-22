@@ -11,8 +11,11 @@ tags:
 
 ??? note "关键点速记"
 	
-	- 对于内建的基本数据类型可以使用按值传递，其他类型为避免拷贝开销，应使用按引用传递。
 	- 形参定义为指向非const类型的引用，它只能接收非const类型的实参，无法配合非const类型和字面量使用，极大地限制了它的作用。因此一般可以定义为const类型的引用，此时就可以配合const类型、非const类型和字面量来使用。但此时你就不能在函数内部修改实参的内容。
+	- 对于拷贝开销小的对象，使用按值传递，对于拷贝开销大的对象，使用按const引用传递。如果不确定开销大还是小，则使用按const引用传递。
+	- 如果对象使用内存不超过两个[[word|字长]]且没有额外的设置工作（打开文件或分配内存），则可以认为拷贝开销小
+	- 拷贝开销小的类型通常有：所有基本类型、枚举类型和`std::string_view`.  
+	- 拷贝开销大的类型通常有：`std::array`, `std::string`, `std::vector`, 和 `std::ostream`.
 
 
 在前面的课程中，我们介绍了左值引用 ([[9-3-Lvalue-references|9.3 - 左值引用]]) 和指向const的左值引用 ([[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]])。单独来看，这两种引用看上去都没啥用——为什么我们能够直接访问变量却还要为其创建一个别名呢？
@@ -327,16 +330,18 @@ int main()
 
 !!! success "最佳实践"
 
-	Prefer pass by value for objects that are cheap to copy, and pass by const reference for objects that are expensive to copy. If you’re not sure whether an object is cheap or expensive to copy, favor pass by const reference.
+	对于拷贝开销小的对象，使用按值传递，对于拷贝开销大的对象，使用按const引用传递。如果不确定开销大还是小，则使用按const引用传递。
 
-The last question then is, how do we define “cheap to copy”? There is no absolute answer here, as this varies by compiler, use case, and architecture. However, we can formulate a good rule of thumb: An object is cheap to copy if it uses 2 or fewer “words” of memory (where a “word” is approximated by the size of a memory address) and it has no setup costs.
+最后一个问题，“拷贝开销小”是如何衡量的？这个问题没有绝对的答案，这取决于编译器、使用场景和架构。但是，经验法则是这样的：如果一个对象使用的内存不超过两个[[word|字长]]（”字长“大约是内存地址的长度），而且没有额外的设置过程，则可以认为是”拷贝开销小“。
 
-The following program defines a macro that can be used to determine if a type (or object) uses 2 or fewer memory addresses worth of memory:
+下面这段程序定义了一个可以用于判断对象使用内存是否大于两个字长（`isSmall`）。
+
 
 ```cpp
 #include <iostream>
 
-// Evaluates to true if the type (or object) uses 2 or fewer memory addresses worth of memory
+// 如果类型或对象使用的堆内存不超过两个字长则返回true
+
 #define isSmall(T) (sizeof(T) <= 2 * sizeof(void*))
 
 struct S
@@ -346,7 +351,7 @@ struct S
 
 int main()
 {
-    std::cout << std::boolalpha; // print true or false rather than 1 or 0
+    std::cout << std::boolalpha; // 将bool类型打印为true或false，而不是01
     std::cout << isSmall(int) << '\n'; // true
     std::cout << isSmall(double) << '\n'; // true
     std::cout << isSmall(S) << '\n'; // false
@@ -355,17 +360,17 @@ int main()
 }
 ```
 
-COPY
 
 !!! cite "题外话"
 
-    We use a preprocessor macro here so that we can substitute in a type (normal functions disallow this).
+    我们在这里使用了一个预处理器宏，这样就可以在类型中进行替换(普通函数不允许这样做)。
 
-However, it can be hard to know whether a class type object has setup costs or not. It’s best to assume that most standard library classes have setup costs, unless you know otherwise that they don’t.
+
+然而，很难知道类类型对象是否具有设置成本。最好假设大多数标准库类都有设置成本，除非你知道它们没有。
 
 !!! tip "小贴士"
 
-	An object of type T is cheap to copy if `sizeof(T) <= 2 * sizeof(void*)` and has no additional setup costs.
-
-- Common types that are cheap to copy include all of the fundamental types, enumerated types, and `std::string_view`.  
-- Common types that are expensive to copy include `std::array`, `std::string`, `std::vector`, and `std::ostream`.
+	如果`sizeof(T) <= 2 * sizeof(void*)`而且类型T没有额外的设置操作，则可以认为T的拷贝开销小。
+	
+	- 拷贝开销小的类型通常有：所有基本类型、枚举类型和`std::string_view`.  
+	- 拷贝开销大的类型通常有：`std::array`, `std::string`, `std::vector`, 和 `std::ostream`.
