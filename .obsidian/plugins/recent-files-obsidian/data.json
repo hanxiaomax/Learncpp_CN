@@ -5,6 +5,10 @@
       "path": "docs/9-6-Introduction-to-pointers.md"
     },
     {
+      "basename": "2-x-Chapter-2-summary-and-quiz",
+      "path": "docs/2-x-Chapter-2-summary-and-quiz.md"
+    },
+    {
       "basename": "bitwise-and",
       "path": "docs/bitwise-and.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "M-4-std-move",
       "path": "docs/M-4-std-move.md"
-    },
-    {
-      "basename": "M-3-move-constructors-and-move-assignment",
-      "path": "docs/M-3-move-constructors-and-move-assignment.md"
     }
   ],
   "omittedPaths": [],

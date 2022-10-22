@@ -155,15 +155,15 @@
   },
   "active": "491edb803dc8f89e",
   "lastOpenFiles": [
-    "docs/bitwise-and.md",
+    "docs/2-x-Chapter-2-summary-and-quiz.md",
     "docs/9-6-Introduction-to-pointers.md",
+    "docs/bitwise-and.md",
     "docs/MOC.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
     "docs/9-3-Lvalue-references.md",
     "docs/word.md",
     "docs/9-7-Null-pointers.md",
     "docs/9-2-Value-categories-lvalues-and-rvalues.md",
-    "docs/9-1-Introduction-to-compound-data-types.md",
-    "docs/8-10-Function-overload-differentiation.md"
+    "docs/9-1-Introduction-to-compound-data-types.md"
   ]
 }

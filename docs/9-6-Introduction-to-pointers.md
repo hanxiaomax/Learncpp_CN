@@ -137,13 +137,13 @@ int main()
 
 ## 指针
 
-A pointer is an object that holds a _memory address_ (typically of another variable) as its value. This allows us to store the address of some other object to use later.
+指针可以看做是一个持有内存地址的对象（通常是其他对象的地址）。这使得我们可以在后面的代码中使用该地址。
 
 !!! cite "题外话"
 
-    In modern C++, the pointers we are talking about here are sometimes called “raw pointers” or “dumb pointers”, to help differentiate them from “smart pointers” that were introduced into the language more recently. We cover smart pointers in [chapter M](https://www.learncpp.com/#ChapterM).
+    在现代 C++ 中，我们此处谈论的指针被称为[[raw-pointer|原始指针]]或[[dumb-pointer|笨指针]]，以便将其与[[smart-pointer|智能指针]]区别开来。智能指针会在[chapter M](https://www.learncpp.com/#ChapterM)介绍。
 
-Much like reference types are declared using an ampersand (&) character, pointer types are declared using an asterisk (*):
+和使用&定义引用的做法类似，指针类型使用`*`来定义：
 
 ```cpp
 int;  // a normal int
@@ -152,8 +152,7 @@ int&; // an lvalue reference to an int value
 int*; // a pointer to an int value (holds the address of an integer value)
 ```
 
-
-To create a pointer variable, we simply define a variable with a pointer type:
+要创建指针变量，只需定义一个指针类型的变量:
 
 ```cpp
 int main()
@@ -167,51 +166,47 @@ int main()
 }
 ```
 
-COPY
-
-Note that this asterisk is part of the declaration syntax for pointers, not a use of the dereference operator.
+注意，这个星号是指针声明语法的一部分，而不是使用解引用操作符。
 
 !!! success "最佳实践"
 
-	When declaring a pointer type, place the asterisk next to the type name.
+	声明指针类型时，在类型名称旁边加上星号。
 
-## Warning
+!!! warning "注意"
 
-	Although you generally should not declare multiple variables on a single line, if you do, the asterisk has to be included with each variable.
+	尽管通常情况下我们不应该在一行定义多个变量，但是如果需要这么做，则每个指针变量前面都需要星号
 	
 	```cpp
 	int* ptr1, ptr2;   // incorrect: ptr1 is a pointer to an int, but ptr2 is just a plain int!
 	int* ptr3, * ptr4; // correct: ptr3 and p4 are both pointers to an int
 	```
-	
-	Although this is sometimes used as an argument to not place the asterisk with the type name (instead placing it next to the variable name), it’s a better argument for avoiding defining multiple variables in the same statement.
+	虽然这个例子时常被作为”星号不应该与类型名放在一起“的论据，但我们倒不如说这是一个”不应在一行中定义多个变量的“例子。
 
-## Pointer initialization
+## 指针的初始化
 
-Like normal variables, pointers are _not_ initialized by default. A pointer that has not been initialized is sometimes called a wild pointer. Wild pointers contain a garbage address, and dereferencing a wild pointer will result in undefined behavior. Because of this, you should always initialize your pointers to a known value.
+和普通的变量不同，==指针默认是不初始化的==。一个没有被初始化的指针，有时称为[[wild-pointer|野指针]]。野指针中存放的是一个无用的地址，对野指针解引用会导致[[undefined-behavior|未定义行为]]。因此，我们一定要将指针初始化为一个已知的值。
 
 !!! success "最佳实践"
 
-	Always initialize your pointers.
+	指针必须初始化。
 
 ```cpp
 int main()
 {
     int x{ 5 };
 
-    int* ptr;        // an uninitialized pointer (holds a garbage address)
-    int* ptr2{};     // a null pointer (we'll discuss these in the next lesson)
-    int* ptr3{ &x }; // a pointer initialized with the address of variable x
+    int* ptr;        // 一个未初始化的指针 (存放这无效地址)
+    int* ptr2{};     // 一个空指针 (稍后讨论这种情况)
+    int* ptr3{ &x }; // 指针，初始化为变量x的地址
 
     return 0;
 }
 ```
 
-COPY
+由于指针保存的是地址，所以其初始化值必须是一个地址。通常，指针用于保存另一个变量的地址(可以使用取地址操作符(&)获取)。
 
-Since pointers hold addresses, when we initialize or assign a value to a pointer, that value has to be an address. Typically, pointers are used to hold the address of another variable (which we can get using the address-of operator (&)).
+一旦我们有了一个持有另一个对象地址的指针，我们就可以使用解引用操作符`*`来访问该地址的值。例如:
 
-Once we have a pointer holding the address of another object, we can then use the dereference operator (*) to access the value at that address. For example:
 
 ```cpp
 #include <iostream>
@@ -219,34 +214,36 @@ Once we have a pointer holding the address of another object, we can then use th
 int main()
 {
     int x{ 5 };
-    std::cout << x << '\n'; // print the value of variable x
+    std::cout << x << '\n'; // 打印变量 x 的值
 
-    int* ptr{ &x }; // ptr holds the address of x
-    std::cout << *ptr << '\n'; // use dereference operator to print the value at the address that ptr is holding (which is x's address)
+    int* ptr{ &x }; // ptr 保存着 x 的地址
+    std::cout << *ptr << '\n'; // 使用解引用操作符打印该地址的内容
 
     return 0;
 }
 ```
 
-COPY
-
-This prints:
+输出结果：
 
 ```
 5
 5
 ```
 
-Conceptually, you can think of the above snippet like this:  
+
+形象一点来看，上面的代码片段是这样的：
+
 ![](https://www.learncpp.com/images/CppTutorial/Section6/6-Pointer.png?ezimgfmt=rs:409x145/rscb2/ng:webp/ngcb2)
 
-This is where pointers get their name from -- `ptr` is holding the address of `x`, so we say that `ptr` is “pointing to” `x`.
+
+这就是指针名称的由来——`ptr` 保存着`x` 的地址，所以我们说`ptr` 是“指向`x` 。
 
 !!! info "作者注"
 
-	A note on pointer nomenclature: “X pointer” (where X is some type) is a commonly used shorthand for “pointer to an X”. So when we say, “an integer pointer”, we really mean “a pointer to an integer”. This distinction will be valuable when we talk about const pointers.
+	关于指针命名的注意事项:“X指针”(其中X是某种类型)是“指向X的指针”的常用缩写。所以当我们说“一个整数指针”时，我们实际上是指“一个指向整型变量的指针”。当我们讨论const指针时，这种区别就很重要了。
+	
+就像引用的类型必须匹配被引用对象的类型一样，指针的类型必须匹配被指向对象的类型:
 
-Much like the type of a reference has to match the type of object being referred to, the type of the pointer has to match the type of the object being pointed to:
 
 ```cpp
 int main()
@@ -262,22 +259,23 @@ int main()
 ```
 
 
-With one exception that we’ll discuss next lesson, initializing a pointer with a literal value is disallowed:
+除了一个例外，我们将在下一课讨论，用字面量初始化指针是不允许的：
 
 ```cpp
-int* ptr{ 5 }; // not okay
-int* ptr{ 0x0012FF7C }; // not okay, 0x0012FF7C is treated as an integer literal
+int* ptr{ 5 }; // 不可以
+int* ptr{ 0x0012FF7C }; // 不可以, 0x0012FF7C 被看做整型字面量
 ```
 
 
-## Pointers and assignment
+## 指针和赋值
 
-We can use assignment with pointers in two different ways:
+在谈论指针的赋值时，可能有两种含义：
 
-1.  To change what the pointer is pointing at (by assigning the pointer a new address)
-2.  To change the value being pointed at (by assigning the dereferenced pointer a new value)
+1.  改变指针的值使其指向其他地址（给指针赋值一个新地址）； 
+2.  改变指针所指内容的值（给指针解引用的结果赋新值）。
 
-First, let’s look at a case where a pointer is changed to point at a different object:
+首先，让我们看看指针被更改为指向另一个对象的情况:
+
 
 ```cpp
 #include <iostream>
