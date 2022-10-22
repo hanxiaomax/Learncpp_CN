@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
     },
     {
       "basename": "10-x-Chapter-10-comprehensive-quiz",
@@ -195,10 +199,6 @@
     {
       "basename": "Frankenobject",
       "path": "docs/Frankenobject.md"
-    },
-    {
-      "basename": "object-slicing",
-      "path": "docs/object-slicing.md"
     }
   ],
   "omittedPaths": [],

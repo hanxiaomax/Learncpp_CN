@@ -11,7 +11,10 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- 自定义类型指代所有非C++核心类型，包括标准库
+	- 程序定义类型才指代编写当前程序时用户定义的类型
+	- 类型定义在某种程度上是不受限于单一定义规则的：类型的定义可以出现在多个代码文件中。因为编译器必须看到完整类型定义才能工作（确定内存分配大小）。但是同一个文件中只能出现一次，这个是永恒的真理
 
 基本数据类型是 C++ 语言的核心部分，设计它们的目的就是为了可以在需要时拿来就用。例如，当我们需要定义一个`int`或者`double`类型的时候，我们只需要：
 
@@ -96,7 +99,7 @@ int main()
 我们将在下一课([[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]中展示更多定义和使用程序定义类型的例子，并且我们将从[[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]]开始介绍结构体。
 
 
-## 命名一个自定义类型
+## 命名一个程序定义类型
 
 按照管理，自定义类型的名字应该以大写字母开头，而且不要添加任何的后缀(例如：`Fraction`，而不是 `fraction`，`fraction_t` 或者 `Fraction_t`)。
 
@@ -113,7 +116,7 @@ Fraction fraction {}; // 实例化一个名为 fraction 的 Fraction 类型的�
 但这与其他类型的变量定义并没有什么区别：类型(`Fraction`)在前(因为 `Fraction` 是大写的，我们知道它是一个自定义类型)，然后是变量名(`fraction`)，然后是一个可选的初始化值。因为C++是区分大小写的，所以这里不存在命名冲突!
 
 
-## 在多文件程序中使用自定义类型
+## 在多文件程序中使用程序定义类型
 
 
 每个使用程序定义类型的代码文件在使用之前都需要看到完整的类型定义。[[forward-declaration|前向声明]]是不够的。看到完整定义是必需的，因为编译器需要知道要为该类型的对象分配多少内存。
@@ -123,7 +126,7 @@ Fraction fraction {}; // 实例化一个名为 fraction 的 Fraction 类型的�
 !!! success "最佳实践"
 
 	- 只在一个代码文件中使用的程序定义类型应该在该代码文件中尽可能靠近第一个使用点定义。
-	- 在多个代码文件中使用的程序定义类型应该在与程序定义类型同名的头文件中定义，然后根据需要在每个代码文件中使用“#included”。
+	- 在多个代码文件中使用的程序定义类型应该在与程序定义类型同名的头文件中定义，然后根据需要在代码文件中使用`#include`。
 
 
 下面是一个例子，如果我们把我们的`Fraction`类型移动到一个头文件(名为`Fraction.h`)，这样它就可以包含在多个代码文件中:
@@ -160,29 +163,31 @@ int main()
 
 ## 类型定义部分上豁免于单一定义原则
 
+在课程 [[2-7-Forward-declarations-and-definitions|2.7 - 前向声明和定义]]中，我们讨论了[[one-definition-rule|单一定义规则(one-definition-rule)]]，该规则要求每个函数和全局变量在**每个程序**中只有一个定义。要在不包含定义的文件中使用给定函数或全局变量，需要向前声明(通常通过头文件实现)。这是可行的，因为当涉及到函数和非constexpr变量时，编译器只需要声明就可以 ，然后链接器会将所需的东西都链接起来。
 
-In lesson [[2-7-Forward-declarations-and-definitions|2.7 - 前向声明和定义]]， we discussed how the one-definition rule requires that each function and global variable only have one definition per program. To use a given function or global variable in a file that does not contain the definition, we need a forward declaration (which we typically propagate via a header file). This works because declarations are enough to satisfy the compiler when it comes to functions and non-constexpr variables, and the linker can then connect everything up.
+但是，这个做法并不适用于类型，因为编译器通常需要看到完整的类型定义才能使用给定的类型。我们必须能够将完整的类型定义导入到每个需要它的代码文件。
 
-However, using forward declarations in a similar manner doesn’t work for types, because the compiler typically needs to see the full definition to use a given type. We must be able to propagate the full type definition to each code file that needs it.
+为此，==类型定义在某种程度上是不受限于单一定义规则的：类型的定义可以出现在多个代码文件中。==
 
-To allow for this, types are partially exempt from the one-definition rule: a given type is allowed to be defined in multiple code files.
+其实你已经在不经意之间这么做了：如果程序有两个代码文件，且都`#include <iostream>`，那么我们实际上将所有输入/输出类型定义都导入到了这两个文件中。
 
-You’ve already exercised this capability (likely without realizing it): if your program has two code files that both `#include <iostream>`, you’re importing all of the input/output type definitions into both files.
+有两点需要注意。首先，类型定义在同一个文件中只能出现一次(这通常不是问题，因为[[2-12-Header-guards|头文件防卫式声明]]可以防止该问题出现)。其次，给定类型的所有类型定义必须相同，否则将导致[[undefined-behavior|未定义行为]]。
 
-There are two caveats that are worth knowing about. First, you can still only have one type definition per code file (this usually isn’t a problem since header guards will prevent this). Second, all of the type definitions for a given type must be identical, otherwise undefined behavior will result.
+
 
 ## 命名法：用户定义类型 vs 程序定义类型
 
-The term “user-defined type” sometimes comes up in casual conversation, as well as being mentioned (but not defined) in the C++ language standard. In casual conversation, the term tends to mean “a type that you defined yourself” (such as the Fraction type example above). Sometimes this also includes type aliases.
+术语“用户定义类型”（自定义类型）有时会出现在日常对话中，也会在C++语言标准中提到(但没有定义)。在非正式的对话中，这个术语往往意味着“你自己定义的类型”(如上面的分数类型例子)。**有时这也包括类型别名**。
 
-However, as used in the C++ language standard, a user-defined type is intended to be any type not defined as part of the core C++ language (in other words, a non-fundamental type). Therefore, types defined in the C++ standard library (such as `std::string`) are technically considered to be user-defined types, as are any types that you’ve defined yourself.
+然而，在C++语言标准的行文语境中，任何没有定义为核心C++语言一部分的类型(换句话说，非基本类型)都是用户定义类型。因此，在C++标准库中定义的类型(例如`std::string`)理论上也算用户定义的类型，就像你自己定义的任何类型一样。
 
-To provide additional differentiation, the C++20 language standard helpfully defines the term “program-defined type” to mean only types that you’ve defined yourself. We’ll prefer this term when talking about such types, as it is less ambiguous.
+为了区别，C++ 20语言标准将术语“程序定义类型”定义为仅指代你自己定义的类型。当我们讨论这些类型时，更喜欢使用这个术语，因为它更加精确。
+
 
 
 |类型	|含义|	例子|
 |:---:|:---:|:---:|
 |基本类型	|内建于 C++ 语言的核心部分|	`int`, `std::nullptr_t`
-|用户定义类型	|A non-fundamental type (in casual use, typically used to mean program-defined types)	|`std::string`, `Fraction`
-|程序定义类型	|a class type or enumeration type defined yourself	|`Fraction`
+|用户定义类型	|非基础数据类型(非正式场合指代程序定义类型)	|`std::string`, `Fraction`
+|程序定义类型	|用户自定义的类或枚举类型	|`Fraction`
 

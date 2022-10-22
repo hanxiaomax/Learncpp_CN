@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "3cc2b2c2c7e0531f",
+            "id": "6f2486508062850d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
+                "file": "docs/10-2-unscoped-enumerations.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+                "file": "docs/10-2-unscoped-enumerations.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
+                "file": "docs/10-2-unscoped-enumerations.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,17 +153,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "3cc2b2c2c7e0531f",
+  "active": "6f2486508062850d",
   "lastOpenFiles": [
     "docs/MOC.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/10-2-unscoped-enumerations.md",
     "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
     "docs/9-7-Null-pointers.md",
     "docs/8-8-Type-deduction-for-functions.md",
     "docs/7-1-Control-flow-introduction.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
     "docs/syntax.md",
-    "docs/link.md",
-    "docs/控制台(console).md"
+    "docs/link.md"
   ]
 }

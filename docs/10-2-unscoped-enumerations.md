@@ -12,6 +12,8 @@ tags:
 
 ??? note "关键点速记"
 
+	- 使用`enum`关键字定义，默认暴露在全局作用域中，因此更适合被直接定义在使用它的类中
+
 
 C++ 中内置了很多有用的基础数据类型和符合类型（分别在[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]和[[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]中进行了介绍）。但是这些内置数据类型并不是总能满足我们的需要。
 
@@ -80,48 +82,49 @@ Color eyeColor{ 8 }; // 语法正确，但语义错误（8不是一个被定义�
 
 ## 枚举
 
-An enumeration (also called an enumerated type or an enum) is a compound data type where every possible value is defined as a symbolic constant (called an enumerator).
+枚举(也称为枚举类型和`enum`) 是一种复合类型。在枚举类型中，每个可能的值都被定义为一个[[symbolic-constants|符号常量]]（称为枚举值）。
 
-Because enumerations are program-defined types[[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]，each enumeration needs to be defined before we can use it to create objects using that enumerated type.
+因为枚举属于程序定义类型（[[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]），所以枚举类型在使用前必须先进行定义。
 
-C++ supports two kinds of enumerations: [[unscoped-enumerations|非限定作用域枚举类型]] (which we’ll cover now) and scoped enumerations (which we’ll cover later in this chapter).
+C++ 支持两种类型的枚举：[[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]和[[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]
 
 ## 非限定作用域枚举类型
 
-[[unscoped-enumerations|非限定作用域枚举类型]] are defined via the `enum` keyword.
+[[unscoped-enumerations|非限定作用域枚举类型]]通过 `enum` 关键字定义。
 
-Enumerated types are best taught by example, so let’s define an unscoped enumeration that can hold some color values. We’ll explain how it all works below.
+枚举类型通过实例来学习效果更好。接下来，让我们定义一个非限定作用域枚举类型来表示颜色值吧：
+
 
 ```cpp
-// Define a new unscoped enumeration named Color
+// 定义一个新的非限定作用域枚举类型，名为 Color
 enum Color
 {
-    // Here are the enumerators
-    // These symbolic constants define all the possible values this type can hold
-    // Each enumerator is separated by a comma, not a semicolon
+    // 枚举值定义在这里
+    // 这些符号常量定义了所有可能的值
+    // 枚举值通过逗号分割，而不是分号
     red,
     green,
-    blue, // trailing comma optional but recommended
-}; // the enum definition must end with a semicolon
+    blue, // 结尾的逗号可有可无，但是推荐写上
+}; // 枚举定义必须以分号结尾
 
 int main()
 {
-    // Define a few variables of enumerated type Color
+    // 定义一些Color类型的变量
     Color apple { red };   // my apple is red
     Color shirt { green }; // my shirt is green
     Color cup { blue };    // my cup is blue
 
-    Color socks { white }; // error: white is not an enumerator of Color
-    Color hat { 2 };       // error: 2 is not an enumerator of Color
+    Color socks { white }; // 错误: white 不是可用的枚举值
+    Color hat { 2 };       // 错误: 2 页不是Color的枚举值
 
     return 0;
 }
 ```
 
 
-We start our example by using the `enum` keyword to tell the compiler that we are defining an unscoped enumeration, which we’ve named `Color`.
+我们首先使用`enum`关键字来告诉编译器，我们正在定义一个非限定作用域枚举，我们将其命名为`Color` 。
 
-Inside a pair of curly braces, we define the enumerators for the `Color` type: `red`, `green`, and `blue`. These enumerators specify the set of possible values that objects of type `Color` will be able to hold. Each enumerator must be separated by a comma (not a semicolon) -- a trailing comma after the last enumerator is optional but recommended for consistency.
+随后，在花括号里面定义`Color`类型的枚举值 `red`, `green`, and `blue`. These enumerators specify the set of possible values that objects of type `Color` will be able to hold. Each enumerator must be separated by a comma (not a semicolon) -- a trailing comma after the last enumerator is optional but recommended for consistency.
 
 The type definition for `Color` ends with a semicolon. We’ve now fully defined what enumerated type `Color` is!
 
