@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "491edb803dc8f89e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/9-6-Introduction-to-pointers.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/9-6-Introduction-to-pointers.md"
               }
             }
           },
@@ -117,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/9-6-Introduction-to-pointers.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,12 +153,12 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "91708e7b42f222ab",
+  "active": "491edb803dc8f89e",
   "lastOpenFiles": [
-    "docs/9-3-Lvalue-references.md",
     "docs/MOC.md",
-    "docs/9-6-Introduction-to-pointers.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
+    "docs/9-3-Lvalue-references.md",
+    "docs/9-6-Introduction-to-pointers.md",
     "docs/word.md",
     "docs/9-7-Null-pointers.md",
     "docs/9-2-Value-categories-lvalues-and-rvalues.md",

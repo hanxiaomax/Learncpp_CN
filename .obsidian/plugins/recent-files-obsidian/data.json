@@ -1,20 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
-    },
-    {
       "basename": "9-6-Introduction-to-pointers",
       "path": "docs/9-6-Introduction-to-pointers.md"
     },
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "9-5-Pass-by-lvalue-reference",
       "path": "docs/9-5-Pass-by-lvalue-reference.md"
+    },
+    {
+      "basename": "9-3-Lvalue-references",
+      "path": "docs/9-3-Lvalue-references.md"
     },
     {
       "basename": "word",

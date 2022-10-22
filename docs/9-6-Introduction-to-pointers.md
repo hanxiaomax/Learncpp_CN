@@ -13,13 +13,15 @@ tags:
 	
 	-
 
-Pointers are one of C++’s historical boogeymen, and a place where many aspiring C++ learners have gotten stuck. However, as you’ll see shortly, pointers are nothing to be scared of.
+指针是 C++ 中的历史遗留产物之一，也是很多人学习C++时容易卡壳的地方。但是，稍后你会看到，其实指针并不可怕。
 
-In fact, pointers behave a lot like lvalue references. But before we explain that further, let’s do some setup.
+实际上，指针的行为和[[lvalue-reference|左值引用]]是很像的。但是在我们继续介绍之前，先来左一些准备工作。
 
-Related content
 
-If you’re rusty or not familiar with lvalue references, now would be a good time to review them. We cover lvalue references in lessons [9.3 -- Lvalue references](https://www.learncpp.com/cpp-tutorial/lvalue-references/), [9.4 -- Lvalue references to const](https://www.learncpp.com/cpp-tutorial/lvalue-references-to-const/), and [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/).
+!!! info "相关内容"
+
+
+如果你还不熟悉左值引用，现在是复习的好时机。If you’re rusty or not familiar with lvalue references, now would be a good time to review them. We cover lvalue references in lessons [9.3 -- Lvalue references](https://www.learncpp.com/cpp-tutorial/lvalue-references/), [9.4 -- Lvalue references to const](https://www.learncpp.com/cpp-tutorial/lvalue-references-to-const/), and [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/).
 
 Consider a normal variable, like this one:
 
