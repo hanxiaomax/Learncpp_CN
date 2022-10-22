@@ -400,11 +400,11 @@ int main()
 -   引用总是绑定到某个对象，指针可以不执行任何对象；
 -   引用是”安全“的（除了[[dangling|悬垂]]引用），指针则是危险的。
 
-## The address-of operator returns a pointer
+## 取地址运算符返回的是一个指针
 
-It’s worth noting that the address-of operator (&) doesn’t return the address of its operand as a literal. Instead, it returns a pointer containing the address of the operand, whose type is derived from the argument (e.g. taking the address of an `int` will return the address in an `int` pointer).
+需要注意，[[address-of-operator|取地址操作符 &]]返回的并不是地址的字面量，它返回的是一个指向操作数地址的指针，该指针的类型取决于参数的类型（例如，获取整型变量的地址返回的是整型指针）。
 
-We can see this in the following example:
+请看下面的例子：
 
 ```cpp
 #include <iostream>
@@ -419,15 +419,18 @@ int main()
 }
 ```
 
-COPY
 
-On Visual Studio, this printed:
+在 Visual Studio 中会打印如下内容：
 
+```
 int *
+```
 
-With gcc, this prints “pi” (pointer to int) instead. Because the result of typeid().name() is compiler-dependent, your compiler may print something different, but it will have the same meaning.
+如果是gcc，则会打印“pi” (指向int的指针——pointer to int)。因为 `typeid().name()` 的结果取决于编译器，所以它的打印结果可能是不同的，不过意思是一样的。
 
-## The size of pointers
+## 指针的大小
+
+指针的大小取决于该可执行程序编译的ti'x
 
 The size of a pointer is dependent upon the architecture the executable is compiled for -- a 32-bit executable uses 32-bit memory addresses -- consequently, a pointer on a 32-bit machine is 32 bits (4 bytes). With a 64-bit executable, a pointer would be 64 bits (8 bytes). Note that this is true regardless of the size of the object being pointed to:
 
