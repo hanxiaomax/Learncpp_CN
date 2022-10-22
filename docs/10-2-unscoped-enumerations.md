@@ -12,7 +12,8 @@ tags:
 
 ??? note "关键点速记"
 
-	- 使用`enum`关键字定义，默认暴露在全局作用域中，因此更适合被直接定义在使用它的类中
+	- 使用`enum`关键字定义的枚举是非限定作用域枚举，它的枚举值被暴露在和枚举类型定义的作用域中，因此更适合被直接定义在使用它的类中
+	- 一个枚举类型的枚举值不能用于另一个枚举类型的对象
 
 
 C++ 中内置了很多有用的基础数据类型和符合类型（分别在[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]和[[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]中进行了介绍）。但是这些内置数据类型并不是总能满足我们的需要。
@@ -197,8 +198,6 @@ int main()
 
 星期几、方向或者一副牌中的花色都是常见的枚举定义。
 
-
-
 ```cpp
 enum DaysOfWeek
 {
@@ -228,7 +227,8 @@ enum CardSuits
 };
 ```
 
-Sometimes functions will return a status code to the caller to indicate whether the function executed successfully or encountered an error. Traditionally, small negative numbers were used to represent different possible error codes. For example:
+
+有时候被调函数需要像主调函数返回状态码以表明自己是否执行成功。传统做法是使用负值来代表不同的错误码，例如：
 
 ```cpp
 int readFileContents()
@@ -244,8 +244,7 @@ int readFileContents()
 }
 ```
 
-
-However, using magic numbers like this isn’t very descriptive. A better method would be to use an enumerated type:
+但是，这些魔鬼数字含义非常模糊。更好的办法是使用枚举类型：
 
 ```cpp
 enum FileReadResult
@@ -269,8 +268,7 @@ FileReadResult readFileContents()
 }
 ```
 
-
-Then the caller can test the function’s return value against the appropriate enumerator, which is easier to understand than testing the return result for a specific integer value.
+然后调用者可以将返回值和特定的枚举值进行比较，相对于直接和整型数比较，这种方法可读性更好。
 
 ```cpp
 if (readFileContents() == readResultSuccess)
@@ -283,9 +281,9 @@ else
 }
 ```
 
-Enumerated types can also be put to good use in games, to identify different types of items, or monsters, or terrain types. Basically, anything that is a small set of related objects.
 
-For example:
+
+枚举类型也可以用于标识简单游戏中的道具、怪物或地形类型。基本上，任何相关对象的小集合都可以使用枚举表示：
 
 ```cpp
 enum ItemType
@@ -303,8 +301,7 @@ int main()
 }
 ```
 
-
-Enumerated types can also make for useful function parameters when the user needs to make a choice between two or more options:
+枚举类型也可以用于函数形参，表示用户的输入的不同选项：
 
 ```cpp
 enum SortOrder
@@ -326,49 +323,47 @@ void sortData(SortOrder order)
 ```
 
 
-Many languages use enumerations to define Booleans -- after all, a Boolean is essentially just an enumeration with 2 enumerators: `false` and `true`! However, in C++, `true` and `false` are defined as keywords instead of enumerators.
+很多编程语言会使用枚举来定义布尔类型——毕竟布尔类型本质上就是一个具有两个枚举值的枚举类型：`false` 和 `true`！但是，C++ 中的`true` 和 `false` 是关键字而不是枚举值。
 
 ## 非限定作用域枚举类型的作用域
 
-Unscoped enumerations are named such because they put their enumerator names into the same scope as the enumeration definition itself (as opposed to creating a new scope region like a namespace does).
+[[unscoped-enumerations|非限定作用域枚举类型]]之所以被赋予这样的名字，==是因为它会将其定义的枚举值暴露在和自己一样的作用域中==（而不是像命名空间那样创建了一个新的作用域空间）。
 
-For example, given this program:
+例如：
 
 ```cpp
-enum Color // this enum is defined in the global namespace
+enum Color // 该枚举类型在全局作用域中定义
 {
-    red, // so red is put into the global namespace
+    red, // 所以 red 也位于全局作用域
     green,
     blue,
 };
 
 int main()
 {
-    Color apple { red }; // my apple is red
+    Color apple { red }; // apple 是 red 的
 
     return 0;
 }
 ```
 
-COPY
+`Color` 枚举类型被定义在全局作用域中，因此它所有枚举值(`red`、`green` 和 `blue`) 都会被放到全局作用域中。这无疑会污染全局作用域，而且显著提高了命名冲突的可能性。
 
-The `Color` enumeration is defined in the global scope. Therefore, all the enumeration names (`red`, `green`, and `blue`) also go into the global scope. This pollutes the global scope and significantly raises the chance of naming collisions.
-
-One consequence of this is that an enumerator name can’t be used in multiple enumerations within the same scope:
+同样地，由于这个原因，相同的枚举值名称不能用在不同的枚举类型中（如果它们在一个作用域中被定义的话）：
 
 ```cpp
 enum Color
 {
     red,
     green,
-    blue, // blue is put into the global namespace
+    blue, // blue 在全局作用域
 };
 
 enum Feeling
 {
     happy,
     tired,
-    blue, // error: naming collision with the above blue
+    blue, // 错误：命名冲突
 };
 
 int main()
@@ -380,36 +375,36 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, both unscoped enumerations (`Color` and `Feeling`) put enumerators with the same name `blue` into the global scope. This leads to a naming collision and subsequent compile error.
+在上面的例子中，两个[[unscoped-enumerations|非限定作用域枚举类型]]都被定义在全局作用域中，但是它们都包含了一个同名的枚举值`blue`。这无疑会导致命名冲突，程序是无法编译的。
 
-Unscoped enumerations also provide a named scope region for their enumerators (much like a namespace acts as a named scope region for the names declared within). This means we can access the enumerators of an unscoped enumeration as follows:
+非限定作用域枚举还为它们的枚举值提供命名作用(非常类似于[[namespace|命名空间]]为其中声明的变量名提供命名作用域区域)。这意味着你可以按以下方式访问非限定作用域枚举的枚举值：
 
 ```cpp
 enum Color
 {
     red,
     green,
-    blue, // blue is put into the global namespace
+    blue, // blue 位于全局命名空间
 };
 
 int main()
 {
-    Color apple { red }; // okay, accessing enumerator from global namespace
-    Color raspberry { Color::red }; // also okay, accessing enumerator from scope of Color
+    Color apple { red }; // 可以直接使用
+    Color raspberry { Color::red }; // 也可以通过Color访问
 
     return 0;
 }
 ```
 
-COPY
-
-Most often, unscoped enumerators are accessed without using the scope resolution operator.
+不过多数情况下，枚举值不会通过[[scope-resolution-operator|作用域解析运算符]]来访问。
 
 ## 避免枚举值的命名冲突
 
 There are quite a few common ways to prevent unscoped enumerator naming collisions. One option is to prefix each enumerator with the name of the enumeration itself:
+
+有很多常见的方法可以避免非限定作用域枚举值命名冲突。一种选择是在每个枚举值前面加上枚举本身的名称:
+
 
 ```cpp
 enum Color
