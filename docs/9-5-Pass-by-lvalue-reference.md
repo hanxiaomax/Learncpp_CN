@@ -319,8 +319,11 @@ int main()
 我们现在可以回答为什么不通过引用传递所有内容的问题了:
 
 - 对于拷贝开销不大的对象，拷贝传递的开销和引用绑定的开销可能差不多，所以应该使用按值传递，以便编译器生成更高效的代码；
-- 对于拷贝开销很大的对象，拷贝
--   For objects that are expensive to copy, the cost of the copy dominates, so we favor pass by (const) reference to avoid making a copy.
+- 对于拷贝开销很大的对象，拷贝开销占据了大头，所以应该使用按值传递（const）来避免拷贝。
+
+!!! info "译者注"
+
+	按引用传递允许修改值并不是原因，因为如果不希望修改值可以传递const类型的引用，更不用说const类型的引用有更好的泛用性——能配合右值使用
 
 !!! success "最佳实践"
 
