@@ -10,7 +10,7 @@ tags:
 - const
 ---
 
-Consider the following code snippet:
+请考虑下面的代码：
 
 ```cpp
 int main()
@@ -27,7 +27,10 @@ int main()
 }
 ```
 
-COPY
+使用普通(非`const`)指针，既可以更改指针所指向的对象(通过为指针分配一个新地址来保存)，也可以更改被保存地址处的值(通过为解引用指针分配一个新值)。
+
+但是，如果我们要指向的值是const，会发生什么呢?
+
 
 With normal (non-const) pointers, we can change both what the pointer is pointing at (by assigning the pointer a new address to hold) or change the value at the address being held (by assigning a new value to the dereferenced pointer).
 
