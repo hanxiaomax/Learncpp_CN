@@ -157,13 +157,13 @@
   "lastOpenFiles": [
     "docs/MOC.md",
     "docs/10-2-unscoped-enumerations.md",
+    "docs/10-3-unscoped-enumeration-input-and-output.md",
     "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
     "docs/10-x-Chapter-10-comprehensive-quiz.md",
     "docs/9-7-Null-pointers.md",
     "docs/8-8-Type-deduction-for-functions.md",
     "docs/7-1-Control-flow-introduction.md",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "docs/syntax.md",
-    "docs/link.md"
+    "docs/syntax.md"
   ]
 }

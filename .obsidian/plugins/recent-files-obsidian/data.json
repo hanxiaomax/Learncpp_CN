@@ -9,6 +9,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
+    },
+    {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
       "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "upcasting",
       "path": "docs/upcasting.md"
-    },
-    {
-      "basename": "Frankenobject",
-      "path": "docs/Frankenobject.md"
     }
   ],
   "omittedPaths": [],

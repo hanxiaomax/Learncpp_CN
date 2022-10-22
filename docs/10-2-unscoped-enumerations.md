@@ -124,39 +124,44 @@ int main()
 
 我们首先使用`enum`关键字来告诉编译器，我们正在定义一个非限定作用域枚举，我们将其命名为`Color` 。
 
-随后，在花括号里面定义`Color`类型的枚举值 `red`, `green`, and `blue`. These enumerators specify the set of possible values that objects of type `Color` will be able to hold. Each enumerator must be separated by a comma (not a semicolon) -- a trailing comma after the last enumerator is optional but recommended for consistency.
+随后，在花括号里面定义`Color`类型的枚举值：`red`，`green`和`blue`。这些枚举值指定了 `Color` 类型能够表示或存储的所有可能值。每个枚举值需要通过逗号（而不是分号）隔开——最后一个枚举值后面可以有逗号也可以没有，加上逗号看起来一致性更好。
 
-The type definition for `Color` ends with a semicolon. We’ve now fully defined what enumerated type `Color` is!
+`Color` 的定义以分号结尾。至此，枚举类型 `Color` 就定义完成了！
 
-Inside `main()`, we instantiate three variables of type `Color`: `apple` is initialized with the color `red`, `shirt` is initialized with the color `green`, and `cup` is initialized with the color `blue`. Memory is allocated for each of these objects. Note that the initializer for an enumerated type must be one of the defined enumerators for that type. The variables `socks` and `hat` cause compile errors because the initializers `white` and `2` are not enumerators of `Color`.
+在 `main()` 函数中，我们初始化了三个 `Color` 类型的变量：`apple` 被初始化为 `red`，`shirt` 初始化为 `green` ，`cup` 初始化为 `blue`。 
+
+程序会为这三个对象分配内存。注意，当初始化枚举类型时，所用的初始化值必须是该类型定义过的枚举值。变量`socks` 和 `hat` 并不能成功定义，因为 `white` 和 `2` 并不是 `Color` 的枚举值。
 
 !!! info "作者注"
 
-	To quickly recap on nomenclature:
-	- An _enumeration_ or _enumerated type_ is the program-defined type itself (e.g. `Color`)
-	- An _enumerator_ is a symbolic constant that is a possible value for a given enumeration (e.g. `red`)
+	命名规则小结:
+	- 枚举和枚举类型指的是类型本身(例如 `Color`)
+	- 枚举值指的是枚举中可能值所对应的符号常量(例如 `red`)
 
-## Naming enumerations and enumerators
+## 枚举类型和枚举值的命名
 
-By convention, the names of enumerated types start with a capital letter (as do all program-defined types).
+按照惯例，枚举类型的名字以大写字母开头（规则适用于所有自定义类型）。
 
 !!! warning "注意"
 
-	Enumerations don’t have to be named, but unnamed enumerations should be avoided in modern C++.
+	枚举类型不一定要有名字，但是现代C++推荐避免使用匿名的枚举。
+	
 
-Enumerators must be given names. Unfortunately, there is no common naming convention for enumerator names. Common choices include starting with lower case (e.g. red), starting with caps (Red), all caps (RED), all caps with a prefix (COLOR_RED), or prefixed with a “k” and intercapped (kColorRed).
+枚举值必须有名字。可惜的是，对于枚举值的名字暂时还没有约定俗成的命名规范。通常的选择有：小写字母开头（例如`red`），大写字母开头（例如`Red`，全大写（例如`RED`）、全大写且添加将枚举类型作为前缀（例如`COLOR_RED`），再或者使用`k`作为前缀并配合大小写交替(kColorRed)。
 
-Modern C++ guidelines typically recommend avoiding the all caps naming conventions, as all caps is typically used for preprocessor macros and may conflict. We recommend also avoiding the conventions starting with a capital letter, as names beginning with a capital letter are typically reserved for program-defined types.
+现代C++指南通常建议避免使用全大写的命名约定，因为全大写通常用于预处理器宏，可能会发生冲突。我们还建议避免以大写字母开头的约定，因为以大写字母开头的名称通常为自定义类型保留。
 
 !!! success "最佳实践"
 
-	Name your enumerated types starting with a capital letter. Name your enumerators starting with a lower case letter.
+	以大写字母开头命名枚举类型。以小写字母开头命名枚举值。
+	
 
-## Enumerated types are distinct types
+## 枚举类型是可区分类型
 
-Each enumerated type you create is considered to be a distinct type, meaning the compiler can distinguish it from other types (unlike typedefs or type aliases, which are considered non-distinct from the types they are aliasing).
+你创建的每个枚举类型都被认为是一个不同的类型，这意味着编译器可以将其与其他类型区分开来(不像`typedefs`或类型别名，它们是一种别名，与其对应的类型并没有区别)。
 
-Because enumerated types are distinct, enumerators defined as part of one enumerated type can’t be used with objects of another enumerated type:
+枚举类型是不同的，因此一种枚举类型中枚举值也不能用于另一种枚举类型的对象:
+
 
 ```cpp
 enum Pet
@@ -176,21 +181,23 @@ enum Color
 
 int main()
 {
-    Pet myPet { black }; // compile error: black is not an enumerator of Pet
-    Color shirt { pig }; // compile error: pig is not an enumerator of Color
+    Pet myPet { black }; // 编译错误: black 不是 Pet 的枚举值
+    Color shirt { pig }; // 编译错误: pig 不是 Color 的枚举值
 
     return 0;
 }
 ```
 
+你可能也不想要一件”pig“衬衫。
 
-You probably didn’t want a pig shirt anyway.
 
-## Putting enumerations to use
+## 使用枚举
 
-Because enumerators are descriptive, they are useful for enhancing code documentation and readability. Enumerated types are best used when you have a smallish set of related constants, and objects only need to hold one of those values at a time.
+因为枚举器是描述性的，它们对于增强代码文档性和可读性非常有用。当你的相关常量的集合很小，并且对象每次只需要保存其中一个值时，枚举类型是最合适的。
 
-Commonly defined enumerations include days of the week, the cardinal directions, and the suits in a deck of cards:
+星期几、方向或者一副牌中的花色都是常见的枚举定义。
+
+
 
 ```cpp
 enum DaysOfWeek
@@ -321,7 +328,7 @@ void sortData(SortOrder order)
 
 Many languages use enumerations to define Booleans -- after all, a Boolean is essentially just an enumeration with 2 enumerators: `false` and `true`! However, in C++, `true` and `false` are defined as keywords instead of enumerators.
 
-## The scope of unscoped enumerations
+## 非限定作用域枚举类型的作用域
 
 Unscoped enumerations are named such because they put their enumerator names into the same scope as the enumeration definition itself (as opposed to creating a new scope region like a namespace does).
 
@@ -400,7 +407,7 @@ COPY
 
 Most often, unscoped enumerators are accessed without using the scope resolution operator.
 
-## Avoiding enumerator naming collisions
+## 避免枚举值的命名冲突
 
 There are quite a few common ways to prevent unscoped enumerator naming collisions. One option is to prefix each enumerator with the name of the enumeration itself:
 
@@ -473,13 +480,13 @@ This means we now have to prefix our enumeration and enumerator names with the n
 
     Classes also provide a scope region, and it’s common to put enumerated types related to a class inside the scope region of the class. We discuss this in lesson [13.17 -- Nested types in classes](https://www.learncpp.com/cpp-tutorial/nested-types-in-classes/).
 
-A related option is to use a scoped enumeration (which defines its own scope region). We’ll discuss scoped enumerations shortly ([10.4 -- Scoped enumerations (enum classes)](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/)).
+A related option is to use a scoped enumeration (which defines its own scope region). We’ll discuss scoped enumerations shortly ([[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]).
 
 !!! success "最佳实践"
 
 	Prefer putting your enumerations inside a named scope region (such as a namespace or class) so the enumerators don’t pollute the global namespace.
 
-## Comparing against enumerators
+## 比较枚举值
 
 We can use the equality operators (`operator==` and `operator!=`) to test whether an enumeration has the value of a particular enumerator or not.
 
@@ -505,8 +512,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 In the above example, we use an if-statement to test whether `shirt` is equal to the enumerator `blue`. This gives us a way to conditionalize our program’s behavior based on what enumerator our enumeration is holding.
 
