@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "491edb803dc8f89e",
+            "id": "ab6b74c0ed61072c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-7-Null-pointers.md",
+                "file": "docs/9-8-Pointers-and-const.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-7-Null-pointers.md"
+                "file": "docs/9-8-Pointers-and-const.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-7-Null-pointers.md",
+                "file": "docs/9-8-Pointers-and-const.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,11 +154,11 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "491edb803dc8f89e",
+  "active": "ab6b74c0ed61072c",
   "lastOpenFiles": [
     "docs/MOC.md",
-    "docs/9-3-Lvalue-references.md",
     "docs/9-7-Null-pointers.md",
+    "docs/9-3-Lvalue-references.md",
     "docs/9-6-Introduction-to-pointers.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md",
     "docs/bitwise-and.md",

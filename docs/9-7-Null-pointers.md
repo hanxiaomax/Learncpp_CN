@@ -17,6 +17,8 @@ tags:
 	- 整型值会被隐式地转换为布尔值：整型值0会被转换为布尔值`false`，而其他任何整型值都会被转换为布尔值`true`
 	- 如果指针是空指针则会被转换为布尔类型false，如果不是非空指针则转换为true
 	- 条件判断只能用于区分空指针与非空指针。没有方便的方法来确定非空指针是指向有效对象还是悬空指针(指向无效对象)。指针应该保存有效对象的地址，或者设置为nullptr。这样我们只需要测试指针是否为空，并且可以假设任何非空指针都是有效的。
+	- 当一个对象被销毁时，指向被销毁对象的任何指针都将成为悬垂指针(它们不会自动设置为`nullptr`)。检测这些情况并确保这些指针随后被设置为`nullptr`是你的责任。
+	- 现代C++中应该避免使用0和NULL这两个历史遗留的指针字面量（应该使用`nullpt`来代替）
 
 在上节课中 ([[9-6-Introduction-to-pointers|9.6 - 指针简介]])，我们介绍了指针的基本知识——指针是一个对象，它持有另外一个对象的地址。我们可以使用[[dereference-operator|解引用操作符]]对地址进行解引用以获得该地址存放的值：
 
@@ -221,17 +223,19 @@ else
 	指针应该保存有效对象的地址，或者设置为nullptr。这样我们只需要测试指针是否为空，并且可以假设任何非空指针都是有效的。
 
 
-Unfortunately, avoiding dangling pointers isn’t always easy: when an object is destroyed, any pointers to that object will be left dangling. Such pointers are _not_ nulled automatically! It is the programmer’s responsibility to ensure that all pointers to an object that has just been destroyed are properly set to `nullptr`.
+不幸的是，避免悬垂指针并不容易：当一个对象被销毁时，任何指向该对象的指针都会变成悬垂指针，而且这些指针并不会会自动地设置为空指针！因此，程序员有责任确保所有指向刚刚被销毁的对象的指针都被正确地设置为`nullptr` 。
+
 
 !!! warning "注意"
 
-	When an object is destroyed, any pointers to the destroyed object will be left dangling (they will not be automatically set to `nullptr`). It is your responsibility to detect these cases and ensure those pointers are subsequently set to `nullptr`.
+	当一个对象被销毁时，指向被销毁对象的任何指针都将成为悬垂指针(它们不会自动设置为`nullptr`)。检测这些情况并确保这些指针随后被设置为`nullptr`是你的责任。
+	
 
-## Legacy null pointer literals: 0 and NULL
+## 遗留的指针字面量 `0` 和 `NULL`
 
-In older code, you may see two other literal values used instead of `nullptr`.
+在历史遗留代码中，你可能会看到除 `nullptr` 以外的指针字面量。
 
-The first is the literal `0`. In the context of a pointer, the literal `0` is specially defined to mean a null value, and is the only time you can assign an integral literal to a pointer.
+第一个字面量是 `0`。在指针的语境中，`0`就被认为是空值，而且也是唯一可以被赋值给指针的整型字面量。
 
 ```cpp
 int main()
@@ -248,9 +252,9 @@ int main()
 
 !!! cite "题外话"
 
-    On modern architectures, the address `0` is typically used to represent a null pointer. However, this value is not guaranteed by the C++ standard, and some architectures use other values. The literal `0`, when used in the context of a null pointer, will be translated into whatever address the architecture uses to represent a null pointer.
+	在现代计算机体系结构中，地址“0”通常用于表示空指针。但是，C++标准并没有对此做出保证，而且一些体系结构也的确会使用其他值。当在空指针的上下文中使用“0”字面值时，它将被转换为当前体系结构用来表示空指针的任何地址。
 
-Additionally, there is a preprocessor macro named `NULL` (defined in the `<cstddef>` header). This macro is inherited from C, where it is commonly used to indicate a null pointer.
+此外，还有一个名为`NULL` 的预处理器宏(在`<cstddef>` 头文件中定义)。这个宏是从C语言中继承的，在C语言中它通常用于指示空指针。
 
 ```cpp
 #include <cstddef> // for NULL
@@ -264,15 +268,14 @@ int main()
 }
 ```
 
-COPY
+现代C++中应该避免使用上述两种字面量（应该使用`nullpt`来代替），我们会在[[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]中介绍为什么要这么做。
 
-Both `0` and `NULL` should be avoided in modern C++ (use `nullptr` instead). We discuss why in lesson [9.10 -- Pass by address (part 2)](https://www.learncpp.com/cpp-tutorial/pass-by-address-part-2/).
+## 尽可能使用引用而不是指针
 
-## Favor references over pointers whenever possible
+指针和引用都使我们能够间接访问其他对象。
 
-Pointers and references both give us the ability to access some other object indirectly.
+指针还有其他功能，可以改变它们所指向的对象，也可以指向null。然而，这些指针功能本身也很危险：空指针有被解引用的风险，而改变指针所指向的对象的能力也使其更容易导致悬垂指针的出现：
 
-Pointers have the additional abilities of being able to change what they are pointing at, and to be pointed at null. However, these pointer abilities are also inherently dangerous: A null pointer runs the risk of being dereferenced, and the ability to change what a pointer is pointing at can make creating dangling pointers easier:
 
 ```cpp
 int main()
@@ -281,18 +284,18 @@ int main()
 
     {
         int x{ 5 };
-        ptr = &x; // set the pointer to an object that will be destroyed (not possible with a reference)
-    } // ptr is now dangling
+        ptr = &x; // 将指针指向一个即将被销毁的对象（如果是引用则不可能这么做）
+    } // ptr 现在是悬垂指针
 
     return 0;
 }
 ```
 
+因为引用不能被绑定到null，所以我们不必担心空引用。由于引用在创建时必须绑定到有效的对象，然后不能重新定位，因此也更不容易出现悬垂指针。
 
-Since references can’t be bound to null, we don’t have to worry about null references. And because references must be bound to a valid object upon creation and then can not be reseated, dangling references are harder to create.
+因为引用更安全，所以应该优先使用引用而不是指针，除非需要指针提供的额外功能。
 
-Because they are safer, references should be favored over pointers, unless the additional capabilities provided by pointers are required.
 
 !!! success "最佳实践"
 
-	Favor references over pointers unless the additional capabilities provided by pointers are needed.
+	除非需要指针提供的附加功能，否则最好使用引用而不是指针。
