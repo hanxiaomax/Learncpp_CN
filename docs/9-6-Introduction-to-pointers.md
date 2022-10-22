@@ -11,7 +11,12 @@ tags:
 
 ??? note "关键点速记"
 	
-	-
+	- 指针和引用之间还有一些值得一提的区别：
+		-   引用必须被初始化，指针并不是必须初始化（但是你应该初始化）；
+		-   引用不是对象，指针是对象； 
+		-   引用不能被重新设置（修改引用使其绑定到其他对象），指针则可以被修改指向其他对象；
+		-   引用总是绑定到某个对象，指针可以不执行任何对象；
+		-   引用是”安全“的（除了[[dangling|悬垂]]引用），指针则是危险的。
 
 指针是 C++ 中的历史遗留产物之一，也是很多人学习C++时容易卡壳的地方。但是，稍后你会看到，其实指针并不可怕。
 
@@ -340,13 +345,13 @@ int main()
 
 !!! tldr "关键信息"
 
-	When we use a pointer without a dereference (`ptr`), we are accessing the address held by the pointer. Modifying this (`ptr = &y`) changes what the pointer is pointing at.
+	在使用指针时，如果不同时使用[[dereference-operator|解引用]]的时候，我们使用的是指针存放的地址。修改该地址就可以改变指针的指向 (`ptr = &y`)。
 
-	When we dereference a pointer (`*ptr`), we are accessing the object being pointed at. Modifying this (`*ptr = 6;`) changes the value of the object being pointed at.
+	当对指针应用解引用时(`*ptr`)，我们访问的则是指针所指的对象。修改(`*ptr = 6;`) 它可以改变该变量的值。 
 
 ## 指针和左值引用很像
 
-Pointers and lvalue references behave similarly. Consider the following program:
+指针和左值引用的行为类似。考虑下面的程序：
 
 ```cpp
 #include <iostream>
@@ -375,9 +380,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序运行结果：
 
 ```
 555
@@ -385,17 +388,17 @@ This program prints:
 777
 ```
 
-In the above program, we create a normal variable `x` with value `5`, and then create an lvalue reference and a pointer to `x`. Next, we use the lvalue reference to change the value from `5` to `6`, and show that we can access that updated value via all three methods. Finally, we use the dereferenced pointer to change the value from `6` to `7`, and again show that we can access the updated value via all three methods.
+在上面的程序中，我们创建了一个值为5的普通变量`x`，然后创建一个左值引用和一个指向`x`的指针。接下来，我们使用左值引用将值从5更改为6，并说明我们可以通过所有三个方法访问更新后的值。最后，我们使用解引用的指针将值从6改为7，并再次表明我们可以通过所有三种方法访问更新后的值。
 
-Thus, both pointers and references provide a way to indirectly access another object. The primary difference is that with pointers, we need to explicitly get the address to point at, and we have to explicitly dereference the pointer to get the value. With references, the address-of and dereference happens implicitly.
+因此，指针和引用都提供了间接访问另一个对象的方法。主要的区别在于，对于指针，我们需要显式地获取要指向的地址，并且显式地解引用指针来获取值。对于引用，地址和解引用都是隐式进行的。
 
-There are some other differences between pointers and references worth mentioning:
+指针和引用之间还有一些值得一提的区别：
 
--   References must be initialized, pointers are not required to be initialized (but should be).
--   References are not objects, pointers are.
--   References can not be reseated (changed to reference something else), pointers can change what they are pointing at.
--   References must always be bound to an object, pointers can point to nothing (we’ll see an example of this in the next lesson).
--   References are “safe” (outside of dangling references), pointers are inherently dangerous (we’ll also discuss this in the next lesson).
+-   引用必须被初始化，指针并不是必须初始化（但是你应该初始化）；
+-   引用不是对象，指针是对象； 
+-   引用不能被重新设置（修改引用使其绑定到其他对象），指针则可以被修改指向其他对象；
+-   引用总是绑定到某个对象，指针可以不执行任何对象；
+-   引用是”安全“的（除了[[dangling|悬垂]]引用），指针则是危险的。
 
 ## The address-of operator returns a pointer
 
