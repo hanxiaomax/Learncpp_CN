@@ -401,10 +401,8 @@ int main()
 
 ## 避免枚举值的命名冲突
 
-There are quite a few common ways to prevent unscoped enumerator naming collisions. One option is to prefix each enumerator with the name of the enumeration itself:
 
-有很多常见的方法可以避免非限定作用域枚举值命名冲突。一种选择是在每个枚举值前面加上枚举本身的名称:
-
+有很多常见的方法可以避免非限定作用域枚举值的命名冲突。一种选择是在命名枚举值前，加上枚举本身的名称：
 
 ```cpp
 enum Color
@@ -430,11 +428,9 @@ int main()
 }
 ```
 
-COPY
+虽然这仍然会污染命名空间，但通过使名称更长、更唯一，减少了命名冲突的机会。
 
-This still pollutes the namespace but reduces the chance for naming collisions by making the names longer and more unique.
-
-A better option is to put the enumerated type inside something that provides a separate scope region, such as a namespace:
+一个更好的选择是将枚举类型放在能够提供单独作用域的东西中，例如命名空间:
 
 ```cpp
 namespace color
@@ -467,23 +463,22 @@ int main()
 }
 ```
 
-COPY
-
-This means we now have to prefix our enumeration and enumerator names with the name of the scoped region.
+但这意味着我们现在必须在枚举和枚举值名称前面加上作用域名称。
 
 !!! info "扩展阅读"
 
-    Classes also provide a scope region, and it’s common to put enumerated types related to a class inside the scope region of the class. We discuss this in lesson [13.17 -- Nested types in classes](https://www.learncpp.com/cpp-tutorial/nested-types-in-classes/).
+	类也能够提供作用域，通常将与类相关的枚举类型直接定义在类内。我们会在[[13-17-nested-types-in-classes|13.17 - 类中的嵌套类型]]中进行详细介绍。
 
-A related option is to use a scoped enumeration (which defines its own scope region). We’ll discuss scoped enumerations shortly ([[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]).
+另外一个接近方案是使用[[scoped-enumerations|限定作用域枚举]]会在[[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]中进行介绍。
 
 !!! success "最佳实践"
 
-	Prefer putting your enumerations inside a named scope region (such as a namespace or class) so the enumerators don’t pollute the global namespace.
+	最好将枚举放在一个命名的作用域中(例如命名空间或类)，这样枚举值就不会污染全局命名空间。
+	
 
 ## 比较枚举值
 
-We can use the equality operators (`operator==` and `operator!=`) to test whether an enumeration has the value of a particular enumerator or not.
+我们可以使用等于号或不等号 (`operator==` 和 `operator!=`) 来判断两个枚举值是否相同。
 
 ```cpp
 #include <iostream>
@@ -508,6 +503,6 @@ int main()
 }
 ```
 
-In the above example, we use an if-statement to test whether `shirt` is equal to the enumerator `blue`. This gives us a way to conditionalize our program’s behavior based on what enumerator our enumeration is holding.
+在上面的例子中，我们使用`if`语句来测试`shirt` 是否等于`blue` 。这为我们提供了一种基于枚举所持有的枚举值来按照条件执行程序的方法。
 
-We’ll make more use of this in the next lesson.
+我们将在下一课中更多地使用它。

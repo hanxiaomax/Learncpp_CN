@@ -1,16 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "9-7-Null-pointers",
+      "path": "docs/9-7-Null-pointers.md"
+    },
+    {
+      "basename": "9-3-Lvalue-references",
+      "path": "docs/9-3-Lvalue-references.md"
+    },
+    {
+      "basename": "9-2-Value-categories-lvalues-and-rvalues",
+      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
+    },
+    {
+      "basename": "9-1-Introduction-to-compound-data-types",
+      "path": "docs/9-1-Introduction-to-compound-data-types.md"
+    },
+    {
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
+    },
+    {
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
+    },
+    {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
       "basename": "10-3-unscoped-enumeration-input-and-output",
       "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
     },
     {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
@@ -21,16 +57,8 @@
       "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
-      "basename": "9-7-Null-pointers",
-      "path": "docs/9-7-Null-pointers.md"
-    },
-    {
       "basename": "8-8-Type-deduction-for-functions",
       "path": "docs/8-8-Type-deduction-for-functions.md"
-    },
-    {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
     },
     {
       "basename": "1-1-Statements-and-the-structure-of-a-program",
@@ -171,34 +199,6 @@
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
       "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
-    },
-    {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
-    },
-    {
-      "basename": "17-5-inheritance-and-access-specifiers",
-      "path": "docs/17-5-inheritance-and-access-specifiers.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
-      "basename": "Run-time-type-information-RTTI",
-      "path": "docs/Run-time-type-information-RTTI.md"
-    },
-    {
-      "basename": "downcasting",
-      "path": "docs/downcasting.md"
-    },
-    {
-      "basename": "upcasting",
-      "path": "docs/upcasting.md"
     }
   ],
   "omittedPaths": [],

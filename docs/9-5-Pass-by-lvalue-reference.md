@@ -292,33 +292,34 @@ int main()
 
 在上面的例子中，第一个实参是按值传递的，而第二个参数则是按引用传递的，第三个参数则是按const引用传递的。
 
-
 ## 何时使用按引用传递
 
 因为类类型的拷贝开销很大，类类型通常会按引用传递而不是按值传递以避免昂贵的拷贝开销。基本数据类型的拷贝开销是很小的，所以它们通常会按值传递。
 
 !!! success "最佳实践"
 
-	Pass fundamental types by value, and class (or struct) types by const reference.
+	对基本数据类型使用[[pass-by-value|按值传递]]，而对于类或者结构体使用const的[[按值传递(pass by value)]] 。
 
 ## 按值传递和按引用传递的开销比较（进阶话题）
 
-Not all class types need to be passed by reference. And you may be wondering why we don’t just pass everything by reference. In this section (which is optional reading), we discuss the cost of pass by value vs pass by reference, and refine our best practice as to when we should use each.
+其实，并不是所有的类类型都必须[[pass-by-value|按值传递]]。当然你可能会问，都按值传递有何不可呢？在本节中，我们会详细地分析按值传递和按引用传递的开销，并提出如何选择两种方式的最佳实践。
 
-There are two key points that will help us understand when we should pass by value vs pass by reference:
+有两个关键点可以帮助我们理解什么时候应该按值传递，什么时候应该按引用传递：
 
-First, the cost of copying an object is generally proportional to two things:
 
--   The size of the object. Objects that use more memory take more time to copy.
--   Any additional setup costs. Some class types do additional setup when they are instantiated (e.g. such as opening a file or database, or allocating a certain amount of dynamic memory to hold an object of a variable size). These setup costs must be paid each time an object is copied.
+首先，对象拷贝的开销很大程度上取决于两方面：
 
-On the other hand, binding a reference to an object is always fast (about the same speed as copying a fundamental type).
+- 对象的大小。对象占用越多的内存，拷贝也就越费时间；
+- 其他额外设置所需的时间。有些类会在实例化时进行额外的设置操作（例如打开文件或数据库、或者分配动态内存）。这些操作无疑也会在对象拷贝时占据一定的时间。
 
-Second, accessing an object through a reference is slightly more expensive than accessing an object through a normal variable identifier. With a variable identifier, the compiler can just go to the memory address assigned to that variable and access the value. With a reference, there usually is an extra step: the compiler must first determine which object is being referenced, and only then can it go to that memory address for that object and access the value. The compiler can also sometimes optimize code using objects passed by value more highly than code using objects passed by reference. This means code generated for objects passed by reference is typically slower than the code generated for objects passed by value.
+另一方面，引用的绑定总是非常快的（几乎和基本数据类型的拷贝一样快）。
 
-We can now answer the question of why we don’t pass everything by reference:
+其次，通过引用访问对象比直接访问对象的速度略慢。使用变量标识符，编译器可以直接访问该变量对应的内存地址以获取值。对于引用，通常有一个额外的步骤：编译器必须首先确定被引用的对象，只有这样它才能到该对象的内存地址并访问该值。此外，编译器在优化代码时，有时候针对按值传递的进行的优化会相对于按引用传递的代码更高效。也就是说，编译器生成的对象按引用传递代码通常比其生成的对象按值传递代码要慢一些。
 
--   For objects that are cheap to copy, the cost of copying is similar to the cost of binding, so we favor pass by value so the code generated will be faster.
+我们现在可以回答为什么不通过引用传递所有内容的问题了:
+
+- 对于拷贝开销不大的对象，拷贝传递的开销和引用绑定的开销可能差不多，所以应该使用按值传递，以便编译器生成更高效的代码；
+- 对于拷贝开销很大的对象，拷贝
 -   For objects that are expensive to copy, the cost of the copy dominates, so we favor pass by (const) reference to avoid making a copy.
 
 !!! success "最佳实践"
