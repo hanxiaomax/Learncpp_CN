@@ -153,7 +153,7 @@
 - [[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]
 - [[9-6-Introduction-to-pointers|9.6 - 指针简介]]
 - [[9-7-Null-pointers|9.7 - 空指针]]
-- [[9-8-Pointers-and-const|9.8 - const 指针]]
+- [[9-8-Pointers-and-const|9.8 - 指针和const]]
 - [[9-9-Pass-by-address|9.9 - 按地址传递]]
 - [[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
 - [[9-11-Return-by-reference-and-return-by-address|9.11 - 按引用返回和按地址返回]]

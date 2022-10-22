@@ -156,15 +156,15 @@
   },
   "active": "ab6b74c0ed61072c",
   "lastOpenFiles": [
+    "docs/const-pointer.md",
+    "docs/9-8-Pointers-and-const.md",
     "docs/MOC.md",
+    "docs/9-1-Introduction-to-compound-data-types.md",
+    "docs/pointer-to-const.md",
     "docs/9-7-Null-pointers.md",
     "docs/9-3-Lvalue-references.md",
     "docs/9-6-Introduction-to-pointers.md",
     "docs/2-x-Chapter-2-summary-and-quiz.md",
-    "docs/bitwise-and.md",
-    "docs/9-5-Pass-by-lvalue-reference.md",
-    "docs/word.md",
-    "docs/9-2-Value-categories-lvalues-and-rvalues.md",
-    "docs/9-1-Introduction-to-compound-data-types.md"
+    "docs/bitwise-and.md"
   ]
 }

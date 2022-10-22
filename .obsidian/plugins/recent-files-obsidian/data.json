@@ -5,8 +5,20 @@
       "path": "docs/9-8-Pointers-and-const.md"
     },
     {
+      "basename": "const-pointer",
+      "path": "docs/const-pointer.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-1-Introduction-to-compound-data-types",
+      "path": "docs/9-1-Introduction-to-compound-data-types.md"
+    },
+    {
+      "basename": "pointer-to-const",
+      "path": "docs/pointer-to-const.md"
     },
     {
       "basename": "9-7-Null-pointers",
@@ -39,10 +51,6 @@
     {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "9-1-Introduction-to-compound-data-types",
-      "path": "docs/9-1-Introduction-to-compound-data-types.md"
     },
     {
       "basename": "8-10-Function-overload-differentiation",
@@ -191,14 +199,6 @@
     {
       "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
       "path": "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
-    },
-    {
-      "basename": "M-6-std-unique-ptr",
-      "path": "docs/M-6-std-unique-ptr.md"
-    },
-    {
-      "basename": "M-5-std-move-if-noexcept",
-      "path": "docs/M-5-std-move-if-noexcept.md"
     }
   ],
   "omittedPaths": [],
