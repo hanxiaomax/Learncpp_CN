@@ -12,6 +12,9 @@ tags:
 
 ??? note "关键点速记"
 
+	- 实现拷贝语义时需要使用const类型的左值引用作为形参，而实现移动语义时，需要使用非const的右值形参；
+	- 编译器不会提供默认的移动构造函数和移动赋值操作符，除非该类没有定义任何拷贝构造函数、拷贝赋值、移动赋值或析构函数
+
 
 在[[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]中我们介绍了`std::auto_ptr`，进而引申出了[[move-semantics|移动语义]]的重要性。然后，我们讨论了当将本来被设计为拷贝语义的函数（[[copy-initialization|拷贝初始化]]和[[copy-assignment-operator|拷贝赋值运算符]]）被用来实现移动语义时会带来的问题。
 
@@ -200,10 +203,10 @@ public:
 		if (&a == this)
 			return *this;
 
-		// Release any resource we're holding
+		// 释放当前持有的资源
 		delete m_ptr;
 
-		// Transfer ownership of a.m_ptr to m_ptr
+		// 转移所有权
 		m_ptr = a.m_ptr;
 		a.m_ptr = nullptr; // we'll talk more about this line below
 
@@ -225,47 +228,49 @@ public:
 Auto_ptr4<Resource> generateResource()
 {
 	Auto_ptr4<Resource> res{new Resource};
-	return res; // this return value will invoke the move constructor
+	return res; // 此处会调用移动构造函数
 }
 
 int main()
 {
 	Auto_ptr4<Resource> mainres;
-	mainres = generateResource(); // this assignment will invoke the move assignment
+	mainres = generateResource(); // 此处赋值会调用移动赋值
 
 	return 0;
 }
 ```
 
-The move constructor and move assignment operator are simple. Instead of deep copying the source object (a) into the implicit object, we simply move (steal) the source object’s resources. This involves shallow copying the source pointer into the implicit object, then setting the source pointer to null.
+移动构造函数和移动赋值运算符并不复杂。这个例子中，我们不再将源对象(`a`)深拷贝到隐式对象中，而是转移了源对象的资源。这涉及到将源指针浅拷贝到隐式对象中，然后将源指针设置为空。
 
-When run, this program prints:
+程序运行输出：
 
 ```
 Resource acquired
 Resource destroyed
 ```
 
-That’s much better!
+效果好极了！
 
-The flow of the program is exactly the same as before. However, instead of calling the copy constructor and copy assignment operators, this program calls the move constructor and move assignment operators. Looking a little more deeply:
+程序的流程和之前的完全一样。但是，这个程序中调用的不是拷贝构造函数和拷贝赋值操作符，而是移动构造函数和移动赋值操作符。再深入一点看：
 
-1.  Inside generateResource(), local variable res is created and initialized with a dynamically allocated Resource, which causes the first “Resource acquired”.
-2.  Res is returned back to main() by value. Res is move constructed into a temporary object, transferring the dynamically created object stored in res to the temporary object. We’ll talk about why this happens below.
-3.  Res goes out of scope. Because res no longer manages a pointer (it was moved to the temporary), nothing interesting happens here.
-4.  The temporary object is move assigned to mainres. This transfers the dynamically created object stored in the temporary to mainres.
-5.  The assignment expression ends, and the temporary object goes out of expression scope and is destroyed. However, because the temporary no longer manages a pointer (it was moved to mainres), nothing interesting happens here either.
-6.  At the end of main(), mainres goes out of scope, and our final “Resource destroyed” is displayed.
+1.  在 `generateResource()`，局部变量 `res` 被创建，同时被一个动态分配的 `Resource` 对象初始化，因此第一次打印了 “Resource acquired”；
+2. `Res` [[return-by-value|按值返回]] `main()`。`res` 会被==移动构造到一个临时变量中==，然后将存放在`res`动态创建的对象的所有权转移给了一个临时对象；
+4.  `Res`离开作用域，但是由于`res`已经不管理指针了（已经转移给了临时对象），所以什么事情都不会发生；
+5.  临时对象被移动赋值给 `mainres`，此时存放在临时对象中的动态创建的资源就被转移给了 `mainres`；
+6.  当赋值表达式结束时，临时对象离开作用域并被销毁，但是由于它已经不再管理任何指针（已经转移给了`mainres`），所以仍然什么都不会发生。
+7.  在`main()`结束的地方，`mainres` 会离开作用域，所以打印了 “Resource destroyed” 。
 
-So instead of copying our Resource twice (once for the copy constructor and once for the copy assignment), we transfer it twice. This is more efficient, as Resource is only constructed and destroyed once instead of three times.
+因此，这次，`Resource`并没有被复制两次(一次是拷贝构造函数，一次是拷贝赋值)，而是将其转移了两次。这么做效率明显更高，因为资源只构建和摧毁一次，而不是三次。
 
-## **When are the move constructor and move assignment called?**
 
-The move constructor and move assignment are called when those functions have been defined, and the argument for construction or assignment is an r-value. Most typically, this r-value will be a literal or temporary value.
+## 移动构造函数和移动赋值会在何时被调用？
 
-In most cases, a move constructor and move assignment operator will not be provided by default, unless the class does not have any defined copy constructors, copy assignment, move assignment, or destructors.
+移动构造函数和移动赋值在定义后才会被调用，而且用于构造或赋值的参数需要是一个右值。最典型的是，这个右值是一个字面量或临时值。
 
-## **The key insight behind move semantics**
+在大多数情况下，==编译器不会提供默认的移动构造函数和移动赋值操作符，除非该类没有定义任何拷贝构造函数、拷贝赋值、移动赋值或析构函数==。
+
+
+## 移动语义背后的关键信息
 
 You now have enough context to understand the key insight behind move semantics.
 
@@ -274,6 +279,14 @@ If we construct an object or do an assignment where the argument is an l-value, 
 However, if we construct an object or do an assignment where the argument is an r-value, then we know that r-value is just a temporary object of some kind. Instead of copying it (which can be expensive), we can simply transfer its resources (which is cheap) to the object we’re constructing or assigning. This is safe to do because the temporary will be destroyed at the end of the expression anyway, so we know it will never be used again!
 
 C++11, through r-value references, gives us the ability to provide different behaviors when the argument is an r-value vs an l-value, enabling us to make smarter and more efficient decisions about how our objects should behave.
+
+现在你已经具有理解移动语义背后的关键信息的背景知识了。
+
+当使用一个[[lvalue|左值]]实参构造一个对象或进行赋值时，我们唯一能做的合理的事情就是复制这个左值。我们不能假设改变可以安全地改变这个左值，因为它可能在稍后的程序中再次被使用。例如，对于表达式`a = b` ，我们不能期望有任何合理的方式可以用来修改b的值。
+
+然而，如果我们构造一个对象或做一个赋值，其中参数是r-value，那么我们知道r-value只是某种类型的临时对象。我们不需要复制它(这可能很昂贵)，而是可以简单地将它的资源(这很便宜)转移到我们正在构造或分配的对象。这样做是安全的，因为临时变量无论如何都会在表达式结束时被销毁，所以我们知道它永远不会再被使用!
+
+c++ 11通过r值引用，使我们能够在实参是r值和l值时提供不同的行为，使我们能够对对象的行为做出更聪明、更有效的决定。
 
 ## **Move functions should always leave both objects in a valid state**
 
