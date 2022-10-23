@@ -10,36 +10,36 @@ tags:
 - address
 ---
 
-In prior lessons, we’ve covered two different ways to pass an argument to a function: pass by value ([2.4 -- Introduction to function parameters and arguments](https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/)) and pass by reference ([9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/)).
 
-Here’s a sample program that shows a `std::string` object being passed by value and by reference:
+在前面的课程中我们介绍了函数的两种传参方式：[[pass-by-value|按值传递]] ([[2-4-Introduction-to-function-parameters-and-arguments|2.4 - 函数形参和实参]]) 和[[pass-by-reference|按引用传递]] ([9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/))。
+
+下面这段代码基于 `std::string` 对象分别演示了上面两种传参方式：
 
 ```cpp
 #include <iostream>
 #include <string>
 
-void printByValue(std::string val) // The function parameter is a copy of str
+void printByValue(std::string val) // 形参是实参的拷贝
 {
-    std::cout << val << '\n'; // print the value via the copy
+    std::cout << val << '\n'; // 打印拷贝的值
 }
 
-void printByReference(const std::string& ref) // The function parameter is a reference that binds to str
+void printByReference(const std::string& ref) // 形参绑定到str
 {
-    std::cout << ref << '\n'; // print the value via the reference
+    std::cout << ref << '\n'; // 通过引用直接打印str
 }
 
 int main()
 {
     std::string str{ "Hello, world!" };
 
-    printByValue(str); // pass str by value, makes a copy of str
-    printByReference(str); // pass str by reference, does not make a copy of str
+    printByValue(str); // 传递str的值，会创建拷贝
+    printByReference(str); // 按引用传递 str ，不会创建拷贝
 
     return 0;
 }
 ```
 
-COPY
 
 When we pass argument `str` by value, the function parameter `val` receives a copy of the argument. Because the parameter is a copy of the argument, any changes to the `val` are made to the copy, not the original argument.
 
@@ -47,7 +47,7 @@ When we pass argument `str` by reference, the reference parameter `ref` is b
 
 In both cases, the caller is providing the actual object (`str`) to be passed as an argument to the function call.
 
-Pass by address
+## Pass by address
 
 C++ provides a third way to pass values to a function, called pass by address. With pass by address, instead of providing an object as an argument, the caller provides an object’s _address_ (via a pointer). This pointer (holding the address of the object) is copied into a pointer parameter of the called function (which now also holds the address of the object). The function can then dereference that pointer to access the object whose address was passed.
 
@@ -131,9 +131,7 @@ int main()
 }
 ```
 
-COPY
-
-Pass by address does not make a copy of the object being pointed to
+## 按地址传递不会创建被指的对象的拷贝
 
 Consider the following statements:
 
@@ -142,13 +140,12 @@ std::string str{ "Hello, world!" };
 printByAddress(&str); // use address-of operator (&) to get pointer holding address of str
 ```
 
-COPY
 
-As we noted in [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/), copying a `std::string` is expensive, so that’s something we want to avoid. When we pass a `std::string` by address, we’re not copying the actual `std::string` object -- we’re just copying the pointer (holding the address of the object) from the caller to the called function. Since an address is typically only 4 or 8 bytes, a pointer is only 4 or 8 bytes, so copying a pointer is always fast.
+As we noted in[[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]], [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/), copying a `std::string` is expensive, so that’s something we want to avoid. When we pass a `std::string` by address, we’re not copying the actual `std::string` object -- we’re just copying the pointer (holding the address of the object) from the caller to the called function. Since an address is typically only 4 or 8 bytes, a pointer is only 4 or 8 bytes, so copying a pointer is always fast.
 
 Thus, just like pass by reference, pass by address is fast, and avoids making a copy of the argument object.
 
-Pass by address allows the function to modify the argument’s value
+## Pass by address allows the function to modify the argument’s value
 
 When we pass an object by address, the function receives the address of the passed object, which it can access via dereferencing. Because this is the address of the actual argument object being passed (not a copy of the object), if the function parameter is a pointer to non-const, the function can modify the argument via the pointer parameter:
 
@@ -178,8 +175,10 @@ COPY
 
 This prints:
 
+```
 x = 5
 x = 6
+```
 
 As you can see, the argument is modified and this modification persists even after `changeValue()` has finished running.
 
@@ -194,7 +193,7 @@ void changeValue(const int* ptr) // note: ptr is now a pointer to a const
 
 COPY
 
-Null checking
+## 指针判空
 
 Now consider this fairly innocent looking program:
 
@@ -311,7 +310,7 @@ int main()
 
 COPY
 
-Prefer pass by (const) reference
+## 推荐按（const）引用传递
 
 Note that function `print()` in the example above doesn’t handle null values very well -- it effectively just aborts the function. Given this, why allow a user to pass in a null value at all? Pass by reference has the same benefits as pass by address without the risk of inadvertently dereferencing a null pointer.
 
@@ -354,6 +353,6 @@ Second, the syntax for pass by reference is natural, as we can just pass in lite
 
 In modern C++, most things that can be done with pass by address are better accomplished through other methods. Follow this common maxim: “Pass by reference when you can, pass by address when you must”.
 
-Best practice
+!!! success "最佳实践"
 
-Prefer pass by reference to pass by address unless you have a specific reason to use pass by address.
+	Prefer pass by reference to pass by address unless you have a specific reason to use pass by address.

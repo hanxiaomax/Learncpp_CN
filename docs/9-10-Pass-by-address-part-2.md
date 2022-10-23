@@ -10,9 +10,9 @@ tags:
 - address
 ---
 
-This lesson is a continuation of [9.9 -- Pass by address](https://www.learncpp.com/cpp-tutorial/pass-by-address/).
+本节课继续[[9-9-Pass-by-address|9.9 - 按地址传递]]的内容。
 
-Pass by address for “optional” arguments
+## Pass by address for “optional” arguments
 
 One of the more common uses for pass by address is to allow a function to accept an “optional” argument. This is easier to illustrate by example than to describe:
 
@@ -41,8 +41,10 @@ COPY
 
 This example prints:
 
+```
 Hello guest
 Hello Joe
+```
 
 In this program, the `greet()` function has one parameter that is passed by address and defaulted to `nullptr`. Inside `main()`, we call this function twice. The first call, we don’t know who the user is, so we call `greet()` without an argument. The `name` parameter defaults to `nullptr`, and the greet function substitutes in the name “guest”. For the second call, we now have a valid user, so we call `greet(&joe)`. The `name` parameter receives the address of `joe`, and can use it to print the name “Joe”.
 
@@ -78,7 +80,7 @@ COPY
 
 This has a number of advantages: we no longer have to worry about null dereferences, and we could pass in a string literal if we wanted.
 
-Changing what a pointer parameter points at
+## Changing what a pointer parameter points at
 
 When we pass an address to a function, that address is copied from the argument into the pointer parameter (which is fine, because copying an address is fast). Now consider the following program:
 
@@ -109,14 +111,16 @@ COPY
 
 This program prints:
 
+```
 ptr is non-null
 ptr is non-null
+```
 
 As you can see, changing the address held by the pointer parameter had no impact on the address held by the argument (`ptr` still points at `x`). When function `nullify()` is called, `ptr2` receives a copy of the address passed in (in this case, the address held by `ptr`, which is the address of `x`). When the function changes what `ptr2` points at, this only affects the copy held by `ptr2`.
 
 So what if we want to allow a function to change what a pointer argument points to?
 
-Pass by address… by reference?
+## Pass by address… by reference?
 
 Yup, it’s a thing. Just like we can pass a normal variable by reference, we can also pass pointers by reference. Here’s the same program as above with `ptr2` changed to be a reference to an address:
 
@@ -146,16 +150,18 @@ COPY
 
 This program prints:
 
+```
 ptr is non-null
 ptr is null
+```
 
 Because `refptr` is now a reference to a pointer, when `ptr` is passed as an argument, `refptr` is bound to `ptr`. This means any changes to `refptr`are made to `ptr`.
 
-As an aside…
+!!! cite "题外话"
 
-Because references to pointers are fairly uncommon, it can be easy to mix up the syntax (is it `int*&` or `int&*`?). The good news is that if you do it backwards, the compiler will error because you can’t have a pointer to a reference (because pointers must hold the address of an object, and references aren’t objects). Then you can switch it around.
+    Because references to pointers are fairly uncommon, it can be easy to mix up the syntax (is it `int*&` or `int&*`?). The good news is that if you do it backwards, the compiler will error because you can’t have a pointer to a reference (because pointers must hold the address of an object, and references aren’t objects). Then you can switch it around.
 
-Why using `0` or `NULL` is no longer preferred (optional)
+## Why using `0` or `NULL` is no longer preferred (optional)
 
 In this subsection, we’ll explain why using `0` or `NULL` is no longer preferred.
 
@@ -163,7 +169,7 @@ The literal `0` can be interpreted as either an integer literal, or as a null 
 
 The definition of preprocessor macro `NULL` is not defined by the language standard. It can be defined as `0`, `0L`, `((void*)0)`, or something else entirely.
 
-In lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/), we discussed that functions can be overloaded (multiple functions can have the same name, so long as they can be differentiated by the number or type of parameters). The compiler can figure out which overloaded function you desire by the arguments passed in as part of the function call.
+In lesson [[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]we discussed that functions can be overloaded (multiple functions can have the same name, so long as they can be differentiated by the number or type of parameters). The compiler can figure out which overloaded function you desire by the arguments passed in as part of the function call.
 
 When using `0` or `NULL`, this can cause problems:
 
@@ -204,10 +210,12 @@ COPY
 
 On the author’s machine (using Visual Studio), this prints:
 
+```
 print(int*): non-null
 print(int): 0
 print(int): 0
 print(int*): null
+```
 
 When passing integer value `0` as a parameter, the compiler will prefer `print(int)` over `print(int*)`. This can lead to unexpected results when we intended `print(int*)` to be called with a null pointer argument.
 
@@ -215,9 +223,9 @@ In the case where `NULL` is defined as value `0`, `print(NULL)` will also c
 
 Using `nullptr` removes this ambiguity (it will always call `print(int*)`), since `nullptr` will only match a pointer type.
 
-std::nullptr_t (optional)
+## `std::nullptr_t` (optional)
 
-Since `nullptr` can be differentiated from integer values in function overloads, it must have a different type. So what type is `nullptr`? The answer is that `nullptr` has type `std::nullptr_t` (defined in header <cstddef>). `std::nullptr_t` can only hold one value: `nullptr`! While this may seem kind of silly, it’s useful in one situation. If we want to write a function that accepts only a `nullptr` literal argument, we can make the parameter a `std::nullptr_t`.
+Since `nullptr` can be differentiated from integer values in function overloads, it must have a different type. So what type is `nullptr`? The answer is that `nullptr` has type `std::nullptr_t` (defined in header `<cstddef>`). `std::nullptr_t` can only hold one value: `nullptr`! While this may seem kind of silly, it’s useful in one situation. If we want to write a function that accepts only a `nullptr` literal argument, we can make the parameter a `std::nullptr_t`.
 
 ```cpp
 #include <iostream>
@@ -257,7 +265,7 @@ The one case that might be a little confusing is when we call `print(ptr)` whe
 
 You probably won’t ever need to use this, but it’s good to know, just in case.
 
-There is only pass by value
+## 其实都是按值传递
 
 Now that you understand the basic differences between passing by reference, address, and value, let’s get reductionist for a moment. :)
 

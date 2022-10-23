@@ -1,16 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
+      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "11-3-Arrays-and-loops",
+      "path": "docs/11-3-Arrays-and-loops.md"
+    },
+    {
+      "basename": "11-2-Arrays-Part-II",
+      "path": "docs/11-2-Arrays-Part-II.md"
+    },
+    {
+      "basename": "zero-initialization",
+      "path": "docs/zero-initialization.md"
+    },
+    {
+      "basename": "initializer-list",
+      "path": "docs/initializer-list.md"
+    },
+    {
+      "basename": "11-1-Arrays-Part-I",
+      "path": "docs/11-1-Arrays-Part-I.md"
+    },
+    {
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+    },
+    {
+      "basename": "9-11-Return-by-reference-and-return-by-address",
+      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
+    },
+    {
+      "basename": "9-10-Pass-by-address-part-2",
+      "path": "docs/9-10-Pass-by-address-part-2.md"
+    },
+    {
+      "basename": "9-9-Pass-by-address",
+      "path": "docs/9-9-Pass-by-address.md"
+    },
+    {
       "basename": "9-8-Pointers-and-const",
       "path": "docs/9-8-Pointers-and-const.md"
     },
     {
       "basename": "const-pointer",
       "path": "docs/const-pointer.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "9-1-Introduction-to-compound-data-types",
@@ -143,62 +199,6 @@
     {
       "basename": "21-1-the-standard-library",
       "path": "docs/21-1-the-standard-library.md"
-    },
-    {
-      "basename": "22-2-std-string-construction-and-destruction",
-      "path": "docs/22-2-std-string-construction-and-destruction.md"
-    },
-    {
-      "basename": "22-1-std-string-and-std-wstring",
-      "path": "docs/22-1-std-string-and-std-wstring.md"
-    },
-    {
-      "basename": "22-7-std-string-inserting",
-      "path": "docs/22-7-std-string-inserting.md"
-    },
-    {
-      "basename": "22-6-std-string-appending",
-      "path": "docs/22-6-std-string-appending.md"
-    },
-    {
-      "basename": "22-5-std-string-assignment-and-swapping",
-      "path": "docs/22-5-std-string-assignment-and-swapping.md"
-    },
-    {
-      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
-      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
-    },
-    {
-      "basename": "22-3-std-string-length-and-capacity",
-      "path": "docs/22-3-std-string-length-and-capacity.md"
-    },
-    {
-      "basename": "21-3-STL-iterators-overview",
-      "path": "docs/21-3-STL-iterators-overview.md"
-    },
-    {
-      "basename": "21.4 — STL algorithms overview",
-      "path": "docs/21.4 — STL algorithms overview.md"
-    },
-    {
-      "basename": "21-2-STL-containers-overview",
-      "path": "docs/21-2-STL-containers-overview.md"
-    },
-    {
-      "basename": "17-7-calling-inherited-functions-and-overriding-behavior",
-      "path": "docs/17-7-calling-inherited-functions-and-overriding-behavior.md"
-    },
-    {
-      "basename": "20-x-Chapter-20-comprehensive-quiz",
-      "path": "docs/20-x-Chapter-20-comprehensive-quiz.md"
-    },
-    {
-      "basename": "M-7-std-shared-ptr",
-      "path": "docs/M-7-std-shared-ptr.md"
-    },
-    {
-      "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
-      "path": "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
     }
   ],
   "omittedPaths": [],

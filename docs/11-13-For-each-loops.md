@@ -46,7 +46,7 @@ While _for loops_ provide a convenient and flexible way to iterate through an 
 
 There’s a simpler and safer type of loop called a **for-each** loop (also called a **range-based for-loop**) for cases where we want to iterate through every element in an array (or other list-type structure).
 
-## For-each loops
+## For-each 循环
 
 The _for-each_ statement has a syntax that looks like this:
 
