@@ -364,13 +364,13 @@ public:
 };
 ```
 
-If you were to try to pass an Auto_ptr5 l-value to a function by value, the compiler would complain that the copy constructor required to initialize the function argument has been deleted. This is good, because we should probably be passing Auto_ptr5 by const l-value reference anyway!
+如果你尝试将一个`Auto_ptr5`类型的左值按值传递给一个函数，则编译器会抱怨用于初始化函数参数的拷贝构造函数被删除了。这是好事，因为我们应该通过按引用传递的方式传递 `Auto_ptr5`！
 
-Auto_ptr5 is (finally) a good smart pointer class. And, in fact the standard library contains a class very much like this one (that you should use instead), named std::unique_ptr. We’ll talk more about std::unique_ptr later in this chapter.
+`Auto_ptr5`(终于)一个很好的智能指针类。而且，实际上标准库包含一个非常类似于它的类，名为 `std::unique_ptr`。我们将在本章后面讨论更多关于`std::unique_ptr`的内容。
 
 ## 另一个例子
 
-Let’s take a look at another class that uses dynamic memory: a simple dynamic templated array. This class contains a deep-copying copy constructor and copy assignment operator.
+让我们来看看另一个使用动态内存的类：一个简单的动态的模板化数组。该类包含一个[[deep-copy|深拷贝]]拷贝构造函数和拷贝赋值运算符。
 
 ```cpp
 #include <iostream>
@@ -426,9 +426,7 @@ public:
 };
 ```
 
-COPY
-
-Now let’s use this class in a program. To show you how this class performs when we allocate a million integers on the heap, we’re going to leverage the Timer class we developed in lesson [[13-18-timing-your-code|13.18 - 对程序进行计时]]。We’ll use the Timer class to time how fast our code runs, and show you the performance difference between copying and moving.
+现在让我们在程序中使用这个类。为了演示在堆上分配一百万个整数时该类的执行情况，我们将利用在第[[13-18-timing-your-code|13.18 -对程序进行计时]]中开发的Timer类。我们将使用Timer类来对代码运行时间进行统计，以展示拷贝和移动之间的性能差异。
 
 ```cpp
 #include <iostream>
@@ -482,11 +480,11 @@ int main()
 }
 ```
 
-COPY
 
-On one of the author’s machines, in release mode, this program executed in 0.00825559 seconds.
 
-Now let’s run the same program again, replacing the copy constructor and copy assignment with a move constructor and move assignment.
+在笔者的机器上，以release模式编译，程序执行耗时 0.00825559 秒。
+
+再次运行相同的程序，同时将拷贝构造函数和拷贝赋值替替换为移动构造函数和移动赋值。
 
 ```cpp
 template <typename T>
@@ -592,13 +590,13 @@ int main()
 }
 ```
 
-COPY
+同样的机器上，程序执行耗时 0.0056 秒。
 
-On the same machine, this program executed in 0.0056 seconds.
-
-Comparing the runtime of the two programs, 0.0056 / 0.00825559 = 67.8%. The move version was 47.4% faster!
+比较两个版本的运行时间，0.0056 / 0.00825559 = 67.8%。使用移动语义的版本速度快乐 47.4% ！
 
 ## 不要使用 `std::swap` 实现移动语义
+
+由于移动语义的目标是将资源从源对象移动到目标对象，所以你可能会考虑使用 `std::swap()` 实现移动构造函数和移动赋值操作符。然而，这并不是一个好主意，因为`std::swap()` 会在可移动对象上调用移动构造函数**和**移动赋值，这将导致无限递归。你可以在下面的例子中看到这种情况:
 
 Since the goal of move semantics is to move a resource from a source object to a destination object, you might think about implementing the move constructor and move assignment operator using `std::swap()`. However, this is a bad idea, as `std::swap()` calls both the move constructor and move assignment on move-capable objects, which would result in an infinite recursion. You can see this happen in the following example:
 
