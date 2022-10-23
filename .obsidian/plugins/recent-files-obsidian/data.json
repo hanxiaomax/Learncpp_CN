@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
+      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
+      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
       "basename": "11-17-An-introduction-to-std-vector",
@@ -191,14 +199,6 @@
     {
       "basename": "18-2-virtual-functions-and-polymorphism",
       "path": "docs/18-2-virtual-functions-and-polymorphism.md"
-    },
-    {
-      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
-      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
-    },
-    {
-      "basename": "21-1-the-standard-library",
-      "path": "docs/21-1-the-standard-library.md"
     }
   ],
   "omittedPaths": [],

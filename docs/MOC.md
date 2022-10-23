@@ -196,7 +196,7 @@
 - [[11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays|11.15 — 指向指针的指针和多维数组]]
 - [[11-16-An-introduction-to-std-array|11.16 — std::array 简介]]
 - [[11-17-An-introduction-to-std-vector|11.17 — std::vector 简介]]
-- [[11-18-Introduction-to-iterators]]
+- [[11-18-Introduction-to-iterators|11.18 — 迭代器简介]]
 - [[11-19-Introduction-to-standard-library-algorithms]]
 - [[11-x-Chapter-11-comprehensive-quiz|11.x - 小结与测试 - 数组、字符串和动态分配]]
 

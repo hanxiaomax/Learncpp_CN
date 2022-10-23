@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 
 
-Consider a function in which we dynamically allocate a value:
+考虑下面函数，函数中动态分配了一个资源：
 
 ```cpp
 void someFunction()
@@ -26,7 +26,6 @@ void someFunction()
 }
 ```
 
-COPY
 
 Although the above code seems fairly straightforward, it’s fairly easy to forget to deallocate ptr. Even if you do remember to delete ptr at the end of the function, there are a myriad of ways that ptr may not be deleted if the function exits early. This can happen via an early return:
 
