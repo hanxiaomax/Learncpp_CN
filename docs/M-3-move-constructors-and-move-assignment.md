@@ -48,7 +48,7 @@ public:
 	Auto_ptr3(const Auto_ptr3& a)
 	{
 		m_ptr = new T;
-		*m_ptr = *a.m_ptr;
+		*m_ptr = *a.m_ptr;//解引用的结果是一个Resource对象，它能够通过默认的拷贝构造函数拷贝赋值自己
 	}
 
 	// 拷贝赋值
@@ -130,13 +130,15 @@ Resource destroyed
 但是，如果使用移动语义的话，效果会更好！
 
 
-## **Move constructors and move assignment**
+## 移动构造函数和移动赋值
 
-C++11 defines two new functions in service of move semantics: a move constructor, and a move assignment operator. Whereas the goal of the copy constructor and copy assignment is to make a copy of one object to another, the goal of the move constructor and move assignment is to move ownership of the resources from one object to another (which is typically much less expensive than making a copy).
 
-Defining a move constructor and move assignment work analogously to their copy counterparts. However, whereas the copy flavors of these functions take a const l-value reference parameter, the move flavors of these functions use non-const r-value reference parameters.
+C++ 11为了支持移动语义，新定义了两个函数：一个是[[move-constructor|移动构造函数]]，一个是[[move-assignment-operator|移动赋值运算符]]。拷贝构造函数和拷贝赋值的目的是将一个对象复制到另一个对象，而移动构造函数和移动赋值的目的是将资源的所有权从一个对象转移到另一个对象(这通常比复制成本低得多)。
 
-Here’s the same Auto_ptr3 class as above, with a move constructor and move assignment operator added. We’ve left in the deep-copying copy constructor and copy assignment operator for comparison purposes.
+定义移动构造函数和移动赋值，和定义它们的“拷贝语义”同僚类似。不过，==实现拷贝语义时需要使用const类型的左值引用作为形参，而实现移动语义时，需要使用非const的右值形参。==
+
+这里是与上面相同的`Auto_ptr3`类，添加了移动构造函数和移动赋值操作符。为了进行比较，我们保留了深拷贝的拷贝构造函数和拷贝赋值操作符。
+
 
 ```cpp
 #include <iostream>
@@ -156,24 +158,24 @@ public:
 		delete m_ptr;
 	}
 
-	// Copy constructor
-	// Do deep copy of a.m_ptr to m_ptr
+	// 拷贝构造函数
+	// 将 a.m_ptr 深拷贝到 m_ptr
 	Auto_ptr4(const Auto_ptr4& a)
 	{
 		m_ptr = new T;
 		*m_ptr = *a.m_ptr;
 	}
 
-	// Move constructor
-	// Transfer ownership of a.m_ptr to m_ptr
-	Auto_ptr4(Auto_ptr4&& a) noexcept
+	// 移动构造函数
+	// 转移 a.m_ptr 的资源给 m_ptr
+	Auto_ptr4(Auto_ptr4&& a) noexcept //注意使用的是右值引用
 		: m_ptr(a.m_ptr)
 	{
 		a.m_ptr = nullptr; // we'll talk more about this line below
 	}
 
-	// Copy assignment
-	// Do deep copy of a.m_ptr to m_ptr
+	// 拷贝赋值
+	// 将 a.m_ptr 深拷贝到 m_ptr
 	Auto_ptr4& operator=(const Auto_ptr4& a)
 	{
 		// Self-assignment detection
@@ -190,8 +192,8 @@ public:
 		return *this;
 	}
 
-	// Move assignment
-	// Transfer ownership of a.m_ptr to m_ptr
+	// 移动赋值
+	// 转移 a.m_ptr 的资源给 m_ptr
 	Auto_ptr4& operator=(Auto_ptr4&& a) noexcept
 	{
 		// Self-assignment detection
@@ -234,8 +236,6 @@ int main()
 	return 0;
 }
 ```
-
-COPY
 
 The move constructor and move assignment operator are simple. Instead of deep copying the source object (a) into the implicit object, we simply move (steal) the source object’s resources. This involves shallow copying the source pointer into the implicit object, then setting the source pointer to null.
 
