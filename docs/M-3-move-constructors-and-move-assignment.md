@@ -14,6 +14,11 @@ tags:
 
 	- 实现拷贝语义时需要使用const类型的左值引用作为形参，而实现移动语义时，需要使用非const的右值形参；
 	- 编译器不会提供默认的移动构造函数和移动赋值操作符，除非该类没有定义任何拷贝构造函数、拷贝赋值、移动赋值或析构函数
+	- 左值稍后可能会被使用，所以只有拷贝它是安全的。右值在表达式结束后总是会被销毁，所以移动它是安全的
+	- 有了右值引用，函数就能够基于参数是左值还是右值表现出不同的行文，也就可以针对右值使用移动构造函数和移动赋值
+	- 实现移动语义时，要保持双方都处于有效状态
+	- 局部变量左值从函数中按值返回时，C++会移动它而不是拷贝它，当然有的编译器也会直接忽略。
+	- 在支持移动语义的类中，有时需要删除拷贝构造函数和拷贝赋值函数，以确保不会执行拷贝
 
 
 在[[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]中我们介绍了`std::auto_ptr`，进而引申出了[[move-semantics|移动语义]]的重要性。然后，我们讨论了当将本来被设计为拷贝语义的函数（[[copy-initialization|拷贝初始化]]和[[copy-assignment-operator|拷贝赋值运算符]]）被用来实现移动语义时会带来的问题。
@@ -272,41 +277,36 @@ Resource destroyed
 
 ## 移动语义背后的关键信息
 
-You now have enough context to understand the key insight behind move semantics.
-
-If we construct an object or do an assignment where the argument is an l-value, the only thing we can reasonably do is copy the l-value. We can’t assume it’s safe to alter the l-value, because it may be used again later in the program. If we have an expression “a = b”, we wouldn’t reasonably expect b to be changed in any way.
-
-However, if we construct an object or do an assignment where the argument is an r-value, then we know that r-value is just a temporary object of some kind. Instead of copying it (which can be expensive), we can simply transfer its resources (which is cheap) to the object we’re constructing or assigning. This is safe to do because the temporary will be destroyed at the end of the expression anyway, so we know it will never be used again!
-
-C++11, through r-value references, gives us the ability to provide different behaviors when the argument is an r-value vs an l-value, enabling us to make smarter and more efficient decisions about how our objects should behave.
-
-现在你已经具有理解移动语义背后的关键信息的背景知识了。
+现在你已经具有理解移动语义背后关键信息的背景知识了。
 
 当使用一个[[lvalue|左值]]实参构造一个对象或进行赋值时，我们唯一能做的合理的事情就是复制这个左值。我们不能假设改变可以安全地改变这个左值，因为它可能在稍后的程序中再次被使用。例如，对于表达式`a = b` ，我们不能期望有任何合理的方式可以用来修改b的值。
 
-然而，如果我们构造一个对象或做一个赋值，其中参数是r-value，那么我们知道r-value只是某种类型的临时对象。我们不需要复制它(这可能很昂贵)，而是可以简单地将它的资源(这很便宜)转移到我们正在构造或分配的对象。这样做是安全的，因为临时变量无论如何都会在表达式结束时被销毁，所以我们知道它永远不会再被使用!
+然而，如果我们使用一个[[rvalue|右值]]来构造一个对象或赋值，由于右值只是某种类型的临时对象。因此，我们不必复制它(复制开销很大)，而是可以简单地将它管理的资源转移到正在构造或分配的对象即可。这样做是安全的，因为临时变量无论如何都会在表达式结束时被销毁。显然，它永远不会再被使用!
 
-c++ 11通过r值引用，使我们能够在实参是r值和l值时提供不同的行为，使我们能够对对象的行为做出更聪明、更有效的决定。
+c++ 11通过[[rvalue-reference|右值引用]]，使我们能够在实参是右值和左值时选择不同的行为，以便设计出更聪明、更有效的对象行为。
 
-## **Move functions should always leave both objects in a valid state**
+## 移动函数应该保持两个对象都处于有效状态
 
-In the above examples, both the move constructor and move assignment functions set a.m_ptr to nullptr. This may seem extraneous -- after all, if `a` is a temporary r-value, why bother doing “cleanup” if parameter `a` is going to be destroyed anyway?
+在上面的例子中，不论是移动构造函数还移动赋值函数，都会将`a.m_ptr`设置为`nullptr`（空指针字面量）。这么做看上去有点多余——毕竟这只是一个临时的右值。既然它稍后就会被销毁，为啥还要手工“清理”它呢？
 
-The answer is simple: When `a` goes out of scope, the destructor for `a` will be called, and `a.m_ptr` will be deleted. If at that point, `a.m_ptr` is still pointing to the same object as `m_ptr`, then `m_ptr` will be left as a dangling pointer. When the object containing `m_ptr` eventually gets used (or destroyed), we’ll get undefined behavior.
+答案很简单：当 `a` 离开作用域时，析构函数会被调用，所以 `a.m_ptr` 会被删除。在操作执行时，如果 `a.m_ptr` 仍然指向与`m_ptr` 指向相同的对象，则 `m_ptr` 显然会变成一个[[dangling|悬垂]]指针。当我们后面使用（或销毁）包含了 `m_ptr` 的对象时，就会导致[[undefined-behavior|未定义行为]]。
 
-When implementing move semantics, it is important to ensure the moved-from object is left in a valid state, so that it will destruct properly (without creating undefined behavior).
+在实现移动语义时，确保被移动的对象也处于有效状态是很重要的，这样它就可以正确地销毁(而不会导致未定义的行为)。
 
-## **Automatic l-values returned by value may be moved instead of copied**
+## 自动变量左值按值返回时可能会进行移动而不是拷贝
 
-In the generateResource() function of the Auto_ptr4 example above, when variable res is returned by value, it is moved instead of copied, even though res is an l-value. The C++ specification has a special rule that says automatic objects returned from a function by value can be moved even if they are l-values. This makes sense, since res was going to be destroyed at the end of the function anyway! We might as well steal its resources instead of making an expensive and unnecessary copy.
 
-Although the compiler can move l-value return values, in some cases it may be able to do even better by simply eliding the copy altogether (which avoids the need to make a copy or do a move at all). In such a case, neither the copy constructor nor move constructor would be called.
+在上面`Auto_ptr4`示例的`generateResource()`函数中，当变量`res`按值返回时，它将被移动而不是复制，即使`res`是一个左值。==C++规范有一个特殊的规则，即函数按值返回的自动对象可以移动，即使它们是左值。==这是有道理的，因为`res`无论如何都会在函数结束时被销毁！那么我们还不如窃取它的资源，而不是执行昂贵且无用的拷贝操作。
 
-## **Disabling copying**
+==虽然编译器可以移动左值返回值，但在某些情况下，如果能够完全避免拷贝(这完全避免了复制或移动的需要)就更好了，在这种情况下，拷贝构造函数和移动构造函数甚至都不会被调用。==
 
-In the Auto_ptr4 class above, we left in the copy constructor and assignment operator for comparison purposes. But in move-enabled classes, it is sometimes desirable to delete the copy constructor and copy assignment functions to ensure copies aren’t made. In the case of our Auto_ptr class, we don’t want to copy our templated object T -- both because it’s expensive, and whatever class T is may not even support copying!
 
-Here’s a version of Auto_ptr that supports move semantics but not copy semantics:
+## 阻止拷贝
+
+在上面的`Auto_ptr4`类中，为了进行对照，我们保留了拷贝构造函数和拷贝操作符。==但在支持移动语义的类中，有时需要删除拷贝构造函数和拷贝赋值函数，以确保不会执行拷贝==。在`Auto_ptr`类中，我们不想拷贝模板化对象T——因为它的开销很大，而且类T甚至可能不支持复制！
+
+下面是`Auto_ptr`的一个版本，它支持移动语义但不支持复制语义:
+
 
 ```cpp
 #include <iostream>
@@ -326,7 +326,7 @@ public:
 		delete m_ptr;
 	}
 
-	// Copy constructor -- no copying allowed!
+	// 拷贝构造函数 —— 不允许拷贝!
 	Auto_ptr5(const Auto_ptr5& a) = delete;
 
 	// Move constructor
@@ -337,7 +337,7 @@ public:
 		a.m_ptr = nullptr;
 	}
 
-	// Copy assignment -- no copying allowed!
+	// 拷贝赋值 —— 不允许拷贝
 	Auto_ptr5& operator=(const Auto_ptr5& a) = delete;
 
 	// Move assignment
@@ -364,13 +364,11 @@ public:
 };
 ```
 
-COPY
-
 If you were to try to pass an Auto_ptr5 l-value to a function by value, the compiler would complain that the copy constructor required to initialize the function argument has been deleted. This is good, because we should probably be passing Auto_ptr5 by const l-value reference anyway!
 
 Auto_ptr5 is (finally) a good smart pointer class. And, in fact the standard library contains a class very much like this one (that you should use instead), named std::unique_ptr. We’ll talk more about std::unique_ptr later in this chapter.
 
-## **Another example**
+## 另一个例子
 
 Let’s take a look at another class that uses dynamic memory: a simple dynamic templated array. This class contains a deep-copying copy constructor and copy assignment operator.
 
@@ -430,7 +428,7 @@ public:
 
 COPY
 
-Now let’s use this class in a program. To show you how this class performs when we allocate a million integers on the heap, we’re going to leverage the Timer class we developed in lesson [13.18 -- Timing your code](https://www.learncpp.com/cpp-tutorial/timing-your-code/). We’ll use the Timer class to time how fast our code runs, and show you the performance difference between copying and moving.
+Now let’s use this class in a program. To show you how this class performs when we allocate a million integers on the heap, we’re going to leverage the Timer class we developed in lesson [[13-18-timing-your-code|13.18 - 对程序进行计时]]。We’ll use the Timer class to time how fast our code runs, and show you the performance difference between copying and moving.
 
 ```cpp
 #include <iostream>
@@ -600,7 +598,7 @@ On the same machine, this program executed in 0.0056 seconds.
 
 Comparing the runtime of the two programs, 0.0056 / 0.00825559 = 67.8%. The move version was 47.4% faster!
 
-## **Do not implement move semantics using std::swap**
+## 不要使用 `std::swap` 实现移动语义
 
 Since the goal of move semantics is to move a resource from a source object to a destination object, you might think about implementing the move constructor and move assignment operator using `std::swap()`. However, this is a bad idea, as `std::swap()` calls both the move constructor and move assignment on move-capable objects, which would result in an infinite recursion. You can see this happen in the following example:
 
