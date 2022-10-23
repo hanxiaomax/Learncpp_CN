@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
-      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
+      "basename": "M-2-R-value-references",
+      "path": "docs/M-2-R-value-references.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "M-5-std-move-if-noexcept",
+      "path": "docs/M-5-std-move-if-noexcept.md"
+    },
+    {
+      "basename": "M-4-std-move",
+      "path": "docs/M-4-std-move.md"
+    },
+    {
+      "basename": "M-3-move-constructors-and-move-assignment",
+      "path": "docs/M-3-move-constructors-and-move-assignment.md"
+    },
+    {
+      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
+      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
     },
     {
       "basename": "11-19-Introduction-to-standard-library-algorithms",
@@ -183,22 +199,6 @@
     {
       "basename": "18-6-the-virtual-table",
       "path": "docs/18-6-the-virtual-table.md"
-    },
-    {
-      "basename": "18-5-early-binding-and-late-binding",
-      "path": "docs/18-5-early-binding-and-late-binding.md"
-    },
-    {
-      "basename": "18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization",
-      "path": "docs/18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization.md"
-    },
-    {
-      "basename": "18-3-the-override-and-final-specifiers-and-covariant-return-types",
-      "path": "docs/18-3-the-override-and-final-specifiers-and-covariant-return-types.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     }
   ],
   "omittedPaths": [],

@@ -423,18 +423,14 @@ Because of the above mentioned shortcomings, std::auto_ptr has been deprecated i
 
 其次，`std::auto_ptr`总是使用非数组删除来删除其内容。这意味着`auto_ptr`不能正确地处理动态分配的数组，因为它使用了错误的内存释放方式。更糟糕的是，它不能阻止您向它传递动态数组，这样它就可能导致内存泄漏。
 
-最后，auto_ptr不能很好地处理标准库中的许多其他类，包括大多数容器和算法。这是因为那些标准库类假定当它们复制一个项时，它实际上进行了复制，而不是移动。
+最后，`auto_ptr` 不能很好地处理标准库中的许多其他类，包括大多数容器和算法。这是因为那些标准库类假定当它们复制一个资源时，它进行了实际的复制，而不是移动。
 
-由于上述缺点，std::auto_ptr在c++ 11中已弃用，在c++ 17中已删除。
+由于上述缺点，`std::auto_ptr` 在C++ 11中已弃用，在C++ 17中已删除。
 
-**Moving forward**
+## 继续
 
-The core problem with the design of std::auto_ptr is that prior to C++11, the C++ language simply had no mechanism to differentiate “copy semantics” from “move semantics”. Overriding the copy semantics to implement move semantics leads to weird edge cases and inadvertent bugs. For example, you can write `res1 = res2` and have no idea whether res2 will be changed or not!
+`std::auto_ptr`的核心问题是：C++ 11之前，C++语言根本没有区分“拷贝语义”和“移动语义”的机制。对拷贝语义重写来实现移动语义，会导致奇怪的边界情况和不易察觉的错误。例如，你可以写`res1 = res2` ，但无法知道`res2`是否会被改变！
 
-Because of this, in C++11, the concept of “move” was formally defined, and “move semantics” were added to the language to properly differentiate copying from moving. Now that we’ve set the stage for why move semantics can be useful, we’ll explore the topic of move semantics throughout the rest of this chapter. We’ll also fix our Auto_ptr2 class using move semantics.
+正因为如此，在C++ 11中，正式定义了“移动”的概念，并在语言中添加了“移动语义”，以正确区分复制和移动。现在，我们已经知道移动语义是很有用的，在本章的其余部分我们会继续探索移动语义的其他话题。我们还将使用移动语义修复`Auto_ptr2`类。
 
-In C++11, std::auto_ptr has been replaced by a bunch of other types of “move-aware” smart pointers: std::unique_ptr, std::weak_ptr, and std::shared_ptr. We’ll also explore the two most popular of these: unique_ptr (which is a direct replacement for auto_ptr) and shared_ptr.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/rvalue-references/)
+在C++ 11中，`std::auto_ptr`已经被一堆其他类型的“移动语义兼容的”智能指针所取代：`std::unique_ptr`, `std::weak_ptr`和`std::shared_ptr`。我们还将探讨其中最流行的两个：`unique_ptr`(它直接替换了 `auto_ptr`)和 `shared_ptr`。

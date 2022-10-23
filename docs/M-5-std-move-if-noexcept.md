@@ -18,7 +18,7 @@ In lesson [20.9 -- Exception specifications and noexcept](https://www.learncpp.
 
 We also covered the `strong exception guarantee`, which guarantees that if a function is interrupted by an exception, no memory will be leaked and the program state will not be changed. In particular, all constructors should uphold the strong exception guarantee, so that the rest of the program won’t be left in an altered state if construction of an object fails.
 
-The move constructors exception problem
+## The move constructors exception problem
 
 Consider the case where we are copying some object, and the copy fails for some reason (e.g. the machine is out of memory). In such a case, the object being copied is not harmed in any way, because the source object doesn’t need to be modified to create a copy. We can discard the failed copy, and move on. The `strong exception guarantee` is upheld.
 
@@ -152,12 +152,14 @@ COPY
 
 The above program prints:
 
+```
 destroying MoveClass(empty)
 my_pair.first: MoveClass(13)
 destroying MoveClass(13)
 Error found: abort!
 my_pair.first: MoveClass(empty)
 destroying MoveClass(empty)
+```
 
 Let’s explore what happened. The first printed line shows the temporary `MoveClass` object used to initialize `my_pair` gets destroyed as soon as the `my_pair` instantiation statement has been executed. It is `empty` since the `MoveClass` subobject in `my_pair` was move constructed from it, demonstrated by the next line which shows `my_pair.first` contains the `MoveClass` object with value `13`.
 
@@ -169,7 +171,7 @@ Finally, `my_pair` was destroyed at the end of main().
 
 To summarize the above results: the move constructor of `std::pair` used the throwing copy constructor of `CopyClass`. This copy constructor threw an exception, causing the creation of `moved_pair` to abort, and `my_pair.first` to be permanently damaged. The `strong exception guarantee`was not preserved.
 
-std::move_if_noexcept to the rescue
+## `std::move_if_noexcept` to the rescue
 
 Note that the above problem could have been avoided if `std::pair` had tried to do a copy instead of a move. In that case, `moved_pair` would have failed to construct, but `my_pair` would not have been altered.
 
@@ -181,9 +183,9 @@ Second, we can use the standard library function `std::move_if_noexcept()` to 
 
 If the compiler can tell that an object passed as an argument to `std::move_if_noexcept` won’t throw an exception when it is move constructed (or if the object is move-only and has no copy constructor), then `std::move_if_noexcept` will perform identically to `std::move()` (and return the object converted to an r-value). Otherwise, `std::move_if_noexcept` will return a normal l-value reference to the object.
 
-Key insight
+!!! tldr "关键信息"
 
-`std::move_if_noexcept` will return a movable r-value if the object has a noexcept move constructor, otherwise it will return a copyable l-value. We can use the `noexcept` specifier in conjunction with `std::move_if_noexcept` to use move semantics only when a strong exception guarantee exists (and use copy semantics otherwise).
+	`std::move_if_noexcept` will return a movable r-value if the object has a noexcept move constructor, otherwise it will return a copyable l-value. We can use the `noexcept` specifier in conjunction with `std::move_if_noexcept` to use move semantics only when a strong exception guarantee exists (and use copy semantics otherwise).
 
 Let’s update the code in the previous example as follows:
 
@@ -196,12 +198,14 @@ COPY
 
 Running the program again prints:
 
+```
 destroying MoveClass(empty)
 my_pair.first: MoveClass(13)
 destroying MoveClass(13)
 Error found: abort!
 my_pair.first: MoveClass(13)
 destroying MoveClass(13)
+```
 
 As you can see, after the exception was thrown, the subobject `my_pair.first` still points to the value `13`.
 
@@ -209,6 +213,6 @@ The move constructor of `std::pair` isn’t `noexcept` (as of C++20), so `s
 
 The standard library uses `std::move_if_noexcept` often to optimize for functions that are `noexcept`. For example, `std::vector::resize` will use move semantics if the element type has a `noexcept` move constructor, and copy semantics otherwise. This means `std::vector` will generally operate faster with objects that have a `noexcept` move constructor.
 
-Warning
+!!! warning "注意"
 
-If a type has both potentially throwing move semantics and deleted copy semantics (the copy constructor and copy assignment operator are unavailable), then `std::move_if_noexcept` will waive the strong guarantee and invoke move semantics. This conditional waiving of the strong guarantee is ubiquitous in the standard library container classes, since they use std::move_if_noexcept often.
+	If a type has both potentially throwing move semantics and deleted copy semantics (the copy constructor and copy assignment operator are unavailable), then `std::move_if_noexcept` will waive the strong guarantee and invoke move semantics. This conditional waiving of the strong guarantee is ubiquitous in the standard library container classes, since they use std::move_if_noexcept often.

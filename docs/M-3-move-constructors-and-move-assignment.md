@@ -13,11 +13,11 @@ tags:
 ??? note "关键点速记"
 
 
-In lesson [M.1 -- Introduction to smart pointers and move semantics](https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/), we took a look at std::auto_ptr, discussed the desire for move semantics, and took a look at some of the downsides that occur when functions designed for copy semantics (copy constructors and copy assignment operators) are redefined to implement move semantics.
+In lesson[[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]], we took a look at std::auto_ptr, discussed the desire for move semantics, and took a look at some of the downsides that occur when functions designed for copy semantics (copy constructors and copy assignment operators) are redefined to implement move semantics.
 
 In this lesson, we’ll take a deeper look at how C++11 resolves these problems via move constructors and move assignment.
 
-**Copy constructors and copy assignment**
+## Copy constructors and copy assignment**
 
 First, let’s take a moment to recap copy semantics.
 
@@ -102,12 +102,14 @@ In this program, we’re using a function named generateResource() to create a s
 
 When this program is run, it prints:
 
+```
 Resource acquired
 Resource acquired
 Resource destroyed
 Resource acquired
 Resource destroyed
 Resource destroyed
+```
 
 (Note: You may only get 4 outputs if your compiler elides the return value from function generateResource())
 
@@ -128,7 +130,7 @@ Inefficient, but at least it doesn’t crash!
 
 However, with move semantics, we can do better.
 
-**Move constructors and move assignment**
+## **Move constructors and move assignment**
 
 C++11 defines two new functions in service of move semantics: a move constructor, and a move assignment operator. Whereas the goal of the copy constructor and copy assignment is to make a copy of one object to another, the goal of the move constructor and move assignment is to move ownership of the resources from one object to another (which is typically much less expensive than making a copy).
 
@@ -239,8 +241,10 @@ The move constructor and move assignment operator are simple. Instead of deep co
 
 When run, this program prints:
 
+```
 Resource acquired
 Resource destroyed
+```
 
 That’s much better!
 
@@ -255,13 +259,13 @@ The flow of the program is exactly the same as before. However, instead of calli
 
 So instead of copying our Resource twice (once for the copy constructor and once for the copy assignment), we transfer it twice. This is more efficient, as Resource is only constructed and destroyed once instead of three times.
 
-**When are the move constructor and move assignment called?**
+## **When are the move constructor and move assignment called?**
 
 The move constructor and move assignment are called when those functions have been defined, and the argument for construction or assignment is an r-value. Most typically, this r-value will be a literal or temporary value.
 
 In most cases, a move constructor and move assignment operator will not be provided by default, unless the class does not have any defined copy constructors, copy assignment, move assignment, or destructors.
 
-**The key insight behind move semantics**
+## **The key insight behind move semantics**
 
 You now have enough context to understand the key insight behind move semantics.
 
@@ -271,7 +275,7 @@ However, if we construct an object or do an assignment where the argument is an 
 
 C++11, through r-value references, gives us the ability to provide different behaviors when the argument is an r-value vs an l-value, enabling us to make smarter and more efficient decisions about how our objects should behave.
 
-**Move functions should always leave both objects in a valid state**
+## **Move functions should always leave both objects in a valid state**
 
 In the above examples, both the move constructor and move assignment functions set a.m_ptr to nullptr. This may seem extraneous -- after all, if `a` is a temporary r-value, why bother doing “cleanup” if parameter `a` is going to be destroyed anyway?
 
@@ -279,13 +283,13 @@ The answer is simple: When `a` goes out of scope, the destructor for `a` wil
 
 When implementing move semantics, it is important to ensure the moved-from object is left in a valid state, so that it will destruct properly (without creating undefined behavior).
 
-**Automatic l-values returned by value may be moved instead of copied**
+## **Automatic l-values returned by value may be moved instead of copied**
 
 In the generateResource() function of the Auto_ptr4 example above, when variable res is returned by value, it is moved instead of copied, even though res is an l-value. The C++ specification has a special rule that says automatic objects returned from a function by value can be moved even if they are l-values. This makes sense, since res was going to be destroyed at the end of the function anyway! We might as well steal its resources instead of making an expensive and unnecessary copy.
 
 Although the compiler can move l-value return values, in some cases it may be able to do even better by simply eliding the copy altogether (which avoids the need to make a copy or do a move at all). In such a case, neither the copy constructor nor move constructor would be called.
 
-**Disabling copying**
+## **Disabling copying**
 
 In the Auto_ptr4 class above, we left in the copy constructor and assignment operator for comparison purposes. But in move-enabled classes, it is sometimes desirable to delete the copy constructor and copy assignment functions to ensure copies aren’t made. In the case of our Auto_ptr class, we don’t want to copy our templated object T -- both because it’s expensive, and whatever class T is may not even support copying!
 
@@ -353,7 +357,7 @@ If you were to try to pass an Auto_ptr5 l-value to a function by value, the comp
 
 Auto_ptr5 is (finally) a good smart pointer class. And, in fact the standard library contains a class very much like this one (that you should use instead), named std::unique_ptr. We’ll talk more about std::unique_ptr later in this chapter.
 
-**Another example**
+## **Another example**
 
 Let’s take a look at another class that uses dynamic memory: a simple dynamic templated array. This class contains a deep-copying copy constructor and copy assignment operator.
 
@@ -583,7 +587,7 @@ On the same machine, this program executed in 0.0056 seconds.
 
 Comparing the runtime of the two programs, 0.0056 / 0.00825559 = 67.8%. The move version was 47.4% faster!
 
-**Do not implement move semantics using std::swap**
+## **Do not implement move semantics using std::swap**
 
 Since the goal of move semantics is to move a resource from a source object to a destination object, you might think about implementing the move constructor and move assignment operator using `std::swap()`. However, this is a bad idea, as `std::swap()` calls both the move constructor and move assignment on move-capable objects, which would result in an infinite recursion. You can see this happen in the following example:
 
@@ -638,11 +642,13 @@ COPY
 
 This prints:
 
+```
 Move assign
 Move ctor
 Move ctor
 Move ctor
 Move ctor
+```
 
 And so on… until the stack overflows.
 
@@ -705,5 +711,7 @@ COPY
 
 This works as expected, and prints:
 
+```
 Move assign
 Joe
+```

@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "c062a04e6297979a",
+            "id": "00520fe1470374a2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
+                "file": "docs/M-2-R-value-references.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
+                "file": "docs/M-2-R-value-references.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
+                "file": "docs/M-2-R-value-references.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,17 +154,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "c062a04e6297979a",
+  "active": "00520fe1470374a2",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/M-5-std-move-if-noexcept.md",
+    "docs/M-4-std-move.md",
+    "docs/M-3-move-constructors-and-move-assignment.md",
+    "docs/M-2-R-value-references.md",
+    "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
     "docs/11-19-Introduction-to-standard-library-algorithms.md",
     "docs/11-18-Introduction-to-iterators.md",
     "docs/11-17-An-introduction-to-std-vector.md",
-    "docs/11-16-An-introduction-to-std-array.md",
-    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
-    "docs/11-13-For-each-loops.md",
-    "docs/11-3-Arrays-and-loops.md",
-    "docs/11-2-Arrays-Part-II.md",
-    "docs/zero-initialization.md"
+    "docs/11-16-An-introduction-to-std-array.md"
   ]
 }
