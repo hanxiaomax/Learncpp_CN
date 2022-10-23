@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "M-2-R-value-references",
-      "path": "docs/M-2-R-value-references.md"
+      "basename": "M-3-move-constructors-and-move-assignment",
+      "path": "docs/M-3-move-constructors-and-move-assignment.md"
+    },
+    {
+      "basename": "copy-semantics",
+      "path": "docs/copy-semantics.md"
+    },
+    {
+      "basename": "move-assignment-operator",
+      "path": "docs/move-assignment-operator.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "M-2-R-value-references",
+      "path": "docs/M-2-R-value-references.md"
     },
     {
       "basename": "M-5-std-move-if-noexcept",
@@ -15,10 +27,6 @@
     {
       "basename": "M-4-std-move",
       "path": "docs/M-4-std-move.md"
-    },
-    {
-      "basename": "M-3-move-constructors-and-move-assignment",
-      "path": "docs/M-3-move-constructors-and-move-assignment.md"
     },
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
@@ -191,14 +199,6 @@
     {
       "basename": "18-8-virtual-base-classes",
       "path": "docs/18-8-virtual-base-classes.md"
-    },
-    {
-      "basename": "18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes",
-      "path": "docs/18-7-pure-virtual-functions-abstract-base-classes-and- interface-classes.md"
-    },
-    {
-      "basename": "18-6-the-virtual-table",
-      "path": "docs/18-6-the-virtual-table.md"
     }
   ],
   "omittedPaths": [],

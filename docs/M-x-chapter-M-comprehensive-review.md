@@ -15,7 +15,7 @@ tags:
  
 [[copy-semantics|拷贝语义]]允许类被复制，该过程主要通过[[copy-constructor|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]来完成。
 
-[[move-semantics|移动语义]]指的是类将对象的所有权转译给另外一个对象，而不是创建一个拷贝，该过程主要通过[[move-constructor|移动构造函数]]和 [[move assignment operator|移动赋值运算符]]来完成。
+[[move-semantics|移动语义]]指的是类将对象的所有权转译给另外一个对象，而不是创建一个拷贝，该过程主要通过[[move-constructor|移动构造函数]]和 [[move-assignment-operator|移动赋值运算符]]来完成。
 
 `std::auto_ptr` 已经被弃用，应该避免使用。
 

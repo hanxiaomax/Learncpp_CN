@@ -13,17 +13,17 @@ tags:
 ??? note "关键点速记"
 
 
-In lesson[[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]], we took a look at std::auto_ptr, discussed the desire for move semantics, and took a look at some of the downsides that occur when functions designed for copy semantics (copy constructors and copy assignment operators) are redefined to implement move semantics.
+在[[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]中我们介绍了`std::auto_ptr`，进而引申出了[[move-semantics|移动语义]]的重要性。然后，我们讨论了当将本来被设计为拷贝语义的函数（[[copy-initialization|拷贝初始化]]和[[copy-assignment-operator|拷贝赋值运算符]]）被用来实现移动语义时会带来的问题。
 
-In this lesson, we’ll take a deeper look at how C++11 resolves these problems via move constructors and move assignment.
+在本节课中，我们会深入分析C++11是如何通过[[move-constructor|移动构造函数]]和[[move-assignment-operator|移动赋值运算符]]来解决上述问题的。
 
-## Copy constructors and copy assignment**
+## 拷贝构造函数和拷贝赋值
 
-First, let’s take a moment to recap copy semantics.
+首先，复习一下[[copy-semantics|拷贝语义]]。
 
-Copy constructors are used to initialize a class by making a copy of an object of the same class. Copy assignment is used to copy one class object to another existing class object. By default, C++ will provide a copy constructor and copy assignment operator if one is not explicitly provided. These compiler-provided functions do shallow copies, which may cause problems for classes that allocate dynamic memory. So classes that deal with dynamic memory should override these functions to do deep copies.
+拷贝构造函数用于通过拷贝一个同类对象来初始化另一个对象。拷贝赋值则用于将一个类对象复制到另一个现有类对象。默认情况下，如果没有显式提供拷贝构造函数和拷贝赋值操作符，C++会提供一个默认版本。这些编译器提供的函数会执行[[shallow-copy|浅拷贝]]，这可能会给分配动态内存的类带来问题。因此，处理动态内存的类应该重写这些函数来进行[[deep-copy|深拷贝]]。
 
-Returning back to our Auto_ptr smart pointer class example from the first lesson in this chapter, let’s look at a version that implements a copy constructor and copy assignment operator that do deep copies, and a sample program that exercises them:
+回到本章第一课中的`Auto_ptr`智能指针类示例，让我们看看实现了深拷贝的拷贝构造函数和拷贝赋值操作符的版本能否正常工作。
 
 ```cpp
 #include <iostream>
@@ -43,8 +43,8 @@ public:
 		delete m_ptr;
 	}
 
-	// Copy constructor
-	// Do deep copy of a.m_ptr to m_ptr
+	// 拷贝构造函数
+	// 将 a.m_ptr 深拷贝到 m_ptr
 	Auto_ptr3(const Auto_ptr3& a)
 	{
 		m_ptr = new T;

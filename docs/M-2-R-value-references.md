@@ -136,21 +136,20 @@ int main()
 
 不过，上面两个例子并不是常见的右值使用场合。
 
-## **R-value references as function parameters**
+## 使用右值引用作为函数形参
 
-R-value references are more often used as function parameters. This is most useful for function overloads when you want to have different behavior for l-value and r-value arguments
 
-==右值引用通常用作函数形参==。当您希望l值和r值参数具有不同的行为时，这对于函数重载最有用。
+==右值引用通常用作函数形参==。在重载函数时，如果你希望函数的行为在处理左值右值时不同，则可以使用右值作为函数形参。
 
 ```cpp
 #include <iostream>
 
-void fun(const int &lref) // l-value arguments will select this function
+void fun(const int &lref) // 左值形参调用这个函数
 {
 	std::cout << "l-value reference to const\n";
 }
 
-void fun(int &&rref) // r-value arguments will select this function
+void fun(int &&rref) // 右值形参调用这个函数
 {
 	std::cout << "r-value reference\n";
 }
@@ -165,30 +164,27 @@ int main()
 }
 ```
 
-COPY
 
-This prints:
+打印结果：
 
 ```
 l-value reference to const
 r-value reference
 ```
 
-As you can see, when passed an l-value, the overloaded function resolved to the version with the l-value reference. When passed an r-value, the overloaded function resolved to the version with the r-value reference (this is considered a better match than a l-value reference to const).
+如你所见，当传递一个左值时，重载函数解析为具有左值引用的版本。当传递一个右值引用，重载函数解析到具有右值引用的版本(这被认为是比左值引用const更好的匹配)。
 
-Why would you ever want to do this? We’ll discuss this in more detail in the next lesson. Needless to say, it’s an important part of move semantics.
+为什么要这么做呢？我们会在下一课中更详细地讨论这个问题。毫无疑问，这是[[move-semantics|移动语义]]的重要组成部分。
 
-One interesting note:
+有一点需要注意的是：
 
 ```cpp
 int &&ref{ 5 };
 fun(ref);
 ```
 
-COPY
+上面代码实际上会调用左值引用版本的函数！尽管`ref`是一个右值引用，但是它本身是一个左值（所有有名字的变量都是左值）。造成混淆的根本原因在于，我们在不同的语境中使用了术语”右值“。应该这样理解：==命名对象是左值，匿名对象是右值。命名对象或匿名对象的类型与它是左值还是右值无关==。或者换句话说，如果右值引用不叫右值引用的话，就不会出现这种无解了。
 
-actually calls the l-value version of the function! Although variable ref has type _r-value reference to an integer_, it is actually an l-value itself (as are all named variables). The confusion stems from the use of the term r-value in two different contexts. Think of it this way: Named-objects are l-values. Anonymous objects are r-values. The type of the named object or anonymous object is independent from whether it’s an l-value or r-value. Or, put another way, if r-value reference had been called anything else, this confusion wouldn’t exist.
+## 返回右值引用
 
-## Returning an r-value reference**
-
-You should almost never return an r-value reference, for the same reason you should almost never return an l-value reference. In most cases, you’ll end up returning a hanging reference when the referenced object goes out of scope at the end of the function.
+==您几乎不应该返回右值的引用，原因与你几乎不应该返回左值的引用相同==。在大多数情况下，当被引用的对象在函数结束时离开作用域时，返回的结果最终会成为一个[[dangling|悬垂]]引用。
