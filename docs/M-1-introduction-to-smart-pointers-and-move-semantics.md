@@ -26,8 +26,7 @@ void someFunction()
 }
 ```
 
-
-Although the above code seems fairly straightforward, it’s fairly easy to forget to deallocate ptr. Even if you do remember to delete ptr at the end of the function, there are a myriad of ways that ptr may not be deleted if the function exits early. This can happen via an early return:
+尽管上面的代码看起来相当简单，但是在实践中很容易忘记释放 `ptr`。即使你记得在函数结束时删除 `ptr`，如果函数提前退出，也有许多因素导致`ptr`不能被正确删除，例如函数的提前返回：
 
 ```cpp
 #include <iostream>
@@ -41,7 +40,7 @@ void someFunction()
     std::cin >> x;
 
     if (x == 0)
-        return; // the function returns early, and ptr won’t be deleted!
+        return; // 函数提前返回，ptr 无法被删除！
 
     // do stuff with ptr here
 
@@ -49,9 +48,7 @@ void someFunction()
 }
 ```
 
-COPY
-
-or via a thrown exception:
+抛出异常也可能会导致问题：
 
 ```cpp
 #include <iostream>
@@ -73,21 +70,18 @@ void someFunction()
 }
 ```
 
-COPY
+在上述两个程序中，提前返回或throw语句，都可能会导致函数在没有删除 `ptr` 的情况下终止。因此，分配给变量`ptr`的内存可能出现内存泄漏(而且是每次调用此函数并提前返回时都会泄漏)。
 
-In the above two programs, the early return or throw statement execute, causing the function to terminate without variable ptr being deleted. Consequently, the memory allocated for variable ptr is now leaked (and will be leaked again every time this function is called and returns early).
+本质上，发生这类问题是因为指针变量不具备自我清理的能力。
 
-At heart, these kinds of issues occur because pointer variables have no inherent mechanism to clean up after themselves.
+## 智能指针类可以拯救我们吗？
 
-**Smart pointer classes to the rescue?**
+对于类对象来说，它们最大的优势是可以在[[going-out-of-scope|离开作用域]]是自动执行[[destructor|析构函数]]。这样一来，如果我们在构造函数中分配或获取内存，则可以在析构函数中进行释放，这样就可以确保内存在对象被销毁前（不论是离开作用域还是显式删除等）释放。这也正是[[RAII (Resource Acquisition Is Initialization)|资源获取即初始化（RAII）]]编程范式的核心思想（见[[13-9-destructors|13.9 - 析构函数]]）。
 
-One of the best things about classes is that they contain destructors that automatically get executed when an object of the class goes out of scope. So if you allocate (or acquire) memory in your constructor, you can deallocate it in your destructor, and be guaranteed that the memory will be deallocated when the class object is destroyed (regardless of whether it goes out of scope, gets explicitly deleted, etc…). This is at the heart of the RAII programming paradigm that we talked about in lesson [13.9 -- Destructors](https://www.learncpp.com/cpp-tutorial/destructors/).
+那么，是否可以辨析一个类，帮助我们管理和清理指针呢？当然可以！
 
-So can we use a class to help us manage and clean up our pointers? We can!
+考虑设计这样一个类，它的唯一工作，就是管理一个传入的指针。当该类对象离开作用域时，释放指针所指向的内存。只要该对象被声明为一个局部变量，我们就可以保证，当它离开作用域时（不论何时、也不论函数如何终止），它管理的指针都会被销毁。
 
-Consider a class whose sole job was to hold and “own” a pointer passed to it, and then deallocate that pointer when the class object went out of scope. As long as objects of that class were only created as local variables, we could guarantee that the class would properly go out of scope (regardless of when or how our functions terminate) and the owned pointer would get destroyed.
-
-Here’s a first draft of the idea:
 
 ```cpp
 #include <iostream>
@@ -97,19 +91,19 @@ class Auto_ptr1
 {
 	T* m_ptr;
 public:
-	// Pass in a pointer to "own" via the constructor
+	// 通过构造函数传入一个指针，使该类拥有它
 	Auto_ptr1(T* ptr=nullptr)
 		:m_ptr(ptr)
 	{
 	}
 
-	// The destructor will make sure it gets deallocated
+	// 析构函数会确保指针被删除
 	~Auto_ptr1()
 	{
 		delete m_ptr;
 	}
 
-	// Overload dereference and operator-> so we can use Auto_ptr1 like m_ptr.
+	// 重载解引用和成员运算符
 	T& operator*() const { return *m_ptr; }
 	T* operator->() const { return m_ptr; }
 };
@@ -124,28 +118,29 @@ public:
 
 int main()
 {
-	Auto_ptr1<Resource> res(new Resource()); // Note the allocation of memory here
+	Auto_ptr1<Resource> res(new Resource()); // 注意此处分配的资源
 
-        // ... but no explicit delete needed
+        // ... 没有显式删除指针
 
-	// Also note that the Resource in angled braces doesn't need a * symbol, since that's supplied by the template
+	// 注意，尖括号中的Resource不需要星号，星号是模板提供的
 
 	return 0;
-} // res goes out of scope here, and destroys the allocated Resource for us
+} // res 离开作用域，并且删除了资源
 ```
 
-COPY
+程序打印：
 
-This program prints:
-
+```
 Resource acquired
 Resource destroyed
+```
 
-Consider how this program and class work. First, we dynamically create a Resource, and pass it as a parameter to our templated Auto_ptr1 class. From that point forward, our Auto_ptr1 variable res owns that Resource object (Auto_ptr1 has a composition relationship with m_ptr). Because res is declared as a local variable and has block scope, it will go out of scope when the block ends, and be destroyed (no worries about forgetting to deallocate it). And because it is a class, when it is destroyed, the Auto_ptr1 destructor will be called. That destructor will ensure that the Resource pointer it is holding gets deleted!
 
-As long as Auto_ptr1 is defined as a local variable (with automatic duration, hence the “Auto” part of the class name), the Resource will be guaranteed to be destroyed at the end of the block it is declared in, regardless of how the function terminates (even if it terminates early).
+考虑一下这个程序和类是如何工作的。首先，动态创建`Resource`，并将其作为参数传递给模板化的`Auto_ptr1`类。从这一刻开始，`Auto_ptr1`变量`res`拥有该资源对象(`Auto_ptr1`是`m_ptr`是[[16-2-composition|组合关系]])。因为`res`被声明为局部变量并具有语句块作用域，所以当语句块结束时，它将离开作用域并被销毁(不用担心忘记释放它)。由于它是一个类，因此在销毁它时，将调用`Auto_ptr1`析构函数。该析构函数将确保它所持有的`Resource`指针被删除!
 
-Such a class is called a smart pointer. A **Smart pointer** is a composition class that is designed to manage dynamically allocated memory and ensure that memory gets deleted when the smart pointer object goes out of scope. (Relatedly, built-in pointers are sometimes called “dumb pointers” because they can’t clean up after themselves).
+只要`Auto_ptr1`被定义为一个局部变量(具有自动持续时间，因此类名中的“Auto”部分)，无论函数如何终止(即使它提前终止)，`Resource`总是可以在声明它的块的末尾被销毁。
+
+这种类被称为智能指针。[[smart pointer class|智能指针类]]是一种组合类，它用于管理动态分配的内存，并且能够确保指针对象在离开作用域时被删除（内置的指针对象被称为“笨指针”，正是因为它们不能自己清理自己所管理的内存）。
 
 Now let’s go back to our someFunction() example above, and show how a smart pointer class can solve our challenge:
 
