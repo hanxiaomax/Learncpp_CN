@@ -51,8 +51,8 @@ public:
 		*m_ptr = *a.m_ptr;
 	}
 
-	// Copy assignment
-	// Do deep copy of a.m_ptr to m_ptr
+	// 拷贝赋值
+	// 将 a.m_ptr 深拷贝到 m_ptr
 	Auto_ptr3& operator=(const Auto_ptr3& a)
 	{
 		// Self-assignment detection
@@ -84,23 +84,22 @@ public:
 Auto_ptr3<Resource> generateResource()
 {
 	Auto_ptr3<Resource> res{new Resource};
-	return res; // this return value will invoke the copy constructor
+	return res; // 返回值会触发拷贝构造函数
 }
 
 int main()
 {
 	Auto_ptr3<Resource> mainres;
-	mainres = generateResource(); // this assignment will invoke the copy assignment
+	mainres = generateResource(); // 赋值会触发拷贝赋值
 
 	return 0;
 }
 ```
 
-COPY
 
-In this program, we’re using a function named generateResource() to create a smart pointer encapsulated resource, which is then passed back to function main(). Function main() then assigns that to an existing Auto_ptr3 object.
+在上面的程序中，`generateResource()` 函数会创建一个被智能指针封装的资源，然后该资源会被返回给主函数。主函数随后将其赋值给 `Auto_ptr3` 对象。
 
-When this program is run, it prints:
+程序运行时打印：
 
 ```
 Resource acquired
@@ -111,24 +110,25 @@ Resource destroyed
 Resource destroyed
 ```
 
-(Note: You may only get 4 outputs if your compiler elides the return value from function generateResource())
+(注意:如果编译器省略了generateResource()函数的返回值，你可能只会得到4行输出)
 
-That’s a lot of resource creation and destruction going on for such a simple program! What’s going on here?
+如此简单的程序，竟然要创建并销毁这么多次？什么情况！
 
-Let’s take a closer look. There are 6 key steps that happen in this program (one for each printed message):
+仔细研究一下，这个程序中有6个关键步骤(每个打印信息一个步骤)：
 
-1.  Inside generateResource(), local variable res is created and initialized with a dynamically allocated Resource, which causes the first “Resource acquired”.
-2.  Res is returned back to main() by value. We return by value here because res is a local variable -- it can’t be returned by address or reference because res will be destroyed when generateResource() ends. So res is copy constructed into a temporary object. Since our copy constructor does a deep copy, a new Resource is allocated here, which causes the second “Resource acquired”.
-3.  Res goes out of scope, destroying the originally created Resource, which causes the first “Resource destroyed”.
-4.  The temporary object is assigned to mainres by copy assignment. Since our copy assignment also does a deep copy, a new Resource is allocated, causing yet another “Resource acquired”.
-5.  The assignment expression ends, and the temporary object goes out of expression scope and is destroyed, causing a “Resource destroyed”.
-6.  At the end of main(), mainres goes out of scope, and our final “Resource destroyed” is displayed.
+1.  在 `generateResource()` 中，局部变量 `res` 被创建，同时被一个动态分配的 `Resource` 对象初始化，因此第一次打印了 “Resource acquired”；
+2.  `Res` [[return-by-value|按值返回]] `main()`。这里使用按值返回是因为`res`是一个局部变量，如果按地址返回或按引用返回则会带来问题因为`res`在 `generateResource()`函数结束时被销毁了。因此，`res` 会被==拷贝构建到一个临时变量中==。因为拷贝构造函数使用了深拷贝，所以它分配了一个新的 `Resource` ，所以第二次打印了 “Resource acquired”；
+3.  `Res` 离开作用域，最初被创建的 `Resource` 对象就销毁了，因此第一打印了 “Resource destroyed”；
+4.  临时对于通过拷贝赋值被赋值给了 `mainres` 。因为此处的拷贝赋值使用了深拷贝，所以它分配了一个新的 `Resource` ，所以第三次打印了 “Resource acquired”；
+5.  当赋值表达式结束后，临时对象就离开了作用域并被销毁，因此第二次打印了“Resource destroyed”；
+6.  在 `main()`的末尾，`mainres`离开了作用域，于是打印了最后一个 “Resource destroyed” 。
 
-So, in short, because we call the copy constructor once to copy construct res to a temporary, and copy assignment once to copy the temporary into mainres, we end up allocating and destroying 3 separate objects in total.
+简而言之，我们调用了一次拷贝构造函数，拷贝构造了`res`到一个临时对象，然后调用了一次拷贝赋值将临时对象复制到`mainres`对象，所以最终总共分配和销毁了3个单独的对象。
 
-Inefficient, but at least it doesn’t crash!
+效率很低，但至少不会崩溃！
 
-However, with move semantics, we can do better.
+但是，如果使用移动语义的话，效果会更好！
+
 
 ## **Move constructors and move assignment**
 
