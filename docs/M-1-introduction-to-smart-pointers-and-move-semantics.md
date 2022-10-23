@@ -142,7 +142,7 @@ Resource destroyed
 
 这种类被称为智能指针。[[smart pointer class|智能指针类]]是一种组合类，它用于管理动态分配的内存，并且能够确保指针对象在离开作用域时被删除（内置的指针对象被称为“笨指针”，正是因为它们不能自己清理自己所管理的内存）。
 
-Now let’s go back to our someFunction() example above, and show how a smart pointer class can solve our challenge:
+现在让我们回到上面的`someFunction()`例子，看看如何使用智能指针解决我们面临的问题：
 
 ```cpp
 #include <iostream>
@@ -180,14 +180,14 @@ public:
 
 void someFunction()
 {
-    Auto_ptr1<Resource> ptr(new Resource()); // ptr now owns the Resource
+    Auto_ptr1<Resource> ptr(new Resource()); // ptr 现在拥有 Resource
 
     int x;
     std::cout << "Enter an integer: ";
     std::cin >> x;
 
     if (x == 0)
-        return; // the function returns early
+        return; // 函数提前返回
 
     // do stuff with ptr here
     ptr->sayHi();
@@ -201,34 +201,34 @@ int main()
 }
 ```
 
-COPY
+如果用户输入非0，则程序打印：
 
-If the user enters a non-zero integer, the above program will print:
-
+```
 Resource acquired
 Hi!
 Resource destroyed
+```
 
-If the user enters zero, the above program will terminate early, printing:
+如果用户输入0，则程序会提前退出，打印：
 
+```
 Resource acquired
 Resource destroyed
+```
 
-Note that even in the case where the user enters zero and the function terminates early, the Resource is still properly deallocated.
+注意，即使在用户输入零且函数提前终止的情况下，资源仍然被正确地释放。
 
-Because the ptr variable is a local variable, ptr will be destroyed when the function terminates (regardless of how it terminates). And because the Auto_ptr1 destructor will clean up the Resource, we are assured that the Resource will be properly cleaned up.
+因为`ptr`变量是一个局部变量，所以`ptr`将在函数终止时被销毁(不管它以何种方式终止)。因为`Auto_ptr1`析构函数将清理`Resource`，所以我们可以保证`Resource`将被正确地清理。
 
-**A critical flaw**
+## 严重缺陷
 
-The Auto_ptr1 class has a critical flaw lurking behind some auto-generated code. Before reading further, see if you can identify what it is. We’ll wait…
+`Auto_ptr1` 类有一个严重的缺陷，是由自动生成的代码引起的。你能看出来吗？
 
-(Hint: consider what parts of a class get auto-generated if you don’t supply them)
+(提示：如果编译器会为类提供哪些默认的函数？)
 
-(Jeopardy music)
+时间到！
 
-Okay, time’s up.
-
-Rather than tell you, we’ll show you. Consider the following program:
+猜到了吗？考虑下面代码：
 
 ```cpp
 #include <iostream>
@@ -263,23 +263,25 @@ public:
 int main()
 {
 	Auto_ptr1<Resource> res1(new Resource());
-	Auto_ptr1<Resource> res2(res1); // Alternatively, don't initialize res2 and then assign res2 = res1;
+	Auto_ptr1<Resource> res2(res1); // 没有初始化res2，而是进行赋值
 
 	return 0;
 }
 ```
 
-COPY
+程序输出结果：
 
-This program prints:
-
+```
 Resource acquired
 Resource destroyed
 Resource destroyed
+```
 
-Very likely (but not necessarily) your program will crash at this point. See the problem now? Because we haven’t supplied a copy constructor or an assignment operator, C++ provides one for us. And the functions it provides do shallow copies. So when we initialize res2 with res1, both Auto_ptr1 variables are pointed at the same Resource. When res2 goes out of the scope, it deletes the resource, leaving res1 with a dangling pointer. When res1 goes to delete its (already deleted) Resource, crash!
 
-You’d run into a similar problem with a function like this:
+程序很可能(但不一定)在此时崩溃。发现问题的所在了吗？因为我们没有提供复制构造函数或赋值操作符，所以C++为我们提供了一个。它提供的函数只做浅拷贝。因此，当我们用`res1`初始化`res2`时，两个`Auto_ptr1`变量都指向同一个`Resource`。当`res2`超出作用域时，它删除资源，给`res1`留下一个[[dangling|悬垂]]指针。当`res1`去删除它的(已经删除的)资源时，程序崩溃!
+
+下面的代码也会出现类似的问题：
+
 
 ```cpp
 void passByValue(Auto_ptr1<Resource> res)
@@ -295,15 +297,13 @@ int main()
 }
 ```
 
-COPY
+在这个程序中，`res1` 将按值复制到`passByValue`的参数`res`中，导致`Resource`指针被复制，进而导致程序崩溃。
 
-In this program, res1 will be copied by value into passByValue’s parameter res, leading to duplication of the Resource pointer. Crash!
+显然这不是什么好事。我们如何解决这个问题?
 
-So clearly this isn’t good. How can we address this?
+一种方法是显式地定义和删除复制构造函数和赋值操作符，从而从根本上阻止拷贝。这会阻止按值传递的情况(这很好，因为我们本来就不应该按值传递它们)。
 
-Well, one thing we could do would be to explicitly define and delete the copy constructor and assignment operator, thereby preventing any copies from being made in the first place. That would prevent the pass by value case (which is good, we probably shouldn’t be passing these by value anyway).
-
-But then how would we return an Auto_ptr1 from a function back to the caller?
+但是，我们如何从函数返回`Auto_ptr1`给调用者呢?
 
 ```cpp
 ??? generateResource()
@@ -313,19 +313,17 @@ But then how would we return an Auto_ptr1 from a function back to the caller?
 }
 ```
 
-COPY
+我们无法将`Auto_ptr1` [[return-by-reference|按引用返回]]，因为局部变量`Auto_ptr1` 会在函数结束时删除，所以主调函数得到的是一个悬垂引用。我们可以将指针r返回为 `Resource*`，但是我们可能会在后面忘记删除 `r`，这就违背了使用智能指针的初衷。所以，按值返回`Auto_ptr1`是唯一有意义的选项——但我们最终会得到浅拷贝、重复的指针并导致程序崩溃。
 
-We can’t return our Auto_ptr1 by reference, because the local Auto_ptr1 will be destroyed at the end of the function, and the caller will be left with a dangling reference. We could return pointer r as `Resource*`, but then we might forget to delete r later, which is the whole point of using smart pointers in the first place. So that’s out. Returning the Auto_ptr1 by value is the only option that makes sense -- but then we end up with shallow copies, duplicated pointers, and crashes.
+另一种选择是重写[[copy-constructors|拷贝构造函数]]和赋值操作符来进行[[deep-copy|深拷贝]]。这样，我们至少可以避免指向同一个对象的重复指针。但是拷贝的开销可能会很大(而且可能不需要甚至不可能)，而且我们不希望仅仅为了从函数返回`Auto_ptr1`而对对象进行不必要的复制。另外，对普通指针赋值或初始化时并不会拷贝对象，为什么智能指针要具有不同的逻辑呢？
 
-Another option would be to override the copy constructor and assignment operator to make deep copies. In this way, we’d at least guarantee to avoid duplicate pointers to the same object. But copying can be expensive (and may not be desirable or even possible), and we don’t want to make needless copies of objects just to return an Auto_ptr1 from a function. Plus assigning or initializing a dumb pointer doesn’t copy the object being pointed to, so why would we expect smart pointers to behave differently?
+该怎么做呢？
 
-What do we do?
+## 移动语义
 
-**Move semantics**
+如果，我们可以让拷贝构造函数和赋值运算符不去拷贝指针（拷贝语义），而是将它所管理的资源传递或移动给目标指针呢？这正是[[move-semantics|移动语义]]背后的核心思想。移动语义说的就是对象所有权发生了转移而不是拷贝。
 
-What if, instead of having our copy constructor and assignment operator copy the pointer (“copy semantics”), we instead transfer/move ownership of the pointer from the source to the destination object? This is the core idea behind move semantics. **Move semantics** means the class will transfer ownership of the object rather than making a copy.
-
-Let’s update our Auto_ptr1 class to show how this can be done:
+更新代码：
 
 ```cpp
 #include <iostream>
@@ -345,22 +343,22 @@ public:
 		delete m_ptr;
 	}
 
-	// A copy constructor that implements move semantics
-	Auto_ptr2(Auto_ptr2& a) // note: not const
+	// 使用拷贝构造函数实现移动语义
+	Auto_ptr2(Auto_ptr2& a) // 注意: 不能是 const
 	{
-		m_ptr = a.m_ptr; // transfer our dumb pointer from the source to our local object
-		a.m_ptr = nullptr; // make sure the source no longer owns the pointer
+		m_ptr = a.m_ptr; // 目的对象获得源对象的指针
+		a.m_ptr = nullptr; // 确保源对象不再拥有该指针 
 	}
 
-	// An assignment operator that implements move semantics
-	Auto_ptr2& operator=(Auto_ptr2& a) // note: not const
+	// 使用赋值运算符实现移动语义
+	Auto_ptr2& operator=(Auto_ptr2& a) // 注意: 不能是 const
 	{
 		if (&a == this)
 			return *this;
 
-		delete m_ptr; // make sure we deallocate any pointer the destination is already holding first
-		m_ptr = a.m_ptr; // then transfer our dumb pointer from the source to the local object
-		a.m_ptr = nullptr; // make sure the source no longer owns the pointer
+		delete m_ptr; // 确保目的对象的指针所指的资源被释放
+		m_ptr = a.m_ptr; // 目的对象获得源对象的指针
+		a.m_ptr = nullptr; // 确保源对象不再拥有该指针
 		return *this;
 	}
 
@@ -395,10 +393,9 @@ int main()
 }
 ```
 
-COPY
+打印：
 
-This program prints:
-
+```
 Resource acquired
 res1 is not null
 res2 is null
@@ -406,22 +403,29 @@ Ownership transferred
 res1 is null
 res2 is not null
 Resource destroyed
+```
 
-Note that our overloaded operator= gave ownership of m_ptr from res1 to res2! Consequently, we don’t end up with duplicate copies of the pointer, and everything gets tidily cleaned up.
+注意，我们重载的赋值运算符现在可以把`m_ptr`的所有权从`res1`传递给`res2`！这样一来，我们将不会得到重复的指针，资源清理可以顺利进行。
 
-**std::auto_ptr, and why it was a bad idea**
+## `std::auto_ptr` 为什么是糟糕的实现
 
-Now would be an appropriate time to talk about std::auto_ptr. std::auto_ptr, introduced in C++98 and removed in C++17, was C++’s first attempt at a standardized smart pointer. std::auto_ptr opted to implement move semantics just like the Auto_ptr2 class does.
+现在是讨论`std::auto_ptr`的合适时机了。`std::auto_ptr`在C++ 98中引入，在C++ 17中被删除，它是C++第一次尝试标准化智能指针。`auto_ptr` 选择了`Auto_ptr2`类一样的移动语义实现方式。
 
-However, std::auto_ptr (and our Auto_ptr2 class) has a number of problems that makes using it dangerous.
+然而，`std::auto_ptr`(以及我们的`Auto_ptr2`类)有许多问题，使得使用它很危险。
 
-First, because std::auto_ptr implements move semantics through the copy constructor and assignment operator, passing a std::auto_ptr by value to a function will cause your resource to get moved to the function parameter (and be destroyed at the end of the function when the function parameters go out of scope). Then when you go to access your auto_ptr argument from the caller (not realizing it was transferred and deleted), you’re suddenly dereferencing a null pointer. Crash!
+首先，由于`std::auto_ptr`通过复制构造函数和赋值操作符实现了移动语义，将`std::auto_ptr`按值传递给函数将导致资源被移动到函数形参中(并在函数形参超出作用域时销毁)。然后，当你从调用者访问`auto_ptr`实参时(没有意识到它已经被移动和删除了)时，进行[[dereference-operator|解引用]]会导致程序崩溃。
 
 Second, std::auto_ptr always deletes its contents using non-array delete. This means auto_ptr won’t work correctly with dynamically allocated arrays, because it uses the wrong kind of deallocation. Worse, it won’t prevent you from passing it a dynamic array, which it will then mismanage, leading to memory leaks.
 
 Finally, auto_ptr doesn’t play nice with a lot of the other classes in the standard library, including most of the containers and algorithms. This occurs because those standard library classes assume that when they copy an item, it actually makes a copy, not a move.
 
 Because of the above mentioned shortcomings, std::auto_ptr has been deprecated in C++11 and removed in C++17.
+
+其次，`std::auto_ptr`总是使用非数组删除来删除其内容。这意味着`auto_ptr`不能正确地处理动态分配的数组，因为它使用了错误的内存释放方式。更糟糕的是，它不能阻止您向它传递动态数组，这样它就可能导致内存泄漏。
+
+最后，auto_ptr不能很好地处理标准库中的许多其他类，包括大多数容器和算法。这是因为那些标准库类假定当它们复制一个项时，它实际上进行了复制，而不是移动。
+
+由于上述缺点，std::auto_ptr在c++ 11中已弃用，在c++ 17中已删除。
 
 **Moving forward**
 
