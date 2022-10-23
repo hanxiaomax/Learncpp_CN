@@ -21,58 +21,53 @@ tags:
 
 在C++11之前，C++中只有左值引用这一种引用，所以它被称为“引用”。但是到了C++11，它被重新命名为左值引用。==左值引用必须通过可修改左值初始化。==
 
-
-
-|左值引用	|可以被初始化	|可以被修改|
+|左值引用	|可用于初始化	|可修改|
 |:----|:----|:----|
 |Modifiable l-values	|Yes	|Yes
 |Non-modifiable l-values|	No	|No
 |R-values	|No	|No
 
-L-value references to const objects can be initialized with modifiable and non-modifiable l-values and r-values alike. However, those values can’t be modified.
+ 
+ const 对象的左值引用可以通过可修改、不可修改的左值或右值初始化。但是，这些值都不能被修改。
 
-
-|L-value reference to const	|Can be initialized with	|Can modify|
+|const左值的引用	|可用于初始化	|可修改|
 |:----|:----|:----|
 |Modifiable l-values	|Yes	|No
 |Non-modifiable l-values	|Yes	|No
 |R-values	|Yes|	No
 
 
-L-value references to const objects are particularly useful because they allow us to pass any type of argument (l-value or r-value) into a function without making a copy of the argument.
+==const 对象的左值引用尤其有用，因为它能够配合任何类型的实参（左值或右值）工作，且不会创建拷贝。==
+ 
 
 ## **R-value references**
 
-C++11 adds a new type of reference called an r-value reference. An r-value reference is a reference that is designed to be initialized with an r-value (only). While an l-value reference is created using a single ampersand, an r-value reference is created using a double ampersand:
+C++11 添加了一种新的引用类型，称为[[rvalue-reference|右值引用]]。右值引用被设计出来的目的，是为了配合右值使用（也只能配合右值使用）。创建左值引用使用一个`&`符号，创建右值引用则使用两个：
 
 ```cpp
 int x{ 5 };
-int &lref{ x }; // l-value reference initialized with l-value x
-int &&rref{ 5 }; // r-value reference initialized with r-value 5
+int &lref{ x }; // 通过左值来初始化一个左值引用
+int &&rref{ 5 }; // 使用右值 5（字面量）来初始化右值引用
 ```
 
-COPY
+右值引用不能够通过左值来初始化。
 
-R-values references cannot be initialized with l-values.
-
-|R-value reference	|Can be initialized with|	Can modify|
+|右值引用	|可用于初始化|可修改|
 |:----|:----|:----|
 |Modifiable l-values	|No	|No
 |Non-modifiable l-values	|No	|No
 |R-values	|Yes	|Yes
 
 
-|R-value reference to const	|Can be initialized with	|Can modify|
+|const右值引用	|可用于初始化|可修改|
 |:----|:----|:----|
 |Modifiable l-values	|No	|No
 |Non-modifiable l-values	|No	|No
 |R-values	|Yes|	No
 
+右值引用有两个有用的属性。首先，==右值引用可以将初始化它们的对象的生命周期延长到自己的生命周期==(对const对象的左值引用也可以做到这一点)。其次，你==可以通过指向非const右值引用来修改右值。==
 
-
-R-value references have two properties that are useful. First, r-value references extend the lifespan of the object they are initialized with to the lifespan of the r-value reference (l-value references to const objects can do this too). Second, non-const r-value references allow you to modify the r-value!
-
-Let’s take a look at some examples:
+考虑下面的例子：
 
 ```cpp
 #include <iostream>
@@ -98,31 +93,31 @@ public:
 
 int main()
 {
-	auto &&rref{ Fraction{ 3, 5 } }; // r-value reference to temporary Fraction
+	auto &&rref{ Fraction{ 3, 5 } }; // 对临时 Fraction 的右值引用
 
-	// f1 of operator<< binds to the temporary, no copies are created.
+	// operator<< 的参数f1会绑定到临时对象，而不会创建拷贝
 	std::cout << rref << '\n';
 
 	return 0;
-} // rref (and the temporary Fraction) goes out of scope here
+} // rref (和临时的Fraction) 离开作用域
 ```
 
-COPY
+程序输出：
 
-This program prints:
-
+```
 3/5
+```
 
-As an anonymous object, Fraction(3, 5) would normally go out of scope at the end of the expression in which it is defined. However, since we’re initializing an r-value reference with it, its duration is extended until the end of the block. We can then use that r-value reference to print the Fraction’s value.
+作为一个临时对象，`Fraction(3, 5)`通常会在表达式结束后就离开作用域。但是，因为我们使用它初始化了一个右值引用，所以它的持续时间被延长到了和该右值引用一样——语句块结尾时离开作用域。然后，我们变可以通过该右值引用打印 `Fraction` 的值。
 
-Now let’s take a look at a less intuitive example:
+现在让我们看一个不那么直观的例子:
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    int &&rref{ 5 }; // because we're initializing an r-value reference with a literal, a temporary with value 5 is created here
+    int &&rref{ 5 }; // 通过字面量初始化右值引用，此时创建了临时对象5
     rref = 10;
     std::cout << rref << '\n';
 
@@ -130,19 +125,22 @@ int main()
 }
 ```
 
-COPY
+程序输出：
 
-This program prints:
-
+```
 10
+```
 
-While it may seem weird to initialize an r-value reference with a literal value and then be able to change that value, when initializing an r-value reference with a literal, a temporary object is constructed from the literal so that the reference is referencing a temporary object, not a literal value.
 
-R-value references are not very often used in either of the manners illustrated above.
+虽然用字面值初始化一个右值引用，然后再通过右值引用修改该右值看起来有些奇怪。但是当我们这么做时，会从字面值构造一个临时对象，此时右值引用引用的对象是该临时对象而不是字面量本身。
+
+不过，上面两个例子并不是常见的右值使用场合。
 
 ## **R-value references as function parameters**
 
-R-value references are more often used as function parameters. This is most useful for function overloads when you want to have different behavior for l-value and r-value arguments.
+R-value references are more often used as function parameters. This is most useful for function overloads when you want to have different behavior for l-value and r-value arguments
+
+==右值引用通常用作函数形参==。当您希望l值和r值参数具有不同的行为时，这对于函数重载最有用。
 
 ```cpp
 #include <iostream>
