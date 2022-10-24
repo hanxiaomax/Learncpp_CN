@@ -5,6 +5,18 @@
       "path": "docs/M-6-std-unique-ptr.md"
     },
     {
+      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
+      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "M-4-std-move",
+      "path": "docs/M-4-std-move.md"
+    },
+    {
       "basename": "exception-safety-issue",
       "path": "docs/exception-safety-issue.md"
     },
@@ -17,16 +29,8 @@
       "path": "docs/dereference-operator.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "M-5-std-move-if-noexcept",
       "path": "docs/M-5-std-move-if-noexcept.md"
-    },
-    {
-      "basename": "M-4-std-move",
-      "path": "docs/M-4-std-move.md"
     },
     {
       "basename": "M-3-move-constructors-and-move-assignment",
@@ -43,10 +47,6 @@
     {
       "basename": "M-2-R-value-references",
       "path": "docs/M-2-R-value-references.md"
-    },
-    {
-      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
-      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
     },
     {
       "basename": "11-19-Introduction-to-standard-library-algorithms",

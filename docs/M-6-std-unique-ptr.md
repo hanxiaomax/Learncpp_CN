@@ -8,10 +8,15 @@ type: translation
 tags:
 - move
 - C++14
+- C++17
 ---
 
 ??? note "关键点速记"
 
+	- 智能指针永远都不应该被动态创建，总是应该在栈上
+	- `std::unique_ptr` 智能指针是其管理资源的唯一拥有者，且只有移动语义
+	- `std::unique_ptr` 并不一定总是管理着某个对象——有可能是它被初始化为空（使用默认构造函数或`nullptr`字面量作为参数），也有可能是它管理的资源被转移了，通过直接对它判断true还是false可以知道它是否正在管理资源
+	- 模板化函数 `std::make_unique` 比直接使用`std::unique_ptr`更好用也更安全，它返回的是管理资源的`std::unique_ptr`
 
 在本章开始的时候，我们讨论了使用指针可能会引发的bug和内存泄漏问题。例如，函数的提前返回、异常的抛出和指针删除不当都可能导致上述问题。
 
@@ -116,7 +121,7 @@ res2 is not null
 Resource destroyed
 ```
 
-因为 `std::unique_ptr` 在设计时考虑了移动语义，所以其[[copy-constructors|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]都被禁用了。如果你想要转移 `std::unique_ptr` 管理的资源的话，就必须使用移动语义。在上面的例子中，移动语义是通过 `std::move` 实现的（它把`res1`转换成了一个[[rvalue|右值]]，因此触发了移动赋值而不是拷贝赋值）。
+==因为 `std::unique_ptr` 在设计时考虑了移动语义，所以其[[copy-constructors|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]都被禁用了。如果你想要转移 `std::unique_ptr` 管理的资源的话，就必须使用移动语义==。在上面的例子中，移动语义是通过 `std::move` 实现的（它把`res1`转换成了一个[[rvalue|右值]]，因此触发了移动赋值而不是拷贝赋值）。
 
 ## 访问被智能指针管理的对象
 
@@ -242,18 +247,18 @@ some_function(std::unique_ptr<T>(new T), function_that_can_throw_exception());
 
 对于如何执行上述函数调用，编译器有很大的灵活性。它可以先创建新的类型T，然后调用`function_that_can_throw_exception()`吗，然后创建`std::unique_ptr` 去管理动态分配的T。如果 `function_that_can_throw_exception()` 抛出了依次，那么T在被分配内存后，没有被释放，因为用于管理它的智能指针还没有被创建。显然这会导致内存泄漏。
 
-`std::make_unique()` 客服了整个问题，因为对象T和 std::unique_ptr happen inside the std::make_unique() function, where there’s no ambiguity about order of execution.
+`std::make_unique()` 客服了整个问题，因为对象T和 `std::unique_ptr` 的创建都是在 `std::make_unique()`中完成的，执行顺序没有歧义。
 
 ## 函数返回 `std::unique_ptr`
 
-std::unique_ptr can be safely returned from a function by value:
+`std::unique_ptr` 可以安全地从函数中[[return-by-value|按值返回]]：
 
 ```cpp
 #include <memory> // for std::unique_ptr
 
 std::unique_ptr<Resource> createResource()
 {
-     return std::make_unique<Resource>();
+     return std::make_unique<Resource>();//匿名对象是右值，所以使用移动语义
 }
 
 int main()
@@ -266,15 +271,19 @@ int main()
 }
 ```
 
-COPY
+在上面的代码中，`createResource()` 按值返回了 `std::unique_ptr` 。如果这个值没有被赋值给任何其他的对象，那么临时对象就会离开作用域，`Resource`也会被清理。如果它被赋值给其他对象 (像 `main()`中那样)，在C++14或更早的代码中，[[move-semantics|移动语义]]会被用来将返回值`Resource`转移给被赋值的对象（上面例子中的`ptr`）。在C++17或更新的代码中，这个返回值会被省略，因此通过 `std::unique_ptr` 返回资源返回原始指针要安全的多！
 
-In the above code, createResource() returns a std::unique_ptr by value. If this value is not assigned to anything, the temporary return value will go out of scope and the Resource will be cleaned up. If it is assigned (as shown in main()), in C++14 or earlier, move semantics will be employed to transfer the Resource from the return value to the object assigned to (in the above example, ptr), and in C++17 or newer, the return will be elided. This makes returning a resource by std::unique_ptr much safer than returning raw pointers!
+一般情况下，你不应该将 `std::unique_ptr` 按指针返回（永远不要）或者按引用返回（除非你有足够的理由）。
 
-In general, you should not return std::unique_ptr by pointer (ever) or reference (unless you have a specific compelling reason to).
 
 ## 传递 `std::unique_ptr` 给函数
 
-If you want the function to take ownership of the contents of the pointer, pass the std::unique_ptr by value. Note that because copy semantics have been disabled, you’ll need to use std::move to actually pass the variable in.
+如果你需要函数获取 `std::unique_ptr` 管理的资源，使用[[pass-by-value|按值传递]]。注意，由于[[copy-semantics|拷贝语义]]被禁用了，所以必须对实际传入的参数调用 `std::move`。
+
+!!! info "译者注"
+
+	需不需要使用`std::move`要看传入的是左值还是右值，左值才需要。
+
 
 ```cpp
 #include <iostream>
@@ -304,7 +313,7 @@ int main()
     auto ptr{ std::make_unique<Resource>() };
 
 //    takeOwnership(ptr); // This doesn't work, need to use move semantics
-    takeOwnership(std::move(ptr)); // ok: use move semantics
+    takeOwnership(std::move(ptr)); // ok: 使用移动语义
 
     std::cout << "Ending program\n";
 
@@ -312,9 +321,7 @@ int main()
 }
 ```
 
-COPY
-
-The above program prints:
+程序输出结果为：
 
 ```
 Resource acquired
@@ -323,9 +330,11 @@ Resource destroyed
 Ending program
 ```
 
-Note that in this case, ownership of the Resource was transferred to `takeOwnership()`, so the Resource was destroyed at the end of `takeOwnership()` rather than the end of `main()`.
+==注意，在这个例子中，`Resource` 的所有权被转移给了`takeOwnership()`，所以 `Resource` 会在 `takeOwnership()` 函数结束时被销毁，而不是 `main()`。==
 
-However, most of the time, you won’t want the function to take ownership of the resource. Although you can pass a `std::unique_ptr` by reference (which will allow the function to use the object without assuming ownership), you should only do so when the called function might alter or change the object being managed.
+但是，大多数时候，我们不会希望某个函数拥有资源的所有权。尽管你可以[[pass-by-reference|按引用传递]]`std::unique_ptr` (这样就没有所有权的关系了，函数可以直接使用对象本身)，但是这种做法只有在函数可能修改对象时才应该被使用。
+
+相反，最好是直接传递资源本身(通过指针或引用，取决于null是否是有效参数)。这允许函数不知道调用者如何管理其资源。要从std::unique_ptr中获取原始资源指针，你可以使用' get() '成员函数:
 
 Instead, it’s better to just pass the resource itself (by pointer or reference, depending on whether null is a valid argument). This allows the function to remain agnostic of how the caller is managing its resources. To get a raw resource pointer from a std::unique_ptr, you can use the `get()` member function:
 
@@ -380,13 +389,13 @@ Resource destroyed
 
 ## `std::unique_ptr` 和类
 
-You can, of course, use std::unique_ptr as a composition member of your class. This way, you don’t have to worry about ensuring your class destructor deletes the dynamic memory, as the std::unique_ptr will be automatically destroyed when the class object is destroyed.
+You can, of course, use `std::unique_ptr` as a composition member of your class. This way, you don’t have to worry about ensuring your class destructor deletes the dynamic memory, as the `std::unique_ptr` will be automatically destroyed when the class object is destroyed.
 
-However, if the class object is not destroyed properly (e.g. it is dynamically allocated and not deallocated properly), then the std::unique_ptr member will not be destroyed either, and the object being managed by the std::unique_ptr will not be deallocated.
+However, if the class object is not destroyed properly (e.g. it is dynamically allocated and not deallocated properly), then the `std::unique_ptr` member will not be destroyed either, and the object being managed by the `std::unique_ptr` will not be deallocated.
 
 ## `std::unique_ptr` 的误用
 
-There are two easy ways to misuse std::unique_ptrs, both of which are easily avoided. First, don’t let multiple classes manage the same resource. For example:
+There are two easy ways to misuse `std::unique_ptrs`, both of which are easily avoided. First, don’t let multiple classes manage the same resource. For example:
 
 ```cpp
 Resource* res{ new Resource() };
@@ -396,9 +405,9 @@ std::unique_ptr<Resource> res2{ res };
 
 COPY
 
-While this is legal syntactically, the end result will be that both res1 and res2 will try to delete the Resource, which will lead to undefined behavior.
+While this is legal syntactically, the end result will be that both `res1` and `res2` will try to delete the `Resource`, which will lead to undefined behavior.
 
-Second, don’t manually delete the resource out from underneath the std::unique_ptr.
+Second, don’t manually delete the resource out from underneath the `std::unique_ptr`.
 
 ```cpp
 Resource* res{ new Resource() };
@@ -408,6 +417,6 @@ delete res;
 
 COPY
 
-If you do, the std::unique_ptr will try to delete an already deleted resource, again leading to undefined behavior.
+If you do, the `std::unique_ptr` will try to delete an already deleted resource, again leading to undefined behavior.
 
-Note that std::make_unique() prevents both of the above cases from happening inadvertently.
+Note that `std::make_unique()` prevents both of the above cases from happening inadvertently.

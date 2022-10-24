@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "b9e8d5204efe2aba",
+            "id": "9e664645d6c72f06",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -154,17 +154,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "b9e8d5204efe2aba",
+  "active": "9e664645d6c72f06",
   "lastOpenFiles": [
-    "docs/exception-safety-issue.md",
+    "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
+    "docs/MOC.md",
     "docs/M-6-std-unique-ptr.md",
+    "docs/M-4-std-move.md",
+    "docs/exception-safety-issue.md",
     "docs/member-access-operator.md",
     "docs/dereference-operator.md",
-    "docs/MOC.md",
     "docs/M-5-std-move-if-noexcept.md",
-    "docs/M-4-std-move.md",
     "docs/M-3-move-constructors-and-move-assignment.md",
-    "docs/copy-semantics.md",
-    "docs/move-assignment-operator.md"
+    "docs/copy-semantics.md"
   ]
 }
