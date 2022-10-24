@@ -5,6 +5,14 @@
       "path": "docs/M-6-std-unique-ptr.md"
     },
     {
+      "basename": "exception-safety-issue",
+      "path": "docs/exception-safety-issue.md"
+    },
+    {
+      "basename": "member-access-operator",
+      "path": "docs/member-access-operator.md"
+    },
+    {
       "basename": "dereference-operator",
       "path": "docs/dereference-operator.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "link",
       "path": "docs/link.md"
-    },
-    {
-      "basename": "18-11-printing-inherited-classes-using-operator<<",
-      "path": "docs/18-11-printing-inherited-classes-using-operator<<.md"
-    },
-    {
-      "basename": "18-10-dynamic-casting",
-      "path": "docs/18-10-dynamic-casting.md"
     }
   ],
   "omittedPaths": [],

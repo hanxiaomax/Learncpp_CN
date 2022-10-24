@@ -156,15 +156,15 @@
   },
   "active": "b9e8d5204efe2aba",
   "lastOpenFiles": [
-    "docs/dereference-operator.md",
+    "docs/exception-safety-issue.md",
     "docs/M-6-std-unique-ptr.md",
+    "docs/member-access-operator.md",
+    "docs/dereference-operator.md",
     "docs/MOC.md",
     "docs/M-5-std-move-if-noexcept.md",
     "docs/M-4-std-move.md",
     "docs/M-3-move-constructors-and-move-assignment.md",
     "docs/copy-semantics.md",
-    "docs/move-assignment-operator.md",
-    "docs/M-2-R-value-references.md",
-    "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
+    "docs/move-assignment-operator.md"
   ]
 }

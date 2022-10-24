@@ -7,6 +7,7 @@ time: 2022-8-9
 type: translation
 tags:
 - move
+- C++14
 ---
 
 ??? note "关键点速记"
@@ -119,9 +120,10 @@ Resource destroyed
 
 ## 访问被智能指针管理的对象
 
-`std::unique_ptr` 类重载了[[dereference-operator|解引用运算符]]和[[成员访问n overloaded operator* and operator-> that can be used to return the resource being managed. Operator* returns a reference to the managed resource, and operator-> returns a pointer.
+`std::unique_ptr` 类重载了[[dereference-operator|解引用运算符]]和[[member-access-operator|成员访问运算符->]]，所以我们可以通过这两个运算符来返回被管理的对象。解引用运算符会返回被管理资源的引用，而`operator->`返回一个指针。
 
-Remember that std::unique_ptr may not always be managing an object -- either because it was created empty (using the default constructor or passing in a nullptr as the parameter), or because the resource it was managing got moved to another std::unique_ptr. So before we use either of these operators, we should check whether the std::unique_ptr actually has a resource. Fortunately, this is easy: std::unique_ptr has a cast to bool that returns true if the std::unique_ptr is managing a resource.
+记住，==`std::unique_ptr` 并不一定总是管理着某个对象——有可能是它被初始化为空（使用默认构造函数或`nullptr`字面量作为参数），也有可能是它管理的资源被转移了==。 所以在使用这些操作符之前，必须首先检查 `std::unique_ptr`是否有资源。==因为`std::unique_ptr`会被隐式转换为布尔类型，所以只需要对该指针进行条件判断就可以，当返回`true`时说明它包含资源。==
+
 
 Here’s an example of this:
 
@@ -152,9 +154,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 Resource acquired
@@ -162,24 +162,24 @@ I am a resource
 Resource destroyed
 ```
 
-In the above program, we use the overloaded operator* to get the Resource object owned by std::unique_ptr res, which we then send to std::cout for printing.
+在上面的例子中，我们使用了重载的[[dereference-operator|解引用运算符]]来获取 `std::unique_ptr` `res` 管理的 `Resource` 对象，然后将其送去 `std::cout` 打印。
 
 ## `std::unique_ptr` 和数组
 
-Unlike std::auto_ptr, std::unique_ptr is smart enough to know whether to use scalar delete or array delete, so std::unique_ptr is okay to use with both scalar objects and arrays.
+和 `std::auto_ptr` 不一样的是，`std::unique_ptr` 足够只能，它懂得使用恰当的`delete`去删除内存（普通 `delete` 或数组 `delete`），所以，`std::unique_ptr` 既可以用于一般对象，也可以用于数组。
 
-However, std::array or std::vector (or std::string) are almost always better choices than using std::unique_ptr with a fixed array, dynamic array, or C-style string.
+但是，==相对于使用 `std::unique_ptr` 管理一个固定数组或C风格字符串，使用`std::array` 或者 `std::vector` (或者 `std::string`) 总是更好的选择。== 
 
 !!! success "最佳实践"
 
-	Favor std::array, std::vector, or std::string over a smart pointer managing a fixed array, dynamic array, or C-style string.
+	相对于使用 `std::unique_ptr` 管理一个固定数组、动态数组或C风格字符串，使用`std::array` 或者 `std::vector` (或者 `std::string`) 总是更好的选择。 
 
 ## `std::make_unique`
 
-C++14 comes with an additional function named std::make_unique(). This templated function constructs an object of the template type and initializes it with the arguments passed into the function.
+C++14 新增了一个名为 `std::make_unique()`的函数。这个模板化函数基于一个模板类型构建对象，并使用传入的参数对其进行初始化。
 
 ```cpp
-#include <memory> // for std::unique_ptr and std::make_unique
+#include <memory> // for std::unique_ptr 和 std::make_unique
 #include <iostream>
 
 class Fraction
@@ -204,12 +204,12 @@ public:
 
 int main()
 {
-	// Create a single dynamically allocated Fraction with numerator 3 and denominator 5
-	// We can also use automatic type deduction to good effect here
+	// 创建一个动态分配的 Fraction
+	// 这里可以配合使用自动类型推断获得更好的效果
 	auto f1{ std::make_unique<Fraction>(3, 5) };
 	std::cout << *f1 << '\n';
 
-	// Create a dynamically allocated array of Fractions of length 4
+	// 创建一个动态分配的 Fraction 数组，长度为4
 	auto f2{ std::make_unique<Fraction[]>(4) };
 	std::cout << f2[0] << '\n';
 
@@ -217,36 +217,32 @@ int main()
 }
 ```
 
-COPY
-
-The code above prints:
+程序输出：
 
 ```
 3/5
 0/1
 ```
 
-Use of std::make_unique() is optional, but is recommended over creating std::unique_ptr yourself. This is because code using std::make_unique is simpler, and it also requires less typing (when used with automatic type deduction). Furthermore it resolves an exception safety issue that can result from C++ leaving the order of evaluation for function arguments unspecified.
+使用 `std::make_unique()` 是一种可选的办法，但是相对于直接创建 `std::unique_ptr` ，我们更推荐这种做法。这主要是因为是用 `std::make_unique` 的代码更加间接（尤其是使用了[[8-7-Type-deduction-for-objects-using-the auto-keyword|类型推断]]后）。不仅如此，它还可以解决C++参数求值顺序没有规范而引发的异常安全问题
 
 !!! success "最佳实践"
 
-	Use `std::make_unique()` instead of creating std::unique_ptr and using new yourself.
+	使用 `std::make_unique()` 来代替 `std::unique_ptr`和 `new`。
 
-The exception safety issue in more detail [](https://www.learncpp.com/cpp-tutorial/stdunique_ptr/#smartpointerexceptionsafety)
+## 异常安全问题
 
-For those wondering what the “exception safety issue” mentioned above is, here’s a description of the issue.
+如果你对上文提到的[[exception-safety-issue|异常安全问题]]感到好奇的话，这一小结我们会详细进行介绍。
 
-Consider an expression like this one:
+考虑下面的代码：
 
 ```cpp
 some_function(std::unique_ptr<T>(new T), function_that_can_throw_exception());
 ```
 
-COPY
+对于如何执行上述函数调用，编译器有很大的灵活性。它可以先创建新的类型T，然后调用`function_that_can_throw_exception()`吗，然后创建`std::unique_ptr` 去管理动态分配的T。如果 `function_that_can_throw_exception()` 抛出了依次，那么T在被分配内存后，没有被释放，因为用于管理它的智能指针还没有被创建。显然这会导致内存泄漏。
 
-The compiler is given a lot of flexibility in terms of how it handles this call. It could create a new T, then call function_that_can_throw_exception(), then create the std::unique_ptr that manages the dynamically allocated T. If function_that_can_throw_exception() throws an exception, then the T that was allocated will not be deallocated, because the smart pointer to do the deallocation hasn’t been created yet. This leads to T being leaked.
-
-std::make_unique() doesn’t suffer from this problem because the creation of the object T and the creation of the std::unique_ptr happen inside the std::make_unique() function, where there’s no ambiguity about order of execution.
+`std::make_unique()` 客服了整个问题，因为对象T和 std::unique_ptr happen inside the std::make_unique() function, where there’s no ambiguity about order of execution.
 
 ## 函数返回 `std::unique_ptr`
 
