@@ -12,8 +12,7 @@ tags:
 ??? note "关键点速记"
 
 
-
-Once you start using move semantics more regularly, you’ll start to find cases where you want to invoke move semantics, but the objects you have to work with are l-values, not r-values. Consider the following swap function as an example:
+随着你开始频繁地使用移动语义，你会发现有时候在你需要使用它的时候，对象是左值而不是右值导致你无法使用。考虑下面这个`swap`函数的例子：
 
 ```cpp
 #include <iostream>
@@ -44,9 +43,7 @@ int main()
 }
 ```
 
-COPY
-
-Passed in two objects of type T (in this case, std::string), this function swaps their values by making three copies. Consequently, this program prints:
+传入两个T类型的对象（在这个例子中是`std::string`）给函数，然后将它们的值交换（在这个过程中创建了三个副本）。程序输出结果为：
 
 ```
 x: abc
@@ -55,17 +52,17 @@ x: de
 y: abc
 ```
 
-As we showed last lesson, making copies can be inefficient. And this version of swap makes 3 copies. That leads to a lot of excessive string creation and destruction, which is slow.
+这个版本的`swap`函数创建了三个副本， 而创建副本是低效的操作，这其中涉及到了多次字符串的创建和销毁，显然效率是很低的。
 
-However, doing copies isn’t necessary here. All we’re really trying to do is swap the values of a and b, which can be accomplished just as well using 3 moves instead! So if we switch from copy semantics to move semantics, we can make our code more performant.
+实际上，这里并不需要创建拷贝，因为我们执行希望将a和b的值交换，这个操作使用三次移动也可完成啊！所以如果能将拷贝语义替换为移动语义，代码无疑会更高效。
 
-But how? The problem here is that parameters a and b are l-value references, not r-value references, so we don’t have a way to invoke the move constructor and move assignment operator instead of copy constructor and copy assignment. By default, we get the copy constructor and copy assignment behaviors. What are we to do?
+但是应该怎么做呢？这里的问题在于，a和b都是[[lvalue-reference|左值引用]]，而不是[[rvalue-reference|右值引用]]，所以没有办法调用[[move-constructor|移动构造函数]]和[[move-assignment-operator|移动赋值运算符]]。默认情况下，基于左值引用执行的是拷贝构造函数和拷贝赋值操作符。那究竟应该如何实现呢？
 
 ## `std::move`
 
-In C++11, std::move is a standard library function that casts (using static_cast) its argument into an r-value reference, so that move semantics can be invoked. Thus, we can use std::move to cast an l-value into a type that will prefer being moved over being copied. std::move is defined in the utility header.
+在 C++11 中 标准库提供了`std::move`函数用于将实参转换（使用[[static-casts|静态类型转换]]）为右值引用，以便激活移动操作。因此，我们可以使用 `std::move` 对一个左值类型进行转换，使其能够被移动。`std::move` 定义在utility头文件中。
 
-Here’s the same program as above, but with a myswapMove() function that uses std::move to convert our l-values into r-values so we can invoke move semantics:
+下面的程序和之前的类似，但是 `myswapMove()` 函数使用`std::move`函数将左值转换成了右值，所以调用了移动语义相关操作：
 
 ```cpp
 #include <iostream>
@@ -97,9 +94,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints the same result as above:
+程序输出：
 
 ```
 x: abc
@@ -108,11 +103,11 @@ x: de
 y: abc
 ```
 
-But it’s much more efficient about it. When tmp is initialized, instead of making a copy of x, we use std::move to convert l-value variable x into an r-value. Since the parameter is an r-value, move semantics are invoked, and x is moved into tmp.
+程序的输出结果一样，但是效率要高得多。当`tmp`初始化时，它没有创建x副本，这里我们使用 `std::move`将左值x转换成了一个右值。因为参数是右值，所以调用了移动构造函数，x被移动到了`tmp`。
 
-With a couple of more swaps, the value of variable x has been moved to y, and the value of y has been moved to x.
+经过几次转换，变量x的值被移动到了y，而y的值也被移动到了x。
 
-## Another example
+## 另外一个例子
 
 We can also use std::move when filling elements of a container, such as std::vector, with l-values.
 

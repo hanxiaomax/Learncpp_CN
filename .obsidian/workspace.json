@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "b7ea59cc57010b6b",
+            "id": "acd4177ec6a661a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/M-3-move-constructors-and-move-assignment.md",
+                "file": "docs/M-4-std-move.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/M-3-move-constructors-and-move-assignment.md"
+                "file": "docs/M-4-std-move.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/M-3-move-constructors-and-move-assignment.md",
+                "file": "docs/M-4-std-move.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,12 +154,12 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "b7ea59cc57010b6b",
+  "active": "acd4177ec6a661a3",
   "lastOpenFiles": [
-    "docs/copy-semantics.md",
-    "docs/M-3-move-constructors-and-move-assignment.md",
-    "docs/move-assignment-operator.md",
     "docs/MOC.md",
+    "docs/M-3-move-constructors-and-move-assignment.md",
+    "docs/copy-semantics.md",
+    "docs/move-assignment-operator.md",
     "docs/M-2-R-value-references.md",
     "docs/M-5-std-move-if-noexcept.md",
     "docs/M-4-std-move.md",

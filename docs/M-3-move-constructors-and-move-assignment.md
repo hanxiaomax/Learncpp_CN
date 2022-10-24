@@ -598,8 +598,6 @@ int main()
 
 由于移动语义的目标是将资源从源对象移动到目标对象，所以你可能会考虑使用 `std::swap()` 实现移动构造函数和移动赋值操作符。然而，这并不是一个好主意，因为`std::swap()` 会在可移动对象上调用移动构造函数**和**移动赋值，这将导致无限递归。你可以在下面的例子中看到这种情况:
 
-Since the goal of move semantics is to move a resource from a source object to a destination object, you might think about implementing the move constructor and move assignment operator using `std::swap()`. However, this is a bad idea, as `std::swap()` calls both the move constructor and move assignment on move-capable objects, which would result in an infinite recursion. You can see this happen in the following example:
-
 ```cpp
 #include <iostream>
 #include <string>
@@ -647,9 +645,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印：
 
 ```
 Move assign
@@ -659,9 +655,9 @@ Move ctor
 Move ctor
 ```
 
-And so on… until the stack overflows.
+一直打印。。。直到函数栈溢出。
 
-You can implement the move constructor and move assignment using your own swap function, as long as your swap member function does not call the move constructor or move assignment. Here’s an example of how that can be done:
+你可以使用自己的`swap`函数实现移动构造函数和移动赋值，只要该`swap`函数不要调用移动构造函数或移动赋值即可。下面是一个如何做到这一点的例子:
 
 ```cpp
 #include <iostream>
@@ -683,7 +679,7 @@ public:
     // Create our own swap friend function to swap the members of Name
     friend void swap(Name& a, Name& b) noexcept
     {
-        // We avoid recursive calls by invoking std::swap on the std::string member,
+        // 对std::string 类型的成员直接使用std:swap
         // not on Name
         std::swap(a.m_name, b.m_name);
     }
@@ -716,9 +712,7 @@ int main()
 }
 ```
 
-COPY
-
-This works as expected, and prints:
+运行结果符合预期：
 
 ```
 Move assign

@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "M-4-std-move",
+      "path": "docs/M-4-std-move.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "M-3-move-constructors-and-move-assignment",
       "path": "docs/M-3-move-constructors-and-move-assignment.md"
     },
@@ -13,20 +21,12 @@
       "path": "docs/move-assignment-operator.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "M-2-R-value-references",
       "path": "docs/M-2-R-value-references.md"
     },
     {
       "basename": "M-5-std-move-if-noexcept",
       "path": "docs/M-5-std-move-if-noexcept.md"
-    },
-    {
-      "basename": "M-4-std-move",
-      "path": "docs/M-4-std-move.md"
     },
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
