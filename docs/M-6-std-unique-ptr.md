@@ -12,7 +12,7 @@ tags:
 ??? note "关键点速记"
 
 
-At the beginning of the chapter, we discussed how the use of pointers can lead to bugs and memory leaks in some situations. For example, this can happen when a function early returns, or throws an exception, and the pointer is not properly deleted.
+在本章开始的时候，我们讨论了使用指针可能会引发的bug和内存泄漏问题。例如，函数的提前返回、异常的抛出和指针删除不当都可能导致上述问题。
 
 ```cpp
 #include <iostream>
@@ -34,19 +34,17 @@ void someFunction()
 }
 ```
 
-COPY
+到目前为止，我们已经学习了[[move-semantics|移动语义]]的基本内容，接下来可以继续回到智能指针类的讨论了。回忆一下，智能指针是一个用于管理动态分配内存的类。尽管智能指针也提供其他功能，但是它最本质的功能还是管理动态分配的资源，并且确保在恰当的时候（通常是智能指针[[going-out-of-scope|离开作用域]]时），该动态资源可以被正确地清理。
 
-Now that we’ve covered the fundamentals of move semantics, we can return to the topic of smart pointer classes. As a reminder, a smart pointer is a class that manages a dynamically allocated object. Although smart pointers can offer other features, the defining characteristic of a smart pointer is that it manages a dynamically allocated resource, and ensures the dynamically allocated object is properly cleaned up at the appropriate time (usually when the smart pointer goes out of scope).
+因此，==智能指针本身永远都不应该被动态创建==（否则智能指针对象本身可能会被忘记释放，从而导致内存泄漏问题）。默认情况下，智能指针应该被创建在栈上（作为[[6-3-Local-variables|局部变量]]或作为其他类的成员），我们保证智能指针在离开作用域时（包含该指针的函数或对象结束时），它所拥有的资源会被恰当地释放。
 
-Because of this, smart pointers should never be dynamically allocated themselves (otherwise, there is the risk that the smart pointer may not be properly deallocated, which means the object it owns would not be deallocated, causing a memory leak). By always allocating smart pointers on the stack (as local variables or composition members of a class), we’re guaranteed that the smart pointer will properly go out of scope when the function or object it is contained within ends, ensuring the object the smart pointer owns is properly deallocated.
+C++11 标准库提供了4种智能指针类：`std::auto_ptr` (在 C++17 中已经删除了)， `std::unique_ptr`， `std::shared_ptr` 和 `std::weak_ptr`。其中 `std::unique_ptr` 是目前最为常用的一个指针类，所以我们稍后会首先介绍它，在接下来的课程中，我们会介绍 `std::shared_ptr` 和`std::weak_ptr`。
 
-C++11 standard library ships with 4 smart pointer classes: std::auto_ptr (removed in C++17), std::unique_ptr, std::shared_ptr, and std::weak_ptr. std::unique_ptr is by far the most used smart pointer class, so we’ll cover that one first. In the following lessons, we’ll cover std::shared_ptr and std::weak_ptr.
+## `std::unique_ptr`
 
-std::unique_ptr
+`std::unique_ptr` 在C++11中被用来替代 `std::auto_ptr`。该智能指针被用来管理动态分配的对象，且该对象并不被多个其他对象所共享。也就是说， `std::unique_ptr` 单独拥有它所管理的资源，而不会和其他类共享资源的所有权。 `std::unique_ptr` 被定义在 `<memory>` 头文件中。
 
-std::unique_ptr is the C++11 replacement for std::auto_ptr. It should be used to manage any dynamically allocated object that is not shared by multiple objects. That is, std::unique_ptr should completely own the object it manages, not share that ownership with other classes. `std::unique_ptr` lives in the `<memory>` header.
-
-Let’s take a look at a simple smart pointer example:
+再看一个简单的例子：
 
 ```cpp
 #include <iostream>
@@ -68,11 +66,10 @@ int main()
 } // res goes out of scope here, and the allocated Resource is destroyed
 ```
 
-COPY
 
-Because the std::unique_ptr is allocated on the stack here, it’s guaranteed to eventually go out of scope, and when it does, it will delete the Resource it is managing.
+因为 `std::unique_ptr` 被分配在栈上，所以它最终一定会离开作用域，当它离开时，它会确保`Resource`被删除。
 
-Unlike std::auto_ptr, std::unique_ptr properly implements move semantics.
+和`std::auto_ptr`不同的是 `std::unique_ptr`正确地实现了移动语义。
 
 ```cpp
 #include <iostream>
@@ -88,14 +85,14 @@ public:
 
 int main()
 {
-	std::unique_ptr<Resource> res1{ new Resource{} }; // Resource created here
-	std::unique_ptr<Resource> res2{}; // Start as nullptr
+	std::unique_ptr<Resource> res1{ new Resource{} }; // 创建 Resource 
+	std::unique_ptr<Resource> res2{}; // 初始化为空指针
 
 	std::cout << "res1 is " << (res1 ? "not null\n" : "null\n");
 	std::cout << "res2 is " << (res2 ? "not null\n" : "null\n");
 
-	// res2 = res1; // Won't compile: copy assignment is disabled
-	res2 = std::move(res1); // res2 assumes ownership, res1 is set to null
+	// res2 = res1; // 不能编译: 因为拷贝赋值被禁用了
+	res2 = std::move(res1); // res2 获取资源所有权，res1 设为空
 
 	std::cout << "Ownership transferred\n";
 
@@ -106,10 +103,9 @@ int main()
 } // Resource destroyed here when res2 goes out of scope
 ```
 
-COPY
+程序运行结果为：
 
-This prints:
-
+```
 Resource acquired
 res1 is not null
 res2 is null
@@ -117,12 +113,13 @@ Ownership transferred
 res1 is null
 res2 is not null
 Resource destroyed
+```
 
-Because std::unique_ptr is designed with move semantics in mind, copy initialization and copy assignment are disabled. If you want to transfer the contents managed by std::unique_ptr, you must use move semantics. In the program above, we accomplish this via std::move (which converts res1 into an r-value, which triggers a move assignment instead of a copy assignment).
+因为 `std::unique_ptr` 在设计时考虑了移动语义，所以其[[copy-constructors|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]都被禁用了。如果你想要转移 `std::unique_ptr` 管理的资源的话，就必须使用移动语义。在上面的例子中，移动语义是通过 `std::move` 实现的（它把`res1`转换成了一个[[rvalue|右值]]，因此触发了移动赋值而不是拷贝赋值）。
 
-Accessing the managed object
+## 访问被智能指针管理的对象
 
-std::unique_ptr has an overloaded operator* and operator-> that can be used to return the resource being managed. Operator* returns a reference to the managed resource, and operator-> returns a pointer.
+`std::unique_ptr` 类重载了[[dereference-operator|解引用运算符]]和[[成员访问n overloaded operator* and operator-> that can be used to return the resource being managed. Operator* returns a reference to the managed resource, and operator-> returns a pointer.
 
 Remember that std::unique_ptr may not always be managing an object -- either because it was created empty (using the default constructor or passing in a nullptr as the parameter), or because the resource it was managing got moved to another std::unique_ptr. So before we use either of these operators, we should check whether the std::unique_ptr actually has a resource. Fortunately, this is easy: std::unique_ptr has a cast to bool that returns true if the std::unique_ptr is managing a resource.
 
@@ -159,23 +156,25 @@ COPY
 
 This prints:
 
+```
 Resource acquired
 I am a resource
 Resource destroyed
+```
 
 In the above program, we use the overloaded operator* to get the Resource object owned by std::unique_ptr res, which we then send to std::cout for printing.
 
-std::unique_ptr and arrays
+## `std::unique_ptr` 和数组
 
 Unlike std::auto_ptr, std::unique_ptr is smart enough to know whether to use scalar delete or array delete, so std::unique_ptr is okay to use with both scalar objects and arrays.
 
 However, std::array or std::vector (or std::string) are almost always better choices than using std::unique_ptr with a fixed array, dynamic array, or C-style string.
 
-Best practice
+!!! success "最佳实践"
 
-Favor std::array, std::vector, or std::string over a smart pointer managing a fixed array, dynamic array, or C-style string.
+	Favor std::array, std::vector, or std::string over a smart pointer managing a fixed array, dynamic array, or C-style string.
 
-**std::make_unique**
+## `std::make_unique`
 
 C++14 comes with an additional function named std::make_unique(). This templated function constructs an object of the template type and initializes it with the arguments passed into the function.
 
@@ -222,14 +221,16 @@ COPY
 
 The code above prints:
 
+```
 3/5
 0/1
+```
 
 Use of std::make_unique() is optional, but is recommended over creating std::unique_ptr yourself. This is because code using std::make_unique is simpler, and it also requires less typing (when used with automatic type deduction). Furthermore it resolves an exception safety issue that can result from C++ leaving the order of evaluation for function arguments unspecified.
 
-Best practice
+!!! success "最佳实践"
 
-Use std::make_unique() instead of creating std::unique_ptr and using new yourself.
+	Use `std::make_unique()` instead of creating std::unique_ptr and using new yourself.
 
 The exception safety issue in more detail [](https://www.learncpp.com/cpp-tutorial/stdunique_ptr/#smartpointerexceptionsafety)
 
@@ -247,7 +248,7 @@ The compiler is given a lot of flexibility in terms of how it handles this call.
 
 std::make_unique() doesn’t suffer from this problem because the creation of the object T and the creation of the std::unique_ptr happen inside the std::make_unique() function, where there’s no ambiguity about order of execution.
 
-Returning std::unique_ptr from a function
+## 函数返回 `std::unique_ptr`
 
 std::unique_ptr can be safely returned from a function by value:
 
@@ -275,7 +276,7 @@ In the above code, createResource() returns a std::unique_ptr by value. If this 
 
 In general, you should not return std::unique_ptr by pointer (ever) or reference (unless you have a specific compelling reason to).
 
-Passing std::unique_ptr to a function
+## 传递 `std::unique_ptr` 给函数
 
 If you want the function to take ownership of the contents of the pointer, pass the std::unique_ptr by value. Note that because copy semantics have been disabled, you’ll need to use std::move to actually pass the variable in.
 
@@ -319,16 +320,18 @@ COPY
 
 The above program prints:
 
+```
 Resource acquired
 I am a resource
 Resource destroyed
 Ending program
+```
 
-Note that in this case, ownership of the Resource was transferred to takeOwnership(), so the Resource was destroyed at the end of takeOwnership() rather than the end of main().
+Note that in this case, ownership of the Resource was transferred to `takeOwnership()`, so the Resource was destroyed at the end of `takeOwnership()` rather than the end of `main()`.
 
-However, most of the time, you won’t want the function to take ownership of the resource. Although you can pass a std::unique_ptr by reference (which will allow the function to use the object without assuming ownership), you should only do so when the called function might alter or change the object being managed.
+However, most of the time, you won’t want the function to take ownership of the resource. Although you can pass a `std::unique_ptr` by reference (which will allow the function to use the object without assuming ownership), you should only do so when the called function might alter or change the object being managed.
 
-Instead, it’s better to just pass the resource itself (by pointer or reference, depending on whether null is a valid argument). This allows the function to remain agnostic of how the caller is managing its resources. To get a raw resource pointer from a std::unique_ptr, you can use the get() member function:
+Instead, it’s better to just pass the resource itself (by pointer or reference, depending on whether null is a valid argument). This allows the function to remain agnostic of how the caller is managing its resources. To get a raw resource pointer from a std::unique_ptr, you can use the `get()` member function:
 
 ```cpp
 #include <memory> // for std::unique_ptr
@@ -372,18 +375,20 @@ COPY
 
 The above program prints:
 
+```
 Resource acquired
 I am a resource
 Ending program
 Resource destroyed
+```
 
-std::unique_ptr and classes
+## `std::unique_ptr` 和类
 
 You can, of course, use std::unique_ptr as a composition member of your class. This way, you don’t have to worry about ensuring your class destructor deletes the dynamic memory, as the std::unique_ptr will be automatically destroyed when the class object is destroyed.
 
 However, if the class object is not destroyed properly (e.g. it is dynamically allocated and not deallocated properly), then the std::unique_ptr member will not be destroyed either, and the object being managed by the std::unique_ptr will not be deallocated.
 
-Misusing std::unique_ptr
+## `std::unique_ptr` 的误用
 
 There are two easy ways to misuse std::unique_ptrs, both of which are easily avoided. First, don’t let multiple classes manage the same resource. For example:
 

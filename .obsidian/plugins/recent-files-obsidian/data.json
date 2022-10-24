@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "M-4-std-move",
-      "path": "docs/M-4-std-move.md"
+      "basename": "M-6-std-unique-ptr",
+      "path": "docs/M-6-std-unique-ptr.md"
+    },
+    {
+      "basename": "dereference-operator",
+      "path": "docs/dereference-operator.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "M-5-std-move-if-noexcept",
+      "path": "docs/M-5-std-move-if-noexcept.md"
+    },
+    {
+      "basename": "M-4-std-move",
+      "path": "docs/M-4-std-move.md"
     },
     {
       "basename": "M-3-move-constructors-and-move-assignment",
@@ -23,10 +35,6 @@
     {
       "basename": "M-2-R-value-references",
       "path": "docs/M-2-R-value-references.md"
-    },
-    {
-      "basename": "M-5-std-move-if-noexcept",
-      "path": "docs/M-5-std-move-if-noexcept.md"
     },
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
@@ -191,14 +199,6 @@
     {
       "basename": "18-10-dynamic-casting",
       "path": "docs/18-10-dynamic-casting.md"
-    },
-    {
-      "basename": "18-9-object-slicing",
-      "path": "docs/18-9-object-slicing.md"
-    },
-    {
-      "basename": "18-8-virtual-base-classes",
-      "path": "docs/18-8-virtual-base-classes.md"
     }
   ],
   "omittedPaths": [],

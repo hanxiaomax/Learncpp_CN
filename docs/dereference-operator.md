@@ -1,6 +1,6 @@
 ---
-title: 解引用
-alias: 解引用
+title: 解引用运算符
+alias: 解引用运算符
 english: dereference-operator
 type: glossary
 tags:

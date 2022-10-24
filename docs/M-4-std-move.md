@@ -186,9 +186,9 @@ vector: Knock Knock
 
 `std::move` 在进行数组排序时也很有用。很多排序算法 (例如选择排序和冒泡排序)是基于交换两个元素而实现的。在之前的课程中，我们使用了基于拷贝语义的交换，现在可以将它替换成基于移动语义的交换了，这么做效率会高很多。
 
-It can also be useful if we want to move the contents managed by one smart pointer to another.
+此外，当我们需要将某个智能指针管理的内容转移到另一个智能指针时，该函数也很有用。
 
-## Conclusion
+## 小结
 
-`std::move` can be used whenever we want to treat an l-value like an r-value for the purpose of invoking move semantics instead of copy semantics.
+当一个左值需要被当做右值使用，以便触发移动语义时，可以使用`std::move`。
  

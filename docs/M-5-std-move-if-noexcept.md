@@ -12,9 +12,9 @@ tags:
 ??? note "关键点速记"
 
 
-(h/t to reader Koe for providing the first draft of this lesson!)
+(感谢读者 Koe 贡献了本节课的草稿！)
 
-In lesson [20.9 -- Exception specifications and noexcept](https://www.learncpp.com/cpp-tutorial/exception-specifications-and-noexcept/), we covered the `noexcept` exception specifier and operator, which this lesson builds on.
+在 [20.9 -- Exception specifications and noexcept](https://www.learncpp.com/cpp-tutorial/exception-specifications-and-noexcept/) 中，我们介绍了 `noexcept` exception specifier and operator, which this lesson builds on.
 
 We also covered the `strong exception guarantee`, which guarantees that if a function is interrupted by an exception, no memory will be leaked and the program state will not be changed. In particular, all constructors should uphold the strong exception guarantee, so that the rest of the program won’t be left in an altered state if construction of an object fails.
 
