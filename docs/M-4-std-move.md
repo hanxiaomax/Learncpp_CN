@@ -11,6 +11,8 @@ tags:
 
 ??? note "关键点速记"
 
+	- 	`std::move()` 会提示编译器，程序员已经不再需要该值了。所以，`std::move()` 应该被应用于那些希望资源被移出的对象，且此后不应当假定该对象还持有该资源。给资源被移出的对象赋新值是可以的。
+
 
 随着你开始频繁地使用移动语义，你会发现有时候在你需要使用它的时候，对象是左值而不是右值导致你无法使用。考虑下面这个`swap`函数的例子：
 
@@ -109,9 +111,9 @@ y: abc
 
 ## 另外一个例子
 
-We can also use std::move when filling elements of a container, such as std::vector, with l-values.
+我们还可以使用`std::move`来填充容器的元素，例如使用左值填充 `std::vector` 。
 
-In the following program, we first add an element to a vector using copy semantics. Then we add an element to the vector using move semantics.
+在下面的例子中，我们首先使用拷贝语义向`vector`添加元素。然后使用移动语义做同样的操作。
 
 ```cpp
 #include <iostream>
@@ -123,29 +125,27 @@ int main()
 {
 	std::vector<std::string> v;
 
-	// We use std::string because it is movable (std::string_view is not)
+	// 这里使用 std::string 是因为它是可移动的 (std::string_view 不可移动)
 	std::string str { "Knock" };
 
 	std::cout << "Copying str\n";
-	v.push_back(str); // calls l-value version of push_back, which copies str into the array element
+	v.push_back(str); // 调用左值版本的 push_back，它会将str拷贝到数组元素
 
 	std::cout << "str: " << str << '\n';
 	std::cout << "vector: " << v[0] << '\n';
 
 	std::cout << "\nMoving str\n";
 
-	v.push_back(std::move(str)); // calls r-value version of push_back, which moves str into the array element
+	v.push_back(std::move(str)); // 调用右值版本的 push_back，它会将str移动到数组元素
 
-	std::cout << "str: " << str << '\n'; // The result of this is indeterminate
+	std::cout << "str: " << str << '\n'; // 打印中奖结果
 	std::cout << "vector:" << v[0] << ' ' << v[1] << '\n';
 
 	return 0;
 }
 ```
 
-COPY
-
-On the author’s machine, this program prints:
+在笔者的机器上会输出如下信息：
 
 ```
 Copying str
@@ -157,33 +157,34 @@ str:
 vector: Knock Knock
 ```
 
-In the first case, we passed push_back() an l-value, so it used copy semantics to add an element to the vector. For this reason, the value in str is left alone.
+在第一种情况下，传入 `push_back()` 的是一个左值，所以它会使用拷贝语义向`vector`添加元素。因此，原字符串还被保存在`str`中。
 
-In the second case, we passed push_back() an r-value (actually an l-value converted via std::move), so it used move semantics to add an element to the vector. This is more efficient, as the vector element can steal the string’s value rather than having to copy it.
+对于第二种情况，传入 `push_back()` 的是一个右值（准确来讲是通过`std::move`将左值转换成的右值），所以它会使用移动语义向`vector`添加元素。这个操作无疑是更加高效的，因为`vector`的元素“窃取了”字符串的值，而没有创建它的拷贝。
 
-Moved from objects will be in a valid, but possibly indeterminate state
+## 资源被移动的对象处于一种有效，但可能不确定的状态
 
-When we move the value from a temporary object, it doesn’t matter what value the moved-from object is left with, because the temporary object will be destroyed immediately anyway. But what about lvalue objects that we’ve used std::move() on? Because we can continue to access these objects after their values have been moved (e.g. in the example above, we print the value of `str` after it has been moved), it is useful to know what value they are left with.
+当我们从一个**临时对象**中把资源移动出来时，这个临时对象中还剩下什么其实并不重要，因为它马上就要被销毁了。但是对于一个**左值对象**来说，当我们对它使用`std::move()`后会怎么样呢？因为该左值在其资源被移动后，仍然可能会被访问（在这个例子中，当我们打印`str`的值时，内容已经没有了），所以有必要知道该对象资源被移动后，还有什么留在原对象中。
 
-There are two schools of thought here. One school believes that objects that have been moved from should be reset back to some default / zero state, where the object does not own a resource any more. We see an example of this above, where `str` has been cleared to the empty string.
+关于这个问题的思考有两个派系。一派人任务，资源已经被移动走的对象，应该被重置为某种默认状态或0幢，因为它不再拥有资源。上面的例子很好地展示了这种情况。
 
-The other school believes that we should do whatever is most convenient, and not constrain ourselves to having to clear the moved-from object if its not convenient to do so.
+另外一派人则认为应该“怎么方便怎么来”，如果清理该对象很麻烦，那就不必清理。
 
-So what does the standard library do in this case? About this, the C++ standard says, “Unless otherwise specified, moved-from objects [of types defined in the C++ standard library] shall be placed in a valid but unspecified state.”
+那么，标准库是如何做的呢？关于这个问题，C++标准认为：“除非有明确的规定，否则C++标准库中定义的类型，在资源被移动后应该被置于**任意一种有效**的状态”。
 
-In our example above, when the author printed the value of `str` after calling `std::move` on it, it printed an empty string. However, this is not required, and it could have printed any valid string, including an empty string, the original string, or any other valid string. Therefore, we should avoid using the value of a moved-from object, as the results will be implementation-specific.
+在上面的例子中，当左值打印 `str` 值时，程序输出的空字符串。但是，这并不是一定的，打印任何其他合法的字符串也可以，包括空字符串、原本的字符串或任何合法的字符串。因此，==我们应该避免继续使用已经被移动的左值对象，因为其结果取决于编译器的具体实现。==
 
-In some cases, we want to reuse an object whose value has been moved (rather than allocating a new object). For example, in the implementation of myswapMove() above, we first move the resource out of `a`, and then we move another resource into `a`. This is fine because we never use the value of `a`between the time where we move it out and the time where we give `a` a new determinate value.
+在有些场景下，我们需要继续使用已经被移动的对象（而不希望重新分配一个新对象）。例如，在上面 `myswapMove()` 的实现中，我们首先将a的资源移出，然后将其他资源移动到a。这么做可行是因为，a的值被移除到a再次获得一个确定的值的这段时间内，我们不会使用a的值。
 
-With a moved-from object, it is safe to call any function that does not depend on the current value of the object. This means we can set or reset the value of the moved-from object (using `operator=`, or any kind of `clear()` or `reset()` member function). We can also test the state of the moved-from object (e.g. using `empty()` to see if the object has a value). However, we should avoid functions like `operator[]` or `front()` (which returns the first element in a container), because these functions depend on the container having elements, and a moved-from container may or may not have elements.
+==对于一个被移动了资源的对象来说，调用任何不依赖其值的函数是安全的==。也就是说，我们可以设置、重置该对象的值（使用`=`或`clear()`或`reset()`成员函数）。我们可以检查它的状态(例如使用 `empty()` 判断该对象是否有值)。但是，我们必须避免`operator[]` 或 `front()` 这样的函数，因为这些函数依赖于对象中存放的值，而被移动后的对象可能可以，也可能不能够提供这些值。
 
 !!! tldr "关键信息"
 
-	`std::move()` gives a hint to the compiler that the programmer doesn’t need the value of an object any more. Only use `std::move()` on persistent objects whose value you want to move, and do not make any assumptions about the value of the object beyond that point. It is okay to give a moved-from object a new value (e.g. using `operator=`) after the current value has been moved.
+	`std::move()` 会提示编译器，程序员已经不再需要该值了。所以，`std::move()` 应该被应用于那些希望资源被移出的对象，且此后不应当假定该对象还持有该资源。给资源被移出的对象赋新值是可以的。
+	
 
-## Where else is `std::move` useful?
+## `std::move` 还有什么用途？
 
-`std::move`can also be useful when sorting an array of elements. Many sorting algorithms (such as selection sort and bubble sort) work by swapping pairs of elements. In previous lessons, we’ve had to resort to copy-semantics to do the swapping. Now we can use move semantics, which is more efficient.
+`std::move` 在进行数组排序时也很有用。很多排序算法 (例如选择排序和冒泡排序)是基于交换两个元素而实现的。在之前的课程中，我们使用了基于拷贝语义的交换，现在可以将它替换成基于移动语义的交换了，这么做效率会高很多。
 
 It can also be useful if we want to move the contents managed by one smart pointer to another.
 
