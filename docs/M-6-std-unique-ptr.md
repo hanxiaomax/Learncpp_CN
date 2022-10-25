@@ -17,6 +17,7 @@ tags:
 	- `std::unique_ptr` 智能指针是其管理资源的唯一拥有者，且只有移动语义
 	- `std::unique_ptr` 并不一定总是管理着某个对象——有可能是它被初始化为空（使用默认构造函数或`nullptr`字面量作为参数），也有可能是它管理的资源被转移了，通过直接对它判断true还是false可以知道它是否正在管理资源
 	- 模板化函数 `std::make_unique` 比直接使用`std::unique_ptr`更好用也更安全，它返回的是管理资源的`std::unique_ptr`
+	- 函数传参时，一般不希望转移所有权，否则资源会在函数结束时被销毁。此时最好传递智能指针管理的资源本身（按值传递或按地址传递都可以），但是不要把智能指针的引用直接传进去
 
 在本章开始的时候，我们讨论了使用指针可能会引发的bug和内存泄漏问题。例如，函数的提前返回、异常的抛出和指针删除不当都可能导致上述问题。
 
@@ -332,11 +333,9 @@ Ending program
 
 ==注意，在这个例子中，`Resource` 的所有权被转移给了`takeOwnership()`，所以 `Resource` 会在 `takeOwnership()` 函数结束时被销毁，而不是 `main()`。==
 
-但是，大多数时候，我们不会希望某个函数拥有资源的所有权。尽管你可以[[pass-by-reference|按引用传递]]`std::unique_ptr` (这样就没有所有权的关系了，函数可以直接使用对象本身)，但是这种做法只有在函数可能修改对象时才应该被使用。
+但是，大多数时候，我们不会希望某个函数拥有资源的所有权。尽管你可以[[pass-by-reference|按引用传递]]`std::unique_ptr` (这样一来函数就无需考虑所有权直接使用对象本身)，但是这种做法只有在函数可能需要改变被管理的对象时才使用。
 
-相反，最好是直接传递资源本身(通过指针或引用，取决于null是否是有效参数)。这允许函数不知道调用者如何管理其资源。要从std::unique_ptr中获取原始资源指针，你可以使用' get() '成员函数:
-
-Instead, it’s better to just pass the resource itself (by pointer or reference, depending on whether null is a valid argument). This allows the function to remain agnostic of how the caller is managing its resources. To get a raw resource pointer from a std::unique_ptr, you can use the `get()` member function:
+相反，最好是**直接传递资源本身**(通过指针或引用，取决于null是否是有效参数)。这样一来，函数就无需关心资源是如何被管理的了。要从`std::unique_ptr`中获取原始资源指针，你可以使用`get()`成员函数：
 
 ```cpp
 #include <memory> // for std::unique_ptr
@@ -355,7 +354,7 @@ public:
 	}
 };
 
-// The function only uses the resource, so we'll accept a pointer to the resource, not a reference to the whole std::unique_ptr<Resource>
+// 函数值会使用资源，所以它只需要获取指向资源本身的指针，而不需要获取完整的 std::unique_ptr<Resource> 的引用
 void useResource(Resource* res)
 {
 	if (res)
@@ -368,7 +367,7 @@ int main()
 {
 	auto ptr{ std::make_unique<Resource>() };
 
-	useResource(ptr.get()); // note: get() used here to get a pointer to the Resource
+	useResource(ptr.get()); // note: 通过 get() 获取被管理的资源
 
 	std::cout << "Ending program\n";
 
@@ -376,9 +375,7 @@ int main()
 } // The Resource is destroyed here
 ```
 
-COPY
-
-The above program prints:
+程序运行结果：
 
 ```
 Resource acquired
@@ -389,9 +386,9 @@ Resource destroyed
 
 ## `std::unique_ptr` 和类
 
-You can, of course, use `std::unique_ptr` as a composition member of your class. This way, you don’t have to worry about ensuring your class destructor deletes the dynamic memory, as the `std::unique_ptr` will be automatically destroyed when the class object is destroyed.
+当然，你也可以将 `std::unique_ptr` 作为一个类成员（形成[[16-2-composition|组合关系]]关系）。这样一来，你就不需要在类的析构函数中删除该动内存，因为`std::unique_ptr` 会在类对象销毁时自动销毁。
 
-However, if the class object is not destroyed properly (e.g. it is dynamically allocated and not deallocated properly), then the `std::unique_ptr` member will not be destroyed either, and the object being managed by the `std::unique_ptr` will not be deallocated.
+但是，如果类没有被正确地销毁的话（例如，动态分配了内存但没有被释放），于是 `std::unique_ptr` 成员也不会被销毁，所以它管理的资源也不会被释放。
 
 ## `std::unique_ptr` 的误用
 
