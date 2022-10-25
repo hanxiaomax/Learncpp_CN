@@ -230,7 +230,7 @@ int main()
 0/1
 ```
 
-使用 `std::make_unique()` 是一种可选的办法，但是相对于直接创建 `std::unique_ptr` ，我们更推荐这种做法。这主要是因为是用 `std::make_unique` 的代码更加间接（尤其是使用了[[8-7-Type-deduction-for-objects-using-the auto-keyword|类型推断]]后）。不仅如此，它还可以解决C++参数求值顺序没有规范而引发的异常安全问题
+使用 `std::make_unique()` 是一种可选的办法，但是相对于直接创建 `std::unique_ptr` ，我们更推荐这种做法。不关因为使用 `std::make_unique` 的代码更加简洁（尤其是使用了[[8-7-Type-deduction-for-objects-using-the auto-keyword|类型推断]]后），它还可以解决C++参数求值顺序没有规范而引发的异常安全问题。
 
 !!! success "最佳实践"
 
@@ -392,7 +392,7 @@ Resource destroyed
 
 ## `std::unique_ptr` 的误用
 
-There are two easy ways to misuse `std::unique_ptrs`, both of which are easily avoided. First, don’t let multiple classes manage the same resource. For example:
+`std::unique_ptrs`有两种典型的误用，但是它们其实很容易避免。首先，不要让多个类管理同一个资源，例如：
 
 ```cpp
 Resource* res{ new Resource() };
@@ -400,11 +400,9 @@ std::unique_ptr<Resource> res1{ res };
 std::unique_ptr<Resource> res2{ res };
 ```
 
-COPY
+尽管语法上完全正确，但是最终的结果是`res1` 和 `res2` 都会去删除资源`Resource`，进而导致[[undefined-behavior|未定义行为]]。
 
-While this is legal syntactically, the end result will be that both `res1` and `res2` will try to delete the `Resource`, which will lead to undefined behavior.
-
-Second, don’t manually delete the resource out from underneath the `std::unique_ptr`.
+第二，不要手动释放已经在 `std::unique_ptr` 管理下的资源：
 
 ```cpp
 Resource* res{ new Resource() };
@@ -412,8 +410,7 @@ std::unique_ptr<Resource> res1{ res };
 delete res;
 ```
 
-COPY
 
-If you do, the `std::unique_ptr` will try to delete an already deleted resource, again leading to undefined behavior.
+这么做的话，`std::unique_ptr` 就会再次删除这个已经被释放的资源，导致[[undefined-behavior|未定义行为]]。
 
-Note that `std::make_unique()` prevents both of the above cases from happening inadvertently.
+使用 `std::make_unique()` 可以避免上述两个问题。

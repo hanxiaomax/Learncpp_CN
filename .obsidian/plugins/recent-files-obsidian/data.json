@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "M-7-std-shared-ptr",
+      "path": "docs/M-7-std-shared-ptr.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "M-6-std-unique-ptr",
       "path": "docs/M-6-std-unique-ptr.md"
     },
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
       "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "M-4-std-move",
@@ -195,10 +199,6 @@
     {
       "basename": "syntax",
       "path": "docs/syntax.md"
-    },
-    {
-      "basename": "link",
-      "path": "docs/link.md"
     }
   ],
   "omittedPaths": [],
