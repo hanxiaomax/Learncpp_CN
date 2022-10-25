@@ -149,26 +149,26 @@ int main()
 
 ## `std::shared_ptr` 内幕
 
-Unlike std::unique_ptr, which uses a single pointer internally, std::shared_ptr uses two pointers internally. One pointer points at the resource being managed. The other points at a “control block”, which is a dynamically allocated object that tracks of a bunch of stuff, including how many std::shared_ptr are pointing at the resource. When a std::shared_ptr is created via a std::shared_ptr constructor, the memory for the managed object (which is usually passed in) and control block (which the constructor creates) are allocated separately. However, when using std::make_shared(), this can be optimized into a single memory allocation, which leads to better performance.
+和 `std::unique_ptr`内部使用了一个指针不同，==`std::shared_ptr` 内部使用了两个指针。其中一个指针指向被管理的资源。另外一个指针则指向一个“控制块”，控制块是一个动态分配的对象，用于追踪一系列的信息，其中就包括有多少 `std::shared_ptr` 指向了该对象==。当 `std::shared_ptr` 通过 `std::shared_ptr`构造函数创建时，被管理对象的内存（通常是传入的）和控制块（通常由构造函数创建）的内存会被分别分配。 但是，当使用 `std::make_shared()` 创建时，两个内存的分配可以被优化为一次内存分配，从而提升性能。
 
-This also explains why independently creating two std::shared_ptr pointed to the same resource gets us into trouble. Each std::shared_ptr will have one pointer pointing at the resource. However, each std::shared_ptr will independently allocate its own control block, which will indicate that it is the only pointer owning that resource. Thus, when that std::shared_ptr goes out of scope, it will deallocate the resource, not realizing there are other std::shared_ptr also trying to manage that resource.
+这也解释了为什么分配创建两个指向相同资源的 `std::shared_ptr` 时会有问题。每个 `std::shared_ptr` 都会有一个指向该资源的指针，但同时，每个 `std::shared_ptr` 也都会独立分配自己的控制块，因此控制块中都只会显示有一个指针指向被管理的资源。当 `std::shared_ptr` 离开作用域时，它就会释放资源，而不会意识到还有其他的 `std::shared_ptr` 也在管理着该资源。
 
-However, when a std::shared_ptr is cloned using copy assignment, the data in the control block can be appropriately updated to indicate that there are now additional std::shared_ptr co-managing the resource.
+但是，当 `std::shared_ptr` 通过[[copy-assignment-operator|拷贝赋值运算符]]被创建时，控制块会被正确地更新，使其能够显示又有另外一个 `std::shared_ptr` 开始管理这个资源了。
 
-Shared pointers can be created from unique pointers
+## Shared pointers can be created from unique pointers
 
-A std::unique_ptr can be converted into a std::shared_ptr via a special std::shared_ptr constructor that accepts a std::unique_ptr r-value. The contents of the std::unique_ptr will be moved to the std::shared_ptr.
+A `std::unique_ptr` can be converted into a `std::shared_ptr` via a special `std::shared_ptr` constructor that accepts a `std::unique_ptr` r-value. The contents of the `std::unique_ptr` will be moved to the `std::shared_ptr`.
 
-However, std::shared_ptr can not be safely converted to a std::unique_ptr. This means that if you’re creating a function that is going to return a smart pointer, you’re better off returning a std::unique_ptr and assigning it to a std::shared_ptr if and when that’s appropriate.
+However, `std::shared_ptr` can not be safely converted to a `std::unique_ptr`. This means that if you’re creating a function that is going to return a smart pointer, you’re better off returning a `std::unique_ptr` and assigning it to a `std::shared_ptr` if and when that’s appropriate.
 
-The perils of std::shared_ptr
+## The perils of `std::shared_ptr`
 
 std::shared_ptr has some of the same challenges as std::unique_ptr -- if the std::shared_ptr is not properly disposed of (either because it was dynamically allocated and never deleted, or it was part of an object that was dynamically allocated and never deleted) then the resource it is managing won’t be deallocated either. With std::unique_ptr, you only have to worry about one smart pointer being properly disposed of. With std::shared_ptr, you have to worry about them all. If any of the std::shared_ptr managing a resource are not properly destroyed, the resource will not be deallocated properly.
 
-std::shared_ptr and arrays
+## `std::shared_ptr` and arrays
 
 In C++17 and earlier, std::shared_ptr does not have proper support for managing arrays, and should not be used to manage a C-style array. As of C++20, std::shared_ptr does have support for arrays.
 
-Conclusion
+## 小结
 
 std::shared_ptr is designed for the case where you need multiple smart pointers co-managing the same resource. The resource will be deallocated when the last std::shared_ptr managing the resource is destroyed.
