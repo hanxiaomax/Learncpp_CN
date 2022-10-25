@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+      "basename": "21.4 — STL algorithms overview",
+      "path": "docs/21.4 — STL algorithms overview.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "21-3-STL-iterators-overview",
+      "path": "docs/21-3-STL-iterators-overview.md"
+    },
+    {
+      "basename": "21-1-the-standard-library",
+      "path": "docs/21-1-the-standard-library.md"
+    },
+    {
+      "basename": "21-2-STL-containers-overview",
+      "path": "docs/21-2-STL-containers-overview.md"
+    },
+    {
+      "basename": "16-6-container-classes",
+      "path": "docs/16-6-container-classes.md"
+    },
+    {
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
+    },
+    {
+      "basename": "M-6-std-unique-ptr",
+      "path": "docs/M-6-std-unique-ptr.md"
     },
     {
       "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
@@ -15,10 +39,6 @@
     {
       "basename": "M-7-std-shared-ptr",
       "path": "docs/M-7-std-shared-ptr.md"
-    },
-    {
-      "basename": "M-6-std-unique-ptr",
-      "path": "docs/M-6-std-unique-ptr.md"
     },
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
@@ -179,26 +199,6 @@
     {
       "basename": "7-1-Control-flow-introduction",
       "path": "docs/7-1-Control-flow-introduction.md"
-    },
-    {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
-      "basename": "8-8-Type-deduction-for-functions",
-      "path": "docs/8-8-Type-deduction-for-functions.md"
     }
   ],
   "omittedPaths": [],

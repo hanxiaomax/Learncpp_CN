@@ -31,12 +31,21 @@ tags:
 
 [[M-4-std-move|M.4 - std::move]]
 
-- `std::move` 允许我们将zu you to treat an l-value as r-value. This is useful when we want to invoke move semantics instead of copy semantics on an l-value.
+- `std::move` 允许我们将左值当做右值处理。当需要基于组织调用或激活移动语义而不是拷贝语义时这很有用。
 
-std::move_if_noexcept will return a movable r-value if the object has a noexcept move constructor, otherwise it will return a copyable l-value. We can use the noexcept specifier in conjunction with std::move_if_noexcept to use move semantics only when a strong exception guarantee exists (and use copy semantics otherwise).
+[[M-5-std-move-if-noexcept|M.5 - std::move_if_noexcept]]
 
-std::unique_ptr is the smart pointer class that you should probably be using. It manages a single non-shareable resource. std::make_unique() (in C++14) should be preferred to create new std::unique_ptr. std::unique_ptr disables copy semantics.
+- 当对象有一个`noexcept`移动构造函数时，`std::move_if_noexcept` 会返回一个可移动的右值。否则，它会返回一个可以拷贝的左值。我们可以使用 `noexcept` 修饰符和 `std::move_if_noexcept` 确保只在具有[[strong-except|强异常保证]]时使用移动语义，其他情况下使用拷贝语义。
 
-std::shared_ptr is the smart pointer class used when you need multiple objects accessing the same resource. The resource will not be destroyed until the last std::shared_ptr managing it is destroyed. std::make_shared() should be preferred to create new std::shared_ptr. With std::shared_ptr, copy semantics should be used to create additional std::shared_ptr pointing to the same object.
+[[M-6-std-unique-ptr|M.6 — std::unique_ptr]]
 
-std::weak_ptr is the smart pointer class used when you need one or more objects with the ability to view and access a resource managed by a std::shared_ptr, but unlike std::shared_ptr, std::weak_ptr is not considered when determining whether the resource should be destroyed.
+- 智能指针`std::unique_ptr` 很常用。它用于管理一个不可共享的资源。应该使用 `std::make_unique()` (C++14) 来创建 `std::unique_ptr`。`std::unique_ptr` 禁用了拷贝语义
+
+[[M-7-std-shared-ptr|M.7 — std::shared_ptr]]
+
+- 当多个对象需要访问同一个资源时，可以使用 `std::shared_ptr`。在最后一个`std::shared_ptr`被销毁前，资源不会被销毁。应该使用`std::make_shared()` 来创建 `std::shared_ptr`。
+- 如果需要创建`std::shared_ptr`指向一个相同的资源，则需要使用拷贝语义从 `std::shared_ptr` 创建。
+
+[[M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|M.8 — 智能指针带来的循环依赖问题]]
+
+- 当你需要一个或多个对象来观察或获取由`std::shared_pr`管理的资源时，可以使用智能指针 `std::weak_ptr`。但是，和`std::shared_ptr`不同的是，在判断资源是否需要被销毁时，指向它的 `std::weak_ptr` 的个数不会被考虑在内。

@@ -25,17 +25,17 @@ An iterator is best visualized as a pointer to a given element in the container,
 
 Each container includes four basic member functions for use with Operator=:
 
--   **begin()** returns an iterator representing the beginning of the elements in the container.
--   **end()** returns an iterator representing the element just past the end of the elements.
--   **cbegin()** returns a const (read-only) iterator representing the beginning of the elements in the container.
--   **cend()** returns a const (read-only) iterator representing the element just past the end of the elements.
+-   `begin()`returns an iterator representing the beginning of the elements in the container.
+-   `end()`returns an iterator representing the element just past the end of the elements.
+-   `cbegin()` returns a const (read-only) iterator representing the beginning of the elements in the container.
+-   `cend()` returns a const (read-only) iterator representing the element just past the end of the elements.
 
 It might seem weird that end() doesn’t point to the last element in the list, but this is done primarily to make looping easy: iterating over the elements can continue until the iterator reaches end(), and then you know you’re done.
 
 Finally, all containers provide (at least) two types of iterators:
 
--   **container::iterator** provides a read/write iterator
--   **container::const_iterator** provides a read-only iterator
+-   `container::iterator` provides a read/write iterator
+-   `container::const_iterator` provides a read-only iterator
 
 Lets take a look at some examples of using iterators.
 
@@ -176,11 +176,13 @@ COPY
 
 This program produces the result:
 
+```
 1=banana 2=orange 3=grapes 4=apple 5=peach 6=mango
+```
 
 Notice here how easy iterators make it to step through each of the elements of the container. You don’t have to care at all how map stores its data!
 
-**Conclusion**
+## Conclusion**
 
 Iterators provide an easy way to step through the elements of a container class without having to understand how the container class is implemented. When combined with STL’s algorithms and the member functions of the container classes, iterators become even more powerful. In the next lesson, you’ll see an example of using an iterator to insert elements into a list (which doesn’t provide an overloaded operator[] to access its elements directly).
 
