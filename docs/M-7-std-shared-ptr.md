@@ -7,17 +7,20 @@ time: 2022-9-16
 type: translation
 tags:
 - shared_ptr
+- C++11
+- C++14
 ---
 
 ??? note "关键点速记"
 
+	- 如果你需要为相同的资源创建额外的 `std::shared_ptr` ，请从已有的 `std::shared_ptr` 复制一份。
 
 
 `std::unique_ptr` 被设计出来独占它所管理的资源，与此不同的是 `std::shared_ptr` 则是为了解决多个指针共同管理同一个资源的情况。
 
 这也意味着，多个 `std::shared_ptr` 指向同一个资源是可以的。`std::shared_ptr`内部会自动追踪当前共享该资源的 `std::shared_ptr` 的个数。只有还有一个`std::shared_ptr` 还指向资源，该资源就不会被释放，即使任意一个`std::shared_ptr` 被销毁。当最后一个指向该资源的 `std::shared_ptr` 离开作用域时（或不再指向该资源），资源才会被释放。
 
-Like std::unique_ptr, std::shared_ptr lives in the `<memory>` header.
+和 `std::unique_ptr` 一样`std::shared_ptr` 也被定义在 `<memory>` 头文件中。
 
 ```cpp
 #include <iostream>
@@ -32,24 +35,23 @@ public:
 
 int main()
 {
-	// allocate a Resource object and have it owned by std::shared_ptr
+	// 分配一个 Resource 对象并让 std::shared_ptr 拥有它
 	Resource* res { new Resource };
 	std::shared_ptr<Resource> ptr1{ res };
 	{
-		std::shared_ptr<Resource> ptr2 { ptr1 }; // make another std::shared_ptr pointing to the same thing
+		std::shared_ptr<Resource> ptr2 { ptr1 }; // 创建另外一个 std::shared_ptr 也指向该资源
 
 		std::cout << "Killing one shared pointer\n";
-	} // ptr2 goes out of scope here, but nothing happens
+	} // ptr2 离开作用域，什么都没有发生
 
 	std::cout << "Killing another shared pointer\n";
 
 	return 0;
-} // ptr1 goes out of scope here, and the allocated Resource is destroyed
+} // ptr1 离开作用域，资源被释放
 ```
 
-COPY
 
-This prints:
+打印：
 
 ```
 Resource acquired
@@ -58,9 +60,9 @@ Killing another shared pointer
 Resource destroyed
 ```
 
-In the above code, we create a dynamic Resource object, and set a std::shared_ptr named ptr1 to manage it. Inside the nested block, we use the copy constructor to create a second std::shared_ptr (ptr2) that points to the same Resource. When ptr2 goes out of scope, the Resource is not deallocated, because ptr1 is still pointing at the Resource. When ptr1 goes out of scope, ptr1 notices there are no more std::shared_ptr managing the Resource, so it deallocates the Resource.
+在上面的例子中，我们首先创建了一个动态  `Resource` 对象，然后将 `std::shared_ptr`类型的 `ptr1`指向它，对资源进行管理。在嵌套的语句块中，我们通过拷贝构造函数创建了第二个 `std::shared_ptr` (`ptr2`)也指向同一个 `Resource`。当 `ptr2` 离开作用域时，`Resource` 并没有被释放，因为`ptr1`仍然指向该资源。当`ptr1`离开作用域时，`ptr1`会意识到此时没有 `std::shared_ptr` 管理该资源了，所以它会释放 `Resource`。
 
-Note that we created a second shared pointer from the first shared pointer. This is important. Consider the following similar program:
+注意，我们是从第一个指针创建的第二个指针，这一点非常重要，考虑下面的代码：
 
 ```cpp
 #include <iostream>
@@ -78,20 +80,18 @@ int main()
 	Resource* res { new Resource };
 	std::shared_ptr<Resource> ptr1 { res };
 	{
-		std::shared_ptr<Resource> ptr2 { res }; // create ptr2 directly from res (instead of ptr1)
+		std::shared_ptr<Resource> ptr2 { res }; // 直接通过res创建 ptr2
 
 		std::cout << "Killing one shared pointer\n";
-	} // ptr2 goes out of scope here, and the allocated Resource is destroyed
+	} // ptr2 离开作用域 Resource 被销毁
 
 	std::cout << "Killing another shared pointer\n";
 
 	return 0;
-} // ptr1 goes out of scope here, and the allocated Resource is destroyed again
+} // ptr1 离开作用域，Resource 再次被销毁
 ```
 
-COPY
-
-This program prints:
+程序输出：
 
 ```
 Resource acquired
@@ -101,21 +101,21 @@ Killing another shared pointer
 Resource destroyed
 ```
 
-and then crashes (at least on the author’s machine).
+紧接着就崩溃了（至少在笔者的机器上会崩溃）。
 
-The difference here is that we created two std::shared_ptr independently from each other. As a consequence, even though they’re both pointing to the same Resource, they aren’t aware of each other. When ptr2 goes out of scope, it thinks it’s the only owner of the Resource, and deallocates it. When ptr1 later goes out of the scope, it thinks the same thing, and tries to delete the Resource again. Then bad things happen.
+和上一个程序不同的是，这里创建的两个 `std::shared_ptr` 是相互独立的。其结果就是它们并不知道对方和自己指向了同一个 `Resource`，它们也互相不知道对方的存在。当 `ptr2` 离开作用域时，它认为只有自己在管理该资源，所以就会释放它。而当`ptr1`离开作用域时，它也认为只有自己在管理该资源，所以会再次释放。问题就此发生了！
 
-Fortunately, this is easily avoided: if you need more than one std::shared_ptr to a given resource, copy an existing std::shared_ptr.
+幸好，这个问题很容易避免：如果你需要为一个资源再创建一个 `std::shared_ptr`，请从一个已经存在的 `std::shared_ptr` 克隆。
 
 !!! success "最佳实践"
 
-	Always make a copy of an existing std::shared_ptr if you need more than one std::shared_ptr pointing to the same resource.
-
+	=如果你需要为相同的资源创建额外的 `std::shared_ptr` ，请从已有的 `std::shared_ptr` 复制一份。
+	
 ## `std::make_shared`
 
-Much like std::make_unique() can be used to create a std::unique_ptr in C++14, std::make_shared() can (and should) be used to make a std::shared_ptr. std::make_shared() is available in C++11.
+类似C++14中的 `std::make_unique()`可以用来创建 `std::unique_ptr`，`std::make_shared()` 也可以（应该）被用来创建 `std::shared_ptr`。`std::make_shared()` 可以在 C++11 中使用。
 
-Here’s our original example, using std::make_shared():
+这个例子使用 `std::make_shared()` 对原来的程序进行了修改：
 
 ```cpp
 #include <iostream>
@@ -130,25 +130,24 @@ public:
 
 int main()
 {
-	// allocate a Resource object and have it owned by std::shared_ptr
+	// 分配一个 Resource 对象并将其交给 std::shared_ptr 管理
 	auto ptr1 { std::make_shared<Resource>() };
 	{
-		auto ptr2 { ptr1 }; // create ptr2 using copy of ptr1
+		auto ptr2 { ptr1 }; // 复制 ptr1 创建 ptr2
 
 		std::cout << "Killing one shared pointer\n";
-	} // ptr2 goes out of scope here, but nothing happens
+	} // ptr2 离开作用域但是什么都没有发生
 
 	std::cout << "Killing another shared pointer\n";
 
 	return 0;
-} // ptr1 goes out of scope here, and the allocated Resource is destroyed
+} // ptr1 离开作用域，资源被销毁
 ```
 
-COPY
 
-The reasons for using std::make_shared() are the same as std::make_unique() -- std::make_shared() is simpler and safer (there’s no way to directly create two std::shared_ptr pointing to the same resource using this method). However, std::make_shared() is also more performant than not using it. The reasons for this lie in the way that std::shared_ptr keeps track of how many pointers are pointing at a given resource.
+使用 `std::make_shared()` 的理由和使用 `std::make_unique()`的理由类似—— `std::make_shared()`更简洁也更安全(使用该方法的情况下，不可能创建两个指向头一个资源的 `std::shared_ptr` )。`std::make_shared()` 效率也更高，它会跟踪指向特定资源的指针的个数。
 
-## Digging into std::shared_ptr
+## `std::shared_ptr` 内幕
 
 Unlike std::unique_ptr, which uses a single pointer internally, std::shared_ptr uses two pointers internally. One pointer points at the resource being managed. The other points at a “control block”, which is a dynamically allocated object that tracks of a bunch of stuff, including how many std::shared_ptr are pointing at the resource. When a std::shared_ptr is created via a std::shared_ptr constructor, the memory for the managed object (which is usually passed in) and control block (which the constructor creates) are allocated separately. However, when using std::make_shared(), this can be optimized into a single memory allocation, which leads to better performance.
 
