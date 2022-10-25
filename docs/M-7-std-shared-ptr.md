@@ -9,6 +9,8 @@ tags:
 - shared_ptr
 - C++11
 - C++14
+- C++17
+- C++20
 ---
 
 ??? note "关键点速记"
@@ -155,20 +157,20 @@ int main()
 
 但是，当 `std::shared_ptr` 通过[[copy-assignment-operator|拷贝赋值运算符]]被创建时，控制块会被正确地更新，使其能够显示又有另外一个 `std::shared_ptr` 开始管理这个资源了。
 
-## Shared pointers can be created from unique pointers
+##  `std::shared_ptr` 可以通过 `std::unique_ptr`  创建
 
-A `std::unique_ptr` can be converted into a `std::shared_ptr` via a special `std::shared_ptr` constructor that accepts a `std::unique_ptr` r-value. The contents of the `std::unique_ptr` will be moved to the `std::shared_ptr`.
+`std::unique_ptr` 可以通过特殊的构造函数（接受一个`std::unique_ptr`右值）被转换为 `std::shared_ptr`。`std::unique_ptr` 的内容会被移动到 `std::shared_ptr`。
 
-However, `std::shared_ptr` can not be safely converted to a `std::unique_ptr`. This means that if you’re creating a function that is going to return a smart pointer, you’re better off returning a `std::unique_ptr` and assigning it to a `std::shared_ptr` if and when that’s appropriate.
+但是，`std::shared_ptr` 并不能被安全地转换为 `std::unique_ptr`。这意味着当你创建的函数需要返回一个智能指针时，所以你最好返回 `std::unique_ptr` 并将其赋值给`std::shared_ptr` 。
 
-## The perils of `std::shared_ptr`
+## `std::shared_ptr` 的陷阱
 
-std::shared_ptr has some of the same challenges as std::unique_ptr -- if the std::shared_ptr is not properly disposed of (either because it was dynamically allocated and never deleted, or it was part of an object that was dynamically allocated and never deleted) then the resource it is managing won’t be deallocated either. With std::unique_ptr, you only have to worry about one smart pointer being properly disposed of. With std::shared_ptr, you have to worry about them all. If any of the std::shared_ptr managing a resource are not properly destroyed, the resource will not be deallocated properly.
+`std::shared_ptr` 也存在`std::unique_ptr`所具有的一些问题——如果`std::shared_ptr` 没有被正常地销毁（可能是因为动态内存没有被释放或部分对象没有被释放）则其管理的资源也不会被释放。使用 `std::unique_ptr` 时，你只需要关心一个智能指针是否被正常的销毁。但是在使用`std::shared_ptr`时，你需要关注管理该对象的所有指针。如果它们中任何一个没有被销毁，则资源也不会被正常销毁。
 
-## `std::shared_ptr` and arrays
+## `std::shared_ptr` 和数组
 
-In C++17 and earlier, std::shared_ptr does not have proper support for managing arrays, and should not be used to manage a C-style array. As of C++20, std::shared_ptr does have support for arrays.
+在 C++17 及之前的版本中，`std::shared_ptr` 并不支持管理数组，而且也不应该被用来管理C语言风格的数组。在 C++20 中 `std::shared_ptr` 已经可以支持数组了。
 
 ## 小结
 
-std::shared_ptr is designed for the case where you need multiple smart pointers co-managing the same resource. The resource will be deallocated when the last std::shared_ptr managing the resource is destroyed.
+设计 `std::shared_ptr` 的初衷，是为了支持多个指针能够共同管理一个资源。当最后一个 `std::shared_ptr` 被销毁时，被管理的资源也就会被销毁了。

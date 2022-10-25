@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "0f197091780f1b59",
+            "id": "d56ab84dd98d93b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/M-7-std-shared-ptr.md",
+                "file": "docs/M-x-chapter-M-comprehensive-review.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "析构",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -90,7 +90,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/M-7-std-shared-ptr.md"
+                "file": "docs/M-x-chapter-M-comprehensive-review.md"
               }
             }
           },
@@ -132,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/M-7-std-shared-ptr.md",
+                "file": "docs/M-x-chapter-M-comprehensive-review.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,17 +155,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "0f197091780f1b59",
+  "active": "d56ab84dd98d93b7",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md",
+    "docs/M-7-std-shared-ptr.md",
     "docs/M-6-std-unique-ptr.md",
     "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md",
     "docs/M-4-std-move.md",
     "docs/exception-safety-issue.md",
     "docs/member-access-operator.md",
     "docs/dereference-operator.md",
-    "docs/M-5-std-move-if-noexcept.md",
-    "docs/M-3-move-constructors-and-move-assignment.md",
-    "docs/copy-semantics.md"
+    "docs/M-5-std-move-if-noexcept.md"
   ]
 }

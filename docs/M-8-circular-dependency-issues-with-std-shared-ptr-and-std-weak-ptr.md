@@ -13,7 +13,7 @@ tags:
 
 ??? note "关键点速记"
 
-In the previous lesson, we saw how std::shared_ptr allowed us to have multiple smart pointers co-owning the same resource. However, in certain cases, this can become problematic. Consider the following case, where the shared pointers in two separate objects each point at the other object:
+In the previous lesson, we saw how `std::shared_ptr` allowed us to have multiple smart pointers co-owning the same resource. However, in certain cases, this can become problematic. Consider the following case, where the shared pointers in two separate objects each point at the other object:
 
 ```cpp
 #include <iostream>
@@ -67,9 +67,11 @@ In the above example, we dynamically allocate two Persons, “Lucy” and “Ric
 
 However, this program doesn’t execute as expected:
 
+```
 Lucy created
 Ricky created
 Lucy is now partnered with Ricky
+```
 
 And that’s it. No deallocations took place. Uh oh. What happened?
 
@@ -83,7 +85,7 @@ Then the program ends -- and neither Person “Lucy” or “Ricky” have been 
 
 It turns out that this can happen any time shared pointers form a circular reference.
 
-Circular references
+## 循环引用
 
 A **Circular reference** (also called a **cyclical reference** or a **cycle**) is a series of references where each object references the next, and the last object references back to the first, causing a referential loop. The references do not need to be actual C++ references -- they can be pointers, unique IDs, or any other means of identifying specific objects.
 
@@ -91,7 +93,7 @@ In the context of shared pointers, the references will be pointers.
 
 This is exactly what we see in the case above: “Lucy” points at “Ricky”, and “Ricky” points at “Lucy”. With three pointers, you’d get the same thing when A points at B, B points at C, and C points at A. The practical effect of having shared pointers form a cycle is that each object ends up keeping the next object alive -- with the last object keeping the first object alive. Thus, no objects in the series can be deallocated because they all think some other object still needs it!
 
-A reductive case
+## A reductive case
 
 It turns out, this cyclical reference issue can even happen with a single std::shared_ptr -- a std::shared_ptr referencing the object that contains it is still a cycle (just a reductive one). Although it’s fairly unlikely that this would ever happen in practice, we’ll show you for additional comprehension:
 
@@ -128,9 +130,9 @@ Resource acquired
 
 and that’s it.
 
-So what is std::weak_ptr for anyway?
+## `std::weak_ptr` 到底是什么？
 
-std::weak_ptr was designed to solve the “cyclical ownership” problem described above. A std::weak_ptr is an observer -- it can observe and access the same object as a std::shared_ptr (or other std::weak_ptrs) but it is not considered an owner. Remember, when a std::shared pointer goes out of scope, it only considers whether other std::shared_ptr are co-owning the object. std::weak_ptr does not count!
+`std::weak_ptr` was designed to solve the “cyclical ownership” problem described above. A std::weak_ptr is an observer -- it can observe and access the same object as a std::shared_ptr (or other std::weak_ptrs) but it is not considered an owner. Remember, when a std::shared pointer goes out of scope, it only considers whether other std::shared_ptr are co-owning the object. std::weak_ptr does not count!
 
 Let’s solve our Person-al issue using a std::weak_ptr:
 
@@ -184,15 +186,17 @@ COPY
 
 This code behaves properly:
 
+```
 Lucy created
 Ricky created
 Lucy is now partnered with Ricky
 Ricky destroyed
 Lucy destroyed
+```
 
 Functionally, it works almost identically to the problematic example. However, now when ricky goes out of scope, it sees that there are no other std::shared_ptr pointing at “Ricky” (the std::weak_ptr from “Lucy” doesn’t count). Therefore, it will deallocate “Ricky”. The same occurs for lucy.
 
-Using std::weak_ptr
+## 使用 `std::weak_ptr`
 
 The downside of std::weak_ptr is that std::weak_ptr are not directly usable (they have no operator->). To use a std::weak_ptr, you must first convert it into a std::shared_ptr. Then you can use the std::shared_ptr. To convert a std::weak_ptr into a std::shared_ptr, you can use the lock() member function. Here’s the above example, updated to show this off:
 
@@ -252,16 +256,18 @@ COPY
 
 This prints:
 
+```
 Lucy created
 Ricky created
 Lucy is now partnered with Ricky
 Ricky's partner is: Lucy
 Ricky destroyed
 Lucy destroyed
+```
 
 We don’t have to worry about circular dependencies with std::shared_ptr variable “partner” since it’s just a local variable inside the function. It will eventually go out of scope at the end of the function and the reference count will be decremented by 1.
 
-Dangling pointers with std::weak_ptr
+## Dangling pointers with std::weak_ptr
 
 Because std::weak_ptr won’t keep an owned resource alive, it’s possible for a std::weak_ptr to be left pointing to a resource that has been deallocated by a std::shared_ptr. Such a std::weak_ptr is dangling, and using it will cause undefined behavior.
 
@@ -300,6 +306,6 @@ COPY
 
 In the above example, inside `getWeakPtr()` we use `std::make_shared()` to create a `std::shared_ptr` variable named `ptr` that owns a `Resource` object. The function returns a `std::weak_ptr` back to the caller, which does not increment the reference count. Then because `ptr` is a local variable, it goes out of scope at the end of the function, which decrements the reference count to 0 and deallocates the `Resource` object. The returned `std::weak_ptr` is left dangling, pointing to a `Resource` that was deallocated.
 
-Conclusion
+## 小结
 
 std::shared_ptr can be used when you need multiple smart pointers that can co-own a resource. The resource will be deallocated when the last std::shared_ptr goes out of scope. std::weak_ptr can be used when you want a smart pointer that can see and use a shared resource, but does not participate in the ownership of that resource.

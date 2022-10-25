@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "M-7-std-shared-ptr",
-      "path": "docs/M-7-std-shared-ptr.md"
+      "basename": "M-x-chapter-M-comprehensive-review",
+      "path": "docs/M-x-chapter-M-comprehensive-review.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
+      "path": "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
+    },
+    {
+      "basename": "M-7-std-shared-ptr",
+      "path": "docs/M-7-std-shared-ptr.md"
     },
     {
       "basename": "M-6-std-unique-ptr",
@@ -191,14 +199,6 @@
     {
       "basename": "8-8-Type-deduction-for-functions",
       "path": "docs/8-8-Type-deduction-for-functions.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "syntax",
-      "path": "docs/syntax.md"
     }
   ],
   "omittedPaths": [],

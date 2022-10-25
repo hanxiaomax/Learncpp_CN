@@ -11,23 +11,27 @@ tags:
 
 ## 复习
 
-[[smart pointer class|智能指针类]]是一种组合类，用于对动态分配的内存进行管理并确保该内存在智能指针指向的对象[[going-out-of-scope|离开作用域]]后被释放。
- 
-[[copy-semantics|拷贝语义]]允许类被复制，该过程主要通过[[copy-constructor|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]来完成。
+[[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]
 
-[[move-semantics|移动语义]]指的是类将对象的所有权转译给另外一个对象，而不是创建一个拷贝，该过程主要通过[[move-constructor|移动构造函数]]和 [[move-assignment-operator|移动赋值运算符]]来完成。
+- [[smart pointer class|智能指针类]]是一种组合类，用于对动态分配的内存进行管理并确保该内存在智能指针指向的对象[[going-out-of-scope|离开作用域]]后被释放。
+- [[copy-semantics|拷贝语义]]允许类被复制，该过程主要通过[[copy-constructor|拷贝构造函数]]和[[copy-assignment-operator|拷贝赋值运算符]]来完成。
+- [[move-semantics|移动语义]]指的是类将对象的所有权转译给另外一个对象，而不是创建一个拷贝，该过程主要通过[[move-constructor|移动构造函数]]和 [[move-assignment-operator|移动赋值运算符]]来完成。
+- `std::auto_ptr` 已经被弃用，应该避免使用。
 
-`std::auto_ptr` 已经被弃用，应该避免使用。
+[[M-2-R-value-references|M.2 - 右值引用]]
 
-一个[[rvalue-reference|右值引用]]引用应该使用一个右值来初始化。 右值引用使用双`&&`号创建。编写将右值引用作为[[parameters|形参]]的函数是可以的，但是绝对不要将右值引用作为返回值。
+- 一个[[rvalue-reference|右值引用]]引用应该使用一个右值来初始化。 右值引用使用双`&&`号创建。编写将右值引用作为[[parameters|形参]]的函数是可以的，但是绝对不要将右值引用作为返回值。
 
-If we construct an object or do an assignment where the argument is an l-value, the only thing we can reasonably do is copy the l-value. We can’t assume it’s safe to alter the l-value, because it may be used again later in the program. If we have an expression “a = b”, we wouldn’t reasonably expect b to be changed in any way.
 
-However, if we construct an object or do an assignment where the argument is an r-value, then we know that r-value is just a temporary object of some kind. Instead of copying it (which can be expensive), we can simply transfer its resources (which is cheap) to the object we’re constructing or assigning. This is safe to do because the temporary will be destroyed at the end of the expression anyway, so we know it will never be used again!
+[[M-3-move-constructors-and-move-assignment|M.3 - 移动构造函数和移动赋值]]
 
-You can use the delete keyword to disable copy semantics for classes you create by deleting the copy constructor and copy assignment operator.
+- 当我们构建对象或对对象赋值时，如果参数是[[lvalue|左值]]，则唯一能做的合理操作是拷贝该左值。我们不能假定改变该左值是安全的，因为它可能会在后面的程序中再次被使用。对于表达式 “a = b”，我们没有理由期望b以任何方式被改变。
+- 但是，当构建对象或者赋值对象时，如果参数是[[rvalue|右值]]，那么我们可以确定该右值肯定是一个临时对象。与其拷贝（开销大）它，不如直接将它的资源转移（开销小）给被构建或被赋值的对象。这么做是安全的，因为临时对象总是在表达式结束时就被销毁，所以肯定不会再次被使用了。
+- 你可以使用 `delete` 关键字禁用拷贝语义（通过删除拷贝构造函数和拷贝赋值运算符）
 
-std::move allows you to treat an l-value as r-value. This is useful when we want to invoke move semantics instead of copy semantics on an l-value.
+[[M-4-std-move|M.4 - std::move]]
+
+- `std::move` 允许我们将zu you to treat an l-value as r-value. This is useful when we want to invoke move semantics instead of copy semantics on an l-value.
 
 std::move_if_noexcept will return a movable r-value if the object has a noexcept move constructor, otherwise it will return a copyable l-value. We can use the noexcept specifier in conjunction with std::move_if_noexcept to use move semantics only when a strong exception guarantee exists (and use copy semantics otherwise).
 
