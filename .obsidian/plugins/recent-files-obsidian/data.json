@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "21.4 — STL algorithms overview",
-      "path": "docs/21.4 — STL algorithms overview.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "21-3-STL-iterators-overview",
-      "path": "docs/21-3-STL-iterators-overview.md"
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
     },
     {
       "basename": "21-1-the-standard-library",
       "path": "docs/21-1-the-standard-library.md"
+    },
+    {
+      "basename": "21.4 — STL algorithms overview",
+      "path": "docs/21.4 — STL algorithms overview.md"
+    },
+    {
+      "basename": "21-3-STL-iterators-overview",
+      "path": "docs/21-3-STL-iterators-overview.md"
     },
     {
       "basename": "21-2-STL-containers-overview",
@@ -187,18 +199,6 @@
     {
       "basename": "9-2-Value-categories-lvalues-and-rvalues",
       "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
-    },
-    {
-      "basename": "8-10-Function-overload-differentiation",
-      "path": "docs/8-10-Function-overload-differentiation.md"
-    },
-    {
-      "basename": "7-14-Common-semantic-errors-in-c",
-      "path": "docs/7-14-Common-semantic-errors-in-c.md"
-    },
-    {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
     }
   ],
   "omittedPaths": [],

@@ -11,7 +11,7 @@ tags:
 
 Capture clauses and capture by value
 
-In the previous lesson ([12.7 -- Introduction to lambdas (anonymous functions)](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/)), we introduced this example:
+In the previous lesson ([[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]), we introduced this example:
 
 ```cpp
 #include <algorithm>
@@ -85,7 +85,7 @@ COPY
 
 This code won’t compile. Unlike nested blocks, where any identifier defined in an outer block is accessible in the scope of the nested block, lambdas can only access specific kinds of identifiers: global identifiers, entities that are known at compile time, and entities with static storage duration. `search` fulfills none of these requirements, so the lambda can’t see it. That’s what the capture clause is there for.
 
-The capture clause
+## The capture clause
 
 The capture clause is used to (indirectly) give a lambda access to variables available in the surrounding scope that it normally would not have access to. All we need to do is list the entities we want to access from within the lambda as part of the capture clause. In this case, we want to give our lambda access to the value of variable `search`, so we add it to the capture clause:
 
@@ -129,10 +129,12 @@ The user can now search for an element of our array.
 
 Output
 
+```
 search for: nana
 Found banana
+```
 
-So how do captures actually work?
+## So how do captures actually work?
 
 While it might look like our lambda in the example above is directly accessing the value of `main`‘s `search` variable, this is not the case. Lambdas might look like nested blocks, but they work slightly differently (and the distinction is important).
 
@@ -142,19 +144,20 @@ Thus, in the above example, when the lambda object is created, the lambda gets i
 
 While these cloned variables have the same name, they don’t necessarily have the same type as the original variable. We’ll explore this in the upcoming sections of this lesson.
 
-Key insight
+!!! tldr "关键信息"
 
-The captured variables of a lambda are _clones_ of the outer scope variables, not the actual variables.
+	The captured variables of a lambda are _clones_ of the outer scope variables, not the actual variables.
 
-For advanced readers
+!!! info "扩展阅读"
 
-Although lambdas look like functions, they’re actually objects that can be called like functions (these are called functors -- we’ll discuss how to create your own functors from scratch in a future lesson).
+    
+	Although lambdas look like functions, they’re actually objects that can be called like functions (these are called functors -- we’ll discuss how to create your own functors from scratch in a future lesson).
 
 When the compiler encounters a lambda definition, it creates a custom object definition for the lambda. Each captured variable becomes a data member of the object.
 
 At runtime, when the lambda definition is encountered, the lambda object is instantiated, and the members of the lambda are initialized at that point.
 
-Captures default to const value
+## Captures default to const value
 
 By default, variables are captured by `const value`. This means when the lambda is created, the lambda captures a constant copy of the outer scope variable, which means that the lambda is not allowed to modify them. In the following example, we capture the variable `ammo` and try to decrement it.
 
@@ -188,7 +191,7 @@ COPY
 
 In the above example, when we capture `ammo`, a new `const` variable with the same name and value is created in the lambda. We can’t modify it, because it is `const`, which causes a compile error.
 
-Mutable capture by value
+## Mutable capture by value
 
 To allow modifications of variables that were captured by value, we can mark the lambda as `mutable`. The mutable keyword in this context removes the `const` qualification from _all_ variables captured by value.
 
@@ -230,11 +233,11 @@ While this now compiles, there’s still a logic error. What happened? When the 
 
 Note that the value of `ammo` is preserved across calls to the lambda!
 
-Warning
+!!! warning "注意"
 
-Because captured variables are members of the lambda object, their values are persisted across multiple calls to the lambda!
+	Because captured variables are members of the lambda object, their values are persisted across multiple calls to the lambda!
 
-Capture by reference
+## Capture by reference
 
 Much like functions can change the value of arguments passed by reference, we can also capture variables by reference to allow our lambda to affect the value of the argument.
 
@@ -271,8 +274,10 @@ COPY
 
 This produces the expected answer:
 
+```
 Pew! 9 shot(s) left.
 9 shot(s) left
+```
 
 Now, let’s use a reference capture to count how many comparisons `std::sort` makes when it sorts an array.
 
@@ -321,12 +326,14 @@ COPY
 
 Possible output
 
+```
 Comparisons: 2
 Honda Civic
 Toyota Corolla
 Volkswagen Golf
+```
 
-Capturing multiple variables
+## Capturing multiple variables
 
 Multiple variables can be captured by separating them with a comma. This can include a mix of variables captured by value or by reference:
 
@@ -341,7 +348,7 @@ std::vector<CEnemy> enemies{};
 
 COPY
 
-Default captures
+## Default captures
 
 Having to explicitly list the variables you want to capture can be burdensome. If you modify your lambda, you may forget to add or remove captured variables. Fortunately, we can enlist the compiler’s help to auto-generate a list of variables we need to capture.
 
@@ -418,7 +425,7 @@ std::vector<CEnemy> enemies{};
 
 COPY
 
-Defining new variables in the lambda-capture
+## Defining new variables in the lambda-capture
 
 Sometimes we want to capture a variable with a slight modification or declare a new variable that is only visible in the scope of the lambda. We can do so by defining a variable in the lambda-capture without specifying its type.
 
@@ -463,11 +470,11 @@ COPY
 
 `userArea` will only be calculated once when the lambda is defined. The calculated area is stored in the lambda object and is the same for every call. If a lambda is mutable and modifies a variable that was defined in the capture, the original value will be overridden.
 
-Best practice
+!!! success "最佳实践"
 
-Only initialize variables in the capture if their value is short and their type is obvious. Otherwise it’s best to define the variable outside of the lambda and capture it.
+	Only initialize variables in the capture if their value is short and their type is obvious. Otherwise it’s best to define the variable outside of the lambda and capture it.
 
-Dangling captured variables
+## Dangling captured variables
 
 Variables are captured at the point where the lambda is defined. If a variable captured by reference dies before the lambda, the lambda will be left holding a dangling reference.
 
@@ -505,13 +512,13 @@ The call to `makeWalrus` creates a temporary `std::string` from the string l
 
 Note that this also happens if `name` is passed to `makeWalrus` by value. The variable `name` still dies at the end of `makeWalrus`, and the lambda is left holding a dangling reference.
 
-Warning
+!!! warning "注意"
 
-Be extra careful when you capture variables by reference, especially with a default reference capture. The captured variables must outlive the lambda.
+	Be extra careful when you capture variables by reference, especially with a default reference capture. The captured variables must outlive the lambda.
 
 If we want the captured `name` to be valid when the lambda is used, we need to capture it by value instead (either explicitly or using a default-capture by value).
 
-Unintended copies of mutable lambdas [](https://www.learncpp.com/cpp-tutorial/lambda-captures/#mutable_copy)
+## Unintended copies of mutable lambdas [](https://www.learncpp.com/cpp-tutorial/lambda-captures/#mutable_copy)
 
 Because lambdas are objects, they can be copied. In some cases, this can cause problems. Consider the following code:
 
@@ -543,9 +550,11 @@ COPY
 
 Output
 
+```
 1
 2
 2
+```
 
 Rather than printing 1, 2, 3, the code prints 2 twice. When we created `otherCount` as a copy of `count`, we created a copy of `count` in its current state. `count`‘s `i` was 1, so `otherCount`‘s `i` is 1 as well. Since `otherCount` is a copy of `count`, they each have their own `i`.
 
@@ -581,15 +590,17 @@ COPY
 
 Output:
 
+```
 1
 1
 1
+```
 
 This exhibits the same problem as the prior example in a more obscure form. When `std::function` is created with a lambda, the `std::function`internally makes a copy of the lambda object. Thus, our call to `fn()` is actually being executed on the copy of our lambda, not the actual lambda.
 
 If we need to pass a mutable lambda, and want to avoid the possibility of inadvertent copies being made, there are two options. One option is to use a non-capturing lambda instead -- in the above case, we could remove the capture and track our state using a static local variable instead. But static local variables can be difficult to keep track of and make our code less readable. A better option is to prevent copies of our lambda from being made in the first place. But since we can’t affect how `std::function` (or other standard library functions or objects) are implemented, how can we do this?
 
-Fortunately, C++ provides a convenient type (as part of the <functional> header) called `std::reference_wrapper` that allows us to pass a normal type as if it was a reference. For even more convenience, a `std::reference_wrapper` can be created by using the `std::ref()` function. By wrapping our lambda in a `std::reference_wrapper`, whenever anybody tries to make a copy of our lambda, they’ll make a copy of the reference instead, which will copy the reference rather than the actual object.
+Fortunately, C++ provides a convenient type (as part of the `<functional>` header) called `std::reference_wrapper` that allows us to pass a normal type as if it was a reference. For even more convenience, a `std::reference_wrapper` can be created by using the `std::ref()` function. By wrapping our lambda in a `std::reference_wrapper`, whenever anybody tries to make a copy of our lambda, they’ll make a copy of the reference instead, which will copy the reference rather than the actual object.
 
 Here’s our updated code using `std::ref`:
 
@@ -626,16 +637,18 @@ COPY
 
 Our output is now as expected:
 
+```
 1
 2
 3
+```
 
 Note that the output doesn’t change even if `invoke` takes `fn` by value. `std::function` doesn’t create a copy of the lambda if we create it with `std::ref`.
 
-Rule
+!!! note "法则"
 
-Standard library functions may copy function objects (reminder: lambdas are function objects). If you want to provide lambdas with mutable captured variables, pass them by reference using `std::ref`.
+	Standard library functions may copy function objects (reminder: lambdas are function objects). If you want to provide lambdas with mutable captured variables, pass them by reference using `std::ref`.
 
-Best practice
+!!! success "最佳实践"
 
-Try to avoid mutable lambdas. Non-mutable lambdas are easier to understand and don’t suffer from the above issues, as well as more dangerous issues that arise when you add parallel execution.
+	Try to avoid mutable lambdas. Non-mutable lambdas are easier to understand and don’t suffer from the above issues, as well as more dangerous issues that arise when you add parallel execution.
