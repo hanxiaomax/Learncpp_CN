@@ -5,6 +5,14 @@
       "path": "docs/16-6-container-classes.md"
     },
     {
+      "basename": "reference-container",
+      "path": "docs/reference-container.md"
+    },
+    {
+      "basename": "value-container",
+      "path": "docs/value-container.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "bitwise-and",
       "path": "docs/bitwise-and.md"
-    },
-    {
-      "basename": "9-5-Pass-by-lvalue-reference",
-      "path": "docs/9-5-Pass-by-lvalue-reference.md"
-    },
-    {
-      "basename": "word",
-      "path": "docs/word.md"
     }
   ],
   "omittedPaths": [],

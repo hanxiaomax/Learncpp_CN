@@ -15,35 +15,34 @@ tags:
 	
 	-
 
-在现实生活中我们经常会用到容器。麦片是装在盒子里的，书也有封面和装订，你的车库里应该也装了不少东西吧。如果没有容器，使用这些东西的时候一定会非常的混乱。Without containers, it would be extremely inconvenient to work with many of these objects. Imagine trying to read a book that didn’t have any sort of binding, or eat cereal that didn’t come in a box without using a bowl. It would be a mess. The value the container provides is largely in its ability to help organize and store items that are put inside it.
+在现实生活中我们经常会用到容器。麦片是装在盒子里的，书也有封面和装订，你的车库里应该也装了不少东西吧。如果没有容器，使用这些东西的时候一定会非常的混乱。容器最大的功能，就是帮助我们组织和存储存在容器中的东西。
 
-Similarly, a **container class** is a class designed to hold and organize multiple instances of another type (either another class, or a fundamental type). There are many different kinds of container classes, each of which has various advantages, disadvantages, and restrictions in their use. By far the most commonly used container in programming is the array, which you have already seen many examples of. Although C++ has built-in array functionality, programmers will often use an array container class (std::array or std::vector) instead because of the additional benefits they provide. Unlike built-in arrays, array container classes generally provide dynamic resizing (when elements are added or removed), remember their size when they are passed to functions, and do bounds-checking. This not only makes array container classes more convenient than normal arrays, but safer too.
+类似的，[[container-class|容器类]]是一种被设计用来存放和组织多种其他类型（可以是类也可以是基本数据类型）实例的类。容器类的种类有很多，每种都有其自己的优势和劣势，以及使用限制。到目前为止，最有用的容器是数组，你在前面的例子中以及多次使用它了。尽管C++ 提供了内建的数组功能，程序员却大多使用数组容器类（`std::array` 或`std::vector`) 。和内建的数组不同，这些数组容器类通常可以动态地调整其大小（当资源被添加或删除时）、可以在传递到函数时保留其大小信息，还可以进行边界检查。这些功能不但使得数组容器类简单易用，而且安全性也更好。
 
-Container classes typically implement a fairly standardized minimal set of functionality. Most well-defined containers will include functions that:
+容器类通常会实现一系列标准的、最小化的功能。大多数实现良好的容器类通常包括下面这些功能：
 
--   Create an empty container (via a constructor)
--   Insert a new object into the container
--   Remove an object from the container
--   Report the number of objects currently in the container
--   Empty the container of all objects
--   Provide access to the stored objects
--   Sort the elements (optional)
+- 创建一个空的容器（通过[[constructor|构造函数]]）；
+- 向容器添加一个对象；
+- 从容器中删除一个对象；
+- 报告容器中对象的个数；
+- 清空容器；
+- 提供存储对象的访问方式；
+- 元素排序（可选的）。
 
-Sometimes certain container classes will omit some of this functionality. For example, arrays container classes often omit the insert and remove functions because they are slow and the class designer does not want to encourage their use.
+有些容器会忽略上述功能中的某些。例如，数组容器类通常会忽略插入和删除操作，因为数组数据结构在进行插入和删除时效率很低，所以类的设计者不鼓励我们使用这两种操作。
 
-Container classes implement a member-of relationship. For example, elements of an array are members-of (belong to) the array. Note that we’re using “member-of” in the conventional sense, not the C++ class member sense.
+容器类实现了一种**成员关系**。例如，数组中的元素是该数组的一个成员（属于）。注意，我们这里说的成员是平常意义上的成员，而不是指[[13-2-classes-and-class-members|类成员]]。
+
 
 ## 容器类型
 
-Container classes generally come in two different varieties. **Value containers** are [compositions](https://www.learncpp.com/cpp-tutorial/102-composition/) that store copies of the objects that they are holding (and thus are responsible for creating and destroying those copies). **Reference containers** are [aggregations](https://www.learncpp.com/cpp-tutorial/103-aggregation/) that store pointers or references to other objects (and thus are not responsible for creation or destruction of those objects).
-
-Unlike in real life, where containers can hold whatever types of objects you put in them, in C++, containers typically only hold one type of data. For example, if you have an array of integers, it will only hold integers. Unlike some other languages, many C++ containers do not allow you to arbitrarily mix types. If you need containers to hold integers and doubles, you will generally have to write two separate containers to do this (or use templates, which is an advanced C++ feature). Despite the restrictions on their use, containers are immensely useful, and they make programming easier, safer, and faster.
+容器类通常有两个变种。[[value-container|值容器]]是[[16-2-composition|组合关系]]，它存放了其元素的拷贝（因此必须负责创建和销毁这些拷贝）。[[reference-container|引用容器]]则是[[16-3-aggregation|聚合关系]]，它保存了元素的指针或引用（因此无需操心它们的创建和销毁）。
 
 ## 数组容器类
 
-In this example, we are going to write an integer array class from scratch that implements most of the common functionality that containers should have. This array class is going to be a value container, which will hold copies of the elements it’s organizing. As the name suggests, the container will hold an array of integers, similar to `std::vector<int>`.
+在这个例子中，我们会从头编写一个整型数组类并实现它应该提供的大部分功能。该数组类是一个[[value-container|值容器]]，它保存元素的拷贝。和它们的名字暗示的那样，这个容器会保存一个整型数构成的数组，类似`std::vector<int>`。
 
-First, let’s create the IntArray.h file:
+首先，让我们创建 `IntArray.h` 文件：
 
 ```cpp
 #ifndef INTARRAY_H
@@ -56,9 +55,9 @@ class IntArray
 #endif
 ```
 
-COPY
 
-Our IntArray is going to need to keep track of two values: the data itself, and the size of the array. Because we want our array to be able to change in size, we’ll have to do some dynamic allocation, which means we’ll have to use a pointer to store the data.
+`IntArray` 需要追踪两个值：数据和数组大小。因为我们希望数组能够改变其大小，所以我们必须动态分配内存，因此必须使用指针来保存数据。
+
 
 ```cpp
 #ifndef INTARRAY_H
@@ -74,9 +73,7 @@ private:
 #endif
 ```
 
-COPY
-
-Now we need to add some constructors that will allow us to create IntArrays. We are going to add two constructors: one that constructs an empty array, and one that will allow us to construct an array of a predetermined size.
+接下来，添加用于创建`IntArrays`的构造函数。这里我们需要两个构造函数，一个创建空的数组，一个则创建预定义长度的数组。
 
 ```cpp
 #ifndef INTARRAY_H
@@ -106,31 +103,29 @@ public:
 #endif
 ```
 
-COPY
 
-We’ll also need some functions to help us clean up IntArrays. First, we’ll write a destructor, which simply deallocates any dynamically allocated data. Second, we’ll write a function called erase(), which will erase the array and set the length to 0.
+我们还需要创建用于清理数组的函数。首先，定义一个[[destructor|析构函数]]，它的功能就是释放数据占用的内存。然后，再编写一个`erase()`函数将数组的元素清除并将长度设置为0。
 
 ```cpp
 ~IntArray()
 {
     delete[] m_data;
-    // we don't need to set m_data to null or m_length to 0 here, since the object will be destroyed immediately after this function anyway
+    // 这里不必将 m_data 设置为 null 也不用将 m_length 设置为0，因为对象马上就会被销毁
+
 }
 
 void erase()
 {
     delete[] m_data;
 
-    // We need to make sure we set m_data to nullptr here, otherwise it will
-    // be left pointing at deallocated memory!
+    // 必须确保  m_data 是 nullptr 否则将会称为悬垂指针
     m_data = nullptr;
     m_length = 0;
 }
 ```
 
-COPY
 
-Now let’s overload the [] operator so we can access the elements of the array. We should bounds check the index to make sure it’s valid, which is best done using the assert() function. We’ll also add an access function to return the length of the array. Here’s everything so far:
+现在，[[overload|重载]]`[]`操作符用于访问数组中的元素。在重载下标运算符的时候，必须确保索引是合法的，该操作可以使用`assert()`函数。我们还需要添加一个函数用于返回数组长度。这样一来，类看上去会向下面这样：
 
 ```cpp
 #ifndef INTARRAY_H
@@ -159,14 +154,13 @@ public:
     ~IntArray()
     {
         delete[] m_data;
-        // we don't need to set m_data to null or m_length to 0 here, since the object will be destroyed immediately after this function anyway
+        // 这里不必将 m_data 设置为 null 也不用将 m_length 设置为0，因为对象马上就会被销毁
     }
 
     void erase()
     {
         delete[] m_data;
-        // We need to make sure we set m_data to nullptr here, otherwise it will
-        // be left pointing at deallocated memory!
+        // 必须确保  m_data 是 nullptr 否则将会称为悬垂指针
         m_data = nullptr;
         m_length = 0;
     }
@@ -183,56 +177,53 @@ public:
 #endif
 ```
 
-COPY
 
-At this point, we already have an IntArray class that we can use. We can allocate IntArrays of a given size, and we can use the [] operator to retrieve or change the value of the elements.
+至此，`IntArray` 类已经实现完成，可以使用了。我们可以创建一个有预定义长度的 `IntArrays`，然后使用下标运算符获取元素的值。
 
-However, there are still a few thing we can’t do with our IntArray. We still can’t change its size, still can’t insert or delete elements, and we still can’t sort it.
+但是，`IntArray` 仍然还有些功能没有被实现。数组大小暂时还不能改变、数组中的元素也还不能被插入或删除、不仅如此，数组元素也还不能被排序。
 
-First, let’s write some code that will allow us to resize an array. We are going to write two different functions to do this. The first function, reallocate(), will destroy any existing elements in the array when it is resized, but it will be fast. The second function, resize(), will keep any existing elements in the array when it is resized, but it will be slow.
+首先，编写代码使得数组可以改变其尺寸。而且，我们会实现两个不同的函数来实现这一功能。第一个函数是 `reallocate()`，这个函数在调整数组大小的时候，会销毁数组中的全部元素，但是它的速度很快。第二个函数是 `resize()`，它在调整数组大小的时候，它会保持数组中的元素，但是该函数的效率会低一些。
 
 ```cpp
-// reallocate resizes the array.  Any existing elements will be destroyed.  This function operates quickly.
+// reallocate 会调整数组大小，但是它会在工作时销毁所有的数组元素。该函数的速度很快
 void reallocate(int newLength)
 {
-    // First we delete any existing elements
+    // 首先，删除全部的元素
     erase();
 
-    // If our array is going to be empty now, return here
+    // 如果要创建空数组，此处返回即可
     if (newLength <= 0)
         return;
 
-    // Then we have to allocate new elements
+    // 分配新的元素
     m_data = new int[newLength];
     m_length = newLength;
 }
 
-// resize resizes the array.  Any existing elements will be kept.  This function operates slowly.
+// resize 会调整数组大小，数组中的元素会被保存下来。该函数的速度比较慢
 void resize(int newLength)
 {
-    // if the array is already the right length, we're done
+    // 如果数组的长度已经满足要求，完成
     if (newLength == m_length)
         return;
 
-    // If we are resizing to an empty array, do that and return
+    // 如果需要将数组调整为一个空数组，完成并返回
     if (newLength <= 0)
     {
         erase();
         return;
     }
 
-    // Now we can assume newLength is at least 1 element.  This algorithm
-    // works as follows: First we are going to allocate a new array.  Then we
-    // are going to copy elements from the existing array to the new array.
-    // Once that is done, we can destroy the old array, and make m_data
-    // point to the new array.
+    // 假设 newLength 大于等于1。该算法的原理如下：
+    // 首先，分配一个新的数组。然后将旧数组中的元素都拷贝到新的数组中。完成后，销毁旧数组。
+    // 然后让 m_data 指向新的数组
 
-    // First we have to allocate a new array
+    // 分配一个新的数组
     int* data{ new int[newLength] };
 
-    // Then we have to figure out how many elements to copy from the existing
-    // array to the new array.  We want to copy as many elements as there are
-    // in the smaller of the two arrays.
+    // 确定有多少个元素需要从旧数组中拷贝到新数组。
+    // 这里我们希望从旧数组中拷贝尽可能多的元素（新数组不一定比旧数组大）
+    // 拷贝的元素个数是新旧两个数组中较小的一个
     if (m_length > 0)
     {
         int elementsToCopy{ (newLength > m_length) ? m_length : newLength };
@@ -242,44 +233,42 @@ void resize(int newLength)
             data[index] = m_data[index];
     }
 
-    // Now we can delete the old array because we don't need it any more
+    // 删除旧数组
     delete[] m_data;
 
-    // And use the new array instead!  Note that this simply makes m_data point
-    // to the same address as the new array we dynamically allocated.  Because
-    // data was dynamically allocated, it won't be destroyed when it goes out of scope.
+    // 开始使用新的数组作为数据！最简单的办法就是让 m_data指向新数组的地址。
+    // 由于该数组是动态分配的，所以不会在离开作用域时被销毁
     m_data = data;
     m_length = newLength;
 }
 ```
 
-COPY
 
-Whew! That was a little tricky!
+还挺复杂！
 
-Many array container classes would stop here. However, just in case you want to see how insert and delete functionality would be implemented we’ll go ahead and write those too. Both of these algorithms are very similar to resize().
+多数的数组容器类会止步于此。不过，也许你想知道插入和删除操作应该如何实现，所以我们继续实现这两个功能。其实现方法和`resize()`非常类似。
 
 ```cpp
 void insertBefore(int value, int index)
 {
-    // Sanity check our index value
+    // 检查数组索引合法性
     assert(index >= 0 && index <= m_length);
 
-    // First create a new array one element larger than the old array
+    // 首先创建一个新的数组，其长度比旧数组大1
     int* data{ new int[m_length+1] };
 
-    // Copy all of the elements up to the index
+    // 拷贝到当前索引的所有元素
     for (int before{ 0 }; before < index; ++before)
         data[before] = m_data[before];
 
-    // Insert our new element into the new array
+    // 插入新的元素到新数组
     data[index] = value;
 
-    // Copy all of the values after the inserted element
+    // 继续拷贝剩余的元素
     for (int after{ index }; after < m_length; ++after)
         data[after+1] = m_data[after];
 
-    // Finally, delete the old array, and use the new array instead
+    // 最后，删除旧数组，然后使用新的数组作为数据
     delete[] m_data;
     m_data = data;
     ++m_length;
@@ -287,10 +276,10 @@ void insertBefore(int value, int index)
 
 void remove(int index)
 {
-    // Sanity check our index value
+    // 检查数组索引合法性
     assert(index >= 0 && index < m_length);
 
-    // If this is the last remaining element in the array, set the array to empty and bail out
+    // 如果这已经是最后一个shu'zu this is the last remaining element in the array, set the array to empty and bail out
     if (m_length == 1)
     {
         erase();
@@ -319,9 +308,7 @@ void insertAtBeginning(int value) { insertBefore(value, 0); }
 void insertAtEnd(int value) { insertBefore(value, m_length); }
 ```
 
-COPY
-
-Here is our IntArray container class in its entirety.
+`IntArray` 容器类的完整定义如下：
 
 ```cpp title="IntArray.h"
 #ifndef INTARRAY_H
@@ -491,9 +478,8 @@ public:
 #endif
 ```
 
-COPY
 
-Now, let’s test it just to prove it works:
+试试看，能不能正确工作！
 
 ```cpp
 #include <iostream>
@@ -531,14 +517,14 @@ int main()
 }
 ```
 
-This produces the result:
+程序运行结果：
 
 ```
 40 1 2 3 5 20 6 7 8 30
 ```
 
-Although writing container classes can be pretty complex, the good news is that you only have to write them once. Once the container class is working, you can use and reuse it as often as you like without any additional programming effort required.
+虽然编写一个容器类是非常复杂的事情，好消息是你只需要编写一次即可。一旦某个容器类可以正常工作了。那么你接下来就可以不断地使用它了。
 
-It is also worth explicitly mentioning that even though our sample IntArray container class holds a built-in data type (int), we could have just as easily used a user-defined type (e.g. a Point class).
+尽管我们的 `IntArray` 容器中存放的是基本数据类型 (`int`)，我们其实也可以使用用户定义类型(例如 `Point` 类).
 
 One more thing: If a class in the standard library meets your needs, use that instead of creating your own. For example, instead of using IntArray, you’re better off using `std::vector<int>`. It’s battle tested, efficient, and plays nicely with the other classes in the standard library. But sometimes you need a specialized container class that doesn’t exist in the standard library, so it’s good to know how to create your own when you need to. We’ll talk more about containers in the standard library once we’ve covered a few more fundamental topics.

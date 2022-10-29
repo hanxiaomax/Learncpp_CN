@@ -95,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -156,15 +157,15 @@
   },
   "active": "caf04286eedb88e5",
   "lastOpenFiles": [
+    "docs/reference-container.md",
+    "docs/16-6-container-classes.md",
+    "docs/value-container.md",
     "docs/MOC.md",
     "docs/13-5-constructors.md",
     "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/12-8-lambda-captures.md",
     "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/21-1-the-standard-library.md",
-    "docs/21.4 — STL algorithms overview.md",
-    "docs/21-3-STL-iterators-overview.md",
-    "docs/21-2-STL-containers-overview.md",
-    "docs/16-6-container-classes.md"
+    "docs/21.4 — STL algorithms overview.md"
   ]
 }
