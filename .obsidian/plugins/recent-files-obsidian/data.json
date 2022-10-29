@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
+      "basename": "16-6-container-classes",
+      "path": "docs/16-6-container-classes.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
@@ -35,10 +39,6 @@
     {
       "basename": "21-2-STL-containers-overview",
       "path": "docs/21-2-STL-containers-overview.md"
-    },
-    {
-      "basename": "16-6-container-classes",
-      "path": "docs/16-6-container-classes.md"
     },
     {
       "basename": "M-x-chapter-M-comprehensive-review",

@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "e19feea77b0998fb",
+            "id": "caf04286eedb88e5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/13-5-constructors.md",
+                "file": "docs/16-6-container-classes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "使用直接初始化",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/13-5-constructors.md"
+                "file": "docs/16-6-container-classes.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/13-5-constructors.md",
+                "file": "docs/16-6-container-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,9 +154,10 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "e19feea77b0998fb",
+  "active": "caf04286eedb88e5",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/13-5-constructors.md",
     "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/12-8-lambda-captures.md",
     "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
@@ -164,7 +165,6 @@
     "docs/21.4 — STL algorithms overview.md",
     "docs/21-3-STL-iterators-overview.md",
     "docs/21-2-STL-containers-overview.md",
-    "docs/16-6-container-classes.md",
-    "docs/M-x-chapter-M-comprehensive-review.md"
+    "docs/16-6-container-classes.md"
   ]
 }
