@@ -28,14 +28,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/12-x-chapter-12-comprehensive-quiz.md",
+                "file": "docs/13-5-constructors.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -64,10 +65,10 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "使用直接初始化",
                 "matchingCase": false,
                 "explainSearch": false,
-                "collapseAll": true,
+                "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -94,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/13-5-constructors.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/13-5-constructors.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,10 +154,10 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "91708e7b42f222ab",
+  "active": "e19feea77b0998fb",
   "lastOpenFiles": [
-    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/MOC.md",
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/12-8-lambda-captures.md",
     "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/21-1-the-standard-library.md",

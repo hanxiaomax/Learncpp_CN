@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "word",
       "path": "docs/word.md"
-    },
-    {
-      "basename": "9-2-Value-categories-lvalues-and-rvalues",
-      "path": "docs/9-2-Value-categories-lvalues-and-rvalues.md"
     }
   ],
   "omittedPaths": [],
