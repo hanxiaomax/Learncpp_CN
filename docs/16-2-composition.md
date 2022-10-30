@@ -72,9 +72,9 @@ public:
 ```
 
 
-This class has two data members: a numerator and a denominator. The numerator and denominator are part of the Fraction (contained within it). They can not belong to more than one Fraction at a time. The numerator and denominator don’t know they are part of a Fraction, they just hold integers. When a Fraction instance is created, the numerator and denominator are created. When the fraction instance is destroyed, the numerator and denominator are destroyed as well.
+这个类有两个数据成员：分子和分母。分子和分母是分数的一部分(包含在分数中)。它们不能同时属于多个分数。分子和分母并不知道它们是分数的一部分，它们只包含整数。在创建 `Fraction` 实例时，将创建分子和分母。当分数实例被破坏时，分子和分母也会被破坏。
 
-While object composition models has-a type relationships (a body has-a heart, a fraction has-a denominator), we can be more precise and say that composition models “part-of” relationships (a heart is part-of a body, a numerator is part of a fraction). Composition is often used to model physical relationships, where one object is physically contained inside another.
+尽管对象组合关系描述的是“具有”的关系 object composition models has-a type relationships (a body has-a heart, a fraction has-a denominator), we can be more precise and say that composition models “part-of” relationships (a heart is part-of a body, a numerator is part of a fraction). Composition is often used to model physical relationships, where one object is physically contained inside another.
 
 The parts of a composition can be singular or multiplicative -- for example, a heart is a singular part of the body, but a body contains 10 fingers (which could be modeled as an array).
 

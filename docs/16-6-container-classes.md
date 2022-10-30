@@ -279,25 +279,25 @@ void remove(int index)
     // 检查数组索引合法性
     assert(index >= 0 && index < m_length);
 
-    // 如果这已经是最后一个shu'zu this is the last remaining element in the array, set the array to empty and bail out
+    // 如果这已经是最后一个数组元素，将数组设置为空数组然后完成
     if (m_length == 1)
     {
         erase();
         return;
     }
 
-    // First create a new array one element smaller than the old array
+    // 创建一个新数组，其大小比旧数组小1
     int* data{ new int[m_length-1] };
 
-    // Copy all of the elements up to the index
+    // 拷贝到索引的全部元素
     for (int before{ 0 }; before < index; ++before)
         data[before] = m_data[before];
 
-    // Copy all of the values after the removed element
+    // 继续拷贝被删除元素后面的所有元素
     for (int after{ index+1 }; after < m_length; ++after)
         data[after-1] = m_data[after];
 
-    // Finally, delete the old array, and use the new array instead
+    // 最后，删除旧数组并使用新的数组作为数据
     delete[] m_data;
     m_data = data;
     --m_length;
@@ -527,4 +527,4 @@ int main()
 
 尽管我们的 `IntArray` 容器中存放的是基本数据类型 (`int`)，我们其实也可以使用用户定义类型(例如 `Point` 类).
 
-One more thing: If a class in the standard library meets your needs, use that instead of creating your own. For example, instead of using IntArray, you’re better off using `std::vector<int>`. It’s battle tested, efficient, and plays nicely with the other classes in the standard library. But sometimes you need a specialized container class that doesn’t exist in the standard library, so it’s good to know how to create your own when you need to. We’ll talk more about containers in the standard library once we’ve covered a few more fundamental topics.
+还有一件事：如果标准库中的一个类可以满足你的需求，那你应该直接使用它而不是创建自己的类。例如，与其使用 `IntArray`，不如使用 `std::vector<int>`。它是经过检验的，效率很高，并且与标准库中的其他类可以很好地配合。但有时你需要标准库中不存在的专用容器类，因此最好知道在需要时如何创建自己的容器类。在介绍了一些更基本的主题之后，我们将更多地讨论标准库中的容器。
