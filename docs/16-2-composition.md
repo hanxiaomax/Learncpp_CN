@@ -71,30 +71,28 @@ public:
 };
 ```
 
-
 这个类有两个数据成员：分子和分母。分子和分母是分数的一部分(包含在分数中)。它们不能同时属于多个分数。分子和分母并不知道它们是分数的一部分，它们只包含整数。在创建 `Fraction` 实例时，将创建分子和分母。当分数实例被破坏时，分子和分母也会被破坏。
 
-尽管对象组合关系描述的是“具有”的关系 object composition models has-a type relationships (a body has-a heart, a fraction has-a denominator), we can be more precise and say that composition models “part-of” relationships (a heart is part-of a body, a numerator is part of a fraction). Composition is often used to model physical relationships, where one object is physically contained inside another.
+尽管对象组合关系描述的是“具有”的关系（人体有一个心脏、分数有一个分母），但是更加精确的说法其实是，组合描述的是“部分与整体”的关系（心脏是人体的一部分、分子是分数的一部分）。组合关系通常用于对一个物理关系进行建模，即一个对象被包含在另外一个对象中。
 
-The parts of a composition can be singular or multiplicative -- for example, a heart is a singular part of the body, but a body contains 10 fingers (which could be modeled as an array).
+“部分”关系可以是“一对一的”，也可以是“多对一的”——例如，身体中包含一个心脏，但是身体可以包含10个手指（最终被实现为数组）。
 
 ## 实现组合关系
 
-Compositions are one of the easiest relationship types to implement in C++. They are typically created as structs or classes with normal data members. Because these data members exist directly as part of the struct/class, their lifetimes are bound to that of the class instance itself.
+组合是C++中最容易实现的关系类型之一。它们通常被创建为具有普通数据成员的结构或类。因为这些数据成员直接作为结构/类的一部分存在，所以它们的生命周期与类实例本身的生命周期绑定在一起。
 
-Compositions that need to do dynamic allocation or deallocation may be implemented using pointer data members. In this case, the composition class should be responsible for doing all necessary memory management itself (not the user of the class).
+需要进行动态分配或回收的组合可以使用指针数据成员实现。在这种情况下，组合类应该自己负责所有必要的内存管理(而不是类的用户)。
 
-In general, if you _can_ design a class using composition, you _should_ design a class using composition. Classes designed using composition are straightforward, flexible, and robust (in that they clean up after themselves nicely).
+一般来说，如果你能使用复合设计一个类，你就应该使用组合关系设计一个类。使用组合设计的类是直接的、灵活的和健壮的(因为它们很好地自行清理)。
 
 ## 更多的例子
 
-Many games and simulations have creatures or objects that move around a board, map, or screen. One thing that all of these creatures/objects have in common is that they all have a location. In this example, we are going to create a creature class that uses a point class to hold the creature’s location.
+许多游戏都有在棋盘、地图或屏幕上移动的生物或物体。所有这些生物/物体的一个共同点是，它们都有一个位置。在这个例子中，我们将创建一个生物类，它使用一个`Point`类来保存生物的位置。
 
-First, let’s design the point class. Our creature is going to live in a 2d world, so our point class will have 2 dimensions, X and Y. We will assume the world is made up of discrete squares, so these dimensions will always be integers.
+首先，让我们设计`Point`类。生物将生活在2d世界中，所以`Point`类只需要有两个维度`x`和`y`。我们假设世界是由离散的正方形组成，所以这些维度总是整数。
 
-Point2D.h:
 
-```cpp
+```cpp title="Point2D.h"
 #ifndef POINT2D_H
 #define POINT2D_H
 
@@ -107,26 +105,26 @@ private:
     int m_y;
 
 public:
-    // A default constructor
+    // 默认构造函数
     Point2D()
         : m_x{ 0 }, m_y{ 0 }
     {
     }
 
-    // A specific constructor
+    // 有参数的构造函数
     Point2D(int x, int y)
         : m_x{ x }, m_y{ y }
     {
     }
 
-    // An overloaded output operator
+    // 重载的输出操作符
     friend std::ostream& operator<<(std::ostream& out, const Point2D& point)
     {
         out << '(' << point.m_x << ", " << point.m_y << ')';
         return out;
     }
 
-    // Access functions
+    // 成员访问函数
     void setPoint(int x, int y)
     {
         m_x = x;
@@ -138,17 +136,15 @@ public:
 #endif
 ```
 
-COPY
 
-Note that because we’ve implemented all of our functions in the header file (for the sake of keeping the example concise), there is no Point2D.cpp.
+注意，因为所有函数的实现都在头文件中（为了保持例子简短），所以并没有 `Point2D.cpp` 文件。
 
-This Point2d class is a composition of its parts: location values x and y are part-of Point2D, and their lifespan is tied to that of a given Point2D instance.
+`Point2d` 是它的部件的的组合：位置信息x和y都是 `Point2D`的一部分，所以它们的生命周期也和 `Point2D` 实例绑定在一起。
 
-Now let’s design our Creature. Our Creature is going to have a few properties: a name, which will be a string, and a location, which will be our Point2D class.
+现在，定义 `Creature` 类。`Creature` 有如下几个属性：名称是一个字符串，位置则是一个 `Point2D` 类。
 
-Creature.h:
 
-```cpp
+```cpp title="Creature.h"
 #ifndef CREATURE_H
 #define CREATURE_H
 
@@ -159,8 +155,8 @@ Creature.h:
 class Creature
 {
 private:
-    std::string m_name;
-    Point2D m_location;
+    std::string m_name;//名称
+    Point2D m_location;//位置
 
 public:
     Creature(const std::string& name, const Point2D& location)
@@ -182,13 +178,12 @@ public:
 #endif
 ```
 
-COPY
 
-This Creature is also a composition of its parts. The creature’s name and location have one parent, and their lifetime is tied to that of the Creature they are part of.
+`Creature` 同样也是其各部分的组合。生物的名字和位置其声明周期都绑定到了 `Creature`。
 
-And finally, main.cpp:
+最终的程序是这样的。
 
-```cpp
+```cpp title="main.cpp"
 #include <string>
 #include <iostream>
 #include "Creature.h"
@@ -225,9 +220,8 @@ int main()
 }
 ```
 
-COPY
 
-Here’s a transcript of this code being run:
+运行程序：
 
 ```
 Enter a name for your creature: Marvin
@@ -241,13 +235,13 @@ Marvin is at (3, 2)
 Enter new X location for creature (-1 to quit): -1
 ```
 
-Variants on the composition theme
+## 不同类型的组合
 
-Although most compositions directly create their parts when the composition is created and directly destroy their parts when the composition is destroyed, there are some variations of composition that bend these rules a bit.
+尽管大多数组合会在组合关系建立时，直接创建它们的部分，并在组合被破坏时直接销毁它们的部分，但也有一些不同类型的组合不满足这一规则。
 
-For example:
+例如：
 
--   A composition may defer creation of some parts until they are needed. For example, a string class may not create a dynamic array of characters until the user assigns the string some data to hold.
+- 组合也可以先不创建部分，而是在需要使用它们时在创建。例如，字符串类可以先不动态分配字符shA composition may defer creation of some parts until they are needed. For example, a string class may not create a dynamic array of characters until the user assigns the string some data to hold.
 -   A composition may opt to use a part that has been given to it as input rather than create the part itself.
 -   A composition may delegate destruction of its parts to some other object (e.g. to a garbage collection routine).
 
