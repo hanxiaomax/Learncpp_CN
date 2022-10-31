@@ -254,10 +254,10 @@ Enter new X location for creature (-1 to quit): -1
 
 1. 每个独立的类能够尽可能地保持简洁，专注于它要完成的任务。这使得这些类更容易编写、也更容易理解，因为它们只专注一个功能。例如，`Point2D` 只需要关注和“点”相关的功能，显然有助于保持类的简洁。
 2. 每个类都是自包含的，所以它们能够被复用。例如，我们可以在其他应用中复用 `Point2D` 这个类。而且，如果`creature`需要另外一个点（例如，表示要去的目标点），此时只需要向类中再添加一个 `Point2D` 成员变量即可；
-3.  The outer class can have the class members do most of the hard work, and instead focus on coordinating the data flow between the members . This helps lower the overall complexity of the outer class, because it can delegate tasks to its members, who already know how to do those tasks. For example, when we move our Creature, it delegates that task to the Point class, which already understands how to set a point. Thus, the Creature class does not have to worry about how such things would be implemented.
+3. 外层类可以利用其类成员完成更复杂的任务，而不需要在不同的成员间协调数据流，这显然有助于降低外层类的整体复杂度，因为它将任务委派给了其成员，且该成员已经知道应该如何完成相关的任务。例如，在需要移动 `Creature` 的时候，它会将任务委派给 `Point` 类，而该类是知道如何设置一个点的。因此 `Creature` 类在实现的时候，就无需操心这些问题了。
 
 !!! tip "小贴士"
 
-	A good rule of thumb is that each class should be built to accomplish a single task. That task should either be the storage and manipulation of some kind of data (e.g. Point2D, std::string), OR the coordination of its members (e.g. Creature). Ideally not both.
-
-In this case of our example, it makes sense that Creature shouldn’t have to worry about how Points are implemented, or how the name is being stored. Creature’s job isn’t to know those intimate details. Creature’s job is to worry about how to coordinate the data flow and ensure that each of the class members knows _what_ it is supposed to do. It’s up to the individual classes to worry about _how_ they will do it.
+	根据经验法则，一个类应该被设计为仅完成一个任务。这个任务要么是存储或修改某种数据（例如，`Point2D`或`std::string`)，要么是协调它的成员完成某些任务。但理想情况下不应该同时做上面两件事。
+	
+在这个例子中，`Creature` 的确不应该操心 `Points` 是如何实现的，也不需要关心name是如何储存的。`Creature` 的任务不是了解这些细节，而是如何要关注如何协调数据流并确保其每个成员都知道它们要做什么。而如何做，则由成员自己来负责。

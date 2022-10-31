@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "046c561a64cf4417",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/16-2-composition.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/16-2-composition.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -133,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/16-2-composition.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,10 +141,10 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "046c561a64cf4417",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/MOC.md",
     "docs/16-2-composition.md",
+    "docs/MOC.md",
     "docs/16-1-object-relationships.md",
     "docs/16-x-Chapter-16-comprehensive-quiz.md",
     "docs/16-6-container-classes.md",
