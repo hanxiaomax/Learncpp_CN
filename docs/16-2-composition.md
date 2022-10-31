@@ -241,18 +241,19 @@ Enter new X location for creature (-1 to quit): -1
 
 例如：
 
-- 组合也可以先不创建部分，而是在需要使用它们时在创建。例如，字符串类可以先不动态分配字符shA composition may defer creation of some parts until they are needed. For example, a string class may not create a dynamic array of characters until the user assigns the string some data to hold.
--   A composition may opt to use a part that has been given to it as input rather than create the part itself.
--   A composition may delegate destruction of its parts to some other object (e.g. to a garbage collection routine).
+- 组合也可以先不创建部分，而是在需要使用它们时在创建。例如，字符串类可以先不动态分配字符数组，当真正有数据要存放时再创建；
+- 组合使用的部分可以是被传入的对象，而不是它自己创建的；
+- 组合也可以把销毁部分的工作委派给其他对象（例如，垃圾回收程序）。
 
-The key point here is that the composition should manage its parts without the user of the composition needing to manage anything.
+这里的关键点是，组合应该管理它的各个部分，而不需要组合的用户管理任何东西。
+
 
 ## 组合和类成员
 
-One question that new programmers often ask when it comes to object composition is, “When should I use a class member instead of direct implementation of a feature?”. For example, instead of using the Point2D class to implement the Creature’s location, we could have instead just added 2 integers to the Creature class and written code in the Creature class to handle the positioning. However, making Point2D its own class (and a member of Creature) has a number of benefits:
+当涉及到对象组合时，新程序员经常会问的一个问题是，“什么时候我应该使用类成员而不是直接使用某个特性？”例如，我们可以不使用`Point2D``类来实现Creature` 的位置，而是向`Creature`类中直接添加2个整数，并编写代码来处理定位。然而，让`Point2D`成为独立的类(并成为`Creature`的的成员)有很多好处：
 
-1.  Each individual class can be kept relatively simple and straightforward, focused on performing one task well. This makes those classes easier to write and much easier to understand, as they are more focused. For example, Point2D only worries about point-related stuff, which helps keep it simple.
-2.  Each class can be self-contained, which makes them reusable. For example, we could reuse our Point2D class in a completely different application. Or if our creature ever needed another point (for example, a destination it was trying to get to), we can simply add another Point2D member variable.
+1. 每个独立的类能够尽可能地保持简洁，专注于它要完成的任务。这使得这些类更容易编写、也更容易理解，因为它们只专注一个功能。例如，`Point2D` 只需要关注和“点”相关的功能，显然有助于保持类的简洁。
+2. 每个类都是自包含的，所以它们能够被复用。例如，我们可以在其他应用中复用 `Point2D` 这个类。而且，如果`creature`需要另外一个点（例如，表示要去的目标点），此时只需要向类中再添加一个 `Point2D` 成员变量即可；
 3.  The outer class can have the class members do most of the hard work, and instead focus on coordinating the data flow between the members . This helps lower the overall complexity of the outer class, because it can delegate tasks to its members, who already know how to do those tasks. For example, when we move our Creature, it delegates that task to the Point class, which already understands how to set a point. Thus, the Creature class does not have to worry about how such things would be implemented.
 
 !!! tip "小贴士"
