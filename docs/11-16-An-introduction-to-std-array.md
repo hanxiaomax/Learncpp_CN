@@ -21,7 +21,7 @@ tags:
 
 ## `std::array`
 
-`std::array` 实现了固定数组的功能，但它在传入函数时不会退化为指针。`std::array` 被定义在 `<array>` 头文件中且位于 `std` [[namespace|命名空间]]内。
+==`std::array` 实现了固定数组的功能，且在传入函数时不会退化为指针。`std::array` 被定义在 `<array>` 头文件中且位于 `std` [[namespace|命名空间]]内。==
 
 声明`std::array`变量很简单：
 
@@ -223,7 +223,7 @@ int main()
 
 这么做的弊端在于，该函数便只能使用特定元素类型和数组长度的数组作为[[arguments|实参]]，但是如果我们希望函数能够处理不同类型元素且长度不同的数组时，应该怎么做呢？难道要创建多个不同的函数来处理吗？这显然会带来很多很多的冗余代码。
 
-幸运地是，C++允许我们使用模板来实现上述功能。我们可以创建一个模板化函数并将所有的类型信息参数化，C++会根据模板在需要时自动创建“真实”的函数：
+幸运地是，C++允许我们使用模板来实现上述功能。==我们可以创建一个模板化函数并将所有的类型信息参数化，C++会根据模板在需要时自动创建“真实”的函数：==
 
 ```cpp
 #include <array>
@@ -324,7 +324,7 @@ int main()
 ```
 
 
-更好的办法是避免对`std::array` 进行人工索引，而是应该使用[[range-based-for-loops|基于范围的for循环]]或[[iterator|迭代器]]。
+更好的办法是==避免对`std::array` 进行人工索引，而是应该使用[[range-based-for-loops|基于范围的for循环]]或[[iterator|迭代器]]。==
 
 一定要记住，当无符号整型到达它们的最大值后，会产生反转。常见的错误是对一个所有进行递减，到达0后仍然递减则会导致无符号整型反转为最大值。在for循环的课程中你已经见过下面的例子了，这里再复习一下：
 ```cpp
@@ -370,13 +370,11 @@ int main()
 }
 ```
 
-我们在条件语句中，使用前缀`--`对``
-
-Suddenly we decrement the index in the condition, and we use the postfix `--` operator. The condition runs before every iteration, including the first. In the first iteration, `i`is `myArray.size() - 1`, because `i` was decremented in the condition. When `i` is 0 and about to wrap around, the condition is no longer `true` and the loop stops. `i`actually wraps around when we do `i--` for the last time, but it’s not used afterwards.
+我们在条件语句中，使用后缀`--`对索引进行递减。该条件判断会在每次迭代前进行，包括第一次迭代。在第一次迭代时，`i` 是 `myArray.size() - 1`，因为`i`在条件中递减。当`i`等于0时，即将发生反转，但是此时条件语句已经不是`true`了，所以循环会停止。实际上，`i` 的确会在最后一个`--`时反转，不过此时循环已经停止，该值并不会被实际使用。
 
 ## 结构体数组
 
-Of course `std::array` isn’t limited to numbers as elements. Every type that can be used in a regular array can be used in a `std::array`. For example, we can have a `std::array` of struct:
+`std::array` 显然不可能只能存放数值元素。任何能够在普通数组中使用的数据类型，同样也能够在 `std::array` 中使用。例如，我们可以创建结构体元素的`std::array`：
 
 ```cpp
 #include <array>
@@ -408,9 +406,7 @@ int main()
 }
 ```
 
-COPY
-
-The above outputs the following:
+输出结果如下：
 
 ```
 House number 13 has 120 rooms
@@ -418,7 +414,7 @@ House number 14 has 30 rooms
 House number 15 has 120 rooms
 ```
 
-However, things get a little weird when we try to initialize an array whose element type requires a list of values (such as a `std::array` of struct). You might try to initialize such a `std::array` like this:
+不过，当我们需要初始化一个数组，且数组元素的初始化也需要一个列表值时（比如结构体数组），代码会看起来怪怪的。初始化此类`std::array` 时，你可能会尝试这样做：
 
 ```cpp
 // Doesn't work.
@@ -429,31 +425,27 @@ std::array<House, 3> houses {
 };
 ```
 
-COPY
+但这种方法实际上是无效的。
 
-But this doesn’t work.
-
-A `std::array` is defined as a struct that contains a C-style array member (whose name is implementation defined). So when we try to initialize `houses` per the above, the compiler interprets the initialization like this:
+==因为 `std::array` 的定义中包含一个C语言风格的数组成员==（其具体名字取决于实现）。所以当我们像上面那样初始化`houses` 时，编译器会按照下面的方式理解该初始化：
 
 ```cpp
 // Doesn't work.
-std::array<House, 3> houses { // initializer for houses
-    { 13, 4, 30 }, // initializer for the C-style array member inside the std::array struct
+std::array<House, 3> houses { // 初始化 houses
+    { 13, 4, 30 }, // 初始化 std::array 结构中的C风格数组成员
     { 14, 3, 10 }, // ?
     { 15, 3, 40 }  // ?
 };
 ```
 
-COPY
+编译器会将 `{ 13, 4, 30 }` 解释为成员数组的初始化值。其效果相当于使用该初始化值初始化了下标为的结构体，剩余的结构体元素则进行了[[zero-initialization|0初始化]]。随后，编译器会发现我们提供了两个额外的初始化值(`{ 14, 3, 10 }` 和 `{ 15, 3, 40 }`) ，所以它会产生一个错误信息，提醒开发者初始化值过多。
 
-The compiler will interpret `{ 13, 4, 30 }` as the initializer for the entire array. This has the effect of initializing the struct with index 0 with those values, and zero-initializing the rest of the struct elements. Then the compiler will discover we’ve provided two more initialization values (`{ 14, 3, 10 }` and `{ 15, 3, 40 }`) and produce a compilation error telling us that we’ve provided too many initialization values.
-
-The correct way to initialize the above is to add an extra set of braces as follows:
+正确的方法是再添加一层大括号：
 
 ```cpp
 // This works as expected
 std::array<House, 3> houses { // initializer for houses
-    { // extra set of braces to initialize the C-style array member inside the std::array struct
+    { // 额外的大括号表明接下来初始化数组成员
         { 13, 4, 30 }, // initializer for array element 0
         { 14, 3, 10 }, // initializer for array element 1
         { 15, 3, 40 }, // initializer for array element 2
@@ -461,12 +453,12 @@ std::array<House, 3> houses { // initializer for houses
 };
 ```
 
-COPY
 
-Note the extra set of braces that are required (to begin initialization of the C-style array member inside the `std::array` struct). Within those braces, we can then initialize each element individually, each inside its own set of braces.
+注意，该大括号是必要的（表明开始初始化`std::array`中的数组成员）。这样一来，我们就可以对每个结构体成员进行初始化了。
 
-This is why you’ll see `std::array` initializers with an extra set of braces when the element type requires a list of values.
+==这就解释了为什么在使用 `std::array` 时，初始化值必须多一层大括号。==
+
 
 ## 小结
 
-`std::array` is a great replacement for built-in fixed arrays. It’s efficient, in that it doesn’t use any more memory than built-in fixed arrays. The only real downside of a `std::array` over a built-in fixed array is a slightly more awkward syntax, that you have to explicitly specify the array length (the compiler won’t calculate it for you from the initializer, unless you also omit the type, which isn’t always possible), and the signed/unsigned issues with size and indexing. But those are comparatively minor quibbles — we recommend using `std::array` over built-in fixed arrays for any non-trivial array use.
+`std::array`可以很好地代替内置的固定数组。它效率很高，唯一的缺点就是它的语法稍微有点别扭：你必须指定数组的长度（除非你省略类型，不然编译器不会基于初始化值自动计算长度，但是这并不总是可行），而且在索引时还存在有符号和无符号不匹配的问题。不过，瑕不掩瑜，我们还是推荐使用 `std::array` 来代替内建数组。

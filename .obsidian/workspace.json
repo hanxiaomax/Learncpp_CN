@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "8c188ee2a2c4bb21",
+            "id": "6859162fb23c8deb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/11-16-An-introduction-to-std-array.md",
+                "file": "docs/11-17-An-introduction-to-std-vector.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -112,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-16-An-introduction-to-std-array.md"
+                "file": "docs/11-17-An-introduction-to-std-vector.md"
               }
             }
           },
@@ -133,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-16-An-introduction-to-std-array.md",
+                "file": "docs/11-17-An-introduction-to-std-vector.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,19 +149,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "8c188ee2a2c4bb21",
+  "active": "6859162fb23c8deb",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/11-16-An-introduction-to-std-array.md",
     "docs/typeid.md",
     "docs/9-6-Introduction-to-pointers.md",
     "docs/8-4-Arithmetic-conversions.md",
     "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
-    "docs/11-16-An-introduction-to-std-array.md",
     "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
     "docs/range-based-for-loops.md",
     "docs/11-17-An-introduction-to-std-vector.md",
