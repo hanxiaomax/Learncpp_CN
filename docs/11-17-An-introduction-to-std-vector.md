@@ -7,6 +7,7 @@ time: 2022-4-8
 type: translation
 tags:
 - vector
+- C++17
 ---
 
 ??? note "关键点速记"
@@ -23,73 +24,68 @@ tags:
 
 `std::vector` 在C++03中被引入，它提供了[[动态数组]]的功能并且可以自我管理内存的申请和释放。也就是说，你可以在[[runtime|运行时]]创建数组并指定其长度，而不需要使用`new`和`delete`来手动管理内存的申请释放。`std::vector` 位于 `<vector>` 头文件中。
 
-Declaring a `std::vector` is simple:
+声明一个 `std::vector` 很简单：
 
 ```cpp
 #include <vector>
 
-// no need to specify length at the declaration
+// 在声明时无需指定长度
 std::vector<int> array;
-std::vector<int> array2 = { 9, 7, 5, 3, 1 }; // use initializer list to initialize array (before C++11)
-std::vector<int> array3 { 9, 7, 5, 3, 1 }; // use uniform initialization to initialize array
+std::vector<int> array2 = { 9, 7, 5, 3, 1 }; // 使用初始化值列表进行初始化(在C++11之前)
+std::vector<int> array3 { 9, 7, 5, 3, 1 }; // 使用统一初始化
 
-// as with std::array, the type can be omitted since C++17
+//和std::array一样，从C++17开始，类型可以省略
 std::vector array4 { 9, 7, 5, 3, 1 }; // deduced to std::vector<int>
 ```
 
-COPY
+注意，不论是初始化与否，你都不需要在编译时指定数组长度。这是因为 `std::vector` 可以在需要时自行分配内存。
 
-Note that in both the uninitialized and initialized case, you do not need to include the array length at compile time. This is because `std::vector` will dynamically allocate memory for its contents as requested.
-
-Just like `std::array`, accessing array elements can be done via the `[]` operator (which does no bounds checking) or the `at()` function (which does bounds checking):
+和 `std::array` 一样，访问数组元素可以使用[[subscripts|下标运算符]]（不进行越界检查）或`at()`函数（进行越界检查）访问：
 
 ```cpp
 array[6] = 2; // no bounds checking
 array.at(7) = 3; // does bounds checking
 ```
 
-COPY
 
-In either case, if you request an element that is off the end of the array, the vector will _not_ automatically resize.
+对于上面两种情况，如果你访问超出数组结尾的元素，vector并不会自动调整长度。
 
-As of C++11, you can also assign values to a `std::vector` using an initializer-list:
+在 C++11 中，你可以使用[[initializer-list|初始化值列表]]为 `std::vector` 赋值：
 
 ```cpp
 array = { 0, 1, 2, 3, 4 }; // okay, array length is now 5
 array = { 9, 8, 7 }; // okay, array length is now 3
 ```
 
-COPY
-
-In this case, the vector will self-resize to match the number of elements provided.
+对于这种情况，vector可以根据元素的个数调整其长度。
 
 ## 自我清理，避免内存泄漏
 
-When a vector variable goes out of scope, it automatically deallocates the memory it controls (if necessary). This is not only handy (as you don’t have to do it yourself), it also helps prevent memory leaks. Consider the following snippet:
+当一个vector变量超出作用域时，它会自动释放它所使用的内存(如果有必要)。这不仅方便(因为您不必自己做)，还有助于防止内存泄漏。考虑下面的代码片段：
 
 ```cpp
 void doSomething(bool earlyExit)
 {
-    int* array{ new int[5] { 9, 7, 5, 3, 1 } }; // allocated memory using new
+    int* array{ new int[5] { 9, 7, 5, 3, 1 } }; // 使用new分配内存
 
     if (earlyExit)
-        return; // exits the function without deallocating the memory allocated above
+        return; // 退出函数而不会释放内存
 
     // do stuff here
 
-    delete[] array; // never called
+    delete[] array; // 并不会被调用
 }
 ```
 
 COPY
 
-If earlyExit is set to true, array will never be deallocated, and the memory will be leaked.
+如果 `earlyExit` 被设置为 `true` ，则数组的内存不会被释放，会造成内存泄漏。
 
-However, if `array` is a `std::vector`, this won’t happen, because the memory will be deallocated as soon as `array` goes out of scope (regardless of whether the function exits early or not). This makes `std::vector` much safer to use than doing your own memory allocation.
+但是，如果 `array` 是 `std::vector` 的话，就不会出现问题，因为 `array` 会在[[going-out-of-scope|离开作用域]]时自动释放内存(不论函数是否正确退出)。这也说明使用 `std::vector` 比自己管理内存要更加安全。
 
 ## Vectors 能够保存其长度信息
 
-Unlike built-in dynamic arrays, which don’t know the length of the array they are pointing to, std::vector keeps track of its length. We can ask for the vector’s length via the `size()` function:
+不同于内建的动态数组（不知道其指向数组的程度），`std::vector`能够保存其长度。使用 `size()` 函数就可以得知 vector 的长度：
 
 ```cpp
 #include <iostream>
@@ -112,18 +108,18 @@ int main()
 }
 ```
 
-COPY
+输出结果为：
 
-The above example prints:
-
+```
 The length is: 5
 The length is: 0
+```
 
-Just like with `std::array`, `size()` returns a value of nested type `size_type` (full type in the above example would be `std::vector<int>::size_type`), which is an unsigned integer.
+和`std::array`一样，`size()`返回的是`size_type`类型的值 (完整的形式为 `std::vector<int>::size_type`)，它是无符号整型数。
 
 ## 调整 vector 大小
 
-Resizing a built-in dynamically allocated array is complicated. Resizing a `std::vector` is as simple as calling the `resize()` function:
+调整内置的动态数组的大小是很复杂的，而调整`std::vector`的大小则很简单，调用`resize()`即可：
 
 ```cpp
 #include <iostream>
@@ -145,18 +141,16 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印：
 
 ```
 The length is: 5
 0 1 2 0 0
 ```
 
-There are two things to note here. First, when we resized the vector, the existing element values were preserved! Second, new elements are initialized to the default value for the type (which is 0 for integers).
+有两件事需要注意。首先，当调整 vector 的大小时，已经存在的元素会被保存下来。第二，新的元素会被初始化为该类型的默认值（整型是0）。
 
-Vectors may be resized to be smaller:
+Vectors 的大小也可以缩小：
 
 ```cpp
 #include <vector>
@@ -178,16 +172,14 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 The length is: 3
 0 1 2
 ```
 
-Resizing a vector is computationally expensive, so you should strive to minimize the number of times you do so. If you need a vector with a specific number of elements but don’t know the values of the elements at the point of declaration, you can create a vector with default elements like so:
+调整vector大小的开销是很大的，因此应该尽量少做。如果你需要一个具有特定数量元素的向量，但在声明时不知道元素的值，你可以创建一个具有默认元素的向量，如下所示：
 
 ```cpp
 #include <iostream>
@@ -211,9 +203,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印：
 
 ```
 The length is: 5
@@ -222,9 +212,10 @@ The length is: 5
 
 !!! tip "小贴士"
 
-	We’ll talk about why direct and brace-initialization are treated differently in lesson [16.7 -- std::initializer_list](https://www.learncpp.com/cpp-tutorial/stdinitializer_list/). A rule of thumb is, if the type is some kind of list and you don’t want to initialize it with a list, use direct initialization.
+	We’ll talk about why direct and brace-initialization are treated differently in lesson [[16-7-std-initializer_list|16.7 - std::initializer_list]]. A rule of thumb is, if the type is some kind of list and you don’t want to initialize it with a list, use direct initialization.
 
-## Compacting bools
+
+## 压缩布尔值
 
 `std::vector` has another cool trick up its sleeves. There is a special implementation for `std::vector` of type bool that will compact 8 booleans into a byte! This happens behind the scenes, and doesn’t change how you use the std::vector.
 
