@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
     },
     {
       "basename": "11-16-An-introduction-to-std-array",
@@ -155,10 +159,6 @@
     {
       "basename": "11-19-Introduction-to-standard-library-algorithms",
       "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",

@@ -187,9 +187,9 @@ The length is: 3
 
 int main()
 {
-    // Using direct initialization, we can create a vector with 5 elements,
-    // each element is a 0. If we use brace initialization, the vector would
-    // have 1 element, a 5.
+    // 使用直接初始化，创建一个包含5个元素的vector
+    // 每个元素都被初始化为0。如果你使用括号初始化的话，则v
+    // vector会包含一个元素，值为5
     std::vector<int> array(5);
 
     std::cout << "The length is: " << array.size() << '\n';
@@ -212,12 +212,12 @@ The length is: 5
 
 !!! tip "小贴士"
 
-	We’ll talk about why direct and brace-initialization are treated differently in lesson [[16-7-std-initializer_list|16.7 - std::initializer_list]]. A rule of thumb is, if the type is some kind of list and you don’t want to initialize it with a list, use direct initialization.
-
+	我们会在 [[16-7-std-initializer_list|16.7 - std::initializer_list]] 中介绍[[direct-initialization|直接初始化]]和[[括号初始化]]的不同。经验法则是：对于你不想初始化的列表型类型，使用直接初始化。
+		
 
 ## 压缩布尔值
 
-`std::vector` has another cool trick up its sleeves. There is a special implementation for `std::vector` of type bool that will compact 8 booleans into a byte! This happens behind the scenes, and doesn’t change how you use the std::vector.
+`std::vector` 还有另外一个很酷的小特性，它会把8个布尔类型的元素压缩为一个字节！这一切都是在幕后完成的，对你使用 `std::vector`并没有影响。
 
 ```cpp
 #include <vector>
@@ -237,9 +237,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 The length is: 5
@@ -248,8 +246,8 @@ The length is: 5
 
 ## 更多内容
 
-Note that this is an introduction article intended to introduce the basics of `std::vector`. In lesson [[12-3-std-vector-capacity-and-stack-behavior|12.3 - std::vector的容量和类栈行为]]we’ll cover some additional capabilities of `std::vector`, including the difference between a vector’s length and capacity, and take a deeper look into how `std::vector` handles memory allocation.
+注意，本节课只是对 `std::vector`进行简介，在 [[12-3-std-vector-capacity-and-stack-behavior|12.3 - std::vector的容量和类栈行为]]中，我们会介绍它的一些额外的功能，包括长度和容量的区别，并且详细介绍`std::vector` 是如何管理内存的。
 
 ## 结论
 
-Because variables of type `std::vector` handle their own memory management (which helps prevent memory leaks), remember their length, and can be easily resized, we recommend using `std::vector` in most cases where dynamic arrays are needed.
+因为`std::vector`类型是变量可以自己管理内存（有助于避免内存泄漏）并且能够记录自身长度，所以我们推荐在大多数需要使用动态数组的时候，使用`std::vector`。
