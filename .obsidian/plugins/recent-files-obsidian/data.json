@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
+      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "range-based-for-loops",
+      "path": "docs/range-based-for-loops.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
     },
     {
       "basename": "16-2-composition",
@@ -125,14 +145,6 @@
       "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
-    },
-    {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
       "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "9-1-Introduction-to-compound-data-types",
       "path": "docs/9-1-Introduction-to-compound-data-types.md"
-    },
-    {
-      "basename": "pointer-to-const",
-      "path": "docs/pointer-to-const.md"
-    },
-    {
-      "basename": "9-7-Null-pointers",
-      "path": "docs/9-7-Null-pointers.md"
-    },
-    {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
     }
   ],
   "omittedPaths": [],

@@ -19,7 +19,7 @@ Analogously, the C++ standard library provides functionality that makes working 
 
 Unlike `std::array`, which closely follows the basic functionality of fixed arrays, `std::vector` comes with some additional tricks up its sleeves. These help make `std::vector` one of the most useful and versatile tools to have in your C++ toolkit.
 
-An introduction to std::vector
+## `std::vector` 简介
 
 Introduced in C++03, `std::vector` provides dynamic array functionality that handles its own memory management. This means you can create arrays that have their length set at run-time, without having to explicitly allocate and deallocate memory using `new` and `delete`. `std::vector` lives in the `<vector>` header.
 
@@ -63,7 +63,7 @@ COPY
 
 In this case, the vector will self-resize to match the number of elements provided.
 
-**Self-cleanup prevents memory leaks**
+## 自我清理，避免内存泄漏
 
 When a vector variable goes out of scope, it automatically deallocates the memory it controls (if necessary). This is not only handy (as you don’t have to do it yourself), it also helps prevent memory leaks. Consider the following snippet:
 
@@ -87,7 +87,7 @@ If earlyExit is set to true, array will never be deallocated, and the memory wil
 
 However, if `array` is a `std::vector`, this won’t happen, because the memory will be deallocated as soon as `array` goes out of scope (regardless of whether the function exits early or not). This makes `std::vector` much safer to use than doing your own memory allocation.
 
-**Vectors remember their length**
+## Vectors 能够保存其长度信息
 
 Unlike built-in dynamic arrays, which don’t know the length of the array they are pointing to, std::vector keeps track of its length. We can ask for the vector’s length via the `size()` function:
 
@@ -121,7 +121,7 @@ The length is: 0
 
 Just like with `std::array`, `size()` returns a value of nested type `size_type` (full type in the above example would be `std::vector<int>::size_type`), which is an unsigned integer.
 
-Resizing a vector
+## 调整 vector 大小
 
 Resizing a built-in dynamically allocated array is complicated. Resizing a `std::vector` is as simple as calling the `resize()` function:
 
@@ -149,8 +149,10 @@ COPY
 
 This prints:
 
+```
 The length is: 5
 0 1 2 0 0
+```
 
 There are two things to note here. First, when we resized the vector, the existing element values were preserved! Second, new elements are initialized to the default value for the type (which is 0 for integers).
 
@@ -180,8 +182,10 @@ COPY
 
 This prints:
 
+```
 The length is: 3
 0 1 2
+```
 
 Resizing a vector is computationally expensive, so you should strive to minimize the number of times you do so. If you need a vector with a specific number of elements but don’t know the values of the elements at the point of declaration, you can create a vector with default elements like so:
 
@@ -211,14 +215,16 @@ COPY
 
 This prints:
 
+```
 The length is: 5
 0 0 0 0 0
+```
 
-Tip
+!!! tip "小贴士"
 
-We’ll talk about why direct and brace-initialization are treated differently in lesson [16.7 -- std::initializer_list](https://www.learncpp.com/cpp-tutorial/stdinitializer_list/). A rule of thumb is, if the type is some kind of list and you don’t want to initialize it with a list, use direct initialization.
+	We’ll talk about why direct and brace-initialization are treated differently in lesson [16.7 -- std::initializer_list](https://www.learncpp.com/cpp-tutorial/stdinitializer_list/). A rule of thumb is, if the type is some kind of list and you don’t want to initialize it with a list, use direct initialization.
 
-Compacting bools
+## Compacting bools
 
 `std::vector` has another cool trick up its sleeves. There is a special implementation for `std::vector` of type bool that will compact 8 booleans into a byte! This happens behind the scenes, and doesn’t change how you use the std::vector.
 
@@ -244,13 +250,15 @@ COPY
 
 This prints:
 
+```
 The length is: 5
 1 0 0 1 1
+```
 
-More to come
+## 更多内容
 
-Note that this is an introduction article intended to introduce the basics of `std::vector`. In lesson [12.3 -- std::vector capacity and stack behavior](https://www.learncpp.com/cpp-tutorial/stdvector-capacity-and-stack-behavior/), we’ll cover some additional capabilities of `std::vector`, including the difference between a vector’s length and capacity, and take a deeper look into how `std::vector` handles memory allocation.
+Note that this is an introduction article intended to introduce the basics of `std::vector`. In lesson [[12-3-std-vector-capacity-and-stack-behavior|12.3 - std::vector的容量和类栈行为]]we’ll cover some additional capabilities of `std::vector`, including the difference between a vector’s length and capacity, and take a deeper look into how `std::vector` handles memory allocation.
 
-Conclusion
+## 结论
 
 Because variables of type `std::vector` handle their own memory management (which helps prevent memory leaks), remember their length, and can be easily resized, we recommend using `std::vector` in most cases where dynamic arrays are needed.

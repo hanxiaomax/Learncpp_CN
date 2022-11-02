@@ -7,6 +7,7 @@ time: 2022-9-15
 type: translation
 tags:
 - std::array
+- C++17
 ---
 
 ??? note "关键点速记"
@@ -14,54 +15,47 @@ tags:
 	-
 
 
-In previous lessons, we’ve talked at length about fixed and dynamic arrays. Although both are built right into the C++ language, they both have downsides: Fixed arrays decay into pointers, losing the array length information when they do, and dynamic arrays have messy deallocation issues and are challenging to resize without error.
+在上节课中，我们讨论了[[fixed-array|固定数组]]和[[dynamic-array|动态数组]]。尽管这两种数组都是C++自带的，但是它们缺点可不少：固定数组会[[decay-into-pointer|退化为指针]]，退化和将会丢失数组的长度信息。动态数组在释放时容易出现问题，而且在重新调整大小时也很难做到不出错。
 
-To address these issues, the C++ standard library includes functionality that makes array management easier, `std::array` and `std::vector`. We’ll examine `std::array` in this lesson, and `std::vector` in the next.
+为了解决这些问题，C++标准库提供了 `std::array` 和`std::vector` 两个容器类，使得数组管理变得更加简单了。我们会在本节课中介绍 `std::array`，然后在下节课中介绍 `std::vector`。
 
-An introduction to std::array
+## `std::array`
 
-`std::array` provides fixed array functionality that won’t decay when passed into a function. `std::array` is defined in the `<array>` header, inside the `std` namespace.
+`std::array` 实现了固定数组的功能，但它在传入函数时不会退化为指针。`std::array` 被定义在 `<array>` 头文件中且位于 `std` [[namespace|命名空间]]内。
 
-Declaring a `std::array` variable is easy:
+声明`std::array`变量很简单：
 
 ```cpp
 #include <array>
 
-std::array<int, 3> myArray; // declare an integer array with length 3
+std::array<int, 3> myArray; // 声明一个长度为3的整型数组
 ```
 
-COPY
+和原生的固定数组实现类似，`std::array` 的长度必须在[[compile-time|编译时]]确定。
 
-Just like the native implementation of fixed arrays, the length of a `std::array` must be known at compile time.
-
-`std::array` can be initialized using initializer lists or list initialization:
+`std::array` 可以通过[[initializer-list|初始化值列表]]或[[list-initialization|列表初始化]]的方式进行初始化：
 
 ```cpp
-std::array<int, 5> myArray = { 9, 7, 5, 3, 1 }; // initializer list
-std::array<int, 5> myArray2 { 9, 7, 5, 3, 1 }; // list initialization
+std::array<int, 5> myArray = { 9, 7, 5, 3, 1 }; // 初始化值列表
+std::array<int, 5> myArray2 { 9, 7, 5, 3, 1 }; // 列表初始化
 ```
 
-COPY
-
-Unlike built-in fixed arrays, with std::array you can not omit the array length when providing an initializer:
+和C++自带的固定数组不同的是，在使用 `std::array` 的时候，你不能省略数组的长度，即使提供了初始化值也不行：
 
 ```cpp
-std::array<int, > myArray { 9, 7, 5, 3, 1 }; // illegal, array length must be provided
-std::array<int> myArray { 9, 7, 5, 3, 1 }; // illegal, array length must be provided
+std::array<int, > myArray { 9, 7, 5, 3, 1 }; // 不合法，必须提供长度
+std::array<int> myArray { 9, 7, 5, 3, 1 }; // 不合法，必须提供长度
 ```
 
-COPY
 
-However, since C++17, it is allowed to omit the type and size. They can only be omitted together, but not one or the other, and only if the array is explicitly initialized.
+不过，从C++17开始， `std::array` 也支持省略类型和大小了。如果数组被显式地初始化，则类型和大小可以一起被忽略。
 
 ```cpp
-std::array myArray { 9, 7, 5, 3, 1 }; // The type is deduced to std::array<int, 5>
-std::array myArray { 9.7, 7.31 }; // The type is deduced to std::array<double, 2>
+std::array myArray { 9, 7, 5, 3, 1 }; // 通过类型推断得到 std::array<int, 5>
+std::array myArray { 9.7, 7.31 }; // 通过类型推断得到 std::array<double, 2>
 ```
 
-COPY
-
-We favor this syntax rather than typing out the type and size at the declaration. If your compiler is not C++17 capable, you need to use the explicit syntax instead.
+我们推荐使用上面这种忽略类型和大小的声明方式，除非你的编译器不支持C++17，那么你就必须显式地指定了类型和大小。
 
 ```cpp
 // std::array myArray { 9, 7, 5, 3, 1 }; // Since C++17
@@ -71,9 +65,7 @@ std::array<int, 5> myArray { 9, 7, 5, 3, 1 }; // Before C++17
 std::array<double, 2> myArray { 9.7, 7.31 }; // Before C++17
 ```
 
-COPY
-
-Since C++20, it is possible to specify the element type but omit the array length. This makes creation of `std::array` a little more like creation of C-style arrays. To create an array with a specific type and deduced size, we use the `std::to_array` function:
+在 C++20 中，我们可以指定元素类型，但是忽略数组长度。这么做的时候，创建`std::array`时看起来更像是创建一个C语言风格的数组。我们可以使用 `std::to_array` 来创建数组（指定元素类型但自动推断长度）：
 
 ```cpp
 auto myArray1 { std::to_array<int, 5>({ 9, 7, 5, 3, 1 }) }; // Specify type and size
@@ -81,11 +73,10 @@ auto myArray2 { std::to_array<int>({ 9, 7, 5, 3, 1 }) }; // Specify type only, d
 auto myArray3 { std::to_array({ 9, 7, 5, 3, 1 }) }; // Deduce type and size
 ```
 
-COPY
 
-Unfortunately, `std::to_array` is more expensive than creating a `std::array` directly, because it actually copies all elements from a C-style array to a `std::array`. For this reason, `std::to_array` should be avoided when the array is created many times (e.g. in a loop).
+不幸的是，使用 `std::to_array` 创建数组时的开销比直接使用 `std::array` 创建数组开销更大，因为它需要将一个C语言风格的数组的元素拷贝到 `std::array`。出于这个原因，如果需要在循环中多次创建数组时，应该避免使用 `std::to_array` 。
 
-You can also assign values to the array using an initializer list
+你也可以使用[[initializer-list|初始化值列表]]为数组赋值。
 
 ```cpp
 std::array<int, 5> myArray;
@@ -94,20 +85,16 @@ myArray = { 9, 8, 7 }; // okay, elements 3 and 4 are set to zero!
 myArray = { 0, 1, 2, 3, 4, 5 }; // not allowed, too many elements in initializer list!
 ```
 
-COPY
-
-Accessing `std::array` values using the subscript operator works just like you would expect:
+恶意使用下标运算符访问 `std::array` 数组中的值：
 
 ```cpp
 std::cout << myArray[1] << '\n';
 myArray[2] = 6;
 ```
 
-COPY
+和内置的数组类似，下标运算符并没有实现越界检查。当传入非法索引时，会发生很不好的事情。
 
-Just like built-in fixed arrays, the subscript operator does not do any bounds-checking. If an invalid index is provided, bad things will probably happen.
-
-`std::array` supports a second form of array element access (the `at()` function) that does (runtime) bounds checking:
+`std::array` 还支持另外一种元素访问方式（使用`at()`函数），它会在（[[runtime|运行时]]）进行越界检查：
 
 ```cpp
 std::array myArray { 9, 7, 5, 3, 1 };
@@ -115,28 +102,27 @@ myArray.at(1) = 6; // array element 1 is valid, sets array element 1 to value 6
 myArray.at(9) = 10; // array element 9 is invalid, will throw a runtime error
 ```
 
-COPY
 
-In the above example, the call to `myArray.at(1)` checks to ensure the index 1 is valid, and because it is, it returns a reference to array element 1. We then assign the value of 6 to this. However, the call to `myArray.at(9)` fails (at runtime) because array element 9 is out of bounds for the array. Instead of returning a reference, the `at()`function throws an error that terminates the program (note: It’s actually throwing an exception of type `std::out_of_range` -- we cover exceptions in chapter 14). Because it does bounds checking, `at()` is slower (but safer) than `operator[]`.
+在上面的例子中，调用 `myArray.at(1)` 时会确保所以1是合法的。由于1确实是合法索引，所以它会返回对应的元素的引用。我们将6赋值给该引用。不过，当我们调用 `myArray.at(9)` 时就会失败，因为索引9越界了。当越界发生时，`at()`函数会抛出一个异常（具体来说它会抛出一个`std::out_of_range`异常），而不会返回对应的索引。因为需要进行越界检查，所以 `at()` 的速度会比下标运算符慢，但它更安全。
 
-`std::array` will clean up after itself when it goes out of scope, so there’s no need to do any kind of manual cleanup.
+`std::array` 会在[[going-out-of-scope|离开作用域]]时清理自己，所以我们必须进行手动清理。
 
-Size and sorting
+## 数组大小和排序
 
-The `size()` function can be used to retrieve the length of the `std::array`:
+`size()` 函数可以用来获取 `std::array` 的长度：
 
 ```cpp
 std::array myArray { 9.0, 7.2, 5.4, 3.6, 1.8 };
 std::cout << "length: " << myArray.size() << '\n';
 ```
 
-COPY
+程序打印：
 
-This prints:
-
+```
 length: 5
+```
 
-Because `std::array` doesn’t decay to a pointer when passed to a function, the `size()` function will work even if you call it from within a function:
+因为 `std::array` 不会在传递给函数时退化为指针，所以 `size()`在函数内部也可以调用：
 
 ```cpp
 #include <array>
@@ -157,21 +143,22 @@ int main()
 }
 ```
 
-COPY
 
-This also prints:
+程序打印：
 
+```
 length: 5
+```
 
-Note that the standard library uses the term “size” to mean the array length — do not get this confused with the results of `sizeof()` on a native fixed array, which returns the actual size of the array in memory (the size of an element multiplied by the array length). Yes, this nomenclature is inconsistent.
+注意，在标准库中 size 一词表示数组的长度——不要把它和 `sizeof()` 搞混了，当对原生的固定数组使用`sizeof`时，返回的是该数组占用的实际内存的大小（元素大小乘以数组长度）。是的，这边命名的一致性保持的不好。
 
-Also note that we passed `std::array` by (`const`) reference. This is to prevent the compiler from making a copy of the `std::array` when the `std::array` was passed to the function (for performance reasons).
+还要注意，当[[pass-by-reference|按引用传递]] `std::array` 时。可以防止编译器创建 `std::array` 的拷贝（有助于提升性能）。
 
-Best practice
+!!! success "最佳实践"
 
-Always pass `std::array` by reference or `const` reference
-
-Because the length is always known, range-based for-loops work with `std::array`:
+	==使用按引用传递或按const引用传递的方式将 `std::array` 传入函数。==
+	
+因为`std::array`的长度总是已知的，所以它可以使用[[range-based-for-loops|基于范围的for循环]]来遍历：
 
 ```cpp
 std::array myArray{ 9, 7, 5, 3, 1 };
@@ -180,9 +167,7 @@ for (int element : myArray)
     std::cout << element << ' ';
 ```
 
-COPY
-
-You can sort `std::array` using `std::sort`, which lives in the `<algorithm>` header:
+使用 `std::sort` 可以对 `std::array` 进行排序，该函数位于 `<algorithm>` 头文件中：
 
 ```cpp
 #include <algorithm> // for std::sort
@@ -192,8 +177,8 @@ You can sort `std::array` using `std::sort`, which lives in the `<algorithm>
 int main()
 {
     std::array myArray { 7, 3, 1, 9, 5 };
-    std::sort(myArray.begin(), myArray.end()); // sort the array forwards
-//  std::sort(myArray.rbegin(), myArray.rend()); // sort the array backwards
+    std::sort(myArray.begin(), myArray.end()); // 从前向后排序
+//  std::sort(myArray.rbegin(), myArray.rend()); // 从后向前排序
 
     for (int element : myArray)
         std::cout << element << ' ';
@@ -204,15 +189,16 @@ int main()
 }
 ```
 
-COPY
+运行结果：
 
-This prints:
-
+```
 1 3 5 7 9
+```
 
-Passing std::array of different lengths to a function
+## 向函数传递不同长度的 `std::array` 
 
-With a std::array, the element type and array length are part of the type information. Therefore, when we use a std::array as a function parameter, we have to specify the element type and array length:
+对于 `std::array` 来说，元素的类型和数组的长度是数组类型的一部分。因此，当我们使用 `std::array` 作为函数[[parameters|形参]]时，必须指明元素类型和数组长度
+：
 
 ```cpp
 #include <array>
@@ -234,11 +220,10 @@ int main()
 }
 ```
 
-COPY
 
-The downside is that this limits our function to only handling arrays of this specific type and length. But what if we want to have our function handle arrays of different element types or lengths? We’d have to create a copy of the function for each different element type and/or array length we want to use. That’s a lot of duplication.
+这么做的弊端在于，该函数便只能使用特定元素类型和数组长度的数组作为[[arguments|实参]]，但是如果我们希望函数能够处理不同类型元素且长度不同的数组时，应该怎么做呢？难道要创建多个不同的函数来处理吗？这显然会带来很多很多的冗余代码。
 
-Fortunately, we can have C++ do this for us, using templates. We can create a template function that parameterizes part or all of the type information, and then C++ will use that template to create “real” functions (with actual types) as needed.
+幸运地是，C++允许我们使用模板来实现上述功能。我们可以创建一个模板化函数并将所有的类型信息参数化，C++会根据模板在需要时自动创建“真实”的函数：
 
 ```cpp
 #include <array>
@@ -266,15 +251,14 @@ int main()
 }
 ```
 
-COPY
+!!! info "相关内容"
 
-Related content
+	函数模板会在 [[8-13-Function-templates|8.13 - 函数模板]] 中介绍。
+	
 
-We cover function templates in lesson [8.13 -- Function templates](https://www.learncpp.com/cpp-tutorial/function-templates/).
+## 基于`size_type` 对 `std::array` 进行人工索引
 
-Manually indexing std::array via size_type
-
-Pop quiz: What’s wrong with the following code?
+一个常见问题：下面的代码有什么问题？
 
 ```cpp
 #include <iostream>
@@ -294,13 +278,11 @@ int main()
 }
 ```
 
-COPY
+这个问题的答案是：代码中可能会出现 signed/unsigned 不匹配的问题。 `size()` 函数和下标索引使用了一种被称为 `size_type` 的类型，该类型在C++标准中被定义为无符号整型类型。而在上面代码中，循环索引`i` 是一个有符号整型。因此在进行 `i < myArray.size()` 比较时会出现类型不匹配的问题。
 
-The answer is that there’s a likely signed/unsigned mismatch in this code! Due to a curious decision, the `size()` function and array index parameter to `operator[]` use a type called `size_type`, which is defined by the C++ standard as an _unsigned_ integral type. Our loop counter/index (variable `i`) is a `signed int`. Therefore both the comparison `i < myArray.size()` and the array index `myArray[i]` have type mismatches.
+有趣的是，`size_type` 还不是一个全局类型（例如，`int`或`std::size_t`），它实际上被定义在`std::array`内部 (C++允许嵌套定义)。这就意味着，当你需要使用`size_type`时，必须添加完整的前缀(可以将 `std::array` 看做是它的命名空间)。在上面的例子中， “size_type” 的完整前缀是 `std::array<int, 5>::size_type`!
 
-Interestingly enough, `size_type` isn’t a global type (like `int` or `std::size_t`). Rather, it’s defined inside the definition of `std::array` (C++ allows nested types). This means when we want to use `size_type`, we have to prefix it with the full array type (think of `std::array` acting as a namespace in this regard). In our above example, the fully-prefixed type of “size_type” is `std::array<int, 5>::size_type`!
-
-Therefore, the correct way to write the above code is as follows:
+所以，上面代码的正确写法应该是这样的：
 
 ```cpp
 #include <array>
@@ -320,9 +302,8 @@ int main()
 }
 ```
 
-COPY
 
-That’s not very readable. Fortunately, `std::array::size_type` is just an alias for `std::size_t`, so we can use that instead.
+可读性并不好。幸运地是，`std::array::size_type` 实际上是 `std::size_t` 的别名，所以我们可以直接使用`std::size_t`：
 
 ```cpp
 #include <array>
@@ -342,12 +323,10 @@ int main()
 }
 ```
 
-COPY
 
-A better solution is to avoid manual indexing of `std::array` in the first place. Instead, use range-based for-loops (or iterators) if possible.
+更好的办法是避免对`std::array` 进行人工索引，而是应该使用[[range-based-for-loops|基于范围的for循环]]或[[iterator|迭代器]]。
 
-Keep in mind that unsigned integers wrap around when you reach their limits. A common mistake is to decrement an index that is 0 already, causing a wrap-around to the maximum value. You saw this in the lesson about for-loops, but let’s repeat.
-
+一定要记住，当无符号整型到达它们的最大值后，会产生反转。常见的错误是对一个所有进行递减，到达0后仍然递减则会导致无符号整型反转为最大值。在for循环的课程中你已经见过下面的例子了，这里再复习一下：
 ```cpp
 #include <array>
 #include <iostream>
@@ -356,8 +335,8 @@ int main()
 {
     std::array myArray { 7, 3, 1, 9, 5 };
 
-    // Print the array in reverse order.
-    // We can use auto, because we're not initializing i with 0.
+    // 逆序打印素组
+    // 因为i不需要初始化为0所以可以使用auto
     // Bad:
     for (auto i{ myArray.size() - 1 }; i >= 0; --i)
         std::cout << myArray[i] << ' ';
@@ -367,7 +346,7 @@ int main()
     return 0;
 }
 ```
-
+[[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]
 COPY
 
 This is an infinite loop, producing undefined behavior once `i` wraps around. There are two issues here. If `myArray` is empty, i.e. `size()` returns 0 (which is possible with `std::array`), `myArray.size() - 1` wraps around. The other issue occurs no matter how many elements there are. `i >= 0` is always true, because unsigned integers cannot be less than 0.
@@ -396,7 +375,7 @@ COPY
 
 Suddenly we decrement the index in the condition, and we use the postfix `--` operator. The condition runs before every iteration, including the first. In the first iteration, `i`is `myArray.size() - 1`, because `i` was decremented in the condition. When `i` is 0 and about to wrap around, the condition is no longer `true` and the loop stops. `i`actually wraps around when we do `i--` for the last time, but it’s not used afterwards.
 
-Array of struct [](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdarray/#struct)
+## 结构体数组
 
 Of course `std::array` isn’t limited to numbers as elements. Every type that can be used in a regular array can be used in a `std::array`. For example, we can have a `std::array` of struct:
 
@@ -434,9 +413,11 @@ COPY
 
 The above outputs the following:
 
+```
 House number 13 has 120 rooms
 House number 14 has 30 rooms
 House number 15 has 120 rooms
+```
 
 However, things get a little weird when we try to initialize an array whose element type requires a list of values (such as a `std::array` of struct). You might try to initialize such a `std::array` like this:
 
@@ -483,10 +464,10 @@ std::array<House, 3> houses { // initializer for houses
 
 COPY
 
-Note the extra set of braces that are required (to begin initialization of the C-style array member inside the std::array struct). Within those braces, we can then initialize each element individually, each inside its own set of braces.
+Note the extra set of braces that are required (to begin initialization of the C-style array member inside the `std::array` struct). Within those braces, we can then initialize each element individually, each inside its own set of braces.
 
 This is why you’ll see `std::array` initializers with an extra set of braces when the element type requires a list of values.
 
-Summary
+## 小结
 
 `std::array` is a great replacement for built-in fixed arrays. It’s efficient, in that it doesn’t use any more memory than built-in fixed arrays. The only real downside of a `std::array` over a built-in fixed array is a slightly more awkward syntax, that you have to explicitly specify the array length (the compiler won’t calculate it for you from the initializer, unless you also omit the type, which isn’t always possible), and the signed/unsigned issues with size and indexing. But those are comparatively minor quibbles — we recommend using `std::array` over built-in fixed arrays for any non-trivial array use.

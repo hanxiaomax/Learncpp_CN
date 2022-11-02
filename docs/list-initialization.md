@@ -9,4 +9,9 @@ tags:
 - initialization
 ---
 
-和[[uniform-initialization|统一初始化]]、[[括号初始化]] 是一回事
+和[[uniform-initialization|统一初始化]]、[[括号初始化]] 是一回事。区别于[[initializer-list|初始化值列表]]
+
+```cpp
+std::array<int, 5> myArray = { 9, 7, 5, 3, 1 }; // 初始化值列表
+std::array<int, 5> myArray2 { 9, 7, 5, 3, 1 }; // 列表初始化
+```
