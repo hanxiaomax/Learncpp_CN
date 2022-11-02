@@ -426,7 +426,7 @@ int main()
 int *
 ```
 
-如果是gcc，则会打印“pi” (指向int的指针——pointer to int)。因为 `typeid().name()` 的结果取决于编译器，所以它的打印结果可能是不同的，不过意思是一样的。
+如果是gcc，则会打印“pi” (指向int的指针——pointer to int)。因为 `typeid().name()` 的结果取决于编译器（[[typeid|typeid 运算符]]），所以它的打印结果可能是不同的，不过意思是一样的。
 
 ## 指针的大小
 

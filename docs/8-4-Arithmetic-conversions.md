@@ -16,7 +16,7 @@ tags:
 	- 算术转换规则
 		- 如果至少有一个操作数在优先级列表中，则具有较低优先级的操作数会被转换为具有较高优先级的操作数；
 		- 否则 (两个操作数的类型均不在表中)，则两个操作数会进行[[numeric promotions|数值提升]](参见：[[8-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]])。
-	- 使用 `typeid` 运算符 (在 `<typeinfo>` 头文件中)，来显示表达式结果所属的类型。
+	- 使用 [[typeid|typeid 运算符]] (在 `<typeinfo>` 头文件中)，来显示表达式结果所属的类型。
 	- **无符号整型**被用在算术表达式中的时候，由于优先级比**整型**高，会导致整型被转换为无符号整型，如果是符号可能出现反转。这就是为什么不要使用无符号整型的原因
 
 在[[5-1-Operator-precedence-and-associativity|5.1 - 运算符优先级和结合律]]中我们讨论过，表达式是如何基于优先级和结合律进行运算的。
@@ -100,6 +100,14 @@ double 5.5
 ```
 
 注意，你的编译器可能会产生稍微不同的结果，因为 `typeid.name()` 输出的结果是由编译器决定的。
+
+!!! info "译者注"
+
+	在g++上使用[[typeid|typeid 运算符]]，输出的结果为[修饰名](https://en.wikipedia.org/wiki/Name_mangling)，可以使用
+	```bash
+	a.out | c++filt --types
+	```
+	得到可读的结果。[参考](https://stackoverflow.com/questions/4465872/why-does-typeid-name-return-weird-characters-using-gcc-and-how-to-make-it-prin)
 
 现在，将两个`short`类型的值相加：
 

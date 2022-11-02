@@ -346,12 +346,11 @@ int main()
     return 0;
 }
 ```
-[[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]
-COPY
 
-This is an infinite loop, producing undefined behavior once `i` wraps around. There are two issues here. If `myArray` is empty, i.e. `size()` returns 0 (which is possible with `std::array`), `myArray.size() - 1` wraps around. The other issue occurs no matter how many elements there are. `i >= 0` is always true, because unsigned integers cannot be less than 0.
 
-A working reverse for-loop for unsigned integers takes an odd shape:
+上面的代码会得到一个死循环，当`i`反转的时候，会导致[[undefined-behavior|未定义行为]]。这里实际上存在两个问题，如果`myArray` 是空的，则 `size()`会返回 0 (对于 `std::array` 来说是可以的)，此时 `myArray.size() - 1` 就会反转。另外一个问题在于，不论数组中有多少元素，`i >= 0` 总是为 `true`，因为无符号整型就不可能小于0。
+
+可行的反向for循环应该像下面这样：
 
 ```cpp
 #include <array>
@@ -371,7 +370,7 @@ int main()
 }
 ```
 
-COPY
+我们在条件语句中，使用前缀`--`对``
 
 Suddenly we decrement the index in the condition, and we use the postfix `--` operator. The condition runs before every iteration, including the first. In the first iteration, `i`is `myArray.size() - 1`, because `i` was decremented in the condition. When `i` is 0 and about to wrap around, the condition is no longer `true` and the loop stops. `i`actually wraps around when we do `i--` for the last time, but it’s not used afterwards.
 

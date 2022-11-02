@@ -5,12 +5,28 @@
       "path": "docs/11-16-An-introduction-to-std-array.md"
     },
     {
-      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
-      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "typeid",
+      "path": "docs/typeid.md"
+    },
+    {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "8-4-Arithmetic-conversions",
+      "path": "docs/8-4-Arithmetic-conversions.md"
+    },
+    {
+      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
+      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
+      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
     },
     {
       "basename": "range-based-for-loops",
@@ -183,22 +199,6 @@
     {
       "basename": "9-10-Pass-by-address-part-2",
       "path": "docs/9-10-Pass-by-address-part-2.md"
-    },
-    {
-      "basename": "9-9-Pass-by-address",
-      "path": "docs/9-9-Pass-by-address.md"
-    },
-    {
-      "basename": "9-8-Pointers-and-const",
-      "path": "docs/9-8-Pointers-and-const.md"
-    },
-    {
-      "basename": "const-pointer",
-      "path": "docs/const-pointer.md"
-    },
-    {
-      "basename": "9-1-Introduction-to-compound-data-types",
-      "path": "docs/9-1-Introduction-to-compound-data-types.md"
     }
   ],
   "omittedPaths": [],
