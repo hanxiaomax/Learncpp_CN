@@ -158,6 +158,7 @@
   "active": "6859162fb23c8deb",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/11-17-An-introduction-to-std-vector.md",
     "docs/11-16-An-introduction-to-std-array.md",
     "docs/typeid.md",
     "docs/9-6-Introduction-to-pointers.md",
@@ -165,7 +166,6 @@
     "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md",
     "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md",
     "docs/range-based-for-loops.md",
-    "docs/11-17-An-introduction-to-std-vector.md",
     "docs/list-initialization.md"
   ]
 }

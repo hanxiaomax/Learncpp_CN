@@ -1,6 +1,6 @@
 ---
-title: 11.17 — std::vector 简介
-alias: 11.17 — std::vector 简介
+title: 11.17 — 动态数组 std::vector 简介
+alias: 11.17 — 动态数组 std::vector 简介
 origin: /an-introduction-to-stdvector/
 origin_title: "11.17 — An introduction to std::vector"
 time: 2022-4-8
@@ -13,15 +13,15 @@ tags:
 	
 
 
-In the previous lesson, we introduced `std::array`, which provides the functionality of C++’s built-in fixed arrays in a safer and more usable form.
+在之前的课程中我们介绍了`std::array`，它提供了C++内建固定数组相同的功能，但是更安全也更好用。
 
-Analogously, the C++ standard library provides functionality that makes working with dynamic arrays safer and easier. This functionality is named `std::vector`.
+类似地，C++ 标准库也提供了相应的功能，使得使用动态数组可以更加安全和易用。这个功能就是 `std::vector`。
 
-Unlike `std::array`, which closely follows the basic functionality of fixed arrays, `std::vector` comes with some additional tricks up its sleeves. These help make `std::vector` one of the most useful and versatile tools to have in your C++ toolkit.
+不同于`std::array`尽可能仿照固定数组的功能，`std::vector` 则提供了很多数组的额外功能，因此 `std::vector` 也成为了C++中最有用的工具之一。
 
 ## `std::vector` 简介
 
-Introduced in C++03, `std::vector` provides dynamic array functionality that handles its own memory management. This means you can create arrays that have their length set at run-time, without having to explicitly allocate and deallocate memory using `new` and `delete`. `std::vector` lives in the `<vector>` header.
+`std::vector` 在C++03中被引入，它提供了[[动态数组]]的功能并且可以自我管理内存的申请和释放。也就是说，你可以在[[runtime|运行时]]创建数组并指定其长度，而不需要使用`new`和`delete`来手动管理内存的申请释放。`std::vector` 位于 `<vector>` 头文件中。
 
 Declaring a `std::vector` is simple:
 
