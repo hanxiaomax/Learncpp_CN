@@ -14,7 +14,7 @@ tags:
 
 
 
-Iterating through an array (or other structure) of data is quite a common thing to do in programming. And so far, we’ve covered many different ways to do so: with loops and an index (`for-loops` and `while loops`), with pointers and pointer arithmetic, and with `range-based for-loops`:
+数组（或其他数据结构）的遍历是编程中一项常见的任务。到目前为止，我们已经ji through an array (or other structure) of data is quite a common thing to do in programming. And so far, we’ve covered many different ways to do so: with loops and an index (`for-loops` and `while loops`), with pointers and pointer arithmetic, and with `range-based for-loops`:
 
 ```cpp
 #include <array>
