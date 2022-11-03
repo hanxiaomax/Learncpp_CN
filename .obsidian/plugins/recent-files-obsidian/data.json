@@ -9,12 +9,12 @@
       "path": "docs/MOC.md"
     },
     {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
-    },
-    {
       "basename": "11-16-An-introduction-to-std-array",
       "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
     },
     {
       "basename": "typeid",

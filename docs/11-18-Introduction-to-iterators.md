@@ -14,7 +14,7 @@ tags:
 
 
 
-数组（或其他数据结构）的遍历是编程中一项常见的任务。到目前为止，我们已经ji through an array (or other structure) of data is quite a common thing to do in programming. And so far, we’ve covered many different ways to do so: with loops and an index (`for-loops` and `while loops`), with pointers and pointer arithmetic, and with `range-based for-loops`:
+数组（或其他数据结构）的遍历是编程中一项常见的任务。到目前为止，我们已经介绍过多种遍历方法：使用循环和索引(`for-loops` 和 `while loops`)，使用指针和指针运算，使用[[range-based-for-loops|基于范围的for循环]]：
 
 ```cpp
 #include <array>
@@ -62,35 +62,34 @@ int main()
 }
 ```
 
-COPY
 
-Warning
+!!! warning "注意"
 
-The examples in this lesson use a C++17 feature called `class template argument deduction` to deduce the template arguments for a template variable from its initializer. In the example above, when the compiler sees `std::array data{ 0, 1, 2, 3, 4, 5, 6 };`, it will deduce that we want `std::array<int, 7> data { 0, 1, 2, 3, 4, 5, 6 };`.
+	注意，本节课的例子使用了C++17的特性：[[class-template-argument-deduction|类模板实参推断]]。即通过变量的初始化值推断模板实参。在上面的例子中，当编译器看到 `std::array data{ 0, 1, 2, 3, 4, 5, 6 };`时，它会推断出我们希望使用 `std::array<int, 7> data { 0, 1, 2, 3, 4, 5, 6 };`。
 
-If your compiler is not C++17 enabled, you’ll get an error that says something like, “missing template arguments before ‘data’”. In that case, your best bet is to enable C++17, as per lesson [0.12 -- Configuring your compiler: Choosing a language standard](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/). If you can not, you can replace the lines that use class template argument deduction with lines that have explicit template arguments (e.g. replace `std::array data{ 0, 1, 2, 3, 4, 5, 6 };` with `std::array<int, 7> data { 0, 1, 2, 3, 4, 5, 6 };`
+	如果你的编译器不支持C++17，你会得到这样的编译错误：“missing template arguments before ‘data’”。此时你最好按照[0.12 -- Configuring your compiler: Choosing a language standard](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/)介绍的方法打开C++17支持。如果实在不行，你可以将这一行替换为显式的声明(e.g. replace `std::array data{ 0, 1, 2, 3, 4, 5, 6 };` with `std::array<int, 7> data { 0, 1, 2, 3, 4, 5, 6 };`
 
-Looping using indexes is more typing than needed if we only use the index to access elements. It also only works if the container (e.g. the array) provides direct access to elements (which arrays do, but some other types of containers, such as lists, do not).
+如果我们只需要通过索引获取元素的话（而不需要使用索引），那么使用基于索引的遍历需要很多不必要的键盘输入。而且，该方法也仅仅适用于支持元素直接访问的容器（数组支持，但是其他类型的容器例如链表就不支持）。
 
-Looping with pointers and pointer arithmetic is verbose, and can be confusing to readers who don’t know the rules of pointer arithmetic. Pointer arithmetic also only works if elements are consecutive in memory (which is true for arrays, but not true for other types of containers, such as lists, trees, and maps).
+使用指针遍历更是啰嗦，而且对于不了解指针运算规则的人来说，可读性非常差。指针遍历也只适用于元素在内存中连续存在的情况（数组是这样的，但是其他类型的容器可不是，例如链表、树和映射）。
 
-For advanced readers
+!!! info "扩展阅读"
 
-Pointers (without pointer arithmetic) can also be used to iterate through some non-sequential structures. In a linked list, each element is connected to the prior element by a pointer. We can iterate through the list by following the chain of pointers.
+	指针(在不使用指针运算时)也可以用于遍历一些非顺序型数据结构。在一个链表中，每个元素都通过指针指向下一个元素。因此我们可以沿着指针链遍历各个元素。
 
-Range-based for-loops are a little more interesting, as the mechanism for iterating through our container is hidden -- and yet, they still work for all kinds of different structures (arrays, lists, trees, maps, etc…). How do these work? They use iterators.
+[[range-based-for-loops|基于范围的for循环]]就有意思了，它遍历容器的具体机制隐藏于幕后——而且，它可以用于各种不同类型的数据结构（数组、链表、树、映射等）。它的原理是什么呢？它使用了迭代器。
 
-Iterators
+## 迭代器
 
-An iterator is an object designed to traverse through a container (e.g. the values in an array, or the characters in a string), providing access to each element along the way.
+[[iterator|迭代器]]是一个用于遍历容器（例如数组中的值或字符串中的字符）的对象，它在移动的过程中提供了对每个元素访问的能力。
 
-A container may provide different kinds of iterators. For example, an array container might offer a forwards iterator that walks through the array in forward order, and a reverse iterator that walks through the array in reverse order.
+容器可以提供不同类型的迭代器。例如，数组容器会提供向前遍历整个数组的前向迭代器和用于逆序遍历数组的逆序迭代器。
 
-Once the appropriate type of iterator is created, the programmer can then use the interface provided by the iterator to traverse and access elements without having to worry about what kind of traversal is being done or how the data is being stored in the container. And because C++ iterators typically use the same interface for traversal (operator++ to move to the next element) and access (operator* to access the current element), we can iterate through a wide variety of different container types using a consistent method.
+一旦创建了合适的迭代器，程序员就可以使用该迭代器提供的接口来遍历和访问容器中的元素，而不需要操心具体的遍历是如何实现的，也不需要操心容器中的数据是如何存储的。同时，因为C++中的迭代器通常提供了相同的接口用于遍历（`++`操作符用于移动到下一个元素）和访问（[[dereference-operator|解引用运算符]]用于访问元素），所以我们可以使用一致的客户端代码来遍历各种各样的容器。
 
-Pointers as an iterator
+## 指针作为迭代器
 
-The simplest kind of iterator is a pointer, which (using pointer arithmetic) works for data stored sequentially in memory. Let’s revisit a simple array traversal using a pointer and pointer arithmetic:
+其实，最简单的迭代器就是指针。指针（使用指针运算）可以用于遍历顺序存放在内存中的数据。接下来我们先复习yi'xiwhich (using pointer arithmetic) works for data stored sequentially in memory. Let’s revisit a simple array traversal using a pointer and pointer arithmetic:
 
 ```cpp
 #include <array>
