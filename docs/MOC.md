@@ -325,13 +325,13 @@
 
 
 ## 23. 输入输出
-- [[23.1 — Input and output (I/O) streams]]
-- [[23.2 — Input with istream]]
-- [[23.3 — Output with ostream and ios]]
-- [[23.4 — Stream classes for strings]]
-- [[23.5 — Stream states and input validation]]
-- [[23.6 — Basic file I/O]]
-- [[23.7 — Random file I/O]]
+- [[23-1-Input-and-output-IO-streams]]
+- [[23-2-Input-with-istream]]
+- [[23-3-output-with-ostream-and-ios]]
+- [[23-4-stream-classes-for-strings]]
+- [[23-5-stream-states-and-input-validation]]
+- [[23-6-basic-file-IO]]
+- [[23-7-random-file-IO]]
 
 
 ## A. 其他话题

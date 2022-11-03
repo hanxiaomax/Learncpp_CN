@@ -76,13 +76,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -143,15 +141,15 @@
   },
   "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/12-1-function-pointers.md",
+    "docs/23-1-Input-and-output-IO-streams.md",
     "docs/MOC.md",
-    "docs/11-19-Introduction-to-standard-library-algorithms.md",
-    "docs/11-18-Introduction-to-iterators.md",
-    "docs/range-based-for-loops.md",
-    "docs/11-16-An-introduction-to-std-array.md",
-    "docs/11-17-An-introduction-to-std-vector.md",
-    "docs/typeid.md",
-    "docs/9-6-Introduction-to-pointers.md",
-    "docs/8-4-Arithmetic-conversions.md"
+    "docs/23-7-random-file-IO.md",
+    "23.7 — Random file I/O.md",
+    "docs/23-6-basic-file-IO.md",
+    "23.6 — Basic file I/23-6-basic-file-IO.md",
+    "docs/23-5-stream-states-and-input-validation.md",
+    "docs/23-4-stream-classes-for-strings.md",
+    "docs/23-3-output-with-ostream-and-ios.md",
+    "docs/23-2-Input-with-istream.md"
   ]
 }
