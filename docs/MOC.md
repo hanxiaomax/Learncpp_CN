@@ -286,7 +286,7 @@
 - [[18-9-object-slicing|18.9 - 对象切片]]
 - [[18-10-dynamic-casting|18.10 - 动态类型转换]]
 - [[18-11-printing-inherited-classes-using-operator<<|18.11 - 使用<<运算符打印继承类]]
-- [[18-2-virtual-functions-and-polymorphism|18.x - 小结与测试 - 虚函数]]
+- [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试 - 虚函数]]
 
 ## 19. 模板和类
 - [[19-x-Chapter-19-comprehensive-quiz|19.x - 小结与测试 - 模板和类]]
@@ -311,7 +311,7 @@
 - [[21-1-the-standard-library|21.1 - 标准库]]
 - [[21-2-STL-containers-overview|21.2 - STL容器]]
 - [[21-3-STL-iterators-overview|21.3 - STL迭代器]]
-- [[21.4 — STL algorithms overview|21.4 - STL算法]]
+- [[21-4-STL-algorithms-overview|21.4 - STL算法]]
 
 ## 22. std 字符串
 

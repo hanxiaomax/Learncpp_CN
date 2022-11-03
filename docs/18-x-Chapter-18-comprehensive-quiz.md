@@ -14,7 +14,8 @@ tags:
 [[18-1-pointers-and-references-to-the-base-class-of-derived-objects|18.1 - 基类的指针和引用]]
 
 - C++ 允许你将基类类型的指针或引用指向派生类的对象。当我们需要编写代码使其能够配合从同一个基类继承的派生类工作时，这个特性非常有用；
-- 
+
+
 [[18-2-virtual-functions-and-polymorphism|18.2 - 虚函数和多态]]
 
 - 如果没有虚函数的帮助，指向派生类的基类指针和引用就只能访问基类的成员变量和基类中对应的函数；

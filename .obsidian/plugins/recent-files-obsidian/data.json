@@ -1,8 +1,100 @@
 {
   "recentFiles": [
     {
+      "basename": "21-4-STL-algorithms-overview",
+      "path": "docs/21-4-STL-algorithms-overview.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "21-3-STL-iterators-overview",
+      "path": "docs/21-3-STL-iterators-overview.md"
+    },
+    {
+      "basename": "21-2-STL-containers-overview",
+      "path": "docs/21-2-STL-containers-overview.md"
+    },
+    {
+      "basename": "21-1-the-standard-library",
+      "path": "docs/21-1-the-standard-library.md"
+    },
+    {
+      "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
+      "path": "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
+    },
+    {
+      "basename": "M-7-std-shared-ptr",
+      "path": "docs/M-7-std-shared-ptr.md"
+    },
+    {
+      "basename": "M-6-std-unique-ptr",
+      "path": "docs/M-6-std-unique-ptr.md"
+    },
+    {
+      "basename": "M-5-std-move-if-noexcept",
+      "path": "docs/M-5-std-move-if-noexcept.md"
+    },
+    {
+      "basename": "M-4-std-move",
+      "path": "docs/M-4-std-move.md"
+    },
+    {
+      "basename": "M-3-move-constructors-and-move-assignment",
+      "path": "docs/M-3-move-constructors-and-move-assignment.md"
+    },
+    {
+      "basename": "M-2-R-value-references",
+      "path": "docs/M-2-R-value-references.md"
+    },
+    {
+      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
+      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
+    },
+    {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "12-5-command-line-arguments",
+      "path": "docs/12-5-command-line-arguments.md"
+    },
+    {
+      "basename": "12-4-recursion",
+      "path": "docs/12-4-recursion.md"
+    },
+    {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
+    },
+    {
+      "basename": "12-2-the-stack-and-the-heap",
+      "path": "docs/12-2-the-stack-and-the-heap.md"
+    },
+    {
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
+      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
+    },
+    {
+      "basename": "18-x-Chapter-18-comprehensive-quiz",
+      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
+    },
+    {
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     },
     {
       "basename": "23-1-Input-and-output-IO-streams",
@@ -31,10 +123,6 @@
     {
       "basename": "23-2-Input-with-istream",
       "path": "docs/23-2-Input-with-istream.md"
-    },
-    {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
     },
     {
       "basename": "11-19-Introduction-to-standard-library-algorithms",
@@ -111,94 +199,6 @@
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
       "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "21-1-the-standard-library",
-      "path": "docs/21-1-the-standard-library.md"
-    },
-    {
-      "basename": "21.4 — STL algorithms overview",
-      "path": "docs/21.4 — STL algorithms overview.md"
-    },
-    {
-      "basename": "21-3-STL-iterators-overview",
-      "path": "docs/21-3-STL-iterators-overview.md"
-    },
-    {
-      "basename": "21-2-STL-containers-overview",
-      "path": "docs/21-2-STL-containers-overview.md"
-    },
-    {
-      "basename": "M-x-chapter-M-comprehensive-review",
-      "path": "docs/M-x-chapter-M-comprehensive-review.md"
-    },
-    {
-      "basename": "M-6-std-unique-ptr",
-      "path": "docs/M-6-std-unique-ptr.md"
-    },
-    {
-      "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
-      "path": "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
-    },
-    {
-      "basename": "M-7-std-shared-ptr",
-      "path": "docs/M-7-std-shared-ptr.md"
-    },
-    {
-      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
-      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
-    },
-    {
-      "basename": "M-4-std-move",
-      "path": "docs/M-4-std-move.md"
-    },
-    {
-      "basename": "exception-safety-issue",
-      "path": "docs/exception-safety-issue.md"
-    },
-    {
-      "basename": "member-access-operator",
-      "path": "docs/member-access-operator.md"
-    },
-    {
-      "basename": "dereference-operator",
-      "path": "docs/dereference-operator.md"
-    },
-    {
-      "basename": "M-5-std-move-if-noexcept",
-      "path": "docs/M-5-std-move-if-noexcept.md"
-    },
-    {
-      "basename": "M-3-move-constructors-and-move-assignment",
-      "path": "docs/M-3-move-constructors-and-move-assignment.md"
-    },
-    {
-      "basename": "copy-semantics",
-      "path": "docs/copy-semantics.md"
-    },
-    {
-      "basename": "move-assignment-operator",
-      "path": "docs/move-assignment-operator.md"
-    },
-    {
-      "basename": "M-2-R-value-references",
-      "path": "docs/M-2-R-value-references.md"
-    },
-    {
-      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
-      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
     }
   ],
   "omittedPaths": [],

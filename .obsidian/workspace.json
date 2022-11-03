@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "57fda9ead3ec4f1f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/21-4-STL-algorithms-overview.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/21-4-STL-algorithms-overview.md"
               }
             }
           },
@@ -117,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/21-4-STL-algorithms-overview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,17 +153,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "91708e7b42f222ab",
+  "active": "57fda9ead3ec4f1f",
   "lastOpenFiles": [
-    "docs/23-1-Input-and-output-IO-streams.md",
     "docs/MOC.md",
-    "docs/23-7-random-file-IO.md",
-    "23.7 — Random file I/O.md",
-    "docs/23-6-basic-file-IO.md",
-    "23.6 — Basic file I/23-6-basic-file-IO.md",
-    "docs/23-5-stream-states-and-input-validation.md",
-    "docs/23-4-stream-classes-for-strings.md",
-    "docs/23-3-output-with-ostream-and-ios.md",
-    "docs/23-2-Input-with-istream.md"
+    "docs/21-3-STL-iterators-overview.md",
+    "docs/21-2-STL-containers-overview.md",
+    "docs/21-1-the-standard-library.md",
+    "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md",
+    "docs/M-7-std-shared-ptr.md",
+    "docs/M-6-std-unique-ptr.md",
+    "docs/M-5-std-move-if-noexcept.md",
+    "docs/M-4-std-move.md",
+    "docs/M-3-move-constructors-and-move-assignment.md"
   ]
 }

@@ -217,6 +217,14 @@ nav:
       - "11-14-Void-pointers.md"
       - "11-x-Chapter-11-comprehensive-quiz.md"
     - 12. 函数: 
+      - "12-1-function-pointers.md"
+      - "12-2-the-stack-and-the-heap.md"
+      - "12-3-std-vector-capacity-and-stack-behavior.md"
+      - "12-4-recursion.md"
+      - "12-5-command-line-arguments.md"
+      - "12-6-Ellipsis-and-why-to-avoid-them.md"
+      - "12-7-introduction-to-lambdas-anonymous-functions.md"
+      - "12-8-lambda-captures.md"
       - "12-x-chapter-12-comprehensive-quiz.md"
     - 13. 面向对象编程基础: 
       - "13-1-welcome-to-object-oriented-programming.md"
@@ -294,9 +302,21 @@ nav:
       - "19-x-Chapter-19-comprehensive-quiz.md"
     - 20. 异常: 
       - "20-x-Chapter-20-comprehensive-quiz.md"
-    - 21. move和智能指针: 
+    - M. move和智能指针: 
+      - "M-1-introduction-to-smart-pointers-and-move-semantics.md"
+      - "M-2-R-value-references.md"
+      - "M-3-move-constructors-and-move-assignment.md"
+      - "M-4-std-move.md"
+      - "M-5-std-move-if-noexcept.md"
+      - "M-6-std-unique-ptr.md"
+      - "M-7-std-shared-ptr.md"
+      - "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
       - "M-x-chapter-M-comprehensive-review.md"
-    # - 22. STL: index.md
+    - 21. STL: 
+      - "21-1-the-standard-library.md"
+      - "21-2-STL-containers-overview.md"
+      - "21-3-STL-iterators-overview.md"
+      - "21-4-STL-algorithms-overview.md"
     # - 22. std字符串: index.md
     # - 23. 输入输出: index.md
     # - 24. 其他话题: index.md
