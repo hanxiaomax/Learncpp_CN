@@ -177,7 +177,7 @@
 - [[10-x-Chapter-10-comprehensive-quiz|10.x - 小结与测试 - 枚举和结构体]]
 - [[10-y-using-a-language-reference|10.y - 学会使用C++参考手册]]
 
-## 11. 数组，字符串和动态内存分配
+## 11. 数组，字符串和动态内存分配 ✅ 
 
 - [[11-1-Arrays-Part-I|11.1 - 数组（第一部分）]]
 - [[11-2-Arrays-Part-II|11.2 - 数组（第二部分）]]
@@ -197,10 +197,11 @@
 - [[11-16-An-introduction-to-std-array|11.16 — 固定数组 std::array 简介]]
 - [[11-17-An-introduction-to-std-vector|11.17 — 动态数组 std::vector 简介]]
 - [[11-18-Introduction-to-iterators|11.18 — 迭代器简介]]
-- [[11-19-Introduction-to-standard-library-algorithms]]
+- [[11-19-Introduction-to-standard-library-algorithms|11.19 — 标准库算法简介]]
 - [[11-x-Chapter-11-comprehensive-quiz|11.x - 小结与测试 - 数组、字符串和动态分配]]
 
 ## 12. 函数 
+
 - [[12-1-function-pointers|12.1 - 函数指针]]
 - [[12-2-the-stack-and-the-heap|12.2 - 栈和堆]]
 - [[12-3-std-vector-capacity-and-stack-behavior|12.3 - std::vector的容量和类栈行为]]
@@ -293,7 +294,7 @@
 ## 20. 异常
 - [[20-x-Chapter-20-comprehensive-quiz|20.x - 小结与测试 - 异常]]
 
-## M. move 和智能指针
+## M. move 和智能指针 ✅ 
 
 - [[M-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]
 - [[M-2-R-value-references|M.2 - 右值引用]]

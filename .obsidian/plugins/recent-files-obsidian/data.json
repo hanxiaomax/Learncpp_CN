@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
       "basename": "11-18-Introduction-to-iterators",
       "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
+      "basename": "range-based-for-loops",
+      "path": "docs/range-based-for-loops.md"
     },
     {
       "basename": "11-16-An-introduction-to-std-array",
@@ -35,10 +47,6 @@
     {
       "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
       "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
-      "basename": "range-based-for-loops",
-      "path": "docs/range-based-for-loops.md"
     },
     {
       "basename": "list-initialization",
@@ -157,10 +165,6 @@
       "path": "docs/M-2-R-value-references.md"
     },
     {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
       "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "9-11-Return-by-reference-and-return-by-address",
       "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
-    },
-    {
-      "basename": "9-10-Pass-by-address-part-2",
-      "path": "docs/9-10-Pass-by-address-part-2.md"
     }
   ],
   "omittedPaths": [],

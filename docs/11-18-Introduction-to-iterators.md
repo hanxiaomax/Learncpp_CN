@@ -89,7 +89,7 @@ int main()
 
 ## 指针作为迭代器
 
-其实，最简单的迭代器就是指针。指针（使用指针运算）可以用于遍历顺序存放在内存中的数据。接下来我们先复习yi'xiwhich (using pointer arithmetic) works for data stored sequentially in memory. Let’s revisit a simple array traversal using a pointer and pointer arithmetic:
+其实，最简单的迭代器就是指针。指针（使用指针运算）可以用于遍历顺序存放在内存中的数据。接下来我们先复习一下指针和[[指针运算]]：
 
 ```cpp
 #include <array>
@@ -114,39 +114,36 @@ int main()
 }
 ```
 
-COPY
+输出：
 
-Output:
-
+```
 0 1 2 3 4 5 6
-
-In the above, we defined two variables: `begin` (which points to the beginning of our container), and `end` (which marks an end point). For arrays, the end marker is typically the place in memory where the last element would be if the container contained one more element.
-
-The pointer then iterates between `begin` and `end`, and the current element can be accessed by indirection through the pointer.
-
-Warning
-
-You might be tempted to calculate the end marker using the address-of operator and array syntax like so:
-
-```cpp
-int* end{ &data[std::size(data)] };
 ```
 
-COPY
+在上面的例子中我们定义了两个变量：`begin` (指向容器中的第一个元素)和`end` (标记为结束点)。对于数组中来说，我们通常假定数组多包含一个元素，而结束标记应设置为该最后一个元素。
 
-But this causes undefined behavior, because `data[std::size(data)]` accesses an element that is off the end of the array.
+然后，指针从 `begin` 遍历到 `end`，而且所处位置的元素可以通过指针访问。
 
-Instead, use:
+!!! warning "注意"
 
-```cpp
-int* end{ data.data() + std::size(data) }; // data() returns a pointer to the first element
-```
+	你可能会尝试使用取地址和数组语法，像下面这样获取结束标记：
+	```cpp
+	int* end{ &data[std::size(data)] };
+	```
+	
+	这么做会导致[[undefined-behavior|未定义行为]]，因为对于下标来说，`data[std::size(data)]`所访问的元素已经越界了。
+	
+	应该这么做
+	
+	```cpp
+	int* end{ data.data() + std::size(data) }; // data() 会返回第一个元素
+	```
 
-COPY
 
-Standard library iterators
 
-Iterating is such a common operation that all standard library containers offer direct support for iteration. Instead of calculating our own begin and end points, we can simply ask the container for the begin and end points via functions conveniently named `begin()` and `end()`:
+## 标准库迭代器
+
+遍历是如此的普遍，所以标准库中所有的容器都支持迭代。而且不需要使用指针并计算起止点的位置，而是可以函数 `begin()` 和 `end()` 直接获取迭代器：
 
 ```cpp
 #include <array>
@@ -156,13 +153,13 @@ int main()
 {
     std::array array{ 1, 2, 3 };
 
-    // Ask our array for the begin and end points (via the begin and end member functions).
+    // 通过begin和end函数直接获取起止点
     auto begin{ array.begin() };
     auto end{ array.end() };
 
-    for (auto p{ begin }; p != end; ++p) // ++ to move to next element.
+    for (auto p{ begin }; p != end; ++p) // ++ 移动到下一个元素
     {
-        std::cout << *p << ' '; // Indirection to get value of current element.
+        std::cout << *p << ' '; // 间接访问当前元素
     }
     std::cout << '\n';
 
@@ -170,13 +167,14 @@ int main()
 }
 ```
 
-COPY
+输出结果：
 
-This prints:
-
+```
 1 2 3
+```
 
-The `iterator` header also contains two generic functions (`std::begin` and `std::end`) that can be used:
+ 
+`iterator` 头文件还包含了两个泛型函数 `std::begin` 和 `std::end` ，可以用于获取迭代器：
 
 ```cpp
 #include <array>
@@ -201,17 +199,18 @@ int main()
 }
 ```
 
-COPY
+输出结果一样：
 
-This also prints:
-
+```
 1 2 3
+```
 
-Don’t worry about the types of the iterators for now, we’ll re-visit iterators in a later chapter. The important thing is that the iterator takes care of the details of iterating through the container. All we need are four things: the begin point, the end point, operator++ to move the iterator to the next element (or the end), and operator* to get the value of the current element.
+现在不要担心迭代器的类型，我们将在后面的章节中再次介绍迭代器。重要的是，迭代器负责处理遍历容器所需的各项细节。我们只需要四个东西：起点、终点、将迭代器移动到下一个元素(或结束)的操作符++和获取当前元素值的操作符*。
 
-Back to range-based for loops
 
-All types that have both `begin()` and `end()` member functions, or that can be used with `std::begin()` and `std::end()`, are usable in range-based for-loops.
+## 基于范围的for循环
+
+==所有具有`begin()` 和 `end()` 成员函数的类型，或者可以配合`std::begin()` 和 `std::end()` 使用的类型，都可以用于[[range-based-for-loops|基于范围的for循环]]。==
 
 ```cpp
 #include <array>
@@ -232,21 +231,23 @@ int main()
 }
 ```
 
-COPY
 
-Behind the scenes, the range-based for-loop calls `begin()` and `end()` of the type to iterate over. `std::array` has `begin` and `end` member functions, so we can use it in a range-based loop. C-style fixed arrays can be used with `std::begin` and `std::end` functions, so we can loop through them with a range-based loop as well. Dynamic arrays don’t work though, because there is no `std::end` function for them (because the type information doesn’t contain the array’s length).
+实际上，基于范围的for循环会在背地里调用被遍历类型的 `begin()` 和 `end()` 。`std::array` 是具有 `begin` 和 `end` 成员函数的，所以它可以被用于基于范围的循环。C语言风格的固定数组，也可以通过 `std::begin` 和 `std::end` 来获取起止点，所以它也可以被用于基于范围的for循环。动态数组就不好使了，因为`std::end` 函数对它无效（类型信息不包含数组长度）。
 
-You’ll learn how to add functions to your types later, so that they can be used with range-based for-loops too.
+稍后你将学习如何向类型中添加函数，以便它们也可以被用于基于范围的for循环。
 
-Range-based for-loops aren’t the only thing that makes use of iterators. They’re also used in `std::sort` and other algorithms. Now that you know what they are, you’ll notice they’re used quite a bit in the standard library.
+基于范围的for循环并不是唯一使用迭代器的地方。迭代器也用在`std::sort` 和其他算法中。在了解迭代器之后你会发现，标准库中大量地使用了迭代器。
 
-Iterator invalidation (dangling iterators)
+## 无效迭代器（悬垂迭代器）
 
 Much like pointers and references, iterators can be left “dangling” if the elements being iterated over change address or are destroyed. When this happens, we say the iterator has been invalidated. Accessing an invalidated iterator produces undefined behavior.
 
-Some operations that modify containers (such as adding an element to a `std::vector`) can have the side effect of causing the elements in the container to change addresses. When this happens, existing iterators to those elements will be invalidated. Good C++ reference documentation should note which container operations may or will invalidate iterators. As an example, see the [“Iterator invalidation” section of `std::vector` on cppreference](https://en.cppreference.com/w/cpp/container/vector#Iterator_invalidation).
+就像指针和引用一样，如果迭代器的元素地址被修改或本身被销毁时，迭代器可能会处于[[dangling|悬垂]]状态。当发生这种情况时，我们说迭代器已失效。访问无效的迭代器会产生[[undefined-behavior|未定义行为]]。
 
-Here’s an example of this:
+
+一些修改容器的操作(例如向`std::vector` 中添加一个元素)可能会导致容器中的元素地址改变。当这种情况发生时，指向这些元素的现有迭代器将失效。好的C++参考文档应该说明哪些容器操作可能或将使迭代器失效。[“Iterator invalidation” section of `std::vector` on cppreference](https://en.cppreference.com/w/cpp/container/vector#Iterator_invalidation) 可以作为一个具体的例子。
+
+失效的例子如下：
 
 ```cpp
 #include <iostream>
@@ -258,16 +259,16 @@ int main()
 
 	auto it{ v.begin() };
 
-	++it; // move to second element
-	std::cout << *it << '\n'; // ok: prints 2
+	++it; // 移动到第二个元素
+	std::cout << *it << '\n'; // ok: 打印2
 
-	v.erase(it); // erase the element currently being iterated over
+	v.erase(it); // erase 当前遍历到的元素
 
-	// erase() invalidates iterators to the erased element (and subsequent elements)
-	// so iterator "it" is now invalidated
+	// erase() 使得被指向被删除元素的迭代器失效
+	// 所以迭代器"it" 现在是无效的
 
-	++it; // undefined behavior
-	std::cout << *it << '\n'; // undefined behavior
+	++it; // 未定义行为
+	std::cout << *it << '\n'; // 未定义行为
 
 	return 0;
 }

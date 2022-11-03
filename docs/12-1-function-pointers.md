@@ -10,7 +10,7 @@ tags:
 ---
 
 
-In lesson [9.6 -- Introduction to pointers](https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/), you learned that a pointer is a variable that holds the address of another variable. Function pointers are similar, except that instead of pointing to variables, they point to functions!
+In lesson [[9-6-Introduction-to-pointers|9.6 - 指针简介]] you learned that a pointer is a variable that holds the address of another variable. Function pointers are similar, except that instead of pointing to variables, they point to functions!
 
 Consider the following function:
 
