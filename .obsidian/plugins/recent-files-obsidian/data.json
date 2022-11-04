@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
       "basename": "21-4-STL-algorithms-overview",
       "path": "docs/21-4-STL-algorithms-overview.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "value-container",
       "path": "docs/value-container.md"
-    },
-    {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

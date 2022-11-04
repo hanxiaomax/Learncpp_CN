@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/21-4-STL-algorithms-overview.md",
+                "file": "docs/12-x-chapter-12-comprehensive-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -110,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/21-4-STL-algorithms-overview.md"
+                "file": "docs/12-x-chapter-12-comprehensive-quiz.md"
               }
             }
           },
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/21-4-STL-algorithms-overview.md",
+                "file": "docs/12-x-chapter-12-comprehensive-quiz.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,15 +155,15 @@
   },
   "active": "57fda9ead3ec4f1f",
   "lastOpenFiles": [
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
+    "docs/21-4-STL-algorithms-overview.md",
     "docs/MOC.md",
     "docs/21-3-STL-iterators-overview.md",
     "docs/21-2-STL-containers-overview.md",
     "docs/21-1-the-standard-library.md",
     "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md",
     "docs/M-7-std-shared-ptr.md",
-    "docs/M-6-std-unique-ptr.md",
-    "docs/M-5-std-move-if-noexcept.md",
-    "docs/M-4-std-move.md",
-    "docs/M-3-move-constructors-and-move-assignment.md"
+    "docs/M-6-std-unique-ptr.md"
   ]
 }
