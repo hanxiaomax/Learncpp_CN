@@ -34,9 +34,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "69d5ea694f757834",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.0.3"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -150,10 +160,7 @@
     "width": 300,
     "collapsed": true
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "57fda9ead3ec4f1f",
+  "active": "69d5ea694f757834",
   "lastOpenFiles": [
     "docs/13-x-Chapter-13-comprehensive-quiz.md",
     "docs/12-x-chapter-12-comprehensive-quiz.md",
