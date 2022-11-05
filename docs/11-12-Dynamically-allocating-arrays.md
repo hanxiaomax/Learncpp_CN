@@ -14,7 +14,7 @@ tags:
 
 除了为单个变量动态分配内存，我们也可以为数组动态分配内存。固定数组的大小必须在编译时已知，而动态分配的数组则可以在运行时确定长度。
 
-为了分配动态数组，我们需要使用`new`和`delete`的数组形式( `new[]` 和 `delete[]`):
+为了分配动态数组，我们需要使用`new`和`delete`的数组形式( `new[]` 和 `delete[]`)：
 
 ```cpp
 #include <iostream>
@@ -25,23 +25,23 @@ int main()
     int length{};
     std::cin >> length;
 
-    int* array{ new int[length]{} }; // use array new.  Note that length does not need to be constant!
+    int* array{ new int[length]{} }; // 使用数组 new，注意这里的length不需要是常数！
 
     std::cout << "I just allocated an array of integers of length " << length << '\n';
 
-    array[0] = 5; // set element 0 to value 5
+    array[0] = 5; // 元素 0 赋值为 5
 
-    delete[] array; // use array delete to deallocate array
+    delete[] array; // 使用数组 delete 释放内存
 
-    // we don't need to set array to nullptr/0 here because it's going to go out of scope immediately after this anyway
+    // 此处不需要将 array 设置为 nullptr/0 因为它马上就会离开作用域被销毁
 
     return 0;
 }
 ```
 
-COPY
 
-Because we are allocating an array, C++ knows that it should use the array version of new instead of the scalar version of new. Essentially, the new[] operator is called, even though the [] isn’t placed next to the new keyword.
+
+Because we are allocating an array, C++ knows that it should use the array version of new instead of the scalar version of new. Essentially, the `new[]` operator is called, even though the `[]` isn’t placed next to the new keyword.
 
 The length of dynamically allocated arrays has to be a type that’s convertible to `std::size_t`. In practice, using an `int` length is fine, since `int` will convert to `std::size_t`.
 
@@ -55,11 +55,9 @@ I find this argument uncompelling for a number of reasons. First, it contradicts
 double* ptr { new double[5] };
 ```
 
-COPY
-
 `5` is an `int` literal, so we get an implicit conversion to `size_t`. Prior to C++23, there is no way to create a `size_t` literal without using `static_cast`! If the designers of C++ had intended us to strictly use `size_t` types here, they would have provided a way to create literals of type `size_t`.
 
-The most common counterargument is that some pedantic compiler might flag this as a signed/unsigned conversion error (since we always treat warnings as errors). However, it’s worth noting that GCC does not flag this as a signed/unsigned conversion error even when such warnings (-Wconversion) are enabled.
+The most common counterargument is that some pedantic compiler might flag this as a signed/unsigned conversion error (since we always treat warnings as errors). However, it’s worth noting that GCC does not flag this as a signed/unsigned conversion error even when such warnings (`-Wconversion`) are enabled.
 
 While there is nothing wrong with using `size_t` as the length of a dynamically allocated array, in this tutorial series, we will not be pedantic about requiring it.
 
@@ -67,17 +65,17 @@ Note that because this memory is allocated from a different place than the memor
 
 ## 动态地删除数组
 
-When deleting a dynamically allocated array, we have to use the array version of delete, which is delete[].
+When deleting a dynamically allocated array, we have to use the array version of delete, which is `delete[]`.
 
-This tells the CPU that it needs to clean up multiple variables instead of a single variable. One of the most common mistakes that new programmers make when dealing with dynamic memory allocation is to use delete instead of delete[] when deleting a dynamically allocated array. Using the scalar version of delete on an array will result in undefined behavior, such as data corruption, memory leaks, crashes, or other problems.
+This tells the CPU that it needs to clean up multiple variables instead of a single variable. One of the most common mistakes that new programmers make when dealing with dynamic memory allocation is to use delete instead of `delete[]` when deleting a dynamically allocated array. Using the scalar version of delete on an array will result in undefined behavior, such as data corruption, memory leaks, crashes, or other problems.
 
-One often asked question of array delete[] is, “How does array delete know how much memory to delete?” The answer is that array new[] keeps track of how much memory was allocated to a variable, so that array delete[] can delete the proper amount. Unfortunately, this size/length isn’t accessible to the programmer.
+One often asked question of array `delete[]` is, “How does array delete know how much memory to delete?” The answer is that array `new[]` keeps track of how much memory was allocated to a variable, so that array `delete[]` can delete the proper amount. Unfortunately, this size/length isn’t accessible to the programmer.
 
-Dynamic arrays are almost identical to fixed arrays
+## 动态数组和固定数组几乎是一样的
 
-In lesson [[11-8-Pointers-and-arrays|11.8 - 指针和数组]], you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via sizeof()), but otherwise there is little difference.
+In lesson [[11-8-Pointers-and-arrays|11.8 - 指针和数组]], you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via `sizeof()`), but otherwise there is little difference.
 
-A dynamic array starts its life as a pointer that points to the first element of the array. Consequently, it has the same limitations in that it doesn’t know its length or size. A dynamic array functions identically to a decayed fixed array, with the exception that the programmer is responsible for deallocating the dynamic array via the delete[] keyword.
+A dynamic array starts its life as a pointer that points to the first element of the array. Consequently, it has the same limitations in that it doesn’t know its length or size. A dynamic array functions identically to a decayed fixed array, with the exception that the programmer is responsible for deallocating the dynamic array via the `delete[]` keyword.
 
 ## 初始化动态分配的数组
 
@@ -115,7 +113,7 @@ auto* array{ new int[5]{ 9, 7, 5, 3, 1 } };
 
 COPY
 
-Note that this syntax has no operator= between the array length and the initializer list.
+Note that this syntax has no `operator=` between the array length and the initializer list.
 
 For consistency, fixed arrays can also be initialized using uniform initialization:
 
@@ -134,4 +132,4 @@ Dynamically allocating an array allows you to set the array length at the time o
 
 Consequently, we recommend avoiding doing this yourself.
 
-Fortunately, if you need this capability, C++ provides a resizable array as part of the standard library called std::vector. We’ll introduce std::vector shortly.
+Fortunately, if you need this capability, C++ provides a resizable array as part of the standard library called `std::vector`. We’ll introduce `std::vector` shortly.

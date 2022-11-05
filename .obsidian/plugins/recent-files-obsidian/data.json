@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "11-12-Dynamically-allocating-arrays",
-      "path": "docs/11-12-Dynamically-allocating-arrays.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "11-12-Dynamically-allocating-arrays",
+      "path": "docs/11-12-Dynamically-allocating-arrays.md"
     },
     {
       "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
@@ -35,10 +39,6 @@
     {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
       "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
     },
     {
       "basename": "stack",

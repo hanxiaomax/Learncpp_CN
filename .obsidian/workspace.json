@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "fcedec3650108d9d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/11-12-Dynamically-allocating-arrays.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-12-Dynamically-allocating-arrays.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -132,7 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-12-Dynamically-allocating-arrays.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +137,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "fcedec3650108d9d",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/11-13-For-each-loops.md",
     "docs/MOC.md",
+    "docs/11-12-Dynamically-allocating-arrays.md",
     "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
     "docs/memory-leak.md",
     "docs/heap.md",
     "docs/4-17-An introduction-to-std-string.md",
     "docs/11-16-An-introduction-to-std-array.md",
     "docs/11-14-Void-pointers.md",
-    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
-    "docs/11-13-For-each-loops.md",
-    "docs/11-12-Dynamically-allocating-arrays.md"
+    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
   ]
 }
