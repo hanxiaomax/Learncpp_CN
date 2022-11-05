@@ -20,17 +20,17 @@ tags:
 
 标准算法库提供的功能大体可以分为以下三类：
 
--   查验类（Inspectors）——用于查看（不修改）容器中的数据。包括搜索和统计。
--   Mutators -- Used to modify data in a container. Examples include sorting and shuffling.
--   Facilitators -- Used to generate a result based on values of the data members. Examples include objects that multiply values, or objects that determine what order pairs of elements should be sorted in.
+-   查验类（Inspectors）—— 用于查看（不修改）容器中的数据。包括搜索和统计。
+-   修改类（Mutators）—— 用于修改容器中的数据。例如排序和洗牌。
+-   辅助类（Facilitators）—— 用于基于数据生成结果。例如数值相乘或者确定元素对的排序顺序。
 
-These algorithms live in the [algorithms](https://en.cppreference.com/w/cpp/algorithm) library. In this lesson, we’ll explore some of the more common algorithms -- but there are many more, and we encourage you to read through the linked reference to see everything that’s available!
+这些算法都被定义在 [algorithms](https://en.cppreference.com/w/cpp/algorithm) 库中。在本节课中，我们会介绍其中最常用的一些算法——但是实际上该算法库提供的算法远远不止这些，强烈建议你点击链接去到参考手册，看看它的全部内容。
 
-Note: All of these make use of iterators, so if you’re not familiar with basic iterators, please review lesson [[11-18-Introduction-to-iterators|11.18 — 迭代器简介]]。
+注意：所有这些算法都使用了[[iterator|迭代器]]，如果你还不熟悉迭代器的话，再去学习一下[[11-18-Introduction-to-iterators|11.18 — 迭代器简介]]吧。
 
-## Using `std::find` to find an element by value 
+## 使用 `std::find` 查找特定值的元素
 
-[`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) searches for the first occurrence of a value in a container. `std::find` takes 3 parameters: an iterator to the starting element in the sequence, an iterator to the ending element in the sequence, and a value to search for. It returns an iterator pointing to the element (if it is found) or the end of the container (if the element is not found).
+[`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。arches for the first occurrence of a value in a container. `std::find` takes 3 parameters: an iterator to the starting element in the sequence, an iterator to the ending element in the sequence, and a value to search for. It returns an iterator pointing to the element (if it is found) or the end of the container (if the element is not found).
 
 For example:
 
