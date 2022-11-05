@@ -101,6 +101,9 @@
 /* starred suggestion item */
 .qsp-suggestion-starred {}
 
+/* indicates that an item represents a starred file */
+.qsp-starred-file {}
+
 /* symbol suggestion item */
 .qsp-suggestion-symbol {}
 
@@ -133,6 +136,12 @@
 
 /* flair icon for suggestion that represent a file currently opened in an editor */
 .qsp-editor-indicator {}
+
+/* flair icon for suggestions that represent a related file */
+.qsp-related-indicator {}
+
+/* flair icon for suggestions that represent a starred file */
+.qsp-starred-indicator {}
 
 /* headings level */
 .qsp-headings-l1 {}

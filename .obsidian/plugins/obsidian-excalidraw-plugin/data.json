@@ -37,6 +37,7 @@
   "forceWrap": false,
   "pageTransclusionCharLimit": 200,
   "wordWrappingDefault": 0,
+  "removeTransclusionQuoteSigns": true,
   "iframelyAllowed": true,
   "pngExportScale": 1,
   "exportWithTheme": true,
@@ -74,7 +75,7 @@
   "mdCSS": "",
   "scriptEngineSettings": {},
   "defaultTrayMode": false,
-  "previousRelease": "1.7.22",
+  "previousRelease": "1.7.27",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
   "mathjaxSourceURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-svg.js"

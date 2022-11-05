@@ -23,30 +23,20 @@
             }
           },
           {
-            "id": "57fda9ead3ec4f1f",
+            "id": "31b57bf7e3fc2879",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/12-x-chapter-12-comprehensive-quiz.md",
+                "file": "docs/11-19-Introduction-to-standard-library-algorithms.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
-          },
-          {
-            "id": "69d5ea694f757834",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.0.3"
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -104,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -120,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/12-x-chapter-12-comprehensive-quiz.md"
+                "file": "docs/11-19-Introduction-to-standard-library-algorithms.md"
               }
             }
           },
@@ -141,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/12-x-chapter-12-comprehensive-quiz.md",
+                "file": "docs/11-19-Introduction-to-standard-library-algorithms.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "69d5ea694f757834",
+  "active": "31b57bf7e3fc2879",
   "lastOpenFiles": [
-    "docs/13-x-Chapter-13-comprehensive-quiz.md",
-    "docs/12-x-chapter-12-comprehensive-quiz.md",
-    "docs/21-4-STL-algorithms-overview.md",
     "docs/MOC.md",
+    "docs/11-18-Introduction-to-iterators.md",
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
+    "docs/21-4-STL-algorithms-overview.md",
     "docs/21-3-STL-iterators-overview.md",
     "docs/21-2-STL-containers-overview.md",
     "docs/21-1-the-standard-library.md",
     "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md",
-    "docs/M-7-std-shared-ptr.md",
-    "docs/M-6-std-unique-ptr.md"
+    "docs/M-7-std-shared-ptr.md"
   ]
 }

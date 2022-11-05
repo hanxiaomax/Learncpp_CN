@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
       "basename": "12-x-chapter-12-comprehensive-quiz",
       "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     },
@@ -11,10 +23,6 @@
     {
       "basename": "21-4-STL-algorithms-overview",
       "path": "docs/21-4-STL-algorithms-overview.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "21-3-STL-iterators-overview",
@@ -131,14 +139,6 @@
     {
       "basename": "23-2-Input-with-istream",
       "path": "docs/23-2-Input-with-istream.md"
-    },
-    {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
       "basename": "range-based-for-loops",

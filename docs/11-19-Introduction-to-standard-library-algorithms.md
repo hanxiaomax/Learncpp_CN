@@ -14,13 +14,13 @@ tags:
 	
 
 
-New programmers typically spend a lot of time writing custom loops to perform relatively simple tasks, such as sorting or counting or searching arrays. These loops can be problematic, both in terms of how easy it is to make an error, and in terms of overall maintainability, as loops can be hard to understand.
+新手程序员可能会画上大量的时间来编写循环代码处理很多简单的任务，例如排序、计数或者是搜索数组。这些循环可能很容易带来问题，一方面本身编写数组循环就容易产生问题，另外一方面可维护性也很不好，因为循环代码通常比较难以理解。
 
-Because searching, counting, and sorting are such common operations to do, the C++ standard library comes with a bunch of functions to do these things in just a few lines of code. Additionally, these standard library functions come pre-tested, are efficient, work on a variety of different container types, and many support parallelization (the ability to devote multiple CPU threads to the same task in order to complete it faster).
+因为搜索、统计和排序是非常常见的操作，所以C++标准库为此提供了非常多的函数，以便你使用寥寥几句代码就可以完成这些任务。不仅如此，标准库的函数久经检验、高效、可以配合多种不同类型的容器使用，而且它们中多少都支持并行（使用多个CPU线程同时工作以便更快速的完成任务）。
 
-The functionality provided in the algorithms library generally fall into one of three categories:
+标准算法库提供的功能大体可以分为以下三类：
 
--   Inspectors -- Used to view (but not modify) data in a container. Examples include searching and counting.
+-   查验类（Inspectors）——用于查看（不修改）容器中的数据。包括搜索和统计。
 -   Mutators -- Used to modify data in a container. Examples include sorting and shuffling.
 -   Facilitators -- Used to generate a result based on values of the data members. Examples include objects that multiply values, or objects that determine what order pairs of elements should be sorted in.
 
