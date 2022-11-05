@@ -5,6 +5,10 @@
       "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
     },
     {
+      "basename": "callable-object",
+      "path": "docs/callable-object.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "reference-container",
       "path": "docs/reference-container.md"
-    },
-    {
-      "basename": "value-container",
-      "path": "docs/value-container.md"
     }
   ],
   "omittedPaths": [],

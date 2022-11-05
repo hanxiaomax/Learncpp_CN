@@ -11,7 +11,12 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- `<algorithms>`中提供了很多好用的算法，用于对容器进行查找、搜索和计数。
+	- [`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。
+	- [`std::find_if`](https://en.cppreference.com/w/cpp/algorithm/find)在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串）
+	- [`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
+
 
 
 新手程序员可能会画上大量的时间来编写循环代码处理很多简单的任务，例如排序、计数或者是搜索数组。这些循环可能很容易带来问题，一方面本身编写数组循环就容易产生问题，另外一方面可维护性也很不好，因为循环代码通常比较难以理解。
@@ -30,9 +35,9 @@ tags:
 
 ## 使用 `std::find` 查找特定值的元素
 
-[`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。arches for the first occurrence of a value in a container. `std::find` takes 3 parameters: an iterator to the starting element in the sequence, an iterator to the ending element in the sequence, and a value to search for. It returns an iterator pointing to the element (if it is found) or the end of the container (if the element is not found).
+[`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。
 
-For example:
+例如：
 
 ```cpp
 #include <algorithm>
@@ -48,22 +53,21 @@ int main()
     int replace{};
     std::cin >> search >> replace;
 
-    // Input validation omitted
+    // 忽略输入合法性检查
 
-    // std::find returns an iterator pointing to the found element (or the end of the container)
-    // we'll store it in a variable, using type inference to deduce the type of
-    // the iterator (since we don't care)
+    // std::find 返回指向找到元素的迭代器（或者是指向容器末尾）
+    // 我们将该元素存放到一个变量中，通过类型推断来获取迭代器的类型
     auto found{ std::find(arr.begin(), arr.end(), search) };
 
-    // Algorithms that don't find what they were looking for return the end iterator.
-    // We can access it by using the end() member function.
+    // 没有找到则返回指向末尾的迭代器
+    // 可以使用end()函数获取末尾并和迭代器进行比较
     if (found == arr.end())
     {
         std::cout << "Could not find " << search << '\n';
     }
     else
     {
-        // Override the found element.
+        // 替换
         *found = replace;
     }
 
@@ -78,15 +82,15 @@ int main()
 }
 ```
 
-COPY
 
-Sample run when the element is found
+元素存在的例子：
 
 ```
 Enter a value to search for and replace with: 5 234
 13 90 99 234 40 80
 ```
-Sample run when the element isn’t found
+
+元素不存在的例子：
 
 ```
 Enter a value to search for and replace with: 0 234
@@ -94,13 +98,14 @@ Could not find 0
 13 90 99 5 40 80
 ```
 
-## Using `std::find_if` to find an element that matches some condition
+## 使用 `std::find_if` 查找满足特定条件的元素
 
-Sometimes we want to see if there is a value in a container that matches some condition (e.g. a string that contains a specific substring) rather than an exact value. In such cases, `std::find_if` is perfect.
+有的时候我们需要在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串），而不是某个具体的值。在这种情况下，`std::find_if` 很好用。
 
-The `std::find_if` function works similarly to `std::find`, but instead of passing in a specific value to search for, we pass in a callable object, such as a function pointer (or a lambda, which we’ll cover later). For each element being iterated over, `std::find_if` will call this function (passing the element as an argument to the function), and the function can return `true` if a match is found, or `false` otherwise.
+`std::find_if` 函数的工作方式和`std::find`很类似，但是我们不需要传递一个具体的值，而是传递一个[[callable-object|可调用对象]]，例如函数指针（或者[[12-7-introduction-to-lambdas-anonymous-functions|lambda表达式]]）。
+当元素被依次遍历时，`std::find_if`会调用函数（通过实参传入的函数），而该函数会返回`true`或`false`。
 
-Here’s an example where we use `std::find_if` to check if any elements contain the substring “nut”:
+下面的例子中使用了 `std::find_if` 来查找包含`nut`子串的元素：
 
 ```cpp
 #include <algorithm>
@@ -137,21 +142,19 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出结果：
 
 ```
 Found walnut
 ```
 
-If you were to write the above example by hand, you’d need at least three loops (one to loop through the array, and two to match the substring). The standard library functions allow us to do the same thing in just a few lines of code!
+如果我们自己编写上面的示例，则至少需要三个循环(一个循环遍历数组，两个循环匹配子字符串)。标准库函数允许我们在短短几行代码中完成相同的事情！
 
-## Using `std::count` and `std::count_if` to count how many occurrences there are 
+## 使用 `std::count` 和 `std::count_if` 进行计数
 
-[`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) and `std::count_if` search for all occurrences of an element or an element fulfilling a condition.
+[`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
 
-In the following example, we’ll count how many elements contain the substring “nut”:
+在下面的例子中，我们统计有多少个元素包含"nut"子串：
 
 ```cpp
 #include <algorithm>
@@ -176,17 +179,15 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出结果：
 
 ```
 Counted 2 nut(s)
 ```
 
-## Using `std::sort` to custom sort 
+## 使用 `std::sort` 进行自定义排序
 
-We previously used [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) to sort an array in ascending order, but std::sort can do more than that. There’s a version of `std::sort` that takes a function as its third parameter that allows us to sort however we like. The function takes two parameters to compare, and returns true if the first argument should be ordered before the second. By default, `std::sort` sorts the elements in ascending order.
+我们曾使用 [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 对数组进行升序排序，但实际上 `std::sort` 还可以做很多事。一个版本的 `std::sort` 可以接受第三个参数hat takes a function as its third parameter that allows us to sort however we like. The function takes two parameters to compare, and returns true if the first argument should be ordered before the second. By default, `std::sort` sorts the elements in ascending order.
 
 Let’s use `std::sort` to sort an array in reverse order using a custom comparison function named `greater`:
 
@@ -219,9 +220,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出结果：
 
 ```
 99 90 80 40 13 5
@@ -365,9 +364,8 @@ Our `greater` function needs 2 arguments, but we’re not passing it any, so w
 	}
 	```
 	
-	COPY
 
-## Using std::for_each to do something to all elements of a container [](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/#std_for_each)
+## 使用 `std::for_each` 对容器中的每个元素进行操作
 
 [`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) takes a list as input and applies a custom function to every element. This is useful when we want to perform the same operation to every element in a list.
 
@@ -400,9 +398,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出结果：
 
 ```
 2 4 6 8
@@ -431,13 +427,12 @@ std::for_each(std::next(arr.begin()), arr.end(), doubleNumber);
 // Now arr is [1, 4, 6, 8]. The first element wasn't doubled.
 ```
 
-COPY
 
 This isn’t possible with a range-based for-loop.
 
 Like many algorithms, `std::for_each` can be parallelized to achieve faster processing, making it better suited for large projects and big data than a range-based for-loop.
 
-## Order of execution
+## 执行顺序
 
 Note that most of the algorithms in the algorithms library do not guarantee a particular order of execution. For such algorithms, take care to ensure any functions you pass in do not assume a particular ordering, as the order of invocation may not be the same on every compiler.
 
@@ -447,11 +442,11 @@ The following algorithms do guarantee sequential execution: `std::for_each`, `
 
 	Unless otherwise specified, do not assume that standard library algorithms will execute in a particular sequence. `std::for_each`, `std::copy`, `std::copy_backward`, `std::move`, and `std::move_backward` have sequential guarantees.
 
-## Ranges in C++20
+## C++20 中的范围
 
 Having to explicitly pass `arr.begin()` and `arr.end()` to every algorithm is a bit annoying. But fear not -- C++20 adds _ranges_, which allow us to simply pass `arr`. This will make our code even shorter and more readable.
 
-## Conclusion
+## 结论
 
 The algorithms library has a ton of useful functionality that can make your code simpler and more robust. We only cover a small subset in this lesson, but because most of these functions work very similarly, once you know how a few work, you can make use of most of them.
 
