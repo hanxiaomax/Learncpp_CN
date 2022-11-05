@@ -17,7 +17,7 @@ tags:
 	- [`std::find_if`](https://en.cppreference.com/w/cpp/algorithm/find)在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串）
 	- [`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
 	- [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 默认对数组进行升序排序，但是可以接受第三个参数，定义排序规则
-	- [`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) 接受一个列表作为输入，然后对列表中的每个元素应用一个自定义的函数
+	- [`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) 接受一个列表作为输入，然后对列表中的每个元素应用一个自定义的函数。支持并行处理。
 
 
 新手程序员可能会画上大量的时间来编写循环代码处理很多简单的任务，例如排序、计数或者是搜索数组。这些循环可能很容易带来问题，一方面本身编写数组循环就容易产生问题，另外一方面可维护性也很不好，因为循环代码通常比较难以理解。
@@ -418,38 +418,38 @@ for (auto& i : arr)
 ```
 
 
-使用 `std::for_each` 时，程序的 our intentions are clear. Call `doubleNumber` with each element of `arr`. In the range-based for-loop, we have to add a new variable, `i`. This leads to several mistakes that a programmer could do when they’re tired or not paying attention. For one, there could be an implicit conversion if we don’t use `auto`. We could forget the ampersand, and `doubleNumber` wouldn’t affect the array. We could accidentally pass a variable other than `i` to `doubleNumber`. These mistakes cannot happen with `std::for_each`.
+使用 `std::for_each` 时，程序的目的是非常清晰的——对`arr`中的每个元素调用 `doubleNumber`。 在for循环的例子中，我们必须添加一个新的变量`i`，在程序员疲惫或者分心的时候，这可能会带来一些问题。一方面，如果我们不使用auto的话，此处会发生[[implicit-type-conversion|隐式类型转换]]。我们也可能会忘记使用`&`，这样的话 `doubleNumber` 函数将无法修改数组元素。我们还可能会误将其他变量传递给 `doubleNumber`。而这些问题在使用 `std::for_each` 时都不会发生。
 
-Additionally, `std::for_each` can skip elements at the beginning or end of a container, for example to skip the first element of `arr`, [`std::next`](https://en.cppreference.com/w/cpp/iterator/next) can be used to advance begin to the next element.
+不仅如此，`std::for_each` 还可以跳过第一个元素，例如 [`std::next`](https://en.cppreference.com/w/cpp/iterator/next) 就可以实现该功能。
 
 ```cpp
 std::for_each(std::next(arr.begin()), arr.end(), doubleNumber);
 // Now arr is [1, 4, 6, 8]. The first element wasn't doubled.
 ```
 
+这在[[range-based-for-loops|基于范围的for循环]]中是无法实现的。
 
-This isn’t possible with a range-based for-loop.
+和很多算法一样，`std::for_each` 也可以通过并行的方式来加速处理，这在应对大型项目或大数据时效率要比[[range-based-for-loops|基于范围的for循环]]高得多。
 
-Like many algorithms, `std::for_each` can be parallelized to achieve faster processing, making it better suited for large projects and big data than a range-based for-loop.
 
 ## 执行顺序
 
-Note that most of the algorithms in the algorithms library do not guarantee a particular order of execution. For such algorithms, take care to ensure any functions you pass in do not assume a particular ordering, as the order of invocation may not be the same on every compiler.
+注意，算法库中的大多数算法都不保证特定的执行顺序。对于这样的算法，请注意确保传入的任何函数都不依赖某种顺序执行，因为其在每个编译器上调用的顺序可能不相同。
 
-The following algorithms do guarantee sequential execution: `std::for_each`, `std::copy`, `std::copy_backward`, `std::move`, and `std::move_backward`.
+下面这些函数是可以保证执行顺序的：`std::for_each`、`std::copy`、`std::copy_backward`、 `std::move` 和 `std::move_backward`。
 
 !!! success "最佳实践"
 
-	Unless otherwise specified, do not assume that standard library algorithms will execute in a particular sequence. `std::for_each`, `std::copy`, `std::copy_backward`, `std::move`, and `std::move_backward` have sequential guarantees.
+	除非有特殊说明，否则不要假设标准库中的算法具有特定的执行顺序。`std::for_each`, `std::copy`, `std::copy_backward`, `std::move`, and `std::move_backward` 是顺序执行的。
 
 ## C++20 中的范围
 
-Having to explicitly pass `arr.begin()` and `arr.end()` to every algorithm is a bit annoying. But fear not -- C++20 adds _ranges_, which allow us to simply pass `arr`. This will make our code even shorter and more readable.
+在使用算法时总是要传入 `arr.begin()` 和 `arr.end()` 其实挺烦人的。不过在C++20中，就不需要这样做了，直接使用`arr`即可。这无疑可以使代码更加简洁。
 
 ## 结论
 
-The algorithms library has a ton of useful functionality that can make your code simpler and more robust. We only cover a small subset in this lesson, but because most of these functions work very similarly, once you know how a few work, you can make use of most of them.
+算法库有大量有用的功能，可以使你的代码更简单、更健壮。在这一课中，我们只涉及一个很小的子集，但是因为这些函数中的大多数工作方式非常相似，一旦你知道了其中一些函数是如何工作的，你就可以使用它们中的大多数。
 
 !!! success "最佳实践"
 
-	Favor using functions from the algorithms library over writing your own functionality to do the same thing
+	建议使用算法库中的函数，而不是编写自己的函数来完成相同的任务
