@@ -1,12 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
+      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
+      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+    },
+    {
+      "basename": "stack",
+      "path": "docs/stack.md"
+    },
+    {
+      "basename": "dynamic-memory-allocation",
+      "path": "docs/dynamic-memory-allocation.md"
+    },
+    {
+      "basename": "automatic-memory-allocation",
+      "path": "docs/automatic-memory-allocation.md"
+    },
+    {
+      "basename": "static-memory-allocation",
+      "path": "docs/static-memory-allocation.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
+      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
+    },
+    {
+      "basename": "11-1-Arrays-Part-I",
+      "path": "docs/11-1-Arrays-Part-I.md"
+    },
+    {
+      "basename": "11-x-Chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
     },
     {
       "basename": "11-19-Introduction-to-standard-library-algorithms",
@@ -171,34 +199,6 @@
     {
       "basename": "9-6-Introduction-to-pointers",
       "path": "docs/9-6-Introduction-to-pointers.md"
-    },
-    {
-      "basename": "8-4-Arithmetic-conversions",
-      "path": "docs/8-4-Arithmetic-conversions.md"
-    },
-    {
-      "basename": "4-5-Unsigned-integers-and-why-to-avoid-them",
-      "path": "docs/4-5-Unsigned-integers-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
-      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
-    },
-    {
-      "basename": "16-2-composition",
-      "path": "docs/16-2-composition.md"
-    },
-    {
-      "basename": "16-1-object-relationships",
-      "path": "docs/16-1-object-relationships.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

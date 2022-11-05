@@ -19,39 +19,45 @@ tags:
 
 C++ 支持三种基本类型的内存分配 ，你应该已经见过其中的两种了：
 
--   **静态内存分配**发生在静态变量和全局变量创建时。当程序启动时，此类变量的内存会被分配并持续到程序结束，贯穿程序的整个生命周期
--   **自动内存分配** happens for function parameters and local variables. Memory for these types of variables is allocated when the relevant block is entered, and freed when the block is exited, as many times as necessary.
--   **动态内存分配** is the topic of this article.
+-   [[static-memory-allocation|静态内存分配]]发生在静态变量和全局变量创建时。当程序启动时，此类变量的内存会被分配并持续到程序结束，贯穿程序的整个生命周期；
+-   [[automatic-memory-allocation|自动内存分配]]发生在函数形参和局部变量创建时。这些变量的内存会在进入相应的语句块时被自动分配，而当语句块退出时则会自动释放；
+-   [[dynamic-memory-allocation|动态内存分配]]则是本节课要介绍的。
 
-Both static and automatic allocation have two things in common:
+静态内存分配和自动内存分配有两个共同点：
 
--   The size of the variable / array must be known at compile time.
--   Memory allocation and deallocation happens automatically (when the variable is instantiated / destroyed).
+-   变量和数组的大小必须在[[compile-time|编译时]]就已知；
+-   内存的分配和释放是自动进行的（在变量实例化和销毁时）。
 
-Most of the time, this is just fine. However, you will come across situations where one or both of these constraints cause problems, usually when dealing with external (user or file) input.
 
-For example, we may want to use a string to hold someone’s name, but we do not know how long their name is until they enter it. Or we may want to read in a number of records from disk, but we don’t know in advance how many records there are. Or we may be creating a game, with a variable number of monsters (that changes over time as some monsters die and new ones are spawned) trying to kill the player.
+大多数情况下，这是已经足够了。但是，有时候这两个特点会带来限制，通常是在处理外部(用户或文件)输入时。
 
-If we have to declare the size of everything at compile time, the best we can do is try to make a guess the maximum size of variables we’ll need and hope that’s enough:
+例如，我们可能想使用一个字符串来保存某人的名字，但在用户输入名字之前，我们并不知道名字有多长。或者我们可能想从磁盘读入一些记录，但事先不知道有多少记录。或者我们正在创造一款怪物数量动态变化的游戏(随着时间的推移，一些怪物会死亡，新怪物会出现)。
+
+如果必须在编译时就声明变量或数组的大小，那我们能做的就是尝试猜测需要的变量的大小的最大值并期望实际使用中该内存是足够的：
 
 ```cpp
-char name[25]; // let's hope their name is less than 25 chars!
-Record record[500]; // let's hope there are less than 500 records!
-Monster monster[40]; // 40 monsters maximum
-Polygon rendering[30000]; // this 3d rendering better not have more than 30,000 polygons!
+char name[25]; // 期望用户的姓名不超过25个字符
+Record record[500]; // 希望数据的记录数小于500条
+Monster monster[40]; // 最多 40 个怪物
+Polygon rendering[30000]; // 3d 渲染不超过3万个多边形
 ```
 
-COPY
+这种解决方案是很差劲的，原因有四条：
 
-This is a poor solution for at least four reasons:
+首先，如果没有实际使用变量，则会导致内存浪费。例如，如果我们为每个名称分配25个字符，但名称平均只有12个字符长，那么我们使用的是实际需要的两倍多。或者考虑一下上面的渲染数组:如果一个渲染只使用10000个多边形，那么我们就有价值20000个多边形的内存没有被使用!
 
 First, it leads to wasted memory if the variables aren’t actually used. For example, if we allocate 25 chars for every name, but names on average are only 12 chars long, we’re using over twice what we really need. Or consider the rendering array above: if a rendering only uses 10,000 polygons, we have 20,000 Polygons worth of memory not being used!
 
-Second, how do we tell which bits of memory are actually used? For strings, it’s easy: a string that starts with a \0 is clearly not being used. But what about monster[24]? Is it alive or dead right now? That necessitates having some way to tell active from inactive items, which adds complexity and can use up additional memory.
+第二，我们如何判断哪些内存位实际上被使用了?对于字符串，这很简单:以\0开头的字符串显然没有被使用。但是“monster[24]”呢?它现在是活的还是死的?这就需要某种方法来区分活动项目和非活动项目，这增加了复杂性，并可能会占用额外的内存。
 
-Third, most normal variables (including fixed arrays) are allocated in a portion of memory called the **stack**. The amount of stack memory for a program is generally quite small -- Visual Studio defaults the stack size to 1MB. If you exceed this number, stack overflow will result, and the operating system will probably close down the program.
+Second, how do we tell which bits of memory are actually used? For strings, it’s easy: a string that starts with a \0 is clearly not being used. But what about `monster[24]`? Is it alive or dead right now? That necessitates having some way to tell active from inactive items, which adds complexity and can use up additional memory.
 
-On Visual Studio, you can see this happen when running this program:
+第三，大多数普通变量(包括固定数组)被分配到称为[[stack|栈]]的内存中。程序的堆栈内存数量通常非常小——Visual Studio默认堆栈大小为1MB。如果超过这个数字，就会导致堆栈溢出，操作系统可能会关闭程序。
+
+Third, most normal variables (including fixed arrays) are allocated in a portion of memory called the [[stack|栈]]. The amount of stack memory for a program is generally quite small -- Visual Studio defaults the stack size to 1MB. If you exceed this number, stack overflow will result, and the operating system will probably close down the program.
+
+在 Visual Studio 中，你可以看到运行这个程序时发生的情况：
+
 
 ```cpp
 int main()
@@ -60,15 +66,19 @@ int main()
 }
 ```
 
-COPY
+将内存限制为1MB对于许多程序来说都是有问题的，特别是那些处理图形的程序。在Visual Studio中，你可以看到运行这个程序时发生的情况:
 
 Being limited to just 1MB of memory would be problematic for many programs, especially those that deal with graphics.
 
+第四，也是最重要的，它会导致人为的限制和/或数组溢出。如果用户试图从磁盘读入600条记录，但我们只分配了最多500条记录的内存，会发生什么情况?我们要么给用户一个错误，只读取500条记录，要么(在最坏的情况下，我们根本不处理这种情况)溢出记录数组，看着糟糕的事情发生。
+
 Fourth, and most importantly, it can lead to artificial limitations and/or array overflows. What happens when the user tries to read in 600 records from disk, but we’ve only allocated memory for a maximum of 500 records? Either we have to give the user an error, only read the 500 records, or (in the worst case where we don’t handle this case at all) overflow the record array and watch something bad happen.
 
-Fortunately, these problems are easily addressed via dynamic memory allocation. **Dynamic memory allocation** is a way for running programs to request memory from the operating system when needed. This memory does not come from the program’s limited stack memory -- instead, it is allocated from a much larger pool of memory managed by the operating system called the **heap**. On modern machines, the heap can be gigabytes in size.
+幸运的是，这些问题可以通过动态内存分配轻松解决。[[dynamic-memory-allocation|动态内存分配]]是运行程序在需要时向操作系统请求内存的一种方法。这个内存不是来自程序有限的堆栈内存——相反，它是从一个更大的内存池中分配的，由操作系统管理，称为**堆**。在现代机器上，堆的大小可以达到千兆字节。
 
-## Dynamically allocating single variables
+Fortunately, these problems are easily addressed via dynamic memory allocation. [[dynamic-memory-allocation|动态内存分配]] is a way for running programs to request memory from the operating system when needed. This memory does not come from the program’s limited stack memory -- instead, it is allocated from a much larger pool of memory managed by the operating system called the **heap**. On modern machines, the heap can be gigabytes in size.
+
+## 单一变量的动态内存分配
 
 To allocate a _single_ variable dynamically, we use the scalar (non-array) form of the **new** operator:
 
@@ -98,7 +108,7 @@ COPY
 
 If it wasn’t before, it should now be clear at least one case in which pointers are useful. Without a pointer to hold the address of the memory that was just allocated, we’d have no way to access the memory that was just allocated for us!
 
-## How does dynamic memory allocation work?
+## 动态内存分配的原理是什么？
 
 Your computer has memory (probably lots of it) that is available for applications to use. When you run an application, your operating system loads the application into some of that memory. This memory used by your application is divided into different areas, each of which serves a different purpose. One area contains your code. Another area is used for normal operations (keeping track of which functions were called, creating and destroying global and local variables, etc…). We’ll talk more about those later. However, much of the memory available just sits there, waiting to be handed out to programs that request it.
 
@@ -106,7 +116,7 @@ When you dynamically allocate memory, you’re asking the operating system to re
 
 Unlike static or automatic memory, the program itself is responsible for requesting and disposing of dynamically allocated memory.
 
-## Initializing a dynamically allocated variable
+## 动态分配变量的初始化 
 
 When you dynamically allocate a variable, you can also initialize it via direct initialization or uniform initialization:
 
