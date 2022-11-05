@@ -6,15 +6,15 @@ origin_title: "11.12 — Dynamically allocating arrays"
 time: 2022-1-2
 type: translation
 tags:
-- unset
+- arrays
 ---
 
 ??? note "关键点速记"
 	
 
-In addition to dynamically allocating single values, we can also dynamically allocate arrays of variables. Unlike a fixed array, where the array size must be fixed at compile time, dynamically allocating an array allows us to choose an array length at runtime.
+除了为单个变量动态分配内存，我们也可以为数组动态分配内存。固定数组的大小必须在编译时已知，而动态分配的数组则可以在运行时确定长度。
 
-To allocate an array dynamically, we use the array form of new and delete (often called new[] and delete[]):
+为了分配动态数组，我们需要使用`new`和`delete`的数组形式( `new[]` 和 `delete[]`):
 
 ```cpp
 #include <iostream>

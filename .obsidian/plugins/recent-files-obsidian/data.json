@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
-      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
-    },
-    {
-      "basename": "heap",
-      "path": "docs/heap.md"
+      "basename": "11-12-Dynamically-allocating-arrays",
+      "path": "docs/11-12-Dynamically-allocating-arrays.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
+      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+    },
+    {
+      "basename": "memory-leak",
+      "path": "docs/memory-leak.md"
+    },
+    {
+      "basename": "heap",
+      "path": "docs/heap.md"
     },
     {
       "basename": "4-17-An introduction-to-std-string",
@@ -31,10 +39,6 @@
     {
       "basename": "11-13-For-each-loops",
       "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "11-12-Dynamically-allocating-arrays",
-      "path": "docs/11-12-Dynamically-allocating-arrays.md"
     },
     {
       "basename": "stack",
@@ -195,10 +199,6 @@
     {
       "basename": "23-4-stream-classes-for-strings",
       "path": "docs/23-4-stream-classes-for-strings.md"
-    },
-    {
-      "basename": "23-3-output-with-ostream-and-ios",
-      "path": "docs/23-3-output-with-ostream-and-ios.md"
     }
   ],
   "omittedPaths": [],

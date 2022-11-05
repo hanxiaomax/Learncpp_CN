@@ -249,15 +249,14 @@ void doSomething()
 }
 ```
 
-This function allocates an integer dynamically, but never frees it using delete. Because pointers variables are just normal variables, when the function ends, ptr will go out of scope. And because ptr is the only variable holding the address of the dynamically allocated integer, when ptr is destroyed there are no more references to the dynamically allocated memory. This means the program has now “lost” the address of the dynamically allocated memory. As a result, this dynamically allocated integer can not be deleted.
 
-这个函数动态分配了一个整数，但并没有用`delete`释放它。因为指针变量只是普通变量，当函数结束时，`ptr`[[going-out-of-scope|离开作用域]]。由于`ptr`是保存动态分配的整数地址的唯一变量，当`ptr`被销毁时，对动态分配的内存就没有更多的引用了。这意味着程序现在“丢失”了动态分配的内存的地址。因此，不能删除这个动态分配的整数。
+这个函数动态分配了一个整数，但并没有用`delete`释放它。因为指针变量只是普通变量，当函数结束时，`ptr`[[going-out-of-scope|离开作用域]]。由于`ptr`是保存动态分配的整数地址的唯一变量，当`ptr`被销毁时，对动态分配的内存就没有更多的引用了。这意味着程序现在“丢失”了动态分配的内存的地址。因此，无法再删除这个动态分配的整数了。
 
-This is called a **memory leak**. Memory leaks happen when your program loses the address of some bit of dynamically allocated memory before giving it back to the operating system. When this happens, your program can’t delete the dynamically allocated memory, because it no longer knows where it is. The operating system also can’t use this memory, because that memory is considered to be still in use by your program.
+这个现象称为[[memory-leak|内存泄漏]]。当程序在将动态分配的内存返回给操作系统之前丢失了它的地址时，就会发生内存泄漏。当这种情况发生时，程序将无法删除动态分配的内存，因为它不再知道内存地址了。操作系统也不能使用该内存，因为该内存被认为是程序仍在使用中。
 
-Memory leaks eat up free memory while the program is running, making less memory available not only to this program, but to other programs as well. Programs with severe memory leak problems can eat all the available memory, causing the entire machine to run slowly or even crash. Only after your program terminates is the operating system able to clean up and “reclaim” all leaked memory.
+在程序运行时，内存泄漏会消耗掉可用的内存，不仅使这个程序可用的内存减少，而且使其他程序可用的内存减少。有严重内存泄漏问题的程序会耗尽所有可用内存，导致整个机器运行缓慢甚至崩溃。只有在程序终止后，操作系统才能清理和“回收”所有泄漏的内存。
 
-Although memory leaks can result from a pointer going out of scope, there are other ways that memory leaks can result. For example, a memory leak can occur if a pointer holding the address of the dynamically allocated memory is assigned another value:
+尽管指针超出作用域可能导致内存泄漏，但还有其他可能导致内存泄漏的方式。例如，如果持有动态分配内存地址的指针被分配了另一个值，也会发生内存泄漏：
 
 ```cpp
 int value = 5;
@@ -265,9 +264,7 @@ int* ptr{ new int{} }; // allocate memory
 ptr = &value; // old address lost, memory leak results
 ```
 
-COPY
-
-This can be fixed by deleting the pointer before reassigning it:
+这可以通过在重新赋值之前删除指针来解决：
 
 ```cpp
 int value{ 5 };
@@ -276,27 +273,25 @@ delete ptr; // return memory back to operating system
 ptr = &value; // reassign pointer to address of value
 ```
 
-COPY
 
-Relatedly, it is also possible to get a memory leak via double-allocation:
+类似地，重复分配内存也可能导致内存泄漏：
 
 ```cpp
 int* ptr{ new int{} };
 ptr = new int{}; // old address lost, memory leak results
 ```
 
-COPY
 
-The address returned from the second allocation overwrites the address of the first allocation. Consequently, the first allocation becomes a memory leak!
+从第二次分配内存时返回的地址将覆盖第一个分配的地址。因此，第一块内存泄漏了！
 
-Similarly, this can be avoided by ensuring you delete the pointer before reassigning.
+类似地，可以通过确保在重新赋值之前删除指针来避免这种情况。
 
 ## 结论
 
-Operators new and delete allow us to dynamically allocate single variables for our programs.
+操作符`new`和`delete`允许我们为程序动态分配单个变量。
 
-Dynamically allocated memory has dynamic duration and will stay allocated until you deallocate it or the program terminates.
+动态分配的内存具有[[dynamic-duration|动态存储持续时间]]，并且在释放它或程序终止之前将保持分配状态。
 
-Be careful not to perform indirection through dangling or null pointers.
+注意不要通过悬垂或空指针执行间接访问操作。
 
-In the next lesson, we’ll take a look at using new and delete to allocate and delete arrays.
+在下一课中，我们将看看如何使用`new`和`delete`来分配和删除数组。
