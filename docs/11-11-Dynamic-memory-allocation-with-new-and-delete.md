@@ -193,9 +193,9 @@ int main()
 int* value { new (std::nothrow) int }; // 如果没有分配到内存，则指针被置为null
 ```
 
-In the above example, if new fails to allocate memory, it will return a null pointer instead of the address of the allocated memory.
+在上面的例子中，如果`new`分配内存失败，它将返回一个空指针而不是已分配内存的地址。
 
-Note that if you then attempt indirection through this pointer, undefined behavior will result (most likely, your program will crash). Consequently, the best practice is to check all memory requests to ensure they actually succeeded before using the allocated memory.
+注意，如果你尝试通过此指针进行间接操作，将导致[[undefined-behavior|未定义行为]](最有可能的是程序崩溃)。因此，最佳实践是在使用分配的内存之前检查所有内存请求，以确保它们实际上成功了。
 
 ```cpp
 int* value { new (std::nothrow) int{} }; // ask for an integer's worth of memory
@@ -206,13 +206,12 @@ if (!value) // handle case where new returned null
 }
 ```
 
-COPY
+因为通过`new`申请内存很少会失败(在开发环境中几乎从不失败)，所以经常会忘记执行此检查！
 
-Because asking new for memory only fails rarely (and almost never in a dev environment), it’s common to forget to do this check!
 
-## Null 指针和动态内存分配
+## 空指针和动态内存分配
 
-Null pointers (pointers set to nullptr) are particularly useful when dealing with dynamic memory allocation. In the context of dynamic memory allocation, a null pointer basically says “no memory has been allocated to this pointer”. This allows us to do things like conditionally allocate memory:
+空指针 (设置为 `nullptr` 的指针) 在处理动态内存分配时很有用。在动态内存分配的上下文中，空指针代表着”没有内存被分配给这个指针“。这使得我们可以根据条件来分配内存：
 
 ```cpp
 // If ptr isn't already allocated, allocate it
@@ -220,29 +219,28 @@ if (!ptr)
     ptr = new int;
 ```
 
-
-Deleting a null pointer has no effect. Thus, there is no need for the following:
+删除空指针没效果。因此没必要这么做：
 
 ```cpp
 if (ptr)
     delete ptr;
 ```
 
-
-Instead, you can just write:
+直接这么做就可以：
 
 ```cpp
 delete ptr;
 ```
 
 
-If ptr is non-null, the dynamically allocated variable will be deleted. If it is null, nothing will happen.
+如果 `ptr` 是非空的，那么它指向的内存将被释放，如果`ptr`是空，则什么都不会发生。
 
 ## 内存泄漏
 
-Dynamically allocated memory stays allocated until it is explicitly deallocated or until the program ends (and the operating system cleans it up, assuming your operating system does that). However, the pointers used to hold dynamically allocated memory addresses follow the normal scoping rules for local variables. This mismatch can create interesting problems.
 
-Consider the following function:
+除非显式地释放动态分配的内存或程序结束(并且操作系统清理它，假设您的操作系统这么做)，否则动态分配的内存一直处于被分配状态。但是，用于保存动态分配的内存地址的指针遵循本地变量的正常作用域规则。这种不匹配会产生有趣的问题。
+
+考虑下面的函数：
 
 ```cpp
 void doSomething()
@@ -251,9 +249,9 @@ void doSomething()
 }
 ```
 
-COPY
-
 This function allocates an integer dynamically, but never frees it using delete. Because pointers variables are just normal variables, when the function ends, ptr will go out of scope. And because ptr is the only variable holding the address of the dynamically allocated integer, when ptr is destroyed there are no more references to the dynamically allocated memory. This means the program has now “lost” the address of the dynamically allocated memory. As a result, this dynamically allocated integer can not be deleted.
+
+这个函数动态分配了一个整数，但并没有用`delete`释放它。因为指针变量只是普通变量，当函数结束时，`ptr`[[going-out-of-scope|离开作用域]]。由于`ptr`是保存动态分配的整数地址的唯一变量，当`ptr`被销毁时，对动态分配的内存就没有更多的引用了。这意味着程序现在“丢失”了动态分配的内存的地址。因此，不能删除这个动态分配的整数。
 
 This is called a **memory leak**. Memory leaks happen when your program loses the address of some bit of dynamically allocated memory before giving it back to the operating system. When this happens, your program can’t delete the dynamically allocated memory, because it no longer knows where it is. The operating system also can’t use this memory, because that memory is considered to be still in use by your program.
 
