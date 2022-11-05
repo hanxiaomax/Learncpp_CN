@@ -16,7 +16,7 @@ tags:
 	- [`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。
 	- [`std::find_if`](https://en.cppreference.com/w/cpp/algorithm/find)在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串）
 	- [`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
-
+	- `std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 默认对数组进行升序排序，但是可以接受第三个参数，定义排序规则
 
 
 新手程序员可能会画上大量的时间来编写循环代码处理很多简单的任务，例如排序、计数或者是搜索数组。这些循环可能很容易带来问题，一方面本身编写数组循环就容易产生问题，另外一方面可维护性也很不好，因为循环代码通常比较难以理解。
@@ -187,9 +187,10 @@ Counted 2 nut(s)
 
 ## 使用 `std::sort` 进行自定义排序
 
-我们曾使用 [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 对数组进行升序排序，但实际上 `std::sort` 还可以做很多事。一个版本的 `std::sort` 可以接受第三个参数hat takes a function as its third parameter that allows us to sort however we like. The function takes two parameters to compare, and returns true if the first argument should be ordered before the second. By default, `std::sort` sorts the elements in ascending order.
+我们曾使用 [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 对数组进行升序排序，但实际上 `std::sort` 还可以做很多事。一个版本的 `std::sort` 可以接受第三个参数，使我们可以通过一个函数定义如何排序。该函数需要接受两个参数用于比较，如果第一个数应该被排在第二个数之前，应该返回`true`。默认情况下，`std::sort` 会按照升序进行排序。
 
-Let’s use `std::sort` to sort an array in reverse order using a custom comparison function named `greater`:
+下面，我们使用 `std::sort` 对数组进行降序排序（通过自定义比较函数`greater`实现）：
+
 
 ```cpp
 #include <algorithm>
@@ -226,27 +227,29 @@ int main()
 99 90 80 40 13 5
 ```
 
-Once again, instead of writing our own custom loop functions, we can sort our array however we like in just a few lines of code!
+同样，我们不用自己编写循环，只需几行代码就可以对数组进行排序!
 
-Our `greater` function needs 2 arguments, but we’re not passing it any, so where do they come from? When we use a function without parentheses (), it’s only a function pointer, not a call. You might remember this from when we tried to print a function without parentheses and `std::cout` printed “1”. `std::sort` uses this pointer and calls the actual `greater` function with any 2 elements of the array. We don’t know which elements `greater` will be called with, because it’s not defined which sorting algorithm `std::sort` is using under the hood. We talk more about function pointers in a later chapter.
+我们的`greater`函数需要两个参数，但我们没有传递给它任何参数，那么它们从何而来呢?当我们使用一个没有圆括号`()`的函数时，它只是一个函数指针，而不是一个函数调用。你可能还记得，当我们试图打印一个没有括号的函数时，`std::cout` 输出的是"1"。`std::sort` 会使用这个指针调用函数并将数组中的两个元素作为实参。我们不知道哪些元素会被`greater`使用，这取决于底层的排序算法。我们将在后面的章节中详细讨论函数指针。
+
 
 !!! tip "小贴士"
 
-	Because sorting in descending order is so common, C++ provides a custom type (named `std::greater`) for that too (which is part of the [functional](https://en.cppreference.com/w/cpp/header/functional) header). In the above example, we can replace:
+	因为降序排序也非常常见，所以C++提供了一个自定义类型(`std::greater`)用于降序排序(它定义在[functional](https://en.cppreference.com/w/cpp/header/functional)头文件中)。在上面的例子中，我们可以替换：
 	
 	```cpp
-	std::sort(arr.begin(), arr.end(), greater); // call our custom greater function
+	std::sort(arr.begin(), arr.end(), greater); // 调用自定义的 greater 函数
 	```
 	
-	with:
+	为
 	
 	```cpp
-	std::sort(arr.begin(), arr.end(), std::greater{}); // use the standard library greater comparison
-	// Before C++17, we had to specify the element type when we create std::greater
-	std::sort(arr.begin(), arr.end(), std::greater<int>{}); // use the standard library greater comparison
+	std::sort(arr.begin(), arr.end(), std::greater{}); // 使用标准库的 greater 比较函数
+	// 在 C++17 之前，我们可以指定 std::greater 使用的元素类型
+	std::sort(arr.begin(), arr.end(), std::greater<int>{}); // 使用标准库的 greater 比较函数
 	```
 
-	Note that the `std::greater{}` needs the curly braces because it is not a callable function. It’s a type, and in order to use it, we need to instantiate an object of that type. The curly braces instantiate an anonymous object of that type (which then gets passed as an argument to std::sort).
+	注意，`std::greater{}` 需要使用大括号初始化，因为它并不是一个可调用的函数。它是一个类型，为了使用它，我们必须将其实例化为一个对象。花括号初始化再这里会实例化一个匿名对象（最终会被传递给`std::sort`）。
+
 
 !!! info "扩展阅读"
 
