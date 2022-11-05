@@ -113,7 +113,7 @@ int main()
 
 COPY
 
-For-each loops and references
+## For-each 循环和引用
 
 In the following for-each example, our element declarations are declared by value:
 
@@ -187,7 +187,7 @@ COPY
 
 Note that in this example, we no longer have to manually subscript the array or get its size. We can access the array element directly through variable score. The array has to have size information. An array that decayed to a pointer cannot be used in a for-each loop.
 
-## For-each loops and non-arrays
+## For-each 循环和非数组变量
 
 _For-each_ loops don’t only work with fixed arrays, they work with many kinds of list-like structures, such as vectors (e.g. `std::vector`), linked lists, trees, and maps. We haven’t covered any of these yet, so don’t worry if you don’t know what these are. Just remember that for each loops provide a flexible and generic way to iterate through more than just arrays.
 

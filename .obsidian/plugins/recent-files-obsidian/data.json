@@ -5,6 +5,38 @@
       "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
     },
     {
+      "basename": "heap",
+      "path": "docs/heap.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "4-17-An introduction-to-std-string",
+      "path": "docs/4-17-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
+      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
+      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "11-12-Dynamically-allocating-arrays",
+      "path": "docs/11-12-Dynamically-allocating-arrays.md"
+    },
+    {
       "basename": "stack",
       "path": "docs/stack.md"
     },
@@ -21,10 +53,6 @@
       "path": "docs/static-memory-allocation.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "11-9-Pointer-arithmetic-and-array-indexing",
       "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
     },
@@ -39,10 +67,6 @@
     {
       "basename": "11-19-Introduction-to-standard-library-algorithms",
       "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
     },
     {
       "basename": "callable-object",
@@ -175,30 +199,6 @@
     {
       "basename": "23-3-output-with-ostream-and-ios",
       "path": "docs/23-3-output-with-ostream-and-ios.md"
-    },
-    {
-      "basename": "23-2-Input-with-istream",
-      "path": "docs/23-2-Input-with-istream.md"
-    },
-    {
-      "basename": "range-based-for-loops",
-      "path": "docs/range-based-for-loops.md"
-    },
-    {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
-    },
-    {
-      "basename": "typeid",
-      "path": "docs/typeid.md"
-    },
-    {
-      "basename": "9-6-Introduction-to-pointers",
-      "path": "docs/9-6-Introduction-to-pointers.md"
     }
   ],
   "omittedPaths": [],

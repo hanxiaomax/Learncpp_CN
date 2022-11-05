@@ -192,7 +192,7 @@
 - [[11-11-Dynamic-memory-allocation-with-new-and-delete|11.11 - 使用 new 和 delete 进行动态内存分配]]
 - [[11-12-Dynamically-allocating-arrays|11.12 - 动态分配数组]]
 - [[11-13-For-each-loops|11.13 - for-each 循环]]
-- [[11-14-Void-pointers|11.4 - void 指针]]
+- [[11-14-Void-pointers|11.14 - void 指针]]
 - [[11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays|11.15 — 指向指针的指针和多维数组]]
 - [[11-16-An-introduction-to-std-array|11.16 — 固定数组 std::array 简介]]
 - [[11-17-An-introduction-to-std-vector|11.17 — 动态数组 std::vector 简介]]

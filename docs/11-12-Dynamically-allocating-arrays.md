@@ -65,7 +65,7 @@ While there is nothing wrong with using `size_t` as the length of a dynamicall
 
 Note that because this memory is allocated from a different place than the memory used for fixed arrays, the size of the array can be quite large. You can run the program above and allocate an array of length 1,000,000 (or probably even 100,000,000) without issue. Try it! Because of this, programs that need to allocate a lot of memory in C++ typically do so dynamically.
 
-## Dynamically deleting arrays
+## 动态地删除数组
 
 When deleting a dynamically allocated array, we have to use the array version of delete, which is delete[].
 
@@ -79,7 +79,7 @@ In lesson [[11-8-Pointers-and-arrays|11.8 - 指针和数组]], you learned that
 
 A dynamic array starts its life as a pointer that points to the first element of the array. Consequently, it has the same limitations in that it doesn’t know its length or size. A dynamic array functions identically to a decayed fixed array, with the exception that the programmer is responsible for deallocating the dynamic array via the delete[] keyword.
 
-## Initializing dynamically allocated arrays
+## 初始化动态分配的数组
 
 If you want to initialize a dynamically allocated array to 0, the syntax is quite simple:
 
@@ -128,7 +128,7 @@ COPY
 
 Explicitly stating the size of the array is optional.
 
-## Resizing arrays
+## 调整数组大小
 
 Dynamically allocating an array allows you to set the array length at the time of allocation. However, C++ does not provide a built-in way to resize an array that has already been allocated. It is possible to work around this limitation by dynamically allocating a new array, copying the elements over, and deleting the old array. However, this is error prone, especially when the element type is a class (which have special rules governing how they are created).
 

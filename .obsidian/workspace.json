@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "00021dfe35765c36",
+            "id": "4e845a93fb006dee",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "00021dfe35765c36",
+  "active": "4e845a93fb006dee",
   "lastOpenFiles": [
-    "docs/stack.md",
+    "docs/heap.md",
     "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
-    "docs/dynamic-memory-allocation.md",
-    "docs/automatic-memory-allocation.md",
-    "docs/static-memory-allocation.md",
     "docs/MOC.md",
-    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
-    "docs/11-1-Arrays-Part-I.md",
-    "docs/11-x-Chapter-11-comprehensive-quiz.md",
-    "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    "docs/4-17-An introduction-to-std-string.md",
+    "docs/11-16-An-introduction-to-std-array.md",
+    "docs/11-14-Void-pointers.md",
+    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
+    "docs/11-13-For-each-loops.md",
+    "docs/11-12-Dynamically-allocating-arrays.md",
+    "docs/stack.md"
   ]
 }

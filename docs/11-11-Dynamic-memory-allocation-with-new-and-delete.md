@@ -44,17 +44,11 @@ Polygon rendering[30000]; // 3d 渲染不超过3万个多边形
 
 这种解决方案是很差劲的，原因有四条：
 
-首先，如果没有实际使用变量，则会导致内存浪费。例如，如果我们为每个名称分配25个字符，但名称平均只有12个字符长，那么我们使用的是实际需要的两倍多。或者考虑一下上面的渲染数组:如果一个渲染只使用10000个多边形，那么我们就有价值20000个多边形的内存没有被使用!
+首先，如果实际没有使用该变量，则会导致内存浪费。例如，如果我们为每个名称分配25个字符，但名称平均只有12个字符长，那么申请的内存是实际使用的两倍多。或者，对于上面`rendering`数组的例子来说：如果渲染只使用10000个多边形，那么将有20000个多边形的内存被额外申请单没有被使用!
 
-First, it leads to wasted memory if the variables aren’t actually used. For example, if we allocate 25 chars for every name, but names on average are only 12 chars long, we’re using over twice what we really need. Or consider the rendering array above: if a rendering only uses 10,000 polygons, we have 20,000 Polygons worth of memory not being used!
+第二，我们如何判断哪些内存位实际上被使用了呢？对于字符串，这很简单：以`\0`开头的字符串显然没有被使用。但是对于`monster[24]`来说呢？它仍然在被使用吗？我们需要某种方法来区分仍然在使用的变量和不再被使用的变量，这增加了复杂性，并可能会占用额外的内存。
 
-第二，我们如何判断哪些内存位实际上被使用了?对于字符串，这很简单:以\0开头的字符串显然没有被使用。但是“monster[24]”呢?它现在是活的还是死的?这就需要某种方法来区分活动项目和非活动项目，这增加了复杂性，并可能会占用额外的内存。
-
-Second, how do we tell which bits of memory are actually used? For strings, it’s easy: a string that starts with a \0 is clearly not being used. But what about `monster[24]`? Is it alive or dead right now? That necessitates having some way to tell active from inactive items, which adds complexity and can use up additional memory.
-
-第三，大多数普通变量(包括固定数组)被分配到称为[[stack|栈]]的内存中。程序的堆栈内存数量通常非常小——Visual Studio默认堆栈大小为1MB。如果超过这个数字，就会导致堆栈溢出，操作系统可能会关闭程序。
-
-Third, most normal variables (including fixed arrays) are allocated in a portion of memory called the [[stack|栈]]. The amount of stack memory for a program is generally quite small -- Visual Studio defaults the stack size to 1MB. If you exceed this number, stack overflow will result, and the operating system will probably close down the program.
+第三，大多数普通变量(包括固定数组)被分配到称为[[stack|栈]]的内存中。程序的堆栈能够使用的内存通常非常小——Visual Studio 默认堆栈大小为 1MB。如果超过这个大小，就会导致堆栈溢出，操作系统就会停止程序。
 
 在 Visual Studio 中，你可以看到运行这个程序时发生的情况：
 
@@ -68,57 +62,45 @@ int main()
 
 将内存限制为1MB对于许多程序来说都是有问题的，特别是那些处理图形的程序。在Visual Studio中，你可以看到运行这个程序时发生的情况:
 
-Being limited to just 1MB of memory would be problematic for many programs, especially those that deal with graphics.
+第四，也是最重要的，它会导致人为的限制，并可能导致溢出。如果用户试图从磁盘读入600条记录，但我们只分配了最多500条记录的内存，会发生什么情况？此时要么给用户发送一个错误，要求其只读取500条记录，要么(在最坏的情况下，我们根本不处理这种情况)`record`数组溢出。
 
-第四，也是最重要的，它会导致人为的限制和/或数组溢出。如果用户试图从磁盘读入600条记录，但我们只分配了最多500条记录的内存，会发生什么情况?我们要么给用户一个错误，只读取500条记录，要么(在最坏的情况下，我们根本不处理这种情况)溢出记录数组，看着糟糕的事情发生。
-
-Fourth, and most importantly, it can lead to artificial limitations and/or array overflows. What happens when the user tries to read in 600 records from disk, but we’ve only allocated memory for a maximum of 500 records? Either we have to give the user an error, only read the 500 records, or (in the worst case where we don’t handle this case at all) overflow the record array and watch something bad happen.
-
-幸运的是，这些问题可以通过动态内存分配轻松解决。[[dynamic-memory-allocation|动态内存分配]]是运行程序在需要时向操作系统请求内存的一种方法。这个内存不是来自程序有限的堆栈内存——相反，它是从一个更大的内存池中分配的，由操作系统管理，称为**堆**。在现代机器上，堆的大小可以达到千兆字节。
-
-Fortunately, these problems are easily addressed via dynamic memory allocation. [[dynamic-memory-allocation|动态内存分配]] is a way for running programs to request memory from the operating system when needed. This memory does not come from the program’s limited stack memory -- instead, it is allocated from a much larger pool of memory managed by the operating system called the **heap**. On modern machines, the heap can be gigabytes in size.
+幸运的是，这些问题可以通过动态内存分配轻松解决。[[dynamic-memory-allocation|动态内存分配]]是运行程序在需要时向操作系统请求内存的一种方法。这个内存不是来自程序有限的堆栈内存——相反，它是从一个更大的内存池中分配的，由操作系统管理，称为[[heap|堆]]。在现代机器上，堆的大小可以达到千兆字节。
 
 ## 单一变量的动态内存分配
 
-To allocate a _single_ variable dynamically, we use the scalar (non-array) form of the **new** operator:
+为*一个*变量分配内存，我们使用`new`的标量形式：
 
 ```cpp
 new int; // dynamically allocate an integer (and discard the result)
 ```
 
-COPY
+在上面的例子中，我们向操作系统申请一个整型的内存。`new`运算符会使用申请来的内存创建这个对象，然后返回指向该内存的指针。
 
-In the above case, we’re requesting an integer’s worth of memory from the operating system. The new operator creates the object using that memory, and then returns a pointer containing the _address_ of the memory that has been allocated.
-
-Most often, we’ll assign the return value to our own pointer variable so we can access the allocated memory later.
+多数情况下，我们可以将返回值赋值给一个指针变量，并通过它在后续的程序中访问这块内存。
 
 ```cpp
 int* ptr{ new int }; // dynamically allocate an integer and assign the address to ptr so we can access it later
 ```
 
-COPY
-
-We can then perform indirection through the pointer to access the memory:
+在后续的程序中通过[[dereference-operator|解引用运算符]]访问该内存：
 
 ```cpp
 *ptr = 7; // assign value of 7 to allocated memory
 ```
 
-COPY
+如果你之前不知道指针有什么用，那么现在应该清楚了，至少在这种情况下，如果没有一个指针来保存刚刚分配的内存地址，我们就没有办法访问刚刚分配给我们的内存!
 
-If it wasn’t before, it should now be clear at least one case in which pointers are useful. Without a pointer to hold the address of the memory that was just allocated, we’d have no way to access the memory that was just allocated for us!
 
 ## 动态内存分配的原理是什么？
 
-Your computer has memory (probably lots of it) that is available for applications to use. When you run an application, your operating system loads the application into some of that memory. This memory used by your application is divided into different areas, each of which serves a different purpose. One area contains your code. Another area is used for normal operations (keeping track of which functions were called, creating and destroying global and local variables, etc…). We’ll talk more about those later. However, much of the memory available just sits there, waiting to be handed out to programs that request it.
+计算机中的内存可供应用程序使用。当程序运行时，操作系统会将程序加载到一块内存中。这块内存被你的程序分割成几个不同的部分，每个部分也都有其特定的作用。其中一小部分包含你的程序代码，另外一小部分则用于程序正常运行时使用（记录函数调用、创建和销毁全局变量和临时变量，等等）。我们会在后面进行更详细介绍。但是，还有很多很多的内存就只是放在那里，等待你的程序请求使用。
 
-When you dynamically allocate memory, you’re asking the operating system to reserve some of that memory for your program’s use. If it can fulfill this request, it will return the address of that memory to your application. From that point forward, your application can use this memory as it wishes. When your application is done with the memory, it can return the memory back to the operating system to be given to another program.
+和静态内存、自动内存不同的是，程序自己需要负责请求和释放动态分配的内存。
 
-Unlike static or automatic memory, the program itself is responsible for requesting and disposing of dynamically allocated memory.
 
 ## 动态分配变量的初始化 
 
-When you dynamically allocate a variable, you can also initialize it via direct initialization or uniform initialization:
+当你动态分配一个变量 you dynamically allocate a variable, you can also initialize it via direct initialization or uniform initialization:
 
 ```cpp
 int* ptr1{ new int (5) }; // use direct initialization
@@ -127,7 +109,7 @@ int* ptr2{ new int { 6 } }; // use uniform initialization
 
 COPY
 
-## Deleting single variables
+## 删除单一变量
 
 When we are done with a dynamically allocated variable, we need to explicitly tell C++ to free the memory for reuse. For single variables, this is done via the scalar (non-array) form of the **delete** operator:
 
@@ -137,9 +119,8 @@ delete ptr; // return the memory pointed to by ptr to the operating system
 ptr = nullptr; // set ptr to be a null pointer
 ```
 
-COPY
 
-## What does it mean to delete memory?
+## 删除内存是什么意思？
 
 The delete operator does not _actually_ delete anything. It simply returns the memory being pointed to back to the operating system. The operating system is then free to reassign that memory to another application (or to this application again later).
 
@@ -201,9 +182,9 @@ First, try to avoid having multiple pointers point at the same piece of dynamic 
 
 Second, when you delete a pointer, if that pointer is not going out of scope immediately afterward, set the pointer to nullptr. We’ll talk more about null pointers, and why they are useful in a bit.
 
-Best practice
+!!! success "最佳实践"
 
-Set deleted pointers to nullptr unless they are going out of scope immediately afterward.
+	Set deleted pointers to nullptr unless they are going out of scope immediately afterward.
 
 ## `new` 运算符可能执行失败
 
