@@ -1,6 +1,6 @@
 ---
-title: 11.4 - void 指针
-alias: 11.4 - void 指针
+title: 11.14 - void 指针
+alias: 11.14 - void 指针
 origin: /void-pointers/
 origin_title: ""
 time: 2022-1-2

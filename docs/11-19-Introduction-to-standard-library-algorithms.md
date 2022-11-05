@@ -16,7 +16,8 @@ tags:
 	- [`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。
 	- [`std::find_if`](https://en.cppreference.com/w/cpp/algorithm/find)在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串）
 	- [`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
-	- `std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 默认对数组进行升序排序，但是可以接受第三个参数，定义排序规则
+	- [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 默认对数组进行升序排序，但是可以接受第三个参数，定义排序规则
+	- [`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) 接受一个列表作为输入，然后对列表中的每个元素应用一个自定义的函数
 
 
 新手程序员可能会画上大量的时间来编写循环代码处理很多简单的任务，例如排序、计数或者是搜索数组。这些循环可能很容易带来问题，一方面本身编写数组循环就容易产生问题，另外一方面可维护性也很不好，因为循环代码通常比较难以理解。
@@ -253,7 +254,7 @@ int main()
 
 !!! info "扩展阅读"
 
-    To further explain how `std::sort` uses the comparison function, we’ll have to take a step back to a modified version of the selection sort example from lesson [11.4 -- Sorting an array using selection sort](https://www.learncpp.com/cpp-tutorial/sorting-an-array-using-selection-sort/).
+	这里我们详细介绍一下`std::sort`是如何使用比较函数的。首先，我们需要修改一下[[11-4-Sorting-an-array-using-selection-sort|11.4 - 数组排序之选择排序]]中实现的选择排序算法。
 	
 	```cpp
 	#include <iostream>
@@ -296,29 +297,26 @@ int main()
 	}
 	```
 	
-	COPY
-	
-	So far, this is nothing new and `sort` always sorts elements from low to high. To add a comparison function, we have to use a new type, `std::function<bool(int, int)>`, to store a function that takes 2 int parameters and returns a bool. Treat this type as magic for now, we will explain it in [chapter 12](https://www.learncpp.com/#Chapter12).
+	到这里位置，还没有任何新东西，`sort`也总是对元素进行从低到高的排序。为了添加比较函数，我们需要使用一个新的类型 `std::function<bool(int, int)>` 用于保存一个2个整型参数且返回布尔类型的函数。你可以暂时将其理解为某种黑科技，我们稍后会在[第十二章](https://www.learncpp.com/#Chapter12)进行详细介绍。
 	
 	```cpp
 	void sort(int* begin, int* end, std::function<bool(int, int)> compare)
 	```
 
-	We can now pass a comparison function like `greater` to `sort`, but how does `sort` use it? All we need to do is replace the line
+	我们现在可以将一个`greater`函数传递给`sort`，但是`sort`又应该如何使用它呢？我们需要将下面代码
 	
 	```cpp
 	if (*currentElement < *smallestElement)
 	```
-
 	
-	with
+	替换为：
 	
 	```cpp
 	if (compare(*currentElement, *smallestElement))
 	```
 
 	
-	Now the caller of `sort` can choose how to compare two elements.
+	接下来，`sort` 的调用者就可以决定如何比较函数。
 	
 	```cpp
 	#include <functional> // std::function
@@ -370,9 +368,9 @@ int main()
 
 ## 使用 `std::for_each` 对容器中的每个元素进行操作
 
-[`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) takes a list as input and applies a custom function to every element. This is useful when we want to perform the same operation to every element in a list.
+[`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) 接受一个列表作为输入，然后对列表中的每个元素应用一个自定义的函数。当我们需要对列表中的每个元素都进行相同的操作时这就非常有用，
 
-Here’s an example where we use `std::for_each` to double all the numbers in an array:
+在下面这个例子中，我们使用 `std::for_each` 函数将数组中的每个元素都翻倍：
 
 ```cpp
 #include <algorithm>
@@ -407,11 +405,11 @@ int main()
 2 4 6 8
 ```
 
-This often seems like the most unnecessary algorithm to new developers, because equivalent code with a range-based for-loop is shorter and easier. But there are benefits to `std::for_each`. Let’s compare `std::for_each` to a range-based for-loop.
+上述功能在新手程序员看来，似乎没什么用，因为相同的操作完全可以使用一个[[range-based-for-loops|基于范围的for循环]]来完成，而且代码会更简短。但是 `std::for_each` 有它的优势。让我们比较一下两种方式。
 
 ```cpp
-std::ranges::for_each(arr, doubleNumber); // Since C++20, we don't have to use begin() and end().
-// std::for_each(arr.begin(), arr.end(), doubleNumber); // Before C++20
+std::ranges::for_each(arr, doubleNumber); // 从 C++20开始，我们不必再使用 begin() 和 end().
+// std::for_each(arr.begin(), arr.end(), doubleNumber); // 在 C++20 之前的形式
 
 for (auto& i : arr)
 {
@@ -419,9 +417,8 @@ for (auto& i : arr)
 }
 ```
 
-COPY
 
-With `std::for_each`, our intentions are clear. Call `doubleNumber` with each element of `arr`. In the range-based for-loop, we have to add a new variable, `i`. This leads to several mistakes that a programmer could do when they’re tired or not paying attention. For one, there could be an implicit conversion if we don’t use `auto`. We could forget the ampersand, and `doubleNumber` wouldn’t affect the array. We could accidentally pass a variable other than `i` to `doubleNumber`. These mistakes cannot happen with `std::for_each`.
+使用 `std::for_each` 时，程序的 our intentions are clear. Call `doubleNumber` with each element of `arr`. In the range-based for-loop, we have to add a new variable, `i`. This leads to several mistakes that a programmer could do when they’re tired or not paying attention. For one, there could be an implicit conversion if we don’t use `auto`. We could forget the ampersand, and `doubleNumber` wouldn’t affect the array. We could accidentally pass a variable other than `i` to `doubleNumber`. These mistakes cannot happen with `std::for_each`.
 
 Additionally, `std::for_each` can skip elements at the beginning or end of a container, for example to skip the first element of `arr`, [`std::next`](https://en.cppreference.com/w/cpp/iterator/next) can be used to advance begin to the next element.
 

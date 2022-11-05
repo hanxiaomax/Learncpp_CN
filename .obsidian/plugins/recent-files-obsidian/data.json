@@ -5,6 +5,10 @@
       "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
     },
     {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
       "basename": "callable-object",
       "path": "docs/callable-object.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "16-6-container-classes",
       "path": "docs/16-6-container-classes.md"
-    },
-    {
-      "basename": "reference-container",
-      "path": "docs/reference-container.md"
     }
   ],
   "omittedPaths": [],

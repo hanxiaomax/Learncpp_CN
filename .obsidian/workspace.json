@@ -153,15 +153,15 @@
   },
   "active": "31b57bf7e3fc2879",
   "lastOpenFiles": [
-    "docs/callable-object.md",
+    "docs/11-14-Void-pointers.md",
     "docs/11-19-Introduction-to-standard-library-algorithms.md",
+    "docs/callable-object.md",
     "docs/MOC.md",
     "docs/11-18-Introduction-to-iterators.md",
     "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/13-x-Chapter-13-comprehensive-quiz.md",
     "docs/21-4-STL-algorithms-overview.md",
     "docs/21-3-STL-iterators-overview.md",
-    "docs/21-2-STL-containers-overview.md",
-    "docs/21-1-the-standard-library.md"
+    "docs/21-2-STL-containers-overview.md"
   ]
 }
