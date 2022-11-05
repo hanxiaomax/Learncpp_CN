@@ -100,18 +100,16 @@ int* ptr{ new int }; // dynamically allocate an integer and assign the address t
 
 ## 动态分配变量的初始化 
 
-当你动态分配一个变量 you dynamically allocate a variable, you can also initialize it via direct initialization or uniform initialization:
+当你动态分配一个变量时，你可以通过[[direct-initialization|直接初始化]]或[[uniform-initialization|统一初始化]]对其进行初始化：
 
 ```cpp
-int* ptr1{ new int (5) }; // use direct initialization
-int* ptr2{ new int { 6 } }; // use uniform initialization
+int* ptr1{ new int (5) }; // 直接初始化
+int* ptr2{ new int { 6 } }; // 统一初始化
 ```
-
-COPY
 
 ## 删除单一变量
 
-When we are done with a dynamically allocated variable, we need to explicitly tell C++ to free the memory for reuse. For single variables, this is done via the scalar (non-array) form of the **delete** operator:
+在使用完动态分配的变量时，我们需要显式地告诉C++释放内存以便重用。对于单个变量，这是通过标量(非数组)形式的`delete`操作符来完成的：
 
 ```cpp
 // assume ptr has previously been allocated with operator new
@@ -122,82 +120,78 @@ ptr = nullptr; // set ptr to be a null pointer
 
 ## 删除内存是什么意思？
 
-The delete operator does not _actually_ delete anything. It simply returns the memory being pointed to back to the operating system. The operating system is then free to reassign that memory to another application (or to this application again later).
+`delete` 运算符并没有*实际上*删除任何东西，它只是将指针指向的内存还给操作系统罢了。操作系统随即便可以将该内存分配给其他应用使用（或者给当前应用使用也可以）。
 
-Although it looks like we’re deleting a _variable_, this is not the case! The pointer variable still has the same scope as before, and can be assigned a new value just like any other variable.
+尽管看上去我们是在`delete`一个变量，但实际上并不是！该指针变量仍然处于该作用域，而且也可以被赋予新值。
 
-Note that deleting a pointer that is not pointing to dynamically allocated memory may cause bad things to happen.
+注意，删除不指向动态分配内存的指针可能会导致不好的事情发生。
 
 ## 悬垂指针
 
-C++ does not make any guarantees about what will happen to the contents of deallocated memory, or to the value of the pointer being deleted. In most cases, the memory returned to the operating system will contain the same values it had before it was returned, and the pointer will be left pointing to the now deallocated memory.
+C++没有规定被释放的内容其内容应该是什么，也没有规定被删除的指针的值应该是什么。在大多数情况下，返回给操作系统的内存将包含它在返回之前的相同值，并且指针将指向现在释放的内存。
 
-A pointer that is pointing to deallocated memory is called a **dangling pointer**. Indirection through- or deleting a dangling pointer will lead to undefined behavior. Consider the following program:
-
-```cpp
-#include <iostream>
-
-int main()
-{
-    int* ptr{ new int }; // dynamically allocate an integer
-    *ptr = 7; // put a value in that memory location
-
-    delete ptr; // return the memory to the operating system.  ptr is now a dangling pointer.
-
-    std::cout << *ptr; // Indirection through a dangling pointer will cause undefined behavior
-    delete ptr; // trying to deallocate the memory again will also lead to undefined behavior.
-
-    return 0;
-}
-```
-
-COPY
-
-In the above program, the value of 7 that was previously assigned to the allocated memory will probably still be there, but it’s possible that the value at that memory address could have changed. It’s also possible the memory could be allocated to another application (or for the operating system’s own usage), and trying to access that memory will cause the operating system to shut the program down.
-
-Deallocating memory may create multiple dangling pointers. Consider the following example:
+执行已经被释放的内存的指针，称为[[dangling|悬垂]]指针。间接访问或删除悬垂指针会导致[[undefined-behavior|未定义行为]]。考虑下面程序：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    int* ptr{ new int{} }; // dynamically allocate an integer
-    int* otherPtr{ ptr }; // otherPtr is now pointed at that same memory location
+    int* ptr{ new int }; // 动态分配一个整型
+    *ptr = 7; // 向该内存赋一个值
 
-    delete ptr; // return the memory to the operating system.  ptr and otherPtr are now dangling pointers.
-    ptr = nullptr; // ptr is now a nullptr
+    delete ptr; // 内存还给操作系统，ptr现在是悬垂指针
 
-    // however, otherPtr is still a dangling pointer!
+    std::cout << *ptr; // 间接访问悬垂指针会导致未定义行为
+    delete ptr; // 再次释放已经被释放的内存也会导致未定义行为
 
     return 0;
 }
 ```
 
-COPY
 
-There are a few best practices that can help here.
+在上面的程序中，之前分配给已分配内存的值7可能仍然存在，但该内存地址的值可能已经发生了变化。内存也有可能被分配给另一个应用程序(或操作系统自己使用)，试图访问该内存将导致操作系统关闭程序。
 
-First, try to avoid having multiple pointers point at the same piece of dynamic memory. If this is not possible, be clear about which pointer “owns” the memory (and is responsible for deleting it) and which pointers are just accessing it.
+释放内存可能会导致多个悬垂指针。考虑下面的例子:
 
-Second, when you delete a pointer, if that pointer is not going out of scope immediately afterward, set the pointer to nullptr. We’ll talk more about null pointers, and why they are useful in a bit.
+```cpp
+#include <iostream>
+
+int main()
+{
+    int* ptr{ new int{} }; // 动态分配一个整型
+    int* otherPtr{ ptr }; // otherPtr 指向相同的内存
+
+    delete ptr; // 内存还给操作系统，ptr,otherPtr 现在是悬垂指针
+    ptr = nullptr; // ptr 现在是nullptr
+
+    // 但是, otherPtr 仍然是悬垂指针
+
+    return 0;
+}
+```
+
+通过一些最佳实践，可以帮助避免上述问题。
+
+首先，尽量避免有多个指针指向同一块动态内存。如果这是不可能的，要清楚哪些指针“拥有”内存(并负责删除它)，哪些指针只是在访问它。
+
+其次，在删除指针时，如果该指针不会立即离开作用域，则将该指针设置为nullptr。我们将更多地讨论空指针，以及它们为什么有用。
 
 !!! success "最佳实践"
 
-	Set deleted pointers to nullptr unless they are going out of scope immediately afterward.
+	将已删除的指针设置为nullptr，除非它们随后将立即超出作用域。
 
 ## `new` 运算符可能执行失败
 
-When requesting memory from the operating system, in rare circumstances, the operating system may not have any memory to grant the request with.
+当向操作系统请求内存时，在极少数情况下，操作系统可能已经没有任何可用的内存。
 
-By default, if new fails, a _bad_alloc_ exception is thrown. If this exception isn’t properly handled (and it won’t be, since we haven’t covered exceptions or exception handling yet), the program will simply terminate (crash) with an unhandled exception error.
+默认情况下，如果`new`失败，则抛出`bad_alloc`异常。如果这个异常没有得到正确处理(它不会得到正确处理，因为我们还没有讨论异常或异常处理)，程序将终止(崩溃)，并出现一个未处理的异常错误。
 
-In many cases, having new throw an exception (or having your program crash) is undesirable, so there’s an alternate form of new that can be used instead to tell new to return a null pointer if memory can’t be allocated. This is done by adding the constant std::nothrow between the new keyword and the allocation type:
+==在许多情况下，让`new`抛出异常(或让程序崩溃)是不可取的，因此，如果无法分配内存，可以使用另一种形式的`new`来告诉`new`返回空指针。这是通过在`new`关键字和分配类型之间添加常量`std::nothrow`来实现的：==
 
 ```cpp
-int* value { new (std::nothrow) int }; // value will be set to a null pointer if the integer allocation fails
+int* value { new (std::nothrow) int }; // 如果没有分配到内存，则指针被置为null
 ```
-
 
 In the above example, if new fails to allocate memory, it will return a null pointer instead of the address of the allocated memory.
 
