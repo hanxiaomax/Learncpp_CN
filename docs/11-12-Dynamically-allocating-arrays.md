@@ -40,40 +40,42 @@ int main()
 ```
 
 
-
-Because we are allocating an array, C++ knows that it should use the array version of new instead of the scalar version of new. Essentially, the `new[]` operator is called, even though the `[]` isn’t placed next to the new keyword.
-
-The length of dynamically allocated arrays has to be a type that’s convertible to `std::size_t`. In practice, using an `int` length is fine, since `int` will convert to `std::size_t`.
+因为我们分配的是一个数组，所以C++指定应该使用数组版本的`new`而不是标量版本的`new`。实际上，即使`[]`没有放在`new`后面，调用的也是`new []`。
+ 
+动态分配的数组长度，其类型必须是能够被转换为`std::size_t`的类型。在实践中，使用 `int` 作为长度是可以的，因为它可以被转换为 `std::size_t`。
 
 !!! info "作者注"
 
-	Some might argue that because array new expects a length of type `size_t`, our lengths (e.g. such as `length` in the example above) should either be of type `size_t` or converted to a `size_t` via `static_cast`.
+	有人会说，因为数组版本的`new`需要 `size_t`类型的长度值，所以我们应该使用`size_t` 或者能够被[[static-casts|静态类型转换]]成`size_t`的变量类型。
+	
+	但是，我认为这个论点没有说服力，原因有很多。首先，它违背了使用有符号整数而不是无符号整数的最佳实践。其次，当使用整数长度创建动态数组时，按照惯例应该这样做:
+	
+	```cpp
+	double* ptr { new double[5] };
+	```
+	
+	`5` 是一个整型[[literals|字面量]]，所以我们可以将其隐式转换为 `size_t`。在C++23之前，我们没有办法在不使用`static_cast`的情况下创建一个 `size_t` 字面量。如果C++的设计者要求我们在这里是 `size_t` 的话，他肯定会提供一个创建 `size_t` 字面的方法。
 
-I find this argument uncompelling for a number of reasons. First, it contradicts the best practice to use signed integers over unsigned ones. Second, when creating dynamic arrays using an integral length, it’s convention to do something like this:
+	最常见的反对意见是，一些迂腐的编译器可能会将此标记为有符号/无符号转换错误(因为我们总是将警告视为错误)。然而，值得注意的是，即使启用了此类警告(' -Wconversion ')， GCC也不会将其标记为有符号/无符号转换错误。
+	
+	虽然使用`size_t`作为动态分配数组的长度没有什么错，但在本系列教程中，我们不会拘于要求使用它。
 
-```cpp
-double* ptr { new double[5] };
-```
 
-`5` is an `int` literal, so we get an implicit conversion to `size_t`. Prior to C++23, there is no way to create a `size_t` literal without using `static_cast`! If the designers of C++ had intended us to strictly use `size_t` types here, they would have provided a way to create literals of type `size_t`.
+请注意，由于此动态分配的内存是从不同的地方分配的，而不是用于固定数组的内存，因此数组的大小可以很大。你可以运行上面的程序并分配长度为1,000,000(甚至可能是100,000,000)的数组。试一试！正因为如此，在C++中需要分配大量内存的程序通常需要分配动态内存。
 
-The most common counterargument is that some pedantic compiler might flag this as a signed/unsigned conversion error (since we always treat warnings as errors). However, it’s worth noting that GCC does not flag this as a signed/unsigned conversion error even when such warnings (`-Wconversion`) are enabled.
-
-While there is nothing wrong with using `size_t` as the length of a dynamically allocated array, in this tutorial series, we will not be pedantic about requiring it.
-
-Note that because this memory is allocated from a different place than the memory used for fixed arrays, the size of the array can be quite large. You can run the program above and allocate an array of length 1,000,000 (or probably even 100,000,000) without issue. Try it! Because of this, programs that need to allocate a lot of memory in C++ typically do so dynamically.
 
 ## 动态地删除数组
 
-When deleting a dynamically allocated array, we have to use the array version of delete, which is `delete[]`.
+删除动态分配的数组需要数组版本的`delete`，即 `delete[]`。
 
-This tells the CPU that it needs to clean up multiple variables instead of a single variable. One of the most common mistakes that new programmers make when dealing with dynamic memory allocation is to use delete instead of `delete[]` when deleting a dynamically allocated array. Using the scalar version of delete on an array will result in undefined behavior, such as data corruption, memory leaks, crashes, or other problems.
+这告诉CPU它需要清理多个变量而不是单个变量。新程序员在处理动态内存分配时最常犯的错误之一是在删除动态分配的数组时使用delete而不是`delete[]` 。在数组上使用标量版本的`delete`将导致[[undefined-behavior|未定义行为]]，如数据损坏、内存泄漏、程序崩溃或其他问题。
 
-One often asked question of array `delete[]` is, “How does array delete know how much memory to delete?” The answer is that array `new[]` keeps track of how much memory was allocated to a variable, so that array `delete[]` can delete the proper amount. Unfortunately, this size/length isn’t accessible to the programmer.
+关于 `delete[]`的一个常见的问题是，`delete`如何知道应该释放多少内存呢？实际上，`new[]`会负责追踪为变量分配的内存的大小，所以 `delete[]` 能够删除该变量实际分配的内存。但是，这段内存的长度值并不能够被开发者获取。
+
 
 ## 动态数组和固定数组几乎是一样的
 
-In lesson [[11-8-Pointers-and-arrays|11.8 - 指针和数组]], you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via `sizeof()`), but otherwise there is little difference.
+在 [[11-8-Pointers-and-arrays|11.8 - 指针和数组]] 中，我们知道固定数组变量会持有指向数组首个元素的内存地址。, you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via `sizeof()`), but otherwise there is little difference.
 
 A dynamic array starts its life as a pointer that points to the first element of the array. Consequently, it has the same limitations in that it doesn’t know its length or size. A dynamic array functions identically to a decayed fixed array, with the exception that the programmer is responsible for deallocating the dynamic array via the `delete[]` keyword.
 
