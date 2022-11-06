@@ -7,11 +7,15 @@ time: 2022-1-2
 type: translation
 tags:
 - for-each
+- C++20
 ---
 
 ??? note "关键点速记"
 
-	- for-each 中的变量可以声明为引用
+	- 在 for-each 循环中声明元素时，如果元素是非基本类型，则将其声明为引用或常数引用以提高性能。
+	- for-each 循环必须知道被遍历容器的大小，所以它不能配合退化为指针的数组或动态数组工作
+	- For-each 循环不仅能够配合固定数组一起使用，它可以和多种类列表的数据结构一起工作，例如vector(例如 `std::vector`)、链表、树和映射。
+	- 通过放置在循环变量的前面的`init-statement`可以像普通for循环一样创建一个索引(C++20)并在循环中对其进行di，在C++20之前，必须在循环外声明。
 
 
 在 [[11-3-Arrays-and-loops|11.3 - 数组和循环]] 中，我们学习了如何使用for循环遍历数组中的元素，例如：
@@ -146,11 +150,11 @@ for (const auto& element: array) // element is a const reference to the currentl
 
 !!! success "最佳实践"
 
-	In for-each loops element declarations, if your elements are non-fundamental types, use references or `const` references for performance reasons.
+	在 for-each 循环中声明元素时，如果元素是非基本类型，则将其声明为引用或常数引用以提高性能。
 
 ## 使用 for-each 循环重写最高分数的例子
 
-Here’s the example at the top of the lesson rewritten using a _for each_ loop:
+接下来，使用 for-each 重写开头的例子：
 
 ```cpp
 #include <iostream>
@@ -174,13 +178,12 @@ int main()
 }
 ```
 
-COPY
+注意，在本例中，我们不再需要通过下标索引数组或获取数组大小。我们可以通过变量`score`直接访问数组元素。数组必须有大小信息，退化为指针的数组不能在for-each循环中使用。
 
-Note that in this example, we no longer have to manually subscript the array or get its size. We can access the array element directly through variable score. The array has to have size information. An array that decayed to a pointer cannot be used in a for-each loop.
 
 ## For-each 循环和非数组变量
 
-_For-each_ loops don’t only work with fixed arrays, they work with many kinds of list-like structures, such as vectors (e.g. `std::vector`), linked lists, trees, and maps. We haven’t covered any of these yet, so don’t worry if you don’t know what these are. Just remember that for each loops provide a flexible and generic way to iterate through more than just arrays.
+==For-each 循环不仅能配合固定数组一起使用，它可以和多种类列表的数据结构一起工作，例如vector(例如 `std::vector`)、链表、树和映射==。 我们还没有介绍这些内容，所以你不知道也没关系。你现在只需要记住，for-each循环提供了一种灵活、通用的遍历方法（不仅仅是遍历数组而已）。
 
 ```cpp
 #include <iostream>
@@ -203,11 +206,10 @@ int main()
 }
 ```
 
-COPY
 
-For-each doesn’t work with pointers to an array
+## For-each 不能和指向数组的指针一起工作
 
-In order to iterate through the array, for-each needs to know how big the array is, which means knowing the array size. Because arrays that have decayed into a pointer do not know their size, for-each loops will not work with them!
+为了遍历数组，for-each需要知道数组的大小。因为已经退化为指针的数组不再包含数组大小的信息，因此for-each循环将无法配合它们一起工作！
 
 ```cpp
 #include <iostream>
@@ -234,24 +236,23 @@ int main()
 }
 ```
 
-COPY
 
-Similarly, dynamic arrays won’t work with for-each loops for the same reason.
+同样，由于同样的原因，动态数组也不能用于for-each循环。
 
-Can I get the index of the current element?
+## 能够获取当前元素的索引吗？
 
-_For-each_ loops do _not_ provide a direct way to get the array index of the current element. This is because many of the structures that _for-each_ loops can be used with (such as linked lists) are not directly indexable!
+_For-each_ 循环不能够提供访问数组索引的直接方法。这是因为很多配合for-each循环工作的数据结构（例如链表）并不能够通过索引访问元素。
 
-Since C++20, range-based for-loops can be used with an init-statement just like the init-statement in normal for-loops. We can use the init-statement to create a manual index counter without polluting the function in which the for-loop is placed.
+从C++20开始，基于范围的for循环可以与一个初始化语句一起使用，就像普通for循环中的初始化语句一样。我们可以使用 `init-statement` 来创建手动索引计数器，而不会破坏for循环所在的函数。
 
-The init-statement is placed right before the loop variable:
+`init-statement` 应该放置在循环变量的前面：
 
-```
+```cpp
 for (init-statement; element_declaration : array)
    statement;
 ```
 
-In the following code, we have two arrays which are correlated by index. For example, the student with the name at `names[3]` has a score of `scores[3]`. Whenever a student with a new high score is found, we print their name and difference in points to the previous high score.
+在下面的代码中，我们有两个通过索引关联的数组。例如，名字为“`names[3]`”的学生的分数为“`scores[3]`”。每当发现一个新的高分学生时，我们就打印出他们的名字和与前一个高分的分差。
 
 ```cpp
 #include <iostream>
@@ -279,20 +280,18 @@ int main()
 }
 ```
 
-COPY
-
-Output
-
+输出结果：
 ```
 Alex beat the previous best score of 0 by 84 points!
 Betty beat the previous best score of 84 by 8 points!
 The best score was 92
 ```
 
-The `int i{ 0 };` is the init-statement, it only gets executed once when the loop starts. At the end of each iteration, we increment `i`, similar to a normal for-loop. However, if we were to use `continue` inside the loop, the `++i` would get skipped, leading to unexpected results. If you use `continue`, you need to make sure that `i` gets incremented before the `continue` is encountered.
+这里的 `int i{ 0 };` 是 `init-statement`，它会在循环执行时执行一次。在每次循环时，`i`就被递增1，类似与普通的循环。不过，如果我们在循环中使用`continue`的话，`++i`会被跳过，导致非预期的结果。如果你需要使用 `continue` 的话，请确保`i`的递增在`continue`之前进行。
 
-Before C++20, the index variable `i` had to be declared outside of the loop, which could lead to name conflicts when we wanted to define another variable named `i` later in the function.
+在C++20之前，索引变量`i` 必须在循环之外声明，但这可能导致名称冲突，例如当我们想在后面的函数中定义另一个名为`i` 的变量时。
 
 ## 结论
 
-_For-each_ loops provide a superior syntax for iterating through an array when we need to access all of the array elements in forwards sequential order. It should be preferred over the standard for loop in the cases where it can be used. To prevent making copies of each element, the element declaration can be a reference.
+
+当需要按正向顺序访问所有数组元素时，For-each 循环为遍历数组提供了一种高级语法。在可以使用它的情况下，它应该优于标准的for循环。为了防止复制每个元素，可以将元素声明为引用。
