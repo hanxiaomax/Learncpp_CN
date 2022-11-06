@@ -10,7 +10,10 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- 使用`new[]`创建动态数组，其长度可以在运行时指定，不需要是常数，但其类型必须是能够被转换为`std::size_t`的类型
+	- 使用`new int[legth]{}`分配并初始化数组为全0。从C++11开始，[[initializer-list|初始化值列表]]可以用于动态数组：`new int[5]{ 9, 7, 5, 3, 1 }`
+	- 删除动态数组的内存需要使用`delete []`，无需指定大小
 
 除了为单个变量动态分配内存，我们也可以为数组动态分配内存。固定数组的大小必须在编译时已知，而动态分配的数组则可以在运行时确定长度。
 
@@ -42,7 +45,7 @@ int main()
 
 因为我们分配的是一个数组，所以C++指定应该使用数组版本的`new`而不是标量版本的`new`。实际上，即使`[]`没有放在`new`后面，调用的也是`new []`。
  
-动态分配的数组长度，其类型必须是能够被转换为`std::size_t`的类型。在实践中，使用 `int` 作为长度是可以的，因为它可以被转换为 `std::size_t`。
+==动态分配的数组长度，其类型必须是能够被转换为`std::size_t`的类型==。在实践中，使用 `int` 作为长度是可以的，因为它可以被转换为 `std::size_t`。
 
 !!! info "作者注"
 
@@ -75,21 +78,19 @@ int main()
 
 ## 动态数组和固定数组几乎是一样的
 
-在 [[11-8-Pointers-and-arrays|11.8 - 指针和数组]] 中，我们知道固定数组变量会持有指向数组首个元素的内存地址。, you learned that a fixed array holds the memory address of the first array element. You also learned that a fixed array can decay into a pointer that points to the first element of the array. In this decayed form, the length of the fixed array is not available (and therefore neither is the size of the array via `sizeof()`), but otherwise there is little difference.
+在 [[11-8-Pointers-and-arrays|11.8 - 指针和数组]] 中，我们知道固定数组变量会持有指向数组首个元素的内存地址。同时我们还知道，固定数组在传递给函数时，会退化为指针，此时数组的长度就无法在函数内被获取了。(此时 `sizeof()`也不可用了)。
 
-A dynamic array starts its life as a pointer that points to the first element of the array. Consequently, it has the same limitations in that it doesn’t know its length or size. A dynamic array functions identically to a decayed fixed array, with the exception that the programmer is responsible for deallocating the dynamic array via the `delete[]` keyword.
+对于动态数组来说，它生来就是一个指向数组第一个元素的指针。因此，它也不知道数组的长度。使用动态数组和固定数组上是一致的，但是程序员需要负责释放动态数组的内存。
 
 ## 初始化动态分配的数组
 
-If you want to initialize a dynamically allocated array to 0, the syntax is quite simple:
+如果你想要将动态分配的数组初始化为0，可以这样做：
 
 ```cpp
 int* array{ new int[length]{} };
 ```
 
-COPY
-
-Prior to C++11, there was no easy way to initialize a dynamic array to a non-zero value (initializer lists only worked for fixed arrays). This means you had to loop through the array and assign element values explicitly.
+在C++11之前，并没有将动态数组初始化为非0的简便方法（[[initializer-list|初始化值列表]]只对固定数组有效）。这就意味着你必须使用循环依次为每个元素赋值才行。
 
 ```cpp
 int* array = new int[5];
@@ -100,11 +101,10 @@ array[3] = 3;
 array[4] = 1;
 ```
 
-COPY
 
-Super annoying!
+太麻烦了！
 
-However, starting with C++11, it’s now possible to initialize dynamic arrays using initializer lists!
+==但是，从C++11开始，[[initializer-list|初始化值列表]]也可以用于初始化动态数组了！==
 
 ```cpp
 int fixedArray[5] = { 9, 7, 5, 3, 1 }; // initialize a fixed array before C++11
@@ -113,20 +113,18 @@ int* array{ new int[5]{ 9, 7, 5, 3, 1 } }; // initialize a dynamic array since C
 auto* array{ new int[5]{ 9, 7, 5, 3, 1 } };
 ```
 
-COPY
+注意，在数组长度和初始化值列表之间没有等号。
 
-Note that this syntax has no `operator=` between the array length and the initializer list.
-
-For consistency, fixed arrays can also be initialized using uniform initialization:
+为了保持一致，固定数组也可以使用[[uniform-initialization|统一初始化]]的方式进行初始化。
 
 ```cpp
 int fixedArray[]{ 9, 7, 5, 3, 1 }; // initialize a fixed array in C++11
 char fixedArray[]{ "Hello, world!" }; // initialize a fixed array in C++11
 ```
 
-COPY
+==显式声明数组的大小是可选的。==
 
-Explicitly stating the size of the array is optional.
+
 
 ## 调整数组大小
 
