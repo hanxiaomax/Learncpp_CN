@@ -124,12 +124,10 @@ char fixedArray[]{ "Hello, world!" }; // initialize a fixed array in C++11
 
 ==显式声明数组的大小是可选的。==
 
-
-
 ## 调整数组大小
 
-Dynamically allocating an array allows you to set the array length at the time of allocation. However, C++ does not provide a built-in way to resize an array that has already been allocated. It is possible to work around this limitation by dynamically allocating a new array, copying the elements over, and deleting the old array. However, this is error prone, especially when the element type is a class (which have special rules governing how they are created).
+动态分配数组允许你在分配时设置数组的长度。但是，C++不提供调整已经分配的数组大小的内置方法。可以通过动态分配新数组、复制元素并删除旧数组来解决这个限制。然而，这很容易出错，特别是当元素类型是类(类有特殊的规则控制它们的创建方式)时。
 
-Consequently, we recommend avoiding doing this yourself.
+因此，我们应该避免自己手动调整数组的大小。
 
-Fortunately, if you need this capability, C++ provides a resizable array as part of the standard library called `std::vector`. We’ll introduce `std::vector` shortly.
+幸运的是，如果你需要该功能，C++提供了支持调整大小的容器 `std::vector`。参见：[[11-17-An-introduction-to-std-vector|11.17 — 动态数组 std::vector 简介]]。

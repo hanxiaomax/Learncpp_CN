@@ -10,12 +10,11 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- for-each 中的变量可以声明为引用
 
 
-In lesson [[11-3-Arrays-and-loops|11.3 - 数组和循环]], we showed examples where we used a _for loop_ to iterate through each element of an array.
-
-For example:
+在 [[11-3-Arrays-and-loops|11.3 - 数组和循环]] 中，我们学习了如何使用for循环遍历数组中的元素，例如：
 
 ```cpp
 #include <iostream>
@@ -42,22 +41,23 @@ int main()
 ```
 
 
-While _for loops_ provide a convenient and flexible way to iterate through an array, they are also easy to mess up and prone to off-by-one errors.
+尽管使用 for 循环可以很方便的遍历一个数组，但是在真正使用的时候，这种方式容易出错，而且也容易犯[[off-by-one-errors|差一错误]]。
 
-There’s a simpler and safer type of loop called a **for-each** loop (also called a **range-based for-loop**) for cases where we want to iterate through every element in an array (or other list-type structure).
+使用 for-each 循环（也称为[[range-based-for-loops|基于范围的for循环]]）可以更加简便、更加安全地遍历数组（或其他类似的数据结构）中的元素。
+
 
 ## For-each 循环
 
-The _for-each_ statement has a syntax that looks like this:
+for-each 循环的语法如下：
 
-```
+```cpp
 for (element_declaration : array)
    statement;
 ```
 
-When this statement is encountered, the loop will iterate through each element in array, assigning the value of the current array element to the variable declared in element_declaration. For best results, element_declaration should have the same type as the array elements, otherwise type conversion will occur.
+当执行此语句时，循环将遍历数组中的每个元素，将当前数组元素的值赋给`element_declaration`中声明的变量。为了获得最佳结果，`element_declaration`应该具有与数组元素相同的类型，否则将发生类型转换。
 
-Let’s take a look at a simple example that uses a _for-each_ loop to print all of the elements in an array named fibonacci:
+让我们看一个简单的例子，它使用 for-each 循环来打印斐波那契数组中的所有元素:
 
 ```cpp
 #include <iostream>
@@ -76,23 +76,20 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+程序的输出结果为：
 
 ```
 0 1 1 2 3 5 8 13 21 34 55 89
 ```
 
-Let’s take a closer look at how this works. First, the _for loop_ executes, and variable number is set to the value of the first element, which has value 0. The program executes the statement, which prints 0. Then the _for loop_ executes again, and number is set to the value of the second element, which has value 1. The statement executes again, which prints 1. The _for loop_ continues to iterate through each of the numbers in turn, executing the statement for each one, until there are no elements left in the array to iterate over. At that point, the loop terminates, and the program continues execution (returning 0 to the operating system).
+让我们仔细研究一下上面代码是如何工作的。首先，执行 for 循环，变量`number` 的值首先被设置为数组中的第一个元素，也就是 0。程序随后打印该值，即打印0.然后，for 循环再次执行，`number`被设置为数组的第二个元素，即1。然后打印1。for 循环不断地执行，依次打印出数组中的每个元素，直到遍历完全部数组。然后，循环截止了，程序继续执行（返回0给操作系统）。
 
-Note that variable number is not an array index. It’s assigned the value of the array element for the current loop iteration.
+注意，这里的 `number` 并不是一个数组索引。它本身被赋值为当前遍历到的数组中的元素。
 
-For each loops and the auto keyword
+## For each 循环和 `auto`关键字
 
-Because element_declaration should have the same type as the array elements, this is an ideal case in which to use the `auto` keyword, and let C++ deduce the type of the array elements for us.
+因为 `element_declaration` 应该与数组中的元素属于同一类型，那么最理想的方式就是使用`auto`关键字声明该变量并让C++为我们自动推断其类型。
 
-Here’s the above example, using auto:
 
 ```cpp
 #include <iostream>
@@ -111,11 +108,10 @@ int main()
 }
 ```
 
-COPY
 
 ## For-each 循环和引用
 
-In the following for-each example, our element declarations are declared by value:
+在下面的例子中，`element`被声明为一个值变量：
 
 ```cpp
 std::string array[]{ "peter", "likes", "frozen", "yogurt" };
@@ -125,9 +121,7 @@ for (auto element : array) // element will be a copy of the current array elemen
 }
 ```
 
-COPY
-
-This means each array element iterated over will be copied into variable element. Copying array elements can be expensive, and most of the time we really just want to refer to the original element. Fortunately, we can use references for this:
+这意味着在遍历数组时，当前元素会被拷贝到`element`。拷贝数组元素的开销会很大，而且多数情况下我们实际上想要访问原本的元素。幸运的是，我们可以将其声明为引用类型：
 
 ```cpp
 std::string array[]{ "peter", "likes", "frozen", "yogurt" };
@@ -137,11 +131,9 @@ for (auto& element: array) // The ampersand makes element a reference to the act
 }
 ```
 
-COPY
+在上面的例子中，`element` 是当前迭代数组元素的引用，从而避免了复制。此外，对`element`的任何修改都会影响正在迭代的数组，如果`element`是一个普通变量，这是不可能的。
 
-In the above example, element will be a reference to the currently iterated array element, avoiding having to make a copy. Also any changes to element will affect the array being iterated over, something not possible if element is a normal variable.
-
-And, of course, it’s a good idea to make your reference `const` if you’re intending to use it in a read-only fashion:
+当然，如果你打算以只读的方式使用引用，将它设为`const`是个好主意：
 
 ```cpp
 std::string array[]{ "peter", "likes", "frozen", "yogurt" };
@@ -151,13 +143,12 @@ for (const auto& element: array) // element is a const reference to the currentl
 }
 ```
 
-COPY
 
 !!! success "最佳实践"
 
 	In for-each loops element declarations, if your elements are non-fundamental types, use references or `const` references for performance reasons.
 
-Rewriting the max scores example using a for-each loop
+## 使用 for-each 循环重写最高分数的例子
 
 Here’s the example at the top of the lesson rewritten using a _for each_ loop:
 
