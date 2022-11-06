@@ -21,11 +21,18 @@ STL 提供了很多不同场合使用的[[container-class|容器类]]。通常�
 
 顺序容器是指那些在容器中按顺序存放元素的容器类。顺序容器的一大特点就是你可以决定在哪个位置插入元素。最常见的顺序容器的例子就是数组：如果你需要在数组的某个位置插入元素，那么该元素一定会被插入到这个位置。
 
-对于C++11来说，STL包含了6种顺序容器：`std::vector`, `std::deque`, `std::array`, `std::list`, `std::forward_list`, and `std::basic_string`。
+对于C++11来说，STL包含了6种顺序容器：
 
-- 如果你学过物理的话，你可能会认为vector表示的具有大小和方向的向量。不过，STL中的 vector 可不是向量，它是一个可以根据需要调整大小的动态数组。 you’ve ever taken physics, you probably are thinking of a vector as an entity with both magnitude and direction. The unfortunately named **vector**class in the STL is a dynamic array capable of growing as needed to contain its elements. The vector class allows random access to its elements via operator[], and inserting and removing elements from the end of the vector is generally fast.
-   
-   The following program inserts 6 numbers into a vector and uses the overloaded `[]` operator to access them in order to print them.
+- `std::vector`
+- `std::deque`
+- `std::array`
+- `std::list`
+- `std::forward_list`
+- `std::basic_string`
+
+如果你学过物理的话，你可能会认为vector表示的具有大小和方向的向量。不过，STL中的 vector 可不是向量，它是一个可以根据需要调整大小的动态数组。vector 容器类支持通过下标运算符进行随机访问，也支持像尾部快速插入元素。
+
+下面的代码向 vector 中插入了 6 个数字，并且使用下标运算符依次访问并打印元素。
 
 ```cpp
 #include <vector>
@@ -45,12 +52,13 @@ int main()
 }
 ```
 
-COPY
+程序运行结果：
 
-This program produces the result:  
+```
 10 9 8 7 6 5
+```
 
--   The **deque** class (pronounced “deck”) is a double-ended queue class, implemented as a dynamic array that can grow from both ends.
+`deque` 类（读作deck）是一个双端队列容器类，它使用动态数组实现，支持向前面或者后面插入。
 
 ```cpp
 #include <iostream>
@@ -72,31 +80,31 @@ int main()
 }
 ```
 
-COPY
+程序运行结果：
 
-This program produces the result:
-
+```
 8 9 10 0 1 2
+```
 
--   A **list** is a special type of sequence container called a doubly linked list where each element in the container contains pointers that point at the next and previous elements in the list. Lists only provide access to the start and end of the list -- there is no random access provided. If you want to find a value in the middle, you have to start at one end and “walk the list” until you reach the element you want to find. The advantage of lists is that inserting elements into a list is very fast if you already know where you want to insert them. Generally iterators are used to walk through the list.
+`list`是一种特殊的顺序容器，称为双向链表。容器中的每个元素都通过指针指向前一个元素和后一个元素。链表只提供了从第一个元素或最后一个元素访问容器的方法——即不支持元素的随机访问。如果你需要访问中间位置的元素，你必须遍历链表以找到你需要访问的元素。链表的优势在于它支持快速插入元素（如果你知道要向哪里插入的话）。通常我们会使用迭代器遍历链表。
 
-We’ll talk more about both linked lists and iterators in future lessons.
+我们会在后续的课程中介绍链表和迭代器。
 
--   Although the STL **string** (and wstring) class aren’t generally included as a type of sequence container, they essentially are, as they can be thought of as a vector with data elements of type char (or wchar).
+尽管 STL 中的 `string` (和 `wstring`)通常不被看做是一种顺序容器，但从本质上讲它是的。你可以将它看做是元素类型为char或wchar的vector。
 
 ## 关联容器
 
-Associative containers are containers that automatically sort their inputs when those inputs are inserted into the container. By default, associative containers compare elements using operator<.
+关联容器会在新元素插入时自动排序。默认情况下，关联容器会使用`<`对元素进行比较。
 
--   A **set** is a container that stores unique elements, with duplicate elements disallowed. The elements are sorted according to their values.
--   A **multiset** is a set where duplicate elements are allowed.
--   A **map** (also called an associative array) is a set where each element is a pair, called a key/value pair. The key is used for sorting and indexing the data, and must be unique. The value is the actual data.
--   A **multimap** (also called a dictionary) is a map that allows duplicate keys. Real-life dictionaries are multimaps: the key is the word, and the value is the meaning of the word. All the keys are sorted in ascending order, and you can look up the value by key. Some words can have multiple meanings, which is why the dictionary is a multimap rather than a map.
+- `set`是一种用于存放唯一元素的容器，重复的元素是不被允许的。元素会按照它们的值进行排序。
+- `multiset` is a set where duplicate elements are allowed
+- `map`(also called an associative array) is a set where each element is a pair, called a key/value pair. The key is used for sorting and indexing the data, and must be unique. The value is the actual data.
+- `multimap`(also called a dictionary) is a map that allows duplicate keys. Real-life dictionaries are multimaps: the key is the word, and the value is the meaning of the word. All the keys are sorted in ascending order, and you can look up the value by key. Some words can have multiple meanings, which is why the dictionary is a multimap rather than a map.
 
 ## 容器适配器
 
-Container adapters are special predefined containers that are adapted to specific uses. The interesting part about container adapters is that you can choose which sequence container you want them to use.
+容器适配器是用于特定用途的特殊预定义容器。容器适配器的有趣之处在于，你可以选择它们使用的[[Sequence-containers|顺序容器]]。
 
--   A **stack** is a container where elements operate in a LIFO (Last In, First Out) context, where elements are inserted (pushed) and removed (popped) from the end of the container. Stacks default to using deque as their default sequence container (which seems odd, since vector seems like a more natural fit), but can use vector or list as well.
--   A **queue** is a container where elements operate in a FIFO (First In, First Out) context, where elements are inserted (pushed) to the back of the container and removed (popped) from the front. Queues default to using deque, but can also use list.
--   A **priority queue** is a type of queue where the elements are kept sorted (via operator<). When elements are pushed, the element is sorted in the queue. Removing an element from the front returns the highest priority item in the priority queue.
+- `stack` 容器支持元素的 LIFO （后入先出）。元素从容器的末端被压入(push)或弹出(pop)。`stack` 默认使用`deque`作为默认的顺序容器（看上去多少有点奇怪，毕竟感觉`vector`更合适），但是你也可以使用`vector`或链表。
+- `queue` is a container where elements operate in a FIFO (First In, First Out) context, where elements are inserted (pushed) to the back of the container and removed (popped) from the front. Queues default to using deque, but can also use list.
+- `priority queue`is a type of queue where the elements are kept sorted (via operator<). When elements are pushed, the element is sorted in the queue. Removing an element from the front returns the highest priority item in the priority queue.
