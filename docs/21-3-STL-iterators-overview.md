@@ -18,10 +18,10 @@ An **Iterator** is an object that can traverse (iterate over) a container clas
 
 An iterator is best visualized as a pointer to a given element in the container, with a set of overloaded operators to provide a set of well-defined functions:
 
--   **Operator*** -- Dereferencing the iterator returns the element that the iterator is currently pointing at.
--   **Operator++** -- Moves the iterator to the next element in the container. Most iterators also provide `Operator--` to move to the previous element.
--   **Operator== and Operator!=** -- Basic comparison operators to determine if two iterators point to the same element. To compare the values that two iterators are pointing at, dereference the iterators first, and then use a comparison operator.
--   **Operator=** -- Assign the iterator to a new position (typically the start or end of the container’s elements). To assign the value of the element the iterator is pointing at, dereference the iterator first, then use the assign operator.
+-   `Operator*` -- Dereferencing the iterator returns the element that the iterator is currently pointing at.
+-   `Operator++` -- Moves the iterator to the next element in the container. Most iterators also provide `Operator--` to move to the previous element.
+-   `Operator==` and `Operator!=` -- Basic comparison operators to determine if two iterators point to the same element. To compare the values that two iterators are pointing at, dereference the iterators first, and then use a comparison operator.
+-   `Operator=` -- Assign the iterator to a new position (typically the start or end of the container’s elements). To assign the value of the element the iterator is pointing at, dereference the iterator first, then use the assign operator.
 
 Each container includes four basic member functions for use with Operator=:
 
@@ -39,7 +39,7 @@ Finally, all containers provide (at least) two types of iterators:
 
 Lets take a look at some examples of using iterators.
 
-**Iterating through a vector**
+## 遍历 `vector`
 
 ```cpp
 #include <iostream>
@@ -63,13 +63,14 @@ int main()
 }
 ```
 
-COPY
+打印结果为：
 
-This prints the following:
-
+```
 0 1 2 3 4 5
+```
 
-**Iterating through a list**
+
+## 遍历列表
 
 Now let’s do the same thing with a list:
 
@@ -96,15 +97,15 @@ int main()
 }
 ```
 
-COPY
+打印结果为：
 
-This prints:
-
+```
 0 1 2 3 4 5
+```
 
 Note the code is almost identical to the vector case, even though vectors and lists have almost completely different internal implementations!
 
-**Iterating through a set**
+## 遍历集合
 
 In the following example, we’re going to create a set from 6 numbers and use an iterator to print the values in the set:
 

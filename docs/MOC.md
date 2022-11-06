@@ -306,14 +306,14 @@
 - [[M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|M.8 — 智能指针带来的循环依赖问题]]
 - [[M-x-chapter-M-comprehensive-review|M.x - 小结与测试 - 移动和智能指针]]
 
-## 21. STL
+## 21. STL ✅ 
 
 - [[21-1-the-standard-library|21.1 - 标准库]]
 - [[21-2-STL-containers-overview|21.2 - STL容器]]
 - [[21-3-STL-iterators-overview|21.3 - STL迭代器]]
 - [[21-4-STL-algorithms-overview|21.4 - STL算法]]
 
-## 22. std 字符串
+## 22. std 字符串  
 
 - [[22-1-std-string-and-std-wstring]]
 - [[22-2-std-string-construction-and-destruction]]

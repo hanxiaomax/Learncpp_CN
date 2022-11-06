@@ -12,14 +12,15 @@ tags:
 ??? note "关键点速记"
 	
 
-Congratulations! You made it all the way through the primary portion of the tutorial! In the preceding lessons, we covered many of the principal C++ language features (including a few from the C++11/14/17 extension to the language).
 
-So the obvious question is, “what next?”. One thing you’ve probably noticed is that an awful lot of programs use the same concepts over and over again: loops, strings, arrays, sorting, etc… You’ve probably also noticed that programs written using non-class versions of containers and common algorithms are error-prone. The good news is that C++ comes with a library that is chock full of reusable classes for you to build programs out of. This library is called The C++ Standard Library.
+恭喜你！你已经完成了教程的主要部分！在前面的课程中，我们介绍了C++语言的许多主要特性(包括C++11/14/17扩展的一些特性)。
+
+那么你肯定要问了，“接下来要怎么做呢？” 你可能已经注意到了，大量的程序都在反复使用相同的概念：循环、字符串、数组、排序等……你可能还注意到，使用非类版本的容器和常用算法编写的程序很容易出错。好消息是，C++附带了一个库，其中提供了很多可重用的类，你可以利用它们构建程序。这个库被称为C++标准库。
 
 ## 标准库
 
-The Standard library contains a collection of classes that provide templated containers, algorithms, and iterators. If you need a common class or algorithm, odds are the standard library has it. The upside is that you can take advantage of these classes without having to write and debug the classes yourself, and the standard library does a good job providing reasonably efficient versions of these classes. The downside is that the standard library is complex, and can be a little intimidating since everything is templated.
+标准库包含一组类，它们提供了模板容器、算法和迭代器。如果你需要一个常用的类或算法，标准库中很可能已经提供了它。使用标准库的优点是你可以直接使用这些类，而不必自己编写和调试类。而且标准库中的类都非常高效。缺点是标准库很复杂，而且看起来可能有点吓人，因为所有东西都是模板化的。
 
-Fortunately, you can bite off the standard library in tiny pieces, using only what you need from it, and ignore the rest until you’re ready to tackle it.
+幸运的是，你可以先将标准库分成多个部分，只使用你需要的部分，而忽略其他部分，直到你需要使用它们的时候再去仔细研究。
 
-In the next few lessons, we’ll take a high-level look at the types of containers, algorithms, and iterators that the standard library provides. Then in subsequent lessons, we’ll dig into some of the specific classes.
+在接下来的几节课中，我们首先会宽泛地了解标准库提供的容器、算法和迭代器的类型。然后在后面的课程中深入研究一些具体的类。
