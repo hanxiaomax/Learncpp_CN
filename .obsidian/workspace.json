@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "ccea23841587f5e9",
+            "id": "4afc44aafe78ca83",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/21-3-STL-iterators-overview.md",
+                "file": "docs/21-2-STL-containers-overview.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/21-3-STL-iterators-overview.md"
+                "file": "docs/21-2-STL-containers-overview.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/21-3-STL-iterators-overview.md",
+                "file": "docs/21-2-STL-containers-overview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ccea23841587f5e9",
+  "active": "4afc44aafe78ca83",
   "lastOpenFiles": [
-    "docs/MOC.md",
+    "docs/container-adapter.md",
     "docs/21-2-STL-containers-overview.md",
+    "docs/Associative-containers.md",
+    "docs/Sequence-containers.md",
+    "docs/MOC.md",
     "docs/21-1-the-standard-library.md",
+    "docs/21-4-STL-algorithms-overview.md",
+    "docs/21-3-STL-iterators-overview.md",
     "docs/11-13-For-each-loops.md",
-    "docs/off-by-one-errors.md",
-    "docs/11-12-Dynamically-allocating-arrays.md",
-    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
-    "docs/memory-leak.md",
-    "docs/heap.md",
-    "docs/4-17-An introduction-to-std-string.md"
+    "docs/off-by-one-errors.md"
   ]
 }

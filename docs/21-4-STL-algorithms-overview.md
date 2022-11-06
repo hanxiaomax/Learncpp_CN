@@ -22,7 +22,7 @@ STL provides quite a few algorithms -- we will only touch on some of the more co
 
 To use any of the STL algorithms, simply include the algorithm header file.
 
-## min_element and max_element**
+## `min_element` 和 `max_element`
 
 The `std::min_element` and `std::max_element` algorithms find the min and max element in a container class. `std::iota` generates a contiguous series of values.
 
@@ -53,7 +53,7 @@ Prints:
 0 5
 ```
 
-## find (and `list::insert`)
+## `find` 和 `list::insert`
 
 In this example, we’ll use the `std::find()` algorithm to find a value in the list class, and then use the list::insert() function to add a new value into the list at that point.
 
@@ -107,7 +107,7 @@ else
 
 COPY
 
-## sort and reverse**
+## `sort` 和 `reverse`
 
 In this example, we’ll sort a vector and then reverse it.
 
@@ -157,6 +157,6 @@ Alternatively, we could pass a custom comparison function as the third argument 
 
 Note that `std::sort()` doesn’t work on list container classes -- the list class provides its own `sort()` member function, which is much more efficient than the generic version would be.
 
-## Conclusion**
+## 小结
 
 Although this is just a taste of the algorithms that STL provides, it should suffice to show how easy these are to use in conjunction with iterators and the basic container classes. There are enough other algorithms to fill up a whole chapter!

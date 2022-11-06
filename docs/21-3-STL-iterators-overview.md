@@ -135,15 +135,15 @@ int main()
 }
 ```
 
-COPY
+打印结果为：
 
-This program produces the following result:
-
+```
 -6 -4 1 2 7 8
+```
 
 Note that although populating the set differs from the way we populate the vector and list, the code used to iterate through the elements of the set was essentially identical.
 
-**Iterating through a map**
+## 遍历映射
 
 This one is a little trickier. Maps and multimaps take pairs of elements (defined as a std::pair). We use the make_pair() helper function to easily create pairs. std::pair allows access to the elements of the pair via the first and second members. In our map, we use first as the key, and second as the value.
 
@@ -173,9 +173,7 @@ int main()
 }
 ```
 
-COPY
-
-This program produces the result:
+打印结果为：
 
 ```
 1=banana 2=orange 3=grapes 4=apple 5=peach 6=mango
@@ -183,7 +181,7 @@ This program produces the result:
 
 Notice here how easy iterators make it to step through each of the elements of the container. You don’t have to care at all how map stores its data!
 
-## Conclusion**
+## 小结
 
 Iterators provide an easy way to step through the elements of a container class without having to understand how the container class is implemented. When combined with STL’s algorithms and the member functions of the container classes, iterators become even more powerful. In the next lesson, you’ll see an example of using an iterator to insert elements into a list (which doesn’t provide an overloaded operator[] to access its elements directly).
 

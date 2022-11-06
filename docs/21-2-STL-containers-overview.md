@@ -13,19 +13,19 @@ tags:
 ??? note "关键点速记"
 	
 
-By far the most commonly used functionality of the STL library are the STL container classes. If you need a quick refresher on container classes, check out lesson .[[16-6-container-classes|16.6 - 容器类]]
+STL库中最有用的功能要算是STL容器类了。如果你需要快速复习一下什么是容器类，请参考 [[16-6-container-classes|16.6 - 容器类]]。
 
-The STL contains many different container classes that can be used in different situations. Generally speaking, the container classes fall into three basic categories: Sequence containers, Associative containers, and Container adapters. We’ll just do a quick overview of the containers here.
+STL 提供了很多不同场合使用的[[container-class|容器类]]。通常，这些容器类可以分为三个大类：[[Sequence-containers|顺序容器]]，[[Associative-containers|关联容器]] 和[[container-adapter|容器适配器]] 。
 
-## 序列容器
+## 顺序容器
 
-Sequence containers are container classes that maintain the ordering of elements in the container. A defining characteristic of sequence containers is that you can choose where to insert your element by position. The most common example of a sequence container is the array: if you insert four elements into an array, the elements will be in the exact order you inserted them.
+顺序容器是指那些在容器中按顺序存放元素的容器类。顺序容器的一大特点就是你可以决定在哪个位置插入元素。最常见的顺序容器的例子就是数组：如果你需要在数组的某个位置插入元素，那么该元素一定会被插入到这个位置。
 
-As of C++11, the STL contains 6 sequence containers: std::vector, std::deque, std::array, std::list, std::forward_list, and std::basic_string.
+对于C++11来说，STL包含了6种顺序容器：`std::vector`, `std::deque`, `std::array`, `std::list`, `std::forward_list`, and `std::basic_string`。
 
--   If you’ve ever taken physics, you probably are thinking of a vector as an entity with both magnitude and direction. The unfortunately named **vector**class in the STL is a dynamic array capable of growing as needed to contain its elements. The vector class allows random access to its elements via operator[], and inserting and removing elements from the end of the vector is generally fast.
-
-The following program inserts 6 numbers into a vector and uses the overloaded [] operator to access them in order to print them.
+- 如果你学过物理的话，你可能会认为vector表示的具有大小和方向的向量。不过，STL中的 vector 可不是向量，它是一个可以根据需要调整大小的动态数组。 you’ve ever taken physics, you probably are thinking of a vector as an entity with both magnitude and direction. The unfortunately named **vector**class in the STL is a dynamic array capable of growing as needed to contain its elements. The vector class allows random access to its elements via operator[], and inserting and removing elements from the end of the vector is generally fast.
+   
+   The following program inserts 6 numbers into a vector and uses the overloaded `[]` operator to access them in order to print them.
 
 ```cpp
 #include <vector>
