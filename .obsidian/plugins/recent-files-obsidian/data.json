@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "21-2-STL-containers-overview",
-      "path": "docs/21-2-STL-containers-overview.md"
+      "basename": "21-3-STL-iterators-overview",
+      "path": "docs/21-3-STL-iterators-overview.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "21-4-STL-algorithms-overview",
+      "path": "docs/21-4-STL-algorithms-overview.md"
+    },
+    {
+      "basename": "21-2-STL-containers-overview",
+      "path": "docs/21-2-STL-containers-overview.md"
     },
     {
       "basename": "container-adapter",
@@ -23,14 +31,6 @@
     {
       "basename": "21-1-the-standard-library",
       "path": "docs/21-1-the-standard-library.md"
-    },
-    {
-      "basename": "21-4-STL-algorithms-overview",
-      "path": "docs/21-4-STL-algorithms-overview.md"
-    },
-    {
-      "basename": "21-3-STL-iterators-overview",
-      "path": "docs/21-3-STL-iterators-overview.md"
     },
     {
       "basename": "11-13-For-each-loops",

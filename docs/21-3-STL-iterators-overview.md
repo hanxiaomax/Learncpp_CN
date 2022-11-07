@@ -14,14 +14,14 @@ tags:
 	
 
 
-An **Iterator** is an object that can traverse (iterate over) a container class without the user having to know how the container is implemented. With many classes (particularly lists and the associative classes), iterators are the primary way elements of these classes are accessed.
+[[iterator|迭代器]]是一个可以遍历[[container-class|容器类]]的对象，使用它遍历容器时，使用者无需知道容器的实现细节。对于很多类来说（尤其是链表或关联容器），迭代器是是访问其元素的首选方式。
 
-An iterator is best visualized as a pointer to a given element in the container, with a set of overloaded operators to provide a set of well-defined functions:
+迭代器可以被形象地看做是一个指向容器元素的指针，同时它具有一系列被重载的运算符：
 
--   `Operator*` -- Dereferencing the iterator returns the element that the iterator is currently pointing at.
--   `Operator++` -- Moves the iterator to the next element in the container. Most iterators also provide `Operator--` to move to the previous element.
--   `Operator==` and `Operator!=` -- Basic comparison operators to determine if two iterators point to the same element. To compare the values that two iterators are pointing at, dereference the iterators first, and then use a comparison operator.
--   `Operator=` -- Assign the iterator to a new position (typically the start or end of the container’s elements). To assign the value of the element the iterator is pointing at, dereference the iterator first, then use the assign operator.
+-   `Operator*` -- 迭代器的[[dereference-operator|解引用运算符]]，它可以返回迭代器当前所指的元素；
+-   `Operator++` -- 将迭代器移动到下一个元素。很多迭代器也提供了`Operator--` 用于将迭代器移动到上一个元素； 
+-   `Operator==` 和 `Operator!=` -- 基本的比较运算符，用于比较两个迭代器所指的元素是否相同。如果需要比较两个迭代器所指元素的值是否相同，则需要先对迭代器解引用，然后在比较；
+-   `Operator=` -- 为迭代器赋值一个新的位置， the iterator to a new position (typically the start or end of the container’s elements). To assign the value of the element the iterator is pointing at, dereference the iterator first, then use the assign operator.
 
 Each container includes four basic member functions for use with Operator=:
 
