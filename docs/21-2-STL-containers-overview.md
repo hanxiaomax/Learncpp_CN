@@ -99,7 +99,8 @@ int main()
 - `set` 是一种用于存放唯一元素的容器，重复的元素是不被允许的。元素会按照它们的值进行排序；
 - `multiset` 是一种允许重复元素的集合；
 - `map` (也称为关联数组) 是一个包含元素对的集合，称为键值对。其中键用来对数据进行排序和索引，而且键必须是唯一的。其中值是实际数据；
-- `multimap`(也称为字典)是一种映射，它允许重复的键。在实际生活中，字典是一种 `multimaps`： the key is the word, and the value is the meaning of the word. All the keys are sorted in ascending order, and you can look up the value by key. Some words can have multiple meanings, which is why the dictionary is a multimap rather than a map.
+- `multimap`(也称为字典)是一种映射，它允许重复的键。在实际生活中，字典是一种 `multimaps`：键是要查的词，而值则是词的意思。所有的键均是按升序排列的，你可以根据键来查值。有些词有多个含义，这也是为什么字典是一个`multimap`而不是`map`。
+
 
 ## 容器适配器
 

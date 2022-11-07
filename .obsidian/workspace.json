@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "4afc44aafe78ca83",
+            "id": "09ee28aa482a4450",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,17 +34,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "6f087e88cc8d425e",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -118,7 +110,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "docs/21-2-STL-containers-overview.md"
+              }
             }
           },
           {
@@ -138,6 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/21-2-STL-containers-overview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,10 +151,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6f087e88cc8d425e",
+  "active": "09ee28aa482a4450",
   "lastOpenFiles": [
-    "docs/21-2-STL-containers-overview.md",
     "docs/MOC.md",
+    "docs/21-2-STL-containers-overview.md",
     "docs/container-adapter.md",
     "docs/Associative-containers.md",
     "docs/Sequence-containers.md",
