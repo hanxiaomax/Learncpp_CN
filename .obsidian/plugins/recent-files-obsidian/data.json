@@ -5,6 +5,10 @@
       "path": "docs/21-2-STL-containers-overview.md"
     },
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "container-adapter",
       "path": "docs/container-adapter.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "Sequence-containers",
       "path": "docs/Sequence-containers.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "21-1-the-standard-library",

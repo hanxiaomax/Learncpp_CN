@@ -34,9 +34,17 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "6f087e88cc8d425e",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -110,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "docs/21-2-STL-containers-overview.md"
-              }
+              "state": {}
             }
           },
           {
@@ -132,7 +138,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/21-2-STL-containers-overview.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,13 +156,13 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "4afc44aafe78ca83",
+  "active": "6f087e88cc8d425e",
   "lastOpenFiles": [
-    "docs/container-adapter.md",
     "docs/21-2-STL-containers-overview.md",
+    "docs/MOC.md",
+    "docs/container-adapter.md",
     "docs/Associative-containers.md",
     "docs/Sequence-containers.md",
-    "docs/MOC.md",
     "docs/21-1-the-standard-library.md",
     "docs/21-4-STL-algorithms-overview.md",
     "docs/21-3-STL-iterators-overview.md",
