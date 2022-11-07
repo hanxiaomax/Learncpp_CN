@@ -21,21 +21,21 @@ tags:
 -   `Operator*` -- 迭代器的[[dereference-operator|解引用运算符]]，它可以返回迭代器当前所指的元素；
 -   `Operator++` -- 将迭代器移动到下一个元素。很多迭代器也提供了`Operator--` 用于将迭代器移动到上一个元素； 
 -   `Operator==` 和 `Operator!=` -- 基本的比较运算符，用于比较两个迭代器所指的元素是否相同。如果需要比较两个迭代器所指元素的值是否相同，则需要先对迭代器解引用，然后在比较；
--   `Operator=` -- 为迭代器赋值一个新的位置， the iterator to a new position (typically the start or end of the container’s elements). To assign the value of the element the iterator is pointing at, dereference the iterator first, then use the assign operator.
+-   `Operator=` -- 为迭代器赋值一个新的位置（一般来说是容器的起点或末尾元素）。如果需要给迭代器所指的元素赋值，则需要先对迭代器解引用然后再赋值。
 
-Each container includes four basic member functions for use with Operator=:
+每个容器都提供了四个基本的成员函数，用于配合赋值号使用：
 
--   `begin()`returns an iterator representing the beginning of the elements in the container.
--   `end()`returns an iterator representing the element just past the end of the elements.
--   `cbegin()` returns a const (read-only) iterator representing the beginning of the elements in the container.
--   `cend()` returns a const (read-only) iterator representing the element just past the end of the elements.
+-   `begin()`：返回一个指向容器起始元素的迭代器；
+-   `end()`：返回一个指向容器末尾的迭代器（其前一个元素为容器中最后一个元素）； 
+-   `cbegin()` ：返回一个指向容器起始元素的const迭代器；
+-   `cend()` ：返回一个指向容器末尾的const迭代器（其前一个元素为容器中最后一个元素）。
 
-It might seem weird that end() doesn’t point to the last element in the list, but this is done primarily to make looping easy: iterating over the elements can continue until the iterator reaches end(), and then you know you’re done.
+虽然`end()` 指向的不是最后一个元素而是其后面一个位置有点奇怪，但其实这么做可以简化循环：迭代可以一直进行，直到迭代器到达 `end()`，此时我们就知道遍历结束了。
 
-Finally, all containers provide (at least) two types of iterators:
+最后，所有的容器都提供了（至少）两种类型的迭代器：
 
--   `container::iterator` provides a read/write iterator
--   `container::const_iterator` provides a read-only iterator
+-   `container::iterator` ：可以读写的迭代器
+-   `container::const_iterator`： 只读迭代器
 
 Lets take a look at some examples of using iterators.
 
