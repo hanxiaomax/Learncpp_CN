@@ -105,6 +105,6 @@ int main()
 
 容器适配器是用于特定用途的特殊预定义容器。容器适配器的有趣之处在于，你可以选择它们使用的[[Sequence-containers|顺序容器]]。
 
-- `stack` 容器支持元素的 LIFO （后入先出）。元素从容器的末端被压入(push)或弹出(pop)。`stack` 默认使用`deque`作为默认的顺序容器（看上去多少有点奇怪，毕竟感觉`vector`更合适），但是你也可以使用`vector`或链表。
-- `queue` is a container where elements operate in a FIFO (First In, First Out) context, where elements are inserted (pushed) to the back of the container and removed (popped) from the front. Queues default to using deque, but can also use list.
-- `priority queue`is a type of queue where the elements are kept sorted (via operator<). When elements are pushed, the element is sorted in the queue. Removing an element from the front returns the highest priority item in the priority queue.
+- `stack` 容器支持元素的 LIFO （后入先出）。元素从容器的末端被压入(push)或弹出(pop)。`stack` 默认使用`deque`作为顺序容器（看上去多少有点奇怪，毕竟感觉`vector`更合适），但是你也可以使用`vector`或链表；
+- `queue` 容器支持元素的 FIFO（先入先出）。元素从容器的尾部插入，然后从头部弹出。`queue` 默认使用 `deque` 作为顺序容器，但是你也可以使用链表；
+- `priority queue` 是一种始终保持元素为排序状态（通过`<`运算符）的队列。当元素被压入优先级队列时，元素会在队列中进行排序。删除时，则从队首移除元素（当前优先级最高的元素）。
