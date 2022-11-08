@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "16-4-association",
       "path": "docs/16-4-association.md"
     },
     {
-      "basename": "reflexive association",
-      "path": "docs/reflexive association.md"
+      "basename": "21-4-STL-algorithms-overview",
+      "path": "docs/21-4-STL-algorithms-overview.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
+      "basename": "reflexive association",
+      "path": "docs/reflexive association.md"
     },
     {
       "basename": "16-5-dependencies",
@@ -71,10 +75,6 @@
     {
       "basename": "22-5-std-string-assignment-and-swapping",
       "path": "docs/22-5-std-string-assignment-and-swapping.md"
-    },
-    {
-      "basename": "21-4-STL-algorithms-overview",
-      "path": "docs/21-4-STL-algorithms-overview.md"
     },
     {
       "basename": "generic-algorithm",

@@ -204,7 +204,7 @@ public:
 
 ## 关联可以是间接的
 
-In all of the previous cases, we’ve used either pointers or references to directly link objects together. However, in an association, this is not strictly required. Any kind of data that allows you to link two objects together suffices. In the following example, we show how a Driver class can have a unidirectional association with a Car without actually including a Car pointer or reference member:
+在前面的所有例子中，我们都使用指针或引用直接将对象连接在一起。然而在关联中，并不一定要这样做。任何能够建立两个对象之间关系的数据都可以。在下面的例子中，我们展示了`Driver`类如何在不实际包含`Car`指针或引用成员的情况下与`Car`形成单向关联关系：
 
 ```cpp
 #include <iostream>
@@ -283,19 +283,19 @@ int main()
 }
 ```
 
-COPY
 
 In the above example, we have a CarLot holding our cars. The Driver, who needs a car, doesn’t have a pointer to his Car -- instead, he has the ID of the car, which we can use to get the Car from the CarLot when we need it.
 
 In this particular example, doing things this way is kind of silly, since getting the Car out of the CarLot requires an inefficient lookup (a pointer connecting the two is much faster). However, there are advantages to referencing things by a unique ID instead of a pointer. For example, you can reference things that are not currently in memory (maybe they’re in a file, or in a database, and can be loaded on demand). Also, pointers can take 4 or 8 bytes -- if space is at a premium and the number of unique objects is fairly low, referencing them by an 8-bit or 16-bit integer can save lots of memory.
 
-Composition vs aggregation vs association summary
+## Composition vs aggregation vs association summary
 
 Here’s a summary table to help you remember the difference between composition, aggregation, and association:
 
-Property	Composition	Aggregation	Association
-Relationship type	Whole/part	Whole/part	Otherwise unrelated
-Members can belong to multiple classes	No	Yes	Yes
-Members’ existence managed by class	Yes	No	No
-Directionality	Unidirectional	Unidirectional	Unidirectional or bidirectional
-Relationship verb	Part-of	Has-a	Uses-a
+|Property|	Composition|	Aggregation|	Association|
+|:---:|:---:|:---:|:---:|
+|Relationship type	|Whole/part	|Whole/part	|Otherwise unrelated
+|Members can belong to multiple classes	|No|	Yes|	Yes
+|Members’ existence managed by class|	Yes	|No	|No
+|Directionality	|Unidirectional	|Unidirectional	|Unidirectional or bidirectional
+|Relationship verb	|Part-of	|Has-a	|Uses-a
