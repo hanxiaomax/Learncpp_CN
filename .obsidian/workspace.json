@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "e5690cc1d5f15d55",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/21-4-STL-algorithms-overview.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +96,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/21-4-STL-algorithms-overview.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -131,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/21-4-STL-algorithms-overview.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,10 +136,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e5690cc1d5f15d55",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/generic-algorithm.md",
     "docs/21-4-STL-algorithms-overview.md",
+    "docs/generic-algorithm.md",
     "docs/MOC.md",
     "docs/21-3-STL-iterators-overview.md",
     "docs/21-2-STL-containers-overview.md",
