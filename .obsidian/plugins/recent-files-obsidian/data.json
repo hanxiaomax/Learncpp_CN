@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "16-3-aggregation",
       "path": "docs/16-3-aggregation.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "16-2-composition",

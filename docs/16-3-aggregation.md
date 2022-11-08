@@ -16,26 +16,26 @@ tags:
 	-
 
 
-在 [[16-2-composition|16.2 - 组合关系]] 中我们指出，对象组合是基于简单对象创建复杂对象的一种方法。同时，我们还介绍了一种类型的组合——[[object-composition|对象组合]]。在对象组合关系中，整体对象要负责管理部分对象的存在性。
+在 [[16-2-composition|16.2 - 组合关系]] 中我们指出，对象组合是基于简单对象创建复杂对象的一种方法。同时，我们还介绍了一种类型的对象组合——组合。在组合关系中，整体对象要负责管理部分对象的存在性。
 
-In this lesson, we’ll take a look at the other subtype of object composition, called aggregation.
+在本节课中，我们会介绍另外一种对象组合——聚合。
 
 ## 聚合
 
-To qualify as an **aggregation**, a whole object and its parts must have the following relationship:
+聚合关系要满足如下几个条件：
 
--   The part (member) is part of the object (class)
--   The part (member) can belong to more than one object (class) at a time
--   The part (member) does _not_ have its existence managed by the object (class)
--   The part (member) does not know about the existence of the object (class)
+- 部分（成员）是整体对象的一部分；
+- 部分（成员）可以不只属于一个整体对象；
+- 部分（成员）的生命周期不由整体对象管理；
+- 部分（成员）不需要知道整体对象的存在性；
 
-Like a composition, an aggregation is still a part-whole relationship, where the parts are contained within the whole, and it is a unidirectional relationship. However, unlike a composition, parts can belong to more than one object at a time, and the whole object is not responsible for the existence and lifespan of the parts. When an aggregation is created, the aggregation is not responsible for creating the parts. When an aggregation is destroyed, the aggregation is not responsible for destroying the parts.
+和组合类似，聚合也是一种”部分与整体“的关系，部分被包含在整体中，而且这是一种单向的关系。但是，和组合不同，聚合对象可以同时属于多个整体，而且整体对象不需要负责管理部分对象的生命周期。当聚合关系被创建时，整体不负责创建部分。当聚合关系被破坏时，整体也不负责销毁部分。
 
-For example, consider the relationship between a person and their home address. In this example, for simplicity, we’ll say every person has an address. However, that address can belong to more than one person at a time: for example, to both you and your roommate or significant other. However, that address isn’t managed by the person -- the address probably existed before the person got there, and will exist after the person is gone. Additionally, a person knows what address they live at, but the addresses don’t know what people live there. Therefore, this is an aggregate relationship.
+举例来说，考虑某个人和它住址之间的关系。简单来说，一个人有一个住址。但是住址可以同时属于多个人，例如你和你的室友，或者是其他人。而且，住址也不是被人管理的——其地址甚至早于居住人就存在了，而且人不在的时候地址仍然会继续存在。因此，我们上面描述的是一种聚合关系。
 
-Alternatively, consider a car and an engine. A car engine is part of the car. And although the engine belongs to the car, it can belong to other things as well, like the person who owns the car. The car is not responsible for the creation or destruction of the engine. And while the car knows it has an engine (it has to in order to get anywhere) the engine doesn’t know it’s part of the car.
+另外，考虑汽车和引擎的关系。汽车的引擎属于汽车的一部分。但是尽管引擎是汽车的一部分，它也可以属于其他人或物。例如，引擎也属于车主。汽车本身并不负责创建或销毁引擎。不仅如此，尽管车辆知道它会有一个引擎，但是引擎却不知道它是汽车的一部分。
 
-When it comes to modeling physical objects, the use of the term “destroyed” can be a little dicey. One might argue, “If a meteor fell out of the sky and crushed the car, wouldn’t the car parts all be destroyed too?” Yes, of course. But that’s the fault of the meteor. The important point is that the car is not responsible for destruction of its parts (but an external force might be).
+当我们讨论对物理对象建模的时候，使用”销毁“一词会比较奇怪。此时有的人可能会抬杠说，如果一个小行星撞击地球正好砸到了你的车，那岂不是车和引擎一起被销毁了？当然，不过这是陨石的错。es, of course. But that’s the fault of the meteor. The important point is that the car is not responsible for destruction of its parts (but an external force might be).
 
 We can say that aggregation models “has-a” relationships (a department has teachers, the car has an engine).
 
