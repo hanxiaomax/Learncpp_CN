@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "5e6483f41515d6d9",
+            "id": "2719a1bbbf6e9feb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/21-3-STL-iterators-overview.md",
+                "file": "docs/generic-algorithm.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/21-3-STL-iterators-overview.md"
+                "file": "docs/generic-algorithm.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/21-3-STL-iterators-overview.md",
+                "file": "docs/generic-algorithm.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,16 +151,16 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "5e6483f41515d6d9",
+  "active": "2719a1bbbf6e9feb",
   "lastOpenFiles": [
-    "docs/MOC.md",
     "docs/21-4-STL-algorithms-overview.md",
+    "docs/MOC.md",
+    "docs/21-3-STL-iterators-overview.md",
     "docs/21-2-STL-containers-overview.md",
     "docs/container-adapter.md",
     "docs/Associative-containers.md",
     "docs/Sequence-containers.md",
     "docs/21-1-the-standard-library.md",
-    "docs/21-3-STL-iterators-overview.md",
     "docs/11-13-For-each-loops.md",
     "docs/off-by-one-errors.md"
   ]

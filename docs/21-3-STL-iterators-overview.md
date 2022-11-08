@@ -37,7 +37,7 @@ tags:
 -   `container::iterator` ：可以读写的迭代器
 -   `container::const_iterator`： 只读迭代器
 
-Lets take a look at some examples of using iterators.
+接下来，让我们看几个使用迭代器的实例吧。
 
 ## 遍历 `vector`
 
@@ -51,12 +51,12 @@ int main()
     for (int count=0; count < 6; ++count)
         vect.push_back(count);
 
-    std::vector<int>::const_iterator it; // declare a read-only iterator
-    it = vect.cbegin(); // assign it to the start of the vector
-    while (it != vect.cend()) // while it hasn't reach the end
+    std::vector<int>::const_iterator it; // 声明一个只读迭代器
+    it = vect.cbegin(); // 将迭代器赋值为 vector 的起点
+    while (it != vect.cend()) // 如果 it 还没有到达容器的末尾
         {
-        std::cout << *it << ' '; // print the value of the element it points to
-        ++it; // and iterate to the next element
+        std::cout << *it << ' '; // 打印 it 所指的元素
+        ++it; // 移动到下一个元素
         }
 
     std::cout << '\n';
@@ -72,7 +72,7 @@ int main()
 
 ## 遍历列表
 
-Now let’s do the same thing with a list:
+遍历列表也是类似的：
 
 ```cpp
 #include <iostream>
@@ -103,11 +103,12 @@ int main()
 0 1 2 3 4 5
 ```
 
-Note the code is almost identical to the vector case, even though vectors and lists have almost completely different internal implementations!
+可以看到，尽管 vector 和链表的具体实现截然不同，但是遍历它们的代码却几乎完全一样！
+
 
 ## 遍历集合
 
-In the following example, we’re going to create a set from 6 numbers and use an iterator to print the values in the set:
+在这个例子中，我们首先创建一个包含6个数的集合，然后再使用迭代器依次打印它们：
 
 ```cpp
 #include <iostream>
@@ -141,11 +142,11 @@ int main()
 -6 -4 1 2 7 8
 ```
 
-Note that although populating the set differs from the way we populate the vector and list, the code used to iterate through the elements of the set was essentially identical.
+从这个例子可以看出，虽然填充集合的方法和填充vector以及链表完全不同，但是使用迭代器遍历它们的方法却是一致的。
 
 ## 遍历映射
 
-This one is a little trickier. Maps and multimaps take pairs of elements (defined as a std::pair). We use the make_pair() helper function to easily create pairs. std::pair allows access to the elements of the pair via the first and second members. In our map, we use first as the key, and second as the value.
+遍历映射稍微复杂些。`Maps` 和 `multimaps` 需要填充元素对(定义为`std::pair`)。我们可以使用 `make_pair()` 函数很方便的创建元素对。`std::pair` 允许我们通过`first`和`second`两个成员变量访问元素对。`first`是键，`second` 是值。
 
 ```cpp
 #include <iostream>
@@ -165,7 +166,7 @@ int main()
 	auto it{ mymap.cbegin() }; // declare a const iterator and assign to start of vector
 	while (it != mymap.cend()) // while it hasn't reach the end
 	{
-		std::cout << it->first << '=' << it->second << ' '; // print the value of the element it points to
+		std::cout << it->first << '=' << it->second << ' '; //  the value of the element it points to
 		++it; // and iterate to the next element
 	}
 
@@ -179,10 +180,10 @@ int main()
 1=banana 2=orange 3=grapes 4=apple 5=peach 6=mango
 ```
 
-Notice here how easy iterators make it to step through each of the elements of the container. You don’t have to care at all how map stores its data!
+可以看到，迭代器能够帮助我们依次遍历容器中的各个元素，我们完全无需操心`map`究竟是如何存储这些元素的！
 
 ## 小结
 
-Iterators provide an easy way to step through the elements of a container class without having to understand how the container class is implemented. When combined with STL’s algorithms and the member functions of the container classes, iterators become even more powerful. In the next lesson, you’ll see an example of using an iterator to insert elements into a list (which doesn’t provide an overloaded operator[] to access its elements directly).
+迭代器提供了一种无需知道实现细节就可以轻松遍历[[container-class|容器类]]的方法。结合STL算法和容器类的成员函数，迭代器会是非常强大的工具。在下节课中，你将会看到如何使用迭代器向链表插入元素（链表没有提供下标运算符所以不能直接访问元素）。
 
-One point worth noting: Iterators must be implemented on a per-class basis, because the iterator does need to know how a class is implemented. Thus iterators are always tied to specific container classes.
+还有一件事值得注意：迭代器必须被实现为类的一部分，因为它需要知道类的实现细节。因此，迭代器总是和特定的容器类绑定的。
