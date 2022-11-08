@@ -136,33 +136,28 @@ int main()
 
 ## 提醒和勘误
 
-由于各种各样的历史原因，组聚合的定义并不精确——因此您可能会看到其他参考材料对它的定义与我们所做的不同。没关系，只是要注意。
+由于各种各样的历史原因，聚合的定义并不像组合的定义那样精确——因此你可能会看到其他参考材料对它的定义与我们所做的不同。这并不要紧，你知道就可以了。
 
-For a variety of historical and contextual reasons, unlike a composition, the definition of an aggregation is not precise -- so you may see other reference material define it differently from the way we do. That’s fine, just be aware.
-
-One final note: In the lesson [[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]] we defined aggregate data types (such as structs and classes) as data types that group multiple variables together. You may also run across the term aggregate class in your C++ journeys, which is defined as a struct or class that has no provided constructors, destructors, or overloaded assignment, has all public members, and does not use inheritance -- essentially a plain-old-data struct. Despite the similarities in naming, aggregates and aggregation are different and should not be confused.
+最后一点需要注意的是：在课程[[10-5-Introduction-to-structs-members-and-member-selection|10.5 -结构体，成员和成员选择]]中，我们将聚合数据类型(如结构和类)定义为将多个变量组合在一起的数据类型。你今后还可能接触到**聚合类**这个术语，它被定义为一个结构或类，但没有提供构造函数、析构函数或重载赋值操作符，且所有成员都是[[public-member|公有成员]]，它也不使用继承——它本质上是一个仅包含数据的结构体。
 
 ## `std::reference_wrapper`
 
-In the `Department`/`Teacher` example above, we used a reference in the `Department` to store the `Teacher`. This works fine if there is only one `Teacher`, but what if a Department has multiple Teachers? We’d like to store those Teachers in a list of some kind (e.g. a `std::vector`) but fixed arrays and the various standard library lists can’t hold references (because list elements must be assignable, and references can’t be reassigned).
-
+在 `Department`/`Teacher` 的例子中，我们在 `Department` 中使用引用来保存`Teacher`。可以这么做的原因是在这个例子中只有一个 `Teacher`，但是如果院系中不止一个老师呢？此时我们需要将老师存放在一个列表中（例如`std::vector`）。但是固定数组和很多标准库容器并不支持保存引用（因为链表元素必须是可赋值的，而引用不可以被赋值）。
 ```cpp
 std::vector<const Teacher&> m_teachers{}; // Illegal
 ```
 
-COPY
+如果引用不行，那么我们可以使用指针，不过此时可能会导致存放或使用空指针的问题。在`Department`/`Teacher` 例子中，我们不允许使用空指针。为了解决这个问题，可以使用 `std::reference_wrapper`。
 
-Instead of references, we could use pointers, but that would open the possibility to store or pass null pointers. In the `Department`/`Teacher` example, we don’t want to allow null pointers. To solve this, there’s `std::reference_wrapper`.
+本质上 `std::reference_wrapper` 是一个行为类似于引用的类，但是它可以被赋值和拷贝，所以能够配合 `std::vector` 使用。
 
-Essentially, `std::reference_wrapper` is a class that acts like a reference, but also allows assignment and copying, so it’s compatible with lists like `std::vector`.
+好消息是你完全不需要了解这背后的原理，使用它你只需要记住三件事：
 
-The good news is that you don’t really need to understand how it works to use it. All you need to know are three things:
+1.  `std::reference_wrapper` 位于 `<functional>` 头文件；
+2.  在创建 `std::reference_wrapper` 包装的对象时，该对象不可以是[[13-16-anonymous-objects|匿名对象]] (因为匿名对象具有表达式作用域，所以会导致[[dangling|悬垂]]引用)。
+3.  当需要从 `std::reference_wrapper` 中获取原对象时，可以使用  `get()` 成员方法。
 
-1.  `std::reference_wrapper` lives in the `<functional>` header.
-2.  When you create your `std::reference_wrapper` wrapped object, the object can’t be an anonymous object (since anonymous objects have expression scope, and this would leave the reference dangling).
-3.  When you want to get your object back out of `std::reference_wrapper`, you use the `get()` member function.
-
-Here’s an example using `std::reference_wrapper` in a `std::vector`:
+下面的中我们在`std::vector`中使用了 `std::reference_wrapper` ：
 
 ```cpp
 #include <functional> // std::reference_wrapper
@@ -193,9 +188,7 @@ int main()
 }
 ```
 
-COPY
-
-To create a vector of const references, we’d have to add const before the `std::string` like so
+如果要创建const引用，在 `std::string` 前加上const即可：
 
 ```cpp
 // Vector of const references to std::string
