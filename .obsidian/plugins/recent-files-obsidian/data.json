@@ -1,8 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "16-3-aggregation",
+      "path": "docs/16-3-aggregation.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "16-2-composition",
+      "path": "docs/16-2-composition.md"
+    },
+    {
+      "basename": "16-1-object-relationships",
+      "path": "docs/16-1-object-relationships.md"
+    },
+    {
+      "basename": "23-7-random-file-IO",
+      "path": "docs/23-7-random-file-IO.md"
+    },
+    {
+      "basename": "23-6-basic-file-IO",
+      "path": "docs/23-6-basic-file-IO.md"
+    },
+    {
+      "basename": "23-5-stream-states-and-input-validation",
+      "path": "docs/23-5-stream-states-and-input-validation.md"
+    },
+    {
+      "basename": "23-4-stream-classes-for-strings",
+      "path": "docs/23-4-stream-classes-for-strings.md"
+    },
+    {
+      "basename": "23-3-output-with-ostream-and-ios",
+      "path": "docs/23-3-output-with-ostream-and-ios.md"
+    },
+    {
+      "basename": "23-2-Input-with-istream",
+      "path": "docs/23-2-Input-with-istream.md"
+    },
+    {
+      "basename": "23-1-Input-and-output-IO-streams",
+      "path": "docs/23-1-Input-and-output-IO-streams.md"
+    },
+    {
+      "basename": "22-5-std-string-assignment-and-swapping",
+      "path": "docs/22-5-std-string-assignment-and-swapping.md"
     },
     {
       "basename": "21-4-STL-algorithms-overview",
@@ -155,50 +199,6 @@
     {
       "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
       "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
-    },
-    {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "12-5-command-line-arguments",
-      "path": "docs/12-5-command-line-arguments.md"
-    },
-    {
-      "basename": "12-4-recursion",
-      "path": "docs/12-4-recursion.md"
-    },
-    {
-      "basename": "12-3-std-vector-capacity-and-stack-behavior",
-      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
-    },
-    {
-      "basename": "12-2-the-stack-and-the-heap",
-      "path": "docs/12-2-the-stack-and-the-heap.md"
-    },
-    {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
-    },
-    {
-      "basename": "18-1-pointers-and-references-to-the-base-class-of-derived-objects",
-      "path": "docs/18-1-pointers-and-references-to-the-base-class-of-derived-objects.md"
-    },
-    {
-      "basename": "18-x-Chapter-18-comprehensive-quiz",
-      "path": "docs/18-x-Chapter-18-comprehensive-quiz.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
     }
   ],
   "omittedPaths": [],

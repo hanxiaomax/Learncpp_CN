@@ -16,7 +16,7 @@ tags:
 	-
 
 
-In the previous lesson [[16-2-composition|16.2 - 组合关系]], we noted that object composition is the process of creating complex objects from simpler ones. We also talked about one type of object composition, called composition. In a composition relationship, the whole object is responsible for the existence of the part.
+在 [[16-2-composition|16.2 - 组合关系]] 中我们指出，对象组合是基于简单对象创建复杂对象的一种方法。同时，我们还介绍了一种组合方法，即 we noted that object composition is the process of creating complex objects from simpler ones. We also talked about one type of object composition, called composition. In a composition relationship, the whole object is responsible for the existence of the part.
 
 In this lesson, we’ll take a look at the other subtype of object composition, called aggregation.
 
