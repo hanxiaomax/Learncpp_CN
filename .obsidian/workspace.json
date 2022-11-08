@@ -35,8 +35,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/16-3-aggregation.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -131,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/16-3-aggregation.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,10 +149,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "652a7a7b78896499",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/MOC.md",
     "docs/16-3-aggregation.md",
+    "docs/MOC.md",
     "docs/16-2-composition.md",
     "docs/16-1-object-relationships.md",
     "docs/23-7-random-file-IO.md",
