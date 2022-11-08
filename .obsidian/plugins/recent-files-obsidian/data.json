@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "16-4-association",
+      "path": "docs/16-4-association.md"
+    },
+    {
+      "basename": "reflexive association",
+      "path": "docs/reflexive association.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -23,10 +31,6 @@
     {
       "basename": "16-3-aggregation",
       "path": "docs/16-3-aggregation.md"
-    },
-    {
-      "basename": "16-4-association",
-      "path": "docs/16-4-association.md"
     },
     {
       "basename": "16-2-composition",
@@ -195,10 +199,6 @@
     {
       "basename": "M-7-std-shared-ptr",
       "path": "docs/M-7-std-shared-ptr.md"
-    },
-    {
-      "basename": "M-6-std-unique-ptr",
-      "path": "docs/M-6-std-unique-ptr.md"
     }
   ],
   "omittedPaths": [],

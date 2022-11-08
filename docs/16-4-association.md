@@ -15,30 +15,31 @@ tags:
 	
 	-
 
-In the previous two lessons, we’ve looked at two types of object composition, composition and aggregation. Object composition is used to model relationships where a complex object is built from one or more simpler objects (parts).
+在前面的两节课中，我们介绍了两种对象组合关系——组合和继承。对象组合用于通过一个或多个简单对象构建复杂对象。
 
-In this lesson, we’ll take a look at a weaker type of relationship between two otherwise unrelated objects, called an association. Unlike object composition relationships, in an association, there is no implied whole/part relationship.
+在这节课中，我们将看看两个本来不相关的对象之间的一种较弱类型的关系，称为关联。与对象组合关系不同，在关联中，没有隐含的整体/部分关系。
 
 ## 关联
 
-To qualify as an **association**, an object and another object must have the following relationship:
+形成关联关系时，对象和对象之间需要满足下面条件：
 
--   The associated object (member) is otherwise unrelated to the object (class)
--   The associated object (member) can belong to more than one object (class) at a time
--   The associated object (member) does _not_ have its existence managed by the object (class)
--   The associated object (member) may or may not know about the existence of the object (class)
+- 关联的对象(成员)在其他方面与对象(类)无关；
+- 关联的对象(成员)可以同时属于多个对象(类)；
+- 关联对象(成员)的存在性不由对象(类)管理；
+- 关联的对象(成员)可能知道也可能不知道对象(类)的存在。
 
-Unlike a composition or aggregation, where the part is a part of the whole object, in an association, the associated object is otherwise unrelated to the object. Just like an aggregation, the associated object can belong to multiple objects simultaneously, and isn’t managed by those objects. However, unlike an aggregation, where the relationship is always unidirectional, in an association, the relationship may be unidirectional or bidirectional (where the two objects are aware of each other).
+  
+在组合或聚合中，部分是整个对象的一部分，而在关联中，关联对象在其他方面与对象无关。就像聚合一样，关联的对象可以同时属于多个对象，并且不受这些对象的管理。然而，与聚合(聚合的关系总是单向的)不同，在关联中，关系可能是单向的或双向的(其中两个对象彼此意识到对方)。
 
-The relationship between doctors and patients is a great example of an association. The doctor clearly has a relationship with his patients, but conceptually it’s not a part/whole (object composition) relationship. A doctor can see many patients in a day, and a patient can see many doctors (perhaps they want a second opinion, or they are visiting different types of doctors). Neither of the object’s lifespans are tied to the other.
+医生和病人之间的关系就是一个很好的例子。医生显然与他的病人有一种关系，但从概念上讲，这不是一个部分/整体(对象组成)关系。一个医生一天可以看很多病人，一个病人可以看很多医生(也许他们想要第二个意见，或者他们正在看不同类型的医生)。这两个物体的寿命都与对方无关。
 
-We can say that association models as “uses-a” relationship. The doctor “uses” the patient (to earn income). The patient uses the doctor (for whatever health purposes they need).
+我们可以说关联建模为“使用一个”关系。医生“使用”病人(以赚取收入)。病人“使用”医生(为了他们需要的任何健康目的)。
 
 ## 实现关联关系
 
-Because associations are a broad type of relationship, they can be implemented in many different ways. However, most often, associations are implemented using pointers, where the object points at the associated object.
+因为关联是一种比较宽泛的关系类型，它们可以以许多不同的方式实现。然而，大多数情况下，关联是使用指针实现的，对象指向关联对象。
 
-In this example, we’ll implement a bi-directional Doctor/Patient relationship, since it makes sense for the Doctors to know who their Patients are, and vice-versa.
+在本例中，我们将实现一个双向的医生/病人关系，因为医生知道谁是他们的病人，反之亦然。
 
 ```cpp
 #include <functional> // reference_wrapper
@@ -161,9 +162,7 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+程序运行结果：
 
 ```
 James is seeing patients: Dave
@@ -172,13 +171,15 @@ Dave is seeing doctors: James Scott
 Frank has no doctors right now
 Betsy is seeing doctors: Scott
 ```
-In general, you should avoid bidirectional associations if a unidirectional one will do, as they add complexity and tend to be harder to write without making errors.
 
-## Reflexive association
+一般来说，如果可以使用单向关联，则应该避免使用双向关联，因为它们增加了复杂性，而且很难在不出错。
 
-Sometimes objects may have a relationship with other objects of the same type. This is called a **reflexive association**. A good example of a reflexive association is the relationship between a university course and its prerequisites (which are also university courses).
+## 反身关联
 
-Consider the simplified case where a Course can only have one prerequisite. We can do something like this:
+有时对象可能与相同类型的其他对象有关系，这被称为[[reflexive association|反身关联]]。反身关联的一个很好的例子是大学课程和它的先修课程(也是大学课程)之间的关系。
+
+考虑一个简化的情况，其中一个课程只能有一个先修课程。我们可以这样做:
+
 
 ```cpp
 #include <string>
@@ -197,11 +198,11 @@ public:
 };
 ```
 
-COPY
 
-This can lead to a chain of associations (a course has a prerequisite, which has a prerequisite, etc…)
 
-## Associations can be indirect
+这可能会导致一系列的关联(一门课程有一个先决条件，另一门课程也有一个先决条件，等等……)
+
+## 关联可以是间接的
 
 In all of the previous cases, we’ve used either pointers or references to directly link objects together. However, in an association, this is not strictly required. Any kind of data that allows you to link two objects together suffices. In the following example, we show how a Driver class can have a unidirectional association with a Car without actually including a Car pointer or reference member:
 
