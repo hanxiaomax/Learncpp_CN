@@ -9,6 +9,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "16-4-association",
+      "path": "docs/16-4-association.md"
+    },
+    {
       "basename": "16-2-composition",
       "path": "docs/16-2-composition.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "M-2-R-value-references",
       "path": "docs/M-2-R-value-references.md"
-    },
-    {
-      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
-      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
     }
   ],
   "omittedPaths": [],

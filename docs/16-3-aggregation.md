@@ -13,7 +13,8 @@ tags:
 
 ??? note "关键点速记"
 	
-	-
+	- 聚合关系中部分可以属于多个整体，其生命周期也独立于整体
+	- 实现聚合关系是基于指针和引用的，其他地方都和组合关系一样
 
 
 在 [[16-2-composition|16.2 - 组合关系]] 中我们指出，对象组合是基于简单对象创建复杂对象的一种方法。同时，我们还介绍了一种类型的对象组合——组合。在组合关系中，整体对象要负责管理部分对象的存在性。
@@ -35,21 +36,21 @@ tags:
 
 另外，考虑汽车和引擎的关系。汽车的引擎属于汽车的一部分。但是尽管引擎是汽车的一部分，它也可以属于其他人或物。例如，引擎也属于车主。汽车本身并不负责创建或销毁引擎。不仅如此，尽管车辆知道它会有一个引擎，但是引擎却不知道它是汽车的一部分。
 
-当我们讨论对物理对象建模的时候，使用”销毁“一词会比较奇怪。此时有的人可能会抬杠说，如果一个小行星撞击地球正好砸到了你的车，那岂不是车和引擎一起被销毁了？当然，不过这是陨石的错。es, of course. But that’s the fault of the meteor. The important point is that the car is not responsible for destruction of its parts (but an external force might be).
+当我们讨论对物理对象建模的时候，使用”销毁“一词会比较奇怪。此时有的人可能会抬杠说，如果一个陨石撞击地球正好砸到了你的车，那岂不是车和引擎一起被销毁了？当然，不过这是陨石的错。这里的关键点在于，汽车不负责销毁其部件（外力是可能的）。
 
-We can say that aggregation models “has-a” relationships (a department has teachers, the car has an engine).
+我们可以说，聚合模型是一种”有一个“的关系（院系有一个老师、汽车有一个引擎）。
 
-Similar to a composition, the parts of an aggregation can be singular or multiplicative.
+类似组合关系，聚合中的部分可以是一个也可以是多个。
 
-## 实现组合关系
+## 实现聚合关系
 
-Because aggregations are similar to compositions in that they are both part-whole relationships, they are implemented almost identically, and the difference between them is mostly semantic. In a composition, we typically add our parts to the composition using normal member variables (or pointers where the allocation and deallocation process is handled by the composition class).
+因为聚合类似于组合，它们都是部分-整体关系，所以它们的实现几乎完全相同，它们之间的区别主要是语义上的。在组合中，我们通常使用普通成员变量(或由组合类处理分配和回收过程的指针)将部件添加到组合中。
 
-In an aggregation, we also add parts as member variables. However, these member variables are typically either references or pointers that are used to point at objects that have been created outside the scope of the class. Consequently, an aggregation usually either takes the objects it is going to point to as constructor parameters, or it begins empty and the subobjects are added later via access functions or operators.
+在聚合中，我们仍然使用成员变量表示部分对象。但是，==这些成员变量通常是引用或指针==，用于指向在类的作用域之外创建的对象。因此，聚合通常要么接受它将要指向的对象作为构造函数参数，要么以空开始，然后通过访问函数或操作符添加子对象。
 
-Because these parts exist outside of the scope of the class, when the class is destroyed, the pointer or reference member variable will be destroyed (but not deleted). Consequently, the parts themselves will still exist.
+因为这些部分对象存在于类的作用域之外，所以当类被销毁时，指针或引用成员变量将被销毁(但不会被删除)。因此，这些部分本身仍然存在。
 
-Let’s take a look at a Teacher and Department example in more detail. In this example, we’re going to make a couple of simplifications: First, the department will only hold one teacher. Second, the teacher will be unaware of what department they’re part of.
+让我们仔细研究一个“教师和院系”的示例。在这个例子中，我们将做一些简化：首先，院系将只容纳一名教师。其次，老师不知道他们是哪个院系的。
 
 ```cpp
 #include <iostream>
@@ -101,40 +102,41 @@ int main()
 }
 ```
 
-COPY
+在这个例子中 `bob` 的创建是独立于 `department` 的，它通过构造函数被传递给了 `department`。当 `department` 销毁的时候引用 `m_teacher`被销毁了，但是 teacher 本身并没有被销毁，它仍然存在并且在`main()`结束时被销毁。
 
-In this case, `bob` is created independently of `department`, and then passed into `department`‘s constructor. When `department` is destroyed, the `m_teacher` reference is destroyed, but the teacher itself is not destroyed, so it still exists until it is independently destroyed later in `main()`.
+## 对象建模时应当选择正确的对象关系
 
-Pick the right relationship for what you’re modeling
+尽管在上面的例子中，教师不知道他们在为哪个系工作，这听起来有点蠢，但在给定的项目上下文中，这可能完全没问题。当决定实现某种类型的关系时，实现满足你需求的最简单的关系，而不是看起来最符合实际环境的关系。
 
-Although it might seem a little silly in the above example that the Teachers don’t know what Department they’re working for, that may be totally fine in the context of a given program. When you’re determining what kind of relationship to implement, implement the simplest relationship that meets your needs, not the one that seems like it would fit best in a real-life context.
-
-For example, if you’re writing a body shop simulator, you may want to implement a car and engine as an aggregation, so the engine can be removed and put on a shelf somewhere for later. However, if you’re writing a racing simulation, you may want to implement a car and an engine as a composition, since the engine will never exist outside of the car in that context.
+例如，如果你正在编写一个车间模拟器，则将汽车和引擎作为一个聚合是恰当的，这样引擎就可以被从汽车中移除并放在某个架子上以备以后使用。然而，如果你正在编写模拟赛车游戏，那可能将汽车和引擎作为组合实现更恰当，因为在该语境中，引擎不会独立存在于汽车之外。
 
 !!! success "最佳实践"
 
-	Implement the simplest relationship type that meets the needs of your program, not what seems right in real-life.
+	==实现满足程序需要的最简单的关系类型，而不是在现实生活中看起来正确的关系类型。==
 
-Summarizing composition and aggregation
+## 小结：组合和聚合
 
 组合:
 
--   Typically use normal member variables
--   Can use pointer members if the class handles object allocation/deallocation itself
--   Responsible for creation/destruction of parts
+-   通常使用普通的成员变量； 
+-   如果类自己管理成员对象的内存申请释放，也可以使用指针；
+-   负责部分对象的创建和销毁。
 
 聚合:
 
--   Typically use pointer or reference members that point to or reference objects that live outside the scope of the aggregate class
--   Not responsible for creating/destroying parts
+-  通常使用指针和引用成员并指向存在于整体对象作用域之外的对象；
+-  不负责部分对象的创建和销毁。
 
-It is worth noting that the concepts of composition and aggregation can be mixed freely within the same class. It is entirely possible to write a class that is responsible for the creation/destruction of some parts but not others. For example, our Department class could have a name and a Teacher. The name would probably be added to the Department by composition, and would be created and destroyed with the Department. On the other hand, the Teacher would be added to the department by aggregation, and created/destroyed independently.
+==值得注意的是，组合和聚合的概念可以在同一个类中自由混合使用==。编写一个负责创建/销毁某些部分而不负责其他部分的类是可以的。例如，我们的`Department`类可以有一个`name`和一个`Teacher` 成员。这个`name`通常是作为组合关系添加到该类中的并且和`Department`一起创建和销毁。另一方面，`Teacher` 将通过聚合的方式添加到`Department`中，并独立地创建/销毁。
 
-While aggregations can be extremely useful, they are also potentially more dangerous, because aggregations do not handle deallocation of their parts. Deallocations are left to an external party to do. If the external party no longer has a pointer or reference to the abandoned parts, or if it simply forgets to do the cleanup (assuming the class will handle that), then memory will be leaked.
+虽然聚合可能非常有用，但它们也更危险，因为聚合不处理其部分对象的回收，其销毁操作被分配外部去做了，如果外部不再有指向该部分的指针或引用，或者它只是忘记进行清理(假设类将处理此操作)，那么内存将会泄漏。
 
-For this reason, compositions should be favored over aggregations.
+因此，应该多用组合少用聚合。
 
-A few warnings/errata
+
+## 提醒和勘误
+
+由于各种各样的历史原因，组聚合的定义并不精确——因此您可能会看到其他参考材料对它的定义与我们所做的不同。没关系，只是要注意。
 
 For a variety of historical and contextual reasons, unlike a composition, the definition of an aggregation is not precise -- so you may see other reference material define it differently from the way we do. That’s fine, just be aware.
 

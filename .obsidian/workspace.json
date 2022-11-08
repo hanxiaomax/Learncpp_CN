@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "652a7a7b78896499",
+            "id": "ffe1288244fccd3d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -150,9 +150,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "652a7a7b78896499",
+  "active": "ffe1288244fccd3d",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/16-4-association.md",
     "docs/16-3-aggregation.md",
     "docs/16-2-composition.md",
     "docs/16-1-object-relationships.md",
@@ -160,7 +161,6 @@
     "docs/23-6-basic-file-IO.md",
     "docs/23-5-stream-states-and-input-validation.md",
     "docs/23-4-stream-classes-for-strings.md",
-    "docs/23-3-output-with-ostream-and-ios.md",
-    "docs/23-2-Input-with-istream.md"
+    "docs/23-3-output-with-ostream-and-ios.md"
   ]
 }
