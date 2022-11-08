@@ -11,20 +11,21 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- 算法都是配合迭代器使用的，返回的结果一般也是迭代器
 
 
-除了[[container-class|容器类]]和[[iterator|迭代器]]，STL还提供了很多[[generic-algorithm|泛型算法]] to container classes and iterators, STL also provides a number of generic algorithms for working with the elements of the container classes. These allow you to do things like search, sort, insert, reorder, remove, and copy elements of the container class.
+除了[[container-class|容器类]]和[[iterator|迭代器]]，STL还提供了很多[[generic-algorithm|泛型算法]] 来配合容器类中的元素使用，对它们进行搜索、排序、插入、重排、删除和拷贝。
 
-Note that algorithms are implemented as functions that operate using iterators. This means that each algorithm only needs to be implemented once, and it will generally automatically work for all containers that provides a set of iterators (including your custom container classes). While this is very powerful and can lead to the ability to write complex code very quickly, it’s also got a dark side: some combination of algorithms and container types may not work, may cause infinite loops, or may work but be extremely poor performing. So use these at your risk.
+注意，这些算法都被实现为使用迭代器进行操作的函数。这意味着每个算法都只需要实现一次，就可以配合所有提供迭代器的容器使用（包括你自定义的类）。尽管这些算法非常强大而且可以方便地编写复杂的代码逻辑，但是它也有缺点：某些算法和容器类型的组合可能无法工作，有些可能导致死循环，或者性能极差。所以在使用时需要你自己考虑清楚并承担相应的风险。
 
-STL provides quite a few algorithms -- we will only touch on some of the more common and easy to use ones here. The rest (and the full details) will be saved for a chapter on STL algorithms.
+STL 提供了非常多的算法——我们只会在此介绍一些非常常见的。剩下的算法会在STL算法章节中进行介绍
 
-To use any of the STL algorithms, simply include the algorithm header file.
+使用STL算法，只需要添加algorithm头文件即可。
 
 ## `min_element` 和 `max_element`
 
-The `std::min_element` and `std::max_element` algorithms find the min and max element in a container class. `std::iota` generates a contiguous series of values.
+`std::min_element` 和 `std::max_element` 算法用于查找容器[[container-class|容器类]]中的最大元素和最小元素。`std::iota` 可以生成一组连续的值。
 
 ```cpp
 #include <algorithm> // std::min_element and std::max_element
@@ -35,7 +36,7 @@ The `std::min_element` and `std::max_element` algorithms find the min and ma
 int main()
 {
     std::list<int> li(6);
-    // Fill li with numbers starting at 0.
+    // 使用数字填充 li ，从0开始
     std::iota(li.begin(), li.end(), 0);
 
     std::cout << *std::min_element(li.begin(), li.end()) << ' '
@@ -45,9 +46,7 @@ int main()
 }
 ```
 
-COPY
-
-Prints:
+运行结果：
 
 ```
 0 5
@@ -55,7 +54,7 @@ Prints:
 
 ## `find` 和 `list::insert`
 
-In this example, we’ll use the `std::find()` algorithm to find a value in the list class, and then use the list::insert() function to add a new value into the list at that point.
+在这个例子中，`std::find()` 算法用于在链表中进行查找，然后使用 `list::insert()` 函数向链表中的该位置插入一个新的值。
 
 ```cpp
 #include <algorithm>
@@ -68,13 +67,13 @@ int main()
     std::list<int> li(6);
     std::iota(li.begin(), li.end(), 0);
 
-    // Find the value 3 in the list
+    // 在链表中找到 3 
     auto it{ std::find(li.begin(), li.end(), 3) };
 
-    // Insert 8 right before 3.
+    // 将 8 插入到 3 的前面
     li.insert(it, 8);
 
-    for (int i : li) // for loop with iterators
+    for (int i : li) // 基于迭代器的for循环
         std::cout << i << ' ';
 
     std::cout << '\n';
@@ -83,16 +82,13 @@ int main()
 }
 ```
 
-COPY
-
-This prints the values
+运行结果为：
 
 ```
 0 1 2 8 3 4 5
 ```
 
-When a searching algorithm doesn’t find what it was looking for, it returns the end iterator.  
-If we didn’t know for sure that 3 is an element of `li`, we’d have to check if `std::find` found it before we use the returned iterator for anything else.
+如果算法没有找到目标值，它会返回end迭代器。如果我们不确定3是否在`li`中，则最好先通过`std::find` 查找并通过返回的迭代器确认是否找到，然后再使用该迭代器。
 
 ```cpp
 if (it == li.end())
@@ -105,11 +101,9 @@ else
 }
 ```
 
-COPY
-
 ## `sort` 和 `reverse`
 
-In this example, we’ll sort a vector and then reverse it.
+在这个例子中，我们会首先对vector进行排序，然后再将其逆序。
 
 ```cpp
 #include <iostream>
@@ -120,7 +114,7 @@ int main()
 {
     std::vector<int> vect{ 7, -3, 6, 2, -5, 0, 4 };
 
-    // sort the vector
+    // 排序
     std::sort(vect.begin(), vect.end());
 
     for (int i : vect)
@@ -130,7 +124,7 @@ int main()
 
     std::cout << '\n';
 
-    // reverse the vector
+    // 逆序
     std::reverse(vect.begin(), vect.end());
 
     for (int i : vect)
@@ -144,19 +138,17 @@ int main()
 }
 ```
 
-COPY
-
-This produces the result:
+运行结果为：
 
 ```
 -5 -3 0 2 4 6 7
 7 6 4 2 0 -3 -5
 ```
 
-Alternatively, we could pass a custom comparison function as the third argument to `std::sort`. There are several comparison functions in the `<functional>` header which we can use so we don’t have to write our own. We can pass `std::greater` to `std::sort` and remove the call to `std::reverse`. The vector will be sorted from high to low right away.
+我们也可以将一个自定义的比较函数作为`std::sort`的第三个参数传入。在`<functional>` 头文件中也提供了不少可以直接使用的此类函数。我们可以将`std::greater` 传入 `std::sort` ，然后不要使用 `std::reverse`。此时 vector 也是从大到小排序的。
 
-Note that `std::sort()` doesn’t work on list container classes -- the list class provides its own `sort()` member function, which is much more efficient than the generic version would be.
+==注意 `std::sort()` 不能配合链表使用，链表提供了自己的 `sort()` 成员函数，它的效率要比泛型的排序高的多。==
 
 ## 小结
 
-Although this is just a taste of the algorithms that STL provides, it should suffice to show how easy these are to use in conjunction with iterators and the basic container classes. There are enough other algorithms to fill up a whole chapter!
+尽管本文只是简单地介绍了STL中提供的一些算法，它足以向你证明配合迭代器和容器使用这些算法是多么的简单。要想讲完剩下的算法，那得需要一整个章节才行呢！

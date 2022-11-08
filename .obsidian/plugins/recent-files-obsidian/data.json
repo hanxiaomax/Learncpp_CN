@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "generic-algorithm",
-      "path": "docs/generic-algorithm.md"
-    },
-    {
       "basename": "21-4-STL-algorithms-overview",
       "path": "docs/21-4-STL-algorithms-overview.md"
+    },
+    {
+      "basename": "generic-algorithm",
+      "path": "docs/generic-algorithm.md"
     },
     {
       "basename": "MOC",
