@@ -15,15 +15,15 @@ tags:
 	
 	-
 
-So far, we’ve explored 3 types of relationships: composition, aggregation, and association. We’ve saved the simplest one for last: dependencies.
+到目前为止，我们已经探讨了3种类型的关系：组合、聚合和关联。我们把最简单的一种关系放在最后介绍——依赖关系。
 
-In casual conversation, we use the term dependency to indicate that an object is reliant upon another object for a given task. For example, if you break your foot, you are dependent on crutches to get around (but not otherwise). Flowers are dependent upon bees to pollinate them, in order to grow fruit or propagate (but not otherwise).
+在日常交谈中，我们使用术语依赖性来表示一个对象依赖于另一个对象来完成给定的任务。例如，如果你的脚骨折了，你就需要依靠拐杖来走动。花朵依靠蜜蜂授粉，才能结出果实或繁殖后代。
 
-A **dependency** occurs when one object invokes another object’s functionality in order to accomplish some specific task. This is a weaker relationship than an association, but still, any change to object being depended upon may break functionality in the (dependent) caller. A dependency is always a unidirectional relationship.
+当一个对象为了完成某些特定任务而调用另一个对象的功能时，就会发生依赖关系。这是一种比关联弱的关系，但是，对所依赖对象的任何更改都可能破坏(依赖的)调用者的功能。依赖关系总是单向的关系。
 
-A good example of a dependency that you’ve already seen many times is std::ostream. Our classes that use std::ostream use it in order to accomplish the task of printing something to the console, but not otherwise.
+一个您已经见过很多次的依赖的好例子是`std::ostream`。我们使用`std::ostream`的类使用它是为了完成向控制台打印内容的任务，而不是为了其他目的。
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -61,22 +61,21 @@ int main()
 }
 ```
 
-COPY
+在上面的代码中，`Point`与`std::ostream`没有直接关系，但是它依赖于`std::ostream`，因为操作符`<<`使用`std::ostream`将`Point`打印到控制台。
 
-In the above code, Point isn’t directly related to std::ostream, but it has a dependency on std::ostream since operator<< uses std::ostream to print the Point to the console.
+## C++中的依赖和关联
 
-## Dependencies vs Association in C++
+依赖关系和关联之间的区别通常容易混淆。
 
-There’s typically some confusion about what differentiates a dependency from an association.
+在C++中，关联是类级别上两个类之间的关系。也就是说，一个类保持与关联类的直接或间接“链接”作为成员。例如，`Doctor`类有一个指向其`Patients`成员的指针数组。你可以问医生谁是他的病人。`Driver`中有一个整型成员，表示`driver`对象拥有的`Car`。驾驶员总是知道与它相关联的是什么车。
 
-In C++, associations are a relationship between two classes at the class level. That is, one class keeps a direct or indirect “link” to the associated class as a member. For example, a Doctor class has an array of pointers to its Patients as a member. You can always ask the Doctor who its patients are. The Driver class holds the id of the Car the driver object owns as an integer member. The Driver always knows what Car is associated with it.
+依赖项通常不是类层面的概念——也就是说，所依赖的对象不是作为类成员出现的。相反，所依赖的对象通常根据需要实例化(如打开文件写入数据)，或作为参数传递到函数中(如上面重载操作符`<<`中的`std::ostream`)。
 
-Dependencies typically are not represented at the class level -- that is, the object being depended on is not linked as a member. Rather, the object being depended on is typically instantiated as needed (like opening a file to write data to), or passed into a function as a parameter (like std::ostream in the overloaded operator<< above).
 
 ## 轻松一刻
 
-Dependencies (courtesy of our friends at [xkcd](https://xkcd.com/754/)):
+依赖 (转载自[xkcd](https://xkcd.com/754/))：
 
 ![](https://www.learncpp.com/ezoimgfmt/imgs.xkcd.com/comics/dependencies.png?ezimgfmt=rs:579x158/rscb2/ng:webp/ngcb2)
 
-Of course, you and I know that this is actually a reflexive association!
+当然，我们其实都知道，这实际上是一种[[reflexive association|反身关联]]。

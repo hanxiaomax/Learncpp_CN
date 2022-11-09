@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "16-7-std-initializer_list",
+      "path": "docs/16-7-std-initializer_list.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "16-6-container-classes",
+      "path": "docs/16-6-container-classes.md"
+    },
+    {
+      "basename": "16-5-dependencies",
+      "path": "docs/16-5-dependencies.md"
+    },
+    {
+      "basename": "reflexive association",
+      "path": "docs/reflexive association.md"
     },
     {
       "basename": "16-4-association",
@@ -13,24 +29,8 @@
       "path": "docs/21-4-STL-algorithms-overview.md"
     },
     {
-      "basename": "reflexive association",
-      "path": "docs/reflexive association.md"
-    },
-    {
-      "basename": "16-5-dependencies",
-      "path": "docs/16-5-dependencies.md"
-    },
-    {
       "basename": "16-x-Chapter-16-comprehensive-quiz",
       "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
-    },
-    {
-      "basename": "16-7-std-initializer_list",
-      "path": "docs/16-7-std-initializer_list.md"
-    },
-    {
-      "basename": "16-6-container-classes",
-      "path": "docs/16-6-container-classes.md"
     },
     {
       "basename": "16-3-aggregation",

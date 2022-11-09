@@ -16,8 +16,7 @@ tags:
 	-
 
 
-Consider a fixed array of integers in C++:
-
+考虑下面这个
 ```cpp
 int array[5];
 ```

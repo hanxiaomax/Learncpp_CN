@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "81a44863b274e75f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/16-7-std-initializer_list.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/16-7-std-initializer_list.md"
               }
             }
           },
@@ -117,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/16-7-std-initializer_list.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,16 +150,16 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "81a44863b274e75f",
   "lastOpenFiles": [
+    "docs/MOC.md",
+    "docs/16-6-container-classes.md",
+    "docs/16-5-dependencies.md",
+    "docs/reflexive association.md",
     "docs/16-4-association.md",
     "docs/21-4-STL-algorithms-overview.md",
-    "docs/MOC.md",
-    "docs/reflexive association.md",
-    "docs/16-5-dependencies.md",
     "docs/16-x-Chapter-16-comprehensive-quiz.md",
     "docs/16-7-std-initializer_list.md",
-    "docs/16-6-container-classes.md",
     "docs/16-3-aggregation.md",
     "docs/16-2-composition.md"
   ]

@@ -284,18 +284,18 @@ int main()
 ```
 
 
-In the above example, we have a CarLot holding our cars. The Driver, who needs a car, doesn’t have a pointer to his Car -- instead, he has the ID of the car, which we can use to get the Car from the CarLot when we need it.
+在上面的例子中，`CarLot` 持有`car` 。而 `Driver` 作为本身需要`car`的对象，却并没有指向`Car`的指针——但是它有车的ID，它可以通过该ID在需要时从 `CarLot` 中获取`car`。
 
-In this particular example, doing things this way is kind of silly, since getting the Car out of the CarLot requires an inefficient lookup (a pointer connecting the two is much faster). However, there are advantages to referencing things by a unique ID instead of a pointer. For example, you can reference things that are not currently in memory (maybe they’re in a file, or in a database, and can be loaded on demand). Also, pointers can take 4 or 8 bytes -- if space is at a premium and the number of unique objects is fairly low, referencing them by an 8-bit or 16-bit integer can save lots of memory.
+在这个特定的示例中，这样做有点愚蠢，因为从`CarLot`中获取`Car`需要低效的查找(之间直接使用指针要快得多)。然而，通过唯一ID而不是指针引用东西有一些优点。例如，你可以引用当前不在内存中的内容(它们可能在文件中，或者在数据库中，并且可以按需加载)。此外，指针可能占用4或8个字节——如果空间非常有限，且惟一对象的数量相当低，那么通过8位或16位整数引用它们可以节省大量内存。
 
-## Composition vs aggregation vs association summary
+## 组合 vs 聚合  vs 关联
 
-Here’s a summary table to help you remember the difference between composition, aggregation, and association:
+下面是一个汇总表，可以帮助你记住组合、聚合和关联之间的区别:
 
-|Property|	Composition|	Aggregation|	Association|
+|属性|	组合|	聚合|	关联|
 |:---:|:---:|:---:|:---:|
-|Relationship type	|Whole/part	|Whole/part	|Otherwise unrelated
-|Members can belong to multiple classes	|No|	Yes|	Yes
-|Members’ existence managed by class|	Yes	|No	|No
-|Directionality	|Unidirectional	|Unidirectional	|Unidirectional or bidirectional
-|Relationship verb	|Part-of	|Has-a	|Uses-a
+|关系类型	|整体-部分|整体-部分|本不相关
+|成员是否可以属于不同的整体对象	|No|	Yes|	Yes
+|成员的存在性是否由整体管理|	Yes	|No	|No
+|方向	|单向	|单向	|单向或双向
+|关系动词|Part-of	|Has-a	|Uses-a
