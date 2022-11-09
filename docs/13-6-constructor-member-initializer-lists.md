@@ -1,6 +1,6 @@
 ---
-title: 13.6 - 构造函数成员初始化列表
-alias: 13.6 - 构造函数成员初始化列表
+title: 13.6 - 构造函数成员初始化值列表
+alias: 13.6 - 构造函数成员初始化值列表
 origin: /constructor-member-initializer-lists/
 origin_title: "13.6 — Constructor member initializer lists"
 time: 2022-9-16
@@ -73,7 +73,7 @@ m_value = 5; //  error: const vars can not be assigned to
 
 ## 成员初始化列表
 
-为了解决这个问题，C++ 提供了一种对成员变量进行初始化（而不是在创建后赋值）的方法，即使用[[member-initializer-list|成员初始化列表]] 。请不要把成员初始化值列表和用于对数组进行赋值的初始化列表搞混。
+为了解决这个问题，C++ 提供了一种对成员变量进行初始化（而不是在创建后赋值）的方法，即使用[[member-initializer-list|成员初始化值列表]] 。请不要把成员初始化值列表和用于对数组进行赋值的[[initializer-list|初始化值列表]]搞混。
 
 在[[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]中我们介绍过，初始化变量的方式有三种：[[copy-initialization|拷贝初始化]]、[[direct-initialization|直接初始化]]和[[uniform-initialization|统一初始化]]。
 

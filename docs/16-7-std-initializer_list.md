@@ -16,21 +16,20 @@ tags:
 	-
 
 
-考虑下面这个
+考虑下面这个整型数组：
+
 ```cpp
 int array[5];
 ```
 
-COPY
-
-If we want to initialize this array with values, we can do so directly via the initializer list syntax:
+如果我们想用值初始化这个数组，可以直接通过[[initializer-list|初始化值列表]]语法来实现:
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-	int array[] { 5, 4, 3, 2, 1 }; // initializer list
+	int array[] { 5, 4, 3, 2, 1 }; // 初始化值列表
 	for (auto i : array)
 		std::cout << i << ' ';
 
