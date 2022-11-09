@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "16-7-std-initializer_list",
+      "path": "docs/16-7-std-initializer_list.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -13,12 +17,20 @@
       "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
     {
-      "basename": "member-initializer-list",
-      "path": "docs/member-initializer-list.md"
-    },
-    {
       "basename": "13-7-non-static-member-initialization",
       "path": "docs/13-7-non-static-member-initialization.md"
+    },
+    {
+      "basename": "13-5-constructors",
+      "path": "docs/13-5-constructors.md"
+    },
+    {
+      "basename": "12-5-command-line-arguments",
+      "path": "docs/12-5-command-line-arguments.md"
+    },
+    {
+      "basename": "member-initializer-list",
+      "path": "docs/member-initializer-list.md"
     },
     {
       "basename": "11-16-An-introduction-to-std-array",
@@ -27,10 +39,6 @@
     {
       "basename": "list-initialization",
       "path": "docs/list-initialization.md"
-    },
-    {
-      "basename": "16-7-std-initializer_list",
-      "path": "docs/16-7-std-initializer_list.md"
     },
     {
       "basename": "11-2-Arrays-Part-II",
@@ -187,18 +195,6 @@
     {
       "basename": "11-9-Pointer-arithmetic-and-array-indexing",
       "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
-    },
-    {
-      "basename": "11-1-Arrays-Part-I",
-      "path": "docs/11-1-Arrays-Part-I.md"
-    },
-    {
-      "basename": "11-x-Chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-Chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
     }
   ],
   "omittedPaths": [],

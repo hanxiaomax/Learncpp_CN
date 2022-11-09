@@ -37,15 +37,13 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印：
 
 ```
 5 4 3 2 1
 ```
 
-This also works for dynamically allocated arrays:
+对于动态数组同样适用：
 
 ```cpp
 #include <iostream>
@@ -61,7 +59,6 @@ int main()
 }
 ```
 
-COPY
 
 In the previous lesson, we introduced the concept of container classes, and showed an example of an IntArray class that holds an array of integers:
 
