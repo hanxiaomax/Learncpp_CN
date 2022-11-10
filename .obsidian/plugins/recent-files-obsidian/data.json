@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "16-7-std-initializer_list",
-      "path": "docs/16-7-std-initializer_list.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
     },
     {
       "basename": "initializer-list",
       "path": "docs/initializer-list.md"
+    },
+    {
+      "basename": "16-7-std-initializer_list",
+      "path": "docs/16-7-std-initializer_list.md"
+    },
+    {
+      "basename": "aggregate-initialization",
+      "path": "docs/aggregate-initialization.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "13-6-constructor-member-initializer-lists",
@@ -35,10 +43,6 @@
     {
       "basename": "11-16-An-introduction-to-std-array",
       "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
     },
     {
       "basename": "11-2-Arrays-Part-II",

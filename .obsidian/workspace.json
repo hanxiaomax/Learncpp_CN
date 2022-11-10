@@ -23,11 +23,16 @@
             }
           },
           {
-            "id": "876ae6d35c03f166",
+            "id": "cf1dd25d7426a91e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "docs/list-initialization.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ],
@@ -60,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "typeid",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +90,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -104,7 +110,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "docs/list-initialization.md"
+              }
             }
           },
           {
@@ -124,6 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "docs/list-initialization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -142,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b9cdb44997e9824e",
+  "active": "cf1dd25d7426a91e",
   "lastOpenFiles": [
-    "docs/16-7-std-initializer_list.md",
-    "docs/MOC.md",
     "docs/initializer-list.md",
+    "docs/16-7-std-initializer_list.md",
+    "docs/aggregate-initialization.md",
+    "docs/MOC.md",
+    "Pasted image 20221017083101.png",
     "docs/13-6-constructor-member-initializer-lists.md",
     "docs/13-7-non-static-member-initialization.md",
     "docs/13-5-constructors.md",
     "docs/12-5-command-line-arguments.md",
-    "docs/member-initializer-list.md",
-    "docs/11-16-An-introduction-to-std-array.md",
-    "docs/list-initialization.md"
+    "docs/member-initializer-list.md"
   ]
 }

@@ -50,7 +50,7 @@ int main()
 
 int main()
 {
-	auto* array{ new int[5]{ 5, 4, 3, 2, 1 } }; // initializer list
+	auto* array{ new int[5]{ 5, 4, 3, 2, 1 } }; // 初始化值列表
 	for (int count{ 0 }; count < 5; ++count)
 		std::cout << array[count] << ' ';
 	delete[] array;
@@ -60,7 +60,7 @@ int main()
 ```
 
 
-In the previous lesson, we introduced the concept of container classes, and showed an example of an IntArray class that holds an array of integers:
+在上节课中我们介绍了[[container-class|容器类]]的概念，并且以`IntArray`类为例介绍了整型数组容器：
 
 ```cpp
 #include <cassert> // for assert()
@@ -98,8 +98,8 @@ public:
 
 int main()
 {
-	// What happens if we try to use an initializer list with this container class?
-	IntArray array { 5, 4, 3, 2, 1 }; // this line doesn't compile
+	// 如果我们使用初始化值列表对IntArray进行初始化会发生什么呢？
+	IntArray array { 5, 4, 3, 2, 1 }; // 无法编译
 	for (int count{ 0 }; count < 5; ++count)
 		std::cout << array[count] << ' ';
 
@@ -107,9 +107,8 @@ int main()
 }
 ```
 
-COPY
 
-This code won’t compile, because the IntArray class doesn’t have a constructor that knows what to do with an initializer list. As a result, we’re left initializing our array elements individually:
+上述代码并不能成功编译，因为 `IntArray` 类并不知道在面对一个[[initializer-list|初始化值列表]]时应该做什么。因此，我们必须对数组中的元素逐一初始化：
 
 ```cpp
 int main()
@@ -128,21 +127,20 @@ int main()
 }
 ```
 
-COPY
 
-That’s not so great.
+很不优雅。
 
-Class initialization using `std::initializer_list`
+## 使用 `std::initializer_list`初始化
 
-When a compiler sees an initializer list, it automatically converts it into an object of type `std::initializer_list`. Therefore, if we create a constructor that takes a `std::initializer_list` parameter, we can create objects using the initializer list as an input.
+当编译器看到初始化值列表时，它会自动地将初始化值列表转换为一个`std::initializer_list`类型的对象。因此，如果我们可以创建一个接收 `std::initializer_list` 类型参数的构造函数的话，就可以通过初始化值列表创建对象了。
 
-`std::initializer_list` lives in the `<initializer_list>` header.
+`std::initializer_list` 位于 `<initializer_list>` 头文件中。
 
-There are a few things to know about `std::initializer_list`. Much like std::array or `std::vector`, you have to tell `std::initializer_list` what type of data the list holds using angled brackets, unless you initialize the `std::initializer_list` right away. Therefore, you’ll almost never see a plain `std::initializer_list`. Instead, you’ll see something like `std::initializer_list<int>` or `std::initializer_list<std::string>`.
+关于`std::initializer_list`，有些事情你必须指定。和 `std::array` 或者 `std::vector`类似，你必须告诉`std::initializer_list` 列表中的元素类型是什么，除非你是立即对其初始化。因此你很少会看到`std::initializer_list`的最简形式。多数情况下你看到的应该是这样的`std::initializer_list<int>` 或这样的 `std::initializer_list<std::string>`。
 
-Second, `std::initializer_list` has a (misnamed) size() function which returns the number of elements in the list. This is useful when we need to know the length of the list passed in.
+第二，`std::initializer_list` 有一个 `size()`成员函数可以返回列表中的元素个数。当我们需要指定传入的初始化列表多长时，这个方法非常有用。
 
-Let’s take a look at updating our IntArray class with a constructor that takes a `std::initializer_list`.
+使用 `std::initializer_list` 对 `IntArray`改写之后是这样的：
 
 ```cpp
 #include <cassert> // for assert()
@@ -205,23 +203,21 @@ int main()
 }
 ```
 
-COPY
-
-This produces the expected result:
+运行结果符合预期：
 
 ```
 5 4 3 2 1
 ```
 
-It works! Now, let’s explore this in more detail.
+很好！接下来让我们深入研究一下：
 
-Here’s our IntArray constructor that takes a `std::initializer_list<int>`.
+`IntArray`的构造函数接受 `std::initializer_list<int>`作为[[parameters|形参]]。
 
 ```cpp
-IntArray(std::initializer_list<int> list) // allow IntArray to be initialized via list initialization
-	: IntArray(static_cast<int>(list.size())) // use delegating constructor to set up initial array
+IntArray(std::initializer_list<int> list) // 使得 IntArray 可以进行列表初始化
+	: IntArray(static_cast<int>(list.size())) // 使用委派构造函数设置数组 
 {
-	// Now initialize our array from the list
+	// 使用列表元素初始化数组
 	int count{ 0 };
 	for (int element : list)
 	{
@@ -230,8 +226,6 @@ IntArray(std::initializer_list<int> list) // allow IntArray to be initialized vi
 	}
 }
 ```
-
-COPY
 
 On line 1: As noted above, we have to use angled brackets to denote what type of element we expect inside the list. In this case, because this is an IntArray, we’d expect the list to be filled with int. Note that we don’t pass the list by const reference. Much like std::string_view, std::initializer_list is very lightweight and copies tend to be cheaper than an indirection.
 

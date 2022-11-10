@@ -29,3 +29,4 @@ MoreData y{{"test1", 6.778}, false};
 ```
 
 https://toutiao.io/posts/tt34ysp/preview
+https://en.cppreference.com/w/cpp/language/aggregate_initialization
