@@ -1,20 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
+      "basename": "aggregate-data-type",
+      "path": "docs/aggregate-data-type.md"
     },
     {
-      "basename": "initializer-list",
-      "path": "docs/initializer-list.md"
+      "basename": "初始化",
+      "path": "docs/初始化.md"
+    },
+    {
+      "basename": "aggregate-initialization",
+      "path": "docs/aggregate-initialization.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "uniform-initialization",
+      "path": "docs/uniform-initialization.md"
+    },
+    {
+      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
+      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
+    },
+    {
+      "basename": "direct-initialization",
+      "path": "docs/direct-initialization.md"
     },
     {
       "basename": "16-7-std-initializer_list",
       "path": "docs/16-7-std-initializer_list.md"
     },
     {
-      "basename": "aggregate-initialization",
-      "path": "docs/aggregate-initialization.md"
+      "basename": "list-constructor",
+      "path": "docs/list-constructor.md"
+    },
+    {
+      "basename": "initializer-list",
+      "path": "docs/initializer-list.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
     },
     {
       "basename": "MOC",
@@ -39,10 +71,6 @@
     {
       "basename": "member-initializer-list",
       "path": "docs/member-initializer-list.md"
-    },
-    {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
     },
     {
       "basename": "11-2-Arrays-Part-II",
@@ -157,10 +185,6 @@
       "path": "docs/11-12-Dynamically-allocating-arrays.md"
     },
     {
-      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
-      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
-    },
-    {
       "basename": "memory-leak",
       "path": "docs/memory-leak.md"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "11-14-Void-pointers",
       "path": "docs/11-14-Void-pointers.md"
-    },
-    {
-      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
-      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
-    },
-    {
-      "basename": "stack",
-      "path": "docs/stack.md"
-    },
-    {
-      "basename": "dynamic-memory-allocation",
-      "path": "docs/dynamic-memory-allocation.md"
-    },
-    {
-      "basename": "automatic-memory-allocation",
-      "path": "docs/automatic-memory-allocation.md"
-    },
-    {
-      "basename": "static-memory-allocation",
-      "path": "docs/static-memory-allocation.md"
-    },
-    {
-      "basename": "11-9-Pointer-arithmetic-and-array-indexing",
-      "path": "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
     }
   ],
   "omittedPaths": [],

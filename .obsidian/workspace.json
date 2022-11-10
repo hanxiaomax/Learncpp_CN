@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/list-initialization.md",
+                "file": "docs/aggregate-data-type.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "std::array<int, 5> myArray2 { 9, 7, 5, 3, 1 }",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -95,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/list-initialization.md"
+                "file": "docs/aggregate-data-type.md"
               }
             }
           },
@@ -132,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/list-initialization.md",
+                "file": "docs/aggregate-data-type.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,20 +149,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "active": "cf1dd25d7426a91e",
   "lastOpenFiles": [
-    "docs/initializer-list.md",
-    "docs/16-7-std-initializer_list.md",
+    "docs/初始化.md",
     "docs/aggregate-initialization.md",
-    "docs/MOC.md",
-    "Pasted image 20221017083101.png",
-    "docs/13-6-constructor-member-initializer-lists.md",
-    "docs/13-7-non-static-member-initialization.md",
-    "docs/13-5-constructors.md",
-    "docs/12-5-command-line-arguments.md",
-    "docs/member-initializer-list.md"
+    "docs/aggregate-data-type.md",
+    "docs/1-x-Chapter-1-summary-and-quiz.md",
+    "docs/uniform-initialization.md",
+    "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md",
+    "docs/direct-initialization.md",
+    "docs/16-7-std-initializer_list.md",
+    "docs/list-constructor.md",
+    "docs/initializer-list.md"
   ]
 }
