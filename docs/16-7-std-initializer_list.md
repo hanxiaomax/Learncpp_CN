@@ -330,12 +330,12 @@ int main()
 
 这样一来，临时 `IntArray` 的 `m_data` 和 `array->m_data` 都指向同一个地址（因为[[shallow-copy|浅拷贝]]的原因）。结果你应该也能预料到了。
 
-At the end of the assignment statement, the temporary IntArray is destroyed. That calls the destructor, which deletes the temporary IntArray’s m_data. This leaves array->m_data as a dangling pointer. When you try to use array->m_data for any purpose (including when array goes out of scope and the destructor goes to delete m_data), you’ll get undefined behavior.
+在赋值语句的末尾，临时的 `IntArray` 会被销毁，此时它的析构函数就会删除 `IntArray`的 `m_data`。这使得 `array->m_data` 称为了一个悬垂指针。在后续使用 `array->m_data` 的时候（不论出于什么目的，包括数组[[going-out-of-scope|离开作用域]]或者析构函数删除`m_data`时），都会导致[[undefined-behavior|未定义行为]]。
 
 !!! success "最佳实践"
 
-	If you provide list construction, it’s a good idea to provide list assignment as well.
-
+	如果提供了列表构造函数，请同时提供列表赋值运算符。
+	
 ## 小结
 
-Implementing a constructor that takes a std::initializer_list parameter allows us to use list initialization with our custom classes. We can also use std::initializer_list to implement other functions that need to use an initializer list, such as an assignment operator.
+实现一个接受`std::initializer_list`形参的构造函数，允许我们对自定义类使用列表初始化。我们还可以使用`std::initializer_list`来实现其他需要使用初始化列表的函数，例如赋值操作符。

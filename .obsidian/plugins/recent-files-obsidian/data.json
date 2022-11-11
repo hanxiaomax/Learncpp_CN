@@ -1,24 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "初始化",
+      "path": "docs/初始化.md"
+    },
+    {
+      "basename": "direct-initialization",
+      "path": "docs/direct-initialization.md"
+    },
+    {
       "basename": "16-7-std-initializer_list",
       "path": "docs/16-7-std-initializer_list.md"
+    },
+    {
+      "basename": "initializer-list",
+      "path": "docs/initializer-list.md"
     },
     {
       "basename": "list assignment operator",
       "path": "docs/list assignment operator.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "list-initialization",
       "path": "docs/list-initialization.md"
-    },
-    {
-      "basename": "初始化",
-      "path": "docs/初始化.md"
     },
     {
       "basename": "括号初始化",
@@ -45,16 +53,8 @@
       "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
     },
     {
-      "basename": "direct-initialization",
-      "path": "docs/direct-initialization.md"
-    },
-    {
       "basename": "list-constructor",
       "path": "docs/list-constructor.md"
-    },
-    {
-      "basename": "initializer-list",
-      "path": "docs/initializer-list.md"
     },
     {
       "basename": "11-16-An-introduction-to-std-array",

@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "8e58ad4740480057",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/16-7-std-initializer_list.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/16-7-std-initializer_list.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -133,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/16-7-std-initializer_list.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,17 +138,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "8e58ad4740480057",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/list assignment operator.md",
+    "docs/初始化.md",
+    "docs/direct-initialization.md",
     "docs/16-7-std-initializer_list.md",
+    "docs/initializer-list.md",
+    "docs/list assignment operator.md",
     "docs/MOC.md",
     "docs/list-initialization.md",
-    "docs/初始化.md",
     "docs/括号初始化.md",
     "docs/aggregate-data-type.md",
-    "docs/aggregate-initialization.md",
-    "docs/1-x-Chapter-1-summary-and-quiz.md",
-    "docs/uniform-initialization.md"
+    "docs/aggregate-initialization.md"
   ]
 }
