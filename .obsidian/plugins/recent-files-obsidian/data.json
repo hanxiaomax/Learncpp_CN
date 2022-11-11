@@ -5,6 +5,46 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "12-5-command-line-arguments",
+      "path": "docs/12-5-command-line-arguments.md"
+    },
+    {
+      "basename": "12-4-recursion",
+      "path": "docs/12-4-recursion.md"
+    },
+    {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
+    },
+    {
+      "basename": "12-2-the-stack-and-the-heap",
+      "path": "docs/12-2-the-stack-and-the-heap.md"
+    },
+    {
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "function-pointer",
+      "path": "docs/function-pointer.md"
+    },
+    {
       "basename": "初始化",
       "path": "docs/初始化.md"
     },
@@ -71,10 +111,6 @@
     {
       "basename": "13-5-constructors",
       "path": "docs/13-5-constructors.md"
-    },
-    {
-      "basename": "12-5-command-line-arguments",
-      "path": "docs/12-5-command-line-arguments.md"
     },
     {
       "basename": "member-initializer-list",
@@ -163,42 +199,6 @@
     {
       "basename": "21-2-STL-containers-overview",
       "path": "docs/21-2-STL-containers-overview.md"
-    },
-    {
-      "basename": "container-adapter",
-      "path": "docs/container-adapter.md"
-    },
-    {
-      "basename": "Associative-containers",
-      "path": "docs/Associative-containers.md"
-    },
-    {
-      "basename": "Sequence-containers",
-      "path": "docs/Sequence-containers.md"
-    },
-    {
-      "basename": "21-1-the-standard-library",
-      "path": "docs/21-1-the-standard-library.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "off-by-one-errors",
-      "path": "docs/off-by-one-errors.md"
-    },
-    {
-      "basename": "11-12-Dynamically-allocating-arrays",
-      "path": "docs/11-12-Dynamically-allocating-arrays.md"
-    },
-    {
-      "basename": "memory-leak",
-      "path": "docs/memory-leak.md"
-    },
-    {
-      "basename": "heap",
-      "path": "docs/heap.md"
     }
   ],
   "omittedPaths": [],

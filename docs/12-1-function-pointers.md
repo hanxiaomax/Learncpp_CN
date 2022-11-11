@@ -10,9 +10,9 @@ tags:
 ---
 
 
-In lesson [[9-6-Introduction-to-pointers|9.6 - 指针简介]] you learned that a pointer is a variable that holds the address of another variable. Function pointers are similar, except that instead of pointing to variables, they point to functions!
+在 [[9-6-Introduction-to-pointers|9.6 - 指针简介]] 中我们介绍了指针，指针是一个保存着其他地址变量的变量。[[function-pointer|函数指针]]也是类似的，只不过它指向的不是变量，而是一个函数！
 
-Consider the following function:
+考虑下面函数：
 
 ```cpp
 int foo()
@@ -21,11 +21,9 @@ int foo()
 }
 ```
 
-COPY
+`foo` 是函数名，但是函数的类型是什么？函数有它自己的[[lvalue|左值]]函数类型——在这个例子中，函数类型是返回整型并且不接受参数。和变量类似，函数也在存放在内存中。
 
-Identifier foo is the function’s name. But what type is the function? Functions have their own l-value function type -- in this case, a function type that returns an integer and takes no parameters. Much like variables, functions live at an assigned address in memory.
-
-When a function is called (via the () operator), execution jumps to the address of the function being called:
+当函数被调用时，程序会跳转到被调用函数的地址去执行：
 
 ```cpp
 int foo() // code for foo starts at memory address 0x002717f0
@@ -41,9 +39,7 @@ int main()
 }
 ```
 
-COPY
-
-At some point in your programming career (if you haven’t already), you’ll probably make a simple mistake:
+在你的编程生涯中可能会犯这样的错误：
 
 ```cpp
 #include <iostream>
@@ -61,15 +57,16 @@ int main()
 }
 ```
 
-COPY
 
-Instead of calling function foo() and printing the return value, we’ve unintentionally sent function foo directly to std::cout. What happens in this case?
+本来我们是想要调用函数foo并打印它的返回值的，但是却无意中直接使用 `std::cout` 打印函数本身。此时会得到什么样的结果呢？
 
-On the author’s machine, this printed:
+在笔者的机器上会输出如下结果：
 
+```
 0x002717f0
+```
 
-…but it may print some other value (e.g. 1) on your machine, depending on how your compiler decides to convert the function pointer to another type for printing. If your machine doesn’t print the function’s address, you may be able to force it to do so by converting the function to a void pointer and printing that:
+但是，在你的电脑上可能会打印其他值（例如 1），这取决于你的编译器如何将函数指针转换为其他类型。如果你的机器没有打印函数地址，那么你可以将函数强制转换为空指针并打印：
 
 ```cpp
 #include <iostream>
@@ -81,19 +78,18 @@ int foo() // code starts at memory address 0x002717f0
 
 int main()
 {
-    std::cout << reinterpret_cast<void*>(foo) << '\n'; // Tell C++ to interpret function foo as a void pointer
+    std::cout << reinterpret_cast<void*>(foo) << '\n'; // 告诉 C++ 将foo解析为空指针
 
     return 0;
 }
 ```
 
-COPY
+就像可以声明一个指向普通变量的非const指针一样，也可以声明一个指向函数的非const指针。在本课的其余部分，我们将研究这些函数指针及其用法。函数指针是一个相当高级的主题，对于只希望了解C++基础知识的人来说，本课的其余部分可以安全地跳过或略过。
 
-Just like it is possible to declare a non-constant pointer to a normal variable, it’s also possible to declare a non-constant pointer to a function. In the rest of this lesson, we’ll examine these function pointers and their uses. Function pointers are a fairly advanced topic, and the rest of this lesson can be safely skipped or skimmed by those only looking for C++ basics.
+## 指向函数的指针
 
-**Pointers to functions**
 
-The syntax for creating a non-const function pointer is one of the ugliest things you will ever see in C++:
+创建非const函数指针的语法是C++中最丑陋的语法之一:
 
 ```cpp
 // fcnPtr is a pointer to a function that takes no arguments and returns an integer
@@ -102,9 +98,9 @@ int (*fcnPtr)();
 
 COPY
 
-In the above snippet, fcnPtr is a pointer to a function that has no parameters and returns an integer. fcnPtr can point to any function that matches this type.
+In the above snippet, `fcnPtr` is a pointer to a function that has no parameters and returns an integer. `fcnPtr` can point to any function that matches this type.
 
-The parentheses around *fcnPtr are necessary for precedence reasons, as `int* fcnPtr()` would be interpreted as a forward declaration for a function named fcnPtr that takes no parameters and returns a pointer to an integer.
+The parentheses around `*fcnPtr` are necessary for precedence reasons, as `int* fcnPtr()` would be interpreted as a forward declaration for a function named fcnPtr that takes no parameters and returns a pointer to an integer.
 
 To make a const function pointer, the const goes after the asterisk:
 
@@ -116,7 +112,7 @@ COPY
 
 If you put the const before the int, then that would indicate the function being pointed to would return a const int.
 
-**Assigning a function to a function pointer**
+## 将函数赋值给函数指针
 
 Function pointers can be initialized with a function (and non-const function pointers can be assigned a function). In the above example, we have used foo directly, and it has been converted to a function pointer. Like with pointers to variables, we can also use &foo to get a function pointer to foo.
 
@@ -180,7 +176,7 @@ int (*fcnptr)() { nullptr }; // okay
 
 COPY
 
-**Calling a function using a function pointer**
+## 使用函数指针调用函数
 
 The other primary thing you can do with a function pointer is use it to actually call the function. There are two ways to do this. The first is via explicit dereference:
 
@@ -244,7 +240,7 @@ int main()
 
 COPY
 
-**Passing functions as arguments to other functions**
+## 将函数作为实参传递给其他函数
 
 One of the most useful things to do with function pointers is pass a function as an argument to another function. Functions used as arguments to another function are sometimes called **callback functions**.
 
@@ -414,8 +410,10 @@ COPY
 
 This program produces the result:
 
+```
 9 8 7 6 5 4 3 2 1
 1 2 3 4 5 6 7 8 9
+```
 
 Is that cool or what? We’ve given the caller the ability to control how our selection sort does its job.
 
@@ -451,7 +449,9 @@ COPY
 
 The above snippet produces the following result:
 
+```
 2 4 6 8 1 3 5 7 9
+```
 
 As you can see, using a function pointer in this context provides a nice way to allow a caller to “hook” their own functionality into something you’ve previously written and tested, which helps facilitate code reuse! Previously, if you wanted to sort one array in descending order and another in ascending order, you’d need multiple versions of the sort routine. Now you can have one version that can sort any way the caller desires!
 
@@ -473,7 +473,7 @@ COPY
 
 This only works for function parameters, not stand-alone function pointers, and so is of somewhat limited use.
 
-**Providing default functions**
+## 提供默认函数
 
 If you’re going to allow the caller to pass in a function as a parameter, it can often be useful to provide some standard functions for the caller to use for their convenience. For example, in the selection sort example above, providing the ascending() and descending() function along with the selectionSort() function would make the caller’s life easier, as they wouldn’t have to rewrite ascending() or descending() every time they want to use them.
 
@@ -488,7 +488,7 @@ COPY
 
 In this case, as long as the user calls selectionSort normally (not through a function pointer), the comparisonFcn parameter will default to ascending. You will need to make sure that the `ascending` function is declared prior to this point, otherwise the compiler will complain it doesn’t know what `ascending` is.
 
-**Making function pointers prettier with type aliases**
+## 使用类型别名让函数指针看起来更优雅
 
 Let’s face it -- the syntax for pointers to functions is ugly. However, type aliases can be used to make pointers to functions look more like regular variables:
 
@@ -516,9 +516,9 @@ bool validate(int x, int y, ValidateFunction pfcn) // clean
 
 COPY
 
-**Using std::function**
+## 使用 `std::function`
 
-An alternate method of defining and storing function pointers is to use std::function, which is part of the standard library <functional> header. To define a function pointer using this method, declare a std::function object like so:
+An alternate method of defining and storing function pointers is to use std::function, which is part of the standard library `<functional>` header. To define a function pointer using this method, declare a std::function object like so:
 
 ```cpp
 #include <functional>
@@ -529,7 +529,7 @@ COPY
 
 As you see, both the return type and parameters go inside angled brackets, with the parameters inside parentheses. If there are no parameters, the parentheses can be left empty.
 
-Updating our earlier example with std::function:
+Updating our earlier example with `std::function`:
 
 ```cpp
 #include <functional>
@@ -570,9 +570,9 @@ Also note that std::function only allows calling the function via implicit deref
 
 As of C++17, CTAD can be used to deduce the template parameters of a std::function from an initializer. In the example above, we could have written `std::function fcnPtr{ &foo };` instead of `std::function<int()> fcnPtr{ &foo };` and let the compiler figure out the template type. However, CTAD doesn’t work for the type alias definitions since no initializer is provided.
 
-**Type inference for function pointers**
+## 函数指针的类型推断
 
-Much like the _auto_ keyword can be used to infer the type of normal variables, the _auto_ keyword can also infer the type of a function pointer.
+Much like the `auto` keyword can be used to infer the type of normal variables, the `auto` keyword can also infer the type of a function pointer.
 
 ```cpp
 #include <iostream>
@@ -595,6 +595,6 @@ COPY
 
 This works exactly like you’d expect, and the syntax is very clean. The downside is, of course, that all of the details about the function’s parameters types and return type are hidden, so it’s easier to make a mistake when making a call with the function, or using its return value.
 
-**Conclusion**
+## 小结
 
 Function pointers are useful primarily when you want to store functions in an array (or other structure), or when you need to pass a function to another function. Because the native syntax to declare function pointers is ugly and error prone, we recommend using std::function. In places where a function pointer type is only used once (e.g. a single parameter or return value), std::function can be used directly. In places where a function pointer type is used multiple times, a type alias to a std::function is a better choice (to prevent repeating yourself).

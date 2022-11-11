@@ -14,7 +14,7 @@ In lesson [11.17 -- An introduction to std::vector](https://www.learncpp.com/cp
 
 Although this is the most useful and commonly used part of std::vector, std::vector has some additional attributes and capabilities that make it useful in some other capacities as well.
 
-## Length vs capacity
+## 长度和容量
 
 Consider the following example:
 
@@ -83,7 +83,7 @@ The capacity is: 5
 
 In this case, the resize() function caused the std::vector to change both its length and capacity. Note that the capacity is guaranteed to be at least as large as the array length (but could be larger), otherwise accessing the elements at the end of the array would be outside of the allocated memory!
 
-## More length vs. capacity
+## 长度和容量——更多细节
 
 Why differentiate between length and capacity? std::vector will reallocate its memory if needed, but like Melville’s Bartleby, it would prefer not to, because resizing an array is computationally expensive. Consider the following:
 
@@ -115,13 +115,13 @@ length: 3  capacity: 5
 
 Note that although we assigned a smaller array to our vector, it did not reallocate its memory (the capacity is still 5). It simply changed its length, so it knows that only the first 3 elements are valid at this time.
 
-## Array subscripts and at() are based on length, not capacity
+## 数组下标和 `at()`基于长度而非容量
 
 The range for the subscript operator ([]) and at() function is based on the vector’s length, not the capacity. Consider the array in the previous example, which has length 3 and capacity 5. What happens if we try to access the array element with index 4? The answer is that it fails, since 4 is greater than the length of the array.
 
 Note that a vector will not resize itself based on a call to the subscript operator or at() function!
 
-## Stack behavior with std::vector
+## `std::vector` 的类栈行为
 
 If the subscript operator and at() function are based on the array length, and the capacity is always at least as large as the array length, why even worry about the capacity at all? Although std::vector can be used as a dynamic array, it can also be used as a stack. To do this, we can use 3 functions that match our key stack operations:
 
@@ -174,6 +174,7 @@ COPY
 
 This prints:
 
+```
 (cap 0 length 0)
 5 (cap 1 length 1)
 5 3 (cap 2 length 2)
@@ -182,6 +183,7 @@ top: 2
 5 3 (cap 3 length 2)
 5 (cap 3 length 1)
 (cap 3 length 0)
+```
 
 Unlike array subscripts or at(), the stack-based functions _will_ resize the std::vector if necessary. In the example above, the vector gets resized 3 times (from a capacity of 0 to 1, 1 to 2, and 2 to 3).
 
@@ -234,6 +236,7 @@ COPY
 
 This program prints:
 
+```
 (cap 5 length 0)
 5 (cap 5 length 1)
 5 3 (cap 5 length 2)
@@ -242,10 +245,11 @@ top: 2
 5 3 (cap 5 length 2)
 5 (cap 5 length 1)
 (cap 5 length 0)
+```
 
 We can see that the capacity was preset to 5 and didn’t change over the lifetime of the program.
 
-**Vectors may allocate extra capacity**
+## Vectors 可能会分配多余的容量
 
 When a vector is resized, the vector may allocate more capacity than is needed. This is done to provide some “breathing room” for additional elements, to minimize the number of resize operations needed. Let’s take a look at this:
 
@@ -269,8 +273,10 @@ COPY
 
 On the author’s machine, this prints:
 
+```
 size: 5  cap: 5
 size: 6  cap: 7
+```
 
 When we used push_back() to add a new element, our vector only needed room for 6 elements, but allocated room for 7. This was done so that if we were to push_back() another element, it wouldn’t need to resize immediately.
 

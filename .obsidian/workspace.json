@@ -140,15 +140,15 @@
   },
   "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/初始化.md",
-    "docs/direct-initialization.md",
-    "docs/16-7-std-initializer_list.md",
-    "docs/initializer-list.md",
-    "docs/list assignment operator.md",
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/MOC.md",
-    "docs/list-initialization.md",
-    "docs/括号初始化.md",
-    "docs/aggregate-data-type.md",
-    "docs/aggregate-initialization.md"
+    "docs/12-8-lambda-captures.md",
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+    "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
+    "docs/12-5-command-line-arguments.md",
+    "docs/12-4-recursion.md",
+    "docs/12-3-std-vector-capacity-and-stack-behavior.md",
+    "docs/12-2-the-stack-and-the-heap.md",
+    "docs/12-1-function-pointers.md"
   ]
 }

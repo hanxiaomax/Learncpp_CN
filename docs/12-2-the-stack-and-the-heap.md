@@ -20,7 +20,7 @@ The memory that a program uses is typically divided into a few different areas, 
 
 For this lesson, we’ll focus primarily on the heap and the stack, as that is where most of the interesting stuff takes place.
 
-**The heap segment**
+## 堆内存段
 
 The heap segment (also known as the “free store”) keeps track of memory used for dynamic memory allocation. We talked about the heap a bit already in lesson [11.11 -- Dynamic memory allocation with new and delete](https://www.learncpp.com/cpp-tutorial/dynamic-memory-allocation-with-new-and-delete/), so this will be a recap.
 
@@ -52,13 +52,13 @@ The heap has advantages and disadvantages:
 -   Dynamically allocated memory must be accessed through a pointer. Dereferencing a pointer is slower than accessing a variable directly.
 -   Because the heap is a big pool of memory, large arrays, structures, or classes can be allocated here.
 
-**The call stack**
+## 调用栈
 
 The **call stack** (usually referred to as “the stack”) has a much more interesting role to play. The call stack keeps track of all the active functions (those that have been called but have not yet terminated) from the start of the program to the current point of execution, and handles allocation of all function parameters and local variables.
 
 The call stack is implemented as a stack data structure. So before we can talk about how the call stack works, we need to understand what a stack data structure is.
 
-**The stack data structure**
+## 数据结构——栈
 
 A **data structure** is a programming mechanism for organizing data so that it can be used efficiently. You’ve already seen several types of data structures, such as arrays and structs. Both of these data structures provide mechanisms for storing data and accessing that data in an efficient way. There are many additional data structures that are commonly used in programming, quite a few of which are implemented in the standard library, and a stack is one of those.
 
@@ -94,7 +94,7 @@ The plate analogy is a pretty good analogy as to how the call stack works, but w
 
 First, we use a marker (like a post-it note) to keep track of where the bottom-most empty mailbox is. In the beginning, this will be the lowest mailbox (on the bottom of the stack). When we push an item onto our mailbox stack, we put it in the mailbox that is marked (which is the first empty mailbox), and move the marker up one mailbox. When we pop an item off the stack, we move the marker down one mailbox (so it’s pointed at the top non-empty mailbox) and remove the item from that mailbox. Anything below the marker is considered “on the stack”. Anything at the marker or above the marker is not on the stack.
 
-**The call stack segment**
+## 调用栈内存段
 
 The call stack segment holds the memory used for the call stack. When the application starts, the main() function is pushed on the call stack by the operating system. Then the program begins executing.
 
@@ -104,7 +104,7 @@ Our mailbox analogy above is fairly analogous to how the call stack works. The s
 
 We can make one further optimization: When we pop an item off the call stack, we only have to move the stack pointer down -- we don’t have to clean up or zero the memory used by the popped stack frame (the equivalent of emptying the mailbox). This memory is no longer considered to be “on the stack” (the stack pointer will be at or below this address), so it won’t be accessed. If we later push a new stack frame to this same memory, it will overwrite the old value we never cleaned up.
 
-**The call stack in action**
+## 调用栈实例
 
 Let’s examine in more detail how the call stack works. Here is the sequence of steps that takes place when a function is called:
 
@@ -132,7 +132,7 @@ Typically, it is not important to know all the details about how the call stack 
 
 A technical note: on some architectures, the call stack grows away from memory address 0. On others, it grows towards memory address 0. As a consequence, newly pushed stack frames may have a higher or a lower memory address than the previous ones.
 
-**A quick and dirty call stack example**
+## 一个简单的调用栈例子
 
 Consider the following simple application:
 
@@ -170,7 +170,7 @@ c:
 
 main()
 
-**Stack overflow**
+## 堆栈溢出
 
 The stack has a limited size, and consequently can only hold a limited amount of information. On Visual Studio for Windows, the default stack size is 1MB. With g++/Clang for Unix variants, it can be as large as 8MB. If the program tries to put too much information on the stack, stack overflow will result. **Stack overflow** happens when all the memory in the stack has been allocated -- in that case, further allocations begin overflowing into other sections of memory.
 
@@ -230,6 +230,6 @@ The stack has advantages and disadvantages:
 -   All memory allocated on the stack is known at compile time. Consequently, this memory can be accessed directly through a variable.
 -   Because the stack is relatively small, it is generally not a good idea to do anything that eats up lots of stack space. This includes passing by value or creating local variables of large arrays or other memory-intensive structures.
 
-Author’s note
+!!! info "作者注"
 
-[This comment](https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/#comment-560618) has some additional (simplified) information about how variables on the stack are laid out and receive actual memory addresses at runtime.
+	[This comment](https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/#comment-560618) has some additional (simplified) information about how variables on the stack are laid out and receive actual memory addresses at runtime.

@@ -85,7 +85,7 @@ COPY
 
 This code won’t compile. Unlike nested blocks, where any identifier defined in an outer block is accessible in the scope of the nested block, lambdas can only access specific kinds of identifiers: global identifiers, entities that are known at compile time, and entities with static storage duration. `search` fulfills none of these requirements, so the lambda can’t see it. That’s what the capture clause is there for.
 
-## The capture clause
+## 闭包
 
 The capture clause is used to (indirectly) give a lambda access to variables available in the surrounding scope that it normally would not have access to. All we need to do is list the entities we want to access from within the lambda as part of the capture clause. In this case, we want to give our lambda access to the value of variable `search`, so we add it to the capture clause:
 
@@ -134,7 +134,7 @@ search for: nana
 Found banana
 ```
 
-## So how do captures actually work?
+## 闭包是如何工作的？
 
 While it might look like our lambda in the example above is directly accessing the value of `main`‘s `search` variable, this is not the case. Lambdas might look like nested blocks, but they work slightly differently (and the distinction is important).
 
@@ -425,7 +425,7 @@ std::vector<CEnemy> enemies{};
 
 COPY
 
-## Defining new variables in the lambda-capture
+## 在闭包中定义新的变量
 
 Sometimes we want to capture a variable with a slight modification or declare a new variable that is only visible in the scope of the lambda. We can do so by defining a variable in the lambda-capture without specifying its type.
 
@@ -518,7 +518,7 @@ Note that this also happens if `name` is passed to `makeWalrus` by value. Th
 
 If we want the captured `name` to be valid when the lambda is used, we need to capture it by value instead (either explicitly or using a default-capture by value).
 
-## Unintended copies of mutable lambdas [](https://www.learncpp.com/cpp-tutorial/lambda-captures/#mutable_copy)
+## Unintended copies of mutable lambdas 
 
 Because lambdas are objects, they can be copied. In some cases, this can cause problems. Consider the following code:
 
