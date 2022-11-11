@@ -231,38 +231,38 @@ IntArray(std::initializer_list<int> list) // 使得 IntArray 可以进行列表�
 
 第二行：我们必须将内存分配的任务委派给其他构造函数（通过委派构造减少冗余代码）。该委派构造函数需要指定数组的长度，所以我们通过 `list.size()`获取长度并向它传递该信息。注意`list.size()` 返回的是 `size_t` (无符号)，所以我们必须将其转换为有符号整型。我们使用[[direct-initialization|直接初始化]]而不是[[括号初始化]]因为括号初始化需要[[list-constructor|列表构造函数]]（list constructors）。尽管构造函数可以被正确解析，使用直接初始化的方式初始化具有列表构造函数的类是更安全的（如果你本意不是使用列表构造函数的话）。
 
-构造函数的函数体 body of the constructor is reserved for copying the elements from the list into our IntArray class. For some inexplicable reason, std::initializer_list does not provide access to the elements of the list via subscripting (operator`[]`). The omission has been noted many times to the standards committee and never addressed.
+构造函数的函数体中的代码用于将初始化列表中的值拷贝到`IntArray`中。令人费解的是，`std::initializer_list` 并没有提供下标运算符用于访问元素。这个问题在C++标准委员会上被提及很多次但每一次都不了了之了。
 
-However, there are easy ways to work around the lack of subscripts. The easiest way is to use a for-each loop here. The ranged-based for loop steps through each element of the initialization list, and we can manually copy the elements into our internal array.
+不过，我们可以使用一些方法来解决这个问题。最简单的是使用[[range-based-for-loops|基于范围的for循环]]，它可以一次遍历初始化列表中的每个元素然后我们就可以将元素拷贝到我们的内部数组中。
 
-One caveat: Initializer lists will always favor a matching initializer_list constructor over other potentially matching constructors. Thus, this variable definition:
+
+注意：初始化器列表总是倾向于调用匹配的`initializer_list`构造函数，而不是其他可能匹配的构造函数。因此，这个变量定义:
 
 ```cpp
 IntArray array { 5 };
 ```
 
-COPY
-
-would match to IntArray(`std::initializer_list<int>`), not IntArray(int). If you want to match to IntArray(int) once a list constructor has been defined, you’ll need to use copy initialization or direct initialization. The same happens to std::vector and other container classes that have both a list constructor and a constructor with a similar type of parameter
+会匹配到 `IntArray(std::initializer_list<int>)`而不是 `IntArray(int)`。如果你希望在[[list-constructor|列表构造函数]]存在的情况下匹配 `IntArray(int)` ，那么你需要使用[[copy-initialization|拷贝初始化]]或者[[direct-initialization|直接初始化]]。对于 `std::vector` 和其他同时具有列表构造函数和类似构造函数的[[container-class|容器类]]也是一样的。
 
 ```cpp
-std::vector<int> array(5); // Calls std::vector::vector(std::vector::size_type), 5 value-initialized elements: 0 0 0 0 0
-std::vector<int> array{ 5 }; // Calls std::vector::vector(std::initializer_list<int>), 1 element: 5
+std::vector<int> array(5); // Calls std::vector::vector(std::vector::size_type), 5个元素被初始化为0
+std::vector<int> array{ 5 }; // Calls std::vector::vector(std::initializer_list<int>), 一个元素 5
 ```
 
 COPY
 
-Class assignment using `std::initializer_list`
+## 使用 `std::initializer_list` 对类进行赋值
 
-You can also use `std::initializer_list` to assign new values to a class by overloading the assignment operator to take a std::initializer_list parameter. This works analogously to the above. We’ll show an example of how to do this in the quiz solution below.
+重载赋值操作符接受`std::initializer_list`形参后，我们就可以通过`std::initializer_list`来为类赋值了。工作原理与上面类似。具体的实例见quiz部分。（见原文）
 
-Note that if you implement a constructor that takes a `std::initializer_list`, you should ensure you do at least one of the following:
+注意，如果你实现了一个接受`std::initializer_list`的构造函数，你应该确保你至少做了以下其中之一:
 
-1.  Provide an overloaded list assignment operator
-2.  Provide a proper deep-copying copy assignment operator
-3.  Delete the copy assignment operator
+1.  提供重载的[[list assignment operator|列表赋值运算符]]；
+2.  提供正确的[[deep-copy|深拷贝]][[copy-assignment-operator|拷贝赋值运算符]]；
+3.  删除[[copy-assignment-operator|拷贝赋值运算符]]。
 
-Here’s why: consider the following class (which doesn’t have any of these things), along with a list assignment statement:
+为什么？考虑下面这个类(不满足上面三个条件)在使用列表赋值语句时可能出现的问题：
+
 
 ```cpp
 #include <cassert> // for assert()
@@ -326,10 +326,9 @@ int main()
 }
 ```
 
+首先，编译器会注意到带有`std::initializer_list`的赋值函数不存在。接下来，它将查找其他可以使用的赋值函数，并发现**隐式提供**的[[copy-assignment-operator|拷贝赋值运算符]]。但是，此函数只应该在初始化器列表能够被转换为`IntArray`的情况下使用。因为`{1,3,5,7,9,11}`是`std::initializer_list`，编译器将使用列表构造函数将初始化列表转换为临时的`IntArray`。然后调用隐式赋值操作符，将临时的`IntArray`浅拷贝到数组对象中。
 
-First, the compiler will note that an assignment function taking a std::initializer_list doesn’t exist. Next it will look for other assignment functions it could use, and discover the implicitly provided copy assignment operator. However, this function can only be used if it can convert the initializer list into an IntArray. Because { 1, 3, 5, 7, 9, 11 } is a std::initializer_list, the compiler will use the list constructor to convert the initializer list into a temporary IntArray. Then it will call the implicit assignment operator, which will shallow copy the temporary IntArray into our array object.
-
-At this point, both the temporary IntArray’s m_data and array->m_data point to the same address (due to the shallow copy). You can already see where this is going.
+这样一来，临时 `IntArray` 的 `m_data` 和 `array->m_data` 都指向同一个地址（因为[[shallow-copy|浅拷贝]]的原因）。结果你应该也能预料到了。
 
 At the end of the assignment statement, the temporary IntArray is destroyed. That calls the destructor, which deletes the temporary IntArray’s m_data. This leaves array->m_data as a dangling pointer. When you try to use array->m_data for any purpose (including when array goes out of scope and the destructor goes to delete m_data), you’ll get undefined behavior.
 

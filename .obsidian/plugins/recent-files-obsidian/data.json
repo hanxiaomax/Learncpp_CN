@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "aggregate-data-type",
-      "path": "docs/aggregate-data-type.md"
+      "basename": "16-7-std-initializer_list",
+      "path": "docs/16-7-std-initializer_list.md"
+    },
+    {
+      "basename": "list assignment operator",
+      "path": "docs/list assignment operator.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "list-initialization",
+      "path": "docs/list-initialization.md"
     },
     {
       "basename": "初始化",
       "path": "docs/初始化.md"
+    },
+    {
+      "basename": "括号初始化",
+      "path": "docs/括号初始化.md"
+    },
+    {
+      "basename": "aggregate-data-type",
+      "path": "docs/aggregate-data-type.md"
     },
     {
       "basename": "aggregate-initialization",
@@ -29,10 +49,6 @@
       "path": "docs/direct-initialization.md"
     },
     {
-      "basename": "16-7-std-initializer_list",
-      "path": "docs/16-7-std-initializer_list.md"
-    },
-    {
       "basename": "list-constructor",
       "path": "docs/list-constructor.md"
     },
@@ -41,16 +57,8 @@
       "path": "docs/initializer-list.md"
     },
     {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
-    },
-    {
       "basename": "11-16-An-introduction-to-std-array",
       "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "13-6-constructor-member-initializer-lists",
@@ -191,14 +199,6 @@
     {
       "basename": "heap",
       "path": "docs/heap.md"
-    },
-    {
-      "basename": "4-17-An introduction-to-std-string",
-      "path": "docs/4-17-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
     }
   ],
   "omittedPaths": [],

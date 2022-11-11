@@ -8,6 +8,8 @@ tags:
 - aggregate-data-type
 ---
 
+称为 aggregates（聚合物）
+
 聚合类型包括：
 -   array type
 -   class type (typically, struct or union), that has
@@ -21,11 +23,5 @@ tags:
 
 聚合类型中元素的特点
 -   for an array, the array elements in increasing subscript order, or
-
--   for a class, the non-static data members that are not anonymous [bit-fields](https://en.cppreference.com/w/cpp/language/bit_field "cpp/language/bit field"), in declaration order.
-
-(until C++17)
-
--   for a class, the direct base classes in declaration order, followed by the direct non-static data members that are neither anonymous [bit-fields](https://en.cppreference.com/w/cpp/language/bit_field "cpp/language/bit field") nor members of an [anonymous union](https://en.cppreference.com/w/cpp/language/union#Anonymous_unions "cpp/language/union"), in declaration order.
-
-(since C++17)
+-   for a class, the non-static data members that are not anonymous [bit-fields](https://en.cppreference.com/w/cpp/language/bit_field "cpp/language/bit field"), in declaration order.(until C++17)
+-   for a class, the direct base classes in declaration order, followed by the direct non-static data members that are neither anonymous [bit-fields](https://en.cppreference.com/w/cpp/language/bit_field "cpp/language/bit field") nor members of an [anonymous union](https://en.cppreference.com/w/cpp/language/union#Anonymous_unions "cpp/language/union"), in declaration order.(since C++17)

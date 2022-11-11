@@ -15,3 +15,5 @@ tags:
 std::array<int, 5> myArray = { 9, 7, 5, 3, 1 }; // 初始化值列表
 std::array<int, 5> myArray2 { 9, 7, 5, 3, 1 }; // 列表初始化
 ```
+
+https://en.cppreference.com/w/cpp/language/list_initialization
