@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "12-2-the-stack-and-the-heap",
       "path": "docs/12-2-the-stack-and-the-heap.md"
-    },
-    {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
     },
     {
       "basename": "function-pointer",

@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "243fe29f1afc8743",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/12-1-function-pointers.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -98,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/12-1-function-pointers.md"
               }
             }
           },
@@ -119,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/12-1-function-pointers.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,10 +152,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "243fe29f1afc8743",
   "lastOpenFiles": [
-    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/MOC.md",
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/12-8-lambda-captures.md",
     "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/12-6-Ellipsis-and-why-to-avoid-them.md",

@@ -89,32 +89,28 @@ int main()
 ## 指向函数的指针
 
 
-创建非const函数指针的语法是C++中最丑陋的语法之一:
+创建非const函数指针的语法是C++中最丑陋的语法之一：
 
 ```cpp
 // fcnPtr is a pointer to a function that takes no arguments and returns an integer
 int (*fcnPtr)();
 ```
 
-COPY
+上面代码中的 `fcnPtr` 上一个函数指针，它没有形参且返回整型。`fcnPtr` 可以执行任何该类型的函数。
 
-In the above snippet, `fcnPtr` is a pointer to a function that has no parameters and returns an integer. `fcnPtr` can point to any function that matches this type.
+`*fcnPtr` 两边的括号是必须的，它可以确保优先级是正确的，否则 `int* fcnPtr()`就会被解析为名为`fcnPtr`，不接受参数，返回整型指针的函数的前向声明。
 
-The parentheses around `*fcnPtr` are necessary for precedence reasons, as `int* fcnPtr()` would be interpreted as a forward declaration for a function named fcnPtr that takes no parameters and returns a pointer to an integer.
-
-To make a const function pointer, the const goes after the asterisk:
+创建const函数指针，需要将const关键字添加在星号后面：
 
 ```cpp
 int (*const fcnPtr)();
 ```
 
-COPY
-
-If you put the const before the int, then that would indicate the function being pointed to would return a const int.
+如果把const放在int前面，则表示函数指针指向的函数返回一个const整型。
 
 ## 将函数赋值给函数指针
 
-Function pointers can be initialized with a function (and non-const function pointers can be assigned a function). In the above example, we have used foo directly, and it has been converted to a function pointer. Like with pointers to variables, we can also use &foo to get a function pointer to foo.
+函数指针可以用函数初始化(非const函数指针可以被赋值为函数)。在上面的例子中，我们直接使用了`foo`，并且它已经被转换为一个函数指针。与指向变量的指针一样，我们也可以使用`&foo`来获得指向`foo`的函数指针。
 
 ```cpp
 int foo()
@@ -136,19 +132,15 @@ int main()
 }
 ```
 
-COPY
-
-One common mistake is to do this:
+下面代码是一种常见的错误：
 
 ```cpp
 fcnPtr = goo();
 ```
 
-COPY
+该行代码将 `goo()` 的返回值(类型为`int`) 赋值给 `fcnPtr` (实际期望的类型是`int(*)()`)，这并不是我们的本意。我们其实希望 `fcnPtr`被赋值为 `goo` 的地址，而不是 `goo()` 的 So no parentheses are needed.
 
-This tries to assign the return value from a call to function goo() (which has type `int`) to fcnPtr (which is expecting a value of type `int(*)()`), which isn’t what we want. We want fcnPtr to be assigned the address of function goo, not the return value from function goo(). So no parentheses are needed.
-
-Note that the type (parameters and return type) of the function pointer must match the type of the function. Here are some examples of this:
+注意，函数指针的类型（返回值和参数）必须和函数类型匹配，一些实例如下：
 
 ```cpp
 // function prototypes
@@ -157,28 +149,25 @@ double goo();
 int hoo(int x);
 
 // function pointer assignments
-int (*fcnPtr1)(){ &foo }; // okay
-int (*fcnPtr2)(){ &goo }; // wrong -- return types don't match!
-double (*fcnPtr4)(){ &goo }; // okay
-fcnPtr1 = &hoo; // wrong -- fcnPtr1 has no parameters, but hoo() does
-int (*fcnPtr3)(int){ &hoo }; // okay
+int (*fcnPtr1)(){ &foo }; // 对 
+int (*fcnPtr2)(){ &goo }; // 错 -- 返回值类型不正确
+double (*fcnPtr4)(){ &goo }; // 对 
+fcnPtr1 = &hoo; // 错 -- fcnPtr1 不接受参数，和 hoo() 不匹配
+int (*fcnPtr3)(int){ &hoo }; // 对
 ```
 
-COPY
+与基本类型不同，c++ 会在需要时隐式地将函数转换为函数指针(因此你==不需要使用address-of操作符(&)来获取函数的地址==)。但是，它不会隐式地将函数指针转换为空指针，反之亦然。
 
-Unlike fundamental types, C++ _will_ implicitly convert a function into a function pointer if needed (so you don’t need to use the address-of operator (&) to get the function’s address). However, it will not implicitly convert function pointers to void pointers, or vice-versa.
-
-Function pointers can also be initialized or assigned the value nullptr:
+函数指针可以被初始化或赋值为 `nullptr`：
 
 ```cpp
-int (*fcnptr)() { nullptr }; // okay
+int (*fcnptr)() { nullptr }; // 对
 ```
-
-COPY
 
 ## 使用函数指针调用函数
 
-The other primary thing you can do with a function pointer is use it to actually call the function. There are two ways to do this. The first is via explicit dereference:
+函数指针的另一个主要功能是使用它来调用函数。通过函数指针调用函数有两个方法，一是通过显式解引用：
+
 
 ```cpp
 int foo(int x)
@@ -195,9 +184,7 @@ int main()
 }
 ```
 
-COPY
-
-The second way is via implicit dereference:
+di'er'zecond way is via implicit dereference:
 
 ```cpp
 int foo(int x)
