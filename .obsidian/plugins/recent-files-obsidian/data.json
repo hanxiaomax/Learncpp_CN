@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "type-aliases",
+      "path": "docs/type-aliases.md"
+    },
+    {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+    },
+    {
       "basename": "12-1-function-pointers",
       "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "callback functions",
+      "path": "docs/callback functions.md"
     },
     {
       "basename": "MOC",
@@ -187,18 +199,6 @@
     {
       "basename": "22-5-std-string-assignment-and-swapping",
       "path": "docs/22-5-std-string-assignment-and-swapping.md"
-    },
-    {
-      "basename": "generic-algorithm",
-      "path": "docs/generic-algorithm.md"
-    },
-    {
-      "basename": "21-3-STL-iterators-overview",
-      "path": "docs/21-3-STL-iterators-overview.md"
-    },
-    {
-      "basename": "21-2-STL-containers-overview",
-      "path": "docs/21-2-STL-containers-overview.md"
     }
   ],
   "omittedPaths": [],

@@ -7,3 +7,6 @@ tags:
 - 词汇表
 - type-aliases
 ---
+
+
+`using distance_t = double; // distance_t 作为 double 的别名`

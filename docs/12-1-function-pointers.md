@@ -184,7 +184,7 @@ int main()
 }
 ```
 
-di'er'zecond way is via implicit dereference:
+第二种方法是通过隐式解引用：
 
 ```cpp
 int foo(int x)
@@ -201,13 +201,11 @@ int main()
 }
 ```
 
-COPY
+如你所见，使用隐式解引用调用函数看起来和正常的函数调用一模一样，因为函数名本来就是指向函数的指针！但是，有些旧的编译器并不支持这种隐式解引用的方式，但是现代编译器都支持。
 
-As you can see, the implicit dereference method looks just like a normal function call -- which is what you’d expect, since normal function names are pointers to functions anyway! However, some older compilers do not support the implicit dereference method, but all modern compilers should.
+==需要注意的是：默认形参不适用于通过函数指针调用的函数。默认形参在编译时解析(也就是说，如果你没有为默认形参提供实参，编译器将在编译代码时为您提供一个实参)。但是，函数指针在运行时解析。因此，在使用函数指针进行函数调用时，无法解析默认形参。在这种情况下，必须显式地传入任何默认参数的值。==
 
-One interesting note: Default parameters won’t work for functions called through function pointers. Default parameters are resolved at compile-time (that is, if you don’t supply an argument for a defaulted parameter, the compiler substitutes one in for you when the code is compiled). However, function pointers are resolved at run-time. Consequently, default parameters can not be resolved when making a function call with a function pointer. You’ll explicitly have to pass in values for any defaulted parameters in this case.
-
-Also note that because function pointers can be set to nullptr, it’s a good idea to assert or conditionally test whether your function pointer is a null pointer before calling it. Just like with normal pointers, dereferencing a null function pointer lead to undefined behavior.
+还要注意，因为函数指针可以设置为nullptr，所以在调用函数指针之前，最好通过断言或有条件测试判断它是否是空指针。就像普通指针一样，对空函数指针的解引用会导致[[undefined-behavior|未定义行为]]。
 
 ```cpp
 int foo(int x)
@@ -225,17 +223,16 @@ int main()
 }
 ```
 
-COPY
 
 ## 将函数作为实参传递给其他函数
 
-One of the most useful things to do with function pointers is pass a function as an argument to another function. Functions used as arguments to another function are sometimes called **callback functions**.
+函数指针最大的用途其实是将函数作为参数传递给另外一个函数。这种作为实参传递给其他函数的函数，称为[[callback functions|回调函数]]。
 
-Consider a case where you are writing a function to perform a task (such as sorting an array), but you want the user to be able to define how a particular part of that task will be performed (such as whether the array is sorted in ascending or descending order). Let’s take a closer look at this problem as applied specifically to sorting, as an example that can be generalized to other similar problems.
+考虑这样一种情况，假设正在编写一个函数来执行一项任务(例如对数组排序)，但你希望用户能够定义如何执行该任务的特定部分(例如数组是按升序还是降序排序)。让我们仔细看看这个问题是如何具体应用于排序的，作为一个可以推广到其他类似问题的例子。
 
-Many comparison-based sorting algorithms work on a similar concept: the sorting algorithm iterates through a list of numbers, does comparisons on pairs of numbers, and reorders the numbers based on the results of those comparisons. Consequently, by varying the comparison, we can change the way the algorithm sorts without affecting the rest of the sorting code.
+许多基于比较的排序算法都基于类似的概念：排序算法遍历列表，对数字对进行比较，并基于这些比较的结果对数字进行重新排序。因此，通过改变比较方法，我们可以改变算法的排序方式，而不影响其他排序代码。
 
-Here is our selection sort routine from a previous lesson:
+下面是之前的选择排序例子：
 
 ```cpp
 #include <utility> // for std::swap
@@ -265,9 +262,7 @@ void SelectionSort(int* array, int size)
 }
 ```
 
-COPY
-
-Let’s replace that comparison with a function to do the comparison. Because our comparison function is going to compare two integers and return a boolean value to indicate whether the elements should be swapped, it will look something like this:
+让我们用一个函数来替换这里的比较。比较函数比较两个整数并返回一个布尔值来指示元素是否应该交换，它看起来像这样:
 
 ```cpp
 bool ascending(int x, int y)
@@ -276,9 +271,7 @@ bool ascending(int x, int y)
 }
 ```
 
-COPY
-
-And here’s our selection sort routine using the ascending() function to do the comparison:
+使用 `ascending()` 函数修改后的排序算法如下：
 
 ```cpp
 #include <utility> // for std::swap
@@ -308,21 +301,19 @@ void SelectionSort(int* array, int size)
 }
 ```
 
-COPY
+现在，为了让调用者决定如何进行排序，我们不使用固定的比较函数，而是允许调用者提供他们自己的排序函数！这是通过函数指针完成的。
 
-Now, in order to let the caller decide how the sorting will be done, instead of using our own hard-coded comparison function, we’ll allow the caller to provide their own sorting function! This is done via a function pointer.
+因为调用者的比较函数将比较两个整数并返回一个布尔值，所以指向这样一个函数的指针看起来像这样:
 
-Because the caller’s comparison function is going to compare two integers and return a boolean value, a pointer to such a function would look something like this:
 
 ```cpp
 bool (*comparisonFcn)(int, int);
 ```
 
-COPY
+因此，我们将允许调用者将一个指向他们想要的比较函数的指针作为第三个形参传递给排序例程，然后我们将使用调用者的函数进行比较。
 
-So, we’ll allow the caller to pass our sort routine a pointer to their desired comparison function as the third parameter, and then we’ll use the caller’s function to do the comparison.
+下面是一个使用函数指针形参进行用户定义比较的选择排序的完整示例，以及如何调用它的示例：
 
-Here’s a full example of a selection sort that uses a function pointer parameter to do a user-defined comparison, along with an example of how to call it:
 
 ```cpp
 #include <utility> // for std::swap
@@ -393,18 +384,16 @@ int main()
 }
 ```
 
-COPY
-
-This program produces the result:
+运行结果如下：
 
 ```
 9 8 7 6 5 4 3 2 1
 1 2 3 4 5 6 7 8 9
 ```
 
-Is that cool or what? We’ve given the caller the ability to control how our selection sort does its job.
+酷不酷？我们给了调用者控制选择排序如何工作的能力。
 
-The caller can even define their own “strange” comparison functions:
+调用者甚至可以定义自己的“奇怪的”比较函数：
 
 ```cpp
 bool evensFirst(int x, int y)
@@ -432,73 +421,62 @@ int main()
 }
 ```
 
-COPY
-
-The above snippet produces the following result:
+运行结果如下：
 
 ```
 2 4 6 8 1 3 5 7 9
 ```
 
-As you can see, using a function pointer in this context provides a nice way to allow a caller to “hook” their own functionality into something you’ve previously written and tested, which helps facilitate code reuse! Previously, if you wanted to sort one array in descending order and another in ascending order, you’d need multiple versions of the sort routine. Now you can have one version that can sort any way the caller desires!
+如你所见，在此上下文中使用函数指针是一种很好方式，调用者可以将自己的功能“挂钩”到你以前编写和测试过的内容中，这有助于促进代码重用！以前，如果希望按降序排列一个数组，按升序排列另一个数组，则需要多个版本的排序例程。现在你可以编写一个版本并按调用者希望的任何方式排序！
 
-Note: If a function parameter is of a function type, it will be converted to a pointer to the function type. This means
+注意：==如果函数形参是函数类型的，它将被转换为指向函数类型的指针==。这意味着：
 
 ```cpp
 void selectionSort(int* array, int size, bool (*comparisonFcn)(int, int))
 ```
 
-COPY
-
-can be equivalently written as:
+等价于：
 
 ```cpp
 void selectionSort(int* array, int size, bool comparisonFcn(int, int))
 ```
 
-COPY
+这只适用于函数形参，而不适用于独立的函数指针，因此使用比较有限。
 
-This only works for function parameters, not stand-alone function pointers, and so is of somewhat limited use.
 
 ## 提供默认函数
 
-If you’re going to allow the caller to pass in a function as a parameter, it can often be useful to provide some standard functions for the caller to use for their convenience. For example, in the selection sort example above, providing the ascending() and descending() function along with the selectionSort() function would make the caller’s life easier, as they wouldn’t have to rewrite ascending() or descending() every time they want to use them.
+如果你要允许调用方将函数作为参数传入，那么为调用方提供一些标准函数以方便使用通常是很有用的。例如，在上面的选择排序示例中，提供`ascending()`和`descending()`函数以及`selectionSort()`函数将使调用者的工作更加轻松，因为他们不必每次想要使用`ascending()`和`descending()`函数时都重写它们。
 
-You can even set one of these as a default parameter:
+你甚至可以设置其中一个作为默认参数：
 
 ```cpp
 // Default the sort to ascending sort
 void selectionSort(int* array, int size, bool (*comparisonFcn)(int, int) = ascending);
 ```
 
-COPY
-
-In this case, as long as the user calls selectionSort normally (not through a function pointer), the comparisonFcn parameter will default to ascending. You will need to make sure that the `ascending` function is declared prior to this point, otherwise the compiler will complain it doesn’t know what `ascending` is.
+在这个例子中，如果用户正常调用 `selectionSort` （不使用函数指针），`comparisonFcn` [[parameters|形参]]默认是升序的。你必须确保 `ascending` 函数在此之前被定义，否则编译器将会报告 `ascending` 找不到。
 
 ## 使用类型别名让函数指针看起来更优雅
 
-Let’s face it -- the syntax for pointers to functions is ugly. However, type aliases can be used to make pointers to functions look more like regular variables:
+实话实说——函数指针的语法的确很难看。不过，==[[type-aliases|类型别名]]可以用来使指向函数的指针看起来更像常规变量==：
 
 ```cpp
 using ValidateFunction = bool(*)(int, int);
 ```
 
-COPY
+类型别名 “ValidateFunction” 是一个指向函数的指针，该指针接受两个整型形参并返回一个bool类型值。
 
-This defines a type alias called “ValidateFunction” that is a pointer to a function that takes two ints and returns a bool.
-
-Now instead of doing this:
+此时我们就可以不这样做：
 
 ```cpp
-bool validate(int x, int y, bool (*fcnPtr)(int, int)); // ugly
+bool validate(int x, int y, bool (*fcnPtr)(int, int)); // 丑陋
 ```
 
-COPY
-
-You can do this:
+你可以这样做：
 
 ```cpp
-bool validate(int x, int y, ValidateFunction pfcn) // clean
+bool validate(int x, int y, ValidateFunction pfcn) // 优雅
 ```
 
 COPY
