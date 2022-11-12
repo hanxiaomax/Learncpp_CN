@@ -99,13 +99,11 @@ Stack: 1
 
 ## 调用栈内存段
 
-调用栈n段保存用于调用堆栈的内存。当应用程序启动时，main()函数被操作系统推送到调用堆栈上。然后程序开始执行。
+调用栈内存段保存用于调用栈的内存。当应用程序启动时，`main()`函数被操作系统压到调用栈上。然后程序开始执行。
 
-The call stack segment holds the memory used for the call stack. When the application starts, the main() function is pushed on the call stack by the operating system. Then the program begins executing.
+函数调用时将函数压入调用栈。当当前函数结束时，该函数从调用栈中弹出。因此，通过查看压入调用栈上的函数，我们可以看到为到达当前执行点而调用的所有函数。
 
-When a function call is encountered, the function is pushed onto the call stack. When the current function ends, that function is popped off the call stack. Thus, by looking at the functions pushed on the call stack, we can see all of the functions that were called to get to the current point of execution.
-
-Our mailbox analogy above is fairly analogous to how the call stack works. The stack itself is a fixed-size chunk of memory addresses. The mailboxes are memory addresses, and the “items” we’re pushing and popping on the stack are called **stack frames**. A stack frame keeps track of all of the data associated with one function call. We’ll talk more about stack frames in a bit. The “marker” is a register (a small piece of memory in the CPU) known as the stack pointer (sometimes abbreviated “SP”). The stack pointer keeps track of where the top of the call stack currently is.
+邮箱的比喻很好地描述了调用栈的工作原理。栈本身是一段固定长度的内存。邮箱可以被看做是内存子，而压入或弹出的内容称为[[stack-frame|栈帧]]。栈帧追踪和某个函数调用相关的全部数据。比喻中的“标记”是一个被称为堆栈指针(SP)的寄存器(CPU中的一小块内存)。堆栈指针用于追踪当前的栈顶位置。
 
 We can make one further optimization: When we pop an item off the call stack, we only have to move the stack pointer down -- we don’t have to clean up or zero the memory used by the popped stack frame (the equivalent of emptying the mailbox). This memory is no longer considered to be “on the stack” (the stack pointer will be at or below this address), so it won’t be accessed. If we later push a new stack frame to this same memory, it will overwrite the old value we never cleaned up.
 
@@ -164,16 +162,22 @@ The call stack looks like the following at the labeled points:
 
 a:
 
+```
 main()
+```
 
 b:
 
+```
 foo() (including parameter x)
 main()
+```
 
 c:
 
+```
 main()
+```
 
 ## 堆栈溢出
 
@@ -201,7 +205,9 @@ This program tries to allocate a huge (likely 40MB) array on the stack. Because 
 
 On Windows (Visual Studio), this program produces the result:
 
+```
 HelloWorld.exe (process 15916) exited with code -1073741571.
+```
 
 -1073741571 is c0000005 in hex, which is the Windows OS code for an access violation. Note that “hi” is never printed because the program is terminated prior to that point.
 
