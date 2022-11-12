@@ -16,28 +16,27 @@ tags:
 
 一个程序的内存可以被分为几个不同的区域，称为[[segment|内存段]]：
 
-- [[code segment|代码段(codedu)]] (also called a text segment), where the compiled program sits in memory. The code segment is typically read-only.
--   The bss segment (also called the uninitialized data segment), where zero-initialized global and static variables are stored.
--   The data segment (also called the initialized data segment), where initialized global and static variables are stored.
--   The heap, where dynamically allocated variables are allocated from.
--   The call stack, where function parameters, local variables, and other function-related information are stored.
+- [[code segment|代码段(code段)]] (也称为 text 段)，编译后的程序就位于该段。代码段通常是只读的；
+- [[bss segment|bss段]] (也称为未初始化数据段)，这里存放[[zero-initialization|0初始化]]的[[global-variable|全局变量]]和[[static-variables|静态变量]]；
+- [[data segment|数据段]](也称为初始化数据段)，这里存放初始化的全局变量和静态变量；
+- [[heap|堆]]：动态变量的内存是从堆中分配的；
+- [[stack|栈]]：[[parameters|形参]]、局部变量和其他函数相关的信息都存放在这里。
 
-For this lesson, we’ll focus primarily on the heap and the stack, as that is where most of the interesting stuff takes place.
+本节课，我们将主要关注堆和栈，它们是这几个内存段中最”有意思“的。
+
 
 ## 堆内存段
 
-The heap segment (also known as the “free store”) keeps track of memory used for dynamic memory allocation. We talked about the heap a bit already in lesson [11.11 -- Dynamic memory allocation with new and delete](https://www.learncpp.com/cpp-tutorial/dynamic-memory-allocation-with-new-and-delete/), so this will be a recap.
+堆段(也称为“自由存储区”)跟踪用于动态内存分配的内存。我们已经在 [[11-11-Dynamic-memory-allocation-with-new-and-delete|11.11 - 使用 new 和 delete 进行动态内存分配]] 中介绍了堆，所以这里只是复习一下：
 
-In C++, when you use the new operator to allocate memory, this memory is allocated in the application’s heap segment.
+在 C++ 中，当你使用 new 分配内存时，该内存就会位于堆段。
 
 ```cpp
 int* ptr { new int }; // ptr is assigned 4 bytes in the heap
 int* array { new int[10] }; // array is assigned 40 bytes in the heap
 ```
 
-COPY
-
-The address of this memory is passed back by operator new, and can then be stored in a pointer. You do not have to worry about the mechanics behind the process of how free memory is located and allocated to the user. However, it is worth knowing that sequential memory requests may not result in sequential memory addresses being allocated!
+该内存的地址通过操作符new返回，然后可以存储在指针中。你不必担心定位空闲内存并将其分配给用户的底层机制。然而，你需要知道的是，连续内存请求可能不会分配连续的内存地址！
 
 ```cpp
 int* ptr1 { new int };
@@ -45,20 +44,18 @@ int* ptr2 { new int };
 // ptr1 and ptr2 may not have sequential addresses
 ```
 
-COPY
+当动态分配的变量被删除时，内存被“返回”到堆中，然后可以在接收到未来的分配请求时重新分配。请记住，删除指针并不删除变量，它只是将相关地址的内存返回给操作系统。
 
-When a dynamically allocated variable is deleted, the memory is “returned” to the heap and can then be reassigned as future allocation requests are received. Remember that deleting a pointer does not delete the variable, it just returns the memory at the associated address back to the operating system.
+堆有优点和缺点：
 
-The heap has advantages and disadvantages:
-
--   Allocating memory on the heap is comparatively slow.
--   Allocated memory stays allocated until it is specifically deallocated (beware memory leaks) or the application ends (at which point the OS should clean it up).
--   Dynamically allocated memory must be accessed through a pointer. Dereferencing a pointer is slower than accessing a variable directly.
--   Because the heap is a big pool of memory, large arrays, structures, or classes can be allocated here.
+- 在堆上分配内存相对很慢；
+- 已分配的内存一直保持分配状态，直到它被特别地释放(注意内存泄漏)或应用程序结束(这时操作系统应该清理它)；
+- 动态分配的内存必须通过指针访问。解引用指针比直接访问变量比较慢；
+- 因为堆是一个很大的内存池，所以可以在这里分配大型数组、结构或类。
 
 ## 调用栈
 
-The **call stack** (usually referred to as “the stack”) has a much more interesting role to play. The call stack keeps track of all the active functions (those that have been called but have not yet terminated) from the start of the program to the current point of execution, and handles allocation of all function parameters and local variables.
+[[call-stack|调用栈]](usually referred to as “the stack”) has a much more interesting role to play. The call stack keeps track of all the active functions (those that have been called but have not yet terminated) from the start of the program to the current point of execution, and handles allocation of all function parameters and local variables.
 
 The call stack is implemented as a stack data structure. So before we can talk about how the call stack works, we need to understand what a stack data structure is.
 

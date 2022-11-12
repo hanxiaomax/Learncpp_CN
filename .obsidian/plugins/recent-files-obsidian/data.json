@@ -5,6 +5,18 @@
       "path": "docs/12-2-the-stack-and-the-heap.md"
     },
     {
+      "basename": "call-stack",
+      "path": "docs/call-stack.md"
+    },
+    {
+      "basename": "data segment",
+      "path": "docs/data segment.md"
+    },
+    {
+      "basename": "bss segment",
+      "path": "docs/bss segment.md"
+    },
+    {
       "basename": "code segment",
       "path": "docs/code segment.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "23-6-basic-file-IO",
       "path": "docs/23-6-basic-file-IO.md"
-    },
-    {
-      "basename": "23-5-stream-states-and-input-validation",
-      "path": "docs/23-5-stream-states-and-input-validation.md"
-    },
-    {
-      "basename": "23-4-stream-classes-for-strings",
-      "path": "docs/23-4-stream-classes-for-strings.md"
-    },
-    {
-      "basename": "23-3-output-with-ostream-and-ios",
-      "path": "docs/23-3-output-with-ostream-and-ios.md"
     }
   ],
   "omittedPaths": [],
