@@ -5,6 +5,10 @@
       "path": "docs/12-2-the-stack-and-the-heap.md"
     },
     {
+      "basename": "stack-overflow",
+      "path": "docs/stack-overflow.md"
+    },
+    {
       "basename": "call-stack",
       "path": "docs/call-stack.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "23-7-random-file-IO",
       "path": "docs/23-7-random-file-IO.md"
-    },
-    {
-      "basename": "23-6-basic-file-IO",
-      "path": "docs/23-6-basic-file-IO.md"
     }
   ],
   "omittedPaths": [],

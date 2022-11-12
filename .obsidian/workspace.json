@@ -154,15 +154,15 @@
   },
   "active": "7f89d4686de57613",
   "lastOpenFiles": [
-    "docs/call-stack.md",
+    "docs/stack-overflow.md",
     "docs/12-2-the-stack-and-the-heap.md",
+    "docs/call-stack.md",
     "docs/data segment.md",
     "docs/bss segment.md",
     "docs/code segment.md",
     "docs/segment.md",
     "docs/MOC.md",
     "docs/12-8-lambda-captures.md",
-    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
-    "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
   ]
 }

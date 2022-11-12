@@ -180,11 +180,11 @@ main()
 
 ## 堆栈溢出
 
-The stack has a limited size, and consequently can only hold a limited amount of information. On Visual Studio for Windows, the default stack size is 1MB. With g++/Clang for Unix variants, it can be as large as 8MB. If the program tries to put too much information on the stack, stack overflow will result. **Stack overflow** happens when all the memory in the stack has been allocated -- in that case, further allocations begin overflowing into other sections of memory.
+栈的大小是有限的，因此它只能保存有限的信息。对于Windows上的Visual Studio 来说，栈的默认大小为 1MB。而对于Linux上的 g++/Clang，栈的默认大小为8MB。如果程序视图在栈上保存过多的信息，就会导致[[stack-overflow|堆栈溢出]]。当栈上的所有内存都被分配出去时，就会发生堆栈溢出——这种情况下，再次分配的内存就会溢出到其他内存段。
 
-Stack overflow is generally the result of allocating too many variables on the stack, and/or making too many nested function calls (where function A calls function B calls function C calls function D etc…) On modern operating systems, overflowing the stack will generally cause your OS to issue an access violation and terminate the program.
+堆栈溢出的主要原因是在栈上分配了过多的变量，或者执行了过多的函数调用（函数A调用函数B调用函数C调用函数D等等）。对于现代操作系统来说，堆栈溢出会导致操作系统报告非法访问并终止程序。
 
-Here is an example program that will likely cause a stack overflow. You can run it on your system and watch it crash:
+下面这个程序就有可能导致堆栈溢出。你可以在你的系统上试试看程序会不会崩溃：
 
 ```cpp
 #include <iostream>
@@ -198,19 +198,17 @@ int main()
 }
 ```
 
-COPY
+这个程序试图在堆栈上分配一个巨大的(可能是40MB)数组。因为堆栈不够大，无法处理这个数组，数组分配溢出到程序不允许使用的内存部分。
 
-This program tries to allocate a huge (likely 40MB) array on the stack. Because the stack is not large enough to handle this array, the array allocation overflows into portions of memory the program is not allowed to use.
-
-On Windows (Visual Studio), this program produces the result:
+在 Windows (Visual Studio) 上，程序运行结果为：
 
 ```
 HelloWorld.exe (process 15916) exited with code -1073741571.
 ```
 
--1073741571 is c0000005 in hex, which is the Windows OS code for an access violation. Note that “hi” is never printed because the program is terminated prior to that point.
+`-1073741571` 等于十六进制的 `c0000005` ，它在 Windows 中表示非法访问。注意“hi”并没有被打印出来，因为还没到这一步程序就崩溃了。
 
-Here’s another program that will cause a stack overflow for a different reason:
+下面是另一个程序，它会因为不同的原因导致堆栈溢出：
 
 ```cpp
 #include <iostream>
@@ -229,17 +227,17 @@ int main()
 }
 ```
 
-COPY
 
-In the above program, a stack frame is pushed on the stack every time function foo() is called. Since foo() calls itself infinitely, eventually the stack will run out of memory and cause an overflow.
+在上面的程序中，每次调用函数`foo()`时，栈帧都会被推入堆栈。因为`foo()`无限地调用自身，最终栈将耗尽内存并导致溢出。
 
-The stack has advantages and disadvantages:
+栈的优缺点：
 
--   Allocating memory on the stack is comparatively fast.
--   Memory allocated on the stack stays in scope as long as it is on the stack. It is destroyed when it is popped off the stack.
--   All memory allocated on the stack is known at compile time. Consequently, this memory can be accessed directly through a variable.
--   Because the stack is relatively small, it is generally not a good idea to do anything that eats up lots of stack space. This includes passing by value or creating local variables of large arrays or other memory-intensive structures.
+-   在栈上分配内存相对较快；
+-   在栈上分配的内存只要在作用域就会一直在栈上，在弹出栈时会被释放；
+-   所有在栈上分配的内存都是在编译时就已知的，因此这些内存可以通过变量直接访问；
+-   因为栈相对来说很小，所以在栈上分配大量的内存是不明智的。这其中就包括创建很大的局部变量数组或大型结构体。
 
 !!! info "作者注"
 
-	[This comment](https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/#comment-560618) has some additional (simplified) information about how variables on the stack are laid out and receive actual memory addresses at runtime.
+	[此评论](https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/#comment-560618)有一些附加的(简化的)信息，关于堆栈上的变量是如何布局的，以及在运行时如何接收实际的内存地址。
+	
