@@ -128,15 +128,16 @@ Stack: 1
 3. 处理返回值；
 4. CPU继续从返回地址执行。
 
-Return values can be handled in a number of different ways, depending on the computer’s architecture. Some architectures include the return value as part of the stack frame. Others use CPU registers.
+根据计算机的体系结构的不同，可以有许多不同的方法处理返回值。有些体系结构将返回值作为堆栈框架的一部分，其他则使用CPU寄存器。
 
-Typically, it is not important to know all the details about how the call stack works. However, understanding that functions are effectively pushed on the stack when they are called and popped off when they return gives you the fundamentals needed to understand recursion, as well as some other concepts that are useful when debugging.
+通常，了解调用堆栈如何工作的所有细节并不重要。但是，了解函数在调用时被有效地推入堆栈，在返回时弹出，可以帮助您了解递归所需的基础知识，以及在调试时有用的其他一些概念。
 
-A technical note: on some architectures, the call stack grows away from memory address 0. On others, it grows towards memory address 0. As a consequence, newly pushed stack frames may have a higher or a lower memory address than the previous ones.
+提示：在某些体系结构上，调用堆栈从内存地址0增长。在其他情况下，它会向内存地址0增长。因此，新推的堆栈帧可能比以前的栈帧有更高或更低的内存地址。
+
 
 ## 一个简单的调用栈例子
 
-Consider the following simple application:
+考虑下面这个简单的应用程序：
 
 ```cpp
 int foo(int x)
@@ -155,9 +156,8 @@ int main()
 }
 ```
 
-COPY
 
-The call stack looks like the following at the labeled points:
+在对应调用栈标记点处看起来是这样的：
 
 a:
 
