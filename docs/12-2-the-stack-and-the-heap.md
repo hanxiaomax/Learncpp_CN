@@ -103,31 +103,30 @@ Stack: 1
 
 函数调用时将函数压入调用栈。当当前函数结束时，该函数从调用栈中弹出。因此，通过查看压入调用栈上的函数，我们可以看到为到达当前执行点而调用的所有函数。
 
-邮箱的比喻很好地描述了调用栈的工作原理。栈本身是一段固定长度的内存。邮箱可以被看做是内存子，而压入或弹出的内容称为[[stack-frame|栈帧]]。栈帧追踪和某个函数调用相关的全部数据。比喻中的“标记”是一个被称为堆栈指针(SP)的寄存器(CPU中的一小块内存)。堆栈指针用于追踪当前的栈顶位置。
+邮箱的比喻很好地描述了调用栈的工作原理。栈本身是一段固定长度的内存。邮箱可以被看做是内存地址，而压入或弹出的内容称为[[stack-frame|栈帧]]。栈帧追踪和某个函数调用相关的全部数据。比喻中的“标记”是一个被称为堆栈指针(SP)的寄存器(CPU中的一小块内存)。堆栈指针用于追踪当前的栈顶位置。
 
-We can make one further optimization: When we pop an item off the call stack, we only have to move the stack pointer down -- we don’t have to clean up or zero the memory used by the popped stack frame (the equivalent of emptying the mailbox). This memory is no longer considered to be “on the stack” (the stack pointer will be at or below this address), so it won’t be accessed. If we later push a new stack frame to this same memory, it will overwrite the old value we never cleaned up.
+我们还可以进一步优化：当从调用栈中弹出内容的时候，我们并不需要实际清理或清零被弹出的栈帧——只需要将栈顶指针向下移动即可。相应的内容已经不被认为是栈的一部分了（栈指针会在该地址或该地址的下方），所以它也不会被寻址。如果稍后我们将新的栈帧压入了该内存地址，则其内容正好就被覆盖掉了。
+
 
 ## 调用栈实例
 
-Let’s examine in more detail how the call stack works. Here is the sequence of steps that takes place when a function is called:
+让我们更详细地研究调用栈是如何工作的。下面是调用函数时的步骤：
 
-1.  The program encounters a function call.
-2.  A stack frame is constructed and pushed on the stack. The stack frame consists of:
+1. 程序中发生函数调用；
+2. 栈帧被构建并压入调用栈。栈帧包括：
+	- 函数调用后指令的地址（返回地址）。CPU通过它知道函数退出时应该返回到的地址；
+	- 所有函数的实参；
+	- 所有局部变量的内存；
+	- 保存被函数修改且需要在函数返回时恢复的寄存器
+1.  CPU 跳转到函数起点；
+2.  函数中的指令开始被执行。
 
--   The address of the instruction beyond the function call (called the **return address**). This is how the CPU remembers where to return to after the called function exits.
--   All function arguments.
--   Memory for any local variables
--   Saved copies of any registers modified by the function that need to be restored when the function returns
+当函数结束时，会执行下面的步骤：
 
-3.  The CPU jumps to the function’s start point.
-4.  The instructions inside of the function begin executing.
-
-When the function terminates, the following steps happen:
-
-1.  Registers are restored from the call stack
-2.  The stack frame is popped off the stack. This frees the memory for all local variables and arguments.
-3.  The return value is handled.
-4.  The CPU resumes execution at the return address.
+1. 寄存器从调用栈恢复；
+2. 栈帧弹出调用栈。此时会释放局部变量和实参的内存；
+3. 处理返回值；
+4. CPU继续从返回地址执行。
 
 Return values can be handled in a number of different ways, depending on the computer’s architecture. Some architectures include the return value as part of the stack frame. Others use CPU registers.
 
