@@ -10,9 +10,13 @@ tags:
 - heap
 ---
 
-The memory that a program uses is typically divided into a few different areas, called segments:
+??? note "关键点速记"
 
--   The code segment (also called a text segment), where the compiled program sits in memory. The code segment is typically read-only.
+
+
+一个程序的内存可以被分为几个不同的区域，称为[[segment|内存段]]：
+
+- [[code segment|代码段(codedu)]] (also called a text segment), where the compiled program sits in memory. The code segment is typically read-only.
 -   The bss segment (also called the uninitialized data segment), where zero-initialized global and static variables are stored.
 -   The data segment (also called the initialized data segment), where initialized global and static variables are stored.
 -   The heap, where dynamically allocated variables are allocated from.

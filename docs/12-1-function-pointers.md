@@ -9,6 +9,7 @@ tags:
 - function
 ---
 
+??? note "关键点速记"
 
 在 [[9-6-Introduction-to-pointers|9.6 - 指针简介]] 中我们介绍了指针，指针是一个保存着其他地址变量的变量。[[function-pointer|函数指针]]也是类似的，只不过它指向的不是变量，而是一个函数！
 
@@ -479,22 +480,19 @@ bool validate(int x, int y, bool (*fcnPtr)(int, int)); // 丑陋
 bool validate(int x, int y, ValidateFunction pfcn) // 优雅
 ```
 
-COPY
 
 ## 使用 `std::function`
 
-An alternate method of defining and storing function pointers is to use std::function, which is part of the standard library `<functional>` header. To define a function pointer using this method, declare a std::function object like so:
+定义和存储函数指针还有一个办法，即使用 `std::function`，它定义在标准库 `<functional>` 头文件中。可以将函数指针定义为一个 `std::function` 对象：
 
 ```cpp
 #include <functional>
 bool validate(int x, int y, std::function<bool(int, int)> fcn); // std::function method that returns a bool and takes two int parameters
 ```
 
-COPY
+如你所见，返回值类型定义在尖括号中，参数类型则被定义在括号中。如果没有参数的话，括号可以留空。
 
-As you see, both the return type and parameters go inside angled brackets, with the parameters inside parentheses. If there are no parameters, the parentheses can be left empty.
-
-Updating our earlier example with `std::function`:
+使用 `std::function` 更新之前的例子：
 
 ```cpp
 #include <functional>
@@ -520,24 +518,20 @@ int main()
 }
 ```
 
-COPY
-
-Type aliasing std::function can be helpful for readability:
+类型别名也可以帮助 `std::function` 提高可读性：
 
 ```cpp
 using ValidateFunctionRaw = bool(*)(int, int); // type alias to raw function pointer
 using ValidateFunction = std::function<bool(int, int)>; // type alias to std::function
 ```
 
-COPY
+需要注意的是，`std::function`只允许通过隐式解引用(e.g. `fcnPtr()`)调用函数，而不支持显示解引用调用函数 (e.g. `(*fcnPtr)()`)。
 
-Also note that std::function only allows calling the function via implicit dereference (e.g. `fcnPtr()`), not explicit dereference (e.g. `(*fcnPtr)()`).
-
-As of C++17, CTAD can be used to deduce the template parameters of a std::function from an initializer. In the example above, we could have written `std::function fcnPtr{ &foo };` instead of `std::function<int()> fcnPtr{ &foo };` and let the compiler figure out the template type. However, CTAD doesn’t work for the type alias definitions since no initializer is provided.
+C++17 中[[10-11-class-template-argument-deduction-and-deduction -guides|类模板参数推断CTAD]] 可以用来从初始化值直接推断 `std::function` 的类型。在上面的例子中，我们就可以写 `std::function fcnPtr{ &foo };`而不需要写 `std::function<int()> fcnPtr{ &foo };` ，让编译器自己推断模板参数。但是 CTAD 并不能在定义类型别名时使用，因为此时我们并没有提供初始化值。
 
 ## 函数指针的类型推断
 
-Much like the `auto` keyword can be used to infer the type of normal variables, the `auto` keyword can also infer the type of a function pointer.
+`auto` 关键字可以推断普通变量类型，`auto` 关键字也可以推断函数指针类型。
 
 ```cpp
 #include <iostream>
@@ -556,10 +550,8 @@ int main()
 }
 ```
 
-COPY
-
-This works exactly like you’d expect, and the syntax is very clean. The downside is, of course, that all of the details about the function’s parameters types and return type are hidden, so it’s easier to make a mistake when making a call with the function, or using its return value.
+这完全符合您的预期，而且语法非常简洁。当然，缺点是关于函数的形参类型和返回类型的所有细节都是隐藏的，因此在调用函数或使用其返回值时很容易出错。
 
 ## 小结
 
-Function pointers are useful primarily when you want to store functions in an array (or other structure), or when you need to pass a function to another function. Because the native syntax to declare function pointers is ugly and error prone, we recommend using std::function. In places where a function pointer type is only used once (e.g. a single parameter or return value), std::function can be used directly. In places where a function pointer type is used multiple times, a type alias to a std::function is a better choice (to prevent repeating yourself).
+如果你希望将函数存储在数组(或其他结构)中，或者需要将函数传递给另一个函数时，函数指针非常有用。因为声明函数指针的语法很难看而且容易出错，我们建议使用`std::function`。在函数指针类型只使用一次的地方(例如单个形参或返回值)，可以直接使用`std::function`。在多次使用函数指针类型的地方，创建`std::function`的类型别名则是更好的选择。

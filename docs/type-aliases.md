@@ -9,4 +9,5 @@ tags:
 ---
 
 
-`using distance_t = double; // distance_t 作为 double 的别名`
+- `using distance_t = double; // distance_t 作为 double 的别名`
+- 可用于简化[[function-pointer|函数指针]]语法

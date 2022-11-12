@@ -10,6 +10,9 @@ tags:
 - stack
 ---
 
+??? note "关键点速记"
+
+
 In lesson [11.17 -- An introduction to std::vector](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdvector/), we introduced std::vector and talked about how std::vector can be used as a dynamic array that both remembers its length and can be dynamically resized as required.
 
 Although this is the most useful and commonly used part of std::vector, std::vector has some additional attributes and capabilities that make it useful in some other capacities as well.

@@ -9,6 +9,8 @@ tags:
 - summary
 ---
 
+??? note "关键点速记"
+
 Consider this snippet of code that we introduced in lesson [[11-19-Introduction-to-standard-library-algorithms|11.19 — 标准库算法简介]]：
 
 ```cpp

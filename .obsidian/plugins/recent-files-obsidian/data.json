@@ -1,28 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "type-aliases",
-      "path": "docs/type-aliases.md"
+      "basename": "12-2-the-stack-and-the-heap",
+      "path": "docs/12-2-the-stack-and-the-heap.md"
     },
     {
-      "basename": "8-6-Typedefs-and-type-aliases",
-      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+      "basename": "code segment",
+      "path": "docs/code segment.md"
     },
     {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
-    },
-    {
-      "basename": "callback functions",
-      "path": "docs/callback functions.md"
+      "basename": "segment",
+      "path": "docs/segment.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     },
     {
       "basename": "12-8-lambda-captures",
@@ -41,16 +33,36 @@
       "path": "docs/12-5-command-line-arguments.md"
     },
     {
-      "basename": "12-4-recursion",
-      "path": "docs/12-4-recursion.md"
-    },
-    {
       "basename": "12-3-std-vector-capacity-and-stack-behavior",
       "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
     },
     {
-      "basename": "12-2-the-stack-and-the-heap",
-      "path": "docs/12-2-the-stack-and-the-heap.md"
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
+      "basename": "type-aliases",
+      "path": "docs/type-aliases.md"
+    },
+    {
+      "basename": "8-6-Typedefs-and-type-aliases",
+      "path": "docs/8-6-Typedefs-and-type-aliases.md"
+    },
+    {
+      "basename": "callback functions",
+      "path": "docs/callback functions.md"
+    },
+    {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-4-recursion",
+      "path": "docs/12-4-recursion.md"
     },
     {
       "basename": "function-pointer",
@@ -187,18 +199,6 @@
     {
       "basename": "23-3-output-with-ostream-and-ios",
       "path": "docs/23-3-output-with-ostream-and-ios.md"
-    },
-    {
-      "basename": "23-2-Input-with-istream",
-      "path": "docs/23-2-Input-with-istream.md"
-    },
-    {
-      "basename": "23-1-Input-and-output-IO-streams",
-      "path": "docs/23-1-Input-and-output-IO-streams.md"
-    },
-    {
-      "basename": "22-5-std-string-assignment-and-swapping",
-      "path": "docs/22-5-std-string-assignment-and-swapping.md"
     }
   ],
   "omittedPaths": [],

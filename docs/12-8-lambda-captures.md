@@ -9,7 +9,10 @@ tags:
 - summary
 ---
 
-Capture clauses and capture by value
+??? note "关键点速记"
+
+
+## Capture clauses and capture by value
 
 In the previous lesson ([[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]), we introduced this example:
 

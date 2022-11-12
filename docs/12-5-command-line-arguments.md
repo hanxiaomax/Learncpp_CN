@@ -9,6 +9,9 @@ tags:
 - argument
 ---
 
+??? note "关键点速记"
+
+
 ## 命令行参数的用途
 
 As you learned in lesson [0.5 -- Introduction to the compiler, linker, and libraries](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/), when you compile and link your program, the output is an executable file. When a program is run, execution starts at the top of the function called main(). Up to this point, we’ve declared main like this:
