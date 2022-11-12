@@ -55,30 +55,31 @@ int* ptr2 { new int };
 
 ## 调用栈
 
-[[call-stack|调用栈]](usually referred to as “the stack”) has a much more interesting role to play. The call stack keeps track of all the active functions (those that have been called but have not yet terminated) from the start of the program to the current point of execution, and handles allocation of all function parameters and local variables.
+[[call-stack|调用栈]]所扮演的角色更加有意思。调用栈会追踪所有活动函数（已经被调用但尚未结束）从开始到当前时间点的信息，并且负责为函数[[parameters|形参]]和局部变量分配内存。
 
-The call stack is implemented as a stack data structure. So before we can talk about how the call stack works, we need to understand what a stack data structure is.
+调用栈使用数据结构——栈实现。所以在讨论调用栈的工作原理之前，我们必须要指定栈是一种什么样的数据结构。
 
 ## 数据结构——栈
 
-A **data structure** is a programming mechanism for organizing data so that it can be used efficiently. You’ve already seen several types of data structures, such as arrays and structs. Both of these data structures provide mechanisms for storing data and accessing that data in an efficient way. There are many additional data structures that are commonly used in programming, quite a few of which are implemented in the standard library, and a stack is one of those.
+**数据结构**是一种组织数据以便有效地使用数据的编程机制，你已经了解了几种类型的数据结构，例如数组和结构体。这两种数据结构都提供了有效地存储数据和访问数据的机制。还有许多在编程中经常使用的附加数据结构，其中相当一部分是在标准库中实现的，栈就是其中之一。
 
-Consider a stack of plates in a cafeteria. Because each plate is heavy and they are stacked, you can really only do one of three things:
+想想自助餐厅里的一叠盘子。因为每个盘子都很重，而且它们是堆叠的，所以你实际上只能做三件事中的一件:
 
-1.  Look at the surface of the top plate
-2.  Take the top plate off the stack (exposing the one underneath, if it exists)
-3.  Put a new plate on top of the stack (hiding the one underneath, if it exists)
+1.  看到最顶层盘子的表面；
+2.  拿走最上面一个盘子（漏出下面一个盘子）；
+3.  将一个新的盘子放在最上面（遮蔽下面一个盘子）。
 
-In computer programming, a stack is a container data structure that holds multiple variables (much like an array). However, whereas an array lets you access and modify elements in any order you wish (called **random access**), a stack is more limited. The operations that can be performed on a stack correspond to the three things mentioned above:
+在计算机编程中，栈是一种容纳多个变量的容器数据结构(很像数组)。然而，数组允许你按任何顺序访问和修改元素(称为**随机访问**)，而栈则有更多的限制。可以在堆栈上执行的操作对应于上面提到的三件事：
 
-1.  Look at the top item on the stack (usually done via a function called top(), but sometimes called peek())
-2.  Take the top item off of the stack (done via a function called pop())
-3.  Put a new item on top of the stack (done via a function called push())
+1.  查看栈顶元素(通常通过`top()`函数或`peek()`)；
+2.  获取并移除栈顶元素(通过`pop()`完成)；
+3.  将一个新元素放置在栈顶(通过`push()`完成)。
 
-A stack is a last-in, first-out (LIFO) structure. The last item pushed onto the stack will be the first item popped off. If you put a new plate on top of the stack, the first plate removed from the stack will be the plate you just pushed on last. Last on, first off. As items are pushed onto a stack, the stack grows larger -- as items are popped off, the stack grows smaller.
+栈是一个后入先出(LIFO)的数据结构。最后被压入栈的元素会第一个被弹出。如果你将一个新的盘子放在盘子堆顶上的话，那你第一个拿走的盘子也只能是它。当新的元素被压入栈时，栈就会增长。当元素被移除时，则栈会收缩。
 
-For example, here’s a short sequence showing how pushing and popping on a stack works:
+例如，下面是一个简短的序列，展示了栈上的push和pop是如何工作的:
 
+```
 Stack: empty
 Push 1
 Stack: 1
@@ -90,12 +91,15 @@ Pop
 Stack: 1 2
 Pop
 Stack: 1
+```
 
-The plate analogy is a pretty good analogy as to how the call stack works, but we can make a better analogy. Consider a bunch of mailboxes, all stacked on top of each other. Each mailbox can only hold one item, and all mailboxes start out empty. Furthermore, each mailbox is nailed to the mailbox below it, so the number of mailboxes can not be changed. If we can’t change the number of mailboxes, how do we get a stack-like behavior?
+对于调用栈是如何工作的，盘子类比是一个非常好的类比，但我们可以做一个更好的类比。考虑一堆邮箱，它们都堆叠在一起。每个邮箱只能装一件物品，而且所有邮箱都是空的。此外，每个邮箱都固定在它下面的邮箱上，因此邮箱的数量不能更改。如果不能更改邮箱的数量，如何获得类似于堆栈的行为?
 
-First, we use a marker (like a post-it note) to keep track of where the bottom-most empty mailbox is. In the beginning, this will be the lowest mailbox (on the bottom of the stack). When we push an item onto our mailbox stack, we put it in the mailbox that is marked (which is the first empty mailbox), and move the marker up one mailbox. When we pop an item off the stack, we move the marker down one mailbox (so it’s pointed at the top non-empty mailbox) and remove the item from that mailbox. Anything below the marker is considered “on the stack”. Anything at the marker or above the marker is not on the stack.
+首先，我们使用一个标记(比如便利贴)来跟踪最下面的空邮箱的位置。在开始时，这将是最低的邮箱(在堆栈的底部)。当我们将一个项目推入邮箱堆栈时，我们将它放入有标记的邮箱中(即第一个空邮箱)，并将标记向上移动一个邮箱。当我们从堆栈中弹出一个项目时，我们将标记向下移动一个邮箱(因此它指向顶部的非空邮箱)，并从该邮箱中删除该项目。任何低于标记的东西都被认为是“在栈上”。标记处或标记上方的任何东西都不在栈上。
 
 ## 调用栈内存段
+
+调用栈n段保存用于调用堆栈的内存。当应用程序启动时，main()函数被操作系统推送到调用堆栈上。然后程序开始执行。
 
 The call stack segment holds the memory used for the call stack. When the application starts, the main() function is pushed on the call stack by the operating system. Then the program begins executing.
 
