@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "12-5-command-line-arguments",
-      "path": "docs/12-5-command-line-arguments.md"
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "12-5-command-line-arguments",
+      "path": "docs/12-5-command-line-arguments.md"
     },
     {
       "basename": "11-x-chapter-11-comprehensive-quiz",
@@ -59,14 +67,6 @@
     {
       "basename": "12-8-lambda-captures",
       "path": "docs/12-8-lambda-captures.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
     },
     {
       "basename": "12-1-function-pointers",

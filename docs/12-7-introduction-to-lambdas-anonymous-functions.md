@@ -52,22 +52,26 @@ COPY
 
 This code searches through an array of strings looking for the first element that contains the substring “nut”. Thus, it produces the result:
 
+```
 Found walnut
+```
 
 And while it works, it could be improved.
 
 The root of the issue here is that `std::find_if` requires that we pass it a function pointer. Because of that, we are forced to define a function that’s only going to be used once, that must be given a name, and that must be put in the global scope (because functions can’t be nested!). The function is also so short, it’s almost easier to discern what it does from the one line of code than from the name and comments.
 
-Lambdas to the rescue
+## Lambdas to the rescue
 
 A lambda expression (also called a lambda or closure) allows us to define an anonymous function inside another function. The nesting is important, as it allows us both to avoid namespace naming pollution, and to define the function as close to where it is used as possible (providing additional context).
 
 The syntax for lambdas is one of the weirder things in C++, and takes a bit of getting used to. Lambdas take the form:
 
+```cpp
 [ captureClause ] ( parameters ) -> returnType
 {
     statements;
 }
+```
 
 -   The capture clause can be empty if no captures are needed.
 -   The parameter list can be either empty or omitted if no parameters are required.
@@ -75,20 +79,20 @@ The syntax for lambdas is one of the weirder things in C++, and takes a bit of g
 
 Also note that lambdas (being anonymous) have no name, so we don’t need to provide one.
 
-As an aside…
+!!! cite "题外话"
 
-This means a trivial lambda definition looks like this:
-
-```cpp
-#include <iostream>
-
-int main()
-{
-  [] {}; // a lambda with an omitted return type, no captures, and omitted parameters.
-
-  return 0;
-}
-```
+	This means a trivial lambda definition looks like this:
+	
+	```cpp
+	#include <iostream>
+	
+	int main()
+	{
+	  [] {}; // a lambda with an omitted return type, no captures, and omitted parameters.
+	
+	  return 0;
+	}
+	```
 
 COPY
 
@@ -128,11 +132,13 @@ COPY
 
 This works just like the function pointer case, and produces an identical result:
 
+```
 Found walnut
+```
 
 Note how similar our lambda is to our `containsNut` function. They both have identical parameters and function bodies. The lambda has no capture clause (we’ll explain what a capture clause is in the next lesson) because it doesn’t need one. And we’ve omitted the trailing return type in the lambda (for conciseness), but since `operator!=` returns a `bool`, our lambda will return a `bool` too.
 
-Type of a lambda
+## lambda 的类型
 
 In the above example, we defined a lambda right where it was needed. This use of a lambda is sometimes called a function literal.
 
@@ -169,9 +175,9 @@ But what is the type of lambda `isEven`?
 
 As it turns out, lambdas don’t have a type that we can explicitly use. When we write a lambda, the compiler generates a unique type just for the lambda that is not exposed to us.
 
-For advanced readers
+!!! info "扩展阅读"
 
-In actuality, lambdas aren’t functions (which is part of how they avoid the limitation of C++ not supporting nested functions). They’re a special kind of object called a functor. Functors are objects that contain an overloaded `operator()` that make them callable like a function.
+	In actuality, lambdas aren’t functions (which is part of how they avoid the limitation of C++ not supporting nested functions). They’re a special kind of object called a functor. Functors are objects that contain an overloaded `operator()` that make them callable like a function.
 
 Although we don’t know the type of a lambda, there are several ways of storing a lambda for use post-definition. If the lambda has an empty capture clause (nothing between the hard brackets []), we can use a regular function pointer. `std::function` or type deduction via the `auto` keyword will also work (even if the lambda has a non-empty capture clause).
 
@@ -252,9 +258,9 @@ If we had used `auto` for the type of `fn`, the caller of the function wouldn
 
 Furthermore, because they are actually templates, functions with `auto` parameters cannot be separated into a header and source file.
 
-Rule
+!!! note "法则"
 
-Use `auto` when initializing variables with lambdas, and `std::function` if you can’t initialize the variable with the lambda.
+	Use `auto` when initializing variables with lambdas, and `std::function` if you can’t initialize the variable with the lambda.
 
 Generic lambdas
 

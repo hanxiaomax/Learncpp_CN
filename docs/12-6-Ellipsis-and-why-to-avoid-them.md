@@ -25,7 +25,7 @@ The _argument_list_ is one or more normal function parameters. Note that funct
 
 The ellipsis (which are represented as three periods in a row) must always be the last parameter in the function. The ellipsis capture any additional arguments (if there are any). Though it is not quite accurate, it is conceptually useful to think of the ellipsis as an array that holds any additional parameters beyond those in the argument_list.
 
-**An ellipsis example**
+## 省略号实例
 
 The best way to learn about ellipsis is by example. So let’s write a simple program that uses ellipsis. Let’s say we want to write a function that calculates the average of a bunch of integers. We’d do it like this:
 
@@ -75,8 +75,10 @@ COPY
 
 This code prints:
 
+```
 3
 3.5
+```
 
 As you can see, this function takes a variable number of parameters! Now, let’s take a look at the components that make up this example.
 
@@ -94,7 +96,7 @@ Finally, to clean up when we are done, we call va_end(), with va_list as the par
 
 Note that va_start() can be called again any time we want to reset the va_list to point to the first parameter in the ellipses again.
 
-**Why ellipsis are dangerous: Type checking is suspended**
+## 为什么省略号不安全：类型检查被跳过了
 
 Ellipsis offer the programmer a lot of flexibility to implement functions that can take a variable number of parameters. However, this flexibility comes with some downsides.
 
@@ -110,7 +112,9 @@ COPY
 
 Although this may look harmless enough at first glance, note that the second argument (the first ellipsis argument) is a double instead of an integer. This compiles fine, and produces a somewhat surprising result:
 
+```
 1.78782e+008
+```
 
 which is a REALLY big number. How did this happen?
 
@@ -131,17 +135,19 @@ COPY
 
 Believe it or not, this actually compiles just fine, and produces the following result on the author’s machine:
 
+```
 1.79766e+008
+```
 
 This result epitomizes the phrase, “Garbage in, garbage out”, which is a popular computer science phrase “used primarily to call attention to the fact that computers, unlike humans, will unquestioningly process the most nonsensical of input data and produce nonsensical output” ([Wikipedia](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out)).
 
 So, in summary, type checking on the parameters is suspended, and we have to trust the caller to pass in the right type of parameters. If they don’t, the compiler won’t complain -- our program will just produce garbage (or maybe crash).
 
-**Why ellipsis are dangerous: ellipsis don’t know how many parameters were passed**
+## 为什么省略号不安全：省略号不知道传入参数的个数
 
 Not only do the ellipsis throw away the _type_ of the parameters, it also throws away the _number_ of parameters in the ellipsis. This means we have to devise our own solution for keeping track of the number of parameters passed into the ellipsis. Typically, this is done in one of three ways.
 
-**Method 1: Pass a length parameter**
+## 方法1：传入一个长度参数
 
 Method #1 is to have one of the fixed parameters represent the number of optional parameters passed. This is the solution we use in the findAverage() example above.
 
@@ -169,9 +175,9 @@ COPY
 
 This produces the answer 3.5, which may look correct at first glance, but omits the last number in the average, because we only told it we were going to provide 6 additional values (and then actually provided 7). These kind of mistakes can be very hard to catch.
 
-**Method 2: Use a sentinel value**
+## 方法2： 使用哨兵值
 
-Method #2 is to use a sentinel value. A **sentinel** is a special value that is used to terminate a loop when it is encountered. For example, with strings, the null terminator is used as a sentinel value to denote the end of the string. With ellipsis, the sentinel is typically passed in as the last parameter. Here’s an example of findAverage() rewritten to use a sentinel value of -1:
+Method #2 is to use a [[sentinel|哨兵]] value. A **sentinel** is a special value that is used to terminate a loop when it is encountered. For example, with strings, the null terminator is used as a sentinel value to denote the end of the string. With ellipsis, the sentinel is typically passed in as the last parameter. Here’s an example of findAverage() rewritten to use a sentinel value of -1:
 
 ```cpp
 #include <iostream>
@@ -233,7 +239,7 @@ Second, this requires the user to pass in the sentinel as the last value. If the
 
 Finally, note that we’ve chosen -1 as our sentinel. That’s fine if we only wanted to find the average of positive numbers, but what if we wanted to include negative numbers? Sentinel values only work well if there is a value that falls outside the valid set of values for the problem you are trying to solve.
 
-**Method 3: Use a decoder string**
+## 方法 3: 使用解码的字符串
 
 Method #3 involves passing a “decoder string” that tells the program how to interpret the parameters.
 
@@ -291,7 +297,7 @@ In this example, we pass a string that encodes both the number of optional varia
 
 For those of you coming from C, this is what printf does!
 
-**Recommendations for safer use of ellipsis**
+## 安全使用省略号的建议
 
 First, if possible, do not use ellipsis at all! Oftentimes, other reasonable solutions are available, even if they require slightly more work. For example, in our findAverage() program, we could have passed in a dynamically sized array of integers instead. This would have provided both strong type checking (to make sure the caller doesn’t try to do something nonsensical) while preserving the ability to pass a variable number of integers to be averaged.
 
@@ -299,14 +305,11 @@ Second, if you do use ellipsis, do not mix expected argument types within your e
 
 Third, using a count parameter or decoder string as part of the argument list is generally safer than using a sentinel as an ellipsis parameter. This forces the user to pick an appropriate value for the count/decoder parameter, which ensures the ellipsis loop will terminate after a reasonable number of iterations even if it produces a garbage value.
 
-For advanced readers
+!!! info "扩展阅读"
 
-To improve upon ellipses-like functionality, C++11 introduced `parameter packs` and `variadic templates`, which offers functionality similar to ellipses, but with strong type checking. However, significant usability challenges impeded adoption of this feature.
+	To improve upon ellipses-like functionality, C++11 introduced `parameter packs` and `variadic templates`, which offers functionality similar to ellipses, but with strong type checking. However, significant usability challenges impeded adoption of this feature.
+	
+	In C++17, [fold expressions](https://en.cppreference.com/w/cpp/language/fold) were added, which significantly improves the usability of parameter packs, to the point where they are now a viable option.
+	
+	We hope to introduce lessons on these topics in a future site update.
 
-In C++17, [fold expressions](https://en.cppreference.com/w/cpp/language/fold) were added, which significantly improves the usability of parameter packs, to the point where they are now a viable option.
-
-We hope to introduce lessons on these topics in a future site update.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/)

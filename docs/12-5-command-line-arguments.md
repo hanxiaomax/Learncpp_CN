@@ -181,23 +181,23 @@ int main(int argc, char* argv[])
 Got integer: 567
 ```
 
-`std::stringstream` 和 `std::cin` 的工作方式类似。在这个例子中 `argv[1]` 首先用于初始化`stringstream` so that we can use operator>> to extract the value to an integer variable (the same as we would with `std::cin`).
+`std::stringstream` 和 `std::cin` 的工作方式类似。在这个例子中 `argv[1]` 首先用于初始化`stringstream`，所以稍后我们可以使用`>>`将其值提取到一个整型变量 ( 类似于`std::cin`)。
 
-We’ll talk more about `std::stringstream` in a future chapter.
+我们会在后续的章节中对 `std::stringstream`进行详细介绍。
 
 ## 操作系统首先解析命令行
 
-When you type something at the command line (or run your program from the IDE), it is the operating system’s responsibility to translate and route that request as appropriate. This not only involves running the executable, it also involves parsing any arguments to determine how they should be handled and passed to the application.
+当你在命令行(或从IDE运行您的程序)上键入某些内容时，操作系统需要负责解析或转发相应的请求。这不仅涉及到运行可执行文件，还涉及到解析任何参数，以确定应该如何处理它们并将它们传递给应用程序。
 
-Generally, operating systems have special rules about how special characters like double quotes and backslashes are handled.
+一般来说，操作系统对于如何处理双引号和反斜杠等特殊字符有特殊的规则。
 
-For example:
+例如：
 
 ```
 MyArgs Hello world!
 ```
 
-prints:
+打印：
 
 ```
 There are 3 arguments:
@@ -206,13 +206,13 @@ There are 3 arguments:
 2 world!
 ```
 
-Typically, strings passed in double quotes are considered to be part of the same string:
+通常，以双引号传递的字符串被认为是同一字符串的一部分:
 
 ```
 MyArgs "Hello world!"
 ```
 
-prints:
+打印：
 
 ```
 There are 2 arguments:
@@ -220,13 +220,14 @@ There are 2 arguments:
 1 Hello world!
 ```
 
-Most operating systems will allow you to include a literal double quote by backslashing the double quote:
+大多数操作系统都允许你通过转译双引号来使用字面双引号：
+
 
 ```
 MyArgs \"Hello world!\"
 ```
 
-prints:
+打印：
 
 ```
 There are 3 arguments:
@@ -235,8 +236,8 @@ There are 3 arguments:
 2 world!"
 ```
 
-Other characters may also require backslashing or escaping depending on how your OS interprets them.
+其他字符可能也需要转义，这取决于你的操作系统如何解释它们。
 
 ## 小结
 
-Command line arguments provide a great way for users or other programs to pass input data into a program at startup. Consider making any input data that a program requires at startup to operate a command line parameter. If the command line isn’t passed in, you can always detect that and ask the user for input. That way, your program can operate either way.
+命令行参数为用户或其他程序在启动时向程序传递输入数据提供了一种很好的方式。对于任何程序需要的数据，请考虑在程序启动时允许通过命令行参数来传递这些输入数据。如果实际使用中，该数据没有通过命令行参数 传入，你也是可以检测到的，此时你可以再要求用户进行输入。这样，程序就可以以任何一种方式运行。
