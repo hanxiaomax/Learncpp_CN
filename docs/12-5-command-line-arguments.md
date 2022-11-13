@@ -14,15 +14,14 @@ tags:
 
 ## 命令行参数的用途
 
-As you learned in lesson [0.5 -- Introduction to the compiler, linker, and libraries](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/), when you compile and link your program, the output is an executable file. When a program is run, execution starts at the top of the function called main(). Up to this point, we’ve declared main like this:
+在 [0.5 -- Introduction to the compiler, linker, and libraries](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/) 中我们介绍过，编译和链接后，得到的结果是一个可执行文件。当程序运行时，则会从`main()`函数的顶部开始运行。`main()`函数定义如下：
 
 ```cpp
 int main()
 ```
 
-COPY
 
-Notice that this version of main() takes no parameters. However, many programs need some kind of input to work with. For example, let’s say you were writing a program called Thumbnail that read in an image file, and then produced a thumbnail (a smaller version of the image). How would Thumbnail know which image to read and process? The user has to have some way of telling the program which file to open. To do this, you might take this approach:
+注意，这里的 `main()` 函数没有[[parameters|形参]]。但是很多程序其实需要基于输入来判断如何开始工作。例如，如果我们编写了一个读取图片作为缩略图的程序 `Thumbnail` 。那么 `Thumbnail` 应该读取哪个图片并处理呢？ which image to read and process? The user has to have some way of telling the program which file to open. To do this, you might take this approach:
 
 ```cpp
 // Program: Thumbnail
