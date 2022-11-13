@@ -1,0 +1,6280 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+  <title>LearnCpp 中文版</title>
+
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+翻译进行中
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="LearnCpp 中文版" class="md-header__button md-logo" aria-label="LearnCpp 中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LearnCpp 中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TheBrain navigation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hanxiaomax/Learncpp_CN" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hanxiaomax/Learncpp_CN
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../../../MOC/" class="md-tabs__link">
+      总目录
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../1-1-Statements-and-the-structure-of-a-program/" class="md-tabs__link">
+        课程内容
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../../../%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A/" class="md-tabs__link">
+      翻译约定
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../../../tags/" class="md-tabs__link">
+      索引
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../../.." class="md-tabs__link">
+      关于本站
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="LearnCpp 中文版" class="md-nav__button md-logo" aria-label="LearnCpp 中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LearnCpp 中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hanxiaomax/Learncpp_CN" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hanxiaomax/Learncpp_CN
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../MOC/" class="md-nav__link">
+        总目录
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          课程内容
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="课程内容" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          课程内容
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          1. C++ 基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1. C++ 基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          1. C++ 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-1-Statements-and-the-structure-of-a-program/" class="md-nav__link">
+        1.1 - 程序结构和语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-2-comments/" class="md-nav__link">
+        1.2 - 注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-3-Introduction-to-objects-and-variables/" class="md-nav__link">
+        1.3 - 对象和变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-4-Variable-assignment-and-initialization/" class="md-nav__link">
+        1.4 - 变量赋值和初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-5-Introduction-to-iostream-cout-cin-and-endl/" class="md-nav__link">
+        1.5 - iostream 简介： cout，cin 和 endl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-6-Uninitialized-variables-and-undefined-behavior/" class="md-nav__link">
+        1.6 - 未初始化变量和未定义行为
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-7-Keywords-and-naming-identifiers/" class="md-nav__link">
+        1.7 - 关键字和标识符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-8-Whitespace-and-basic-formatting/" class="md-nav__link">
+        1.8 - 空白符和基本排版
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-9-Introduction-to-literals-and-operators/" class="md-nav__link">
+        1.9 - 字面量和操作符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-10-Introduction-to-expressions/" class="md-nav__link">
+        1.10 - 表达式简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-11-Developing-your-first-program/" class="md-nav__link">
+        1.11 - 开发你的第一个程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../1-x-Chapter-1-summary-and-quiz/" class="md-nav__link">
+        1.x - 小结与测试 - C++基础
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          2. C++ 基础-函数和文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2. C++ 基础-函数和文件" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          2. C++ 基础-函数和文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-1-Introduction-to-functions/" class="md-nav__link">
+        2.1 - 函数简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-2-Function-return-values-value-returning%20functions/" class="md-nav__link">
+        2.2 - 函数返回值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-3-Void-functions-non-value%20returning%20functions/" class="md-nav__link">
+        2.3 - void 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-4-Introduction-to-function-parameters-and-arguments/" class="md-nav__link">
+        2.4 - 函数形参和实参
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-5-Introduction-to-local-scope/" class="md-nav__link">
+        2.5 - 局部作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-6-Why-functions-are-useful-and-how-to-use-them-effectively/" class="md-nav__link">
+        2.6 - 为什么函数有用，如何高效使用函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-7-Forward-declarations-and-definitions/" class="md-nav__link">
+        2.7 - 前向声明和定义
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-8-Programs-with-multiple-code-files/" class="md-nav__link">
+        2.8 - 多文件程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-9-Naming-collisions-and-an-introduction-to-namespaces/" class="md-nav__link">
+        2.9 - 命名冲突和命名空间
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-10-Introduction-to-the-preprocessor/" class="md-nav__link">
+        2.10 - 预处理器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-11-Header-files/" class="md-nav__link">
+        2.11 - 头文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-12-Header-guards/" class="md-nav__link">
+        2.12 - 头文件防卫式声明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-13-How-to-design-your-first-programs/" class="md-nav__link">
+        2.13 - 如何设计第一个程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2-x-Chapter-2-summary-and-quiz/" class="md-nav__link">
+        2.x - 小结与测试 - 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          3. 调试 C++ 程序
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3. 调试 C++ 程序" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          3. 调试 C++ 程序
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-1-Syntax-and-semantic-errors/" class="md-nav__link">
+        3.1 - 语法和语义错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-2-The-debugging-process/" class="md-nav__link">
+        3.2 - 代码调试步骤
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-3-A-strategy-for-debugging/" class="md-nav__link">
+        3.3 - 代码调试策略
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-4-Basic-debugging-tactics/" class="md-nav__link">
+        3.4 — 基本代码调试技术
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-5-More-debugging-tactics/" class="md-nav__link">
+        3.5 - 更多代码调试技术
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-6-Using-an-integrated-debugger-Stepping/" class="md-nav__link">
+        3.6 - 使用集成调试器之单步调试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-7-Using-an-integrated-debugger-Running-and-breakpoints/" class="md-nav__link">
+        3.7 - 使用集成调试器之运行和断点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-8-Using-an-integrated-debugger-Watching-variables/" class="md-nav__link">
+        3.8 - 使用集成调试器之监控变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-9-Using-an-integrated-debugger-The-call-stack/" class="md-nav__link">
+        3.9 - 使用集成调试器之调用栈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-10-Finding-issues-before-they-become-problems/" class="md-nav__link">
+        3.10 - 在问题发生前发现问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../3-x-Chapter-3-summary-and-quiz/" class="md-nav__link">
+        3.x - 小结与测试 - 代码调试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          4. 基础数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4. 基础数据类型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          4. 基础数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-1-Introduction-to-fundamental-data-types/" class="md-nav__link">
+        4.1 - 基础数据类型简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-2-Void/" class="md-nav__link">
+        4.2 - Void
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-3-Object-sizes-and-the-sizeof-operator/" class="md-nav__link">
+        4.3 - 对象的大小和 sizeof 操作符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-4-Signed-integers/" class="md-nav__link">
+        4.4 - 有符号整型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-5-Unsigned-integers-and-why-to-avoid-them/" class="md-nav__link">
+        4.5 - 无符号整型以及为什么要避免使用它
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-6-Fixed-width-integers-and-size_t/" class="md-nav__link">
+        4.6 - 固定宽度整型和 size_t
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-7-Introduction-to-scientific-notation/" class="md-nav__link">
+        4.7 - 科学计数法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-8-Floating-point-numbers/" class="md-nav__link">
+        4.8 - 浮点数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-9-Boolean-values/" class="md-nav__link">
+        4.9 - 布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-10-Introduction-to-if-statements/" class="md-nav__link">
+        4.10 - if 语句简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-11-Chars/" class="md-nav__link">
+        4.11 - 字符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-12-Introduction-to-type-conversion-and-static_cast/" class="md-nav__link">
+        4.12 - 类型转换和 static_cast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-13-Const-variables-and-symbolic-constants/" class="md-nav__link">
+        4.13 - const 变量和符号常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-14-Compile-time-constants-constant-expressions-and-constexpr/" class="md-nav__link">
+        4.14 - 编译时常量、常量表达式和 constexpr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/" class="md-nav__link">
+        4.16 - 数值系统（十进制、二进制、十六进制和八进制）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+        4.17 - std::string 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-18-Introduction-to-std-string_view/" class="md-nav__link">
+        4.18 - std::string_view 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../4-x-Chapter-4-summary-and-quiz/" class="md-nav__link">
+        4.x - 小结与测试 - 基本数据类型
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          5. 运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5. 运算符" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          5. 运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-1-Operator-precedence-and-associativity/" class="md-nav__link">
+        5.1 - 运算符优先级和结合律
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-2-Arithmetic-operators/" class="md-nav__link">
+        5.2 - 数学运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-3-Modulus-and-Exponentiation/" class="md-nav__link">
+        5.3 - 求模和指数运算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-4-Increment-decrement-operators-and-side-effects/" class="md-nav__link">
+        5.4 - 自增自减运算符及其副作用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-5-Comma-and-conditional-operators/" class="md-nav__link">
+        5.5 - 逗号和条件运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-6-Relational-operators-and-floating-point-comparisons/" class="md-nav__link">
+        5.6 - 关系运算符和浮点数比较
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-7-Logical-operators/" class="md-nav__link">
+        5.7 - 逻辑运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../5-x-Chapter-5-summary-and-quiz/" class="md-nav__link">
+        5.x - 小结与测试 - 运算符
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          6. 作用域，生命周期和链接
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6. 作用域，生命周期和链接" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          6. 作用域，生命周期和链接
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-1-Compound-statements-blocks/" class="md-nav__link">
+        6.1 - 复合语句（语句块）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-2-User-defined-namespaces-and-the-scope-resolution-operator/" class="md-nav__link">
+        6.2 - 用户定义命名空间和作用域解析运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-3-Local-variables/" class="md-nav__link">
+        6.3 - 局部变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-4-Introduction-to-global-variables/" class="md-nav__link">
+        6.4 - 全局变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-5-Variable-shadowing-name-hiding/" class="md-nav__link">
+        6.5 - 变量遮蔽
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-6-Internal-linkage/" class="md-nav__link">
+        6.6 - 内部链接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-7-External-linkage-and-variable-forward-declarations/" class="md-nav__link">
+        6.7 - 外部链接和变量前向声明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-8-Why-non-const-global-variables-are-evil/" class="md-nav__link">
+        6.8 - 为什么非 const 全局变量是魔鬼
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-9-Sharing-global-constants-across-multiple-files-using-inline-variables/" class="md-nav__link">
+        6.9 - 使用 inline 变量共享全局常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-10-Static-local-variables/" class="md-nav__link">
+        6.10 - 静态局部变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-11-Scope-duration-and-linkage-summary/" class="md-nav__link">
+        6.11 - 作用域和链接小结
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-12-Using-declarations-and-using%20directives/" class="md-nav__link">
+        6.12 - using 声明和 using 指令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-13-Inline-functions/" class="md-nav__link">
+        6.13 - 内联函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-14-Constexpr-and-consteval-functions/" class="md-nav__link">
+        6.14 - Constexpr 和 consteval 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-15-Unnamed-and-inline-namespaces/" class="md-nav__link">
+        6.15 - 未命名和内联命名空间
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../6-x-Chapter-6-summary-and-quiz/" class="md-nav__link">
+        6.x - 小结与测试 - 作用域、持续时间和链接
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          7. 控制流和错误处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7. 控制流和错误处理" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          7. 控制流和错误处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-1-Control-flow-introduction/" class="md-nav__link">
+        7.1 - 控制流
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-2-If-statements-and-blocks/" class="md-nav__link">
+        7.2 - if 语句和语句块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-3-Common-if-statement-problems/" class="md-nav__link">
+        7.3 - 常见的 if 语句错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-4-Switch-statement-basics/" class="md-nav__link">
+        7.4 - switch 语句基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
+        7.5 - switch 落空和作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-6-Goto-statements/" class="md-nav__link">
+        7.6 - goto 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-7-Intro-to-loops-and-while-statements/" class="md-nav__link">
+        7.7 - 循环和 while 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-8-Do-while-statements/" class="md-nav__link">
+        7.8 - do-while 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-9-For-statements/" class="md-nav__link">
+        7.9 - for 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-10-Break-and-continue/" class="md-nav__link">
+        7.10 - break 和 continue
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-11-Halts-exiting-your-program-early/" class="md-nav__link">
+        7.11 - 挂起（提前结束程序）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-12-Introduction-to-testing-your-code/" class="md-nav__link">
+        7.12 - 代码测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-13-Code-coverage/" class="md-nav__link">
+        7.13 - 代码覆盖率
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-14-Common-semantic-errors-in-c/" class="md-nav__link">
+        7.14 - C++ 中常见的语义错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-15-Detecting-and-handling-errors/" class="md-nav__link">
+        7.15 - 发现错误和处理错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-16-std-cin-and-handling-invalid-input/" class="md-nav__link">
+        7.16 - std::in 和输入错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-17-assert-and-static-assert/" class="md-nav__link">
+        7.17 - 断言和 static_assert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../7-x-Chapter-7-summary-and-quiz/" class="md-nav__link">
+        7.x - 小结与测试 - 控制流和错误处理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          8. 类型转换和函数重载
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8. 类型转换和函数重载" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          8. 类型转换和函数重载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-1-Implicit-type-conversion-coercion/" class="md-nav__link">
+        8.1 - 隐式类型转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-2-Floating-point-and-integral-promotion/" class="md-nav__link">
+        8.2 - 浮点数和整型提升
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-3-Numeric-conversions/" class="md-nav__link">
+        8.3 - 数值转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-4-Arithmetic-conversions/" class="md-nav__link">
+        8.4 - 算术转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-5-Explicit-type-conversion-casting-and-static-cast/" class="md-nav__link">
+        8.5 - 显式类型转换和static_cast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-6-Typedefs-and-type-aliases/" class="md-nav__link">
+        8.6 - typedef 和类型别名
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-7-Type-deduction-for-objects-using-the%20auto-keyword/" class="md-nav__link">
+        8.7 - 使用 auto 关键字进行类型推断
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-8-Type-deduction-for-functions/" class="md-nav__link">
+        8.8 - 函数的类型推断
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-9-Introduction-to-function-overloading/" class="md-nav__link">
+        8.9 - 函数重载
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-10-Function-overload-differentiation/" class="md-nav__link">
+        8.10 - 函数重载和区分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-11-Function-overload-resolution-and-ambiguous-matches/" class="md-nav__link">
+        8.11 - 函数重载解析和不明确匹配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-12-Default-arguments/" class="md-nav__link">
+        8.12 - 默认参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-13-Function-templates/" class="md-nav__link">
+        8.13 - 函数模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-14-Function-template-instantiation/" class="md-nav__link">
+        8.14 - 函数模板的实例化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-15-Function-templates-with-multiple-template-types/" class="md-nav__link">
+        8.15 - 具有多种类型的函数模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../8-x-Chapter-8-summary-and-quiz/" class="md-nav__link">
+        8.x - 小结与测试 - 类型转换和函数重载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          9. 复合类型-引用和指针
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9. 复合类型-引用和指针" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          9. 复合类型-引用和指针
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-1-Introduction-to-compound-data-types/" class="md-nav__link">
+        9.1 - 复合数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-2-Value-categories-lvalues-and-rvalues/" class="md-nav__link">
+        9.2 - 值的分类（左值和右值）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-3-Lvalue-references/" class="md-nav__link">
+        9.3 - 左值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-4-Lvalue-references-to-const/" class="md-nav__link">
+        9.4 - const类型的左值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-5-Pass-by-lvalue-reference/" class="md-nav__link">
+        9.5 - 传递左值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-6-Introduction-to-pointers/" class="md-nav__link">
+        9.6 - 指针简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-7-Null-pointers/" class="md-nav__link">
+        9.7 - 空指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-8-Pointers-and-const/" class="md-nav__link">
+        9.8 - 指针和const
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-9-Pass-by-address/" class="md-nav__link">
+        9.9 - 按地址传递
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-10-Pass-by-address-part-2/" class="md-nav__link">
+        9.10 - 按地址传递 Part2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-11-Return-by-reference-and-return-by-address/" class="md-nav__link">
+        9.11 - 按引用返回和按地址返回
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-12-Type-deduction-with-pointers-references-and-const/" class="md-nav__link">
+        9.12 - 指针、引用和const的类型推断
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../9-x-Chapter-9-comprehensive-quiz.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          10. 复合类型-枚举和结构体
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10. 复合类型-枚举和结构体" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          10. 复合类型-枚举和结构体
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
+        10.1 - 自定义类型简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-2-unscoped-enumerations/" class="md-nav__link">
+        10.2 - 非限定作用域枚举类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-3-unscoped-enumeration-input-and-output/" class="md-nav__link">
+        10.3 - 限定作用域枚举类型的输入输出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-4-scoped-enumerations-enum-classes/" class="md-nav__link">
+        10.4 - 限定作用域枚举（枚举类）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-5-Introduction-to-structs-members-and-member-selection/" class="md-nav__link">
+        10.5 - 结构体、成员和成员选择
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-6-struct-aggregate-initialization/" class="md-nav__link">
+        10.6 - 结构体的聚合初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-7-default-member-initialization/" class="md-nav__link">
+        10.7 - 默认成员初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-8-struct-passing-and-miscellany/" class="md-nav__link">
+        10.8 - 结构体传递及其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-9-member-selection-with-pointers-and-references/" class="md-nav__link">
+        10.9 - 基于指针和引用的成员选择
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-10-class-templates/" class="md-nav__link">
+        10.10 - 类模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-11-class-template-argument-deduction-and-deduction%20-guides/" class="md-nav__link">
+        10.11 - 类模板参数推断CTAD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-x-Chapter-10-comprehensive-quiz/" class="md-nav__link">
+        10.x - 小结与测试 - 枚举和结构体
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../10-y-using-a-language-reference/" class="md-nav__link">
+        10.y - 学会使用C++参考手册
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_11">
+          11. 数组，字符串和动态内存分配
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="11. 数组，字符串和动态内存分配" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          11. 数组，字符串和动态内存分配
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-1-Arrays-Part-I/" class="md-nav__link">
+        11.1 - 数组（第一部分）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-2-Arrays-Part-II/" class="md-nav__link">
+        11.2 - 数组（第二部分）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-3-Arrays-and-loops/" class="md-nav__link">
+        11.3 - 数组和循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-4-Sorting-an-array-using-selection-sort/" class="md-nav__link">
+        11.4 - 数组排序之选择排序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-5-Multidimensional-Arrays/" class="md-nav__link">
+        11.5 - 多维数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-6-C-style-strings/" class="md-nav__link">
+        11.6 - C 语言风格字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-7-An-introduction-to-std-string_view.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-7-std-string-view-part-2/" class="md-nav__link">
+        11.7 - std::string_view（第二部分）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-8-Pointers-and-arrays/" class="md-nav__link">
+        11.8 - 指针和数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-13-For-each-loops/" class="md-nav__link">
+        11.13 - for-each 循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-14-Void-pointers/" class="md-nav__link">
+        11.14 — void 指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../11-x-chapter-11-comprehensive-quiz/" class="md-nav__link">
+        11.x - 小结与测试 - 数组、字符串和动态分配
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          12. 函数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="12. 函数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          12. 函数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-1-function-pointers/" class="md-nav__link">
+        12.1 - 函数指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-2-the-stack-and-the-heap/" class="md-nav__link">
+        12.2 - 栈和堆
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-3-std-vector-capacity-and-stack-behavior/" class="md-nav__link">
+        12.3 - std::vector的容量和类栈行为
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-4-recursion/" class="md-nav__link">
+        12.4 - 递归
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-5-command-line-arguments/" class="md-nav__link">
+        12.5 - 命令行参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-6-Ellipsis-and-why-to-avoid-them/" class="md-nav__link">
+        12.6 - 省略号以及为什么要避免使用它
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-7-introduction-to-lambdas-anonymous-functions/" class="md-nav__link">
+        12.7 - lambda表达式简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-8-lambda-captures/" class="md-nav__link">
+        12.8 - lambda 闭包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../12-x-chapter-12-comprehensive-quiz/" class="md-nav__link">
+        12.x - 小结与测试 - 函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          13. 面向对象编程基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="13. 面向对象编程基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          13. 面向对象编程基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-1-welcome-to-object-oriented-programming/" class="md-nav__link">
+        13.1 - 欢迎来到面向对象的世界
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-2-classes-and-class-members/" class="md-nav__link">
+        13.2 - 类和类成员
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-3-public-vs-private-access-specifiers/" class="md-nav__link">
+        13.3 - 访问修饰符 public 和 private
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-4-access-functions-and-encapsulation/" class="md-nav__link">
+        13.4 - 成员访问函数与封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-5-constructors/" class="md-nav__link">
+        13.5 - 构造函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-6-constructor-member-initializer-lists/" class="md-nav__link">
+        13.6 - 构造函数成员初始化值列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-7-non-static-member-initialization/" class="md-nav__link">
+        13.7 - 非静态成员初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-8-overlapping-and-delegating-constructors/" class="md-nav__link">
+        13.8 - 重叠和委托构造函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-9-destructors/" class="md-nav__link">
+        13.9 - 析构函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-10-the-hidden-this-pointer/" class="md-nav__link">
+        13.10 - 隐藏的this指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-11-class-code-and-header-files/" class="md-nav__link">
+        13.11 - 类代码和头文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-12-const-class-objects-and-member-functions/" class="md-nav__link">
+        13.12 - const 对象和成员函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-13-static-member-variables/" class="md-nav__link">
+        13.13 - 静态成员变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-14-static-member-functions/" class="md-nav__link">
+        13.14 - 静态成员函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-15-friend-functions-and-classes/" class="md-nav__link">
+        13.15 - 友元函数和友元类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-16-anonymous-objects/" class="md-nav__link">
+        13.16 - 匿名对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-17-nested-types-in-classes/" class="md-nav__link">
+        13.17 - 类中的嵌套类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-18-timing-your-code/" class="md-nav__link">
+        13.18 - 对程序进行计时
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../13-x-Chapter-13-comprehensive-quiz/" class="md-nav__link">
+        13.x - 小结与测试 - 面向对象基础
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          14. 操作符重载
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="14. 操作符重载" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          14. 操作符重载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-1-introduction-to-operator-overloading/" class="md-nav__link">
+        14.1 - 运算符重载简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-2-overloading-the-arithmetic-operators-using-friend-functions/" class="md-nav__link">
+        14.2 - 使用友元重载算数运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-3-overloading-operators-using-normal-functions/" class="md-nav__link">
+        14.3 - 使用普通函数重载运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-4-overloading-the-IO-operators/" class="md-nav__link">
+        14.4 - 重载输入输出运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-5-overloading-operators-using-member-functions/" class="md-nav__link">
+        14.5 - 使用成员函数重载运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-6-overloading-unary-operators-%2B--and-%21/" class="md-nav__link">
+        14.6 - 重载一元运算符+，- 和 !
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-7-overloading-the-comparison-operators/" class="md-nav__link">
+        14.7 - 重载比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-8-overloading-the-increment-and-decrement-operators/" class="md-nav__link">
+        14.8 - 重载递增递减运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-9-overloading-the-subscript-operator/" class="md-nav__link">
+        14.9 - 重载下标运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-10-overloading-the-parenthesis-operator/" class="md-nav__link">
+        14.10 - 重载括号运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-11-Overloading-typecasts/" class="md-nav__link">
+        14.11 - 重载类型转换操作符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-12-the-copy-constructor/" class="md-nav__link">
+        14.12 - 拷贝构造函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-13-copy-initialization/" class="md-nav__link">
+        14.13 - 拷贝初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-14-converting-constructors-explicit-and-delete/" class="md-nav__link">
+        14.14 - 转换构造函数与explicit和delete关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-15-overloading-the-assignment-operator/" class="md-nav__link">
+        14.15 - 重载赋值运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-16-shallow-vs-deep-copying/" class="md-nav__link">
+        14.16 - 浅拷贝和深拷贝
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-17-overloading-operators-and-function-templates/" class="md-nav__link">
+        14.17 - 重载运算符和函数模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../14-x-Chapter-14-comprehensive-quiz/" class="md-nav__link">
+        14.x - 小结与测试 - 运算符重载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_15">
+          16. 对象关系简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="16. 对象关系简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          16. 对象关系简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-1-object-relationships/" class="md-nav__link">
+        16.1 - 对象关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-2-composition/" class="md-nav__link">
+        16.2 - 组合关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-3-aggregation/" class="md-nav__link">
+        16.3 - 聚合关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-4-association/" class="md-nav__link">
+        16.4 - 关联关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-5-dependencies/" class="md-nav__link">
+        16.5 - 依赖关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-6-container-classes/" class="md-nav__link">
+        16.6 - 容器类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-7-std-initializer_list/" class="md-nav__link">
+        16.7 - std::initializer_list
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../16-x-Chapter-16-comprehensive-quiz/" class="md-nav__link">
+        16.x - 小结与测试 - 对象关系
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_16">
+          17. 继承
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="17. 继承" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          17. 继承
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-1-introduction-to-inheritance/" class="md-nav__link">
+        17.1 - 继承简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-2-basic-inheritance-in-c%2B%2B/" class="md-nav__link">
+        17.2 - C++继承基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-3-order-of-construction-of-derived-classes/" class="md-nav__link">
+        17.3 - 派生类的构造顺序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-4-constructors-and-initialization-of-derived-classes/" class="md-nav__link">
+        17.4 - 派生类的构造和初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-5-inheritance-and-access-specifiers/" class="md-nav__link">
+        17.5 - 继承和访问说明符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-6-adding-new-functionality-to-a-derived-class/" class="md-nav__link">
+        17.6 - 为派生类添加新功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-7-calling-inherited-functions-and-overriding-behavior/" class="md-nav__link">
+        17.7 - 调用继承函数和重写
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-8-Hiding-inherited-functionality/" class="md-nav__link">
+        17.8 - 隐藏继承的函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-9-multiple-inheritance/" class="md-nav__link">
+        17.9 - 多重继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../17-x-Chapter-17-comprehensive-quiz/" class="md-nav__link">
+        17.x - 小结与测试 - 继承
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_17">
+          18. 虚函数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="18. 虚函数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          18. 虚函数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-1-pointers-and-references-to-the-base-class-of-derived-objects/" class="md-nav__link">
+        18.1 - 基类的指针和引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-2-virtual-functions-and-polymorphism/" class="md-nav__link">
+        18.2 - 虚函数和多态
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-3-the-override-and-final-specifiers-and-covariant-return-types/" class="md-nav__link">
+        18.3 - override、final标识符以及协变返回类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization/" class="md-nav__link">
+        18.4 - 虚构造函数、虚赋值和重载虚拟化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-5-early-binding-and-late-binding/" class="md-nav__link">
+        18.5 - 早期绑定和后期绑定
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-6-the-virtual-table/" class="md-nav__link">
+        18.6 - 虚函数表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-7-pure-virtual-functions-abstract-base-classes-and-%20interface-classes/" class="md-nav__link">
+        18.7 - 纯虚函数，抽象基类和接口类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-8-virtual-base-classes/" class="md-nav__link">
+        18.8 - 虚基类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-9-object-slicing/" class="md-nav__link">
+        18.9 - 对象切片
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-10-dynamic-casting/" class="md-nav__link">
+        18.10 - 动态类型转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-11-printing-inherited-classes-using-operator%3C%3C/" class="md-nav__link">
+        18.11 - 使用 << 运算符打印继承类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../18-x-Chapter-18-comprehensive-quiz/" class="md-nav__link">
+        18.x - 小结与测试 - 虚函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_18">
+          19. 模板和类
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="19. 模板和类" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          19. 模板和类
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../19-x-Chapter-19-comprehensive-quiz/" class="md-nav__link">
+        19.x - 小结与测试 - 模板和类
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_19">
+          20. 异常
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="20. 异常" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          20. 异常
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../20-x-Chapter-20-comprehensive-quiz/" class="md-nav__link">
+        20.x - 小结与测试 - 异常
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_20" type="checkbox" id="__nav_2_20" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_20">
+          M. move和智能指针
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="M. move和智能指针" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_20">
+          <span class="md-nav__icon md-icon"></span>
+          M. move和智能指针
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-1-introduction-to-smart-pointers-and-move-semantics/" class="md-nav__link">
+        M.1 - 智能指针和移动语义简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-2-R-value-references/" class="md-nav__link">
+        M.2 - 右值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-3-move-constructors-and-move-assignment/" class="md-nav__link">
+        M.3 - 移动构造函数和移动赋值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-4-std-move/" class="md-nav__link">
+        M.4 - std::move
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-5-std-move-if-noexcept/" class="md-nav__link">
+        M.5 - std::move_if_noexcept
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-6-std-unique-ptr/" class="md-nav__link">
+        M.6 — std::unique_ptr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-7-std-shared-ptr/" class="md-nav__link">
+        M.7 — std::shared_ptr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr/" class="md-nav__link">
+        M.8 - 智能指针带来的循环依赖问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../M-x-chapter-M-comprehensive-review/" class="md-nav__link">
+        M.x - 小结与测试 - 移动和智能指针
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_21" type="checkbox" id="__nav_2_21" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_21">
+          21. STL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="21. STL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_21">
+          <span class="md-nav__icon md-icon"></span>
+          21. STL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../21-1-the-standard-library/" class="md-nav__link">
+        21.1 - 标准库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../21-2-STL-containers-overview/" class="md-nav__link">
+        21.2 - STL容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../21-3-STL-iterators-overview/" class="md-nav__link">
+        21.3 - STL迭代器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../21-4-STL-algorithms-overview/" class="md-nav__link">
+        21.4 - STL算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A/" class="md-nav__link">
+        翻译约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tags/" class="md-nav__link">
+        索引
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        关于本站
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+
+  
+
+
+
+
+  <h1>TheBrain navigation</h1>
+
+<p>/*
+An Excalidraw based graph user interface for your Vault. Requires the <a href="https://github.com/blacksmithgu/obsidian-dataview">Dataview plugin</a>. Generates a graph view similar to that of <a href="https://TheBrain.com">TheBrain</a> plex.</p>
+<p>Watch introduction to this script on <a href="https://youtu.be/plYobK-VufM">YouTube</a>.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/zsviczian/obsidian-excalidraw-plugin/master/images/TheBrain.jpg" /></p>
+<p>```javascript
+*/</p>
+<p>if(!ea.verifyMinimumPluginVersion || !ea.verifyMinimumPluginVersion("1.6.25")) {
+  new Notice("This script requires a newer version of Excalidraw. Please install the latest version.");
+  return;
+}</p>
+<p>if(!window.DataviewAPI) {
+  new Notice ("Some features will only work if you have the Dataview plugin installed and enabled", 4000);
+  return;
+}</p>
+<p>const EVENT = "active-leaf-change";</p>
+<p>const removeEventHandler = () =&gt; {
+  app.workspace.off(EVENT,window.brainGraphEventHandler);
+  if(isBoolean(window.excalidrawView?.linksAlwaysOpenInANewPane)) {
+    window.excalidrawView.linksAlwaysOpenInANewPane = false;
+  }
+  const ea = ExcalidrawAutomate;
+  ea.setView(window.excalidrawView);
+  if(ea.targetView?.excalidrawAPI) {
+    try {
+      ea.targetView.semaphores.saving = false;
+      ea.getExcalidrawAPI().updateScene({appState:{viewModeEnabled:false}});
+    } catch {}
+  }
+  delete window.excalidrawView;
+  delete window.excalidrawFile;
+  delete window.lastfilePath;
+  new Notice("Brain Graph Off")
+  setTimeout(()=&gt;delete window.brainGraphEventHandler);
+}</p>
+<p>//Turn off event handler if it is already running
+if(window.brainGraphEventHandler) {
+  removeEventHandler();
+  return;
+}</p>
+<p>//-------------------------------------------------------
+// Load Settings
+//-------------------------------------------------------
+let saveSettings = false;
+settings = ea.getScriptSettings();
+//set default values on first run
+if(!settings["Max number of nodes/domain"]) {
+  settings = {
+    "Confirmation prompt at startup": {
+      value: true,
+      description: "Prompt me to confirm starting of the script because " +
+        "it will overwrite the current active drawing. " +
+        "You can disable this warning by turning off this switch"
+    },
+    "Max number of nodes/domain": {
+      value: 30,
+      description: "Maximum number of items to show in each domain: parents, children, siblings, jumps."
+    },
+    "Infer non-Breadcrumbs links": {
+      value: true,
+      description: "Links on the page are children, backlinks to the page are " +
+        "parents. Breadcrumbs take priority. Inferred nodes have a dashed border."
+    },
+    "Hide attachments": {
+      value: true,
+      description: "Hide attachments. Will only have an effect if Infer non-Breadcrumbs links is turned on."
+    },
+    "Font family": {
+      value: "Code",
+      valueset: ["Hand-drawn","Normal","Code","Fourth (custom) Font"]
+    },
+    "Stroke roughness": {
+      value: "Architect",
+      valueset: ["Architect", "Artist", "Cartoonist"]
+    },
+    "Rectangle stroke sharpness": {
+      value: "round",
+      valueset: ["sharp", "round"]
+    },
+    "Central font size": {
+      value: 30,
+      description: "Font size of the central node"
+    },
+    "Font size": {
+      value: 20,
+      description: "Font size of jumps, children and parents"
+    },
+    "Siblings font size": {
+      value: 15,
+      description: "Font size of siblings"
+    },
+    "Max label length": {
+      value: 30,
+      description: "Maximum number of characters to display from node title. Longer nodes will end with '...'"
+    },
+    "Padding": {
+      value: 10,
+      description: "Padding of the node rectangle"
+    },
+    "Gate offset": {
+      value: 15,
+      description: "The offset to the left and right of the parent and child gates."
+    },<br />
+    "Gate radius": {
+      value: 5,
+      description: "The radius of the 3 small circles (alias: gates) serving as connection points for nodes"
+    },
+    "Canvas color": {
+      value: "hsl(208, 80%, 23%)",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Gate color": {
+      value: "white",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Link color": {
+      value: "hsl(0, 0%, 41%)",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Central-node background color": {
+      value: "#C49A13",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Central-node color": {
+      value: "black",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Breadcrumbs-node background color": {
+      value: "rgba(0,0,0,0.4)",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Breadcrumbs-node color": {
+      value: "white",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Non-breadcrumbs-node background color": {
+      value: "rgba(0,0,5,0.7)",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Non-breadcrumbs-node color": {
+      value: "hsl(208, 80%, 77%)",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Virtual-node background color": {
+      value: "rgba(255,0,0,0.4)",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    },
+    "Virtual-node color": {
+      value: "white",
+      description: "Any legal HTML color (#000000, rgb, color-name, etc.)."
+    }
+  };
+  saveSettings = true;
+}
+if(!settings["Display alias if available"]) {
+  settings["Display alias if available"] = {
+    value: true,
+    description: "Displays the page alias instead of the " +
+      "filename if it is specified in the page's front matter. "
+  };
+  saveSettings = true;
+}
+if(!settings["Graph settings JSON"]) {
+  settings["Graph settings JSON"] = {
+    height: "450px",
+    value: <code>{\n  "breadcrumbs": {\n    "down": ["children", "child"],\n    "up": ["parents", "parent"],\n    "jump": ["jump", "jumps"]\n  },\n  "tags": {\n    "#excalidraw": {\n      "nodeColor": "hsl(59, 80%, 77%)",\n    "gateColor": "#fd7e14",\n   "borderColor": "black",\n   "backgroundColor": "rgba(50,50,50,0.5)",\n      "prefix": "🎨 "\n    },\n    "#dnp": {\n      "prefix": "🗓 "\n    }\n  }\n}</code>,
+    description: <code>This may contain two elements:
+    &lt;ol&gt;
+      &lt;li&gt;A specification of your breadcrumbs hierarchy. Note, that if you have the Breadcrumbs plugin installed and enabled then &lt;code&gt;TheBrain-navigation&lt;/code&gt; script will take your hierarchy settings from Breadcrumbs. If Breadcrumbs is disabled, this specification will be used.&lt;/li&gt;
+      &lt;li&gt;Formatting of nodes based on page tags. You can specify special formatting rules for tags. If multiple tags are present on the page the first matching a specification will be used. You may provide partial specifications as well. e.g. if you only specify &lt;code&gt;prefix&lt;/code&gt;, the other attributes will follow your default settings.&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;div style="user-select: text;background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"&gt;&lt;pre style="margin: 0; line-height: 125%"&gt;&lt;span style="color: #d0d0d0"&gt;{&lt;/span&gt;
+  &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;breadcrumbs&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;{&lt;/span&gt;
+    &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;down&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;[&lt;/span&gt;&lt;span style="color: #ed9d13"&gt;&amp;quot;children&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;child&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;],&lt;/span&gt;
+    &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;up&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;[&lt;/span&gt;&lt;span style="color: #ed9d13"&gt;&amp;quot;parents&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;parent&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;],&lt;/span&gt;
+    &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;jump&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;[&lt;/span&gt;&lt;span style="color: #ed9d13"&gt;&amp;quot;jump&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;jumps&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;]&lt;/span&gt;
+  &lt;span style="color: #d0d0d0"&gt;},&lt;/span&gt;
+  &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;tags&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;{&lt;/span&gt;
+    &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;#excalidraw&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;{&lt;/span&gt;
+      &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;nodeColor&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;hsl(59, 80%, 77%)&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt;
+      &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;gateColor&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;#fd7e14&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt;
+      &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;borderColor&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;black&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt;
+      &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;backgroundColor&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;rgba(50,50,50,0.5)&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;,&lt;/span&gt;
+      &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;prefix&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;🎨 &amp;quot;&lt;/span&gt;
+    &lt;span style="color: #d0d0d0"&gt;},&lt;/span&gt;
+    &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;#dnp&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #d0d0d0"&gt;{&lt;/span&gt;
+      &lt;span style="color: #6ab825; font-weight: bold"&gt;&amp;quot;prefix&amp;quot;&lt;/span&gt;&lt;span style="color: #d0d0d0"&gt;:&lt;/span&gt; &lt;span style="color: #ed9d13"&gt;&amp;quot;🗓 &amp;quot;&lt;/span&gt;
+    &lt;span style="color: #d0d0d0"&gt;}&lt;/span&gt;
+  &lt;span style="color: #d0d0d0"&gt;}&lt;/span&gt;
+&lt;span style="color: #d0d0d0"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</code>
+  };
+  saveSettings = true;
+}</p>
+<p>if(saveSettings) {
+  ea.setScriptSettings(settings);
+}</p>
+<p>const SHOW_CONFIRMATION_PROMPT = settings["Confirmation prompt at startup"].value;
+const MAX_ITEMS = Math.floor(settings["Max number of nodes/domain"].value)??40;
+const INCLUDE_OBSIDIAN_LINKS = settings["Infer non-Breadcrumbs links"].value;
+const HIDE_ATTACHMENTS = settings["Hide attachments"].value;
+const FONT_FAMILY = settings["Font family"].value === "Hand-drawn" 
+  ? 1
+  : settings["Font family"].value === "Normal"
+    ? 2
+    : settings["Font family"].value === "Code"
+      ? 3
+      : 4;
+const STROKE_ROUGHNESS = settings["Stroke roughness"].value === "Architect"
+  ? 0
+  : settings["Stroke roughness"].value === "Artist"
+    ? 1
+    : 2;  <br />
+const STROKE_SHARPNESS = settings["Rectangle stroke sharpness"].value;
+const CENTRAL_FONT_SIZE = Math.floor(settings["Central font size"].value)??30;
+const FONT_SIZE = Math.floor(settings["Font size"].value)??20;
+const DISTANT_FONT_SIZE = Math.floor(settings["Siblings font size"].value)??15;
+const MAX_LABEL_LENGTH = Math.floor(settings["Max label length"].value)??30;
+const PADDING = Math.floor(settings["Padding"].value)??10;
+const GATE_OFFSET = Math.floor(settings["Gate offset"].value)??15;
+const GATE_RADIUS = Math.floor(settings["Gate radius"].value)??5;
+const BG_COLOR = settings["Canvas color"].value;
+const GATE_COLOR = settings["Gate color"].value;
+const LINK_COLOR = settings["Link color"].value;
+const CENTRAL_NODE_BG_COLOR = settings["Central-node background color"].value;
+const CENTRAL_NODE_COLOR = settings["Central-node color"].value;
+const NODE_BG_COLOR = settings["Breadcrumbs-node background color"].value;
+const NODE_COLOR = settings["Breadcrumbs-node color"].value;
+const OBSIDIAN_NODE_BG_COLOR = settings["Non-breadcrumbs-node background color"].value;
+const OBSIDIAN_NODE_COLOR = settings["Non-breadcrumbs-node color"].value;
+const VIRTUAL_NODE_BG_COLOR = settings["Virtual-node background color"].value;
+const VIRTUAL_NODE_COLOR = settings["Virtual-node color"].value;
+const USE_ALIAS = settings["Display alias if available"].value;
+let formattingJSON = {};
+try {
+  formattingJSON = JSON.parse(settings["Graph settings JSON"].value);
+} catch (e) {
+  new Notice("Error reading graph settings JSON, see developer console for more information",4000);
+  console.log(e);
+};
+const NODE_FORMATTING = formattingJSON?.tags??{};
+const FORMATTED_TAGS = Object.keys(NODE_FORMATTING);</p>
+<p>//-------------------------------------------------------
+// Load breadcrumbs hierarchies
+const HIERARCHIES = new Map();
+if(window.BCAPI) { //read breadcrumbs if available
+  const getHierarchyFields = (direction) =&gt; {
+    const values = new Set(direction);
+    direction.forEach(
+      d =&gt; BCAPI.plugin.settings.userHiers.forEach(
+        h =&gt; h[d].forEach(
+          x =&gt; values.add(x)
+        )
+      )
+    );
+    return Array.from(values);
+  }
+  HIERARCHIES.set("down",getHierarchyFields(["down"]));
+  HIERARCHIES.set("up",getHierarchyFields(["up"]));
+  HIERARCHIES.set("jump",getHierarchyFields(["prev","next"]));
+} else {
+  HIERARCHIES.set("down",formattingJSON?.breadcrumbs?.down??["down","child","children"]);
+  HIERARCHIES.set("up",formattingJSON?.breadcrumbs?.up??["up", "parent","parents"]);
+  HIERARCHIES.set("jump",formattingJSON?.breadcrumbs?.jump??["jump", "jumps", "next", "previous"]);
+}</p>
+<p>//-------------------------------------------------------
+// Initialization
+//-------------------------------------------------------
+if(SHOW_CONFIRMATION_PROMPT) {
+  const result = await utils.inputPrompt(
+    "This will overwrite the current active drawing",
+    "type: 'ok' to Continue"
+  );
+  if(result !== "ok") return;
+}</p>
+<p>const measureText = (text,fontSize) =&gt; {
+  ea.style.fontSize = fontSize;
+  return ea.measureText(text);
+}</p>
+<p>ea.style.fontFamily = FONT_FAMILY;
+const TEXT_SIZE = measureText("m".repeat(MAX_LABEL_LENGTH+3),FONT_SIZE);
+const NODE_WIDTH = TEXT_SIZE.width + 3 * PADDING;
+const NODE_HEIGHT = 2 * (TEXT_SIZE.height + 2 * PADDING);</p>
+<p>ea.getExcalidrawAPI().updateScene({
+  appState: {
+    viewModeEnabled:true,
+    theme: "light",
+  viewBackgroundColor: BG_COLOR
+  },
+  elements:[]
+});</p>
+<p>ea.style.strokeColor = NODE_COLOR;
+ea.addText(0,0,"Open a document in another pane and click it to get started.\n\n" +
+  "For the best experience enable 'Open in adjacent pane'\nin Excalidraw settings " +
+  "under 'Links and Transclusion'.", {textAlign:"center"});
+await ea.addElementsToView();
+ea.getExcalidrawAPI().zoomToFit();</p>
+<p>window.excalidrawView = ea.targetView;
+window.excalidrawFile = ea.targetView.file;</p>
+<p>ea.targetView.linksAlwaysOpenInANewPane = true;</p>
+<p>new Notice("Brain Graph On");</p>
+<p>//-------------------------------------------------------
+// Supporting functions and classes
+//-------------------------------------------------------
+const getFilenameFromPath = (path) =&gt; {
+  const mdFile = path.endsWith(".md");
+  const filename = path.substring(path.lastIndexOf("/")+1);
+  return mdFile ? filename.slice(0,-3) : filename;
+}</p>
+<p>const getExtension = (path) =&gt; {
+  const lastDot = path.lastIndexOf(".");
+  if(lastDot === -1) return "md";
+  return path.slice(lastDot+1);
+}</p>
+<p>const distinct = (data) =&gt; Array.from(new Set(data));  </p>
+<p>class Layout {
+  constructor(spec) {
+    this.spec = spec;
+  this.nodes = [];
+  this.renderedNodes = [];
+  }</p>
+<p>layout(columns = this.spec.columns) {
+    const generateLayoutVector = (pattern) =&gt; {
+    const res = [];
+    let cur = 1;
+    let state = true;
+    pattern
+      .map(p =&gt; Math.floor(p))
+      .forEach(cnt =&gt; {
+        for(let i=0;i&lt;cnt;i++) res.push(state ? null : cur++);
+        state = !state;
+      });
+    return res;
+  }</p>
+<p>const getRowLayout = (items) =&gt; items%2
+    ? generateLayoutVector([(columns-items)/2,items,(columns-items)/2])
+    : generateLayoutVector([(columns-items)/2,items/2,1,items/2,(columns-items)/2]);</p>
+<p>const sortedNodes = this.nodes.sort((a,b) =&gt; a.label.toLowerCase() &lt; b.label.toLowerCase() ? -1 : 1)
+  const itemCount = sortedNodes.length;
+  if(itemCount === 0) return;
+  const rowCount = Math.ceil(itemCount / columns);
+  this.renderedNodes = Array(rowCount).fill().map((<em>,i) =&gt;
+    (i+1 &lt; rowCount) || (itemCount % columns === 0)
+      ? Array(columns).fill().map((</em>,j) =&gt; sortedNodes[i<em>columns+j]) //full row
+      : getRowLayout(itemCount % columns).map(idx =&gt; idx ? sortedNodes[i</em>columns+idx-1]:null));
+  }</p>
+<p>render() {
+    this.layout();
+    const rows = this.renderedNodes.length;
+    const height = rows * this.spec.rowHeight;
+    const top = (this.spec.top === null &amp;&amp; this.spec.bottom === null) //unconstrained
+      ? this.spec.origoY - height/2
+      : this.spec.top !== null 
+        ? (this.spec.origoY - height/2) &lt; this.spec.top //top constrained
+          ? this.spec.top
+          : this.spec.origoY - height/2
+        : (this.spec.origoY + height/2) &gt; this.spec.bottom  //bottom constrained
+          ? this.spec.bottom - height
+          : this.spec.origoY - height/2;
+    const center00 = {
+      x: this.spec.origoX - (this.spec.columns === 1 ? 0 : (this.spec.columns-1)/2<em>this.spec.columnWidth),
+      y: top
+    };
+    this.renderedNodes.forEach((nodes,row) =&gt;
+    nodes.forEach((node,idx) =&gt; {
+      if(!node) return;
+      node.setCenter({
+        x: center00.x + idx</em>this.spec.columnWidth,
+        y: center00.y + row*this.spec.rowHeight
+      });
+      node.render();
+    })
+    );
+  }
+}</p>
+<p>class Node {
+  constructor(spec) {
+    const dvPage = spec.file ? DataviewAPI?.page(spec.file.path) : null;
+    const tag = (dvPage?.file?.tags?.values??[]).filter(t=&gt;FORMATTED_TAGS.some(x=&gt;t.startsWith(x)))[0];
+    if(tag) {
+      const format = NODE_FORMATTING[FORMATTED_TAGS.filter(x=&gt;tag.startsWith(x))[0]];
+      spec.gateColor = format.gateColor ?? spec.gateColor;
+      spec.backgroundColor = format.backgroundColor ?? spec.backgroundColor;
+      spec.nodeColor = format.nodeColor ?? spec.nodeColor;
+      spec.borderColor = format.borderColor ?? spec.borderColor;
+      spec.prefix = format.prefix;
+    }
+    this.spec = spec;</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>const aliases = (spec.file &amp;&amp; USE_ALIAS)
+  ? (dvPage?.file?.aliases?.values??[])
+  : [];
+const label = (spec.prefix??&quot;&quot;) + (aliases.length &gt; 0 
+  ? aliases[0] 
+  : (spec.file
+    ? (spec.file.extension === &quot;md&quot; ? spec.file.basename : spec.file.name)
+    : spec.nodeTitle));
+this.label = label.length &gt; spec.maxLabelLength
+  ? label.substring(0,spec.maxLabelLength-1) + &quot;...&quot;
+  : label;
+this.labelSize = measureText(this.label, spec.fontSize);
+</code></pre></div></td></tr></table></div>
+<p>}</p>
+<p>setCenter(center) {
+    this.center = center;
+  }</p>
+<p>render() {
+    ea.style.fontSize = this.spec.fontSize;
+    ea.style.strokeColor = this.spec.file
+      ? this.spec.nodeColor
+      : this.spec.virtualNodeColor;
+    ea.style.backgroundColor = "transparent";
+    this.id = ea.addText(
+      this.center.x - this.labelSize.width / 2, 
+      this.center.y - this.labelSize.height / 2,
+      this.label,
+      {
+        wrapAt: this.spec.maxLabelLength+5,
+        textAlign: "center",
+        box: true,
+        boxPadding: this.spec.padding
+      }
+    );
+    const box = ea.getElement(this.id);
+    box.link = <code>[[${this.spec.file?.path??this.spec.nodeTitle}]]</code>;
+    box.backgroundColor = this.spec.file
+      ? this.spec.backgroundColor
+      : this.spec.virtualNodeBGColor;
+    box.strokeColor = this.spec.borderColor;
+    box.strokeStyle = this.spec.strokeStyle??"solid";</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>ea.style.strokeColor = this.spec.gateColor;
+ea.style.backgroundColor =  this.spec.hasJumps ? this.spec.gateColor : &quot;transparent&quot;;
+this.jumpGateId = ea.addEllipse(
+  this.spec.jumpOnLeft
+    ? this.center.x - this.spec.gateRadius * 2 - this.spec.padding - this.labelSize.width / 2
+    : this.center.x + this.spec.padding + this.labelSize.width / 2,
+  this.center.y - this.spec.gateRadius,
+  this.spec.gateRadius * 2,
+  this.spec.gateRadius * 2
+);
+ea.style.backgroundColor =  this.spec.hasParents ? this.spec.gateColor : &quot;transparent&quot;;
+this.parentGateId = ea.addEllipse(
+  this.center.x - this.spec.gateRadius - this.spec.gateOffset,
+  this.center.y - 2 * this.spec.gateRadius - this.spec.padding - this.labelSize.height / 2,
+  this.spec.gateRadius * 2,
+  this.spec.gateRadius * 2
+);
+ea.style.backgroundColor =  this.spec.hasChildren ? this.spec.gateColor : &quot;transparent&quot;;
+this.childGateId = ea.addEllipse(
+  this.center.x - this.spec.gateRadius + this.spec.gateOffset,
+  this.center.y + this.spec.padding + this.labelSize.height / 2,
+  this.spec.gateRadius * 2,
+  this.spec.gateRadius * 2
+);
+
+ea.addToGroup([this.jumpGateId,this.parentGateId,this.childGateId,this.id, box.boundElements[0].id]);
+</code></pre></div></td></tr></table></div>
+<p>}
+}</p>
+<p>const addNodes = (nodesMap, root, nodes, layout, options) =&gt; {
+  nodes.forEach(filePath =&gt; {
+    const node = new Node({
+      nodeTitle: getFilenameFromPath(filePath),
+      file: app.vault.getAbstractFileByPath(filePath),
+      hasChildren: false,
+      hasParents: false,
+      hasJumps: false,
+      ...options
+    });
+    nodesMap.set(filePath,node);
+    layout.nodes.push(node);
+  });
+}</p>
+<p>//-------------------------------------------------------
+// Breadcrumbs workaround to handle full filepath
+//-------------------------------------------------------
+const getPathOrSelf = (link,host) =&gt; {
+  return (app.metadataCache.getFirstLinkpathDest(link,host)?.path)??link;
+}</p>
+<p>const readDVField = (field,file) =&gt; {
+  const res = new Set();
+  if(field.values) {
+    field.values.forEach(l=&gt;{
+      if(l.type === "file") res.add(getPathOrSelf(l.path,file.path));
+    });
+    return Array.from(res);
+  }
+  if(field.path) {
+    return [getPathOrSelf(field.path,file.path)];
+  }
+  const m = field.matchAll(/[<sup>[]*[[([</sup>#]|]<em>)[^]]</em>]]/g);
+  while(!(r=m.next()).done) {
+    if(r.value[1]) {
+      res.add(getPathOrSelf(r.value[1],file.path));
+    }
+  }
+  return Array.from(res);
+}</p>
+<p>const getDVFieldLinks = (page,dir,retSet=false) =&gt; {
+  const fields = HIERARCHIES.get(dir);
+  const links = new Set();
+  const processed = new Set();
+  fields.forEach(f =&gt; {
+    if(page[f] &amp;&amp; !processed.has(f)) {
+      processed.add(f);
+      readDVField(page[f],page.file).forEach(l=&gt;links.add(l))
+    };
+  });
+  return retSet ? links : Array.from(links);
+}</p>
+<p>//-------------------------------------------------------
+// Event handler
+//-------------------------------------------------------
+window.brainGraphEventHandler = async (leaf) =&gt; {
+  //sleep for 100ms to give time for leaf.view.file to be set
+  await new Promise((resolve) =&gt; setTimeout(resolve, 100));</p>
+<p>//-------------------------------------------------------
+  //terminate event handler if view no longer exists or file has changed
+  if(!window.excalidrawView?.file || window.excalidrawView.file.path !== window.excalidrawFile?.path) {
+    removeEventHandler();
+    return;
+  }</p>
+<p>if(!leaf?.view?.file) return;
+  const rootFile = leaf.view.file;</p>
+<p>if (rootFile.path === window.excalidrawFile.path) return; //brainview drawing is active</p>
+<p>if(window.lastfilePath &amp;&amp; window.lastfilePath === rootFile.path) return; //don't reload the file if it has not changed
+  window.lastfilePath = rootFile.path;</p>
+<p>//-------------------------------------------------------
+  //I must reinitialize ea because in the event handler the script engine ea will no longer be available
+  ea = ExcalidrawAutomate;
+  ea.reset();
+  ea.setView(window.excalidrawView);
+  ea.style.fontFamily = FONT_FAMILY;
+  ea.style.roughness = STROKE_ROUGHNESS;
+  ea.style.strokeSharpness = STROKE_SHARPNESS;
+  ea.getExcalidrawAPI().updateScene({elements:[]});
+  ea.style.verticalAlign = "middle";
+  ea.style.strokeSharpness = "round";
+  ea.style.fillStyle = "solid";</p>
+<p>//-------------------------------------------------------
+  //build list of nodes
+  const dvPage = DataviewAPI.page(rootFile.path); //workaround because 
+  const parentsSet = dvPage
+    ? getDVFieldLinks(dvPage,"up",true)
+    : new Set();
+  parentsSet.delete(rootFile.path);</p>
+<p>const childrenSet = dvPage
+    ? getDVFieldLinks(dvPage,"down",true)
+    : new Set();
+  childrenSet.delete(rootFile.path);</p>
+<p>const jumpsSet = dvPage
+    ? getDVFieldLinks(dvPage,"jump",true)
+    : new Set();
+  jumpsSet.delete(rootFile.path);</p>
+<p>let backlinksSet = new Set(
+    Object.keys((app.metadataCache.getBacklinksForFile(rootFile)?.data)??{})
+    .map(l=&gt;app.metadataCache.getFirstLinkpathDest(l,rootFile.path)?.path??l)
+  );</p>
+<p>backlinksSet.forEach(l=&gt;{
+    const page = DataviewAPI.page(l);
+    if(page) {
+      if(getDVFieldLinks(page,"down",true).has(rootFile.path)) {
+        parentsSet.add(l);
+        backlinksSet.delete(l);
+        return;
+      }
+      if(getDVFieldLinks(page,"up",true).has(rootFile.path)) {
+        childrenSet.add(l);
+        backlinksSet.delete(l);
+        return;
+      }
+      if(getDVFieldLinks(page,"jump", true).has(rootFile.path)) {
+        jumpsSet.add(l);
+        backlinksSet.delete(l);
+        return;
+      }
+    }
+  })</p>
+<p>const parents = Array.from(parentsSet).slice(0,MAX_ITEMS);
+  const children = Array.from(childrenSet).slice(0,MAX_ITEMS);
+  const jumps = Array.from(jumpsSet).slice(0,MAX_ITEMS);</p>
+<p>//adding links from the document, not explicitly declared as a breadcrumb
+  const forwardLinks = INCLUDE_OBSIDIAN_LINKS 
+    ? distinct(app.metadataCache
+        .getLinks()[rootFile.path]?.map(
+          l=&gt;app.metadataCache.getFirstLinkpathDest(l.link.match(/[<sup>#]*/)[0],rootFile.path)??l.link.match(/[</sup>#]*/)[0]
+        ).filter(f=&gt;f &amp;&amp; (!HIDE_ATTACHMENTS || (f.extension??getExtension(f)) === "md"))
+        .map(f=&gt;f.path??f)
+        .filter(l=&gt;!parentsSet.has(l) &amp;&amp; !childrenSet.has(l) &amp;&amp; !jumpsSet.has(l) &amp;&amp; l!==rootFile.path &amp;&amp; !backlinksSet.has(l))
+        .slice(0,Math.max(MAX_ITEMS-children.length))
+      )
+    : [];
+  const forwardlinksSet = new Set(forwardLinks);</p>
+<p>const backLinks = INCLUDE_OBSIDIAN_LINKS
+    ? Array.from(backlinksSet)
+      .filter(l=&gt;!parentsSet.has(l) &amp;&amp; !childrenSet.has(l) &amp;&amp;
+        !jumpsSet.has(l) &amp;&amp; l!==rootFile.path &amp;&amp; !forwardlinksSet.has(l))
+      .slice(0,Math.max(MAX_ITEMS-parents.length))
+    : [];
+  backlinksSet = new Set(backLinks);</p>
+<p>const sharedParents = INCLUDE_OBSIDIAN_LINKS
+    ? backLinks.concat(parents)
+    : parents;</p>
+<p>const siblings = distinct(
+    sharedParents.map(p=&gt;{
+      const page = DataviewAPI.page(p);
+      return page
+        ? getDVFieldLinks(page,"down")
+          .filter(l=&gt;!parentsSet.has(l) &amp;&amp; !childrenSet.has(l) &amp;&amp;
+            !jumpsSet.has(l) &amp;&amp; l!==rootFile.path &amp;&amp;
+            !forwardlinksSet.has(l) &amp;&amp; !backlinksSet.has(l))
+        : [];
+    }).flat()
+  ).slice(0,MAX_ITEMS);
+  const siblingsSet = new Set(siblings);</p>
+<p>const inverseInferredSiblingsMap = new Map();
+  const inferredSiblings = INCLUDE_OBSIDIAN_LINKS
+    ? distinct(
+      sharedParents.map(p=&gt;{
+        f = app.vault.getAbstractFileByPath(p);  //app.metadataCache.getFirstLinkpathDest(p,rootFile.path);
+        if(!f) {
+          return [];
+        }
+        const res = Object.keys((app.metadataCache.getBacklinksForFile(f)?.data)??{})
+        .map(l=&gt;app.metadataCache.getFirstLinkpathDest(l,rootFile.path)?.path??l)
+        .filter(l=&gt;!parentsSet.has(l) &amp;&amp; !childrenSet.has(l) &amp;&amp; !jumpsSet.has(l) &amp;&amp;
+          l!==rootFile.path &amp;&amp; !forwardlinksSet.has(l) &amp;&amp; !backlinksSet.has(l) &amp;&amp; !siblingsSet.has(l));
+        res.forEach(r=&gt;inverseInferredSiblingsMap.set(r,p));
+        return res;
+      }).flat()
+    ).slice(0,Math.max(MAX_ITEMS-siblings.length))
+    : [];
+  const inferredSiblingsSet = new Set(inferredSiblings);</p>
+<p>//-------------------------------------------------------
+  // Generate layout and nodes
+  const nodesMap = new Map();
+  const linksMap = new Map();</p>
+<p>const lCenter = new Layout({
+    origoX: 0,
+    origoY: 0,
+    top: null,
+    bottom: null,
+    columns: 1,
+    columnWidth: NODE_WIDTH,
+    rowHeight: NODE_HEIGHT
+  });</p>
+<p>const manyChildren = (children.length + forwardLinks.length) &gt;10;
+  const manySiblings = (siblings.length + inferredSiblings.length) &gt; 10;
+  const singleParent = (parents.length + backLinks.length) &lt;= 1</p>
+<p>const lChildren = new Layout({
+    origoX: 0,
+    origoY: 2.5 * NODE_HEIGHT,
+    top: 2.5 * NODE_HEIGHT - NODE_HEIGHT/2,
+    bottom: null,
+    columns: manyChildren ? 5 : 3,
+    columnWidth: NODE_WIDTH,
+    rowHeight: NODE_HEIGHT
+  });</p>
+<p>const lJumps = new Layout({
+    origoX: (manyChildren ? -3 : -2)  * NODE_WIDTH,
+    origoY: 0,
+    top: null,
+    bottom: null,
+    columns: 1,
+    columnWidth: NODE_WIDTH,
+    rowHeight: NODE_HEIGHT
+  });</p>
+<p>const lParents = new Layout({
+    origoX: 0,
+    origoY: -2.5 * NODE_HEIGHT,
+    top: null,
+    bottom: -2.5 * NODE_HEIGHT + NODE_HEIGHT/2,
+    columns: 3,
+    columnWidth: NODE_WIDTH,
+    rowHeight: NODE_HEIGHT
+  });</p>
+<p>const lSiblings = new Layout({
+    origoX: NODE_WIDTH * ((singleParent ? 0 : 1) + (manySiblings ? 2 : 1)),
+    origoY: -2.5 * NODE_HEIGHT,
+    top: null,
+    bottom: NODE_HEIGHT,
+    columns: (manySiblings ? 3 : 1),
+    columnWidth: NODE_WIDTH,
+    rowHeight: NODE_HEIGHT
+  })</p>
+<p>const rootNode = new Node({
+    file: rootFile,
+    hasChildren: false,
+    hasParents: false,
+    hasJumps: false,
+    fontSize: CENTRAL_FONT_SIZE,
+    jumpOnLeft: true,
+    maxLabelLength: 2*MAX_LABEL_LENGTH,
+    gateRadius: GATE_RADIUS,
+    gateOffset: GATE_OFFSET,
+    padding: PADDING,
+    nodeColor: CENTRAL_NODE_COLOR,
+    gateColor: GATE_COLOR,
+    borderColor: CENTRAL_NODE_COLOR,
+    backgroundColor: CENTRAL_NODE_BG_COLOR,
+    virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+  });
+  nodesMap.set(rootFile.path,rootNode);
+  lCenter.nodes.push(rootNode);</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    parents,
+    lParents,
+    {
+      fontSize: FONT_SIZE,
+      jumpOnLeft: true,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: "transparent",
+      backgroundColor: NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    backLinks,
+    lParents,
+    {
+      fontSize: FONT_SIZE,
+      jumpOnLeft: true,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: OBSIDIAN_NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: OBSIDIAN_NODE_BG_COLOR,
+      strokeStyle: "dotted",
+      strokeWidth: 3,
+      backgroundColor: OBSIDIAN_NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    children,
+    lChildren,
+    {
+      fontSize: FONT_SIZE,
+      jumpOnLeft: true,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: "transparent",
+      backgroundColor: NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    forwardLinks,
+    lChildren,
+    {
+      fontSize: FONT_SIZE,
+      jumpOnLeft: true,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: OBSIDIAN_NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: OBSIDIAN_NODE_BG_COLOR,
+      strokeStyle: "dotted",
+      strokeWidth: 3,
+      backgroundColor: OBSIDIAN_NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    jumps,
+    lJumps,
+    {
+      fontSize: FONT_SIZE,
+      jumpOnLeft: false,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: "transparent",
+      backgroundColor: NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    siblings,
+    lSiblings,
+    {
+      fontSize: DISTANT_FONT_SIZE,
+      jumpOnLeft: true,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: "transparent",
+      backgroundColor: NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>addNodes(
+    nodesMap,
+    rootFile,
+    inferredSiblings,
+    lSiblings,
+    {
+      fontSize: DISTANT_FONT_SIZE,
+      jumpOnLeft: true,
+      maxLabelLength: MAX_LABEL_LENGTH,
+      gateRadius: GATE_RADIUS,
+      gateOffset: GATE_OFFSET,
+      padding: PADDING,
+      nodeColor: OBSIDIAN_NODE_COLOR,
+      gateColor: GATE_COLOR,
+      borderColor: OBSIDIAN_NODE_BG_COLOR,
+      strokeStyle: "dotted",
+      strokeWidth: 3,
+      backgroundColor: OBSIDIAN_NODE_BG_COLOR,
+      virtualNodeColor: VIRTUAL_NODE_COLOR,
+      virtualNodeBGColor: VIRTUAL_NODE_BG_COLOR
+    }
+  );</p>
+<p>//-------------------------------------------------------
+  // Generate links for all displayed nodes
+  const separator = "?"; //any character disallowed in filenames
+  Array.from(nodesMap.keys()).forEach(filePath =&gt; {
+    const node = nodesMap.get(filePath);
+    const dvPage = DataviewAPI.page(filePath);</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code>//-------------------------------------------------------
+// Add links originating from node
+const parent = forwardlinksSet.has(filePath) 
+  ? rootFile.path
+  : inverseInferredSiblingsMap.get(filePath);
+const parents = dvPage
+  ? (parent ? getDVFieldLinks(dvPage,&quot;up&quot;,true).add(parent) : getDVFieldLinks(dvPage,&quot;up&quot;,true))
+  : (parent ? new Set([parent]) : new Set());
+
+const child = backlinksSet.has(filePath) ? rootFile.path : null
+const children = dvPage
+  ? (child ? getDVFieldLinks(dvPage,&quot;down&quot;, true).add(child) : getDVFieldLinks(dvPage,&quot;down&quot;, true))
+  : (child ? new Set([child]) : new Set());
+
+const jumps = dvPage
+  ? getDVFieldLinks(dvPage,&quot;jump&quot;, true)
+  : new Set();
+
+//siblings are left out in this case on purpose
+
+const addLinks = (nodes,relation) =&gt; nodes.forEach(n =&gt; {
+  if(!nodesMap.has(n)) return;
+  if(linksMap.has(filePath + separator + n)) return;
+  linksMap.set(filePath + separator + n,relation);
+  linksMap.set(n + separator + filePath,null);
+});
+
+addLinks(parents,[&quot;parent&quot;,&quot;child&quot;]);
+addLinks(children, [&quot;child&quot;,&quot;parent&quot;]);
+addLinks(jumps, [&quot;jump&quot;,&quot;jump&quot;]);
+
+//-------------------------------------------------------
+//Set gate fill 
+//- if node has outgoing links
+node.spec.hasChildren = node.spec.hasChildren || children.size&gt;0;
+node.spec.hasParents = node.spec.hasParents || parents.size&gt;0;
+node.spec.hasJumps = node.spec.hasJumps || jumps.size&gt;0;
+
+//- of the nodes on the other end of outgoing links
+//  this is required on top of backlinks, to handle
+//  nodes for referenced but not yet created pages
+parents.forEach(p=&gt;{
+  const n = nodesMap.get(p);
+  if(n) n.spec.hasChildren = true;
+});
+
+children.forEach(p=&gt;{
+  const n = nodesMap.get(p);
+  if(n) n.spec.hasParents = true;
+});
+
+jumps.forEach(p=&gt;{
+  const n = nodesMap.get(p);
+  if(n) n.spec.hasJumps = true;
+});
+
+//- if node has an incoming link from a node outside the visible graph
+if(node.spec.file &amp;&amp; !(node.spec.hasParents &amp;&amp; node.spec.hasChildren &amp;&amp; node.hasJumps)) {
+  const nodeBacklinks = new Set(
+    Object.keys((app.metadataCache.getBacklinksForFile(node.spec.file)?.data)??{})
+    .map(l=&gt;app.metadataCache.getFirstLinkpathDest(l,filePath)?.path??l)
+  );
+
+  nodeBacklinks.forEach(l=&gt;{
+    if(node.spec.hasParents &amp;&amp; node.spec.hasChildren &amp;&amp; node.hasJumps) return;
+    const page = DataviewAPI.page(l);
+    if(page) {
+      if(getDVFieldLinks(page,&quot;down&quot;,true).has(filePath)) {
+        node.spec.hasParents = true;
+        return;
+      }
+      if(getDVFieldLinks(page,&quot;up&quot;,true).has(filePath)) {
+        node.spec.hasChildren = true;
+        return;
+      }
+      if(getDVFieldLinks(page,&quot;jump&quot;,true).has(filePath)) {
+        node.spec.hasJumps = true;
+        return;
+      }
+      if(INCLUDE_OBSIDIAN_LINKS) {
+        node.spec.hasParents = true;
+        return;
+      }
+    }
+  });
+}
+
+if(!node.spec.hasChildren &amp;&amp; INCLUDE_OBSIDIAN_LINKS &amp;&amp; node.spec.file) {
+  const forwardLinks = app.metadataCache
+    .getLinks()[filePath]?.map(
+      l=&gt;app.metadataCache.getFirstLinkpathDest(l.link.match(/[^#]*/)[0],rootFile.path)??l.link.match(/[^#]*/)[0]
+    ).filter(f=&gt;f &amp;&amp; (!HIDE_ATTACHMENTS || (f.extension??getExtension(f)) === &quot;md&quot;))
+    .map(f=&gt;f.path??f)
+    .filter(l=&gt;!parents.has(l) &amp;&amp; !children.has(l) &amp;&amp; !jumps.has(l) &amp;&amp; l!==rootFile.path);        
+  if(forwardLinks.length &gt; 0) {
+    node.spec.hasChildren = true;
+  }
+}
+</code></pre></div></td></tr></table></div>
+<p>});</p>
+<p>//-------------------------------------------------------
+  // Render
+  lCenter.render();
+  lParents.render();
+  lChildren.render();
+  lJumps.render();
+  lSiblings.render();</p>
+<p>const getGate = (key,value) =&gt; (value === "parent")
+    ? nodesMap.get(key).parentGateId
+    : (value === "child")
+      ? nodesMap.get(key).childGateId
+      : nodesMap.get(key).jumpGateId;</p>
+<p>ea.style.strokeColor = LINK_COLOR;
+  for([key,value] of linksMap) {
+    if(value) {
+    const k=key.split(separator);
+      const gate1 = getGate(k[0],value[0]);
+      const gate2 = getGate(k[1],value[1]);
+    ea.connectObjects(gate1, null, gate2, null, { startArrowHead: null, endArrowHead: null });
+    }
+  }</p>
+<p>elements = ea.getElements();
+  ea.getExcalidrawAPI().updateScene({
+    elements: elements.filter(
+      el=&gt;el.type==="arrow"
+    ).concat(elements.filter(el=&gt;el.type!=="arrow"))
+  })
+  ea.getExcalidrawAPI().zoomToFit();
+}</p>
+<p>//-------------------------------------------------------
+// Initiate event listner and trigger plex if file is open
+//-------------------------------------------------------
+app.workspace.on(EVENT, window.brainGraphEventHandler);</p>
+<p>ea.targetView.semaphores.saving = true; //disable saving by setting this Excalidraw flag (not published API)</p>
+<p>const mdLeaf = app.workspace.getLeavesOfType("markdown");
+if(mdLeaf.length&gt;0) {
+  window.brainGraphEventHandler(mdLeaf[0]);
+  return;
+}</p>
+<p>const mdExcalidrawLeaf = app.workspace.getLeavesOfType("excalidraw").filter(l=&gt;l!==ea.targetView.leaf);
+if(mdExcalidrawLeaf.length&gt;0) {
+  window.brainGraphEventHandler(mdExcalidrawLeaf[0]);
+  return;
+}</p>
+<p>const mdImageLeaf = app.workspace.getLeavesOfType("image");
+if(mdImageLeaf.length&gt;0) {
+  window.brainGraphEventHandler(mdImageLeaf[0]);
+  return;
+}</p>
+
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+        
+          <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/hanxiaomax" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+        
+      </div>
+    </div>
+  </footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.top", "content.tooltips", "header.autohide", "navigation.indexes", "navigation.tabs", "navigation.prune"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

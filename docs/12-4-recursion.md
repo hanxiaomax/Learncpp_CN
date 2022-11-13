@@ -253,10 +253,10 @@ int main()
 -   当递归代码更容易编写时；
 -   递归的深度有限(例如，实际上没办法编写十万层递归的算法）；
 -   当迭代版本的算法需要手工管理栈时；
--   性能要求 isn’t a performance-critical section of code.
+-   性能要求不高
 
-However, if the recursive algorithm is simpler to implement, it may make sense to start recursively and then optimize to an iterative algorithm later.
+但是，如果递归算法更容易实现，那么可以先递归地开始，然后再优化为迭代算法。
 
 !!! success "最佳实践"
 
-	Generally favor iteration over recursion, except when recursion really makes sense.
+	一般来说，迭代比递归更受欢迎，除非递归确实有意义。

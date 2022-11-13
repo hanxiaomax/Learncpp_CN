@@ -1,0 +1,5673 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+  <title>LearnCpp 中文版</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+翻译进行中
+
+          </div>
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LearnCpp 中文版" class="md-header__button md-logo" aria-label="LearnCpp 中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LearnCpp 中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.13 - 如何设计第一个程序
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hanxiaomax/Learncpp_CN" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hanxiaomax/Learncpp_CN
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../MOC/" class="md-tabs__link">
+      总目录
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-1-Statements-and-the-structure-of-a-program/" class="md-tabs__link md-tabs__link--active">
+        课程内容
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A/" class="md-tabs__link">
+      翻译约定
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../tags/" class="md-tabs__link">
+      索引
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      关于本站
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LearnCpp 中文版" class="md-nav__button md-logo" aria-label="LearnCpp 中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    LearnCpp 中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hanxiaomax/Learncpp_CN" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hanxiaomax/Learncpp_CN
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MOC/" class="md-nav__link">
+        总目录
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          课程内容
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="课程内容" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          课程内容
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          1. C++ 基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1. C++ 基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          1. C++ 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-1-Statements-and-the-structure-of-a-program/" class="md-nav__link">
+        1.1 - 程序结构和语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-2-comments/" class="md-nav__link">
+        1.2 - 注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-3-Introduction-to-objects-and-variables/" class="md-nav__link">
+        1.3 - 对象和变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-4-Variable-assignment-and-initialization/" class="md-nav__link">
+        1.4 - 变量赋值和初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-5-Introduction-to-iostream-cout-cin-and-endl/" class="md-nav__link">
+        1.5 - iostream 简介： cout，cin 和 endl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-6-Uninitialized-variables-and-undefined-behavior/" class="md-nav__link">
+        1.6 - 未初始化变量和未定义行为
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-7-Keywords-and-naming-identifiers/" class="md-nav__link">
+        1.7 - 关键字和标识符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-8-Whitespace-and-basic-formatting/" class="md-nav__link">
+        1.8 - 空白符和基本排版
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-9-Introduction-to-literals-and-operators/" class="md-nav__link">
+        1.9 - 字面量和操作符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-10-Introduction-to-expressions/" class="md-nav__link">
+        1.10 - 表达式简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-11-Developing-your-first-program/" class="md-nav__link">
+        1.11 - 开发你的第一个程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-x-Chapter-1-summary-and-quiz/" class="md-nav__link">
+        1.x - 小结与测试 - C++基础
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          2. C++ 基础-函数和文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2. C++ 基础-函数和文件" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          2. C++ 基础-函数和文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-1-Introduction-to-functions/" class="md-nav__link">
+        2.1 - 函数简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-2-Function-return-values-value-returning%20functions/" class="md-nav__link">
+        2.2 - 函数返回值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-3-Void-functions-non-value%20returning%20functions/" class="md-nav__link">
+        2.3 - void 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-4-Introduction-to-function-parameters-and-arguments/" class="md-nav__link">
+        2.4 - 函数形参和实参
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-5-Introduction-to-local-scope/" class="md-nav__link">
+        2.5 - 局部作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-6-Why-functions-are-useful-and-how-to-use-them-effectively/" class="md-nav__link">
+        2.6 - 为什么函数有用，如何高效使用函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-7-Forward-declarations-and-definitions/" class="md-nav__link">
+        2.7 - 前向声明和定义
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-8-Programs-with-multiple-code-files/" class="md-nav__link">
+        2.8 - 多文件程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-9-Naming-collisions-and-an-introduction-to-namespaces/" class="md-nav__link">
+        2.9 - 命名冲突和命名空间
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-10-Introduction-to-the-preprocessor/" class="md-nav__link">
+        2.10 - 预处理器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-11-Header-files/" class="md-nav__link">
+        2.11 - 头文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-12-Header-guards/" class="md-nav__link">
+        2.12 - 头文件防卫式声明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            2.13 - 如何设计第一个程序
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.13 - 如何设计第一个程序
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    设计步骤1：定目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    设计步骤2：定需求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    设计步骤3：定义工具、目标产物以及备份计划
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    设计步骤4：将复杂问题切分为多个简单问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    设计步骤5：确定相关事件发生的顺序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1main" class="md-nav__link">
+    实现步骤1：编写main函数框架
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    实现步骤2：实现每个函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    实现步骤3：最终测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    编程忠言
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-x-Chapter-2-summary-and-quiz/" class="md-nav__link">
+        2.x - 小结与测试 - 函数与文件
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          3. 调试 C++ 程序
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3. 调试 C++ 程序" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          3. 调试 C++ 程序
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-1-Syntax-and-semantic-errors/" class="md-nav__link">
+        3.1 - 语法和语义错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-2-The-debugging-process/" class="md-nav__link">
+        3.2 - 代码调试步骤
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-3-A-strategy-for-debugging/" class="md-nav__link">
+        3.3 - 代码调试策略
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-4-Basic-debugging-tactics/" class="md-nav__link">
+        3.4 — 基本代码调试技术
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-5-More-debugging-tactics/" class="md-nav__link">
+        3.5 - 更多代码调试技术
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-6-Using-an-integrated-debugger-Stepping/" class="md-nav__link">
+        3.6 - 使用集成调试器之单步调试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-7-Using-an-integrated-debugger-Running-and-breakpoints/" class="md-nav__link">
+        3.7 - 使用集成调试器之运行和断点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-8-Using-an-integrated-debugger-Watching-variables/" class="md-nav__link">
+        3.8 - 使用集成调试器之监控变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-9-Using-an-integrated-debugger-The-call-stack/" class="md-nav__link">
+        3.9 - 使用集成调试器之调用栈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-10-Finding-issues-before-they-become-problems/" class="md-nav__link">
+        3.10 - 在问题发生前发现问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-x-Chapter-3-summary-and-quiz/" class="md-nav__link">
+        3.x - 小结与测试 - 代码调试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          4. 基础数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4. 基础数据类型" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          4. 基础数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-1-Introduction-to-fundamental-data-types/" class="md-nav__link">
+        4.1 - 基础数据类型简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-2-Void/" class="md-nav__link">
+        4.2 - Void
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-3-Object-sizes-and-the-sizeof-operator/" class="md-nav__link">
+        4.3 - 对象的大小和 sizeof 操作符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-4-Signed-integers/" class="md-nav__link">
+        4.4 - 有符号整型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-5-Unsigned-integers-and-why-to-avoid-them/" class="md-nav__link">
+        4.5 - 无符号整型以及为什么要避免使用它
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-6-Fixed-width-integers-and-size_t/" class="md-nav__link">
+        4.6 - 固定宽度整型和 size_t
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-7-Introduction-to-scientific-notation/" class="md-nav__link">
+        4.7 - 科学计数法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-8-Floating-point-numbers/" class="md-nav__link">
+        4.8 - 浮点数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-9-Boolean-values/" class="md-nav__link">
+        4.9 - 布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-10-Introduction-to-if-statements/" class="md-nav__link">
+        4.10 - if 语句简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-11-Chars/" class="md-nav__link">
+        4.11 - 字符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-12-Introduction-to-type-conversion-and-static_cast/" class="md-nav__link">
+        4.12 - 类型转换和 static_cast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-13-Const-variables-and-symbolic-constants/" class="md-nav__link">
+        4.13 - const 变量和符号常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-14-Compile-time-constants-constant-expressions-and-constexpr/" class="md-nav__link">
+        4.14 - 编译时常量、常量表达式和 constexpr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/" class="md-nav__link">
+        4.16 - 数值系统（十进制、二进制、十六进制和八进制）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+        4.17 - std::string 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-18-Introduction-to-std-string_view/" class="md-nav__link">
+        4.18 - std::string_view 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-x-Chapter-4-summary-and-quiz/" class="md-nav__link">
+        4.x - 小结与测试 - 基本数据类型
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          5. 运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5. 运算符" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          5. 运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-1-Operator-precedence-and-associativity/" class="md-nav__link">
+        5.1 - 运算符优先级和结合律
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-2-Arithmetic-operators/" class="md-nav__link">
+        5.2 - 数学运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-3-Modulus-and-Exponentiation/" class="md-nav__link">
+        5.3 - 求模和指数运算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-4-Increment-decrement-operators-and-side-effects/" class="md-nav__link">
+        5.4 - 自增自减运算符及其副作用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-5-Comma-and-conditional-operators/" class="md-nav__link">
+        5.5 - 逗号和条件运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-6-Relational-operators-and-floating-point-comparisons/" class="md-nav__link">
+        5.6 - 关系运算符和浮点数比较
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-7-Logical-operators/" class="md-nav__link">
+        5.7 - 逻辑运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-x-Chapter-5-summary-and-quiz/" class="md-nav__link">
+        5.x - 小结与测试 - 运算符
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          6. 作用域，生命周期和链接
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6. 作用域，生命周期和链接" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          6. 作用域，生命周期和链接
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-1-Compound-statements-blocks/" class="md-nav__link">
+        6.1 - 复合语句（语句块）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-2-User-defined-namespaces-and-the-scope-resolution-operator/" class="md-nav__link">
+        6.2 - 用户定义命名空间和作用域解析运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-3-Local-variables/" class="md-nav__link">
+        6.3 - 局部变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-4-Introduction-to-global-variables/" class="md-nav__link">
+        6.4 - 全局变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-5-Variable-shadowing-name-hiding/" class="md-nav__link">
+        6.5 - 变量遮蔽
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-6-Internal-linkage/" class="md-nav__link">
+        6.6 - 内部链接
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-7-External-linkage-and-variable-forward-declarations/" class="md-nav__link">
+        6.7 - 外部链接和变量前向声明
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-8-Why-non-const-global-variables-are-evil/" class="md-nav__link">
+        6.8 - 为什么非 const 全局变量是魔鬼
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-9-Sharing-global-constants-across-multiple-files-using-inline-variables/" class="md-nav__link">
+        6.9 - 使用 inline 变量共享全局常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-10-Static-local-variables/" class="md-nav__link">
+        6.10 - 静态局部变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-11-Scope-duration-and-linkage-summary/" class="md-nav__link">
+        6.11 - 作用域和链接小结
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-12-Using-declarations-and-using%20directives/" class="md-nav__link">
+        6.12 - using 声明和 using 指令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-13-Inline-functions/" class="md-nav__link">
+        6.13 - 内联函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-14-Constexpr-and-consteval-functions/" class="md-nav__link">
+        6.14 - Constexpr 和 consteval 函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-15-Unnamed-and-inline-namespaces/" class="md-nav__link">
+        6.15 - 未命名和内联命名空间
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-x-Chapter-6-summary-and-quiz/" class="md-nav__link">
+        6.x - 小结与测试 - 作用域、持续时间和链接
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          7. 控制流和错误处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7. 控制流和错误处理" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          7. 控制流和错误处理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-1-Control-flow-introduction/" class="md-nav__link">
+        7.1 - 控制流
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-2-If-statements-and-blocks/" class="md-nav__link">
+        7.2 - if 语句和语句块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-3-Common-if-statement-problems/" class="md-nav__link">
+        7.3 - 常见的 if 语句错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-4-Switch-statement-basics/" class="md-nav__link">
+        7.4 - switch 语句基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
+        7.5 - switch 落空和作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-6-Goto-statements/" class="md-nav__link">
+        7.6 - goto 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-7-Intro-to-loops-and-while-statements/" class="md-nav__link">
+        7.7 - 循环和 while 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-8-Do-while-statements/" class="md-nav__link">
+        7.8 - do-while 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-9-For-statements/" class="md-nav__link">
+        7.9 - for 语句
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-10-Break-and-continue/" class="md-nav__link">
+        7.10 - break 和 continue
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-11-Halts-exiting-your-program-early/" class="md-nav__link">
+        7.11 - 挂起（提前结束程序）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-12-Introduction-to-testing-your-code/" class="md-nav__link">
+        7.12 - 代码测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-13-Code-coverage/" class="md-nav__link">
+        7.13 - 代码覆盖率
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-14-Common-semantic-errors-in-c/" class="md-nav__link">
+        7.14 - C++ 中常见的语义错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-15-Detecting-and-handling-errors/" class="md-nav__link">
+        7.15 - 发现错误和处理错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-16-std-cin-and-handling-invalid-input/" class="md-nav__link">
+        7.16 - std::in 和输入错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-17-assert-and-static-assert/" class="md-nav__link">
+        7.17 - 断言和 static_assert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-x-Chapter-7-summary-and-quiz/" class="md-nav__link">
+        7.x - 小结与测试 - 控制流和错误处理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          8. 类型转换和函数重载
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8. 类型转换和函数重载" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          8. 类型转换和函数重载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-1-Implicit-type-conversion-coercion/" class="md-nav__link">
+        8.1 - 隐式类型转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-2-Floating-point-and-integral-promotion/" class="md-nav__link">
+        8.2 - 浮点数和整型提升
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-3-Numeric-conversions/" class="md-nav__link">
+        8.3 - 数值转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-4-Arithmetic-conversions/" class="md-nav__link">
+        8.4 - 算术转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-5-Explicit-type-conversion-casting-and-static-cast/" class="md-nav__link">
+        8.5 - 显式类型转换和static_cast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-6-Typedefs-and-type-aliases/" class="md-nav__link">
+        8.6 - typedef 和类型别名
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-7-Type-deduction-for-objects-using-the%20auto-keyword/" class="md-nav__link">
+        8.7 - 使用 auto 关键字进行类型推断
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-8-Type-deduction-for-functions/" class="md-nav__link">
+        8.8 - 函数的类型推断
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-9-Introduction-to-function-overloading/" class="md-nav__link">
+        8.9 - 函数重载
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-10-Function-overload-differentiation/" class="md-nav__link">
+        8.10 - 函数重载和区分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-11-Function-overload-resolution-and-ambiguous-matches/" class="md-nav__link">
+        8.11 - 函数重载解析和不明确匹配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-12-Default-arguments/" class="md-nav__link">
+        8.12 - 默认参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-13-Function-templates/" class="md-nav__link">
+        8.13 - 函数模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-14-Function-template-instantiation/" class="md-nav__link">
+        8.14 - 函数模板的实例化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-15-Function-templates-with-multiple-template-types/" class="md-nav__link">
+        8.15 - 具有多种类型的函数模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-x-Chapter-8-summary-and-quiz/" class="md-nav__link">
+        8.x - 小结与测试 - 类型转换和函数重载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          9. 复合类型-引用和指针
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9. 复合类型-引用和指针" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          9. 复合类型-引用和指针
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-1-Introduction-to-compound-data-types/" class="md-nav__link">
+        9.1 - 复合数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-2-Value-categories-lvalues-and-rvalues/" class="md-nav__link">
+        9.2 - 值的分类（左值和右值）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-3-Lvalue-references/" class="md-nav__link">
+        9.3 - 左值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-4-Lvalue-references-to-const/" class="md-nav__link">
+        9.4 - const类型的左值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-5-Pass-by-lvalue-reference/" class="md-nav__link">
+        9.5 - 传递左值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-6-Introduction-to-pointers/" class="md-nav__link">
+        9.6 - 指针简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-7-Null-pointers/" class="md-nav__link">
+        9.7 - 空指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-8-Pointers-and-const/" class="md-nav__link">
+        9.8 - 指针和const
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-9-Pass-by-address/" class="md-nav__link">
+        9.9 - 按地址传递
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-10-Pass-by-address-part-2/" class="md-nav__link">
+        9.10 - 按地址传递 Part2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-11-Return-by-reference-and-return-by-address/" class="md-nav__link">
+        9.11 - 按引用返回和按地址返回
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-12-Type-deduction-with-pointers-references-and-const/" class="md-nav__link">
+        9.12 - 指针、引用和const的类型推断
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-x-Chapter-9-comprehensive-quiz.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10">
+          10. 复合类型-枚举和结构体
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10. 复合类型-枚举和结构体" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          10. 复合类型-枚举和结构体
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
+        10.1 - 自定义类型简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
+        10.2 - 非限定作用域枚举类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-3-unscoped-enumeration-input-and-output/" class="md-nav__link">
+        10.3 - 限定作用域枚举类型的输入输出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-4-scoped-enumerations-enum-classes/" class="md-nav__link">
+        10.4 - 限定作用域枚举（枚举类）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-5-Introduction-to-structs-members-and-member-selection/" class="md-nav__link">
+        10.5 - 结构体、成员和成员选择
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-6-struct-aggregate-initialization/" class="md-nav__link">
+        10.6 - 结构体的聚合初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-7-default-member-initialization/" class="md-nav__link">
+        10.7 - 默认成员初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-8-struct-passing-and-miscellany/" class="md-nav__link">
+        10.8 - 结构体传递及其他
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-9-member-selection-with-pointers-and-references/" class="md-nav__link">
+        10.9 - 基于指针和引用的成员选择
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-10-class-templates/" class="md-nav__link">
+        10.10 - 类模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-11-class-template-argument-deduction-and-deduction%20-guides/" class="md-nav__link">
+        10.11 - 类模板参数推断CTAD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-x-Chapter-10-comprehensive-quiz/" class="md-nav__link">
+        10.x - 小结与测试 - 枚举和结构体
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-y-using-a-language-reference/" class="md-nav__link">
+        10.y - 学会使用C++参考手册
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_11" type="checkbox" id="__nav_2_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_11">
+          11. 数组，字符串和动态内存分配
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="11. 数组，字符串和动态内存分配" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          11. 数组，字符串和动态内存分配
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-1-Arrays-Part-I/" class="md-nav__link">
+        11.1 - 数组（第一部分）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-2-Arrays-Part-II/" class="md-nav__link">
+        11.2 - 数组（第二部分）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-3-Arrays-and-loops/" class="md-nav__link">
+        11.3 - 数组和循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-4-Sorting-an-array-using-selection-sort/" class="md-nav__link">
+        11.4 - 数组排序之选择排序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-5-Multidimensional-Arrays/" class="md-nav__link">
+        11.5 - 多维数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-6-C-style-strings/" class="md-nav__link">
+        11.6 - C 语言风格字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-7-An-introduction-to-std-string_view.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-7-std-string-view-part-2/" class="md-nav__link">
+        11.7 - std::string_view（第二部分）
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-8-Pointers-and-arrays/" class="md-nav__link">
+        11.8 - 指针和数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-13-For-each-loops/" class="md-nav__link">
+        11.13 - for-each 循环
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-14-Void-pointers/" class="md-nav__link">
+        11.14 — void 指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-x-chapter-11-comprehensive-quiz/" class="md-nav__link">
+        11.x - 小结与测试 - 数组、字符串和动态分配
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_12" type="checkbox" id="__nav_2_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_12">
+          12. 函数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="12. 函数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          12. 函数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-1-function-pointers/" class="md-nav__link">
+        12.1 - 函数指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-2-the-stack-and-the-heap/" class="md-nav__link">
+        12.2 - 栈和堆
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-3-std-vector-capacity-and-stack-behavior/" class="md-nav__link">
+        12.3 - std::vector的容量和类栈行为
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-4-recursion/" class="md-nav__link">
+        12.4 - 递归
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-5-command-line-arguments/" class="md-nav__link">
+        12.5 - 命令行参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-6-Ellipsis-and-why-to-avoid-them/" class="md-nav__link">
+        12.6 - 省略号以及为什么要避免使用它
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-7-introduction-to-lambdas-anonymous-functions/" class="md-nav__link">
+        12.7 - lambda表达式简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-8-lambda-captures/" class="md-nav__link">
+        12.8 - lambda 闭包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-x-chapter-12-comprehensive-quiz/" class="md-nav__link">
+        12.x - 小结与测试 - 函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_13" type="checkbox" id="__nav_2_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_13">
+          13. 面向对象编程基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="13. 面向对象编程基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          13. 面向对象编程基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-1-welcome-to-object-oriented-programming/" class="md-nav__link">
+        13.1 - 欢迎来到面向对象的世界
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-2-classes-and-class-members/" class="md-nav__link">
+        13.2 - 类和类成员
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-3-public-vs-private-access-specifiers/" class="md-nav__link">
+        13.3 - 访问修饰符 public 和 private
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-4-access-functions-and-encapsulation/" class="md-nav__link">
+        13.4 - 成员访问函数与封装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-5-constructors/" class="md-nav__link">
+        13.5 - 构造函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-6-constructor-member-initializer-lists/" class="md-nav__link">
+        13.6 - 构造函数成员初始化值列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-7-non-static-member-initialization/" class="md-nav__link">
+        13.7 - 非静态成员初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-8-overlapping-and-delegating-constructors/" class="md-nav__link">
+        13.8 - 重叠和委托构造函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-9-destructors/" class="md-nav__link">
+        13.9 - 析构函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-10-the-hidden-this-pointer/" class="md-nav__link">
+        13.10 - 隐藏的this指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-11-class-code-and-header-files/" class="md-nav__link">
+        13.11 - 类代码和头文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-12-const-class-objects-and-member-functions/" class="md-nav__link">
+        13.12 - const 对象和成员函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-13-static-member-variables/" class="md-nav__link">
+        13.13 - 静态成员变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-14-static-member-functions/" class="md-nav__link">
+        13.14 - 静态成员函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-15-friend-functions-and-classes/" class="md-nav__link">
+        13.15 - 友元函数和友元类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-16-anonymous-objects/" class="md-nav__link">
+        13.16 - 匿名对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-17-nested-types-in-classes/" class="md-nav__link">
+        13.17 - 类中的嵌套类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-18-timing-your-code/" class="md-nav__link">
+        13.18 - 对程序进行计时
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-x-Chapter-13-comprehensive-quiz/" class="md-nav__link">
+        13.x - 小结与测试 - 面向对象基础
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_14" type="checkbox" id="__nav_2_14" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_14">
+          14. 操作符重载
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="14. 操作符重载" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_14">
+          <span class="md-nav__icon md-icon"></span>
+          14. 操作符重载
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-1-introduction-to-operator-overloading/" class="md-nav__link">
+        14.1 - 运算符重载简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-2-overloading-the-arithmetic-operators-using-friend-functions/" class="md-nav__link">
+        14.2 - 使用友元重载算数运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-3-overloading-operators-using-normal-functions/" class="md-nav__link">
+        14.3 - 使用普通函数重载运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-4-overloading-the-IO-operators/" class="md-nav__link">
+        14.4 - 重载输入输出运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-5-overloading-operators-using-member-functions/" class="md-nav__link">
+        14.5 - 使用成员函数重载运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-6-overloading-unary-operators-%2B--and-%21/" class="md-nav__link">
+        14.6 - 重载一元运算符+，- 和 !
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-7-overloading-the-comparison-operators/" class="md-nav__link">
+        14.7 - 重载比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-8-overloading-the-increment-and-decrement-operators/" class="md-nav__link">
+        14.8 - 重载递增递减运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-9-overloading-the-subscript-operator/" class="md-nav__link">
+        14.9 - 重载下标运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-10-overloading-the-parenthesis-operator/" class="md-nav__link">
+        14.10 - 重载括号运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-11-Overloading-typecasts/" class="md-nav__link">
+        14.11 - 重载类型转换操作符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-12-the-copy-constructor/" class="md-nav__link">
+        14.12 - 拷贝构造函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-13-copy-initialization/" class="md-nav__link">
+        14.13 - 拷贝初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-14-converting-constructors-explicit-and-delete/" class="md-nav__link">
+        14.14 - 转换构造函数与explicit和delete关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-15-overloading-the-assignment-operator/" class="md-nav__link">
+        14.15 - 重载赋值运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-16-shallow-vs-deep-copying/" class="md-nav__link">
+        14.16 - 浅拷贝和深拷贝
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-17-overloading-operators-and-function-templates/" class="md-nav__link">
+        14.17 - 重载运算符和函数模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-x-Chapter-14-comprehensive-quiz/" class="md-nav__link">
+        14.x - 小结与测试 - 运算符重载
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_15" type="checkbox" id="__nav_2_15" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_15">
+          16. 对象关系简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="16. 对象关系简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_15">
+          <span class="md-nav__icon md-icon"></span>
+          16. 对象关系简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-1-object-relationships/" class="md-nav__link">
+        16.1 - 对象关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-2-composition/" class="md-nav__link">
+        16.2 - 组合关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-3-aggregation/" class="md-nav__link">
+        16.3 - 聚合关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-4-association/" class="md-nav__link">
+        16.4 - 关联关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-5-dependencies/" class="md-nav__link">
+        16.5 - 依赖关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-6-container-classes/" class="md-nav__link">
+        16.6 - 容器类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-7-std-initializer_list/" class="md-nav__link">
+        16.7 - std::initializer_list
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-x-Chapter-16-comprehensive-quiz/" class="md-nav__link">
+        16.x - 小结与测试 - 对象关系
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_16" type="checkbox" id="__nav_2_16" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_16">
+          17. 继承
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="17. 继承" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          17. 继承
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-1-introduction-to-inheritance/" class="md-nav__link">
+        17.1 - 继承简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-2-basic-inheritance-in-c%2B%2B/" class="md-nav__link">
+        17.2 - C++继承基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-3-order-of-construction-of-derived-classes/" class="md-nav__link">
+        17.3 - 派生类的构造顺序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-4-constructors-and-initialization-of-derived-classes/" class="md-nav__link">
+        17.4 - 派生类的构造和初始化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-5-inheritance-and-access-specifiers/" class="md-nav__link">
+        17.5 - 继承和访问说明符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-6-adding-new-functionality-to-a-derived-class/" class="md-nav__link">
+        17.6 - 为派生类添加新功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-7-calling-inherited-functions-and-overriding-behavior/" class="md-nav__link">
+        17.7 - 调用继承函数和重写
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-8-Hiding-inherited-functionality/" class="md-nav__link">
+        17.8 - 隐藏继承的函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-9-multiple-inheritance/" class="md-nav__link">
+        17.9 - 多重继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-x-Chapter-17-comprehensive-quiz/" class="md-nav__link">
+        17.x - 小结与测试 - 继承
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_17" type="checkbox" id="__nav_2_17" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_17">
+          18. 虚函数
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="18. 虚函数" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_17">
+          <span class="md-nav__icon md-icon"></span>
+          18. 虚函数
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-1-pointers-and-references-to-the-base-class-of-derived-objects/" class="md-nav__link">
+        18.1 - 基类的指针和引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-2-virtual-functions-and-polymorphism/" class="md-nav__link">
+        18.2 - 虚函数和多态
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-3-the-override-and-final-specifiers-and-covariant-return-types/" class="md-nav__link">
+        18.3 - override、final标识符以及协变返回类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-4-virtual-destructors-virtual-assignment-and-overriding-virtualization/" class="md-nav__link">
+        18.4 - 虚构造函数、虚赋值和重载虚拟化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-5-early-binding-and-late-binding/" class="md-nav__link">
+        18.5 - 早期绑定和后期绑定
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-6-the-virtual-table/" class="md-nav__link">
+        18.6 - 虚函数表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-7-pure-virtual-functions-abstract-base-classes-and-%20interface-classes/" class="md-nav__link">
+        18.7 - 纯虚函数，抽象基类和接口类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-8-virtual-base-classes/" class="md-nav__link">
+        18.8 - 虚基类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-9-object-slicing/" class="md-nav__link">
+        18.9 - 对象切片
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-10-dynamic-casting/" class="md-nav__link">
+        18.10 - 动态类型转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-11-printing-inherited-classes-using-operator%3C%3C/" class="md-nav__link">
+        18.11 - 使用 << 运算符打印继承类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-x-Chapter-18-comprehensive-quiz/" class="md-nav__link">
+        18.x - 小结与测试 - 虚函数
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_18" type="checkbox" id="__nav_2_18" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_18">
+          19. 模板和类
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="19. 模板和类" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_18">
+          <span class="md-nav__icon md-icon"></span>
+          19. 模板和类
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-x-Chapter-19-comprehensive-quiz/" class="md-nav__link">
+        19.x - 小结与测试 - 模板和类
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_19" type="checkbox" id="__nav_2_19" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_19">
+          20. 异常
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="20. 异常" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_19">
+          <span class="md-nav__icon md-icon"></span>
+          20. 异常
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-x-Chapter-20-comprehensive-quiz/" class="md-nav__link">
+        20.x - 小结与测试 - 异常
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_20" type="checkbox" id="__nav_2_20" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_20">
+          M. move和智能指针
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="M. move和智能指针" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_20">
+          <span class="md-nav__icon md-icon"></span>
+          M. move和智能指针
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-1-introduction-to-smart-pointers-and-move-semantics/" class="md-nav__link">
+        M.1 - 智能指针和移动语义简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-2-R-value-references/" class="md-nav__link">
+        M.2 - 右值引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-3-move-constructors-and-move-assignment/" class="md-nav__link">
+        M.3 - 移动构造函数和移动赋值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-4-std-move/" class="md-nav__link">
+        M.4 - std::move
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-5-std-move-if-noexcept/" class="md-nav__link">
+        M.5 - std::move_if_noexcept
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-6-std-unique-ptr/" class="md-nav__link">
+        M.6 — std::unique_ptr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-7-std-shared-ptr/" class="md-nav__link">
+        M.7 — std::shared_ptr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr/" class="md-nav__link">
+        M.8 - 智能指针带来的循环依赖问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../M-x-chapter-M-comprehensive-review/" class="md-nav__link">
+        M.x - 小结与测试 - 移动和智能指针
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_21" type="checkbox" id="__nav_2_21" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_21">
+          21. STL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="21. STL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_21">
+          <span class="md-nav__icon md-icon"></span>
+          21. STL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-1-the-standard-library/" class="md-nav__link">
+        21.1 - 标准库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-2-STL-containers-overview/" class="md-nav__link">
+        21.2 - STL容器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-3-STL-iterators-overview/" class="md-nav__link">
+        21.3 - STL迭代器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-4-STL-algorithms-overview/" class="md-nav__link">
+        21.4 - STL算法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BF%BB%E8%AF%91%E7%BA%A6%E5%AE%9A/" class="md-nav__link">
+        翻译约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tags/" class="md-nav__link">
+        索引
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        关于本站
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    设计步骤1：定目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    设计步骤2：定需求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    设计步骤3：定义工具、目标产物以及备份计划
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    设计步骤4：将复杂问题切分为多个简单问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    设计步骤5：确定相关事件发生的顺序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1main" class="md-nav__link">
+    实现步骤1：编写main函数框架
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    实现步骤2：实现每个函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    实现步骤3：最终测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    编程忠言
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+
+  
+
+  <nav class="md-tags" >
+    
+      
+        <a href="../tags/#desgin" class="md-tag">
+          desgin
+        </a>
+      
+    
+  </nav>
+
+
+
+  <!-- <div style="background: #efefef;">
+    <div >
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//how-to-design-your-first-programs/">原文链接: 2.13 — How to design your first programs</a>
+    </div>
+    <div >
+        <a target="_blank" href="https://www.learncpp.com/author/Alex/">作者: ALEX</a>
+    </div>
+    <div >
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//how-to-design-your-first-programs/">更新时间: 2022-4-15</a>
+    </div>
+  </div> -->
+  <div class="origin-link">
+    <span class="twemoji">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.3 208-208 208zm-.9-288c21.06 0 40.92 8.312 55.83 23.38 9.375 9.344 24.53 9.5 33.97.156 9.406-9.344 9.469-24.53.156-33.97-24-24.22-55.95-37.56-89.95-37.56 0 0 .032 0 0 0-33.97 0-65.95 13.34-89.95 37.56-49.44 49.88-49.44 131 0 180.9 24 24.22 55.98 37.56 89.95 37.56.032 0 0 0 0 0 34 0 65.95-13.34 89.95-37.56 9.312-9.438 9.25-24.62-.156-33.97-9.438-9.312-24.59-9.219-33.97.156-14.91 15.06-34.77 23.38-55.83 23.38 0 0 .031 0 0 0-21.09 0-40.95-8.312-55.89-23.38-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/></svg> 
+    </span>
+    <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//how-to-design-your-first-programs/">English
+    </a>
+</div>
+  
+
+  <h1>2.13 - 如何设计第一个程序</h1>
+
+<details class="note">
+<summary>关键点速记</summary>
+<ul>
+<li>开始时一切从简</li>
+<li>逐渐添加新的功能</li>
+<li>一次只做一件事</li>
+<li>一边实现、一边测试</li>
+<li>不要过早地优化代码</li>
+</ul>
+</details>
+<p>在学习过基本的编程知识后，让我们来看看如何设计第一个程序。</p>
+<p>当你坐下来开始编程的时候，通常你只有一些如何编写该程序的基本的想法，新手程序员通常会对如何将想法转变为代码感到不知所措。实际上，完成这件事所需要的技能与你在生活中学到的解决问题的技能并无差别。</p>
+<p>最需要新手程序员们记住的是（也是最难做到的是）在开始<strong>编写</strong>代码前，一定要先<strong>设计</strong>你的程序。编程和盖房子在很多方面都很相像。想象一下，我们会在没有图纸的情况下就开始盖房子吗？很可能不会，除非你是个天才，不然你盖出来的房子一定问题不少：墙是斜的、顶是漏的等等。同样的，如果毫无计划就开始编程，写出来的代码也一定是问题百出，然后你就需要花费大量的时间去修复那些你本来就可以避免的问题。</p>
+<p>在开始前稍加计划，不仅可以节约时间，还能避免很多让人感到沮丧的时刻。</p>
+<p>在本节课中，我们会向你介绍一种将想法转变为简单的、可用的程序的基本方法。</p>
+<h2 id="1">设计步骤1：定目标</h2>
+<p>为了编写一个成功的程序，你必须要首先明确你的目标是什么。理想情况下，该目标应该用一两句话就可以描述。通常来讲，从用户的角度来描述编程的结果是很有用的，例如：</p>
+<ul>
+<li>允许用户可以管理一些列的姓名并将其关联到电话号码；</li>
+<li>随机生成看上去很酷的洞穴场景以作为游戏中的地牢来使用；</li>
+<li>生成一个高股息股票的推荐列表；</li>
+<li>对一个球从高塔掉落到地面所需的时间进行建模。</li>
+</ul>
+<p>尽管这一步所做的事情看上去都是很显然的，它的作用却不容忽视。对于编程来说，最糟糕的莫过于你写完的程序却不是你想要的（或者你老板想要的）！</p>
+<h2 id="2">设计步骤2：定需求</h2>
+<p>尽管，定义问题有助于你确定你期望的结果是声明，但目标仍然是不清楚的。接下来一步就是考虑如何设计需求。</p>
+<p>需求一方面指的是你能够使用的有限资源（例如，预算、工期、空间和内存等等），另一方面指的是你的程序必须具备的能够满足用户需要的能力。注意，需求关注的仍然是<strong>什么</strong>，而不是<strong>如何</strong>。</p>
+<p>例如：</p>
+<ul>
+<li>电话号码应该能够被储存，这样以后可以用来进行回拨；</li>
+<li>随机的地牢应该总是包含一条从入口到出口的路；</li>
+<li>股票推荐应该参考历史价格信息；</li>
+<li>用户应该能够输入高塔的高度；</li>
+<li>我们需要在七天内完成可供测试的版本；</li>
+<li>程序需要在10秒内完成用户的请求； </li>
+<li>程序在用户使用时崩溃退出的概率应该小于 0.1%。</li>
+</ul>
+<p>一个问题可能会派生出很多需求，只有所有的需求都被满足，才能说解决方案被实现了。</p>
+<h2 id="3">设计步骤3：定义工具、目标产物以及备份计划</h2>
+<p>如果你已经是一个有经验的程序员了，在设计过程中，你可能还需要考虑其他的一些问题，例如：</p>
+<ul>
+<li>定义程序需要运行的平台的体系结构和（或）操作系统；</li>
+<li>确定你需要使用哪些工具；</li>
+<li>确定你是独立完成代码编写还是以团队合作的方式完成；</li>
+<li>定义测试、反馈和释放策略；</li>
+<li>定义如何备份代码。</li>
+</ul>
+<p>不过，作为新手程序员，上面几个问题其实都很简单：你将会独立地在你自己的电脑上编写代码，所需的工具就是你下载并安装了的IDE，你编写的程序除了你自己没有其他人会使用。</p>
+<p>即便如此，如果你编写的代码不是寥寥几行，你还是应该考虑一下如何备份你的代码。将代码拷贝或者压缩后放到电脑的其他目录中是不够的（尽管聊胜于无）。如果你的电脑坏了，你编写的代码也就付之东流了。一个好的备份策略，应该是把代码全部拷贝一份后拷到其他电脑或其他地方。有很多办法可以实现，例如将其压缩为Zip文件后发送到你自己的邮箱，拷贝到Dropbox或者网盘，或者通过FTP传到其他电脑，也可以通过局域网拷到其他电脑上，或者使用位于其他电脑或云端的版本控制系统（例如：Github）。版本控制系统除了存储文件以外，还有很多其他有用的功能，例如它可以将你的代码回退到之前的版本。</p>
+<h2 id="4">设计步骤4：将复杂问题切分为多个简单问题</h2>
+<p>在现实生活中，我们时常需要完成一些非常复杂的问题。找到的问题的解决办法，通常并不容易。在这种情况下，我们通常使用 <strong>自顶向下(top down)</strong> 的办法来解决问题。为了解决一个特别复杂的问题，我们通常会把这个问题分解为多个相对来说更容易解决的子问题。如果子问题仍然难以解决，它们还可以被进一步分割为更多的子问题。通过不断地将复杂问题分解成简单的子问题，你最终可以得到很多更容易被处理的子问题。</p>
+<p>举例来说，如果我们需要打扫屋子，那么分解任务的结构可能会是像下面这样：</p>
+<ul>
+<li>打扫屋子</li>
+</ul>
+<p>打扫屋子是一个很大的任务，让我们将其分解为多个子任务：</p>
+<ul>
+<li>打扫屋子<ul>
+<li>清理地毯</li>
+<li>打扫卫生间</li>
+<li>打扫厨房</li>
+</ul>
+</li>
+</ul>
+<p>比之前容易处理了一些，因为我们可以逐项解决这些子问题了。不过，我们其实还能将这些任务继续分解：</p>
+<ul>
+<li>打扫屋子<ul>
+<li>清理地毯</li>
+<li>打扫卫生间<ul>
+<li>清洗马桶</li>
+<li>清理水池</li>
+</ul>
+</li>
+<li>打扫厨房<ul>
+<li>清理灶台</li>
+<li>打扫灶台</li>
+<li>清洗水池</li>
+<li>倒垃圾</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>现在，我们面对的是一系列具有层次结构的问题了，而且它们中任何一项都不复杂。通过完成这些相对更容易处理的子任务之后，我们也就完成了打扫屋子这个更复杂的问题。</p>
+<p>另外一种分解任务的方式称为<strong>自底向上(bottom)</strong> 方法。使用这种方法时，我们会从一系列简单的任务开始，然后通过合并分组的方式构建任务列表。</p>
+<p>大多数人平时不是上学就是上班，那么就以此来举例，假设我们要解决的是“去上班”这个问题，如果有人问你，你早上出门前都做哪些事呢？你的回答可能包含下面这些任务：</p>
+<ul>
+<li>拿出要穿的衣服</li>
+<li>穿衣</li>
+<li>吃早饭</li>
+<li>开车去公司</li>
+<li>刷牙</li>
+<li>起床</li>
+<li>做早餐</li>
+<li>上车</li>
+<li>洗澡</li>
+</ul>
+<p>使用自底向上的方法，我们可以基于它们的相似性，为这些任务创建一个层次结构：</p>
+<ul>
+<li>从起床到上班要做的事<ul>
+<li>卧室要做的事<ul>
+<li>起床</li>
+<li>拿衣服</li>
+<li>穿衣</li>
+</ul>
+</li>
+<li>卫生间要做的事<ul>
+<li>洗澡</li>
+<li>刷牙</li>
+</ul>
+</li>
+<li>早餐相关<ul>
+<li>准备麦片</li>
+<li>吃麦片</li>
+</ul>
+</li>
+<li>通勤相关<ul>
+<li>上车</li>
+<li>开车到公司</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>其实我们不难看出，这些层次结构对于编程来说是非常有用的，因为一旦任务的结构清楚了，程序的大体结构其实也已经清楚了。最上层的任务（打扫屋子或去上班）就可以是程序的<code>main()</code>函数（因为它是你要解决的主要(main)问题）。而其他子项目则可以实现为不同的函数。</p>
+<p>如果其中某一项任务（函数）在实现时仍然过于困难，则可以继续将其分解为几个子问题。最终你就可以将程序分割为多个容易实现的函数。</p>
+<h2 id="5">设计步骤5：确定相关事件发生的顺序</h2>
+<p>现在，程序的结构已经清楚了，接下来需要将这些任务关联其他。首先，我们要确定这些要任务的发生顺序。例如，你早上起来，完成上面那些任务的顺序是什么？差不多应该是这样的吧：</p>
+<ul>
+<li>卧室要做的事</li>
+<li>卫生间要做的事</li>
+<li>早餐相关</li>
+<li>通勤相关</li>
+</ul>
+<p>如果你要编写一个计算器程序，我们可能会按照下面步骤来做：</p>
+<ul>
+<li>从用户获取第一个数</li>
+<li>从用户获取需要执行的运算操作</li>
+<li>从用户获取第二个数</li>
+<li>计算结果</li>
+<li>打印结果</li>
+</ul>
+<p>完成上述设计工作后，我们就可以开始实现代码了！</p>
+<h2 id="1main">实现步骤1：编写main函数框架</h2>
+<p>现在可以开始实现代码了。根据上面顺序结构，我们可以先完成<code>main</code>函数的框架，暂时无需担心输入输出的问题。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="c1">//    doBedroomThings();</span>
+<span class="c1">//    doBathroomThings();</span>
+<span class="c1">//    doBreakfastThings();</span>
+<span class="c1">//    doTransportationThings();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>或者对于计算器例子来说是这样的：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Get first number from user</span>
+<span class="c1">//    getUserInput();</span>
+
+<span class="w">    </span><span class="c1">// Get mathematical operation from user</span>
+<span class="c1">//    getMathematicalOperation();</span>
+
+<span class="w">    </span><span class="c1">// Get second number from user</span>
+<span class="c1">//    getUserInput();</span>
+
+<span class="w">    </span><span class="c1">// Calculate result</span>
+<span class="c1">//    calculateResult();</span>
+
+<span class="w">    </span><span class="c1">// Print result</span>
+<span class="c1">//    printResult();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>注意，如果你也使用这种“大纲框架”的方法来构建程序，这里涉及的函数都是无法编译的，毕竟它们还没有被定义。在函数被实际定义前先将其暂时先注释掉是一种方法（上面展示的就是这种方法）。此外，你还可以对函数进行<a href="../stub/">打桩(stub)</a>，即为程序创建一个空的函数体，以便程序可以编译通过。</p>
+<h2 id="2_1">实现步骤2：实现每个函数</h2>
+<p>在这一步，对于每个函数都需要做三件事：</p>
+<ol>
+<li>定义函数的原型（输入输出）；</li>
+<li>编写函数；</li>
+<li>测试函数。</li>
+</ol>
+<p>如果你的函数粒度足够细，那么每个函数都应该是非常简单和直接的。如果一个函数实现起来非常复杂，那么很可能它还需要被进一步分割为多个更容易实现的子函数（<em>也可能是你的任务顺序有问题，你应该重新审视一下各个步骤的顺序</em>）。</p>
+<p>接下来，实现计算器程序中的第一个函数：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="c1">// Full implementation of the getUserInput function</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getUserInput</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter an integer &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">input</span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 从用户获取第一个输入</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">{</span><span class="w"> </span><span class="n">getUserInput</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 注意，这里的代码本身就具备测试函数输出的功能</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// 用于确保 getUserInput() 能够正常工作的调试代码，稍后需要移除</span>
+
+<span class="w">    </span><span class="c1">// Get mathematical operation from user</span>
+<span class="c1">//    getMathematicalOperation();</span>
+
+<span class="w">    </span><span class="c1">// Get second number from user</span>
+<span class="c1">//    getUserInput();</span>
+
+<span class="w">    </span><span class="c1">// Calculate result</span>
+<span class="c1">//    calculateResult();</span>
+
+<span class="w">    </span><span class="c1">// Print result</span>
+<span class="c1">//    printResult();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>首先，确定函数 <code>getUserInput</code> 不需要接受任何<a href="../arguments/">实参</a>。同时，该函数会返回一个整型值给主调函数。反映到函数原型上，即函数返回值类型为<code>int</code>，同时没有<a href="../parameters/">形参</a>。接下来，编写函数体。函数体非常直接，只包含四条语句<a href="../statement/">语句</a>。最后，在<code>main</code>函数中编写一些用于测试函数 <code>getUserInput</code> 功能（包括其返回值) 的临时代码，确定函数是否能够正常工作。</p>
+<p>多次运行程序并使用不同的输入值，确保程序的结果都符合预期。如果发现程序不能正确工作，则问题可能就出在刚才编写的代码中。</p>
+<p>一旦你确定程序可以正常工作了，那么这些临时测试代码就可以被移除了，然后开始实现下一个函数（<code>getMathematicalOperation</code>）。我们并不会在本节课中实现所有函数，因为还有一些更加重要的话题需要讨论。</p>
+<p>记住：不要期望一次性实现全部的代码。一步一步完成，并且每一步都要进行测试。</p>
+<h2 id="3_1">实现步骤3：最终测试</h2>
+<p>当程序编写“完成”后，最后一步则是对完整的程序进行测试，确定其行为是否满足预期。如果不满足，则需要进行修复。</p>
+<h2 id="_1">编程忠言</h2>
+<p><strong>开始时一切从简</strong>：很多新手程序员对其要实现的程序和功能具有宏伟的蓝图：“我想要设计一款具有图形界面、配乐和随机地牢的角色扮演游戏。不仅如此，游戏地图还包括城镇，你可以在城镇里售卖你收集到的战利品”。如果你从一开始就要完成一个非常复杂的任务，你可能会在进度不佳时感到不知所措或心灰意冷。所以，你其实应该将你开始时的目标设的尽可能简单，即一些你肯定能够完成的目标。例如，“我想要在屏幕上显示一个2D的区域”。</p>
+<p><strong>逐渐添加新的功能</strong>：当上述简单的程序可以正常工作后，你就可以考虑为其增加新的功能了。例如，当上述2D区域可以被正常显示在屏幕上后，你可以添加一个能够移动的角色。当角色可以移动后，添加一些墙体限制角色的移动路径。墙体完成后，可以利用墙体来构建一个城镇地图。城镇完成后，添加一个商人NPC。通过这种循序渐进的方式为你的程序添加新功能，程序最终会变得越来越复杂，同时也不会让你在这个过程中感到不知所措。</p>
+<p><strong>一次只做一件事</strong>：不要期望一次性写完全部的代码，也不要把你的注意力分散在多个任务上。一次只做一件事。一个正常工作的功能+五个尚未实现的功能，好过六个不能正常工作的功能。注意力被分散的时候，你会更容易犯错，也更容易忘记重要的细节。</p>
+<p><strong>一边实现、一边测试</strong>：新的程序员常常会一次性写完全部的程序，然后才对其进行编译，然后就“收获”了非常多的报错信息。写完的代码不能编译，不仅吓人，而且还难以查找其产生错误的原因。正确的做法是编写一些代码，然后就对其进行编译和测试。如果不能正常工作，那么修复起来也非常简单。当你确定这些代码可以正常工作了，再重复上述操作，开始编写接下来的代码。这么做或许会“拖累”你的进度，但是实际上当你完成后 ，代码应该是能够正确工作的，这好过你写完代码后再花费两倍多的时间去定位问题。</p>
+<p><strong>不要过早地优化代码</strong>：第一版功能（或程序）很少是完美的。而且，程序本身也会随着时间不断被更新，毕竟你还要为其添加功能，或者重新组织代码。如果你在早期就花费很多时间去打磨这些代码（添加很多文档、确保满足最佳实践、优化等），那么有可能会因为必须修改代码而使得这些努力都付之东流。正确的做法是，让你的程序功能保持最简可用，然后继续其他的工作。当你对程序感到满意时，再对其进行一系列的优化。不过，不要期望其达到完美的状态，大型程序很少是完美的，它总是有这样或那样的问题需要我们优化。做到足够好就可以了。</p>
+<p>大多数新手程序员并不能很好的遵循上述忠言（因为看上去很麻烦，也不如写代码有趣）。但是，对于具有一定规模的代码来说，完整遵循上述建议绝对可以帮助你节约很多时间（从长期来看）。简单地进行一些设计规划，就可以为后期节约大量的调试时间。</p>
+<p>好消息是，一旦你习惯了这么做以后，它便会慢慢地成为你的习惯。最终，你将能够不在进行任何预先设计的情况下，完成整个函数的编写。</p>
+
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+    
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../2-12-Header-guards/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2.12 - 头文件防卫式声明" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                2.12 - 头文件防卫式声明
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2-x-Chapter-2-summary-and-quiz/" class="md-footer__link md-footer__link--next" aria-label="Next: 2.x - 小结与测试 - 函数与文件" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                2.x - 小结与测试 - 函数与文件
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+        
+          <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/hanxiaomax" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+        
+      </div>
+    </div>
+  </footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.top", "content.tooltips", "header.autohide", "navigation.indexes", "navigation.tabs", "navigation.prune"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
