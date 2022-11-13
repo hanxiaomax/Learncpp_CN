@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#lambdas-to-the-rescue" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -3002,6 +3007,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_11">
@@ -3106,20 +3119,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-7-An-introduction-to-std-string_view.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../11-7-std-string-view-part-2/" class="md-nav__link">
         11.7 - std::string_view（第二部分）
       </a>
@@ -3164,6 +3163,76 @@
     <li class="md-nav__item">
       <a href="../11-14-Void-pointers/" class="md-nav__link">
         11.14 — void 指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays/" class="md-nav__link">
+        11.15 — 指向指针的指针和多维数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-16-An-introduction-to-std-array/" class="md-nav__link">
+        11.16 — 固定数组 std::array 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-17-An-introduction-to-std-vector/" class="md-nav__link">
+        11.17 — 动态数组 std::vector 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-18-Introduction-to-iterators/" class="md-nav__link">
+        11.18 — 迭代器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-19-Introduction-to-standard-library-algorithms/" class="md-nav__link">
+        11.19 — 标准库算法简介
       </a>
     </li>
   
@@ -3336,9 +3405,80 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            12.7 - lambda表达式简介
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         12.7 - lambda表达式简介
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lambdas-to-the-rescue" class="md-nav__link">
+    Lambdas to the rescue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    lambda 的类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-lambdas" class="md-nav__link">
+    Generic lambdas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-lambdas-and-static-variables" class="md-nav__link">
+    Generic lambdas and static variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-type-deduction-and-trailing-return-types" class="md-nav__link">
+    Return type deduction and trailing return types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-library-function-objects" class="md-nav__link">
+    Standard library function objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5076,6 +5216,63 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lambdas-to-the-rescue" class="md-nav__link">
+    Lambdas to the rescue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    lambda 的类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-lambdas" class="md-nav__link">
+    Generic lambdas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-lambdas-and-static-variables" class="md-nav__link">
+    Generic lambdas and static variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-type-deduction-and-trailing-return-types" class="md-nav__link">
+    Return type deduction and trailing return types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-library-function-objects" class="md-nav__link">
+    Standard library function objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5193,23 +5390,29 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This code searches through an array of strings looking for the first element that contains the substring “nut”. Thus, it produces the result:</p>
-<p>Found walnut</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Found walnut
+</code></pre></div></td></tr></table></div>
 <p>And while it works, it could be improved.</p>
 <p>The root of the issue here is that <code>std::find_if</code> requires that we pass it a function pointer. Because of that, we are forced to define a function that’s only going to be used once, that must be given a name, and that must be put in the global scope (because functions can’t be nested!). The function is also so short, it’s almost easier to discern what it does from the one line of code than from the name and comments.</p>
-<p>Lambdas to the rescue</p>
+<h2 id="lambdas-to-the-rescue">Lambdas to the rescue</h2>
 <p>A lambda expression (also called a lambda or closure) allows us to define an anonymous function inside another function. The nesting is important, as it allows us both to avoid namespace naming pollution, and to define the function as close to where it is used as possible (providing additional context).</p>
 <p>The syntax for lambdas is one of the weirder things in C++, and takes a bit of getting used to. Lambdas take the form:</p>
-<p>[ captureClause ] ( parameters ) -&gt; returnType
-{
-    statements;
-}</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">[</span><span class="w"> </span><span class="n">captureClause</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">returnType</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>The capture clause can be empty if no captures are needed.</li>
 <li>The parameter list can be either empty or omitted if no parameters are required.</li>
 <li>The return type is optional, and if omitted, <code>auto</code> will be assumed (thus using type deduction used to determine the return type). While we previously noted that type deduction for function return types should be avoided, in this context, it’s fine to use (because these functions are typically so trivial).</li>
 </ul>
 <p>Also note that lambdas (being anonymous) have no name, so we don’t need to provide one.</p>
-<p>As an aside…</p>
+<div class="admonition cite">
+<p class="admonition-title">题外话</p>
 <p>This means a trivial lambda definition looks like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -5227,6 +5430,7 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
 <p>COPY</p>
 <p>Let’s rewrite the above example using a lambda:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5285,9 +5489,10 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This works just like the function pointer case, and produces an identical result:</p>
-<p>Found walnut</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Found walnut
+</code></pre></div></td></tr></table></div>
 <p>Note how similar our lambda is to our <code>containsNut</code> function. They both have identical parameters and function bodies. The lambda has no capture clause (we’ll explain what a capture clause is in the next lesson) because it doesn’t need one. And we’ve omitted the trailing return type in the lambda (for conciseness), but since <code>operator!=</code> returns a <code>bool</code>, our lambda will return a <code>bool</code> too.</p>
-<p>Type of a lambda</p>
+<h2 id="lambda">lambda 的类型</h2>
 <p>In the above example, we defined a lambda right where it was needed. This use of a lambda is sometimes called a function literal.</p>
 <p>However, writing a lambda in the same line as it’s used can sometimes make code harder to read. Much like we can initialize a variable with a literal value (or a function pointer) for use later, we can also initialize a lambda variable with a lambda definition and then use it later. A named lambda along with a good function name can make code easier to read.</p>
 <p>For example, in the following snippet, we’re using <code>std::all_of</code> to check if all elements of an array are even:</p>
@@ -5319,8 +5524,10 @@
 <p>Note how well the last line reads: “return whether <em>all of</em> the elements in the <em>array</em> are <em>even</em>”</p>
 <p>But what is the type of lambda <code>isEven</code>?</p>
 <p>As it turns out, lambdas don’t have a type that we can explicitly use. When we write a lambda, the compiler generates a unique type just for the lambda that is not exposed to us.</p>
-<p>For advanced readers</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
 <p>In actuality, lambdas aren’t functions (which is part of how they avoid the limitation of C++ not supporting nested functions). They’re a special kind of object called a functor. Functors are objects that contain an overloaded <code>operator()</code> that make them callable like a function.</p>
+</div>
 <p>Although we don’t know the type of a lambda, there are several ways of storing a lambda for use post-definition. If the lambda has an empty capture clause (nothing between the hard brackets []), we can use a regular function pointer. <code>std::function</code> or type deduction via the <code>auto</code> keyword will also work (even if the lambda has a non-empty capture clause).</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5433,19 +5640,26 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Output</p>
-<p>0
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>0
 1
-2</p>
+2
+</code></pre></div></td></tr></table></div>
 <p>If we had used <code>auto</code> for the type of <code>fn</code>, the caller of the function wouldn’t know what parameters and return type <code>fn</code> needs to have. This limitation was lifted in C++20 when abbreviated function templates were added.</p>
 <p>Furthermore, because they are actually templates, functions with <code>auto</code> parameters cannot be separated into a header and source file.</p>
-<p>Rule</p>
+<div class="admonition note">
+<p class="admonition-title">法则</p>
 <p>Use <code>auto</code> when initializing variables with lambdas, and <code>std::function</code> if you can’t initialize the variable with the lambda.</p>
-<p>Generic lambdas</p>
+</div>
+<h2 id="generic-lambdas">Generic lambdas</h2>
 <p>For the most part, lambda parameters work by the same rules as regular function parameters.</p>
 <p>One notable exception is that since C++14 we’re allowed to use <code>auto</code> for parameters (note: in C++20, regular functions are able to use <code>auto</code> for parameters too). When a lambda has one or more <code>auto</code> parameter, the compiler will infer what parameter types are needed from the calls to the lambda.</p>
 <p>Because lambdas with one or more <code>auto</code> parameter can potentially work with a wide variety of types, they are called generic lambdas.</p>
-<p>For advanced readers</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
 <p>When used in the context of a lambda, <code>auto</code> is just a shorthand for a template parameter.</p>
+</div>
 <p>Let’s take a look at a generic lambda:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5596,7 +5810,7 @@
 <p>Output:</p>
 <p>There are 2 months with 5 letters</p>
 <p>In this example, using <code>auto</code> would infer a type of <code>const char*</code>. C-style strings aren’t easy to work with (apart from using <code>operator[]</code>). In this case, we prefer to explicitly define the parameter as a <code>std::string_view</code>, which allows us to work with the underlying data much more easily (e.g. we can ask the string view for its length, even if the user passed in a C-style array).</p>
-<p>Generic lambdas and static variables</p>
+<h2 id="generic-lambdas-and-static-variables">Generic lambdas and static variables</h2>
 <p>One thing to be aware of is that a unique lambda will be generated for each different type that <code>auto</code> resolves to. The following example shows how one generic lambda turns into two distinct lambdas:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5650,15 +5864,20 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Output</p>
-<p>0: hello
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>0: hello
 1: world
 0: 1
 1: 2
-2: ding dong</p>
+2: ding dong
+</code></pre></div></td></tr></table></div>
 <p>In the above example, we define a lambda and then call it with two different parameters (a string literal parameter, and an integer parameter). This generates two different versions of the lambda (one with a string literal parameter, and one with an integer parameter).</p>
 <p>Most of the time, this is inconsequential. However, note that if the generic lambda uses static duration variables, those variables are not shared between the generated lambdas.</p>
 <p>We can see this in the example above, where each type (string literals and integers) has its own unique count! Although we only wrote the lambda once, two lambdas were generated -- and each has its own version of <code>callCount</code>. To have a shared counter between the two generated lambdas, we’d have to define a global variable or a <code>static</code> local variable outside of the lambda. As you know from previous lessons, both global- and static local variables can cause problems and make it more difficult to understand code. We’ll be able to avoid those variables after talking about lambda captures in the next lesson.</p>
-<p>Return type deduction and trailing return types</p>
+<h2 id="return-type-deduction-and-trailing-return-types">Return type deduction and trailing return types</h2>
 <p>If return type deduction is used, a lambda’s return type is deduced from the <code>return</code>-statements inside the lambda, and all return statements in the lambda must return the same type (otherwise the compiler won’t know which one to prefer).</p>
 <p>For example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5737,8 +5956,8 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>That way, if you ever decide to change the return type, you (usually) only need to change the lambda’s return type, and not touch the lambda body.</p>
-<p>Standard library function objects</p>
-<p>For common operations (e.g. addition, negation, or comparison) you don’t need to write your own lambdas, because the standard library comes with many basic callable objects that can be used instead. These are defined in the <a href="https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects"><functional></a> header.</p>
+<h2 id="standard-library-function-objects">Standard library function objects</h2>
+<p>For common operations (e.g. addition, negation, or comparison) you don’t need to write your own lambdas, because the standard library comes with many basic callable objects that can be used instead. These are defined in the <a href="https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects"><code>&lt;functional&gt;</code></a> header.</p>
 <p>In the following example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5794,7 +6013,8 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Output</p>
-<p>99 90 80 40 13 5</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>99 90 80 40 13 5
+</code></pre></div></td></tr></table></div>
 <p>Instead of converting our <code>greater</code> function to a lambda (which would obscure its meaning a bit), we can instead use <code>std::greater</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5840,8 +6060,9 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Output</p>
-<p>99 90 80 40 13 5</p>
-<p>Conclusion</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>99 90 80 40 13 5
+</code></pre></div></td></tr></table></div>
+<h2 id="_1">小结</h2>
 <p>Lambdas and the algorithm library may seem unnecessarily complicated when compared to a solution that uses a loop. However, this combination can allow some very powerful operations in just a few lines of code, and can be more readable than writing your own loops. On top of that, the algorithm library features powerful and easy-to-use parallelism, which you won’t get with loops. Upgrading source code that uses library functions is easier than upgrading code that uses loops.</p>
 <p>Lambdas are great, but they don’t replace regular functions for all cases. Prefer regular functions for non-trivial and reusable cases.</p>
 

@@ -9,6 +9,46 @@
       "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     },
     {
+      "basename": "12-1-function-pointers",
+      "path": "docs/12-1-function-pointers.md"
+    },
+    {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
+      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
+      "basename": "11-6-C-style-strings",
+      "path": "docs/11-6-C-style-strings.md"
+    },
+    {
+      "basename": "11-x-chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-chapter-11-comprehensive-quiz.md"
+    },
+    {
       "basename": "12-8-lambda-captures",
       "path": "docs/12-8-lambda-captures.md"
     },
@@ -23,10 +63,6 @@
     {
       "basename": "12-5-command-line-arguments",
       "path": "docs/12-5-command-line-arguments.md"
-    },
-    {
-      "basename": "11-x-chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-chapter-11-comprehensive-quiz.md"
     },
     {
       "basename": "12-4-recursion",
@@ -67,14 +103,6 @@
     {
       "basename": "segment",
       "path": "docs/segment.md"
-    },
-    {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
-    },
-    {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
     },
     {
       "basename": "type-aliases",
@@ -145,10 +173,6 @@
       "path": "docs/list-constructor.md"
     },
     {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
       "basename": "13-6-constructor-member-initializer-lists",
       "path": "docs/13-6-constructor-member-initializer-lists.md"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "16-5-dependencies",
       "path": "docs/16-5-dependencies.md"
-    },
-    {
-      "basename": "reflexive association",
-      "path": "docs/reflexive association.md"
-    },
-    {
-      "basename": "16-4-association",
-      "path": "docs/16-4-association.md"
-    },
-    {
-      "basename": "21-4-STL-algorithms-overview",
-      "path": "docs/21-4-STL-algorithms-overview.md"
-    },
-    {
-      "basename": "16-x-Chapter-16-comprehensive-quiz",
-      "path": "docs/16-x-Chapter-16-comprehensive-quiz.md"
-    },
-    {
-      "basename": "16-3-aggregation",
-      "path": "docs/16-3-aggregation.md"
-    },
-    {
-      "basename": "16-2-composition",
-      "path": "docs/16-2-composition.md"
     }
   ],
   "omittedPaths": [],

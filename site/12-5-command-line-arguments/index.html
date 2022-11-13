@@ -3007,6 +3007,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_11">
@@ -3111,20 +3119,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-7-An-introduction-to-std-string_view.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../11-7-std-string-view-part-2/" class="md-nav__link">
         11.7 - std::string_view（第二部分）
       </a>
@@ -3169,6 +3163,76 @@
     <li class="md-nav__item">
       <a href="../11-14-Void-pointers/" class="md-nav__link">
         11.14 — void 指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays/" class="md-nav__link">
+        11.15 — 指向指针的指针和多维数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-16-An-introduction-to-std-array/" class="md-nav__link">
+        11.16 — 固定数组 std::array 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-17-An-introduction-to-std-vector/" class="md-nav__link">
+        11.17 — 动态数组 std::vector 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-18-Introduction-to-iterators/" class="md-nav__link">
+        11.18 — 迭代器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-19-Introduction-to-standard-library-algorithms/" class="md-nav__link">
+        11.19 — 标准库算法简介
       </a>
     </li>
   
@@ -5246,11 +5310,10 @@
 <summary>关键点速记</summary>
 </details>
 <h2 id="_1">命令行参数的用途</h2>
-<p>As you learned in lesson <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/">0.5 -- Introduction to the compiler, linker, and libraries</a>, when you compile and link your program, the output is an executable file. When a program is run, execution starts at the top of the function called main(). Up to this point, we’ve declared main like this:</p>
+<p>在 <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/">0.5 -- Introduction to the compiler, linker, and libraries</a> 中我们介绍过，编译和链接后，得到的结果是一个可执行文件。当程序运行时，则会从<code>main()</code>函数的顶部开始运行。<code>main()</code>函数定义如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Notice that this version of main() takes no parameters. However, many programs need some kind of input to work with. For example, let’s say you were writing a program called Thumbnail that read in an image file, and then produced a thumbnail (a smaller version of the image). How would Thumbnail know which image to read and process? The user has to have some way of telling the program which file to open. To do this, you might take this approach:</p>
+<p>注意，这里的 <code>main()</code> 函数没有<a href="../parameters/">形参</a>。但是很多程序其实需要基于输入来判断如何开始工作。例如，如果我们编写了一个读取图片作为缩略图的程序 <code>Thumbnail</code> 。那么 <code>Thumbnail</code> 应该读取哪个图片并处理呢？用户必须有办法告诉程序应该打开哪个文件，此时我们可以这样做：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5279,38 +5342,39 @@
 <span class="w">    </span><span class="c1">// output thumbnail</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, there is a potential problem with this approach. Every time the program is run, the program will wait for the user to enter input. This may not be a problem if you’re manually running this program once from the command line. But it is problematic in other cases, such as when you want to run this program on many files, or have this program run by another program.</p>
-<p>Let’s look into these cases further.</p>
-<p>Consider the case where you want to create thumbnails for all the image files in a given directory. How would you do that? You could run this program as many times as there are images in the directory, typing out each filename by hand. However, if there were hundreds of images, this could take all day! A good solution here would be to write a program that loops through each filename in the directory, calling Thumbnail once for each file.</p>
-<p>Now consider the case where you’re running a website, and you want to have your website create a Thumbnail every time a user uploads an image to your website. This program isn’t set up to accept input from the web, so how would the uploader enter a filename in this case? A good solution here would be to have your web server call Thumbnail automatically after upload.</p>
-<p>In both of these cases, we really need a way for an external <em>program</em> to pass in the filename as input to our Thumbnail program when Thumbnail is launched, rather than having Thumbnail wait for the <em>user</em> to enter the filename after it has started.</p>
-<p><strong>Command line arguments</strong> are optional string arguments that are passed by the operating system to the program when it is launched. The program can then use them as input (or ignore them). Much like function parameters provide a way for a function to provide inputs to another function, command line arguments provide a way for people or programs to provide inputs to a <em>program</em>.</p>
+<p>但是，这么做有一个潜在的问题。每次程序运行时，都必须等待用户的输入才能继续工作。如果我们每次都是手动启动该程序的话，这似乎也没什么问题。但是很多时候这么做是不合适的，例如你需要对多个文件执行该程序或者从另外一个程序中调用该程序。</p>
+<p>让我们进一步研究这些案例。</p>
+<p>考虑这样一种情况，你希望为给定目录中的所有图像文件创建缩略图。你会怎么做?只要目录中有图像，你就可以多次运行这个程序，手动键入每个文件名。然而，如果有数百个图像，这可能需要一整天！一个好的解决方案是编写一个程序循环遍历目录中的每个文件名，为每个文件调用一次<code>Thumbnail</code>。</p>
+<p>现在考虑这样一个情况，你正在运营一个网站，你想让你的网站在用户每次上传图片到你的网站时创建一个缩略图。这个程序没有设置为接受来自网络的输入，那么在这种情况下，上传者如何输入文件名呢?一个好的解决方案是让你的web服务器在上传后自动调用<code>Thumbnail</code>。</p>
+<p>在这两种情况下，我们确实需要一种方法，让一个外部程序在<code>Thumbnail</code>启动时将文件名作为输入传递给<code>Thumbnail</code>程序，而不是让<code>Thumbnail</code>在启动后等待用户输入文件名。</p>
+<p><strong>命令行参数</strong>是可选的字符串参数，在程序启动时由操作系统传递给它。然后程序可以使用它们作为输入(或忽略它们)。就像函数形参为函数提供了向另一个函数提供输入的方法一样，命令行实参为人们或程序提供了向程序提供输入的方法。</p>
 <h2 id="_2">传递命令行参数</h2>
-<p>Executable programs can be run on the command line by invoking them by name. For example, to run the executable file “WordCount” that is located in the current directory of a Windows machine, you could type:</p>
-<p>WordCount</p>
-<p>The equivalent command line on a Unix-based OS would be:</p>
-<p>./WordCount</p>
-<p>In order to pass command line arguments to WordCount, we simply list the command line arguments after the executable name:</p>
-<p>WordCount Myfile.txt</p>
-<p>Now when WordCount is executed, Myfile.txt will be provided as a command line argument. A program can have multiple command line arguments, separated by spaces:</p>
-<p>WordCount Myfile.txt Myotherfile.txt</p>
-<p>If you are running your program from an IDE, the IDE should provide a way to enter command line arguments.</p>
-<p>In Microsoft Visual Studio, right click on your project in the solution explorer, then choose properties. Open the “Configuration Properties” tree element, and choose “Debugging”. In the right pane, there is a line called “Command Arguments”. You can enter your command line arguments there for testing, and they will be automatically passed to your program when you run it.</p>
-<p>In Code::Blocks, choose “Project -&gt; Set program’s arguments”.</p>
+<p>可执行程序可以通过名称在命令行中运行。例如，要运行Windows机器当前目录下的可执行文件" WordCount "，你可以输入:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>WordCount
+</code></pre></div></td></tr></table></div>
+<p>在UNIX类的操作系统上使用：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./WordCount
+</code></pre></div></td></tr></table></div>
+<p>给 <code>WordCount</code> 传递参数很简单，只要将参数放在程序名后面即可：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>WordCount Myfile.txt
+</code></pre></div></td></tr></table></div>
+<p>当 <code>WordCount</code> 执行时 <code>Myfile.txt</code> 会作为命令行实参传入，如果程序需要多个参数，则需要将它们用空格隔开：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>WordCount Myfile.txt Myotherfile.txt
+</code></pre></div></td></tr></table></div>
+<p>如果从IDE运行程序，IDE应该提供输入命令行参数的方法。</p>
+<p>在Microsoft Visual Studio中，在解决方案资源管理器中右键单击项目，然后选择属性。打开“Configuration Properties”，选择“Debugging”。在右窗格中，有一行称为“命令参数”。你可以在这里输入命令行参数进行测试，当你运行程序时，它们将自动传递给你的程序。</p>
+<p>在Code::Blocks中，选择" Project -&gt; Set program 's arguments "。</p>
 <h2 id="_3">使用命令行参数</h2>
-<p>Now that you know how to provide command line arguments to a program, the next step is to access them from within our C++ program. To do that, we use a different form of main() than we’ve seen before. This new form of main() takes two arguments (named argc and argv by convention) as follows:</p>
+<p>现在你已经知道如何向程序提供命令行参数了，下一步就是从C++程序中访问它们。为此，我们使用了一种不同于以往的<code>main()</code>形式。<code>main()</code>的这种新形式有两个参数(按照约定命名为<code>argc</code>和<code>argv</code>)：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>You will sometimes also see it written as:</p>
+<p>有时你会看到它被写成：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Even though these are treated identically, we prefer the first representation because it’s intuitively easier to understand.</p>
-<p><strong>argc</strong> is an integer parameter containing a count of the number of arguments passed to the program (think: argc = <strong>arg</strong>ument <strong>c</strong>ount). argc will always be at least 1, because the first argument is always the name of the program itself. Each command line argument the user provides will cause argc to increase by 1.</p>
-<p><strong>argv</strong> is where the actual argument values are stored (think: argv = <strong>arg</strong>ument <strong>v</strong>alues, though the proper name is “argument vectors”). Although the declaration of argv looks intimidating, argv is really just an array of C-style strings. The length of this array is argc.</p>
-<p>Let’s write a short program named “MyArgs” to print the value of all the command line parameters:</p>
+<p>尽管这两种表示是相同的，但我们更喜欢第一种表示，因为它更直观，容易理解。</p>
+<p><strong>argc</strong>是一个整数参数，包含传递给程序的参数数量(请考虑：argc = <strong>arg</strong>ument <strong>c</strong>ount)。<code>argc</code>最小是1，因为第一个参数总是程序本身的名称。用户提供的每个命令行参数将导致<code>argc</code>增加1。</p>
+<p><strong>argv</strong>是存储实际参数值的地方(请考虑：argv = <strong>arg</strong>ument <strong>v</strong> values，虽然它的正确名称是“参数向量”)。尽管argv的声明看起来很吓人，但argv实际上只是一个C语言风格的字符串数组。这个数组的长度是argc。</p>
+<p>让我们写一个名为“MyArgs”的小程序来打印所有命令行参数的值:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5341,16 +5405,19 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now, when we invoke this program (MyArgs) with the command line arguments “Myfile.txt” and “100”, the output will be as follows:</p>
-<p>There are 3 arguments:
+<p>现在，当我们用命令行参数“Myfile.txt”和“100”调用这个程序(MyArgs)时，输出将如下所示:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>There are 3 arguments:
 0 C:\MyArgs
 1 Myfile.txt
-2 100</p>
-<p>Argument 0 is the path and name of the current program being run. Argument 1 and 2 in this case are the two command line parameters we passed in.</p>
+2 100
+</code></pre></div></td></tr></table></div>
+<p>参数0是正在运行的当前程序的路径和名称。本例中的参数1和2是我们传入的两个命令行参数。</p>
 <h2 id="_4">处理数值参数</h2>
-<p>Command line arguments are always passed as strings, even if the value provided is numeric in nature. To use a command line argument as a number, you must convert it from a string to a number. Unfortunately, C++ makes this a little more difficult than it should be.</p>
-<p>The C++ way to do this follows:</p>
+<p>命令行参数总是作为字符串传递，即使提供的值本质上是数值。若要将命令行参数用作数字，必须将其从字符串转换为数字。不幸的是，在C++中，字符串转数字比你想象的要复杂。</p>
+<p>在C++中需要这么做：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5396,7 +5463,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">convert</span><span class="p">{</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// set up a stringstream variable named convert, initialized with the input from argv[1]</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">convert</span><span class="p">{</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 创建一个 stringstream 变量 convert，使用 argv[1] 对其进行初始化</span>
 
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">myint</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">convert</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">myint</span><span class="p">))</span><span class="w"> </span><span class="c1">// do the conversion</span>
@@ -5407,37 +5474,51 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When run with input “567”, this program prints:</p>
-<p>Got integer: 567</p>
-<p>std::stringstream works much like std::cin. In this case, we’re initializing it with the value of argv[1], so that we can use operator&gt;&gt; to extract the value to an integer variable (the same as we would with std::cin).</p>
-<p>We’ll talk more about std::stringstream in a future chapter.</p>
+<p>运行该程序并将"567"作为参数：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Got integer: 567
+</code></pre></div></td></tr></table></div>
+<p><code>std::stringstream</code> 和 <code>std::cin</code> 的工作方式类似。在这个例子中 <code>argv[1]</code> 首先用于初始化<code>stringstream</code>，所以稍后我们可以使用<code>&gt;&gt;</code>将其值提取到一个整型变量 ( 类似于<code>std::cin</code>)。</p>
+<p>我们会在后续的章节中对 <code>std::stringstream</code>进行详细介绍。</p>
 <h2 id="_5">操作系统首先解析命令行</h2>
-<p>When you type something at the command line (or run your program from the IDE), it is the operating system’s responsibility to translate and route that request as appropriate. This not only involves running the executable, it also involves parsing any arguments to determine how they should be handled and passed to the application.</p>
-<p>Generally, operating systems have special rules about how special characters like double quotes and backslashes are handled.</p>
-<p>For example:</p>
-<p>MyArgs Hello world!</p>
-<p>prints:</p>
-<p>There are 3 arguments:
+<p>当你在命令行(或从IDE运行您的程序)上键入某些内容时，操作系统需要负责解析或转发相应的请求。这不仅涉及到运行可执行文件，还涉及到解析任何参数，以确定应该如何处理它们并将它们传递给应用程序。</p>
+<p>一般来说，操作系统对于如何处理双引号和反斜杠等特殊字符有特殊的规则。</p>
+<p>例如：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>MyArgs Hello world!
+</code></pre></div></td></tr></table></div>
+<p>打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>There are 3 arguments:
 0 C:\MyArgs
 1 Hello
-2 world!</p>
-<p>Typically, strings passed in double quotes are considered to be part of the same string:</p>
-<p>MyArgs "Hello world!"</p>
-<p>prints:</p>
-<p>There are 2 arguments:
+2 world!
+</code></pre></div></td></tr></table></div>
+<p>通常，以双引号传递的字符串被认为是同一字符串的一部分:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>MyArgs &quot;Hello world!&quot;
+</code></pre></div></td></tr></table></div>
+<p>打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>There are 2 arguments:
 0 C:\MyArgs
-1 Hello world!</p>
-<p>Most operating systems will allow you to include a literal double quote by backslashing the double quote:</p>
-<p>MyArgs \"Hello world!\"</p>
-<p>prints:</p>
-<p>There are 3 arguments:
+1 Hello world!
+</code></pre></div></td></tr></table></div>
+<p>大多数操作系统都允许你通过转译双引号来使用字面双引号：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>MyArgs \&quot;Hello world!\&quot;
+</code></pre></div></td></tr></table></div>
+<p>打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>There are 3 arguments:
 0 C:\MyArgs
-1 "Hello
-2 world!"</p>
-<p>Other characters may also require backslashing or escaping depending on how your OS interprets them.</p>
+1 &quot;Hello
+2 world!&quot;
+</code></pre></div></td></tr></table></div>
+<p>其他字符可能也需要转义，这取决于你的操作系统如何解释它们。</p>
 <h2 id="_6">小结</h2>
-<p>Command line arguments provide a great way for users or other programs to pass input data into a program at startup. Consider making any input data that a program requires at startup to operate a command line parameter. If the command line isn’t passed in, you can always detect that and ask the user for input. That way, your program can operate either way.</p>
+<p>命令行参数为用户或其他程序在启动时向程序传递输入数据提供了一种很好的方式。对于任何程序需要的数据，请考虑在程序启动时允许通过命令行参数来传递这些输入数据。如果实际使用中，该数据没有通过命令行参数 传入，你也是可以检测到的，此时你可以再要求用户进行输入。这样，程序就可以以任何一种方式运行。</p>
 
 
             </article>

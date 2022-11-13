@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -3002,6 +3007,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_11">
@@ -3106,20 +3119,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-7-An-introduction-to-std-string_view.md" class="md-nav__link">
-        None
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../11-7-std-string-view-part-2/" class="md-nav__link">
         11.7 - std::string_view（第二部分）
       </a>
@@ -3164,6 +3163,76 @@
     <li class="md-nav__item">
       <a href="../11-14-Void-pointers/" class="md-nav__link">
         11.14 — void 指针
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays/" class="md-nav__link">
+        11.15 — 指向指针的指针和多维数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-16-An-introduction-to-std-array/" class="md-nav__link">
+        11.16 — 固定数组 std::array 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-17-An-introduction-to-std-vector/" class="md-nav__link">
+        11.17 — 动态数组 std::vector 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-18-Introduction-to-iterators/" class="md-nav__link">
+        11.18 — 迭代器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-19-Introduction-to-standard-library-algorithms/" class="md-nav__link">
+        11.19 — 标准库算法简介
       </a>
     </li>
   
@@ -3322,9 +3391,80 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            12.6 - 省略号以及为什么要避免使用它
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         12.6 - 省略号以及为什么要避免使用它
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    省略号实例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    为什么省略号不安全：类型检查被跳过了
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    为什么省略号不安全：省略号不知道传入参数的个数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    方法1：传入一个长度参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    方法2： 使用哨兵值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    方法 3: 使用解码的字符串
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    安全使用省略号的建议
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5076,6 +5216,63 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    省略号实例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    为什么省略号不安全：类型检查被跳过了
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    为什么省略号不安全：省略号不知道传入参数的个数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    方法1：传入一个长度参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    方法2： 使用哨兵值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    方法 3: 使用解码的字符串
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    安全使用省略号的建议
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5132,7 +5329,7 @@
 <p>return_type function_name(argument_list, ...)</p>
 <p>The <em>argument_list</em> is one or more normal function parameters. Note that functions that use ellipsis must have at least one non-ellipsis parameter. Any arguments passed to the function must match the argument_list parameters first.</p>
 <p>The ellipsis (which are represented as three periods in a row) must always be the last parameter in the function. The ellipsis capture any additional arguments (if there are any). Though it is not quite accurate, it is conceptually useful to think of the ellipsis as an array that holds any additional parameters beyond those in the argument_list.</p>
-<p><strong>An ellipsis example</strong></p>
+<h2 id="_1">省略号实例</h2>
 <p>The best way to learn about ellipsis is by example. So let’s write a simple program that uses ellipsis. Let’s say we want to write a function that calculates the average of a bunch of integers. We’d do it like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5214,8 +5411,10 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This code prints:</p>
-<p>3
-3.5</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>3
+3.5
+</code></pre></div></td></tr></table></div>
 <p>As you can see, this function takes a variable number of parameters! Now, let’s take a look at the components that make up this example.</p>
 <p>First, we have to include the cstdarg header. This header defines va_list, va_arg, va_start, and va_end, which are macros that we need to use to access the parameters that are part of the ellipsis.</p>
 <p>We then declare our function that uses the ellipsis. Remember that the argument list must be one or more fixed parameters. In this case, we’re passing in a single integer that tells us how many numbers to average. The ellipsis always comes last.</p>
@@ -5224,7 +5423,7 @@
 <p>To get the value of the parameter that va_list currently points to, we use va_arg(). va_arg() also takes two parameters: the va_list itself, and the type of the parameter we’re trying to access. Note that va_arg() also moves the va_list to the next parameter in the ellipsis!</p>
 <p>Finally, to clean up when we are done, we call va_end(), with va_list as the parameter.</p>
 <p>Note that va_start() can be called again any time we want to reset the va_list to point to the first parameter in the ellipses again.</p>
-<p><strong>Why ellipsis are dangerous: Type checking is suspended</strong></p>
+<h2 id="_2">为什么省略号不安全：类型检查被跳过了</h2>
 <p>Ellipsis offer the programmer a lot of flexibility to implement functions that can take a variable number of parameters. However, this flexibility comes with some downsides.</p>
 <p>With regular function parameters, the compiler uses type checking to ensure the types of the function arguments match the types of the function parameters (or can be implicitly converted so they match). This helps ensure you don’t pass a function an integer when it was expecting a string, or vice versa. However, note that ellipsis parameters have no type declarations. When using ellipsis, the compiler completely suspends type checking for ellipsis parameters. This means it is possible to send arguments of any type to the ellipsis! However, the downside is that the compiler will no longer be able to warn you if you call the function with ellipsis arguments that do not make sense. When using the ellipsis, it is completely up to the caller to ensure the function is called with ellipsis arguments that the function can handle. Obviously that leaves quite a bit of room for error (especially if the caller wasn’t the one who wrote the function).</p>
 <p>Let’s look at an example of a mistake that is pretty subtle:</p>
@@ -5232,7 +5431,8 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Although this may look harmless enough at first glance, note that the second argument (the first ellipsis argument) is a double instead of an integer. This compiles fine, and produces a somewhat surprising result:</p>
-<p>1.78782e+008</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.78782e+008
+</code></pre></div></td></tr></table></div>
 <p>which is a REALLY big number. How did this happen?</p>
 <p>As you have learned in previous lessons, a computer stores all data as a sequence of bits. A variable’s type tells the computer how to translate that sequence of bits into a meaningful value. However, you just learned that the ellipsis throw away the variable’s type! Consequently, the only way to get a meaningful value back from the ellipsis is to manually tell va_arg() what the expected type of the next parameter is. This is what the second parameter of va_arg() does. If the actual parameter type doesn’t match the expected parameter type, bad things will usually happen.</p>
 <p>In the above findAverage program, we told va_arg() that our variables are all expected to have a type of int. Consequently, each call to va_arg() will return the next sequence of bits translated as an integer.</p>
@@ -5244,12 +5444,13 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Believe it or not, this actually compiles just fine, and produces the following result on the author’s machine:</p>
-<p>1.79766e+008</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.79766e+008
+</code></pre></div></td></tr></table></div>
 <p>This result epitomizes the phrase, “Garbage in, garbage out”, which is a popular computer science phrase “used primarily to call attention to the fact that computers, unlike humans, will unquestioningly process the most nonsensical of input data and produce nonsensical output” (<a href="https://en.wikipedia.org/wiki/Garbage_in,_garbage_out">Wikipedia</a>).</p>
 <p>So, in summary, type checking on the parameters is suspended, and we have to trust the caller to pass in the right type of parameters. If they don’t, the compiler won’t complain -- our program will just produce garbage (or maybe crash).</p>
-<p><strong>Why ellipsis are dangerous: ellipsis don’t know how many parameters were passed</strong></p>
+<h2 id="_3">为什么省略号不安全：省略号不知道传入参数的个数</h2>
 <p>Not only do the ellipsis throw away the <em>type</em> of the parameters, it also throws away the <em>number</em> of parameters in the ellipsis. This means we have to devise our own solution for keeping track of the number of parameters passed into the ellipsis. Typically, this is done in one of three ways.</p>
-<p><strong>Method 1: Pass a length parameter</strong></p>
+<h2 id="1">方法1：传入一个长度参数</h2>
 <p>Method #1 is to have one of the fixed parameters represent the number of optional parameters passed. This is the solution we use in the findAverage() example above.</p>
 <p>However, even here we run into trouble. For example, consider the following call:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">findAverage</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
@@ -5263,8 +5464,8 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This produces the answer 3.5, which may look correct at first glance, but omits the last number in the average, because we only told it we were going to provide 6 additional values (and then actually provided 7). These kind of mistakes can be very hard to catch.</p>
-<p><strong>Method 2: Use a sentinel value</strong></p>
-<p>Method #2 is to use a sentinel value. A <strong>sentinel</strong> is a special value that is used to terminate a loop when it is encountered. For example, with strings, the null terminator is used as a sentinel value to denote the end of the string. With ellipsis, the sentinel is typically passed in as the last parameter. Here’s an example of findAverage() rewritten to use a sentinel value of -1:</p>
+<h2 id="2">方法2： 使用哨兵值</h2>
+<p>Method #2 is to use a [[sentinel|哨兵]] value. A <strong>sentinel</strong> is a special value that is used to terminate a loop when it is encountered. For example, with strings, the null terminator is used as a sentinel value to denote the end of the string. With ellipsis, the sentinel is typically passed in as the last parameter. Here’s an example of findAverage() rewritten to use a sentinel value of -1:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5364,7 +5565,7 @@
 <p>However, there are a couple of challenges here. First, C++ requires that we pass at least one fixed parameter. In the previous example, this was our count variable. In this example, the first value is actually part of the numbers to be averaged. So instead of treating the first value to be averaged as part of the ellipsis parameters, we explicitly declare it as a normal parameter. We then need special handling for it inside the function (in this case, we set sum to first instead of 0 to start).</p>
 <p>Second, this requires the user to pass in the sentinel as the last value. If the user forgets to pass in the sentinel value (or passes in the wrong value), the function will loop continuously until it runs into garbage that matches the sentinel (or crashes).</p>
 <p>Finally, note that we’ve chosen -1 as our sentinel. That’s fine if we only wanted to find the average of positive numbers, but what if we wanted to include negative numbers? Sentinel values only work well if there is a value that falls outside the valid set of values for the problem you are trying to solve.</p>
-<p><strong>Method 3: Use a decoder string</strong></p>
+<h2 id="3">方法 3: 使用解码的字符串</h2>
 <p>Method #3 involves passing a “decoder string” that tells the program how to interpret the parameters.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5459,16 +5660,16 @@
 <p>COPY</p>
 <p>In this example, we pass a string that encodes both the number of optional variables and their types. The cool thing is that this lets us deal with parameters of different types. However, this method has downsides as well: the decoder string can be a bit cryptic, and if the number or types of the optional parameters don’t match the decoder string precisely, bad things can happen.</p>
 <p>For those of you coming from C, this is what printf does!</p>
-<p><strong>Recommendations for safer use of ellipsis</strong></p>
+<h2 id="_4">安全使用省略号的建议</h2>
 <p>First, if possible, do not use ellipsis at all! Oftentimes, other reasonable solutions are available, even if they require slightly more work. For example, in our findAverage() program, we could have passed in a dynamically sized array of integers instead. This would have provided both strong type checking (to make sure the caller doesn’t try to do something nonsensical) while preserving the ability to pass a variable number of integers to be averaged.</p>
 <p>Second, if you do use ellipsis, do not mix expected argument types within your ellipsis if possible. Doing so vastly increases the possibility of the caller inadvertently passing in data of the wrong type and va_arg() producing a garbage result.</p>
 <p>Third, using a count parameter or decoder string as part of the argument list is generally safer than using a sentinel as an ellipsis parameter. This forces the user to pick an appropriate value for the count/decoder parameter, which ensures the ellipsis loop will terminate after a reasonable number of iterations even if it produces a garbage value.</p>
-<p>For advanced readers</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
 <p>To improve upon ellipses-like functionality, C++11 introduced <code>parameter packs</code> and <code>variadic templates</code>, which offers functionality similar to ellipses, but with strong type checking. However, significant usability challenges impeded adoption of this feature.</p>
 <p>In C++17, <a href="https://en.cppreference.com/w/cpp/language/fold">fold expressions</a> were added, which significantly improves the usability of parameter packs, to the point where they are now a viable option.</p>
 <p>We hope to introduce lessons on these topics in a future site update.</p>
-<p>[</p>
-<p>](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/)</p>
+</div>
 
 
             </article>
