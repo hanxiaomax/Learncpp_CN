@@ -80,37 +80,34 @@ WordCount Myfile.txt
 WordCount Myfile.txt Myotherfile.txt
 ```
 
-If you are running your program from an IDE, the IDE should provide a way to enter command line arguments.
+如果从IDE运行程序，IDE应该提供输入命令行参数的方法。
 
-In Microsoft Visual Studio, right click on your project in the solution explorer, then choose properties. Open the “Configuration Properties” tree element, and choose “Debugging”. In the right pane, there is a line called “Command Arguments”. You can enter your command line arguments there for testing, and they will be automatically passed to your program when you run it.
+在Microsoft Visual Studio中，在解决方案资源管理器中右键单击项目，然后选择属性。打开“Configuration Properties”，选择“Debugging”。在右窗格中，有一行称为“命令参数”。你可以在这里输入命令行参数进行测试，当你运行程序时，它们将自动传递给你的程序。
 
-In Code::Blocks, choose “Project -> Set program’s arguments”.
+在Code::Blocks中，选择" Project -> Set program 's arguments "。
+
 
 ## 使用命令行参数
 
-Now that you know how to provide command line arguments to a program, the next step is to access them from within our C++ program. To do that, we use a different form of main() than we’ve seen before. This new form of main() takes two arguments (named argc and argv by convention) as follows:
+现在你已经知道如何向程序提供命令行参数了，下一步就是从C++程序中访问它们。为此，我们使用了一种不同于以往的`main()`形式。`main()`的这种新形式有两个参数(按照约定命名为`argc`和`argv`)：
 
 ```cpp
 int main(int argc, char* argv[])
 ```
 
-COPY
-
-You will sometimes also see it written as:
+有时你会看到它被写成：
 
 ```cpp
 int main(int argc, char** argv)
 ```
 
-COPY
+尽管这两种表示是相同的，但我们更喜欢第一种表示，因为它更直观，容易理解。
 
-Even though these are treated identically, we prefer the first representation because it’s intuitively easier to understand.
+**argc**是一个整数参数，包含传递给程序的参数数量(请考虑：argc = **arg**ument **c**ount)。`argc`最小是1，因为第一个参数总是程序本身的名称。用户提供的每个命令行参数将导致`argc`增加1。
 
-**argc** is an integer parameter containing a count of the number of arguments passed to the program (think: argc = **arg**ument **c**ount). argc will always be at least 1, because the first argument is always the name of the program itself. Each command line argument the user provides will cause argc to increase by 1.
+**argv**是存储实际参数值的地方(请考虑：argv = **arg**ument **v** values，虽然它的正确名称是“参数向量”)。尽管argv的声明看起来很吓人，但argv实际上只是一个C语言风格的字符串数组。这个数组的长度是argc。
 
-**argv** is where the actual argument values are stored (think: argv = **arg**ument **v**alues, though the proper name is “argument vectors”). Although the declaration of argv looks intimidating, argv is really just an array of C-style strings. The length of this array is argc.
-
-Let’s write a short program named “MyArgs” to print the value of all the command line parameters:
+让我们写一个名为“MyArgs”的小程序来打印所有命令行参数的值:
 
 ```cpp
 // Program: MyArgs
@@ -130,22 +127,22 @@ int main(int argc, char* argv[])
 }
 ```
 
-COPY
+现在，当我们用命令行参数“Myfile.txt”和“100”调用这个程序(MyArgs)时，输出将如下所示:
 
-Now, when we invoke this program (MyArgs) with the command line arguments “Myfile.txt” and “100”, the output will be as follows:
-
+```
 There are 3 arguments:
 0 C:\MyArgs
 1 Myfile.txt
 2 100
+```
 
-Argument 0 is the path and name of the current program being run. Argument 1 and 2 in this case are the two command line parameters we passed in.
+参数0是正在运行的当前程序的路径和名称。本例中的参数1和2是我们传入的两个命令行参数。
 
 ## 处理数值参数
 
-Command line arguments are always passed as strings, even if the value provided is numeric in nature. To use a command line argument as a number, you must convert it from a string to a number. Unfortunately, C++ makes this a little more difficult than it should be.
+命令行参数总是作为字符串传递，即使提供的值本质上是数值。若要将命令行参数用作数字，必须将其从字符串转换为数字。不幸的是，在C++中，字符串转数字比你想象的要复杂。
 
-The C++ way to do this follows:
+在C++中需要这么做：
 
 ```cpp
 #include <iostream>
@@ -166,7 +163,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	std::stringstream convert{ argv[1] }; // set up a stringstream variable named convert, initialized with the input from argv[1]
+	std::stringstream convert{ argv[1] }; // 创建一个 stringstream 变量 convert，使用 argv[1] 对其进行初始化
 
 	int myint{};
 	if (!(convert >> myint)) // do the conversion
@@ -178,15 +175,15 @@ int main(int argc, char* argv[])
 }
 ```
 
-COPY
+运行该程序并将"567"作为参数：
 
-When run with input “567”, this program prints:
-
+```
 Got integer: 567
+```
 
-std::stringstream works much like std::cin. In this case, we’re initializing it with the value of argv[1], so that we can use operator>> to extract the value to an integer variable (the same as we would with std::cin).
+`std::stringstream` 和 `std::cin` 的工作方式类似。在这个例子中 `argv[1]` 首先用于初始化`stringstream` so that we can use operator>> to extract the value to an integer variable (the same as we would with `std::cin`).
 
-We’ll talk more about std::stringstream in a future chapter.
+We’ll talk more about `std::stringstream` in a future chapter.
 
 ## 操作系统首先解析命令行
 
@@ -196,35 +193,47 @@ Generally, operating systems have special rules about how special characters lik
 
 For example:
 
+```
 MyArgs Hello world!
+```
 
 prints:
 
+```
 There are 3 arguments:
 0 C:\MyArgs
 1 Hello
 2 world!
+```
 
 Typically, strings passed in double quotes are considered to be part of the same string:
 
+```
 MyArgs "Hello world!"
+```
 
 prints:
 
+```
 There are 2 arguments:
 0 C:\MyArgs
 1 Hello world!
+```
 
 Most operating systems will allow you to include a literal double quote by backslashing the double quote:
 
+```
 MyArgs \"Hello world!\"
+```
 
 prints:
 
+```
 There are 3 arguments:
 0 C:\MyArgs
 1 "Hello
 2 world!"
+```
 
 Other characters may also require backslashing or escaping depending on how your OS interprets them.
 
