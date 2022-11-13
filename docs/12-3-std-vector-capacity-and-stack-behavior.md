@@ -13,25 +13,23 @@ tags:
 ??? note "关键点速记"
 
 
-In lesson [11.17 -- An introduction to std::vector](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdvector/), we introduced std::vector and talked about how std::vector can be used as a dynamic array that both remembers its length and can be dynamically resized as required.
+在 [[11-17-An-introduction-to-std-vector|11.17 — 动态数组 std::vector 简介]]中我们介绍了 `std::vector` 以及如何将其当做动态数组使用（可以记录自身长度也可以根据需要调整大小）。
 
-Although this is the most useful and commonly used part of std::vector, std::vector has some additional attributes and capabilities that make it useful in some other capacities as well.
+尽管这是 `std::vector` 最常用的功能，`std::vector` 还有一些其他的其他的属性和功能使其在别的方面也很有用。
 
 ## 长度和容量
 
-Consider the following example:
+考虑下面的例子：
 
 ```cpp
 int* array{ new int[10] { 1, 2, 3, 4, 5 } };
 ```
 
-COPY
+我们会说这个数组的长度是10，即使我们只使用了分配的元素中的5个。
 
-We would say that this array has a length of 10, even though we’re only using 5 of the elements that we allocated.
+但是，如果我们只想遍历已经初始化的元素，而保留未使用的元素以备将来扩展呢？在这种情况下，我们需要分别跟踪“使用”了多少元素和分配了多少元素。与只记住其长度的内置数组或`std::array`不同，`std::vector`包含两个独立的属性：长度和容量。在`std::vector`的语境中，**length**是数组中使用的元素数量，而**capacity**是内存中分配的元素数量。
 
-However, what if we only wanted to iterate over the elements we’ve initialized, reserving the unused ones for future expansion? In that case, we’d need to separately track how many elements were “used” from how many elements were allocated. Unlike a built-in array or a std::array, which only remembers its length, std::vector contains two separate attributes: length and capacity. In the context of a std::vector, **length** is how many elements are being used in the array, whereas **capacity** is how many elements were allocated in memory.
-
-Taking a look at an example from the previous lesson on std::vector:
+让我们再看一下之前的一个`std::vector`的一个例子:
 
 ```cpp
 #include <vector>
@@ -57,9 +55,9 @@ The length is: 5
 0 1 2 0 0
 ```
 
-In the above example, we’ve used the resize() function to set the vector’s length to 5. This tells variable array that we’re intending to use the first 5 elements of the array, so it should consider those in active use. However, that leaves an interesting question: what is the capacity of this array?
+在上面的例子中，我们使用了`resize()`函数将vector的长度设置为5。这告诉变量数组我们打算使用数组的前5个元素，所以它应该把这些元素当做活动的。然而，这带来了一个有趣的问题：这个数组的容量是多少?
 
-We can ask the std::vector what its capacity is via the capacity() function:
+我们可以通过`capacity()`函数查询`std::vector`的容量：
 
 ```cpp
 #include <vector>
@@ -75,20 +73,18 @@ int main()
 }
 ```
 
-COPY
-
-On the authors machine, this printed:
+在笔者的电脑上，输出如下：
 
 ```
 The length is: 5
 The capacity is: 5
 ```
 
-In this case, the resize() function caused the std::vector to change both its length and capacity. Note that the capacity is guaranteed to be at least as large as the array length (but could be larger), otherwise accessing the elements at the end of the array would be outside of the allocated memory!
+在本例中，`resize()`函数使`std::vector`改变了它的长度和容量。注意，容量保证至少与数组长度一样大(但也可以更大)，否则访问数组末尾的元素将在分配的内存之外！
 
 ## 长度和容量——更多细节
 
-Why differentiate between length and capacity? std::vector will reallocate its memory if needed, but like Melville’s Bartleby, it would prefer not to, because resizing an array is computationally expensive. Consider the following:
+为什么要区分长度和容量？vector会在需要的时候重新分配它的内存，但是它希望尽量避免重新分配，因为调整数组的大小计算开销很大。考虑下面代码：
 
 ```cpp
 #include <vector>
@@ -107,30 +103,28 @@ int main()
 }
 ```
 
-COPY
-
-This produces the following:
+打印结果：
 
 ```
 length: 5  capacity: 5
 length: 3  capacity: 5
 ```
 
-Note that although we assigned a smaller array to our vector, it did not reallocate its memory (the capacity is still 5). It simply changed its length, so it knows that only the first 3 elements are valid at this time.
+注意，虽然我们为vector分配了一个更小的数组，但它并没有重新分配它的内存(容量仍然是5)。它只是更改了它的长度，因此它知道此时只有前3个元素有效。
 
 ## 数组下标和 `at()`基于长度而非容量
 
-The range for the subscript operator ([]) and at() function is based on the vector’s length, not the capacity. Consider the array in the previous example, which has length 3 and capacity 5. What happens if we try to access the array element with index 4? The answer is that it fails, since 4 is greater than the length of the array.
+下标运算符和`at()`函数是基于vector的长度而非容量工作的。对于前例中的array，它的长度是3，容量是5。那么如果我们访问索引4的元素会发生什么呢？结果显然是会访问失败，因为4已经超过了数组的长度。
 
-Note that a vector will not resize itself based on a call to the subscript operator or at() function!
+注意：vector并不会因为下标运算符和`at()`的调用而调整大小！
 
 ## `std::vector` 的类栈行为
 
-If the subscript operator and at() function are based on the array length, and the capacity is always at least as large as the array length, why even worry about the capacity at all? Although std::vector can be used as a dynamic array, it can also be used as a stack. To do this, we can use 3 functions that match our key stack operations:
+如果下标操作符和`at()`函数是基于数组长度的，并且容量总是至少与数组长度一样大，为什么还要担心容量呢？虽然`std::vector`可以用作动态数组，但它也可以用作堆栈。为此，我们可以使用3个与栈操作相匹配的函数：
 
--   push_back() pushes an element on the stack.
--   back() returns the value of the top element on the stack.
--   pop_back() pops an element off the stack.
+-   `push_back()` ：元素压栈；
+-   `back(`) ：返回栈顶元素；
+-   `pop_back()` ：从栈中弹出元素。
 
 ```cpp
 #include <iostream>
@@ -149,7 +143,7 @@ int main()
 
 	printStack(stack);
 
-	stack.push_back(5); // push_back() pushes an element on the stack
+	stack.push_back(5); // push_back() 压栈
 	printStack(stack);
 
 	stack.push_back(3);
@@ -158,9 +152,9 @@ int main()
 	stack.push_back(2);
 	printStack(stack);
 
-	std::cout << "top: " << stack.back() << '\n'; // back() returns the last element
+	std::cout << "top: " << stack.back() << '\n'; // back() 返回最后一个元素
 
-	stack.pop_back(); // pop_back() pops an element off the stack
+	stack.pop_back(); // pop_back() 弹出元素
 	printStack(stack);
 
 	stack.pop_back();
@@ -188,9 +182,9 @@ top: 2
 (cap 3 length 0)
 ```
 
-Unlike array subscripts or at(), the stack-based functions _will_ resize the std::vector if necessary. In the example above, the vector gets resized 3 times (from a capacity of 0 to 1, 1 to 2, and 2 to 3).
+和下标运算符和 `at()` 不同，栈操作函数会在需要时调整 `std::vector` 的大小，在这个例子中。vector 的大小被调整了3次(capacity 从 0 到 1， 1 到 2，2 到 3)。
 
-Because resizing the vector is expensive, we can tell the vector to allocate a certain amount of capacity up front using the reserve() function:
+因为调整vector的大小代价很大，所以我们可以使用`reserve()`函数预先告诉vector分配一定量的容量：
 
 ```cpp
 #include <vector>

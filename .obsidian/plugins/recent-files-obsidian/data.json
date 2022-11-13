@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "12-2-the-stack-and-the-heap",
       "path": "docs/12-2-the-stack-and-the-heap.md"
     },
@@ -29,10 +37,6 @@
       "path": "docs/segment.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "12-8-lambda-captures",
       "path": "docs/12-8-lambda-captures.md"
     },
@@ -47,10 +51,6 @@
     {
       "basename": "12-5-command-line-arguments",
       "path": "docs/12-5-command-line-arguments.md"
-    },
-    {
-      "basename": "12-3-std-vector-capacity-and-stack-behavior",
-      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
     },
     {
       "basename": "12-1-function-pointers",
