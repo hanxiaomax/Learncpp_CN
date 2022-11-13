@@ -250,9 +250,11 @@ COPY
 
 Output
 
+```
 0
 1
 2
+```
 
 If we had used `auto` for the type of `fn`, the caller of the function wouldn’t know what parameters and return type `fn` needs to have. This limitation was lifted in C++20 when abbreviated function templates were added.
 
@@ -262,7 +264,7 @@ Furthermore, because they are actually templates, functions with `auto` parame
 
 	Use `auto` when initializing variables with lambdas, and `std::function` if you can’t initialize the variable with the lambda.
 
-Generic lambdas
+## Generic lambdas
 
 For the most part, lambda parameters work by the same rules as regular function parameters.
 
@@ -270,9 +272,9 @@ One notable exception is that since C++14 we’re allowed to use `auto` for pa
 
 Because lambdas with one or more `auto` parameter can potentially work with a wide variety of types, they are called generic lambdas.
 
-For advanced readers
+!!! info "扩展阅读"
 
-When used in the context of a lambda, `auto` is just a shorthand for a template parameter.
+    When used in the context of a lambda, `auto` is just a shorthand for a template parameter.
 
 Let’s take a look at a generic lambda:
 
@@ -370,7 +372,7 @@ There are 2 months with 5 letters
 
 In this example, using `auto` would infer a type of `const char*`. C-style strings aren’t easy to work with (apart from using `operator[]`). In this case, we prefer to explicitly define the parameter as a `std::string_view`, which allows us to work with the underlying data much more easily (e.g. we can ask the string view for its length, even if the user passed in a C-style array).
 
-Generic lambdas and static variables
+## Generic lambdas and static variables
 
 One thing to be aware of is that a unique lambda will be generated for each different type that `auto` resolves to. The following example shows how one generic lambda turns into two distinct lambdas:
 
@@ -406,11 +408,13 @@ COPY
 
 Output
 
+```
 0: hello
 1: world
 0: 1
 1: 2
 2: ding dong
+```
 
 In the above example, we define a lambda and then call it with two different parameters (a string literal parameter, and an integer parameter). This generates two different versions of the lambda (one with a string literal parameter, and one with an integer parameter).
 
@@ -418,7 +422,7 @@ Most of the time, this is inconsequential. However, note that if the generic lam
 
 We can see this in the example above, where each type (string literals and integers) has its own unique count! Although we only wrote the lambda once, two lambdas were generated -- and each has its own version of `callCount`. To have a shared counter between the two generated lambdas, we’d have to define a global variable or a `static` local variable outside of the lambda. As you know from previous lessons, both global- and static local variables can cause problems and make it more difficult to understand code. We’ll be able to avoid those variables after talking about lambda captures in the next lesson.
 
-Return type deduction and trailing return types
+## Return type deduction and trailing return types
 
 If return type deduction is used, a lambda’s return type is deduced from the `return`-statements inside the lambda, and all return statements in the lambda must return the same type (otherwise the compiler won’t know which one to prefer).
 
@@ -478,9 +482,9 @@ COPY
 
 That way, if you ever decide to change the return type, you (usually) only need to change the lambda’s return type, and not touch the lambda body.
 
-Standard library function objects
+## Standard library function objects
 
-For common operations (e.g. addition, negation, or comparison) you don’t need to write your own lambdas, because the standard library comes with many basic callable objects that can be used instead. These are defined in the [<functional>](https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects) header.
+For common operations (e.g. addition, negation, or comparison) you don’t need to write your own lambdas, because the standard library comes with many basic callable objects that can be used instead. These are defined in the [`<functional>`](https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects) header.
 
 In the following example:
 
@@ -517,7 +521,9 @@ COPY
 
 Output
 
+```
 99 90 80 40 13 5
+```
 
 Instead of converting our `greater` function to a lambda (which would obscure its meaning a bit), we can instead use `std::greater`:
 
@@ -549,9 +555,11 @@ COPY
 
 Output
 
+```
 99 90 80 40 13 5
+```
 
-Conclusion
+## 小结
 
 Lambdas and the algorithm library may seem unnecessarily complicated when compared to a solution that uses a loop. However, this combination can allow some very powerful operations in just a few lines of code, and can be more readable than writing your own loops. On top of that, the algorithm library features powerful and easy-to-use parallelism, which you won’t get with loops. Upgrading source code that uses library functions is easier than upgrading code that uses loops.
 
