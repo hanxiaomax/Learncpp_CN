@@ -315,8 +315,8 @@
 
 ## 22. std 字符串  
 
-- [[22-1-std-string-and-std-wstring]]
-- [[22-2-std-string-construction-and-destruction]]
+- [[22-1-std-string-and-std-wstring|22.1 - std::string 和 std::wstring]]
+- [[22-2-std-string-construction-and-destruction|22.2 - std-string的构造和析构]]
 - [[22-3-std-string-length-and-capacity]]
 - [[22-4-std-string-character-access-and-conversion-to-C-style-arrays]]
 - [[22-5-std-string-assignment-and-swapping]]

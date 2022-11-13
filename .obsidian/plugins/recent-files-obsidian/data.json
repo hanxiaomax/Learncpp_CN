@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "22-3-std-string-length-and-capacity",
+      "path": "docs/22-3-std-string-length-and-capacity.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "22-2-std-string-construction-and-destruction",
+      "path": "docs/22-2-std-string-construction-and-destruction.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
@@ -191,14 +199,6 @@
     {
       "basename": "11-2-Arrays-Part-II",
       "path": "docs/11-2-Arrays-Part-II.md"
-    },
-    {
-      "basename": "16-6-container-classes",
-      "path": "docs/16-6-container-classes.md"
-    },
-    {
-      "basename": "16-5-dependencies",
-      "path": "docs/16-5-dependencies.md"
     }
   ],
   "omittedPaths": [],
