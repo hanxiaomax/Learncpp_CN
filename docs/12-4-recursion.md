@@ -146,22 +146,20 @@ sumTo(5) returns sumTo(4) + 5, which is 10 + 5 = 15.
 
 ## 递归算法
 
-使用递归函数解决问题的思路如下：首先找到问题子集的解(递归地)，然后修改子解以得到解。在上述算法中，sumTo(value)首先求解sumTo(value-1)，然后将变量value的值相加，求出sumTo(value)的解。
+使用递归函数解决问题的思路如下：首先找到问题子集的解(递归地)，然后修改子问题的解以得到问题的解。在上述算法中，`sumTo(value)`首先求解`sumTo(value-1)`，然后将变量`value`的值相加，求出`sumTo(value)`的解。
 
-Recursive functions typically solve a problem by first finding the solution to a subset of the problem (recursively), and then modifying that sub-solution to get to a solution. In the above algorithm, sumTo(value) first solves sumTo(value-1), and then adds the value of variable value to find the solution for sumTo(value).
+在许多递归算法中，一些输入会得到很简单的输出。例如，`sumTo(1)`的输出为1(你可以在头脑中计算)，并且没有必要再进一步递归了。这种情况称为——基本条件。基本条件通常作为算法的终止条件。通过考虑输入0、1、" "、"或null的输出，通常可以识别为基本条件。
 
-In many recursive algorithms, some inputs produce trivial outputs. For example, sumTo(1) has the trivial output 1 (you can calculate this in your head), and does not benefit from further recursion. Inputs for which an algorithm trivially produces an output is called a **base case**. Base cases act as termination conditions for the algorithm. Base cases can often be identified by considering the output for an input of 0, 1, “”, ”, or null.
+## 斐波那契数列
 
-**Fibonacci numbers**
+最著名的数学递归算法之一是斐波那契数列。斐波那契数列出现在自然界的许多地方，如树木的分枝、贝壳的螺旋形、菠萝的果实、不卷曲的蕨类叶子和松果的排列。
 
-One of the most famous mathematical recursive algorithms is the Fibonacci sequence. Fibonacci sequences appear in many places in nature, such as branching of trees, the spiral of shells, the fruitlets of a pineapple, an uncurling fern frond, and the arrangement of a pine cone.
-
-Here is a picture of a Fibonacci spiral:  
+这是一张斐波那契螺旋图:
 ![](https://www.learncpp.com/images/CppTutorial/Section7/Fibonacci.png?ezimgfmt=rs:802x497/rscb2/ng:webp/ngcb2)
 
-Each of the Fibonacci numbers is the length of the side of the square that the number appears in.
+每一个斐波那契数列都是该数列所在正方形的边长。
 
-Fibonacci numbers are defined mathematically as:
+斐波那契数列在数学上定义为:
 
 ```
 F(n) =
@@ -171,7 +169,8 @@ F(n) =
 f(n-1) + f(n-2) if n > 1
 ```
 
-Consequently, it’s rather simple to write a (not very efficient) recursive function to calculate the nth Fibonacci number:
+
+因此，编写一个(不是很高效的)递归函数来计算第n个斐波那契数是相当简单的:
 
 ```cpp
 #include <iostream>
@@ -195,19 +194,19 @@ int main()
 }
 ```
 
-COPY
+运行该程序会产生以下结果:
 
-Running the program produces the following result:
-
+```
 0 1 1 2 3 5 8 13 21 34 55 89 144
+```
 
-Which you will note are exactly the numbers that appear in the Fibonacci spiral diagram.
+你会注意到，这正是斐波那契螺旋图中出现的数字。
 
 ## 记忆化算法
 
-The above recursive Fibonacci algorithm isn’t very efficient, in part because each call to a Fibonacci non-base case results in two more Fibonacci calls. This produces an exponential number of function calls (in fact, the above example calls fibonacci() 1205 times!). There are techniques that can be used to reduce the number of calls necessary. One technique, called **memoization**, caches the results of expensive function calls so the result can be returned when the same input occurs again.
+上面的递归斐波那契算法不是很高效，部分原因是每次调用一个斐波那契都会导致另外两个斐波那契调用。这将产生指数级的函数调用次数(实际上，上面的示例调用`fibonacci()` 1205次!)有一些方法可以用来减少必要的调用次数。一种是叫做**记忆化**的技术，将开销很大的函数调用的结果缓存起来，以便在再次出现相同的输入时返回结果。
 
-Here’s a memoized version of the recursive Fibonacci algorithm:
+下面是一个记忆版的递归斐波那契算法:
 
 ```cpp
 #include <iostream>
@@ -238,24 +237,23 @@ int main()
 }
 ```
 
-COPY
 
-This memoized version makes 35 function calls, which is much better than the 1205 of the original algorithm.
+这个记忆版本进行了35次函数调用，比原始算法的1205次好得多。
 
 ## 递归和迭代
 
-One question that is often asked about recursive functions is, “Why use a recursive function if you can do many of the same tasks iteratively (using a _for loop_ or _while loop_)?”. It turns out that you can always solve a recursive problem iteratively -- however, for non-trivial problems, the recursive version is often much simpler to write (and read). For example, while it’s possible to write the Fibonacci function iteratively, it’s a little more difficult! (Try it!)
+关于递归函数经常被问到的一个问题是，“如果可以迭代地执行许多相同的任务(使用for 循环或while循环)，为什么还要使用递归函数呢?”事实证明，你总是可以迭代地解决递归问题——然而，对于复杂的问题，递归版本的编写(和读取)通常要简单得多。例如，虽然可以迭代地编写Fibonacci函数，但这有点困难!(试一试!)
 
-Iterative functions (those using a for-loop or while-loop) are almost always more efficient than their recursive counterparts. This is because every time you call a function there is some amount of overhead that takes place in pushing and popping stack frames. Iterative functions avoid this overhead.
+迭代函数(使用for循环或while循环的函数)几乎总是比递归函数更高效。这是因为每次调用函数时，栈帧的推入和弹出都会产生一定的开销。迭代函数避免了这种开销。
 
-That’s not to say iterative functions are always a better choice. Sometimes the recursive implementation of a function is so much cleaner and easier to follow that incurring a little extra overhead is more than worth it for the benefit in maintainability, particularly if the algorithm doesn’t need to recurse too many times to find a solution.
+这并不是说迭代函数总是更好的选择。有时候，函数的递归实现是如此的简洁和容易遵循，以至于为了可维护性的好处，产生一点额外的开销是值得的，特别是在算法不需要多次递归来找到一个解决方案的情况下。
 
-In general, recursion is a good choice when most of the following are true:
+在满足下面条件的时候，使用递归通常是更好的选择：
 
--   The recursive code is much simpler to implement.
--   The recursion depth can be limited (e.g. there’s no way to provide an input that will cause it to recurse down 100,000 levels).
--   The iterative version of the algorithm requires managing a stack of data.
--   This isn’t a performance-critical section of code.
+-   当递归代码更容易编写时；
+-   递归的深度有限(例如，实际上没办法编写十万层递归的算法）；
+-   当迭代版本的算法需要手工管理栈时；
+-   性能要求 isn’t a performance-critical section of code.
 
 However, if the recursive algorithm is simpler to implement, it may make sense to start recursively and then optimize to an iterative algorithm later.
 
