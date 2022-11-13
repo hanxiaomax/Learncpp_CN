@@ -321,8 +321,17 @@ nav:
       - "21-2-STL-containers-overview.md"
       - "21-3-STL-iterators-overview.md"
       - "21-4-STL-algorithms-overview.md"
-    # - 22. std字符串: index.md
-    # - 23. 输入输出: index.md
+    - 22. std字符串: 
+      - "22-1-std-string-and-std-wstring.md"
+      - "22-2-std-string-construction-and-destruction.md"
+      - "22-3-std-string-length-and-capacity.md"
+      - "22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
+      - "22-5-std-string-assignment-and-swapping.md"
+      - "22-6-std-string-appending.md"
+      - "22-7-std-string-inserting.md"
+    - 23. 输入输出:
+      - "23-1-Input-and-output-IO-streams.md"
+      - ""
     # - 24. 其他话题: index.md
     # - 25. C++标准更新: index.md
     # - O1. 位运算: index.md

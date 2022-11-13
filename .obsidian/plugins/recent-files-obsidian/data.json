@@ -1,48 +1,80 @@
 {
   "recentFiles": [
     {
-      "basename": "23-5-stream-states-and-input-validation",
-      "path": "docs/23-5-stream-states-and-input-validation.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
-    },
-    {
-      "basename": "23-4-stream-classes-for-strings",
-      "path": "docs/23-4-stream-classes-for-strings.md"
     },
     {
       "basename": "23-2-Input-with-istream",
       "path": "docs/23-2-Input-with-istream.md"
     },
     {
-      "basename": "23-3-output-with-ostream-and-ios",
-      "path": "docs/23-3-output-with-ostream-and-ios.md"
-    },
-    {
-      "basename": "22-2-std-string-construction-and-destruction",
-      "path": "docs/22-2-std-string-construction-and-destruction.md"
-    },
-    {
-      "basename": "22-3-std-string-length-and-capacity",
-      "path": "docs/22-3-std-string-length-and-capacity.md"
-    },
-    {
-      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
-      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
-    },
-    {
-      "basename": "22-6-std-string-appending",
-      "path": "docs/22-6-std-string-appending.md"
+      "basename": "23-1-Input-and-output-IO-streams",
+      "path": "docs/23-1-Input-and-output-IO-streams.md"
     },
     {
       "basename": "22-7-std-string-inserting",
       "path": "docs/22-7-std-string-inserting.md"
     },
     {
+      "basename": "22-6-std-string-appending",
+      "path": "docs/22-6-std-string-appending.md"
+    },
+    {
       "basename": "22-5-std-string-assignment-and-swapping",
       "path": "docs/22-5-std-string-assignment-and-swapping.md"
+    },
+    {
+      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
+      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
+    },
+    {
+      "basename": "22-3-std-string-length-and-capacity",
+      "path": "docs/22-3-std-string-length-and-capacity.md"
+    },
+    {
+      "basename": "22-2-std-string-construction-and-destruction",
+      "path": "docs/22-2-std-string-construction-and-destruction.md"
+    },
+    {
+      "basename": "22-1-std-string-and-std-wstring",
+      "path": "docs/22-1-std-string-and-std-wstring.md"
+    },
+    {
+      "basename": "O-4-converting-between-binary-and-decimal",
+      "path": "docs/O-4-converting-between-binary-and-decimal.md"
+    },
+    {
+      "basename": "O-2-bitwise-operators",
+      "path": "docs/O-2-bitwise-operators.md"
+    },
+    {
+      "basename": "O-3-bit-manipulation-with-bitwise-operators-and-bit-masks",
+      "path": "docs/O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md"
+    },
+    {
+      "basename": "O-1-bit-flags-and-bit-manipulation-via-std-bitset",
+      "path": "docs/O-1-bit-flags-and-bit-manipulation-via-std-bitset.md"
+    },
+    {
+      "basename": "23-7-random-file-IO",
+      "path": "docs/23-7-random-file-IO.md"
+    },
+    {
+      "basename": "23-6-basic-file-IO",
+      "path": "docs/23-6-basic-file-IO.md"
+    },
+    {
+      "basename": "23-5-stream-states-and-input-validation",
+      "path": "docs/23-5-stream-states-and-input-validation.md"
+    },
+    {
+      "basename": "23-4-stream-classes-for-strings",
+      "path": "docs/23-4-stream-classes-for-strings.md"
+    },
+    {
+      "basename": "23-3-output-with-ostream-and-ios",
+      "path": "docs/23-3-output-with-ostream-and-ios.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
@@ -167,38 +199,6 @@
     {
       "basename": "direct-initialization",
       "path": "docs/direct-initialization.md"
-    },
-    {
-      "basename": "16-7-std-initializer_list",
-      "path": "docs/16-7-std-initializer_list.md"
-    },
-    {
-      "basename": "initializer-list",
-      "path": "docs/initializer-list.md"
-    },
-    {
-      "basename": "list assignment operator",
-      "path": "docs/list assignment operator.md"
-    },
-    {
-      "basename": "list-initialization",
-      "path": "docs/list-initialization.md"
-    },
-    {
-      "basename": "括号初始化",
-      "path": "docs/括号初始化.md"
-    },
-    {
-      "basename": "aggregate-data-type",
-      "path": "docs/aggregate-data-type.md"
-    },
-    {
-      "basename": "aggregate-initialization",
-      "path": "docs/aggregate-initialization.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

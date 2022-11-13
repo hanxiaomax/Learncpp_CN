@@ -1,6 +1,6 @@
 ---
-title: 23.5 - 使用ostream和ios处理输出
-alias: 23.5 - 使用ostream和ios处理输出
+title: 23.5 - stream 状态和输入验证
+alias: 23.5 - stream 状态和输入验证
 origin: /stream-states-and-input-validation/
 origin_title: "23.5 — Stream states and input validation"
 time: 2022-9-7
@@ -72,7 +72,7 @@ std::ispunct(int)	Returns non-zero if the parameter is neither alphanumeric nor 
 std::isspace(int)	Returns non-zero if the parameter is whitespace
 std::isxdigit(int)	Returns non-zero if the parameter is a hexadecimal digit (0-9, a-f, A-F)
 
-String validation
+## String validation
 
 Let’s do a simple case of string validation by asking the user to enter their name. Our validation criteria will be that the user enters only alphabetic characters or spaces. If anything else is encountered, the input will be rejected.
 
@@ -376,7 +376,3 @@ COPY
 Whether this approach is more or less work than straight numeric extraction depends on your validation parameters and restrictions.
 
 As you can see, doing input validation in C++ is a lot of work. Fortunately, many such tasks (e.g. doing numeric validation as a string) can be easily turned into functions that can be reused in a wide variety of situations.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/basic-file-io/)

@@ -329,9 +329,9 @@
 - [[23-2-Input-with-istream|23.2 - 使用istream处理输入]]
 - [[23-3-output-with-ostream-and-ios|23.2 - 使用ostream和ios处理输出]]
 - [[23-4-stream-classes-for-strings|23.4 - 用于字符串的 stream 类]]
-- [[23-5-stream-states-and-input-validation]]
-- [[23-6-basic-file-IO]]
-- [[23-7-random-file-IO]]
+- [[23-5-stream-states-and-input-validation|23.5 - stream 状态和输入验证]]
+- [[23-6-basic-file-IO|23.6 - 基本文件输入输出]]
+- [[23-7-random-file-IO|23.7 - 随机文件输入输出]]
 
 
 ## A. 其他话题
@@ -339,3 +339,8 @@
 ## B. C++标准更新
 
 ## O1. 位运算
+
+- [[O-1-bit-flags-and-bit-manipulation-via-std-bitset|O.1 - bit标记和通过std::bitset操作bit]]
+- [[O-2-bitwise-operators|O.2 - bit标记和通过std::bitset操作bit]]
+- [[O-3-bit-manipulation-with-bitwise-operators-and-bit-masks|O.3 - 使用位运算符和掩码操作位]]
+- - [[O-4-converting-between-binary-and-decimal|O.4 - 二进制和十进制转换]]
