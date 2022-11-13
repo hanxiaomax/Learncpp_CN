@@ -1,16 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "22-3-std-string-length-and-capacity",
-      "path": "docs/22-3-std-string-length-and-capacity.md"
+      "basename": "23-5-stream-states-and-input-validation",
+      "path": "docs/23-5-stream-states-and-input-validation.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
+      "basename": "23-4-stream-classes-for-strings",
+      "path": "docs/23-4-stream-classes-for-strings.md"
+    },
+    {
+      "basename": "23-2-Input-with-istream",
+      "path": "docs/23-2-Input-with-istream.md"
+    },
+    {
+      "basename": "23-3-output-with-ostream-and-ios",
+      "path": "docs/23-3-output-with-ostream-and-ios.md"
+    },
+    {
       "basename": "22-2-std-string-construction-and-destruction",
       "path": "docs/22-2-std-string-construction-and-destruction.md"
+    },
+    {
+      "basename": "22-3-std-string-length-and-capacity",
+      "path": "docs/22-3-std-string-length-and-capacity.md"
+    },
+    {
+      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
+      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
+    },
+    {
+      "basename": "22-6-std-string-appending",
+      "path": "docs/22-6-std-string-appending.md"
+    },
+    {
+      "basename": "22-7-std-string-inserting",
+      "path": "docs/22-7-std-string-inserting.md"
+    },
+    {
+      "basename": "22-5-std-string-assignment-and-swapping",
+      "path": "docs/22-5-std-string-assignment-and-swapping.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
@@ -167,38 +199,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "uniform-initialization",
-      "path": "docs/uniform-initialization.md"
-    },
-    {
-      "basename": "11-11-Dynamic-memory-allocation-with-new-and-delete",
-      "path": "docs/11-11-Dynamic-memory-allocation-with-new-and-delete.md"
-    },
-    {
-      "basename": "list-constructor",
-      "path": "docs/list-constructor.md"
-    },
-    {
-      "basename": "13-6-constructor-member-initializer-lists",
-      "path": "docs/13-6-constructor-member-initializer-lists.md"
-    },
-    {
-      "basename": "13-7-non-static-member-initialization",
-      "path": "docs/13-7-non-static-member-initialization.md"
-    },
-    {
-      "basename": "13-5-constructors",
-      "path": "docs/13-5-constructors.md"
-    },
-    {
-      "basename": "member-initializer-list",
-      "path": "docs/member-initializer-list.md"
-    },
-    {
-      "basename": "11-2-Arrays-Part-II",
-      "path": "docs/11-2-Arrays-Part-II.md"
     }
   ],
   "omittedPaths": [],

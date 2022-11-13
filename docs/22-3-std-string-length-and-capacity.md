@@ -1,6 +1,6 @@
 ---
-title: 22.3 - 标准库
-alias: 22.3 - 标准库
+title: 22.3 - std-string 的长度和容量
+alias: 22.3 - std-string 的长度和容量
 origin: /stdstring-length-and-capacity/
 origin_title: "22.3 — std::string length and capacity"
 time: 2022-8-15
@@ -226,6 +226,8 @@ COPY
 
 The result of this program will change each time, but here’s the output from one execution:
 
+```
 wzpzujwuaokbakgijqdawvzjqlgcipiiuuxhyfkdppxpyycvytvyxwqsbtielxpy
+```
 
 Rather than having to reallocate s multiple times, we set the capacity once and then fill the string up. This can make a huge difference in performance when constructing large strings via concatenation.

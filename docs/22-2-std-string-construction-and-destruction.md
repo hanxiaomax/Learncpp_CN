@@ -1,6 +1,6 @@
 ---
-title: 22.2 - std-string的构造和析构
-alias: 22.2 - std-string的构造和析构
+title: 22.2 - std-string 的构造和析构
+alias: 22.2 - std-string 的构造和析构
 origin: /stdstring-construction-and-destruction/
 origin_title: "22.2 — std::string construction and destruction"
 time: 2022-9-16

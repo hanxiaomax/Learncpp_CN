@@ -316,19 +316,19 @@
 ## 22. std 字符串  
 
 - [[22-1-std-string-and-std-wstring|22.1 - std::string 和 std::wstring]]
-- [[22-2-std-string-construction-and-destruction|22.2 - std-string的构造和析构]]
-- [[22-3-std-string-length-and-capacity]]
-- [[22-4-std-string-character-access-and-conversion-to-C-style-arrays]]
-- [[22-5-std-string-assignment-and-swapping]]
-- [[22-6-std-string-appending]]
-- [[22-7-std-string-inserting]]
+- [[22-2-std-string-construction-and-destruction|22.2 - std-string 的构造和析构]]
+- [[22-3-std-string-length-and-capacity|22.3 - std-string 的长度和容量]]
+- [[22-4-std-string-character-access-and-conversion-to-C-style-arrays|22.4 - std-string 字符访问和C字符数组转换]]
+- [[22-5-std-string-assignment-and-swapping|22.5 - std-string 赋值和交换]]
+- [[22-6-std-string-appending|22.6 - std-string 追加]]
+- [[22-7-std-string-inserting|22.7 - std-string 插入]]
 
 
 ## 23. 输入输出
-- [[23-1-Input-and-output-IO-streams]]
-- [[23-2-Input-with-istream]]
-- [[23-3-output-with-ostream-and-ios]]
-- [[23-4-stream-classes-for-strings]]
+- [[23-1-Input-and-output-IO-streams|23.1 - 输入输出流]]
+- [[23-2-Input-with-istream|23.2 - 使用istream处理输入]]
+- [[23-3-output-with-ostream-and-ios|23.2 - 使用ostream和ios处理输出]]
+- [[23-4-stream-classes-for-strings|23.4 - 用于字符串的 stream 类]]
 - [[23-5-stream-states-and-input-validation]]
 - [[23-6-basic-file-IO]]
 - [[23-7-random-file-IO]]
