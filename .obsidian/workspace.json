@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "c09f1193deb5ded9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/O-4-converting-between-binary-and-decimal.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +96,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/O-4-converting-between-binary-and-decimal.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -131,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/O-4-converting-between-binary-and-decimal.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,8 +136,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "c09f1193deb5ded9",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/O-4-converting-between-binary-and-decimal.md",
     "docs/MOC.md",
     "docs/O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md",
     "docs/O-1-bit-flags-and-bit-manipulation-via-std-bitset.md",
@@ -160,7 +147,6 @@
     "docs/23-6-basic-file-IO.md",
     "docs/23-5-stream-states-and-input-validation.md",
     "docs/23-4-stream-classes-for-strings.md",
-    "docs/23-3-output-with-ostream-and-ios.md",
-    "docs/23-2-Input-with-istream.md"
+    "docs/23-3-output-with-ostream-and-ios.md"
   ]
 }

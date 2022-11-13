@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "O-4-converting-between-binary-and-decimal",
-      "path": "docs/O-4-converting-between-binary-and-decimal.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "O-4-converting-between-binary-and-decimal",
+      "path": "docs/O-4-converting-between-binary-and-decimal.md"
     },
     {
       "basename": "O-3-bit-manipulation-with-bitwise-operators-and-bit-masks",
