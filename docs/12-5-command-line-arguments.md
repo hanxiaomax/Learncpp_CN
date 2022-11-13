@@ -46,12 +46,6 @@ int main()
 
 考虑这样一种情况，你希望为给定目录中的所有图像文件创建缩略图。你会怎么做?只要目录中有图像，你就可以多次运行这个程序，手动键入每个文件名。然而，如果有数百个图像，这可能需要一整天！一个好的解决方案是编写一个程序循环遍历目录中的每个文件名，为每个文件调用一次`Thumbnail`。
 
-Now consider the case where you’re running a website, and you want to have your website create a Thumbnail every time a user uploads an image to your website. This program isn’t set up to accept input from the web, so how would the uploader enter a filename in this case? A good solution here would be to have your web server call Thumbnail automatically after upload.
-
-In both of these cases, we really need a way for an external _program_ to pass in the filename as input to our Thumbnail program when Thumbnail is launched, rather than having Thumbnail wait for the _user_ to enter the filename after it has started.
-
-**Command line arguments** are optional string arguments that are passed by the operating system to the program when it is launched. The program can then use them as input (or ignore them). Much like function parameters provide a way for a function to provide inputs to another function, command line arguments provide a way for people or programs to provide inputs to a _program_.
-
 现在考虑这样一个情况，你正在运营一个网站，你想让你的网站在用户每次上传图片到你的网站时创建一个缩略图。这个程序没有设置为接受来自网络的输入，那么在这种情况下，上传者如何输入文件名呢?一个好的解决方案是让你的web服务器在上传后自动调用`Thumbnail`。
 
 在这两种情况下，我们确实需要一种方法，让一个外部程序在`Thumbnail`启动时将文件名作为输入传递给`Thumbnail`程序，而不是让`Thumbnail`在启动后等待用户输入文件名。
@@ -61,21 +55,30 @@ In both of these cases, we really need a way for an external _program_ to pass
 
 ## 传递命令行参数
 
-Executable programs can be run on the command line by invoking them by name. For example, to run the executable file “WordCount” that is located in the current directory of a Windows machine, you could type:
+可执行程序可以通过名称在命令行中运行。例如，要运行Windows机器当前目录下的可执行文件" WordCount "，你可以输入:
 
+```
 WordCount
+```
 
-The equivalent command line on a Unix-based OS would be:
+在UNIX类的操作系统上使用：
 
+```
 ./WordCount
+```
 
-In order to pass command line arguments to WordCount, we simply list the command line arguments after the executable name:
+给 `WordCount` 传递参数很简单，只要将参数放在程序名后面即可：
 
+
+```
 WordCount Myfile.txt
+```
 
-Now when WordCount is executed, Myfile.txt will be provided as a command line argument. A program can have multiple command line arguments, separated by spaces:
+当 `WordCount` 执行时 `Myfile.txt` 会作为命令行实参传入，如果程序需要多个参数，则需要将它们用空格隔开：
 
+```
 WordCount Myfile.txt Myotherfile.txt
+```
 
 If you are running your program from an IDE, the IDE should provide a way to enter command line arguments.
 
