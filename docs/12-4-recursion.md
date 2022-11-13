@@ -118,7 +118,7 @@ int sumTo(int sumto)
 }
 ```
 
-仅通过观察递归程序通常很难理解递归调用。当我们调用具有特定值的递归函数时，看看会发生什么通常是有指导意义的。让我们看看当我们调用这个参数为`sumto = 5`的函数时会发生什么。
+仅通过观察递归程序通常很难理解递归调用。当我们调用具有特定值的递归函数时，看看会发生什么通常是有指导意义的。让我们看看当我们调用这个参数为`sumto = 5` 的函数时会发生什么。
 
 ```
 sumTo(5) called, 5 <= 1 is false, so we return sumTo(4) + 5.
@@ -138,13 +138,15 @@ sumTo(4) returns sumTo(3) + 4, which is 6 + 4 = 10.
 sumTo(5) returns sumTo(4) + 5, which is 10 + 5 = 15.
 ```
 
-At this point, it’s easier to see that we’re adding numbers between 1 and the value passed in (both inclusive).
+这里可以很明显的看出，每次相加值会递增1，然后再加上传入的值。
 
-Because recursive functions can be hard to understand by looking at them, good comments are particularly important.
+因为单看递归函数可能很难理解，所以好的注释特别重要。
 
-Note that in the above code, we recurse with value `sumto - 1` rather than `--sumto`. We do this because `operator--` has a side effect, and using a variable that has a side effect applied more than once in a given expression will result in undefined behavior. Using `sumto - 1` avoids side effects, making sumto safe to use more than once in the expression.
+注意，在上面的例子中，我们使用了 `sumto - 1` 而不是 `--sumto`。这是因为 `operator--` 是有副作用的，而在一个表达式中多次使用一个有副作用的变量会导致[[undefined-behavior|未定义行为]]。使用 `sumto - 1` 可以避免副作用，使得 `sumto` 可以安全地在一个表达式中多次使用。
 
 ## 递归算法
+
+使用递归函数解决问题的思路如下：首先找到问题子集的解(递归地)，然后修改子解以得到解。在上述算法中，sumTo(value)首先求解sumTo(value-1)，然后将变量value的值相加，求出sumTo(value)的解。
 
 Recursive functions typically solve a problem by first finding the solution to a subset of the problem (recursively), and then modifying that sub-solution to get to a solution. In the above algorithm, sumTo(value) first solves sumTo(value-1), and then adds the value of variable value to find the solution for sumTo(value).
 
