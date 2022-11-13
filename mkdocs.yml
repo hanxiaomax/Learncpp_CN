@@ -215,7 +215,7 @@ nav:
       - "11-8-Pointers-and-arrays.md"
       - "11-13-For-each-loops.md"
       - "11-14-Void-pointers.md"
-      - "11-x-Chapter-11-comprehensive-quiz.md"
+      - "11-x-chapter-11-comprehensive-quiz.md"
     - 12. 函数: 
       - "12-1-function-pointers.md"
       - "12-2-the-stack-and-the-heap.md"

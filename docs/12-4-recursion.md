@@ -9,7 +9,7 @@ tags:
 - recursion
 ---
 
-A **recursive function** in C++ is a function that calls itself. Here is an example of a poorly-written recursive function:
+在 C++ 中，自己调用自己的函数称为递归函数。下面这个例子是一个递归函数的例子（不佳的写法）：
 
 ```cpp
 #include <iostream>
@@ -28,11 +28,10 @@ int main()
 }
 ```
 
-COPY
 
-When countDown(5) is called, “push 5” is printed, and countDown(4) is called. countDown(4) prints “push 4” and calls countDown(3). countDown(3) prints “push 3” and calls countDown(2). The sequence of countDown(n) calling countDown(n-1) is repeated indefinitely, effectively forming the recursive equivalent of an infinite loop.
+当 `countDown(5)` 被调用时，打印了 “push 5”。然后 `countDown(4)` 被调用，它打印 “push 4” 并调用 `countDown(3)`。`countDown(3)` 会打印 “push 3” 并调用 `countDown(2)`。`countDown(n)` 调用的一系列 `countDown(n-1)`，形成的递归调用等价于一个死循环。
 
-In lesson [12.2 -- The stack and the heap](https://www.learncpp.com/cpp-tutorial/the-stack-and-the-heap/), you learned that every function call causes data to be placed on the call stack. Because the countDown() function never returns (it just calls countDown() again), this information is never being popped off the stack! Consequently, at some point, the computer will run out of stack memory, stack overflow will result, and the program will crash or terminate. On the author’s machine, this program counted down to -11732 before terminating!
+在 [[12-2-the-stack-and-the-heap|12.2 - 栈和堆]] 中我们学过，所有的函数调用都需要将相应的数据放在调用栈上。因为 `countDown()` 函数从不返回（只是不断地调用 `countDown()`)，因此相关的函数信息从来没有被从栈上弹出过。因此，在到达某个极限时，计算机就会耗尽栈上内存，进而发生堆栈溢出，cheer being popped off the stack! Consequently, at some point, the computer will run out of stack memory, stack overflow will result, and the program will crash or terminate. On the author’s machine, this program counted down to -11732 before terminating!
 
 ## 递归的终止条件
 

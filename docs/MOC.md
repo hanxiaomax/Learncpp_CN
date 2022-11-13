@@ -198,7 +198,7 @@
 - [[11-17-An-introduction-to-std-vector|11.17 - 动态数组 std::vector 简介]]
 - [[11-18-Introduction-to-iterators|11.18 - 迭代器简介]]
 - [[11-19-Introduction-to-standard-library-algorithms|11.19 - 标准库算法简介]]
-- [[11-x-Chapter-11-comprehensive-quiz|11.x - 小结与测试 - 数组、字符串和动态分配]]
+- [[11-x-chapter-11-comprehensive-quiz|11.x - 小结与测试 - 数组、字符串和动态分配]]
 
 ## 12. 函数 
 
@@ -212,7 +212,7 @@
 - [[12-8-lambda-captures|12.8 - lambda 闭包]]
 - [[12-x-chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
 
-## 13. 面向对象编程基础✅ 
+## 13. 面向对象编程基础 ✅ 
 
 - [[13-1-welcome-to-object-oriented-programming|13.1 - 欢迎来到面向对象的世界]]
 - [[13-2-classes-and-class-members|13.2 - 类和类成员]]
