@@ -200,7 +200,7 @@
 - [[11-19-Introduction-to-standard-library-algorithms|11.19 - 标准库算法简介]]
 - [[11-x-chapter-11-comprehensive-quiz|11.x - 小结与测试 - 数组、字符串和动态分配]]
 
-## 12. 函数 
+## 12. 函数 ✅ 
 
 - [[12-1-function-pointers|12.1 - 函数指针]]
 - [[12-2-the-stack-and-the-heap|12.2 - 栈和堆]]

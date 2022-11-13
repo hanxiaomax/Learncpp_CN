@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "122aa6da4f62a60b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +96,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -131,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,17 +136,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "122aa6da4f62a60b",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/MOC.md",
+    "docs/12-8-lambda-captures.md",
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
     "docs/12-5-command-line-arguments.md",
     "docs/11-x-chapter-11-comprehensive-quiz.md",
-    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/12-4-recursion.md",
     "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md",
-    "docs/12-3-std-vector-capacity-and-stack-behavior.md",
-    "docs/12-2-the-stack-and-the-heap.md",
-    "docs/stack-overflow.md"
+    "docs/12-3-std-vector-capacity-and-stack-behavior.md"
   ]
 }

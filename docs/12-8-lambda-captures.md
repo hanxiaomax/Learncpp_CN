@@ -228,9 +228,11 @@ COPY
 
 Output:
 
+```
 Pew! 9 shot(s) left.
 Pew! 8 shot(s) left.
 10 shot(s) left
+```
 
 While this now compiles, there’s still a logic error. What happened? When the lambda was called, the lambda captured a _copy_ of `ammo`. When the lambda decremented `ammo` from `10` to `9` to `8`, it decremented its own copy, not the original value.
 
