@@ -331,10 +331,19 @@ nav:
       - "22-7-std-string-inserting.md"
     - 23. 输入输出:
       - "23-1-Input-and-output-IO-streams.md"
-      - ""
+      - "23-2-Input-with-istream.md"
+      - "23-3-output-with-ostream-and-ios.md"
+      - "23-4-stream-classes-for-strings.md"
+      - "23-5-stream-states-and-input-validation.md"
+      - "23-6-basic-file-IO.md"
+      - "23-7-random-file-IO.md"
     # - 24. 其他话题: index.md
     # - 25. C++标准更新: index.md
-    # - O1. 位运算: index.md
+    - O1. 位运算:
+      - "O-1-bit-flags-and-bit-manipulation-via-std-bitset.md"
+      - "O-2-bitwise-operators.md"
+      - "O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md"
+      - "O-4-converting-between-binary-and-decimal.md"
   - 翻译约定: 翻译约定.md
   - 索引: tags.md
   - 关于本站: index.md

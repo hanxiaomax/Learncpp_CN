@@ -341,6 +341,6 @@
 ## O1. 位运算
 
 - [[O-1-bit-flags-and-bit-manipulation-via-std-bitset|O.1 - bit标记和通过std::bitset操作bit]]
-- [[O-2-bitwise-operators|O.2 - bit标记和通过std::bitset操作bit]]
+- [[O-2-bitwise-operators|O.2 - 位运算符]]
 - [[O-3-bit-manipulation-with-bitwise-operators-and-bit-masks|O.3 - 使用位运算符和掩码操作位]]
 - - [[O-4-converting-between-binary-and-decimal|O.4 - 二进制和十进制转换]]

@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#string-construction" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              21.1 - 标准库
+              22.2 - std-string 的构造和析构
             
           </span>
         </div>
@@ -183,6 +188,8 @@
         
   
   
+    
+  
 
 
   
@@ -194,7 +201,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../1-1-Statements-and-the-structure-of-a-program/" class="md-tabs__link">
+      <a href="../1-1-Statements-and-the-structure-of-a-program/" class="md-tabs__link md-tabs__link--active">
         课程内容
       </a>
     </li>
@@ -304,15 +311,23 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
+        
+          
+        
+          
+        
+          
         
           
         
@@ -5057,6 +5072,452 @@
 
             
           
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_22" type="checkbox" id="__nav_2_22" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_22">
+          22. std字符串
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="22. std字符串" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_22">
+          <span class="md-nav__icon md-icon"></span>
+          22. std字符串
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-1-std-string-and-std-wstring/" class="md-nav__link">
+        22.1 - std::string 和 std::wstring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            22.2 - std-string 的构造和析构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        22.2 - std-string 的构造和析构
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#string-construction" class="md-nav__link">
+    String construction**
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructing-strings-from-numbers" class="md-nav__link">
+    Constructing strings from numbers**
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-strings-to-numbers" class="md-nav__link">
+    Converting strings to numbers**
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-3-std-string-length-and-capacity/" class="md-nav__link">
+        22.3 - std-string 的长度和容量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-4-std-string-character-access-and-conversion-to-C-style-arrays/" class="md-nav__link">
+        22.4 - std-string 字符访问和C字符数组转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-5-std-string-assignment-and-swapping/" class="md-nav__link">
+        22.5 - std-string 赋值和交换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-6-std-string-appending/" class="md-nav__link">
+        22.6 - std-string 追加
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-7-std-string-inserting/" class="md-nav__link">
+        22.7 - std-string 插入
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_23" type="checkbox" id="__nav_2_23" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_23">
+          23. 输入输出
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="23. 输入输出" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_23">
+          <span class="md-nav__icon md-icon"></span>
+          23. 输入输出
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-1-Input-and-output-IO-streams/" class="md-nav__link">
+        23.1 - 输入输出流
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-2-Input-with-istream/" class="md-nav__link">
+        23.2 - 使用istream处理输入
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-3-output-with-ostream-and-ios/" class="md-nav__link">
+        23.3 - 使用ostream和ios处理输出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-4-stream-classes-for-strings/" class="md-nav__link">
+        23.4 - 用于字符串的 stream 类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-5-stream-states-and-input-validation/" class="md-nav__link">
+        23.5 - stream 状态和输入验证
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-6-basic-file-IO/" class="md-nav__link">
+        23.6 - 基本文件输入输出
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-7-random-file-IO/" class="md-nav__link">
+        23.7 - 随机文件输入输出
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_24" type="checkbox" id="__nav_2_24" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_24">
+          O1. 位运算
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="O1. 位运算" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_24">
+          <span class="md-nav__icon md-icon"></span>
+          O1. 位运算
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../O-1-bit-flags-and-bit-manipulation-via-std-bitset/" class="md-nav__link">
+        O.1 - bit标记和通过std::bitset操作bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../O-2-bitwise-operators/" class="md-nav__link">
+        O.2 - 位运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../O-3-bit-manipulation-with-bitwise-operators-and-bit-masks/" class="md-nav__link">
+        O.3 - 使用位运算符和掩码操作位
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../O-4-converting-between-binary-and-decimal/" class="md-nav__link">
+        O.4 - 二进制和十进制转换
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -5126,6 +5587,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#string-construction" class="md-nav__link">
+    String construction**
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructing-strings-from-numbers" class="md-nav__link">
+    Constructing strings from numbers**
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-strings-to-numbers" class="md-nav__link">
+    Converting strings to numbers**
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5153,29 +5643,253 @@
 
   <!-- <div style="background: #efefef;">
     <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//the-standard-library/">原文链接: 21.1 — The Standard Library</a>
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//stdstring-construction-and-destruction/">原文链接: 22.2 — std::string construction and destruction</a>
     </div>
     <div >
         <a target="_blank" href="https://www.learncpp.com/author/Alex/">作者: ALEX</a>
     </div>
     <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//the-standard-library/">更新时间: 2022-7-23</a>
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//stdstring-construction-and-destruction/">更新时间: 2022-9-16</a>
     </div>
   </div> -->
   <div class="origin-link">
     <span class="twemoji">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.3 208-208 208zm-.9-288c21.06 0 40.92 8.312 55.83 23.38 9.375 9.344 24.53 9.5 33.97.156 9.406-9.344 9.469-24.53.156-33.97-24-24.22-55.95-37.56-89.95-37.56 0 0 .032 0 0 0-33.97 0-65.95 13.34-89.95 37.56-49.44 49.88-49.44 131 0 180.9 24 24.22 55.98 37.56 89.95 37.56.032 0 0 0 0 0 34 0 65.95-13.34 89.95-37.56 9.312-9.438 9.25-24.62-.156-33.97-9.438-9.312-24.59-9.219-33.97.156-14.91 15.06-34.77 23.38-55.83 23.38 0 0 .031 0 0 0-21.09 0-40.95-8.312-55.89-23.38-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/></svg> 
     </span>
-    <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//the-standard-library/">English
+    <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//stdstring-construction-and-destruction/">English
     </a>
 </div>
   
 
-  <h1>21.1 - 标准库</h1>
+  <h1>22.2 - std-string 的构造和析构</h1>
 
 <details class="note">
 <summary>关键点速记</summary>
 </details>
+<p>In this lesson, we’ll take a look at how to construct objects of std::string, as well as how to create strings from numbers and vice-versa.</p>
+<h2 id="string-construction">String construction**</h2>
+<p>The string classes have a number of constructors that can be used to create strings. We’ll take a look at each of them here.</p>
+<p>Note: string::size_type resolves to size_t, which is the same unsigned integral type that is returned by the sizeof operator. The actual size of size_t depending on the environment. For the purposes of this tutorial, envision it as an unsigned int.</p>
+<p><strong>string::string()</strong></p>
+<ul>
+<li>This is the default constructor. It creates an empty string.</li>
+</ul>
+<p>Sample code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sSource</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sSource</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<p><strong>string::string(const string&amp; strString)</strong></p>
+<ul>
+<li>This is the copy constructor. This constructor creates a new string as a copy of strString.</li>
+</ul>
+<p>Sample code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sSource</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;my string&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sOutput</span><span class="p">{</span><span class="w"> </span><span class="n">sSource</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOutput</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>my string
+</code></pre></div></td></tr></table></div>
+<p><strong><code>string::string(const string&amp; strString, size_type unIndex)</code></strong><br />
+<strong>string::string(const string&amp; strString, size_type unIndex, size_type unLength)</strong></p>
+<ul>
+<li>This constructor creates a new string that contains at most unLength characters from strString, starting with index unIndex. If a NULL is encountered, the string copy will end, even if unLength has not been reached.</li>
+<li>If no unLength is supplied, all characters starting from unIndex will be used.</li>
+<li>If unIndex is larger than the size of the string, the out_of_range exception will be thrown.</li>
+</ul>
+<p>Sample code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sSource</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;my string&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sOutput</span><span class="p">{</span><span class="w"> </span><span class="n">sSource</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOutput</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">sOutput2</span><span class="p">(</span><span class="n">sSource</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOutput2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>string
+stri
+</code></pre></div></td></tr></table></div>
+<p><strong><code>string::string(const char* szCString)</code></strong></p>
+<ul>
+<li>This constructor creates a new string from the C-style string szCString, up to but not including the NULL terminator.</li>
+<li>If the resulting size exceeds the maximum string length, the length_error exception will be thrown.</li>
+<li><strong>Warning:</strong> szCString must not be NULL.</li>
+</ul>
+<p>Sample code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">szSource</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;my string&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sOutput</span><span class="p">{</span><span class="w"> </span><span class="n">szSource</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOutput</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>my string
+</code></pre></div></td></tr></table></div>
+<p><strong><code>string::string(const char* szCString, size_type unLength)</code></strong></p>
+<ul>
+<li>This constructor creates a new string from the first unLength chars from the C-style string szCString.</li>
+<li>If the resulting size exceeds the maximum string length, the length_error exception will be thrown.</li>
+<li><strong>Warning:</strong> For this function only, NULLs are not treated as end-of-string characters in szCString! This means it is possible to read off the end of your string if unLength is too big. Be careful not to overflow your string buffer!</li>
+</ul>
+<p>Sample code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">szSource</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;my string&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">sOutput</span><span class="p">(</span><span class="n">szSource</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOutput</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>my s
+</code></pre></div></td></tr></table></div>
+<p><strong>string::string(size_type nNum, char chChar)</strong></p>
+<ul>
+<li>This constructor creates a new string initialized by nNum occurances of the character chChar.</li>
+<li>If the resulting size exceeds the maximum string length, the length_error exception will be thrown.</li>
+</ul>
+<p>Sample code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">sOutput</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;Q&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOutput</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>QQQQ
+</code></pre></div></td></tr></table></div>
+<p><strong><code>template string::string(InputIterator itBeg, InputIterator itEnd)</code></strong></p>
+<ul>
+<li>This constructor creates a new string initialized by the characters of range <code>[itBeg, itEnd)</code>.</li>
+<li>If the resulting size exceeds the maximum string length, the length_error exception will be thrown.</li>
+</ul>
+<p>No sample code for this one. It’s obscure enough you’ll probably never use it.</p>
+<p><strong><code>string::~string()</code></strong>
+<strong>String destruction</strong></p>
+<ul>
+<li>This is the destructor. It destroys the string and frees the memory.</li>
+</ul>
+<p>No sample code here either since the destructor isn’t called explicitly.</p>
+<h2 id="constructing-strings-from-numbers">Constructing strings from numbers**</h2>
+<p>One notable omission in the std::string class is the lack of ability to create strings from numbers. For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sFour</span><span class="p">{</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Produces the following error:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>c:vcprojectstest2test2test.cpp(10) : error C2664: &#39;std::basic_string&lt;_Elem,_Traits,_Ax&gt;::basic_string(std::basic_string&lt;_Elem,_Traits,_Ax&gt;::_Has_debug_it)&#39; : cannot convert parameter 1 from &#39;int&#39; to &#39;std::basic_string&lt;_Elem,_Traits,_Ax&gt;::_Has_debug_it&#39;
+</code></pre></div></td></tr></table></div>
+<p>Remember what I said about the string classes producing horrible looking errors? The relevant bit of information here is:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cannot convert parameter 1 from &#39;int&#39; to &#39;std::basic_string
+</code></pre></div></td></tr></table></div>
+<p>In other words, it tried to convert your int into a string but failed.</p>
+<p>The easiest way to convert numbers into strings is to involve the <code>std::ostringstream</code> class. <code>std::ostringstream</code> is already set up to accept input from a variety of sources, including characters, numbers, strings, etc… It is also capable of outputting strings (either via the extraction <code>operator&gt;&gt;</code>, or via the <code>str()</code> function). For more information on <code>std::ostringstream</code>, see <a href="https://www.learncpp.com/cpp-tutorial/stream-classes-for-strings/">23.4 -- Stream classes for strings</a>.</p>
+<p>Here’s a simple solution for creating std::string from various types of inputs:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ToString</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">tX</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="w"> </span><span class="n">oStream</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">oStream</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">tX</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">oStream</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Here’s some sample code to test it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sFour</span><span class="p">{</span><span class="w"> </span><span class="n">ToString</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sSixPointSeven</span><span class="p">{</span><span class="w"> </span><span class="n">ToString</span><span class="p">(</span><span class="mf">6.7</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sA</span><span class="p">{</span><span class="w"> </span><span class="n">ToString</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sFour</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sSixPointSeven</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sA</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>And the output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>4
+6.7
+A
+</code></pre></div></td></tr></table></div>
+<p>Note that this solution omits any error checking. It is possible that inserting tX into oStream could fail. An appropriate response would be to throw an exception if the conversion fails.</p>
+<div class="admonition info">
+<p class="admonition-title">相关内容</p>
+<p>The standard library also contains a function named <code>std::to_string()</code> that can be used to convert chars and numbers into a std::string. While this is a simpler solution for basic cases, the output of std::to_string may differ from the output of std::cout or out ToString() function above. Some of these differences are currently documented <a href="https://en.cppreference.com/w/cpp/string/basic_string/to_string">here</a>.</p>
+</div>
+<h2 id="converting-strings-to-numbers">Converting strings to numbers**</h2>
+<p>Similar to the solution above:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">FromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sString</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tX</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="nf">iStream</span><span class="p">(</span><span class="n">sString</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="n">iStream</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">tX</span><span class="p">).</span><span class="n">fail</span><span class="p">();</span><span class="w"> </span><span class="c1">// extract value into tX, return success or not</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Here’s some sample code to test it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">dX</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FromString</span><span class="p">(</span><span class="s">&quot;3.4&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dX</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dX</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FromString</span><span class="p">(</span><span class="s">&quot;ABC&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dX</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dX</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>And the output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>3.4
+</code></pre></div></td></tr></table></div>
+<p>Note that the second conversion failed and returned false.</p>
 
 
             </article>
@@ -5190,6 +5904,41 @@
       </main>
       
         <footer class="md-footer">
+    
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../22-1-std-string-and-std-wstring/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 22.1 - std::string 和 std::wstring" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                22.1 - std::string 和 std::wstring
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../22-3-std-string-length-and-capacity/" class="md-footer__link md-footer__link--next" aria-label="Next: 22.3 - std-string 的长度和容量" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                22.3 - std-string 的长度和容量
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
     <div class="md-footer-meta md-typeset">
       <div class="md-footer-meta__inner md-grid">

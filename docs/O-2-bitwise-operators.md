@@ -1,6 +1,6 @@
 ---
-title: O.2 - bit标记和通过std::bitset操作bit
-alias: O.2 - bit标记和通过std::bitset操作bit
+title: O.2 - 位运算符
+alias: O.2 - 位运算符
 origin: /bitwise-operators/
 origin_title: "O.2 — Bitwise operators"
 time: 2022-8-9
