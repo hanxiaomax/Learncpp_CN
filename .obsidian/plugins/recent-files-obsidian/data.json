@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "12-3-std-vector-capacity-and-stack-behavior",
-      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12-4-recursion",
+      "path": "docs/12-4-recursion.md"
+    },
+    {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
     },
     {
       "basename": "12-2-the-stack-and-the-heap",
@@ -71,14 +79,6 @@
     {
       "basename": "callback functions",
       "path": "docs/callback functions.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-4-recursion",
-      "path": "docs/12-4-recursion.md"
     },
     {
       "basename": "function-pointer",

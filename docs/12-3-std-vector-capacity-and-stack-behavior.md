@@ -201,7 +201,7 @@ int main()
 {
 	std::vector<int> stack{};
 
-	stack.reserve(5); // Set the capacity to (at least) 5
+	stack.reserve(5); // 将容量设置为5
 
 	printStack(stack);
 
@@ -229,9 +229,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序输出：
 
 ```
 (cap 5 length 0)
@@ -244,11 +242,11 @@ top: 2
 (cap 5 length 0)
 ```
 
-We can see that the capacity was preset to 5 and didn’t change over the lifetime of the program.
+我们可以看到容量被预设为5，并且在程序的生命周期中没有变化。
 
 ## Vectors 可能会分配多余的容量
 
-When a vector is resized, the vector may allocate more capacity than is needed. This is done to provide some “breathing room” for additional elements, to minimize the number of resize operations needed. Let’s take a look at this:
+当调整一个vector的大小时，该vector可能会分配比所需更多的容量。这样做是为了为其他元素提供一些“喘息的空间”，从而最小化所需的调整操作的数量。让我们来看看这个：
 
 ```cpp
 #include <vector>
@@ -266,15 +264,13 @@ int main()
 }
 ```
 
-COPY
-
-On the author’s machine, this prints:
+在笔者机器上打印：
 
 ```
 size: 5  cap: 5
 size: 6  cap: 7
 ```
 
-When we used push_back() to add a new element, our vector only needed room for 6 elements, but allocated room for 7. This was done so that if we were to push_back() another element, it wouldn’t need to resize immediately.
+当我们使用`push_back()`添加一个新元素时，我们的向量只需要6个元素的空间，但分配了7个空间。这样做的目的是，如果我们要`push_back()`另一个元素，它不需要立即调整大小。
 
-If, when, and how much additional capacity is allocated is left up to the compiler implementer.
+是否、何时以及分配多少额外的容量取决于编译器实现者。
