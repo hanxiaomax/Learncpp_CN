@@ -21,7 +21,7 @@ int main()
 ```
 
 
-注意，这里的 `main()` 函数没有[[parameters|形参]]。但是很多程序其实需要基于输入来判断如何开始工作。例如，如果我们编写了一个读取图片作为缩略图的程序 `Thumbnail` 。那么 `Thumbnail` 应该读取哪个图片并处理呢？ which image to read and process? The user has to have some way of telling the program which file to open. To do this, you might take this approach:
+注意，这里的 `main()` 函数没有[[parameters|形参]]。但是很多程序其实需要基于输入来判断如何开始工作。例如，如果我们编写了一个读取图片作为缩略图的程序 `Thumbnail` 。那么 `Thumbnail` 应该读取哪个图片并处理呢？用户必须有办法告诉程序应该打开哪个文件，此时我们可以这样做：
 
 ```cpp
 // Program: Thumbnail
@@ -40,19 +40,24 @@ int main()
 }
 ```
 
-COPY
+但是，这么做有一个潜在的问题。每次程序运行时，都必须等待用户的输入才能继续工作。如果我们每次都是手动启动该程序的话，这似乎也没什么问题。但是很多时候这么做是不合适的，例如你需要对多个文件执行该程序或者从另外一个程序中调用该程序。
 
-However, there is a potential problem with this approach. Every time the program is run, the program will wait for the user to enter input. This may not be a problem if you’re manually running this program once from the command line. But it is problematic in other cases, such as when you want to run this program on many files, or have this program run by another program.
+让我们进一步研究这些案例。
 
-Let’s look into these cases further.
-
-Consider the case where you want to create thumbnails for all the image files in a given directory. How would you do that? You could run this program as many times as there are images in the directory, typing out each filename by hand. However, if there were hundreds of images, this could take all day! A good solution here would be to write a program that loops through each filename in the directory, calling Thumbnail once for each file.
+考虑这样一种情况，你希望为给定目录中的所有图像文件创建缩略图。你会怎么做?只要目录中有图像，你就可以多次运行这个程序，手动键入每个文件名。然而，如果有数百个图像，这可能需要一整天！一个好的解决方案是编写一个程序循环遍历目录中的每个文件名，为每个文件调用一次`Thumbnail`。
 
 Now consider the case where you’re running a website, and you want to have your website create a Thumbnail every time a user uploads an image to your website. This program isn’t set up to accept input from the web, so how would the uploader enter a filename in this case? A good solution here would be to have your web server call Thumbnail automatically after upload.
 
 In both of these cases, we really need a way for an external _program_ to pass in the filename as input to our Thumbnail program when Thumbnail is launched, rather than having Thumbnail wait for the _user_ to enter the filename after it has started.
 
 **Command line arguments** are optional string arguments that are passed by the operating system to the program when it is launched. The program can then use them as input (or ignore them). Much like function parameters provide a way for a function to provide inputs to another function, command line arguments provide a way for people or programs to provide inputs to a _program_.
+
+现在考虑这样一个情况，你正在运营一个网站，你想让你的网站在用户每次上传图片到你的网站时创建一个缩略图。这个程序没有设置为接受来自网络的输入，那么在这种情况下，上传者如何输入文件名呢?一个好的解决方案是让你的web服务器在上传后自动调用`Thumbnail`。
+
+在这两种情况下，我们确实需要一种方法，让一个外部程序在`Thumbnail`启动时将文件名作为输入传递给`Thumbnail`程序，而不是让`Thumbnail`在启动后等待用户输入文件名。
+
+**命令行参数**是可选的字符串参数，在程序启动时由操作系统传递给它。然后程序可以使用它们作为输入(或忽略它们)。就像函数形参为函数提供了向另一个函数提供输入的方法一样，命令行实参为人们或程序提供了向程序提供输入的方法。
+
 
 ## 传递命令行参数
 
