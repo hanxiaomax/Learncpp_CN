@@ -31,13 +31,13 @@ int main()
 
 当 `countDown(5)` 被调用时，打印了 “push 5”。然后 `countDown(4)` 被调用，它打印 “push 4” 并调用 `countDown(3)`。`countDown(3)` 会打印 “push 3” 并调用 `countDown(2)`。`countDown(n)` 调用的一系列 `countDown(n-1)`，形成的递归调用等价于一个死循环。
 
-在 [[12-2-the-stack-and-the-heap|12.2 - 栈和堆]] 中我们学过，所有的函数调用都需要将相应的数据放在调用栈上。因为 `countDown()` 函数从不返回（只是不断地调用 `countDown()`)，因此相关的函数信息从来没有被从栈上弹出过。因此，在到达某个极限时，计算机就会耗尽栈上内存，进而发生堆栈溢出，cheer being popped off the stack! Consequently, at some point, the computer will run out of stack memory, stack overflow will result, and the program will crash or terminate. On the author’s machine, this program counted down to -11732 before terminating!
+在 [[12-2-the-stack-and-the-heap|12.2 - 栈和堆]] 中我们学过，所有的函数调用都需要将相应的数据放在调用栈上。因为 `countDown()` 函数从不返回（只是不断地调用 `countDown()`)，因此相关的函数信息从来没有被从栈上弹出过。因此，在到达某个极限时，计算机就会耗尽栈上内存，进而发生堆栈溢出，程序崩溃。在笔者的机器上，程序会在count到-11732时崩溃！
 
 ## 递归的终止条件
 
-Recursive function calls generally work just like normal function calls. However, the program above illustrates the most important difference with recursive functions: you must include a recursive termination condition, or they will run “forever” (actually, until the call stack runs out of memory). A **recursive termination** is a condition that, when met, will cause the recursive function to stop calling itself.
+递归函数调用的工作方式通常与普通函数调用一样。然而，上面的程序说明了递归函数最重要的区别：递归函数必须包含递归终止条件，否则它们将“永远”运行(实际上，直到调用堆栈耗尽内存)。递归终止条件——当满足该条件时，将导致递归函数停止调用自身。
 
-Recursive termination generally involves using an if statement. Here is our function redesigned with a termination condition (and some extra output):
+递归终止条件通常涉及使用if语句。下面是我们的函数重新设计了一个终止条件(和一些额外的输出)：
 
 ```cpp
 #include <iostream>
@@ -59,9 +59,7 @@ int main()
 }
 ```
 
-COPY
-
-Now when we run our program, countDown() will start by outputting the following:
+运行程序，`countDown()` 会开始打印：
 
 ```
 push 5
@@ -71,7 +69,7 @@ push 2
 push 1
 ```
 
-If you were to look at the call stack at this point, you would see the following:
+如果你现在查看调用栈，你会看到以下内容：
 
 ```
 countDown(1)
@@ -82,9 +80,9 @@ countDown(5)
 main()
 ```
 
-Because of the termination condition, countDown(1) does not call countDown(0) -- instead, the “if statement” does not execute, so it prints “pop 1” and then terminates. At this point, countDown(1) is popped off the stack, and control returns to countDown(2). countDown(2) resumes execution at the point after countDown(1) was called, so it prints “pop 2” and then terminates. The recursive function calls get subsequently popped off the stack until all instances of countDown have been removed.
+由于终止条件存在，`countDown(1)`不调用`countDown(0)`——相反，" if语句"不执行，因此它打印" pop 1 "，然后终止。此时，从栈中弹出`countDown(1)`，控制返回`countDown(2)`。`countDown(2)`在`countDown(1)`被调用后继续执行，因此它打印" pop 2 "然后终止。递归函数调用随后从堆栈中弹出，直到所有的`countDown`实例都被删除。
 
-Thus, this program in total outputs:
+因此，程序打印的完整结果如下：
 
 ```
 push 5
@@ -99,11 +97,12 @@ pop 4
 pop 5
 ```
 
-It’s worth noting that the “push” outputs happen in forward order since they occur before the recursive function call. The “pop” outputs occur in reverse order because they occur after the recursive function call, as the functions are being popped off the stack (which happens in the reverse order that they were put on).
+值得注意的是，“push”输出是按前向顺序发生的，因为它们发生在递归函数调用之前。“pop”输出以相反的顺序出现，因为它们出现在递归函数调用之后，因为函数从栈中弹出(其发生的顺序与放入它们的顺序相反)。
+
 
 ## 更有用的例子
 
-Now that we’ve discussed the basic mechanics of recursive function calls, let’s take a look at another recursive function that is slightly more typical:
+现在我们已经讨论了递归函数调用的基本机制，让我们看看另一个更典型的递归函数:
 
 ```cpp
 // return the sum of all the integers between 1 (inclusive) and sumto (inclusive)
@@ -119,9 +118,7 @@ int sumTo(int sumto)
 }
 ```
 
-COPY
-
-Recursive programs are often hard to figure out just by looking at them. It’s often instructive to see what happens when we call a recursive function with a particular value. So let’s see what happens when we call this function with parameter sumto = 5.
+仅通过观察递归程序通常很难理解递归调用。当我们调用具有特定值的递归函数时，看看会发生什么通常是有指导意义的。让我们看看当我们调用这个参数为`sumto = 5`的函数时会发生什么。
 
 ```
 sumTo(5) called, 5 <= 1 is false, so we return sumTo(4) + 5.
@@ -131,7 +128,7 @@ sumTo(2) called, 2 <= 1 is false, so we return sumTo(1) + 2.
 sumTo(1) called, 1 <= 1 is true, so we return 1.  This is the termination condition.
 ```
 
-Now we unwind the call stack (popping each function off the call stack as it returns):
+现在我们展开调用栈(在返回时将每个函数从调用栈中弹出):
 
 ```
 sumTo(1) returns 1.
