@@ -14,7 +14,7 @@ tags:
 
 The iostream library is fairly complex -- so we will not be able to cover it in its entirety in these tutorials. However, we will show you the most commonly used functionality. In this section, we will look at various aspects of the input class (istream).
 
-**The extraction operator**
+## The extraction operator**
 
 As seen in many lessons now, we can use the extraction operator (>>) to read information from an input stream. C++ has predefined extraction operations for all of the built-in data types, and you’ve already seen how you can [overload the extraction operator](https://www.learncpp.com/cpp-tutorial/93-overloading-the-io-operators/) for your own classes.
 
@@ -41,7 +41,7 @@ COPY
 
 This program will now only read the first 9 characters out of the stream (leaving room for a terminator). Any remaining characters will be left in the stream until the next extraction.
 
-**Extraction and whitespace**
+## Extraction and whitespace**
 
 As a reminder, the extraction operator skips whitespace (blanks, tabs, and newlines).
 
@@ -184,7 +184,7 @@ int main()
 
 COPY
 
-**A special version of getline() for std::string**
+## A special version of getline() for std::string**
 
 There is a special version of getline() that lives outside the istream class that is used for reading in variables of type std::string. This special version is not a member of either ostream or istream, and is included in the string header. Here is an example of its use:
 

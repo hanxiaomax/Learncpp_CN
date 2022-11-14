@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "23-1-Input-and-output-IO-streams",
-      "path": "docs/23-1-Input-and-output-IO-streams.md"
+      "basename": "23-2-Input-with-istream",
+      "path": "docs/23-2-Input-with-istream.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "23-1-Input-and-output-IO-streams",
+      "path": "docs/23-1-Input-and-output-IO-streams.md"
+    },
+    {
+      "basename": "insertion-operator",
+      "path": "docs/insertion-operator.md"
+    },
+    {
+      "basename": "standard-stream",
+      "path": "docs/standard-stream.md"
+    },
+    {
+      "basename": "extraction-operator",
+      "path": "docs/extraction-operator.md"
     },
     {
       "basename": "O-4-converting-between-binary-and-decimal",
@@ -43,10 +59,6 @@
     {
       "basename": "23-3-output-with-ostream-and-ios",
       "path": "docs/23-3-output-with-ostream-and-ios.md"
-    },
-    {
-      "basename": "23-2-Input-with-istream",
-      "path": "docs/23-2-Input-with-istream.md"
     },
     {
       "basename": "22-7-std-string-inserting",
@@ -187,18 +199,6 @@
     {
       "basename": "callback functions",
       "path": "docs/callback functions.md"
-    },
-    {
-      "basename": "function-pointer",
-      "path": "docs/function-pointer.md"
-    },
-    {
-      "basename": "初始化",
-      "path": "docs/初始化.md"
-    },
-    {
-      "basename": "direct-initialization",
-      "path": "docs/direct-initialization.md"
     }
   ],
   "omittedPaths": [],

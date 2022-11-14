@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "64ff90f44969bd4e",
+            "id": "93bf0f5925101903",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/23-1-Input-and-output-IO-streams.md",
+                "file": "docs/23-2-Input-with-istream.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/23-1-Input-and-output-IO-streams.md"
+                "file": "docs/23-2-Input-with-istream.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/23-1-Input-and-output-IO-streams.md",
+                "file": "docs/23-2-Input-with-istream.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "64ff90f44969bd4e",
+  "active": "93bf0f5925101903",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/23-2-Input-with-istream.md",
     "docs/23-1-Input-and-output-IO-streams.md",
+    "docs/insertion-operator.md",
+    "docs/standard-stream.md",
+    "docs/extraction-operator.md",
     "docs/O-4-converting-between-binary-and-decimal.md",
     "docs/O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md",
     "docs/O-1-bit-flags-and-bit-manipulation-via-std-bitset.md",
-    "docs/O-2-bitwise-operators.md",
-    "docs/23-7-random-file-IO.md",
-    "docs/23-6-basic-file-IO.md",
-    "docs/23-5-stream-states-and-input-validation.md",
-    "docs/23-4-stream-classes-for-strings.md"
+    "docs/O-2-bitwise-operators.md"
   ]
 }

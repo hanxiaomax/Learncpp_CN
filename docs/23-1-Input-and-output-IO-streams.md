@@ -23,37 +23,34 @@ tags:
 
 你可能注意到的第二件事是“流(stream)”这个词被使用得非常频繁。在最基本的情况下，C++中的I/O是通过流实现的。抽象地说，一个**流**只是一个可以按顺序访问的字节序列。随着时间的推移，流可能产生或消耗无限数量的数据。
 
-Typically we deal with two different types of streams. **Input streams** are used to hold input from a data producer, such as a keyboard, a file, or a network. For example, the user may press a key on the keyboard while the program is currently not expecting any input. Rather than ignore the users keypress, the data is put into an input stream, where it will wait until the program is ready for it.
+通常情况下我们需要处理两种类型的流。**输入流**用来保存从数据生产者得到的输入，例如键盘、文件或网络。举例来说，用户可以通过按下键盘上的按键来产生输出（即便程序没有要求任何输入），该输入数据并没有被直接忽略，而是被送入了输入流中，它只是在那里等待程序去读取它。
 
-Conversely, **output streams** are used to hold output for a particular data consumer, such as a monitor, a file, or a printer. When writing data to an output device, the device may not be ready to accept that data yet -- for example, the printer may still be warming up when the program writes data to its output stream. The data will sit in the output stream until the printer begins consuming it.
+另一方面，**输出流**用于保存数据消费者需要的数据，例如显示器、文件或打印机。当向输出设备写数据时，该设备可能并没有准备好接收该数据——例如：当数据被写到输出流时，打印机的可能还在准备。数据就会在输出流中等待打印机去消费它。
 
-Some devices, such as files and networks, are capable of being both input and output sources.
+有些设备，如文件和网络，可以同时作为输入和输出源。
 
-The nice thing about streams is the programmer only has to learn how to interact with the streams in order to read and write data to many different kinds of devices. The details about how the stream interfaces with the actual devices they are hooked up to is left up to the environment or operating system.
+流的好处是，程序员只需学习如何与流交互，以便向许多不同类型的设备读写数据。关于流如何与它们所连接的实际设备进行接口的细节由环境或操作系统决定。
 
-**Input/output in C++**
 
-Although the ios class is generally derived from ios_base, ios is typically the most base class you will be working directly with. The ios class defines a bunch of stuff that is common to both input and output streams. We’ll deal with this stuff in a future lesson.
+## C++中的 Input/output 
 
-The **istream** class is the primary class used when dealing with input streams. With input streams, the **extraction operator (>>)** is used to remove values from the stream. This makes sense: when the user presses a key on the keyboard, the key code is placed in an input stream. Your program then extracts the value from the stream so it can be used.
+尽管`ios`类通常派生自`ios_base`，但`ios`通常是你会直接使用的最上层的基类。`ios`类定义了一堆对输入和输出流都通用的东西。我们将在以后的课程中使用这些内容。
 
-The **ostream** class is the primary class used when dealing with output streams. With output streams, the **insertion operator (<<)** is used to put values in the stream. This also makes sense: you insert your values into the stream, and the data consumer (e.g. monitor) uses them.
+`istream` 类是处理输入流时需要用到的主要类。我们可以使用  [[extraction-operator|提取运算符>>]] 从流中提取值。当用户按键时，对应的数据会被放置在输入流中，此时你的程序可以从流中提取该值以便使用该数据。
 
-The **iostream** class can handle both input and output, allowing bidirectional I/O.
+`ostream` 类则是处理输出流的主要类。我们可以使用[[insertion-operator|插入运算符<<]] 流中插入数据。我们需要将数据插入流中，这样数据消费者（例如显示器）才能访问该数据。
 
-**Standard streams in C++**
+`iostream` 类可以处理输入和输出，实现双向 I/O.
 
-A **standard stream** is a pre-connected stream provided to a computer program by its environment. C++ comes with four predefined standard stream objects that have already been set up for your use. The first three, you have seen before:
+## C++ 中的标准流
 
-1.  **cin** -- an istream object tied to the standard input (typically the keyboard)
-2.  **cout** -- an ostream object tied to the standard output (typically the monitor)
-3.  **cerr** -- an ostream object tied to the standard error (typically the monitor), providing unbuffered output
-4.  **clog** -- an ostream object tied to the standard error (typically the monitor), providing buffered output
+[[standard-stream|标准流]]是系统环境提供给程序的预先连接好的流。C++有四个预定义的标准流对象，你可以直接使用它们，其中前三个你之前已经见过了：
 
-Unbuffered output is typically handled immediately, whereas buffered output is typically stored and written out as a block. Because clog isn’t used very often, it is often omitted from the list of standard streams.
+1.  `cin` -- 绑定到标准输入流(例如键盘)的 `istream`  对象；
+2. `cout` -- 绑定到标准输出流(通常是显示器)的 `ostream` 对象 ；
+3.  `cerr` -- 绑定到标准错误流(通常是显示器)的 `ostream` 对象，提供无缓冲输出；
+4.  `clog` -- 绑定到标准错误流(通常是显示器)的 `ostream` 对象，提供缓冲输出。
 
-In the next lesson, we’ll take a look at some more I/O related functionality in more detail.
+无缓冲输出通常立即处理，而缓冲输出通常作为块存储和写入。因为clog不经常使用，所以它经常从标准流列表中被省略。
 
-[
-
-](https://www.learncpp.com/cpp-tutorial/input-with-istream/)
+在下一课中，我们将更详细地了解更多与I/O相关的功能。
