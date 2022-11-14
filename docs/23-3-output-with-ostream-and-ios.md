@@ -11,47 +11,50 @@ tags:
 
 ??? note "关键点速记"
 
+	- 更改格式化的方式有两种，标记和manipulators。标记你可以将其看做是可以开关的布尔量。而manipulators则是放置在流中，可以修改输入输出的对象 。
+	- `setf()`和`unsetf()`分别用于设置和关闭标记
+	- 许多标志属于组，称为格式组。[[format-group|格式组]]是一组执行类似(有时互斥)格式化选项的标志，此时可以使用两个参数版本的`setf()`，并通过第二个参数指明组。此时组内其他标记会被自动关闭。
+
+
 本节课我们将介绍`iostream`的输出类`ostream`。
 
 ## 插入运算符
 
 [[insertion-operator|插入运算符]]用于向输出流插入数据。C++为所有的内建数据结构都预定义了插入运算符，我们也可以通过[[14-4-overloading-the-IO-operators|重载输入输出运算符]]为自定义的类提供插入运算符。
 
-在[[23-1-Input-and-output-IO-streams|23.1 - 输入输出流]]中我们介绍过， `istream` 和 `ostream` 都是从 `ios` 类派生来的。`ios` (和 `ios_base`) 类的一个功能就是控制输出dis to control the formatting options for output.
+在[[23-1-Input-and-output-IO-streams|23.1 - 输入输出流]]中我们介绍过， `istream` 和 `ostream` 都是从 `ios` 类派生来的。`ios` (和 `ios_base`) 类的一个功能就是控制输出的格式。
 
-## Formatting**
+## 格式化
 
-There are two ways to change the formatting options: flags, and manipulators. You can think of **flags** as boolean variables that can be turned on and off. **Manipulators** are objects placed in a stream that affect the way things are input and output.
+==更改格式化的方式有两种，标记和manipulators。标记你可以将其看做是可以开关的布尔量。而manipulators则是放置在流中，可以修改输入输出的对象 。==
 
-To switch a flag on, use the **setf()** function, with the appropriate flag as a parameter. For example, by default, C++ does not print a + sign in front of positive numbers. However, by using the std::ios::showpos flag, we can change this behavior:
+==设置一个标记可以使用 `setf()`函数并提供合适的标记作为参数。==例如，默认情况下C++并不会在正数前加一个+号。但是，使用 `std::ios::showpos` 标记就可以修改该行为：
 
 ```cpp
-std::cout.setf(std::ios::showpos); // turn on the std::ios::showpos flag
+std::cout.setf(std::ios::showpos); // 打开std::ios::showpos 标记
 std::cout << 27 << '\n';
 ```
 
-COPY
+输出结果如下：
 
-This results in the following output:
-
+```
 +27
+```
 
-It is possible to turn on multiple ios flags at once using the Bitwise OR (|) operator:
+我们也可以利用[[bitwise-or|按位或]]操作一次性打开多个 `ios` 标记 ：
 
 ```cpp
-std::cout.setf(std::ios::showpos | std::ios::uppercase); // turn on the std::ios::showpos and std::ios::uppercase flag
+std::cout.setf(std::ios::showpos | std::ios::uppercase); // 打开 std::ios::showpos 和 std::ios::uppercase 标记
 std::cout << 1234567.89f << '\n';
 ```
 
-COPY
-
-This outputs:
+输出结果：
 
 ```
 +1.23457E+06
 ```
 
-To turn a flag off, use the **unsetf()** function:
+关闭标记也很简单，使用 `unsetf()`函数即可：
 
 ```cpp
 std::cout.setf(std::ios::showpos); // turn on the std::ios::showpos flag
@@ -60,33 +63,29 @@ std::cout.unsetf(std::ios::showpos); // turn off the std::ios::showpos flag
 std::cout << 28 << '\n';
 ```
 
-COPY
-
-This results in the following output:
+输出结果如下：
 
 ```
 +27
 28
 ```
 
-There’s one other bit of trickiness when using setf() that needs to be mentioned. Many flags belong to groups, called format groups. A **format group** is a group of flags that perform similar (sometimes mutually exclusive) formatting options. For example, a format group named “basefield” contains the flags “oct”, “dec”, and “hex”, which controls the base of integral values. By default, the “dec” flag is set. Consequently, if we do this:
+在使用`setf()`时还有一个需要提及的小技巧。==许多标志属于组，称为格式组。[[format-group|格式组]]是一组执行类似(有时互斥)格式化选项的标志==。例如，名为“basefield”的格式组包含标志“oct”、“dec”和“hex”，它们控制整数值的基数。默认情况下，设置了“dec”标志。因此，如果我们这样做:
 
 ```cpp
-std::cout.setf(std::ios::hex); // try to turn on hex output
+std::cout.setf(std::ios::hex); // 尝试启动十六进制输出
 std::cout << 27 << '\n';
 ```
 
-COPY
-
-We get the following output:
+则输出结果为：
 
 ```
 27
 ```
 
-It didn’t work! The reason why is because setf() only turns flags on -- it isn’t smart enough to turn mutually exclusive flags off. Consequently, when we turned std::hex on, std::ios::dec was still on, and std::ios::dec apparently takes precedence. There are two ways to get around this problem.
+没有效果！这是因为 `setf()` 只能打开标记——但是它没有智能到懂得去关闭互斥的标记。因此，当 `std::ios::hex` 开启时， `std::ios::dec` 仍然是开启状态，由于它优先级更高，所以仍然是按照十进制输出的。有两个办法可以解决这个问题。
 
-First, we can turn off std::ios::dec so that only std::hex is set:
+第一种方法是关闭 `std::ios::dec` 并开启 `std::hex`：
 
 ```cpp
 std::cout.unsetf(std::ios::dec); // turn off decimal output
@@ -94,15 +93,13 @@ std::cout.setf(std::ios::hex); // turn on hexadecimal output
 std::cout << 27 << '\n';
 ```
 
-COPY
-
-Now we get output as expected:
+输出结果符合预期：
 
 ```
 1b
 ```
 
-The second way is to use a different form of setf() that takes two parameters: the first parameter is the flag to set, and the second is the formatting group it belongs to. When using this form of setf(), all of the flags belonging to the group are turned off, and only the flag passed in is turned on. For example:
+第二种方法是使用另一个版本的 `setf()` ，它有两个形参，第二个参数指明标记所属的[[format-group|格式组]]。当使用这个版本的 `setf()` 时，同组的其他标记都会被自动关闭，只有我们设置的标记会被打开。例如：
 
 ```cpp
 // Turn on std::ios::hex as the only std::ios::basefield flag

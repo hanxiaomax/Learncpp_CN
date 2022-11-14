@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "a0a63a5991dea216",
+            "id": "ed7f6b9636224573",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "a0a63a5991dea216",
+  "active": "ed7f6b9636224573",
   "lastOpenFiles": [
-    "docs/MOC.md",
+    "docs/format-group.md",
     "docs/23-3-output-with-ostream-and-ios.md",
+    "docs/MOC.md",
+    "docs/bitwise-or.md",
     "docs/23-2-Input-with-istream.md",
     "docs/23-1-Input-and-output-IO-streams.md",
     "docs/insertion-operator.md",
     "docs/standard-stream.md",
     "docs/extraction-operator.md",
-    "docs/O-4-converting-between-binary-and-decimal.md",
-    "docs/O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md",
-    "docs/O-1-bit-flags-and-bit-manipulation-via-std-bitset.md"
+    "docs/O-4-converting-between-binary-and-decimal.md"
   ]
 }
