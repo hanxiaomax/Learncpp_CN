@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "23-1-Input-and-output-IO-streams",
+      "path": "docs/23-1-Input-and-output-IO-streams.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -43,10 +47,6 @@
     {
       "basename": "23-2-Input-with-istream",
       "path": "docs/23-2-Input-with-istream.md"
-    },
-    {
-      "basename": "23-1-Input-and-output-IO-streams",
-      "path": "docs/23-1-Input-and-output-IO-streams.md"
     },
     {
       "basename": "22-7-std-string-inserting",

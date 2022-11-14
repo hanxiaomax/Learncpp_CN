@@ -11,18 +11,17 @@ tags:
 
 ??? note "关键点速记"
 
+输入输出并没有被定义为C++语言的核心功能，它是通过C++的标准库提供的（因此位于std命名空间中）。在之前的课程中，我们在代码中包含了`iostream`库的头文件并使用了`cin`和`cout`对象进行简单的输入输出。在本节课中，我们会进一步研究其细节。
 
-Input and output functionality is not defined as part of the core C++ language, but rather is provided through the C++ standard library (and thus resides in the std namespace). In previous lessons, you included the iostream library header and made use of the cin and cout objects to do simple I/O. In this lesson, we’ll take a look at the iostream library in more detail.
+## `iostream` 库
 
-**The iostream library**
+当我们包含 `iostream` 头文件后，你就可以访问提供输入输出功能的全部类了（包括一个称为`iostream`的类）。所有非文件IO的类的继承图可以在[这里](https://en.cppreference.com/w/cpp/io) 找到。
 
-When you include the iostream header, you gain access to a whole hierarchy of classes responsible for providing I/O functionality (including one class that is actually named iostream). You can find a class hierarchy diagram for the non-file-I/O classes [here](https://en.cppreference.com/w/cpp/io).
+关于这个层次结构，您可能注意到的第一件事是它使用了多重继承(这是我们多次提醒你要避免的事情)。但是，`iostream` 库经过了广泛的设计和测试，以避免任何典型的多重继承问题，因此你可以放心大胆地使用它。
 
-The first thing you may notice about this hierarchy is that it uses multiple inheritance (that thing we told you to avoid if at all possible). However, the iostream library has been designed and extensively tested in order to avoid any of the typical multiple inheritance problems, so you can use it freely without worrying.
+## 流（Streams）
 
-**Streams**
-
-The second thing you may notice is that the word “stream” is used an awful lot. At its most basic, I/O in C++ is implemented with streams. Abstractly, a **stream** is just a sequence of bytes that can be accessed sequentially. Over time, a stream may produce or consume potentially unlimited amounts of data.
+你可能注意到的第二件事是“流(stream)”这个词被使用得非常频繁。在最基本的情况下，C++中的I/O是通过流实现的。抽象地说，一个**流**只是一个可以按顺序访问的字节序列。随着时间的推移，流可能产生或消耗无限数量的数据。
 
 Typically we deal with two different types of streams. **Input streams** are used to hold input from a data producer, such as a keyboard, a file, or a network. For example, the user may press a key on the keyboard while the program is currently not expecting any input. Rather than ignore the users keypress, the data is put into an input stream, where it will wait until the program is ready for it.
 

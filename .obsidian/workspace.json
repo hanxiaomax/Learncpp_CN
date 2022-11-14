@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "64ff90f44969bd4e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/23-1-Input-and-output-IO-streams.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -80,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -96,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/23-1-Input-and-output-IO-streams.md"
               }
             }
           },
@@ -117,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/23-1-Input-and-output-IO-streams.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "64ff90f44969bd4e",
   "lastOpenFiles": [
-    "docs/O-4-converting-between-binary-and-decimal.md",
     "docs/MOC.md",
+    "docs/23-1-Input-and-output-IO-streams.md",
+    "docs/O-4-converting-between-binary-and-decimal.md",
     "docs/O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md",
     "docs/O-1-bit-flags-and-bit-manipulation-via-std-bitset.md",
     "docs/O-2-bitwise-operators.md",
     "docs/23-7-random-file-IO.md",
     "docs/23-6-basic-file-IO.md",
     "docs/23-5-stream-states-and-input-validation.md",
-    "docs/23-4-stream-classes-for-strings.md",
-    "docs/23-3-output-with-ostream-and-ios.md"
+    "docs/23-4-stream-classes-for-strings.md"
   ]
 }

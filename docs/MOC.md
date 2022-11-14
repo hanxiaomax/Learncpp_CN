@@ -325,6 +325,7 @@
 
 
 ## 23. 输入输出
+
 - [[23-1-Input-and-output-IO-streams|23.1 - 输入输出流]]
 - [[23-2-Input-with-istream|23.2 - 使用istream处理输入]]
 - [[23-3-output-with-ostream-and-ios|23.2 - 使用ostream和ios处理输出]]
