@@ -13,6 +13,7 @@ tags:
 	- [[extraction-operator|提取运算符]]会忽略空白符
 	- `std::get()`可以获取字符或获取字符串（指定最大字符个数），但是它不读取换行符
 	- `getline()`，它的工作方式和`get()`完全一致但是会读取换行符！
+	- `getline()`的一个特殊版本存在于`istream`类之外，用于读入`std::string`类型的变量。这个特殊版本不是`ostream`或`istream`的成员，包含在`string`头文件中。
 
 `iostream` 库是很复杂的——所以本教程不可能涵盖它的方方面面。不过，我们会向你介绍其中最常用的那些功能。在本节中，我们会讨论输入库`istream`的各项功能。
 
@@ -171,11 +172,10 @@ int main()
 }
 ```
 
-COPY
+即使用户输入的字符串中有换行符，这段代码也会按照你的期望执行。
 
-This code will perform as you expect, even if the user enters a string with a newline in it.
+如果你需要知道最后一次调用`getline()`提取了多少字符，使用`gcount()`:
 
-If you need to know how many character were extracted by the last call of `getline()`, use `gcount()`:
 
 ```cpp
 int main()
@@ -189,11 +189,10 @@ int main()
 }
 ```
 
-COPY
+## 用于`std::string` 的 `getline()` 
 
-## A special version of getline() for std::string**
+==`getline()`的一个特殊版本存在于`istream`类之外，用于读入`std::string`类型的变量。这个特殊版本不是`ostream`或`istream`的成员，包含在`string`头文件中。下面是它的用法示例:==
 
-There is a special version of getline() that lives outside the istream class that is used for reading in variables of type std::string. This special version is not a member of either ostream or istream, and is included in the string header. Here is an example of its use:
 
 ```cpp
 #include <string>
@@ -209,16 +208,15 @@ int main()
 }
 ```
 
-COPY
 
-## A few more useful istream functions**
+## 一些更有用的`istream` 函数
 
-There are a few more useful input functions that you might want to make use of:
+还有一些更有用的输入函数你可能会用到：
 
-`ignore()` discards the first character in the stream.  
-`ignore(int nCount)` discards the first nCount characters.  
-`peek()` allows you to read a character from the stream without removing it from the stream.  
-`unget()` returns the last character read back into the stream so it can be read again by the next call.  
-`putback(char ch)` allows you to put a character of your choice back into the stream to be read by the next call.
+- `ignore()` ：忽略流中的第一个字符；
+- `ignore(int nCount)` ：忽略流中的前 `nCount` 个字符；  
+- `peek()`：允许你从流中读取字符而不将其从流中删除。
+- `unget()`：返回读回流的最后一个字符，以便下一次调用可以再次读取它。
+- `putback(char ch)`：允许你将所选的字符放回流中，以便下一个调用读取。返回读回流的最后一个字符，以便下一次调用可以再次读取它。
 
-`istream` contains many other functions and variants of the above mentioned functions that may be useful, depending on what you need to do. However, those topics are really more suited for a tutorial or book focusing on the standard library (such as the excellent [“The C++ Standard Library”](https://www.amazon.com/Standard-Library-Tutorial-Reference-2nd/dp/0321623215) by Nicolai M. Josuttis).
+`istream`包含许多其他函数和上面提到的函数的变体，它们可能有用，这取决于你需要做什么。然而，这些主题实际上更适合于专注于标准库的教程或书籍(例如Nicolai M. Josuttis的[“c++标准库”](https://www.amazon.com/Standard-Library-Tutorial-Reference-2nd/dp/0321623215))。

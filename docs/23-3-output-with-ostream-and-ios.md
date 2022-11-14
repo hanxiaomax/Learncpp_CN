@@ -11,15 +11,15 @@ tags:
 
 ??? note "关键点速记"
 
-In this section, we will look at various aspects of the iostream output class (ostream).
+本节课我们将介绍`iostream`的输出类`ostream`。
 
-**The insertion operator**
+## 插入运算符
 
-The insertion operator (<<) is used to put information into an output stream. C++ has predefined insertion operations for all of the built-in data types, and you’ve already seen how you can [overload the insertion operator](https://www.learncpp.com/cpp-tutorial/93-overloading-the-io-operators/) for your own classes.
+[[insertion-operator|插入运算符]]用于向输出流插入数据。C++为所有的内建数据结构都预定义了插入运算符，我们也可以通过[[14-4-overloading-the-IO-operators|重载输入输出运算符]]为自定义的类提供插入运算符。
 
-In the lesson on [streams](https://www.learncpp.com/cpp-tutorial/131-input-and-output-io-streams/), you saw that both istream and ostream were derived from a class called ios. One of the jobs of ios (and ios_base) is to control the formatting options for output.
+在[[23-1-Input-and-output-IO-streams|23.1 - 输入输出流]]中我们介绍过， `istream` 和 `ostream` 都是从 `ios` 类派生来的。`ios` (和 `ios_base`) 类的一个功能就是控制输出dis to control the formatting options for output.
 
-**Formatting**
+## Formatting**
 
 There are two ways to change the formatting options: flags, and manipulators. You can think of **flags** as boolean variables that can be turned on and off. **Manipulators** are objects placed in a stream that affect the way things are input and output.
 
@@ -138,7 +138,7 @@ This program produces the output:
 
 In general, using manipulators is much easier than setting and unsetting flags. Many options are available via both flags and manipulators (such as changing the base), however, other options are only available via flags or via manipulators, so it’s important to know how to use both.
 
-**Useful formatters**
+## Useful formatters**
 
 Here is a list of some of the more useful flags, manipulators, and member functions. Flags live in the std::ios class, manipulators live in the std namespace, and the member functions live in the std::ostream class.
 
@@ -477,16 +477,13 @@ COPY
 
 This produces the output:
 
+```
 -12345
 ****-12345
 -12345****
 ****-12345
 -****12345
-
+```
 Note that all the blank spaces in the field have been filled up with the fill character.
 
 The ostream class and iostream library contain other output functions, flags, and manipulators that may be useful, depending on what you need to do. As with the istream class, those topics are really more suited for a tutorial or book focusing on the standard library (such as the excellent book “The C++ Standard Template Library” by Nicolai M. Josuttis).
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/stream-classes-for-strings/)

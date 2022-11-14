@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "23-2-Input-with-istream",
-      "path": "docs/23-2-Input-with-istream.md"
+      "basename": "23-3-output-with-ostream-and-ios",
+      "path": "docs/23-3-output-with-ostream-and-ios.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "23-2-Input-with-istream",
+      "path": "docs/23-2-Input-with-istream.md"
     },
     {
       "basename": "23-1-Input-and-output-IO-streams",
@@ -55,10 +59,6 @@
     {
       "basename": "23-4-stream-classes-for-strings",
       "path": "docs/23-4-stream-classes-for-strings.md"
-    },
-    {
-      "basename": "23-3-output-with-ostream-and-ios",
-      "path": "docs/23-3-output-with-ostream-and-ios.md"
     },
     {
       "basename": "22-7-std-string-inserting",
