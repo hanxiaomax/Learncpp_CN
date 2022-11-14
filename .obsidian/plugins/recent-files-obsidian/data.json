@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "23-4-stream-classes-for-strings",
+      "path": "docs/23-4-stream-classes-for-strings.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "23-2-Input-with-istream",
+      "path": "docs/23-2-Input-with-istream.md"
+    },
+    {
       "basename": "23-3-output-with-ostream-and-ios",
       "path": "docs/23-3-output-with-ostream-and-ios.md"
     },
@@ -9,16 +21,8 @@
       "path": "docs/format-group.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "bitwise-or",
       "path": "docs/bitwise-or.md"
-    },
-    {
-      "basename": "23-2-Input-with-istream",
-      "path": "docs/23-2-Input-with-istream.md"
     },
     {
       "basename": "23-1-Input-and-output-IO-streams",
@@ -63,10 +67,6 @@
     {
       "basename": "23-5-stream-states-and-input-validation",
       "path": "docs/23-5-stream-states-and-input-validation.md"
-    },
-    {
-      "basename": "23-4-stream-classes-for-strings",
-      "path": "docs/23-4-stream-classes-for-strings.md"
     },
     {
       "basename": "22-7-std-string-inserting",

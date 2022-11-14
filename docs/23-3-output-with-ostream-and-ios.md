@@ -406,8 +406,6 @@ Scientific	3	1.235e+004	1.235e-001
 
 通常，当我们打印数字时是不考虑其周围的空间的。不过，我们的确可以让数字向左或向右对其。为此，我们必须首先定义一个字段宽度——即输出空间的大小。如果实际打印的数字小于字段宽度，它将被左对齐或右对齐(根据指定)。如果实际数字大于字段宽度，它并不会被截断——而是会溢出。
 
-
-
 |Group	|Flag	|Meaning|
 |:--|:--|:--|
 |`std::ios::adjustfield`	|`std::ios::internal`	|Left-justifies the sign of the number, and right-justifies the value
@@ -430,7 +428,7 @@ Scientific	3	1.235e+004	1.235e-001
 |`std::ios_base::width(int)`	|Sets the current field width and returns old field width
 
 
-In order to use any of these formatters, we first have to set a field width. This can be done via the `width(int)` member function, or the `setw()` manipulator. Note that right justification is the default.
+为了使用这些格式化操作，我们必须先设置宽度。设置宽度可以通过 `width(int)` 成员函数来完成，或者通过 `setw()` manipulator。注意，默认情况下是右对齐的。
 
 ```cpp
 std::cout << -12345 << '\n'; // print default value with no field width
@@ -440,22 +438,20 @@ std::cout << std::setw(10) << std::right << -12345 << '\n'; // print right justi
 std::cout << std::setw(10) << std::internal << -12345 << '\n'; // print internally justified
 ```
 
-COPY
-
-This produces the result:
+运行结果为：
 
 ```
 -12345
-****-12345
--12345****
-****-12345
--****12345
+    -12345
+-12345
+    -12345
+-    12345
 ```
 
 
-One thing to note is that setw() and width() only affect the next output statement. They are not persistent like some other flags/manipulators.
+==注意，`setw()` 和 `width()` 只对下一个输出语句有效，和其他的标记或manipulators不同，它们不是持久化的。==
 
-Now, let’s set a fill character and do the same example:
+接下来，让我们设置一个填充字符并进行类似的操作：
 
 ```cpp
 std::cout.fill('*');
@@ -466,9 +462,7 @@ std::cout << std::setw(10) << std::right << -12345 << '\n'; // print right justi
 std::cout << std::setw(10) << std::internal << -12345 << '\n'; // print internally justified
 ```
 
-COPY
-
-This produces the output:
+输出结果：
 
 ```
 -12345
@@ -477,6 +471,7 @@ This produces the output:
 ****-12345
 -****12345
 ```
-Note that all the blank spaces in the field have been filled up with the fill character.
 
-The ostream class and iostream library contain other output functions, flags, and manipulators that may be useful, depending on what you need to do. As with the istream class, those topics are really more suited for a tutorial or book focusing on the standard library (such as the excellent book “The C++ Standard Template Library” by Nicolai M. Josuttis).
+注意，之前的空格被填充字符所替代了。
+
+`ostream` 类和 `iostream` 库还提供了其他有用的输出函数、标记和 manipulators。和 `istream` 类一样，这些议题更适合放在专注于标准库的教程或书中(例如Nicolai M. Josuttis的[“c++标准库”](https://www.amazon.com/Standard-Library-Tutorial-Reference-2nd/dp/0321623215))。

@@ -219,4 +219,4 @@ int main()
 - `unget()`：返回读回流的最后一个字符，以便下一次调用可以再次读取它。
 - `putback(char ch)`：允许你将所选的字符放回流中，以便下一个调用读取。返回读回流的最后一个字符，以便下一次调用可以再次读取它。
 
-`istream`包含许多其他函数和上面提到的函数的变体，它们可能有用，这取决于你需要做什么。然而，这些主题实际上更适合于专注于标准库的教程或书籍(例如Nicolai M. Josuttis的[“c++标准库”](https://www.amazon.com/Standard-Library-Tutorial-Reference-2nd/dp/0321623215))。
+`istream` 包含许多其他函数和上面提到的函数的变体，它们可能有用，这取决于你需要做什么。然而，这些议题更适合放在专注于标准库的教程或书中(例如Nicolai M. Josuttis的[“c++标准库”](https://www.amazon.com/Standard-Library-Tutorial-Reference-2nd/dp/0321623215))。
