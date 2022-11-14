@@ -129,25 +129,25 @@ std::cout << std::dec << 29 << '\n'; // back to decimal
 29
 ```
 
-通常，使用manipulators比设置和取消设置标志要容易得多。许多选项都可以通过标志和manipulators来实现(例如更改基数)，然而，另外一些标记则只能通过标志或操纵符实现，因此了解如何使用这两种方法非常重要。
+通常，使用manipulators比设置和取消设置标记要容易得多。许多标记都可以通过标志**和**manipulators来实现(例如更改基数)，然而，另外一些标记则只能通过标记或manipulators实现，因此了解如何使用这两种方法非常重要。
 
-In general, using manipulators is much easier than setting and unsetting flags. Many options are available via both flags and manipulators (such as changing the base), however, other options are only available via flags or via manipulators, so it’s important to know how to use both.
+## 有用的标记
 
-## Useful formatters**
-
-Here is a list of some of the more useful flags, manipulators, and member functions. Flags live in the std::ios class, manipulators live in the std namespace, and the member functions live in the std::ostream class.
+这里我们列举一些很有用的标记、manipulators 以及成员函数。 标记位于 `std::ios` 类中，manipulators 则位于std[[namespace|命名空间]]总，而成员函数则位于 `std::ostream` 类中。
 
 
-Group	Flag	Meaning
-`std::ios::boolalpha`	If set, booleans print “true” or “false”. If not set, booleans print 0 or 1
+|组标|记|	含义|
+|:--|:--|:--|
+||`std::ios::boolalpha`	|打开该标记后，布尔类型会打印 “true” 或 “false”。如果关闭，则大0或1
 
 
-Manipulator	Meaning
-`std::boolalpha`	Booleans print “true” or “false”
-`std::noboolalpha`	Booleans print 0 or 1 (default)
+|Manipulator	|含义|
+|:--|:--|
+|`std::boolalpha`	|布尔类型会打印 “true” or “false”
+|`std::noboolalpha`	|布尔类型会打印 0 or 1 (default)
 
 
-Example:
+例如：
 
 ```cpp
 std::cout << true << ' ' << false << '\n';
@@ -160,9 +160,7 @@ std::cout << std::noboolalpha << true << ' ' << false << '\n';
 std::cout << std::boolalpha << true << ' ' << false << '\n';
 ```
 
-COPY
-
-Result:
+结果：
 
 ```
 1 0
@@ -172,16 +170,16 @@ true false
 ```
 
 
-Group	Flag	Meaning
-`std::ios::showpos`	If set, prefix positive numbers with a +
+|组 | 标记|	含义|
+|:--|:--|:--|
+||`std::ios::showpos`	|设置后，正数前面会添加+号
 
+|Manipulator	|含义|
+|:--|:--|
+|`std::showpos`	|正数前面会添加+号
+|`std::noshowpos`	|正数前面不添加+号
 
-
-Manipulator	Meaning
-`std::showpos`	Prefixes positive numbers with a +
-`std::noshowpos`	Doesn’t prefix positive numbers with a +
-
-Example:
+例如：
 
 ```cpp
 std::cout << 5 << '\n';
@@ -194,9 +192,7 @@ std::cout << std::noshowpos << 5 << '\n';
 std::cout << std::showpos << 5 << '\n';
 ```
 
-COPY
-
-Result:
+结果：
 
 ```
 5
@@ -205,15 +201,16 @@ Result:
 +5
 ```
 
-Group	Flag	Meaning
-`std::ios::uppercase`	If set, uses upper case letters
+|组	|标记	|含义|
+|:--|:--|:--|
+||`std::ios::uppercase`	|If set, uses upper case letters
 
-Meaning
-`std::uppercase`	Uses upper case letters
-`std::nouppercase`	Uses lower case letters
+|Manipulator|含义|
+|:--|:--|
+|`std::uppercase`	|使用大写字母
+|`std::nouppercase`	|使用小写字母
 
-
-Example:
+例如：
 
 ```cpp
 std::cout << 12345678.9 << '\n';
@@ -226,9 +223,7 @@ std::cout << std::nouppercase << 12345678.9 << '\n';
 std::cout << std::uppercase << 12345678.9 << '\n';
 ```
 
-COPY
-
-Result:
+结果：
 
 ```
 1.23457e+007
@@ -237,20 +232,21 @@ Result:
 1.23457E+007
 ```
 
-Group	Flag	Meaning
-`std::ios::basefield`	`std::ios::dec`	Prints values in decimal (default)
-`std::ios::basefield`	`std::ios::hex`	Prints values in hexadecimal
-`std::ios::basefield`	`std::ios::oct`	Prints values in octal
-`std::ios::basefield`	(none)	                    Prints values according to leading characters of value
+|组	|标记	|含义|
+|:--|:--|:--|
+|`std::ios::basefield`	|`std::ios::dec`	|按照十进制打印（默认的）
+|`std::ios::basefield`	|`std::ios::hex`	|按照十六进制打印
+|`std::ios::basefield`	|`std::ios::oct`	|按照八进制打印
+|`std::ios::basefield`	|(none)	      |根据前缀字母打印
 
 
-Manipulator	Meaning
-`std::dec`	Prints values in decimal
-`std::hex`	Prints values in hexadecimal
-`std::oct`	Prints values in octal
+|Manipulator	|Meaning|
+|:--|:--|
+|`std::dec` |	按照十进制打印
+|`std::hex`	|按照十六进制打印
+|`std::oct`	|按照八进制打印
 
-
-Example:
+例如：
 
 ```cpp
 std::cout << 27 << '\n';
@@ -280,33 +276,36 @@ std::cout << std::hex << 27 << '\n';
 33
 1b
 ```
-By now, you should be able to see the relationship between setting formatting via flag and via manipulators. In future examples, we will use manipulators unless they are not available.
 
-Precision, notation, and decimal points
+到目前为止，你应该能够看到通过标志和通过操作符设置格式之间的关系。在以后的例子中，我们将使用操纵符，除非它们不可用。
 
-Using manipulators (or flags), it is possible to change the precision and format with which floating point numbers are displayed. There are several formatting options that combine in somewhat complex ways, so we will take a closer look at this.
+## 精度、计数法和小数点
 
+使用 manipulators (或者标记) 也可以改变数值打印时的精度和要展示的小数点位数。这些格式化选项的组合比较复杂，让我们仔细研究一下：
 
-Group	Flag	Meaning
-std::ios::floatfield	std::ios::fixed	Uses decimal notation for floating-point numbers
-std::ios::floatfield	std::ios::scientific	Uses scientific notation for floating-point numbers
-std::ios::floatfield	(none)	Uses fixed for numbers with few digits, scientific otherwise
-std::ios::floatfield	std::ios::showpoint	Always show a decimal point and trailing 0’s for floating-point values
+|组	|标记	|含义|
+|:--|:--|:--|
+| |`std::ios::floatfield`	|`std::ios::fixed`	|对浮点数使用十进制记数法
+| |`std::ios::floatfield`	|`std::ios::scientific`	|对浮点数使用科学记数法
+| |`std::ios::floatfield`	|(none)	|Uses fixed for numbers with few digits, scientific otherwise
+| |`std::ios::floatfield`	|`std::ios::showpoint`	|Always show a decimal point and trailing 0’s for floating-point values
 
-Manipulator	Meaning
-std::fixed	Use decimal notation for values
-std::scientific	Use scientific notation for values
-std::showpoint	Show a decimal point and trailing 0’s for floating-point values
-std::noshowpoint	Don’t show a decimal point and trailing 0’s for floating-point values
-std::setprecision(int)	Sets the precision of floating-point numbers (defined in the iomanip header)
-
-
-Member function	Meaning
-std::ios_base::precision()	Returns the current precision of floating-point numbers
-std::ios_base::precision(int)	Sets the precision of floating-point numbers and returns old precision
+|Manipulator|	Meaning|
+|:--|:--|
+|`std::fixed`	|Use decimal notation for values
+|`std::scientific`	|Use scientific notation for values
+|`std::showpoint`	|Show a decimal point and trailing 0’s for floating-point values
+|`std::noshowpoint` |Don’t show a decimal point and trailing 0’s for floating-point values
+|`std::setprecision(int)`	|Sets the precision of floating-point numbers (defined in the iomanip header)
 
 
-If fixed or scientific notation is used, precision determines how many decimal places in the fraction is displayed. Note that if the precision is less than the number of significant digits, the number will be rounded.
+|Member function|Meaning|
+|:--|:--|
+|`std::ios_base::precision()`	|Returns the current precision of floating-point numbers
+|`std::ios_base::precision(int)`	|Sets the precision of floating-point numbers and returns old precision
+
+如果使用固定记数法或科学记数法，则精度决定分数中显示的小数点后多少位。注意，如果精度小于有效位数，则数字将四舍五入。
+
 
 ```cpp
 std::cout << std::fixed << '\n';
