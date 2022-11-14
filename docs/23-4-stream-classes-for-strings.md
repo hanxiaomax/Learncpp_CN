@@ -13,13 +13,13 @@ tags:
 ??? note "关键点速记"
 
 
-So far, all of the I/O examples you have seen have been writing to cout or reading from cin. However, there is another set of classes called the stream classes for strings that allow you to use the familiar insertions (<<) and extraction (>>) operators to work with strings. Like istream and ostream, the string streams provide a buffer to hold data. However, unlike cin and cout, these streams are not connected to an I/O channel (such as a keyboard, monitor, etc…). One of the primary uses of string streams is to buffer output for display at a later time, or to process input line-by-line.
+到目前为止，你看到的所有I/O示例都是从`cout`写入或从`cin`读取的。但是，还有另一组称为字符串流类的类，它允许你使用熟悉的[[insertion-operator|插入运算符]]和[[extraction-operator|提取运算符]]来处理字符串。像`istream`和`ostream`一样，字符串流提供了一个缓冲区来保存数据。然而，与`cin`和`cout`不同的是，这些流不连接到I/O通道(如键盘、显示器等)。字符串流的主要用途之一是缓冲输出以便稍后显示，或者逐行处理输入。
 
-There are six stream classes for strings: istringstream (derived from istream), ostringstream (derived from ostream), and stringstream (derived from iostream) are used for reading and writing normal characters width strings. wistringstream, wostringstream, and wstringstream are used for reading and writing wide character strings. To use the stringstreams, you need to `#include` the sstream header.
+字符串有六个流类: 其中`istringstream`(派生自`istream`)、`ostringstream`(派生自`ostream`)和`stringstream`(派生自`iostream`)用于读写普通字符宽度的字符串。`Wistringstream`、`wostringstream` 和 `wstringstream` 用于读写宽字符串。要使用 `stringstreams`，你需要 `#include` `sstream` 头文件。
 
-There are two ways to get data into a stringstream:
+有两个方法可以向 `stringstream` 输入数据：
 
-1.  Use the insertion (<<) operator:
+1.  使用[[insertion-operator|插入运算符]]：
 
 ```cpp
 std::stringstream os;
