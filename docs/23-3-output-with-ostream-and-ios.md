@@ -113,23 +113,23 @@ std::cout << 27 << '\n';
 1b
 ```
 
-使用 `setf()` 和 `unsetf()` 是有点别扭的，因此C++提供了第二种方法来改变格式化选项：manipulators. The nice thing about manipulators is that they are smart enough to turn on and off the appropriate flags. Here is an example of using some manipulators to change the base:
+使用 `setf()` 和 `unsetf()` 是有点别扭的，因此C++提供了第二种方法来改变格式化选项：manipulators。manipulators 最赞的地方在于它足够智能，它能够自动开关相关联的标记。下面的例子中使用了 manipulators 改变计数进制：
 
 ```cpp
 std::cout << std::hex << 27 << '\n'; // print 27 in hex
-std::cout << 28 << '\n'; // we're still in hex
+std::cout << 28 << '\n'; // 仍然是十六进制，不是一次性的
 std::cout << std::dec << 29 << '\n'; // back to decimal
 ```
 
-COPY
-
-This program produces the output:
+程序输出：
 
 ```
 1b
 1c
 29
 ```
+
+通常，使用manipulators比设置和取消设置标志要容易得多。许多选项都可以通过标志和manipulators来实现(例如更改基数)，然而，另外一些标记则只能通过标志或操纵符实现，因此了解如何使用这两种方法非常重要。
 
 In general, using manipulators is much easier than setting and unsetting flags. Many options are available via both flags and manipulators (such as changing the base), however, other options are only available via flags or via manipulators, so it’s important to know how to use both.
 
