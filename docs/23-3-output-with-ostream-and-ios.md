@@ -107,15 +107,13 @@ std::cout.setf(std::ios::hex, std::ios::basefield);
 std::cout << 27 << '\n';
 ```
 
-COPY
-
-This also produces the expected output:
+输出结果仍然符合预期：
 
 ```
 1b
 ```
 
-Using setf() and unsetf() tends to be awkward, so C++ provides a second way to change the formatting options: manipulators. The nice thing about manipulators is that they are smart enough to turn on and off the appropriate flags. Here is an example of using some manipulators to change the base:
+使用 `setf()` 和 `unsetf()` 是有点别扭的，因此C++提供了第二种方法来改变格式化选项：manipulators. The nice thing about manipulators is that they are smart enough to turn on and off the appropriate flags. Here is an example of using some manipulators to change the base:
 
 ```cpp
 std::cout << std::hex << 27 << '\n'; // print 27 in hex
