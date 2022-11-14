@@ -26,20 +26,16 @@ std::stringstream os;
 os << "en garde!\n"; // insert "en garde!" into the stringstream
 ```
 
-COPY
-
-2.  Use the str(string) function to set the value of the buffer:
+2.  使用 `str(string)` 函数设置字符串到缓冲：
 
 ```cpp
 std::stringstream os;
 os.str("en garde!"); // set the stringstream buffer to "en garde!"
 ```
 
-COPY
+类似的，从 `stringstream` 读取也有两个方法：
 
-There are similarly two ways to get data out of a stringstream:
-
-1.  Use the str() function to retrieve the results of the buffer:
+1.  使用 `str()` 函数获取缓冲中的内容：
 
 ```cpp
 std::stringstream os;
@@ -47,13 +43,13 @@ os << "12345 67.89\n";
 std::cout << os.str();
 ```
 
-COPY
+打印：
 
-This prints:
-
+```
 12345 67.89
+```
 
-2.  Use the extraction (>>) operator:
+2.  使用[[extraction-operator|提取运算符]]：
 
 ```cpp
 std::stringstream os;
@@ -69,19 +65,19 @@ os >> strValue2;
 std::cout << strValue << " - " << strValue2 << '\n';
 ```
 
-COPY
+程序打印：
 
-This program prints:
-
+```
 12345 - 67.89
+```
 
-Note that the >> operator iterates through the string -- each successive use of >> returns the next extractable value in the stream. On the other hand, str() returns the whole value of the stream, even if the >> has already been used on the stream.
+注意，提取运算符会遍历字符串，每个>>会返回流中下一个可以提取的字符串。另一方面，`str()` 可以返回整个流中的数据，即使我们已经使用 >> 从中进行了提取。
 
-**Conversion between strings and numbers**
+## 转换字符串和数字
 
-Because the insertion and extraction operators know how to work with all of the basic data types, we can use them in order to convert strings to numbers or vice versa.
+因为插入和提取操作符知道如何处理所有基本数据类型，所以我们可以使用它们将字符串转换为数字，反之亦然。
 
-First, let’s take a look at converting numbers into a string:
+首先，让我们看看如何将数字转换为字符串:
 
 ```cpp
 std::stringstream os;
@@ -96,13 +92,13 @@ os >> strValue1 >> strValue2;
 std::cout << strValue1 << ' ' << strValue2 << '\n';
 ```
 
-COPY
+输出结果：
 
-This snippet prints:
-
+```
 12345 67.89
+```
 
-Now let’s convert a numerical string to a number:
+现在，将字符串转换为数字：
 
 ```cpp
 std::stringstream os;
@@ -115,17 +111,17 @@ os >> nValue >> dValue;
 std::cout << nValue << ' ' << dValue << '\n';
 ```
 
-COPY
+输出结果：
 
-This program prints:
-
+```
 12345 67.89
+```
 
-**Clearing a stringstream for reuse**
+## 清理 `stringstream` 为再次使用做准备
 
-There are several ways to empty a stringstream’s buffer.
+清空 `stringstream` 缓冲的方法有很多：
 
-1.  Set it to the empty string using str() with a blank C-style string:
+1.  使用 `str()` 设置一个C语言风格的空字符串：
 
 ```cpp
 std::stringstream os;
@@ -137,21 +133,17 @@ os << "World!";
 std::cout << os.str();
 ```
 
-COPY
-
-2.  Set it to the empty string using str() with a blank std::string object:
+2. 使用 `str()` 和空的 `std::string` 对象将其设置为空:
 
 ```cpp
 std::stringstream os;
 os << "Hello ";
 
-os.str(std::string{}); // erase the buffer
+os.str(std::string{}); // 清空
 
 os << "World!";
 std::cout << os.str();
 ```
-
-COPY
 
 Both of these programs produce the following result:
 
