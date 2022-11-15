@@ -60,25 +60,23 @@ std::cin >> age;
 
 为此，C++提供了许多有用的函数，我们可以使用它们来确定特定的字符是数字还是字母。以下函数位于`cctype`头文件中
 
-|Function	|Meaning|
+|函数	|含义|
 |:---:|---:|
-|`std::isalnum(int)`	|Returns non-zero if the parameter is a letter or a digit
-|`std::isalpha(int)`	|Returns non-zero if the parameter is a letter
-|`std::iscntrl(int)`	|Returns non-zero if the parameter is a control character
-|`std::isdigit(int)`	|Returns non-zero if the parameter is a digit
-|`std::isgraph(int)`	|Returns non-zero if the parameter is printable character that is not whitespace
-|`std::isprint(int)`	|Returns non-zero if the parameter is printable character (including whitespace)
-|`std::ispunct(int)`	|Returns non-zero if the parameter is neither alphanumeric nor whitespace
-|`std::isspace(int)`	|Returns non-zero if the parameter is whitespace
-|`std::isxdigit(int)`	|Returns non-zero if the parameter is a hexadecimal digit (0-9, a-f, A-F)
-
+|`std::isalnum(int)`	|如果参数是字母或数字则返回非零值
+|`std::isalpha(int)`	|如果参数是字母则返回非零值
+|`std::iscntrl(int)`	|如果参数是控制字符则返回非零值
+|`std::isdigit(int)`	|如果参数是数字则返回非零值
+|`std::isgraph(int)`	|如果参数是非空白可打印字符则返回非零值
+|`std::isprint(int)`	|如果参数是可打印字符（包括非空白）则返回非零值
+|`std::ispunct(int)`	|如果参数是不是字母、数字或空白符返回非零值 
+|`std::isspace(int)`	|如果参数是空白符则返回非零值
+|`std::isxdigit(int)`	|如果参数是十六进制则返回非零值
 
 ## 字符串验证
 
 让我们做一个简单的字符串验证案例，要求用户输入他们的名字。验证标准是用户只能输入字母字符或空格。如果遇到其他情况，则将拒绝输入。
 
-
-When it comes to variable length inputs, the best way to validate strings (besides using a regular expression library) is to step through each character of the string and ensure it meets the validation criteria. That’s exactly what we’ll do here, or better, that’s what `std::all_of` does for us.
+对于不定长度的输入，验证字符串的最佳方法(除了使用正则表达式库之外)是逐个遍历字符串的每个字符，并确保它满足验证标准。这正是我们在这里要做的，或者通过`std::all_of` 完成。
 
 ```cpp
 #include <algorithm> // std::all_of
@@ -107,27 +105,25 @@ int main()
   do
   {
     std::cout << "Enter your name: ";
-    std::getline(std::cin, name); // get the entire line, including spaces
+    std::getline(std::cin, name); // 读取整行输入，包括空格
   } while (!isValidName(name));
 
   std::cout << "Hello " << name << "!\n";
 }
 ```
 
-COPY
-
-Note that this code isn’t perfect: the user could say their name was “asf w jweo s di we ao” or some other bit of gibberish, or even worse, just a bunch of spaces. We could address this somewhat by refining our validation criteria to only accept strings that contain at least one character and at most one space.
+注意，这段代码并不完美：用户可以说他们的名字是“asf w jweo s di we ao”或其他一些乱七八糟的东西，甚至更糟，只是一堆空格。我们可以通过改进验证标准来解决这个问题，使其只接受至少包含一个字符和最多一个空格的字符串。
 
 !!! info "作者注"
 
-	Reader “Waldo” provides a C++20 solution (using std::ranges) that addresses these shortcomings [here](https://www.learncpp.com/cpp-tutorial/stream-states-and-input-validation/#comment-571052)
+	读者“Waldo”提供了一个C++20解决方案(使用std::ranges)来解决这些缺点，参考[这里](https://www.learncpp.com/cpp-tutorial/stream-states-and-input-validation/#comment-571052)
 
-Now let’s take a look at another example where we are going to ask the user to enter their phone number. Unlike a user’s name, which is variable-length and where the validation criteria are the same for every character, a phone number is a fixed length but the validation criteria differ depending on the position of the character. Consequently, we are going to take a different approach to validating our phone number input. In this case, we’re going to write a function that will check the user’s input against a predetermined template to see whether it matches. The template will work as follows:
+再看另一个例子，我们要求用户输入他们的电话号码。虽然用户名的长度是可变的，但每个字符的验证标准都是相同的。而电话号码的长度虽然是固定的，但验证标准则根据字符的位置而不同。因此需要采用不同的方法来验证电话号码输入。在本例中，我们将编写一个函数，根据预先确定的模板检查用户的输入是否匹配。模板的工作方式如下:
 
-A # will match any digit in the user input.  
-A @ will match any alphabetic character in the user input.  
-A _ will match any whitespace.  
-A ? will match anything.  
+A `#` will match any digit in the user input.  
+A `@` will match any alphabetic character in the user input.  
+A `_` will match any whitespace.  
+A `?` will match anything.  
 Otherwise, the characters in the user input and the template must match exactly.
 
 So, if we ask the function to match the template “(###) ###-####”, that means we expect the user to enter a ‘(‘ character, three numbers, a ‘)’ character, a space, three numbers, a dash, and four more numbers. If any of these things doesn’t match, the input will be rejected.
