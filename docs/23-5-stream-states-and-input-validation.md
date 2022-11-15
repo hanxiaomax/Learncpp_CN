@@ -192,9 +192,9 @@ int main()
 
 ## 数值验证
 
-在处理数值型输入时，最常见的做法是使用[[extraction-operator|提取运算符]] dealing with numeric input, the obvious way to proceed is to use the extraction operator to extract input to a numeric type. By checking the `failbit`, we can then tell whether the user entered a number or not.
+==在处理数值型输入时，最常见的做法是使用[[extraction-operator|提取运算符]]将输入提取到一个数值类型的变量中==（参见：[[23-4-stream-classes-for-strings#转换字符串和数字]]）。通过检查流状态标记`failbit`，我们就可以知道用户的输入是否是一个数字。
 
-Let’s try this approach:
+请看下面代码：
 
 ```cpp
 #include <iostream>
@@ -209,14 +209,14 @@ int main()
         std::cout << "Enter your age: ";
         std::cin >> age;
 
-        if (std::cin.fail()) // no extraction took place
+        if (std::cin.fail()) // 无法提取
         {
-            std::cin.clear(); // reset the state bits back to goodbit so we can use ignore()
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear out the bad input from the stream
-            continue; // try again
+            std::cin.clear(); // 重置状态为 goodbit，以便可以调用 ignore()
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 从流中忽略非法输入
+            continue; // 继续
         }
 
-        if (age <= 0) // make sure age is positive
+        if (age <= 0) // 确保输入的年龄是正数
             continue;
 
         break;
@@ -226,7 +226,6 @@ int main()
 }
 ```
 
-COPY
 
 If the user enters an integer, the extraction will succeed. `std::cin.fail()` will evaluate to false, skipping the conditional, and (assuming the user entered a positive number), we will hit the break statement, exiting the loop.
 

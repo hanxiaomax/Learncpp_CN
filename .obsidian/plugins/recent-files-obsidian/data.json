@@ -1,16 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "23-4-stream-classes-for-strings",
+      "path": "docs/23-4-stream-classes-for-strings.md"
+    },
+    {
       "basename": "23-5-stream-states-and-input-validation",
       "path": "docs/23-5-stream-states-and-input-validation.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
-    },
-    {
-      "basename": "23-4-stream-classes-for-strings",
-      "path": "docs/23-4-stream-classes-for-strings.md"
     },
     {
       "basename": "23-7-random-file-IO",
