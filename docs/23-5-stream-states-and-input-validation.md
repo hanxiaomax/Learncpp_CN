@@ -120,15 +120,16 @@ int main()
 
 再看另一个例子，我们要求用户输入他们的电话号码。虽然用户名的长度是可变的，但每个字符的验证标准都是相同的。而电话号码的长度虽然是固定的，但验证标准则根据字符的位置而不同。因此需要采用不同的方法来验证电话号码输入。在本例中，我们将编写一个函数，根据预先确定的模板检查用户的输入是否匹配。模板的工作方式如下:
 
-A `#` will match any digit in the user input.  
-A `@` will match any alphabetic character in the user input.  
-A `_` will match any whitespace.  
-A `?` will match anything.  
-Otherwise, the characters in the user input and the template must match exactly.
+- `#` 会匹配任何输入的数字；
+- `@` 会匹配任何输入的英文字母；
+- `_` 会匹配任何输入的空白；
+- `?` 匹配所有。
 
-So, if we ask the function to match the template “(###) ###-####”, that means we expect the user to enter a ‘(‘ character, three numbers, a ‘)’ character, a space, three numbers, a dash, and four more numbers. If any of these things doesn’t match, the input will be rejected.
+除此之外，用户输入的其他字符必须精确匹配。
 
-Here is the code:
+因此，如果模板为 “(###) ###-####”，则表示用户需要输入 ‘`(`‘，三个数字， ‘`)`’ ，空格，三个数字，短横线，四个数字。对于任何不满足上述要求的输入，都会被程序拒绝。
+
+代码如下：
 
 ```cpp
 #include <algorithm> // std::equal
@@ -162,14 +163,12 @@ bool inputMatches(std::string_view input, std::string_view pattern)
     return std::ranges::equal(input, pattern, [](char ch, char mask) -> bool {
         if (auto found{ validators.find(mask) }; found != validators.end())
         {
-            // The pattern's current element was found in the validators. Call the
-            // corresponding function.
+            // 找到可匹配的模式，调用对应的校验函数
             return (*found->second)(ch);
         }
         else
         {
-            // The pattern's current element was not found in the validators. The
-            // characters have to be an exact match.
+            // 没有找到匹配的模式，此时要求字符精确匹配
             return (ch == mask);
         }
         });
@@ -189,13 +188,11 @@ int main()
 }
 ```
 
-COPY
-
-Using this function, we can force the user to match our specific format exactly. However, this function is still subject to several constraints: if `#`,` @`, `_`, and `?` are valid characters in the user input, this function won’t work, because those symbols have been given special meanings. Also, unlike with regular expressions, there is no template symbol that means “a variable number of characters can be entered”. Thus, such a template could not be used to ensure the user enters two words separated by a whitespace, because it can not handle the fact that the words are of variable lengths. For such problems, the non-template approach is generally more appropriate.
+使用这个函数可以强制用户按照我们要求的格式输入。不过，这个方法仍然有局限性：如果`#`、`@`、 `_` 和 `?` 也是合法的用户输入，则该函数将无法工作，因为这些符号已经被赋予了特殊的含义。此外，不同于正则表达式，该模板中没有符号可以表示“输入一组不定长的字符”。因此，该模板不能被用来确保用户输入两个单词（空格隔开），因为它不能处理变长的输入。对于这种类型的输入，非模板的方法更加合适 。
 
 ## 数值验证
 
-When dealing with numeric input, the obvious way to proceed is to use the extraction operator to extract input to a numeric type. By checking the `failbit`, we can then tell whether the user entered a number or not.
+在处理数值型输入时，最常见的做法是使用[[extraction-operator|提取运算符]] dealing with numeric input, the obvious way to proceed is to use the extraction operator to extract input to a numeric type. By checking the `failbit`, we can then tell whether the user entered a number or not.
 
 Let’s try this approach:
 
