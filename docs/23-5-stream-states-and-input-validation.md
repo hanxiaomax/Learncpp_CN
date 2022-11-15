@@ -229,14 +229,14 @@ int main()
 
 如果用户输入了一个整型数，则提取可以成功。 `std::cin.fail()` 的结果为`false` ，不进入if语句。假设用户输入的是正数的话，则接下来会走到`break`语句，退出循环。
 
-如果，用户输入的不是整数而是字母，则提取会失败。此时 `std::cin.fail()` 返回 `true`，所以会走到if语句中。在语句块的最后，会遇到`continue`，继续and we will go into the conditional. At the end of the conditional block, we will hit the continue statement, which will jump back to the top of the while loop, and the user will be asked to enter input again.
+如果，用户输入的不是整数而是字母，则提取会失败。此时 `std::cin.fail()` 返回 `true`，所以会走到if语句中。在语句块的最后，会遇到`continue`，继续执行while循环，要求用户重新输入。
 
-However, there’s one more case we haven’t tested for, and that’s when the user enters a string that starts with numbers but then contains letters (e.g. “34abcd56”). In this case, the starting numbers (34) will be extracted into age, the remainder of the string (“abcd56”) will be left in the input stream, and the `failbit` will NOT be set. This causes two potential problems:
+但是，还有一种情况我们还没有测试——用户输入的字符串开头是数字，但是后面是字母(例如 “34abcd56”)。在这个例子中，开头是数字(34)，它会被提取成年龄，剩下的字符串则会流在输入流中，`failbit` 并不会被设置，这会导致两个问题：
 
-1.  If you want this to be valid input, you now have garbage in your stream.
-2.  If you don’t want this to be valid input, it is not rejected (and you have garbage in your stream).
+1.  如果你将它作为合法输入，则输入流中残留了垃圾信息；
+2.  如果你不认为这是合法输入，但是它并不会被拒绝（而且你的流中还有垃圾信息）。
 
-Let’s fix the first problem. This is easy:
+解决这个问题的方法也很简单：
 
 ```cpp
 #include <iostream>
@@ -254,11 +254,11 @@ int main()
         if (std::cin.fail()) // no extraction took place
         {
             std::cin.clear(); // reset the state bits back to goodbit so we can use ignore()
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear out the bad input from the stream
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 从流中清除错误的输入
             continue; // try again
         }
 
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear out any additional input from the stream
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 从输入流中剔除多余的输入
 
         if (age <= 0) // make sure age is positive
             continue;
@@ -270,8 +270,7 @@ int main()
 }
 ```
 
-
-If you don’t want such input to be valid, we’ll have to do a little extra work. Fortunately, the previous solution gets us half way there. We can use the `gcount()` function to determine how many characters were ignored. If our input was valid, `gcount()` should return 1 (the newline character that was discarded). If it returns more than 1, the user entered something that wasn’t extracted properly, and we should ask them for new input. Here’s an example of this:
+如果你不希望这样的输入是有效的，那我们需要做一些额外的工作。幸运的是，前面的解决方案已经完成了一半的工作。我们可以使用`gcount()` 函数来确定有多少字符被忽略。如果输入有效，`gcount()` 应该返回1(被丢弃的换行符)。如果返回值大于1，说明用户输入的内容没有被正确提取，此时应该要求用户重新输入。这里有一个例子:
 
 ```cpp
 #include <iostream>
