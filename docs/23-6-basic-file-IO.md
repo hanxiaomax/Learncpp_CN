@@ -17,7 +17,7 @@ File I/O in C++ works very similarly to normal I/O (with a few minor added compl
 
 Unlike the cout, cin, cerr, and clog streams, which are already ready for use, file streams have to be explicitly set up by the programmer. However, this is extremely simple: to open a file for reading and/or writing, simply instantiate an object of the appropriate file I/O class, with the name of the file as a parameter. Then use the insertion (<<) or extraction (>>) operator to write to or read data from the file. Once you are done, there are several ways to close a file: explicitly call the close() function, or just let the file I/O variable go out of scope (the file I/O class destructor will close the file for you).
 
-**File output**
+## 文件输出
 
 To do file output in the following example, we’re going to use the ofstream class. This is extremely straighforward:
 
@@ -56,7 +56,7 @@ If you look in your project directory, you should see a file called Sample.txt. 
 
 Note that it is also possible to use the put() function to write a single character to the file.
 
-**File input**
+## 文件输入
 
 Now, we’ll take the file we wrote in the last example and read it back in from disk. Note that ifstream returns a 0 if we’ve reached the end of the file (EOF). We’ll use this fact to determine how much to read.
 
@@ -99,6 +99,7 @@ COPY
 
 This produces the result:
 
+```
 This
 is
 line
@@ -107,6 +108,7 @@ This
 is
 line
 2
+```
 
 Hmmm, that wasn’t quite what we wanted. Remember that the extraction operator breaks on whitespace. In order to read in entire lines, we’ll have to use the getline() function.
 
@@ -149,10 +151,12 @@ COPY
 
 This produces the result:
 
+```
 This is line 1
 This is line 2
+```
 
-**Buffered output**
+## 带缓冲的输出
 
 Output in C++ may be buffered. This means that anything that is output to a file stream may not be written to disk immediately. Instead, several output operations may be batched and handled together. This is done primarily for performance reasons. When a buffer is written to disk, this is called **flushing**the buffer. One way to cause the buffer to be flushed is to close the file -- the contents of the buffer will be flushed to disk, and then the file will be closed.
 
@@ -162,7 +166,7 @@ It is possible to flush the buffer manually using the ostream::flush() function 
 
 One interesting note is that std::endl; also flushes the output stream. Consequently, overuse of std::endl (causing unnecessary buffer flushes) can have performance impacts when doing buffered I/O where flushes are expensive (such as writing to a file). For this reason, performance conscious programmers will often use ‘\n’ instead of std::endl to insert a newline into the output stream, to avoid unnecessary flushing of the buffer.
 
-**File modes**
+## 文件模式
 
 What happens if we try to write to a file that already exists? Running the output example again shows that the original file is completely overwritten each time the program is run. What if, instead, we wanted to append some more data to the end of the file? It turns out that the file stream constructors take an optional second parameter that allows you to specify information about how the file should be opened. This parameter is called mode, and the valid flags that it accepts live in the ios class.
 
@@ -176,9 +180,9 @@ trunc	Erases the file if it already exists
 
 It is possible to specify multiple flags by bitwise ORing them together (using the | operator). ifstream defaults to std::ios::in file mode. ofstream defaults to std::ios::out file mode. And fstream defaults to std::ios::in | std::ios::out file mode, meaning you can both read and write by default.
 
-Tip
+!!! tip "小贴士"
 
-Due to the way fstream was designed, it may fail if std::ios::in is used and the file being opened does not exist. If you need to create a new file using fstream, use std::ios::out mode only.
+	Due to the way fstream was designed, it may fail if std::ios::in is used and the file being opened does not exist. If you need to create a new file using fstream, use std::ios::out mode only.
 
 Let’s write a program that appends two more lines to the Sample.txt file we previously created:
 
@@ -215,12 +219,14 @@ COPY
 
 Now if we take a look at Sample.txt (using one of the above sample programs that prints its contents, or loading it in a text editor), we will see the following:
 
+```
 This is line 1
 This is line 2
 This is line 3
 This is line 4
+```
 
-**Explicitly opening files using open()**
+## 使用 `open()`打开文件
 
 Just like it is possible to explicitly close a file stream using close(), it’s also possible to explicitly open a file stream using open(). open() works just like the file stream constructors -- it takes a file name and an optional file mode.
 
@@ -241,7 +247,3 @@ outf.close();
 COPY
 
 You can find more information about the open() function [here](https://en.cppreference.com/w/cpp/io/basic_filebuf/open).
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/random-file-io/)

@@ -11,7 +11,7 @@ tags:
 
 ??? note "关键点速记"
 
-## Stream states
+## 流的状态
 
 The ios_base class contains several state flags that are used to signal various conditions that may occur when using streams:
 
@@ -50,7 +50,7 @@ Note that this program is expecting the user to enter an integer. However, if th
 
 If an error occurs and a stream is set to anything other than goodbit, further stream operations on that stream will be ignored. This condition can be cleared by calling the clear() function.
 
-## Input validation
+## 输入验证
 
 **Input validation** is the process of checking whether the user input meets some set of criteria. Input validation can generally be broken down into two types: string and numeric.
 
@@ -72,7 +72,7 @@ std::ispunct(int)	Returns non-zero if the parameter is neither alphanumeric nor 
 std::isspace(int)	Returns non-zero if the parameter is whitespace
 std::isxdigit(int)	Returns non-zero if the parameter is a hexadecimal digit (0-9, a-f, A-F)
 
-## String validation
+## 字符串验证
 
 Let’s do a simple case of string validation by asking the user to enter their name. Our validation criteria will be that the user enters only alphabetic characters or spaces. If anything else is encountered, the input will be rejected.
 
@@ -116,9 +116,9 @@ COPY
 
 Note that this code isn’t perfect: the user could say their name was “asf w jweo s di we ao” or some other bit of gibberish, or even worse, just a bunch of spaces. We could address this somewhat by refining our validation criteria to only accept strings that contain at least one character and at most one space.
 
-Author’s note
+!!! info "作者注"
 
-Reader “Waldo” provides a C++20 solution (using std::ranges) that addresses these shortcomings [here](https://www.learncpp.com/cpp-tutorial/stream-states-and-input-validation/#comment-571052)
+	Reader “Waldo” provides a C++20 solution (using std::ranges) that addresses these shortcomings [here](https://www.learncpp.com/cpp-tutorial/stream-states-and-input-validation/#comment-571052)
 
 Now let’s take a look at another example where we are going to ask the user to enter their phone number. Unlike a user’s name, which is variable-length and where the validation criteria are the same for every character, a phone number is a fixed length but the validation criteria differ depending on the position of the character. Consequently, we are going to take a different approach to validating our phone number input. In this case, we’re going to write a function that will check the user’s input against a predetermined template to see whether it matches. The template will work as follows:
 
@@ -195,7 +195,7 @@ COPY
 
 Using this function, we can force the user to match our specific format exactly. However, this function is still subject to several constraints: if #, @, _, and ? are valid characters in the user input, this function won’t work, because those symbols have been given special meanings. Also, unlike with regular expressions, there is no template symbol that means “a variable number of characters can be entered”. Thus, such a template could not be used to ensure the user enters two words separated by a whitespace, because it can not handle the fact that the words are of variable lengths. For such problems, the non-template approach is generally more appropriate.
 
-Numeric validation
+## 数值验证
 
 When dealing with numeric input, the obvious way to proceed is to use the extraction operator to extract input to a numeric type. By checking the failbit, we can then tell whether the user entered a number or not.
 
@@ -276,7 +276,6 @@ int main()
 }
 ```
 
-COPY
 
 If you don’t want such input to be valid, we’ll have to do a little extra work. Fortunately, the previous solution gets us half way there. We can use the gcount() function to determine how many characters were ignored. If our input was valid, gcount() should return 1 (the newline character that was discarded). If it returns more than 1, the user entered something that wasn’t extracted properly, and we should ask them for new input. Here’s an example of this:
 
@@ -320,7 +319,7 @@ int main()
 
 COPY
 
-Numeric validation as a string
+## 数值作为字符串进行验证
 
 The above example was quite a bit of work simply to get a simple value! Another way to process numeric input is to read it in as a string, then try to convert it to a numeric type. The following program makes use of that methodology:
 

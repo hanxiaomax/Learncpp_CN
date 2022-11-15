@@ -12,11 +12,11 @@ tags:
 ??? note "关键点速记"
 
 
-## The file pointer**
+## 文件指针
 
 Each file stream class contains a file pointer that is used to keep track of the current read/write position within the file. When something is read from or written to a file, the reading/writing happens at the file pointer’s current location. By default, when opening a file for reading or writing, the file pointer is set to the beginning of the file. However, if a file is opened in append mode, the file pointer is moved to the end of the file, so that writing does not overwrite any of the current contents of the file.
 
-## Random file access with seekg() and seekp()**
+## 使用 `seekg()` 和 `seekp()` 进行随机文件访问
 
 So far, all of the file access we’ve done has been sequential -- that is, we’ve read or written the file contents in order. However, it is also possible to do random file access -- that is, skip around to various points in the file to read its contents. This can be useful when your file is full of records, and you wish to retrieve a specific record. Rather than reading all of the records until you get to the one you want, you can skip directly to the record you wish to retrieve.
 
@@ -136,7 +136,7 @@ This prints:
 
 which is how long sample.txt is in bytes (assuming a carriage return after the last line).
 
-## Reading and writing a file at the same time using fstream**
+## 使用`fstream`同时进行文件的读写
 
 The fstream class is capable of both reading and writing a file at the same time -- almost! The big caveat here is that it is not possible to switch between reading and writing arbitrarily. Once a read or write has taken place, the only way to switch between the two is to perform an operation that modifies the file position (e.g. a seek). If you don’t actually want to move the file pointer (because it’s already in the spot you want), you can always seek to the current position:
 
@@ -225,13 +225,13 @@ Th#s #s l#n# 3
 Th#s #s l#n# 4
 ```
 
-**Other useful file functions**
+## 其他有用的文件函数
 
 To delete a file, simply use the remove() function.
 
 Also, the is_open() function will return true if the stream is currently open, and false otherwise.
 
-## A warning about writing pointers to disk**
+## 关于将指针写入硬盘的警告⚠️
 
 While streaming variables to a file is quite easy, things become more complicated when you’re dealing with pointers. Remember that a pointer simply holds the address of the variable it is pointing to. Although it is possible to read and write addresses to disk, it is extremely dangerous to do so. This is because a variable’s address may differ from execution to execution. Consequently, although a variable may have lived at address 0x0012FF7C when you wrote that address to disk, it may not live there any more when you read that address back in!
 

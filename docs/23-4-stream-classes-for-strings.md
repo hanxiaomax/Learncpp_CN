@@ -145,27 +145,23 @@ os << "World!";
 std::cout << os.str();
 ```
 
-Both of these programs produce the following result:
+两个程序的输出结果是相同的：
 
+```
 World!
+```
 
-When clearing out a stringstream, it is also generally a good idea to call the clear() function:
+清理`stringstream`时，应该同时调用 `clear()` 函数：
 
 ```cpp
 std::stringstream os;
 os << "Hello ";
 
-os.str(""); // erase the buffer
-os.clear(); // reset error flags
+os.str(""); // 清空 buffer
+os.clear(); // 重置错误标记
 
 os << "World!";
 std::cout << os.str();
 ```
 
-COPY
-
-clear() resets any error flags that may have been set and returns the stream back to the ok state. We will talk more about the stream state and error flags in the next lesson.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/stream-states-and-input-validation/)
+`clear()`重置可能已设置的任何错误标志，并将流返回到ok状态。我们将在下一课中更多地讨论流状态和错误标志。
