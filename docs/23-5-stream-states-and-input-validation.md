@@ -11,32 +11,34 @@ tags:
 
 ??? note "关键点速记"
 
+
 ## 流的状态
 
-The ios_base class contains several state flags that are used to signal various conditions that may occur when using streams:
+`ios_base` 类包含了多个不同的状态标记，它们可以用来表示流的不同状态：
 
-Flag	Meaning
-goodbit	Everything is okay
-badbit	Some kind of fatal error occurred (e.g. the program tried to read past the end of a file)
-eofbit	The stream has reached the end of a file
-failbit	A non-fatal error occurred (e.g. the user entered letters when the program was expecting an integer)
+|标记	|含义|
+|:---:|---:|
+|goodbit	|一切正常
+|badbit	|发生了某种严重错误(例如：程序读取超过了文件末尾)
+|eofbit	|流到达文件末尾
+|failbit	|发生非致命错误(例如，程序期望整型时用户输入了字符)
 
-Although these flags live in ios_base, because ios is derived from ios_base and ios takes less typing than ios_base, they are generally accessed through ios (e.g. as std::ios::failbit).
+尽管这些标记定义在 `ios_base`中，但是因为 `ios` 派生自 `ios_base` 而且 `ios` 写起来更简单，所以我们通常会通过 `ios` 访问这些标记(例如： as `std::ios::failbit`).
 
-ios also provides a number of member functions in order to conveniently access these states:
+`ios` 同样也提供了一些成员函数，用于访问这些状态：
 
+|成员函数	|含义|
+|:---:|---:|
+|`good()`	|如果设置了`goodbit`则返回`true`(流状态正常)
+|`bad()`	      |如果设置了`badbit`则返回`true`(发生严重错误)
+|`eof()`	|      如果设置了`eofbit`则返回`true`(流到达文件末尾)
+|`fail()`	|如果设置了`failbit`则返回`true`(发生非致命错误)
+|`clear()`	|清空所有标记并将流状态设置为 `goodbit`
+|`clear(state)`	|清空所有标记并将流状态设置为参数`state`表示的状态
+|`rdstate()`	|返回当前设置的标记
+|`setstate(state)`	|将流状态设置为参数`state`表示的状态
 
-Member function	Meaning
-good()	Returns true if the goodbit is set (the stream is ok)
-bad()	Returns true if the badbit is set (a fatal error occurred)
-eof()	Returns true if the eofbit is set (the stream is at the end of a file)
-fail()	Returns true if the failbit is set (a non-fatal error occurred)
-clear()	Clears all flags and restores the stream to the goodbit state
-clear(state)	Clears all flags and sets the state flag passed in
-rdstate()	Returns the currently set flags
-setstate(state)	Sets the state flag passed in
-
-The most commonly dealt with bit is the failbit, which is set when the user enters invalid input. For example, consider the following program:
+实践中最常遇到的标记是 `failbit`，当用户输入非法数据时则该标记就会被设置。例如：
 
 ```cpp
 std::cout << "Enter your age: ";
@@ -44,37 +46,37 @@ int age {};
 std::cin >> age;
 ```
 
-COPY
+程序期望用户输入一个整型。但是如果用户输入的是一个非数值数据，例如 “Alex”，`cin` 就无法提取任何年龄信息，此时 `failbit` 会被设置 。
 
-Note that this program is expecting the user to enter an integer. However, if the user enters non-numeric data, such as “Alex”, cin will be unable to extract anything to age, and the failbit will be set.
-
-If an error occurs and a stream is set to anything other than goodbit, further stream operations on that stream will be ignored. This condition can be cleared by calling the clear() function.
+当发生错误时，流会被设置为除`goodbit`以外的状态，后续对流的操作也会被忽略。此时可以通过调用  `clear()` 函数来重置状态。
 
 ## 输入验证
 
-**Input validation** is the process of checking whether the user input meets some set of criteria. Input validation can generally be broken down into two types: string and numeric.
+**输入验证**是检查用户输入是否满足某些条件的过程。输入验证通常可以分为两种类型：字符串和数字。
 
-With string validation, we accept all user input as a string, and then accept or reject that string depending on whether it is formatted appropriately. For example, if we ask the user to enter a telephone number, we may want to ensure the data they enter has ten digits. In most languages (especially scripting languages like Perl and PHP), this is done via regular expressions. The C++ standard library has a [regular expression library](https://en.cppreference.com/w/cpp/regex) as well. Because regular expressions are slow compared to manual string validation, they should only be used if performance (compile-time and run-time) is of no concern or manual validation is too cumbersome.
+对于字符串验证，所有用户输入都会被作为字符串接受，然后根据其格式是否满足要求来判断应该接受或拒绝该字符串。例如，如果我们要求用户输入一个电话号码，我们可能希望确保其输入的数据有10位数字。在大多数语言中(特别是像Perl和PHP这样的脚本语言)，这是通过正则表达式完成的。C++标准库也有一个[正则表达式库](https://en.cppreference.com/w/cpp/regex)。因为正则表达式比手动字符串验证慢，所以只有在性能(编译时和运行时)要求不高或者手动验证太麻烦的情况下才应该使用正则表达式。
 
-With numerical validation, we are typically concerned with making sure the number the user enters is within a particular range (e.g. between 0 and 20). However, unlike with string validation, it’s possible for the user to enter things that aren’t numbers at all -- and we need to handle these cases too.
+对于数值验证，我们通常关心的是用户输入的数字是否在特定的范围内(例如，在0到20之间)。然而，与字符串验证不同的是，用户可以输入完全不是数字的东西——我们也需要处理这些情况。
 
-To help us out, C++ provides a number of useful functions that we can use to determine whether specific characters are numbers or letters. The following functions live in the cctype header
+为此，C++提供了许多有用的函数，我们可以使用它们来确定特定的字符是数字还是字母。以下函数位于`cctype`头文件中
 
+|Function	|Meaning|
+|:---:|---:|
+|`std::isalnum(int)`	|Returns non-zero if the parameter is a letter or a digit
+|`std::isalpha(int)`	|Returns non-zero if the parameter is a letter
+|`std::iscntrl(int)`	|Returns non-zero if the parameter is a control character
+|`std::isdigit(int)`	|Returns non-zero if the parameter is a digit
+|`std::isgraph(int)`	|Returns non-zero if the parameter is printable character that is not whitespace
+|`std::isprint(int)`	|Returns non-zero if the parameter is printable character (including whitespace)
+|`std::ispunct(int)`	|Returns non-zero if the parameter is neither alphanumeric nor whitespace
+|`std::isspace(int)`	|Returns non-zero if the parameter is whitespace
+|`std::isxdigit(int)`	|Returns non-zero if the parameter is a hexadecimal digit (0-9, a-f, A-F)
 
-Function	Meaning
-std::isalnum(int)	Returns non-zero if the parameter is a letter or a digit
-std::isalpha(int)	Returns non-zero if the parameter is a letter
-std::iscntrl(int)	Returns non-zero if the parameter is a control character
-std::isdigit(int)	Returns non-zero if the parameter is a digit
-std::isgraph(int)	Returns non-zero if the parameter is printable character that is not whitespace
-std::isprint(int)	Returns non-zero if the parameter is printable character (including whitespace)
-std::ispunct(int)	Returns non-zero if the parameter is neither alphanumeric nor whitespace
-std::isspace(int)	Returns non-zero if the parameter is whitespace
-std::isxdigit(int)	Returns non-zero if the parameter is a hexadecimal digit (0-9, a-f, A-F)
 
 ## 字符串验证
 
-Let’s do a simple case of string validation by asking the user to enter their name. Our validation criteria will be that the user enters only alphabetic characters or spaces. If anything else is encountered, the input will be rejected.
+让我们做一个简单的字符串验证案例，要求用户输入他们的名字。验证标准是用户只能输入字母字符或空格。如果遇到其他情况，则将拒绝输入。
+
 
 When it comes to variable length inputs, the best way to validate strings (besides using a regular expression library) is to step through each character of the string and ensure it meets the validation criteria. That’s exactly what we’ll do here, or better, that’s what `std::all_of` does for us.
 
@@ -193,11 +195,11 @@ int main()
 
 COPY
 
-Using this function, we can force the user to match our specific format exactly. However, this function is still subject to several constraints: if #, @, _, and ? are valid characters in the user input, this function won’t work, because those symbols have been given special meanings. Also, unlike with regular expressions, there is no template symbol that means “a variable number of characters can be entered”. Thus, such a template could not be used to ensure the user enters two words separated by a whitespace, because it can not handle the fact that the words are of variable lengths. For such problems, the non-template approach is generally more appropriate.
+Using this function, we can force the user to match our specific format exactly. However, this function is still subject to several constraints: if `#`,` @`, `_`, and `?` are valid characters in the user input, this function won’t work, because those symbols have been given special meanings. Also, unlike with regular expressions, there is no template symbol that means “a variable number of characters can be entered”. Thus, such a template could not be used to ensure the user enters two words separated by a whitespace, because it can not handle the fact that the words are of variable lengths. For such problems, the non-template approach is generally more appropriate.
 
 ## 数值验证
 
-When dealing with numeric input, the obvious way to proceed is to use the extraction operator to extract input to a numeric type. By checking the failbit, we can then tell whether the user entered a number or not.
+When dealing with numeric input, the obvious way to proceed is to use the extraction operator to extract input to a numeric type. By checking the `failbit`, we can then tell whether the user entered a number or not.
 
 Let’s try this approach:
 
@@ -233,11 +235,11 @@ int main()
 
 COPY
 
-If the user enters an integer, the extraction will succeed. std::cin.fail() will evaluate to false, skipping the conditional, and (assuming the user entered a positive number), we will hit the break statement, exiting the loop.
+If the user enters an integer, the extraction will succeed. `std::cin.fail()` will evaluate to false, skipping the conditional, and (assuming the user entered a positive number), we will hit the break statement, exiting the loop.
 
-If the user instead enters input starting with a letter, the extraction will fail. std::cin.fail() will evaluate to true, and we will go into the conditional. At the end of the conditional block, we will hit the continue statement, which will jump back to the top of the while loop, and the user will be asked to enter input again.
+If the user instead enters input starting with a letter, the extraction will fail. `std::cin.fail()` will evaluate to true, and we will go into the conditional. At the end of the conditional block, we will hit the continue statement, which will jump back to the top of the while loop, and the user will be asked to enter input again.
 
-However, there’s one more case we haven’t tested for, and that’s when the user enters a string that starts with numbers but then contains letters (e.g. “34abcd56”). In this case, the starting numbers (34) will be extracted into age, the remainder of the string (“abcd56”) will be left in the input stream, and the failbit will NOT be set. This causes two potential problems:
+However, there’s one more case we haven’t tested for, and that’s when the user enters a string that starts with numbers but then contains letters (e.g. “34abcd56”). In this case, the starting numbers (34) will be extracted into age, the remainder of the string (“abcd56”) will be left in the input stream, and the `failbit` will NOT be set. This causes two potential problems:
 
 1.  If you want this to be valid input, you now have garbage in your stream.
 2.  If you don’t want this to be valid input, it is not rejected (and you have garbage in your stream).
@@ -277,7 +279,7 @@ int main()
 ```
 
 
-If you don’t want such input to be valid, we’ll have to do a little extra work. Fortunately, the previous solution gets us half way there. We can use the gcount() function to determine how many characters were ignored. If our input was valid, gcount() should return 1 (the newline character that was discarded). If it returns more than 1, the user entered something that wasn’t extracted properly, and we should ask them for new input. Here’s an example of this:
+If you don’t want such input to be valid, we’ll have to do a little extra work. Fortunately, the previous solution gets us half way there. We can use the `gcount()` function to determine how many characters were ignored. If our input was valid, `gcount()` should return 1 (the newline character that was discarded). If it returns more than 1, the user entered something that wasn’t extracted properly, and we should ask them for new input. Here’s an example of this:
 
 ```cpp
 #include <iostream>
