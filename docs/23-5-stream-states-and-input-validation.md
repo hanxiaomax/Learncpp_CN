@@ -227,9 +227,9 @@ int main()
 ```
 
 
-If the user enters an integer, the extraction will succeed. `std::cin.fail()` will evaluate to false, skipping the conditional, and (assuming the user entered a positive number), we will hit the break statement, exiting the loop.
+如果用户输入了一个整型数，则提取可以成功。 `std::cin.fail()` 的结果为`false` ，不进入if语句。假设用户输入的是正数的话，则接下来会走到`break`语句，退出循环。
 
-If the user instead enters input starting with a letter, the extraction will fail. `std::cin.fail()` will evaluate to true, and we will go into the conditional. At the end of the conditional block, we will hit the continue statement, which will jump back to the top of the while loop, and the user will be asked to enter input again.
+如果，用户输入的不是整数而是字母，则提取会失败。此时 `std::cin.fail()` 返回 `true`，所以会走到if语句中。在语句块的最后，会遇到`continue`，继续and we will go into the conditional. At the end of the conditional block, we will hit the continue statement, which will jump back to the top of the while loop, and the user will be asked to enter input again.
 
 However, there’s one more case we haven’t tested for, and that’s when the user enters a string that starts with numbers but then contains letters (e.g. “34abcd56”). In this case, the starting numbers (34) will be extracted into age, the remainder of the string (“abcd56”) will be left in the input stream, and the `failbit` will NOT be set. This causes two potential problems:
 
