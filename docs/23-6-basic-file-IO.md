@@ -157,27 +157,29 @@ C++中的输出可以被缓冲。这意味着输出到文件流的任何内容�
 
 缓冲区可以通过 `ostream::flush()` 函数手动刷新，或者向输出流发送 `std::flush` 也可以。这两种方法都可以用于确保缓冲区的内容立即写入磁盘，以防程序突然崩溃。
 
-另外一点需要注意的是，`std::endl;` 会刷新输出流。因此，过度使用`std::endl`(导致不必要的缓冲区刷新)可能会在执行缓存I/O时产生性能影响，因为刷新操作开销很大(例如写入文件)。由于这个原因，注重性能的程序员通常会使用`\n` 而不是`std::endl`在输出流中插入换行符，以避免不必要的刷新缓冲区。
+另外一点需要注意的是，`std::endl;` 会刷新输出流。因此，过度使用`std::endl`(导致不必要的缓冲区刷新)可能会在执行缓存I/O时产生性能影响，因为刷新操作开销很大(例如写入文件)。由于这个原因，注重性能的程序员通常会使用`\n` 而不是`std::endl`在输出流中插入换行符，以避免不必要的缓冲区刷新。
 
 ## 文件模式
 
-What happens if we try to write to a file that already exists? Running the output example again shows that the original file is completely overwritten each time the program is run. What if, instead, we wanted to append some more data to the end of the file? It turns out that the file stream constructors take an optional second parameter that allows you to specify information about how the file should be opened. This parameter is called mode, and the valid flags that it accepts live in the ios class.
+如果我们试图向一个已经存在的文件写入会发生什么？再次运行输出示例可以看到，每次运行程序时，原始文件都被完全覆盖。如果我们想在文件的末尾追加更多的数据应该怎么操作呢？实际上，文件流构造函数接受第二个可选参数，该参数可以指定应该如何打开文件。这个参数被称为模式(mode)，它接受的有效标志存在于`ios`类中。
 
-Ios file mode	Meaning
-app	Opens the file in append mode
-ate	Seeks to the end of the file before reading/writing
-binary	Opens the file in binary mode (instead of text mode)
-in	Opens the file in read mode (default for ifstream)
-out	Opens the file in write mode (default for ofstream)
-trunc	Erases the file if it already exists
+|Ios file mode	|Meaning|
+|:---:|:---|
+|app	|使用追加模式打开文件
+|ate	|在读写前移动到文件末尾
+|binary	|以二进制模式打开文件(而非文本模式)
+|in	|以读模式打开文件(`ifstream`的默认模式)
+|out	|以写模式打开文件(`ofstream`的默认模式)
+|trunc	|如果文件存在则清掉其内容
 
-It is possible to specify multiple flags by bitwise ORing them together (using the | operator). ifstream defaults to std::ios::in file mode. ofstream defaults to std::ios::out file mode. And fstream defaults to std::ios::in | std::ios::out file mode, meaning you can both read and write by default.
+使用[[bitwise-or|按位或]]运算符可以同时设置读个标记。`ifstream` 默认使用的是 `std::ios::in` 文件模式。而 `ofstream` 默认使用了 `std::ios::out` 文件模式。`fstream` 默认使用了 `std::ios::in | std::ios::out` 文件模式，意味着你可以对该文件进行读写。
+
 
 !!! tip "小贴士"
 
-	Due to the way fstream was designed, it may fail if std::ios::in is used and the file being opened does not exist. If you need to create a new file using fstream, use std::ios::out mode only.
+	 ==如果使用了 `std::ios::in` 但文件并不存在，则 `fstream` 会失败。所以如果你希望使用`fstream`创建以新文件，请确保只使用 `std::ios::out` 模式。==
 
-Let’s write a program that appends two more lines to the Sample.txt file we previously created:
+让我们编写一个程序，向之前创建的*Sample.txt*文件追加两行内容:
 
 ```cpp
 #include <iostream>
@@ -185,15 +187,15 @@ Let’s write a program that appends two more lines to the Sample.txt file we pr
 
 int main()
 {
-    // We'll pass the ios:app flag to tell the ofstream to append
-    // rather than rewrite the file. We do not need to pass in std::ios::out
-    // because ofstream defaults to std::ios::out
+    // 使用 ios:app 标记告知 ofstream 追加内容而不是覆写
+    // 我们不需要添加 std::ios::out
+    // 因为 ofstream 默认是 std::ios::out
     std::ofstream outf{ "Sample.txt", std::ios::app };
 
-    // If we couldn't open the output file stream for writing
+    // 如果不能打开文件
     if (!outf)
     {
-        // Print an error and exit
+        // 打印错误并退出
         std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
         return 1;
     }
@@ -203,14 +205,11 @@ int main()
 
     return 0;
 
-    // When outf goes out of scope, the ofstream
-    // destructor will close the file
+    // 当 inf 离开作用域时，ifstream 的析构函数会负责关闭文件
 }
 ```
 
-COPY
-
-Now if we take a look at Sample.txt (using one of the above sample programs that prints its contents, or loading it in a text editor), we will see the following:
+现在，如果我们看一下*Sample .txt*(使用上面的一个示例程序打印它的内容，或在文本编辑器中加载它)，可以看到以下内容:
 
 ```
 This is line 1
