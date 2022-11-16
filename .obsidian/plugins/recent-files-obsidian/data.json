@@ -9,6 +9,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "13-x-Chapter-13-comprehensive-quiz",
+      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
+    },
+    {
       "basename": "23-5-stream-states-and-input-validation",
       "path": "docs/23-5-stream-states-and-input-validation.md"
     },
@@ -191,14 +195,6 @@
     {
       "basename": "code segment",
       "path": "docs/code segment.md"
-    },
-    {
-      "basename": "segment",
-      "path": "docs/segment.md"
-    },
-    {
-      "basename": "type-aliases",
-      "path": "docs/type-aliases.md"
     }
   ],
   "omittedPaths": [],

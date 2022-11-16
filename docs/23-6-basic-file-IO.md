@@ -12,14 +12,16 @@ tags:
 
 ??? note "关键点速记"
 
+	- 基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)
+
 
 C++中的文件I/O和普通 I/O 非常类似。基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)。这些类可以分别用于文件输入、文件输出和文件输入输出。使用这些文件IO类时，需要包含 `fstream` 头文件。
 
-和 `cout`、 `cin`、 `cerr` 以及 `clog` 这些已经连接好可以直接使用的流不同，文件流必须由程序员手动设置。不过，操作很简单：要打开一个用于读写的文件时，只需要实例化一个需要的文件IO类（将文件名作为参数）。然后使用[[extraction-operator|提取运算符]]或[[insertion-operator|插入运算符]]从文件中读取数据或向文件写入shu'jThen use the insertion (<<) or extraction (>>) operator to write to or read data from the file. Once you are done, there are several ways to close a file: explicitly call the close() function, or just let the file I/O variable go out of scope (the file I/O class destructor will close the file for you).
+和 `cout`、 `cin`、 `cerr` 以及 `clog` 这些已经连接好可以直接使用的流不同，文件流必须由程序员手动设置。不过，操作很简单：要打开一个用于读写的文件时，只需要实例化一个需要的文件IO类（将文件名作为参数）。然后使用[[extraction-operator|提取运算符]]或[[insertion-operator|插入运算符]]从文件中读取数据或向文件写入数据。完成操作后，==有几种方式可以关闭该文件：显式地调用 `close()` 函数或者让文件IO变量[[going-out-of-scope|离开作用域]]（[[destructor|析构函数]]会帮你关闭文件）。==
 
 ## 文件输出
 
-To do file output in the following example, we’re going to use the ofstream class. This is extremely straighforward:
+下面的例子中使用了`ofstream`类进行文件输出。非常简单直接：
 
 ```cpp
 #include <fstream>
@@ -27,38 +29,35 @@ To do file output in the following example, we’re going to use the ofstream cl
 
 int main()
 {
-    // ofstream is used for writing files
-    // We'll make a file called Sample.txt
+    // ofstream 用于写文件
+    // 创建一个名为 Sample.txt 的文件
     std::ofstream outf{ "Sample.txt" };
 
-    // If we couldn't open the output file stream for writing
+    // 如果无法打开输出文件流
     if (!outf)
     {
-        // Print an error and exit
+        // 打印错误并退出
         std::cerr << "Uh oh, Sample.txt could not be opened for writing!\n";
         return 1;
     }
 
-    // We'll write two lines into this file
+    // 向文件写入两行文字
     outf << "This is line 1\n";
     outf << "This is line 2\n";
 
     return 0;
 
-    // When outf goes out of scope, the ofstream
-    // destructor will close the file
+    // outf 离开作用域时，ofstream析构函数会关闭文件
 }
 ```
 
-COPY
+此时打开项目目录，应该会看到一个名为*Sample.txt*的文件。如果用文本编辑器打开它，可以看到它确实包含了刚才写入文件的两行文本。
 
-If you look in your project directory, you should see a file called Sample.txt. If you open it with a text editor, you will see that it indeed contains two lines we wrote to the file.
-
-Note that it is also possible to use the put() function to write a single character to the file.
+注意，也可以使用`put()`函数向文件写入单个字符。
 
 ## 文件输入
 
-Now, we’ll take the file we wrote in the last example and read it back in from disk. Note that ifstream returns a 0 if we’ve reached the end of the file (EOF). We’ll use this fact to determine how much to read.
+在这个例子中，我们会打开上一个例子中新创建的文件并读取其内容。注意，在到达文件末尾（EOF）时， `ifstream`  会返回0。我们需要基于这个特性来判断读取多少内容：
 
 ```cpp
 #include <fstream>
@@ -67,22 +66,22 @@ Now, we’ll take the file we wrote in the last example and read it back in from
 
 int main()
 {
-    // ifstream is used for reading files
-    // We'll read from a file called Sample.txt
+    // ifstream 用于读取文件
+    // 从 Sample.txt 读取内容
     std::ifstream inf{ "Sample.txt" };
 
-    // If we couldn't open the output file stream for reading
+    // 如果无法打开输入文件流
     if (!inf)
     {
-        // Print an error and exit
+        // 打印错误并退出
         std::cerr << "Uh oh, Sample.txt could not be opened for reading!\n";
         return 1;
     }
 
-    // While there's still stuff left to read
+    // 如果仍然有内容可以读取
     while (inf)
     {
-        // read stuff from the file into a string and print it
+        // 从文件中读取字符串并打印
         std::string strInput;
         inf >> strInput;
         std::cout << strInput << '\n';
@@ -90,8 +89,8 @@ int main()
 
     return 0;
 
-    // When inf goes out of scope, the ifstream
-    // destructor will close the file
+    // 当 inf 离开作用域时，ifstream 的析构函数会负责关闭文件
+
 }
 ```
 

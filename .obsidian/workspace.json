@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "e370b52882412826",
+            "id": "c6667d3035536b62",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e370b52882412826",
+  "active": "c6667d3035536b62",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/destructors.md",
+    "docs/23-6-basic-file-IO.md",
+    "docs/13-x-Chapter-13-comprehensive-quiz.md",
     "docs/23-5-stream-states-and-input-validation.md",
     "docs/23-4-stream-classes-for-strings.md",
     "docs/23-7-random-file-IO.md",
-    "docs/23-6-basic-file-IO.md",
     "docs/23-2-Input-with-istream.md",
     "docs/23-3-output-with-ostream-and-ios.md",
-    "docs/format-group.md",
-    "docs/bitwise-or.md",
-    "docs/23-1-Input-and-output-IO-streams.md"
+    "docs/format-group.md"
   ]
 }
