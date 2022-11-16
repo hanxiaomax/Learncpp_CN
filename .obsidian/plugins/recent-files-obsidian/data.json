@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "23-6-basic-file-IO",
-      "path": "docs/23-6-basic-file-IO.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "22-1-std-string-and-std-wstring",
+      "path": "docs/22-1-std-string-and-std-wstring.md"
+    },
+    {
+      "basename": "23-7-random-file-IO",
+      "path": "docs/23-7-random-file-IO.md"
+    },
+    {
+      "basename": "23-6-basic-file-IO",
+      "path": "docs/23-6-basic-file-IO.md"
     },
     {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
@@ -19,10 +27,6 @@
     {
       "basename": "23-4-stream-classes-for-strings",
       "path": "docs/23-4-stream-classes-for-strings.md"
-    },
-    {
-      "basename": "23-7-random-file-IO",
-      "path": "docs/23-7-random-file-IO.md"
     },
     {
       "basename": "23-2-Input-with-istream",
@@ -95,10 +99,6 @@
     {
       "basename": "22-2-std-string-construction-and-destruction",
       "path": "docs/22-2-std-string-construction-and-destruction.md"
-    },
-    {
-      "basename": "22-1-std-string-and-std-wstring",
-      "path": "docs/22-1-std-string-and-std-wstring.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",

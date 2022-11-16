@@ -324,7 +324,7 @@
 - [[22-7-std-string-inserting|22.7 - std-string 插入]]
 
 
-## 23. 输入输出
+## 23. 输入输出 ✅ 
 
 - [[23-1-Input-and-output-IO-streams|23.1 - 输入输出流]]
 - [[23-2-Input-with-istream|23.2 - 使用istream处理输入]]

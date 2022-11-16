@@ -14,47 +14,42 @@ tags:
 
 ## 文件指针
 
-Each file stream class contains a file pointer that is used to keep track of the current read/write position within the file. When something is read from or written to a file, the reading/writing happens at the file pointer’s current location. By default, when opening a file for reading or writing, the file pointer is set to the beginning of the file. However, if a file is opened in append mode, the file pointer is moved to the end of the file, so that writing does not overwrite any of the current contents of the file.
+每个文件流类都包含一个文件指针，用于跟踪文件内的当前读/写位置。当对文件进行读写操作时，读/写操作发生在文件指针的当前位置。默认情况下，当打开一个文件进行读写时，文件指针被设置为文件的开头。但是，如果以追加模式打开文件，则文件指针将移动到文件的末尾，因此写入操作不会覆盖文件的任何当前内容。
 
 ## 使用 `seekg()` 和 `seekp()` 进行随机文件访问
 
-So far, all of the file access we’ve done has been sequential -- that is, we’ve read or written the file contents in order. However, it is also possible to do random file access -- that is, skip around to various points in the file to read its contents. This can be useful when your file is full of records, and you wish to retrieve a specific record. Rather than reading all of the records until you get to the one you want, you can skip directly to the record you wish to retrieve.
+到目前为止，我们所完成的文件访问都是顺序的——即按顺序读取或写入了文件内容。但是，其实也可以进行随机文件访问——即跳到文件中的某个位置再读取其内容。当你希望从包含大量记录的文件中检索特定的记录时，这是很有用的。因为你可以直接跳到想要检索的记录，而不必读取所有的记录并从中找到你想要的记录。
 
-Random file access is done by manipulating the file pointer using either seekg() function (for input) and seekp() function (for output). In case you are wondering, the g stands for “get” and the p for “put”. For some types of streams, seekg() (changing the read position) and seekp() (changing the write position) operate independently -- however, with file streams, the read and write position are always identical, so seekg and seekp can be used interchangeably.
+通过使用`seekg()`函数(用于输入)和`seekp()`函数(用于输出)操作文件指针可以实现文件随机访问。如果你想知道，`g` 代表"get" ，`p` 代表"put"。对于某些类型的流，`seekg()`(改变读位置)和`seekp()`(改变写位置)独立操作——然而，对于文件流，读和写位置总是相同的，因此`seekg`和`seekp`可以互换使用。
 
-The seekg() and seekp() functions take two parameters. The first parameter is an offset that determines how many bytes to move the file pointer. The second parameter is an ios flag that specifies what the offset parameter should be offset from.
+`seekg()` 和 `seekp()` 函数有两个[[parameters|形参]]。第一个形参是文件指针需要编译的字节数，第二个参数则是 `ios` 标记，用于指定从哪里偏移（偏移基准点）。
 
+|ios 搜索标记	|含义|
+|:---|:---|
+|`beg`	|相对于文件开头进行偏移 (默认)
+|`cur`	|相对于当前位置进行偏移
+|`end`	|相对于文件结尾进行偏移
 
-Ios seek flag	Meaning
-beg	The offset is relative to the beginning of the file (default)
-cur	The offset is relative to the current location of the file pointer
-end	The offset is relative to the end of the file
+正偏移量意味着将文件指针向文件的末尾移动，而负偏移量意味着将文件指针向文件开头移动。
 
-
-A positive offset means move the file pointer towards the end of the file, whereas a negative offset means move the file pointer towards the beginning of the file.
-
-Here are some examples:
-
-```cpp
-inf.seekg(14, std::ios::cur); // move forward 14 bytes
-inf.seekg(-18, std::ios::cur); // move backwards 18 bytes
-inf.seekg(22, std::ios::beg); // move to 22nd byte in file
-inf.seekg(24); // move to 24th byte in file
-inf.seekg(-28, std::ios::end); // move to the 28th byte before end of the file
-```
-
-COPY
-
-Moving to the beginning or end of the file is easy:
+下面是一些例子：
 
 ```cpp
-inf.seekg(0, std::ios::beg); // move to beginning of file
-inf.seekg(0, std::ios::end); // move to end of file
+inf.seekg(14, std::ios::cur); // 向前移动14字节
+inf.seekg(-18, std::ios::cur); // 向后移动18字节
+inf.seekg(22, std::ios::beg); // 移动到文件的第22字节
+inf.seekg(24); // 移动到文件的第22字节
+inf.seekg(-28, std::ios::end); // 移动到文件结束前的第28字节
 ```
 
-COPY
+移动到文件的开头或结尾很容易：
 
-Let’s do an example using seekg() and the input file we created in the last lesson. That input file looks like this:
+```cpp
+inf.seekg(0, std::ios::beg); // 移动到文件的开头
+inf.seekg(0, std::ios::end); // 移动到文件的结尾
+```
+
+使用`seekg()`和上一课中的创建的输入文件做一个例子。输入文件的内容如下：
 
 ```
 This is line 1
@@ -63,7 +58,7 @@ This is line 3
 This is line 4
 ```
 
-Here is the example:
+例子：
 
 ```cpp
 #include <fstream>
@@ -103,24 +98,20 @@ int main()
 }
 ```
 
-COPY
-
-This produces the result:
-
+输出结果如下：
 ```
 is line 1
 line 2
 This is line 4
 ```
-Note: Some compilers have buggy implementations of seekg() and seekp() when used in conjunction with text files (due to buffering). If your compiler is one of them (and you’ll know because your output will differ from the above), you can try opening the file in binary mode instead:
+
+注意：当与文本文件一起使用时，一些编译器对`seekg()`和`seekp()`的实现有bug(由于缓冲的关系)。如果你的编译器是其中之一(如果你的输出结果和上面不同，则说明有此类问题)，此时你你可以尝试以二进制模式打开文件:
 
 ```cpp
 std::ifstream inf("Sample.txt", std::ifstream::binary);
 ```
 
-COPY
-
-Two other useful functions are tellg() and tellp(), which return the absolute position of the file pointer. This can be used to determine the size of a file:
+另外两个有用的函数是`tellg()`和`tellp()`，它们返回文件指针的绝对位置。这可以用来确定文件的大小:
 
 ```cpp
 std::ifstream inf("Sample.txt");
@@ -128,32 +119,30 @@ inf.seekg(0, std::ios::end); // move to end of file
 std::cout << inf.tellg();
 ```
 
-COPY
+打印结果：
 
-This prints:
-
+```
 64
+```
 
-which is how long sample.txt is in bytes (assuming a carriage return after the last line).
+这就是*Sample.txt*的字节长度(假设在最后一行之后有一个回车)。
 
 ## 使用`fstream`同时进行文件的读写
 
-The fstream class is capable of both reading and writing a file at the same time -- almost! The big caveat here is that it is not possible to switch between reading and writing arbitrarily. Once a read or write has taken place, the only way to switch between the two is to perform an operation that modifies the file position (e.g. a seek). If you don’t actually want to move the file pointer (because it’s already in the spot you want), you can always seek to the current position:
+`fstream` 类可以同时读写文件！这里需要注意的是，它不能在读取和写入之间随意切换。一旦进行了读或写操作，在两者之间切换的唯一方法是执行修改文件指针位置的操作(例如`seek`)。如果你不想移动文件指针(因为它已经在需要的位置了)，你可以将指针调整到当前位置：
 
 ```cpp
 // assume iofile is an object of type fstream
-iofile.seekg(iofile.tellg(), std::ios::beg); // seek to current file position
+iofile.seekg(iofile.tellg(), std::ios::beg); // 指针移动到当前位置
 ```
 
-COPY
+如果你不这样做，任何奇怪的事情都可能发生。
 
-If you do not do this, any number of strange and bizarre things may occur.
+(注意：尽管看起来 `iofile.seekg(0, std::ios::cur)` 也能起到相似的作用。但是实际上有些编译器会将其优化掉)。
 
-(Note: Although it may seem that `iofile.seekg(0, std::ios::cur)` would also work, it appears some compilers may optimize this away).
+还有一点需要注意的是，和 `ifstream`不同，`fstream`不能通过 `while (inf)` 来判断是否达到文件末尾。
 
-One other bit of trickiness: Unlike ifstream, where we could say `while (inf)` to determine if there was more to read, this will not work with fstream.
-
-Let’s do a file I/O example using fstream. We’re going to write a program that opens a file, reads its contents, and changes any vowels it finds to a ‘#’ symbol.
+接下来使用`fstream` 演示一下文件输入输出。下面程序会打开一个文件，读取其内容，然后将其中所有的元音字母替换为‘`#`’。
 
 ```cpp
 #include <fstream>
@@ -214,9 +203,7 @@ int main()
 }
 ```
 
-COPY
-
-After running the above program, our Sample.txt file will look like this:
+运行程序，输出结果如下：
 
 ```
 Th#s #s l#n# 1
@@ -227,18 +214,18 @@ Th#s #s l#n# 4
 
 ## 其他有用的文件函数
 
-To delete a file, simply use the remove() function.
+要删除文件，只需使用`remove()` 函数。
 
-Also, the is_open() function will return true if the stream is currently open, and false otherwise.
+此外，如果流是打开状态，`is_open()` 函数会返回`true`，否则返回`false`。
 
 ## 关于将指针写入硬盘的警告⚠️
 
-While streaming variables to a file is quite easy, things become more complicated when you’re dealing with pointers. Remember that a pointer simply holds the address of the variable it is pointing to. Although it is possible to read and write addresses to disk, it is extremely dangerous to do so. This is because a variable’s address may differ from execution to execution. Consequently, although a variable may have lived at address 0x0012FF7C when you wrote that address to disk, it may not live there any more when you read that address back in!
+虽然将变量写到文件是很容易做到的，但在处理指针时，情况就变得更加复杂了。记住，指针只是保存它所指向的变量的地址。尽管可以将地址读写到磁盘，但这样做是非常危险的。这是因为变量的地址在每次执行时可能不同。因此，尽管当你将该地址写入磁盘时，变量可能位于地址**0x0012FF7C**，但当你再次读取该地址时，它可能不再位于该地址了！
 
-For example, let’s say you had an integer named nValue that lived at address 0x0012FF7C. You assigned nValue the value 5. You also declared a pointer named *pnValue that points to nValue. pnValue holds nValue’s address of 0x0012FF7C. You want to save these for later, so you write the value 5 and the address 0x0012FF7C to disk.
+例如，假设有一个名为`nValue`的整数，位于地址**0x0012FF7C**。你给`nValue`赋值5。同时，声明了一个名为`*pnValue`的指针，`它指向nValue`。`pnValue` 保存 `nValue` 的地址**0x0012FF7C**。此时，你希望将这些变量保存到文件以备将来使用，因此你将值5和地址**0x0012FF7C**写入磁盘。
 
-A few weeks later, you run the program again and read these values back from disk. You read the value 5 into another variable named nValue, which lives at 0x0012FF78. You read the address 0x0012FF7C into a new pointer named *pnValue. Because pnValue now points to 0x0012FF7C when the nValue lives at 0x0012FF78, pnValue is no longer pointing to nValue, and trying to access pnValue will lead you into trouble.
+几周后，再次运行该程序并从磁盘读取这些值。将值5读入另一个名为`nValue`的变量，该变量位于**0x0012FF78**。你将地址**0x0012FF7C**读入名为`*pnValue` 的指针中。因为`pnValue` 现在指向**0x0012FF7C**，而`nValue`位于**0x0012FF78**， `pnValue` 不再指向 `nValue`，试图访问 `pnValue` 将会带来麻烦。
 
 !!! warning "注意"
 
-	Do not write memory addresses to files. The variables that were originally at those addresses may be at different addresses when you read their values back in from disk, and the addresses will be invalid.
+	不要向文件写入内存地址。当你从磁盘读回这些值时，最初位于这些地址的变量可能位于不同的地址，这些地址是无效的。

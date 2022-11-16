@@ -220,9 +220,10 @@ This is line 4
 
 ## 使用 `open()`打开文件
 
-Just like it is possible to explicitly close a file stream using close(), it’s also possible to explicitly open a file stream using open(). open() works just like the file stream constructors -- it takes a file name and an optional file mode.
+就像可以使用`close()`显式地关闭文件流一样，也可以使用`open()`显式地打开文件流。`open()`的工作原理与文件流构造函数类似——它接受一个文件名和一个可选的文件模式。
 
-For example:
+例如:
+
 
 ```cpp
 std::ofstream outf{ "Sample.txt" };
@@ -236,6 +237,5 @@ outf << "This is line 3\n";
 outf.close();
 ```
 
-COPY
 
-You can find more information about the open() function [here](https://en.cppreference.com/w/cpp/io/basic_filebuf/open).
+更多关于 `open()` 函数的信息可以在 [这里](https://en.cppreference.com/w/cpp/io/basic_filebuf/open)找到。
