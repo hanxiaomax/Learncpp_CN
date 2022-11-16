@@ -94,9 +94,7 @@ int main()
 }
 ```
 
-COPY
-
-This produces the result:
+输出结果：
 
 ```
 This
@@ -109,7 +107,7 @@ line
 2
 ```
 
-Hmmm, that wasn’t quite what we wanted. Remember that the extraction operator breaks on whitespace. In order to read in entire lines, we’ll have to use the getline() function.
+额。。这好像并不是我们想要的结果。还记得吗？[[extraction-operator|提取运算符]]会被空格分割，所以为了读取一整行，我们需要使用 `getline()` 函数。
 
 ```cpp
 #include <fstream>
@@ -118,38 +116,34 @@ Hmmm, that wasn’t quite what we wanted. Remember that the extraction operator 
 
 int main()
 {
-    // ifstream is used for reading files
-    // We'll read from a file called Sample.txt
+    // ifstream 用于读取文件
+    // 从 Sample.txt 读取内容
     std::ifstream inf{ "Sample.txt" };
 
-    // If we couldn't open the input file stream for reading
+    // 如果无法打开输入文件流
     if (!inf)
     {
-        // Print an error and exit
+        // 打印错误并退出
         std::cerr << "Uh oh, Sample.txt could not be opened for reading!\n";
         return 1;
     }
 
-    // While there's still stuff left to read
+    // 如果仍然有内容可以读取
     while (inf)
     {
-        // read stuff from the file into a string and print it
+        // 从文件中读取字符串并打印
         std::string strInput;
-        std::getline(inf, strInput);
+        std::getline(inf, strInput); //使用 getline 读取一整行
         std::cout << strInput << '\n';
     }
 
     return 0;
 
-    // When inf goes out of scope, the ifstream
-    // destructor will close the file
+    // 当 inf 离开作用域时，ifstream 的析构函数会负责关闭文件
 }
 ```
 
-COPY
-
-This produces the result:
-
+输出结果：
 ```
 This is line 1
 This is line 2
@@ -157,13 +151,13 @@ This is line 2
 
 ## 带缓冲的输出
 
-Output in C++ may be buffered. This means that anything that is output to a file stream may not be written to disk immediately. Instead, several output operations may be batched and handled together. This is done primarily for performance reasons. When a buffer is written to disk, this is called **flushing**the buffer. One way to cause the buffer to be flushed is to close the file -- the contents of the buffer will be flushed to disk, and then the file will be closed.
+C++中的输出可以被缓冲。这意味着输出到文件流的任何内容都不会立即写入磁盘。这样一来就可以将几个输出操作合并处理。这样做主要是出于性能原因，当缓冲区被写入磁盘时，这被称为**刷新缓冲区**。==触发缓冲区刷新的一种方法是关闭文件——缓冲区的内容将被刷新到磁盘，然后关闭文件。==
 
-Buffering is usually not a problem, but in certain circumstance it can cause complications for the unwary. The main culprit in this case is when there is data in the buffer, and then program terminates immediately (either by crashing, or by calling exit()). In these cases, the destructors for the file stream classes are not executed, which means the files are never closed, which means the buffers are never flushed. In this case, the data in the buffer is not written to disk, and is lost forever. This is why it is always a good idea to explicitly close any open files before calling exit().
+缓冲通常不是问题，但在某些情况下，它可能会给粗心的人带来麻烦。在这种情况下，主要的罪魁祸首是缓冲区中有数据，然后程序立即终止(通过崩溃或调用`exit()`)。在这种情况下，不会执行文件流类的析构函数，这意味着文件永远不会关闭，所以缓冲区永远不会刷新。在这种情况下，缓冲区中的数据将不会被写入磁盘，并且永远丢失。这就是为什么在调用`exit()`之前显式关闭所有打开的文件总是一个好主意
 
-It is possible to flush the buffer manually using the ostream::flush() function or sending std::flush to the output stream. Either of these methods can be useful to ensure the contents of the buffer are written to disk immediately, just in case the program crashes.
+缓冲区可以通过 `ostream::flush()` 函数手动刷新，或者向输出流发送 `std::flush` 也可以。这两种方法都可以用于确保缓冲区的内容立即写入磁盘，以防程序突然崩溃。
 
-One interesting note is that std::endl; also flushes the output stream. Consequently, overuse of std::endl (causing unnecessary buffer flushes) can have performance impacts when doing buffered I/O where flushes are expensive (such as writing to a file). For this reason, performance conscious programmers will often use ‘\n’ instead of std::endl to insert a newline into the output stream, to avoid unnecessary flushing of the buffer.
+另外一点需要注意的是，`std::endl;` 会刷新输出流。因此，过度使用`std::endl`(导致不必要的缓冲区刷新)可能会在执行缓存I/O时产生性能影响，因为刷新操作开销很大(例如写入文件)。由于这个原因，注重性能的程序员通常会使用`\n` 而不是`std::endl`在输出流中插入换行符，以避免不必要的刷新缓冲区。
 
 ## 文件模式
 
