@@ -1,6 +1,6 @@
 ---
-title: 23.5 - stream 状态和输入验证
-alias: 23.5 - stream 状态和输入验证
+title: 23.5 - 流状态和输入验证
+alias: 23.5 - 流状态和输入验证
 origin: /stream-states-and-input-validation/
 origin_title: "23.5 — Stream states and input validation"
 time: 2022-9-7
@@ -270,7 +270,7 @@ int main()
 }
 ```
 
-如果你不希望这样的输入是有效的，那我们需要做一些额外的工作。幸运的是，前面的解决方案已经完成了一半的工作。我们可以使用`gcount()` 函数来确定有多少字符被忽略。如果输入有效，`gcount()` 应该返回1(被丢弃的换行符)。如果返回值大于1，说明用户输入的内容没有被正确提取，此时应该要求用户重新输入。这里有一个例子:
+如果你不希望这样的输入是有效的，那还需要做一些额外的工作。幸运的是，前面的解决方案已经完成了一半的工作。我们可以使用`gcount()` 函数来确定有多少字符被忽略了。如果输入有效，则`gcount()` 应该返回1(被丢弃的换行符)。如果返回值大于1，说明用户输入的内容没有被正确提取，此时应该要求用户重新输入。这里有一个例子:
 
 ```cpp
 #include <iostream>
@@ -310,11 +310,10 @@ int main()
 }
 ```
 
-COPY
 
 ## 数值作为字符串进行验证
 
-The above example was quite a bit of work simply to get a simple value! Another way to process numeric input is to read it in as a string, then try to convert it to a numeric type. The following program makes use of that methodology:
+为了得到一个值，竟然要像上面那样这么多的操作！处理数字输入的另一种方法是将其作为字符串读入，然后尝试将其转换为数字类型。下面的程序使用了这种方法：
 
 ```cpp
 #include <charconv> // std::from_chars
@@ -328,13 +327,13 @@ std::optional<int> extractAge(std::string_view age)
   int result{};
   auto end{ age.data() + age.length() };
 
-  // Try to parse an int from age
+  // 尝试从age中提取一个整数
   if (std::from_chars(age.data(), end, result).ptr != end)
   {
     return {};
   }
 
-  if (result <= 0) // make sure age is positive
+  if (result <= 0) // 确保年龄是正数
   {
     return {};
   }
@@ -365,6 +364,7 @@ int main()
 
 COPY
 
-Whether this approach is more or less work than straight numeric extraction depends on your validation parameters and restrictions.
+与直接提取数字相比，这种方法的工作量是多还是少取决于验证参数和限制。
 
-As you can see, doing input validation in C++ is a lot of work. Fortunately, many such tasks (e.g. doing numeric validation as a string) can be easily turned into functions that can be reused in a wide variety of situations.
+如你所见，在C++中进行输入验证需要大量的工作。幸运的是，许多这样的任务(例如，作为字符串进行数值验证)可以很容易地转换为可以在各种情况下重用的函数。
+

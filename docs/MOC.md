@@ -330,7 +330,7 @@
 - [[23-2-Input-with-istream|23.2 - 使用istream处理输入]]
 - [[23-3-output-with-ostream-and-ios|23.3 - 使用ostream和ios处理输出]]
 - [[23-4-stream-classes-for-strings|23.4 - 用于字符串的 stream 类]]
-- [[23-5-stream-states-and-input-validation|23.5 - stream 状态和输入验证]]
+- [[23-5-stream-states-and-input-validation|23.5 - 流状态和输入验证]]
 - [[23-6-basic-file-IO|23.6 - 基本文件输入输出]]
 - [[23-7-random-file-IO|23.7 - 随机文件输入输出]]
 

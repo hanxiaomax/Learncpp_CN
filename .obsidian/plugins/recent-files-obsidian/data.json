@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "23-5-stream-states-and-input-validation",
-      "path": "docs/23-5-stream-states-and-input-validation.md"
+      "basename": "23-6-basic-file-IO",
+      "path": "docs/23-6-basic-file-IO.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "23-5-stream-states-and-input-validation",
+      "path": "docs/23-5-stream-states-and-input-validation.md"
     },
     {
       "basename": "23-4-stream-classes-for-strings",
@@ -15,10 +19,6 @@
     {
       "basename": "23-7-random-file-IO",
       "path": "docs/23-7-random-file-IO.md"
-    },
-    {
-      "basename": "23-6-basic-file-IO",
-      "path": "docs/23-6-basic-file-IO.md"
     },
     {
       "basename": "23-2-Input-with-istream",

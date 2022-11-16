@@ -13,9 +13,9 @@ tags:
 ??? note "关键点速记"
 
 
-File I/O in C++ works very similarly to normal I/O (with a few minor added complexities). There are 3 basic file I/O classes in C++: ifstream (derived from istream), ofstream (derived from ostream), and fstream (derived from iostream). These classes do file input, output, and input/output respectively. To use the file I/O classes, you will need to include the fstream header.
+C++中的文件I/O和普通 I/O 非常类似。基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)。这些类可以分别用于文件输入、文件输出和文件输入输出。使用这些文件IO类时，需要包含 `fstream` 头文件。
 
-Unlike the cout, cin, cerr, and clog streams, which are already ready for use, file streams have to be explicitly set up by the programmer. However, this is extremely simple: to open a file for reading and/or writing, simply instantiate an object of the appropriate file I/O class, with the name of the file as a parameter. Then use the insertion (<<) or extraction (>>) operator to write to or read data from the file. Once you are done, there are several ways to close a file: explicitly call the close() function, or just let the file I/O variable go out of scope (the file I/O class destructor will close the file for you).
+和 `cout`、 `cin`、 `cerr` 以及 `clog` 这些已经连接好可以直接使用的流不同，文件流必须由程序员手动设置。不过，操作很简单：要打开一个用于读写的文件时，只需要实例化一个需要的文件IO类（将文件名作为参数）。然后使用[[extraction-operator|提取运算符]]或[[insertion-operator|插入运算符]]从文件中读取数据或向文件写入shu'jThen use the insertion (<<) or extraction (>>) operator to write to or read data from the file. Once you are done, there are several ways to close a file: explicitly call the close() function, or just let the file I/O variable go out of scope (the file I/O class destructor will close the file for you).
 
 ## 文件输出
 
