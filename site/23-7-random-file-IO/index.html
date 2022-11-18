@@ -9,22 +9,24 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
   <title>LearnCpp 中文版</title>
 
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
         
           
           
           <meta name="theme-color" content="#009485">
         
       
+      
+
     
     
     
@@ -39,10 +41,11 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -53,7 +56,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
   
     
     
@@ -63,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-file-pointer" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -73,9 +76,11 @@
         <aside class="md-banner">
           <div class="md-banner__inner md-grid md-typeset">
             
+            
 翻译进行中
 
           </div>
+          
         </aside>
       
     </div>
@@ -127,7 +132,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -151,7 +156,7 @@
         <a href="https://github.com/hanxiaomax/Learncpp_CN" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     hanxiaomax/Learncpp_CN
@@ -280,7 +285,7 @@
       <a href="https://github.com/hanxiaomax/Learncpp_CN" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     hanxiaomax/Learncpp_CN
@@ -5326,7 +5331,7 @@
   
     <li class="md-nav__item">
       <a href="../23-5-stream-states-and-input-validation/" class="md-nav__link">
-        23.5 - stream 状态和输入验证
+        23.5 - 流状态和输入验证
       </a>
     </li>
   
@@ -5383,29 +5388,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-file-pointer" class="md-nav__link">
-    The file pointer**
+  <a href="#_1" class="md-nav__link">
+    文件指针
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#random-file-access-with-seekg-and-seekp" class="md-nav__link">
-    Random file access with seekg() and seekp()**
+  <a href="#seekg-seekp" class="md-nav__link">
+    使用 seekg() 和 seekp() 进行随机文件访问
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-writing-a-file-at-the-same-time-using-fstream" class="md-nav__link">
-    Reading and writing a file at the same time using fstream**
+  <a href="#fstream" class="md-nav__link">
+    使用fstream同时进行文件的读写
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-warning-about-writing-pointers-to-disk" class="md-nav__link">
-    A warning about writing pointers to disk**
+  <a href="#_2" class="md-nav__link">
+    其他有用的文件函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    关于将指针写入硬盘的警告⚠️
   </a>
   
 </li>
@@ -5601,29 +5613,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-file-pointer" class="md-nav__link">
-    The file pointer**
+  <a href="#_1" class="md-nav__link">
+    文件指针
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#random-file-access-with-seekg-and-seekp" class="md-nav__link">
-    Random file access with seekg() and seekp()**
+  <a href="#seekg-seekp" class="md-nav__link">
+    使用 seekg() 和 seekp() 进行随机文件访问
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-writing-a-file-at-the-same-time-using-fstream" class="md-nav__link">
-    Reading and writing a file at the same time using fstream**
+  <a href="#fstream" class="md-nav__link">
+    使用fstream同时进行文件的读写
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-warning-about-writing-pointers-to-disk" class="md-nav__link">
-    A warning about writing pointers to disk**
+  <a href="#_2" class="md-nav__link">
+    其他有用的文件函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    关于将指针写入硬盘的警告⚠️
   </a>
   
 </li>
@@ -5636,9 +5655,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
 
 
   
@@ -5668,7 +5688,7 @@
   </div> -->
   <div class="origin-link">
     <span class="twemoji">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.3 208-208 208zm-.9-288c21.06 0 40.92 8.312 55.83 23.38 9.375 9.344 24.53 9.5 33.97.156 9.406-9.344 9.469-24.53.156-33.97-24-24.22-55.95-37.56-89.95-37.56 0 0 .032 0 0 0-33.97 0-65.95 13.34-89.95 37.56-49.44 49.88-49.44 131 0 180.9 24 24.22 55.98 37.56 89.95 37.56.032 0 0 0 0 0 34 0 65.95-13.34 89.95-37.56 9.312-9.438 9.25-24.62-.156-33.97-9.438-9.312-24.59-9.219-33.97.156-14.91 15.06-34.77 23.38-55.83 23.38 0 0 .031 0 0 0-21.09 0-40.95-8.312-55.89-23.38-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/></svg> 
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.3 208-208 208zm-.9-288c21.06 0 40.92 8.312 55.83 23.38 9.375 9.344 24.53 9.5 33.97.156 9.406-9.344 9.469-24.53.156-33.97-24-24.22-55.95-37.56-89.95-37.56 0 0 .032 0 0 0-33.97 0-65.95 13.34-89.95 37.56-49.44 49.88-49.44 131 0 180.9 24 24.22 55.98 37.56 89.95 37.56.032 0 0 0 0 0 34 0 65.95-13.34 89.95-37.56 9.312-9.438 9.25-24.62-.156-33.97-9.438-9.312-24.59-9.219-33.97.156-14.91 15.06-34.77 23.38-55.83 23.38 0 0 .031 0 0 0-21.09 0-40.95-8.312-55.89-23.38-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/></svg> 
     </span>
     <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//random-file-io/">English
     </a>
@@ -5677,39 +5697,53 @@
 
   <h1>23.7 - 随机文件输入输出</h1>
 
-<details class="note">
-<summary>关键点速记</summary>
-</details>
-<h2 id="the-file-pointer">The file pointer**</h2>
-<p>Each file stream class contains a file pointer that is used to keep track of the current read/write position within the file. When something is read from or written to a file, the reading/writing happens at the file pointer’s current location. By default, when opening a file for reading or writing, the file pointer is set to the beginning of the file. However, if a file is opened in append mode, the file pointer is moved to the end of the file, so that writing does not overwrite any of the current contents of the file.</p>
-<h2 id="random-file-access-with-seekg-and-seekp">Random file access with seekg() and seekp()**</h2>
-<p>So far, all of the file access we’ve done has been sequential -- that is, we’ve read or written the file contents in order. However, it is also possible to do random file access -- that is, skip around to various points in the file to read its contents. This can be useful when your file is full of records, and you wish to retrieve a specific record. Rather than reading all of the records until you get to the one you want, you can skip directly to the record you wish to retrieve.</p>
-<p>Random file access is done by manipulating the file pointer using either seekg() function (for input) and seekp() function (for output). In case you are wondering, the g stands for “get” and the p for “put”. For some types of streams, seekg() (changing the read position) and seekp() (changing the write position) operate independently -- however, with file streams, the read and write position are always identical, so seekg and seekp can be used interchangeably.</p>
-<p>The seekg() and seekp() functions take two parameters. The first parameter is an offset that determines how many bytes to move the file pointer. The second parameter is an ios flag that specifies what the offset parameter should be offset from.</p>
-<p>Ios seek flag   Meaning
-beg The offset is relative to the beginning of the file (default)
-cur The offset is relative to the current location of the file pointer
-end The offset is relative to the end of the file</p>
-<p>A positive offset means move the file pointer towards the end of the file, whereas a negative offset means move the file pointer towards the beginning of the file.</p>
-<p>Here are some examples:</p>
+<details class="note"><summary>关键点速记</summary></details>
+<h2 id="_1">文件指针</h2>
+<p>每个文件流类都包含一个文件指针，用于跟踪文件内的当前读/写位置。当对文件进行读写操作时，读/写操作发生在文件指针的当前位置。默认情况下，当打开一个文件进行读写时，文件指针被设置为文件的开头。但是，如果以追加模式打开文件，则文件指针将移动到文件的末尾，因此写入操作不会覆盖文件的任何当前内容。</p>
+<h2 id="seekg-seekp">使用 <code>seekg()</code> 和 <code>seekp()</code> 进行随机文件访问</h2>
+<p>到目前为止，我们所完成的文件访问都是顺序的——即按顺序读取或写入了文件内容。但是，其实也可以进行随机文件访问——即跳到文件中的某个位置再读取其内容。当你希望从包含大量记录的文件中检索特定的记录时，这是很有用的。因为你可以直接跳到想要检索的记录，而不必读取所有的记录并从中找到你想要的记录。</p>
+<p>通过使用<code>seekg()</code>函数(用于输入)和<code>seekp()</code>函数(用于输出)操作文件指针可以实现文件随机访问。如果你想知道，<code>g</code> 代表"get" ，<code>p</code> 代表"put"。对于某些类型的流，<code>seekg()</code>(改变读位置)和<code>seekp()</code>(改变写位置)独立操作——然而，对于文件流，读和写位置总是相同的，因此<code>seekg</code>和<code>seekp</code>可以互换使用。</p>
+<p><code>seekg()</code> 和 <code>seekp()</code> 函数有两个<a href="../parameters/">形参</a>。第一个形参是文件指针需要编译的字节数，第二个参数则是 <code>ios</code> 标记，用于指定从哪里偏移（偏移基准点）。</p>
+<table>
+<thead>
+<tr>
+<th align="left">ios 搜索标记</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>beg</code></td>
+<td align="left">相对于文件开头进行偏移 (默认)</td>
+</tr>
+<tr>
+<td align="left"><code>cur</code></td>
+<td align="left">相对于当前位置进行偏移</td>
+</tr>
+<tr>
+<td align="left"><code>end</code></td>
+<td align="left">相对于文件结尾进行偏移</td>
+</tr>
+</tbody>
+</table>
+<p>正偏移量意味着将文件指针向文件的末尾移动，而负偏移量意味着将文件指针向文件开头移动。</p>
+<p>下面是一些例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="c1">// move forward 14 bytes</span>
-<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">-18</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="c1">// move backwards 18 bytes</span>
-<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="w"> </span><span class="c1">// move to 22nd byte in file</span>
-<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span><span class="w"> </span><span class="c1">// move to 24th byte in file</span>
-<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">-28</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">end</span><span class="p">);</span><span class="w"> </span><span class="c1">// move to the 28th byte before end of the file</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="c1">// 向前移动14字节</span>
+<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">-18</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">cur</span><span class="p">);</span><span class="w"> </span><span class="c1">// 向后移动18字节</span>
+<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="w"> </span><span class="c1">// 移动到文件的第22字节</span>
+<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span><span class="w"> </span><span class="c1">// 移动到文件的第22字节</span>
+<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">-28</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">end</span><span class="p">);</span><span class="w"> </span><span class="c1">// 移动到文件结束前的第28字节</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Moving to the beginning or end of the file is easy:</p>
+<p>移动到文件的开头或结尾很容易：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="w"> </span><span class="c1">// move to beginning of file</span>
-<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">end</span><span class="p">);</span><span class="w"> </span><span class="c1">// move to end of file</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="w"> </span><span class="c1">// 移动到文件的开头</span>
+<span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">end</span><span class="p">);</span><span class="w"> </span><span class="c1">// 移动到文件的结尾</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Let’s do an example using seekg() and the input file we created in the last lesson. That input file looks like this:</p>
+<p>使用<code>seekg()</code>和上一课中的创建的输入文件做一个例子。输入文件的内容如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5718,7 +5752,7 @@ This is line 2
 This is line 3
 This is line 4
 </code></pre></div></td></tr></table></div>
-<p>Here is the example:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5789,40 +5823,37 @@ This is line 4
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This produces the result:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>输出结果如下：
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>is line 1
 line 2
 This is line 4
+</code></pre></div></td></tr></table></div></p>
+<p>注意：当与文本文件一起使用时，一些编译器对<code>seekg()</code>和<code>seekp()</code>的实现有bug(由于缓冲的关系)。如果你的编译器是其中之一(如果你的输出结果和上面不同，则说明有此类问题)，此时你你可以尝试以二进制模式打开文件:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">inf</span><span class="p">(</span><span class="s">&quot;Sample.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-Note: Some compilers have buggy implementations of seekg() and seekp() when used in conjunction with text files (due to buffering). If your compiler is one of them (and you’ll know because your output will differ from the above), you can try opening the file in binary mode instead:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">inf</span><span class="p">(</span><span class="s">&quot;Sample.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Two other useful functions are tellg() and tellp(), which return the absolute position of the file pointer. This can be used to determine the size of a file:</p>
+<p>另外两个有用的函数是<code>tellg()</code>和<code>tellp()</code>，它们返回文件指针的绝对位置。这可以用来确定文件的大小:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">inf</span><span class="p">(</span><span class="s">&quot;Sample.txt&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">inf</span><span class="p">(</span><span class="s">&quot;Sample.txt&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">inf</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">end</span><span class="p">);</span><span class="w"> </span><span class="c1">// move to end of file</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inf</span><span class="p">.</span><span class="n">tellg</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
-<p>64</p>
-<p>which is how long sample.txt is in bytes (assuming a carriage return after the last line).</p>
-<h2 id="reading-and-writing-a-file-at-the-same-time-using-fstream">Reading and writing a file at the same time using fstream**</h2>
-<p>The fstream class is capable of both reading and writing a file at the same time -- almost! The big caveat here is that it is not possible to switch between reading and writing arbitrarily. Once a read or write has taken place, the only way to switch between the two is to perform an operation that modifies the file position (e.g. a seek). If you don’t actually want to move the file pointer (because it’s already in the spot you want), you can always seek to the current position:</p>
+<p>打印结果：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>64
+</code></pre></div></td></tr></table></div>
+<p>这就是<em>Sample.txt</em>的字节长度(假设在最后一行之后有一个回车)。</p>
+<h2 id="fstream">使用<code>fstream</code>同时进行文件的读写</h2>
+<p><code>fstream</code> 类可以同时读写文件！这里需要注意的是，它不能在读取和写入之间随意切换。一旦进行了读或写操作，在两者之间切换的唯一方法是执行修改文件指针位置的操作(例如<code>seek</code>)。如果你不想移动文件指针(因为它已经在需要的位置了)，你可以将指针调整到当前位置：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// assume iofile is an object of type fstream</span>
-<span class="n">iofile</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="n">iofile</span><span class="p">.</span><span class="n">tellg</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="w"> </span><span class="c1">// seek to current file position</span>
+<span class="n">iofile</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="n">iofile</span><span class="p">.</span><span class="n">tellg</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="w"> </span><span class="c1">// 指针移动到当前位置</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>If you do not do this, any number of strange and bizarre things may occur.</p>
-<p>(Note: Although it may seem that <code>iofile.seekg(0, std::ios::cur)</code> would also work, it appears some compilers may optimize this away).</p>
-<p>One other bit of trickiness: Unlike ifstream, where we could say <code>while (inf)</code> to determine if there was more to read, this will not work with fstream.</p>
-<p>Let’s do a file I/O example using fstream. We’re going to write a program that opens a file, reads its contents, and changes any vowels it finds to a ‘#’ symbol.</p>
+<p>如果你不这样做，任何奇怪的事情都可能发生。</p>
+<p>(注意：尽管看起来 <code>iofile.seekg(0, std::ios::cur)</code> 也能起到相似的作用。但是实际上有些编译器会将其优化掉)。</p>
+<p>还有一点需要注意的是，和 <code>ifstream</code>不同，<code>fstream</code>不能通过 <code>while (inf)</code> 来判断是否达到文件末尾。</p>
+<p>接下来使用<code>fstream</code> 演示一下文件输入输出。下面程序会打开一个文件，读取其内容，然后将其中所有的元音字母替换为‘<code>#</code>’。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5935,8 +5966,7 @@ Note: Some compilers have buggy implementations of seekg() and seekp() when used
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>After running the above program, our Sample.txt file will look like this:</p>
+<p>运行程序，输出结果如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5945,24 +5975,26 @@ Th#s #s l#n# 2
 Th#s #s l#n# 3
 Th#s #s l#n# 4
 </code></pre></div></td></tr></table></div>
-<p><strong>Other useful file functions</strong></p>
-<p>To delete a file, simply use the remove() function.</p>
-<p>Also, the is_open() function will return true if the stream is currently open, and false otherwise.</p>
-<h2 id="a-warning-about-writing-pointers-to-disk">A warning about writing pointers to disk**</h2>
-<p>While streaming variables to a file is quite easy, things become more complicated when you’re dealing with pointers. Remember that a pointer simply holds the address of the variable it is pointing to. Although it is possible to read and write addresses to disk, it is extremely dangerous to do so. This is because a variable’s address may differ from execution to execution. Consequently, although a variable may have lived at address 0x0012FF7C when you wrote that address to disk, it may not live there any more when you read that address back in!</p>
-<p>For example, let’s say you had an integer named nValue that lived at address 0x0012FF7C. You assigned nValue the value 5. You also declared a pointer named *pnValue that points to nValue. pnValue holds nValue’s address of 0x0012FF7C. You want to save these for later, so you write the value 5 and the address 0x0012FF7C to disk.</p>
-<p>A few weeks later, you run the program again and read these values back from disk. You read the value 5 into another variable named nValue, which lives at 0x0012FF78. You read the address 0x0012FF7C into a new pointer named *pnValue. Because pnValue now points to 0x0012FF7C when the nValue lives at 0x0012FF78, pnValue is no longer pointing to nValue, and trying to access pnValue will lead you into trouble.</p>
+<h2 id="_2">其他有用的文件函数</h2>
+<p>要删除文件，只需使用<code>remove()</code> 函数。</p>
+<p>此外，如果流是打开状态，<code>is_open()</code> 函数会返回<code>true</code>，否则返回<code>false</code>。</p>
+<h2 id="_3">关于将指针写入硬盘的警告⚠️</h2>
+<p>虽然将变量写到文件是很容易做到的，但在处理指针时，情况就变得更加复杂了。记住，指针只是保存它所指向的变量的地址。尽管可以将地址读写到磁盘，但这样做是非常危险的。这是因为变量的地址在每次执行时可能不同。因此，尽管当你将该地址写入磁盘时，变量可能位于地址<strong>0x0012FF7C</strong>，但当你再次读取该地址时，它可能不再位于该地址了！</p>
+<p>例如，假设有一个名为<code>nValue</code>的整数，位于地址<strong>0x0012FF7C</strong>。你给<code>nValue</code>赋值5。同时，声明了一个名为<code>*pnValue</code>的指针，<code>它指向nValue</code>。<code>pnValue</code> 保存 <code>nValue</code> 的地址<strong>0x0012FF7C</strong>。此时，你希望将这些变量保存到文件以备将来使用，因此你将值5和地址<strong>0x0012FF7C</strong>写入磁盘。</p>
+<p>几周后，再次运行该程序并从磁盘读取这些值。将值5读入另一个名为<code>nValue</code>的变量，该变量位于<strong>0x0012FF78</strong>。你将地址<strong>0x0012FF7C</strong>读入名为<code>*pnValue</code> 的指针中。因为<code>pnValue</code> 现在指向<strong>0x0012FF7C</strong>，而<code>nValue</code>位于<strong>0x0012FF78</strong>， <code>pnValue</code> 不再指向 <code>nValue</code>，试图访问 <code>pnValue</code> 将会带来麻烦。</p>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>Do not write memory addresses to files. The variables that were originally at those addresses may be at different addresses when you read their values back in from disk, and the addresses will be invalid.</p>
+<p>不要向文件写入内存地址。当你从磁盘读回这些值时，最初位于这些地址的变量可能位于不同的地址，这些地址是无效的。</p>
 </div>
 
 
-            </article>
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
           </a>
@@ -6026,7 +6058,7 @@ Th#s #s l#n# 4
       
     
     <a href="https://github.com/hanxiaomax" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
     </a>
   
 </div>
@@ -6039,10 +6071,11 @@ Th#s #s l#n# 4
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.top", "content.tooltips", "header.autohide", "navigation.indexes", "navigation.tabs", "navigation.prune"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.top", "content.tooltips", "header.autohide", "navigation.indexes", "navigation.tabs", "navigation.prune"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       
