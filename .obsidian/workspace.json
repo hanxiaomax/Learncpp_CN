@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "28b671188966c670",
+            "id": "a09b242a7d6c227a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/22-3-std-string-length-and-capacity.md",
+                "file": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/22-3-std-string-length-and-capacity.md"
+                "file": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/22-3-std-string-length-and-capacity.md",
+                "file": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "28b671188966c670",
+  "active": "a09b242a7d6c227a",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md",
+    "docs/22-3-std-string-length-and-capacity.md",
     "docs/22-2-std-string-construction-and-destruction.md",
     "docs/22-1-std-string-and-std-wstring.md",
     "docs/23-7-random-file-IO.md",
     "docs/23-6-basic-file-IO.md",
     "docs/destructors.md",
     "docs/13-x-Chapter-13-comprehensive-quiz.md",
-    "docs/23-5-stream-states-and-input-validation.md",
-    "docs/23-4-stream-classes-for-strings.md",
-    "docs/23-2-Input-with-istream.md"
+    "docs/23-5-stream-states-and-input-validation.md"
   ]
 }

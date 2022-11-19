@@ -12,8 +12,7 @@ tags:
 ??? note "关键点速记"
 
 
-## Character access**
-
+## 访问字符
 There are two almost identical ways to access characters in a string. The easier to use and faster version is the overloaded `operator[]`:
 
 **`char& string::operator[] (size_type nIndex)`**  

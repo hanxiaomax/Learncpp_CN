@@ -16,35 +16,33 @@ tags:
 
 ## 字符串的长度
 
-字符串的长度非常简单 length of the string is quite simple -- it’s the number of characters in the string. There are two identical functions for determining string length:
+字符串的长度非常简单——即字符串中字符的个数。有两个函数可以用于确定字符串的长度：
 
 **`size_type string::length() const`**  
 **`size_type string::size() const`**
 
--   Both of these functions return the current number of characters in the string, excluding the null terminator.
+-   这两个函数都可以返回字符串中字符的个数，包括结束符。
 
-Sample code:
+例子：
 
 ```cpp
 std::string s { "012345678" };
 std::cout << s.length() << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 9
 ```
 
-Although it’s possible to use length() to determine whether a string has any characters or not, it’s more efficient to use the empty() function:
+尽管使用 `length()` 判断字符串中是否有字符也是可行的，但是最佳的方法是使用 `empty()` 函数：
 
 **`bool string::empty() const`**
 
--   Returns true if the string has no characters, false otherwise.
+- 如果字符串中没有字符，则返回`true`，否则返回`false`。
 
-Sample code:
+例子：
 
 ```cpp
 std::string string1 { "Not Empty" };
@@ -53,46 +51,43 @@ std::string string2; // empty
 std::cout << (string2.empty() ? "true" : "false")  << '\n';
 ```
 
-COPY
 
-Output:
+输出：
 
 ```
 false
 true
 ```
 
-There is one more size-related function that you will probably never use, but we’ll include it here for completeness:
+还有一个与大小相关的函数，虽然可能永远都用不到，但为了完整，我们决定还是将其列在这里：
 
 **`size_type string::max_size() const`**
 
--   Returns the maximum number of characters that a string is allowed to have.
--   This value will vary depending on operating system and system architecture.
+-   返回字符串允许的最大字符数；
+-   根据操作系统和系统架构的不同，该值会有所不同。
 
-Sample code:
+例子：
 
 ```cpp
 std::string s { "MyString" };
 std::cout << s.max_size() << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 4294967294
 ```
 
-## Capacity of a string**
+## 字符串的容量
 
-The capacity of a string reflects how much memory the string allocated to hold its contents. This value is measured in string characters, excluding the NULL terminator. For example, a string with capacity 8 could hold 8 characters.
+字符串的容量反映了该字符串分配多少内存来保存其内容。该值用字符串表示，不包括终止符。例如，容量为8的字符串可以容纳8个字符。
 
 **`size_type string::capacity() const`**
 
--   Returns the number of characters a string can hold without reallocation.
+-   返回字符串在不重新分配的情况下可以容纳的字符数。
 
-Sample code:
+例子：
 
 ```cpp
 std::string s { "01234567" };
@@ -100,26 +95,24 @@ std::cout << "Length: " << s.length() << '\n';
 std::cout << "Capacity: " << s.capacity() << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 Length: 8
 Capacity: 15
 ```
 
-Note that the capacity is higher than the length of the string! Although our string was length 8, the string actually allocated enough memory for 15 characters! Why was this done?
+注意，该字符串的容量大于其长度！虽然我们的字符串的长度是8，但该字符串实际上分配了足够存放15个字符的内存！为什么要这样做?
 
-The important thing to recognize here is that if a user wants to put more characters into a string than the string has capacity for, the string has to be reallocated to a larger capacity. For example, if a string had both length and capacity of 8, then adding any characters to the string would force a reallocation. By making the capacity larger than the actual string, this gives the user some buffer room to expand the string before reallocation needs to be done.
+这里要注意的是，如果用户希望在字符串中放入的字符多于字符串的容量，则字符串需要重新分配更大的容量。例如，如果字符串的长度和容量都为8，那么向字符串中添加任何字符都将强制重新分配。通过使容量大于实际字符串，这为用户提供了一些缓冲空间，以便在需要进行重新分配之前能够存放一些额外的字符。
 
-As it turns out, reallocation is bad for several reasons:
+==事实证明，再分配有以下缺陷：==
 
-First, reallocating a string is comparatively expensive. First, new memory has to be allocated. Then each character in the string has to be copied to the new memory. This can take a long time if the string is big. Finally, the old memory has to be deallocated. If you are doing many reallocations, this process can slow your program down significantly.
+首先，重新分配字符串开销较大。首先，必须分配新的内存。然后必须将字符串中的每个字符复制到新的内存中。如果字符串很大，这可能需要很长时间。最后，旧的内存必须被释放。如果你正在进行多次重新分配，这个过程会极大地拖累程序性能。
 
-Second, whenever a string is reallocated, the contents of the string change to a new memory address. This means all references, pointers, and iterators to the string become invalid!
+其次，==每当一个字符串被重新分配时，该字符串的内容将放置到一个新的内存地址。这意味着对字符串的所有引用、指针和迭代器都会无效！==
 
-Note that it’s not always the case that strings will be allocated with capacity greater than length. Consider the following program:
+注意，分配给字符串的容量并不总是大于长度。考虑下面的程序：
 
 ```cpp
 std::string s { "0123456789abcde" };
@@ -127,18 +120,16 @@ std::cout << "Length: " << s.length() << '\n';
 std::cout << "Capacity: " << s.capacity() << '\n';
 ```
 
-COPY
-
-This program outputs:
+输出结果：
 
 ```
 Length: 15
 Capacity: 15
 ```
 
-(Results may vary depending on compiler).
+（实际结果根据编译器的不同也可能会不同）
 
-Let’s add one character to the string and watch the capacity change:
+接下来，在字符串中添加一个字符并观察其容量的变化:
 
 ```cpp
 std::string s("0123456789abcde");
@@ -151,9 +142,7 @@ std::cout << "Length: " << s.length() << '\n';
 std::cout << "Capacity: " << s.capacity() << '\n';
 ```
 
-COPY
-
-This produces the result:
+输出结果：
 
 ```
 Length: 15
@@ -165,10 +154,10 @@ Capacity: 31
 **`void string::reserve()`**  
 **`void string::reserve(size_type unSize)`**
 
--   The second flavor of this function sets the capacity of the string to at least unSize (it can be greater). Note that this may require a reallocation to occur.
--   If the first flavor of the function is called, or the second flavor is called with unSize less than the current capacity, the function will try to shrink the capacity to match the length. This request to shrink the capacity may be ignored, depending on implementation.
+- 此函数的第二种形式将字符串的容量设置为至少`unSize`(可以更大)。注意，这可能需要进行重新分配。
+- 如果调用函数的第一种形式，或者调用第二个味道时`unSize`小于当前容量，函数将尝试缩小容量以匹配长度。根据执行情况，可能会忽略这个缩小容量的要求。 
 
-Sample code:
+例子：
 
 ```cpp
 std::string s { "01234567" };
@@ -184,9 +173,7 @@ std::cout << "Length: " << s.length() << '\n';
 std::cout << "Capacity: " << s.capacity() << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 Length: 8
@@ -197,9 +184,9 @@ Length: 8
 Capacity: 207
 ```
 
-This example shows two interesting things. First, although we requested a capacity of 200, we actually got a capacity of 207. The capacity is always guaranteed to be at least as large as your request, but may be larger. We then requested the capacity change to fit the string. This request was ignored, as the capacity did not change.
+这个例子展示了两个有趣的现象。首先，虽然我们要求的容量是200，但实际上我们得到的容量是207。容量总是保证至少与你的请求一样大，但也可能更大。然后我们请求容量更改以适应字符串。该请求被忽略，容量并没有改变。
 
-If you know in advance that you’re going to be constructing a large string by doing lots of string operations that will add to the size of the string, you can avoid having the string reallocated multiple times by reserving enough capacity from the outset:
+如果你提前知道你将通过大量的字符串操作来构造一个很长字符串（这会增加字符串的大小），则应该在开始时就预留足够的容量来避免重新分配：
 
 ```cpp
 #include <iostream>
@@ -222,12 +209,10 @@ int main()
 }
 ```
 
-COPY
-
-The result of this program will change each time, but here’s the output from one execution:
+这个程序的结果每次都会改变，其中一次的结果为：
 
 ```
 wzpzujwuaokbakgijqdawvzjqlgcipiiuuxhyfkdppxpyycvytvyxwqsbtielxpy
 ```
 
-Rather than having to reallocate s multiple times, we set the capacity once and then fill the string up. This can make a huge difference in performance when constructing large strings via concatenation.
+为了避免重新分配，这里我们先设置一次容量，然后填充字符串。当通过连接构造长字符串时，其性能差异是非常明显的。
