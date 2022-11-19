@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "22-1-std-string-and-std-wstring",
-      "path": "docs/22-1-std-string-and-std-wstring.md"
+      "basename": "22-2-std-string-construction-and-destruction",
+      "path": "docs/22-2-std-string-construction-and-destruction.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "22-1-std-string-and-std-wstring",
+      "path": "docs/22-1-std-string-and-std-wstring.md"
     },
     {
       "basename": "23-7-random-file-IO",
@@ -95,10 +99,6 @@
     {
       "basename": "22-3-std-string-length-and-capacity",
       "path": "docs/22-3-std-string-length-and-capacity.md"
-    },
-    {
-      "basename": "22-2-std-string-construction-and-destruction",
-      "path": "docs/22-2-std-string-construction-and-destruction.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",

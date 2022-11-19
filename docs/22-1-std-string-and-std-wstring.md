@@ -124,10 +124,10 @@ namespace std
 |[=, assign()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)  | 字符串赋值
 |[+=, append(), push_back()](https://www.learncpp.com/uncategorized/17-6-stdstring-appending/)  | 字符串末尾添加 
 |[insert()](https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting/)  |在任意索引位置插入
-|`clear()`  |删除字符串中的所有字符
-|`erase()`  |清除字符
-|`replace()`  |替换字符串中的一部分
-|`resize()`  |调整字符串大小(在末尾截断或添加)  
+|[clear()](https://en.cppreference.com/w/cpp/string/basic_string/clear)  |删除字符串中的所有字符
+|[erase()](https://en.cppreference.com/w/cpp/string/basic_string/erase)  |清除字符
+|[replace()](https://en.cppreference.com/w/cpp/string/basic_string/replace)  |替换字符串中的一部分
+|[resize()](https://en.cppreference.com/w/cpp/string/basic_string/resize)  |调整字符串大小(在末尾截断或添加)  
 |[swap()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)| 交换两个字符串
 
 
@@ -173,32 +173,23 @@ namespace std
 |Function	|Effect|
 |:--:|:--:|
 |[begin()](https://en.cppreference.com/w/cpp/string/basic_string/begin), [end()](https://en.cppreference.com/w/cpp/string/basic_string/end)|正向迭代器，开头/结尾
-|get_allocator()|返回分配器
-|[rbegin()](https://en.cppreference.com/w/cpp/string/basic_string/rbegin), [rend()]()|反向迭代器，开头/结尾
+|[get_allocator()](https://en.cppreference.com/w/cpp/string/basic_string/get_allocator)|返回分配器
+|[rbegin()](https://en.cppreference.com/w/cpp/string/basic_string/rbegin), [rend()](https://en.cppreference.com/w/cpp/string/basic_string/rend)|反向迭代器，开头/结尾
 
 
 
+虽然标准库字符串类提供了很多功能，但有一些明显的遗漏：
 
+-   对于正则表达式的支持；
+-   从数字创建字符串的构造函数；
+-   大小写字母转换函数；
+-   忽略大小写的字符串比较方法；
+-   字符串分词(Tokenization)后存入数组；
+-   获取字符串左半部分或右半部分的函数；
+-   空白移除函数(trimming)；
+-   `sprintf`风格的字符串格式化函数；
+-   utf-8 和 utf-16 转换。
 
+对于其中的大多数功能，你必须编写自己的函数，或者将字符串转换为C风格的字符串(使用`c_str()`)，并使用提供此功能的C函数。
 
-
-
-
-
-
-
-While the standard library string classes provide a lot of functionality, there are a few notable omissions:
-
--   Regular expression support
--   Constructors for creating strings from numbers
--   Capitalization / upper case / lower case functions
--   Case-insensitive comparisons
--   Tokenization / splitting string into array
--   Easy functions for getting the left or right hand portion of string
--   Whitespace trimming
--   Formatting a string sprintf style
--   Conversion from utf-8 to utf-16 or vice-versa
-
-For most of these, you will have to either write your own functions, or convert your string to a C-style string (using c_str()) and use the C functions that offer this functionality.
-
-In the next lessons, we will look at the various functions of the string class in more depth. Although we will use string for our examples, everything is equally applicable to wstring.
+在接下来的课程中，我们将更深入地研究字符串类的各种功能。尽管我们将在示例中使用`string`，但所有内容都同样适用于`wstring`。

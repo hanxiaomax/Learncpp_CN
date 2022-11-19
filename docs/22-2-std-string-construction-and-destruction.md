@@ -12,33 +12,31 @@ tags:
 ??? note "关键点速记"
 
 
+在这一课中，我们将看看如何构造`std::string`的对象，以及如何从数字创建字符串，反之亦然。
 
-In this lesson, we’ll take a look at how to construct objects of std::string, as well as how to create strings from numbers and vice-versa.
+## 字符串构造
 
-## String construction**
+字符串类有许多可以用来创建字符串的构造函数。我们将在这里逐一了解它们。
 
-The string classes have a number of constructors that can be used to create strings. We’ll take a look at each of them here.
-
-Note: string::size_type resolves to size_t, which is the same unsigned integral type that is returned by the sizeof operator. The actual size of size_t depending on the environment. For the purposes of this tutorial, envision it as an unsigned int.
+注意：`string::size_type`解析为`size_t`，它与`sizeof`操作符返回的无符号整型相同。`size_t`的实际大小取决于环境。在本教程中，将其看做无符号整型。
 
 
-**string::string()**
+**`string::string()`**
 
-- This is the default constructor. It creates an empty string.
+- 字符串类的默认构造函数——创建一个空字符串。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sSource;
 std::cout << sSource;
 ```
-
-Output:
+输出：
 
 ```
 ```
 
-**string::string(const string& strString)**
+**`string::string(const string& strString)`**
 
 -   This is the copy constructor. This constructor creates a new string as a copy of strString.
 
@@ -58,7 +56,7 @@ my string
 
 
 **`string::string(const string& strString, size_type unIndex)`**  
-**string::string(const string& strString, size_type unIndex, size_type unLength)**
+**`string::string(const string& strString, size_type unIndex, size_type unLength)`**
 
 -   This constructor creates a new string that contains at most unLength characters from strString, starting with index unIndex. If a NULL is encountered, the string copy will end, even if unLength has not been reached.
 -   If no unLength is supplied, all characters starting from unIndex will be used.
