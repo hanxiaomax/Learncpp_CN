@@ -31,6 +31,7 @@ tags:
 std::string sSource;
 std::cout << sSource;
 ```
+
 输出：
 
 ```
@@ -38,9 +39,9 @@ std::cout << sSource;
 
 **`string::string(const string& strString)`**
 
--   This is the copy constructor. This constructor creates a new string as a copy of strString.
+-   拷贝构造函数。该构造函数基于一个字符串`strString`来创建一个新的字符串。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sSource{ "my string" };
@@ -48,7 +49,7 @@ std::string sOutput{ sSource };
 std::cout << sOutput;
 ```
 
-Output:
+输出：
 
 ```
 my string
@@ -58,11 +59,11 @@ my string
 **`string::string(const string& strString, size_type unIndex)`**  
 **`string::string(const string& strString, size_type unIndex, size_type unLength)`**
 
--   This constructor creates a new string that contains at most unLength characters from strString, starting with index unIndex. If a NULL is encountered, the string copy will end, even if unLength has not been reached.
--   If no unLength is supplied, all characters starting from unIndex will be used.
--   If unIndex is larger than the size of the string, the out_of_range exception will be thrown.
+-  该构造函数基于`strString`字符串中最多`unLength`个字符（从`unIndex` 开始）构造新的字符串。如果遇到结束符，则停止拷贝，即使还没有到 `unLength` 个字符；
+-  如果没有 `unLength` 个字符，则会从 `unIndex` 开始拷贝全部字符；
+-  如果 `unIndex`比字符串的长度还长，则或抛出 `out_of_range` 异常。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sSource{ "my string" };
@@ -72,7 +73,7 @@ std::string sOutput2(sSource, 3, 4);
 std::cout << sOutput2 << '\n';
 ```
 
-Output:
+输出：
 
 ```
 string
@@ -81,11 +82,11 @@ stri
 
 **`string::string(const char* szCString)`**
 
--   This constructor creates a new string from the C-style string szCString, up to but not including the NULL terminator.
--   If the resulting size exceeds the maximum string length, the length_error exception will be thrown.
--   **Warning:** szCString must not be NULL.
+-   该构造函数会基于一个C语言风格字符串 `szCString` 构造一个新的字符串，但是不会包含结束符；
+-   如果结果会超过字符串的最大长度，则会抛出 `length_error` 异常；
+-   **警告⚠️**：`szCString` 不能是 NULL。
 
-Sample code:
+例子：
 
 ```cpp
 const char* szSource{ "my string" };
@@ -93,7 +94,7 @@ std::string sOutput{ szSource };
 std::cout << sOutput << '\n';
 ```
 
-Output:
+输出：
 
 ```
 my string
@@ -105,7 +106,7 @@ my string
 -   If the resulting size exceeds the maximum string length, the length_error exception will be thrown.
 -   **Warning:** For this function only, NULLs are not treated as end-of-string characters in szCString! This means it is possible to read off the end of your string if unLength is too big. Be careful not to overflow your string buffer!
 
-Sample code:
+例子：
 
 ```cpp
 const char* szSource{ "my string" };
@@ -113,7 +114,7 @@ std::string sOutput(szSource, 4);
 std::cout << sOutput << '\n';
 ```
 
-Output:
+输出：
 
 ```
 my s
@@ -121,18 +122,17 @@ my s
 
 **string::string(size_type nNum, char chChar)**
 
--   This constructor creates a new string initialized by nNum occurances of the character chChar.
--   If the resulting size exceeds the maximum string length, the length_error exception will be thrown.
+-   该构造函数基于某个字符，将其重复 `chChar` 次创建出新的字符串；
+-   如果结果的长度超过字符串的长度，则抛出 `length_error` 异常。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sOutput(4, 'Q');
 std::cout << sOutput << '\n';
 ```
 
-
-Output:
+输出：
 
 ```
 QQQQ
@@ -140,8 +140,8 @@ QQQQ
 
 **`template string::string(InputIterator itBeg, InputIterator itEnd)`**
 
--   This constructor creates a new string initialized by the characters of range `[itBeg, itEnd)`.
--   If the resulting size exceeds the maximum string length, the length_error exception will be thrown.
+-   该构造函数基于一个范围`[itBeg, itEnd)`的字符串创建一个新的字符串；
+-   如果结果的长度超过字符串的长度，则抛出 `length_error` 异常。
 
 No sample code for this one. It’s obscure enough you’ll probably never use it.
 
