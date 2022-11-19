@@ -125,54 +125,56 @@ namespace std
 |[+=, append(), push_back()](https://www.learncpp.com/uncategorized/17-6-stdstring-appending/)  | 字符串末尾添加 
 |[insert()](https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting/)  |在任意索引位置插入
 |`clear()`  |删除字符串中的所有字符
-|`erase()`  |清楚任意索引位置的字符
-|`replace()`  |替换任意索引位置的字符 
+|`erase()`  |清除字符
+|`replace()`  |替换字符串中的一部分
 |`resize()`  |调整字符串大小(在末尾截断或添加)  
 |[swap()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)| 交换两个字符串
 
 
-**Input and Output**
-|Function	|Effect|
-|:--:|:--:|
-|`>>`, `getline()`  |Reads values from the input stream into the string  
-|`<<`   |Writes string value to the output stream  
-|[c_str()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)  |Returns the contents of the string as a NULL-terminated C-style string  
-|[copy()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)  |Copies contents (not NULL-terminated) to a character array  
-|[data()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)|Same as c_str(). The non-const overload allows writing to the returned string.
-
-
-**String comparison**
+#### 输入输出
 
 |Function	|Effect|
-|:--:|:--:|
-|`==`, `!=`  |Compares whether two strings are equal/unequal (returns bool)  
-|`<`, `<=`, `>` ,`>=`  |Compares whether two strings are less than / greater than each other (returns bool)  
-|`compare()`|Compares whether two strings are equal/unequal (returns -1, 0, or 1)
+|:--:|:--|
+|`>>`, `getline()`  |从输入流中获取输入
+|`<<`   | 将字符串输出到输出流 
+|[c_str()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)  |返回以空字符结尾的C语言风格字符串 
+|[copy()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)  |拷贝字符串内容到字符数组(不包含结束符) 
+|[data()](https://www.learncpp.com/cpp-tutorial/17-4-stdstring-character-access-and-conversion-to-c-style-arrays/)|类似`c_str()`。非const重载，允许写入返回的字符串。
 
-**Substrings and concatenation**
+
+#### 字符串比较
+
+|Function	|Effect|
+|:--:|:--|
+|`==`, `!=`  |比较两个字符串（返回布尔值）
+|`<`, `<=`, `>` ,`>=`  |比较两个字符串大小关系（返回布尔值）
+|`compare()`|比较两个字符串是否相等(返回 -1, 0, 或 1)
+
+#### 子串和拼接
+
+|Function	|Effect|
+|:--:|:--|
+|`+`  |连接两个字符串
+|`substr()`|返回一个子串
+
+#### 搜索
+
+|Function	|Effect|
+|:--|:--|
+|[find()](https://en.cppreference.com/w/cpp/string/basic_string/find)|搜索字符、子串第一次出现的索引位置
+|[find_first_of()](https://en.cppreference.com/w/cpp/string/basic_string/find_first_of)|找到字符第一次出现的索引位置
+|[find_first_not_of()](https://en.cppreference.com/w/cpp/string/basic_string/find_first_not_of)|找到第一个不在字符集中的字符出现的位置
+|[find_last_of()](https://en.cppreference.com/w/cpp/string/basic_string/find_last_of)|找到字符集中最后一个字符出现的索引位置
+|[find_last_not_of()](https://en.cppreference.com/w/cpp/string/basic_string/find_last_not_of)|找到最后一个不在字符集中的字符出现的位置
+|[rfind()](https://en.cppreference.com/w/cpp/string/basic_string/rfind)	|搜索字符、子串最后一次出现的索引位置
+
+#### 迭代器和内存分配
 
 |Function	|Effect|
 |:--:|:--:|
-|`+`  |Concatenates two strings  
-|`substr()`|Returns a substring
-
-**Searching**
-
-|Function	|Effect|
-|:--:|:--:|
-|`find()`|Find index of first character/substring
-|`find_first_of()`|Find index of first character from a set of characters
-|`find_first_not_of()`|Find index of first character not from a set of characters
-|`find_last_of()`|Find index of last character from a set of characters
-|`find_last_not_of()`|Find index of last character not from a set of characters
-|`rfind()`	|Find index of last character/substring
-
-**Iterator and allocator support**
-|Function	|Effect|
-|:--:|:--:|
-|begin(), end()|Forward-direction iterator support for beginning/end of string
-|get_allocator()|Returns the allocator
-|rbegin(), rend()|	Reverse-direction iterator support for beginning/end of string
+|[begin()](https://en.cppreference.com/w/cpp/string/basic_string/begin), [end()](https://en.cppreference.com/w/cpp/string/basic_string/end)|正向迭代器，开头/结尾
+|get_allocator()|返回分配器
+|[rbegin()](https://en.cppreference.com/w/cpp/string/basic_string/rbegin), [rend()]()|反向迭代器，开头/结尾
 
 
 
