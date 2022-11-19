@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 
 
-The standard library contains many useful classes -- but perhaps the most useful is std::string. std::string (and std::wstring) is a string class that provides many operations to assign, compare, and modify strings. In this chapter, we’ll look into these string classes in depth.
+C++标准库提供了很多有用的类，但是其中最有用的，可能非 `std::string` 莫属了。`std::string` (和 `std::wstring`) 是一个字符串类，提供了字符串相关的多种操作，包括赋值、比较和修改，在本章中，我们将会一起深入学习字符串类。
 
 Note: C-style strings will be referred to as “C-style strings”, whereas std::string (and std::wstring) will be referred to simply as “strings”.
 

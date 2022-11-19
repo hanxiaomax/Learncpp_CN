@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "22-1-std-string-and-std-wstring",
       "path": "docs/22-1-std-string-and-std-wstring.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "23-7-random-file-IO",

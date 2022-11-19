@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "a049d4e51c0c8d43",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/22-1-std-string-and-std-wstring.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/22-1-std-string-and-std-wstring.md"
               }
             }
           },
@@ -118,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/22-1-std-string-and-std-wstring.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,10 +151,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "a049d4e51c0c8d43",
   "lastOpenFiles": [
-    "docs/22-1-std-string-and-std-wstring.md",
     "docs/MOC.md",
+    "docs/22-1-std-string-and-std-wstring.md",
     "docs/23-7-random-file-IO.md",
     "docs/23-6-basic-file-IO.md",
     "docs/destructors.md",
