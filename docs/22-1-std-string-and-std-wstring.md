@@ -74,13 +74,9 @@ namespace std
 }
 ```
 
-我们并不会直接使用这个类，所以暂时不要担心`trait`或`Allocator`z什么。在几乎所有可以想象到的情况下，默认值就足够了。
+我们并不会直接使用这个类，所以暂时不要担心`trait`或`Allocator`这些乱七八糟的情况。在几乎所有可以想象到的情况下，默认值就足够了。
 
-标准库提供了两种类型的basic_string:
-
-You won’t be working with this class directly, so don’t worry about what traits or an Allocator is for the time being. The default values will suffice in almost every imaginable case.
-
-There are two flavors of basic_string provided by the standard library:
+标准库提供了两种类型的 `basic_string`：
 
 ```cpp
 namespace std
@@ -90,48 +86,49 @@ namespace std
 }
 ```
 
-COPY
+这是你将实际使用的两个类。`string`用于标准的ASCII和utf-8字符串。`wstring`用于宽字符/unicode (utf-16)字符串。但是并没有用于utf-32字符串的内置类(不过，如果需要的话，您应该能够从`basic_string`自己扩展)。
 
-These are the two classes that you will actually use. std::string is used for standard ascii and utf-8 strings. std::wstring is used for wide-character/unicode (utf-16) strings. There is no built-in class for utf-32 strings (though you should be able to extend your own from basic_string if you need one).
+尽管你会直接使用的是`std::string`和`std::wstring`，但所有的字符串功能都是在`basic_string`类中实现的。`string`和`wstring`能够直接访问这些功能，因为它们是模板化的。因此，所提供的所有函数都适用于`string`和`wstring`。但是，由于`basic_string`是一个模板化类，这也意味着当你对`string`或`wstring`进行语法错误操作时，编译器将产生可怕的模板错误。不要被这些错误吓倒：它们只是看起来比较吓人罢了。
 
-Although you will directly use std::string and std::wstring, all of the string functionality is implemented in the basic_string class. String and wstring are able to access that functionality directly by virtue of being templated. Consequently, all of the functions presented will work for both string and wstring. However, because basic_string is a templated class, it also means the compiler will produce horrible looking template errors when you do something syntactically incorrect with a string or wstring. Don’t be intimidated by these errors; they look far worse than they are!
+这是`string`类中所有函数的列表。这些函数中的大多数都有多种变种用于处理不同类型的输入，我们将在接下来的课程中更深入地讨它们的具体用法。
 
-Here’s a list of all the functions in the string class. Most of these functions have multiple flavors to handle different types of inputs, which we will cover in more depth in the next lessons.
-
-**Creation and destruction**
-|Function	|Effect|
-|:--:|:--:|
-|[(constructor)](https://www.learncpp.com/cpp-tutorial/17-2-ststring-construction-and-destruction/) |Create or copy a string
-|[(destructor)](https://www.learncpp.com/cpp-tutorial/17-2-ststring-construction-and-destruction/)|Destroy a string
-
-**Size and capacity**
-|Function	|Effect|
-|:--:|:--:|
-|[capacity()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |Returns the number of characters that can be held without reallocation|
-|[empty()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/)|Returns a boolean indicating whether the string is empty
-|[length(), size()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |Returns the number of characters in string
-|[max_size()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |Returns the maximum string size that can be allocated
-|[reserve()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/)	|Expand or shrink the capacity of the string
-
-
-**Element access**
-|Function	|Effect|
-|:--:|:--:|
-|`[]`, `at()`	|Accesses the character at a particular index
-
-
-**Modification**
+#### 构建和析构
 
 |Function	|Effect|
-|:--:|:--:|
-|[=, assign()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)  |Assigns a new value to the string  
-|[+=, append(), push_back()](https://www.learncpp.com/uncategorized/17-6-stdstring-appending/)  |Concatenates characters to end of the string  
-|[insert()](https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting/)  |Inserts characters at an arbitrary index in string  
-|`clear()`  |Delete all characters in the string  
-|`erase()`  |Erase characters at an arbitrary index in string  
-|`replace()`  |Replace characters at an arbitrary index with other characters  
-|`resize()`  |Expand or shrink the string (truncates or adds characters at end of string)  
-|[swap()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)|Swaps the value of two strings
+|:--:|:--|
+|[(constructor)](https://www.learncpp.com/cpp-tutorial/17-2-ststring-construction-and-destruction/) |创建一个字符串的拷贝
+|[(destructor)](https://www.learncpp.com/cpp-tutorial/17-2-ststring-construction-and-destruction/)|销毁字符串
+
+#### 长度和容量
+
+|Function	|Effect|
+|:--|:--|
+|[capacity()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |在不重新分配内存情况下，能够存放的最多的字符个数
+|[empty()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/)| 返回布尔值表示字符串是否为空字符串
+|[length(), size()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |返回字符串中字符的个数
+|[max_size()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/) |返回可以分配的最长的字符串大小
+|[reserve()](https://www.learncpp.com/cpp-tutorial/17-3-stdstring-length-and-capacity/)	|扩大或缩小字符串的容量
+
+
+#### 元素访问
+
+|Function	|Effect|
+|:--:|:--|
+|`[]`, `at()`	|使用索引访问字符串中的字符
+
+
+#### 修改字符串
+
+|Function	|Effect|
+|:--|:--|
+|[=, assign()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)  | 字符串赋值
+|[+=, append(), push_back()](https://www.learncpp.com/uncategorized/17-6-stdstring-appending/)  | 字符串末尾添加 
+|[insert()](https://www.learncpp.com/cpp-tutorial/17-7-stdstring-inserting/)  |在任意索引位置插入
+|`clear()`  |删除字符串中的所有字符
+|`erase()`  |清楚任意索引位置的字符
+|`replace()`  |替换任意索引位置的字符 
+|`resize()`  |调整字符串大小(在末尾截断或添加)  
+|[swap()](https://www.learncpp.com/cpp-programming/17-5-stdstring-assignment-and-swapping/)| 交换两个字符串
 
 
 **Input and Output**
