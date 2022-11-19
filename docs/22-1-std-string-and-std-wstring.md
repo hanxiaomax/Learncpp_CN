@@ -15,65 +15,56 @@ tags:
 
 C++标准库提供了很多有用的类，但是其中最有用的，可能非 `std::string` 莫属了。`std::string` (和 `std::wstring`) 是一个字符串类，提供了字符串相关的多种操作，包括赋值、比较和修改，在本章中，我们将会一起深入学习字符串类。
 
-Note: C-style strings will be referred to as “C-style strings”, whereas std::string (and std::wstring) will be referred to simply as “strings”.
+注意：我们将C语言中的字符串称为C语言风格字符串，而将 `std::string` (和 `std::wstring` 称为字符串)。
 
-Author’s note
+!!! info "作者注"
 
-This chapter is somewhat outdated and will likely be condensed in a future update. Feel free to scan the material for ideas and useful examples, but technical reference sites (e.g. [cppreference](https://en.cppreference.com/w/cpp/string/basic_string)) should be preferred for the most up-to-date information.
+	注意，本章节的内容稍微有些过时，而且很可能会在将来进行更新。你可以浏览一下本章节，重点关注有关字符串的核心思想和例子。但如果是作为参考文档，专门的参考网站(例如 [cppreference](https://en.cppreference.com/w/cpp/string/basic_string)) 会使更好的选择，在那里你可以找到更新、更准确的信息。
+	
+## 设计字符串类的初衷
 
-**Motivation for a string class**
+在之前的课程中，我们介绍了[[11-6-C-style-strings|C 语言风格字符串]]，它的本质就是一个字符数组，存放了组成字符串的字符。如果你曾经使用过C风格字符串，你肯定也会觉得它用起来很困难、容易出错而且不容易调试。
 
-In a previous lesson, we covered [C-style strings](https://www.learncpp.com/cpp-tutorial/66-c-style-strings/), which uses char arrays to store a string of characters. If you’ve tried to do anything with C-style strings, you’ll very quickly come to the conclusion that they are a pain to work with, easy to mess up, and hard to debug.
-
-C-style strings have many shortcomings, primarily revolving around the fact that you have to do all the memory management yourself. For example, if you want to assign the string “hello!” into a buffer, you have to first dynamically allocate a buffer of the correct length:
+C语言风格字符串有很多缺陷，这主要是因为你必须自己管理它的内存。比方说，如果你需要将字符串"hello"赋值到一个缓存中，则你必须首先分配一个长度正确的缓存：
 
 ```cpp
 char* strHello { new char[7] };
 ```
 
-COPY
+不要忘记在计算长度时多加一个结束符的长度！
 
-Don’t forget to account for an extra character for the null terminator!
-
-Then you have to actually copy the value in:
+然后你需要将值拷贝到这块缓存中：
 
 ```cpp
 strcpy(strHello, "hello!");
 ```
 
-COPY
+只有当你计算的缓存长度正确时，才不会出现缓冲区溢出。
 
-Hopefully you made your buffer large enough so there’s no buffer overflow!
-
-And of course, because the string is dynamically allocated, you have to remember to deallocate it properly when you’re done with it:
+当然，因为字符串是动态分配的，所以你还必须记得在使用完成后正确地释放它：
 
 ```cpp
 delete[] strHello;
 ```
 
-COPY
+不要忘记使用数组delete而不是普通delete。
 
-Don’t forget to use array delete instead of normal delete!
+此外，C语言提供的许多用于处理数字的操作符，例如赋值和比较，根本无法用于处理C风格的字符串。有时，这些方法看似有效，但实际上会产生不正确的结果——例如，使用`==`比较两个C风格字符串时，实际上比较的是两个指针，而非字符串本身。使用`operator=`将一个C风格字符串赋值给另一个C风格字符串，乍一看似乎可行，但实际上是在进行指针的[[shallow-copy|浅拷贝]]，这通常不是我们想要的结果。这类事情会导致程序崩溃，而且很难发现和调试！
 
-Furthermore, many of the intuitive operators that C provides to work with numbers, such as assignment and comparisons, simply don’t work with C-style strings. Sometimes these will appear to work but actually produce incorrect results -- for example, comparing two C-style strings using == will actually do a pointer comparison, not a string comparison. Assigning one C-style string to another using operator= will appear to work at first, but is actually doing a pointer copy (shallow copy), which is not generally what you want. These kinds of things can lead to program crashes that are very hard to find and debug!
+归根结底，使用C风格字符串需要记住许多关于安全/不安全的规则，记住一堆具有有趣名称的函数，如`strcat()`和`strcmp()`，而不是使用直观的操作符，而且还需要进行大量的手动内存管理。
 
-The bottom line is that working with C-style strings requires remembering a lot of nit-picky rules about what is safe/unsafe, memorizing a bunch of functions that have funny names like strcat() and strcmp() instead of using intuitive operators, and doing lots of manual memory management.
+幸运的是，C++和标准库提供了处理字符串的更好的方法：`std::string`和`std::wstring`类。通过使用构造函数、析构函数和操作符重载等C++概念，`std::string` 使我们可以以一种直观和安全的方式创建和操作字符串！不再需要内存管理，不再需要奇怪的函数名，也大大降低了发生问题的可能性。
 
-Fortunately, C++ and the standard library provide a much better way to deal with strings: the std::string and std::wstring classes. By making use of C++ concepts such as constructors, destructors, and operator overloading, std::string allows you to create and manipulate strings in an intuitive and safe manner! No more memory management, no more weird function names, and a much reduced potential for disaster.
 
-Sign me up!
+## 字符串简介
 
-**String overview**
-
-All string functionality in the standard library lives in the header file. To use it, simply include the string header:
+所有标准库字符串函数都位于头文件中，使用时只需要包含该头文件即可：
 
 ```cpp
 #include <string>
 ```
 
-COPY
-
-There are actually 3 different string classes in the string header. The first is a templated base class named basic_string:
+在字符串头文件中实际上有3个不同的字符串类。第一个是名为`basic_string`的模板基类：
 
 ```cpp
 namespace std
@@ -83,7 +74,9 @@ namespace std
 }
 ```
 
-COPY
+我们并不会直接使用这个类，所以暂时不要担心`trait`或`Allocator`z什么。在几乎所有可以想象到的情况下，默认值就足够了。
+
+标准库提供了两种类型的basic_string:
 
 You won’t be working with this class directly, so don’t worry about what traits or an Allocator is for the time being. The default values will suffice in almost every imaginable case.
 
