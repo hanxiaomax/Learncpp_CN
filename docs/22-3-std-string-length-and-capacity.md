@@ -12,11 +12,11 @@ tags:
 ??? note "关键点速记"
 
 
-Once you’ve created strings, it’s often useful to know how long they are. This is where length and capacity operations come into play. We’ll also discuss various ways to convert std::string back into C-style strings, so you can use them with functions that expect strings of type char*.
+一旦创建了字符串，知道它们的长度通常是很有用的。我们还将讨论将`std::string`转换回C风格字符串的各种方法，这样你就可以在将其用在期望`char*`类型字符串的函数中使用它们。
 
-## Length of a string
+## 字符串的长度
 
-The length of the string is quite simple -- it’s the number of characters in the string. There are two identical functions for determining string length:
+字符串的长度非常简单 length of the string is quite simple -- it’s the number of characters in the string. There are two identical functions for determining string length:
 
 **`size_type string::length() const`**  
 **`size_type string::size() const`**

@@ -313,7 +313,7 @@
 - [[21-3-STL-iterators-overview|21.3 - STL迭代器]]
 - [[21-4-STL-algorithms-overview|21.4 - STL算法]]
 
-## 22. std 字符串  
+## 22. std 字符串 ✅ 
 
 - [[22-1-std-string-and-std-wstring|22.1 - std::string 和 std::wstring]]
 - [[22-2-std-string-construction-and-destruction|22.2 - std-string 的构造和析构]]

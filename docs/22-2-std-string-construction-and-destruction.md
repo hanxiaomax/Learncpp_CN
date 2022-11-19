@@ -143,44 +143,43 @@ QQQQ
 -   该构造函数基于一个范围`[itBeg, itEnd)`的字符串创建一个新的字符串；
 -   如果结果的长度超过字符串的长度，则抛出 `length_error` 异常。
 
-No sample code for this one. It’s obscure enough you’ll probably never use it.
+没有示例代码。它太晦涩了，你可能永远不会用它。
 
+
+
+## 字符串析构
 
 **`string::~string()`**
-**String destruction**
 
--   This is the destructor. It destroys the string and frees the memory.
+-   析构函数，用于销毁字符串并释放内存
 
-No sample code here either since the destructor isn’t called explicitly.
+没有示例代码。你不会显示地调用它。
 
-## Constructing strings from numbers**
+## 从数字构建字符串
 
-One notable omission in the std::string class is the lack of ability to create strings from numbers. For example:
+`std::string` 类遗漏了一个非常重要的功能，即从数字创建字符串，例如：
 
 ```cpp
 std::string sFour{ 4 };
 ```
 
-COPY
-
-Produces the following error:
+输出结果：
 
 ```
 c:vcprojectstest2test2test.cpp(10) : error C2664: 'std::basic_string<_Elem,_Traits,_Ax>::basic_string(std::basic_string<_Elem,_Traits,_Ax>::_Has_debug_it)' : cannot convert parameter 1 from 'int' to 'std::basic_string<_Elem,_Traits,_Ax>::_Has_debug_it'
 ```
 
-
-Remember what I said about the string classes producing horrible looking errors? The relevant bit of information here is:
+还记得我说过字符串类会产生可怕的报错信息吗？就是像上面这样。这里的有用的信息是：
 
 ```
 cannot convert parameter 1 from 'int' to 'std::basic_string
 ```
 
-In other words, it tried to convert your int into a string but failed.
+换句话说，它试图将int转换为字符串，但失败了。
 
-The easiest way to convert numbers into strings is to involve the `std::ostringstream` class. `std::ostringstream` is already set up to accept input from a variety of sources, including characters, numbers, strings, etc… It is also capable of outputting strings (either via the extraction `operator>>`, or via the `str()` function). For more information on `std::ostringstream`, see [23.4 -- Stream classes for strings](https://www.learncpp.com/cpp-tutorial/stream-classes-for-strings/).
+将数字转换为字符串最简单的方法是使用`std::ostringstream` 类。`std::ostringstream` 可以接受来自各种来源的输入，包括字符、数字、字符串等…它还能够输出字符串(通过[[extraction-operator|提取运算符]]，或通过`str()` 函数)。有关 `std::ostringstream` 的更多信息，参考 [[23-4-stream-classes-for-strings|23.4 - 用于字符串的 stream 类]]。
 
-Here’s a simple solution for creating std::string from various types of inputs:
+==从不同类型的输入创建字符串的例子如下：==
 
 ```cpp
 #include <iostream>
@@ -196,9 +195,7 @@ inline std::string ToString(T tX)
 }
 ```
 
-COPY
-
-Here’s some sample code to test it:
+下面是一些测试它的示例代码：
 
 ```cpp
 int main()
@@ -212,9 +209,7 @@ int main()
 }
 ```
 
-COPY
-
-And the output:
+输出结果：
 
 ```
 4
@@ -222,15 +217,16 @@ And the output:
 A
 ```
 
-Note that this solution omits any error checking. It is possible that inserting tX into oStream could fail. An appropriate response would be to throw an exception if the conversion fails.
+注意，这里我们忽略了错误检查。将`tX`插入`oStream`中可能会失败，如果转换失败则应该抛出一个异常。
 
 !!! info "相关内容"
 
-	The standard library also contains a function named `std::to_string()` that can be used to convert chars and numbers into a std::string. While this is a simpler solution for basic cases, the output of std::to_string may differ from the output of std::cout or out ToString() function above. Some of these differences are currently documented [here](https://en.cppreference.com/w/cpp/string/basic_string/to_string).
+	标准库还包含一个名为 `std::to_string()` 的函数，可用于将字符和数字转换为 `std::string`。虽然这是基本场合中更简单的解决方案，但`std::to_string`的输出可能与上面`std::cout`或`out ToString()`函数的输出不同。其中一些差异被记录[这里](https://en.cppreference.com/w/cpp/string/basic_string/to_string)。
 
-## Converting strings to numbers**
 
-Similar to the solution above:
+## 从字符串创建数字
+
+和上面的解决方案类似：
 
 ```cpp
 #include <iostream>
@@ -241,13 +237,11 @@ template <typename T>
 inline bool FromString(const std::string& sString, T& tX)
 {
     std::istringstream iStream(sString);
-    return !(iStream >> tX).fail(); // extract value into tX, return success or not
+    return !(iStream >> tX).fail(); // 将值提取到 tX 并返回是否成功
 }
 ```
 
-COPY
-
-Here’s some sample code to test it:
+下面是一些测试它的示例代码：
 
 ```cpp
 int main()
@@ -260,12 +254,10 @@ int main()
 }
 ```
 
-COPY
-
-And the output:
+输出结果：
 
 ```
 3.4
 ```
 
-Note that the second conversion failed and returned false.
+注意，第二次转换失败并返回了 `false`。
