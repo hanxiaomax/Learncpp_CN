@@ -11,9 +11,9 @@ tags:
 
 ??? note "关键点速记"
 
-## Appending**
+## 追加字符串
 
-Appending strings to the end of an existing string is easy using either operator+=, append(), or push_back().
+在一个字符串的末尾追加字符串，可以使用 `operator+=` 或 `append()` 或 `push_back()`。
 
 **`string& string::operator+= (const string& str)`**  
 **`string& string::append (const string& str)`**  
