@@ -93,9 +93,9 @@ cdef
 
 **`string& string::assign (const char* chars, size_type len)`**
 
--   Assigns len characters from the C-style array chars
--   Throws an length_error exception if the result exceeds the maximum number of characters
--   Returns *this so it can be “chained”.
+-   将C风格字符串数组中的 `len` 个字符赋值给字符串；
+-   如果要拷贝的长度超过最大字符个数，则抛出`length_error`异常；
+-   返回 `*this` 以便可以被链式调用。
 
 例子：
 
@@ -112,13 +112,13 @@ std::cout << sDest << '\n';
 abcd
 ```
 
-This function is potentially dangerous and its use is not recommended.
+这个函数存在潜在风险，不建议使用。
 
 **`string& string::assign (size_type len, char c)`**
 
--   Assigns len occurrences of the character c
--   Throws a length_error exception if the result exceeds the maximum number of characters
--   Returns *this so it can be “chained”.
+-   将字符c重复 `len` 次赋值给字符串；
+-   如果结果超过最大字符个数，则抛出 `length_error` 异常；
+-   返回 `*this` 以便可以被链式调用。
 
 例子：
 
@@ -135,14 +135,14 @@ std::cout << sDest << '\n';
 gggg
 ```
 
-## Swapping**
+## 交换字符串
 
-If you have two strings and want to swap their values, there are two functions both named swap() that you can use.
+如果你有两个字符串并希望交换它们的值，那么可以使用两个名为`swap()`的函数。
 
 **`void string::swap (string& str)`**  
 **`void swap (string& str1, string& str2)`**
 
--   Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.
+-   两个函数都可以交换l functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.
 -   These functions are efficient and should be used instead of assignments to perform a string swap.
 
 例子：
