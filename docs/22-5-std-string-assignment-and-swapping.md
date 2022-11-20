@@ -14,7 +14,7 @@ tags:
 
 ## String 赋值
 
-为字符串赋值的最简单的方法是使用[[14-15-overloading-the-assignment-operator|重载赋值运算符]] ，此外`assign()`函数也提供了类似的功能。
+为字符串赋值的最简单的方法是使用[[14-15-overloading-the-assignment-operator|重载赋值运算符]] ，此外，`assign()`函数也提供了类似的功能。
 
 **`string& string::operator= (const string& str)`**  
 **`string& string::assign (const string& str)`**  
@@ -22,11 +22,11 @@ tags:
 **`string& string::assign (const char* str)`**  
 **`string& string::operator= (char c)`**  
 
--   These functions assign values of various types to the string.
--   These functions return *this so they can be “chained”.
--   Note that there is no assign() function that takes a single char.
+-   这些函数都对字符串进行赋值；
+-   函数返回 `*this`，所以可以进行链式调用；
+-   注意，`assign()` 函数的各个版本都不能接收一个单独字符作为参数。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sString;
@@ -56,9 +56,7 @@ sString = sOther = "Six";
 std::cout << sString << ' ' << sOther << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 One
@@ -69,15 +67,15 @@ Four
 Six Six
 ```
 
-The `assign()` member function also comes in a few other flavors:
+`assign()` 成员函数还有一些其他的版本：
 
 **`string& string::assign (const string& str, size_type index, size_type len)`**
 
--   Assigns a substring of str, starting from index, and of length len
--   Throws an out_of_range exception if the index is out of bounds
--   Returns *this so it can be “chained”.
+- 将一个字符串的子串赋值给另一个字符串，从 `index` 开始，长度为 `len`
+- 如果索引`index`越界，则抛出 `out_of_range` 异常；
+- 返回 `*this` 以便可以被链式调用。
 
-Sample code:
+例子：
 
 ```cpp
 const std::string sSource("abcdefg");
@@ -87,9 +85,7 @@ sDest.assign(sSource, 2, 4); // assign a substring of source from index 2 of len
 std::cout << sDest << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 cdef
@@ -101,7 +97,7 @@ cdef
 -   Throws an length_error exception if the result exceeds the maximum number of characters
 -   Returns *this so it can be “chained”.
 
-Sample code:
+例子：
 
 ```cpp
 std::string sDest;
@@ -110,9 +106,7 @@ sDest.assign("abcdefg", 4);
 std::cout << sDest << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 abcd
@@ -126,7 +120,7 @@ This function is potentially dangerous and its use is not recommended.
 -   Throws a length_error exception if the result exceeds the maximum number of characters
 -   Returns *this so it can be “chained”.
 
-Sample code:
+例子：
 
 ```cpp
 std::string sDest;
@@ -135,9 +129,7 @@ sDest.assign(4, 'g');
 std::cout << sDest << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 gggg
@@ -153,7 +145,7 @@ If you have two strings and want to swap their values, there are two functions b
 -   Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.
 -   These functions are efficient and should be used instead of assignments to perform a string swap.
 
-Sample code:
+例子：
 
 ```cpp
 std::string sStr1("red");
@@ -166,9 +158,7 @@ sStr1.swap(sStr2);
 std::cout << sStr1 << ' ' << sStr2 << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 red blue
