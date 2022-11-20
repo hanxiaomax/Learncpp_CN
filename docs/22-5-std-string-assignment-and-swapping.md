@@ -14,7 +14,7 @@ tags:
 
 ## String 赋值
 
-The easiest way to assign a value to a string is to use the overloaded operator= function. There is also an assign() member function that duplicates some of this functionality.
+ easiest way to assign a value to a string is to use the overloaded operator= function. There is also an assign() member function that duplicates some of this functionality.
 
 **`string& string::operator= (const string& str)`**  
 **`string& string::assign (const string& str)`**  

@@ -13,16 +13,17 @@ tags:
 
 
 ## 访问字符
-There are two almost identical ways to access characters in a string. The easier to use and faster version is the overloaded `operator[]`:
+
+访问字符也有两个极其类似的方法。最简单也是最块的方法是使用[[14-9-overloading-the-subscript-operator|重载下标运算符]]：
 
 **`char& string::operator[] (size_type nIndex)`**  
 **`const char& string::operator[] (size_type nIndex) const`**
 
--   Both of these functions return the character with index nIndex
--   Passing an invalid index results in undefined behavior
--   Because char& is the return type, you can use this to edit characters in the array
+-   函数返回位于索引 `nIndex` 处的字符；
+-   传入非法索引会导致[[undefined-behavior|未定义行为]]；
+-   因为返回类型是 `char&` 所以你可以使用它修改数组中的元素。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sSource{ "abcdefg" };
@@ -31,25 +32,24 @@ sSource[5] = 'X';
 std::cout << sSource << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 f
 abcdeXg
 ```
 
-There is also a non-operator version. This version is slower since it uses exceptions to check if the nIndex is valid. If you are not sure whether nIndex is valid, you should use this version to access the array:
+此外，还有一个非操作符的版本。该版本的函数速度会慢一些，因为它==会检查数组下标是否合法==。如果你不确定索引 `nIndex` 是否一定有效，则最好使用这个方法来访问：
 
 **`char& string::at (size_type nIndex)`**  
 **`const char& string::at (size_type nIndex) const`**
 
--   Both of these functions return the character with index nIndex
--   Passing an invalid index results in an out_of_range exception
--   Because char& is the return type, you can use this to edit characters in the array
+-  函数返回位于索引 `nIndex` 处的字符；
+-  传入非法索引会导致 `out_of_range` 异常；
+-  因为返回类型是 `char&` 所以你可以使用它修改数组中的元素。
 
-Sample code:
+
+例子：
 
 ```cpp
 std::string sSource{ "abcdefg" };
@@ -58,26 +58,24 @@ sSource.at(5) = 'X';
 std::cout << sSource << '\n';
 ```
 
-COPY
-
-Output:
+输出
 
 ```
 f
 abcdeXg
 ```
 
-## Conversion to C-style arrays**
+## 转换为C风格数组
 
-Many functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.
+很多函数（包括所有C语言函数）期望的输入是C语言风格字符串而不是`std::string`。因此，`std::string`提供了三种将`std::string`转换为C语言字符串的方法：
 
 **`const char* string::c_str () const`**
 
--   Returns the contents of the string as a const C-style string
--   A null terminator is appended
--   The C-style string is owned by the std::string and should not be deleted
+- 将字符串内容作为C风格字符串常量返回；
+- 结尾会添加结束符；
+- 该C风格字符串归 `std::string` 所有且不应该被手动释放。
 
-Sample code:
+例子：
 
 ```cpp
 #include <cstring>
@@ -86,9 +84,7 @@ std::string sSource{ "abcdefg" };
 std::cout << std::strlen(sSource.c_str());
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 7
@@ -96,11 +92,11 @@ Output:
 
 **`const char* string::data () const`**
 
--   Returns the contents of the string as a const C-style string
--   A null terminator is appended. This function performs the same action as `c_str()`
--   The C-style string is owned by the std::string and should not be deleted
+-  将字符串内容作为C风格字符串常量返回；
+-  结尾会添加结束符；该函数行为与 `c_str()` 是一样的；
+-  该C风格字符串归 `std::string` 所有且不应该被手动释放。
 
-Sample code:
+例子：
 
 ```cpp
 #include <cstring>
@@ -114,20 +110,20 @@ else
     std::cout << "The strings are not equal";
 ```
 
-COPY
+输出：
 
-Output:
-
+```
 The strings are equal
+```
 
 **`size_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) const`**
 
--   Both flavors copy at most nLength characters of the string to szBuf, beginning with character nIndex
--   The number of characters copied is returned
--   No null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned length
--   The caller is responsible for not overflowing szBuf
+-   从字符串中拷贝至多 `nLength` 个字符到 `szBuf`，从索引`nIndex`开始；
+-   返回成功拷贝的字符的个数；
+-   ==并不会添加结束符==。条用在必须保证 `szBuf` 被初始化为空或基于返回的长度为字符串添加结束符；
+-   调用者需要确保 `szBuf` 不溢出。
 
-Sample code:
+例子：
 
 ```cpp
 std::string sSource{ "sphinx of black quartz, judge my vow" };
@@ -139,13 +135,11 @@ szBuf[nLength] = '\0';  // Make sure we terminate the string in the buffer
 std::cout << szBuf << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 black
 ```
 
-This function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).
+==这个函数应该尽可能避免，因为其相对比较危险的(因为需要由调用者提供结束符并避免缓冲区溢出)。==
 

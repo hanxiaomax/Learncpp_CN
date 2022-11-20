@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
-      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
+      "basename": "22-5-std-string-assignment-and-swapping",
+      "path": "docs/22-5-std-string-assignment-and-swapping.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
+      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
+    },
+    {
+      "basename": "22-1-std-string-and-std-wstring",
+      "path": "docs/22-1-std-string-and-std-wstring.md"
     },
     {
       "basename": "22-3-std-string-length-and-capacity",
@@ -15,10 +23,6 @@
     {
       "basename": "22-2-std-string-construction-and-destruction",
       "path": "docs/22-2-std-string-construction-and-destruction.md"
-    },
-    {
-      "basename": "22-1-std-string-and-std-wstring",
-      "path": "docs/22-1-std-string-and-std-wstring.md"
     },
     {
       "basename": "23-7-random-file-IO",
@@ -95,10 +99,6 @@
     {
       "basename": "22-6-std-string-appending",
       "path": "docs/22-6-std-string-appending.md"
-    },
-    {
-      "basename": "22-5-std-string-assignment-and-swapping",
-      "path": "docs/22-5-std-string-assignment-and-swapping.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
