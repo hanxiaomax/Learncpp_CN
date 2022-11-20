@@ -142,8 +142,8 @@ gggg
 **`void string::swap (string& str)`**  
 **`void swap (string& str1, string& str2)`**
 
--   两个函数都可以交换l functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.
--   These functions are efficient and should be used instead of assignments to perform a string swap.
+- 两个函数都可以交换两个字符串的值。成员函数会交换 `*this` 和 `str`，全局函数则交换 `str1` 和 `str2`；
+- 这些函数是高效的，应该用来代替赋值来执行字符串交换。
 
 例子：
 
