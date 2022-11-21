@@ -120,31 +120,26 @@ void 指针可以被设置为 null 值：
 void* ptr{ nullptr }; // ptr is a void pointer that is currently a null pointer
 ```
 
-尽管一些编译器允许删除指向动态分配内存的空指针，但应该避免这样做，因为它可能[[导致
+尽管一些编译器允许删除指向动态分配内存的空指针，但应该避免这样做，因为它可能导致[[undefined-behavior|未定义行为]]。
 
-在空指针上做指针算术是不可能的。这是因为指针算术要求指针知道它所指向的对象的大小，因此它可以适当地增加或减少指针。
+不能在void指针上做指针算术运算。这是因为指针算术要求指针知道它所指向的对象的大小，以便可以适当地增加或减少指针。
 
-注意，没有空引用这种东西。这是因为void引用的类型是void &，并且不知道它引用的是什么类型的值。
+注意，没有void引用这种东西。这是因为void引用的类型是void &，并且不知道它引用的是什么类型的值。
 
-Although some compilers allow deleting a void pointer that points to dynamically allocated memory, doing so should be avoided, as it can result in undefined behavior.
-
-It is not possible to do pointer arithmetic on a void pointer. This is because pointer arithmetic requires the pointer to know what size object it is pointing to, so it can increment or decrement the pointer appropriately.
-
-Note that there is no such thing as a void reference. This is because a void reference would be of type void &, and would not know what type of value it referenced.
 
 ## 小结
 
-In general, it is a good idea to avoid using void pointers unless absolutely necessary, as they effectively allow you to avoid type checking. This allows you to inadvertently do things that make no sense, and the compiler won’t complain about it. For example, the following would be valid:
+一般来说，除非绝对必要，否则应该避免使用void指针，因为它们可以避免类型检查，这使得你在不经意间犯的错误无法被编译器发现。例如：
 
 ```cpp
 int nValue{ 5 };
 printValue(&nValue, Type::tCString);
 ```
 
-COPY
 
-But who knows what the result would actually be!
+但谁知道结果会怎样呢！
 
-Although the above function seems like a neat way to make a single function handle multiple data types, C++ actually offers a much better way to do the same thing (via function overloading) that retains type checking to help prevent misuse. Many other places where void pointers would once be used to handle multiple data types are now better done using templates, which also offer strong type checking.
+尽管上面的函数看起来像是一种让一个函数处理多个数据类型的简洁方法，但C++实际上提供了一种更好的方法(通过函数重载)来做同样的事情，该方法保留了类型检查，以避免滥用。许多其他地方曾经使用void指针来处理多个数据类型，现在可以使用模板来更好地完成，模板也提供了强类型检查。
 
-However, very occasionally, you may still find a reasonable use for the void pointer. Just make sure there isn’t a better (safer) way to do the same thing using other language mechanisms first!
+
+但是，在非常偶然的情况下，void指针也是很有用的。但是在使用前要首先确保没有更好(更安全)的方法来使用其他语言机制完成同样的事情！

@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-9-member-selection-with-pointers-and-references",
+      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
+    },
+    {
+      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
+      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
+    },
+    {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
     },
     {
       "basename": "void pointer",
@@ -187,18 +199,6 @@
     {
       "basename": "stack-overflow",
       "path": "docs/stack-overflow.md"
-    },
-    {
-      "basename": "call-stack",
-      "path": "docs/call-stack.md"
-    },
-    {
-      "basename": "data segment",
-      "path": "docs/data segment.md"
-    },
-    {
-      "basename": "bss segment",
-      "path": "docs/bss segment.md"
     }
   ],
   "omittedPaths": [],
