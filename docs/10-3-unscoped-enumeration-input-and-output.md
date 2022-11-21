@@ -12,9 +12,9 @@ tags:
 
 ??? note "关键点速记"
 
-在上节课中([[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]])我们提到，枚举是一种[[symbolic-constants|符号常量]]。但是我们entioned that enumerators are symbolic constants. What we didn’t tell you then is that enumerators are _integral_ symbolic constants. As a result, enumerated types actually hold an integral value.
+在上节课中([[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]])我们提到，枚举是一种[[symbolic-constants|符号常量]]。但是我们没说的是，枚举实际上是一个整型符号常量。因此，枚举类型中保存的其实是一个整型值。
 
-This is similar to the case with chars ([[4-11-Chars|4.11 - 字符]]). Consider:
+在这一点上，枚举类型类似于字符 ([[4-11-Chars|4.11 - 字符]])。考虑下面代码：
 
 ```cpp
 char ch { 'A' };
