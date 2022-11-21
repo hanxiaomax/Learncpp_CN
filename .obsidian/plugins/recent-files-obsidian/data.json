@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "11-14-Void-pointers",
+      "path": "docs/11-14-Void-pointers.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "void pointer",
+      "path": "docs/void pointer.md"
+    },
+    {
+      "basename": "11-x-chapter-11-comprehensive-quiz",
+      "path": "docs/11-x-chapter-11-comprehensive-quiz.md"
+    },
+    {
+      "basename": "11-19-Introduction-to-standard-library-algorithms",
+      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
     },
     {
       "basename": "22-7-std-string-inserting",
@@ -109,10 +133,6 @@
       "path": "docs/12-1-function-pointers.md"
     },
     {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
       "basename": "11-18-Introduction-to-iterators",
       "path": "docs/11-18-Introduction-to-iterators.md"
     },
@@ -121,16 +141,8 @@
       "path": "docs/11-17-An-introduction-to-std-vector.md"
     },
     {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
       "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
     },
     {
       "basename": "11-7-std-string-view-part-2",
@@ -139,10 +151,6 @@
     {
       "basename": "11-6-C-style-strings",
       "path": "docs/11-6-C-style-strings.md"
-    },
-    {
-      "basename": "11-x-chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-chapter-11-comprehensive-quiz.md"
     },
     {
       "basename": "12-8-lambda-captures",
@@ -191,10 +199,6 @@
     {
       "basename": "bss segment",
       "path": "docs/bss segment.md"
-    },
-    {
-      "basename": "code segment",
-      "path": "docs/code segment.md"
     }
   ],
   "omittedPaths": [],

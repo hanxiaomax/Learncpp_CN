@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "13f59164e0fb87e3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/11-14-Void-pointers.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/11-14-Void-pointers.md"
               }
             }
           },
@@ -118,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/11-14-Void-pointers.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "13f59164e0fb87e3",
   "lastOpenFiles": [
-    "docs/22-7-std-string-inserting.md",
     "docs/MOC.md",
+    "docs/void pointer.md",
+    "docs/11-14-Void-pointers.md",
+    "docs/11-x-chapter-11-comprehensive-quiz.md",
+    "docs/11-19-Introduction-to-standard-library-algorithms.md",
+    "docs/11-16-An-introduction-to-std-array.md",
+    "docs/11-13-For-each-loops.md",
+    "docs/22-7-std-string-inserting.md",
     "docs/22-6-std-string-appending.md",
-    "docs/22-5-std-string-assignment-and-swapping.md",
-    "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md",
-    "docs/22-1-std-string-and-std-wstring.md",
-    "docs/22-3-std-string-length-and-capacity.md",
-    "docs/22-2-std-string-construction-and-destruction.md",
-    "docs/23-7-random-file-IO.md",
-    "docs/23-6-basic-file-IO.md"
+    "docs/22-5-std-string-assignment-and-swapping.md"
   ]
 }
