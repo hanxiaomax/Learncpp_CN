@@ -22,10 +22,10 @@ tags:
 - 这些函数可以将`str`中的字符，插入到字符串索引`index`位置；
 - 这些函数都会返回 `*this` 以便可以被链式调用；
 - 如果索引无效，则会抛出 `out_of_range` 异常；
-- 如果chao'choth functions throw a length_error exception if the result exceeds the maximum number of characters.
--   In the C-style string version, str must not be `NULL`.
+- 如果结果超出最大字符个数则抛出 `length_error` 异常；
+- 对于接受C风格字符串版本的函数，`str`不能是NULL。
 
-Sample code:
+例子：
 
 ```cpp
 string sString("aaaa");
@@ -38,9 +38,7 @@ sString.insert(4, "cccc");
 cout << sString << endl;
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 aaaa
@@ -48,16 +46,16 @@ aabbbbaa
 aabbccccbbaa
 ```
 
-Here’s a crazy version of insert() that allows you to insert a substring into a string at an arbitrary index:
+还有一个特别吓人的 `insert()`版本，使用它可以将一个子串插入到字符串的`index`位置：
 
 **`string& string::insert (size_type index, const string& str, size_type startindex, size_type num)`**
 
--   This function inserts num characters str, starting from startindex, into the string at index.
--   Returns *this so it can be “chained”.
--   Throws an out_of_range if index or startindex is out of bounds
--   Throws a length_error exception if the result exceeds the maximum number of characters.
+- 该函数会将`str`中从`startindex`开始的`num`个字符插入到字符串的`index`位置；
+- 这些函数都会返回 `*this` 以便可以被链式调用；
+- 如果`index`或者`startindex`，越界，则抛出 `out_of_range` 异常；
+- 如果结果超出最大字符个数则抛出 `length_error` 异常；
 
-Sample code:
+例子：
 
 ```cpp
 string sString("aaaa");
@@ -67,25 +65,23 @@ sString.insert(2, sInsert, 3, 4); // insert substring of sInsert from index [3,7
 cout << sString << endl;
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 aa3456aa
 ```
 
-There is a flavor of `insert()` that inserts the first portion of a C-style string:
+还有一个版本的 `insert()` 可以将C语言风格字符串的前面一部分插入到字符串中：
 
 **`string& string::insert(size_type index, const char* str, size_type len)`**
 
--   Inserts len characters of str into the string at index
--   Returns *this so it can be “chained”.
--   Throws an out_of_range exception if the index is invalid
--   Throws a length_error exception if the result exceeds the maximum number of characters.
--   Ignores special characters (such as ”)
+- 将`str`中的前 `len` 个字符插入到字符串中`index`位置；
+- 这些函数都会返回 `*this` 以便可以被链式调用；
+- 如果索引无效，则抛出 `out_of_range` 异常；
+- 如果结果超出最大字符个数则抛出 `length_error` 异常；
+- 会忽略特殊字符 (例如 `”`)
 
-Sample code:
+例子：
 
 ```cpp
 string sString("aaaa");
@@ -94,24 +90,22 @@ sString.insert(2, "bcdef", 3);
 cout << sString << endl;
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 aabcdaa
 ```
 
-There’s also a flavor of insert() that inserts the same character multiple times:
+还有一个版本的 `insert()` 可以插入某个字符若干次：
 
 **`string& string::insert(size_type index, size_type num, char c)`**
 
--   Inserts num instances of char c into the string at index
--   Returns *this so it can be “chained”.
--   Throws an out_of_range exception if the index is invalid
--   Throws a length_error exception if the result exceeds the maximum number of characters.
+- 将字符`c`在字符串`index`处插入 `num` 次；
+- 这些函数都会返回 `*this` 以便可以被链式调用；
+- 如果索引无效，则抛出 `out_of_range` 异常；
+- 如果结果超出最大字符个数则抛出 `length_error` 异常；
 
-Sample code:
+例子：
 
 ```cpp
 string sString("aaaa");
@@ -120,21 +114,19 @@ sString.insert(2, 4, 'c');
 cout << sString << endl;
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 aaccccaa
 ```
 
-And finally, the insert() function also has three different versions that use iterators:
+最后，还有三个版本的 `insert()` 用于配合[[iterator|迭代器]]使用：
 
 **`void insert(iterator it, size_type num, char c)`**  
 **`iterator string::insert(iterator it, char c)`**  
 **`void string::insert(iterator it, InputIterator begin, InputIterator end)`**
 
--   The first function inserts num instances of the character c before the iterator it.
--   The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.
--   The third inserts all characters between `[begin,end)` before the iterator it.
--   All functions throw a length_error exception if the result exceeds the maximum number of characters.
+- 第一个函数将字符`c`在迭代器`it`前插入`num`次；
+- 第二个函数将字符c插入到迭代器`it`前并返回一个指向该字符的迭代器；
+- 第三个函数将 `[begin,end)` 范围内的字符插入到迭代器`it`前；
+- 如果结果超出最大字符个数则抛出 `length_error` 异常；
