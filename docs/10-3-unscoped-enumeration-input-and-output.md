@@ -12,7 +12,7 @@ tags:
 
 ??? note "关键点速记"
 
-In the prior lesson ([[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]), we mentioned that enumerators are symbolic constants. What we didn’t tell you then is that enumerators are _integral_ symbolic constants. As a result, enumerated types actually hold an integral value.
+在上节课中([[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]])我们提到，枚举是一种[[symbolic-constants|符号常量]]。但是我们entioned that enumerators are symbolic constants. What we didn’t tell you then is that enumerators are _integral_ symbolic constants. As a result, enumerated types actually hold an integral value.
 
 This is similar to the case with chars ([[4-11-Chars|4.11 - 字符]]). Consider:
 
