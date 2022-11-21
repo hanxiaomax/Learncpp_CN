@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "22-6-std-string-appending",
-      "path": "docs/22-6-std-string-appending.md"
+      "basename": "22-7-std-string-inserting",
+      "path": "docs/22-7-std-string-inserting.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "22-6-std-string-appending",
+      "path": "docs/22-6-std-string-appending.md"
     },
     {
       "basename": "22-5-std-string-assignment-and-swapping",
@@ -95,10 +99,6 @@
     {
       "basename": "O-2-bitwise-operators",
       "path": "docs/O-2-bitwise-operators.md"
-    },
-    {
-      "basename": "22-7-std-string-inserting",
-      "path": "docs/22-7-std-string-inserting.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",

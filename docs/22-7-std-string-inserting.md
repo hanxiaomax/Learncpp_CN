@@ -12,17 +12,17 @@ tags:
 ??? note "关键点速记"
 
 
-## Inserting**
+## 插入
 
-Inserting characters into an existing string can be done via the insert() function.
+向字符串中插入字符可以通过 `insert()` 函数完成。
 
 **`string& string::insert (size_type index, const string& str)`**  
 **`string& string::insert (size_type index, const char* str)`**
 
--   Both functions insert the characters of str into the string at index
--   Both function return *this so they can be “chained”.
--   Both functions throw out_of_range if index is invalid
--   Both functions throw a length_error exception if the result exceeds the maximum number of characters.
+- 这些函数可以将`str`中的字符，插入到字符串索引`index`位置；
+- 这些函数都会返回 `*this` 以便可以被链式调用；
+- 如果索引无效，则会抛出 `out_of_range` 异常；
+- 如果chao'choth functions throw a length_error exception if the result exceeds the maximum number of characters.
 -   In the C-style string version, str must not be `NULL`.
 
 Sample code:

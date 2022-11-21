@@ -144,17 +144,17 @@ std::cout << sString << '\n';
 one 2
 ```
 
-如果你好奇为什么这个函数的名字是 `push_back()` 而不是 `append()`。这里是遵循了[[stack|栈]]操作的命名习惯，`push_back()` 用于将一个单个内容添加到栈顶。如果我们将字符串看做是一个字符组成的栈 is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!
+如果你好奇为什么这个函数的名字是 `push_back()` 而不是 `append()`。这里是遵循了[[stack|栈]]操作的命名习惯，`push_back()` 用于将一个单个内容添加到栈顶。如果我们将字符串看做是一个字符组成的栈，则使用 `push_back()` 将一个字符添加到栈顶是很符合直觉的。但是，没有提供 `append()` 函数在我看来在一致性方面是一种缺失！
 
-It turns out there is an `append()` function for characters, that looks like this:
+`append()` 函数有一个版本可以添加多个字符串：
 
 **`string& string::append (size_type num, char c)`**  
 
--   Adds num occurrences of the character c to the string
--   Returns *this so it can be “chained”.
--   Throws a length_error exception if the result exceeds the maximum number of characters.
+-  将字符c重复`num`次追加到字符串中；
+-  返回 `*this` 以便可以被链式调用；
+-  如果结果超过最大字符个数则抛出 `length_error` 异常；
 
-Sample code:
+例子：
 
 ```cpp
 std::string sString{"aaa"};
@@ -163,18 +163,16 @@ sString.append(4, 'b');
 std::cout << sString << '\n';
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 aaabbbb
 ```
 
-There’s one final flavor of append() that works with iterators:
+最后一种版本的 `append()` 可以配合[[iterator|迭代器]]工作：
 
 **`string& string::append (InputIterator start, InputIterator end)`**  
 
--   Appends all characters from the range `[start, end)` (including start up to but not including end)
--   Returns *this so it can be “chained”.
--   Throws a length_error exception if the result exceeds the maximum number of characters.
+-   将 `[start, end)` 范围内的字符追加到字符串 (左闭右开区间)；
+-   返回 `*this` 以便可以被链式调用；
+-   如果结果超过最大字符个数则抛出 `length_error` 异常；
