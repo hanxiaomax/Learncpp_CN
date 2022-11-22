@@ -169,7 +169,7 @@ Your shirt is blue
 
 这么做比使用多个if-else判断更高效（因为switch语句比if更高效），而且可读性也更好。但是，这个版本的代码也不是很高效，因为每次调用函数时，都必须创建并返回一个 `std::string` (开销很大)。
 
-在 C++17 中，更高效的做法是将 `std::string` 替换为 `std::string_view`。 `std::string_view` allows us to return string literals in a way that is much less expensive to copy.
+在 C++17 中，更高效的做法是将 `std::string` 替换为 `std::string_view`。 `std::string_view` 会以某种拷贝开销更小的方式返回一个字符串字面量。
 
 ```cpp
 #include <iostream>
@@ -207,11 +207,11 @@ COPY
 
 !!! info "相关内容"
 
-	Constexpr return types are covered in in lesson [6.14 -- Constexpr and consteval functions](https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/).
+	Constexpr 返回类型在[[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]中介绍。
 
-## Teaching `operator<<` how to print an enumerator
+## 让 `operator<<` 知道如何打印枚举值
 
-Although the above example functions well, we still have to remember the name of the function we created to get the enumerator name. While this usually isn’t too burdensome, it can become more problematic if you have lots of enumerations. Using operator overloading (a capability similar to function overloading), we can actually teach `operator<<` how to print the value of a program-defined enumeration! We haven’t explained how this works yet, so consider it a bit of magic for now:
+尽管上面的例子可以正常工作，但是我们必须要能够记住哪个函数是用来获取枚举值名字的。尽管多数情况下这也并不麻烦，但是如果枚举类型很多的时候，还是很可能会带来问题。使用运算符重载，我们可以教会运算符 `operator<<` 如何打印程序定义枚举类型！由于我们还没有介绍如何做到这一点，所以你可以先将下面的代码当做一种魔法：
 
 ```cpp
 #include <iostream>
@@ -249,19 +249,19 @@ int main()
 }
 ```
 
-COPY
+输出结果：
 
-This prints:
-
+```
 Your shirt is blue
+```
 
 !!! info "扩展阅读"
 
-    For the curious, here’s what the above code is actually doing. When we try to print `shirt` using `std::cout` and `operator<<`, the compiler will see that we’ve overloaded `operator<<` to work with objects of type `Color`. This overloaded `operator<<` function is then called with `std::cout` as the `out` parameter, and our `shirt` as parameter `color`. Since `out` is a reference to `std::cout`, a statement such as `out << "blue"` is really just printing `"blue"` to `std::cout`.
+    如果你好奇的话，这里简单介绍一下上面代码的工作原理。当我们尝试通过`std::cout` 和 `operator<<` 打印 `shirt` 时，编译器发现被重载的 `operator<<` 可以配合 `Color` 类型的对象工作。于是重载的 `operator<<` 被调用， is then called with `std::cout` as the `out` parameter, and our `shirt` as parameter `color`. Since `out` is a reference to `std::cout`, a statement such as `out << "blue"` is really just printing `"blue"` to `std::cout`.
 
-We cover overloading the I/O operators in lesson [14.4 -- Overloading the I/O operators](https://www.learncpp.com/cpp-tutorial/overloading-the-io-operators/). For now, you can copy this code and replace `Color` with your own enumerated type.
+We cover overloading the I/O operators in lesson [[14-4-overloading-the-IO-operators|14.4 - 重载输入输出运算符]]。 For now, you can copy this code and replace `Color` with your own enumerated type.
 
-## Enumeration size and base
+## 枚举的大小和进制
 
 Enumerated types are considered part of the integer family of types, and it’s up to the compiler to determine how much memory to allocate for an enum variable. The C++ standard says the enum size needs to be large enough to represent all of the enumerator values. Most often, it will make enum variables the same size as a standard `int`.
 
@@ -285,7 +285,7 @@ Since enumerators aren’t usually used for arithmetic or comparisons with integ
 
 	Specify the base type of an enumeration only when necessary.
 
-## Integer to unscoped enumerator conversion
+## 整型转换为非限定作用域枚举
 
 While the compiler will implicitly convert unscoped enumerators to an integer, it will _not_ implicitly convert an integer to an unscoped enumerator. The following will produce a compiler error:
 
@@ -363,7 +363,7 @@ int main()
 
 COPY
 
-## Unscoped enumerator input
+## 非限定作用域枚举值的输入
 
 Because `Pet` is a program-defined type, the language doesn’t know how to input a Pet using `std::cin`:
 
