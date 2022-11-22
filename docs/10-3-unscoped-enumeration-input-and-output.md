@@ -20,10 +20,9 @@ tags:
 char ch { 'A' };
 ```
 
+`char` 实际上就是一个1个字节的整型数，字符 `A` 会被转换为整型数（转换为65）并储存。
 
-A char is really just a 1-byte integral value, and the character `'A'` gets converted to an integral value (in this case, `65`) and stored.
-
-When we define an enumerator, each enumerator is automatically assigned an integer value based on its position in the enumerator list. By default, the first enumerator is assigned the integral value `0`, and each subsequent enumerator has a value one greater than the previous enumerator:
+当我们定义枚举的时候，每个枚举值会根据其所在位置被自动赋值一个整型值。默认情况下，第一个枚举值会被赋值为0，后面的枚举值以此类推，每个都比前一个值大一：
 
 ```cpp
 #include <iostream>
@@ -48,8 +47,7 @@ int main()
 }
 ```
 
-
-It is possible to explicitly define the value of enumerators. These integral values can be positive or negative, and can share the same value as other enumerators. Any non-defined enumerators are given a value one greater than the previous enumerator.
+我们也可以显式地定义枚举数的值，而且这些整数值可以是整数或负数，并且可以与其他枚举值共享相同的值。任何未定义的枚举数都被赋予一个比前一个枚举数大1的值。
 
 ```cpp
 enum Animal
@@ -63,17 +61,15 @@ enum Animal
 };
 ```
 
-COPY
-
-Note in this case, `horse` and `giraffe` have been given the same value. When this happens, the enumerators become non-distinct -- essentially, `horse` and `giraffe` are interchangeable. Although C++ allows it, assigning the same value to two enumerators in the same enumeration should generally be avoided.
+注意，在这个例子中，`horse` 和 `giraffe` 具有相同的值，在这种情况下，这些枚举值是无区别的—— `horse` 和 `giraffe` 是可以互换的。尽管C++允许你这么做，但是我们应该尽量避免将一个枚举类型中的两个枚举值赋值为相同的数。
 
 !!! success "最佳实践"
 
-	Avoid assigning explicit values to your enumerators unless you have a compelling reason to do so.
+	避免给枚举值显式赋值，除非有令人信服的理由这样做。
 
-## Unscoped enumerations will implicitly convert to integral values
+## 非限定作用域枚举类型会被隐式地转换为整型值
 
-Consider the following program:
+考虑下面的程序：
 
 ```cpp
 #include <iostream>
@@ -100,23 +96,23 @@ int main()
 }
 ```
 
-COPY
+因为枚举类型保存的是整型值，所以如你所期待的那样，上面的程序打印：
 
-Since enumerated types hold integral values, as you might expect, this prints:
-
+```
 Your shirt is 2
+```
 
-When an enumerated type is used in a function call or with an operator, the compiler will first try to find a function or operator that matches the enumerated type. For example, when the compiler tries to compile `std::cout << shirt`, the compiler will first look to see if `operator<<` knows how to print an object of type `Color` (because `shirt` is of type `Color`) to `std::cout`. It doesn’t.
+当枚举类型用于函数调用或与运算符一起使用时，编译器将首先尝试查找与枚举类型匹配的函数或运算符。例如，当编译器试图编译`std::cout << shirt` 时，编译器首先会查看 `operator<<` 是否知道如何将`Color` 类型的对象(因为 `shirt` 的类型是`Color` )打印到 `std::cout` 。它不知道。
 
-If the compiler can’t find a match, the compiler will then implicitly convert an unscoped enumeration or enumerator to its corresponding integer value. Because `std::cout` does know how to print an integral value, the value in `shirt` gets converted to an integer and printed as integer value `2`.
+如果编译器无法找到匹配的运算符，则它会将[[unscoped-enumerations|非限定作用域枚举类型]]隐式地转换为对应的整型。因为 `std::cout` 知道如何打印一个整型，所以 `shirt` 会被转换为整型并打印出2。
 
-## Printing enumerator names
+## 打印枚举值的名字
 
-Most of the time, printing an enumeration as an integral value (such as `2`) isn’t what we want. Instead, we typically will want to print the name of whatever the enumerator represents (`blue`). But to do that, we need some way to convert the integral value of the enumeration (`2`) into a string matching the enumerator name (`"blue"`).
+大多数情况下，将枚举转换为整型打印出来并不是我们想要的结果。我们肯定是希望能够将枚举值的本名打印出来 (例如 `blue`)。但是，为了实现这一点我们需要一些方法将枚举在转换为字符串并打印出来(`"blue"`)。
 
-As of C++20, C++ doesn’t come with any easy way to do this, so we’ll have to find a solution ourselves. Fortunately, that’s not very difficult. The typical way to do this is to write a function that takes an enumerated type as a parameter and then outputs the corresponding string (or returns the string to the caller).
+截至C++ 20, C++还没有提供任何简单的方法来实现这一点，所以我们必须自己寻找解决方案。幸运的是，这并不难。实现这一点的典型方法是编写一个函数，该函数接受枚举类型作为参数，然后输出相应的字符串(或将字符串返回给调用者)。
 
-The typical way to do this is to test our enumeration against every possible enumerator:
+典型的方法是判断当前需要打印的是哪个的枚举值：
 
 ```cpp
 // Using if-else for this is inefficient
@@ -129,9 +125,7 @@ void printColor(Color color)
 }
 ```
 
-COPY
-
-However, using a series of if-else statements for this is inefficient, as it requires multiple comparisons before a match is found. A more efficient way to do the same thing is to use a switch statement. In the following example, we will also return our `Color` as a `std::string`, to give the caller more flexibility to do whatever they want with the name (including print it):
+但是，为此使用一系列if-else语句是低效的，因为它需要多次比较才能找到匹配。完成同样任务的一种更有效的方法是使用`switch`语句。在下面的例子中，我们还将以`std::string` 的形式返回`Color` ，以给调用者更多的灵活性来对名称做任何想做的事情(包括打印它):
 
 ```cpp
 #include <iostream>
@@ -167,15 +161,15 @@ int main()
 }
 ```
 
-COPY
+输出结果：
 
-This prints:
-
+```
 Your shirt is blue
+```
 
-This likely performs better than the if-else chain (switch statements tend to be more efficient than if-else chains), and it’s easier to read too. However, this version is still inefficient, because we need to create and return a `std::string` (which is expensive) every time the function is called.
+这么做比使用多个if-else判断更高效（因为switch语句比if更高效），而且可读性也更好。但是，这个版本的代码也不是很高效，因为每次调用函数时，都必须创建并返回一个 `std::string` (开销很大)。
 
-In C++17, a more efficient option is to replace `std::string` with `std::string_view`. `std::string_view` allows us to return string literals in a way that is much less expensive to copy.
+在 C++17 中，更高效的做法是将 `std::string` 替换为 `std::string_view`。 `std::string_view` allows us to return string literals in a way that is much less expensive to copy.
 
 ```cpp
 #include <iostream>
