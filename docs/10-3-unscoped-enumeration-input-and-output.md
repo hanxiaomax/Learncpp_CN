@@ -257,15 +257,16 @@ Your shirt is blue
 
 !!! info "扩展阅读"
 
-    如果你好奇的话，这里简单介绍一下上面代码的工作原理。当我们尝试通过`std::cout` 和 `operator<<` 打印 `shirt` 时，编译器发现被重载的 `operator<<` 可以配合 `Color` 类型的对象工作。于是重载的 `operator<<` 被调用， is then called with `std::cout` as the `out` parameter, and our `shirt` as parameter `color`. Since `out` is a reference to `std::cout`, a statement such as `out << "blue"` is really just printing `"blue"` to `std::cout`.
+    如果你好奇的话，这里简单介绍一下上面代码的工作原理。当我们尝试通过`std::cout` 和 `operator<<` 打印 `shirt` 时，编译器发现被重载的 `operator<<` 可以配合 `Color` 类型的对象工作。于是重载的 `operator<<` 被调用，参数`out`是 `std::cout`，参数`color`则是 `shirt`。因为`out`是`std::cout`的引用，所以 `out << "blue"` 就是将 `"blue"` 送到 `std::cout`打印。
 
-We cover overloading the I/O operators in lesson [[14-4-overloading-the-IO-operators|14.4 - 重载输入输出运算符]]。 For now, you can copy this code and replace `Color` with your own enumerated type.
+我们会在 [[14-4-overloading-the-IO-operators|14.4 - 重载输入输出运算符]] 中介绍IO运算符的重载。目前你可以先拷贝这份代码并用于你自己的枚举类型。
 
-## 枚举的大小和进制
 
-Enumerated types are considered part of the integer family of types, and it’s up to the compiler to determine how much memory to allocate for an enum variable. The C++ standard says the enum size needs to be large enough to represent all of the enumerator values. Most often, it will make enum variables the same size as a standard `int`.
+## 枚举的大小和基类型
 
-However, it is possible to specify a different underlying type. For example, if you are working in some bandwidth-sensitive context (e.g. sending data over a network) you may want to specify a smaller type:
+枚举类型被认为是整数类型家族的一部分，由编译器决定为枚举变量分配多少内存。C++标准规定，枚举的大小需要大到足以表示所有枚举值。大多数情况下，它将使枚举变量的大小与标准的`int` 相同。
+
+但是，可以指定不同的基础类型。例如，==如果你在开发某个带宽敏感的程序(例如通过网络发送数据)，那么此时你可能需要指定一个更小的类型：==
 
 ```cpp
 // Use an 8-bit unsigned integer as the enum base
@@ -277,17 +278,15 @@ enum Color : std::uint8_t
 };
 ```
 
-COPY
-
-Since enumerators aren’t usually used for arithmetic or comparisons with integers, it’s generally safe to use an unsigned integer if desired.
+由于枚举数通常不用于算术或与整数比较，如果需要，使用无符号整数通常是安全的。
 
 !!! success "最佳实践"
 
-	Specify the base type of an enumeration only when necessary.
+	仅在必要时指定枚举的基类型
 
 ## 整型转换为非限定作用域枚举
 
-While the compiler will implicitly convert unscoped enumerators to an integer, it will _not_ implicitly convert an integer to an unscoped enumerator. The following will produce a compiler error:
+==虽然编译器可以隐式地将[[unscoped-enumerations|非限定作用域枚举类型]]转换为整数，但它将不能隐式地将整数转换为非限定作用域枚举类型。以下操作将产生编译错误：==
 
 ```cpp
 #include <iostream>
@@ -309,11 +308,9 @@ int main()
 }
 ```
 
-COPY
+有两种方法可以解决这个问题。
 
-There are two ways to work around this.
-
-First, you can force the compiler to convert an integer to an unscoped enumerator using `static_cast`:
+首先，可以使用 `static_cast`  强制编译器将一个整数转换为非限定作用域枚举数：
 
 ```cpp
 #include <iostream>
@@ -335,11 +332,9 @@ int main()
 }
 ```
 
-COPY
+稍后我们会举一个使用该方法的例子。
 
-We’ll see an example in a moment where this can be useful.
-
-Second, in C++17, if an unscoped enumeration has a specified base, then the compiler will allow you to initialize (but not assign) an unscoped enumeration using an integral value:
+此外，在 C++17 中，==如果一个非限定作用域枚举有一个基类型，则编译器允许你使用整型初始化（非赋值）该枚举值。==
 
 ```cpp
 #include <iostream>
@@ -361,11 +356,10 @@ int main()
 }
 ```
 
-COPY
 
 ## 非限定作用域枚举值的输入
 
-Because `Pet` is a program-defined type, the language doesn’t know how to input a Pet using `std::cin`:
+由于 `Pet` 是一个程序定义类型，所以C++并不知道如何从`std::cin`输入一个 `Pet`：
 
 ```cpp
 #include <iostream>
@@ -387,9 +381,7 @@ int main()
 }
 ```
 
-COPY
-
-To work around this, we can read in an integer, and use `static_cast` to convert the integer to an enumerator of the appropriate enumerated type:
+为了解决这个问题，我们可以先读入一个整型数，然后使用 `static_cast` 将其[[static-casts|静态类型转换]]为合适的枚举类型：
 
 ```cpp
 #include <iostream>
@@ -415,11 +407,9 @@ int main()
 }
 ```
 
-COPY
-
 !!! info "扩展阅读"
 
-    Similar to how we were able to teach `operator<<` to output an enum type above, we can also teach `operator>>` how to input an enum type:
+     类似于重载 `operator<<` 使其能够输出枚举类型，我们也可以重载 `operator>>` 使其指定ru'h how to input an enum type:
 
 	```cpp
 	#include <iostream>
