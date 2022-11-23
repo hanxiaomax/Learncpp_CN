@@ -5,12 +5,12 @@
       "path": "docs/10-4-scoped-enumerations-enum-classes.md"
     },
     {
-      "basename": "unscoped-enumerations",
-      "path": "docs/unscoped-enumerations.md"
-    },
-    {
       "basename": "enum-class",
       "path": "docs/enum-class.md"
+    },
+    {
+      "basename": "unscoped-enumerations",
+      "path": "docs/unscoped-enumerations.md"
     },
     {
       "basename": "scoped-enumerations",

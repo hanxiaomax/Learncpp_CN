@@ -153,9 +153,9 @@
   },
   "active": "4c2669fed12c9a06",
   "lastOpenFiles": [
-    "docs/unscoped-enumerations.md",
-    "docs/10-4-scoped-enumerations-enum-classes.md",
     "docs/enum-class.md",
+    "docs/10-4-scoped-enumerations-enum-classes.md",
+    "docs/unscoped-enumerations.md",
     "docs/scoped-enumerations.md",
     "docs/type-safe.md",
     "docs/MOC.md",

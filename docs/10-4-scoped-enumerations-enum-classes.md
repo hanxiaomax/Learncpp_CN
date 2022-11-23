@@ -9,6 +9,7 @@ tags:
 - enum 
 - scoped enumerations
 - C++20
+- C++17
 ---
 
 ??? note "关键点速记"
@@ -204,19 +205,19 @@ int main()
 ```
 
 
-As of C++17, you can initialize a scoped enumeration using an integral value without the `static_cast` (and unlike an unscoped enumeration, you don’t need to specify a base).
+在 C++17 中，你可以使用整型数（无需类型转换）直接初始化有作用域枚举（而且不像无作用域枚举，你不需要指明一个基类）。
 
 !!! success "最佳实践"
 
-	Favor scoped enumerations over unscoped enumerations unless there’s a compelling reason to do otherwise.
+	推荐使用有作用域枚举而非无作用域枚举，除非你有足够的理由不这么做。
 
-Despite the benefits that scoped enumerations offer, unscoped enumerations are still commonly used in C++ because there are situations where we desire the implicit conversion to int (doing lots of static_casting get annoying) and we don’t need the extra namespacing.
+尽管有作用域枚举提供了很多好的功能，但是无作用域枚举在C++中仍然非常常见，因为在有些场合下我们希望枚举值能够被隐式地转换为整型（总是使用`static_cast`进行转换有些麻烦），而且有时我们也不需要额外的命名空间分隔。
 
-## Easing the conversion of scoped enumerators to integers (进阶话题) 
+## 简化有作用域枚举值到整型的转换(进阶话题) 
 
-Scoped enumerations are great, but the lack of implicit conversion to integers can sometimes be a pain point. If we need to convert a scoped enumeration to integers often (e.g. cases where we want to use scoped enumerators as array indices), having to use static_cast every time we want a conversion can clutter our code significantly.
+有作用域枚举很好，但它不能够被隐式转换为整数的这一特点有时可能会是一个痛点。如果需要经常将作用域枚举转换为整数(例如，在希望使用作用域枚举作为数组下标的情况下)，那么每次需要转换时都必须使用`static_cast`，这无疑会使代码看起来非常混乱
 
-If you find yourself in the situation where it would be useful to make conversion of scoped enumerators to integers easier, a useful hack is to overload the unary `operator+` to perform this conversion. We haven’t explained how this works yet, so consider it magic for now:
+如果你有这样的需求，希望使有作用域枚举值能够更容易地转换为整数，那么可以尝试重载一元 `operator+` 来执行这种转换。我们还没有解释这是如何工作的，所以现在就把它当成魔术吧：
 
 ```cpp
 #include <iostream>
@@ -254,13 +255,13 @@ int main()
 3
 ```
 
-This method prevents unintended implicit conversions to an integral type, but provides a convenient way to explicitly request such conversions as needed.
+此方法可避免不经意地隐式转换，同时还提供了一种方便地显示转换方法。
 
 ## `using enum` 语句 （C++20）
 
-Introduced in C++20, a `using enum` statement imports all of the enumerators from an enum into the current scope. When used with an enum class type, this allows us to access the enum class enumerators without having to prefix each with the name of the enum class.
+C++20 引入了 `using enum` 语句，它可以将每个枚举作用域中的枚举值全部导入到当前作用域。当配合[[enum-class|枚举类]]使用时，可以避免使用枚举类前缀访问枚举值。
 
-This can be useful in cases where we would otherwise have many identical, repeated prefixes, such as within a switch statement:
+这个特性非常有用，特别是在需要重复输入大量相同前缀的情况下，例如在下面的switch语句中：
 
 ```cpp
 #include <iostream>
@@ -297,8 +298,7 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, `Color` is an enum class, so we normally would access the enumerators using a fully qualified name (e.g. `Color::blue`). However, within function `getColor()`, we’ve added the statement `using enum Color;`, which allows us to access those enumerators without the `Color::` prefix.
+在上面的例子中， `Color` 是一个枚举类，所以我们通常需要使用完全限定名来访问其枚举值 (例如 `Color::blue`)。但是，在 `getColor()` 函数中, 由于我们使用了 `using enum Color;`，因此可以省略 `Color::` 前缀直接访问枚举值。
 
-This saves us from having multiple, redundant, obvious prefixes inside the switch statement.
+这样可以帮助我们在switch语句中节省大量重复、冗余的输入。
