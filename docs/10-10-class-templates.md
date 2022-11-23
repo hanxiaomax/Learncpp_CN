@@ -13,7 +13,7 @@ tags:
 
 
 
-In lesson [8.13 -- Function templates](https://www.learncpp.com/cpp-tutorial/function-templates/), we introduced the challenge of having to create a separate (overloaded) function for each different set of types we want to work with:
+In lesson [[8-13-Function-templates|8.13 - 函数模板]]，we introduced the challenge of having to create a separate (overloaded) function for each different set of types we want to work with:
 
 ```cpp
 #include <iostream>
@@ -67,11 +67,11 @@ int main()
 
 COPY
 
-Related content
+!!! info "相关内容"
 
-We cover how function template instantiation works in lesson [8.14 -- Function template instantiation](https://www.learncpp.com/cpp-tutorial/function-template-instantiation/).
+	We cover how function template instantiation works in lesson [[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]
 
-Aggregate types have similar challenges
+## Aggregate types have similar challenges
 
 We run into similar challenges with aggregate types (both structs/classes/unions and arrays).
 
@@ -151,17 +151,17 @@ We could solve the first two issues by giving our `Pair` structs different nam
 
 Fortunately, we can do better.
 
-Author’s note
+!!! info "作者注"
 
-Before proceeding, please review lessons [8.13 -- Function templates](https://www.learncpp.com/cpp-tutorial/function-templates/) and [8.14 -- Function template instantiation](https://www.learncpp.com/cpp-tutorial/function-template-instantiation/) if you’re hazy on how function templates, template types, or function template instantiation works.
+	Before proceeding, please review lessons [[8-13-Function-templates|8.13 - 函数模板]]和[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]] if you’re hazy on how function templates, template types, or function template instantiation works.
 
-Class templates
+## Class templates
 
 Much like a function template is a template definition for instantiating functions, a class template is a template definition for instantiating class types.
 
-A reminder
+!!! info "提醒"
 
-A “class type” is a struct, class, or union type. Although we’ll be demonstrating “class templates” on structs for simplicity, everything here applies equally well to classes.
+	A “class type” is a struct, class, or union type. Although we’ll be demonstrating “class templates” on structs for simplicity, everything here applies equally well to classes.
 
 As a reminder, here’s our `int` pair struct definition:
 
@@ -261,7 +261,7 @@ For advanced readers
 
 The above example makes use of a feature called template class specialization (covered in future lesson [19.4 -- Class template specialization](https://www.learncpp.com/cpp-tutorial/class-template-specialization/)). Knowledge of how this feature works is not required at this point.
 
-Using our class template in a function
+## Using our class template in a function
 
 Now let’s return to the challenge of making our `max()` function work with different types. Because the compiler treats `Pair<int>` and `Pair<double>`as separate types, we could use overloaded functions that are differentiated by parameter type:
 
@@ -346,7 +346,7 @@ COPY
 
 This works exactly like you’d expect: `first` will be whatever the template type `T` is, and `second` will always be an `int`.
 
-Class templates with multiple template types
+## Class templates with multiple template types
 
 Class templates can also have multiple template types. For example, if we wanted the two members of our `Pair` class to be able to have different types, we can define our `Pair` class template with two template types:
 
@@ -382,7 +382,7 @@ COPY
 
 To define multiple template types, in our template parameter declaration, we separate each of our desired template types with a comma. In the above example we define two different template types, one named `T`, and one named `U`. The actual template type arguments for `T` and `U` can be different (as in the case of `p1` and `p2` above) or the same (as in the case of `p3`).
 
-std::pair
+## `std::pair`
 
 Because working with pairs of data is common, the C++ standard library contains a class template named `std::pair` (in the `<utility>` header) that is defined identically to the `Pair` class template with multiple template types in the preceding section. In fact, we can swap out the `pair` struct we developed for `std::pair`:
 
@@ -412,7 +412,7 @@ COPY
 
 We developed our own `Pair` class in this lesson to show how things work, but in real code, you should favor `std::pair` over writing your own.
 
-Using class templates in multiple files
+## Using class templates in multiple files
 
 Just like function templates, class templates are typically defined in header files so they can be included into any code file that needs them. Both template definitions and type definitions are exempt from the one-definition rule, so this won’t cause problems:
 

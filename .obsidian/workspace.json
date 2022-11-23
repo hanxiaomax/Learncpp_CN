@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "1589110da0b20ddf",
+            "id": "4c2669fed12c9a06",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-3-unscoped-enumeration-input-and-output.md",
+                "file": "docs/10-4-scoped-enumerations-enum-classes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-3-unscoped-enumeration-input-and-output.md"
+                "file": "docs/10-4-scoped-enumerations-enum-classes.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-3-unscoped-enumeration-input-and-output.md",
+                "file": "docs/10-4-scoped-enumerations-enum-classes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "1589110da0b20ddf",
+  "active": "4c2669fed12c9a06",
   "lastOpenFiles": [
+    "docs/type-safe.md",
+    "docs/10-4-scoped-enumerations-enum-classes.md",
     "docs/MOC.md",
+    "docs/10-6-struct-aggregate-initialization.md",
+    "docs/10-8-struct-passing-and-miscellany.md",
     "docs/10-9-member-selection-with-pointers-and-references.md",
     "docs/10-11-class-template-argument-deduction-and-deduction -guides.md",
-    "docs/11-14-Void-pointers.md",
-    "docs/void pointer.md",
-    "docs/11-x-chapter-11-comprehensive-quiz.md",
-    "docs/11-19-Introduction-to-standard-library-algorithms.md",
-    "docs/11-16-An-introduction-to-std-array.md",
-    "docs/11-13-For-each-loops.md",
-    "docs/22-7-std-string-inserting.md"
+    "docs/10-10-class-templates.md",
+    "docs/10-y-using-a-language-reference.md",
+    "docs/10-3-unscoped-enumeration-input-and-output.md"
   ]
 }

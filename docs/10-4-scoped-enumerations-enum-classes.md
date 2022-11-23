@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 	
 
-Although unscoped enumerations are distinct types in C++, they are not type safe, and in some cases will allow you to do things that don’t make sense. Consider the following case:
+尽管[[unscoped-enumerations|非限定作用域枚举类型]]在C++中是可区分类型，但它们并不是[[type-safe|类型安全]]的，而且在某些情况下它允许你做出一些不合理的操作。考虑下面的代码：
 
 ```cpp
 #include <iostream>

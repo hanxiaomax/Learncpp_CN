@@ -54,7 +54,7 @@ COPY
 
 While passing 3 variables isn’t that bad, consider a struct with 10 or 12 members. Passing each variable independently would be time consuming and error prone. Additionally, if we ever add a new attribute to our employee (e.g. name), we now have to modify all the functions declarations, definitions, and function calls to accept the new parameter and argument!
 
-Passing structs (by reference)
+## Passing structs (by reference)
 
 A big advantage of using structs over individual variables is that we can pass the entire struct to a function that needs to work with the members. Structs are generally passed by (const) reference to avoid making copies.
 
@@ -98,6 +98,7 @@ In the above example, we pass an entire `Employee` to `printEmployee()` (twi
 
 The above program outputs:
 
+```
 ID:   14
 Age:  32
 Wage: 24.15
@@ -105,10 +106,11 @@ Wage: 24.15
 ID:   15
 Age:  28
 Wage: 18.27
+```
 
 Because we are passing the entire struct object (rather than individual members), we only need one parameter no matter how many members the struct object has. And, in the future, if we ever decide to add new members to our `Employee` struct, we will not have to change the function declaration or function call! The new member will automatically be included.
 
-Returning structs
+## Returning structs
 
 Consider the case where we have a function that needs to return a point in 3-dimensional Cartesian space. Such a point has 3 attributes: an x-coordinate, a y-coordinate, and a z-coordinate. But functions can only return one value. So how do we return all 3 coordinates back the user?
 
@@ -148,11 +150,13 @@ COPY
 
 This prints:
 
+```
 The point is zero
+```
 
 Structs are usually returned by value, so as not to return a dangling reference.
 
-Returning unnamed structs
+## Returning unnamed structs
 
 In the `getZeroPoint()` function above, we create a new named object (`temp`) just so we could return it:
 
@@ -207,7 +211,7 @@ Point3d getZeroPoint()
 
 COPY
 
-Structs with program-defined members
+## Structs with program-defined members
 
 In C++, structs (and classes) can have members that are other program-defined types. There are two ways to do this.
 
@@ -269,7 +273,7 @@ COPY
 
 This is more often done with classes, so we’ll talk more about this in a future lesson ([13.17 -- Nested types in classes](https://www.learncpp.com/cpp-tutorial/nested-types-in-classes/)).
 
-Struct size and data structure alignment
+## Struct size and data structure alignment
 
 Typically, the size of a struct is the sum of the size of all its members, but not always!
 
@@ -297,15 +301,17 @@ COPY
 
 On many platforms, a short is 2 bytes, an int is 4 bytes, and a double is 8 bytes, so we’d expect `sizeof(Foo)` to be 2 + 4 + 8 = 14 bytes. However, on the author’s machine, this prints:
 
+```
 The size of Foo is 16
+```
 
 It turns out, we can only say that the size of a struct will be _at least_ as large as the size of all the variables it contains. But it could be larger! For performance reasons, the compiler will sometimes add gaps into structures (this is called padding).
 
 In the `Foo` struct above, the compiler is invisibly adding 2 bytes of padding after member `a`, making the size of the structure 16 bytes instead of 14.
 
-For advanced readers
+!!! info "扩展阅读"
 
-The reason compilers may add padding is beyond the scope of this tutorial, but readers who want to learn more can read about [data structure alignment](https://en.wikipedia.org/wiki/Data_structure_alignment) on Wikipedia. This is optional reading and not required to understand structures or C++!
+    The reason compilers may add padding is beyond the scope of this tutorial, but readers who want to learn more can read about [data structure alignment](https://en.wikipedia.org/wiki/Data_structure_alignment) on Wikipedia. This is optional reading and not required to understand structures or C++!
 
 This can actually have a pretty significant impact on the size of the struct, as the following program will demonstrate:
 
@@ -341,9 +347,11 @@ COPY
 
 Note that `Foo1` and `Foo2` have the same members, the only difference being where in the declaration order member `qq` is declared. This program prints:
 
+```
 The size of Foo1 is 16
 The size of Foo2 is 24
+```
 
-Structs are an important building block
+## Structs are an important building block
 
 While structs are useful in and of themselves, classes (which are the heart of C++ and object oriented programming) build directly on top of the concepts we’ve introduced here. Having a good understanding of structs (especially data members, member selection, and default member initialization) will make your transition to classes that much easier.

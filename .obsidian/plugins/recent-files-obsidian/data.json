@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
+      "basename": "10-4-scoped-enumerations-enum-classes",
+      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
+    },
+    {
+      "basename": "type-safe",
+      "path": "docs/type-safe.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-6-struct-aggregate-initialization",
+      "path": "docs/10-6-struct-aggregate-initialization.md"
+    },
+    {
+      "basename": "10-8-struct-passing-and-miscellany",
+      "path": "docs/10-8-struct-passing-and-miscellany.md"
     },
     {
       "basename": "10-9-member-selection-with-pointers-and-references",
@@ -15,6 +27,18 @@
     {
       "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
       "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
+    },
+    {
+      "basename": "10-10-class-templates",
+      "path": "docs/10-10-class-templates.md"
+    },
+    {
+      "basename": "10-y-using-a-language-reference",
+      "path": "docs/10-y-using-a-language-reference.md"
+    },
+    {
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
     },
     {
       "basename": "11-14-Void-pointers",
@@ -175,30 +199,6 @@
     {
       "basename": "12-6-Ellipsis-and-why-to-avoid-them",
       "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "12-5-command-line-arguments",
-      "path": "docs/12-5-command-line-arguments.md"
-    },
-    {
-      "basename": "12-4-recursion",
-      "path": "docs/12-4-recursion.md"
-    },
-    {
-      "basename": "M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr",
-      "path": "docs/M-8-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr.md"
-    },
-    {
-      "basename": "12-3-std-vector-capacity-and-stack-behavior",
-      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
-    },
-    {
-      "basename": "12-2-the-stack-and-the-heap",
-      "path": "docs/12-2-the-stack-and-the-heap.md"
-    },
-    {
-      "basename": "stack-overflow",
-      "path": "docs/stack-overflow.md"
     }
   ],
   "omittedPaths": [],

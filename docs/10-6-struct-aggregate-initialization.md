@@ -15,7 +15,7 @@ tags:
 
 In the previous lesson ([10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/)), we talked about how to define structs, instantiate struct objects, and access their members. In this lesson, we’ll discuss how structs are intialized.
 
-Data members are not initialized by default
+## Data members are not initialized by default
 
 Much like normal variables, data members are not initialized by default. Consider the following struct:
 
@@ -44,21 +44,21 @@ Because we have not provided any initializers, when `joe` is instantiated, `j
 
 However, before we show you how to initialize a struct, let’s take a short detour.
 
-What is an aggregate?
+## What is an aggregate?
 
 In general programming, an aggregate data type (also called an aggregate) is any type that can contain multiple data members. Some types of aggregates allow members to have different types (e.g. structs), while others require that all members must be of a single type (e.g. arrays).
 
 In C++, the definition of an aggregate is narrower and quite a bit more complicated.
 
-For advanced readers
+!!! info "扩展阅读"
 
-To be an aggregate in C++, a type must meet the following criteria:
+	To be an aggregate in C++, a type must meet the following criteria:
 
--   Is a class type (a struct, class, or union), or an array type (a built-in array or `std::array`).
--   Has no private or protected non-static data members.
--   Has no user-declared or inherited constructors.
--   Has no base classes.
--   Has no virtual member functions.
+	-   Is a class type (a struct, class, or union), or an array type (a built-in array or `std::array`).
+	-   Has no private or protected non-static data members.
+	-   Has no user-declared or inherited constructors.
+	-   Has no base classes.
+	-   Has no virtual member functions.
 
 Putting the precise definition of a C++ aggregate aside, the important thing to understand at this point is that structs with only data members (which are the only kind of structs we’ll create in these lessons) are aggregates. Arrays (which we’ll cover next chapter) are also aggregates.
 
@@ -119,11 +119,11 @@ COPY
 
 Each of these initialization forms does a memberwise initialization, which means each member in the struct is initialized in the order of declaration. Thus, `Employee joe { 2, 28, 45000.0 };` first initializes `joe.id` with value `2`, then `joe.age` with value `28`, and `joe.wage` with value `45000.0` last.
 
-Best practice
+!!! success "最佳实践"
 
-Prefer the (non-copy) braced list form when initializing aggregates.
+	Prefer the (non-copy) braced list form when initializing aggregates.
 
-Missing initializers in an initializer list
+## Missing initializers in an initializer list
 
 If an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized.
 
@@ -155,7 +155,7 @@ Employee joe {}; // value-initialize all members
 
 COPY
 
-Const structs
+## Const structs
 
 Variables of a struct type can be const, and just like all const variables, they must be initialized.
 
@@ -177,7 +177,7 @@ int main()
 
 COPY
 
-Designated initializers C++20
+## Designated initializers C++20
 
 When initializing a struct from a list of values, the initializers are applied to the members in order of declaration.
 
@@ -241,11 +241,11 @@ Designated initializers are nice because they provide some level of self-documen
 
 Also, because there’s no enforcement that designated initializers are being used consistently everywhere an aggregate is initialized, it’s a good idea to avoid adding new members to the middle of an existing aggregate definition, to avoid the risk of initializer shifting.
 
-Best practice
+!!! success "最佳实践"
 
-When adding a new member to an aggregate, it’s safest to add it to the bottom of the definition list so the initializers for other members don’t shift.
+	When adding a new member to an aggregate, it’s safest to add it to the bottom of the definition list so the initializers for other members don’t shift.
 
-Assignment with an initializer list
+## Assignment with an initializer list
 
 As shown in the prior lesson, we can assign values to members of structs individually:
 
@@ -293,7 +293,7 @@ COPY
 
 Note that because we didn’t want to change `joe.id`, we needed to provide the current value for `joe.id` in our list as a placeholder, so that memberwise assignment could assign `joe.id` to `joe.id`. This is a bit ugly.
 
-Assignment with designated initializers C++20
+## Assignment with designated initializers C++20
 
 Designated initializers can also be used in a list assignment:
 

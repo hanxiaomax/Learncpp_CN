@@ -409,7 +409,7 @@ int main()
 
 !!! info "扩展阅读"
 
-     类似于重载 `operator<<` 使其能够输出枚举类型，我们也可以重载 `operator>>` 使其指定ru'h how to input an enum type:
+     类似于重载 `operator<<` 使其能够输出枚举类型，我们也可以重载 `operator>>` 使其指定如何输入一个枚举类型：
 
 	```cpp
 	#include <iostream>
@@ -446,4 +446,4 @@ int main()
 	}
 	```
 
-Again, consider this a bit of magic for now (since we haven’t explained the concepts behind it yet), but you might find it handy.
+	同样地，你可以先使用这段神奇的代码(因为我们还没有解释它背后的概念)，在后面的课程中我们会介绍它的原理。

@@ -11,7 +11,7 @@ tags:
 
 ??? note "关键点速记"
 	
-Member selection for structs and references to structs
+## Member selection for structs and references to structs
 
 In lesson [10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/), we showed that you can use the member selection operator (.) to select a member from a struct object:
 
@@ -74,7 +74,7 @@ int main()
 
 COPY
 
-Member selection for pointers to structs
+## Member selection for pointers to structs
 
 However, use of the member selection operator (.) doesn’t work if you have a pointer to a struct:
 
@@ -164,11 +164,11 @@ COPY
 
 This member selection from pointer operator (->) works identically to the member selection operator (.) but does an implicit dereference of the pointer object before selecting the member. This arrow operator is not only easier to type, but is also much less prone to error because the indirection is implicitly done for you, so there are no precedence issues to worry about. Consequently, when doing member access through a pointer, always use the -> operator instead of the . operator.
 
-Best practice
+!!! success "最佳实践"
 
-When using a pointer to access the value of a member, use operator->; instead of operator. (the . operator)
+	When using a pointer to access the value of a member, use operator->; instead of operator. (the . operator)
 
-Mixing pointers and non-pointers to members
+## Mixing pointers and non-pointers to members
 
 The member selection operator is always applied to the currently selected variable. If you have a mix of pointers and normal member variables, you can see member selections where . and -> are both used in sequence:
 

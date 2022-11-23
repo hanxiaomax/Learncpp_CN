@@ -15,7 +15,7 @@ One such resource is [Stack Overflow](https://stackoverflow.com/), where you ca
 
 In this lesson, we’ll show how to use [cppreference](https://cppreference.com/), a popular standard reference that we refer to throughout the lessons, by researching 3 examples.
 
-## Overview
+## 总览
 
 Cppreference greets you with an [overview](https://en.cppreference.com/w/cpp) of the core language and libraries:
 
@@ -27,19 +27,19 @@ The upper half of the table shows features currently in the language, while the 
 
 Starting with C++11, cppreference marks all features with the language standard version they’ve been added in. The standard version is the little green number you can see next to some of the links in the above image. Features without a version number have been available since C++98/03. The version numbers are not only in the overview, but everywhere on cppreference, letting you know exactly what you can or cannot use in a specific C++ version.
 
-A reminder
+!!! info "提醒"
 
-The C++ versions are C++98, C++03, C++11, C++14, C++17, C++20. C++23 is the informal name for the next planned iteration.
+	The C++ versions are C++98, C++03, C++11, C++14, C++17, C++20. C++23 is the informal name for the next planned iteration.
 
-Warning
+!!! warning "注意"
 
-If you use a search engine and a technical specification has just been accepted into the standard, you might get linked to a technical specification rather than the official reference, which can differ.
+	If you use a search engine and a technical specification has just been accepted into the standard, you might get linked to a technical specification rather than the official reference, which can differ.
 
-Tip
+!!! tip "小贴士"
 
-Cppreference is not only a reference for C++, but also for C. Since C++ shares some functions with C (which can differ), you may find yourself in the C reference after searching for something. The URL and the navigation bar at the top of cppreference always show you if you’re browsing the C or C++ reference.
+	Cppreference is not only a reference for C++, but also for C. Since C++ shares some functions with C (which can differ), you may find yourself in the C reference after searching for something. The URL and the navigation bar at the top of cppreference always show you if you’re browsing the C or C++ reference.
 
-std::string::length
+## `std::string::length`
 
 We’ll start by researching a function that you know from a previous lesson, `std::string::length`, which returns the length of a string.
 
@@ -79,7 +79,7 @@ Until you’re done learning C++, there will be features in the examples that yo
 
 Now we know what `std::string::length` does, but we knew that before. Let’s have a look at something new!
 
-## std::cin.ignore
+## `std::cin.ignore`
 
 In lesson [7.16 -- std::cin and handling invalid input](https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/), we talked about `std::cin.ignore`, which is used to ignore everything up to a line break. One of the parameters of this function is some long and verbose value. What was that again? Can’t you just use a big number? What does this argument do anyway? Let’s figure it out!
 
