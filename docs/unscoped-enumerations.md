@@ -1,6 +1,6 @@
 ---
-title: 非限定作用域枚举类型
-alias: 非限定作用域枚举类型
+title: 无作用域枚举类型
+alias: 无作用域枚举类型
 english: unscoped-enumerations
 type: glossary
 tags:

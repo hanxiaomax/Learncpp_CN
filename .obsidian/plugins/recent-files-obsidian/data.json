@@ -5,6 +5,10 @@
       "path": "docs/10-4-scoped-enumerations-enum-classes.md"
     },
     {
+      "basename": "unscoped-enumerations",
+      "path": "docs/unscoped-enumerations.md"
+    },
+    {
       "basename": "enum-class",
       "path": "docs/enum-class.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "11-6-C-style-strings",
       "path": "docs/11-6-C-style-strings.md"
-    },
-    {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
     }
   ],
   "omittedPaths": [],

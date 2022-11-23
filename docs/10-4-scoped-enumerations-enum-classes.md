@@ -8,6 +8,7 @@ type: translation
 tags:
 - enum 
 - scoped enumerations
+- C++20
 ---
 
 ??? note "关键点速记"
@@ -92,19 +93,18 @@ int main()
 }
 ```
 
-COPY
-
-This program produces a compile error on line 19, since the scoped enumeration won’t convert to any type that can be compared with another type.
+编译器会报告程序的第19行存在错误，因为有作用域枚举不能够被转换为任何可比较的其他类型。
 
 !!! cite "题外话"
 
-    The `class` keyword (along with the `static` keyword), is one of the most overloaded keywords in the C++ language, and can have different meanings depending on context. Although scoped enumerations use the `class` keyword, they aren’t considered to be a “class type” (which is reserved for structs, classes, and unions).
+    `class` 关键字 (以及`static`关键字)是 C++ 中最被“滥用”的关键字，它在不同语境下具有不同的含义。尽管有作用域枚举类型使用了 `class` 关键字，但是它们并不是类类型（类类型包括结构体、类和联合体）。
+    
+## 有作用域枚举会定义自己的作用域
 
-## Scoped enumerations define their own scope regions
 
-Unlike [[unscoped-enumerations|非限定作用域枚举类型]], which place their enumerators in the same scope as the enumeration itself, scoped enumerations place their enumerators _only_ in the scope region of the enumeration. In other words, scoped enumerations act like a namespace for their enumerators. This built-in namespacing helps reduce global namespace pollution and the potential for name conflicts when scoped enumerations are used in the global scope.
+[[unscoped-enumerations|无作用域枚举类型]]会将其枚举值和自己放置在相同的作用域中，而有作用域枚举会将它的枚举值放置在自己定义的作用域中。换言之，有作用域枚举同时是其枚举值的命名空间。这种自带的作用域有助于避免命名空间污染和潜在的命名冲突。
 
-To access a scoped enumerator, we do so just as if it was in a namespace having the same name as the scoped enumeration:
+要访问有作用域枚举值，就像它位于与作用域枚举同名的命名空间中一样:
 
 ```cpp
 #include <iostream>
@@ -126,15 +126,13 @@ int main()
 }
 ```
 
-COPY
+因为有作用域枚举类型为枚举值提供了它们自己的隐式名称空间，所以没有必要将作用域枚举放在另一个作用域(比如名称空间)中，除非有其他令人信服的理由这样做，因为这样做是多余的。
 
-Because scoped enumerations offer their own implicit namespacing for enumerators, there’s no need to put scoped enumerations inside another scope region (such as a namespace), unless there’s some other compelling reason to do so, as it would be redundant.
+## 有作用域枚举不会被隐式地转换为整型
 
-Scoped enumerations don’t implicitly convert to integers
+和无作用域枚举不同，有作用域枚举不会被隐式地转换为整型。在大多数情况下，这是有益地，因为绝大多数情况下这样的转换都不合理，所以这有助于帮我们避免语义错误，例如比较两个不同枚举类型中的枚举值或者使用枚举值进行数学运算（`red + 5`）。
 
-Unlike non-scoped enumerators, scoped enumerators won’t implicitly convert to integers. In most cases, this is a good thing because it rarely makes sense to do so, and it helps prevent semantic errors, such as comparing enumerators from different enumerations, or expressions such as `red + 5`.
-
-Note that you can still compare enumerators from within the same scoped enumeration (since they are of the same type):
+注意，你可以比较来自相同有作用域枚举类型中的枚举值(因为它们具有相同的类型)：
 
 ```cpp
 #include <iostream>
@@ -148,7 +146,7 @@ int main()
 
     Color shirt { Color::red };
 
-    if (shirt == Color::red) // this Color to Color comparison is okay
+    if (shirt == Color::red) // Color 和 Color 的比较是可以的
         std::cout << "The shirt is red!\n";
     else if (shirt == Color::blue)
         std::cout << "The shirt is blue!\n";
@@ -157,9 +155,7 @@ int main()
 }
 ```
 
-COPY
-
-There are occasionally cases where it is useful to be able to treat a scoped enumerator as an integer. In these cases, you can explicitly convert a scoped enumeration to an integer by using a `static_cast` to int:
+在某些情况下，将有作用域枚举值作为整数处理也是有用的。在这些情况下，可以通过使用`static_cast` 显式地将枚举值转换为整数：
 
 ```cpp
 #include <iostream>
@@ -180,9 +176,8 @@ int main()
 }
 ```
 
-COPY
 
-Conversely, you can also `static_cast` an integer to a scoped enumerator, which can be useful when doing input from users:
+反过来，你也可以使用 `static_cast` 将一个整型转换为有作用域枚举值，这在处理输入时尤其有用：
 
 ```cpp
 #include <iostream>
@@ -208,17 +203,16 @@ int main()
 }
 ```
 
-COPY
 
-As of C++17, you can initialize a scoped enumeration using an integral value without the static_cast (and unlike an unscoped enumeration, you don’t need to specify a base).
+As of C++17, you can initialize a scoped enumeration using an integral value without the `static_cast` (and unlike an unscoped enumeration, you don’t need to specify a base).
 
-Best practice
+!!! success "最佳实践"
 
-Favor scoped enumerations over unscoped enumerations unless there’s a compelling reason to do otherwise.
+	Favor scoped enumerations over unscoped enumerations unless there’s a compelling reason to do otherwise.
 
 Despite the benefits that scoped enumerations offer, unscoped enumerations are still commonly used in C++ because there are situations where we desire the implicit conversion to int (doing lots of static_casting get annoying) and we don’t need the extra namespacing.
 
-Easing the conversion of scoped enumerators to integers (advanced) [](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/#operatorplus)
+## Easing the conversion of scoped enumerators to integers (进阶话题) 
 
 Scoped enumerations are great, but the lack of implicit conversion to integers can sometimes be a pain point. If we need to convert a scoped enumeration to integers often (e.g. cases where we want to use scoped enumerators as array indices), having to use static_cast every time we want a conversion can clutter our code significantly.
 
@@ -254,15 +248,15 @@ int main()
 }
 ```
 
-COPY
+打印：
 
-This prints:
-
+```
 3
+```
 
 This method prevents unintended implicit conversions to an integral type, but provides a convenient way to explicitly request such conversions as needed.
 
-`using enum` statements C++20
+## `using enum` 语句 （C++20）
 
 Introduced in C++20, a `using enum` statement imports all of the enumerators from an enum into the current scope. When used with an enum class type, this allows us to access the enum class enumerators without having to prefix each with the name of the enum class.
 
