@@ -1,6 +1,6 @@
 ---
-title: 限定作用域枚举
-alias: 限定作用域枚举
+title: 有作用域枚举
+alias: 有作用域枚举
 english: scoped-enumerations
 type: glossary
 tags:

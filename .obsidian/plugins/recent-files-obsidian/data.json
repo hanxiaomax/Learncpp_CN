@@ -5,6 +5,14 @@
       "path": "docs/10-4-scoped-enumerations-enum-classes.md"
     },
     {
+      "basename": "enum-class",
+      "path": "docs/enum-class.md"
+    },
+    {
+      "basename": "scoped-enumerations",
+      "path": "docs/scoped-enumerations.md"
+    },
+    {
       "basename": "type-safe",
       "path": "docs/type-safe.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "12-8-lambda-captures",
       "path": "docs/12-8-lambda-captures.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
     }
   ],
   "omittedPaths": [],

@@ -153,15 +153,15 @@
   },
   "active": "4c2669fed12c9a06",
   "lastOpenFiles": [
-    "docs/type-safe.md",
+    "docs/enum-class.md",
     "docs/10-4-scoped-enumerations-enum-classes.md",
+    "docs/scoped-enumerations.md",
+    "docs/type-safe.md",
     "docs/MOC.md",
     "docs/10-6-struct-aggregate-initialization.md",
     "docs/10-8-struct-passing-and-miscellany.md",
     "docs/10-9-member-selection-with-pointers-and-references.md",
     "docs/10-11-class-template-argument-deduction-and-deduction -guides.md",
-    "docs/10-10-class-templates.md",
-    "docs/10-y-using-a-language-reference.md",
-    "docs/10-3-unscoped-enumeration-input-and-output.md"
+    "docs/10-10-class-templates.md"
   ]
 }

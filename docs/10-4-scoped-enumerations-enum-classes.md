@@ -35,8 +35,8 @@ int main()
     Color color { red };
     Fruit fruit { banana };
 
-    if (color == fruit) // The compiler will compare color and fruit as integers
-        std::cout << "color and fruit are equal\n"; // and find they are equal!
+    if (color == fruit) // 编译器会将 color 和 fruit 当做整型进行比较
+        std::cout << "color and fruit are equal\n"; // 并认为它们相等
     else
         std::cout << "color and fruit are not equal\n";
 
@@ -44,46 +44,46 @@ int main()
 }
 ```
 
-COPY
+打印：
 
-This prints:
-
+```
 color and fruit are equal
+```
 
-When `color` and `fruit` are compared, the compiler will look to see if it knows how to compare a `Color` and a `Fruit`. It doesn’t. Next, it will try converting `Color` and/or `Fruit` to integers to see if it can find a match. Eventually the compiler will determine that if it converts both to integers, it can do the comparison. Since `color` and `fruit` are both set to enumerators that convert to integer value `0`, `color` will equal `fruit`.
+当 `color` 和 `fruit` 进行比较时，编译器会首先判断它是否知道如何比较`Color` 和 `Fruit`。它并不知道。然后，它就会尝试将 `Color` 或 `Fruit` 转换为整型并继续查看是有匹配的比较方法。最终，编译器会将二者都转换为整型并进行比较。因为 `color` 和 `fruit` 的枚举值都转换为0，所以它们是相等的。
 
-This doesn’t make sense semantically since `color` and `fruit` are from different enumerations and are not intended to be comparable. With standard enumerators, there’s no easy way to prevent this.
+这显然不合理，因为 `color` 和 `fruit` 来自两个不同的枚举类型，它们本来是不具有可比性的。对于一般的枚举来说，我们并没有简单的办法放置此类事情发生。
 
-Because of such challenges, as well as the namespace pollution problem (unscoped enumerations defined in the global scope put their enumerators in the global namespace), the C++ designers determined that a cleaner solution for enumerations would be of use.
+因为上述问题的存在，以及[[namespace|命名空间]]污染问题，C++设计者决定提供一个干净利落地解决方案。
 
-## Scoped enumerations
+## 有作用域枚举
 
-That solution is the scoped enumeration (often called an enum class in C++ for reasons that will become obvious shortly).
+这个解决方案就是[[scoped-enumerations|有作用域枚举]](在C++中通常称为[[enum-class|枚举类]]，至于为什么这么叫它，很快就会不言自明了)。
 
-Scoped enumerations work similarly to unscoped enumerations ([10.2 -- Unscoped enumerations](https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/)), but have two primary differences: They are strongly typed (they won’t implicitly convert to integers) and strongly scoped (the enumerators are _only_ placed into the scope region of the enumeration).
+有作用域枚举和无作用域枚举（[[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]）用法类似，不过它们有两个主要的区别：其一，有作用域枚举是强类型的(它不会被隐式地转换为整型) ，其二它具有强作用域约束 (它的枚举值**只会**被放置在枚举类的作用域中)。
 
-To make a scoped enumeration, we use the keywords `enum class`. The rest of the scoped enumeration definition is the same as an unscoped enumeration definition. Here’s an example:
+创建有作用域枚举，需要使用关键字 `enum class`。定义的其他部分则和无作用域枚举一样。例如：
 
 ```cpp
 #include <iostream>
 int main()
 {
-    enum class Color // "enum class" defines this as a scoped enumeration rather than an unscoped enumeration
+    enum class Color // "enum class" 定义了有作用域枚举类型
     {
-        red, // red is considered part of Color's scope region
+        red, // red 是 Color 作用域的成员
         blue,
     };
 
     enum class Fruit
     {
-        banana, // banana is considered part of Fruit's scope region
+        banana, // banana 是 Fruit 作用域的成员
         apple,
     };
 
-    Color color { Color::red }; // note: red is not directly accessible, we have to use Color::red
-    Fruit fruit { Fruit::banana }; // note: banana is not directly accessible, we have to use Fruit::banana
+    Color color { Color::red }; // 注意: red 不能够被直接访问，必须使用 Color::red
+    Fruit fruit { Fruit::banana }; // note: banana 不能够被直接访问, 必须使用 Fruit::banana
 
-    if (color == fruit) // compile error: the compiler doesn't know how to compare different types Color and Fruit
+    if (color == fruit) // 编译错误：编译器不知道如何比较 Color 和 Fruit
         std::cout << "color and fruit are equal\n";
     else
         std::cout << "color and fruit are not equal\n";
