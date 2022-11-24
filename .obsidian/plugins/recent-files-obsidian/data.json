@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "10-4-scoped-enumerations-enum-classes",
       "path": "docs/10-4-scoped-enumerations-enum-classes.md"
     },
@@ -19,10 +27,6 @@
     {
       "basename": "type-safe",
       "path": "docs/type-safe.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "10-6-struct-aggregate-initialization",
@@ -195,10 +199,6 @@
     {
       "basename": "11-7-std-string-view-part-2",
       "path": "docs/11-7-std-string-view-part-2.md"
-    },
-    {
-      "basename": "11-6-C-style-strings",
-      "path": "docs/11-6-C-style-strings.md"
     }
   ],
   "omittedPaths": [],

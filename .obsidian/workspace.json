@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "4c2669fed12c9a06",
+            "id": "08a8a2f8398a4f2d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-4-scoped-enumerations-enum-classes.md",
+                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-4-scoped-enumerations-enum-classes.md"
+                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-4-scoped-enumerations-enum-classes.md",
+                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,14 +151,14 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "4c2669fed12c9a06",
+  "active": "08a8a2f8398a4f2d",
   "lastOpenFiles": [
-    "docs/enum-class.md",
+    "docs/MOC.md",
     "docs/10-4-scoped-enumerations-enum-classes.md",
+    "docs/enum-class.md",
     "docs/unscoped-enumerations.md",
     "docs/scoped-enumerations.md",
     "docs/type-safe.md",
-    "docs/MOC.md",
     "docs/10-6-struct-aggregate-initialization.md",
     "docs/10-8-struct-passing-and-miscellany.md",
     "docs/10-9-member-selection-with-pointers-and-references.md",

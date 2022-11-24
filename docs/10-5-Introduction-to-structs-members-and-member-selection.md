@@ -15,11 +15,9 @@ tags:
 	
 
 
-There are many instances in programming where we need more than one variable in order to represent something of interest. As we discussed in the introduction to the previous chapter ([[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]), a fraction has a numerator and denominator that are linked together into a single mathematical object.
+在编程中我们经常需要使用多个变量来表示更复杂的对象，正如在之前章节中([[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]])介绍的那样，分数是由两个具有关联的数学对象——分子分母组成的。
 
-Alternatively, lets say we want to write a program where we need to store information about the employees in a company. We might be interested in keeping track of attributes such as the employee’s name, title, age, employee id, manager id, wage, birthday, hire date, etc…
-
-If we were to use independent variables to track all of this information, that might look something like this:
+或者，假设我们想要编写一个程序，其中需要存储关于公司员工的信息。为此我们需要追踪诸如员工姓名、头衔、年龄、员工id、经理id、工资、生日、雇佣日期等属性。
 
 ```cpp
 std::string name;
@@ -36,13 +34,11 @@ int hireMonth;
 int hireDay;
 ```
 
-COPY
+然而，这种方式存在许多问题。首先，我们不清楚这些变量是否真的相关(你必须阅读注释，或者查看它们在上下文中是如何使用的)。其次，现在有12个变量需要管理。如果我们想要将这个雇员传递给一个函数，我们必须传递12个参数(并且顺序正确)，这将使我们的函数原型和函数调用变得混乱。既然函数只能返回一个值，那么函数如何返回一个雇员呢?
 
-However, there are a number of problems with this approach. First, it’s not immediately clear whether these variables are actually related or not (you’d have to read comments, or see how they are used in context). Second, there are now 12 variables to manage. If we wanted to pass this employee to a function, we’d have to pass 12 arguments (and in the correct order), which would make a mess of our function prototypes and function calls. And since a function can only return a single value, how would a function even return an employee?
+如果我们想要一个以上的员工，我们需要为每个额外的员工定义12个以上的变量(每个变量都需要一个惟一的名称)！这显然是无法扩展的。我们真正需要的是某种方法来组织所有这些相关的数据块，使它们更容易管理。
 
-And if we wanted more than one employee, we’d need to define 12 more variables for each additional employee (each of which would require a unique name)! This clearly doesn’t scale at all. What we really need is some way to organize all of these related pieces of data together, to make them easier to manage.
-
-Fortunately, C++ comes with two compound types designed to solve such challenges: structs (which we’ll introduce now) and classes (which we’ll explore soon). A struct (short for structure) is a program-defined data type ([[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]) that allows us to bundle multiple variables together into a single type. As you’ll see shortly, this makes management of related sets of variables much simpler!
+幸运的是，C++ 提供了两个comes with two compound types designed to solve such challenges: structs (which we’ll introduce now) and classes (which we’ll explore soon). A struct (short for structure) is a program-defined data type ([[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]) that allows us to bundle multiple variables together into a single type. As you’ll see shortly, this makes management of related sets of variables much simpler!
 
 ## Defining structs
 
