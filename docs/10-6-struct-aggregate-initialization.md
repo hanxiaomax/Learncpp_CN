@@ -17,6 +17,7 @@ tags:
 	- 尽管聚合类型内部的成员使用了括号初始化，但是如果聚合类型本身没有被初始化，则成员的初始化也不会进行
 	- 如果聚合类型被初始化了，那么即便没有对每个成员进行初始化，则该成员会使用自己的初始化值（可以是0，也可以是其他指定值，由其自身的括号初始化决定）
 	- 列表初始化聚合类型时，按照[[memberwise initialization|成员依次初始化]]进行，此时如果插入新声明的成员到前面，则对应的列表必须移动，而编译器并不会检测到这类问题。
+	- 在向聚合中添加新成员时，最安全的做法是将其添加到定义列表的底部，这样其他成员的初始化式就不需要调整顺序。
 
 在上节课中([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。
 
@@ -225,26 +226,25 @@ struct Foo
 
 int main()
 {
-    Foo f1{ .a{ 1 }, .c{ 3 } }; // ok: f.a = 1, f.b = 0 (value initialized), f.c = 3
+    Foo f1{ .a{ 1 }, .c{ 3 } }; // ok: f.a = 1, f.b = 0 (未出现，值初始化), f.c = 3
     Foo f2{ .b{ 2 }, .a{ 1 } }; // 错误: 初始化顺序和成员声明顺序不匹配
 
     return 0;
 }
 ```
 
-COPY
+指定初始化很不错，因为它们提供了某种程度的自注释，并有助于确保你不会无意中混淆初始化值的顺序。但是，指定初始化式也会使初始化式列表变得非常混乱，因此我们目前不建议将其作为最佳实践使用。
 
-Designated initializers are nice because they provide some level of self-documentation and help ensure you don’t inadvertently mix up the order of your initialization values. However, designated initializers also clutter up the initializer list significantly, so we won’t recommend their use as a best practice at this time.
+另外，由于没有强制规定在初始化聚合的所有地方都一致使用指定初始化式，因此避免向现有聚合定义的中间添加新成员是一个好主意，以避免初始化式转移的风险。
 
-Also, because there’s no enforcement that designated initializers are being used consistently everywhere an aggregate is initialized, it’s a good idea to avoid adding new members to the middle of an existing aggregate definition, to avoid the risk of initializer shifting.
 
 !!! success "最佳实践"
 
-	When adding a new member to an aggregate, it’s safest to add it to the bottom of the definition list so the initializers for other members don’t shift.
+	在向聚合中添加新成员时，最安全的做法是将其添加到定义列表的底部，这样其他成员的初始化式就不需要调整顺序。
 
 ## 使用初始化值列表进行赋值
 
-As shown in the prior lesson, we can assign values to members of structs individually:
+如上一课所示，我们可以为结构体的成员单独赋值：
 
 ```cpp
 struct Employee
@@ -265,9 +265,7 @@ int main()
 }
 ```
 
-COPY
-
-This is fine for single members, but not great when we want to update many members. Similar to initializing a struct with an initializer list, you can also assign values to structs using an initializer list (which does memberwise assignment):
+如果要操作的是个别成员，那是没有问题的。但是一旦要操作很多成员时，这种方式非常麻烦。类似于可以用[[initializer-list|初始化值列表]]初始化结构体一样，我们也可以使用初始化值列表进行赋值（进行[[memberwise-assignment|成员依次赋值]]）：
 
 ```cpp
 struct Employee
@@ -286,13 +284,12 @@ int main()
 }
 ```
 
-COPY
 
-Note that because we didn’t want to change `joe.id`, we needed to provide the current value for `joe.id` in our list as a placeholder, so that memberwise assignment could assign `joe.id` to `joe.id`. This is a bit ugly.
+注意，因为我们不希望改变  `joe.id` 的值，所以可以直接使用 `joe.id` 作为占位符，将 `joe.id` 赋值给 `joe.id`。虽然不太优雅。
 
 ## 使用指定初始化赋值（C++20）
 
-Designated initializers can also be used in a list assignment:
+指定初始化也可以用来赋值：
 
 ```cpp
 struct Employee
@@ -311,6 +308,4 @@ int main()
 }
 ```
 
-COPY
-
-Any members that aren’t designated in such an assignment will be assigned the value that would be used for value initialization. If we hadn’t have specified a designated initializer for `joe.id`, `joe.id` would have been assigned the value 0.
+任何没有在这种赋值中指定的成员都将被赋值给用于[[value-initialization|值初始化]]的值。也就是说，如果不为 `joe.id` 提供指定初始化值，则`joe.id` 会被赋值为0。

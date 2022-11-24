@@ -1,6 +1,6 @@
 ---
-title: 默认成员初始化
-alias: 默认成员初始化
+title: 默认成员初始化值
+alias: 默认成员初始化值
 english: default-member-initializer
 type: glossary
 tags:

@@ -13,9 +13,9 @@ tags:
 ??? note "关键点速记"
 	
 
-When we define a struct (or class) type, we can provide a default initialization value for each member as part of the type definition. This process is called non-static member initialization, and the initialization value is called a default member initializer.
+在定义结构体（或类）类型时，我们可以为每个成员都提供默认初始化值作为其定义的一部分。 这个过程称为[[non-static-member-initialization|非静态成员初始化]]，而这个初始化值称为[[default-member-initializer|默认成员初始值]]。
 
-Here’s an example:
+举个例子：
 
 ```cpp
 struct Something
@@ -33,21 +33,19 @@ int main()
 }
 ```
 
-COPY
-
 In the above definition of `Something`, `x` has no default value, `y` is value-initialized by default, and `z` has the default value `2`. These default member initialization values will be used if the user doesn’t provide an explicit initialization value when instantiating an object of type `Something`.
 
 Our `s1` object doesn’t have an initializer, so the members of `s1` are initialized to their default values. `s1.x` has no default initializer, so it remains uninitialized. `s1.y` is value initialized by default, so it gets value `0`. And `s1.z` is initialized with the value `2`.
 
 Note that even though we haven’t provided an explicit initializer for `s1.z`, it is initialized to a non-zero value because of the default member initializer provided.
 
-Key insight
+!!! tldr "关键信息"
 
-Using default member initializers (or other mechanisms that we’ll cover later), structs and classes can self-initialize even when no explicit initializers are provided!
+	Using default member initializers (or other mechanisms that we’ll cover later), structs and classes can self-initialize even when no explicit initializers are provided!
 
-Explicit initialization values take precedence over default values
+## 显式初始化值优先级高于默认初始化值
 
-Explicit values in a list initializer always take precedence over default member initialization values.
+列表初始化式中的显式值总是优先于默认成员初始化值。
 
 ```cpp
 struct Something
@@ -65,13 +63,12 @@ int main()
 }
 ```
 
-COPY
 
 In the above case, `s2` has explicit initialization values for every member, so the default member initialization values are not used at all. This means `s2.x`, `s2.y` and `s2.z` are initialized to the values `5`, `6`, and `7` respectively.
 
-Missing initializers in an initializer list when default values exist
+## 存在默认初始化值且初始化列表没有提供初始化值的情况
 
-In the previous lesson ([10.6 -- Struct aggregate initialization](https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/)) we noted that if an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized. However, if a default member initializer is provided for a given member, that default member initializer will be used instead.
+In the previous lesson （[[10-6-struct-aggregate-initialization|10.6 - 结构体的聚合初始化]]） we noted that if an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized. However, if a default member initializer is provided for a given member, that default member initializer will be used instead.
 
 ```cpp
 struct Something
@@ -93,7 +90,7 @@ COPY
 
 In the above case, `s3` is list initialized with an empty list, so all initializers are missing. This means that a default member initializer will be used if it exists, and value initialization will occur otherwise. Thus, `s3.x` (which has no default member initializer) is value initialized to `0`, `s3.y` is value initialized by default to `0`, and `s3.z` is defaulted to value `2`.
 
-Recapping the initialization possibilities
+## Recapping the initialization possibilities
 
 If an aggregate is defined with an initialization list:
 
@@ -132,7 +129,7 @@ COPY
 
 The case we want to watch out for is `s1.x`. Because `s1` has no initializer list and `x` has no default member initializer, `s1.x` remains uninitialized (which is bad, since we should always initialize our variables).
 
-Always provide default values for your members
+## 应当始终为成员提供默认初始化值
 
 To avoid the possibility of uninitialized members, simply ensure that each member has a default value (either an explicit default value, or an empty pair of braces). That way, our members will be initialized with some value regardless of whether we provide an initializer list or not.
 

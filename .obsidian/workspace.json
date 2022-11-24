@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "35b213d1d11f1cfc",
+            "id": "10b8d57ca917fb67",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-6-struct-aggregate-initialization.md",
+                "file": "docs/10-7-default-member-initialization.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-6-struct-aggregate-initialization.md"
+                "file": "docs/10-7-default-member-initialization.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-6-struct-aggregate-initialization.md",
+                "file": "docs/10-7-default-member-initialization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "35b213d1d11f1cfc",
+  "active": "10b8d57ca917fb67",
   "lastOpenFiles": [
-    "docs/aggregate-initialization.md",
+    "docs/non-static-member-initialization.md",
+    "docs/10-7-default-member-initialization.md",
+    "docs/default-member-initializer.md",
+    "docs/MOC.md",
     "docs/10-6-struct-aggregate-initialization.md",
+    "docs/memberwise-assignment.md",
+    "docs/aggregate-initialization.md",
     "docs/aggregate-data-type.md",
     "docs/class-type.md",
-    "docs/MOC.md",
-    "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
-    "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md",
-    "docs/10-2-unscoped-enumerations.md",
-    "docs/10-4-scoped-enumerations-enum-classes.md"
+    "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
   ]
 }

@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "10-7-default-member-initialization",
+      "path": "docs/10-7-default-member-initialization.md"
+    },
+    {
+      "basename": "non-static-member-initialization",
+      "path": "docs/non-static-member-initialization.md"
+    },
+    {
+      "basename": "default-member-initializer",
+      "path": "docs/default-member-initializer.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "10-6-struct-aggregate-initialization",
       "path": "docs/10-6-struct-aggregate-initialization.md"
+    },
+    {
+      "basename": "memberwise-assignment",
+      "path": "docs/memberwise-assignment.md"
     },
     {
       "basename": "aggregate-initialization",
@@ -15,10 +35,6 @@
     {
       "basename": "class-type",
       "path": "docs/class-type.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "10-5-Introduction-to-structs-members-and-member-selection",
@@ -183,22 +199,6 @@
     {
       "basename": "extraction-operator",
       "path": "docs/extraction-operator.md"
-    },
-    {
-      "basename": "O-4-converting-between-binary-and-decimal",
-      "path": "docs/O-4-converting-between-binary-and-decimal.md"
-    },
-    {
-      "basename": "O-3-bit-manipulation-with-bitwise-operators-and-bit-masks",
-      "path": "docs/O-3-bit-manipulation-with-bitwise-operators-and-bit-masks.md"
-    },
-    {
-      "basename": "O-1-bit-flags-and-bit-manipulation-via-std-bitset",
-      "path": "docs/O-1-bit-flags-and-bit-manipulation-via-std-bitset.md"
-    },
-    {
-      "basename": "O-2-bitwise-operators",
-      "path": "docs/O-2-bitwise-operators.md"
     }
   ],
   "omittedPaths": [],
