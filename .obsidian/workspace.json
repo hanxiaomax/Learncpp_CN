@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "08a8a2f8398a4f2d",
+            "id": "35b213d1d11f1cfc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
+                "file": "docs/10-6-struct-aggregate-initialization.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+                "file": "docs/10-6-struct-aggregate-initialization.md"
               }
             }
           },
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
+                "file": "docs/10-6-struct-aggregate-initialization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "08a8a2f8398a4f2d",
+  "active": "35b213d1d11f1cfc",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
+    "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/10-2-unscoped-enumerations.md",
     "docs/10-4-scoped-enumerations-enum-classes.md",
     "docs/enum-class.md",
     "docs/unscoped-enumerations.md",
     "docs/scoped-enumerations.md",
-    "docs/type-safe.md",
-    "docs/10-6-struct-aggregate-initialization.md",
-    "docs/10-8-struct-passing-and-miscellany.md",
-    "docs/10-9-member-selection-with-pointers-and-references.md",
-    "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
+    "docs/type-safe.md"
   ]
 }

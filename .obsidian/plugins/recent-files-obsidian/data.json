@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
-      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+      "basename": "10-6-struct-aggregate-initialization",
+      "path": "docs/10-6-struct-aggregate-initialization.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
     },
     {
       "basename": "10-4-scoped-enumerations-enum-classes",
@@ -27,10 +43,6 @@
     {
       "basename": "type-safe",
       "path": "docs/type-safe.md"
-    },
-    {
-      "basename": "10-6-struct-aggregate-initialization",
-      "path": "docs/10-6-struct-aggregate-initialization.md"
     },
     {
       "basename": "10-8-struct-passing-and-miscellany",
@@ -187,18 +199,6 @@
     {
       "basename": "11-18-Introduction-to-iterators",
       "path": "docs/11-18-Introduction-to-iterators.md"
-    },
-    {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
-    },
-    {
-      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
-      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
     }
   ],
   "omittedPaths": [],

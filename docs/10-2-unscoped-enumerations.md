@@ -85,7 +85,7 @@ Color eyeColor{ 8 }; // 语法正确，但语义错误（8不是一个被定义�
 
 枚举(也称为枚举类型和`enum`) 是一种复合类型。在枚举类型中，每个可能的值都被定义为一个[[symbolic-constants|符号常量]]（称为枚举值）。
 
-因为枚举属于程序定义类型（[[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]），所以枚举类型在使用前必须先进行定义。
+因为枚举属于程序定义类型（[[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 程序定义类型简介]]），所以枚举类型在使用前必须先进行定义。
 
 C++ 支持两种类型的枚举：[[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]和[[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]
 

@@ -163,7 +163,7 @@
 
 ## 10. 复合类型-枚举和结构体 ✅ 
 
-- [[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]
+- [[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 程序定义类型简介]]
 - [[10-2-unscoped-enumerations|10.2 - 非限定作用域枚举类型]]
 - [[10-3-unscoped-enumeration-input-and-output|10.3 - 限定作用域枚举类型的输入输出]]
 - [[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]

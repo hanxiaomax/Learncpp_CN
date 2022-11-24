@@ -1,6 +1,6 @@
 ---
-title: 10.1 - 自定义类型简介
-alias: 10.1 - 自定义类型简介
+title: 10.1 - 程序定义类型简介
+alias: 10.1 - 程序定义类型简介
 origin: /introduction-to-program-defined-user-defined-types/
 origin_title: "10.1 — Introduction to program-defined (user-defined) types"
 time: 2022-9-16

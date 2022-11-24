@@ -9,7 +9,7 @@ tags:
 - summary
 ---
 
-[[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]
+[[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 程序定义类型简介]]
 
 - 用户定义类型是一种自定义类型，我们可以在程序中创建它用于某些目的。基于枚举类型和class类型（包括结构体、类和联合）我们可以创建需要的自定义类型。自定义类型在使用前必须先定义，定义它的过程则称为[[type-definition|类型定义]]。类型定义不需要遵循[[one-definition-rule|单一定义规则(one-definition-rule)]]。
 

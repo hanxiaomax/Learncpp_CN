@@ -38,11 +38,11 @@ int hireDay;
 
 如果我们想要一个以上的员工，我们需要为每个额外的员工定义12个以上的变量(每个变量都需要一个惟一的名称)！这显然是无法扩展的。我们真正需要的是某种方法来组织所有这些相关的数据块，使它们更容易管理。
 
-幸运的是，C++ 提供了两个comes with two compound types designed to solve such challenges: structs (which we’ll introduce now) and classes (which we’ll explore soon). A struct (short for structure) is a program-defined data type ([[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 自定义类型简介]]) that allows us to bundle multiple variables together into a single type. As you’ll see shortly, this makes management of related sets of variables much simpler!
+幸运的是，C++ 提供了两个符合类型用于解决上述问题：结构体和类。结构体是一种程序定义类型([[10-1-Introduction-to-program-defined-user-defined-types|10.1 - 程序定义类型简介]]) ，使用结构体我们可以把多个变量聚合成一个单独的类型。稍后你将会看到，这使得管理多个相关联变量变得非常简单！
 
-## Defining structs
+## 定义结构体
 
-Because structs are a program-defined type, we first have to tell the compiler what our struct type looks like before we can begin using it. Here is an example of a struct definition for a simplified employee:
+因为结构是程序定义的类型，所以在开始使用结构类型之前，我们必须先告诉编译器结构类型是什么样子的。下面是一个简化员工的结构定义示例：
 
 ```cpp
 struct Employee
@@ -53,46 +53,40 @@ struct Employee
 };
 ```
 
-COPY
+`struct` 关键字用于告诉编译器此处要定义一个结构体——名为 `Employee` （因为程序定义类型的命名通常以大写字母开头）。
 
-The `struct` keyword is used to tell the compiler that we’re defining a struct, which we’ve named `Employee` (since program-defined types are typically given names starting with a capital letter).
-
-Then, inside a pair of curly braces, we define the variables that each Employee object will contain. In this example, each `Employee` we create will have 3 variables: an `int id`, an `int age`, and a `double wage`. The variables that are part of the struct are called data members (or member variables).
+随后，在大括号中，定义了 `Employee` 所需要的各个变量。在这个例子中，每个 `Employee` 创建了3个变量：`int id`、`int age` 和 `double wage`。这些变量是结构体的一部分，称为数据成员（或者[[member-variable|成员变量]]）。
 
 !!! tip "小贴士"
 
-	We’ll use the term `member` a lot in future lessons, so make sure you remember what it means.
+	在以后的课程中，我们会经常用到“成员”这个词，所以一定要记住它的意思。
 
-Just like we use an empty set of curly braces to value initialize ([[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]) normal variables, the empty curly braces here ensure that the variables inside our `Employee` are value initialized when an `Employee` is created. We’ll talk more about this when we cover default member initialization in a few lessons ([10.7 -- Default member initialization](https://www.learncpp.com/cpp-tutorial/default-member-initialization/)).
+正如可以使用空的大括号对一般变量进行[[初始化]]一样 ([[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]) ，空的大括号也可以用于在创建 `Employee` 时对其成员变量进行初始化。 我们会在后续的课程中介绍[[default-member-initializer|默认成员初始化]]([[10-7-default-member-initialization|10.7 - 默认成员初始化]])。
 
-Finally, we end the type definition with a semicolon.
+最后，在定义结束处添加分号。
 
-As a reminder, `Employee` is just a type definition -- no objects are actually created at this point.
+提醒一下，这里的 `Employee` 只是一个类型定义——并没有实际创建任何对象。
 
-Defining struct objects
+## 定义结构体对象
 
-In order to use the `Employee` type, we simply define a variable of type `Employee`:
+为了使用 `Employee` 类型，定义一个 `Employee` 类型的变量即可：
 
 ```cpp
 Employee joe; // Employee is the type, joe is the variable name
 ```
 
-COPY
+此处定义了一个名为 `joe` 的 `Employee` 类型变量。定义 `joe` 时，将创建一个 `Employee` 对象，并按顺序创建其中的3个数据成员(然后初始化值)。
 
-This defines a variable of type `Employee` named `joe`. When `joe` is defined, an Employee object is created, and the 3 data members within are created in sequential order (and then value initialized).
-
-Just like any other type, it is possible to define multiple variables of the same struct type:
+就像任何其他类型一样，可以定义多个此类型变量:
 
 ```cpp
 Employee joe; // create an Employee struct for Joe
 Employee frank; // create an Employee struct for Frank
 ```
 
-COPY
-
 ## 访问成员
 
-Consider the following example:
+考虑下面这个例子：
 
 ```cpp
 struct Employee
@@ -110,11 +104,9 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，`joe` 指的是整个结构体对象(其中包含成员变量)。要访问特定的成员变量，需要在结构变量名和成员名之间使用[[member-selection-operator|成员选择运算符]]。例如，要访问`joe`的年龄成员，需要写作 `joe.age`。
 
-In the above example, the name `joe` refers to the entire struct object (which contains the member variables). To access a specific member variable, we use the member selection operator (`operator.`) in between the struct variable name and the member name. For example, to access Joe’s age member, we’d use `joe.age`.
-
-Struct member variables work just like normal variables, so it is possible to do normal operations on them, including assignment, arithmetic, comparison, etc…
+结构体成员变量就像普通变量一样工作，因此可以对它们进行一般的操作，包括赋值、运算、比较等……
 
 ```cpp
 #include <iostream>
@@ -138,15 +130,13 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 32
 ```
 
-One of the biggest advantages of structs is that we only need to create one new name per struct variable (the member names are fixed as part of the struct type definition). In the following example, we instantiate two `Employee` objects: `joe` and `frank`.
+使用结构体的最大有时在于，你只需要为每个结构体创建一个变量(成员名是结构体定义中固定的部分)。在下面的例子中，我们实例化了两个  `Employee` 对象：`joe` 和 `frank`。
 
 ```cpp
 #include <iostream>
@@ -189,6 +179,6 @@ int main()
 }
 ```
 
-In the above example, it is very easy to tell which member variables belong to Joe and which belong to Frank. This provides a much higher level of organization than individual variables would. Furthermore, because Joe’s and Frank’s members have the same names, this provides consistency when you have multiple variables of the same struct type.
+在上面的例子中，很容易判断哪些成员变量属于`Joe`，哪些属于`Frank`。这提供了比单个变量更高层次的组织方法。此外，由于`Joe`的成员和`Frank`的成员具有相同的名称，当你有多个相同结构类型的变量时，这将提供一致性。
 
-We’ll continue our exploration of structs in the next lesson, including a look at how to initialize them.
+我们将在下一课中继续探索结构体，以及如何初始化它们。

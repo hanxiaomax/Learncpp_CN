@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 	
 
-In the previous lesson ([10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/)), we talked about how to define structs, instantiate struct objects, and access their members. In this lesson, we’ll discuss how structs are intialized.
+在上节课中([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。
 
 ## Data members are not initialized by default
 
