@@ -14,6 +14,9 @@ tags:
 ??? note "关键点速记"
 
 	- 数据成员默认不会被初始化
+	- 尽管聚合类型内部的成员使用了括号初始化，但是如果聚合类型本身没有被初始化，则成员的初始化也不会进行
+	- 如果聚合类型被初始化了，那么即便没有对每个成员进行初始化，则该成员会使用自己的初始化值（可以是0，也可以是其他指定值，由其自身的括号初始化决定）
+	- 列表初始化聚合类型时，按照[[memberwise initialization|成员依次初始化]]进行，此时如果插入新声明的成员到前面，则对应的列表必须移动，而编译器并不会检测到这类问题。
 
 在上节课中([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。
 
@@ -121,7 +124,7 @@ int main()
 	
 ## 初始化值列表中缺失的值
 
-If an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized.
+如果聚合数据类型被初始化，但初始化值列表中的值个数少于成员个数，则剩余的成员会被[[value-initialization|值初始化]]。
 
 ```cpp
 struct Employee
@@ -133,27 +136,30 @@ struct Employee
 
 int main()
 {
-    Employee joe { 2, 28 }; // joe.wage will be value-initialized to 0.0
+    Employee joe { 2, 28 }; // joe.wage 被值初始化为 0.0
 
     return 0;
 }
 ```
 
-COPY
+在上面的例子中， `joe.id` 被初始化为2， `joe.age` 被初始化为28，因为 `joe.wage` 没有被显式指定初始化值，则被值初始化为0.0。
 
-In the above example, `joe.id` will be initialized with value `2`, `joe.age` will be initialized with value `28`, and because `joe.wage` wasn’t given an explicit initializer, it will be value-initialized to `0.0`.
-
-This means we can use an empty initialization list to value-initialize all members of the struct:
+这意味着我们可以使用一个空的初始化列表对结构的所有成员进行值初始化：
 
 ```cpp
 Employee joe {}; // value-initialize all members
 ```
 
-COPY
+!!! info "译者注"
+
+	1. 尽管聚合类型内部的成员使用了括号初始化，但是如果聚合类型本身没有被初始化，则成员的初始化也不会进行
+	2. 如果聚合类型被初始化了，那么即便没有对每个成员进行初始化，则该成员会使用自己的初始化值（可以是0，也可以是其他指定值，由其自身的括号初始化决定）
+
 
 ## const 结构体
 
-Variables of a struct type can be const, and just like all const variables, they must be initialized.
+结构体类型也可以是const的，而且和普通const变量一样必须被初始化。
+
 
 ```cpp
 struct Rectangle
@@ -171,11 +177,10 @@ int main()
 }
 ```
 
-COPY
 
 ## 指定初始化（ C++20 ）
 
-When initializing a struct from a list of values, the initializers are applied to the members in order of declaration.
+使用列表初始化结构体时，是按照成员声明的顺序初始化的。
 
 ```cpp
 struct Foo
@@ -190,9 +195,8 @@ int main()
 }
 ```
 
-COPY
 
-Now consider what would happen if you were to add a new member to your struct that is not the last member:
+那么考虑这样一种情况，如果我们添加了一个新成员，而且并没有把它声明成最后一个：
 
 ```cpp
 struct Foo
@@ -208,12 +212,9 @@ int main()
 }
 ```
 
-COPY
+那么你所有使用初始化值列表的地方，都要对应的移动。更糟的是，编译器并不会检测到该问题，毕竟在语法层面它是有效的。
 
-Now all your initialization values have shifted, and worse, the compiler may not detect this as an error (after all, the syntax is still valid).
-
-To help avoid this, C++20 adds a new way to initialize struct members called [[designated-initializers|指定初始化]]. Designated initializers allow you to explicitly define which initialization values map to which members. The members must be initialized in the same order in which they are declared in the struct, otherwise an error will result. Members not designated an initializer will be value initialized.
-
+为了解决这个问题，C++20 为结构体成员提供了一个新的初始化方法——[[designated-initializers|指定初始化]]。指定初始化允许我们显示地将初始化值映射到所需初始化的成员。但是，列表的顺序仍然要求按照成员定义的顺序定义，否则编译器会报错。没有在列表中出现的成员仍然进行值初始化。
 ```cpp
 struct Foo
 {
@@ -225,7 +226,7 @@ struct Foo
 int main()
 {
     Foo f1{ .a{ 1 }, .c{ 3 } }; // ok: f.a = 1, f.b = 0 (value initialized), f.c = 3
-    Foo f2{ .b{ 2 }, .a{ 1 } }; // error: initialization order does not match order of declaration in struct
+    Foo f2{ .b{ 2 }, .a{ 1 } }; // 错误: 初始化顺序和成员声明顺序不匹配
 
     return 0;
 }
