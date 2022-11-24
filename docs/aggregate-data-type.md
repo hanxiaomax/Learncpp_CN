@@ -25,3 +25,11 @@ tags:
 -   for an array, the array elements in increasing subscript order, or
 -   for a class, the non-static data members that are not anonymous [bit-fields](https://en.cppreference.com/w/cpp/language/bit_field "cpp/language/bit field"), in declaration order.(until C++17)
 -   for a class, the direct base classes in declaration order, followed by the direct non-static data members that are neither anonymous [bit-fields](https://en.cppreference.com/w/cpp/language/bit_field "cpp/language/bit field") nor members of an [anonymous union](https://en.cppreference.com/w/cpp/language/union#Anonymous_unions "cpp/language/union"), in declaration order.(since C++17)
+
+C++ 中的聚合数据类型必须满足如下条件：
+
+-   是一个[[class-type|类类型]](包括 struct, class 或 union) 或数组 (包括内置数组或`std::array`)；
+-   没有私有或受保护的非静态数据成员；
+-   没有用户声明的或继承的[[constructor|构造函数]]；
+-   没有[[base-class|基类]]；
+-   没有[[virtual-function|虚函数]] ；

@@ -5,6 +5,18 @@
       "path": "docs/10-6-struct-aggregate-initialization.md"
     },
     {
+      "basename": "aggregate-initialization",
+      "path": "docs/aggregate-initialization.md"
+    },
+    {
+      "basename": "aggregate-data-type",
+      "path": "docs/aggregate-data-type.md"
+    },
+    {
+      "basename": "class-type",
+      "path": "docs/class-type.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "O-2-bitwise-operators",
       "path": "docs/O-2-bitwise-operators.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-1-function-pointers",
-      "path": "docs/12-1-function-pointers.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
     }
   ],
   "omittedPaths": [],

@@ -153,15 +153,15 @@
   },
   "active": "35b213d1d11f1cfc",
   "lastOpenFiles": [
+    "docs/aggregate-initialization.md",
+    "docs/10-6-struct-aggregate-initialization.md",
+    "docs/aggregate-data-type.md",
+    "docs/class-type.md",
     "docs/MOC.md",
     "docs/10-5-Introduction-to-structs-members-and-member-selection.md",
     "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
     "docs/10-x-Chapter-10-comprehensive-quiz.md",
     "docs/10-2-unscoped-enumerations.md",
-    "docs/10-4-scoped-enumerations-enum-classes.md",
-    "docs/enum-class.md",
-    "docs/unscoped-enumerations.md",
-    "docs/scoped-enumerations.md",
-    "docs/type-safe.md"
+    "docs/10-4-scoped-enumerations-enum-classes.md"
   ]
 }

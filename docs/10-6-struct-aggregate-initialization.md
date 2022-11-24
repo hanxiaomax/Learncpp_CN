@@ -8,16 +8,19 @@ type: translation
 tags:
 - struct
 - aggregate initialization
+- C++20
 ---
 
 ??? note "关键点速记"
-	
+
+	- 数据成员默认不会被初始化
 
 在上节课中([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。
 
-## Data members are not initialized by default
+## 数据成员默认不会被初始化
 
-Much like normal variables, data members are not initialized by default. Consider the following struct:
+和普通变量类似，数据成员并不会被默认初始化。考虑下面的结构体：
+
 
 ```cpp
 #include <iostream>
@@ -38,41 +41,39 @@ int main()
 }
 ```
 
-COPY
+因为我们没有提供任何初始化值，所以当实例化 `joe` 时，`joe.id`、`joe.age` 和 `joe.wage` 处于未初始化状态。当我们试图打印`joe.id` 的值时，将产生[[undefined-behavior|未定义行为]]。
 
-Because we have not provided any initializers, when `joe` is instantiated, `joe.id`, `joe.age`, and `joe.wage` will all be uninitialized. We will then get undefined behavior when we try to print the value of `joe.id`.
+但是，在向你展示如何初始化结构之前，让我们先绕路走一小段路。
 
-However, before we show you how to initialize a struct, let’s take a short detour.
+## 什么是聚合？
 
-## What is an aggregate?
+在编程领域，[[aggregate-data-type|聚合数据类型]]指的是==任何包含多个数据成员的类型==。某些类型的聚合类型允许成员具有不同的类型(例如结构)，而其他类型的聚合要求所有成员必须具有单一类型(例如数组)。
 
-In general programming, an aggregate data type (also called an aggregate) is any type that can contain multiple data members. Some types of aggregates allow members to have different types (e.g. structs), while others require that all members must be of a single type (e.g. arrays).
-
-In C++, the definition of an aggregate is narrower and quite a bit more complicated.
+在C++中，聚合数据类型的定义更局限也更复杂。
 
 !!! info "扩展阅读"
 
-	To be an aggregate in C++, a type must meet the following criteria:
+	C++ 中的聚合数据类型必须满足如下条件：
+	
+	-   是一个[[class-type|类类型]](包括 struct, class 或 union) 或数组 (包括内置数组或`std::array`)；
+	-   没有私有或受保护的非静态数据成员；
+	-   没有用户声明的或继承的[[constructor|构造函数]]；
+	-   没有[[base-class|基类]]；
+	-   没有[[virtual-function|虚函数]] ；
 
-	-   Is a class type (a struct, class, or union), or an array type (a built-in array or `std::array`).
-	-   Has no private or protected non-static data members.
-	-   Has no user-declared or inherited constructors.
-	-   Has no base classes.
-	-   Has no virtual member functions.
 
-Putting the precise definition of a C++ aggregate aside, the important thing to understand at this point is that structs with only data members (which are the only kind of structs we’ll create in these lessons) are aggregates. Arrays (which we’ll cover next chapter) are also aggregates.
+先把C++聚合的精确定义放在一边，在这一点上需要理解的重要事情是，==只有数据成员的结构(这是我们在这些课程中创建的唯一类型的结构)是聚合数据类型。数组(我们将在下一章讨论)也是聚合。==
 
-## Aggregate initialization of a struct
 
-Because a normal variable can only hold a single value, we only need to provide a single initializer:
+## 结构体的聚合初始化
+
+因为普通变量只能保存一个值，所以我们只需要提供一个初始化值：
 
 ```cpp
 int x { 5 };
 ```
 
-COPY
-
-However, a struct can have multiple members:
+但是，结构体中有多个成员：
 
 ```cpp
 struct Employee
@@ -83,19 +84,16 @@ struct Employee
 };
 ```
 
-COPY
-
-When we define an object with a struct type, we need some way to initialize multiple members at initialization time:
+当定义一个具有结构类型的对象时，我们能够在初始化结构体时同时初始化多个成员的方法：
 
 ```cpp
-Employee joe; // how do we initialize joe.id, joe.age, and joe.wage?
+Employee joe; // 如何初始化 joe.id, joe.age 和 joe.wage?
 ```
 
-COPY
+聚合数据类型使用一种称为[[aggregate-initialization|聚合初始化]]的初始化形式，它允许我们直接初始化聚合的成员。为此，我们提供一个[[initializer-list|初始化值列表]]作为初始化值。初始化值列表就是一个包含多个初始化值，以逗号分割的值列表。
 
-Aggregates use a form of initialization called aggregate initialization, which allows us to directly initialize the members of aggregates. To do this, we provide an initializer list as an initializer, which is just a list of comma-separated initialization values.
+就像普通变量可以被[[copy-initialization|拷贝初始化]]、[[direct-initialization|直接初始化]]或[[list-initialization|列表初始化]]一样，==聚合初始化也有三种形式：==
 
-Much like normal variables can be copy initialized, direct initialized, or list initialized, there are 3 forms of aggregate initialization:
 
 ```cpp
 struct Employee
@@ -107,23 +105,21 @@ struct Employee
 
 int main()
 {
-    Employee frank = { 1, 32, 60000.0 }; // copy-list initialization using braced list
-    Employee robert ( 3, 45, 62500.0 );  // direct initialization using parenthesized list (C++20)
-    Employee joe { 2, 28, 45000.0 };     // list initialization using braced list (preferred)
-
+    Employee frank = { 1, 32, 60000.0 }; // 拷贝列表初始化，使用大括号
+    Employee robert ( 3, 45, 62500.0 );  // 使用小括号的直接初始化(C++20)
+    Employee joe { 2, 28, 45000.0 };     // 使用大括号列表的列表初始化（推荐）
     return 0;
 }
 ```
 
-COPY
 
-Each of these initialization forms does a memberwise initialization, which means each member in the struct is initialized in the order of declaration. Thus, `Employee joe { 2, 28, 45000.0 };` first initializes `joe.id` with value `2`, then `joe.age` with value `28`, and `joe.wage` with value `45000.0` last.
+上面这三种初始化形式都会进行[[memberwise initialization|成员依次初始化]]，即结构体成员会按照其声明的顺序进行初始化。因此，`Employee joe { 2, 28, 45000.0 };` 首先初始化 `joe.id` 为2，然后将 `joe.age` 初始化为28，最后将 `joe.wage` 初始化为 `45000.0` 。
 
 !!! success "最佳实践"
 
-	Prefer the (non-copy) braced list form when initializing aggregates.
-
-## Missing initializers in an initializer list
+	推荐使用括号列表形式（非拷贝）进行聚合初始化。
+	
+## 初始化值列表中缺失的值
 
 If an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized.
 
@@ -155,7 +151,7 @@ Employee joe {}; // value-initialize all members
 
 COPY
 
-## Const structs
+## const 结构体
 
 Variables of a struct type can be const, and just like all const variables, they must be initialized.
 
@@ -177,7 +173,7 @@ int main()
 
 COPY
 
-## Designated initializers C++20
+## 指定初始化（ C++20 ）
 
 When initializing a struct from a list of values, the initializers are applied to the members in order of declaration.
 
@@ -216,7 +212,7 @@ COPY
 
 Now all your initialization values have shifted, and worse, the compiler may not detect this as an error (after all, the syntax is still valid).
 
-To help avoid this, C++20 adds a new way to initialize struct members called designated initializers. Designated initializers allow you to explicitly define which initialization values map to which members. The members must be initialized in the same order in which they are declared in the struct, otherwise an error will result. Members not designated an initializer will be value initialized.
+To help avoid this, C++20 adds a new way to initialize struct members called [[designated-initializers|指定初始化]]. Designated initializers allow you to explicitly define which initialization values map to which members. The members must be initialized in the same order in which they are declared in the struct, otherwise an error will result. Members not designated an initializer will be value initialized.
 
 ```cpp
 struct Foo
@@ -245,7 +241,7 @@ Also, because there’s no enforcement that designated initializers are being us
 
 	When adding a new member to an aggregate, it’s safest to add it to the bottom of the definition list so the initializers for other members don’t shift.
 
-## Assignment with an initializer list
+## 使用初始化值列表进行赋值
 
 As shown in the prior lesson, we can assign values to members of structs individually:
 
@@ -293,7 +289,7 @@ COPY
 
 Note that because we didn’t want to change `joe.id`, we needed to provide the current value for `joe.id` in our list as a placeholder, so that memberwise assignment could assign `joe.id` to `joe.id`. This is a bit ugly.
 
-## Assignment with designated initializers C++20
+## 使用指定初始化赋值（C++20）
 
 Designated initializers can also be used in a list assignment:
 
