@@ -11,7 +11,9 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
+
+	- 实例化聚合类型对象时如果没有提供初始化值，则表示没有初始化该聚合类型。此时它的成员会进行默认初始化。没有默认初始化值的成员则为未初始化状态。
+	- 初始化聚合类型对象时，如果初始化值少于成员，则剩余的成员使用默认初始化，如果没有提供默认初始化值，则值初始化为0.
 
 在定义结构体（或类）类型时，我们可以为每个成员都提供默认初始化值作为其定义的一部分。 这个过程称为[[non-static-member-initialization|非静态成员初始化]]，而这个初始化值称为[[default-member-initializer|默认成员初始值]]。
 
@@ -33,15 +35,15 @@ int main()
 }
 ```
 
-在上面 `Something` 的定义中， `x` 并没有默认初始化值、`y` 进行默认的值初始化而 `z` 则被初始化为2。如果在初始化`Something`类型的对象时，没有提供显式初始化值，则会使用成员的这些默认成员初始化值。
+在上面 `Something` 的定义中， `x` 并没有默认初始化值、`y` 进行默认的值初始化而 `z` 则被初始化为2。==如果在[[instantiated|实例化]]`Something`类型的对象时没有提供显式初始化值，则会使用成员的这些默认成员初始化值。==
 
 `s1` 对象没有初始化值，所以 `s1` 的成员们会被初始化为它们的默认值。`s1.x` 则因为没有默认初始化值而保持未初始化状态。`s1.y` 进行默认值初始化，得到初值0，而 `s1.z` 则被初始化为 2 。
 
-注意，即便我们并没有为 `s1.z` 提供显式地初始化值，它仍然 it is initialized to a non-zero value because of the default member initializer provided.
+注意，即便我们并没有为 `s1.z` 提供显式地初始化值，它仍然被初始化为一个非零值，因为我们为其提供了默认成员初始化值。
 
 !!! tldr "关键信息"
 
-	Using default member initializers (or other mechanisms that we’ll cover later), structs and classes can self-initialize even when no explicit initializers are provided!
+	使用默认成员初始化式(或我们将在后面介绍的其他机制)，即使没有提供显式初始化式，结构和类也可以自我初始化！
 
 ## 显式初始化值优先级高于默认初始化值
 
@@ -64,11 +66,11 @@ int main()
 ```
 
 
-In the above case, `s2` has explicit initialization values for every member, so the default member initialization values are not used at all. This means `s2.x`, `s2.y` and `s2.z` are initialized to the values `5`, `6`, and `7` respectively.
+在上面的例子中，s2 的每个成员都具有显式地初始化值，所以默认成员初始化在这个例子中并不生效。`s2.x`、`s2.y` 和 `s2.z` 分别被初始化为`5`、 `6` 和 `7` 。
 
 ## 存在默认初始化值且初始化列表没有提供初始化值的情况
 
-In the previous lesson （[[10-6-struct-aggregate-initialization|10.6 - 结构体的聚合初始化]]） we noted that if an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized. However, if a default member initializer is provided for a given member, that default member initializer will be used instead.
+在上一节课中（[[10-6-struct-aggregate-initialization|10.6 - 结构体的聚合初始化]]）我们提到，==如果聚合数据结构被初始化了，但初始化值的个数比实际成员要少，则剩下的成员变量则会进行值初始化。但是，如果该成员具有默认初始化值，则会使用默认初始化值。==
 
 ```cpp
 struct Something
@@ -86,26 +88,24 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，`s3` 的初始化值列表是一个空列表，即没有提供任何的显式初始化值。这意味着，如果提供了默认成员初始化值，则使用该值，否则则使用[[value-initialization|值初始化]]。因此 `s3.x` (没有默认初始化值) 会被值初始化为0。`s3.y` 的值被默认初始化为0，而 `s3.z` 默认初始化为 2。
 
-In the above case, `s3` is list initialized with an empty list, so all initializers are missing. This means that a default member initializer will be used if it exists, and value initialization will occur otherwise. Thus, `s3.x` (which has no default member initializer) is value initialized to `0`, `s3.y` is value initialized by default to `0`, and `s3.z` is defaulted to value `2`.
+## 复习：初始化的可能性
 
-## Recapping the initialization possibilities
+如果聚合对象定义时有[[initializer-list|初始化值列表]]（实例化的同时初始化）：
 
-If an aggregate is defined with an initialization list:
+-  如果具有显式的初始化值，则使用该值；
+-  如果有缺失的初始化值，但存在默认初始化值，则使用默认值进行[[default-initialization|默认初始化]]；
+-  如果有缺失的初始化值，但是没有默认初始化值，则使用[[value-initialization|值初始化]]。
 
--   If an explicit initialization value exists, that explicit value is used.
--   If an initializer is missing and a default member initializer exists, the default is used.
--   If an initializer is missing and no default member initializer exists, value initialization occurs.
+如果聚合对象定义时没有初始化值列表（实例化时未进行初始化）：
 
-If an aggregate is defined with no initialization list:
+- 如果有默认初始化值，则使用默认值进行默认初始化；
+- 如果不存在默认初始化值，则对应成员保持未初始化状态。
 
--   If a default member initializer exists, the default is used.
--   If no default member initializer exists, the member remains uninitialized.
+成员总是按照声明的顺序初始化。
 
-Members are always initialized in the order of declaration.
-
-The following example recaps all possibilities:
+下面的例子对上述各种可能性进行了总结：
 
 ```cpp
 struct Something
@@ -125,15 +125,13 @@ int main()
 }
 ```
 
-COPY
-
-The case we want to watch out for is `s1.x`. Because `s1` has no initializer list and `x` has no default member initializer, `s1.x` remains uninitialized (which is bad, since we should always initialize our variables).
+这个例子中，尤其要注意的是 `s1.x`。因为 `s1` 没有初始化值列表，而且`x`也没有默认的成员初始化值，所以它处于未初始化状态（这是不对的，因为变量一定要初始化才好）。
 
 ## 应当始终为成员提供默认初始化值
 
-To avoid the possibility of uninitialized members, simply ensure that each member has a default value (either an explicit default value, or an empty pair of braces). That way, our members will be initialized with some value regardless of whether we provide an initializer list or not.
+为了避免出现未初始化的成员，需确保每个成员都有一个默认值(要么是显式默认值，要么是空的花括号对)。这样，无论是否提供初始化列表，成员都将被初始化为某个值。
 
-Consider the following struct, which has all members defaulted:
+考虑下面例子中中的结构体，它的所有成员都有默认值：
 
 ```cpp
 struct Fraction
@@ -153,34 +151,35 @@ int main()
 }
 ```
 
-COPY
-
-In all cases, our members are initialized with values.
+在这个例子中，所有的成员都会被初始化。
 
 !!! success "最佳实践"
 
-	Provide a default value for all members. This ensure that your members will be initialized even if the variable definition doesn’t include an initializer list.
+	为所有成员提供默认值。这确保了即使变量定义不包含初始化列表，成员也会被初始化。
 
 ## 默认初始化 vs 聚合类型的值初始化
 
 回顾一下上面例子中的两个初始化方式：
 
 ```cpp
-Fraction f1;          // f1.numerator value initialized to 0, f1.denominator defaulted to 1
-Fraction f2 {};       // f2.numerator value initialized to 0, f2.denominator defaulted to 1
+Fraction f1;  // f1.numerator value initialized to 0, f1.denominator defaulted to 1
+Fraction f2 {}; // f2.numerator value initialized to 0, f2.denominator defaulted to 1
 ```
 
 
-You’ll note that `f1` is default initialized and `f2` is value initialized, yet the results are the same (`numerator` is initialized to `0` and `denominator` is initialized to `1`). So which should we prefer?
+在上面的例子中，`f1` 是默认初始化，而  `f2` 是值初始化。尽管结果是一样的 (`numerator` 初始化为0而 `denominator` 初始化为1)。所以，应该使用哪种方式呢？
 
-The value initialization case (`f2`) is safer, because it will ensure any members with no default values are value initialized (and although we should always provide default values for members, this protects against the case where one is missed).
+值初始化(`f2`)是更安全的方式，因为它可以确保即使成员没有初始化值也能通过值初始化被初始化(尽管我们应该为每个成员都提供默认值，该方法可以防止我们遗漏)。
 
-Preferring value initialization has one more benefit -- it’s consistent with how we initialize objects of other types. Consistency helps prevent errors.
+值初始化还有一个好处——它与初始化其他类型的对象的方式一致。一致性有助于防止错误。
+
 
 !!! success "最佳实践"
 
-	If no explicit initializer values will be provided for an aggregate, prefer value initialization (with an empty braces initializer) to default initialization (with no braces).
 
-That said, it’s not uncommon for programmers to use default initialization instead of value initialization for class types. This is partly for historic reasons (as value initialization wasn’t introduced until C++11), and partly because there is a similar case (for non-aggregates) where default initialization can be more efficient (we cover this case in [[13-5-constructors|13.5 - 构造函数]]).
+	如果没有为聚合提供显式初始化值，则首选值初始化(带空大括号初始化器)而不是默认初始化(不带大括号)。
 
-Therefore, we won’t be militant about enforcing use of value initialization for structs and classes in these tutorials, but we do strongly recommend it.
+也就是说，程序员对类类型使用默认初始化而不是值初始化是很常见的。这部分是由于历史原因(因为值初始化直到C++ 11才引入)，部分是因为在类似的情况下(对于非聚合)，默认初始化更高效(我们在[[13-5-constructors|13.5 -构造函数]]中讨论了这种情况)。
+
+因此，我们不会在这些教程中强制使用结构和类的值初始化，但我们强烈建议这样做。
+
