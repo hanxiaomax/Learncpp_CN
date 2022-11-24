@@ -33,11 +33,11 @@ int main()
 }
 ```
 
-In the above definition of `Something`, `x` has no default value, `y` is value-initialized by default, and `z` has the default value `2`. These default member initialization values will be used if the user doesn’t provide an explicit initialization value when instantiating an object of type `Something`.
+在上面 `Something` 的定义中， `x` 并没有默认初始化值、`y` 进行默认的值初始化而 `z` 则被初始化为2。如果在初始化`Something`类型的对象时，没有提供显式初始化值，则会使用成员的这些默认成员初始化值。
 
-Our `s1` object doesn’t have an initializer, so the members of `s1` are initialized to their default values. `s1.x` has no default initializer, so it remains uninitialized. `s1.y` is value initialized by default, so it gets value `0`. And `s1.z` is initialized with the value `2`.
+`s1` 对象没有初始化值，所以 `s1` 的成员们会被初始化为它们的默认值。`s1.x` 则因为没有默认初始化值而保持未初始化状态。`s1.y` 进行默认值初始化，得到初值0，而 `s1.z` 则被初始化为 2 。
 
-Note that even though we haven’t provided an explicit initializer for `s1.z`, it is initialized to a non-zero value because of the default member initializer provided.
+注意，即便我们并没有为 `s1.z` 提供显式地初始化值，它仍然 it is initialized to a non-zero value because of the default member initializer provided.
 
 !!! tldr "关键信息"
 

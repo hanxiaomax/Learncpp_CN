@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "badfd4de2aaf6134",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/10-7-default-member-initialization.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/10-7-default-member-initialization.md"
               }
             }
           },
@@ -118,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/10-7-default-member-initialization.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,10 +151,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "badfd4de2aaf6134",
   "lastOpenFiles": [
-    "docs/10-9-member-selection-with-pointers-and-references.md",
     "docs/MOC.md",
+    "docs/10-9-member-selection-with-pointers-and-references.md",
     "docs/10-8-struct-passing-and-miscellany.md",
     "docs/10-7-default-member-initialization.md",
     "docs/10-6-struct-aggregate-initialization.md",
