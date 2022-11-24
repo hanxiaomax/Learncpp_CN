@@ -54,7 +54,7 @@ COPY
 
 While passing 3 variables isn’t that bad, consider a struct with 10 or 12 members. Passing each variable independently would be time consuming and error prone. Additionally, if we ever add a new attribute to our employee (e.g. name), we now have to modify all the functions declarations, definitions, and function calls to accept the new parameter and argument!
 
-## Passing structs (by reference)
+## 按引用传递结构体
 
 A big advantage of using structs over individual variables is that we can pass the entire struct to a function that needs to work with the members. Structs are generally passed by (const) reference to avoid making copies.
 
@@ -110,7 +110,7 @@ Wage: 18.27
 
 Because we are passing the entire struct object (rather than individual members), we only need one parameter no matter how many members the struct object has. And, in the future, if we ever decide to add new members to our `Employee` struct, we will not have to change the function declaration or function call! The new member will automatically be included.
 
-## Returning structs
+## 返回结构体
 
 Consider the case where we have a function that needs to return a point in 3-dimensional Cartesian space. Such a point has 3 attributes: an x-coordinate, a y-coordinate, and a z-coordinate. But functions can only return one value. So how do we return all 3 coordinates back the user?
 
@@ -156,7 +156,7 @@ The point is zero
 
 Structs are usually returned by value, so as not to return a dangling reference.
 
-## Returning unnamed structs
+## 返回匿名结构体
 
 In the `getZeroPoint()` function above, we create a new named object (`temp`) just so we could return it:
 
@@ -211,7 +211,7 @@ Point3d getZeroPoint()
 
 COPY
 
-## Structs with program-defined members
+## 包含程序自定义类型成员的结构体
 
 In C++, structs (and classes) can have members that are other program-defined types. There are two ways to do this.
 
@@ -273,7 +273,7 @@ COPY
 
 This is more often done with classes, so we’ll talk more about this in a future lesson ([13.17 -- Nested types in classes](https://www.learncpp.com/cpp-tutorial/nested-types-in-classes/)).
 
-## Struct size and data structure alignment
+## 结构体大小和数据结构对齐
 
 Typically, the size of a struct is the sum of the size of all its members, but not always!
 
@@ -352,6 +352,6 @@ The size of Foo1 is 16
 The size of Foo2 is 24
 ```
 
-## Structs are an important building block
+## 结构体是重要的程序组成部分
 
 While structs are useful in and of themselves, classes (which are the heart of C++ and object oriented programming) build directly on top of the concepts we’ve introduced here. Having a good understanding of structs (especially data members, member selection, and default member initialization) will make your transition to classes that much easier.

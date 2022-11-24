@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "10b8d57ca917fb67",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/10-7-default-member-initialization.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-7-default-member-initialization.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -132,7 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-7-default-member-initialization.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +137,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "10b8d57ca917fb67",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/non-static-member-initialization.md",
-    "docs/10-7-default-member-initialization.md",
-    "docs/default-member-initializer.md",
+    "docs/10-9-member-selection-with-pointers-and-references.md",
     "docs/MOC.md",
+    "docs/10-8-struct-passing-and-miscellany.md",
+    "docs/10-7-default-member-initialization.md",
     "docs/10-6-struct-aggregate-initialization.md",
+    "docs/non-static-member-initialization.md",
+    "docs/default-member-initializer.md",
     "docs/memberwise-assignment.md",
     "docs/aggregate-initialization.md",
-    "docs/aggregate-data-type.md",
-    "docs/class-type.md",
-    "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    "docs/aggregate-data-type.md"
   ]
 }

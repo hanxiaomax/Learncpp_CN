@@ -157,20 +157,19 @@ COPY
 
 In all cases, our members are initialized with values.
 
-Best practice
+!!! success "最佳实践"
 
-Provide a default value for all members. This ensure that your members will be initialized even if the variable definition doesn’t include an initializer list.
+	Provide a default value for all members. This ensure that your members will be initialized even if the variable definition doesn’t include an initializer list.
 
-Default initialization vs value initialization for aggregates
+## 默认初始化 vs 聚合类型的值初始化
 
-Revisiting two lines from the above example:
+回顾一下上面例子中的两个初始化方式：
 
 ```cpp
 Fraction f1;          // f1.numerator value initialized to 0, f1.denominator defaulted to 1
 Fraction f2 {};       // f2.numerator value initialized to 0, f2.denominator defaulted to 1
 ```
 
-COPY
 
 You’ll note that `f1` is default initialized and `f2` is value initialized, yet the results are the same (`numerator` is initialized to `0` and `denominator` is initialized to `1`). So which should we prefer?
 
@@ -178,14 +177,10 @@ The value initialization case (`f2`) is safer, because it will ensure any member
 
 Preferring value initialization has one more benefit -- it’s consistent with how we initialize objects of other types. Consistency helps prevent errors.
 
-Best practice
+!!! success "最佳实践"
 
-If no explicit initializer values will be provided for an aggregate, prefer value initialization (with an empty braces initializer) to default initialization (with no braces).
+	If no explicit initializer values will be provided for an aggregate, prefer value initialization (with an empty braces initializer) to default initialization (with no braces).
 
-That said, it’s not uncommon for programmers to use default initialization instead of value initialization for class types. This is partly for historic reasons (as value initialization wasn’t introduced until C++11), and partly because there is a similar case (for non-aggregates) where default initialization can be more efficient (we cover this case in [13.5 -- Constructors](https://www.learncpp.com/cpp-tutorial/constructors/)).
+That said, it’s not uncommon for programmers to use default initialization instead of value initialization for class types. This is partly for historic reasons (as value initialization wasn’t introduced until C++11), and partly because there is a similar case (for non-aggregates) where default initialization can be more efficient (we cover this case in [[13-5-constructors|13.5 - 构造函数]]).
 
 Therefore, we won’t be militant about enforcing use of value initialization for structs and classes in these tutorials, but we do strongly recommend it.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/struct-passing-and-miscellany/)
