@@ -10,8 +10,10 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
-Consider an employee represented by 3 loose variables:
+
+
+
+假设一个员工由3个松散变量表示：
 
 ```cpp
 int main()
@@ -24,9 +26,7 @@ int main()
 }
 ```
 
-COPY
-
-If we want to pass this employee to a function, we have to pass three variables:
+如果我们想把这个雇员传递给一个函数，则须传递三个变量：
 
 ```cpp
 #include <iostream>
@@ -50,13 +50,14 @@ int main()
 }
 ```
 
-COPY
 
-While passing 3 variables isn’t that bad, consider a struct with 10 or 12 members. Passing each variable independently would be time consuming and error prone. Additionally, if we ever add a new attribute to our employee (e.g. name), we now have to modify all the functions declarations, definitions, and function calls to accept the new parameter and argument!
+虽然传递3个变量并不是那么糟糕，但考虑一个有10或12个成员的结构体。独立地传递每个变量既耗时又容易出错。此外，如果我们向雇员添加了一个新属性(例如名称)，我们现在必须修改所有函数声明、定义和函数调用，以接受新的形参和实参！
+
 
 ## 按引用传递结构体
 
-A big advantage of using structs over individual variables is that we can pass the entire struct to a function that needs to work with the members. Structs are generally passed by (const) reference to avoid making copies.
+使用结构体而不是单个变量的一大优点是，我们可以将整个结构传递给需要与成员一起工作的函数。结构体通常通过(const)引用传递，以避免拷贝。
+
 
 ```cpp
 #include <iostream>
@@ -92,11 +93,10 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, we pass an entire `Employee` to `printEmployee()` (twice, once for `joe` and once for `frank`).
+在上面的例子中，我们将 `Employee` 作为整体传递给 `printEmployee()` (传递了量词，一次是`joe` 一次是`frank`)。
 
-The above program outputs:
+上面程序输出：
 
 ```
 ID:   14
@@ -108,13 +108,13 @@ Age:  28
 Wage: 18.27
 ```
 
-Because we are passing the entire struct object (rather than individual members), we only need one parameter no matter how many members the struct object has. And, in the future, if we ever decide to add new members to our `Employee` struct, we will not have to change the function declaration or function call! The new member will automatically be included.
+因为传递的是整个结构对象(而不是单个成员)，所以无论结构对象有多少成员，我们只需要一个形参。而且，在将来，如果需要向`Employee`结构体中添加新成员，也不必更改函数声明或函数调用！新成员将自动被包括在内。
 
 ## 返回结构体
 
-Consider the case where we have a function that needs to return a point in 3-dimensional Cartesian space. Such a point has 3 attributes: an x-coordinate, a y-coordinate, and a z-coordinate. But functions can only return one value. So how do we return all 3 coordinates back the user?
+考虑这样一种情况，我们有一个函数需要返回三维笛卡尔空间中的一个点。这样的点有3个属性：`x`坐标、`y`坐标和`z`坐标。但是函数只能返回一个值。此时应该如何将3个坐标全部返回给用户?
 
-One common way is to return a struct:
+最常见的办法是返回一个结构体：
 
 ```cpp
 #include <iostream>
@@ -146,19 +146,17 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印结果：
 
 ```
 The point is zero
 ```
 
-Structs are usually returned by value, so as not to return a dangling reference.
+结构体通常[[return-by-value|按值返回]]，这样就不会产生[[dangling|悬垂]]引用。
 
 ## 返回匿名结构体
 
-In the `getZeroPoint()` function above, we create a new named object (`temp`) just so we could return it:
+`getZeroPoint()` 函数中创建了一个对象(`temp`)，我们可以将它直接返回：
 
 ```cpp
 Point3d getZeroPoint()
@@ -169,11 +167,9 @@ Point3d getZeroPoint()
 }
 ```
 
-COPY
+这个命名对象 (`temp`) 对可读性并没有什么帮助。
 
-The name of the object (`temp`) doesn’t really provide any documentation value here.
-
-We can make our function slightly better by returning a temporary (unnamed) object instead:
+我们可以对函数稍加修改，使其返回一个临时的匿名对象：
 
 ```cpp
 Point3d getZeroPoint()
@@ -182,11 +178,9 @@ Point3d getZeroPoint()
 }
 ```
 
-COPY
+这个例子中创建了一个临时的 `Point3d` 对象并将其[[return-by-value|按值返回]]（拷贝返回）给调用者。该对象会在表达式结束时销毁。注意这是多么的简洁(一行相比两行，并且不需要判断 `temp` 是否使用了多次)。
 
-In this case, a temporary Point3d is constructed, copied back to the caller, and then destroyed at the end of the expression. Note how much cleaner this is (one line vs two, and no need to understand whether `temp` is used more than once).
-
-In the case where the function has an explicit return type (e.g. `Point3d`) instead of using type deduction (an `auto` return type), we can even omit the type in the return statement:
+==在函数有显式返回类型的情况下(例如: `Point3d` )而不是使用类型演绎(一个 `auto` 返回类型)，我们甚至可以在return语句中省略类型:==
 
 ```cpp
 Point3d getZeroPoint()
@@ -197,9 +191,7 @@ Point3d getZeroPoint()
 }
 ```
 
-COPY
-
-Also note that since in this case we’re returning all zero values, we can use empty braces to return a value-initialized Point3d:
+还要注意，因为在本例中我们返回的都是零值，所以我们可以使用空大括号来返回一个值初始化的 `Point3d`：
 
 ```cpp
 Point3d getZeroPoint()
@@ -209,13 +201,12 @@ Point3d getZeroPoint()
 }
 ```
 
-COPY
 
 ## 包含程序自定义类型成员的结构体
 
-In C++, structs (and classes) can have members that are other program-defined types. There are two ways to do this.
+在C++中，结构体(和类)的成员可以是其他程序定义的类型。有两种方法可以做到这一点。
 
-First, we can define one program-defined type (in the global scope) and then use it as a member of another program-defined type:
+首先，可以定义一个程序定义类型（在全局作用域），然后将其作为另一个程序定义类型的成员：
 
 ```cpp
 #include <iostream>

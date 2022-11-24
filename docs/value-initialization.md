@@ -7,3 +7,5 @@ tags:
 - 词汇表
 - value-initialization
 ---
+
+[值初始化](https://en.cppreference.com/w/cpp/language/value_initialization)：通过空初始化值构造对象
