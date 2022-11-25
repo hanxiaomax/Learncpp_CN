@@ -110,13 +110,13 @@ template <typename T, typename U>
 Pair(T, U) -> Pair<T, U>;
 ```
 
-首先，我们需要使用和 `Pair` 类一样的模板定义，因为推断定义的目的就是告诉编译器如何推断 `Pair<T, U>` 类型。接下来，在箭头符号的右侧，我们提供了用于帮助编译器进行推断的类型。在这个例子中，我们希望编译器能够为 `Pair<T, U>` 类型的对象进行模板类型推断。最后，在箭头符号的左侧，我们告诉编译器应该关注什么样的声明。在这个例子中，编译器被要求关注名为 `Pair` 且有两个形参(一个是 `T` 类型，一个是`U`类型)的声明。这里也可以写作 `Pair(T t, U u)` (where `t` and `u` are the names of the parameters, but since we don’t use `t` and `u`, we don’t need to give them names).
+首先，我们需要使用和 `Pair` 类一样的模板定义，因为推断定义的目的就是告诉编译器如何推断 `Pair<T, U>` 类型。接下来，在箭头符号的右侧，我们提供了用于帮助编译器进行推断的类型。在这个例子中，我们希望编译器能够为 `Pair<T, U>` 类型的对象进行模板类型推断。最后，在箭头符号的左侧，我们告诉编译器应该关注什么样的声明。在这个例子中，编译器被要求关注名为 `Pair` 且有两个形参(一个是 `T` 类型，一个是`U`类型)的声明。这里也可以写作 `Pair(T t, U u)` ( `t` 和 `u` 是参数的名字，但是因为我们不需要使用`t` 和 `u`，所以也没必要给它们一个名字)。
 
-Putting it all together, we’re telling the compiler that if it sees a declaration of a `Pair` with two arguments (of types `T` and `U` respectively), it should deduce the type to be a `Pair<T, U>`.
+上述操作综合起来，告诉编译器如果看到有一个 `Pair` 类型的对象，且有两个[[arguments|实参]]，则应该将其推断为类型 `Pair<T, U>`。
 
-So when the compiler sees the definition `Pair p2{ 1, 2 };` in our program, it will say, “oh, this is a declaration of a `Pair` and there are two arguments of type `int` and `int`, so using the deduction guide, I should deduce this to be a `Pair<int, int>`“.
+所以当编译器看到 `Pair p2{ 1, 2 };` 时，它会说：“噢，这是一个`Pair`对象，有两个实参`int`和`int`，所以基于推断指南，我应该将其推断为类型`Pair<int, int>`” 。
 
-Here’s a similar example for a Pair that takes a single template type:
+下面是一个接受单一模板类型的`Pair`的类似示例：
 
 ```cpp
 template <typename T>
