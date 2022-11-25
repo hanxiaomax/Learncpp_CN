@@ -75,8 +75,10 @@
   "mdCSS": "",
   "scriptEngineSettings": {},
   "defaultTrayMode": false,
-  "previousRelease": "1.7.27",
+  "previousRelease": "1.8.0",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
-  "mathjaxSourceURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-svg.js"
+  "mathjaxSourceURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-svg.js",
+  "taskboneEnabled": false,
+  "taskboneAPIkey": ""
 }

@@ -231,11 +231,9 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，我们首先定义了一个 `Employee` 结构体，然后将其作为另一个 `Company` 结构体的成员。 当 `Company` 初始化时，也可以通过嵌套的[[initializer-list|初始化值列表]]初始化`Employee`。如果我们想知道某个CEO的薪水是多少，则需要使用两次[[member-selection-operator|成员选择运算符]]：`myCompany.CEO.wage;`
 
-In the above case, we’ve defined an `Employee` struct, and then used that as a member in a `Company` struct. When we initialize our `Company`, we can also initialize our `Employee` by using a nested initialization list. And if we want to know what the CEO’s salary was, we simply use the member selection operator twice: `myCompany.CEO.wage;`
-
-Second, types can also be nested inside other types, so if an Employee only existed as part of a Company, the Employee type could be nested inside the Company struct:
+其次，类型也可以被嵌套定义在其他类型中，搜易如果 `Employee` 只会作为 `Company` 的成员使用，则可以将其定义在 `Company` 结构体中：
 
 ```cpp
 #include <iostream>
@@ -260,15 +258,13 @@ int main()
 }
 ```
 
-COPY
-
-This is more often done with classes, so we’ll talk more about this in a future lesson ([13.17 -- Nested types in classes](https://www.learncpp.com/cpp-tutorial/nested-types-in-classes/)).
+这种形式通常会在类中使用，我们会在后面的课程中进行介绍[[13-17-nested-types-in-classes|13.17 - 类中的嵌套类型]]。
 
 ## 结构体大小和数据结构对齐
 
-Typically, the size of a struct is the sum of the size of all its members, but not always!
+通常我们会认为结构体的大小就是其所有成员大小的总和，但实际上并不一定！
 
-Consider the following struct:
+考虑下面的代码：
 
 ```cpp
 #include <iostream>
@@ -288,9 +284,7 @@ int main()
 }
 ```
 
-COPY
-
-On many platforms, a short is 2 bytes, an int is 4 bytes, and a double is 8 bytes, so we’d expect `sizeof(Foo)` to be 2 + 4 + 8 = 14 bytes. However, on the author’s machine, this prints:
+在很多平台上，short 是 2 字节、int 是 4 字节bytes, and a double is 8 bytes, so we’d expect `sizeof(Foo)` to be 2 + 4 + 8 = 14 bytes. However, on the author’s machine, this prints:
 
 ```
 The size of Foo is 16
