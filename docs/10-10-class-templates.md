@@ -153,9 +153,9 @@ int main()
 
 !!! info "提醒"
 
-	A “class type” is a struct, class, or union type. Although we’ll be demonstrating “class templates” on structs for simplicity, everything here applies equally well to classes.
+	所谓 “[[class-type|类类型]]” 指的是结构体、类或联合体。虽然我们以结构体的类模板进行演示，但是它同样适用于类。
 
-As a reminder, here’s our `int` pair struct definition:
+回忆一下，这里有一个整型成员类型的 `Pair` 结构体定义：
 
 ```cpp
 struct Pair
@@ -165,9 +165,7 @@ struct Pair
 };
 ```
 
-COPY
-
-Let’s rewrite our pair class as a class template:
+让我们使用类模板重写一下该结构体：
 
 ```cpp
 #include <iostream>
@@ -194,9 +192,9 @@ int main()
 }
 ```
 
-COPY
+就像函数模板一样，我们从模板形参声明开始定义类模板，即先是 `template`关键字。接下来，在尖括号(`<>`)中指定类模板将使用的所有模板类型。对于我们需要的每个模板类型，需要使用关键字`typename` (首选)或`class` (非首选)，后面跟着模板类型的名称(例如。“T”)。在本例中，因为我们的两个成员都是相同的类型，所以我们只需要一个模板类型。
 
-Just like with function templates, we start a class template definition with a template parameter declaration. We begin with the `template` keyword. Next, we specify all of the template types that our class template will use inside angled brackets (<>). For each template type that we need, we use the keyword `typename` (preferred) or `class` (not preferred), followed by the name of the template type (e.g. `T`). In this case, since both of our members will be the same type, we only need one template type.
+接下来，我们像往常一样定义结构，只不过我们可以在需要模板类型的地方使用模板类型(`T` )，以便稍后用实际类型替换模板类型。就是这样！类模板的d我们已经完成了类模板定义。
 
 Next, we define our struct like usual, except we can use our template type (`T`) wherever we want a templated type that will be replaced with a real type later. That’s it! We’re done with the class template definition.
 
