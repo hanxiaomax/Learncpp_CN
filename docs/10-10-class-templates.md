@@ -13,7 +13,7 @@ tags:
 
 
 
-In lesson [[8-13-Function-templates|8.13 - 函数模板]]，we introduced the challenge of having to create a separate (overloaded) function for each different set of types we want to work with:
+在 [[8-13-Function-templates|8.13 - 函数模板] 中我们提到，为不同类型的对象分别创建（重载）不同的函数是一项困难且没必要的工作。
 
 ```cpp
 #include <iostream>
@@ -41,9 +41,7 @@ int main()
 }
 ```
 
-COPY
-
-The solution to this was to create a function template that the compiler can use to instantiate normal functions for whichever set of types we need:
+该问题的最终解决方案是创建一个[[function-template|函数模板]]并让编译器根据所需的类型为你实例化对应的函数：
 
 ```cpp
 #include <iostream>
@@ -65,17 +63,15 @@ int main()
 }
 ```
 
-COPY
-
 !!! info "相关内容"
 
-	We cover how function template instantiation works in lesson [[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]
+	我们在[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]中介绍了函数模板的实例化。
 
-## Aggregate types have similar challenges
+## 聚合类型也面临类似的问题
 
-We run into similar challenges with aggregate types (both structs/classes/unions and arrays).
+对于聚合类型(包括结构/类/联合和数组)，我们也遇到了类似的问题。
 
-For example, let’s say we’re writing a program where we need to work with pairs of `int` values, and need to determine which of the two numbers is larger. We might write a program like this:
+例如，假设我们正在编写一个程序，其中需要处理一对 `int` 值，并需要确定这两个数字中哪一个更大。我们可以写这样一个程序:
 
 ```cpp
 #include <iostream>
@@ -100,9 +96,7 @@ int main()
 }
 ```
 
-COPY
-
-Later, we discover that we also need pairs of `double` values. So we update our program to the following:
+一段时间后，我们发现我们需要处理一对 `double` 类型的值，那么我们必须更新程序，添加另外一个`Pair`：
 
 ```cpp
 #include <iostream>
@@ -141,23 +135,21 @@ int main()
 }
 ```
 
-COPY
+很遗憾，这个程序是不能编译的，而且这里有很多问题：
 
-Unfortunately, this program won’t compile, and has a number of problems that need to be addressed.
+首先，和函数不同，类型是不能被[[overload|重载]]的。所以编译器会将第二个`double`成员版本的 `Pair` 看做是第一个`Pair` 的重复定义。第二，尽管函数可以被重载，但两个 `max(Pair)` 函数只有返回值不同，而函数重载不能仅仅通过不同的返回值类型区分。第三，代码有很多冗余。每个  `Pair` 结构体都是相同的（只是数据类型不同），`max(Pair)` 函数也是 (只有返回值不同)。
 
-First, unlike functions, type definitions can’t be overloaded. The compiler will treat double second definition of `Pair` as an erroneous redeclaration of the first definition of `Pair`. Second, although functions can be overloaded, our `max(Pair)` functions only differ by return type, and overloaded functions can’t be differentiated solely by return type. Third, there is a lot of redundancy here. Each `Pair` struct is identical (except for the data type) and same with our `max(Pair)` functions (except for the return type).
+我们可以通过给`Pair` 起不同的名字来解决前两个问题（例如 `Pairint` 和 `Pairdouble` )。但是我们必须记住全部的命名方案，并为我们想要的每一个额外的类型克隆一堆代码，这并不能解决冗余问题。
 
-We could solve the first two issues by giving our `Pair` structs different names (e.g. `Pairint` and `Pairdouble`). But then we both have to remember our naming scheme, and essentially clone a bunch of code for each additional pair type we want, which doesn’t solve the redundancy problem.
-
-Fortunately, we can do better.
+幸运的是，我们有更好的办法！
 
 !!! info "作者注"
 
-	Before proceeding, please review lessons [[8-13-Function-templates|8.13 - 函数模板]]和[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]] if you’re hazy on how function templates, template types, or function template instantiation works.
+	在继续阅读之前，如果你还不熟悉函数模板、模板类型或者函数模板实例化是如何工作的，推荐复习一下 [[8-13-Function-templates|8.13 - 函数模板]]和[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]。
+	
+## 类模板
 
-## Class templates
-
-Much like a function template is a template definition for instantiating functions, a class template is a template definition for instantiating class types.
+就像函数模板是实例化函数的模板定义一样，类模板是实例化类类型的模板定义。
 
 !!! info "提醒"
 
@@ -346,7 +338,7 @@ COPY
 
 This works exactly like you’d expect: `first` will be whatever the template type `T` is, and `second` will always be an `int`.
 
-## Class templates with multiple template types
+## 具有多个模板类型的类模板
 
 Class templates can also have multiple template types. For example, if we wanted the two members of our `Pair` class to be able to have different types, we can define our `Pair` class template with two template types:
 
@@ -412,7 +404,7 @@ COPY
 
 We developed our own `Pair` class in this lesson to show how things work, but in real code, you should favor `std::pair` over writing your own.
 
-## Using class templates in multiple files
+## 在多个文件中使用类模板
 
 Just like function templates, class templates are typically defined in header files so they can be included into any code file that needs them. Both template definitions and type definitions are exempt from the one-definition rule, so this won’t cause problems:
 

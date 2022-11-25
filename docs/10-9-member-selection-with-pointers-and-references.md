@@ -152,15 +152,15 @@ int main()
 }
 ```
 
-指针成员选择运算符和普通的成员选择运算符用法类似 member selection from pointer operator (->) works identically to the member selection operator (.) but does an implicit dereference of the pointer object before selecting the member. This arrow operator is not only easier to type, but is also much less prone to error because the indirection is implicitly done for you, so there are no precedence issues to worry about. Consequently, when doing member access through a pointer, always use the -> operator instead of the . operator.
+指针成员选择运算符和普通的成员选择运算符用法类似，但是它会首先进行隐式的解引用。该箭头运算符不仅更容易写，也更不容易出错，因为它会隐式进行解引用，所以我们不需要操心运算符优先级的问题。因此，在通过结构体指针访问其成员时，应该总是使用箭头运算符来完成。
 
 !!! success "最佳实践"
 
-	When using a pointer to access the value of a member, use operator->; instead of operator. (the . operator)
+	当使用指针访问成员的值时，使用`->`;而不是`.`
+	
+## 同时使用指针和非指针成员访问
 
-## Mixing pointers and non-pointers to members
-
-The member selection operator is always applied to the currently selected variable. If you have a mix of pointers and normal member variables, you can see member selections where . and -> are both used in sequence:
+成员选择操作符始终应用于当前选定的变量。如果指针和普通成员变量混合使用，则成员选择`.`和`->`是按顺序使用的：
 
 ```cpp
 #include <iostream>
@@ -192,7 +192,5 @@ int main()
 }
 ```
 
-COPY
 
-Note that in the case of `(ptr->paw).claws`, parentheses aren’t necessary since both `operator->` and `operator.` evaluate in left to right order, but it does help readability slightly.
-
+注意 `(ptr->paw).claws`中的括号是可选的，因为 `operator->` and `operator.` 都是从左向右进行运算的，但是添加括号可以提高可读性。

@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "10-9-member-selection-with-pointers-and-references",
-      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
+      "basename": "10-10-class-templates",
+      "path": "docs/10-10-class-templates.md"
+    },
+    {
+      "basename": "function-template",
+      "path": "docs/function-template.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-9-member-selection-with-pointers-and-references",
+      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
     },
     {
       "basename": "10-8-struct-passing-and-miscellany",
@@ -91,10 +99,6 @@
     {
       "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
       "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
-    },
-    {
-      "basename": "10-10-class-templates",
-      "path": "docs/10-10-class-templates.md"
     },
     {
       "basename": "10-y-using-a-language-reference",
@@ -195,10 +199,6 @@
     {
       "basename": "23-1-Input-and-output-IO-streams",
       "path": "docs/23-1-Input-and-output-IO-streams.md"
-    },
-    {
-      "basename": "insertion-operator",
-      "path": "docs/insertion-operator.md"
     }
   ],
   "omittedPaths": [],

@@ -7,3 +7,5 @@ tags:
 - 词汇表
 - function-template
 ---
+
+编译器会根据所需的类型自动创建对应的函数
