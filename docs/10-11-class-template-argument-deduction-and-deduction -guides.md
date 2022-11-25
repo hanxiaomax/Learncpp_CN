@@ -14,11 +14,9 @@ tags:
 ??? note "关键点速记"
 
 
-## 类模板实参推断 (CTAD) 
+## 类模板实参推断 (CTAD) (C++17)
 
-从C++ 17开始，当从类模板实例化一个对象时，编译器可以从对象的初始化式的类型推断出模板类型(这称为类模板实参推断，简称CTAD)。例如:
-
-Starting in C++17, when instantiating an object from a class template, the compiler can deduce the template types from the types of the object’s initializer (this is called class template argument deduction or CTAD for short). For example:
+从C++ 17开始，当从类模板实例化一个对象时，编译器可以从对象的初始化式的类型推断出模板类型([[class-template-argument-deduction|类模板实参推断]]，简称CTAD)。例如:
 
 ```cpp
 #include <utility> // for std::pair
@@ -32,33 +30,30 @@ int main()
 }
 ```
 
-COPY
-
-CTAD is only performed if no template argument list is present. Therefore, both of the following are errors:
+CTAD 只有在类模板列表中没有提供任何参数时才会进行，因此下面代码中的两种方式都是错误的：
 
 ```cpp
 #include <utility> // for std::pair
 
 int main()
 {
-    std::pair<> p1 { 1, 2 };    // error: too few template arguments, both arguments not deduced
-    std::pair<int> p2 { 3, 4 }; // error: too few template arguments, second argument not deduced
+    std::pair<> p1 { 1, 2 };    // 错误: 模板参数太少, 两个参数都不会推断
+    std::pair<int> p2 { 3, 4 }; // 错误: 模板参数太少,第二个参数不会被推断
 
     return 0;
 }
 ```
 
-COPY
-
 !!! info "作者注"
 
-	Many future lessons on this site make use of CTAD. If you’re compiling these examples using the C++14 standard, you’ll get an error about missing template arguments. You’ll need to explicitly add such arguments to the example to make it compile.
+	本网站今后的许多课程都利用了CTAD。如果使用C++14标准编译这些示例，将会得到一个关于缺少模板参数的错误。您需要显式地将这些参数添加到示例中，以使其能够编译。
 
-## Template argument deduction guides C++17 
 
-In most cases, CTAD works right out of the box. However, in certain cases, the compiler may need a little extra help understanding how to deduce the template arguments properly.
+## 模板参数推断指南 (C++17)
 
-You may be surprised to find that the following program (which is almost identical to the example that uses `std::pair` above) doesn’t compile in C++17:
+在大多数情况下，CTAD可以开箱即用。然而，在某些情况下，编译器可能需要一些额外的帮助，以理解如何正确地推导模板实参。
+
+你可能会惊讶地发现下面的程序(它几乎与上面使用`std::pair`的例子相同)不能在C++ 17中编译：
 
 ```cpp
 // define our own Pair type
@@ -78,11 +73,9 @@ int main()
 }
 ```
 
-COPY
+如果你在C++17中编译它，你可能会得到一些关于“类模板实参推导失败”或“无法推导模板实参”或“没有可行的构造函数或推导指南”的错误。这是因为在C++17中，CTAD不知道如何推导聚合类模板的模板实参。为了解决这个问题，我们可以为编译器提供指南，告诉编译器如何推断给定类模板的模板实参。
 
-If you compile this in C++17, you’ll likely get some error about “class template argument deduction failed” or “cannot deduce template arguments” or “No viable constructor or deduction guide”. This is because in C++17, CTAD doesn’t know how to deduce the template arguments for aggregate class templates. To address this, we can provide the compiler with a deduction guide, which tells the compiler how to deduce the template arguments for a given class template.
-
-Here’s the same program with a deduction guide:
+下面的程序为编译器提供了推断指南：
 
 ```cpp
 template <typename T, typename U>
@@ -92,34 +85,32 @@ struct Pair
     U second{};
 };
 
-// Here's a deduction guide for our Pair
-// Pair objects initialized with arguments of type T and U should deduce to Pair<T, U>
+// 此处为 Pair 提供推断指南
+// 使用参数 T 和 U 初始化的Pair对象应该推断为 Pair<T, U>
 template <typename T, typename U>
 Pair(T, U) -> Pair<T, U>;
 
 int main()
 {
-    Pair<int, int> p1{ 1, 2 }; // explicitly specify class template Pair<int, int> (C++11 onward)
-    Pair p2{ 1, 2 };     // CTAD used to deduce Pair<int, int> from the initializers (C++17)
+    Pair<int, int> p1{ 1, 2 }; // 显式指定类模板Pair<int, int> (C++11 onward)
+    Pair p2{ 1, 2 };     // CTAD 使用初始化值推断 Pair<int, int> (C++17)
 
     return 0;
 }
 ```
 
+上面的例子可以在C++17中成功编译。
 
-This example should compile under C++17.
-
-The deduction guide for our `Pair` class is pretty simple, but let’s take a closer look at how it works.
+此处`Pair`类的类型推断指南很简单，让我们仔细研究一下它是如何工作的吧。
 
 ```cpp
-// Here's a deduction guide for our Pair
-// Pair objects initialized with arguments of type T and U should deduce to Pair<T, U>
+// 此处为 Pair 提供推断指南
+// 使用参数 T 和 U 初始化的Pair对象应该推断为 Pair<T, U>
 template <typename T, typename U>
 Pair(T, U) -> Pair<T, U>;
 ```
 
-
-First, we use the same template type definition as in our `Pair` class. This makes sense, because if our deduction guide is going to tell the compiler how to deduce the types for a `Pair<T, U>`, we have to define what `T` and `U` are (template types). Second, on the right hand side of the arrow, we have the type that we’re helping the compiler to deduce. In this case, we want the compiler to be able to deduce template arguments for objects of type `Pair<T, U>`, so that’s exactly what we put here. Finally, on the left side of the arrow, we tell the compiler what kind of declaration to look for. In this case, we’re telling it to look for a declaration of some object named `Pair` with two arguments (one of type `T`, the other of type `U`). We could also write this as `Pair(T t, U u)` (where `t` and `u` are the names of the parameters, but since we don’t use `t` and `u`, we don’t need to give them names).
+首先，我们需要使用和 `Pair` 类一样的模板定义，因为推断定义的目的就是告诉编译器如何推断 `Pair<T, U>` 类型。接下来，在箭头符号的右侧，我们提供了用于帮助编译器进行推断的类型。在这个例子中，我们希望编译器能够为 `Pair<T, U>` 类型的对象进行模板类型推断。最后，在箭头符号的左侧，我们告诉编译器应该关注什么样的声明。在这个例子中，编译器被要求关注名为 `Pair` 且有两个形参(一个是 `T` 类型，一个是`U`类型)的声明。这里也可以写作 `Pair(T t, U u)` (where `t` and `u` are the names of the parameters, but since we don’t use `t` and `u`, we don’t need to give them names).
 
 Putting it all together, we’re telling the compiler that if it sees a declaration of a `Pair` with two arguments (of types `T` and `U` respectively), it should deduce the type to be a `Pair<T, U>`.
 
