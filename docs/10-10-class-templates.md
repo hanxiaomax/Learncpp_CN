@@ -194,15 +194,13 @@ int main()
 
 就像函数模板一样，我们从模板形参声明开始定义类模板，即先是 `template`关键字。接下来，在尖括号(`<>`)中指定类模板将使用的所有模板类型。对于我们需要的每个模板类型，需要使用关键字`typename` (首选)或`class` (非首选)，后面跟着模板类型的名称(例如。“T”)。在本例中，因为我们的两个成员都是相同的类型，所以我们只需要一个模板类型。
 
-接下来，我们像往常一样定义结构，只不过我们可以在需要模板类型的地方使用模板类型(`T` )，以便稍后用实际类型替换模板类型。就是这样！类模板的d我们已经完成了类模板定义。
+接下来，我们像往常一样定义结构，只不过我们可以在需要模板类型的地方使用模板类型(`T` )，以便稍后用实际类型替换模板类型。就是这样！类模板的定义就完成了。
 
-Next, we define our struct like usual, except we can use our template type (`T`) wherever we want a templated type that will be replaced with a real type later. That’s it! We’re done with the class template definition.
+在`main`中，我们可以使用需要要的任何类型来实例化`Pair` 对象。首先，我们实例化一个 `Pair<int>` 类型的对象。因为`Pair<int>` 的类型定义还不存在，编译器使用类模板实例化一个名为` Pair<int>` 的结构体类型定义，其中所有出现的模板类型 `T` 都被类型 `int` 替换。
 
-Inside main, we can instantiate `Pair` objects using whatever types we desire. First, we instantiate an object of type `Pair<int>`. Because a type definition for `Pair<int>` doesn’t exist yet, the compiler uses the class template to instantiate a struct type definition named `Pair<int>`, where all occurrences of template type `T` are replaced by type `int`.
+接下来，再实例化一个 `Pair<double>` 类型的对象，此时会实例化一个 `Pair<double>` 类型的结构体定义，其中 `T` 会被替换为 `double`。对于`p3`来说，`Pair<double>` 已经被实例化了，所以编译器会使用之前的定义。
 
-Next, we instantiate an object of type `Pair<double>`, which instantiates a struct type definition named `Pair<double>` where `T` is replaced by `double`. For `p3`, `Pair<double>` has already been instantiated, so the compiler will use the prior type definition.
-
-Here’s the same example as above, showing what the compiler actually compiles after all template instantiations are done:
+接下来是与上面相同的例子，显示了编译器在所有模板实例化完成后实际编译的内容：
 
 ```cpp
 #include <iostream>
@@ -243,17 +241,15 @@ int main()
 }
 ```
 
-COPY
+你可以直接编译此示例，它能够按预期工作!
 
-You can compile this example directly and see that it works as expected!
+!!! info "扩展阅读"
 
-For advanced readers
+上面的例子中使用了一个称为[[template-class-specialization|类模板特化]]的特性(会在 [19.4 -- Class template specialization](https://www.learncpp.com/cpp-tutorial/class-template-specialization/) 中介绍)。目前我们还不需要掌握该特性的知识。
 
-The above example makes use of a feature called template class specialization (covered in future lesson [19.4 -- Class template specialization](https://www.learncpp.com/cpp-tutorial/class-template-specialization/)). Knowledge of how this feature works is not required at this point.
+## 在函数中使用类模板
 
-## Using our class template in a function
-
-Now let’s return to the challenge of making our `max()` function work with different types. Because the compiler treats `Pair<int>` and `Pair<double>`as separate types, we could use overloaded functions that are differentiated by parameter type:
+现在让我们回到让`max()` 函数配合不同类型工作的挑战。因为编译器将 `Pair<int>` 和 `Pair<double>` 看做单独的类型，我们可以使用按形参类型区分的重载函数：
 
 ```cpp
 constexpr int max(Pair<int> p)
@@ -267,11 +263,10 @@ constexpr double max(Pair<double> p) // okay: overloaded function differentiated
 }
 ```
 
-COPY
 
-While this compiles, it doesn’t solve the redundancy problem. What we really want is a function that can take a pair of any type. In other words, we want a function that takes a parameter of type `Pair<T>`, where T is a template type parameter. And that means we need a function template for this job!
+虽然上述代码可以编译了，但是它没有解决代码冗余的问题。我们实际上希望一个函数能够接受任何类型的参数。换言之我们希望函数可以使用  `Pair<T>` 类型的形参，其中 `T` 是一个模板类型参数。因此我们需要使用一个函数模板来完成相应的工作！
 
-Here’s a full example, with `max()` being implemented as a function template:
+下面是一个完整的例子，`max()`被实现为一个函数模板：
 
 ```cpp
 #include <iostream>
@@ -301,11 +296,9 @@ int main()
 }
 ```
 
-COPY
+`max()` 函数模板非常直白。因为我们需要向其传递 `Pair<T>`，所以编译器必须了解 `T` 是什么。因此，我们需要在函数开头出添加模板参数声明，定义模板类型`T`。随后，我们就可以使用`T`作为返回类型，以及模板参数 `Pair<T>`。
 
-The `max()` function template is pretty straightforward. Because we want to pass in a `Pair<T>`, we need the compiler to understand what `T` is. Therefore, we need to start our function with a template parameter declaration that defines template type T. We can then use `T` as both our return type, and as the template type for `Pair<T>`.
-
-When the `max()` function is called with a `Pair<int>` argument, the compiler will instantiate the function `int max<int>(Pair<int>)` from the function template, where template type `T` is replaced with `int`. The following snippet shows what the compiler actually instantiates in such a case:
+因为 `max()` 函数的调用基于 `Pair<int>` 类型[[arguments|实参]] ，编译器会基于函数模板实例化函数`int max<int>(Pair<int>)` ，模板中的 `T` 被替换为了`int`。编译器实际上实例化了这样一个函数：
 
 ```cpp
 template <>
@@ -315,13 +308,11 @@ constexpr int max(Pair<int> p)
 }
 ```
 
-COPY
+与所有对函数模板的调用一样，我们可以显式地指定模板类型实参(例如 `max<int>(p1)`)，也可以隐式地使用(例如 `max(p2)`)，并让编译器使用[[class-template-argument-deduction|类模板实参推断]]来确定模板类型实参应该是什么类型的。
 
-As with all calls to a function template, we can either be explicit about the template type argument (e.g. `max<int>(p1)`) or we can be implicitly (e.g. `max(p2)`) and let the compiler use template argument deduction to determine what the template type argument should be.
+## 同时使用模板类型和非模板类型的类模板
 
-Class templates with template type and non-template type members
-
-Class templates can have some members using a template type and other members using a normal (non-template) type. For example:
+类模板的成员可以使用模板类型，也可以同时有另外一部分成员使用普通类型（非模板），例如：
 
 ```cpp
 template <typename T>
@@ -332,13 +323,11 @@ struct Foo
 };
 ```
 
-COPY
-
-This works exactly like you’d expect: `first` will be whatever the template type `T` is, and `second` will always be an `int`.
+上述代码能够正常工作：`first` 的类型由 `T` 指定，而 `second` 类型则总是`int`。
 
 ## 具有多个模板类型的类模板
 
-Class templates can also have multiple template types. For example, if we wanted the two members of our `Pair` class to be able to have different types, we can define our `Pair` class template with two template types:
+类模板也可以有多个模板类型。例如，如果我们希望`Pair` 类的两个成员能够具有不同的类型，我们可以用两种模板类型定义`Pair` 类模板：
 
 ```cpp
 #include <iostream>
@@ -368,13 +357,11 @@ int main()
 }
 ```
 
-COPY
-
-To define multiple template types, in our template parameter declaration, we separate each of our desired template types with a comma. In the above example we define two different template types, one named `T`, and one named `U`. The actual template type arguments for `T` and `U` can be different (as in the case of `p1` and `p2` above) or the same (as in the case of `p3`).
+要定义多个模板类型，在模板参数声明中，用逗号分隔每个所需的模板类型。在上面的例子中，我们定义了两种不同的模板类型，一种名为`T` ，另一种名为`U` 。`T` 和 `U` 的实际模板类型实参可以不同(就像上面的 `p1` 和 `p2` 一样)，也可以相同(就像 `p3` 一样)。
 
 ## `std::pair`
 
-Because working with pairs of data is common, the C++ standard library contains a class template named `std::pair` (in the `<utility>` header) that is defined identically to the `Pair` class template with multiple template types in the preceding section. In fact, we can swap out the `pair` struct we developed for `std::pair`:
+因为在C++中使用一对数据是很常见的需求，因此C++标准库提供了一个名为`std::pair`的类模板(位于 `<utility>` 头文件中) ，它的另一和使用了多个模板类型的  `Pair` 类一样。实际上，我们可以使用 `std::pair` 来替换我们定义的`pair`。
 
 ```cpp
 #include <iostream>
@@ -398,13 +385,11 @@ int main()
 }
 ```
 
-COPY
-
-We developed our own `Pair` class in this lesson to show how things work, but in real code, you should favor `std::pair` over writing your own.
+本节课我们定义了自己的 `Pair` 类以解释其工作原理，但是在实际工作中，我们推荐使用`std::pair`。
 
 ## 在多个文件中使用类模板
 
-Just like function templates, class templates are typically defined in header files so they can be included into any code file that needs them. Both template definitions and type definitions are exempt from the one-definition rule, so this won’t cause problems:
+就像函数模板一样，类模板通常是在头文件中定义的，因此它们可以被包含到任何需要它们的代码文件中。模板定义和类型定义都不受[[one-definition-rule|单一定义规则(one-definition-rule)]]的约束，所以这不会导致问题：
 
 ```cpp title="pair.h"
 #ifndef PAIR_H

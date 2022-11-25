@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "10-10-class-templates",
-      "path": "docs/10-10-class-templates.md"
-    },
-    {
-      "basename": "function-template",
-      "path": "docs/function-template.md"
+      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
+      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "one-definition-rule",
+      "path": "docs/one-definition-rule.md"
+    },
+    {
+      "basename": "10-10-class-templates",
+      "path": "docs/10-10-class-templates.md"
+    },
+    {
+      "basename": "template-class-specialization",
+      "path": "docs/template-class-specialization.md"
+    },
+    {
+      "basename": "function-template",
+      "path": "docs/function-template.md"
     },
     {
       "basename": "10-9-member-selection-with-pointers-and-references",
@@ -95,10 +107,6 @@
     {
       "basename": "type-safe",
       "path": "docs/type-safe.md"
-    },
-    {
-      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
-      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
     },
     {
       "basename": "10-y-using-a-language-reference",
@@ -191,14 +199,6 @@
     {
       "basename": "format-group",
       "path": "docs/format-group.md"
-    },
-    {
-      "basename": "bitwise-or",
-      "path": "docs/bitwise-or.md"
-    },
-    {
-      "basename": "23-1-Input-and-output-IO-streams",
-      "path": "docs/23-1-Input-and-output-IO-streams.md"
     }
   ],
   "omittedPaths": [],

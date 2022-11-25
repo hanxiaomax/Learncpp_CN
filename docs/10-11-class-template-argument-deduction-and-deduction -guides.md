@@ -14,7 +14,9 @@ tags:
 ??? note "关键点速记"
 
 
-## Class template argument deduction (CTAD) C++17 
+## 类模板实参推断 (CTAD) 
+
+从C++ 17开始，当从类模板实例化一个对象时，编译器可以从对象的初始化式的类型推断出模板类型(这称为类模板实参推断，简称CTAD)。例如:
 
 Starting in C++17, when instantiating an object from a class template, the compiler can deduce the template types from the types of the object’s initializer (this is called class template argument deduction or CTAD for short). For example:
 
