@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
-      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
+      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
     },
     {
       "basename": "one-definition-rule",
@@ -79,10 +83,6 @@
     {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
       "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
     },
     {
       "basename": "10-2-unscoped-enumerations",

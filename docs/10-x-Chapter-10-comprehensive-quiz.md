@@ -17,7 +17,7 @@ tags:
 [[10-3-unscoped-enumeration-input-and-output|10.3 - 限定作用域枚举类型的输入输出]]
 
 - 枚举（称为枚举类型或enum）是一种复合数据类型，它的每个可能值都被定义为[[symbolic-constants|符号常量]]（称为枚举值）。枚举值是一种确切的数据类型，也就是说编译器可以区分它和其他类型（不像[[8-6-Typedefs-and-type-aliases|类型别名]]那样）。
-- [[unscoped-enumerations|非限定作用域枚举类型]] are named such because they put their enumerator names into the same scope as the enumeration definition itself (as opposed to creating a new scope region like a namespace does). Unscoped enumerations also provide a named scope region for their enumerators. Unscoped enumerations will implicitly convert to integral values.
+- [[unscoped-enumerations|无作用域枚举类型]]会将自己的枚举值名称导入到与自己相同的作用域中(而不是像命名空间那样创建新的作用域区域)。无作用域枚举 会被yiUnscoped enumerations will implicitly convert to integral values.
 
 
 [[10-4-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]

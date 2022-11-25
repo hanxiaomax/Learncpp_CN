@@ -140,14 +140,12 @@ int main()
 }
 ```
 
-COPY
-
-In this case, our deduction guide maps a `Pair(T, T)` (a `Pair` with two arguments of type `T`) to a `Pair<T>`.
+在这个例子中，类型推断指南将 `Pair(T, T)` (`Pair`类型且有两个类型为T的参数 `T`) 推断为类型 `Pair<T>`。
 
 !!! info "作者注"
 
-	A few notes about deduction guides.
+	关于类型推断指南的一些备注。
 	
-	First, `std::pair` (and other standard library template types) come with pre-defined deduction guides. This is why our example above that uses `std::pair` compiles fine in C++17 without us having to provide deduction guides ourselves.
+	首先，`std::pair`(以及其他标准库模板类型)是有预定义的类型推断指南的。这也是为什么使用 `std::pair`的例子是可以在 C++17 中直接编译的。
 	
-	Second, C++20 added the ability for the compiler to automatically generate deduction guides for aggregate class types, so the version of `Pair`without the deduction guides should compile in C++20. This assumes your compiler supports feature P1816, which as of the time of writing, gcc and Visual Studio do, and Clang does not.
+	其次，C++20 为编译器提供了为聚合类型自动生成类型推断指南的能力，因此前面使用`Pair`的例子可以在C++20编译器中编译。这里假设你的编译器支持P1816特性，在编写本文时，gcc和Visual Studio支持P1816特性，而Clang不支持。
