@@ -79,9 +79,9 @@ void someFunction()
 
 对于类对象来说，它们最大的优势是可以在[[going-out-of-scope|离开作用域]]是自动执行[[destructor|析构函数]]。这样一来，如果我们在构造函数中分配或获取内存，则可以在析构函数中进行释放，这样就可以确保内存在对象被销毁前（不论是离开作用域还是显式删除等）释放。这也正是[[RAII (Resource Acquisition Is Initialization)|资源获取即初始化（RAII）]]编程范式的核心思想（见[[13-9-destructors|13.9 - 析构函数]]）。
 
-那么，是否可以辨析一个类，帮助我们管理和清理指针呢？当然可以！
+那么，是否可以编写一个类，帮助我们管理和清理指针呢？当然可以！
 
-考虑设计这样一个类，它的唯一工作，就是管理一个传入的指针。当该类对象离开作用域时，释放指针所指向的内存。只要该对象被声明为一个局部变量，我们就可以保证，当它离开作用域时（不论何时、也不论函数如何终止），它管理的指针都会被销毁。
+考虑设计这样一个类，它的唯一工作，就是管理一个传入的指针。当该类对象离开作用域时，释放指针所指向的内存。只要该对象被声明为一个局部变量，我们就可以保证，当它离开作用域时（不论何时、也不论函数如何终止），它管理的指针就会被销毁。
 
 
 ```cpp
@@ -136,10 +136,9 @@ Resource acquired
 Resource destroyed
 ```
 
-
 考虑一下这个程序和类是如何工作的。首先，动态创建`Resource`，并将其作为参数传递给模板化的`Auto_ptr1`类。从这一刻开始，`Auto_ptr1`变量`res`拥有该资源对象(`Auto_ptr1`是`m_ptr`是[[16-2-composition|组合关系]])。因为`res`被声明为局部变量并具有语句块作用域，所以当语句块结束时，它将离开作用域并被销毁(不用担心忘记释放它)。由于它是一个类，因此在销毁它时，将调用`Auto_ptr1`析构函数。该析构函数将确保它所持有的`Resource`指针被删除!
 
-只要`Auto_ptr1`被定义为一个局部变量(具有自动持续时间，因此类名中的“Auto”部分)，无论函数如何终止(即使它提前终止)，`Resource`总是可以在声明它的块的末尾被销毁。
+只要`Auto_ptr1`被定义为一个局部变量(具有自动持续时间，因此类名中有“Auto”部分)，无论函数如何终止(即使它提前终止)，`Resource`总是可以在声明它的块的末尾被销毁。
 
 这种类被称为智能指针。[[smart pointer class|智能指针类]]是一种组合类，它用于管理动态分配的内存，并且能够确保指针对象在离开作用域时被删除（内置的指针对象被称为“笨指针”，正是因为它们不能自己清理自己所管理的内存）。
 
@@ -415,12 +414,6 @@ Resource destroyed
 然而，`std::auto_ptr`(以及我们的`Auto_ptr2`类)有许多问题，使得使用它很危险。
 
 首先，由于`std::auto_ptr`通过复制构造函数和赋值操作符实现了移动语义，将`std::auto_ptr`按值传递给函数将导致资源被移动到函数形参中(并在函数形参超出作用域时销毁)。然后，当你从调用者访问`auto_ptr`实参时(没有意识到它已经被移动和删除了)时，进行[[dereference-operator|解引用]]会导致程序崩溃。
-
-Second, std::auto_ptr always deletes its contents using non-array delete. This means auto_ptr won’t work correctly with dynamically allocated arrays, because it uses the wrong kind of deallocation. Worse, it won’t prevent you from passing it a dynamic array, which it will then mismanage, leading to memory leaks.
-
-Finally, auto_ptr doesn’t play nice with a lot of the other classes in the standard library, including most of the containers and algorithms. This occurs because those standard library classes assume that when they copy an item, it actually makes a copy, not a move.
-
-Because of the above mentioned shortcomings, std::auto_ptr has been deprecated in C++11 and removed in C++17.
 
 其次，`std::auto_ptr`总是使用非数组删除来删除其内容。这意味着`auto_ptr`不能正确地处理动态分配的数组，因为它使用了错误的内存释放方式。更糟糕的是，它不能阻止您向它传递动态数组，这样它就可能导致内存泄漏。
 

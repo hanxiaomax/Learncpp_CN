@@ -24,7 +24,7 @@ tags:
 	    -   左值引用 L-value references
 	    -   右值引用 R-value references
 	-   枚举 Enumerated types:
-	    -   [[unscoped-enumerations|非限定作用域枚举类型]] Unscoped enumerations
+	    -   [[unscoped-enumerations|无作用域枚举类型]] Unscoped enumerations
 	    -   [[scoped-enumerations|限定作用域枚举]] Scoped enumerations
 	-   类 Class types:
 	    -   结构体 Structs
@@ -111,7 +111,7 @@ int main()
     -   左值引用 L-value references
     -   右值引用 R-value references
 -   枚举 Enumerated types:
-    -   [[unscoped-enumerations|非限定作用域枚举类型]] Unscoped enumerations
+    -   [[unscoped-enumerations|无作用域枚举类型]] Unscoped enumerations
     -   [[scoped-enumerations|限定作用域枚举]] Scoped enumerations
 -   类 Class types:
     -   结构体 Structs
@@ -128,6 +128,6 @@ void doSomething(int x, double y)
 
 这个函数的类型是 `void(int, double)` 注意，这个类型包含了多个基本数据类型，从而形成了复合类型。当然，函数也有其特殊的行为（例如：可以被调用）。
 
-关于这一话题有很多内容需要介绍，因此我们会使用三个章节来介绍。在本章节中，我们会介绍一些简单直观的复合数据类型，包括[[lvalue-reference|左值引用]]和指针。在下一章节中，我们则会介绍[[unscoped-enumerations|非限定作用域枚举类型]]、[[scoped-enumerations|限定作用域枚举]]和基本的结构体。然后，再下一章节我们会更加深入地介绍非常有用的数组类型，包括 `std::string`([[4-17-An introduction-to-std-string|4.17 - std::string 简介]])，它其实是一种class类型。
+关于这一话题有很多内容需要介绍，因此我们会使用三个章节来介绍。在本章节中，我们会介绍一些简单直观的复合数据类型，包括[[lvalue-reference|左值引用]]和指针。在下一章节中，我们则会介绍[[unscoped-enumerations|无作用域枚举类型]]、[[scoped-enumerations|限定作用域枚举]]和基本的结构体。然后，再下一章节我们会更加深入地介绍非常有用的数组类型，包括 `std::string`([[4-17-An introduction-to-std-string|4.17 - std::string 简介]])，它其实是一种class类型。
 
 准备好了吗！Let’s go!

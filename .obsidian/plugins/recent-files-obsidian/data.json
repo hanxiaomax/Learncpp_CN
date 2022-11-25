@@ -1,12 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "10-x-Chapter-10-comprehensive-quiz",
-      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+      "basename": "10-y-using-a-language-reference",
+      "path": "docs/10-y-using-a-language-reference.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-17-nested-types-in-classes",
+      "path": "docs/13-17-nested-types-in-classes.md"
+    },
+    {
+      "basename": "10-x-Chapter-10-comprehensive-quiz",
+      "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    },
+    {
+      "basename": "10-4-scoped-enumerations-enum-classes",
+      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
+    },
+    {
+      "basename": "10-3-unscoped-enumeration-input-and-output",
+      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
+    },
+    {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "9-1-Introduction-to-compound-data-types",
+      "path": "docs/9-1-Introduction-to-compound-data-types.md"
+    },
+    {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
+    },
+    {
+      "basename": "13-2-classes-and-class-members",
+      "path": "docs/13-2-classes-and-class-members.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "2-7-Forward-declarations-and-definitions",
+      "path": "docs/2-7-Forward-declarations-and-definitions.md"
+    },
+    {
+      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
+      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
+    },
+    {
+      "basename": "M-2-R-value-references",
+      "path": "docs/M-2-R-value-references.md"
     },
     {
       "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
@@ -81,18 +133,6 @@
       "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
     },
     {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "10-4-scoped-enumerations-enum-classes",
-      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
-    },
-    {
       "basename": "enum-class",
       "path": "docs/enum-class.md"
     },
@@ -107,14 +147,6 @@
     {
       "basename": "type-safe",
       "path": "docs/type-safe.md"
-    },
-    {
-      "basename": "10-y-using-a-language-reference",
-      "path": "docs/10-y-using-a-language-reference.md"
-    },
-    {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
     },
     {
       "basename": "11-14-Void-pointers",
@@ -167,38 +199,6 @@
     {
       "basename": "22-2-std-string-construction-and-destruction",
       "path": "docs/22-2-std-string-construction-and-destruction.md"
-    },
-    {
-      "basename": "23-7-random-file-IO",
-      "path": "docs/23-7-random-file-IO.md"
-    },
-    {
-      "basename": "23-6-basic-file-IO",
-      "path": "docs/23-6-basic-file-IO.md"
-    },
-    {
-      "basename": "13-x-Chapter-13-comprehensive-quiz",
-      "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
-    },
-    {
-      "basename": "23-5-stream-states-and-input-validation",
-      "path": "docs/23-5-stream-states-and-input-validation.md"
-    },
-    {
-      "basename": "23-4-stream-classes-for-strings",
-      "path": "docs/23-4-stream-classes-for-strings.md"
-    },
-    {
-      "basename": "23-2-Input-with-istream",
-      "path": "docs/23-2-Input-with-istream.md"
-    },
-    {
-      "basename": "23-3-output-with-ostream-and-ios",
-      "path": "docs/23-3-output-with-ostream-and-ios.md"
-    },
-    {
-      "basename": "format-group",
-      "path": "docs/format-group.md"
     }
   ],
   "omittedPaths": [],
