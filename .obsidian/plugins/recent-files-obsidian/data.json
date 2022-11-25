@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "10-8-struct-passing-and-miscellany",
-      "path": "docs/10-8-struct-passing-and-miscellany.md"
+      "basename": "10-9-member-selection-with-pointers-and-references",
+      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-8-struct-passing-and-miscellany",
+      "path": "docs/10-8-struct-passing-and-miscellany.md"
+    },
+    {
+      "basename": "struct-padding",
+      "path": "docs/struct-padding.md"
     },
     {
       "basename": "value-initialization",
@@ -15,10 +23,6 @@
     {
       "basename": "10-7-default-member-initialization",
       "path": "docs/10-7-default-member-initialization.md"
-    },
-    {
-      "basename": "10-9-member-selection-with-pointers-and-references",
-      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
     },
     {
       "basename": "10-6-struct-aggregate-initialization",
@@ -195,10 +199,6 @@
     {
       "basename": "insertion-operator",
       "path": "docs/insertion-operator.md"
-    },
-    {
-      "basename": "standard-stream",
-      "path": "docs/standard-stream.md"
     }
   ],
   "omittedPaths": [],

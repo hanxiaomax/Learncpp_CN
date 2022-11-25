@@ -284,21 +284,21 @@ int main()
 }
 ```
 
-在很多平台上，short 是 2 字节、int 是 4 字节bytes, and a double is 8 bytes, so we’d expect `sizeof(Foo)` to be 2 + 4 + 8 = 14 bytes. However, on the author’s machine, this prints:
+在很多平台上，short 是 2 字节、int 是 4 字节而 double 是 8 字节，所以我们会认为 `sizeof(Foo)` 的长度为 2 + 4 + 8 = 14 字节。但是，在笔者的机器上打印结果为。
 
 ```
 The size of Foo is 16
 ```
 
-It turns out, we can only say that the size of a struct will be _at least_ as large as the size of all the variables it contains. But it could be larger! For performance reasons, the compiler will sometimes add gaps into structures (this is called padding).
+实际上，我们计算的结果，只是结构体最小的大小，即结构体的大小的最小值为其所有成员的大小的总和。但是它也可以占据更多空间。处于性能优化的考虑，编译器有时会在结构体中添加一些“间隙”（称为[[struct-padding|结构体填充]]）
 
-In the `Foo` struct above, the compiler is invisibly adding 2 bytes of padding after member `a`, making the size of the structure 16 bytes instead of 14.
+在上面的例子中，`Foo` 结构体会被编译器插入一个2字节的不可见的填充（位于成员a之后），使得结构体的大小从14变为16。
 
 !!! info "扩展阅读"
 
-    The reason compilers may add padding is beyond the scope of this tutorial, but readers who want to learn more can read about [data structure alignment](https://en.wikipedia.org/wiki/Data_structure_alignment) on Wikipedia. This is optional reading and not required to understand structures or C++!
+    编译器之所以对结构体进行填充的原因，超出了本教程的范围，如果您有兴趣可以阅读维基百科上关于[数据结构对齐](https://en.wikipedia.org/wiki/Data_structure_alignment)的内容。该知识点属于扩展阅读内容，它并不是掌握结构体或C++必备的知识！
 
-This can actually have a pretty significant impact on the size of the struct, as the following program will demonstrate:
+这实际上会对结构的大小产生相当大的影响，如下面的程序所示：
 
 ```cpp
 #include <iostream>
@@ -328,9 +328,7 @@ int main()
 }
 ```
 
-COPY
-
-Note that `Foo1` and `Foo2` have the same members, the only difference being where in the declaration order member `qq` is declared. This program prints:
+注意，尽管 `Foo1` 和 `Foo2` 具有相同的成员，但是其中成员`qq`声明的位置是不同的，程序打印：
 
 ```
 The size of Foo1 is 16
@@ -339,4 +337,4 @@ The size of Foo2 is 24
 
 ## 结构体是重要的程序组成部分
 
-While structs are useful in and of themselves, classes (which are the heart of C++ and object oriented programming) build directly on top of the concepts we’ve introduced here. Having a good understanding of structs (especially data members, member selection, and default member initialization) will make your transition to classes that much easier.
+虽然结构本身很有用，但类(类是C++和面向对象编程的核心)直接构建在我们这里介绍的概念之上。在很好地理解结构体(特别是数据成员、成员选择和默认成员初始化)之后，学习类也会变得更加容易。

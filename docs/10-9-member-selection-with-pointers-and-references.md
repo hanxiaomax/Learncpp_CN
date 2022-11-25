@@ -10,11 +10,11 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
-## Member selection for structs and references to structs
 
-In lesson [10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/), we showed that you can use the member selection operator (.) to select a member from a struct object:
 
+## 结构体和结构体引用的成员选择
+
+在[[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]]中我们提到，访问结构体的成员可以使用[[member-selection-operator|成员选择运算符]]：
 ```cpp
 #include <iostream>
 
@@ -37,9 +37,7 @@ int main()
 }
 ```
 
-COPY
-
-Since references to an object act just like the object itself, we can also use the member selection operator (.) to select a member from a reference to a struct:
+因为对象的引用其实就是对象本身，所以我们也可以对引用使用成员选择运算符来访问结构体成员：
 
 ```cpp
 #include <iostream>
@@ -72,12 +70,10 @@ int main()
 }
 ```
 
-COPY
 
-## Member selection for pointers to structs
+## 结构体指针的成员选择
 
-However, use of the member selection operator (.) doesn’t work if you have a pointer to a struct:
-
+不过，成员选择运算符并不能被用于指向结构体的指针：
 ```cpp
 #include <iostream>
 
@@ -102,9 +98,7 @@ int main()
 }
 ```
 
-COPY
-
-With normal variables or references, we can access objects directly. However, because pointers hold addresses, we first need to dereference the pointer to get the object before we can do anything with it. So one way to access a member from a pointer to a struct is as follows:
+对于普通变量和引用，我们可以直接访问它。而对于保存着地址的指针来说，我们必须在访问对象前，首先对地址解引用以获得该对象。 所以，通过结构体访问成员的一种方式应该像下面这样：
 
 ```cpp
 #include <iostream>
@@ -130,11 +124,9 @@ int main()
 }
 ```
 
-COPY
+但是，这并不优雅，尤其是这里必须使用括号以确保正确的运算符优先级。
 
-However, this is a bit ugly, especially because we need to parenthesize the dereference operation so it will take precedence over the member selection operation.
-
-To make for a cleaner syntax, C++ offers a member selection from pointer operator (->) (also sometimes called the arrow operator) that can be used to select members from a pointer to an object:
+为了能够提供一个更简洁的语法，C++提供了指针运算符进行成员选择（有时候称为箭头运算符）使我们可以基于对象指针来访问其成员：
 
 ```cpp
 #include <iostream>
@@ -160,9 +152,7 @@ int main()
 }
 ```
 
-COPY
-
-This member selection from pointer operator (->) works identically to the member selection operator (.) but does an implicit dereference of the pointer object before selecting the member. This arrow operator is not only easier to type, but is also much less prone to error because the indirection is implicitly done for you, so there are no precedence issues to worry about. Consequently, when doing member access through a pointer, always use the -> operator instead of the . operator.
+指针成员选择运算符和普通的成员选择运算符用法类似 member selection from pointer operator (->) works identically to the member selection operator (.) but does an implicit dereference of the pointer object before selecting the member. This arrow operator is not only easier to type, but is also much less prone to error because the indirection is implicitly done for you, so there are no precedence issues to worry about. Consequently, when doing member access through a pointer, always use the -> operator instead of the . operator.
 
 !!! success "最佳实践"
 
