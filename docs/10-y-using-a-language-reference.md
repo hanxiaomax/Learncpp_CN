@@ -80,7 +80,7 @@ Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)
 现在我们知道了 `std::string::length` 的作用，不过这没什么新鲜的，毕竟我们之前就已经掌握该函数了。接下来看看新的东西吧！
 
 
-## `std::cin.ignore`
+## 案例二：`std::cin.ignore`
 
 在[[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]中我们介绍过 `std::cin.ignore`，它可以忽略换行之前的全部内容。这个函数的其中一个形参又长又啰嗦，很难被记住。是什么来着？怎么用来着？让我们查查看。
 
@@ -103,27 +103,27 @@ Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)
 
 等等！ 我之前搜索 “`std::cin.ignore`” 的时候是搜到过 `std::basic_istream` 的。原来 `istream`  就是 `basic_istream` 的 `typedef` 啊。也许我们并没有搜索错！
 
-Scrolling down on that page, we’re greeted with familiar functions:
+页面向下滑动，可以看到很多熟悉的函数：
 
 ![Member functions](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/members-min.png?ezimgfmt=rs:641x828/rscb2/ng:webp/ngcb2)
 
-We’ve used many of these functions already: `operator>>`, `get`, `getline`, `ignore`. Scroll around on that page to get an idea of what else there is in `std::cin`. Then click [`ignore`](https://en.cppreference.com/w/cpp/io/basic_istream/ignore), since that’s what we’re interested in.
+这里很多函数我们都用过：`operator>>`, `get`, `getline`, `ignore`。可以浏览一下还有哪些函数，然后点击 [`ignore`](https://en.cppreference.com/w/cpp/io/basic_istream/ignore)，这就是我们要找的函数。
 
 ![ignore](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/ignore-top-min.png?ezimgfmt=rs:772x250/rscb2/ng:webp/ngcb2)
 
-On the top of the page there’s the function signature and a description of what the function and its two parameters do. The `=` signs after the parameters indicate a default argument (we cover this in lesson [8.12 -- Default arguments](https://www.learncpp.com/cpp-tutorial/default-arguments/)). If we don’t provide an argument for a parameter that has a default value, the default value is used.
+在页面的顶部有函数签名、函数简介及其两个参数的功能描述。形参后面的`=` 符号表示默认实参(在课程[[8-12-Default-arguments|8.12 -默认参数]]中讨论过)。如果没有为具有默认值的形参提供实参，则使用默认值。
 
-The first bullet point answers all of our questions. We can see that `std::numeric_limits<std::streamsize>::max()` has special meaning to `std::cin.ignore`, in that it disables the character count check. This means `std::cin.ignore` will continue ignoring characters until it finds the delimiter, or until it runs out of characters to look at.
+接下来的无序列表中包含三条内容。可以看到 `std::numeric_limits<std::streamsize>::max()` 在 `std::cin.ignore` 中是由特殊含义的，它可以忽略字符计数检查。也就是说，`std::cin.ignore` 会忽略分隔符前所有的字符，或者直到耗尽需要关注的字符个数。
 
-Many times, you don’t need to read the entire description of a function if you already know it but forgot what the parameters or return value mean. In such situations, reading the parameter or return value description suffices.
+多数情况下，我们知道这个函数是干嘛的，但是忘记了参数和返回值，此时你不需要阅读函数的完整描述。这种情况下你只需浏览一下参数列表和返回值就足够了。
 
 ![Parameters and return value](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/parameters-return-min.png?ezimgfmt=rs:505x135/rscb2/ng:webp/ngcb2)
 
-The parameter description is brief. It doesn’t contain the special handling of `std::numeric_limits<std::streamsize>::max()` or the other stop conditions, but serves as a good reminder.
+这里的参数介绍很简洁。它并没有包括 `std::numeric_limits<std::streamsize>::max()` 的特殊含义，但是这些简洁的参数介绍一般情况下能够帮助我们回忆起一些关键的信息。
 
-A language grammar example
+## 案例三：语法
 
-Alongside the standard library, cppreference also documents the language grammar. Here’s a valid program:
+除了标准库，cppreference还记录了C++语言的语法。下面是一个有效的程序:
 
 ```cpp
 #include <iostream>
@@ -152,32 +152,33 @@ int main()
 }
 ```
 
-COPY
+为什么在`if-statement` 的条件中有一个变量定义？在搜索引擎中搜索“cppreference if statement”来了解它的功能。搜索引擎会将我们带到[if statements](https://en.cppreference.com/w/cpp/language/if)。在页面开始的地方就有其相关的语法说明。
 
-Why is there a variable definition inside the condition of the `if-statement`? Let’s use cppreference to figure out what it does by searching for “cppreference if statement” in our favorite search engine. Doing so leads us to [if statements](https://en.cppreference.com/w/cpp/language/if). At the top, there’s a syntax reference.
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/syntax-min.png?ezimgfmt=rs:773x479/rscb2/ng:webp/ngcb2)
 
-On the right, we can again see the version for which this syntax is relevant. Look at the version of the `if-statement` that is relevant since C++17. If you remove all of the optional parts, you get an `if-statement` that you already know. Before the `condition`, there’s an optional `init-statement`, that looks like what’s happening in the code above.
+在页面的右半部分我们可以看到不同语法与C++版本之间的关系。对于 `if-statement`，从C++17开始，如果你忽略所有可选的部分，那么就是我们常用的 `if-statement` 的形式。在 `condition` 之前，有一个可选的部分称为`init-statement`，看起来这部分就是和之前例子中的代码是相关的。
 
+```cpp
 if ( init-statement condition ) statement-true
 if ( init-statement condition ) statement-true else statement-false
+```
 
-Below the syntax reference, there’s an explanation of each part of the syntax, including the `init-statement`. It says that the `init-statement` is typically a declaration of a variable with an initializer.
+在语法参考下方，有对语法的每个部分的解释，其中就包括 `init-statement`——它通常是一个带有初始化值的变量声明。
 
-Following the syntax is an explanation of `if-statements` and simple examples:
+下面是 `if-statements` 的语法解释和一些简单的例子:
 
 ![Explanation on examples](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/explanation-min.png?ezimgfmt=rs:776x843/rscb2/ng:webp/ngcb2)
 
-We already know how `if-statements` work, and the examples don’t include an `init-statement`, so we scroll down a little to find a section dedicated to `if-statements` with initializers:
+我们了解 `if-statements` 是如何工作的，但是这个例子中没有包含 `init-statement` 的用法。所以接着向下看，找找看有没有专门介绍带初始化值的 `if-statements` 的内容。
 
 ![If Statements with Initializer](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/if-init-min.png?ezimgfmt=rs:828x654/rscb2/ng:webp/ngcb2)
 
-First, it is shown how the `init-statement` can be written without actually using an `init-statement`. Now we know what the code in question is doing. It’s a normal variable declaration, just merged into the `if-statement`.
+这里首先展示了如何使用 `init-statement` ，现在我们就知道之前代码中的if语句是怎么回事了。其实它就是将一般的变量声明和if语句合并起来罢了。
 
-The sentence after that is interesting, because it lets us know that the names from the `init-statement` are available in _both_ statements (`statement-true` and `statement-false`). This may be surprising, since you might otherwise assume the variable is only available in the `statement-true`.
+接下来的句子很有意思，它告诉我们 `init-statement` 声明的变量，在if语句的true和false语句块中都能使用。如果你之前天真的认为这个变量只能在true语句块中使用的话，该说明应该会让你看到有点意外。
 
-The `init-statement` examples use features and types that we haven’t covered yet. You don’t have to understand everything you see to understand how the `init-statement` works. Let’s skip everything that’s too confusing until we find something we can work with:
+`init-statement` 的例子中使用了一些我们还没有介绍过的特性，但我们并不需要看懂所有内容就可以了解如何使用 `init-statement`。所以muworks. Let’s skip everything that’s too confusing until we find something we can work with:
 
 ```cpp
 // Iterators, we don't know them. Skip.
@@ -216,8 +217,9 @@ COPY
 
 From this, it’s relatively easy to see how an `init-statement` works. Define some variable (`lock`), then a semicolon, then the condition. That’s exactly what happened in our example.
 
-A warning about the accuracy of cppreference
+## 关于 cppreference 准确性的注意事项
 
-Cppreference is not an official documentation source -- rather, it is a wiki. With wikis, anyone can add and modify content -- the content is sourced from the community. Although this means that it’s easy for someone to add wrong information, that misinformation is typically quickly caught and removed, making cppreference a reliable source.
 
-The only official source for C++ is [the standard](https://isocpp.org/std/the-standard) (Free drafts on [github](https://github.com/cplusplus/draft/tree/master/papers)), which is a formal document and not easily usable as a reference.
+其实，cppreference 并不是一个官方文档源——相反，它是一个wiki百科应用。使用wiki，任何人都可以添加和修改内容——内容来自社区。虽然这意味着人们很容易添加错误的信息，但错误的信息通常会很快被发现并删除，使cppreference成为一个可靠的来源。
+
+[C++标准](https://isocpp.org/std/the-standard) 是唯一的官方文档([github](https://github.com/cplusplus/draft/tree/master/papers))。虽然它是正式的文档，但是它并不是一个易用的参考手册。
