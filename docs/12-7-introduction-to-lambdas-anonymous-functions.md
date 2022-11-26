@@ -1,12 +1,14 @@
 ---
-title: 12.7 - lambda表达式简介
-alias: 12.7 - lambda表达式简介
+title: 12.7 - lambda表达式简介（匿名函数）
+alias: 12.7 - lambda表达式简介（匿名函数）
 origin: /chapter-12-comprehensive-quiz/
 origin_title: "12.7 — Introduction to lambdas (anonymous functions)"
 time: 2022-4-8
 type: translation
 tags:
-- summary
+- lambda
+- C++14
+- C++20
 ---
 
 ??? note "关键点速记"
@@ -243,27 +245,27 @@ int main()
 2
 ```
 
-在这个例子中我们不能使用`auto` 关键字来推断 `fn` 的类型，因为函数的调用者不知道`fn`应该有什么样的参数和返回值类型。这个限制在C++20引入[[abbreviated function templates|缩写函数模板]]之后就不存在了。
+在这个例子中我们不能使用`auto` 关键字，这么做的话函数的调用者就无法知道`fn`应该有什么样的参数和返回值类型。这个限制在C++20引入[[abbreviated function templates|缩写函数模板]]之后就不存在了。
 
-Furthermore, because they are actually templates, functions with `auto` parameters cannot be separated into a header and source file.
+此外，因为它们实际上是模板，具有 `auto` 参数的函数不能被分离到头文件和源文件中。
 
 !!! note "法则"
 
-	Use `auto` when initializing variables with lambdas, and `std::function` if you can’t initialize the variable with the lambda.
+	需要用 lambda 初始化变量时，使用`auto`关键字。罪域不能用 lambda 初始化变量的场合，使用`std::function`。
 
 ## 泛型lambda函数
 
-For the most part, lambda parameters work by the same rules as regular function parameters.
+在大多数情况下，lambda形参的工作规则与常规函数形参相同。
 
-One notable exception is that since C++14 we’re allowed to use `auto` for parameters (note: in C++20, regular functions are able to use `auto` for parameters too). When a lambda has one or more `auto` parameter, the compiler will infer what parameter types are needed from the calls to the lambda.
+一个值得注意的例外是，从C++ 14开始，我们允许使用`auto` 作为形参类型(注意:在c++ 20中，常规函数也可以使用 `auto` 作为形参类型)。当lambda有一个或多个 `auto` 形参时，编译器将从对lambda的调用中推断需要什么形参类型。
 
-Because lambdas with one or more `auto` parameter can potentially work with a wide variety of types, they are called generic lambdas.
+因为带有一个或多个 `auto` 参数的 lambda可以潜在地与各种类型一起工作，所以它们被称为泛型lambda。
 
 !!! info "扩展阅读"
 
-    When used in the context of a lambda, `auto` is just a shorthand for a template parameter.
+    当在lambda的上下文中使用时，`auto`只是模板形参的缩写。
 
-Let’s take a look at a generic lambda:
+看一个泛型lambda的例子：
 
 ```cpp
 #include <algorithm>
@@ -306,17 +308,15 @@ int main()
 }
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 June and July start with the same letter
 ```
 
-In the above example, we use `auto` parameters to capture our strings by `const` reference. Because all string types allow access to their individual characters via `operator[]`, we don’t need to care whether the user is passing in a `std::string`, C-style string, or something else. This allows us to write a lambda that could accept any of these, meaning if we change the type of `months` later, we won’t have to rewrite the lambda.
+在上面的例子中，我们使用了 `auto` 形参来获取字符串的 `const`引用。由于所有的字符串类型都可以通过 `operator[]` 访问单个字符。所以我们无需关心传入字符串是`std::string`、C风格字符串还是其他字符串。这样一来，我们就可以编写介绍这些类型的lambda表达式，如果将来需要修改 `months` 的类型，也不必修改lambda。
 
-However, `auto` isn’t always the best choice. Consider:
+不过，使用 `auto` 并不总是最佳的选择，考虑下面代码：
 
 ```cpp
 #include <algorithm>
@@ -363,7 +363,7 @@ There are 2 months with 5 letters
 
 In this example, using `auto` would infer a type of `const char*`. C-style strings aren’t easy to work with (apart from using `operator[]`). In this case, we prefer to explicitly define the parameter as a `std::string_view`, which allows us to work with the underlying data much more easily (e.g. we can ask the string view for its length, even if the user passed in a C-style array).
 
-## 泛型匿名函数和静态变量
+## 泛型lambda和静态变量
 
 One thing to be aware of is that a unique lambda will be generated for each different type that `auto` resolves to. The following example shows how one generic lambda turns into two distinct lambdas:
 
