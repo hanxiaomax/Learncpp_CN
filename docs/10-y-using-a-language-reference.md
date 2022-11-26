@@ -9,27 +9,27 @@ tags:
 - summary
 ---
 
-Depending on where you’re at in your journey with learning programming languages (and specifically, C++), LearnCpp.com might be the only resource you’re using to learn C++ or to look something up. LearnCpp.com is designed to explain concepts in a beginner-friendly fashion, but it simply can’t cover every aspect of the language. As you begin to explore outside the topics that these tutorials cover, you’ll inevitably run into questions that these tutorials don’t answer. In that case, you’ll need to leverage outside resources.
+根据你学习C++所处的阶段，本网站可能是你在某个阶段学习C++的唯一资料。LearnCpp.com 以一种新手友好的方式向你介绍了C++的基本概念，但是它不可能涵盖C++的方方面面。当你开始探索本教程以外的话题时，你需要学会如何利用其他的资源来进行学习。
 
-One such resource is [Stack Overflow](https://stackoverflow.com/), where you can ask questions (or better, read the answer to the same question someone before you asked). But sometimes a better first stop is a reference guide. Unlike tutorials, which tend to focus on the most important topics and use informal/common language to make learning easier, reference guides describe C++ precisely using formal terminology. Because of this, reference material tends to be comprehensive, accurate, and… hard to understand.
+[Stack Overflow](https://stackoverflow.com/) 是一个问答网站，在这里你可以问问题(你可以在这里找到与你有相同问题的人并且阅读这些问题的答案)。不过，多数情况下我们还是建议你先去看看C++语言的参考手册。和教程不同，教程通常专注于某些重要话题并使用通俗的语言向你解释相关的概念，使得语言学习更容易。但是参考手册不同，它的作用是使用正式的术语，精确地描述C++中的概念。因此，参考手册通常很全面、精确，但比较难以理解。
 
-In this lesson, we’ll show how to use [cppreference](https://cppreference.com/), a popular standard reference that we refer to throughout the lessons, by researching 3 examples.
+本节课我们会向你介绍如何高效地使用 [cppreference](https://cppreference.com/)，这是一个流行的C++标准参考文档网站，本教程自始至终多次参考了该网站的内容。我们会使用三个具体的例子向你展示如何去使用该参考网站。
 
 ## 总览
 
-Cppreference greets you with an [overview](https://en.cppreference.com/w/cpp) of the core language and libraries:
+Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)  其中列出了语言的核心功能和标准库：
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/overview-min.png?ezimgfmt=rs%3Adevice%2Frscb2-1)
 
-From here, you can get to everything cppreference has to offer, but it’s easier to use the search function, or a search engine. The overview is a great place to visit once you’ve finished the tutorials on LearnCpp.com, to delve deeper into the libraries, and to see what else the language has to offer that you might not be aware of.
+虽然在这个页面中，你可以看到cppreference提供的所有内容的目录，但通常使用搜索功能或搜索引擎更容易找到你需要的内容。当你完成了LearnCpp.com上的教程之后，该页面是你绝佳的下一站目的地。在这里你可以深入研究标准库，并查看C++还提供了哪些你还不知道的功能。
 
-The upper half of the table shows features currently in the language, while the bottom half shows technical specifications, which are features that may or may not be added to C++ in a future version, or have already been partially accepted into the language. This can be useful if you want to see what new capabilities are coming soon.
+表的上半部分显示了C++当前的特性，而下半部分则展示了技术规范，这些特性可能会在未来的版本中添加到C++，也可能不会添加到C++，或者已经部分被语言接受。如果您想了解即将推出的新功能，这将非常有用。
 
-Starting with C++11, cppreference marks all features with the language standard version they’ve been added in. The standard version is the little green number you can see next to some of the links in the above image. Features without a version number have been available since C++98/03. The version numbers are not only in the overview, but everywhere on cppreference, letting you know exactly what you can or cannot use in a specific C++ version.
+从C++ 11开始，cppreference会用引入该功能的标准版本来标记对应的功能。标准版本是上面图片中一些链接旁边的绿色小数字。那些没有标记标准版本的功能，则是在 C++ 98/03 中就已经有的功能。我们不仅会在总览页面看到标准版本号，它在cppreference上随处可见，这使得我们可以确切地知道在特定的C++版本中什么功能可用，什么功能不可用。
 
 !!! info "提醒"
 
-	The C++ versions are C++98, C++03, C++11, C++14, C++17, C++20. C++23 is the informal name for the next planned iteration.
+	C++ 的版本有：C++98, C++03, C++11, C++14, C++17, C++20。C++23 是下一个迭代的版本号。
 
 !!! warning "注意"
 
@@ -37,7 +37,7 @@ Starting with C++11, cppreference marks all features with the language standard 
 
 !!! tip "小贴士"
 
-	Cppreference is not only a reference for C++, but also for C. Since C++ shares some functions with C (which can differ), you may find yourself in the C reference after searching for something. The URL and the navigation bar at the top of cppreference always show you if you’re browsing the C or C++ reference.
+cppreference不仅是C++的参考，也是C的参考。因为C++和C共享一些函数(可能有所不同)，你可能会在C参考中搜索到一些东西。cppreference顶部的URL和导航栏总是会显示您正在浏览的是C还是c++引用。
 
 ## `std::string::length`
 
