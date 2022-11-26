@@ -159,7 +159,7 @@ Found banana
 
 ## 默认捕获的是const值
 
-By default, variables are captured by `const value`. This means when the lambda is created, the lambda captures a constant copy of the outer scope variable, which means that the lambda is not allowed to modify them. In the following example, we capture the variable `ammo` and try to decrement it.
+默认情况下，变量被捕获为 const 值。这意味着在创建lambda时，lambda捕获外部作用域变量的const副本，这意味着不允许lambda修改它们。在下面的例子中，我们捕获变量`ammo`并尝试递减它。
 
 ```cpp
 #include <iostream>
@@ -168,10 +168,10 @@ int main()
 {
   int ammo{ 10 };
 
-  // Define a lambda and store it in a variable called "shoot".
+  // 定义一个 lambda 并将其存放在 "shoot" 中
   auto shoot{
     [ammo]() {
-      // Illegal, ammo was captured as a const copy.
+      // 非法操作, ammo 是const的
       --ammo;
 
       std::cout << "Pew! " << ammo << " shot(s) left.\n";
@@ -187,13 +187,12 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, when we capture `ammo`, a new `const` variable with the same name and value is created in the lambda. We can’t modify it, because it is `const`, which causes a compile error.
+在上面的例子中，由于捕获的 `ammo` 是`const`变量。所以并不能被修改，否则编译器会报错。
 
-## Mutable capture by value
+## 捕获变量设置为可变值
 
-To allow modifications of variables that were captured by value, we can mark the lambda as `mutable`. The mutable keyword in this context removes the `const` qualification from _all_ variables captured by value.
+为了允许修改被捕获的变量，我们可以将lambda标记为 `mutable` 。在此上下文中，`mutable` 关键字从按值捕获的全部变量中删除 const 限定。
 
 ```cpp
 #include <iostream>
@@ -203,9 +202,9 @@ int main()
   int ammo{ 10 };
 
   auto shoot{
-    // Added mutable after the parameter list.
+    // 在参数列表后面添加 mutable 关键字
     [ammo]() mutable {
-      // We're allowed to modify ammo now
+      // 现在可以修改 ammo 了
       --ammo;
 
       std::cout << "Pew! " << ammo << " shot(s) left.\n";
@@ -221,9 +220,7 @@ int main()
 }
 ```
 
-COPY
-
-Output:
+输出结果：
 
 ```
 Pew! 9 shot(s) left.
@@ -231,17 +228,17 @@ Pew! 8 shot(s) left.
 10 shot(s) left
 ```
 
-While this now compiles, there’s still a logic error. What happened? When the lambda was called, the lambda captured a _copy_ of `ammo`. When the lambda decremented `ammo` from `10` to `9` to `8`, it decremented its own copy, not the original value.
+虽然代码可以编译，但是存在逻辑错误。为什么会这样？当lambda被调用时，它捕获的是 `ammo` 的副本，尽管 lambda 将 `ammo` 从 `10` 递减到 `9` 再到 `8`，但是它递减的是其拷贝，而不是原本的值。
 
-Note that the value of `ammo` is preserved across calls to the lambda!
+注意，`ammo` 的值会在多次lambda调用直接保持！
 
 !!! warning "注意"
 
-	Because captured variables are members of the lambda object, their values are persisted across multiple calls to the lambda!
+	因为捕获的变量是lambda对象的成员，所以它们的值跨多次调用lambda!
 
-## Capture by reference
+## 捕获变量的引用
 
-Much like functions can change the value of arguments passed by reference, we can also capture variables by reference to allow our lambda to affect the value of the argument.
+就像函数可以通过引用来更改参数的值一样，我们也可以通过引用来捕获变量，以允许lambda修改参数的值。
 
 To capture a variable by reference, we prepend an ampersand (`&`) to the variable name in the capture. Unlike variables that are captured by value, variables that are captured by reference are non-const, unless the variable they’re capturing is `const`. Capture by reference should be preferred over capture by value whenever you would normally prefer passing an argument to a function by reference (e.g. for non-fundamental types).
 
@@ -335,7 +332,7 @@ Toyota Corolla
 Volkswagen Golf
 ```
 
-## Capturing multiple variables
+## 捕获多个变量
 
 Multiple variables can be captured by separating them with a comma. This can include a mix of variables captured by value or by reference:
 
@@ -348,9 +345,9 @@ std::vector<CEnemy> enemies{};
 [health, armor, &enemies](){};
 ```
 
-COPY
 
-## Default captures
+
+## 默认捕获
 
 Having to explicitly list the variables you want to capture can be burdensome. If you modify your lambda, you may forget to add or remove captured variables. Fortunately, we can enlist the compiler’s help to auto-generate a list of variables we need to capture.
 
@@ -425,7 +422,6 @@ std::vector<CEnemy> enemies{};
 [armor, &](){};
 ```
 
-COPY
 
 ## 在闭包中定义新的变量
 
@@ -476,7 +472,7 @@ COPY
 
 	Only initialize variables in the capture if their value is short and their type is obvious. Otherwise it’s best to define the variable outside of the lambda and capture it.
 
-## Dangling captured variables
+## 悬垂的捕获变量
 
 Variables are captured at the point where the lambda is defined. If a variable captured by reference dies before the lambda, the lambda will be left holding a dangling reference.
 
