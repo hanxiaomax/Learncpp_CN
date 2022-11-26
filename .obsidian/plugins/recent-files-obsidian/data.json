@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "10-y-using-a-language-reference",
-      "path": "docs/10-y-using-a-language-reference.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "10-y-using-a-language-reference",
+      "path": "docs/10-y-using-a-language-reference.md"
     },
     {
       "basename": "13-17-nested-types-in-classes",

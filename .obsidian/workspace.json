@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "00e3b33fa2cad4a3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/10-y-using-a-language-reference.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/10-y-using-a-language-reference.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -133,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/10-y-using-a-language-reference.md",
+                "file": "docs/MOC.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,8 +138,9 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "00e3b33fa2cad4a3",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/10-y-using-a-language-reference.md",
     "docs/MOC.md",
     "docs/13-17-nested-types-in-classes.md",
     "docs/10-x-Chapter-10-comprehensive-quiz.md",
@@ -162,7 +149,6 @@
     "docs/10-2-unscoped-enumerations.md",
     "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
     "docs/9-1-Introduction-to-compound-data-types.md",
-    "docs/6-12-Using-declarations-and-using directives.md",
-    "docs/13-2-classes-and-class-members.md"
+    "docs/6-12-Using-declarations-and-using directives.md"
   ]
 }

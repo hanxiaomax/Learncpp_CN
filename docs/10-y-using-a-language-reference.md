@@ -178,7 +178,7 @@ if ( init-statement condition ) statement-true else statement-false
 
 接下来的句子很有意思，它告诉我们 `init-statement` 声明的变量，在if语句的true和false语句块中都能使用。如果你之前天真的认为这个变量只能在true语句块中使用的话，该说明应该会让你看到有点意外。
 
-`init-statement` 的例子中使用了一些我们还没有介绍过的特性，但我们并不需要看懂所有内容就可以了解如何使用 `init-statement`。所以muworks. Let’s skip everything that’s too confusing until we find something we can work with:
+`init-statement` 的例子中使用了一些我们还没有介绍过的特性，但我们并不需要看懂所有内容就可以了解如何使用 `init-statement`。所以目前可以先跳过让人困惑的内容，专注于我们熟系的部分：
 
 ```cpp
 // Iterators, we don't know them. Skip.
@@ -201,9 +201,7 @@ if (auto keywords = {"if", "for", "while"};
 }
 ```
 
-COPY
-
-The easiest example seems to be the one with an `int`. Then we look after the semicolon and there’s another definition, odd… Let’s go back to the `std::lock_guard` example.
+最简单的例子似乎是使用了 `int` 的那个，但是它的分号后面又是一个定义，看上去有点奇怪。再看一个`std::lock_guard` 的例子：
 
 ```cpp
 if (std::lock_guard lock(mx); shared_flag)
@@ -213,9 +211,7 @@ if (std::lock_guard lock(mx); shared_flag)
 }
 ```
 
-COPY
-
-From this, it’s relatively easy to see how an `init-statement` works. Define some variable (`lock`), then a semicolon, then the condition. That’s exactly what happened in our example.
+这里定义了变量(`lock`)，然后是分号，然后是条件。这个反倒是最接近我们代码的例子。
 
 ## 关于 cppreference 准确性的注意事项
 
