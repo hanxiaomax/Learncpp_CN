@@ -319,9 +319,7 @@ int main()
 }
 ```
 
-COPY
-
-Possible output
+可能的输出是：
 
 ```
 Comparisons: 2
@@ -332,7 +330,8 @@ Volkswagen Golf
 
 ## 捕获多个变量
 
-Multiple variables can be captured by separating them with a comma. This can include a mix of variables captured by value or by reference:
+
+可以通过用逗号分隔多个变量来捕获它们。这其中可以包括通过值或引用捕获的变量的组合：
 
 ```cpp
 int health{ 33 };
@@ -347,12 +346,12 @@ std::vector<CEnemy> enemies{};
 
 ## 默认捕获
 
-Having to explicitly list the variables you want to capture can be burdensome. If you modify your lambda, you may forget to add or remove captured variables. Fortunately, we can enlist the compiler’s help to auto-generate a list of variables we need to capture.
+必须显式地列出想要捕获的变量是很麻烦的。如果修改lambda，可能会忘记添加或删除捕获的变量。幸运的是，我们可以利用编译器的帮助来自动生成需要捕获的变量列表。
 
 A default capture (also called a capture-default) captures all variables that are mentioned in the lambda. Variables not mentioned in the lambda are not captured if a default capture is used.
 
-To capture all used variables by value, use a capture value of `=`.  
-To capture all used variables by reference, use a capture value of `&`.
+- To capture all used variables by value, use a capture value of `=`.  
+- To capture all used variables by reference, use a capture value of `&`.
 
 Here’s an example of using a default capture by value:
 
