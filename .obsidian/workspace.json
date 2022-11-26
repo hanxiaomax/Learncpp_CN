@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "e5ac87e7ccb1a50a",
+            "id": "d258447e5c5493a2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/19-x-Chapter-19-comprehensive-quiz.md",
+                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "closure",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -95,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -112,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
               }
             }
           },
@@ -133,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/19-x-Chapter-19-comprehensive-quiz.md",
+                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,19 +148,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "e5ac87e7ccb1a50a",
+  "active": "d258447e5c5493a2",
   "lastOpenFiles": [
-    "docs/class-instance.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md",
-    "docs/fixed-array.md",
+    "docs/abbreviated function templates.md",
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+    "docs/function-literal.md",
+    "docs/type deduction.md",
+    "docs/closure.md",
     "docs/MOC.md",
-    "docs/7-10-Break-and-continue.md",
-    "docs/4-3-Object-sizes-and-the-sizeof-operator.md",
-    "docs/4-2-Void.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/10-1-Introduction-to-program-defined-user-defined-types.md",
-    "docs/5-1-Operator-precedence-and-associativity.md"
+    "docs/10-y-using-a-language-reference.md",
+    "docs/19-x-Chapter-19-comprehensive-quiz.md",
+    "docs/class-instance.md",
+    "docs/fixed-array.md"
   ]
 }

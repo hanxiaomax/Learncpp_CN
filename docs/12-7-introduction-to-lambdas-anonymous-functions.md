@@ -58,11 +58,11 @@ Found walnut
 
 这里问题的核心在于 `std::find_if` 要求使用者传递给它一个函数指针。因此，我们必须定义一个只使用一次的函数，还必须给它起个名，并将其放置在全局作用域中(因为函数不能嵌套!)。这个函数很短，从一行代码中几乎比从名称和注释中更容易辨别它的功能。
 
-## 匿名函数
+## lambda 
 
-A lambda expression (also called a lambda or closure) allows us to define an anonymous function inside another function. The nesting is important, as it allows us both to avoid namespace naming pollution, and to define the function as close to where it is used as possible (providing additional context).
+使用 lambda 表达式(有时候也称lambda或[[closure|闭包]]或匿名函数) 可以在其他函数中定义匿名函数。能够嵌套定义是很重要的特性，它可以避免[[namespace|命名空间]]中的名称污染，而且可以将函数的定义尽可能靠近使用它的地方（避免额外的上下文）。
 
-The syntax for lambdas is one of the weirder things in C++, and takes a bit of getting used to. Lambdas take the form:
+lambda 的语法是C++中最奇怪的东西之一，需要一点时间来适应。匿名函数形式是:
 
 ```cpp
 [ captureClause ] ( parameters ) -> returnType
@@ -71,30 +71,29 @@ The syntax for lambdas is one of the weirder things in C++, and takes a bit of g
 }
 ```
 
--   The capture clause can be empty if no captures are needed.
--   The parameter list can be either empty or omitted if no parameters are required.
--   The return type is optional, and if omitted, `auto` will be assumed (thus using type deduction used to determine the return type). While we previously noted that type deduction for function return types should be avoided, in this context, it’s fine to use (because these functions are typically so trivial).
+-   闭包语句可以为空，如果不需要捕获变量的话；
+-   [[parameters|形参]]列表也可以为空，如果不需要形参的话；
+-   返回类型是可选的，如果省略的话，会假定为 `auto` (使用[[type deduction|类型推断]]来决定返回值类型)。尽管我们之前说过，==应该避免使用函数返回值的类型推断==，但是在匿名表达式中是可以用的（因为这些函数通常都非常简单）。
 
-Also note that lambdas (being anonymous) have no name, so we don’t need to provide one.
+因为lambda 没有函数名，所以不必为其起名。
 
 !!! cite "题外话"
 
-	This means a trivial lambda definition looks like this:
+	一个基本的匿名函数定义看上去像是这样：
 	
 	```cpp
 	#include <iostream>
 	
 	int main()
 	{
-	  [] {}; // a lambda with an omitted return type, no captures, and omitted parameters.
-	
+	  [] {}; // 省略返回值类型, 无闭包，无参数
+	  
 	  return 0;
 	}
 	```
 
-COPY
 
-Let’s rewrite the above example using a lambda:
+让我们用匿名函数重写上面的例子：
 
 ```cpp
 #include <algorithm>
@@ -108,7 +107,7 @@ int main()
 
   // Define the function right where we use it.
   const auto found{ std::find_if(arr.begin(), arr.end(),
-                           [](std::string_view str) // here's our lambda, no capture clause
+                           [](std::string_view str) // 匿名函数，无闭包
                            {
                              return (str.find("nut") != std::string_view::npos);
                            }) };
@@ -126,32 +125,28 @@ int main()
 }
 ```
 
-COPY
-
-This works just like the function pointer case, and produces an identical result:
+和使用函数指针的情况一样，产生相同的结果:
 
 ```
 Found walnut
 ```
 
-Note how similar our lambda is to our `containsNut` function. They both have identical parameters and function bodies. The lambda has no capture clause (we’ll explain what a capture clause is in the next lesson) because it doesn’t need one. And we’ve omitted the trailing return type in the lambda (for conciseness), but since `operator!=` returns a `bool`, our lambda will return a `bool` too.
+可以看到，lambda 和之前的 `containsNut` 函数非常类型。它们的参数和函数体是完全一样的。这个lambda没有闭包（下节课介绍），因为没必要。不仅如此我们还省略了返回值类型，但是由于 `operator!=` 返回 `bool`，所以该lambda也返回布尔类型。
 
-## 匿名函数的类型
+## lambda 函数的类型
 
-In the above example, we defined a lambda right where it was needed. This use of a lambda is sometimes called a function literal.
+在上面的例子中，我们在需要的地方定义了匿名函数，它的这种用法有时被称为[[function-literal|函数字面量]]。
 
-However, writing a lambda in the same line as it’s used can sometimes make code harder to read. Much like we can initialize a variable with a literal value (or a function pointer) for use later, we can also initialize a lambda variable with a lambda definition and then use it later. A named lambda along with a good function name can make code easier to read.
+然而，在同一行中编写lambda有时会降低代码的可读性。就像我们可以用字面值(或函数指针)初始化一个变量以供以后使用一样，我们也可以用lambda定义初始化一个变量，然后在以后使用它。一个有好名字的lambda函数可以使代码更容易阅读。
 
-For example, in the following snippet, we’re using `std::all_of` to check if all elements of an array are even:
+例如，在下面的代码片段中，我们使用`std::all_of` 来检查数组中的所有元素是否为偶数：
 
 ```cpp
 // Bad: We have to read the lambda to understand what's happening.
 return std::all_of(array.begin(), array.end(), [](int i){ return ((i % 2) == 0); });
 ```
 
-COPY
-
-We can improve the readability of this as follows:
+可以通过下面的方式提升可读性。
 
 ```cpp
 // Good: Instead, we can store the lambda in a named variable and pass it to the function.
@@ -165,19 +160,17 @@ auto isEven{
 return std::all_of(array.begin(), array.end(), isEven);
 ```
 
-COPY
+注意，现在最后一行代码可以很自然地被理解为：*判断数组的所有元素是否都是偶数*
 
-Note how well the last line reads: “return whether _all of_ the elements in the _array_ are _even_”
+不过，`isEven` 的类型是什么呢？
 
-But what is the type of lambda `isEven`?
-
-As it turns out, lambdas don’t have a type that we can explicitly use. When we write a lambda, the compiler generates a unique type just for the lambda that is not exposed to us.
+事实证明，lambdas没有可以显式使用的类型。当我们编写lambda时，编译器会为其生成一个唯一的类型，但对我们并不可见。
 
 !!! info "扩展阅读"
 
-	In actuality, lambdas aren’t functions (which is part of how they avoid the limitation of C++ not supporting nested functions). They’re a special kind of object called a functor. Functors are objects that contain an overloaded `operator()` that make them callable like a function.
-
-Although we don’t know the type of a lambda, there are several ways of storing a lambda for use post-definition. If the lambda has an empty capture clause (nothing between the hard brackets []), we can use a regular function pointer. `std::function` or type deduction via the `auto` keyword will also work (even if the lambda has a non-empty capture clause).
+	实际上，lambda并不是函数(这是它们可以避免C++不支持嵌套函数的限制的部分原因)。它们是一种叫做functor的特殊对象。函子是包含重载的`operator()`的对象，使它们像函数一样可调用。
+	
+尽管我们并不知道lambda的类型，但是我们仍然有几种方法可以将其存放到某个变量中。如果一个lambda没有闭包，则可以使用一个普通的函数指针存放它。使用 `std::function` 或者通过 `auto` 进行类型推断也是可以的(即便此时lambda有闭包语句)。
 
 ```cpp
 #include <functional>
@@ -215,11 +208,9 @@ int main()
 }
 ```
 
-COPY
+使用lambda的实际类型的唯一方法是通过 `auto` 。与 `std::function` 相比，`auto` 还有一个好处，那就是没有开销。
 
-The only way of using the lambda’s actual type is by means of `auto`. `auto` also has the benefit of having no overhead compared to `std::function`.
-
-Unfortunately, prior to C++20, we can’t always use `auto`. In cases where the actual lambda is unknown (e.g. because we’re passing a lambda to a function as a parameter and the caller determines what lambda will be passed in), we can’t use `auto` without compromises. In such cases, `std::function` can be used instead.
+不幸的是，在C++ 20之前，我们不能总是使用`auto` 。在实际lambda未知的情况下(例如，因为我们将lambda作为参数传递给函数，由调用者决定将传入什么lambda)，我们不能在这种情况下使用 `auto` 。在这种情况下，可以使用`std::function` 来代替。
 
 ```cpp
 #include <functional>
@@ -244,9 +235,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出
 
 ```
 0
@@ -254,7 +243,7 @@ Output
 2
 ```
 
-If we had used `auto` for the type of `fn`, the caller of the function wouldn’t know what parameters and return type `fn` needs to have. This limitation was lifted in C++20 when abbreviated function templates were added.
+在这个例子中我们不能使用`auto` 关键字来推断 `fn` 的类型，因为函数的调用者不知道`fn`应该有什么样的参数和返回值类型。这个限制在C++20引入[[abbreviated function templates|缩写函数模板]]之后就不存在了。
 
 Furthermore, because they are actually templates, functions with `auto` parameters cannot be separated into a header and source file.
 
@@ -262,7 +251,7 @@ Furthermore, because they are actually templates, functions with `auto` parame
 
 	Use `auto` when initializing variables with lambdas, and `std::function` if you can’t initialize the variable with the lambda.
 
-## 泛型匿名函数
+## 泛型lambda函数
 
 For the most part, lambda parameters work by the same rules as regular function parameters.
 
