@@ -348,12 +348,13 @@ std::vector<CEnemy> enemies{};
 
 必须显式地列出想要捕获的变量是很麻烦的。如果修改lambda，可能会忘记添加或删除捕获的变量。幸运的是，我们可以利用编译器的帮助来自动生成需要捕获的变量列表。
 
-A default capture (also called a capture-default) captures all variables that are mentioned in the lambda. Variables not mentioned in the lambda are not captured if a default capture is used.
+默认捕获(也称为capture-default)捕获lambda中提到的所有变量，但不会捕获lambda中未提及的变量。
 
-- To capture all used variables by value, use a capture value of `=`.  
-- To capture all used variables by reference, use a capture value of `&`.
+- 按值捕获所有使用的变量，使用捕获值`=` ；
+- 按引用捕获所有使用的变量，请使用捕获值 `&`。
 
-Here’s an example of using a default capture by value:
+
+下面是一个使用默认值捕获的例子：
 
 ```cpp
 #include <algorithm>
@@ -387,35 +388,34 @@ int main()
   return 0;
 }
 ```
+=
 
-COPY
-
-Default captures can be mixed with normal captures. We can capture some variables by value and others by reference, but each variable can only be captured once.
+默认捕获可以与普通捕获混合使用。我们可以通过值捕获一些变量，通过引用捕获另一些变量，但是每个变量只能捕获一次。
 
 ```cpp
 int health{ 33 };
 int armor{ 100 };
 std::vector<CEnemy> enemies{};
 
-// Capture health and armor by value, and enemies by reference.
+// 按值捕获 health 和 armor ，按引用捕获 enemies 
 [health, armor, &enemies](){};
 
-// Capture enemies by reference and everything else by value.
+// 按引用捕获 enemies，剩下的都按值捕获
 [=, &enemies](){};
 
-// Capture armor by value and everything else by reference.
+// 按值捕获 armor，剩下的都按引用捕获
 [&, armor](){};
 
-// Illegal, we already said we want to capture everything by reference.
+// 错误：已经表明按引用捕获所有变量
 [&, &armor](){};
 
-// Illegal, we already said we want to capture everything by value.
+// 错误：已经表明按值捕获所有变量
 [=, armor](){};
 
-// Illegal, armor appears twice.
+// 错误：armor 出现了两次
 [armor, &health, &armor](){};
 
-// Illegal, the default capture has to be the first element in the capture group.
+// 错误：默认捕获必须放在最前面
 [armor, &](){};
 ```
 
