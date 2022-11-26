@@ -5,12 +5,16 @@
       "path": "docs/12-8-lambda-captures.md"
     },
     {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
     },
     {
       "basename": "return-type-deduction",
@@ -195,10 +199,6 @@
     {
       "basename": "non-static-member-initialization",
       "path": "docs/non-static-member-initialization.md"
-    },
-    {
-      "basename": "default-member-initializer",
-      "path": "docs/default-member-initializer.md"
     }
   ],
   "omittedPaths": [],

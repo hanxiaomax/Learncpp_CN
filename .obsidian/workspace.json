@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "e8065e7ab07db1e9",
+            "id": "4bbce176817f2bd8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -152,17 +152,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e8065e7ab07db1e9",
+  "active": "4bbce176817f2bd8",
   "lastOpenFiles": [
-    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/MOC.md",
+    "docs/12-x-chapter-12-comprehensive-quiz.md",
     "docs/12-8-lambda-captures.md",
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/return-type-deduction.md",
     "docs/lambda.md",
     "docs/abbreviated function templates.md",
     "docs/function-literal.md",
     "docs/type deduction.md",
-    "docs/closure.md",
-    "docs/10-y-using-a-language-reference.md"
+    "docs/closure.md"
   ]
 }

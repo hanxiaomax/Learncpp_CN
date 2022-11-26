@@ -422,7 +422,7 @@ std::vector<CEnemy> enemies{};
 
 ## 在闭包中定义新的变量
 
-Sometimes we want to capture a variable with a slight modification or declare a new variable that is only visible in the scope of the lambda. We can do so by defining a variable in the lambda-capture without specifying its type.
+有时候我们需要对捕获的变量进行稍许修改，或者是声明一个仅在 lambda 作用域中可见的变量，此时我们可以在闭包中定义一个新的变量而且不必指明其类型。
 
 ```cpp
 #include <array>
@@ -439,11 +439,11 @@ int main()
   std::cout << "Enter width and height: ";
   std::cin >> width >> height;
 
-  // We store areas, but the user entered width and height.
-  // We need to calculate the area before we can search for it.
+  // 我们需要面积，但是用户输入的是长宽。
+  // 所以需要在搜索面积前首先计算面积
   auto found{ std::find_if(areas.begin(), areas.end(),
-                           // Declare a new variable that's visible only to the lambda.
-                           // The type of userArea is automatically deduced to int.
+                           // 声明一个仅 lambda 可见的变量
+                           // userArea 会被自动推断为 int.
                            [userArea{ width * height }](int knownArea) {
                              return (userArea == knownArea);
                            }) };
@@ -461,57 +461,56 @@ int main()
 }
 ```
 
-COPY
 
-`userArea` will only be calculated once when the lambda is defined. The calculated area is stored in the lambda object and is the same for every call. If a lambda is mutable and modifies a variable that was defined in the capture, the original value will be overridden.
+当lambda被定义时，`userArea` 只会被计算一次。计算的面积存储在lambda对象中，每次调用都是相同的。如果lambda是可变的，并且修改了捕获中定义的变量，则原始值将被覆盖。
+
 
 !!! success "最佳实践"
 
-	Only initialize variables in the capture if their value is short and their type is obvious. Otherwise it’s best to define the variable outside of the lambda and capture it.
+	只有当变量的存在时间很短且类型很明显时，才在捕获中的定义并初始化变量。否则，最好在lambda之外定义变量并捕获它。
 
 ## 悬垂的捕获变量
 
-Variables are captured at the point where the lambda is defined. If a variable captured by reference dies before the lambda, the lambda will be left holding a dangling reference.
+变量在定义lambda的地方被捕获。如果引用捕获的变量在lambda之前被销毁，则lambda将得到一个[[dangling|悬垂]]引用。
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
 #include <string>
 
-// returns a lambda
+// 返回一个 lambda
 auto makeWalrus(const std::string& name)
 {
-  // Capture name by reference and return the lambda.
+  // 按引用捕获 name 并返回一个lambda
   return [&]() {
-    std::cout << "I am a walrus, my name is " << name << '\n'; // Undefined behavior
+    std::cout << "I am a walrus, my name is " << name << '\n'; // 未定义行为
   };
 }
 
 int main()
 {
-  // Create a new walrus whose name is Roofus.
-  // sayName is the lambda returned by makeWalrus.
+  // 创建一个名为roofus的新的 walrus 
+  // sayName 是 makeWalrus 返回的 lambda
   auto sayName{ makeWalrus("Roofus") };
 
-  // Call the lambda function that makeWalrus returned.
+  // 调用 makeWalrus 返回的 lambda 
   sayName();
 
   return 0;
 }
 ```
 
-COPY
 
-The call to `makeWalrus` creates a temporary `std::string` from the string literal “Roofus”. The lambda in `makeWalrus` captures the temporary string by reference. The temporary string dies when `makeWalrus` returns, but the lambda still references it. Then when we call `sayName`, the dangling reference is accessed, causing undefined behavior.
+调用 `makeWalrus` 会从字符串字面量“Roofus”创建一个临时的 `std::string` 。`makeWalrus` 中的lambda会按引用捕获该字符串。当 `makeWalrus` 返回时，该字符串会销毁，但是 lambda 仍然会使用它的引用。于是当我们调用 `sayName` 时，就会访问该悬垂引用，导致[[undefined-behavior|未定义行为]]。
 
-Note that this also happens if `name` is passed to `makeWalrus` by value. The variable `name` still dies at the end of `makeWalrus`, and the lambda is left holding a dangling reference.
+注意，即使 `name` 是[[pass-by-value|按值传递]]给 `makeWalrus` 的。变量 `name` 仍然会在 `makeWalrus` 结束时销毁，lambda持有的仍然是悬垂引用。
 
 !!! warning "注意"
 
-	Be extra careful when you capture variables by reference, especially with a default reference capture. The captured variables must outlive the lambda.
+	在通过引用捕获变量时要格外小心，特别是使用默认引用捕获时。捕获的变量必须比lambda存活的时间长。
 
-If we want the captured `name` to be valid when the lambda is used, we need to capture it by value instead (either explicitly or using a default-capture by value).
+如果我们想要在使用lambda时仍然保证 `name` 可用，则需要在闭包中an be valid when the lambda is used, we need to capture it by value instead (either explicitly or using a default-capture by value).
 
 ## Unintended copies of mutable lambdas 
 
