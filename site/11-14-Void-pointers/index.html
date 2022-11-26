@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#void" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2793,7 +2798,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2807,7 +2812,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -3176,9 +3181,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            11.14 — void 指针
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         11.14 — void 指针
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#void" class="md-nav__link">
+    void 指针其他细节
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5544,6 +5585,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#void" class="md-nav__link">
+    void 指针其他细节
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5592,11 +5655,10 @@
 
   <h1>11.14 — void 指针</h1>
 
-<p>The <strong>void pointer</strong>, also known as the generic pointer, is a special type of pointer that can be pointed at objects of any data type! A void pointer is declared like a normal pointer, using the void keyword as the pointer’s type:</p>
+<p><a href="../void%20pointer/">void 指针</a>，也被称之为泛型指针，是一种可以指向任意类型对象的指针！void指针的声明类似于普通指针，使用<code>void</code>关键字标识指针类型：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// ptr is a void pointer</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>A void pointer can point to objects of any data type:</p>
+<p>void 指针可以指向任何数据类型的对象：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5627,8 +5689,7 @@
 <span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fValue</span><span class="p">;</span><span class="w"> </span><span class="c1">// valid</span>
 <span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sValue</span><span class="p">;</span><span class="w"> </span><span class="c1">// valid</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, because the void pointer does not know what type of object it is pointing to, dereferencing a void pointer is illegal. Instead, the void pointer must first be cast to another pointer type before the dereference can be performed.</p>
+<p>不过，由于void指针并不知道它所指对象的类型，所以堆void指针进行<a href="../dereference-operator/">解引用</a>是非法操作。void 指针必须首先被转换为其他特定类型的指针，然后才能进行解引用。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5641,15 +5702,15 @@
 
 <span class="c1">// std::cout &lt;&lt; *voidPtr &lt;&lt; &#39;\n&#39;; // illegal: dereference of void pointer</span>
 
-<span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">intPtr</span><span class="p">{</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">voidPtr</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// however, if we cast our void pointer to an int pointer...</span>
+<span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">intPtr</span><span class="p">{</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">voidPtr</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 首先将void指针转换为int指针</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">intPtr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// then we can dereference the result</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">intPtr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 然后解引用得到结果</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
-<p>5</p>
-<p>The next obvious question is: If a void pointer doesn’t know what it’s pointing to, how do we know what to cast it to? Ultimately, that is up to you to keep track of.</p>
-<p>Here’s an example of a void pointer in use:</p>
+<p>运行结果：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5
+</code></pre></div></td></tr></table></div>
+<p>接下来的问题是：如果 void 指针不知道它所指的对象是什么类型的话，我们又是如何得应该将它转换成什么类型呢？实际上，你必须自己去跟踪这个类型。</p>
+<p>下面是一个使用 void 指针的类型：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5736,29 +5797,29 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
-<p>5
+<p>输出结果：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>5
 7.5
-Mollie</p>
-<p><strong>Void pointer miscellany</strong></p>
-<p>Void pointers can be set to a null value:</p>
+Mollie
+</code></pre></div></td></tr></table></div>
+<h2 id="void">void 指针其他细节</h2>
+<p>void 指针可以被设置为 null 值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">{</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// ptr is a void pointer that is currently a null pointer</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Although some compilers allow deleting a void pointer that points to dynamically allocated memory, doing so should be avoided, as it can result in undefined behavior.</p>
-<p>It is not possible to do pointer arithmetic on a void pointer. This is because pointer arithmetic requires the pointer to know what size object it is pointing to, so it can increment or decrement the pointer appropriately.</p>
-<p>Note that there is no such thing as a void reference. This is because a void reference would be of type void &amp;, and would not know what type of value it referenced.</p>
-<p><strong>Conclusion</strong></p>
-<p>In general, it is a good idea to avoid using void pointers unless absolutely necessary, as they effectively allow you to avoid type checking. This allows you to inadvertently do things that make no sense, and the compiler won’t complain about it. For example, the following would be valid:</p>
+<p>尽管一些编译器允许删除指向动态分配内存的空指针，但应该避免这样做，因为它可能导致<a href="../undefined-behavior/">未定义行为</a>。</p>
+<p>不能在void指针上做指针算术运算。这是因为指针算术要求指针知道它所指向的对象的大小，以便可以适当地增加或减少指针。</p>
+<p>注意，没有void引用这种东西。这是因为void引用的类型是void &amp;，并且不知道它引用的是什么类型的值。</p>
+<h2 id="_1">小结</h2>
+<p>一般来说，除非绝对必要，否则应该避免使用void指针，因为它们可以避免类型检查，这使得你在不经意间犯的错误无法被编译器发现。例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">nValue</span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">printValue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nValue</span><span class="p">,</span><span class="w"> </span><span class="n">Type</span><span class="o">::</span><span class="n">tCString</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>But who knows what the result would actually be!</p>
-<p>Although the above function seems like a neat way to make a single function handle multiple data types, C++ actually offers a much better way to do the same thing (via function overloading) that retains type checking to help prevent misuse. Many other places where void pointers would once be used to handle multiple data types are now better done using templates, which also offer strong type checking.</p>
-<p>However, very occasionally, you may still find a reasonable use for the void pointer. Just make sure there isn’t a better (safer) way to do the same thing using other language mechanisms first!</p>
+<p>但谁知道结果会怎样呢！</p>
+<p>尽管上面的函数看起来像是一种让一个函数处理多个数据类型的简洁方法，但C++实际上提供了一种更好的方法(通过函数重载)来做同样的事情，该方法保留了类型检查，以避免滥用。许多其他地方曾经使用void指针来处理多个数据类型，现在可以使用模板来更好地完成，模板也提供了强类型检查。</p>
+<p>但是，在非常偶然的情况下，void指针也是很有用的。但是在使用前要首先确保没有更好(更安全)的方法来使用其他语言机制完成同样的事情！</p>
 
 
               </article>

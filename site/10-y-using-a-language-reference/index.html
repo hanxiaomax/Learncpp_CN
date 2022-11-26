@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2800,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2814,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2997,15 +2997,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
+  <a href="#_1" class="md-nav__link">
+    总览
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdstringlength" class="md-nav__link">
+    案例一：std::string::length
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#stdcinignore" class="md-nav__link">
-    std::cin.ignore
+    案例二：std::cin.ignore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    案例三：语法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cppreference" class="md-nav__link">
+    关于 cppreference 准确性的注意事项
   </a>
   
 </li>
@@ -5592,15 +5613,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
+  <a href="#_1" class="md-nav__link">
+    总览
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdstringlength" class="md-nav__link">
+    案例一：std::string::length
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#stdcinignore" class="md-nav__link">
-    std::cin.ignore
+    案例二：std::cin.ignore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    案例三：语法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cppreference" class="md-nav__link">
+    关于 cppreference 准确性的注意事项
   </a>
   
 </li>
@@ -5655,67 +5697,73 @@
 
   <h1>10.y - 学会使用C++参考手册</h1>
 
-<p>Depending on where you’re at in your journey with learning programming languages (and specifically, C++), LearnCpp.com might be the only resource you’re using to learn C++ or to look something up. LearnCpp.com is designed to explain concepts in a beginner-friendly fashion, but it simply can’t cover every aspect of the language. As you begin to explore outside the topics that these tutorials cover, you’ll inevitably run into questions that these tutorials don’t answer. In that case, you’ll need to leverage outside resources.</p>
-<p>One such resource is <a href="https://stackoverflow.com/">Stack Overflow</a>, where you can ask questions (or better, read the answer to the same question someone before you asked). But sometimes a better first stop is a reference guide. Unlike tutorials, which tend to focus on the most important topics and use informal/common language to make learning easier, reference guides describe C++ precisely using formal terminology. Because of this, reference material tends to be comprehensive, accurate, and… hard to understand.</p>
-<p>In this lesson, we’ll show how to use <a href="https://cppreference.com/">cppreference</a>, a popular standard reference that we refer to throughout the lessons, by researching 3 examples.</p>
-<h2 id="overview">Overview</h2>
-<p>Cppreference greets you with an <a href="https://en.cppreference.com/w/cpp">overview</a> of the core language and libraries:</p>
+<p>根据你学习C++所处的阶段，本网站可能是你在某个阶段学习C++的唯一资料。LearnCpp.com 以一种新手友好的方式向你介绍了C++的基本概念，但是它不可能涵盖C++的方方面面。当你开始探索本教程以外的话题时，你需要学会如何利用其他的资源来进行学习。</p>
+<p><a href="https://stackoverflow.com/">Stack Overflow</a> 是一个问答网站，在这里你可以问问题(你可以在这里找到与你有相同问题的人并且阅读这些问题的答案)。不过，多数情况下我们还是建议你先去看看C++语言的参考手册。和教程不同，教程通常专注于某些重要话题并使用通俗的语言向你解释相关的概念，使得语言学习更容易。但是参考手册不同，它的作用是使用正式的术语，精确地描述C++中的概念。因此，参考手册通常很全面、精确，但比较难以理解。</p>
+<p>本节课我们会向你介绍如何高效地使用 <a href="https://cppreference.com/">cppreference</a>，这是一个流行的C++标准参考文档网站，本教程自始至终多次参考了该网站的内容。我们会使用三个具体的例子向你展示如何去使用该参考网站。</p>
+<h2 id="_1">总览</h2>
+<p>Cppreference 的首页是一个<a href="https://en.cppreference.com/w/cpp">总览页面</a>  其中列出了语言的核心功能和标准库：</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/overview-min.png?ezimgfmt=rs%3Adevice%2Frscb2-1" /></p>
-<p>From here, you can get to everything cppreference has to offer, but it’s easier to use the search function, or a search engine. The overview is a great place to visit once you’ve finished the tutorials on LearnCpp.com, to delve deeper into the libraries, and to see what else the language has to offer that you might not be aware of.</p>
-<p>The upper half of the table shows features currently in the language, while the bottom half shows technical specifications, which are features that may or may not be added to C++ in a future version, or have already been partially accepted into the language. This can be useful if you want to see what new capabilities are coming soon.</p>
-<p>Starting with C++11, cppreference marks all features with the language standard version they’ve been added in. The standard version is the little green number you can see next to some of the links in the above image. Features without a version number have been available since C++98/03. The version numbers are not only in the overview, but everywhere on cppreference, letting you know exactly what you can or cannot use in a specific C++ version.</p>
-<p>A reminder</p>
-<p>The C++ versions are C++98, C++03, C++11, C++14, C++17, C++20. C++23 is the informal name for the next planned iteration.</p>
-<p>Warning</p>
-<p>If you use a search engine and a technical specification has just been accepted into the standard, you might get linked to a technical specification rather than the official reference, which can differ.</p>
-<p>Tip</p>
-<p>Cppreference is not only a reference for C++, but also for C. Since C++ shares some functions with C (which can differ), you may find yourself in the C reference after searching for something. The URL and the navigation bar at the top of cppreference always show you if you’re browsing the C or C++ reference.</p>
-<p>std::string::length</p>
-<p>We’ll start by researching a function that you know from a previous lesson, <code>std::string::length</code>, which returns the length of a string.</p>
-<p>On the top right of cppreference, search for “string”. Doing so shows a long list of types and functions, of which only the top is relevant for now.</p>
+<p>虽然在这个页面中，你可以看到cppreference提供的所有内容的目录，但通常使用搜索功能或搜索引擎更容易找到你需要的内容。当你完成了LearnCpp.com上的教程之后，该页面是你绝佳的下一站目的地。在这里你可以深入研究标准库，并查看C++还提供了哪些你还不知道的功能。</p>
+<p>表的上半部分显示了C++当前的特性，而下半部分则展示了技术规范，这些特性可能会在未来的版本中添加到C++，也可能不会添加到C++，或者已经部分被语言接受。如果您想了解即将推出的新功能，这将非常有用。</p>
+<p>从C++ 11开始，cppreference会用引入该功能的标准版本来标记对应的功能。标准版本是上面图片中一些链接旁边的绿色小数字。那些没有标记标准版本的功能，则是在 C++ 98/03 中就已经有的功能。我们不仅会在总览页面看到标准版本号，它在cppreference上随处可见，这使得我们可以确切地知道在特定的C++版本中什么功能可用，什么功能不可用。</p>
+<div class="admonition info">
+<p class="admonition-title">提醒</p>
+<p>C++ 的版本有：C++98, C++03, C++11, C++14, C++17, C++20。C++23 是下一个迭代的版本号。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>如果你使用搜索引擎，而某个技术规范刚刚被接受为标准，那么你可能会链接到某个技术规范而不是官方参考，这可能会有所不同。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">小贴士</p>
+<p>cppreference不仅是C++的参考，也是C的参考。因为C++和C共享一些函数(可能有所不同)，你可能会搜索后被引导到C语言的参考中。在cppreference顶部的URL和导航栏总是会显示您正在浏览的是C还是C++参考。</p>
+</div>
+<h2 id="stdstringlength">案例一：<code>std::string::length</code></h2>
+<p>接下来，让我们首先研究一个已经学习过的函数——<code>std::string::length</code> ，它返回字符串的长度。</p>
+<p>在cppreference的右上角，搜索“string”。此时做会显示一长串类型和函数，目前只有最上面的是相关的。</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/string-search-ddg-min.png?ezimgfmt=rs:674x555/rscb2/ng:webp/ngcb2" /></p>
-<p>We could have searched for “string length” right away, but for the purpose of showing as much as possible in this lesson, we’re taking the long route. Clicking on “Strings library” takes us to a page talking about the various kinds of strings that C++ supports.</p>
+<p>当我们也可以直接搜索“string length”，不过为了向你更全面地展示各种情况，这里我们故意舍近求远了。点击 “Strings library” 会将我们带到一个页面，该页面展示了C++支持的各种字符串功能。</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/strings-lib-min.png?ezimgfmt=rs:776x357/rscb2/ng:webp/ngcb2" /></p>
-<p>If we look under the “std::basic_string” section, we can see a list of typedefs, and within that list is std::string.</p>
-<p>Clicking on “std::string” leads to the page for <a href="https://en.cppreference.com/w/cpp/string/basic_string"><code>std::basic_string</code></a>. There is no page for <code>std::string</code>, because <code>std::string</code> is a <code>typedef</code> for <code>std::basic_string&lt;char&gt;</code>, which again can be seen in the <code>typedef</code> list:</p>
+<p>在 “<code>std::basic_string</code>” 小节下方，我们可以看到一系列的 <code>typedefs</code>，其中就有 <code>std::string</code>。</p>
+<p>点击 “<code>std::string</code>” 会跳转到 <a href="https://en.cppreference.com/w/cpp/string/basic_string"><code>std::basic_string</code></a> 页面。网站中并没有关于 <code>std::string</code> 的页面因为 <code>std::string</code> 是 <code>typedef</code> 的 <code>std::basic_string&lt;char&gt;</code>。在 <code>typedef</code> 列表中可以看到。</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/typedef-min.png?ezimgfmt=rs:485x239/rscb2/ng:webp/ngcb2" /></p>
-<p>The <code>&lt;char&gt;</code> means that each character of the string is of type <code>char</code>. You’ll note that C++ offers other strings that use different character types. These can be useful when using Unicode instead of ASCII.</p>
-<p>Further down the same page, there’s a <a href="https://en.cppreference.com/w/cpp/string/basic_string#Member_functions">list of member functions</a> (the behaviors that a type has). If you want to know what you can do with a type, this list is very convenient. In this list, you’ll find a row for <code>length</code> (and <code>size</code>).</p>
-<p>Following the link brings us to the detailed function description of <a href="https://en.cppreference.com/w/cpp/string/basic_string/size"><code>length</code> and <code>size</code></a>, which both do the same thing.</p>
-<p>The top of each page starts with a short summary of the feature and syntax, overloads, or declarations:</p>
+<p><code>&lt;char&gt;</code> 表示该字符串中的每个字符其类型都是 <code>char</code>。在这里可以看到，C++的字符串，其字符支持不同种类的字符。当需要使用Unicode而非ASCII时，这显得尤为重要。</p>
+<p>还是这个页面，继续往下看，此时可以看到<a href="https://en.cppreference.com/w/cpp/string/basic_string#Member_functions">成员函数列表 Member functions</a> (该类型支持的方法)。如果你想知道某个类型可以做什么样的操作，直接看这个表就非常清楚了。在这个表中，可以找到 <code>length</code> 方法(和 <code>size</code>)。</p>
+<p>点击该方法的链接，页面跳转到 <a href="https://en.cppreference.com/w/cpp/string/basic_string/size"><code>length</code> 和 <code>size</code>的介绍</a> （这两其实是一回事）。</p>
+<p>每个页面的顶部首先呈现的是功能和语法、重载或声明的简短摘要。</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/string-length-overloads-min.png?ezimgfmt=rs:771x178/rscb2/ng:webp/ngcb2" /></p>
-<p>The title of the page shows the name of the class and function with all template parameters. We can ignore this part. Below the title, we see all of the different function overloads (different versions of the function that share the same name) and which language standard they apply to.</p>
-<p>Below that, we can see the parameters that the function takes, and what the return value means.</p>
-<p>Because <code>std::string::length</code> is a simple function, there’s not a lot of content on this page. Many pages show example uses of the feature they’re documenting, as does this one:</p>
+<p>这个页面的标题显示了类和函数的名称以及所有模板参数。我们可以忽略这部分。在标题下面，可以找到所有的重载函数(具有相同名称的函数的不同版本)以及它们应用的语言标准。</p>
+<p>再下面，是函数的<a href="../parameters/">形参</a>列表，以及返回值类型。</p>
+<p>因为 <code>std::string::length</code> 是一个非常简单的函数，所以该页面中并没有很多内容。一般来说，页面会包含使用了相关特性的例子，例如：</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/string-length-example-min.png?ezimgfmt=rs:742x423/rscb2/ng:webp/ngcb2" /></p>
-<p>Until you’re done learning C++, there will be features in the examples that you haven’t seen before. If there are enough examples, you’re probably able to understand a sufficient amount of it to get an idea of how the function is used and what it does. If the example is too complicated, you can search for an example somewhere else or read the reference of the parts you don’t understand (you can click on functions and types in the examples to see what they do).</p>
-<p>Now we know what <code>std::string::length</code> does, but we knew that before. Let’s have a look at something new!</p>
-<h2 id="stdcinignore">std::cin.ignore</h2>
-<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/">7.16 -- std::cin and handling invalid input</a>, we talked about <code>std::cin.ignore</code>, which is used to ignore everything up to a line break. One of the parameters of this function is some long and verbose value. What was that again? Can’t you just use a big number? What does this argument do anyway? Let’s figure it out!</p>
-<p>Typing “std::cin.ignore” into the cppreference search yields the following results:</p>
+<p>除非你已经完全掌握C++，否则示例中总会有你还没见过的特性。如果有足够多的例子，你可能能够理解足够多的内容，从而了解如何使用函数及其功能。如果示例太复杂，也可以在其他地方搜索示例，或者阅读不理解部分的参考资料(可以单击示例中的函数和类型来查看它们的功能)。</p>
+<p>现在我们知道了 <code>std::string::length</code> 的作用，不过这没什么新鲜的，毕竟我们之前就已经掌握该函数了。接下来看看新的东西吧！</p>
+<h2 id="stdcinignore">案例二：<code>std::cin.ignore</code></h2>
+<p>在<a href="../7-16-std-cin-and-handling-invalid-input/">7.16 - std::in 和输入错误处理</a>中我们介绍过 <code>std::cin.ignore</code>，它可以忽略换行之前的全部内容。这个函数的其中一个形参又长又啰嗦，很难被记住。是什么来着？怎么用来着？让我们查查看。</p>
+<p>在搜索来输入 “std::cin.ignore” ：</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/ignore-ddg-min.png?ezimgfmt=rs:588x631/rscb2/ng:webp/ngcb2" /></p>
 <ul>
-<li><code>std::cin, std::wcin</code> - We want <code>.ignore</code>, not plain <code>std::cin</code>.</li>
-<li><code>std::basic_istream&lt;CharT,Traits&gt;::ignore</code> - Eew, what is this? Let’s skip for now.</li>
-<li><code>std::ignore</code> - No, that’s not it.</li>
-<li><code>std::basic_istream</code> - That’s not it either.</li>
+<li><code>std::cin, std::wcin</code> - 我们要找的是 <code>.ignore</code>，而不是 <code>std::cin</code>；</li>
+<li><code>std::basic_istream&lt;CharT,Traits&gt;::ignore</code> - 这是啥？看不懂先跳过吧；</li>
+<li><code>std::ignore</code> - 不是这个；</li>
+<li><code>std::basic_istream</code> - 也不是这个。</li>
 </ul>
-<p>It’s not there, what now? Let’s go to <a href="https://en.cppreference.com/w/cpp/io/cin"><code>std::cin</code></a> and work our way from there. There’s nothing immediately obvious on that page. On the top, we can see the declaration of <code>std::cin</code> and <code>std::wcin</code>, and it tells us which header we need to include to use <code>std::cin</code>:</p>
+<p>没搜到？现在咋整？让我们先进入 <a href="https://en.cppreference.com/w/cpp/io/cin"><code>std::cin</code></a> ，然后顺藤摸瓜吧。这个页面上也没有明显与我们需要找的东西相关的内容。在页面的顶部，可以看到 <code>std::cin</code> 和<code>std::wcin</code>的声明，同时它还告诉我们使用 <code>std::cin</code>时应该包含哪个头文件：</p>
 <p><img alt="Declaration" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/cintop-min.png?ezimgfmt=rs:777x97/rscb2/ng:webp/ngcb2" /></p>
-<p>We can see that <code>std::cin</code> is an object of type <code>std::istream</code>. Let’s follow the link to <a href="https://en.cppreference.com/w/cpp/io/basic_istream"><code>std::istream</code></a>:</p>
+<p>可以看出  <code>std::cin</code> 是 <code>std::istream</code> 类型的一个对象。接下来点击 <a href="https://en.cppreference.com/w/cpp/io/basic_istream"><code>std::istream</code></a> 的链接：</p>
 <p><img alt="basic_istream" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/basic_istream-min.png?ezimgfmt=rs:777x520/rscb2/ng:webp/ngcb2" /></p>
-<p>Hold up! We’ve seen <code>std::basic_istream</code> before when we searched for “std::cin.ignore” in our search engine. It turns out that <code>istream</code> is a typedef for <code>basic_istream</code>, so maybe our search wasn’t so wrong after all.</p>
-<p>Scrolling down on that page, we’re greeted with familiar functions:</p>
+<p>等等！ 我之前搜索 “<code>std::cin.ignore</code>” 的时候是搜到过 <code>std::basic_istream</code> 的。原来 <code>istream</code>  就是 <code>basic_istream</code> 的 <code>typedef</code> 啊。也许我们并没有搜索错！</p>
+<p>页面向下滑动，可以看到很多熟悉的函数：</p>
 <p><img alt="Member functions" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/members-min.png?ezimgfmt=rs:641x828/rscb2/ng:webp/ngcb2" /></p>
-<p>We’ve used many of these functions already: <code>operator&gt;&gt;</code>, <code>get</code>, <code>getline</code>, <code>ignore</code>. Scroll around on that page to get an idea of what else there is in <code>std::cin</code>. Then click <a href="https://en.cppreference.com/w/cpp/io/basic_istream/ignore"><code>ignore</code></a>, since that’s what we’re interested in.</p>
+<p>这里很多函数我们都用过：<code>operator&gt;&gt;</code>, <code>get</code>, <code>getline</code>, <code>ignore</code>。可以浏览一下还有哪些函数，然后点击 <a href="https://en.cppreference.com/w/cpp/io/basic_istream/ignore"><code>ignore</code></a>，这就是我们要找的函数。</p>
 <p><img alt="ignore" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/ignore-top-min.png?ezimgfmt=rs:772x250/rscb2/ng:webp/ngcb2" /></p>
-<p>On the top of the page there’s the function signature and a description of what the function and its two parameters do. The <code>=</code> signs after the parameters indicate a default argument (we cover this in lesson <a href="https://www.learncpp.com/cpp-tutorial/default-arguments/">8.12 -- Default arguments</a>). If we don’t provide an argument for a parameter that has a default value, the default value is used.</p>
-<p>The first bullet point answers all of our questions. We can see that <code>std::numeric_limits&lt;std::streamsize&gt;::max()</code> has special meaning to <code>std::cin.ignore</code>, in that it disables the character count check. This means <code>std::cin.ignore</code> will continue ignoring characters until it finds the delimiter, or until it runs out of characters to look at.</p>
-<p>Many times, you don’t need to read the entire description of a function if you already know it but forgot what the parameters or return value mean. In such situations, reading the parameter or return value description suffices.</p>
+<p>在页面的顶部有函数签名、函数简介及其两个参数的功能描述。形参后面的<code>=</code> 符号表示默认实参(在课程<a href="../8-12-Default-arguments/">8.12 -默认参数</a>中讨论过)。如果没有为具有默认值的形参提供实参，则使用默认值。</p>
+<p>接下来的无序列表中包含三条内容。可以看到 <code>std::numeric_limits&lt;std::streamsize&gt;::max()</code> 在 <code>std::cin.ignore</code> 中是由特殊含义的，它可以忽略字符计数检查。也就是说，<code>std::cin.ignore</code> 会忽略分隔符前所有的字符，或者直到耗尽需要关注的字符个数。</p>
+<p>多数情况下，我们知道这个函数是干嘛的，但是忘记了参数和返回值，此时你不需要阅读函数的完整描述。这种情况下你只需浏览一下参数列表和返回值就足够了。</p>
 <p><img alt="Parameters and return value" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/parameters-return-min.png?ezimgfmt=rs:505x135/rscb2/ng:webp/ngcb2" /></p>
-<p>The parameter description is brief. It doesn’t contain the special handling of <code>std::numeric_limits&lt;std::streamsize&gt;::max()</code> or the other stop conditions, but serves as a good reminder.</p>
-<p>A language grammar example</p>
-<p>Alongside the standard library, cppreference also documents the language grammar. Here’s a valid program:</p>
+<p>这里的参数介绍很简洁。它并没有包括 <code>std::numeric_limits&lt;std::streamsize&gt;::max()</code> 的特殊含义，但是这些简洁的参数介绍一般情况下能够帮助我们回忆起一些关键的信息。</p>
+<h2 id="_2">案例三：语法</h2>
+<p>除了标准库，cppreference还记录了C++语言的语法。下面是一个有效的程序:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5764,20 +5812,21 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Why is there a variable definition inside the condition of the <code>if-statement</code>? Let’s use cppreference to figure out what it does by searching for “cppreference if statement” in our favorite search engine. Doing so leads us to <a href="https://en.cppreference.com/w/cpp/language/if">if statements</a>. At the top, there’s a syntax reference.</p>
+<p>为什么在<code>if-statement</code> 的条件中有一个变量定义？在搜索引擎中搜索“cppreference if statement”来了解它的功能。搜索引擎会将我们带到<a href="https://en.cppreference.com/w/cpp/language/if">if statements</a>。在页面开始的地方就有其相关的语法说明。</p>
 <p><img alt="" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/syntax-min.png?ezimgfmt=rs:773x479/rscb2/ng:webp/ngcb2" /></p>
-<p>On the right, we can again see the version for which this syntax is relevant. Look at the version of the <code>if-statement</code> that is relevant since C++17. If you remove all of the optional parts, you get an <code>if-statement</code> that you already know. Before the <code>condition</code>, there’s an optional <code>init-statement</code>, that looks like what’s happening in the code above.</p>
-<p>if ( init-statement condition ) statement-true
-if ( init-statement condition ) statement-true else statement-false</p>
-<p>Below the syntax reference, there’s an explanation of each part of the syntax, including the <code>init-statement</code>. It says that the <code>init-statement</code> is typically a declaration of a variable with an initializer.</p>
-<p>Following the syntax is an explanation of <code>if-statements</code> and simple examples:</p>
+<p>在页面的右半部分我们可以看到不同语法与C++版本之间的关系。对于 <code>if-statement</code>，从C++17开始，如果你忽略所有可选的部分，那么就是我们常用的 <code>if-statement</code> 的形式。在 <code>condition</code> 之前，有一个可选的部分称为<code>init-statement</code>，看起来这部分就是和之前例子中的代码是相关的。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">init</span><span class="o">-</span><span class="n">statement</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">statement</span><span class="o">-</span><span class="nb">true</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">init</span><span class="o">-</span><span class="n">statement</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">statement</span><span class="o">-</span><span class="nb">true</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">statement</span><span class="o">-</span><span class="nb">false</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>在语法参考下方，有对语法的每个部分的解释，其中就包括 <code>init-statement</code>——它通常是一个带有初始化值的变量声明。</p>
+<p>下面是 <code>if-statements</code> 的语法解释和一些简单的例子:</p>
 <p><img alt="Explanation on examples" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/explanation-min.png?ezimgfmt=rs:776x843/rscb2/ng:webp/ngcb2" /></p>
-<p>We already know how <code>if-statements</code> work, and the examples don’t include an <code>init-statement</code>, so we scroll down a little to find a section dedicated to <code>if-statements</code> with initializers:</p>
+<p>我们了解 <code>if-statements</code> 是如何工作的，但是这个例子中没有包含 <code>init-statement</code> 的用法。所以接着向下看，找找看有没有专门介绍带初始化值的 <code>if-statements</code> 的内容。</p>
 <p><img alt="If Statements with Initializer" src="https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/if-init-min.png?ezimgfmt=rs:828x654/rscb2/ng:webp/ngcb2" /></p>
-<p>First, it is shown how the <code>init-statement</code> can be written without actually using an <code>init-statement</code>. Now we know what the code in question is doing. It’s a normal variable declaration, just merged into the <code>if-statement</code>.</p>
-<p>The sentence after that is interesting, because it lets us know that the names from the <code>init-statement</code> are available in <em>both</em> statements (<code>statement-true</code> and <code>statement-false</code>). This may be surprising, since you might otherwise assume the variable is only available in the <code>statement-true</code>.</p>
-<p>The <code>init-statement</code> examples use features and types that we haven’t covered yet. You don’t have to understand everything you see to understand how the <code>init-statement</code> works. Let’s skip everything that’s too confusing until we find something we can work with:</p>
+<p>这里首先展示了如何使用 <code>init-statement</code> ，现在我们就知道之前代码中的if语句是怎么回事了。其实它就是将一般的变量声明和if语句合并起来罢了。</p>
+<p>接下来的句子很有意思，它告诉我们 <code>init-statement</code> 声明的变量，在if语句的true和false语句块中都能使用。如果你之前天真的认为这个变量只能在true语句块中使用的话，该说明应该会让你看到有点意外。</p>
+<p><code>init-statement</code> 的例子中使用了一些我们还没有介绍过的特性，但我们并不需要看懂所有内容就可以了解如何使用 <code>init-statement</code>。所以目前可以先跳过让人困惑的内容，专注于我们熟系的部分：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5814,8 +5863,7 @@ if ( init-statement condition ) statement-true else statement-false</p>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Token must not be a keyword</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The easiest example seems to be the one with an <code>int</code>. Then we look after the semicolon and there’s another definition, odd… Let’s go back to the <code>std::lock_guard</code> example.</p>
+<p>最简单的例子似乎是使用了 <code>int</code> 的那个，但是它的分号后面又是一个定义，看上去有点奇怪。再看一个<code>std::lock_guard</code> 的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5826,11 +5874,10 @@ if ( init-statement condition ) statement-true else statement-false</p>
 <span class="w">  </span><span class="n">shared_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>From this, it’s relatively easy to see how an <code>init-statement</code> works. Define some variable (<code>lock</code>), then a semicolon, then the condition. That’s exactly what happened in our example.</p>
-<p>A warning about the accuracy of cppreference</p>
-<p>Cppreference is not an official documentation source -- rather, it is a wiki. With wikis, anyone can add and modify content -- the content is sourced from the community. Although this means that it’s easy for someone to add wrong information, that misinformation is typically quickly caught and removed, making cppreference a reliable source.</p>
-<p>The only official source for C++ is <a href="https://isocpp.org/std/the-standard">the standard</a> (Free drafts on <a href="https://github.com/cplusplus/draft/tree/master/papers">github</a>), which is a formal document and not easily usable as a reference.</p>
+<p>这里定义了变量(<code>lock</code>)，然后是分号，然后是条件。这个反倒是最接近我们代码的例子。</p>
+<h2 id="cppreference">关于 cppreference 准确性的注意事项</h2>
+<p>其实，cppreference 并不是一个官方文档源——相反，它是一个wiki百科应用。使用wiki，任何人都可以添加和修改内容——内容来自社区。虽然这意味着人们很容易添加错误的信息，但错误的信息通常会很快被发现并删除，使cppreference成为一个可靠的来源。</p>
+<p><a href="https://isocpp.org/std/the-standard">C++标准</a> 是唯一的官方文档(<a href="https://github.com/cplusplus/draft/tree/master/papers">github</a>)。虽然它是正式的文档，但是它并不是一个易用的参考手册。</p>
 
 
               </article>

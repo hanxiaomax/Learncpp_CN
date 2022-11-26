@@ -2800,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2814,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5641,18 +5641,18 @@
 
   <h1>10.x - 小结与测试 - 枚举和结构体</h1>
 
-<p><a href="../10-1-Introduction-to-program-defined-user-defined-types/">10.1 - 自定义类型简介</a></p>
+<p><a href="../10-1-Introduction-to-program-defined-user-defined-types/">10.1 - 程序定义类型简介</a></p>
 <ul>
 <li>用户定义类型是一种自定义类型，我们可以在程序中创建它用于某些目的。基于枚举类型和class类型（包括结构体、类和联合）我们可以创建需要的自定义类型。自定义类型在使用前必须先定义，定义它的过程则称为<a href="../type-definition/">类型定义</a>。类型定义不需要遵循<a href="../one-definition-rule/">单一定义规则(one-definition-rule)</a>。</li>
 </ul>
-<p><a href="../10-2-unscoped-enumerations/">10.2 - 非限定作用域枚举类型</a>
+<p><a href="../10-2-unscoped-enumerations/">10.2 - 无作用域枚举类型</a>
 <a href="../10-3-unscoped-enumeration-input-and-output/">10.3 - 限定作用域枚举类型的输入输出</a></p>
 <ul>
 <li>枚举（称为枚举类型或enum）是一种复合数据类型，它的每个可能值都被定义为<a href="../symbolic-constants/">符号常量</a>（称为枚举值）。枚举值是一种确切的数据类型，也就是说编译器可以区分它和其他类型（不像<a href="../8-6-Typedefs-and-type-aliases/">类型别名</a>那样）。</li>
-<li><a href="../unscoped-enumerations/">非限定作用域枚举类型</a> are named such because they put their enumerator names into the same scope as the enumeration definition itself (as opposed to creating a new scope region like a namespace does). Unscoped enumerations also provide a named scope region for their enumerators. Unscoped enumerations will implicitly convert to integral values.</li>
+<li><a href="../unscoped-enumerations/">无作用域枚举类型</a>会将自己的枚举值名称导入到与自己相同的作用域中(而不是像命名空间那样创建新的作用域区域)。无作用域枚举会被隐式转换为整型数。</li>
 </ul>
 <p><a href="../10-4-scoped-enumerations-enum-classes/">10.4 - 限定作用域枚举（枚举类）</a>
-- <a href="../scoped-enumerations/">限定作用域枚举</a> work similarly to unscoped enumerations but are strongly typed (they won’t implicitly convert to integers) and strongly scoped (the enumerators are only placed into the scope region of the enumeration).</p>
+- <a href="../scoped-enumerations/">限定作用域枚举</a> 与无作用域枚举的工作原理类似，但它们是强类型的(它们不会隐式转换为整数)和强作用域的(枚举数只放在枚举的作用域区域中)。</p>
 <p><a href="../10-5-Introduction-to-structs-members-and-member-selection/">10.5 - 结构体、成员和成员选择</a></p>
 <ul>
 <li>结构体是一种自定义类型，使用它可以将多个变量打包为一个单独的类型。变量是结构体（或类）的一部分，称为数据成员或<a href="../member-variable/">成员变量</a>。访问成员函数需要在结构体变量名（普通结构体或结构体引用）和成员名之间使用<a href="../member-selection-operator/">成员选择运算符</a>（<code>operator .</code>），或者使用指针运算符(<code>operator-&gt;</code>) （对于结构体指针而言）。</li>

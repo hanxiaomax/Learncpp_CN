@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aggregate-initialization-of-a-struct" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2800,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2814,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2899,8 +2899,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aggregate-initialization-of-a-struct" class="md-nav__link">
-    Aggregate initialization of a struct
+  <a href="#_1" class="md-nav__link">
+    数据成员默认不会被初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    什么是聚合？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    结构体的聚合初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    初始化值列表中缺失的值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    const 结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    指定初始化（ C++20 ）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    使用初始化值列表进行赋值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c20_1" class="md-nav__link">
+    使用指定初始化赋值（C++20）
   </a>
   
 </li>
@@ -5585,8 +5634,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aggregate-initialization-of-a-struct" class="md-nav__link">
-    Aggregate initialization of a struct
+  <a href="#_1" class="md-nav__link">
+    数据成员默认不会被初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    什么是聚合？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    结构体的聚合初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    初始化值列表中缺失的值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    const 结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    指定初始化（ C++20 ）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    使用初始化值列表进行赋值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c20_1" class="md-nav__link">
+    使用指定初始化赋值（C++20）
   </a>
   
 </li>
@@ -5621,6 +5719,12 @@
         </a>
       
     
+      
+        <a href="../tags/#c20" class="md-tag">
+          C++20
+        </a>
+      
+    
   </nav>
 
 
@@ -5647,10 +5751,16 @@
 
   <h1>10.6 - 结构体的聚合初始化</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
-<p>In the previous lesson (<a href="https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/">10.5 -- Introduction to structs, members, and member selection</a>), we talked about how to define structs, instantiate struct objects, and access their members. In this lesson, we’ll discuss how structs are intialized.</p>
-<p>Data members are not initialized by default</p>
-<p>Much like normal variables, data members are not initialized by default. Consider the following struct:</p>
+<details class="note"><summary>关键点速记</summary><ul>
+<li>数据成员默认不会被初始化，除非有默认初始化值。</li>
+<li>如果聚合类型被初始化了，那么即便没有对每个成员进行初始化，则该成员会使用自己的初始化值（可以是0，也可以是其他指定值，由其自身的括号初始化决定）</li>
+<li>列表初始化聚合类型时，按照<a href="../memberwise%20initialization/">成员依次初始化</a>进行，此时如果插入新声明的成员到前面，则对应的列表必须移动，而编译器并不会检测到这类问题。</li>
+<li>在向聚合中添加新成员时，最安全的做法是将其添加到定义列表的底部，这样其他成员的初始化式就不需要调整顺序。</li>
+</ul>
+</details>
+<p>在上节课中(<a href="../10-5-Introduction-to-structs-members-and-member-selection/">10.5 - 结构体、成员和成员选择</a>)，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。</p>
+<h2 id="_1">数据成员默认不会被初始化</h2>
+<p>和普通变量类似，数据成员并不会被默认初始化。考虑下面的结构体：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5683,28 +5793,28 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Because we have not provided any initializers, when <code>joe</code> is instantiated, <code>joe.id</code>, <code>joe.age</code>, and <code>joe.wage</code> will all be uninitialized. We will then get undefined behavior when we try to print the value of <code>joe.id</code>.</p>
-<p>However, before we show you how to initialize a struct, let’s take a short detour.</p>
-<p>What is an aggregate?</p>
-<p>In general programming, an aggregate data type (also called an aggregate) is any type that can contain multiple data members. Some types of aggregates allow members to have different types (e.g. structs), while others require that all members must be of a single type (e.g. arrays).</p>
-<p>In C++, the definition of an aggregate is narrower and quite a bit more complicated.</p>
-<p>For advanced readers</p>
-<p>To be an aggregate in C++, a type must meet the following criteria:</p>
+<p>因为我们没有提供任何初始化值，所以当实例化 <code>joe</code> 时，<code>joe.id</code>、<code>joe.age</code> 和 <code>joe.wage</code> 处于未初始化状态。当我们试图打印<code>joe.id</code> 的值时，将产生<a href="../undefined-behavior/">未定义行为</a>。</p>
+<p>但是，在向你展示如何初始化结构之前，让我们先绕路走一小段路。</p>
+<h2 id="_2">什么是聚合？</h2>
+<p>在编程领域，<a href="../aggregate-data-type/">聚合数据类型</a>指的是==任何包含多个数据成员的类型==。某些类型的聚合类型允许成员具有不同的类型(例如结构)，而其他类型的聚合要求所有成员必须具有单一类型(例如数组)。</p>
+<p>在C++中，聚合数据类型的定义更局限也更复杂。</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
+<p>C++ 中的聚合数据类型必须满足如下条件：</p>
 <ul>
-<li>Is a class type (a struct, class, or union), or an array type (a built-in array or <code>std::array</code>).</li>
-<li>Has no private or protected non-static data members.</li>
-<li>Has no user-declared or inherited constructors.</li>
-<li>Has no base classes.</li>
-<li>Has no virtual member functions.</li>
+<li>是一个<a href="../class-type/">类类型</a>(包括 struct, class 或 union) 或数组 (包括内置数组或<code>std::array</code>)；</li>
+<li>没有私有或受保护的非静态数据成员；</li>
+<li>没有用户声明的或继承的<a href="../constructor/">构造函数</a>；</li>
+<li>没有<a href="../base-class/">基类</a>；</li>
+<li>没有<a href="../virtual-function/">虚函数</a> ；</li>
 </ul>
-<p>Putting the precise definition of a C++ aggregate aside, the important thing to understand at this point is that structs with only data members (which are the only kind of structs we’ll create in these lessons) are aggregates. Arrays (which we’ll cover next chapter) are also aggregates.</p>
-<h2 id="aggregate-initialization-of-a-struct">Aggregate initialization of a struct</h2>
-<p>Because a normal variable can only hold a single value, we only need to provide a single initializer:</p>
+</div>
+<p>先把C++聚合的精确定义放在一边，在这一点上需要理解的重要事情是，<mark>只有数据成员的结构(这是我们在这些课程中创建的唯一类型的结构)是聚合数据类型。数组(我们将在下一章讨论)也是聚合。</mark></p>
+<h2 id="_3">结构体的聚合初始化</h2>
+<p>因为普通变量只能保存一个值，所以我们只需要提供一个初始化值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, a struct can have multiple members:</p>
+<p>但是，结构体中有多个成员：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5717,13 +5827,11 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">wage</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When we define an object with a struct type, we need some way to initialize multiple members at initialization time:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="p">;</span><span class="w"> </span><span class="c1">// how do we initialize joe.id, joe.age, and joe.wage?</span>
+<p>当定义一个具有结构类型的对象时，我们能够在初始化结构体时同时初始化多个成员的方法：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如何初始化 joe.id, joe.age 和 joe.wage?</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Aggregates use a form of initialization called aggregate initialization, which allows us to directly initialize the members of aggregates. To do this, we provide an initializer list as an initializer, which is just a list of comma-separated initialization values.</p>
-<p>Much like normal variables can be copy initialized, direct initialized, or list initialized, there are 3 forms of aggregate initialization:</p>
+<p>聚合数据类型使用一种称为<a href="../aggregate-initialization/">聚合初始化</a>的初始化形式，它允许我们直接初始化聚合的成员。为此，我们提供一个<a href="../initializer-list/">初始化值列表</a>作为初始化值。初始化值列表就是一个包含多个初始化值，以逗号分割的值列表。</p>
+<p>就像普通变量可以被<a href="../copy-initialization/">拷贝初始化</a>、<a href="../direct-initialization/">直接初始化</a>或<a href="../list-initialization/">列表初始化</a>一样，<mark>聚合初始化也有三种形式：</mark></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5737,8 +5845,7 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Employee</span><span class="w"></span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Employee</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
@@ -5747,19 +5854,19 @@
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">frank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mf">60000.0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// copy-list initialization using braced list</span>
-<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">robert</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mf">62500.0</span><span class="w"> </span><span class="p">);</span><span class="w">  </span><span class="c1">// direct initialization using parenthesized list (C++20)</span>
-<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mf">45000.0</span><span class="w"> </span><span class="p">};</span><span class="w">     </span><span class="c1">// list initialization using braced list (preferred)</span>
-
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">frank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mf">60000.0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 拷贝列表初始化，使用大括号</span>
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">robert</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mf">62500.0</span><span class="w"> </span><span class="p">);</span><span class="w">  </span><span class="c1">// 使用小括号的直接初始化(C++20)</span>
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mf">45000.0</span><span class="w"> </span><span class="p">};</span><span class="w">     </span><span class="c1">// 使用大括号列表的列表初始化（推荐）</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Each of these initialization forms does a memberwise initialization, which means each member in the struct is initialized in the order of declaration. Thus, <code>Employee joe { 2, 28, 45000.0 };</code> first initializes <code>joe.id</code> with value <code>2</code>, then <code>joe.age</code> with value <code>28</code>, and <code>joe.wage</code> with value <code>45000.0</code> last.</p>
-<p>Best practice</p>
-<p>Prefer the (non-copy) braced list form when initializing aggregates.</p>
-<p>Missing initializers in an initializer list</p>
-<p>If an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized.</p>
+<p>上面这三种初始化形式都会进行<a href="../memberwise%20initialization/">成员依次初始化</a>，即结构体成员会按照其声明的顺序进行初始化。因此，<code>Employee joe { 2, 28, 45000.0 };</code> 首先初始化 <code>joe.id</code> 为2，然后将 <code>joe.age</code> 初始化为28，最后将 <code>joe.wage</code> 初始化为 <code>45000.0</code> 。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>推荐使用括号列表形式（非拷贝）进行聚合初始化。</p>
+</div>
+<h2 id="_4">初始化值列表中缺失的值</h2>
+<p>如果聚合数据类型被初始化，但初始化值列表中的值个数少于成员个数，则剩余的成员会被<a href="../value-initialization/">值初始化</a>。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5781,19 +5888,21 @@
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// joe.wage will be value-initialized to 0.0</span>
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// joe.wage 被值初始化为 0.0</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, <code>joe.id</code> will be initialized with value <code>2</code>, <code>joe.age</code> will be initialized with value <code>28</code>, and because <code>joe.wage</code> wasn’t given an explicit initializer, it will be value-initialized to <code>0.0</code>.</p>
-<p>This means we can use an empty initialization list to value-initialize all members of the struct:</p>
+<p>在上面的例子中， <code>joe.id</code> 被初始化为2， <code>joe.age</code> 被初始化为28，因为 <code>joe.wage</code> 没有被显式指定初始化值，则被值初始化为0.0。</p>
+<p>这意味着我们可以使用一个空的初始化列表对结构的所有成员进行值初始化：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// value-initialize all members</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Const structs</p>
-<p>Variables of a struct type can be const, and just like all const variables, they must be initialized.</p>
+<div class="admonition info">
+<p class="admonition-title">译者注</p>
+<p>关于默认初始化请参考<a href="../10-7-default-member-initialization/">10.7 - 默认成员初始化</a>。</p>
+</div>
+<h2 id="const">const 结构体</h2>
+<p>结构体类型也可以是const的，而且和普通const变量一样必须被初始化。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5820,9 +5929,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Designated initializers C++20</p>
-<p>When initializing a struct from a list of values, the initializers are applied to the members in order of declaration.</p>
+<h2 id="c20">指定初始化（ C++20 ）</h2>
+<p>使用列表初始化结构体时，是按照成员声明的顺序初始化的。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5843,8 +5951,7 @@
 <span class="w">    </span><span class="n">Foo</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// f.a = 1, f.c = 3</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now consider what would happen if you were to add a new member to your struct that is not the last member:</p>
+<p>那么考虑这样一种情况，如果我们添加了一个新成员，而且并没有把它声明成最后一个：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5867,9 +5974,8 @@
 <span class="w">    </span><span class="n">Foo</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// now, f.a = 1, f.b = 3, f.c = 0</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now all your initialization values have shifted, and worse, the compiler may not detect this as an error (after all, the syntax is still valid).</p>
-<p>To help avoid this, C++20 adds a new way to initialize struct members called designated initializers. Designated initializers allow you to explicitly define which initialization values map to which members. The members must be initialized in the same order in which they are declared in the struct, otherwise an error will result. Members not designated an initializer will be value initialized.</p>
+<p>那么你所有使用初始化值列表的地方，都要对应的移动。更糟的是，编译器并不会检测到该问题，毕竟在语法层面它是有效的。</p>
+<p>为了解决这个问题，C++20 为结构体成员提供了一个新的初始化方法——<a href="../designated-initializers/">指定初始化</a>。指定初始化允许我们显示地将初始化值映射到所需初始化的成员。但是，列表的顺序仍然要求按照成员定义的顺序定义，否则编译器会报错。没有在列表中出现的成员仍然进行值初始化。
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5892,19 +5998,20 @@
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Foo</span><span class="w"> </span><span class="n">f1</span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">a</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">.</span><span class="n">c</span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// ok: f.a = 1, f.b = 0 (value initialized), f.c = 3</span>
-<span class="w">    </span><span class="n">Foo</span><span class="w"> </span><span class="n">f2</span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">b</span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">.</span><span class="n">a</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// error: initialization order does not match order of declaration in struct</span>
+<span class="w">    </span><span class="n">Foo</span><span class="w"> </span><span class="n">f1</span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">a</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">.</span><span class="n">c</span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// ok: f.a = 1, f.b = 0 (未出现，值初始化), f.c = 3</span>
+<span class="w">    </span><span class="n">Foo</span><span class="w"> </span><span class="n">f2</span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">b</span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">.</span><span class="n">a</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 错误: 初始化顺序和成员声明顺序不匹配</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Designated initializers are nice because they provide some level of self-documentation and help ensure you don’t inadvertently mix up the order of your initialization values. However, designated initializers also clutter up the initializer list significantly, so we won’t recommend their use as a best practice at this time.</p>
-<p>Also, because there’s no enforcement that designated initializers are being used consistently everywhere an aggregate is initialized, it’s a good idea to avoid adding new members to the middle of an existing aggregate definition, to avoid the risk of initializer shifting.</p>
-<p>Best practice</p>
-<p>When adding a new member to an aggregate, it’s safest to add it to the bottom of the definition list so the initializers for other members don’t shift.</p>
-<p>Assignment with an initializer list</p>
-<p>As shown in the prior lesson, we can assign values to members of structs individually:</p>
+</code></pre></div></td></tr></table></div></p>
+<p>指定初始化很不错，因为它们提供了某种程度的自注释，并有助于确保你不会无意中混淆初始化值的顺序。但是，指定初始化式也会使初始化式列表变得非常混乱，因此我们目前不建议将其作为最佳实践使用。</p>
+<p>另外，由于没有强制规定在初始化聚合的所有地方都一致使用指定初始化式，因此避免向现有聚合定义的中间添加新成员是一个好主意，以避免初始化式转移的风险。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>在向聚合中添加新成员时，最安全的做法是将其添加到定义列表的底部，这样其他成员的初始化式就不需要调整顺序。</p>
+</div>
+<h2 id="_5">使用初始化值列表进行赋值</h2>
+<p>如上一课所示，我们可以为结构体的成员单独赋值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5937,8 +6044,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This is fine for single members, but not great when we want to update many members. Similar to initializing a struct with an initializer list, you can also assign values to structs using an initializer list (which does memberwise assignment):</p>
+<p>如果要操作的是个别成员，那是没有问题的。但是一旦要操作很多成员时，这种方式非常麻烦。类似于可以用<a href="../initializer-list/">初始化值列表</a>初始化结构体一样，我们也可以使用初始化值列表进行赋值（进行<a href="../memberwise-assignment/">成员依次赋值</a>）：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5967,10 +6073,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Note that because we didn’t want to change <code>joe.id</code>, we needed to provide the current value for <code>joe.id</code> in our list as a placeholder, so that memberwise assignment could assign <code>joe.id</code> to <code>joe.id</code>. This is a bit ugly.</p>
-<p>Assignment with designated initializers C++20</p>
-<p>Designated initializers can also be used in a list assignment:</p>
+<p>注意，因为我们不希望改变  <code>joe.id</code> 的值，所以可以直接使用 <code>joe.id</code> 作为占位符，将 <code>joe.id</code> 赋值给 <code>joe.id</code>。虽然不太优雅。</p>
+<h2 id="c20_1">使用指定初始化赋值（C++20）</h2>
+<p>指定初始化也可以用来赋值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5999,8 +6104,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Any members that aren’t designated in such an assignment will be assigned the value that would be used for value initialization. If we hadn’t have specified a designated initializer for <code>joe.id</code>, <code>joe.id</code> would have been assigned the value 0.</p>
+<p>任何没有在这种赋值中指定的成员都将被赋值给用于<a href="../value-initialization/">值初始化</a>的值。也就是说，如果不为 <code>joe.id</code> 提供指定初始化值，则<code>joe.id</code> 会被赋值为0。</p>
 
 
               </article>

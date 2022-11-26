@@ -1,8 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "class-instance",
+      "path": "docs/class-instance.md"
+    },
+    {
+      "basename": "fixed-array",
+      "path": "docs/fixed-array.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
+    },
+    {
+      "basename": "4-3-Object-sizes-and-the-sizeof-operator",
+      "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
+    },
+    {
+      "basename": "4-2-Void",
+      "path": "docs/4-2-Void.md"
+    },
+    {
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "dynamic-initialization",
+      "path": "docs/dynamic-initialization.md"
+    },
+    {
+      "basename": "6-8-Why-non-const-global-variables-are-evil",
+      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
+    },
+    {
+      "basename": "static-initialization",
+      "path": "docs/static-initialization.md"
+    },
+    {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
+      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
+      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
     },
     {
       "basename": "10-y-using-a-language-reference",
@@ -27,10 +91,6 @@
     {
       "basename": "10-2-unscoped-enumerations",
       "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
     },
     {
       "basename": "9-1-Introduction-to-compound-data-types",
@@ -139,66 +199,6 @@
     {
       "basename": "unscoped-enumerations",
       "path": "docs/unscoped-enumerations.md"
-    },
-    {
-      "basename": "scoped-enumerations",
-      "path": "docs/scoped-enumerations.md"
-    },
-    {
-      "basename": "type-safe",
-      "path": "docs/type-safe.md"
-    },
-    {
-      "basename": "11-14-Void-pointers",
-      "path": "docs/11-14-Void-pointers.md"
-    },
-    {
-      "basename": "void pointer",
-      "path": "docs/void pointer.md"
-    },
-    {
-      "basename": "11-x-chapter-11-comprehensive-quiz",
-      "path": "docs/11-x-chapter-11-comprehensive-quiz.md"
-    },
-    {
-      "basename": "11-19-Introduction-to-standard-library-algorithms",
-      "path": "docs/11-19-Introduction-to-standard-library-algorithms.md"
-    },
-    {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "22-7-std-string-inserting",
-      "path": "docs/22-7-std-string-inserting.md"
-    },
-    {
-      "basename": "22-6-std-string-appending",
-      "path": "docs/22-6-std-string-appending.md"
-    },
-    {
-      "basename": "22-5-std-string-assignment-and-swapping",
-      "path": "docs/22-5-std-string-assignment-and-swapping.md"
-    },
-    {
-      "basename": "22-4-std-string-character-access-and-conversion-to-C-style-arrays",
-      "path": "docs/22-4-std-string-character-access-and-conversion-to-C-style-arrays.md"
-    },
-    {
-      "basename": "22-1-std-string-and-std-wstring",
-      "path": "docs/22-1-std-string-and-std-wstring.md"
-    },
-    {
-      "basename": "22-3-std-string-length-and-capacity",
-      "path": "docs/22-3-std-string-length-and-capacity.md"
-    },
-    {
-      "basename": "22-2-std-string-construction-and-destruction",
-      "path": "docs/22-2-std-string-construction-and-destruction.md"
     }
   ],
   "omittedPaths": [],

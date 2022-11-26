@@ -2789,7 +2789,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2803,7 +2803,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5587,6 +5587,35 @@
 </code></pre></div></td></tr></table></div>
 <p>https://toutiao.io/posts/tt34ysp/preview
 https://en.cppreference.com/w/cpp/language/aggregate_initialization</p>
+<p>聚合初始化有三种形式：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Employee</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">wage</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">frank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mf">60000.0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 拷贝列表初始化，使用大括号</span>
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">robert</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mf">62500.0</span><span class="w"> </span><span class="p">);</span><span class="w">  </span><span class="c1">// 使用小括号的直接初始化(C++20)</span>
+<span class="w">    </span><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mf">45000.0</span><span class="w"> </span><span class="p">};</span><span class="w">     </span><span class="c1">// 使用大括号列表的列表初始化（推荐）</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 
 
               </article>

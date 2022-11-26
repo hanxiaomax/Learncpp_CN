@@ -2789,7 +2789,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2803,7 +2803,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5580,6 +5580,14 @@
 -   for an array, the array elements in increasing subscript order, or
 -   for a class, the non-static data members that are not anonymous <a href="https://en.cppreference.com/w/cpp/language/bit_field" title="cpp/language/bit field">bit-fields</a>, in declaration order.(until C++17)
 -   for a class, the direct base classes in declaration order, followed by the direct non-static data members that are neither anonymous <a href="https://en.cppreference.com/w/cpp/language/bit_field" title="cpp/language/bit field">bit-fields</a> nor members of an <a href="https://en.cppreference.com/w/cpp/language/union#Anonymous_unions" title="cpp/language/union">anonymous union</a>, in declaration order.(since C++17)</p>
+<p>C++ 中的聚合数据类型必须满足如下条件：</p>
+<ul>
+<li>是一个<a href="../class-type/">类类型</a>(包括 struct, class 或 union) 或数组 (包括内置数组或<code>std::array</code>)；</li>
+<li>没有私有或受保护的非静态数据成员；</li>
+<li>没有用户声明的或继承的<a href="../constructor/">构造函数</a>；</li>
+<li>没有<a href="../base-class/">基类</a>；</li>
+<li>没有<a href="../virtual-function/">虚函数</a> ；</li>
+</ul>
 
 
               </article>

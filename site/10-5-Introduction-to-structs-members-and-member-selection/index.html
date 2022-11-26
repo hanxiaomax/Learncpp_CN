@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#defining-structs" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2800,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2814,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2885,14 +2885,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#defining-structs" class="md-nav__link">
-    Defining structs
+  <a href="#_1" class="md-nav__link">
+    定义结构体
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
+    定义结构体对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     访问成员
   </a>
   
@@ -5592,14 +5599,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#defining-structs" class="md-nav__link">
-    Defining structs
+  <a href="#_1" class="md-nav__link">
+    定义结构体
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
+    定义结构体对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     访问成员
   </a>
   
@@ -5668,9 +5682,8 @@
   <h1>10.5 - 结构体、成员和成员选择</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>There are many instances in programming where we need more than one variable in order to represent something of interest. As we discussed in the introduction to the previous chapter (<a href="../9-1-Introduction-to-compound-data-types/">9.1 - 复合数据类型</a>), a fraction has a numerator and denominator that are linked together into a single mathematical object.</p>
-<p>Alternatively, lets say we want to write a program where we need to store information about the employees in a company. We might be interested in keeping track of attributes such as the employee’s name, title, age, employee id, manager id, wage, birthday, hire date, etc…</p>
-<p>If we were to use independent variables to track all of this information, that might look something like this:</p>
+<p>在编程中我们经常需要使用多个变量来表示更复杂的对象，正如在之前章节中(<a href="../9-1-Introduction-to-compound-data-types/">9.1 - 复合数据类型</a>)介绍的那样，分数是由两个具有关联的数学对象——分子分母组成的。</p>
+<p>或者，假设我们想要编写一个程序，其中需要存储关于公司员工的信息。为此我们需要追踪诸如员工姓名、头衔、年龄、员工id、经理id、工资、生日、雇佣日期等属性。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5695,12 +5708,11 @@
 <span class="kt">int</span><span class="w"> </span><span class="n">hireMonth</span><span class="p">;</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="n">hireDay</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, there are a number of problems with this approach. First, it’s not immediately clear whether these variables are actually related or not (you’d have to read comments, or see how they are used in context). Second, there are now 12 variables to manage. If we wanted to pass this employee to a function, we’d have to pass 12 arguments (and in the correct order), which would make a mess of our function prototypes and function calls. And since a function can only return a single value, how would a function even return an employee?</p>
-<p>And if we wanted more than one employee, we’d need to define 12 more variables for each additional employee (each of which would require a unique name)! This clearly doesn’t scale at all. What we really need is some way to organize all of these related pieces of data together, to make them easier to manage.</p>
-<p>Fortunately, C++ comes with two compound types designed to solve such challenges: structs (which we’ll introduce now) and classes (which we’ll explore soon). A struct (short for structure) is a program-defined data type (<a href="../10-1-Introduction-to-program-defined-user-defined-types/">10.1 - 自定义类型简介</a>) that allows us to bundle multiple variables together into a single type. As you’ll see shortly, this makes management of related sets of variables much simpler!</p>
-<h2 id="defining-structs">Defining structs</h2>
-<p>Because structs are a program-defined type, we first have to tell the compiler what our struct type looks like before we can begin using it. Here is an example of a struct definition for a simplified employee:</p>
+<p>然而，这种方式存在许多问题。首先，我们不清楚这些变量是否真的相关(你必须阅读注释，或者查看它们在上下文中是如何使用的)。其次，现在有12个变量需要管理。如果我们想要将这个雇员传递给一个函数，我们必须传递12个参数(并且顺序正确)，这将使我们的函数原型和函数调用变得混乱。既然函数只能返回一个值，那么函数如何返回一个雇员呢?</p>
+<p>如果我们想要一个以上的员工，我们需要为每个额外的员工定义12个以上的变量(每个变量都需要一个惟一的名称)！这显然是无法扩展的。我们真正需要的是某种方法来组织所有这些相关的数据块，使它们更容易管理。</p>
+<p>幸运的是，C++ 提供了两个符合类型用于解决上述问题：结构体和类。结构体是一种程序定义类型(<a href="../10-1-Introduction-to-program-defined-user-defined-types/">10.1 - 程序定义类型简介</a>) ，使用结构体我们可以把多个变量聚合成一个单独的类型。稍后你将会看到，这使得管理多个相关联变量变得非常简单！</p>
+<h2 id="_1">定义结构体</h2>
+<p>因为结构是程序定义的类型，所以在开始使用结构类型之前，我们必须先告诉编译器结构类型是什么样子的。下面是一个简化员工的结构定义示例：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5713,30 +5725,27 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">wage</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The <code>struct</code> keyword is used to tell the compiler that we’re defining a struct, which we’ve named <code>Employee</code> (since program-defined types are typically given names starting with a capital letter).</p>
-<p>Then, inside a pair of curly braces, we define the variables that each Employee object will contain. In this example, each <code>Employee</code> we create will have 3 variables: an <code>int id</code>, an <code>int age</code>, and a <code>double wage</code>. The variables that are part of the struct are called data members (or member variables).</p>
+<p><code>struct</code> 关键字用于告诉编译器此处要定义一个结构体——名为 <code>Employee</code> （因为程序定义类型的命名通常以大写字母开头）。</p>
+<p>随后，在大括号中，定义了 <code>Employee</code> 所需要的各个变量。在这个例子中，每个 <code>Employee</code> 创建了3个变量：<code>int id</code>、<code>int age</code> 和 <code>double wage</code>。这些变量是结构体的一部分，称为数据成员（或者<a href="../member-variable/">成员变量</a>）。</p>
 <div class="admonition tip">
 <p class="admonition-title">小贴士</p>
-<p>We’ll use the term <code>member</code> a lot in future lessons, so make sure you remember what it means.</p>
+<p>在以后的课程中，我们会经常用到“成员”这个词，所以一定要记住它的意思。</p>
 </div>
-<p>Just like we use an empty set of curly braces to value initialize (<a href="../1-4-Variable-assignment-and-initialization/">1.4 - 变量赋值和初始化</a>) normal variables, the empty curly braces here ensure that the variables inside our <code>Employee</code> are value initialized when an <code>Employee</code> is created. We’ll talk more about this when we cover default member initialization in a few lessons (<a href="https://www.learncpp.com/cpp-tutorial/default-member-initialization/">10.7 -- Default member initialization</a>).</p>
-<p>Finally, we end the type definition with a semicolon.</p>
-<p>As a reminder, <code>Employee</code> is just a type definition -- no objects are actually created at this point.</p>
-<p>Defining struct objects</p>
-<p>In order to use the <code>Employee</code> type, we simply define a variable of type <code>Employee</code>:</p>
+<p>正如可以使用空的大括号对一般变量进行<a href="../%E5%88%9D%E5%A7%8B%E5%8C%96/">初始化</a>一样 (<a href="../1-4-Variable-assignment-and-initialization/">1.4 - 变量赋值和初始化</a>) ，空的大括号也可以用于在创建 <code>Employee</code> 时对其成员变量进行初始化。 我们会在后续的课程中介绍<a href="../default-member-initializer/">默认成员初始化</a>(<a href="../10-7-default-member-initialization/">10.7 - 默认成员初始化</a>)。</p>
+<p>最后，在定义结束处添加分号。</p>
+<p>提醒一下，这里的 <code>Employee</code> 只是一个类型定义——并没有实际创建任何对象。</p>
+<h2 id="_2">定义结构体对象</h2>
+<p>为了使用 <code>Employee</code> 类型，定义一个 <code>Employee</code> 类型的变量即可：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="p">;</span><span class="w"> </span><span class="c1">// Employee is the type, joe is the variable name</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This defines a variable of type <code>Employee</code> named <code>joe</code>. When <code>joe</code> is defined, an Employee object is created, and the 3 data members within are created in sequential order (and then value initialized).</p>
-<p>Just like any other type, it is possible to define multiple variables of the same struct type:</p>
+<p>此处定义了一个名为 <code>joe</code> 的 <code>Employee</code> 类型变量。定义 <code>joe</code> 时，将创建一个 <code>Employee</code> 对象，并按顺序创建其中的3个数据成员(然后初始化值)。</p>
+<p>就像任何其他类型一样，可以定义多个此类型变量:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Employee</span><span class="w"> </span><span class="n">joe</span><span class="p">;</span><span class="w"> </span><span class="c1">// create an Employee struct for Joe</span>
 <span class="n">Employee</span><span class="w"> </span><span class="n">frank</span><span class="p">;</span><span class="w"> </span><span class="c1">// create an Employee struct for Frank</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<h2 id="_1">访问成员</h2>
-<p>Consider the following example:</p>
+<h2 id="_3">访问成员</h2>
+<p>考虑下面这个例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5763,9 +5772,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, the name <code>joe</code> refers to the entire struct object (which contains the member variables). To access a specific member variable, we use the member selection operator (<code>operator.</code>) in between the struct variable name and the member name. For example, to access Joe’s age member, we’d use <code>joe.age</code>.</p>
-<p>Struct member variables work just like normal variables, so it is possible to do normal operations on them, including assignment, arithmetic, comparison, etc…</p>
+<p>在上面的例子中，<code>joe</code> 指的是整个结构体对象(其中包含成员变量)。要访问特定的成员变量，需要在结构变量名和成员名之间使用<a href="../member-selection-operator/">成员选择运算符</a>。例如，要访问<code>joe</code>的年龄成员，需要写作 <code>joe.age</code>。</p>
+<p>结构体成员变量就像普通变量一样工作，因此可以对它们进行一般的操作，包括赋值、运算、比较等……</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5804,11 +5812,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
+<p>打印结果：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>32
 </code></pre></div></td></tr></table></div>
-<p>One of the biggest advantages of structs is that we only need to create one new name per struct variable (the member names are fixed as part of the struct type definition). In the following example, we instantiate two <code>Employee</code> objects: <code>joe</code> and <code>frank</code>.</p>
+<p>使用结构体的最大有时在于，你只需要为每个结构体创建一个变量(成员名是结构体定义中固定的部分)。在下面的例子中，我们实例化了两个  <code>Employee</code> 对象：<code>joe</code> 和 <code>frank</code>。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5885,8 +5892,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>In the above example, it is very easy to tell which member variables belong to Joe and which belong to Frank. This provides a much higher level of organization than individual variables would. Furthermore, because Joe’s and Frank’s members have the same names, this provides consistency when you have multiple variables of the same struct type.</p>
-<p>We’ll continue our exploration of structs in the next lesson, including a look at how to initialize them.</p>
+<p>在上面的例子中，很容易判断哪些成员变量属于<code>Joe</code>，哪些属于<code>Frank</code>。这提供了比单个变量更高层次的组织方法。此外，由于<code>Joe</code>的成员和<code>Frank</code>的成员具有相同的名称，当你有多个相同结构类型的变量时，这将提供一致性。</p>
+<p>我们将在下一课中继续探索结构体，以及如何初始化它们。</p>
 
 
               </article>

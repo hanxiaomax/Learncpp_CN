@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              10.1 - 自定义类型简介
+              10.1 - 程序定义类型简介
             
           </span>
         </div>
@@ -2807,12 +2807,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-            10.1 - 自定义类型简介
+            10.1 - 程序定义类型简介
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
       
         
@@ -2886,7 +2886,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5709,7 +5709,7 @@
 </div>
   
 
-  <h1>10.1 - 自定义类型简介</h1>
+  <h1>10.1 - 程序定义类型简介</h1>
 
 <details class="note"><summary>关键点速记</summary><ul>
 <li>自定义类型指代所有非C++核心类型，包括标准库</li>
@@ -5759,7 +5759,7 @@
 <h2 id="_1">用户定义类型是什么？</h2>
 <p>在 <a href="../9-1-Introduction-to-compound-data-types/">9.1 - 复合数据类型</a> 一课中，我们曾经介绍过如何存储一个分数。对于分数来说，它包括分子和分母两个部分，而且它们之间是存在概念性联系的。在本节课中，我们会讨论使用两个整型分别表示分子分母可能带来的问题。</p>
 <p>如果C++有能够表示分数的内建类型就好了——但可惜并没有。还有数百种其他可能有用的类型C++没有包含，因为它不可能预测人们可能需要的所有东西(更不用说实现和测试那些东西了)。</p>
-<p>相反，C++提供了解决该问题的另外一种途径：允许我们在程序中创建全新的自定义类型！这样的类型通常称为用户定义类型(尽管我们认为术语程序定义类型更好——我们将在本课后面讨论其区别)。C++有两类复合类型可以实现这一点：枚举类型(包括<a href="../unscoped-enumerations/">非限定作用域枚举类型</a>和<a href="../scoped-enumerations/">限定作用域枚举</a>)和类类型(包括结构体、类和联合体)。</p>
+<p>相反，C++提供了解决该问题的另外一种途径：允许我们在程序中创建全新的自定义类型！这样的类型通常称为用户定义类型(尽管我们认为术语程序定义类型更好——我们将在本课后面讨论其区别)。C++有两类复合类型可以实现这一点：枚举类型(包括<a href="../unscoped-enumerations/">无作用域枚举类型</a>和<a href="../scoped-enumerations/">限定作用域枚举</a>)和类类型(包括结构体、类和联合体)。</p>
 <h2 id="_2">定义一个程序定义类型</h2>
 <p>就像<a href="../type-aliases/">类型别名</a>一样，程序定义类型也必须先定义后使用。程序定义类型的定义称为类型定义。</p>
 <p>尽管结构体还尚未介绍，但我们可以先从下面的例子中了解到，自定义类型<code>Fraction</code>和该类型对象是如何初始化的。</p>
@@ -5801,9 +5801,9 @@
 <p class="admonition-title">注意</p>
 <p>不要忘记以分号结束类型定义，否则编译器通常会在下一行代码中出错。</p>
 </div>
-<p>我们将在下一课(<a href="../10-2-unscoped-enumerations/">10.2 - 非限定作用域枚举类型</a>中展示更多定义和使用程序定义类型的例子，并且我们将从<a href="../10-5-Introduction-to-structs-members-and-member-selection/">10.5 - 结构体、成员和成员选择</a>开始介绍结构体。</p>
+<p>我们将在下一课(<a href="../10-2-unscoped-enumerations/">10.2 - 无作用域枚举类型</a>中展示更多定义和使用程序定义类型的例子，并且我们将从<a href="../10-5-Introduction-to-structs-members-and-member-selection/">10.5 - 结构体、成员和成员选择</a>开始介绍结构体。</p>
 <h2 id="_3">命名一个程序定义类型</h2>
-<p>按照管理，自定义类型的名字应该以大写字母开头，而且不要添加任何的后缀(例如：<code>Fraction</code>，而不是 <code>fraction</code>，<code>fraction_t</code> 或者 <code>Fraction_t</code>)。</p>
+<p>按照惯例，自定义类型的名字应该以大写字母开头，而且不要添加任何的后缀(例如：<code>Fraction</code>，而不是 <code>fraction</code>，<code>fraction_t</code> 或者 <code>Fraction_t</code>)。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
 <p>以大写字母开始命名自定义类型，不要使用后缀。</p>
@@ -5939,13 +5939,13 @@
         
         
           
-          <a href="../10-2-unscoped-enumerations/" class="md-footer__link md-footer__link--next" aria-label="Next: 10.2 - 非限定作用域枚举类型" rel="next">
+          <a href="../10-2-unscoped-enumerations/" class="md-footer__link md-footer__link--next" aria-label="Next: 10.2 - 无作用域枚举类型" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   Next
                 </span>
-                10.2 - 非限定作用域枚举类型
+                10.2 - 无作用域枚举类型
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2795,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2809,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2899,9 +2904,73 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            10.8 - 结构体传递及其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         10.8 - 结构体传递及其他
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    按引用传递结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    返回结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    返回匿名结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    包含程序自定义类型成员的结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    结构体大小和数据结构对齐
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    结构体是重要的程序组成部分
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5544,6 +5613,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    按引用传递结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    返回结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    返回匿名结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    包含程序自定义类型成员的结构体
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    结构体大小和数据结构对齐
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    结构体是重要的程序组成部分
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5593,7 +5712,7 @@
   <h1>10.8 - 结构体传递及其他</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>Consider an employee represented by 3 loose variables:</p>
+<p>假设一个员工由3个松散变量表示：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5610,8 +5729,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>If we want to pass this employee to a function, we have to pass three variables:</p>
+<p>如果我们想把这个雇员传递给一个函数，则须传递三个变量：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5650,10 +5768,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>While passing 3 variables isn’t that bad, consider a struct with 10 or 12 members. Passing each variable independently would be time consuming and error prone. Additionally, if we ever add a new attribute to our employee (e.g. name), we now have to modify all the functions declarations, definitions, and function calls to accept the new parameter and argument!</p>
-<p>Passing structs (by reference)</p>
-<p>A big advantage of using structs over individual variables is that we can pass the entire struct to a function that needs to work with the members. Structs are generally passed by (const) reference to avoid making copies.</p>
+<p>虽然传递3个变量并不是那么糟糕，但考虑一个有10或12个成员的结构体。独立地传递每个变量既耗时又容易出错。此外，如果我们向雇员添加了一个新属性(例如名称)，我们现在必须修改所有函数声明、定义和函数调用，以接受新的形参和实参！</p>
+<h2 id="_1">按引用传递结构体</h2>
+<p>使用结构体而不是单个变量的一大优点是，我们可以将整个结构传递给需要与成员一起工作的函数。结构体通常通过(const)引用传递，以避免拷贝。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5716,19 +5833,26 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, we pass an entire <code>Employee</code> to <code>printEmployee()</code> (twice, once for <code>joe</code> and once for <code>frank</code>).</p>
-<p>The above program outputs:</p>
-<p>ID:   14
+<p>在上面的例子中，我们将 <code>Employee</code> 作为整体传递给 <code>printEmployee()</code> (传递了量词，一次是<code>joe</code> 一次是<code>frank</code>)。</p>
+<p>上面程序输出：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>ID:   14
 Age:  32
-Wage: 24.15</p>
-<p>ID:   15
+Wage: 24.15
+
+ID:   15
 Age:  28
-Wage: 18.27</p>
-<p>Because we are passing the entire struct object (rather than individual members), we only need one parameter no matter how many members the struct object has. And, in the future, if we ever decide to add new members to our <code>Employee</code> struct, we will not have to change the function declaration or function call! The new member will automatically be included.</p>
-<p>Returning structs</p>
-<p>Consider the case where we have a function that needs to return a point in 3-dimensional Cartesian space. Such a point has 3 attributes: an x-coordinate, a y-coordinate, and a z-coordinate. But functions can only return one value. So how do we return all 3 coordinates back the user?</p>
-<p>One common way is to return a struct:</p>
+Wage: 18.27
+</code></pre></div></td></tr></table></div>
+<p>因为传递的是整个结构对象(而不是单个成员)，所以无论结构对象有多少成员，我们只需要一个形参。而且，在将来，如果需要向<code>Employee</code>结构体中添加新成员，也不必更改函数声明或函数调用！新成员将自动被包括在内。</p>
+<h2 id="_2">返回结构体</h2>
+<p>考虑这样一种情况，我们有一个函数需要返回三维笛卡尔空间中的一个点。这样的点有3个属性：<code>x</code>坐标、<code>y</code>坐标和<code>z</code>坐标。但是函数只能返回一个值。此时应该如何将3个坐标全部返回给用户?</p>
+<p>最常见的办法是返回一个结构体：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5783,12 +5907,12 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
-<p>The point is zero</p>
-<p>Structs are usually returned by value, so as not to return a dangling reference.</p>
-<p>Returning unnamed structs</p>
-<p>In the <code>getZeroPoint()</code> function above, we create a new named object (<code>temp</code>) just so we could return it:</p>
+<p>打印结果：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>The point is zero
+</code></pre></div></td></tr></table></div>
+<p>结构体通常<a href="../return-by-value/">按值返回</a>，这样就不会产生<a href="../dangling/">悬垂</a>引用。</p>
+<h2 id="_3">返回匿名结构体</h2>
+<p><code>getZeroPoint()</code> 函数中创建了一个对象(<code>temp</code>)，我们可以将它直接返回：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5801,9 +5925,8 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The name of the object (<code>temp</code>) doesn’t really provide any documentation value here.</p>
-<p>We can make our function slightly better by returning a temporary (unnamed) object instead:</p>
+<p>这个命名对象 (<code>temp</code>) 对可读性并没有什么帮助。</p>
+<p>我们可以对函数稍加修改，使其返回一个临时的匿名对象：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5812,9 +5935,8 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Point3d</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// return an unnamed Point3d</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this case, a temporary Point3d is constructed, copied back to the caller, and then destroyed at the end of the expression. Note how much cleaner this is (one line vs two, and no need to understand whether <code>temp</code> is used more than once).</p>
-<p>In the case where the function has an explicit return type (e.g. <code>Point3d</code>) instead of using type deduction (an <code>auto</code> return type), we can even omit the type in the return statement:</p>
+<p>这个例子中创建了一个临时的 <code>Point3d</code> 对象并将其<a href="../return-by-value/">按值返回</a>（拷贝返回）给调用者。该对象会在表达式结束时销毁。注意这是多么的简洁(一行相比两行，并且不需要判断 <code>temp</code> 是否使用了多次)。</p>
+<p><mark>在函数有显式返回类型的情况下(例如: <code>Point3d</code> )而不是使用类型演绎(一个 <code>auto</code> 返回类型)，我们甚至可以在return语句中省略类型:</mark></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5827,8 +5949,7 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// return an unnamed Point3d</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Also note that since in this case we’re returning all zero values, we can use empty braces to return a value-initialized Point3d:</p>
+<p>还要注意，因为在本例中我们返回的都是零值，所以我们可以使用空大括号来返回一个值初始化的 <code>Point3d</code>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5839,10 +5960,9 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Structs with program-defined members</p>
-<p>In C++, structs (and classes) can have members that are other program-defined types. There are two ways to do this.</p>
-<p>First, we can define one program-defined type (in the global scope) and then use it as a member of another program-defined type:</p>
+<h2 id="_4">包含程序自定义类型成员的结构体</h2>
+<p>在C++中，结构体(和类)的成员可以是其他程序定义的类型。有两种方法可以做到这一点。</p>
+<p>首先，可以定义一个程序定义类型（在全局作用域），然后将其作为另一个程序定义类型的成员：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5883,9 +6003,8 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">myCompany</span><span class="p">.</span><span class="n">CEO</span><span class="p">.</span><span class="n">wage</span><span class="p">;</span><span class="w"> </span><span class="c1">// print the CEO&#39;s wage</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above case, we’ve defined an <code>Employee</code> struct, and then used that as a member in a <code>Company</code> struct. When we initialize our <code>Company</code>, we can also initialize our <code>Employee</code> by using a nested initialization list. And if we want to know what the CEO’s salary was, we simply use the member selection operator twice: <code>myCompany.CEO.wage;</code></p>
-<p>Second, types can also be nested inside other types, so if an Employee only existed as part of a Company, the Employee type could be nested inside the Company struct:</p>
+<p>在上面的例子中，我们首先定义了一个 <code>Employee</code> 结构体，然后将其作为另一个 <code>Company</code> 结构体的成员。 当 <code>Company</code> 初始化时，也可以通过嵌套的<a href="../initializer-list/">初始化值列表</a>初始化<code>Employee</code>。如果我们想知道某个CEO的薪水是多少，则需要使用两次<a href="../member-selection-operator/">成员选择运算符</a>：<code>myCompany.CEO.wage;</code></p>
+<p>其次，类型也可以被嵌套定义在其他类型中，搜易如果 <code>Employee</code> 只会作为 <code>Company</code> 的成员使用，则可以将其定义在 <code>Company</code> 结构体中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5926,11 +6045,10 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">myCompany</span><span class="p">.</span><span class="n">CEO</span><span class="p">.</span><span class="n">wage</span><span class="p">;</span><span class="w"> </span><span class="c1">// print the CEO&#39;s wage</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This is more often done with classes, so we’ll talk more about this in a future lesson (<a href="https://www.learncpp.com/cpp-tutorial/nested-types-in-classes/">13.17 -- Nested types in classes</a>).</p>
-<p>Struct size and data structure alignment</p>
-<p>Typically, the size of a struct is the sum of the size of all its members, but not always!</p>
-<p>Consider the following struct:</p>
+<p>这种形式通常会在类中使用，我们会在后面的课程中进行介绍<a href="../13-17-nested-types-in-classes/">13.17 - 类中的嵌套类型</a>。</p>
+<h2 id="_5">结构体大小和数据结构对齐</h2>
+<p>通常我们会认为结构体的大小就是其所有成员大小的总和，但实际上并不一定！</p>
+<p>考虑下面的代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5961,14 +6079,16 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>On many platforms, a short is 2 bytes, an int is 4 bytes, and a double is 8 bytes, so we’d expect <code>sizeof(Foo)</code> to be 2 + 4 + 8 = 14 bytes. However, on the author’s machine, this prints:</p>
-<p>The size of Foo is 16</p>
-<p>It turns out, we can only say that the size of a struct will be <em>at least</em> as large as the size of all the variables it contains. But it could be larger! For performance reasons, the compiler will sometimes add gaps into structures (this is called padding).</p>
-<p>In the <code>Foo</code> struct above, the compiler is invisibly adding 2 bytes of padding after member <code>a</code>, making the size of the structure 16 bytes instead of 14.</p>
-<p>For advanced readers</p>
-<p>The reason compilers may add padding is beyond the scope of this tutorial, but readers who want to learn more can read about <a href="https://en.wikipedia.org/wiki/Data_structure_alignment">data structure alignment</a> on Wikipedia. This is optional reading and not required to understand structures or C++!</p>
-<p>This can actually have a pretty significant impact on the size of the struct, as the following program will demonstrate:</p>
+<p>在很多平台上，short 是 2 字节、int 是 4 字节而 double 是 8 字节，所以我们会认为 <code>sizeof(Foo)</code> 的长度为 2 + 4 + 8 = 14 字节。但是，在笔者的机器上打印结果为。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>The size of Foo is 16
+</code></pre></div></td></tr></table></div>
+<p>实际上，我们计算的结果，只是结构体最小的大小，即结构体的大小的最小值为其所有成员的大小的总和。但是它也可以占据更多空间。处于性能优化的考虑，编译器有时会在结构体中添加一些“间隙”（称为<a href="../struct-padding/">结构体填充</a>）</p>
+<p>在上面的例子中，<code>Foo</code> 结构体会被编译器插入一个2字节的不可见的填充（位于成员a之后），使得结构体的大小从14变为16。</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
+<p>编译器之所以对结构体进行填充的原因，超出了本教程的范围，如果您有兴趣可以阅读维基百科上关于<a href="https://en.wikipedia.org/wiki/Data_structure_alignment">数据结构对齐</a>的内容。该知识点属于扩展阅读内容，它并不是掌握结构体或C++必备的知识！</p>
+</div>
+<p>这实际上会对结构的大小产生相当大的影响，如下面的程序所示：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6019,12 +6139,13 @@ Wage: 18.27</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Note that <code>Foo1</code> and <code>Foo2</code> have the same members, the only difference being where in the declaration order member <code>qq</code> is declared. This program prints:</p>
-<p>The size of Foo1 is 16
-The size of Foo2 is 24</p>
-<p>Structs are an important building block</p>
-<p>While structs are useful in and of themselves, classes (which are the heart of C++ and object oriented programming) build directly on top of the concepts we’ve introduced here. Having a good understanding of structs (especially data members, member selection, and default member initialization) will make your transition to classes that much easier.</p>
+<p>注意，尽管 <code>Foo1</code> 和 <code>Foo2</code> 具有相同的成员，但是其中成员<code>qq</code>声明的位置是不同的，程序打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>The size of Foo1 is 16
+The size of Foo2 is 24
+</code></pre></div></td></tr></table></div>
+<h2 id="_6">结构体是重要的程序组成部分</h2>
+<p>虽然结构本身很有用，但类(类是C++和面向对象编程的核心)直接构建在我们这里介绍的概念之上。在很好地理解结构体(特别是数据成员、成员选择和默认成员初始化)之后，学习类也会变得更加容易。</p>
 
 
               </article>

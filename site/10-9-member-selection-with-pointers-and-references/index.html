@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2795,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2809,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2913,9 +2918,52 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            10.9 - 基于指针和引用的成员选择
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         10.9 - 基于指针和引用的成员选择
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    结构体和结构体引用的成员选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    结构体指针的成员选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    同时使用指针和非指针成员访问
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5544,6 +5592,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    结构体和结构体引用的成员选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    结构体指针的成员选择
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    同时使用指针和非指针成员访问
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5593,8 +5670,8 @@
   <h1>10.9 - 基于指针和引用的成员选择</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>Member selection for structs and references to structs</p>
-<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/">10.5 -- Introduction to structs, members, and member selection</a>, we showed that you can use the member selection operator (.) to select a member from a struct object:</p>
+<h2 id="_1">结构体和结构体引用的成员选择</h2>
+<p>在<a href="../10-5-Introduction-to-structs-members-and-member-selection/">10.5 - 结构体、成员和成员选择</a>中我们提到，访问结构体的成员可以使用<a href="../member-selection-operator/">成员选择运算符</a>：
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5632,9 +5709,8 @@
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Since references to an object act just like the object itself, we can also use the member selection operator (.) to select a member from a reference to a struct:</p>
+</code></pre></div></td></tr></table></div></p>
+<p>因为对象的引用其实就是对象本身，所以我们也可以对引用使用成员选择运算符来访问结构体成员：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5691,9 +5767,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Member selection for pointers to structs</p>
-<p>However, use of the member selection operator (.) doesn’t work if you have a pointer to a struct:</p>
+<h2 id="_2">结构体指针的成员选择</h2>
+<p>不过，成员选择运算符并不能被用于指向结构体的指针：
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5735,9 +5810,8 @@
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>With normal variables or references, we can access objects directly. However, because pointers hold addresses, we first need to dereference the pointer to get the object before we can do anything with it. So one way to access a member from a pointer to a struct is as follows:</p>
+</code></pre></div></td></tr></table></div></p>
+<p>对于普通变量和引用，我们可以直接访问它。而对于保存着地址的指针来说，我们必须在访问对象前，首先对地址解引用以获得该对象。 所以，通过结构体访问成员的一种方式应该像下面这样：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5780,9 +5854,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, this is a bit ugly, especially because we need to parenthesize the dereference operation so it will take precedence over the member selection operation.</p>
-<p>To make for a cleaner syntax, C++ offers a member selection from pointer operator (-&gt;) (also sometimes called the arrow operator) that can be used to select members from a pointer to an object:</p>
+<p>但是，这并不优雅，尤其是这里必须使用括号以确保正确的运算符优先级。</p>
+<p>为了能够提供一个更简洁的语法，C++提供了指针运算符进行成员选择（有时候称为箭头运算符）使我们可以基于对象指针来访问其成员：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5825,12 +5898,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This member selection from pointer operator (-&gt;) works identically to the member selection operator (.) but does an implicit dereference of the pointer object before selecting the member. This arrow operator is not only easier to type, but is also much less prone to error because the indirection is implicitly done for you, so there are no precedence issues to worry about. Consequently, when doing member access through a pointer, always use the -&gt; operator instead of the . operator.</p>
-<p>Best practice</p>
-<p>When using a pointer to access the value of a member, use operator-&gt;; instead of operator. (the . operator)</p>
-<p>Mixing pointers and non-pointers to members</p>
-<p>The member selection operator is always applied to the currently selected variable. If you have a mix of pointers and normal member variables, you can see member selections where . and -&gt; are both used in sequence:</p>
+<p>指针成员选择运算符和普通的成员选择运算符用法类似，但是它会首先进行隐式的解引用。该箭头运算符不仅更容易写，也更不容易出错，因为它会隐式进行解引用，所以我们不需要操心运算符优先级的问题。因此，在通过结构体指针访问其成员时，应该总是使用箭头运算符来完成。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>当使用指针访问成员的值时，使用<code>-&gt;</code>;而不是<code>.</code></p>
+</div>
+<h2 id="_3">同时使用指针和非指针成员访问</h2>
+<p>成员选择操作符始终应用于当前选定的变量。如果指针和普通成员变量混合使用，则成员选择<code>.</code>和<code>-&gt;</code>是按顺序使用的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5885,8 +5959,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Note that in the case of <code>(ptr-&gt;paw).claws</code>, parentheses aren’t necessary since both <code>operator-&gt;</code> and <code>operator.</code> evaluate in left to right order, but it does help readability slightly.</p>
+<p>注意 <code>(ptr-&gt;paw).claws</code>中的括号是可选的，因为 <code>operator-&gt;</code> and <code>operator.</code> 都是从左向右进行运算的，但是添加括号可以提高可读性。</p>
 
 
               </article>

@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2795,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2809,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2885,9 +2890,66 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            10.7 - 默认成员初始化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         10.7 - 默认成员初始化
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    显式初始化值优先级高于默认初始化值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    存在默认初始化值且初始化列表没有提供初始化值的情况
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    复习：初始化的可能性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    应当始终为成员提供默认初始化值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    默认初始化 vs 聚合类型的值初始化
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5544,6 +5606,49 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    显式初始化值优先级高于默认初始化值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    存在默认初始化值且初始化列表没有提供初始化值的情况
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    复习：初始化的可能性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    应当始终为成员提供默认初始化值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    默认初始化 vs 聚合类型的值初始化
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5598,9 +5703,13 @@
 
   <h1>10.7 - 默认成员初始化</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
-<p>When we define a struct (or class) type, we can provide a default initialization value for each member as part of the type definition. This process is called non-static member initialization, and the initialization value is called a default member initializer.</p>
-<p>Here’s an example:</p>
+<details class="note"><summary>关键点速记</summary><ul>
+<li>实例化聚合类型对象时如果没有提供初始化值，则表示没有初始化该聚合类型。此时它的成员会进行默认初始化。没有默认初始化值的成员则为未初始化状态。</li>
+<li>初始化聚合类型对象时，如果初始化值少于成员，则剩余的成员使用默认初始化，如果没有提供默认初始化值，则值初始化为0.</li>
+</ul>
+</details>
+<p>在定义结构体（或类）类型时，我们可以为每个成员都提供默认初始化值作为其定义的一部分。 这个过程称为<a href="../non-static-member-initialization/">非静态成员初始化</a>，而这个初始化值称为<a href="../default-member-initializer/">默认成员初始值</a>。</p>
+<p>举个例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5627,14 +5736,15 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above definition of <code>Something</code>, <code>x</code> has no default value, <code>y</code> is value-initialized by default, and <code>z</code> has the default value <code>2</code>. These default member initialization values will be used if the user doesn’t provide an explicit initialization value when instantiating an object of type <code>Something</code>.</p>
-<p>Our <code>s1</code> object doesn’t have an initializer, so the members of <code>s1</code> are initialized to their default values. <code>s1.x</code> has no default initializer, so it remains uninitialized. <code>s1.y</code> is value initialized by default, so it gets value <code>0</code>. And <code>s1.z</code> is initialized with the value <code>2</code>.</p>
-<p>Note that even though we haven’t provided an explicit initializer for <code>s1.z</code>, it is initialized to a non-zero value because of the default member initializer provided.</p>
-<p>Key insight</p>
-<p>Using default member initializers (or other mechanisms that we’ll cover later), structs and classes can self-initialize even when no explicit initializers are provided!</p>
-<p>Explicit initialization values take precedence over default values</p>
-<p>Explicit values in a list initializer always take precedence over default member initialization values.</p>
+<p>在上面 <code>Something</code> 的定义中， <code>x</code> 并没有默认初始化值、<code>y</code> 进行默认的值初始化而 <code>z</code> 则被初始化为2。<mark>如果在<a href="../instantiated/">实例化</a><code>Something</code>类型的对象时没有提供显式初始化值，则会使用成员的这些默认成员初始化值。</mark></p>
+<p><code>s1</code> 对象没有初始化值，所以 <code>s1</code> 的成员们会被初始化为它们的默认值。<code>s1.x</code> 则因为没有默认初始化值而保持未初始化状态。<code>s1.y</code> 进行默认值初始化，得到初值0，而 <code>s1.z</code> 则被初始化为 2 。</p>
+<p>注意，即便我们并没有为 <code>s1.z</code> 提供显式地初始化值，它仍然被初始化为一个非零值，因为我们为其提供了默认成员初始化值。</p>
+<div class="admonition tldr">
+<p class="admonition-title">关键信息</p>
+<p>使用默认成员初始化式(或我们将在后面介绍的其他机制)，即使没有提供显式初始化式，结构和类也可以自我初始化！</p>
+</div>
+<h2 id="_1">显式初始化值优先级高于默认初始化值</h2>
+<p>列表初始化式中的显式值总是优先于默认成员初始化值。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5661,10 +5771,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above case, <code>s2</code> has explicit initialization values for every member, so the default member initialization values are not used at all. This means <code>s2.x</code>, <code>s2.y</code> and <code>s2.z</code> are initialized to the values <code>5</code>, <code>6</code>, and <code>7</code> respectively.</p>
-<p>Missing initializers in an initializer list when default values exist</p>
-<p>In the previous lesson (<a href="https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/">10.6 -- Struct aggregate initialization</a>) we noted that if an aggregate is initialized but the number of initialization values is fewer than the number of members, then all remaining members will be value-initialized. However, if a default member initializer is provided for a given member, that default member initializer will be used instead.</p>
+<p>在上面的例子中，s2 的每个成员都具有显式地初始化值，所以默认成员初始化在这个例子中并不生效。<code>s2.x</code>、<code>s2.y</code> 和 <code>s2.z</code> 分别被初始化为<code>5</code>、 <code>6</code> 和 <code>7</code> 。</p>
+<h2 id="_2">存在默认初始化值且初始化列表没有提供初始化值的情况</h2>
+<p>在上一节课中（<a href="../10-6-struct-aggregate-initialization/">10.6 - 结构体的聚合初始化</a>）我们提到，<mark>如果聚合数据结构被初始化了，但初始化值的个数比实际成员要少，则剩下的成员变量则会进行值初始化。但是，如果该成员具有默认初始化值，则会使用默认初始化值。</mark></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5691,22 +5800,21 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above case, <code>s3</code> is list initialized with an empty list, so all initializers are missing. This means that a default member initializer will be used if it exists, and value initialization will occur otherwise. Thus, <code>s3.x</code> (which has no default member initializer) is value initialized to <code>0</code>, <code>s3.y</code> is value initialized by default to <code>0</code>, and <code>s3.z</code> is defaulted to value <code>2</code>.</p>
-<p>Recapping the initialization possibilities</p>
-<p>If an aggregate is defined with an initialization list:</p>
+<p>在上面的例子中，<code>s3</code> 的初始化值列表是一个空列表，即没有提供任何的显式初始化值。这意味着，如果提供了默认成员初始化值，则使用该值，否则则使用<a href="../value-initialization/">值初始化</a>。因此 <code>s3.x</code> (没有默认初始化值) 会被值初始化为0。<code>s3.y</code> 的值被默认初始化为0，而 <code>s3.z</code> 默认初始化为 2。</p>
+<h2 id="_3">复习：初始化的可能性</h2>
+<p>如果聚合对象定义时有<a href="../initializer-list/">初始化值列表</a>（实例化的同时初始化）：</p>
 <ul>
-<li>If an explicit initialization value exists, that explicit value is used.</li>
-<li>If an initializer is missing and a default member initializer exists, the default is used.</li>
-<li>If an initializer is missing and no default member initializer exists, value initialization occurs.</li>
+<li>如果具有显式的初始化值，则使用该值；</li>
+<li>如果有缺失的初始化值，但存在默认初始化值，则使用默认值进行<a href="../default-initialization/">默认初始化</a>；</li>
+<li>如果有缺失的初始化值，但是没有默认初始化值，则使用<a href="../value-initialization/">值初始化</a>。</li>
 </ul>
-<p>If an aggregate is defined with no initialization list:</p>
+<p>如果聚合对象定义时没有初始化值列表（实例化时未进行初始化）：</p>
 <ul>
-<li>If a default member initializer exists, the default is used.</li>
-<li>If no default member initializer exists, the member remains uninitialized.</li>
+<li>如果有默认初始化值，则使用默认值进行默认初始化；</li>
+<li>如果不存在默认初始化值，则对应成员保持未初始化状态。</li>
 </ul>
-<p>Members are always initialized in the order of declaration.</p>
-<p>The following example recaps all possibilities:</p>
+<p>成员总是按照声明的顺序初始化。</p>
+<p>下面的例子对上述各种可能性进行了总结：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5737,11 +5845,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The case we want to watch out for is <code>s1.x</code>. Because <code>s1</code> has no initializer list and <code>x</code> has no default member initializer, <code>s1.x</code> remains uninitialized (which is bad, since we should always initialize our variables).</p>
-<p>Always provide default values for your members</p>
-<p>To avoid the possibility of uninitialized members, simply ensure that each member has a default value (either an explicit default value, or an empty pair of braces). That way, our members will be initialized with some value regardless of whether we provide an initializer list or not.</p>
-<p>Consider the following struct, which has all members defaulted:</p>
+<p>这个例子中，尤其要注意的是 <code>s1.x</code>。因为 <code>s1</code> 没有初始化值列表，而且<code>x</code>也没有默认的成员初始化值，所以它处于未初始化状态（这是不对的，因为变量一定要初始化才好）。</p>
+<h2 id="_4">应当始终为成员提供默认初始化值</h2>
+<p>为了避免出现未初始化的成员，需确保每个成员都有一个默认值(要么是显式默认值，要么是空的花括号对)。这样，无论是否提供初始化列表，成员都将被初始化为某个值。</p>
+<p>考虑下面例子中中的结构体，它的所有成员都有默认值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5772,26 +5879,26 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In all cases, our members are initialized with values.</p>
-<p>Best practice</p>
-<p>Provide a default value for all members. This ensure that your members will be initialized even if the variable definition doesn’t include an initializer list.</p>
-<p>Default initialization vs value initialization for aggregates</p>
-<p>Revisiting two lines from the above example:</p>
+<p>在这个例子中，所有的成员都会被初始化。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>为所有成员提供默认值。这确保了即使变量定义不包含初始化列表，成员也会被初始化。</p>
+</div>
+<h2 id="vs">默认初始化 vs 聚合类型的值初始化</h2>
+<p>回顾一下上面例子中的两个初始化方式：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Fraction</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span><span class="w">          </span><span class="c1">// f1.numerator value initialized to 0, f1.denominator defaulted to 1</span>
-<span class="n">Fraction</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="p">{};</span><span class="w">       </span><span class="c1">// f2.numerator value initialized to 0, f2.denominator defaulted to 1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Fraction</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span><span class="w">  </span><span class="c1">// f1.numerator value initialized to 0, f1.denominator defaulted to 1</span>
+<span class="n">Fraction</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// f2.numerator value initialized to 0, f2.denominator defaulted to 1</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>You’ll note that <code>f1</code> is default initialized and <code>f2</code> is value initialized, yet the results are the same (<code>numerator</code> is initialized to <code>0</code> and <code>denominator</code> is initialized to <code>1</code>). So which should we prefer?</p>
-<p>The value initialization case (<code>f2</code>) is safer, because it will ensure any members with no default values are value initialized (and although we should always provide default values for members, this protects against the case where one is missed).</p>
-<p>Preferring value initialization has one more benefit -- it’s consistent with how we initialize objects of other types. Consistency helps prevent errors.</p>
-<p>Best practice</p>
-<p>If no explicit initializer values will be provided for an aggregate, prefer value initialization (with an empty braces initializer) to default initialization (with no braces).</p>
-<p>That said, it’s not uncommon for programmers to use default initialization instead of value initialization for class types. This is partly for historic reasons (as value initialization wasn’t introduced until C++11), and partly because there is a similar case (for non-aggregates) where default initialization can be more efficient (we cover this case in <a href="https://www.learncpp.com/cpp-tutorial/constructors/">13.5 -- Constructors</a>).</p>
-<p>Therefore, we won’t be militant about enforcing use of value initialization for structs and classes in these tutorials, but we do strongly recommend it.</p>
-<p>[</p>
-<p>](https://www.learncpp.com/cpp-tutorial/struct-passing-and-miscellany/)</p>
+<p>在上面的例子中，<code>f1</code> 是默认初始化，而  <code>f2</code> 是值初始化。尽管结果是一样的 (<code>numerator</code> 初始化为0而 <code>denominator</code> 初始化为1)。所以，应该使用哪种方式呢？</p>
+<p>值初始化(<code>f2</code>)是更安全的方式，因为它可以确保即使成员没有初始化值也能通过值初始化被初始化(尽管我们应该为每个成员都提供默认值，该方法可以防止我们遗漏)。</p>
+<p>值初始化还有一个好处——它与初始化其他类型的对象的方式一致。一致性有助于防止错误。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>如果没有为聚合提供显式初始化值，则首选值初始化(带空大括号初始化器)而不是默认初始化(不带大括号)。</p>
+</div>
+<p>也就是说，程序员对类类型使用默认初始化而不是值初始化是很常见的。这部分是由于历史原因(因为值初始化直到C++ 11才引入)，部分是因为在类似的情况下(对于非聚合)，默认初始化更高效(我们在<a href="../13-5-constructors/">13.5 -构造函数</a>中讨论了这种情况)。</p>
+<p>因此，我们不会在这些教程中强制使用结构和类的值初始化，但我们强烈建议这样做。</p>
 
 
               </article>

@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#appending" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2798,7 +2798,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2812,7 +2812,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5227,8 +5227,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#appending" class="md-nav__link">
-    Appending**
+  <a href="#_1" class="md-nav__link">
+    追加字符串
   </a>
   
 </li>
@@ -5585,8 +5585,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#appending" class="md-nav__link">
-    Appending**
+  <a href="#_1" class="md-nav__link">
+    追加字符串
   </a>
   
 </li>
@@ -5642,14 +5642,14 @@
   <h1>22.6 - std-string 追加</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<h2 id="appending">Appending**</h2>
-<p>Appending strings to the end of an existing string is easy using either operator+=, append(), or push_back().</p>
+<h2 id="_1">追加字符串</h2>
+<p>在一个字符串的末尾追加字符串，可以使用 <code>operator+=</code> 或 <code>append()</code> 或 <code>push_back()</code>。</p>
 <p><strong><code>string&amp; string::operator+= (const string&amp; str)</code></strong><br />
 <strong><code>string&amp; string::append (const string&amp; str)</code></strong>  </p>
 <ul>
-<li>Both functions append the characters of str to the string.</li>
-<li>Both functions return *this so they can be “chained”.</li>
-<li>Both functions throw a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>这些函数都可以将<code>str</code>追加到字符串的末尾；</li>
+<li>这些函数都返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常。</li>
 </ul>
 <p>Sample code:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5671,15 +5671,15 @@
 <p>Output:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>one two three
 </code></pre></div></td></tr></table></div>
-<p>There’s also a flavor of append() that can append a substring:</p>
+<p><code>append()</code>函数也有几种，可以用于添加一个子串：</p>
 <p><strong><code>string&amp; string::append (const string&amp; str, size_type index, size_type num)</code></strong></p>
 <ul>
-<li>This function appends num characters from str, starting at index, to the string.</li>
-<li>Returns *this so it can be “chained”.</li>
-<li>Throws an out_of_range if index is out of bounds</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>该函数将<code>str</code>中从索引<code>index</code>开始的<code>num</code>个字符串追加到字符串末尾；</li>
+<li>这些函数都返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果索引越界，则抛出<code>out_of_range</code>；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5690,20 +5690,19 @@
 <span class="n">sString</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sTemp</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// append substring of sTemp starting at index 3 of length 5</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>one three
 </code></pre></div></td></tr></table></div>
-<p>Operator+= and append() also have versions that work on C-style strings:</p>
+<p><code>Operator+=</code> 和 <code>append()</code> 也提供了配合C语言风格字符串工作的版本：</p>
 <p><strong><code>string&amp; string::operator+= (const char* str)</code></strong><br />
 <strong><code>string&amp; string::append (const char* str)</code></strong>  </p>
 <ul>
-<li>Both functions append the characters of str to the string.</li>
-<li>Both functions return *this so they can be “chained”.</li>
-<li>Both functions throw a length_error exception if the result exceeds the maximum number of characters.</li>
-<li>str should not be NULL.</li>
+<li>这些函数都可以将<code>str</code>追加到字符串的末尾；</li>
+<li>这些函数都返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常；</li>
+<li><code>str</code> 不能是 NULL。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5714,19 +5713,18 @@
 <span class="n">sString</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot; three&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>one two three
 </code></pre></div></td></tr></table></div>
-<p>There is an additional flavor of append() that works on C-style strings:</p>
+<p><code>append()</code> 还有另外一个配合C语言字符串工作的版本：</p>
 <p><strong><code>string&amp; string::append (const char* str, size_type len)</code></strong>  </p>
 <ul>
-<li>Appends the first len characters of str to the string.</li>
-<li>Returns *this so they can be “chained”.</li>
-<li>Throw a length_error exception if the result exceeds the maximum number of characters.</li>
-<li>Ignores special characters (including ”)</li>
+<li>将<code>str</code>的前<code>len</code>个字符追加到字符串；</li>
+<li>这些函数都返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常；</li>
+<li>会忽略特殊字符(包括<code>”</code>)。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5735,20 +5733,19 @@
 <span class="n">sString</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;threefour&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>one three
 </code></pre></div></td></tr></table></div>
-<p>This function is dangerous and its use is not recommended.</p>
-<p>There is also a set of functions that append characters. Note that the name of the non-operator function to append a character is push_back(), not append()!</p>
+<p>该函数不安全，不推荐使用。</p>
+<p>还有另外一些可以追加<strong>字符</strong>的函数，注意，函数名是 <code>push_back()</code> 而不是 <code>append()</code>！</p>
 <p><strong><code>string&amp; string::operator+= (char c)</code></strong><br />
 <strong><code>void string::push_back (char c)</code></strong>  </p>
 <ul>
-<li>Both functions append the character c to the string.</li>
-<li>Operator += returns *this so it can be “chained”.</li>
-<li>Both functions throw a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>这两个函数都可以将字符c追加到字符串；</li>
+<li><code>operator +=</code> 返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常；</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5759,19 +5756,18 @@
 <span class="n">sString</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;2&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>one 2
 </code></pre></div></td></tr></table></div>
-<p>Now you might be wondering why the name of the function is push_back() and not append(). This follows a naming convention used for stacks, where push_back() is the function that adds a single item to the end of the stack. If you envision a string as a stack of characters, using push_back() to add a single character to the end makes sense. However, the lack of an append() function is inconsistent in my view!</p>
-<p>It turns out there is an <code>append()</code> function for characters, that looks like this:</p>
+<p>如果你好奇为什么这个函数的名字是 <code>push_back()</code> 而不是 <code>append()</code>。这里是遵循了<a href="../stack/">栈</a>操作的命名习惯，<code>push_back()</code> 用于将一个单个内容添加到栈顶。如果我们将字符串看做是一个字符组成的栈，则使用 <code>push_back()</code> 将一个字符添加到栈顶是很符合直觉的。但是，没有提供 <code>append()</code> 函数在我看来在一致性方面是一种缺失！</p>
+<p><code>append()</code> 函数有一个版本可以添加多个字符串：</p>
 <p><strong><code>string&amp; string::append (size_type num, char c)</code></strong>  </p>
 <ul>
-<li>Adds num occurrences of the character c to the string</li>
-<li>Returns *this so it can be “chained”.</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>将字符c重复<code>num</code>次追加到字符串中；</li>
+<li>返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常；</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5780,16 +5776,15 @@
 <span class="n">sString</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aaabbbb
 </code></pre></div></td></tr></table></div>
-<p>There’s one final flavor of append() that works with iterators:</p>
+<p>最后一种版本的 <code>append()</code> 可以配合<a href="../iterator/">迭代器</a>工作：</p>
 <p><strong><code>string&amp; string::append (InputIterator start, InputIterator end)</code></strong>  </p>
 <ul>
-<li>Appends all characters from the range <code>[start, end)</code> (including start up to but not including end)</li>
-<li>Returns *this so it can be “chained”.</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>将 <code>[start, end)</code> 范围内的字符追加到字符串 (左闭右开区间)；</li>
+<li>返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果结果超过最大字符个数则抛出 <code>length_error</code> 异常；</li>
 </ul>
 
 

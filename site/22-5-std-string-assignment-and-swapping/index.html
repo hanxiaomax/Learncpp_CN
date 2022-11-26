@@ -2798,7 +2798,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2812,7 +2812,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5220,8 +5220,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#swapping" class="md-nav__link">
-    Swapping**
+  <a href="#_1" class="md-nav__link">
+    交换字符串
   </a>
   
 </li>
@@ -5599,8 +5599,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#swapping" class="md-nav__link">
-    Swapping**
+  <a href="#_1" class="md-nav__link">
+    交换字符串
   </a>
   
 </li>
@@ -5657,18 +5657,18 @@
 
 <details class="note"><summary>关键点速记</summary></details>
 <h2 id="string">String 赋值</h2>
-<p>The easiest way to assign a value to a string is to use the overloaded operator= function. There is also an assign() member function that duplicates some of this functionality.</p>
+<p>为字符串赋值的最简单的方法是使用<a href="../14-15-overloading-the-assignment-operator/">重载赋值运算符</a> ，此外，<code>assign()</code>函数也提供了类似的功能。</p>
 <p><strong><code>string&amp; string::operator= (const string&amp; str)</code></strong><br />
 <strong><code>string&amp; string::assign (const string&amp; str)</code></strong><br />
 <strong><code>string&amp; string::operator= (const char* str)</code></strong><br />
 <strong><code>string&amp; string::assign (const char* str)</code></strong><br />
 <strong><code>string&amp; string::operator= (char c)</code></strong>  </p>
 <ul>
-<li>These functions assign values of various types to the string.</li>
-<li>These functions return *this so they can be “chained”.</li>
-<li>Note that there is no assign() function that takes a single char.</li>
+<li>这些函数都对字符串进行赋值；</li>
+<li>函数返回 <code>*this</code>，所以可以进行链式调用；</li>
+<li>注意，<code>assign()</code> 函数的各个版本都不能接收一个单独字符作为参数。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5719,8 +5719,7 @@
 <span class="n">sString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sOther</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Six&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sOther</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5733,14 +5732,14 @@ Four
 5
 Six Six
 </code></pre></div></td></tr></table></div>
-<p>The <code>assign()</code> member function also comes in a few other flavors:</p>
+<p><code>assign()</code> 成员函数还有一些其他的版本：</p>
 <p><strong><code>string&amp; string::assign (const string&amp; str, size_type index, size_type len)</code></strong></p>
 <ul>
-<li>Assigns a substring of str, starting from index, and of length len</li>
-<li>Throws an out_of_range exception if the index is out of bounds</li>
-<li>Returns *this so it can be “chained”.</li>
+<li>将一个字符串的子串赋值给另一个字符串，从 <code>index</code> 开始，长度为 <code>len</code></li>
+<li>如果索引<code>index</code>越界，则抛出 <code>out_of_range</code> 异常；</li>
+<li>返回 <code>*this</code> 以便可以被链式调用。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5751,17 +5750,16 @@ Six Six
 <span class="n">sDest</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">sSource</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// assign a substring of source from index 2 of length 4</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sDest</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cdef
 </code></pre></div></td></tr></table></div>
 <p><strong><code>string&amp; string::assign (const char* chars, size_type len)</code></strong></p>
 <ul>
-<li>Assigns len characters from the C-style array chars</li>
-<li>Throws an length_error exception if the result exceeds the maximum number of characters</li>
-<li>Returns *this so it can be “chained”.</li>
+<li>将C风格字符串数组中的 <code>len</code> 个字符赋值给字符串；</li>
+<li>如果要拷贝的长度超过最大字符个数，则抛出<code>length_error</code>异常；</li>
+<li>返回 <code>*this</code> 以便可以被链式调用。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5770,18 +5768,17 @@ Six Six
 <span class="n">sDest</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sDest</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>abcd
 </code></pre></div></td></tr></table></div>
-<p>This function is potentially dangerous and its use is not recommended.</p>
+<p>这个函数存在潜在风险，不建议使用。</p>
 <p><strong><code>string&amp; string::assign (size_type len, char c)</code></strong></p>
 <ul>
-<li>Assigns len occurrences of the character c</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters</li>
-<li>Returns *this so it can be “chained”.</li>
+<li>将字符c重复 <code>len</code> 次赋值给字符串；</li>
+<li>如果结果超过最大字符个数，则抛出 <code>length_error</code> 异常；</li>
+<li>返回 <code>*this</code> 以便可以被链式调用。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5790,19 +5787,18 @@ Six Six
 <span class="n">sDest</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;g&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sDest</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gggg
 </code></pre></div></td></tr></table></div>
-<h2 id="swapping">Swapping**</h2>
-<p>If you have two strings and want to swap their values, there are two functions both named swap() that you can use.</p>
+<h2 id="_1">交换字符串</h2>
+<p>如果你有两个字符串并希望交换它们的值，那么可以使用两个名为<code>swap()</code>的函数。</p>
 <p><strong><code>void string::swap (string&amp; str)</code></strong><br />
 <strong><code>void swap (string&amp; str1, string&amp; str2)</code></strong></p>
 <ul>
-<li>Both functions swap the value of the two strings. The member function swaps *this and str, the global function swaps str1 and str2.</li>
-<li>These functions are efficient and should be used instead of assignments to perform a string swap.</li>
+<li>两个函数都可以交换两个字符串的值。成员函数会交换 <code>*this</code> 和 <code>str</code>，全局函数则交换 <code>str1</code> 和 <code>str2</code>；</li>
+<li>这些函数是高效的，应该用来代替赋值来执行字符串交换。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5819,8 +5815,7 @@ Six Six
 <span class="n">sStr1</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">sStr2</span><span class="p">);</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sStr1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sStr2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>red blue

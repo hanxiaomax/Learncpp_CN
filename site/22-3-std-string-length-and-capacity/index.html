@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#length-of-a-string" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2798,7 +2798,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2812,7 +2812,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5185,15 +5185,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#length-of-a-string" class="md-nav__link">
-    Length of a string
+  <a href="#_1" class="md-nav__link">
+    字符串的长度
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#capacity-of-a-string" class="md-nav__link">
-    Capacity of a string**
+  <a href="#_2" class="md-nav__link">
+    字符串的容量
   </a>
   
 </li>
@@ -5592,15 +5592,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#length-of-a-string" class="md-nav__link">
-    Length of a string
+  <a href="#_1" class="md-nav__link">
+    字符串的长度
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#capacity-of-a-string" class="md-nav__link">
-    Capacity of a string**
+  <a href="#_2" class="md-nav__link">
+    字符串的容量
   </a>
   
 </li>
@@ -5656,29 +5656,28 @@
   <h1>22.3 - std-string 的长度和容量</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>Once you’ve created strings, it’s often useful to know how long they are. This is where length and capacity operations come into play. We’ll also discuss various ways to convert std::string back into C-style strings, so you can use them with functions that expect strings of type char*.</p>
-<h2 id="length-of-a-string">Length of a string</h2>
-<p>The length of the string is quite simple -- it’s the number of characters in the string. There are two identical functions for determining string length:</p>
+<p>一旦创建了字符串，知道它们的长度通常是很有用的。我们还将讨论将<code>std::string</code>转换回C风格字符串的各种方法，这样你就可以在将其用在期望<code>char*</code>类型字符串的函数中使用它们。</p>
+<h2 id="_1">字符串的长度</h2>
+<p>字符串的长度非常简单——即字符串中字符的个数。有两个函数可以用于确定字符串的长度：</p>
 <p><strong><code>size_type string::length() const</code></strong><br />
 <strong><code>size_type string::size() const</code></strong></p>
 <ul>
-<li>Both of these functions return the current number of characters in the string, excluding the null terminator.</li>
+<li>这两个函数都可以返回字符串中字符的个数，包括结束符。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;012345678&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>9
 </code></pre></div></td></tr></table></div>
-<p>Although it’s possible to use length() to determine whether a string has any characters or not, it’s more efficient to use the empty() function:</p>
+<p>尽管使用 <code>length()</code> 判断字符串中是否有字符也是可行的，但是最佳的方法是使用 <code>empty()</code> 函数：</p>
 <p><strong><code>bool string::empty() const</code></strong></p>
 <ul>
-<li>Returns true if the string has no characters, false otherwise.</li>
+<li>如果字符串中没有字符，则返回<code>true</code>，否则返回<code>false</code>。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5687,66 +5686,62 @@
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">string2</span><span class="p">;</span><span class="w"> </span><span class="c1">// empty</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">string2</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">)</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>false
 true
 </code></pre></div></td></tr></table></div>
-<p>There is one more size-related function that you will probably never use, but we’ll include it here for completeness:</p>
+<p>还有一个与大小相关的函数，虽然可能永远都用不到，但为了完整，我们决定还是将其列在这里：</p>
 <p><strong><code>size_type string::max_size() const</code></strong></p>
 <ul>
-<li>Returns the maximum number of characters that a string is allowed to have.</li>
-<li>This value will vary depending on operating system and system architecture.</li>
+<li>返回字符串允许的最大字符数；</li>
+<li>根据操作系统和系统架构的不同，该值会有所不同。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;MyString&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">max_size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>4294967294
 </code></pre></div></td></tr></table></div>
-<h2 id="capacity-of-a-string">Capacity of a string**</h2>
-<p>The capacity of a string reflects how much memory the string allocated to hold its contents. This value is measured in string characters, excluding the NULL terminator. For example, a string with capacity 8 could hold 8 characters.</p>
+<h2 id="_2">字符串的容量</h2>
+<p>字符串的容量反映了该字符串分配多少内存来保存其内容。该值用字符串表示，不包括终止符。例如，容量为8的字符串可以容纳8个字符。</p>
 <p><strong><code>size_type string::capacity() const</code></strong></p>
 <ul>
-<li>Returns the number of characters a string can hold without reallocation.</li>
+<li>返回字符串在不重新分配的情况下可以容纳的字符数。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;01234567&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Length: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Capacity: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Length: 8
 Capacity: 15
 </code></pre></div></td></tr></table></div>
-<p>Note that the capacity is higher than the length of the string! Although our string was length 8, the string actually allocated enough memory for 15 characters! Why was this done?</p>
-<p>The important thing to recognize here is that if a user wants to put more characters into a string than the string has capacity for, the string has to be reallocated to a larger capacity. For example, if a string had both length and capacity of 8, then adding any characters to the string would force a reallocation. By making the capacity larger than the actual string, this gives the user some buffer room to expand the string before reallocation needs to be done.</p>
-<p>As it turns out, reallocation is bad for several reasons:</p>
-<p>First, reallocating a string is comparatively expensive. First, new memory has to be allocated. Then each character in the string has to be copied to the new memory. This can take a long time if the string is big. Finally, the old memory has to be deallocated. If you are doing many reallocations, this process can slow your program down significantly.</p>
-<p>Second, whenever a string is reallocated, the contents of the string change to a new memory address. This means all references, pointers, and iterators to the string become invalid!</p>
-<p>Note that it’s not always the case that strings will be allocated with capacity greater than length. Consider the following program:</p>
+<p>注意，该字符串的容量大于其长度！虽然我们的字符串的长度是8，但该字符串实际上分配了足够存放15个字符的内存！为什么要这样做?</p>
+<p>这里要注意的是，如果用户希望在字符串中放入的字符多于字符串的容量，则字符串需要重新分配更大的容量。例如，如果字符串的长度和容量都为8，那么向字符串中添加任何字符都将强制重新分配。通过使容量大于实际字符串，这为用户提供了一些缓冲空间，以便在需要进行重新分配之前能够存放一些额外的字符。</p>
+<p><mark>事实证明，再分配有以下缺陷：</mark></p>
+<p>首先，重新分配字符串开销较大。首先，必须分配新的内存。然后必须将字符串中的每个字符复制到新的内存中。如果字符串很大，这可能需要很长时间。最后，旧的内存必须被释放。如果你正在进行多次重新分配，这个过程会极大地拖累程序性能。</p>
+<p>其次，<mark>每当一个字符串被重新分配时，该字符串的内容将放置到一个新的内存地址。这意味着对字符串的所有引用、指针和迭代器都会无效！</mark></p>
+<p>注意，分配给字符串的容量并不总是大于长度。考虑下面的程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;0123456789abcde&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Length: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Capacity: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program outputs:</p>
+<p>输出结果：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Length: 15
 Capacity: 15
 </code></pre></div></td></tr></table></div>
-<p>(Results may vary depending on compiler).</p>
-<p>Let’s add one character to the string and watch the capacity change:</p>
+<p>（实际结果根据编译器的不同也可能会不同）</p>
+<p>接下来，在字符串中添加一个字符并观察其容量的变化:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5763,8 +5758,7 @@ Capacity: 15
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Length: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Capacity: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This produces the result:</p>
+<p>输出结果：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5776,10 +5770,10 @@ Capacity: 31
 <p><strong><code>void string::reserve()</code></strong><br />
 <strong><code>void string::reserve(size_type unSize)</code></strong></p>
 <ul>
-<li>The second flavor of this function sets the capacity of the string to at least unSize (it can be greater). Note that this may require a reallocation to occur.</li>
-<li>If the first flavor of the function is called, or the second flavor is called with unSize less than the current capacity, the function will try to shrink the capacity to match the length. This request to shrink the capacity may be ignored, depending on implementation.</li>
+<li>此函数的第二种形式将字符串的容量设置为至少<code>unSize</code>(可以更大)。注意，这可能需要进行重新分配。</li>
+<li>如果调用函数的第一种形式，或者调用第二个味道时<code>unSize</code>小于当前容量，函数将尝试缩小容量以匹配长度。根据执行情况，可能会忽略这个缩小容量的要求。 </li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5802,8 +5796,7 @@ Capacity: 31
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Length: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Capacity: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5816,8 +5809,8 @@ Capacity: 207
 Length: 8
 Capacity: 207
 </code></pre></div></td></tr></table></div>
-<p>This example shows two interesting things. First, although we requested a capacity of 200, we actually got a capacity of 207. The capacity is always guaranteed to be at least as large as your request, but may be larger. We then requested the capacity change to fit the string. This request was ignored, as the capacity did not change.</p>
-<p>If you know in advance that you’re going to be constructing a large string by doing lots of string operations that will add to the size of the string, you can avoid having the string reallocated multiple times by reserving enough capacity from the outset:</p>
+<p>这个例子展示了两个有趣的现象。首先，虽然我们要求的容量是200，但实际上我们得到的容量是207。容量总是保证至少与你的请求一样大，但也可能更大。然后我们请求容量更改以适应字符串。该请求被忽略，容量并没有改变。</p>
+<p>如果你提前知道你将通过大量的字符串操作来构造一个很长字符串（这会增加字符串的大小），则应该在开始时就预留足够的容量来避免重新分配：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5854,11 +5847,10 @@ Capacity: 207
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The result of this program will change each time, but here’s the output from one execution:</p>
+<p>这个程序的结果每次都会改变，其中一次的结果为：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>wzpzujwuaokbakgijqdawvzjqlgcipiiuuxhyfkdppxpyycvytvyxwqsbtielxpy
 </code></pre></div></td></tr></table></div>
-<p>Rather than having to reallocate s multiple times, we set the capacity once and then fill the string up. This can make a huge difference in performance when constructing large strings via concatenation.</p>
+<p>为了避免重新分配，这里我们先设置一次容量，然后填充字符串。当通过连接构造长字符串时，其性能差异是非常明显的。</p>
 
 
               </article>

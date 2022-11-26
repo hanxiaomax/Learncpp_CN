@@ -11,7 +11,7 @@ tags:
 
 ??? note "关键点速记"
 
-Consider this snippet of code that we introduced in lesson [[11-19-Introduction-to-standard-library-algorithms|11.19 — 标准库算法简介]]：
+请考虑下面这段代码，我们在 [[11-19-Introduction-to-standard-library-algorithms|11.19 — 标准库算法简介]]中介绍过它：
 
 ```cpp
 #include <algorithm>
@@ -48,19 +48,17 @@ int main()
 }
 ```
 
-COPY
-
-This code searches through an array of strings looking for the first element that contains the substring “nut”. Thus, it produces the result:
+这段代码会在一个数组中搜索字符串，找到第一个包含 “nut” 子串的元素。因此输出结果为：
 
 ```
 Found walnut
 ```
 
-And while it works, it could be improved.
+虽然代码可以正确执行，但是还有可改进的地方。
 
-The root of the issue here is that `std::find_if` requires that we pass it a function pointer. Because of that, we are forced to define a function that’s only going to be used once, that must be given a name, and that must be put in the global scope (because functions can’t be nested!). The function is also so short, it’s almost easier to discern what it does from the one line of code than from the name and comments.
+这里问题的核心在于 `std::find_if` 要求使用者传递给它一个函数指针。因此，我们必须定义一个只使用一次的函数，还必须给它起个名，并将其放置在全局作用域中(因为函数不能嵌套!)。这个函数很短，从一行代码中几乎比从名称和注释中更容易辨别它的功能。
 
-## Lambdas to the rescue
+## 匿名函数
 
 A lambda expression (also called a lambda or closure) allows us to define an anonymous function inside another function. The nesting is important, as it allows us both to avoid namespace naming pollution, and to define the function as close to where it is used as possible (providing additional context).
 
@@ -138,7 +136,7 @@ Found walnut
 
 Note how similar our lambda is to our `containsNut` function. They both have identical parameters and function bodies. The lambda has no capture clause (we’ll explain what a capture clause is in the next lesson) because it doesn’t need one. And we’ve omitted the trailing return type in the lambda (for conciseness), but since `operator!=` returns a `bool`, our lambda will return a `bool` too.
 
-## lambda 的类型
+## 匿名函数的类型
 
 In the above example, we defined a lambda right where it was needed. This use of a lambda is sometimes called a function literal.
 
@@ -264,7 +262,7 @@ Furthermore, because they are actually templates, functions with `auto` parame
 
 	Use `auto` when initializing variables with lambdas, and `std::function` if you can’t initialize the variable with the lambda.
 
-## Generic lambdas
+## 泛型匿名函数
 
 For the most part, lambda parameters work by the same rules as regular function parameters.
 
@@ -323,7 +321,9 @@ COPY
 
 Output:
 
+```
 June and July start with the same letter
+```
 
 In the above example, we use `auto` parameters to capture our strings by `const` reference. Because all string types allow access to their individual characters via `operator[]`, we don’t need to care whether the user is passing in a `std::string`, C-style string, or something else. This allows us to write a lambda that could accept any of these, meaning if we change the type of `months` later, we won’t have to rewrite the lambda.
 
@@ -368,11 +368,13 @@ COPY
 
 Output:
 
+```
 There are 2 months with 5 letters
+```
 
 In this example, using `auto` would infer a type of `const char*`. C-style strings aren’t easy to work with (apart from using `operator[]`). In this case, we prefer to explicitly define the parameter as a `std::string_view`, which allows us to work with the underlying data much more easily (e.g. we can ask the string view for its length, even if the user passed in a C-style array).
 
-## Generic lambdas and static variables
+## 泛型匿名函数和静态变量
 
 One thing to be aware of is that a unique lambda will be generated for each different type that `auto` resolves to. The following example shows how one generic lambda turns into two distinct lambdas:
 
@@ -422,7 +424,7 @@ Most of the time, this is inconsequential. However, note that if the generic lam
 
 We can see this in the example above, where each type (string literals and integers) has its own unique count! Although we only wrote the lambda once, two lambdas were generated -- and each has its own version of `callCount`. To have a shared counter between the two generated lambdas, we’d have to define a global variable or a `static` local variable outside of the lambda. As you know from previous lessons, both global- and static local variables can cause problems and make it more difficult to understand code. We’ll be able to avoid those variables after talking about lambda captures in the next lesson.
 
-## Return type deduction and trailing return types
+## 返回值类型推断和尾随返回值类型
 
 If return type deduction is used, a lambda’s return type is deduced from the `return`-statements inside the lambda, and all return statements in the lambda must return the same type (otherwise the compiler won’t know which one to prefer).
 
@@ -482,7 +484,7 @@ COPY
 
 That way, if you ever decide to change the return type, you (usually) only need to change the lambda’s return type, and not touch the lambda body.
 
-## Standard library function objects
+## 标准库中的函数对象
 
 For common operations (e.g. addition, negation, or comparison) you don’t need to write your own lambdas, because the standard library comes with many basic callable objects that can be used instead. These are defined in the [`<functional>`](https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects) header.
 
@@ -561,6 +563,6 @@ Output
 
 ## 小结
 
-Lambdas and the algorithm library may seem unnecessarily complicated when compared to a solution that uses a loop. However, this combination can allow some very powerful operations in just a few lines of code, and can be more readable than writing your own loops. On top of that, the algorithm library features powerful and easy-to-use parallelism, which you won’t get with loops. Upgrading source code that uses library functions is easier than upgrading code that uses loops.
+与使用循环的解决方案相比，匿名函数和算法库可能稍显得不必要地复杂。然而，这种组合可以在短短几行代码中实现一些非常强大的操作，并且比自己编写循环更具有可读性。最重要的是，算法库具有强大且易于使用的并行性，这是循环所无法获得的。更新使用库函数的源代码比更新使用循环的代码更容易。
 
-Lambdas are great, but they don’t replace regular functions for all cases. Prefer regular functions for non-trivial and reusable cases.
+匿名函数很好，但它们不能在所有情况下取代常规函数。对于功能复杂且需要可重用的情形，首选常规函数。

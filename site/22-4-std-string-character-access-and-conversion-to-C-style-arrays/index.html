@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#character-access" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2798,7 +2798,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2812,7 +2812,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5199,15 +5199,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#character-access" class="md-nav__link">
-    Character access**
+  <a href="#_1" class="md-nav__link">
+    访问字符
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conversion-to-c-style-arrays" class="md-nav__link">
-    Conversion to C-style arrays**
+  <a href="#c" class="md-nav__link">
+    转换为C风格数组
   </a>
   
 </li>
@@ -5592,15 +5592,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#character-access" class="md-nav__link">
-    Character access**
+  <a href="#_1" class="md-nav__link">
+    访问字符
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conversion-to-c-style-arrays" class="md-nav__link">
-    Conversion to C-style arrays**
+  <a href="#c" class="md-nav__link">
+    转换为C风格数组
   </a>
   
 </li>
@@ -5656,16 +5656,16 @@
   <h1>22.4 - std-string 字符访问和C字符数组转换</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<h2 id="character-access">Character access**</h2>
-<p>There are two almost identical ways to access characters in a string. The easier to use and faster version is the overloaded <code>operator[]</code>:</p>
+<h2 id="_1">访问字符</h2>
+<p>访问字符也有两个极其类似的方法。最简单也是最块的方法是使用<a href="../14-9-overloading-the-subscript-operator/">重载下标运算符</a>：</p>
 <p><strong><code>char&amp; string::operator[] (size_type nIndex)</code></strong><br />
 <strong><code>const char&amp; string::operator[] (size_type nIndex) const</code></strong></p>
 <ul>
-<li>Both of these functions return the character with index nIndex</li>
-<li>Passing an invalid index results in undefined behavior</li>
-<li>Because char&amp; is the return type, you can use this to edit characters in the array</li>
+<li>函数返回位于索引 <code>nIndex</code> 处的字符；</li>
+<li>传入非法索引会导致<a href="../undefined-behavior/">未定义行为</a>；</li>
+<li>因为返回类型是 <code>char&amp;</code> 所以你可以使用它修改数组中的元素。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5674,21 +5674,20 @@
 <span class="n">sSource</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;X&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sSource</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>f
 abcdeXg
 </code></pre></div></td></tr></table></div>
-<p>There is also a non-operator version. This version is slower since it uses exceptions to check if the nIndex is valid. If you are not sure whether nIndex is valid, you should use this version to access the array:</p>
+<p>此外，还有一个非操作符的版本。该版本的函数速度会慢一些，因为它==会检查数组下标是否合法==。如果你不确定索引 <code>nIndex</code> 是否一定有效，则最好使用这个方法来访问：</p>
 <p><strong><code>char&amp; string::at (size_type nIndex)</code></strong><br />
 <strong><code>const char&amp; string::at (size_type nIndex) const</code></strong></p>
 <ul>
-<li>Both of these functions return the character with index nIndex</li>
-<li>Passing an invalid index results in an out_of_range exception</li>
-<li>Because char&amp; is the return type, you can use this to edit characters in the array</li>
+<li>函数返回位于索引 <code>nIndex</code> 处的字符；</li>
+<li>传入非法索引会导致 <code>out_of_range</code> 异常；</li>
+<li>因为返回类型是 <code>char&amp;</code> 所以你可以使用它修改数组中的元素。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5697,21 +5696,20 @@ abcdeXg
 <span class="n">sSource</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;X&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sSource</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>f
 abcdeXg
 </code></pre></div></td></tr></table></div>
-<h2 id="conversion-to-c-style-arrays">Conversion to C-style arrays**</h2>
-<p>Many functions (including all C functions) expect strings to be formatted as C-style strings rather than std::string. For this reason, std::string provides 3 different ways to convert std::string to C-style strings.</p>
+<h2 id="c">转换为C风格数组</h2>
+<p>很多函数（包括所有C语言函数）期望的输入是C语言风格字符串而不是<code>std::string</code>。因此，<code>std::string</code>提供了三种将<code>std::string</code>转换为C语言字符串的方法：</p>
 <p><strong><code>const char* string::c_str () const</code></strong></p>
 <ul>
-<li>Returns the contents of the string as a const C-style string</li>
-<li>A null terminator is appended</li>
-<li>The C-style string is owned by the std::string and should not be deleted</li>
+<li>将字符串内容作为C风格字符串常量返回；</li>
+<li>结尾会添加结束符；</li>
+<li>该C风格字符串归 <code>std::string</code> 所有且不应该被手动释放。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5720,17 +5718,16 @@ abcdeXg
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sSource</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;abcdefg&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">strlen</span><span class="p">(</span><span class="n">sSource</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>7
 </code></pre></div></td></tr></table></div>
 <p><strong><code>const char* string::data () const</code></strong></p>
 <ul>
-<li>Returns the contents of the string as a const C-style string</li>
-<li>A null terminator is appended. This function performs the same action as <code>c_str()</code></li>
-<li>The C-style string is owned by the std::string and should not be deleted</li>
+<li>将字符串内容作为C风格字符串常量返回；</li>
+<li>结尾会添加结束符；该函数行为与 <code>c_str()</code> 是一样的；</li>
+<li>该C风格字符串归 <code>std::string</code> 所有且不应该被手动释放。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5749,17 +5746,17 @@ abcdeXg
 <span class="k">else</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The strings are not equal&quot;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
-<p>The strings are equal</p>
+<p>输出：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>The strings are equal
+</code></pre></div></td></tr></table></div>
 <p><strong><code>size_type string::copy(char* szBuf, size_type nLength, size_type nIndex = 0) const</code></strong></p>
 <ul>
-<li>Both flavors copy at most nLength characters of the string to szBuf, beginning with character nIndex</li>
-<li>The number of characters copied is returned</li>
-<li>No null is appended. It is up to the caller to ensure szBuf is initialized to NULL or terminate the string using the returned length</li>
-<li>The caller is responsible for not overflowing szBuf</li>
+<li>从字符串中拷贝至多 <code>nLength</code> 个字符到 <code>szBuf</code>，从索引<code>nIndex</code>开始；</li>
+<li>返回成功拷贝的字符的个数；</li>
+<li><mark>并不会添加结束符</mark>。条用在必须保证 <code>szBuf</code> 被初始化为空或基于返回的长度为字符串添加结束符；</li>
+<li>调用者需要确保 <code>szBuf</code> 不溢出。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5774,11 +5771,10 @@ abcdeXg
 
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">szBuf</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>black
 </code></pre></div></td></tr></table></div>
-<p>This function should be avoided where possible as it is relatively dangerous (as it is up to the caller to provide null-termination and avoid buffer overflows).</p>
+<p><mark>这个函数应该尽可能避免，因为其相对比较危险的(因为需要由调用者提供结束符并避免缓冲区溢出)。</mark></p>
 
 
               </article>

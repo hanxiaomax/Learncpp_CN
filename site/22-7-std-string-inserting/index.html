@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#inserting" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2798,7 +2798,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2812,7 +2812,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -5241,8 +5241,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inserting" class="md-nav__link">
-    Inserting**
+  <a href="#_1" class="md-nav__link">
+    插入
   </a>
   
 </li>
@@ -5585,8 +5585,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inserting" class="md-nav__link">
-    Inserting**
+  <a href="#_1" class="md-nav__link">
+    插入
   </a>
   
 </li>
@@ -5642,18 +5642,18 @@
   <h1>22.7 - std-string 插入</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<h2 id="inserting">Inserting**</h2>
-<p>Inserting characters into an existing string can be done via the insert() function.</p>
+<h2 id="_1">插入</h2>
+<p>向字符串中插入字符可以通过 <code>insert()</code> 函数完成。</p>
 <p><strong><code>string&amp; string::insert (size_type index, const string&amp; str)</code></strong><br />
 <strong><code>string&amp; string::insert (size_type index, const char* str)</code></strong></p>
 <ul>
-<li>Both functions insert the characters of str into the string at index</li>
-<li>Both function return *this so they can be “chained”.</li>
-<li>Both functions throw out_of_range if index is invalid</li>
-<li>Both functions throw a length_error exception if the result exceeds the maximum number of characters.</li>
-<li>In the C-style string version, str must not be <code>NULL</code>.</li>
+<li>这些函数可以将<code>str</code>中的字符，插入到字符串索引<code>index</code>位置；</li>
+<li>这些函数都会返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果索引无效，则会抛出 <code>out_of_range</code> 异常；</li>
+<li>如果结果超出最大字符个数则抛出 <code>length_error</code> 异常；</li>
+<li>对于接受C风格字符串版本的函数，<code>str</code>不能是NULL。</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5670,23 +5670,22 @@
 <span class="n">sString</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cccc&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>aaaa
 aabbbbaa
 aabbccccbbaa
 </code></pre></div></td></tr></table></div>
-<p>Here’s a crazy version of insert() that allows you to insert a substring into a string at an arbitrary index:</p>
+<p>还有一个特别吓人的 <code>insert()</code>版本，使用它可以将一个子串插入到字符串的<code>index</code>位置：</p>
 <p><strong><code>string&amp; string::insert (size_type index, const string&amp; str, size_type startindex, size_type num)</code></strong></p>
 <ul>
-<li>This function inserts num characters str, starting from startindex, into the string at index.</li>
-<li>Returns *this so it can be “chained”.</li>
-<li>Throws an out_of_range if index or startindex is out of bounds</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>该函数会将<code>str</code>中从<code>startindex</code>开始的<code>num</code>个字符插入到字符串的<code>index</code>位置；</li>
+<li>这些函数都会返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果<code>index</code>或者<code>startindex</code>，越界，则抛出 <code>out_of_range</code> 异常；</li>
+<li>如果结果超出最大字符个数则抛出 <code>length_error</code> 异常；</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5697,20 +5696,19 @@ aabbccccbbaa
 <span class="n">sString</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">sInsert</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// insert substring of sInsert from index [3,7) into sString at index 2</span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aa3456aa
 </code></pre></div></td></tr></table></div>
-<p>There is a flavor of <code>insert()</code> that inserts the first portion of a C-style string:</p>
+<p>还有一个版本的 <code>insert()</code> 可以将C语言风格字符串的前面一部分插入到字符串中：</p>
 <p><strong><code>string&amp; string::insert(size_type index, const char* str, size_type len)</code></strong></p>
 <ul>
-<li>Inserts len characters of str into the string at index</li>
-<li>Returns *this so it can be “chained”.</li>
-<li>Throws an out_of_range exception if the index is invalid</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters.</li>
-<li>Ignores special characters (such as ”)</li>
+<li>将<code>str</code>中的前 <code>len</code> 个字符插入到字符串中<code>index</code>位置；</li>
+<li>这些函数都会返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果索引无效，则抛出 <code>out_of_range</code> 异常；</li>
+<li>如果结果超出最大字符个数则抛出 <code>length_error</code> 异常；</li>
+<li>会忽略特殊字符 (例如 <code>”</code>)</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5719,19 +5717,18 @@ aabbccccbbaa
 <span class="n">sString</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bcdef&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aabcdaa
 </code></pre></div></td></tr></table></div>
-<p>There’s also a flavor of insert() that inserts the same character multiple times:</p>
+<p>还有一个版本的 <code>insert()</code> 可以插入某个字符若干次：</p>
 <p><strong><code>string&amp; string::insert(size_type index, size_type num, char c)</code></strong></p>
 <ul>
-<li>Inserts num instances of char c into the string at index</li>
-<li>Returns *this so it can be “chained”.</li>
-<li>Throws an out_of_range exception if the index is invalid</li>
-<li>Throws a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>将字符<code>c</code>在字符串<code>index</code>处插入 <code>num</code> 次；</li>
+<li>这些函数都会返回 <code>*this</code> 以便可以被链式调用；</li>
+<li>如果索引无效，则抛出 <code>out_of_range</code> 异常；</li>
+<li>如果结果超出最大字符个数则抛出 <code>length_error</code> 异常；</li>
 </ul>
-<p>Sample code:</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5740,19 +5737,18 @@ aabbccccbbaa
 <span class="n">sString</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;c&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sString</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Output:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>aaccccaa
 </code></pre></div></td></tr></table></div>
-<p>And finally, the insert() function also has three different versions that use iterators:</p>
+<p>最后，还有三个版本的 <code>insert()</code> 用于配合<a href="../iterator/">迭代器</a>使用：</p>
 <p><strong><code>void insert(iterator it, size_type num, char c)</code></strong><br />
 <strong><code>iterator string::insert(iterator it, char c)</code></strong><br />
 <strong><code>void string::insert(iterator it, InputIterator begin, InputIterator end)</code></strong></p>
 <ul>
-<li>The first function inserts num instances of the character c before the iterator it.</li>
-<li>The second inserts a single character c before the iterator it, and returns an iterator to the position of the character inserted.</li>
-<li>The third inserts all characters between <code>[begin,end)</code> before the iterator it.</li>
-<li>All functions throw a length_error exception if the result exceeds the maximum number of characters.</li>
+<li>第一个函数将字符<code>c</code>在迭代器<code>it</code>前插入<code>num</code>次；</li>
+<li>第二个函数将字符c插入到迭代器<code>it</code>前并返回一个指向该字符的迭代器；</li>
+<li>第三个函数将 <code>[begin,end)</code> 范围内的字符插入到迭代器<code>it</code>前；</li>
+<li>如果结果超出最大字符个数则抛出 <code>length_error</code> 异常；</li>
 </ul>
 
 

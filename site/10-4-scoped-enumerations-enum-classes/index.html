@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scoped-enumerations" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2800,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2814,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2871,15 +2871,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scoped-enumerations" class="md-nav__link">
-    Scoped enumerations
+  <a href="#_1" class="md-nav__link">
+    有作用域枚举
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scoped-enumerations-define-their-own-scope-regions" class="md-nav__link">
-    Scoped enumerations define their own scope regions
+  <a href="#_2" class="md-nav__link">
+    有作用域枚举会定义自己的作用域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    有作用域枚举不会被隐式地转换为整型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    简化有作用域枚举值到整型的转换(进阶话题)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-enum-c20" class="md-nav__link">
+    using enum 语句 （C++20）
   </a>
   
 </li>
@@ -5592,15 +5613,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#scoped-enumerations" class="md-nav__link">
-    Scoped enumerations
+  <a href="#_1" class="md-nav__link">
+    有作用域枚举
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#scoped-enumerations-define-their-own-scope-regions" class="md-nav__link">
-    Scoped enumerations define their own scope regions
+  <a href="#_2" class="md-nav__link">
+    有作用域枚举会定义自己的作用域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    有作用域枚举不会被隐式地转换为整型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    简化有作用域枚举值到整型的转换(进阶话题)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-enum-c20" class="md-nav__link">
+    using enum 语句 （C++20）
   </a>
   
 </li>
@@ -5635,6 +5677,18 @@
         </a>
       
     
+      
+        <a href="../tags/#c20" class="md-tag">
+          C++20
+        </a>
+      
+    
+      
+        <a href="../tags/#c17" class="md-tag">
+          C++17
+        </a>
+      
+    
   </nav>
 
 
@@ -5662,7 +5716,7 @@
   <h1>10.4 - 限定作用域枚举（枚举类）</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>Although unscoped enumerations are distinct types in C++, they are not type safe, and in some cases will allow you to do things that don’t make sense. Consider the following case:</p>
+<p>尽管<a href="../unscoped-enumerations/">无作用域枚举类型</a>在C++中是可区分类型，但它们并不是<a href="../type-safe/">类型安全</a>的，而且在某些情况下它允许你做出一些不合理的操作。考虑下面的代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5707,24 +5761,24 @@
 <span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">red</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="n">Fruit</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">banana</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">fruit</span><span class="p">)</span><span class="w"> </span><span class="c1">// The compiler will compare color and fruit as integers</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;color and fruit are equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// and find they are equal!</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">fruit</span><span class="p">)</span><span class="w"> </span><span class="c1">// 编译器会将 color 和 fruit 当做整型进行比较</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;color and fruit are equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 并认为它们相等</span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;color and fruit are not equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
-<p>color and fruit are equal</p>
-<p>When <code>color</code> and <code>fruit</code> are compared, the compiler will look to see if it knows how to compare a <code>Color</code> and a <code>Fruit</code>. It doesn’t. Next, it will try converting <code>Color</code> and/or <code>Fruit</code> to integers to see if it can find a match. Eventually the compiler will determine that if it converts both to integers, it can do the comparison. Since <code>color</code> and <code>fruit</code> are both set to enumerators that convert to integer value <code>0</code>, <code>color</code> will equal <code>fruit</code>.</p>
-<p>This doesn’t make sense semantically since <code>color</code> and <code>fruit</code> are from different enumerations and are not intended to be comparable. With standard enumerators, there’s no easy way to prevent this.</p>
-<p>Because of such challenges, as well as the namespace pollution problem (unscoped enumerations defined in the global scope put their enumerators in the global namespace), the C++ designers determined that a cleaner solution for enumerations would be of use.</p>
-<h2 id="scoped-enumerations">Scoped enumerations</h2>
-<p>That solution is the scoped enumeration (often called an enum class in C++ for reasons that will become obvious shortly).</p>
-<p>Scoped enumerations work similarly to unscoped enumerations (<a href="https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/">10.2 -- Unscoped enumerations</a>), but have two primary differences: They are strongly typed (they won’t implicitly convert to integers) and strongly scoped (the enumerators are <em>only</em> placed into the scope region of the enumeration).</p>
-<p>To make a scoped enumeration, we use the keywords <code>enum class</code>. The rest of the scoped enumeration definition is the same as an unscoped enumeration definition. Here’s an example:</p>
+<p>打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>color and fruit are equal
+</code></pre></div></td></tr></table></div>
+<p>当 <code>color</code> 和 <code>fruit</code> 进行比较时，编译器会首先判断它是否知道如何比较<code>Color</code> 和 <code>Fruit</code>。它并不知道。然后，它就会尝试将 <code>Color</code> 或 <code>Fruit</code> 转换为整型并继续查看是有匹配的比较方法。最终，编译器会将二者都转换为整型并进行比较。因为 <code>color</code> 和 <code>fruit</code> 的枚举值都转换为0，所以它们是相等的。</p>
+<p>这显然不合理，因为 <code>color</code> 和 <code>fruit</code> 来自两个不同的枚举类型，它们本来是不具有可比性的。对于一般的枚举来说，我们并没有简单的办法放置此类事情发生。</p>
+<p>因为上述问题的存在，以及<a href="../namespace/">命名空间</a>污染问题，C++设计者决定提供一个干净利落地解决方案。</p>
+<h2 id="_1">有作用域枚举</h2>
+<p>这个解决方案就是<a href="../scoped-enumerations/">有作用域枚举</a>(在C++中通常称为<a href="../enum-class/">枚举类</a>，至于为什么这么叫它，很快就会不言自明了)。</p>
+<p>有作用域枚举和无作用域枚举（<a href="../10-2-unscoped-enumerations/">10.2 - 无作用域枚举类型</a>）用法类似，不过它们有两个主要的区别：其一，有作用域枚举是强类型的(它不会被隐式地转换为整型) ，其二它具有强作用域约束 (它的枚举值<strong>只会</strong>被放置在枚举类的作用域中)。</p>
+<p>创建有作用域枚举，需要使用关键字 <code>enum class</code>。定义的其他部分则和无作用域枚举一样。例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5752,22 +5806,22 @@
 <span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Color</span><span class="w"> </span><span class="c1">// &quot;enum class&quot; defines this as a scoped enumeration rather than an unscoped enumeration</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Color</span><span class="w"> </span><span class="c1">// &quot;enum class&quot; 定义了有作用域枚举类型</span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">red</span><span class="p">,</span><span class="w"> </span><span class="c1">// red is considered part of Color&#39;s scope region</span>
+<span class="w">        </span><span class="n">red</span><span class="p">,</span><span class="w"> </span><span class="c1">// red 是 Color 作用域的成员</span>
 <span class="w">        </span><span class="n">blue</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Fruit</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">banana</span><span class="p">,</span><span class="w"> </span><span class="c1">// banana is considered part of Fruit&#39;s scope region</span>
+<span class="w">        </span><span class="n">banana</span><span class="p">,</span><span class="w"> </span><span class="c1">// banana 是 Fruit 作用域的成员</span>
 <span class="w">        </span><span class="n">apple</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Color</span><span class="o">::</span><span class="n">red</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// note: red is not directly accessible, we have to use Color::red</span>
-<span class="w">    </span><span class="n">Fruit</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Fruit</span><span class="o">::</span><span class="n">banana</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// note: banana is not directly accessible, we have to use Fruit::banana</span>
+<span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Color</span><span class="o">::</span><span class="n">red</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 注意: red 不能够被直接访问，必须使用 Color::red</span>
+<span class="w">    </span><span class="n">Fruit</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Fruit</span><span class="o">::</span><span class="n">banana</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// note: banana 不能够被直接访问, 必须使用 Fruit::banana</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">fruit</span><span class="p">)</span><span class="w"> </span><span class="c1">// compile error: the compiler doesn&#39;t know how to compare different types Color and Fruit</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">fruit</span><span class="p">)</span><span class="w"> </span><span class="c1">// 编译错误：编译器不知道如何比较 Color 和 Fruit</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;color and fruit are equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;color and fruit are not equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
@@ -5775,15 +5829,14 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program produces a compile error on line 19, since the scoped enumeration won’t convert to any type that can be compared with another type.</p>
+<p>编译器会报告程序的第19行存在错误，因为有作用域枚举不能够被转换为任何可比较的其他类型。</p>
 <div class="admonition cite">
 <p class="admonition-title">题外话</p>
-<p>The <code>class</code> keyword (along with the <code>static</code> keyword), is one of the most overloaded keywords in the C++ language, and can have different meanings depending on context. Although scoped enumerations use the <code>class</code> keyword, they aren’t considered to be a “class type” (which is reserved for structs, classes, and unions).</p>
+<p><code>class</code> 关键字 (以及<code>static</code>关键字)是 C++ 中最被“滥用”的关键字，它在不同语境下具有不同的含义。尽管有作用域枚举类型使用了 <code>class</code> 关键字，但是它们并不是类类型（类类型包括结构体、类和联合体）。</p>
 </div>
-<h2 id="scoped-enumerations-define-their-own-scope-regions">Scoped enumerations define their own scope regions</h2>
-<p>Unlike <a href="../unscoped-enumerations/">非限定作用域枚举类型</a>, which place their enumerators in the same scope as the enumeration itself, scoped enumerations place their enumerators <em>only</em> in the scope region of the enumeration. In other words, scoped enumerations act like a namespace for their enumerators. This built-in namespacing helps reduce global namespace pollution and the potential for name conflicts when scoped enumerations are used in the global scope.</p>
-<p>To access a scoped enumerator, we do so just as if it was in a namespace having the same name as the scoped enumeration:</p>
+<h2 id="_2">有作用域枚举会定义自己的作用域</h2>
+<p><a href="../unscoped-enumerations/">无作用域枚举类型</a>会将其枚举值和自己放置在相同的作用域中，而有作用域枚举会将它的枚举值放置在自己定义的作用域中。换言之，有作用域枚举同时是其枚举值的命名空间。这种自带的作用域有助于避免命名空间污染和潜在的命名冲突。</p>
+<p>要访问有作用域枚举值，就像它位于与作用域枚举同名的命名空间中一样:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5818,11 +5871,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Because scoped enumerations offer their own implicit namespacing for enumerators, there’s no need to put scoped enumerations inside another scope region (such as a namespace), unless there’s some other compelling reason to do so, as it would be redundant.</p>
-<p>Scoped enumerations don’t implicitly convert to integers</p>
-<p>Unlike non-scoped enumerators, scoped enumerators won’t implicitly convert to integers. In most cases, this is a good thing because it rarely makes sense to do so, and it helps prevent semantic errors, such as comparing enumerators from different enumerations, or expressions such as <code>red + 5</code>.</p>
-<p>Note that you can still compare enumerators from within the same scoped enumeration (since they are of the same type):</p>
+<p>因为有作用域枚举类型为枚举值提供了它们自己的隐式名称空间，所以没有必要将作用域枚举放在另一个作用域(比如名称空间)中，除非有其他令人信服的理由这样做，因为这样做是多余的。</p>
+<h2 id="_3">有作用域枚举不会被隐式地转换为整型</h2>
+<p>和无作用域枚举不同，有作用域枚举不会被隐式地转换为整型。在大多数情况下，这是有益地，因为绝大多数情况下这样的转换都不合理，所以这有助于帮我们避免语义错误，例如比较两个不同枚举类型中的枚举值或者使用枚举值进行数学运算（<code>red + 5</code>）。</p>
+<p>注意，你可以比较来自相同有作用域枚举类型中的枚举值(因为它们具有相同的类型)：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5851,7 +5903,7 @@
 
 <span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">shirt</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Color</span><span class="o">::</span><span class="n">red</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shirt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Color</span><span class="o">::</span><span class="n">red</span><span class="p">)</span><span class="w"> </span><span class="c1">// this Color to Color comparison is okay</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shirt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Color</span><span class="o">::</span><span class="n">red</span><span class="p">)</span><span class="w"> </span><span class="c1">// Color 和 Color 的比较是可以的</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The shirt is red!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shirt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Color</span><span class="o">::</span><span class="n">blue</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The shirt is blue!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
@@ -5859,8 +5911,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>There are occasionally cases where it is useful to be able to treat a scoped enumerator as an integer. In these cases, you can explicitly convert a scoped enumeration to an integer by using a <code>static_cast</code> to int:</p>
+<p>在某些情况下，将有作用域枚举值作为整数处理也是有用的。在这些情况下，可以通过使用<code>static_cast</code> 显式地将枚举值转换为整数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5893,8 +5944,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Conversely, you can also <code>static_cast</code> an integer to a scoped enumerator, which can be useful when doing input from users:</p>
+<p>反过来，你也可以使用 <code>static_cast</code> 将一个整型转换为有作用域枚举值，这在处理输入时尤其有用：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5937,14 +5987,15 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>As of C++17, you can initialize a scoped enumeration using an integral value without the static_cast (and unlike an unscoped enumeration, you don’t need to specify a base).</p>
-<p>Best practice</p>
-<p>Favor scoped enumerations over unscoped enumerations unless there’s a compelling reason to do otherwise.</p>
-<p>Despite the benefits that scoped enumerations offer, unscoped enumerations are still commonly used in C++ because there are situations where we desire the implicit conversion to int (doing lots of static_casting get annoying) and we don’t need the extra namespacing.</p>
-<p>Easing the conversion of scoped enumerators to integers (advanced) <a href="https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/#operatorplus"></a></p>
-<p>Scoped enumerations are great, but the lack of implicit conversion to integers can sometimes be a pain point. If we need to convert a scoped enumeration to integers often (e.g. cases where we want to use scoped enumerators as array indices), having to use static_cast every time we want a conversion can clutter our code significantly.</p>
-<p>If you find yourself in the situation where it would be useful to make conversion of scoped enumerators to integers easier, a useful hack is to overload the unary <code>operator+</code> to perform this conversion. We haven’t explained how this works yet, so consider it magic for now:</p>
+<p>在 C++17 中，你可以使用整型数（无需类型转换）直接初始化有作用域枚举（而且不像无作用域枚举，你不需要指明一个基类）。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>推荐使用有作用域枚举而非无作用域枚举，除非你有足够的理由不这么做。</p>
+</div>
+<p>尽管有作用域枚举提供了很多好的功能，但是无作用域枚举在C++中仍然非常常见，因为在有些场合下我们希望枚举值能够被隐式地转换为整型（总是使用<code>static_cast</code>进行转换有些麻烦），而且有时我们也不需要额外的命名空间分隔。</p>
+<h2 id="_4">简化有作用域枚举值到整型的转换(进阶话题)</h2>
+<p>有作用域枚举很好，但它不能够被隐式转换为整数的这一特点有时可能会是一个痛点。如果需要经常将作用域枚举转换为整数(例如，在希望使用作用域枚举作为数组下标的情况下)，那么每次需要转换时都必须使用<code>static_cast</code>，这无疑会使代码看起来非常混乱</p>
+<p>如果你有这样的需求，希望使有作用域枚举值能够更容易地转换为整数，那么可以尝试重载一元 <code>operator+</code> 来执行这种转换。我们还没有解释这是如何工作的，所以现在就把它当成魔术吧：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5999,13 +6050,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
-<p>3</p>
-<p>This method prevents unintended implicit conversions to an integral type, but provides a convenient way to explicitly request such conversions as needed.</p>
-<p><code>using enum</code> statements C++20</p>
-<p>Introduced in C++20, a <code>using enum</code> statement imports all of the enumerators from an enum into the current scope. When used with an enum class type, this allows us to access the enum class enumerators without having to prefix each with the name of the enum class.</p>
-<p>This can be useful in cases where we would otherwise have many identical, repeated prefixes, such as within a switch statement:</p>
+<p>打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>3
+</code></pre></div></td></tr></table></div>
+<p>此方法可避免不经意地隐式转换，同时还提供了一种方便地显示转换方法。</p>
+<h2 id="using-enum-c20"><code>using enum</code> 语句 （C++20）</h2>
+<p>C++20 引入了 <code>using enum</code> 语句，它可以将每个枚举作用域中的枚举值全部导入到当前作用域。当配合<a href="../enum-class/">枚举类</a>使用时，可以避免使用枚举类前缀访问枚举值。</p>
+<p>这个特性非常有用，特别是在需要重复输入大量相同前缀的情况下，例如在下面的switch语句中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6070,9 +6121,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, <code>Color</code> is an enum class, so we normally would access the enumerators using a fully qualified name (e.g. <code>Color::blue</code>). However, within function <code>getColor()</code>, we’ve added the statement <code>using enum Color;</code>, which allows us to access those enumerators without the <code>Color::</code> prefix.</p>
-<p>This saves us from having multiple, redundant, obvious prefixes inside the switch statement.</p>
+<p>在上面的例子中， <code>Color</code> 是一个枚举类，所以我们通常需要使用完全限定名来访问其枚举值 (例如 <code>Color::blue</code>)。但是，在 <code>getColor()</code> 函数中, 由于我们使用了 <code>using enum Color;</code>，因此可以省略 <code>Color::</code> 前缀直接访问枚举值。</p>
+<p>这样可以帮助我们在switch语句中节省大量重复、冗余的输入。</p>
 
 
               </article>

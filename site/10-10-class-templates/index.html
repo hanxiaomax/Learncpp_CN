@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2795,7 +2800,7 @@
   
     <li class="md-nav__item">
       <a href="../10-1-Introduction-to-program-defined-user-defined-types/" class="md-nav__link">
-        10.1 - 自定义类型简介
+        10.1 - 程序定义类型简介
       </a>
     </li>
   
@@ -2809,7 +2814,7 @@
   
     <li class="md-nav__item">
       <a href="../10-2-unscoped-enumerations/" class="md-nav__link">
-        10.2 - 非限定作用域枚举类型
+        10.2 - 无作用域枚举类型
       </a>
     </li>
   
@@ -2927,9 +2932,80 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            10.10 - 类模板
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         10.10 - 类模板
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    聚合类型也面临类似的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    在函数中使用类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    同时使用模板类型和非模板类型的类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    具有多个模板类型的类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdpair" class="md-nav__link">
+    std::pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    在多个文件中使用类模板
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5544,6 +5620,63 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    聚合类型也面临类似的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    在函数中使用类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    同时使用模板类型和非模板类型的类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    具有多个模板类型的类模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdpair" class="md-nav__link">
+    std::pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    在多个文件中使用类模板
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5593,7 +5726,7 @@
   <h1>10.10 - 类模板</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/function-templates/">8.13 -- Function templates</a>, we introduced the challenge of having to create a separate (overloaded) function for each different set of types we want to work with:</p>
+<p>在 [[8-13-Function-templates|8.13 - 函数模板] 中我们提到，为不同类型的对象分别创建（重载）不同的函数是一项困难且没必要的工作。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5640,8 +5773,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The solution to this was to create a function template that the compiler can use to instantiate normal functions for whichever set of types we need:</p>
+<p>该问题的最终解决方案是创建一个<a href="../function-template/">函数模板</a>并让编译器根据所需的类型为你实例化对应的函数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5676,12 +5808,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Related content</p>
-<p>We cover how function template instantiation works in lesson <a href="https://www.learncpp.com/cpp-tutorial/function-template-instantiation/">8.14 -- Function template instantiation</a>.</p>
-<p>Aggregate types have similar challenges</p>
-<p>We run into similar challenges with aggregate types (both structs/classes/unions and arrays).</p>
-<p>For example, let’s say we’re writing a program where we need to work with pairs of <code>int</code> values, and need to determine which of the two numbers is larger. We might write a program like this:</p>
+<div class="admonition info">
+<p class="admonition-title">相关内容</p>
+<p>我们在<a href="../8-14-Function-template-instantiation/">8.14 - 函数模板的实例化</a>中介绍了函数模板的实例化。</p>
+</div>
+<h2 id="_1">聚合类型也面临类似的问题</h2>
+<p>对于聚合类型(包括结构/类/联合和数组)，我们也遇到了类似的问题。</p>
+<p>例如，假设我们正在编写一个程序，其中需要处理一对 <code>int</code> 值，并需要确定这两个数字中哪一个更大。我们可以写这样一个程序:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5722,8 +5855,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Later, we discover that we also need pairs of <code>double</code> values. So we update our program to the following:</p>
+<p>一段时间后，我们发现我们需要处理一对 <code>double</code> 类型的值，那么我们必须更新程序，添加另外一个<code>Pair</code>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5792,18 +5924,21 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Unfortunately, this program won’t compile, and has a number of problems that need to be addressed.</p>
-<p>First, unlike functions, type definitions can’t be overloaded. The compiler will treat double second definition of <code>Pair</code> as an erroneous redeclaration of the first definition of <code>Pair</code>. Second, although functions can be overloaded, our <code>max(Pair)</code> functions only differ by return type, and overloaded functions can’t be differentiated solely by return type. Third, there is a lot of redundancy here. Each <code>Pair</code> struct is identical (except for the data type) and same with our <code>max(Pair)</code> functions (except for the return type).</p>
-<p>We could solve the first two issues by giving our <code>Pair</code> structs different names (e.g. <code>Pairint</code> and <code>Pairdouble</code>). But then we both have to remember our naming scheme, and essentially clone a bunch of code for each additional pair type we want, which doesn’t solve the redundancy problem.</p>
-<p>Fortunately, we can do better.</p>
-<p>Author’s note</p>
-<p>Before proceeding, please review lessons <a href="https://www.learncpp.com/cpp-tutorial/function-templates/">8.13 -- Function templates</a> and <a href="https://www.learncpp.com/cpp-tutorial/function-template-instantiation/">8.14 -- Function template instantiation</a> if you’re hazy on how function templates, template types, or function template instantiation works.</p>
-<p>Class templates</p>
-<p>Much like a function template is a template definition for instantiating functions, a class template is a template definition for instantiating class types.</p>
-<p>A reminder</p>
-<p>A “class type” is a struct, class, or union type. Although we’ll be demonstrating “class templates” on structs for simplicity, everything here applies equally well to classes.</p>
-<p>As a reminder, here’s our <code>int</code> pair struct definition:</p>
+<p>很遗憾，这个程序是不能编译的，而且这里有很多问题：</p>
+<p>首先，和函数不同，类型是不能被<a href="../overload/">重载</a>的。所以编译器会将第二个<code>double</code>成员版本的 <code>Pair</code> 看做是第一个<code>Pair</code> 的重复定义。第二，尽管函数可以被重载，但两个 <code>max(Pair)</code> 函数只有返回值不同，而函数重载不能仅仅通过不同的返回值类型区分。第三，代码有很多冗余。每个  <code>Pair</code> 结构体都是相同的（只是数据类型不同），<code>max(Pair)</code> 函数也是 (只有返回值不同)。</p>
+<p>我们可以通过给<code>Pair</code> 起不同的名字来解决前两个问题（例如 <code>Pairint</code> 和 <code>Pairdouble</code> )。但是我们必须记住全部的命名方案，并为我们想要的每一个额外的类型克隆一堆代码，这并不能解决冗余问题。</p>
+<p>幸运的是，我们有更好的办法！</p>
+<div class="admonition info">
+<p class="admonition-title">作者注</p>
+<p>在继续阅读之前，如果你还不熟悉函数模板、模板类型或者函数模板实例化是如何工作的，推荐复习一下 <a href="../8-13-Function-templates/">8.13 - 函数模板</a>和<a href="../8-14-Function-template-instantiation/">8.14 - 函数模板的实例化</a>。</p>
+</div>
+<h2 id="_2">类模板</h2>
+<p>就像函数模板是实例化函数的模板定义一样，类模板是实例化类类型的模板定义。</p>
+<div class="admonition info">
+<p class="admonition-title">提醒</p>
+<p>所谓 “<a href="../class-type/">类类型</a>” 指的是结构体、类或联合体。虽然我们以结构体的类模板进行演示，但是它同样适用于类。</p>
+</div>
+<p>回忆一下，这里有一个整型成员类型的 <code>Pair</code> 结构体定义：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5814,8 +5949,7 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="p">{};</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Let’s rewrite our pair class as a class template:</p>
+<p>让我们使用类模板重写一下该结构体：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5860,12 +5994,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Just like with function templates, we start a class template definition with a template parameter declaration. We begin with the <code>template</code> keyword. Next, we specify all of the template types that our class template will use inside angled brackets (&lt;&gt;). For each template type that we need, we use the keyword <code>typename</code> (preferred) or <code>class</code> (not preferred), followed by the name of the template type (e.g. <code>T</code>). In this case, since both of our members will be the same type, we only need one template type.</p>
-<p>Next, we define our struct like usual, except we can use our template type (<code>T</code>) wherever we want a templated type that will be replaced with a real type later. That’s it! We’re done with the class template definition.</p>
-<p>Inside main, we can instantiate <code>Pair</code> objects using whatever types we desire. First, we instantiate an object of type <code>Pair&lt;int&gt;</code>. Because a type definition for <code>Pair&lt;int&gt;</code> doesn’t exist yet, the compiler uses the class template to instantiate a struct type definition named <code>Pair&lt;int&gt;</code>, where all occurrences of template type <code>T</code> are replaced by type <code>int</code>.</p>
-<p>Next, we instantiate an object of type <code>Pair&lt;double&gt;</code>, which instantiates a struct type definition named <code>Pair&lt;double&gt;</code> where <code>T</code> is replaced by <code>double</code>. For <code>p3</code>, <code>Pair&lt;double&gt;</code> has already been instantiated, so the compiler will use the prior type definition.</p>
-<p>Here’s the same example as above, showing what the compiler actually compiles after all template instantiations are done:</p>
+<p>就像函数模板一样，我们从模板形参声明开始定义类模板，即先是 <code>template</code>关键字。接下来，在尖括号(<code>&lt;&gt;</code>)中指定类模板将使用的所有模板类型。对于我们需要的每个模板类型，需要使用关键字<code>typename</code> (首选)或<code>class</code> (非首选)，后面跟着模板类型的名称(例如。“T”)。在本例中，因为我们的两个成员都是相同的类型，所以我们只需要一个模板类型。</p>
+<p>接下来，我们像往常一样定义结构，只不过我们可以在需要模板类型的地方使用模板类型(<code>T</code> )，以便稍后用实际类型替换模板类型。就是这样！类模板的定义就完成了。</p>
+<p>在<code>main</code>中，我们可以使用需要要的任何类型来实例化<code>Pair</code> 对象。首先，我们实例化一个 <code>Pair&lt;int&gt;</code> 类型的对象。因为<code>Pair&lt;int&gt;</code> 的类型定义还不存在，编译器使用类模板实例化一个名为<code>Pair&lt;int&gt;</code> 的结构体类型定义，其中所有出现的模板类型 <code>T</code> 都被类型 <code>int</code> 替换。</p>
+<p>接下来，再实例化一个 <code>Pair&lt;double&gt;</code> 类型的对象，此时会实例化一个 <code>Pair&lt;double&gt;</code> 类型的结构体定义，其中 <code>T</code> 会被替换为 <code>double</code>。对于<code>p3</code>来说，<code>Pair&lt;double&gt;</code> 已经被实例化了，所以编译器会使用之前的定义。</p>
+<p>接下来是与上面相同的例子，显示了编译器在所有模板实例化完成后实际编译的内容：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5938,12 +6071,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>You can compile this example directly and see that it works as expected!</p>
-<p>For advanced readers</p>
-<p>The above example makes use of a feature called template class specialization (covered in future lesson <a href="https://www.learncpp.com/cpp-tutorial/class-template-specialization/">19.4 -- Class template specialization</a>). Knowledge of how this feature works is not required at this point.</p>
-<p>Using our class template in a function</p>
-<p>Now let’s return to the challenge of making our <code>max()</code> function work with different types. Because the compiler treats <code>Pair&lt;int&gt;</code> and <code>Pair&lt;double&gt;</code>as separate types, we could use overloaded functions that are differentiated by parameter type:</p>
+<p>你可以直接编译此示例，它能够按预期工作!</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
+</div>
+<p>上面的例子中使用了一个称为<a href="../template-class-specialization/">类模板特化</a>的特性(会在 <a href="https://www.learncpp.com/cpp-tutorial/class-template-specialization/">19.4 -- Class template specialization</a> 中介绍)。目前我们还不需要掌握该特性的知识。</p>
+<h2 id="_3">在函数中使用类模板</h2>
+<p>现在让我们回到让<code>max()</code> 函数配合不同类型工作的挑战。因为编译器将 <code>Pair&lt;int&gt;</code> 和 <code>Pair&lt;double&gt;</code> 看做单独的类型，我们可以使用按形参类型区分的重载函数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5962,9 +6096,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>While this compiles, it doesn’t solve the redundancy problem. What we really want is a function that can take a pair of any type. In other words, we want a function that takes a parameter of type <code>Pair&lt;T&gt;</code>, where T is a template type parameter. And that means we need a function template for this job!</p>
-<p>Here’s a full example, with <code>max()</code> being implemented as a function template:</p>
+<p>虽然上述代码可以编译了，但是它没有解决代码冗余的问题。我们实际上希望一个函数能够接受任何类型的参数。换言之我们希望函数可以使用  <code>Pair&lt;T&gt;</code> 类型的形参，其中 <code>T</code> 是一个模板类型参数。因此我们需要使用一个函数模板来完成相应的工作！</p>
+<p>下面是一个完整的例子，<code>max()</code>被实现为一个函数模板：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6015,9 +6148,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The <code>max()</code> function template is pretty straightforward. Because we want to pass in a <code>Pair&lt;T&gt;</code>, we need the compiler to understand what <code>T</code> is. Therefore, we need to start our function with a template parameter declaration that defines template type T. We can then use <code>T</code> as both our return type, and as the template type for <code>Pair&lt;T&gt;</code>.</p>
-<p>When the <code>max()</code> function is called with a <code>Pair&lt;int&gt;</code> argument, the compiler will instantiate the function <code>int max&lt;int&gt;(Pair&lt;int&gt;)</code> from the function template, where template type <code>T</code> is replaced with <code>int</code>. The following snippet shows what the compiler actually instantiates in such a case:</p>
+<p><code>max()</code> 函数模板非常直白。因为我们需要向其传递 <code>Pair&lt;T&gt;</code>，所以编译器必须了解 <code>T</code> 是什么。因此，我们需要在函数开头出添加模板参数声明，定义模板类型<code>T</code>。随后，我们就可以使用<code>T</code>作为返回类型，以及模板参数 <code>Pair&lt;T&gt;</code>。</p>
+<p>因为 <code>max()</code> 函数的调用基于 <code>Pair&lt;int&gt;</code> 类型<a href="../arguments/">实参</a> ，编译器会基于函数模板实例化函数<code>int max&lt;int&gt;(Pair&lt;int&gt;)</code> ，模板中的 <code>T</code> 被替换为了<code>int</code>。编译器实际上实例化了这样一个函数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6028,10 +6160,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>As with all calls to a function template, we can either be explicit about the template type argument (e.g. <code>max&lt;int&gt;(p1)</code>) or we can be implicitly (e.g. <code>max(p2)</code>) and let the compiler use template argument deduction to determine what the template type argument should be.</p>
-<p>Class templates with template type and non-template type members</p>
-<p>Class templates can have some members using a template type and other members using a normal (non-template) type. For example:</p>
+<p>与所有对函数模板的调用一样，我们可以显式地指定模板类型实参(例如 <code>max&lt;int&gt;(p1)</code>)，也可以隐式地使用(例如 <code>max(p2)</code>)，并让编译器使用<a href="../class-template-argument-deduction/">类模板实参推断</a>来确定模板类型实参应该是什么类型的。</p>
+<h2 id="_4">同时使用模板类型和非模板类型的类模板</h2>
+<p>类模板的成员可以使用模板类型，也可以同时有另外一部分成员使用普通类型（非模板），例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6044,10 +6175,9 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="p">{};</span><span class="w"> </span><span class="c1">// second will always have type int, regardless of what type T is</span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This works exactly like you’d expect: <code>first</code> will be whatever the template type <code>T</code> is, and <code>second</code> will always be an <code>int</code>.</p>
-<p>Class templates with multiple template types</p>
-<p>Class templates can also have multiple template types. For example, if we wanted the two members of our <code>Pair</code> class to be able to have different types, we can define our <code>Pair</code> class template with two template types:</p>
+<p>上述代码能够正常工作：<code>first</code> 的类型由 <code>T</code> 指定，而 <code>second</code> 类型则总是<code>int</code>。</p>
+<h2 id="_5">具有多个模板类型的类模板</h2>
+<p>类模板也可以有多个模板类型。例如，如果我们希望<code>Pair</code> 类的两个成员能够具有不同的类型，我们可以用两种模板类型定义<code>Pair</code> 类模板：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6098,10 +6228,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>To define multiple template types, in our template parameter declaration, we separate each of our desired template types with a comma. In the above example we define two different template types, one named <code>T</code>, and one named <code>U</code>. The actual template type arguments for <code>T</code> and <code>U</code> can be different (as in the case of <code>p1</code> and <code>p2</code> above) or the same (as in the case of <code>p3</code>).</p>
-<p>std::pair</p>
-<p>Because working with pairs of data is common, the C++ standard library contains a class template named <code>std::pair</code> (in the <code>&lt;utility&gt;</code> header) that is defined identically to the <code>Pair</code> class template with multiple template types in the preceding section. In fact, we can swap out the <code>pair</code> struct we developed for <code>std::pair</code>:</p>
+<p>要定义多个模板类型，在模板参数声明中，用逗号分隔每个所需的模板类型。在上面的例子中，我们定义了两种不同的模板类型，一种名为<code>T</code> ，另一种名为<code>U</code> 。<code>T</code> 和 <code>U</code> 的实际模板类型实参可以不同(就像上面的 <code>p1</code> 和 <code>p2</code> 一样)，也可以相同(就像 <code>p3</code> 一样)。</p>
+<h2 id="stdpair"><code>std::pair</code></h2>
+<p>因为在C++中使用一对数据是很常见的需求，因此C++标准库提供了一个名为<code>std::pair</code>的类模板(位于 <code>&lt;utility&gt;</code> 头文件中) ，它的另一和使用了多个模板类型的  <code>Pair</code> 类一样。实际上，我们可以使用 <code>std::pair</code> 来替换我们定义的<code>pair</code>。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6140,10 +6269,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>We developed our own <code>Pair</code> class in this lesson to show how things work, but in real code, you should favor <code>std::pair</code> over writing your own.</p>
-<p>Using class templates in multiple files</p>
-<p>Just like function templates, class templates are typically defined in header files so they can be included into any code file that needs them. Both template definitions and type definitions are exempt from the one-definition rule, so this won’t cause problems:</p>
+<p>本节课我们定义了自己的 <code>Pair</code> 类以解释其工作原理，但是在实际工作中，我们推荐使用<code>std::pair</code>。</p>
+<h2 id="_6">在多个文件中使用类模板</h2>
+<p>就像函数模板一样，类模板通常是在头文件中定义的，因此它们可以被包含到任何需要它们的代码文件中。模板定义和类型定义都不受<a href="../one-definition-rule/">单一定义规则(one-definition-rule)</a>的约束，所以这不会导致问题：</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">pair.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
