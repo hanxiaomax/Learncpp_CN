@@ -240,9 +240,9 @@ Pew! 8 shot(s) left.
 
 就像函数可以通过引用来更改参数的值一样，我们也可以通过引用来捕获变量，以允许lambda修改参数的值。
 
-To capture a variable by reference, we prepend an ampersand (`&`) to the variable name in the capture. Unlike variables that are captured by value, variables that are captured by reference are non-const, unless the variable they’re capturing is `const`. Capture by reference should be preferred over capture by value whenever you would normally prefer passing an argument to a function by reference (e.g. for non-fundamental types).
+要通过引用捕获变量，需要在捕获的变量名前加上`&`号。与通过值捕获的变量不同，通过引用捕获的变量是非const的，除非它们捕获的变量是 `const` 。当你通常喜欢通过引用将参数传递给函数时(例如，对于非基本类型)，通过引用捕获应该优先于通过值捕获。
 
-Here’s the above code with `ammo` captured by reference:
+修改之前的例子，捕获 `ammo` 的引用：
 
 ```cpp
 #include <iostream>
@@ -269,16 +269,14 @@ int main()
 }
 ```
 
-COPY
-
-This produces the expected answer:
+结果如我们期望的那样：
 
 ```
 Pew! 9 shot(s) left.
 9 shot(s) left
 ```
 
-Now, let’s use a reference capture to count how many comparisons `std::sort` makes when it sorts an array.
+接下来，我们使用按引用捕获来统计 `std::sort` 对数组排序时进行的比较次数。
 
 ```cpp
 #include <algorithm>
