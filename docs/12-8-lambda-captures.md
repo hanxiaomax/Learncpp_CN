@@ -12,9 +12,9 @@ tags:
 ??? note "关键点速记"
 
 
-## Capture clauses and capture by value
+## 捕获语句以及捕获值
 
-In the previous lesson ([[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]), we introduced this example:
+在上节课 [[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]) 中我们介绍了整个例子：
 
 ```cpp
 #include <algorithm>
@@ -45,9 +45,8 @@ int main()
 }
 ```
 
-COPY
 
-Now, let’s modify the nut example and let the user pick a substring to search for. This isn’t as intuitive as you might expect.
+接下来，修改这个例子，让用户决定需要搜索的子串。不过，这个操作并不想你想象的那么简单：
 
 ```cpp
 #include <algorithm>
@@ -67,8 +66,8 @@ int main()
   std::cin >> search;
 
   auto found{ std::find_if(arr.begin(), arr.end(), [](std::string_view str) {
-    // Search for @search rather than "nut".
-    return (str.find(search) != std::string_view::npos); // Error: search not accessible in this scope
+    // 搜索 @search 而不是 "nut".
+    return (str.find(search) != std::string_view::npos); // 错误: search 并不能在这里被访问
   }) };
 
   if (found == arr.end())
@@ -84,13 +83,11 @@ int main()
 }
 ```
 
-COPY
-
-This code won’t compile. Unlike nested blocks, where any identifier defined in an outer block is accessible in the scope of the nested block, lambdas can only access specific kinds of identifiers: global identifiers, entities that are known at compile time, and entities with static storage duration. `search` fulfills none of these requirements, so the lambda can’t see it. That’s what the capture clause is there for.
+这段代码无法编译。与嵌套块(在嵌套块范围内可以访问外部块中定义的任何标识符)不同，==lambdas只能访问特定类型的标识符：全局变量、编译时已知的实体和具有[[static-storage-duration|静态存储持续时间]]的实体==。`search` 不满足这些要求，所以lambda无法看到它。这就是捕获语句的作用。
 
 ## 闭包
 
-The capture clause is used to (indirectly) give a lambda access to variables available in the surrounding scope that it normally would not have access to. All we need to do is list the entities we want to access from within the lambda as part of the capture clause. In this case, we want to give our lambda access to the value of variable `search`, so we add it to the capture clause:
+捕获语句用于为帮助 lambda 访问在其内部无法访问的普通变量。我们要做的就是将需要访问的实体列举在捕获语句中。在本例中，我们需要让lambda访问 `search` 变量，所以将其加入捕获语句即可：
 
 ```cpp
 #include <algorithm>
@@ -126,11 +123,10 @@ int main()
 }
 ```
 
-COPY
 
-The user can now search for an element of our array.
+注意，这样用户就可以在数组中搜索任何值了：
 
-Output
+输出：
 
 ```
 search for: nana
@@ -139,28 +135,29 @@ Found banana
 
 ## 闭包是如何工作的？
 
-While it might look like our lambda in the example above is directly accessing the value of `main`‘s `search` variable, this is not the case. Lambdas might look like nested blocks, but they work slightly differently (and the distinction is important).
+虽然上面例子中的lambda看起来像是直接访问了main函数中的`search` 变量，但事实并非如此。虽然 lambda 可能看起来像嵌套块，但它们的工作方式略有不同(而且这种区别很重要)。
 
-When a lambda definition is executed, for each variable that the lambda captures, a clone of that variable is made (with an identical name) inside the lambda. These cloned variables are initialized from the outer scope variables of the same name at this point.
+当执行lambda定义时，对于lambda捕获的每个变量，将在lambda内部生成该变量的克隆(具有相同的名称)。此时，这些克隆变量是从同名的外部作用域变量初始化的。
 
-Thus, in the above example, when the lambda object is created, the lambda gets its own cloned variable named `search`. This cloned `search` has the same value as `main`‘s `search`, so it behaves like we’re accessing `main`‘s `search`, but we’re not.
+因此，在上面的例子中，当lambda对象被创建时，lambda将获得自己的克隆变量 `search`。这个克隆的 `search` 与 main 函数中的 `search` 具有相同的值，因此它的行为就像访问 main 函数中的 `search` 一样，但实际上并不是。
 
-While these cloned variables have the same name, they don’t necessarily have the same type as the original variable. We’ll explore this in the upcoming sections of this lesson.
+虽然这些克隆的变量具有相同的名称，==但它们不一定具有与原始变量相同的类型==。我们将在本课接下来的章节中探讨这个问题。
+
 
 !!! tldr "关键信息"
 
-	The captured variables of a lambda are _clones_ of the outer scope variables, not the actual variables.
-
+	捕获的变量是外层原始变量的一份克隆，而不是实际的原变量。
+	
 !!! info "扩展阅读"
 
-    
-	Although lambdas look like functions, they’re actually objects that can be called like functions (these are called functors -- we’ll discuss how to create your own functors from scratch in a future lesson).
+	尽管 lambda 看上去像是函数，但其实并不是，它只是可以被像函数一样调用的对象而已(称为 functor —— 我们会在后面的课程中介绍如何定义自己的functor的)。
 
-When the compiler encounters a lambda definition, it creates a custom object definition for the lambda. Each captured variable becomes a data member of the object.
+当编译器遇到lambda定义时，它为该lambda创建一个自定义对象定义。每个捕获的变量都会成为对象的数据成员。
 
-At runtime, when the lambda definition is encountered, the lambda object is instantiated, and the members of the lambda are initialized at that point.
+在运行时，当遇到lambda定义时，将实例化lambda对象，并在此时初始化lambda的成员。
 
-## Captures default to const value
+
+## 默认捕获的是const值
 
 By default, variables are captured by `const value`. This means when the lambda is created, the lambda captures a constant copy of the outer scope variable, which means that the lambda is not allowed to modify them. In the following example, we capture the variable `ammo` and try to decrement it.
 

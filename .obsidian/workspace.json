@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "d258447e5c5493a2",
+            "id": "e8065e7ab07db1e9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+                "file": "docs/12-8-lambda-captures.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -112,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+                "file": "docs/12-8-lambda-captures.md"
               }
             }
           },
@@ -133,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+                "file": "docs/12-8-lambda-captures.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,17 +152,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d258447e5c5493a2",
+  "active": "e8065e7ab07db1e9",
   "lastOpenFiles": [
+    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
+    "docs/MOC.md",
+    "docs/12-8-lambda-captures.md",
     "docs/return-type-deduction.md",
     "docs/lambda.md",
-    "docs/MOC.md",
-    "docs/12-7-introduction-to-lambdas-anonymous-functions.md",
     "docs/abbreviated function templates.md",
     "docs/function-literal.md",
     "docs/type deduction.md",
     "docs/closure.md",
-    "docs/10-y-using-a-language-reference.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    "docs/10-y-using-a-language-reference.md"
   ]
 }

@@ -469,7 +469,7 @@ int main()
 
 对于很多基本操作(例如：addition, negation 或 comparison) 来说，其实我们不需要自己编写lambda，因为标准库中提供很多可以使用的可调用对象。它们都定义在 [`<functional>`](https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects) 头文件中。
 
-In the following example:
+考虑下面的例子：
 
 ```cpp
 #include <algorithm>
@@ -506,7 +506,7 @@ int main()
 99 90 80 40 13 5
 ```
 
-Instead of converting our `greater` function to a lambda (which would obscure its meaning a bit), we can instead use `std::greater`:
+在这个例子中，我们不需要将 `greater` 函数改写为lambda，而是可以直接使用 `std::greater`：
 
 ```cpp
 #include <algorithm>

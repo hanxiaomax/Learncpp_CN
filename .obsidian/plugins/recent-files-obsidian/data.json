@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
       "basename": "12-7-introduction-to-lambdas-anonymous-functions",
       "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
     },
     {
       "basename": "return-type-deduction",
@@ -11,10 +19,6 @@
     {
       "basename": "lambda",
       "path": "docs/lambda.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "abbreviated function templates",
@@ -87,10 +91,6 @@
     {
       "basename": "static-initialization",
       "path": "docs/static-initialization.md"
-    },
-    {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
     },
     {
       "basename": "12-6-Ellipsis-and-why-to-avoid-them",
