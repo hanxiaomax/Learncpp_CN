@@ -75,7 +75,7 @@ lambda 的语法是C++中最奇怪的东西之一，需要一点时间来适应�
 
 -   闭包语句可以为空，如果不需要捕获变量的话；
 -   [[parameters|形参]]列表也可以为空，如果不需要形参的话；
--   返回类型是可选的，如果省略的话，会假定为 `auto` (使用[[type deduction|类型推断]]来决定返回值类型)。尽管我们之前说过，==应该避免使用函数返回值的类型推断==，但是在匿名表达式中是可以用的（因为这些函数通常都非常简单）。
+-   返回类型是可选的，如果省略的话，会假定为 `auto` (使用[[return-type-deduction|返回值类型推断]])。尽管我们之前说过，==应该避免使用函数返回值的类型推断==，但是在匿名表达式中是可以用的（因为这些函数通常都非常简单）。
 
 因为lambda 没有函数名，所以不必为其起名。
 
@@ -353,19 +353,16 @@ int main()
 }
 ```
 
-COPY
-
-Output:
-
+输出：
 ```
 There are 2 months with 5 letters
 ```
 
-In this example, using `auto` would infer a type of `const char*`. C-style strings aren’t easy to work with (apart from using `operator[]`). In this case, we prefer to explicitly define the parameter as a `std::string_view`, which allows us to work with the underlying data much more easily (e.g. we can ask the string view for its length, even if the user passed in a C-style array).
+在这个例子中，如果使用 `auto`，则会推断出 `const char*`。由于 C 风格字符串并不易用（除了`operator[]`）。所以在这个例子中我们显式地定义参数为 `std::string_view`类型，这使得我们在处理数据时可以更容易。(例如，我们可以查询string view 的长度，即便传入的是一个C风格字符串数组)。
 
 ## 泛型lambda和静态变量
 
-One thing to be aware of is that a unique lambda will be generated for each different type that `auto` resolves to. The following example shows how one generic lambda turns into two distinct lambdas:
+需要注意的一件事是，编译器将为 `auto` 解析出的每个不同类型生成唯一的lambda表达式。下面的例子展示了一个泛型lambda如何变成两个不同的lambda的：
 
 ```cpp
 #include <algorithm>
@@ -395,9 +392,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出：
 
 ```
 0: hello
@@ -407,17 +402,17 @@ Output
 2: ding dong
 ```
 
-In the above example, we define a lambda and then call it with two different parameters (a string literal parameter, and an integer parameter). This generates two different versions of the lambda (one with a string literal parameter, and one with an integer parameter).
+在上面的例子中，我们定义了一个lambda，然后使用两个不同类型的参数对其进行了调用（一个是字符串字面量，另一个是整型参数）。这会生成两个不同版本的lambda(一个是字符串字面量形参，另一个带有整数形参)。
 
-Most of the time, this is inconsequential. However, note that if the generic lambda uses static duration variables, those variables are not shared between the generated lambdas.
+大多数时候，这是无关紧要的。但是，请注意，==如果泛型lambda使用[[static-variables|静态变量]]，则生成的lambda之间不会共享这些变量。==
 
-We can see this in the example above, where each type (string literals and integers) has its own unique count! Although we only wrote the lambda once, two lambdas were generated -- and each has its own version of `callCount`. To have a shared counter between the two generated lambdas, we’d have to define a global variable or a `static` local variable outside of the lambda. As you know from previous lessons, both global- and static local variables can cause problems and make it more difficult to understand code. We’ll be able to avoid those variables after talking about lambda captures in the next lesson.
+从上面的例子中可以看出这一点，其中每种类型(字符串字面量和整数)都有自己唯一的计数！虽然我们只写了一次lambda，但是生成了两个lambda——并且每个lambda都有自己的 `callCount` 。要在两个生成的lambda之间有一个共享计数器，我们必须在lambda外部定义一个全局变量或一个“静态”局部变量。正如在前面的课程中了学到的，全局和静态局部变量容易带来问题，而且会降低代码的可读性。在下一课中讨论lambda捕获之后，我们将能够避免这些变量。
 
 ## 返回值类型推断和尾随返回值类型
 
-If return type deduction is used, a lambda’s return type is deduced from the `return`-statements inside the lambda, and all return statements in the lambda must return the same type (otherwise the compiler won’t know which one to prefer).
+如果使用了[[return-type-deduction|返回值类型推断]]，则 lambda 的返回值类型需要从 `return` 语句进行推断，而且所有的返回类型必须相同（否则编译器将难以判断）：
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -438,16 +433,15 @@ int main()
 }
 ```
 
-COPY
+这将产生一个编译错误，因为第一个返回语句的返回类型(int)与第二个返回语句的返回类型(double)不匹配。
 
-This produces a compile error because the return type of the first return statement (int) doesn’t match the return type of the second return statement (double).
+在返回不同类型的情况下，我们有两个选项：
 
-In the case where we’re returning different types, we have two options:
+1. 是否显式强制转换以使所有返回类型匹配，还是
+2. 显式指定lambda的返回类型，并让编译器执行隐式转换。
 
-1.  Do explicit casts to make all the return types match, or
-2.  explicitly specify a return type for the lambda, and let the compiler do implicit conversions.
+第二种情况通常是更好的选择:
 
-The second case is usually the better choice:
 
 ```cpp
 #include <iostream>
@@ -469,13 +463,11 @@ int main()
 }
 ```
 
-COPY
-
-That way, if you ever decide to change the return type, you (usually) only need to change the lambda’s return type, and not touch the lambda body.
+通过这种方式，如果今后你决定修改返回值的类型，那么你通常只需要修改lambda的返回值类型即可，而不必修改其函数内容。
 
 ## 标准库中的函数对象
 
-For common operations (e.g. addition, negation, or comparison) you don’t need to write your own lambdas, because the standard library comes with many basic callable objects that can be used instead. These are defined in the [`<functional>`](https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects) header.
+对于很多基本操作(例如：addition, negation 或 comparison) 来说，其实我们不需要自己编写lambda，因为标准库中提供很多可以使用的可调用对象。它们都定义在 [`<functional>`](https://en.cppreference.com/w/cpp/utility/functional#Operator_function_objects) 头文件中。
 
 In the following example:
 
@@ -508,9 +500,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出：
 
 ```
 99 90 80 40 13 5
@@ -542,9 +532,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出：
 
 ```
 99 90 80 40 13 5

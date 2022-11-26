@@ -5,6 +5,18 @@
       "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
     },
     {
+      "basename": "return-type-deduction",
+      "path": "docs/return-type-deduction.md"
+    },
+    {
+      "basename": "lambda",
+      "path": "docs/lambda.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
       "basename": "abbreviated function templates",
       "path": "docs/abbreviated function templates.md"
     },
@@ -19,10 +31,6 @@
     {
       "basename": "closure",
       "path": "docs/closure.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "10-y-using-a-language-reference",
@@ -191,14 +199,6 @@
     {
       "basename": "default-member-initializer",
       "path": "docs/default-member-initializer.md"
-    },
-    {
-      "basename": "memberwise-assignment",
-      "path": "docs/memberwise-assignment.md"
-    },
-    {
-      "basename": "aggregate-initialization",
-      "path": "docs/aggregate-initialization.md"
     }
   ],
   "omittedPaths": [],
