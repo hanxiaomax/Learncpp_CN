@@ -82,26 +82,26 @@ Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)
 
 ## `std::cin.ignore`
 
-在[[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]中我们介绍过 `std::cin.ignore`，它可以忽略换行之前的全部内容。这个函数的其中一个xin'cOne of the parameters of this function is some long and verbose value. What was that again? Can’t you just use a big number? What does this argument do anyway? Let’s figure it out!
+在[[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]中我们介绍过 `std::cin.ignore`，它可以忽略换行之前的全部内容。这个函数的其中一个形参又长又啰嗦，很难被记住。是什么来着？怎么用来着？让我们查查看。
 
-Typing “std::cin.ignore” into the cppreference search yields the following results:
+在搜索来输入 “std::cin.ignore” ：
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/ignore-ddg-min.png?ezimgfmt=rs:588x631/rscb2/ng:webp/ngcb2)
 
--   `std::cin, std::wcin` - We want `.ignore`, not plain `std::cin`.
--   `std::basic_istream<CharT,Traits>::ignore` - Eew, what is this? Let’s skip for now.
--   `std::ignore` - No, that’s not it.
--   `std::basic_istream` - That’s not it either.
+-   `std::cin, std::wcin` - 我们要找的是 `.ignore`，而不是 `std::cin`；
+-   `std::basic_istream<CharT,Traits>::ignore` - 这是啥？看不懂先跳过吧；
+-   `std::ignore` - 不是这个；
+-   `std::basic_istream` - 也不是这个。
 
-It’s not there, what now? Let’s go to [`std::cin`](https://en.cppreference.com/w/cpp/io/cin) and work our way from there. There’s nothing immediately obvious on that page. On the top, we can see the declaration of `std::cin` and `std::wcin`, and it tells us which header we need to include to use `std::cin`:
+没搜到？现在咋整？让我们先进入 [`std::cin`](https://en.cppreference.com/w/cpp/io/cin) ，然后顺藤摸瓜吧。这个页面上也没有明显与我们需要找的东西相关的内容。在页面的顶部，可以看到 `std::cin` 和`std::wcin`的声明，同时它还告诉我们使用 `std::cin`时应该包含哪个头文件：
 
 ![Declaration](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/cintop-min.png?ezimgfmt=rs:777x97/rscb2/ng:webp/ngcb2)
 
-We can see that `std::cin` is an object of type `std::istream`. Let’s follow the link to [`std::istream`](https://en.cppreference.com/w/cpp/io/basic_istream):
+可以看出  `std::cin` 是 `std::istream` 类型的一个对象。接下来点击 [`std::istream`](https://en.cppreference.com/w/cpp/io/basic_istream) 的链接：
 
 ![basic_istream](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/basic_istream-min.png?ezimgfmt=rs:777x520/rscb2/ng:webp/ngcb2)
 
-Hold up! We’ve seen `std::basic_istream` before when we searched for “std::cin.ignore” in our search engine. It turns out that `istream` is a typedef for `basic_istream`, so maybe our search wasn’t so wrong after all.
+等等！ 我之前搜索 “`std::cin.ignore`” 的时候是搜到过 `std::basic_istream` 的。原来 `istream`  就是 `basic_istream` 的 `typedef` 啊。也许我们并没有搜索错！
 
 Scrolling down on that page, we’re greeted with familiar functions:
 
