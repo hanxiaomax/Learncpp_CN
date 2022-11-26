@@ -33,55 +33,56 @@ Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)
 
 !!! warning "注意"
 
-	If you use a search engine and a technical specification has just been accepted into the standard, you might get linked to a technical specification rather than the official reference, which can differ.
+	如果你使用搜索引擎，而某个技术规范刚刚被接受为标准，那么你可能会链接到某个技术规范而不是官方参考，这可能会有所不同。
 
 !!! tip "小贴士"
 
-cppreference不仅是C++的参考，也是C的参考。因为C++和C共享一些函数(可能有所不同)，你可能会在C参考中搜索到一些东西。cppreference顶部的URL和导航栏总是会显示您正在浏览的是C还是c++引用。
+	cppreference不仅是C++的参考，也是C的参考。因为C++和C共享一些函数(可能有所不同)，你可能会搜索后被引导到C语言的参考中。在cppreference顶部的URL和导航栏总是会显示您正在浏览的是C还是C++参考。
 
-## `std::string::length`
+## 案例一：`std::string::length`
 
-We’ll start by researching a function that you know from a previous lesson, `std::string::length`, which returns the length of a string.
+接下来，让我们首先研究一个已经学习过的函数——`std::string::length` ，它返回字符串的长度。
 
-On the top right of cppreference, search for “string”. Doing so shows a long list of types and functions, of which only the top is relevant for now.
+在cppreference的右上角，搜索“string”。此时做会显示一长串类型和函数，目前只有最上面的是相关的。
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/string-search-ddg-min.png?ezimgfmt=rs:674x555/rscb2/ng:webp/ngcb2)
 
-We could have searched for “string length” right away, but for the purpose of showing as much as possible in this lesson, we’re taking the long route. Clicking on “Strings library” takes us to a page talking about the various kinds of strings that C++ supports.
+当我们也可以直接搜索“string length”，不过为了向你更全面地展示各种情况，这里我们故意舍近求远了。点击 “Strings library” 会将我们带到一个页面，该页面展示了C++支持的各种字符串功能。
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/strings-lib-min.png?ezimgfmt=rs:776x357/rscb2/ng:webp/ngcb2)
 
-If we look under the “std::basic_string” section, we can see a list of typedefs, and within that list is std::string.
+在 “`std::basic_string`” 小节下方，我们可以看到一系列的 `typedefs`，其中就有 `std::string`。
 
-Clicking on “std::string” leads to the page for [`std::basic_string`](https://en.cppreference.com/w/cpp/string/basic_string). There is no page for `std::string`, because `std::string` is a `typedef` for `std::basic_string<char>`, which again can be seen in the `typedef` list:
+点击 “`std::string`” 会跳转到 [`std::basic_string`](https://en.cppreference.com/w/cpp/string/basic_string) 页面。网站中并没有关于 `std::string` 的页面因为 `std::string` 是 `typedef` 的 `std::basic_string<char>`。在 `typedef` 列表中可以看到。
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/typedef-min.png?ezimgfmt=rs:485x239/rscb2/ng:webp/ngcb2)
 
-The `<char>` means that each character of the string is of type `char`. You’ll note that C++ offers other strings that use different character types. These can be useful when using Unicode instead of ASCII.
+`<char>` 表示该字符串中的每个字符其类型都是 `char`。在这里可以看到，C++的字符串，其字符支持不同种类的字符。当需要使用Unicode而非ASCII时，这显得尤为重要。
 
-Further down the same page, there’s a [list of member functions](https://en.cppreference.com/w/cpp/string/basic_string#Member_functions) (the behaviors that a type has). If you want to know what you can do with a type, this list is very convenient. In this list, you’ll find a row for `length` (and `size`).
+还是这个页面，继续往下看，此时可以看到[成员函数列表 Member functions](https://en.cppreference.com/w/cpp/string/basic_string#Member_functions) (该类型支持的方法)。如果你想知道某个类型可以做什么样的操作，直接看这个表就非常清楚了。在这个表中，可以找到 `length` 方法(和 `size`)。
 
-Following the link brings us to the detailed function description of [`length` and `size`](https://en.cppreference.com/w/cpp/string/basic_string/size), which both do the same thing.
+点击该方法的链接，页面跳转到 [`length` 和 `size`的介绍](https://en.cppreference.com/w/cpp/string/basic_string/size) （这两其实是一回事）。
 
-The top of each page starts with a short summary of the feature and syntax, overloads, or declarations:
+每个页面的顶部首先呈现的是功能和语法、重载或声明的简短摘要。
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/string-length-overloads-min.png?ezimgfmt=rs:771x178/rscb2/ng:webp/ngcb2)
 
-The title of the page shows the name of the class and function with all template parameters. We can ignore this part. Below the title, we see all of the different function overloads (different versions of the function that share the same name) and which language standard they apply to.
+这个页面的标题显示了类和函数的名称以及所有模板参数。我们可以忽略这部分。在标题下面，可以找到所有的重载函数(具有相同名称的函数的不同版本)以及它们应用的语言标准。
 
-Below that, we can see the parameters that the function takes, and what the return value means.
+再下面，是函数的[[parameters|形参]]列表，以及返回值类型。
 
-Because `std::string::length` is a simple function, there’s not a lot of content on this page. Many pages show example uses of the feature they’re documenting, as does this one:
+因为 `std::string::length` 是一个非常简单的函数，所以该页面中并没有很多内容。一般来说，页面会包含使用了相关特性的例子，例如：
 
 ![](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/string-length-example-min.png?ezimgfmt=rs:742x423/rscb2/ng:webp/ngcb2)
 
-Until you’re done learning C++, there will be features in the examples that you haven’t seen before. If there are enough examples, you’re probably able to understand a sufficient amount of it to get an idea of how the function is used and what it does. If the example is too complicated, you can search for an example somewhere else or read the reference of the parts you don’t understand (you can click on functions and types in the examples to see what they do).
+除非你已经完全掌握C++，否则示例中总会有你还没见过的特性。如果有足够多的例子，你可能能够理解足够多的内容，从而了解如何使用函数及其功能。如果示例太复杂，也可以在其他地方搜索示例，或者阅读不理解部分的参考资料(可以单击示例中的函数和类型来查看它们的功能)。
 
-Now we know what `std::string::length` does, but we knew that before. Let’s have a look at something new!
+现在我们知道了 `std::string::length` 的作用，不过这没什么新鲜的，毕竟我们之前就已经掌握该函数了。接下来看看新的东西吧！
+
 
 ## `std::cin.ignore`
 
-In lesson [7.16 -- std::cin and handling invalid input](https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/), we talked about `std::cin.ignore`, which is used to ignore everything up to a line break. One of the parameters of this function is some long and verbose value. What was that again? Can’t you just use a big number? What does this argument do anyway? Let’s figure it out!
+在[[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]中我们介绍过 `std::cin.ignore`，它可以忽略换行之前的全部内容。这个函数的其中一个xin'cOne of the parameters of this function is some long and verbose value. What was that again? Can’t you just use a big number? What does this argument do anyway? Let’s figure it out!
 
 Typing “std::cin.ignore” into the cppreference search yields the following results:
 
