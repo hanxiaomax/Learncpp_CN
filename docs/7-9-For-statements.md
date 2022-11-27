@@ -16,7 +16,7 @@ As of C++11, there are two different kinds of `for loops`. We’ll cover the cl
 
 The `for statement` looks pretty simple in abstract:
 
-```
+```cpp
 for (init-statement; condition; end-expression)
    statement;
 ```
@@ -103,7 +103,7 @@ That doesn’t look so bad, does it? Note that the outer braces are necessary he
 
 `For loops` can be hard for new programmers to read -- however, experienced programmers love them because they are a very compact way to do loops with a counter, with all of the necessary information about the loop variables, loop conditions, and loop count modifiers are presented up front. This helps reduce errors.
 
-## More for loop examples
+## 更多循环案例
 
 Here’s an example of a function that uses a `for loop` to calculate integer exponents:
 
@@ -230,9 +230,9 @@ COPY
 
 	Avoid `operator!=` when doing numeric comparisons in the for-loop condition.
 
-## Off-by-one errors
+## 差一错误
 
-One of the biggest problems that new programmers have with `for loops` (and other loops that utilize counters) are `off-by-one errors`. Off-by-one errorsoccur when the loop iterates one too many or one too few times to produce the desired result.
+One of the biggest problems that new programmers have with `for loops` (and other loops that utilize counters) are [[Off-by-one|差一错误]]。 Off-by-one errorsoccur when the loop iterates one too many or one too few times to produce the desired result.
 
 Here’s an example:
 
@@ -259,7 +259,7 @@ This program is supposed to print `1 2 3 4 5`, but it only prints `1 2 3 4` b
 
 Although the most common cause for these errors is using the wrong relational operator, they can sometimes occur by using pre-increment or pre-decrement instead of post-increment or post-decrement, or vice-versa.
 
-## Omitted expressions
+## 省略表达式
 
 It is possible to write _for loops_ that omit any or all of the statements or expressions. For example, in the following example, we’ll omit the init-statement and end-expression, leaving only the condition:
 
@@ -313,7 +313,7 @@ This might be a little unexpected, as you’d probably expect an omitted conditi
 
 We recommend avoiding this form of the for loop altogether and using `while(true)` instead.
 
-## For loops with multiple counters
+## 有多个计数的循环
 
 Although `for loops` typically iterate over only one variable, sometimes `for loops` need to work with multiple variables. To assist with this, the programmer can define multiple variables in the init-statement, and can make use of the comma operator to change the value of multiple variables in the end-expression:
 
@@ -353,7 +353,7 @@ This is about the only place in C++ where defining multiple variables in the sam
 
 	Defining multiple variables (in the init-statement) and using the comma operator (in the end-expression) is acceptable inside a `for statement`.
 
-# Nested for loops
+## 嵌套循环
 
 Like other types of loops, `for loops` can be nested inside other loops. In the following example, we’re nesting a `for loop` inside another `for loop`:
 
@@ -390,7 +390,7 @@ e012
 
 Here’s some more detail on what’s happening here. The outer loop runs first, and char `c` is initialized to `'a'`. Then `c <= 'e'` is evaluated, which is `true`, so the loop body executes. Since `c` is set to `'a'`, this first prints `a`. Next the inner loop executes entirely (which prints `0`, `1`, and `2`). Then a newline is printed. Now the outer loop body is finished, so the outer loop returns to the top, `c` is incremented to `'b'`, and the loop condition is re-evaluated. Since the loop condition is still `true` the next iteration of the outer loop begins. This prints `b012\n`. And so on.
 
-## Conclusion
+## 小结
 
 `For statements` are the most commonly used loop in the C++ language. Even though its syntax is typically a bit confusing to new programmers, you will see `for loops` so often that you will understand them in no time at all!
 

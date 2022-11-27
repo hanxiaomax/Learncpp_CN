@@ -1,16 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "7-4-Switch-statement-basics",
+      "path": "docs/7-4-Switch-statement-basics.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-5-Switch-fallthrough-and-scoping",
+      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
+    },
+    {
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
+    },
+    {
+      "basename": "7-9-For-statements",
+      "path": "docs/7-9-For-statements.md"
+    },
+    {
+      "basename": "11-3-Arrays-and-loops",
+      "path": "docs/11-3-Arrays-and-loops.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "Off-by-one",
+      "path": "docs/Off-by-one.md"
+    },
+    {
       "basename": "7-3-Common-if-statement-problems",
       "path": "docs/7-3-Common-if-statement-problems.md"
     },
     {
       "basename": "5-7-Logical-operators",
       "path": "docs/5-7-Logical-operators.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "7-2-If-statements-and-blocks",
@@ -45,28 +81,12 @@
       "path": "docs/7-15-Detecting-and-handling-errors.md"
     },
     {
-      "basename": "7-14-Common-semantic-errors-in-c",
-      "path": "docs/7-14-Common-semantic-errors-in-c.md"
-    },
-    {
-      "basename": "7-13-Code-coverage",
-      "path": "docs/7-13-Code-coverage.md"
-    },
-    {
-      "basename": "7-12-Introduction-to-testing-your-code",
-      "path": "docs/7-12-Introduction-to-testing-your-code.md"
-    },
-    {
       "basename": "7-11-Halts-exiting-your-program-early",
       "path": "docs/7-11-Halts-exiting-your-program-early.md"
     },
     {
       "basename": "7-10-Break-and-continue",
       "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
-      "basename": "7-9-For-statements",
-      "path": "docs/7-9-For-statements.md"
     },
     {
       "basename": "7-8-Do-while-statements",
@@ -79,14 +99,6 @@
     {
       "basename": "7-6-Goto-statements",
       "path": "docs/7-6-Goto-statements.md"
-    },
-    {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
-    },
-    {
-      "basename": "7-4-Switch-statement-basics",
-      "path": "docs/7-4-Switch-statement-basics.md"
     },
     {
       "basename": "B-4-introduction-to-C++20",
@@ -183,22 +195,6 @@
     {
       "basename": "abbreviated function templates",
       "path": "docs/abbreviated function templates.md"
-    },
-    {
-      "basename": "function-literal",
-      "path": "docs/function-literal.md"
-    },
-    {
-      "basename": "type deduction",
-      "path": "docs/type deduction.md"
-    },
-    {
-      "basename": "closure",
-      "path": "docs/closure.md"
-    },
-    {
-      "basename": "10-y-using-a-language-reference",
-      "path": "docs/10-y-using-a-language-reference.md"
     }
   ],
   "omittedPaths": [],

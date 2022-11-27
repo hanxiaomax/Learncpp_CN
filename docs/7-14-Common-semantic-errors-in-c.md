@@ -22,7 +22,7 @@ But there’s one other thing that can help -- and that’s knowing which type o
 
 In this lesson, we’ll cover a bunch of the most common types of semantic errors that occur in C++ (most of which have to do with flow control in some way).
 
-## Conditional logic errors
+## 条件逻辑错误
 
 One of the most common types of semantic errors is a conditional logic error. A conditional logic error occurs when the programmer incorrectly codes the logic of a conditional statement or loop condition. Here is a simple example:
 
@@ -50,6 +50,7 @@ Here’s a run of the program that exhibits the conditional logic error:
 Enter an integer: 5
 5 is greater than 5
 ```
+
 When the user enters `5`, the conditional expression `x >= 5` evaluates to `true`, so the associated statement is executed.
 
 Here’s another example, using a for loop:
@@ -85,7 +86,7 @@ Enter an integer: 5
 
 It didn’t print anything. This happens because on entrance to the for loop, `count > x` is `false`, so the loop never iterates at all.
 
-## Infinite loops
+## 无限循环 loops
 
 In lesson [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]], we covered infinite loops, and showed this example:
 
@@ -280,11 +281,11 @@ This prints:
 5 divided by 3 is: 1
 ```
 
-In lesson [5.2 -- Arithmetic operators](https://www.learncpp.com/cpp-tutorial/arithmetic-operators/), we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.
+In lesson [[5-2-Arithmetic-operators|5.2 - 数学运算符]], we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.
 
 ## 意外造成的空语句
 
-In lesson [7.3 -- Common if statement problems](https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/), we covered `null statements`, which are statements that do nothing.
+In lesson [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]], we covered `null statements`, which are statements that do nothing.
 
 In the below program, we only want to blow up the world if we have the user’s permission:
 
@@ -352,7 +353,7 @@ Should we blow up the world again? (y/n): n
 Kaboom!
 ```
 
-A `dangling else` (covered in lesson [7.3 -- Common if statement problems](https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/)) also falls into this category.
+A `dangling else` (covered in lesson [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]]) also falls into this category.
 
 ## What else?
 

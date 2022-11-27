@@ -225,13 +225,11 @@ int main()
 }
 ```
 
-COPY
-
-This program will compile and run, but will produce the wrong result in some cases:
+程序可以编译运行，但是某些情况下结果是错误的：
 
 ```
 Enter 0 or 1: 0
 You entered 1
 ```
 
-In fact, this program will always produce the result `You entered 1`. This happens because `x = 0` first assigns the value `0` to `x`, then evaluates to the value of `x`, which is now `0`, which is Boolean `false`. Since the conditional is always `false`, the `else statement` always executes.
+事实上，这个程序总是会产生“你输入了1”的结果。这是因为`x = 0` 首先将值 `0` 赋值给`x` ，然后计算 `x`的值，现在是`0` ，即布尔值`false` 。由于条件总是`false` 所以`else`语句总是执行。

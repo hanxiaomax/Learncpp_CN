@@ -13,8 +13,7 @@ tags:
 ??? note "关键点速记"
 	
 
-
-Although it is possible to chain many if-else statements together, this is both difficult to read and inefficient. Consider the following program:
+尽管我们可以编写很多链式 if-else，但是这么做不仅写起来费劲，效率也不高。例如：
 
 ```cpp
 #include <iostream>
@@ -39,11 +38,9 @@ int main()
 }
 ```
 
-COPY
+这个例子并不复杂，x 最多会被求值三次（不高效），读者也必须明白被求值多次的是`x`而不是其他变量。
 
-While this example isn’t too complex, `x` is evaluated up to three times (which is inefficient), and the reader has to be sure that it is `x` being evaluated each time (not some other variable).
-
-Because testing a variable or expression for equality against a set of different values is common, C++ provides an alternative conditional statement called a **switch statement** that is specialized for this purpose. Here is the same program as above using a switch:
+由于针对一组不同的值测试变量或表达式是否相等是很常见的，C++提供了另外一种可选的条件语句，称为**switch语句**，专门用于此目的。下面的代码用switch语句实现了相同的功能：
 
 ```cpp
 #include <iostream>
@@ -75,9 +72,7 @@ int main()
 }
 ```
 
-COPY
-
-The idea behind a switch statement is simple: an expression (sometimes called the `condition`) is evaluated to produce a value. If the expression’s value is equal to the value after any of the `case labels`, the statements after the matching `case label` are executed. If no matching value can be found and a `default label` exists, the statements after the `default label` are executed instead.
+switch 背后的思想很简单：表达式(有时称为条件)求值后得到一个值。如果表达式的值能够和后面的某个分支标签匹配，则该标签后的语句就会被zhi'x evaluated to produce a value. If the expression’s value is equal to the value after any of the `case labels`, the statements after the matching `case label` are executed. If no matching value can be found and a `default label` exists, the statements after the `default label` are executed instead.
 
 Compared to the original `if statement`, the `switch statement` has the advantage of only evaluating the expression once (making it more efficient), and the `switch statement` also makes it clearer to the reader that it is the same expression being tested for equality in each case.
 
@@ -87,11 +82,11 @@ Compared to the original `if statement`, the `switch statement` has the advan
 
 Let’s examine each of these concepts in more detail.
 
-## Starting a switch
+## 创建 switch 
 
 We start a `switch statement` by using the `switch` keyword, followed by parentheses with the conditional expression that we would like to evaluate inside. Often the expression is just a single variable, but it can be any valid expression.
 
-The one restriction is that the condition must evaluate to an integral type (see lesson [4.1 -- Introduction to fundamental data types](https://www.learncpp.com/cpp-tutorial/introduction-to-fundamental-data-types/) if you need a reminder which fundamental types are considered integral types) or an enumerated type (covered in future lesson [10.2 -- Unscoped enumerations](https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/)), or be convertible to one. Expressions that evaluate to floating point types, strings, and most other non-integral types may not be used here.
+The one restriction is that the condition must evaluate to an integral type (see lesson [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]if you need a reminder which fundamental types are considered integral types) or an enumerated type (covered in future lesson [[10-2-unscoped-enumerations|10.2 - 无作用域枚举类型]]), or be convertible to one. Expressions that evaluate to floating point types, strings, and most other non-integral types may not be used here.
 
 !!! info "扩展阅读"
 

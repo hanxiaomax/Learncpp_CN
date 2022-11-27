@@ -16,11 +16,11 @@ tags:
 
 In the previous lesson [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]， we discussed how to write and preserve simple tests. In this lesson, we’ll talk about what kind of tests are useful to write to ensure your code is correct.
 
-## Code coverage
+## 代码覆盖率
 
 The term code coverage is used to describe how much of the source code of a program is executed while testing. There are many different metrics used for code coverage. We’ll cover a few of the more useful and popular ones in the following sections.
 
-## Statement coverage
+## 语句覆盖率
 
 The term statement coverage refers to the percentage of statements in your code that have been exercised by your testing routines.
 
@@ -67,7 +67,7 @@ This function will require two calls to test all of the statements, as there is 
 
 While aiming for 100% statement coverage is good, it’s not enough to ensure correctness.
 
-## Branch coverage
+## 分支覆盖率
 
 Branch coverage refers to the percentage of branches that have been executed, each possible branch counted separately. An `if statement` has two branches -- a branch that executes when the condition is `true`, and a branch that executes when the condition is `false` (even if there is no corresponding `else statement` to execute). A switch statement can have many branches.
 

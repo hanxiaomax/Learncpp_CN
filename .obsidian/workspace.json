@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "d9a0a69dd2b5df08",
+            "id": "2264ad44dd01dc95",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/7-3-Common-if-statement-problems.md",
+                "file": "docs/7-4-Switch-statement-basics.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -94,7 +94,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -110,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/7-3-Common-if-statement-problems.md"
+                "file": "docs/7-4-Switch-statement-basics.md"
               }
             }
           },
@@ -131,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/7-3-Common-if-statement-problems.md",
+                "file": "docs/7-4-Switch-statement-basics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d9a0a69dd2b5df08",
+  "active": "2264ad44dd01dc95",
   "lastOpenFiles": [
-    "docs/5-7-Logical-operators.md",
-    "docs/7-3-Common-if-statement-problems.md",
     "docs/MOC.md",
-    "docs/7-2-If-statements-and-blocks.md",
-    "docs/7-1-Control-flow-introduction.md",
-    "docs/7-x-Chapter-7-summary-and-quiz.md",
-    "docs/7-19-generating-random-numbers-using-mersenne-twister.md",
-    "docs/7-18-introduction-to-random-number-generation.md",
-    "docs/7-17-assert-and-static-assert.md",
-    "docs/7-16-std-cin-and-handling-invalid-input.md"
+    "docs/7-5-Switch-fallthrough-and-scoping.md",
+    "docs/7-14-Common-semantic-errors-in-c.md",
+    "docs/7-12-Introduction-to-testing-your-code.md",
+    "docs/7-13-Code-coverage.md",
+    "docs/7-9-For-statements.md",
+    "docs/off-by-one-errors.md",
+    "docs/11-3-Arrays-and-loops.md",
+    "docs/11-13-For-each-loops.md",
+    "docs/7-4-Switch-statement-basics.md"
   ]
 }
