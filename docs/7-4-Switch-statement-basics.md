@@ -159,9 +159,7 @@ switch (x)
 
 ## default 标签
 
-第二种标签称为 default 标签(经常被称为默认分支)，使用 `default` 关键字定义。如果条件表达式不满足. If the conditional expression does not match any case label and a default label exists, execution begins at the first statement after the default label.
-
-Here’s an example of the condition matching the default label:
+第二种标签称为 default 标签(经常被称为默认分支)，使用 `default` 关键字定义。如果条件表达式不能够匹配任何其他标签且default 标签存在，则从default标签后的第一条语句开始执行。
 
 ```cpp
 #include <iostream>
@@ -193,24 +191,23 @@ int main()
 }
 ```
 
-COPY
-
-This code prints:
+程序打印：
 
 ```
 Unknown
 ```
 
-The default label is optional, and there can only be one default label per switch statement. By convention, the `default case` is placed last in the switch block.
+default 分支是可选的，如果有的话则只能有一个。一般来讲，default分支会被放置在switch语句中的最后一个分支。
+
 
 !!! success "最佳实践"
 
-	Place the default case last in the switch block.
+	将 default 作为最后一个分支。
 
 
 ## 没有匹配的分支也没有默认分支
 
-If the value of the conditional expression does not match any of the case labels, and no default case has been provided, then no cases inside the switch are executed. Execution continues after the end of the switch block.
+如果条件表达式的值不匹配任何分支，并且没有提供默认分支，则switch内部不会执行任何case。在switch结束后继续执行。
 
 ```cpp
 #include <iostream>
@@ -244,18 +241,16 @@ int main()
 }
 ```
 
-COPY
-
-In the above example, `x` evalutes to `5`, but there is no case label matching `5`, nor is there a default case. As a result, no cases execute. Execution continues after the switch block, printing `Hello`.
+在上面的例子中， `x`  求值为 `5`，但是由于没有匹配的分支，也没有默认分支。所以不会走到任何case中，程序在switch块结束后继续向下执行。打印 `Hello`。
 
 
-## 休息一下
+## 使用 break 
 
-In the above examples, we used `return statements` to stop execution of the statements after our labels. However, this also exits the entire function.
+在上面的例子中，我们使用 `return` 语句来停止标签后面语句的执行。但是，这也会退出整个函数。
 
-A break statement (declared using the `break` keyword) tells the compiler that we are done executing statements within the switch, and that execution should continue with the statement after the end of the switch block. This allows us to exit a `switch statement` without exiting the entire function.
+`break` 语句(使用`break` 关键字声明)告诉编译器，我们已经完成了switch语句的执行但需要继续执行外面的语句。这允许我们在不退出整个函数的情况下退出“switch语句”。
 
-Here’s a slightly modified example rewritten using `break` instead of `return`:
+下面是一个用`break` 而不是`return` 重写的例子:
 
 ```cpp
 #include <iostream>
@@ -271,14 +266,14 @@ void printDigitName(int x)
             std::cout << "Two";
             break;
         case 3:
-            std::cout << "Three"; // execution starts here
-            break; // jump to the end of the switch block
+            std::cout << "Three"; // 从这里开始执行
+            break; // 跳到 switch 结束时
         default:
             std::cout << "Unknown";
             break;
     }
 
-    // execution continues here
+    // 从这里继续执行
     std::cout << " Ah-Ah-Ah!";
 }
 
@@ -290,9 +285,7 @@ int main()
 }
 ```
 
-COPY
-
-The above example prints:
+程序打印：
 
 ```
 Three Ah-Ah-Ah!
@@ -300,6 +293,9 @@ Three Ah-Ah-Ah!
 
 !!! success "最佳实践"
 
-	Each set of statements underneath a label should end in a `break statement` or a `return statement`. This includes the statements underneath the last label in the switch.
+	标签下的每组语句都应该以“break语句”或“return语句”结束。这包括switch最后一个标签下面的语句。
+
+
+那么，如果不以`break` 或' `return` '作为一组语句的结尾，会发生什么呢?我们将在下一课中探讨这个话题和其他话题。
 
 So what happens if you don’t end a set of statements under a label with a `break` or `return`? We’ll explore that topic, and others, in the next lesson.
