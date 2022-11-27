@@ -1,32 +1,44 @@
 {
   "recentFiles": [
     {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "A.2-using-libraries-with-visual-studio",
-      "path": "docs/A.2-using-libraries-with-visual-studio.md"
-    },
-    {
-      "basename": "A.1-static-and-dynamic-libraries",
-      "path": "docs/A.1-static-and-dynamic-libraries.md"
-    },
-    {
-      "basename": "B-1-introduction-to-C++20",
-      "path": "docs/B-1-introduction-to-C++20.md"
+      "basename": "B-4-introduction-to-C++20",
+      "path": "docs/B-4-introduction-to-C++20.md"
     },
     {
       "basename": "B-3-introduction-to-C++17",
       "path": "docs/B-3-introduction-to-C++17.md"
     },
     {
-      "basename": "B-1-introduction-to-C++14",
-      "path": "docs/B-1-introduction-to-C++14.md"
+      "basename": "B-2-introduction-to-C++14",
+      "path": "docs/B-2-introduction-to-C++14.md"
     },
     {
       "basename": "B-1-introduction-to-C++11",
       "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "A-4-C++FAQ",
+      "path": "docs/A-4-C++FAQ.md"
+    },
+    {
+      "basename": "A-3-using-libraries-with-Code-Blocks",
+      "path": "docs/A-3-using-libraries-with-Code-Blocks.md"
+    },
+    {
+      "basename": "A-2-using-libraries-with-visual-studio",
+      "path": "docs/A-2-using-libraries-with-visual-studio.md"
+    },
+    {
+      "basename": "A-1-static-and-dynamic-libraries",
+      "path": "docs/A-1-static-and-dynamic-libraries.md"
     },
     {
       "basename": "6-x-Chapter-6-summary-and-quiz",
@@ -187,18 +199,6 @@
     {
       "basename": "10-x-Chapter-10-comprehensive-quiz",
       "path": "docs/10-x-Chapter-10-comprehensive-quiz.md"
-    },
-    {
-      "basename": "10-4-scoped-enumerations-enum-classes",
-      "path": "docs/10-4-scoped-enumerations-enum-classes.md"
-    },
-    {
-      "basename": "10-3-unscoped-enumeration-input-and-output",
-      "path": "docs/10-3-unscoped-enumeration-input-and-output.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
     }
   ],
   "omittedPaths": [],

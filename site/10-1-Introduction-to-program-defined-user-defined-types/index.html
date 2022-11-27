@@ -376,6 +376,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2">
@@ -3482,7 +3486,7 @@
   
     <li class="md-nav__item">
       <a href="../12-7-introduction-to-lambdas-anonymous-functions/" class="md-nav__link">
-        12.7 - lambda表达式简介
+        12.7 - lambda表达式简介（匿名函数）
       </a>
     </li>
   
@@ -5470,12 +5474,210 @@
       
       
         <label class="md-nav__link" for="__nav_2_24">
+          A. 其他话题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="A. 其他话题" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_24">
+          <span class="md-nav__icon md-icon"></span>
+          A. 其他话题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A-1-static-and-dynamic-libraries/" class="md-nav__link">
+        A 1 static and dynamic libraries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A-2-using-libraries-with-visual-studio/" class="md-nav__link">
+        A.2 - 在visual studio中使用库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A-3-using-libraries-with-Code-Blocks/" class="md-nav__link">
+        A.3 - 在Code Blocks中使用库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A-4-C%2B%2BFAQ/" class="md-nav__link">
+        A.4 — C++ FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_25" type="checkbox" id="__nav_2_25" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_25">
+          25. C++标准更新
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="25. C++标准更新" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_25">
+          <span class="md-nav__icon md-icon"></span>
+          25. C++标准更新
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B-1-introduction-to-C%2B%2B11/" class="md-nav__link">
+        B.1 - C++11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B-2-introduction-to-C%2B%2B14/" class="md-nav__link">
+        B.2 - C++14
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B-3-introduction-to-C%2B%2B17/" class="md-nav__link">
+        B.3 - C++17
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../B-4-introduction-to-C%2B%2B20/" class="md-nav__link">
+        B.4 - C++20
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_26" type="checkbox" id="__nav_2_26" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_26">
           O1. 位运算
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="O1. 位运算" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_24">
+        <label class="md-nav__title" for="__nav_2_26">
           <span class="md-nav__icon md-icon"></span>
           O1. 位运算
         </label>
@@ -5759,7 +5961,7 @@
 <h2 id="_1">用户定义类型是什么？</h2>
 <p>在 <a href="../9-1-Introduction-to-compound-data-types/">9.1 - 复合数据类型</a> 一课中，我们曾经介绍过如何存储一个分数。对于分数来说，它包括分子和分母两个部分，而且它们之间是存在概念性联系的。在本节课中，我们会讨论使用两个整型分别表示分子分母可能带来的问题。</p>
 <p>如果C++有能够表示分数的内建类型就好了——但可惜并没有。还有数百种其他可能有用的类型C++没有包含，因为它不可能预测人们可能需要的所有东西(更不用说实现和测试那些东西了)。</p>
-<p>相反，C++提供了解决该问题的另外一种途径：允许我们在程序中创建全新的自定义类型！这样的类型通常称为用户定义类型(尽管我们认为术语程序定义类型更好——我们将在本课后面讨论其区别)。C++有两类复合类型可以实现这一点：枚举类型(包括<a href="../unscoped-enumerations/">无作用域枚举类型</a>和<a href="../scoped-enumerations/">限定作用域枚举</a>)和类类型(包括结构体、类和联合体)。</p>
+<p>相反，C++提供了解决该问题的另外一种途径：允许我们在程序中创建全新的自定义类型！这样的类型通常称为用户定义类型(尽管我们认为术语程序定义类型更好——我们将在本课后面讨论其区别)。C++有两类复合类型可以实现这一点：枚举类型(包括<a href="../unscoped-enumerations/">无作用域枚举类型</a>和<a href="../scoped-enumerations/">有作用域枚举</a>)和类类型(包括结构体、类和联合体)。</p>
 <h2 id="_2">定义一个程序定义类型</h2>
 <p>就像<a href="../type-aliases/">类型别名</a>一样，程序定义类型也必须先定义后使用。程序定义类型的定义称为类型定义。</p>
 <p>尽管结构体还尚未介绍，但我们可以先从下面的例子中了解到，自定义类型<code>Fraction</code>和该类型对象是如何初始化的。</p>

@@ -1,12 +1,13 @@
 ---
-title: A.2 - 静态库和动态库
-alias: A.2 - 静态库和动态库
-origin: /a1-static-and-dynamic-libraries/
+title: A.2 - 在visual studio中使用库
+alias: A.2 - 在visual studio中使用库
+origin: /a2-using-libraries-with-visual-studio-2005-express/
 origin_title: "A.2 — Using libraries with Visual Studio"
 time: 2022-8-15
 type: translation
 ---
 
+??? note "关键点速记"
 
 
 To recap the process needed to use a library:

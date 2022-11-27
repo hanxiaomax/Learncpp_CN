@@ -23,19 +23,20 @@
             }
           },
           {
-            "id": "f8d2b7a0ee27d448",
+            "id": "119528e3eabf6b8e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/A.2-using-libraries-with-visual-studio.md",
+                "file": "docs/7-1-Control-flow-introduction.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -89,13 +90,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -111,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/7-1-Control-flow-introduction.md"
               }
             }
           },
@@ -132,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/7-1-Control-flow-introduction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,17 +150,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "119528e3eabf6b8e",
   "lastOpenFiles": [
-    "docs/A.2-using-libraries-with-visual-studio.md",
     "docs/MOC.md",
-    "docs/A.1-static-and-dynamic-libraries.md",
-    "docs/B-1-introduction-to-C++20.md",
+    "docs/B-4-introduction-to-C++20.md",
     "docs/B-3-introduction-to-C++17.md",
-    "docs/B-1-introduction-to-C++14.md",
+    "docs/B-2-introduction-to-C++14.md",
     "docs/B-1-introduction-to-C++11.md",
-    "docs/6-x-Chapter-6-summary-and-quiz.md",
-    "docs/inline-namespace.md",
-    "docs/unnamed-namespace.md"
+    "docs/A-4-C++FAQ.md",
+    "docs/A-3-using-libraries-with-Code-Blocks.md",
+    "docs/A-2-using-libraries-with-visual-studio.md",
+    "docs/A-1-static-and-dynamic-libraries.md",
+    "docs/6-x-Chapter-6-summary-and-quiz.md"
   ]
 }

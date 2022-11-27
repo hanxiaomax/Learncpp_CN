@@ -337,8 +337,16 @@ nav:
       - "23-5-stream-states-and-input-validation.md"
       - "23-6-basic-file-IO.md"
       - "23-7-random-file-IO.md"
-    # - 24. 其他话题: index.md
-    # - 25. C++标准更新: index.md
+    - A. 其他话题:
+      - "A-1-static-and-dynamic-libraries.md"
+      - "A-2-using-libraries-with-visual-studio.md"
+      - "A-3-using-libraries-with-Code-Blocks.md"
+      - "A-4-C++FAQ.md"
+    - 25. C++标准更新: 
+      - "B-1-introduction-to-C++11.md"
+      - "B-2-introduction-to-C++14.md"
+      - "B-3-introduction-to-C++17.md"
+      - "B-4-introduction-to-C++20.md"
     - O1. 位运算:
       - "O-1-bit-flags-and-bit-manipulation-via-std-bitset.md"
       - "O-2-bitwise-operators.md"

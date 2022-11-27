@@ -13,9 +13,9 @@ tags:
 	
 
 
-When a program is run, the CPU begins execution at the top of `main()`, executes some number of statements (in sequential order by default), and then the program terminates at the end of `main()`. The specific sequence of statements that the CPU executes is called the program’s execution path (or path, for short).
+当程序开始运行时，CPU从 `main()` 的顶部开始执行指令（默认按照顺序执行），当到达 `main()` 函数末尾时，程序停止。CPU执行语句的特定顺序，称为执行路径（简称路径）。
 
-Consider the following program:
+考虑下面代码：
 
 ```cpp
 #include <iostream>
@@ -33,9 +33,9 @@ int main()
 }
 ```
 
-COPY
+该程序的执行路径依次包括第5、7、8、10和12行。这是一个直线程序的例子。直线程序每次运行时都采用相同的路径(以相同的顺序执行相同的语句)。
 
-The execution path of this program includes lines 5, 7, 8, 10, and 12, in that order. This is an example of a straight-line program. Straight-line programs take the same path (execute the same statements in the same order) every time they are run.
+然而，这往往并不是我们想要的。例如，如果我们要求用户输入，而用户输入的内容无效，理想情况下，我们希望要求用户做出另一个选择。这在直线顺序执行的程序中这是不可能的。事实上，用户可能会重复输入无效的输入，所以我们可能需要要求他们做出另一个选择的次数直到运行时才知道。
 
 However, often this is not what we desire. For example, if we ask the user for input, and the user enters something invalid, ideally we’d like to ask the user to make another choice. This is not possible in a straight-line program. In fact, the user may repeatedly enter invalid input, so the number of times we might need to ask them to make another selection isn’t knowable until runtime.
 
