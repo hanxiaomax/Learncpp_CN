@@ -166,7 +166,7 @@ The first statement after _all_ of the case statements in the above program is
 
 Thus, we can “stack” case labels to make all of those case labels share the same set of statements afterward. This is not considered fallthrough behavior, so use of comments or `[[fallthrough]]` is not needed here.
 
-## Switch case scoping
+## switch-case 作用域
 
 With `if statements`, you can only have a single statement after the if-condition, and that statement is considered to be implicitly inside a block:
 
@@ -195,7 +195,7 @@ COPY
 
 In the above example, the 2 statements between the `case 1` and the default label are scoped as part of the switch block, not a block implicit to `case 1`.
 
-## Variable declaration and initialization inside case statements
+## case 语句中声明和初始化变量
 
 You can declare (but not initialize) variables inside the switch, both before and after the case labels:
 
@@ -247,6 +247,6 @@ switch (1)
 
 COPY
 
-Best practice
+!!! success "最佳实践"
 
-If defining variables used in a case statement, do so in a block inside the case.
+	If defining variables used in a case statement, do so in a block inside the case.

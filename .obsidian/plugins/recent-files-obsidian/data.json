@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
+      "basename": "7-9-For-statements",
+      "path": "docs/7-9-For-statements.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-8-Do-while-statements",
+      "path": "docs/7-8-Do-while-statements.md"
+    },
+    {
+      "basename": "7-7-Intro-to-loops-and-while-statements",
+      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
+    },
+    {
+      "basename": "7-6-Goto-statements",
+      "path": "docs/7-6-Goto-statements.md"
+    },
+    {
+      "basename": "7-5-Switch-fallthrough-and-scoping",
+      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     },
     {
       "basename": "7-4-Switch-statement-basics",
@@ -183,22 +199,6 @@
     {
       "basename": "10-1-Introduction-to-program-defined-user-defined-types",
       "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
-    },
-    {
-      "basename": "dynamic-initialization",
-      "path": "docs/dynamic-initialization.md"
-    },
-    {
-      "basename": "6-8-Why-non-const-global-variables-are-evil",
-      "path": "docs/6-8-Why-non-const-global-variables-are-evil.md"
-    },
-    {
-      "basename": "static-initialization",
-      "path": "docs/static-initialization.md"
     }
   ],
   "omittedPaths": [],

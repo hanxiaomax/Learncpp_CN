@@ -48,7 +48,7 @@ Enter a non-negative number: 4
 The square root of 4 is 2
 ```
 
-## Statement labels have function scope
+## 语句标签具有函数作用域
 
 In the chapter on object scope ([chapter 6](https://www.learncpp.com/#Chapter6)), we covered two kinds of scope: local (block) scope, and file (global) scope. Statement labels utilize a third kind of scope: function scope, which means the label is visible throughout the function even before its point of declaration. The `goto statement` and its corresponding `statement label` must appear in the same function.
 
@@ -105,7 +105,7 @@ COPY
 
 Note that you can jump backwards over a variable initialization, and the variable will be re-initialized when the initialization is executed.
 
-## Avoid using goto
+## 避免使用 `goto` 语句
 
 Use of `goto` is shunned in C++ (and other modern high level languages as well). [Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_Dijkstra), a noted computer scientist, laid out the case for avoiding `goto` in a famous but difficult to read paper called [Go To Statement Considered Harmful](https://www.cs.utexas.edu/users/EWD/ewd02xx/EWD215.PDF). The primary problem with `goto` is that it allows a programmer to jump around the code arbitrarily. This creates what is not-so-affectionately known as `spaghetti code`. Spaghetti code is code that has a path of execution that resembles a bowl of spaghetti (all tangled and twisted), making it extremely difficult to follow the logic of such code.
 

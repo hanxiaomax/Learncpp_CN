@@ -17,7 +17,7 @@ As of C++11, there are two different kinds of `for loops`. We’ll cover the cl
 The `for statement` looks pretty simple in abstract:
 
 for (init-statement; condition; end-expression)
-   statement
+   statement;
 
 The easiest way to initially understand how a `for statement` works is to convert it into an equivalent `while statement`:
 
@@ -49,6 +49,8 @@ int main()
 {
     for (int count{ 1 }; count <= 10; ++count)
         std::cout << count << ' ';
+
+    std::cout << '\n';
 
     return 0;
 }
@@ -83,6 +85,8 @@ int main()
             ++count; // our end-expression
         }
     }
+
+    std::cout << '\n';
 }
 ```
 
@@ -97,10 +101,12 @@ More for loop examples
 Here’s an example of a function that uses a `for loop` to calculate integer exponents:
 
 ```cpp
+#include <cstdint> // for fixed-width integers
+
 // returns the value base ^ exponent -- watch out for overflow!
-int pow(int base, int exponent)
+std::int64_t pow(int base, int exponent)
 {
-    int total{ 1 };
+    std::int64_t total{ 1 };
 
     for (int count{ 0 }; count < exponent; ++count)
         total *= base;
@@ -129,6 +135,8 @@ int main()
     for (int count{ 9 }; count >= 0; --count)
         std::cout << count << ' ';
 
+    std::cout << '\n';
+
     return 0;
 }
 ```
@@ -146,8 +154,10 @@ Alternately, we can change the value of our loop variable by more than 1 with ea
 
 int main()
 {
-    for (int count{ 9 }; count >= 0; count -= 2)
-    std::cout << count << ' ';
+    for (int count{ 0 }; count <= 10; count += 2)
+        std::cout << count << ' ';
+
+    std::cout << '\n';
 
     return 0;
 }
@@ -157,11 +167,61 @@ COPY
 
 This prints the result:
 
-9 7 5 3 1
+0 2 4 6 8 10
+
+The perils of `operator!=` in for-loop conditions
+
+When writing a loop condition involving a value, we can often write the condition in many different ways. The following two loops execute identically:
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    for (int i { 0 }; i < 10; ++i) // uses <
+         std::cout << i;
+
+    for (int i { 0 }; i != 10; ++i) // uses !=
+         std::cout << i;
+
+     return 0;
+}
+```
+
+COPY
+
+So which should we prefer? The former is the better choice, as it will terminate even if `i` jumps over the value `10`, whereas the latter will not. The following example demonstrates this:
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    for (int i { 0 }; i < 10; ++i) // uses <, still terminates
+    {
+         std::cout << i;
+         if (i == 9) ++i; // jump over value 10
+    }
+
+    for (int i { 0 }; i != 10; ++i) // uses !=, infinite loop
+    {
+         std::cout << i;
+         if (i == 9) ++i; // jump over value 10
+    }
+
+     return 0;
+}
+```
+
+COPY
+
+Best practice
+
+Avoid `operator!=` when doing numeric comparisons in the for-loop condition.
 
 Off-by-one errors
 
-One of the biggest problems that new programmers have with `for loops` (and other loops that utilize counters) are `off-by-one errors`. Off-by-one errors occur when the loop iterates one too many or one too few times to produce the desired result.
+One of the biggest problems that new programmers have with `for loops` (and other loops that utilize counters) are `off-by-one errors`. Off-by-one errorsoccur when the loop iterates one too many or one too few times to produce the desired result.
 
 Here’s an example:
 
@@ -176,6 +236,8 @@ int main()
         std::cout << count << ' ';
     }
 
+    std::cout << '\n';
+
     return 0;
 }
 ```
@@ -186,7 +248,7 @@ This program is supposed to print `1 2 3 4 5`, but it only prints `1 2 3 4` b
 
 Although the most common cause for these errors is using the wrong relational operator, they can sometimes occur by using pre-increment or pre-decrement instead of post-increment or post-decrement, or vice-versa.
 
-Omitted expressions
+## Omitted expressions
 
 It is possible to write _for loops_ that omit any or all of the statements or expressions. For example, in the following example, we’ll omit the init-statement and end-expression, leaving only the condition:
 
@@ -202,6 +264,8 @@ int main()
         ++count;
     }
 
+    std::cout << '\n';
+
     return 0;
 }
 ```
@@ -210,7 +274,9 @@ COPY
 
 This _for loop_ produces the result:
 
+```
 0 1 2 3 4 5 6 7 8 9
+```
 
 Rather than having the _for loop_ do the initialization and incrementing, we’ve done it manually. We have done so purely for academic purposes in this example, but there are cases where not declaring a loop variable (because you already have one) or not incrementing it in the end-expression (because you’re incrementing it some other way) is desired.
 
@@ -236,7 +302,7 @@ This might be a little unexpected, as you’d probably expect an omitted conditi
 
 We recommend avoiding this form of the for loop altogether and using `while(true)` instead.
 
-For loops with multiple counters
+## For loops with multiple counters
 
 Although `for loops` typically iterate over only one variable, sometimes `for loops` need to work with multiple variables. To assist with this, the programmer can define multiple variables in the init-statement, and can make use of the comma operator to change the value of multiple variables in the end-expression:
 
@@ -258,6 +324,7 @@ This loop defines and initializes two new variables: `x` and `y`. It iterates
 
 This program produces the result:
 
+```
 0 9
 1 8
 2 7
@@ -268,14 +335,14 @@ This program produces the result:
 7 2
 8 1
 9 0
-
+```
 This is about the only place in C++ where defining multiple variables in the same statement, and use of the comma operator is considered an acceptable practice.
 
-Best practice
+!!! success "最佳实践"
 
-Defining multiple variables (in the init-statement) and using the comma operator (in the end-expression) is acceptable inside a `for statement`.
+	Defining multiple variables (in the init-statement) and using the comma operator (in the end-expression) is acceptable inside a `for statement`.
 
-Nested for loops
+# Nested for loops
 
 Like other types of loops, `for loops` can be nested inside other loops. In the following example, we’re nesting a `for loop` inside another `for loop`:
 
@@ -302,21 +369,23 @@ COPY
 
 For each iteration of the outer loop, the inner loop runs in its entirety. Consequently, the output is:
 
+```
 a012
 b012
 c012
 d012
 e012
+```
 
 Here’s some more detail on what’s happening here. The outer loop runs first, and char `c` is initialized to `'a'`. Then `c <= 'e'` is evaluated, which is `true`, so the loop body executes. Since `c` is set to `'a'`, this first prints `a`. Next the inner loop executes entirely (which prints `0`, `1`, and `2`). Then a newline is printed. Now the outer loop body is finished, so the outer loop returns to the top, `c` is incremented to `'b'`, and the loop condition is re-evaluated. Since the loop condition is still `true` the next iteration of the outer loop begins. This prints `b012\n`. And so on.
 
-Conclusion
+## Conclusion
 
-`For statements` are the most commonly used loop in the C++ language. Even though its syntax is typically a bit confusing to new programmers, you will see `for loops`so often that you will understand them in no time at all!
+`For statements` are the most commonly used loop in the C++ language. Even though its syntax is typically a bit confusing to new programmers, you will see `for loops` so often that you will understand them in no time at all!
 
 `For statements` excel when you have a counter variable. If you do not have a counter, a `while statement` is probably a better choice.
 
-Best practice
-
-Prefer `for loops` over `while loops` when there is an obvious loop variable.  
-Prefer `while loops` over `for loops` when there is no obvious loop variable.
+!!! success "最佳实践"
+	
+	- Prefer `for loops` over `while loops` when there is an obvious loop variable.  
+	- Prefer `while loops` over `for loops` when there is no obvious loop variable.
