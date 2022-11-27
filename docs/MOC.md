@@ -34,7 +34,7 @@
 - [[2-13-How-to-design-your-first-programs|2.13 - 如何设计第一个程序]]
 - [[2-x-Chapter-2-summary-and-quiz|2.x - 小结与测试 - 函数与文件]]
 
-## 3. 调试 C++ 程序 
+## 3. 调试 C++ 程序 🚧
 
 - [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误]]
 - [[3-2-The-debugging-process|3.2 - 代码调试步骤]]
@@ -101,7 +101,7 @@
 - [[6-15-Unnamed-and-inline-namespaces|6.15 - 未命名和内联命名空间]]
 - [[6-x-Chapter-6-summary-and-quiz|6.x - 小结与测试 - 作用域、持续时间和链接]]
 
-## 7. 控制流和错误处理
+## 7. 控制流和错误处理  🚧
 
 - [[7-1-Control-flow-introduction|7.1 - 控制流]]
 - [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]]
@@ -120,8 +120,8 @@
 - [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
 - [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]
 - [[7-17-assert-and-static-assert|7.17 - 断言和 static_assert]]
-- [[7-18-introduction-to-random-number-generation]]
-- [[7.19 - 使用 Mersenne Twister 生成随机数]]
+- [[7-18-introduction-to-random-number-generation|7.18 - 随机数生成器简介]]
+- [[7-19-generating-random-numbers-using-mersenne-twister|7.19 - 使用 Mersenne Twister 生成随机数]]
 - [[7-x-Chapter-7-summary-and-quiz|7.x - 小结与测试 - 控制流和错误处理]]
 
 
@@ -234,7 +234,7 @@
 - [[13-18-timing-your-code|13.18 - 对程序进行计时]]
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 面向对象基础]]
 
-## 14. 操作符重载
+## 14. 操作符重载  🚧
 
 - [[14-1-introduction-to-operator-overloading|14.1 - 运算符重载简介]]
 - [[14-2-overloading-the-arithmetic-operators-using-friend-functions|14.2 - 使用友元重载算数运算符]]
@@ -288,10 +288,10 @@
 - [[18-11-printing-inherited-classes-using-operator<<|18.11 - 使用<<运算符打印继承类]]
 - [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试 - 虚函数]]
 
-## 19. 模板和类
+## 19. 模板和类  🚧
 - [[19-x-Chapter-19-comprehensive-quiz|19.x - 小结与测试 - 模板和类]]
 
-## 20. 异常
+## 20. 异常  🚧
 - [[20-x-Chapter-20-comprehensive-quiz|20.x - 小结与测试 - 异常]]
 
 ## M. move 和智能指针 ✅ 
@@ -337,9 +337,19 @@
 
 ## A. 其他话题
 
+- [[A.1-static-and-dynamic-libraries|A.1 - 静态库和动态库]]
+- [[A.2-using-libraries-with-visual-studio]]
+- [[A.1-static-and-dynamic-libraries]]
+- [[A.1-static-and-dynamic-libraries]]
+
 ## B. C++标准更新
 
-## O1. 位运算
+- [[B-1-introduction-to-C++11|B.1 - C++11]]
+- [[B-1-introduction-to-C++14|B.2 - C++14]]
+- [[B-3-introduction-to-C++17|B.3 - C++17]]
+- [[B-1-introduction-to-C++20|B.4 - C++20]]
+
+## O1. 位运算  🚧
 
 - [[O-1-bit-flags-and-bit-manipulation-via-std-bitset|O.1 - bit标记和通过std::bitset操作bit]]
 - [[O-2-bitwise-operators|O.2 - 位运算符]]

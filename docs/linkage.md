@@ -1,6 +1,6 @@
 ---
-title: 链接性
-alias: 链接性
+title: 链接属性
+alias: 链接属性
 english: linkage
 type: glossary
 tags:

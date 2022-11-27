@@ -1,6 +1,74 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "A.2-using-libraries-with-visual-studio",
+      "path": "docs/A.2-using-libraries-with-visual-studio.md"
+    },
+    {
+      "basename": "A.1-static-and-dynamic-libraries",
+      "path": "docs/A.1-static-and-dynamic-libraries.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++20",
+      "path": "docs/B-1-introduction-to-C++20.md"
+    },
+    {
+      "basename": "B-3-introduction-to-C++17",
+      "path": "docs/B-3-introduction-to-C++17.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++14",
+      "path": "docs/B-1-introduction-to-C++14.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++11",
+      "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "6-x-Chapter-6-summary-and-quiz",
+      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
+    },
+    {
+      "basename": "inline-namespace",
+      "path": "docs/inline-namespace.md"
+    },
+    {
+      "basename": "unnamed-namespace",
+      "path": "docs/unnamed-namespace.md"
+    },
+    {
+      "basename": "inline-function",
+      "path": "docs/inline-function.md"
+    },
+    {
+      "basename": "using-directive",
+      "path": "docs/using-directive.md"
+    },
+    {
+      "basename": "using-declaration",
+      "path": "docs/using-declaration.md"
+    },
+    {
+      "basename": "linkage",
+      "path": "docs/linkage.md"
+    },
+    {
+      "basename": "shadow",
+      "path": "docs/shadow.md"
+    },
+    {
+      "basename": "file-scope",
+      "path": "docs/file-scope.md"
+    },
+    {
+      "basename": "7-19-generating-random-numbers-using-mersenne-twister",
+      "path": "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
+    },
+    {
       "basename": "7-18-introduction-to-random-number-generation",
       "path": "docs/7-18-introduction-to-random-number-generation.md"
     },
@@ -11,10 +79,6 @@
     {
       "basename": "7-14-Common-semantic-errors-in-c",
       "path": "docs/7-14-Common-semantic-errors-in-c.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "12-8-lambda-captures",
@@ -135,70 +199,6 @@
     {
       "basename": "10-2-unscoped-enumerations",
       "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "9-1-Introduction-to-compound-data-types",
-      "path": "docs/9-1-Introduction-to-compound-data-types.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "13-2-classes-and-class-members",
-      "path": "docs/13-2-classes-and-class-members.md"
-    },
-    {
-      "basename": "1-4-Variable-assignment-and-initialization",
-      "path": "docs/1-4-Variable-assignment-and-initialization.md"
-    },
-    {
-      "basename": "2-7-Forward-declarations-and-definitions",
-      "path": "docs/2-7-Forward-declarations-and-definitions.md"
-    },
-    {
-      "basename": "M-1-introduction-to-smart-pointers-and-move-semantics",
-      "path": "docs/M-1-introduction-to-smart-pointers-and-move-semantics.md"
-    },
-    {
-      "basename": "M-2-R-value-references",
-      "path": "docs/M-2-R-value-references.md"
-    },
-    {
-      "basename": "10-11-class-template-argument-deduction-and-deduction -guides",
-      "path": "docs/10-11-class-template-argument-deduction-and-deduction -guides.md"
-    },
-    {
-      "basename": "one-definition-rule",
-      "path": "docs/one-definition-rule.md"
-    },
-    {
-      "basename": "10-10-class-templates",
-      "path": "docs/10-10-class-templates.md"
-    },
-    {
-      "basename": "template-class-specialization",
-      "path": "docs/template-class-specialization.md"
-    },
-    {
-      "basename": "function-template",
-      "path": "docs/function-template.md"
-    },
-    {
-      "basename": "10-9-member-selection-with-pointers-and-references",
-      "path": "docs/10-9-member-selection-with-pointers-and-references.md"
-    },
-    {
-      "basename": "10-8-struct-passing-and-miscellany",
-      "path": "docs/10-8-struct-passing-and-miscellany.md"
-    },
-    {
-      "basename": "struct-padding",
-      "path": "docs/struct-padding.md"
-    },
-    {
-      "basename": "value-initialization",
-      "path": "docs/value-initialization.md"
     }
   ],
   "omittedPaths": [],

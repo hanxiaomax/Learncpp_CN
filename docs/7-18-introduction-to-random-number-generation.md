@@ -262,3 +262,29 @@ ranlux48	Subtract and carry	10^171	96 bytes	Awful	Good	No
 knuth_b	Shuffled linear congruential generator	2^31	1028 bytes	Awful	Bad	No
 default_random_engine	Any of above (implementation defined)	Varies	Varies	?	?	No2
 rand()	Linear congruential generator	2^31	4 bytes	Bad	Awful	Nono
+
+
+There is zero reason to use `knuth_b`, `default_random_engine`, or `rand()` (which is a random number generator provided for compatibility with C).
+
+As of C++20, the Mersenne Twister algorithm is the only PRNG that ships with C++ that has both decent performance and quality.
+
+!!! info "扩展阅读"
+
+	A test called [PracRand](http://pracrand.sourceforge.net/) is often used to assess the performance and quality of PRNGs (to determine whether they have different kinds of biases). You may also see references to SmallCrush, Crush or BigCrush -- these are other tests that are sometimes used for the same purpose.
+
+	If you want to see what the output of Pracrand looks like, [this website](https://arvid.io/2018/06/30/on-cxx-random-number-generator-quality/) has output for all of the PRNGs that C++ supports as of C++20.
+
+## So we should use Mersenne Twister, right?
+
+Probably. For most applications, Mersenne Twister is fine, both in terms of performance and quality.
+
+However, it’s worth noting that by modern PRNG standards, Mersenne Twister is [a bit outdated](https://en.wikipedia.org/wiki/Mersenne_Twister#Disadvantages). The biggest issue with Mersenne Twister is that its results can be predicted after seeing 624 generated numbers, making it non-suitable for any application that requires non-predictability.
+
+If you are developing an application that requires the highest quality random results (e.g. a statistical simulation), the fastest results, or one where non-predictability is important (e.g. cryptography), you’ll need to use a 3rd party library.
+
+Popular choices as of the time of writing:
+
+-   The [Xoshiro family](https://prng.di.unimi.it/) and [Wyrand](https://github.com/wangyi-fudan/wyhash) for non-cryptographic PRNGs.
+-   The [Chacha family](https://cr.yp.to/chacha.html) for cryptographic (non-predictable) PRNGs.
+
+Okay, now that your eyes are probably bleeding, that’s enough theory. Let’s discuss how to actually generate random numbers with Mersenne Twister in C++.
