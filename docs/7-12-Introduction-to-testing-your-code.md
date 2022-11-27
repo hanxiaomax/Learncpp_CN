@@ -25,7 +25,7 @@ Just because your program worked for one set of inputs doesn’t mean it’s goi
 
 Software verification (a.k.a. software testing) is the process of determining whether or not the software works as expected in all cases.
 
-The testing challenge
+## The testing challenge
 
 Before we talk about some practical ways to test your code, let’s talk about why testing your program comprehensively is difficult.
 
@@ -70,7 +70,7 @@ Now, your intuition should be telling you that you really shouldn’t need to ru
 
 There’s a lot that can be written about testing methodologies -- in fact, we could write a whole chapter on it. But since it’s not a C++ specific topic, we’ll stick to a brief and informal introduction, covered from the point of view of you (as the developer) testing your own code. In the next few subsections, we’ll talk about some _practical_ things you should be thinking about as you test your code.
 
-Test your programs in small pieces
+## Test your programs in small pieces
 
 Consider an auto manufacturer that is building a custom concept car. Which of the following do you think they do?  
 a) Build (or buy) and test each car component individually before installing it. Once the component has been proven to work, integrate it into the car and retest it to make sure the integration worked. At the end, test the whole car, as a final validation that everything seems good.  
@@ -88,15 +88,15 @@ The above analogy holds true for programs as well, though for some reason, new p
 
 Testing a small part of your code in isolation to ensure that “unit” of code is correct is called unit testing. Each unit test is designed to ensure that a particular behavior of the unit is correct.
 
-Best practice
+!!! success "最佳实践"
 
-Write your program in small, well defined units (functions or classes), compile often, and test your code as you go.
+	Write your program in small, well defined units (functions or classes), compile often, and test your code as you go.
 
 If the program is short and accepts user input, trying a variety of user inputs might be sufficient. But as programs get longer and longer, this becomes less sufficient, and there is more value in testing individual functions or classes before integrating them into the rest of the program.
 
 So how can we test our code in units?
 
-Informal testing
+## Informal testing
 
 One way you can test code is to do informal testing as you write the program. After writing a unit of code (a function, a class, or some other discrete “package” of code), you can write some code to test the unit that was just added, and then erase the test once the test passes. As an example, for the following isLowerVowel() function, you might write the following code:
 
@@ -133,7 +133,7 @@ COPY
 
 If the results come back as `1` and `0`, then you’re good to go. You know your function works for some basic cases, and you can reasonably infer by looking at the code that it will work for the cases you didn’t test (‘e’, ‘i’, ‘o’, and ‘u’). So you can erase that temporary test code, and continue programming.
 
-Preserving your tests
+## Preserving your tests
 
 Although writing temporary tests is a quick and easy way to test some code, it doesn’t account for the fact that at some point, you may want to test that same code again later. Perhaps you modified a function to add a new capability, and want to make sure you didn’t break anything that was already working. For that reason, it can make more sense to preserve your tests so they can be run again in the future. For example, instead of erasing your temporary test code, you could move the tests into a testVowel() function:
 
@@ -173,7 +173,7 @@ COPY
 
 As you create more tests, you can simply add them to the `testVowel()` function.
 
-Automating your test functions
+## Automating your test functions
 
 One problem with the above test function is that it relies on you to manually verify the results when you run it. This requires you to remember what the expected answer was at worst (assuming you didn’t document it), and manually compare the actual results to the expected results.
 
@@ -216,10 +216,10 @@ COPY
 
 Now, you can call `testVowel()` at any time to re-prove that you haven’t broken anything, and the test routine will do all the work for you, returning either an “all good” signal (return value `0`), or the test number that didn’t pass, so you can investigate why it broke. This is particularly useful when going back and modifying old code, to ensure you haven’t accidentally broken anything!
 
-Unit testing frameworks
+## Unit testing frameworks
 
 Because writing functions to exercise other functions is so common and useful, there are entire frameworks (called unit testing frameworks) that are designed to help simplify the process of writing, maintaining, and executing unit tests. Since these involve third party software, we won’t cover them here, but you should be aware they exist.
 
-Integration testing
+## Integration testing
 
 Once each of your units has been tested in isolation, they can be integrated into your program and retested to make sure they were integrated properly. This is called an integration test. Integration testing tends to be more complicated -- for now, running your program a few times and spot checking the behavior of the integrated unit will suffice.

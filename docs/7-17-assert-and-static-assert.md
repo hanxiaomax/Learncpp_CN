@@ -11,7 +11,7 @@ tags:
 - C++17
 ---
 
-In a function that takes parameters, the caller may be able to pass in arguments that are syntactically valid but semantically meaningless. For example, in the previous lesson ([7.15 -- Detecting and handling errors](https://www.learncpp.com/cpp-tutorial/detecting-and-handling-errors/)), we showed the following sample function:
+In a function that takes parameters, the caller may be able to pass in arguments that are syntactically valid but semantically meaningless. For example, in the previous lesson ([[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]), we showed the following sample function:
 
 ```cpp
 void printDivision(int x, int y)
@@ -180,7 +180,7 @@ Second, your asserts should have no side effects -- that is, the program should 
 
 Also note that the `abort()` function terminates the program immediately, without a chance to do any further cleanup (e.g. close a file or database). Because of this, asserts should be used only in cases where corruption isn’t likely to occur if the program terminates unexpectedly.
 
-## static_assert
+## `static_assert`
 
 C++ also has another type of assert called `static_assert`. A static_assert is an assertion that is checked at compile-time rather than at runtime, with a failing `static_assert` causing a compile error. Unlike assert, which is declared in the `<cassert>`header, static_assert is a keyword, so no header needs to be included to use it.
 

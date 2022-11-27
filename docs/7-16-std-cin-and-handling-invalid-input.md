@@ -19,7 +19,7 @@ As you write programs, you should always consider how users will (unintentionall
 
 In this lesson, we’ll take a look specifically at ways the user can enter invalid text input via std::cin, and show you some different ways to handle those cases.
 
-std::cin, buffers, and extraction
+## `std::cin`, buffers, and extraction
 
 In order to discuss how std::cin and operator>> can fail, it first helps to know a little bit about how they work.
 
@@ -56,7 +56,7 @@ COPY
 
 If the user were to enter ‘b’, extraction would fail because ‘b’ can not be extracted to an integer variable.
 
-Validating input
+## 输入验证
 
 The process of checking whether user input conforms to what the program is expecting is called **input validation**.
 
@@ -74,7 +74,7 @@ Since strings do not have any restrictions on what characters can be entered, ex
 
 Most often, we let std::cin and the extraction operator do the hard work. Under this method, we let the user enter whatever they want, have std::cin and operator>> try to extract it, and deal with the fallout if it fails. This is the easiest method, and the one we’ll talk more about below.
 
-A sample program
+## 例程
 
 Consider the following calculator program that has no error handling:
 
@@ -132,10 +132,12 @@ COPY
 
 This simple program asks the user to enter two numbers and a mathematical operator.
 
+```
 Enter a double value: 5
 Enter one of the following: +, -, *, or /: *
 Enter a double value: 7
 5 * 7 is 35
+```
 
 Now, consider where invalid user input might break this program.
 
@@ -145,7 +147,7 @@ Second, we ask the user to enter one of four possible symbols. What if they ente
 
 Third, what if we ask the user to enter a symbol and they enter a string like “*q hello”. Although we can extract the ‘*’ character we need, there’s additional input left in the buffer that could cause problems down the road.
 
-Types of invalid text input
+## Types of invalid text input
 
 We can generally separate input text errors into four types:
 
@@ -158,13 +160,15 @@ Thus, to make our programs robust, whenever we ask the user for input, we ideall
 
 Let’s dig into each of these cases, and how to handle them using std::cin.
 
-Error case 1: Extraction succeeds but input is meaningless
+## Error case 1: Extraction succeeds but input is meaningless
 
 This is the simplest case. Consider the following execution of the above program:
 
+```
 Enter a double value: 5
 Enter one of the following: +, -, *, or /: k
 Enter a double value: 7
+```
 
 In this case, we asked the user to enter one of four symbols, but they entered ‘k’ instead. ‘k’ is a valid character, so std::cin happily extracts it to variable op, and this gets returned to main. But our program wasn’t expecting this to happen, so it doesn’t properly deal with this case (and thus never outputs anything).
 
@@ -204,7 +208,7 @@ COPY
 
 As you can see, we’re using a while loop to continuously loop until the user provides valid input. If they don’t, we ask them to try again until they either give us valid input, shutdown the program, or destroy their computer.
 
-Error case 2: Extraction succeeds but with extraneous input
+## Error case 2: Extraction succeeds but with extraneous input
 
 Consider the following execution of the above program:
 
@@ -271,11 +275,11 @@ COPY
 
 Now our program will work as expected, even if we enter “5*7” for the first input -- the 5 will be extracted, and the rest of the characters will be removed from the input buffer. Since the input buffer is now empty, the user will be properly asked for input the next time an extraction operation is performed!
 
-Author’s note
+!!! info "作者注"
 
-Some lessons still pass 32767 to `std::cin.ignore()`. This is a magic number with no special meaning to `std::cin.ignore()` and should be avoided. If you see such an occurrence, feel free to point it out.
+	Some lessons still pass 32767 to `std::cin.ignore()`. This is a magic number with no special meaning to `std::cin.ignore()` and should be avoided. If you see such an occurrence, feel free to point it out.
 
-Error case 3: Extraction fails
+## Error case 3: Extraction fails
 
 Now consider the following execution of our updated calculator program:
 
@@ -356,7 +360,7 @@ COPY
 
 A failed extraction due to invalid input will cause the variable to be zero-initialized. Zero initialization means the variable is set to 0, 0.0, “”, or whatever value 0 converts to for that type.
 
-Error case 4: Extraction succeeds but the user overflows a numeric value
+## Error case 4: Extraction succeeds but the user overflows a numeric value
 
 Consider the following simple example:
 
@@ -390,7 +394,7 @@ In the above case, std::cin goes immediately into “failure mode”, but also a
 
 A failed extraction due to invalid input will cause the variable to be zero-initialized. Zero initialization means the variable is set to 0, 0.0, “”, or whatever value 0 converts to for that type.
 
-Putting it all together
+## Putting it all together
 
 Here’s our example calculator, updated with a few additional bits of error checking:
 
@@ -483,9 +487,9 @@ int main()
 }
 ```
 
-COPY
 
-Conclusion
+
+## 小结
 
 As you write your programs, consider how users will misuse your program, especially around text input. For each point of text input, consider:
 
@@ -502,7 +506,6 @@ The following code will clear any extraneous input:
 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 ```
 
-COPY
 
 The following code will test for and fix failed extractions or overflow:
 
@@ -515,10 +518,9 @@ if (!std::cin) // has a previous extraction failed or overflowed?
 }
 ```
 
-COPY
 
 Finally, use loops to ask the user to re-enter input if the original input was invalid.
 
-Author’s note
+!!! info "作者注"
 
-Input validation is important and useful, but it also tends to make examples more complicated and harder to follow. Accordingly, in future lessons, we will generally not do any kind of input validation unless it’s relevant to something we’re trying to teach.
+	Input validation is important and useful, but it also tends to make examples more complicated and harder to follow. Accordingly, in future lessons, we will generally not do any kind of input validation unless it’s relevant to something we’re trying to teach.

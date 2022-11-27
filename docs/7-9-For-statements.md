@@ -16,11 +16,14 @@ As of C++11, there are two different kinds of `for loops`. We’ll cover the cl
 
 The `for statement` looks pretty simple in abstract:
 
+```
 for (init-statement; condition; end-expression)
    statement;
+```
 
 The easiest way to initially understand how a `for statement` works is to convert it into an equivalent `while statement`:
 
+```cpp
 { // note the block here
     init-statement; // used to define variables used in the loop
     while (condition)
@@ -30,7 +33,9 @@ The easiest way to initially understand how a `for statement` works is to conv
     }
 } // variables defined inside the loop go out of scope here
 
-Evaluation of for statements
+```
+
+## Evaluation of for statements
 
 A `for statement` is evaluated in 3 parts:
 
@@ -68,7 +73,9 @@ Now, `count <= 10` is evaluated again. Since `count` has value `2`, this ev
 
 Consequently, this program prints the result:
 
+```
 1 2 3 4 5 6 7 8 9 10
+```
 
 For the sake of example, let’s convert the above `for loop` into an equivalent `while loop`:
 
@@ -96,7 +103,7 @@ That doesn’t look so bad, does it? Note that the outer braces are necessary he
 
 `For loops` can be hard for new programmers to read -- however, experienced programmers love them because they are a very compact way to do loops with a counter, with all of the necessary information about the loop variables, loop conditions, and loop count modifiers are presented up front. This helps reduce errors.
 
-More for loop examples
+## More for loop examples
 
 Here’s an example of a function that uses a `for loop` to calculate integer exponents:
 
@@ -121,9 +128,9 @@ This function returns the value base^exponent (base to the exponent power).
 
 This is a straightforward incrementing `for loop`, with `count` looping from `0` up to (but excluding) `exponent`.
 
-If exponent is 0, the `for loop` will execute 0 times, and the function will return 1.  
-If exponent is 1, the `for loop` will execute 1 time, and the function will return 1 * base.  
-If exponent is 2, the `for loop` will execute 2 times, and the function will return 1 * base * base.
+- If exponent is 0, the `for loop` will execute 0 times, and the function will return 1.  
+- If exponent is 1, the `for loop` will execute 1 time, and the function will return 1 * base.  
+- If exponent is 2, the `for loop` will execute 2 times, and the function will return 1 * base * base.
 
 Although most `for loops` increment the loop variable by 1, we can decrement it as well:
 
@@ -145,7 +152,9 @@ COPY
 
 This prints the result:
 
+```
 9 8 7 6 5 4 3 2 1 0
+```
 
 Alternately, we can change the value of our loop variable by more than 1 with each iteration:
 
@@ -167,7 +176,9 @@ COPY
 
 This prints the result:
 
+```
 0 2 4 6 8 10
+```
 
 The perils of `operator!=` in for-loop conditions
 
@@ -215,11 +226,11 @@ int main()
 
 COPY
 
-Best practice
+!!! success "最佳实践"
 
-Avoid `operator!=` when doing numeric comparisons in the for-loop condition.
+	Avoid `operator!=` when doing numeric comparisons in the for-loop condition.
 
-Off-by-one errors
+## Off-by-one errors
 
 One of the biggest problems that new programmers have with `for loops` (and other loops that utilize counters) are `off-by-one errors`. Off-by-one errorsoccur when the loop iterates one too many or one too few times to produce the desired result.
 

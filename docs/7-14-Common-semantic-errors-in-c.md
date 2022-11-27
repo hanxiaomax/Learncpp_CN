@@ -10,8 +10,7 @@ type: translation
 ??? note "关键点速记"
 	
 
-
-In lesson [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误]], we covered `syntax errors`, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of these types of errors, so they are trivial to catch, and usually straightforward to fix.
+In lesson [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误]]， we covered `syntax errors`, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of such errors, so they are trivial to catch, and usually straightforward to fix.
 
 We also covered `semantic errors`, which occur when you write code that does not do what you intended. The compiler generally will not catch semantic errors (though in some cases, smart compilers may be able to generate a warning).
 
@@ -37,7 +36,7 @@ int main()
     std::cin >> x;
 
     if (x >= 5) // oops, we used operator>= instead of operator>
-        std::cout << x << " is greater than 5";
+        std::cout << x << " is greater than 5\n";
 
     return 0;
 }
@@ -51,7 +50,6 @@ Here’s a run of the program that exhibits the conditional logic error:
 Enter an integer: 5
 5 is greater than 5
 ```
-
 When the user enters `5`, the conditional expression `x >= 5` evaluates to `true`, so the associated statement is executed.
 
 Here’s another example, using a for loop:
@@ -71,6 +69,8 @@ int main()
         std::cout << count << ' ';
     }
 
+    std::cout << '\n';
+
     return 0;
 }
 ```
@@ -87,7 +87,7 @@ It didn’t print anything. This happens because on entrance to the for loop, `
 
 ## Infinite loops
 
-In lesson [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]] we covered infinite loops, and showed this example:
+In lesson [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]], we covered infinite loops, and showed this example:
 
 ```cpp
 #include <iostream>
@@ -99,6 +99,8 @@ int main()
     {
         std::cout << count << ' '; // so this line will repeatedly execute
     }
+
+    std::cout << '\n'; // this line will never execute
 
     return 0; // this line will never execute
 }
@@ -129,6 +131,8 @@ int main()
           std::cout << count << ' ';
     }
 
+    std::cout << '\n';
+
     return 0;
 }
 ```
@@ -141,9 +145,9 @@ This program is supposed to print `5 4 3 2 1 blastoff!`, which it does, but it 
 
 and then just keeps decrementing. The program will never terminate, because `count >= 0` can never be `false` when `count` is an unsigned integer.
 
-## Off-by-one errors
+## 差一错误
 
-An off-by-one error is an error that occurs when a loop executes one too many or one too few times. Here’s an example that we covered in lesson [[7-9-For-statements|7.9 - for 语句]]：
+An off-by-one error is an error that occurs when a loop executes one too many or one too few times. Here’s an example that we covered in lesson [[7-9-For-statements|7.9 - for 语句]]：
 
 ```cpp
 #include <iostream>
@@ -155,16 +159,19 @@ int main()
         std::cout << count << ' ';
     }
 
+    std::cout << '\n';
+
     return 0;
 }
 ```
 
+COPY
 
-This code is supposed to print `1 2 3 4 5`, but it only prints `1 2 3 4` because the wrong relational operator was used.
+The programmer intended for this code to print `1 2 3 4 5`. However, the wrong relational operator was used (`<` instead of `<=`), so the loop executes one fewer times than intended, printing `1 2 3 4`.
 
-## Incorrect operator precedence
+## 运算符优先级错误
 
-From lesson [[5-7-Logical-operators|5.7 - 逻辑运算符]], the following program makes an operator precedence mistake:
+From lesson [[5-7-Logical-operators|5.7 - 逻辑运算符]]， the following program makes an operator precedence mistake:
 
 ```cpp
 #include <iostream>
@@ -195,7 +202,7 @@ As a result, this program prints:
 
 This can also happen when mixing Logical OR and Logical AND in the same expression (Logical AND takes precedence over Logical OR). Use explicit parenthesization to avoid these kinds of errors.
 
-Precision issues with floating point types
+## 浮点数的精度问题
 
 The following floating point variable doesn’t have enough precision to store the entire number:
 
@@ -205,7 +212,7 @@ The following floating point variable doesn’t have enough precision to store t
 int main()
 {
     float f{ 0.123456789f };
-    std::cout << f;
+    std::cout << f << '\n';
 
     return 0;
 }
@@ -219,7 +226,7 @@ Because of this lack of precision, the number is rounded slightly:
 0.123457
 ```
 
-In lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]], we talked about how using `operator==` and `operator!=` can be problematic with floating point numbers due to small rounding errors (as well as what to do about it). Here’s an example:
+In lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]], we talked about how using `operator==` and `operator!=` can be problematic with floating point numbers due to small rounding errors (as well as what to do about it). Here’s an example:
 
 ```cpp
 #include <iostream>
@@ -229,9 +236,9 @@ int main()
     double d{ 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 }; // should sum to 1.0
 
     if (d == 1.0)
-        std::cout << "equal";
+        std::cout << "equal\n";
     else
-        std::cout << "not equal";
+        std::cout << "not equal\n";
 
     return 0;
 }
@@ -241,11 +248,13 @@ COPY
 
 This program prints:
 
+```
 not equal
+```
 
 The more arithmetic you do with a floating point number, the more it will accumulate small rounding errors.
 
-Integer division
+## 整型除法
 
 In the following example, we mean to do a floating point division, but because both operands are integers, we end up doing an integer division instead:
 
@@ -257,7 +266,7 @@ int main()
     int x{ 5 };
     int y{ 3 };
 
-    std::cout << x << " divided by " << y << " is: " << x / y; // integer division
+    std::cout << x << " divided by " << y << " is: " << x / y << '\n'; // integer division
 
     return 0;
 }
@@ -271,11 +280,11 @@ This prints:
 5 divided by 3 is: 1
 ```
 
-In lesson [[5-2-Arithmetic-operators|5.2 - 数学运算符]]， we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.
+In lesson [5.2 -- Arithmetic operators](https://www.learncpp.com/cpp-tutorial/arithmetic-operators/), we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.
 
-Accidental null statements
+## 意外造成的空语句
 
-In lesson [[7-13-Code-coverage|7.13 - 代码覆盖率]], we covered `null statements`, which are statements that do nothing.
+In lesson [7.3 -- Common if statement problems](https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/), we covered `null statements`, which are statements that do nothing.
 
 In the below program, we only want to blow up the world if we have the user’s permission:
 
@@ -304,9 +313,10 @@ COPY
 
 However, because of an accidental `null statement`, the function call to `blowUpWorld()` is always executed, so we blow it up regardless:
 
+```
 Should we blow up the world again? (y/n): n
 Kaboom!
-
+```
 Not using a compound statement when one is required
 
 Another variant of the above program that always blows up the world:
@@ -342,8 +352,8 @@ Should we blow up the world again? (y/n): n
 Kaboom!
 ```
 
-A `dangling else` (covered in lesson [[7-13-Code-coverage|7.13 - 代码覆盖率]]) also falls into this category.
+A `dangling else` (covered in lesson [7.3 -- Common if statement problems](https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/)) also falls into this category.
 
-What else?
+## What else?
 
 The above represents a good sample of the most common type of semantic errors new C++ programmers tend to make, but there are plenty more. Readers, if you have any additional ones that you think are common pitfalls, leave a note in the comments.

@@ -1,12 +1,56 @@
 {
   "recentFiles": [
     {
-      "basename": "7-9-For-statements",
-      "path": "docs/7-9-For-statements.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-x-Chapter-7-summary-and-quiz",
+      "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
+    },
+    {
+      "basename": "7-19-generating-random-numbers-using-mersenne-twister",
+      "path": "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
+    },
+    {
+      "basename": "7-18-introduction-to-random-number-generation",
+      "path": "docs/7-18-introduction-to-random-number-generation.md"
+    },
+    {
+      "basename": "7-17-assert-and-static-assert",
+      "path": "docs/7-17-assert-and-static-assert.md"
+    },
+    {
+      "basename": "7-16-std-cin-and-handling-invalid-input",
+      "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
+    },
+    {
+      "basename": "7-15-Detecting-and-handling-errors",
+      "path": "docs/7-15-Detecting-and-handling-errors.md"
+    },
+    {
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
+    },
+    {
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
+      "basename": "7-11-Halts-exiting-your-program-early",
+      "path": "docs/7-11-Halts-exiting-your-program-early.md"
+    },
+    {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
+    },
+    {
+      "basename": "7-9-For-statements",
+      "path": "docs/7-9-For-statements.md"
     },
     {
       "basename": "7-8-Do-while-statements",
@@ -109,20 +153,8 @@
       "path": "docs/file-scope.md"
     },
     {
-      "basename": "7-19-generating-random-numbers-using-mersenne-twister",
-      "path": "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
-    },
-    {
-      "basename": "7-18-introduction-to-random-number-generation",
-      "path": "docs/7-18-introduction-to-random-number-generation.md"
-    },
-    {
       "basename": "yaml",
       "path": "Templates/yaml.md"
-    },
-    {
-      "basename": "7-14-Common-semantic-errors-in-c",
-      "path": "docs/7-14-Common-semantic-errors-in-c.md"
     },
     {
       "basename": "12-8-lambda-captures",
@@ -167,38 +199,6 @@
     {
       "basename": "19-x-Chapter-19-comprehensive-quiz",
       "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
-      "basename": "moc-onepage",
-      "path": "docs/images/onepage/moc-onepage.md"
-    },
-    {
-      "basename": "class-instance",
-      "path": "docs/class-instance.md"
-    },
-    {
-      "basename": "fixed-array",
-      "path": "docs/fixed-array.md"
-    },
-    {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
-      "basename": "4-3-Object-sizes-and-the-sizeof-operator",
-      "path": "docs/4-3-Object-sizes-and-the-sizeof-operator.md"
-    },
-    {
-      "basename": "4-2-Void",
-      "path": "docs/4-2-Void.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
     }
   ],
   "omittedPaths": [],

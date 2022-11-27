@@ -16,11 +16,11 @@ tags:
 
 In the previous lesson [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]， we discussed how to write and preserve simple tests. In this lesson, we’ll talk about what kind of tests are useful to write to ensure your code is correct.
 
-Code coverage
+## Code coverage
 
 The term code coverage is used to describe how much of the source code of a program is executed while testing. There are many different metrics used for code coverage. We’ll cover a few of the more useful and popular ones in the following sections.
 
-Statement coverage
+## Statement coverage
 
 The term statement coverage refers to the percentage of statements in your code that have been exercised by your testing routines.
 
@@ -67,7 +67,7 @@ This function will require two calls to test all of the statements, as there is 
 
 While aiming for 100% statement coverage is good, it’s not enough to ensure correctness.
 
-Branch coverage
+## Branch coverage
 
 Branch coverage refers to the percentage of branches that have been executed, each possible branch counted separately. An `if statement` has two branches -- a branch that executes when the condition is `true`, and a branch that executes when the condition is `false` (even if there is no corresponding `else statement` to execute). A switch statement can have many branches.
 
@@ -126,11 +126,11 @@ COPY
 
 3 calls are needed to get 100% branch coverage here: `compare(1, 0)` tests the positive use case for the first `if statement`. `compare(0, 1)` tests the negative use case for the first `if statement` and the positive use case for the second `if statement`. `compare(0, 0)` tests the negative use case for the first and second `if statement` and executes the `else statement`. Thus, we can say this function is reliably tested with 3 calls (which is slightly better than 18 quintillion).
 
-Best practice
+!!! success "最佳实践"
 
-Aim for 100% branch coverage of your code.
+	Aim for 100% branch coverage of your code.
 
-Loop coverage
+## 循环覆盖率
 
 Loop coverage (informally called the 0, 1, 2 test) says that if you have a loop in your code, you should ensure it works properly when it iterates 0 times, 1 time, and 2 times. If it works correctly for the 2-iteration case, it should work correctly for all iterations greater than 2. These three tests therefore cover all possibilities (since a loop can’t execute a negative number of times).
 
@@ -150,11 +150,11 @@ COPY
 
 To test the loop within this function properly, you should call it three times: `spam(0)` to test the zero-iteration case, `spam(1)` to test the one-iteration case, and `spam(2)`to test the two-iteration case. If `spam(2)` works, then `spam(n)` should work, where `n > 2`.
 
-Best practice
+!!! success "最佳实践"
 
-Use the `0, 1, 2 test` to ensure your loops work correctly with different number of iterations.
+	Use the `0, 1, 2 test` to ensure your loops work correctly with different number of iterations.
 
-Testing different categories of input
+## 测试不同类别的输入
 
 When writing functions that accept parameters, or when accepting user input, consider what happens with different categories of input. In this context, we’re using the term “category” to mean a set of inputs that have similar characteristics.
 
@@ -170,6 +170,6 @@ For strings, make sure you’ve considered how your function handles an empty st
 
 If your function takes a pointer, don’t forget to test `nullptr` as well (don’t worry if this doesn’t make sense, we haven’t covered it yet).
 
-Best practice
+!!! success "最佳实践"
 
-Test different categories of input values to make sure your unit handles them properly.
+	Test different categories of input values to make sure your unit handles them properly.

@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "f2141ccb41331394",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/7-9-For-statements.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +96,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/7-9-For-statements.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -131,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/7-9-For-statements.md",
+                "file": "docs/MOC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,17 +136,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f2141ccb41331394",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
+    "docs/7-x-Chapter-7-summary-and-quiz.md",
     "docs/MOC.md",
-    "docs/7-8-Do-while-statements.md",
-    "docs/7-7-Intro-to-loops-and-while-statements.md",
-    "docs/7-6-Goto-statements.md",
-    "docs/7-5-Switch-fallthrough-and-scoping.md",
-    "docs/7-4-Switch-statement-basics.md",
-    "docs/7-3-Common-if-statement-problems.md",
-    "docs/7-2-If-statements-and-blocks.md",
-    "docs/7-1-Control-flow-introduction.md",
-    "docs/B-4-introduction-to-C++20.md"
+    "docs/7-19-generating-random-numbers-using-mersenne-twister.md",
+    "docs/7-18-introduction-to-random-number-generation.md",
+    "docs/7-17-assert-and-static-assert.md",
+    "docs/7-16-std-cin-and-handling-invalid-input.md",
+    "docs/7-15-Detecting-and-handling-errors.md",
+    "docs/7-14-Common-semantic-errors-in-c.md",
+    "docs/7-13-Code-coverage.md",
+    "docs/7-12-Introduction-to-testing-your-code.md"
   ]
 }
