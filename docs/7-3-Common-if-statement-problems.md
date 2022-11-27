@@ -15,7 +15,7 @@ tags:
 
 This lesson is a continuation of lesson [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]] In this lesson, we’ll take a look at some common problems that occur when using `if statements`.
 
-Nested if statements and the dangling else problem
+## Nested if statements and the dangling else problem
 
 It is possible to nest `if statements` within other `if statements`:
 
@@ -128,9 +128,9 @@ COPY
 
 The `else statement` within the block attaches to the inner `if statement`, and the `else statement` outside of the block attaches to the outer `if statement`.
 
-## Flattening nested if statements
+## 嵌套语句展开
 
-Nested `if statements` can often be flattened by either restructuring the logic or by using logical operators (covered in lesson [5.7 -- Logical operators](https://www.learncpp.com/cpp-tutorial/logical-operators/)). Code that is less nested is less error prone.
+Nested `if statements` can often be flattened by either restructuring the logic or by using logical operators (covered in lesson [[5-7-Logical-operators|5.7 - 逻辑运算符]]). Code that is less nested is less error prone.
 
 For example, the above example can be flattened as follows:
 
@@ -184,7 +184,7 @@ int main()
 
 COPY
 
-Null statements
+## 空语句
 
 A null statement is a statement that consists of just a semicolon:
 
@@ -220,7 +220,7 @@ COPY
 
 	Be careful not to “terminate” your `if statement` with a semicolon, otherwise your conditional statement(s) will execute unconditionally (even if they are inside a block).
 
-Operator== vs Operator= inside the conditional
+## 条件语句中的 Operator== 和 Operator= 
 
 Inside your conditional, you should be using `operator==` when testing for equality, not `operator=` (which is assignment). Consider the following program:
 

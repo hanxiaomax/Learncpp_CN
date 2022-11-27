@@ -9,12 +9,11 @@ tags:
 - if
 ---
 
+我们要讨论的第一类控制流语句是条件语句。条件语句是一种指定是否应该执行某些关联语句的语句。
 
-The first category of control flow statements we’ll talk about are the conditional statements. A conditional statement is a statement that specifies whether some associated statement(s) should be executed or not.
+C++支持两种基本条件语句：if语句(我们在课程[[4-10-Introduction-to-if-statements|4.10 -if语句简介]中介绍过，并将在这里进一步讨论)和  `switch` 语句(我们将在几节课中讨论)。
 
-C++ supports two basic kinds of conditionals: `if statements` (which we introduced in lesson [4.10 -- Introduction to if statements](https://www.learncpp.com/cpp-tutorial/introduction-to-if-statements/), and will talk about further here) and `switch statements` (which we’ll cover in a couple of lessons).
-
-## Quick if-statement recap
+## 快速复习一下 if 语句
 
 The most basic kind of conditional statement in C++ is the `if statement`. An `if statement` takes the form:
 
@@ -58,13 +57,15 @@ COPY
 
 This program works just like you’d expect:
 
+```
 Enter a number: 15
 15 is greater than 10
 
 Enter a number: 4
 4 is not greater than 10
+```
 
-If or else with multiple conditional statements
+## If or else with multiple conditional statements
 
 New programmers often try something like this:
 
@@ -91,9 +92,11 @@ COPY
 
 However, consider the following run of the program:
 
+```
 Enter your height (in cm): 180
 You are tall enough to ride.
 Too bad!
+```
 
 This program doesn’t work as expected because the `true_statement` and `false_statement` can only be a single statement. The indentation is deceiving us here -- the above program executes as if it had been written as follows:
 
@@ -159,7 +162,7 @@ You are not tall enough to ride.
 Too bad!
 ```
 
-To block or not to block single statements
+## To block or not to block single statements
 
 There is debate within the programmer community as to whether single statements following an `if` or `else` should be explicitly enclosed in blocks or not.
 
@@ -228,7 +231,7 @@ COPY
 
 This avoids both of the above downsides mentioned above at some minor cost to readability.
 
-Implicit blocks
+## 隐式语句块
 
 If the programmer does not declare a block in the statement portion of an `if statement` or `else statement`, the compiler will implicitly declare one. Thus:
 

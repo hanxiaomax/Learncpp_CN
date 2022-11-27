@@ -37,26 +37,24 @@ int main()
 
 然而，这往往并不是我们想要的。例如，如果我们要求用户输入，而用户输入的内容无效，理想情况下，我们希望要求用户做出另一个选择。这在直线顺序执行的程序中这是不可能的。事实上，用户可能会重复输入无效的输入，所以我们可能需要要求他们做出另一个选择的次数直到运行时才知道。
 
-However, often this is not what we desire. For example, if we ask the user for input, and the user enters something invalid, ideally we’d like to ask the user to make another choice. This is not possible in a straight-line program. In fact, the user may repeatedly enter invalid input, so the number of times we might need to ask them to make another selection isn’t knowable until runtime.
+幸运的是，C++提供了许多不同的控制流语句(也称为流控制语句)，这些语句允许程序员通过程序改变正常的执行路径。你已经看到了一个关于“if语句”的例子(在课程[[4-10-Introduction-to-if-statements|4.10 -if语句简介]]中介绍)，它允许我们只在条件表达式为真时执行语句。
 
-Fortunately, C++ provides a number of different control flow statements (also called flow control statements), which are statements that allow the programmer to change the normal path of execution through the program. You’ve already seen an example of this with `if statements` (introduced in lesson [[4-10-Introduction-to-if-statements|4.10 - if 语句简介]]) that let us execute a statement only if a conditional expression is true.
+当“控制流语句”导致执行点更改为非顺序语句时，这称为分支。
 
-When a `control flow statement` causes point of execution to change to a non-sequential statement, this is called branching.
+控制语句的分类：
 
-Categories of flow control statements
-
-|Category	|Meaning	|Implementated in C++ by|
+|分类	|含义	|实现|
 |---|---|---|
-|Conditional statements	|Conditional statements cause a sequence of code to execute only if some condition is met.	|If, switch|
-|Jumps	|Jumps tell the CPU to start executing the statements at some other location.	|Goto, break, continue|
-|Function calls	|Function calls are jumps to some other location and back.	|Function calls, return|
-|Loops	|Loops tell the program to repeatedly execute some sequence of code zero or more times, until some condition is met.	|While, do-while, for, ranged-for|
-|Halts	|Halts tell the program to quit running.	|std::exit(), std::abort()|
-|Exceptions	|Exceptions are a special kind of flow control structure designed for error handling.	|Try, throw, catch|
+|条件语句	|条件语句只在满足某些条件时执行代码序列	|`if`, `switch`|
+|跳转	|跳转告诉CPU从其他位置开始执行语句.	|`Goto`, `break`, `continue`|
+|函数调用	|函数调用会跳转到其他地方执行再返回	|`Function calls`, `return`|
+|循环	|循环告诉程序重复执行某些语句0次或多次，知道满足某种条件|`while`, `do-while`, `for`, `ranged-for`|
+|停止	|告诉程序停止运行|`std::exit()`, `std::abort()`|
+|异常	|异常是为错误处理而设计的一种特殊的流控制结构	|`try`, `throw`, `catch`|
 
 
-We’ll cover all of these categories in detail throughout this chapter, with the exception of exceptions (ha) which we’ll devote an entire future chapter to ([[docs/MOC#20 异常|第20章 - 异常]]).
+我们会在本章介绍除异常以外的其他全部类别的控制语句。
 
-Prior to this chapter, the number of things you could have a program do was fairly limited. Being able to control the flow of your program (particularly using loops) makes any number of interesting things possible! No longer will you be restricted to toy programs and academic exercises -- you will be able to write programs that have real utility.
+在学习本章前，你可以让一个程序做的事情是相当有限的。在学会控制程序的流程(特别是使用循环)后，可以做许多有趣的事情！我们将不再局限于玩具程序和小练习——你将能够编写真正有用的程序。
 
-This is where the real fun begins. So let’s get to it!
+这才是真正有趣的开始。所以让我们继续吧！

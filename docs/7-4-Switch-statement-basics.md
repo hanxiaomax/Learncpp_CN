@@ -81,29 +81,30 @@ The idea behind a switch statement is simple: an expression (sometimes called 
 
 Compared to the original `if statement`, the `switch statement` has the advantage of only evaluating the expression once (making it more efficient), and the `switch statement` also makes it clearer to the reader that it is the same expression being tested for equality in each case.
 
-Best practice
+!!! success "最佳实践"
 
-Prefer `switch statements` over if-else chains when there is a choice.
+	Prefer `switch statements` over if-else chains when there is a choice.
 
 Let’s examine each of these concepts in more detail.
 
-Starting a switch
+## Starting a switch
 
 We start a `switch statement` by using the `switch` keyword, followed by parentheses with the conditional expression that we would like to evaluate inside. Often the expression is just a single variable, but it can be any valid expression.
 
 The one restriction is that the condition must evaluate to an integral type (see lesson [4.1 -- Introduction to fundamental data types](https://www.learncpp.com/cpp-tutorial/introduction-to-fundamental-data-types/) if you need a reminder which fundamental types are considered integral types) or an enumerated type (covered in future lesson [10.2 -- Unscoped enumerations](https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/)), or be convertible to one. Expressions that evaluate to floating point types, strings, and most other non-integral types may not be used here.
 
-For advanced readers
+!!! info "扩展阅读"
 
-Why does the switch type only allow for integral (or enumerated) types? The answer is because switch statements are designed to be highly optimized. Historically, the most common way for compilers to implement switch statements is via [Jump tables](https://en.wikipedia.org/wiki/Branch_table) -- and jump tables only work with integral values.
 
-For those of you already familiar with arrays, a jump table works much like an array, an integral value is used as the array index to “jump” directly to a result. This can be much more efficient than doing a bunch of sequential comparisons.
-
-Of course, compilers don’t have to implement switches using jump tables, and sometimes they don’t. There is technically no reason that C++ couldn’t relax the restriction so that other types could be used as well, they just haven’t done so yet (as of C++20).
+	Why does the switch type only allow for integral (or enumerated) types? The answer is because switch statements are designed to be highly optimized. Historically, the most common way for compilers to implement switch statements is via [Jump tables](https://en.wikipedia.org/wiki/Branch_table) -- and jump tables only work with integral values.
+	
+	For those of you already familiar with arrays, a jump table works much like an array, an integral value is used as the array index to “jump” directly to a result. This can be much more efficient than doing a bunch of sequential comparisons.
+	
+	Of course, compilers don’t have to implement switches using jump tables, and sometimes they don’t. There is technically no reason that C++ couldn’t relax the restriction so that other types could be used as well, they just haven’t done so yet (as of C++20).
 
 Following the conditional expression, we declare a block. Inside the block, we use labels to define all of the values we want to test for equality. There are two kinds of labels.
 
-Case labels
+## 分支标签
 
 The first kind of label is the case label, which is declared using the `case` keyword and followed by a constant expression. The constant expression must either match the type of the condition or must be convertible to that type.
 
@@ -162,7 +163,7 @@ switch (x)
 
 COPY
 
-The default label
+## 默认标签
 
 The second kind of label is the default label (often called the default case), which is declared using the `default` keyword. If the conditional expression does not match any case label and a default label exists, execution begins at the first statement after the default label.
 
@@ -202,15 +203,59 @@ COPY
 
 This code prints:
 
+```
 Unknown
+```
 
 The default label is optional, and there can only be one default label per switch statement. By convention, the `default case` is placed last in the switch block.
 
-Best practice
+!!! success "最佳实践"
 
-Place the default case last in the switch block.
+	Place the default case last in the switch block.
 
-Taking a break
+
+## 没有匹配的分支也没有默认分支
+
+If the value of the conditional expression does not match any of the case labels, and no default case has been provided, then no cases inside the switch are executed. Execution continues after the end of the switch block.
+
+```cpp
+#include <iostream>
+
+void printDigitName(int x)
+{
+    switch (x) // x is evaluated to produce value 5
+    {
+    case 1:
+        std::cout << "One";
+        return;
+    case 2:
+        std::cout << "Two";
+        return;
+    case 3:
+        std::cout << "Three";
+        return;
+    // no matching case exists and there is no default case
+    }
+
+    // so execution continues here
+    std::cout << "Hello";
+}
+
+int main()
+{
+    printDigitName(5);
+    std::cout << '\n';
+
+    return 0;
+}
+```
+
+COPY
+
+In the above example, `x` evalutes to `5`, but there is no case label matching `5`, nor is there a default case. As a result, no cases execute. Execution continues after the switch block, printing `Hello`.
+
+
+## 休息一下
 
 In the above examples, we used `return statements` to stop execution of the statements after our labels. However, this also exits the entire function.
 
@@ -255,10 +300,13 @@ COPY
 
 The above example prints:
 
+```
 Three Ah-Ah-Ah!
+```
 
-Best practice
+!!! success "最佳实践"
 
-Each set of statements underneath a label should end in a `break statement` or a `return statement`.
+	<>
+	Each set of statements underneath a label should end in a `break statement` or a `return statement`. This includes the statements underneath the last label in the switch.
 
 So what happens if you don’t end a set of statements under a label with a `break` or `return`? We’ll explore that topic, and others, in the next lesson.

@@ -13,7 +13,7 @@ tags:
 	
 
 
-This lesson continues our exploration of switch statements that we started in the prior lesson [7.4 -- Switch statement basics](https://www.learncpp.com/cpp-tutorial/switch-statement-basics/). In the prior lesson, we mentioned that each set of statements underneath a label should end in a `break statement` or a `return statement`.
+This lesson continues our exploration of switch statements that we started in the prior lesson[[7-4-Switch-statement-basics|7.4 - switch 语句基础]] In the prior lesson, we mentioned that each set of statements underneath a label should end in a `break statement` or a `return statement`.
 
 In this lesson, we’ll explore why, and talk about some switch scoping issues that sometimes trip up new programmers.
 
@@ -56,20 +56,22 @@ COPY
 
 This program outputs the following:
 
+```
 2
 3
 4
 5
+```
 
 This is probably not what we wanted! When execution flows from a statement underneath a label into statements underneath a subsequent label, this is called fallthrough.
 
-Warning
+!!! warning "注意"
 
-Once the statements underneath a case or default label have started executing, they will overflow (fallthrough) into subsequent cases. `Break` or `return` statements are typically used to prevent this.
+	Once the statements underneath a case or default label have started executing, they will overflow (fallthrough) into subsequent cases. `Break` or `return` statements are typically used to prevent this.
 
 Since fallthrough is rarely desired or intentional, many compilers and code analysis tools will flag fallthrough as a warning.
 
-The [[fallthrough]] attribute
+## The [[fallthrough]] attribute
 
 Commenting intentional fallthrough is a common convention to tell other developers that fallthrough is intended. While this works for other developers, the compiler and code analysis tools don’t know how to interpret comments, so it won’t get rid of the warnings.
 
@@ -105,16 +107,18 @@ COPY
 
 This program prints:
 
+```
 2
 3
+```
 
 And it should not generate any warnings about the fallthrough.
 
-Best practice
+!!! success "最佳实践"
 
-Use the `[[fallthrough]]` attribute (along with a null statement) to indicate intentional fallthrough.
+	Use the `[[fallthrough]]` attribute (along with a null statement) to indicate intentional fallthrough.
 
-Sequential case labels
+## Sequential case labels
 
 You can use the logical OR operator to combine multiple tests into a single statement:
 
@@ -162,7 +166,7 @@ The first statement after _all_ of the case statements in the above program is
 
 Thus, we can “stack” case labels to make all of those case labels share the same set of statements afterward. This is not considered fallthrough behavior, so use of comments or `[[fallthrough]]` is not needed here.
 
-Switch case scoping
+## Switch case scoping
 
 With `if statements`, you can only have a single statement after the if-condition, and that statement is considered to be implicitly inside a block:
 
@@ -191,7 +195,7 @@ COPY
 
 In the above example, the 2 statements between the `case 1` and the default label are scoped as part of the switch block, not a block implicit to `case 1`.
 
-Variable declaration and initialization inside case statements
+## Variable declaration and initialization inside case statements
 
 You can declare (but not initialize) variables inside the switch, both before and after the case labels:
 
