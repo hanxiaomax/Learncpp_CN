@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "7-2-If-statements-and-blocks",
-      "path": "docs/7-2-If-statements-and-blocks.md"
+      "basename": "7-3-Common-if-statement-problems",
+      "path": "docs/7-3-Common-if-statement-problems.md"
+    },
+    {
+      "basename": "5-7-Logical-operators",
+      "path": "docs/5-7-Logical-operators.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-2-If-statements-and-blocks",
+      "path": "docs/7-2-If-statements-and-blocks.md"
     },
     {
       "basename": "7-1-Control-flow-introduction",
@@ -79,10 +87,6 @@
     {
       "basename": "7-4-Switch-statement-basics",
       "path": "docs/7-4-Switch-statement-basics.md"
-    },
-    {
-      "basename": "7-3-Common-if-statement-problems",
-      "path": "docs/7-3-Common-if-statement-problems.md"
     },
     {
       "basename": "B-4-introduction-to-C++20",
@@ -195,10 +199,6 @@
     {
       "basename": "10-y-using-a-language-reference",
       "path": "docs/10-y-using-a-language-reference.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],

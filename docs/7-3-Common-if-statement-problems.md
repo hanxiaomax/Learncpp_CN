@@ -13,11 +13,11 @@ tags:
 	
 
 
-This lesson is a continuation of lesson [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]] In this lesson, we’ll take a look at some common problems that occur when using `if statements`.
+继续 [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]] 的内容。本节课我们会介绍一些和if语句相关的常见错误。
 
-## Nested if statements and the dangling else problem
+## 嵌套if语句和悬垂else问题
 
-It is possible to nest `if statements` within other `if statements`:
+if 语句可以嵌套在其他 if 语句中：
 
 ```cpp
 #include <iostream>
@@ -28,18 +28,16 @@ int main()
     int x{};
     std::cin >> x;
 
-    if (x >= 0) // outer if statement
-        // it is bad coding style to nest if statements this way
-        if (x <= 20) // inner if statement
+    if (x >= 0) // 外层if语句
+        // 这种嵌套方式是不好的编程风格
+        if (x <= 20) // 内层if语句
             std::cout << x << " is between 0 and 20\n";
 
     return 0;
 }
 ```
 
-COPY
-
-Now consider the following program:
+考虑下面的程序：
 
 ```cpp
 #include <iostream>
@@ -50,12 +48,12 @@ int main()
     int x{};
     std::cin >> x;
 
-    if (x >= 0) // outer if statement
-        // it is bad coding style to nest if statements this way
-        if (x <= 20) // inner if statement
+    if (x >= 0) // 外层if语句
+        // 这种嵌套方式是不好的编程风格
+        if (x <= 20) // 内层if语句
             std::cout << x << " is between 0 and 20\n";
 
-    // which if statement does this else belong to?
+    // 这个 else 应该和哪个 if 语句匹配？
     else
         std::cout << x << " is negative\n";
 
@@ -63,11 +61,9 @@ int main()
 }
 ```
 
-COPY
+上面的程序引入了一个潜在的歧义来源，称为悬垂else问题。上面程序中的`else` 语句应该与外部if匹配还是和内部if匹配？
 
-The above program introduces a source of potential ambiguity called a dangling else problem. Is the `else statement` in the above program matched up with the outer or inner `if statement`?
-
-The answer is that an `else statement` is paired up with the last unmatched `if statement` in the same block. Thus, in the program above, the `else` is matched up with the inner `if statement`, as if the program had been written like this:
+答案是 `else` 语句与同一语句块中最后一个未匹配的`if`语句配对。因此，在上面的程序中，`else`与内部的`if`语句匹配，等价于下面形式：
 
 ```cpp
 #include <iostream>
@@ -78,11 +74,11 @@ int main()
     int x{};
     std::cin >> x;
 
-    if (x >= 0) // outer if statement
+    if (x >= 0) // 外层 if 语句
     {
-        if (x <= 20) // inner if statement
+        if (x <= 20) // 内层 if 语句
             std::cout << x << " is between 0 and 20\n";
-        else // attached to inner if statement
+        else // 和内层 if 语句匹配
             std::cout << x << " is negative\n";
     }
 
@@ -90,16 +86,14 @@ int main()
 }
 ```
 
-COPY
-
-This causes the above program to produce incorrect output:
+这使得程序产生错误的结果：
 
 ```
 Enter a number: 21
 21 is negative
 ```
 
-To avoid such ambiguities when nesting `if statements`, it is a good idea to explicitly enclose the inner `if statement` within a block. This allows us to attach an `else` to either `if statement` without ambiguity:
+为了避免因嵌套 if 语句产生的歧义，最好的办法是将内部的if语句显式地定义在语句块中：
 
 ```cpp
 #include <iostream>
@@ -124,15 +118,13 @@ int main()
 }
 ```
 
-COPY
-
-The `else statement` within the block attaches to the inner `if statement`, and the `else statement` outside of the block attaches to the outer `if statement`.
+此时，语句块中的 `else` 语句会和内层的`if` 语句匹配，而语句块外部的 `else` 则和外层的 `if` 语句匹配。
 
 ## 嵌套语句展开
 
-Nested `if statements` can often be flattened by either restructuring the logic or by using logical operators (covered in lesson [[5-7-Logical-operators|5.7 - 逻辑运算符]]). Code that is less nested is less error prone.
+嵌套的多层 `if` 语句可以通过重新组织逻辑或使用[[5-7-Logical-operators|逻辑运算符]]展开成一层逻辑。嵌套越少的代码越不容易出错。
 
-For example, the above example can be flattened as follows:
+例如，上面的例子中可以展开成如下形式：
 
 ```cpp
 #include <iostream>
@@ -154,9 +146,7 @@ int main()
 }
 ```
 
-COPY
-
-Here’s another example that uses logical operators to check multiple conditions within a single `if statement`:
+下面是另一个使用逻辑运算符在一个`if`语句中检查多个条件的例子：
 
 ```cpp
 #include <iostream>
@@ -171,9 +161,9 @@ int main()
     int y{};
     std::cin >> y;
 
-    if (x > 0 && y > 0) // && is logical and -- checks if both conditions are true
+    if (x > 0 && y > 0) // && 是逻辑与——检查是否两个条件均为真
         std::cout << "Both numbers are positive\n";
-    else if (x > 0 || y > 0) // || is logical or -- checks if either condition is true
+    else if (x > 0 || y > 0) // || 是逻辑或——检查是否有为真的条件
         std::cout << "One of the numbers is positive\n";
     else
         std::cout << "Neither number is positive\n";
@@ -182,47 +172,41 @@ int main()
 }
 ```
 
-COPY
 
 ## 空语句
 
-A null statement is a statement that consists of just a semicolon:
+空语句是一个只包含分号的语句：
 
 ```cpp
 if (x > 10)
     ; // this is a null statement
 ```
 
-COPY
+空语句什么都不做。一般来说，只有当语言要求存在一条语句但程序员不需要的情况下才这么做。为了可读性，“空语句”通常被放在单独的行中。
 
-`Null statements` do nothing. They are typically used when the language requires a statement to exist but the programmer doesn’t need one. For readability, `null statements` are typically placed on their own lines.
+我们将在本章后面讲到循环的时候看到有意的空语句的例子。“空语句”很少与“if语句”一起使用。然而，它们可能会无意中给新手(或粗心的)程序员带来问题。考虑下面的代码：
 
-We’ll see examples of intentional `null statements` later in this chapter, when we cover loops. `Null statements` are rarely intentionally used with `if statements`. However, they can unintentionally cause problems for new (or careless) programmers. Consider the following snippet:
 
 ```cpp
 if (nuclearCodesActivated());
     blowUpTheWorld();
 ```
 
-COPY
-
-In the above snippet, the programmer accidentally put a semicolon on the end of the `if statement` (a common mistake since semicolons end many statements). This unassuming error compiles fine, and causes the snippet to execute as if it had been written like this:
+在上面的例子中，程序员不经意间在if语句的末尾添加了一个分号。这个不起眼的错误可以很好地编译，并使代码段执行起来就像它是这样编写的一样：
 
 ```cpp
 if (nuclearCodesActivated())
-    ; // the semicolon acts as a null statement
-blowUpTheWorld(); // and this line always gets executed!
+    ; // 分号实际上制造了一个空语句
+blowUpTheWorld(); // 这个函数总是会执行
 ```
-
-COPY
 
 !!! warning "注意"
 
-	Be careful not to “terminate” your `if statement` with a semicolon, otherwise your conditional statement(s) will execute unconditionally (even if they are inside a block).
+	注意不要在if语句后面添加分号，否则你的“条件语句”总是会无条件执行（即使你把它写在语句块中）。
 
-## 条件语句中的 Operator== 和 Operator= 
+## 条件语句中的等号和赋值号
 
-Inside your conditional, you should be using `operator==` when testing for equality, not `operator=` (which is assignment). Consider the following program:
+在 if 的条件中，你应该使用等号`==`来判断是否相等，而不是赋值号`=`，考虑下面程序：
 
 ```cpp
 #include <iostream>
@@ -232,7 +216,7 @@ int main()
     std::cout << "Enter 0 or 1: ";
     int x{};
     std::cin >> x;
-    if (x = 0) // oops, we used an assignment here instead of a test for equality
+    if (x = 0) // 糟糕, 我们使用赋值号进行了赋值而不是判断相等
         std::cout << "You entered 0";
     else
         std::cout << "You entered 1";
