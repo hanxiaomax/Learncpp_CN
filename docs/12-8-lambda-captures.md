@@ -510,11 +510,11 @@ int main()
 
 	在通过引用捕获变量时要格外小心，特别是使用默认引用捕获时。捕获的变量必须比lambda存活的时间长。
 
-如果我们想要在使用lambda时仍然保证 `name` 可用，则需要在闭包中an be valid when the lambda is used, we need to capture it by value instead (either explicitly or using a default-capture by value).
+如果我们想要在使用lambda时仍然保证 `name` 可用，则需要在闭包中按值捕获该变量（显式指定或默认按值捕获）。
 
-## Unintended copies of mutable lambdas 
+## 无意间拷贝可变的 lambda 
 
-Because lambdas are objects, they can be copied. In some cases, this can cause problems. Consider the following code:
+因为lambda是对象，所以它们可以被复制。在某些情况下，这可能会导致问题。考虑以下代码:
 
 ```cpp
 #include <iostream>
@@ -540,9 +540,7 @@ int main()
 }
 ```
 
-COPY
-
-Output
+输出：
 
 ```
 1
@@ -550,9 +548,9 @@ Output
 2
 ```
 
-Rather than printing 1, 2, 3, the code prints 2 twice. When we created `otherCount` as a copy of `count`, we created a copy of `count` in its current state. `count`‘s `i` was 1, so `otherCount`‘s `i` is 1 as well. Since `otherCount` is a copy of `count`, they each have their own `i`.
+程序没有打印 1, 2, 3，而是打印了两个2。我们创建 `otherCount` 时拷贝了 `count`，同时也拷贝了 `count` 当前的状态。`count` 的 `i` 是 1，所以`otherCount` 的 `i` 也是 1。因为 `otherCount` 是 `count` 的拷贝，所以它们有各自的 `i`。
 
-Now let’s take a look at a slightly less obvious example:
+再看一个不太明显的例子：
 
 ```cpp
 #include <iostream>
@@ -580,9 +578,7 @@ int main()
 }
 ```
 
-COPY
-
-Output:
+输出：
 
 ```
 1
@@ -590,13 +586,13 @@ Output:
 1
 ```
 
-This exhibits the same problem as the prior example in a more obscure form. When `std::function` is created with a lambda, the `std::function`internally makes a copy of the lambda object. Thus, our call to `fn()` is actually being executed on the copy of our lambda, not the actual lambda.
+这个例子中存在相同的问题，但是更加隐蔽。当通过lambda创建 `std::function`  时，`std::function` 会创建 lambda 的拷贝。因此在调用 `fn()` 时，执行的其实是lambda 的拷贝而不是其本身。
 
-If we need to pass a mutable lambda, and want to avoid the possibility of inadvertent copies being made, there are two options. One option is to use a non-capturing lambda instead -- in the above case, we could remove the capture and track our state using a static local variable instead. But static local variables can be difficult to keep track of and make our code less readable. A better option is to prevent copies of our lambda from being made in the first place. But since we can’t affect how `std::function` (or other standard library functions or objects) are implemented, how can we do this?
+如果我们需要传递一个可变的lambda，并且想要避免无意地复制，有两个方法。一种是使用非捕获lambda来代替——在上面的情况下，我们可以删除捕获并使用静态局部变量来跟踪状态。但是静态局部变量很难跟踪，并且使我们的代码可读性较差。一个更好的选择是从一开始就阻止lambda的复制。但是由于我们不能影响 `std::function` (或其他标准库函数或对象)的实现方式，那要如何才能做到这一点呢?
 
-Fortunately, C++ provides a convenient type (as part of the `<functional>` header) called `std::reference_wrapper` that allows us to pass a normal type as if it was a reference. For even more convenience, a `std::reference_wrapper` can be created by using the `std::ref()` function. By wrapping our lambda in a `std::reference_wrapper`, whenever anybody tries to make a copy of our lambda, they’ll make a copy of the reference instead, which will copy the reference rather than the actual object.
+幸运的是，C++ 提供了一个更加方便的类型(定义在 `<functional>` 头文件中) ——称为 `std::reference_wrapper` 。该类型使我们可以传入一个普通类型，但当做引用使用。更好地是，`std::reference_wrapper` 可以通过`std::ref()` 函数创建。如果我们将 lambda 包装到 `std::reference_wrapper` 中，则每当有人想拷贝 lambda 时，它们会拷贝一个引用而不是对象本身。
 
-Here’s our updated code using `std::ref`:
+使用 `std::ref` 更新代码：
 
 ```cpp
 #include <iostream>
@@ -616,9 +612,8 @@ int main()
       std::cout << ++i << '\n';
     } };
 
-    // std::ref(count) ensures count is treated like a reference
-    // thus, anything that tries to copy count will actually copy the reference
-    // ensuring that only one count exists
+    // std::ref(count) 使得 count 被当做引用对待
+    // 因此, 任何对其的拷贝都实际拷贝的是引用，确保始终只存在一个 count
     myInvoke(std::ref(count));
     myInvoke(std::ref(count));
     myInvoke(std::ref(count));
@@ -627,9 +622,7 @@ int main()
 }
 ```
 
-COPY
-
-Our output is now as expected:
+输出符合预期：
 
 ```
 1
@@ -637,12 +630,12 @@ Our output is now as expected:
 3
 ```
 
-Note that the output doesn’t change even if `invoke` takes `fn` by value. `std::function` doesn’t create a copy of the lambda if we create it with `std::ref`.
+注意，`invoke`  按值获取 `fn` 结果也是一样的。如果我们通过 `std::ref`创建它，则 `std::function` 不会创建 lambda 的副本。
 
 !!! note "法则"
 
-	Standard library functions may copy function objects (reminder: lambdas are function objects). If you want to provide lambdas with mutable captured variables, pass them by reference using `std::ref`.
+	标准库函数可能会复制函数对象(提醒:lambda是函数对象)。如果你想提供带有可变捕获变量的lambda，可以使用 `std::ref`通过引用传递它们。
 
 !!! success "最佳实践"
 
-	Try to avoid mutable lambdas. Non-mutable lambdas are easier to understand and don’t suffer from the above issues, as well as more dangerous issues that arise when you add parallel execution.
+	尽量避免可变的lambda。不可变lambda更容易理解，不会出现上述问题，也不会在添加并行执行时出现更危险的问题。

@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
+      "basename": "7-18-introduction-to-random-number-generation",
+      "path": "docs/7-18-introduction-to-random-number-generation.md"
+    },
+    {
+      "basename": "yaml",
+      "path": "Templates/yaml.md"
+    },
+    {
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
@@ -187,18 +199,6 @@
     {
       "basename": "value-initialization",
       "path": "docs/value-initialization.md"
-    },
-    {
-      "basename": "10-7-default-member-initialization",
-      "path": "docs/10-7-default-member-initialization.md"
-    },
-    {
-      "basename": "10-6-struct-aggregate-initialization",
-      "path": "docs/10-6-struct-aggregate-initialization.md"
-    },
-    {
-      "basename": "non-static-member-initialization",
-      "path": "docs/non-static-member-initialization.md"
     }
   ],
   "omittedPaths": [],
