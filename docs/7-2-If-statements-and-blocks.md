@@ -15,25 +15,25 @@ C++支持两种基本条件语句：if语句(我们在课程[[4-10-Introduction-
 
 ## 快速复习一下 if 语句
 
-The most basic kind of conditional statement in C++ is the `if statement`. An `if statement` takes the form:
+if 语句是C++中最基本的条件语句，其形式为：
 
-```
+```cpp
 if (condition)
     true_statement;
 ```
 
-or with an optional `else statement`:
+或者是带 `else` 的形式：
 
-```
+```cpp
 if (condition)
     true_statement;
 else
     false_statement;
 ```
 
-If the `condition` evaluates to `true`, the `true_statement` executes. If the `condition` evaluates to `false` and the optional `else statement` exists, the `false_statement` executes.
+如果 `condition` 求值为 `true`，则执行 `true_statement`。如果求值为 `false` 而且存在 `else ` 语句则执行 `false_statement` 。
 
-Here is a simple program that uses an `if statement` with the optional `else statement`:
+下面的例子展示了if语句和else语句的用法：
 
 ```cpp
 #include <iostream>
@@ -53,9 +53,7 @@ int main()
 }
 ```
 
-COPY
-
-This program works just like you’d expect:
+程序输出结果如你所期望的那样：
 
 ```
 Enter a number: 15
@@ -65,9 +63,9 @@ Enter a number: 4
 4 is not greater than 10
 ```
 
-## If or else with multiple conditional statements
+## 多个条件语句
 
-New programmers often try something like this:
+新手程序员可能会编写这样的程序：
 
 ```cpp
 #include <iostream>
@@ -88,9 +86,7 @@ int main()
 }
 ```
 
-COPY
-
-However, consider the following run of the program:
+不过，程序的运行结果可能并不如愿：
 
 ```
 Enter your height (in cm): 180
@@ -98,7 +94,7 @@ You are tall enough to ride.
 Too bad!
 ```
 
-This program doesn’t work as expected because the `true_statement` and `false_statement` can only be a single statement. The indentation is deceiving us here -- the above program executes as if it had been written as follows:
+这个程序没有像预期的那样工作，因为`true_statement` 和`false_statement` 只能是一个语句。这里的缩进欺骗了我们——上面的程序执行起来就好像它是这样写的：
 
 ```cpp
 #include <iostream>
@@ -120,11 +116,9 @@ int main()
 }
 ```
 
-COPY
+这也就看到很清楚了，显然 “Too bad!” 在任何情况下都会被打印。
 
-This makes it clearer that “Too bad!” will always execute.
-
-However, it’s common to want to execute multiple statements based on some condition. To do so, we can use a compound statement (block):
+但是，通常希望基于某些条件执行多个语句。为此，我们可以使用复合语句(块):
 
 ```cpp
 #include <iostream>
@@ -147,9 +141,7 @@ int main()
 }
 ```
 
-COPY
-
-Remember that blocks are treated as a single statement, so this now works as expected:
+记住，block被当作一个单独的语句，所以现在工作正常：
 
 ```
 Enter your height (in cm): 180
@@ -162,20 +154,18 @@ You are not tall enough to ride.
 Too bad!
 ```
 
-## To block or not to block single statements
+## 应该将单独的条件语句写作语句块吗？
 
-There is debate within the programmer community as to whether single statements following an `if` or `else` should be explicitly enclosed in blocks or not.
+对于 `if` 或 `else` 后面的单个语句是否应该显式地包含在语句块中，在程序员社区中引发了广泛的争论。
 
-There are two reasons typically given as rationale for doing so. First, consider the following snippet:
+这样做通常有两个理由。首先，考虑下面的代码片段：记住，块被视为一个单独的语句，所以现在工作正常:
 
 ```cpp
 if (age >= 21)
     purchaseBeer();
 ```
 
-COPY
-
-Now let’s say we’re in a hurry and modify this program to add another ability:
+然后，如果你特别匆忙地将某个新功能加入到程序中：
 
 ```cpp
 if (age >= 21)
@@ -183,22 +173,18 @@ if (age >= 21)
     gamble(); // will always execute
 ```
 
-COPY
+上述代码将允许未成年人赌博。在监狱里玩得开心！
 
-Oops, we’ve just allowed minors to gamble. Have fun in jail!
-
-Second, it can make programs more difficult to debug. Let’s say we have the following snippet:
+其次，它会使程序更难调试。假设我们有以下代码片段：
 
 ```cpp
 if (age >= 21)
     addBeerToCart();
 
-checkout();
-```
+checkout();```
 
-COPY
 
-Let’s say we suspect something is wrong with the `addBeerToCart()` function, so we comment it out:
+如果我们怀疑 `addBeerToCart()` 函数有问题，往往会将其临时注释掉：
 
 ```cpp
 if (age >= 21)
@@ -207,33 +193,31 @@ if (age >= 21)
 checkout();
 ```
 
-COPY
+这样一来会使得 `checkout()` 按条件执行，这并不是我们想要的结果。
 
-Now we’ve made `checkout()` conditional, which we certainly didn’t intend.
+如果我们总是将if和else的语句放在语句块中的话，上面的这些问题都可以避免。
 
-Neither of these problems occur if you always use blocks after an `if` or `else` statement.
+反方则认为，不要在单个语句周围使用块的最佳理由是因为添加块会占用垂直空间，使你一次看到的代码更少，这会使代码可读性变差，并可能导致其他更严重的错误。
 
-The best argument for not using blocks around single statements is that adding blocks makes you able to see less of your code at one time by spacing it out vertically, which makes your code less readable and can lead to other, more serious mistakes.
+社区似乎更倾向于始终使用块，尽管这种建议当然不是普遍存在的。
 
-The community seems to be more in favor of always using blocks than not, though this recommendation certainly isn’t ubiquitous.
 
 !!! success "最佳实践"
 
-	Consider putting single statements associated with an `if` or `else` in blocks (particularly while you are learning). More experienced C++ developers sometimes disregard this practice in favor of tighter vertical spacing.
+	考虑将与“`if`”或“`else`”相关的单个语句放在块中(特别是在你学习的时候)。更有经验的C++开发人员有时会忽略这种做法，而倾向于更紧凑的垂直间距。
 
-A middle-ground alternative is to put single-lines on the same line as the `if` or `else`:
+还有一种折中的办法，即将单一条件语句和if或else写在同一行：
 
 ```cpp
 if (age >= 21) purchaseBeer();
 ```
 
-COPY
+这避免了上面提到的两个缺点，不过可读性稍差了一点。
 
-This avoids both of the above downsides mentioned above at some minor cost to readability.
 
 ## 隐式语句块
 
-If the programmer does not declare a block in the statement portion of an `if statement` or `else statement`, the compiler will implicitly declare one. Thus:
+如果程序员没有在 `if` 语句或`else`语句的部分声明一个语句块，则编译器将隐式声明一个。因此：
 
 ```
 if (condition)
@@ -242,7 +226,7 @@ else
     false_statement;
 ```
 
-is actually the equivalent of:
+等价于：
 
 ```
 if (condition)
@@ -255,7 +239,7 @@ else
 }
 ```
 
-Most of the time, this doesn’t matter. However, new programmers sometimes try to do something like this:
+多数情况下这并不会带来问题，但是新手程序员可能会尝试这样做：
 
 ```cpp
 #include <iostream>
@@ -273,9 +257,7 @@ int main()
 }
 ```
 
-COPY
-
-This won’t compile, with the compiler generating an error that identifier `x` isn’t defined. This is because the above example is the equivalent of:
+此时代码是不能编译的，编译器会报告 `x` 未定义。因为上述代码等价于：
 
 ```cpp
 #include <iostream>
@@ -285,20 +267,19 @@ int main()
     if (true)
     {
         int x{ 5 };
-    } // x destroyed here
+    } // x 销毁了
     else
     {
         int x{ 6 };
-    } // x destroyed here
+    } // x 销毁了
 
-    std::cout << x; // x isn't in scope here
+    std::cout << x; // x 并不在该作用域中
 
     return 0;
 }
 ```
 
-COPY
 
-In this context, it’s clearer that variable `x` has block scope and is destroyed at the end of the block. By the time we get to the `std::cout` line, `x` doesn’t exist.
+这里，很显然变量 `x` 具有语句块作用域，并且会在语句块结束时销毁。当我们在 `std::cout` 中访问 `x` 时，它已经不存在了。
 
-We’ll continue our exploration of `if statements` in the next lesson.
+我们会在

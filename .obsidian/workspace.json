@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "9c14a5511adba7ce",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/7-2-If-statements-and-blocks.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/7-2-If-statements-and-blocks.md"
               }
             }
           },
@@ -117,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/7-2-If-statements-and-blocks.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,17 +150,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "9c14a5511adba7ce",
   "lastOpenFiles": [
-    "docs/7-x-Chapter-7-summary-and-quiz.md",
     "docs/MOC.md",
+    "docs/7-1-Control-flow-introduction.md",
+    "docs/7-x-Chapter-7-summary-and-quiz.md",
     "docs/7-19-generating-random-numbers-using-mersenne-twister.md",
     "docs/7-18-introduction-to-random-number-generation.md",
     "docs/7-17-assert-and-static-assert.md",
     "docs/7-16-std-cin-and-handling-invalid-input.md",
     "docs/7-15-Detecting-and-handling-errors.md",
     "docs/7-14-Common-semantic-errors-in-c.md",
-    "docs/7-13-Code-coverage.md",
-    "docs/7-12-Introduction-to-testing-your-code.md"
+    "docs/7-13-Code-coverage.md"
   ]
 }
