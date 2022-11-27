@@ -9,6 +9,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "integral-type",
+      "path": "docs/integral-type.md"
+    },
+    {
       "basename": "7-5-Switch-fallthrough-and-scoping",
       "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     },

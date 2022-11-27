@@ -72,54 +72,54 @@ int main()
 }
 ```
 
-switch 背后的思想很简单：表达式(有时称为条件)求值后得到一个值。如果表达式的值能够和后面的某个分支标签匹配，则该标签后的语句就会被zhi'x evaluated to produce a value. If the expression’s value is equal to the value after any of the `case labels`, the statements after the matching `case label` are executed. If no matching value can be found and a `default label` exists, the statements after the `default label` are executed instead.
+switch 背后的思想很简单：表达式(有时称为条件)求值后得到一个值。如果表达式的值能够和后面的某个分支标签匹配，则该标签后的语句就会被执行。如果没有匹配的标签，但是存在default标签，则执行default后面的语句。
 
-Compared to the original `if statement`, the `switch statement` has the advantage of only evaluating the expression once (making it more efficient), and the `switch statement` also makes it clearer to the reader that it is the same expression being tested for equality in each case.
+和if语句相比，switch语句的优势在于条件求值只需要做一次（更高效），而且switch语句看起来更清楚，可读性更好。
 
 !!! success "最佳实践"
 
-	Prefer `switch statements` over if-else chains when there is a choice.
-
-Let’s examine each of these concepts in more detail.
+	如果可以的话，尽量用 switch 语句代替 if-else 语句链。
+	
+让我们更详细地研究这些概念。
 
 ## 创建 switch 
 
-We start a `switch statement` by using the `switch` keyword, followed by parentheses with the conditional expression that we would like to evaluate inside. Often the expression is just a single variable, but it can be any valid expression.
+使用 `switch` 关键字，后面加上括号以及需要在括号中求值的条件表达式，就可以创建switch语句。通常情况下表达式会是一个单一变量，但是也可以是任何合法的表达式。
 
-The one restriction is that the condition must evaluate to an integral type (see lesson [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]if you need a reminder which fundamental types are considered integral types) or an enumerated type (covered in future lesson [[10-2-unscoped-enumerations|10.2 - 无作用域枚举类型]]), or be convertible to one. Expressions that evaluate to floating point types, strings, and most other non-integral types may not be used here.
+关于这里的条件语句，它的一个限制条件是其求值结果必须为[[integral-type|整型类型]](如何你还不熟悉整型类型，请参见：[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]) 或[[scoped-enumerations|有作用域枚举]]类型(参见：[[10-2-unscoped-enumerations|10.2 - 无作用域枚举类型]])，或者是任何能转换成上述类型的值。浮点类型、字符串和大多数其他非整型的表达式都不可用。
 
 !!! info "扩展阅读"
 
-
-	Why does the switch type only allow for integral (or enumerated) types? The answer is because switch statements are designed to be highly optimized. Historically, the most common way for compilers to implement switch statements is via [Jump tables](https://en.wikipedia.org/wiki/Branch_table) -- and jump tables only work with integral values.
+	为什么switch只使用整数(或枚举)类型？答案是因为switch语句被高度优化了。历史上，编译器实现switch语句最常见的方法是通过[跳表](https://en.wikipedia.org/wiki/Branch_table)实现的，而跳转表只适用于整数值。
 	
-	For those of you already familiar with arrays, a jump table works much like an array, an integral value is used as the array index to “jump” directly to a result. This can be much more efficient than doing a bunch of sequential comparisons.
+	对于那些已经熟悉数组的人来说，跳表的工作原理非常类似于数组，使用整数值作为数组索引，直接“跳转”到结果。这比执行一堆顺序比较要高效得多。
 	
-	Of course, compilers don’t have to implement switches using jump tables, and sometimes they don’t. There is technically no reason that C++ couldn’t relax the restriction so that other types could be used as well, they just haven’t done so yet (as of C++20).
+	当然，编译器不必使用跳表实现switch，有时也不需要。从技术上讲，C++没有理由不能放松此处的类型限制，以便其他类型也可以使用，只是目前还没有这样做罢了(直到C++20)。
 
-Following the conditional expression, we declare a block. Inside the block, we use labels to define all of the values we want to test for equality. There are two kinds of labels.
+在条件表达式后面，我们声明一个语句块。在语句块内部，使用标签来定义我们想要测试是否相等的所有值，标签有两种：
 
 ## 分支标签
 
-The first kind of label is the case label, which is declared using the `case` keyword and followed by a constant expression. The constant expression must either match the type of the condition or must be convertible to that type.
+第一种标签是分支标签，它使用 `case` 关键字声明，后面跟着一个常量表达式。常量表达式必须匹配条件的类型，或可以转换为该类型。
 
-If the value of the conditional expression equals the expression after a `case label`, execution begins at the first statement after that `case label` and then continues sequentially.
+如果条件表达式求值结果等于某个分支标签的值，则从该标签后面的第一条语句继续顺序执行。
 
-Here’s an example of the condition matching a `case label`:
+
+下面的例子中，条件表达式可以匹配一个分支标签：
 
 ```cpp
 #include <iostream>
 
 void printDigitName(int x)
 {
-    switch (x) // x is evaluated to produce value 2
+    switch (x) // x 求值为 2
     {
         case 1:
             std::cout << "One";
             return;
-        case 2: // which matches the case statement here
-            std::cout << "Two"; // so execution starts here
-            return; // and then we return to the caller
+        case 2: // 匹配
+            std::cout << "Two"; // 从这里开始执行
+            return; // 执行到这条语句后就返回
         case 3:
             std::cout << "Three";
             return;
@@ -137,15 +137,15 @@ int main()
 }
 ```
 
-COPY
+程序输出：
 
-This code prints:
-
+```
 Two
+```
 
-In the above program, `x` is evaluated to produce value `2`. Because there is a case label with value `2`, execution jumps to the statement underneath that matching case label. The program prints `Two`, and then the `return statement` is executed, which returns back to the caller.
+在上面的例子中，`x` 求值为2。因为分支标签中也有2，所以程序会跳转到该标签下的第一条语句开始执行。该程序会打印 `Two`，然后从 `return` 语句返回给调用者。
 
-There is no practical limit to the number of case labels you can have, but all case labels in a switch must be unique. That is, you can not do this:
+分支标签的个数并没有现在，但是每个标签必须是唯一的，所以下面的代码是错误的：
 
 ```cpp
 switch (x)
@@ -156,11 +156,10 @@ switch (x)
 }
 ```
 
-COPY
 
-## 默认标签
+## default 标签
 
-The second kind of label is the default label (often called the default case), which is declared using the `default` keyword. If the conditional expression does not match any case label and a default label exists, execution begins at the first statement after the default label.
+第二种标签称为 default 标签(经常被称为默认分支)，使用 `default` 关键字定义。如果条件表达式不满足. If the conditional expression does not match any case label and a default label exists, execution begins at the first statement after the default label.
 
 Here’s an example of the condition matching the default label:
 
@@ -301,7 +300,6 @@ Three Ah-Ah-Ah!
 
 !!! success "最佳实践"
 
-	<>
 	Each set of statements underneath a label should end in a `break statement` or a `return statement`. This includes the statements underneath the last label in the switch.
 
 So what happens if you don’t end a set of statements under a label with a `break` or `return`? We’ll explore that topic, and others, in the next lesson.

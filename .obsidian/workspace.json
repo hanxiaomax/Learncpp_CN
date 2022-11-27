@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "2264ad44dd01dc95",
+            "id": "e2c89d46762a5224",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2264ad44dd01dc95",
+  "active": "e2c89d46762a5224",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/integral-type.md",
+    "docs/7-4-Switch-statement-basics.md",
     "docs/7-5-Switch-fallthrough-and-scoping.md",
     "docs/7-14-Common-semantic-errors-in-c.md",
     "docs/7-12-Introduction-to-testing-your-code.md",
     "docs/7-13-Code-coverage.md",
     "docs/7-9-For-statements.md",
     "docs/off-by-one-errors.md",
-    "docs/11-3-Arrays-and-loops.md",
-    "docs/11-13-For-each-loops.md",
-    "docs/7-4-Switch-statement-basics.md"
+    "docs/11-3-Arrays-and-loops.md"
   ]
 }
