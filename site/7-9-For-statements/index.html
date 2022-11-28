@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#for" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2008,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2070,9 +2075,80 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.9 - for 语句
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.9 - for 语句
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    for 语句求值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    更多循环案例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    差一错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    省略表达式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    有多个计数的循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    嵌套循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5822,63 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#for" class="md-nav__link">
+    for 语句求值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    更多循环案例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    差一错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    省略表达式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    有多个计数的循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    嵌套循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5794,26 +5927,14 @@
 
   <h1>7.9 - for 语句</h1>
 
-<p>By far, the most utilized loop statement in C++ is the <code>for statement</code>. The for statement (also called a for loop) is preferred when we have an obvious loop variable because it lets us easily and concisely define, initialize, test, and change the value of loop variables.</p>
-<p>As of C++11, there are two different kinds of <code>for loops</code>. We’ll cover the classic <code>for statement</code> in this lesson, and the newer <code>range-based for statement</code> in a future lesson (<a href="https://www.learncpp.com/cpp-tutorial/for-each-loops/">11.13 -- For-each loops</a>) once we’ve covered some other prerequisite topics, such as arrays and iterators.</p>
-<p>The <code>for statement</code> looks pretty simple in abstract:</p>
-<p>for (init-statement; condition; end-expression)
-   statement</p>
-<p>The easiest way to initially understand how a <code>for statement</code> works is to convert it into an equivalent <code>while statement</code>:</p>
-<p>{ // note the block here
-    init-statement; // used to define variables used in the loop
-    while (condition)
-    {
-        statement; 
-        end-expression; // used to modify the loop variable prior to reassessment of the condition
-    }
-} // variables defined inside the loop go out of scope here</p>
-<p>Evaluation of for statements</p>
-<p>A <code>for statement</code> is evaluated in 3 parts:</p>
-<p>First, the init-statement is executed. This only happens once when the loop is initiated. The init-statement is typically used for variable definition and initialization. These variables have “loop scope”, which really just is a form of block scope where these variables exist from the point of definition through the end of the loop statement. In our while-loop equivalent, you can see that the init-statement is inside a block that contains the loop, so the variables defined in the init-statement go out of scope when the block containing the loop ends.</p>
-<p>Second, for each loop iteration, the condition is evaluated. If this evaluates to true, the statement is executed. If this evaluates to false, the loop terminates and execution continues with the next statement beyond the loop.</p>
-<p>Finally, after the statement is executed, the end-expression is evaluated. Typically, this expression is used to increment or decrement the loop variables defined in the init-statement. After the end-expression has been evaluated, execution returns to the second step (and the condition is evaluated again).</p>
-<p>Let’s take a look at a sample <em>for loop</em> and discuss how it works:</p>
+<p>C++中最常用的语句是<code>for</code>语句。当我们有一个明显的循环变量时，首选使用for语句(也称为for循环)，因为它使我们可以轻松而简洁地定义、初始化、测试和更改循环变量的值。</p>
+<p>在 C++11 中，有两种 <code>for</code>循环，我们会在本节课介绍最典型的 <code>for</code>  循环，然后在后面的课程中（<a href="../11-13-For-each-loops/">11.13 - for-each 循环</a>）介绍较新的的<a href="../range-based-for-loops/">基于范围的for循环</a> (<a href="https://www.learncpp.com/cpp-tutorial/for-each-loops/">11.13 -- For-each loops</a>) 。</p>
+<p><code>for</code> 循环语法的抽象形式非常简单：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">init</span><span class="o">-</span><span class="n">statement</span><span class="p">;</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span><span class="w"> </span><span class="n">end</span><span class="o">-</span><span class="n">expression</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">statement</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>理解 <code>for</code> 循环最简单的方式是将其转换成一个等价的 <code>while</code>循环：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5821,25 +5942,51 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="c1">// 注意这里的语句块</span>
+<span class="w">    </span><span class="n">init</span><span class="o">-</span><span class="n">statement</span><span class="p">;</span><span class="w"> </span><span class="c1">// 用于定义循环中使用的变量</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">statement</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span><span class="n">end</span><span class="o">-</span><span class="n">expression</span><span class="p">;</span><span class="w"> </span><span class="c1">// 用于修改循环变量</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="c1">// 在循环中定义的变量在这里超出了作用域</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="for">for 语句求值</h2>
+<p><code>for</code>语句求值分三部分：</p>
+<p>首先是执行 <code>init-statement</code> ，但是它之后在循环初始化时执行一次。<code>init-statement</code> 通常用于变量的定义和初始化。这些变量均具有“循环作用域”——这只是块作用域的一种形式，这些变量从定义点一直存续到循环语句结束。在等价的while循环中，可以看到<code>init-statement</code>位于包含循环的块中，因此当包含循环的块结束时，<code>init-statement</code>中定义的变量将超出作用域。</p>
+<p>其次, 对于每个循环迭代，都要计算条件。如果该值为<code>true</code>，则执行语句。如果该值为<code>false</code>，则循环终止，并继续执行循环以外的下一个语句。</p>
+<p>最后，当<code>statement</code>执行后，会对 <code>end-expression</code> 进行求值。通常，该表达式用于增加或减少<code>init-statement</code>中定义的循环变量。在计算结束表达式之后，执行返回到第二步(再次计算条件)。</p>
+<p>接下来看一个 for 循环例程，了解其工作方式：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>First, we declare a loop variable named <code>count</code>, and initialize it with the value <code>1</code>.</p>
-<p>Second, <code>count &lt;= 10</code> is evaluated, and since count is <code>1</code>, this evaluates to <code>true</code>. Consequently, the statement executes, which prints <code>1</code> and a space.</p>
-<p>Finally, <code>++count</code> is evaluated, which increments <code>count</code> to <code>2</code>. Then the loop goes back to the second step.</p>
-<p>Now, <code>count &lt;= 10</code> is evaluated again. Since <code>count</code> has value <code>2</code>, this evaluates <code>true</code>, so the loop iterates again. The statement prints <code>2</code> and a space, and count is incremented to <code>3</code>. The loop continues to iterate until eventually <code>count</code> is incremented to <code>11</code>, at which point <code>count &lt;= 10</code> evaluates to <code>false</code>, and the loop exits.</p>
-<p>Consequently, this program prints the result:</p>
-<p>1 2 3 4 5 6 7 8 9 10</p>
-<p>For the sake of example, let’s convert the above <code>for loop</code> into an equivalent <code>while loop</code>:</p>
+<p>首先，声明一个循环变量 <code>count</code>并将其初始化为1。</p>
+<p>然后对 <code>count &lt;= 10</code> 求值，因为 <code>count</code>等于1，所以条件求值为 <code>true</code>。因此，<code>statement</code> 会被执行，打印1和空格。</p>
+<p>最后，对 <code>++count</code> 求值，将 <code>count</code> 递增为 <code>2</code>。然后回到第二步。</p>
+<p>现在，再次对 <code>count &lt;= 10</code> 求值。由于 <code>count</code> 已经是 <code>2</code>了，所以求值结果为 <code>true</code>，再次执行循环。语句输出<code>2</code> 和一个空格，<code>count</code> 被增加到<code>3</code> 。循环继续迭代，直到<code>count</code> 被增加到<code>11</code> ，此时 <code>count &lt;= 10</code> 的计算值为 <code>false</code> ，循环退出。</p>
+<p>程序的输出结果为：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1 2 3 4 5 6 7 8 9 10
+</code></pre></div></td></tr></table></div>
+<p>对于这个例子，让我们将其转换为等价的 <code>while</code> 循环：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5852,7 +5999,9 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -5864,13 +6013,14 @@
 <span class="w">            </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="c1">// our end-expression</span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>That doesn’t look so bad, does it? Note that the outer braces are necessary here, because <code>count</code> goes out of scope when the loop ends.</p>
-<p><code>For loops</code> can be hard for new programmers to read -- however, experienced programmers love them because they are a very compact way to do loops with a counter, with all of the necessary information about the loop variables, loop conditions, and loop count modifiers are presented up front. This helps reduce errors.</p>
-<p>More for loop examples</p>
-<p>Here’s an example of a function that uses a <code>for loop</code> to calculate integer exponents:</p>
+<p>看起来没那么糟，是吧？注意，这里需要使用外大括号，因为当循环结束时 <code>count</code> 要<a href="../going-out-of-scope/">离开作用域</a>。</p>
+<p>对于新程序员来说，“for循环”可能很难读懂——然而，有经验的程序员喜欢它们，因为它们是一种非常紧凑的方法，可以用计数器来执行循环，关于循环变量、循环条件和循环计数修饰符的所有必要信息都在前面给出了。这有助于减少错误。</p>
+<h2 id="_1">更多循环案例</h2>
+<p>下面是一个使用<code>for</code>循环计算整数指数的函数示例:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5880,10 +6030,14 @@
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// returns the value base ^ exponent -- watch out for overflow!</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">exponent</span><span class="p">)</span><span class="w"></span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span><span class="c1"> // for fixed-width integers</span><span class="cp"></span>
+
+<span class="c1">// returns the value base ^ exponent -- watch out for overflow!</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">exponent</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="w"> </span><span class="n">total</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">exponent</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">base</span><span class="p">;</span><span class="w"></span>
@@ -5891,59 +6045,69 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This function returns the value base^exponent (base to the exponent power).</p>
+<p>This function returns the value <code>base^exponent</code> (base to the exponent power).</p>
 <p>This is a straightforward incrementing <code>for loop</code>, with <code>count</code> looping from <code>0</code> up to (but excluding) <code>exponent</code>.</p>
-<p>If exponent is 0, the <code>for loop</code> will execute 0 times, and the function will return 1.<br />
-If exponent is 1, the <code>for loop</code> will execute 1 time, and the function will return 1 * base.<br />
-If exponent is 2, the <code>for loop</code> will execute 2 times, and the function will return 1 * base * base.</p>
+<ul>
+<li>If exponent is <code>0</code>, the <code>for loop</code> will execute 0 times, and the function will return <code>1</code>.  </li>
+<li>If exponent is <code>1</code>, the <code>for loop</code> will execute 1 time, and the function will return <code>1 * base</code>.  </li>
+<li>If exponent is <code>2</code>, the <code>for loop</code> will execute 2 times, and the function will return <code>1 * base * base</code>.</li>
+</ul>
 <p>Although most <code>for loops</code> increment the loop variable by 1, we can decrement it as well:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">count</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This prints the result:</p>
-<p>9 8 7 6 5 4 3 2 1 0</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>9 8 7 6 5 4 3 2 1 0
+</code></pre></div></td></tr></table></div>
 <p>Alternately, we can change the value of our loop variable by more than 1 with each iteration:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This prints the result:</p>
-<p>9 7 5 3 1</p>
-<p>Off-by-one errors</p>
-<p>One of the biggest problems that new programmers have with <code>for loops</code> (and other loops that utilize counters) are <code>off-by-one errors</code>. Off-by-one errors occur when the loop iterates one too many or one too few times to produce the desired result.</p>
-<p>Here’s an example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>0 2 4 6 8 10
+</code></pre></div></td></tr></table></div>
+<p>The perils of <code>operator!=</code> in for-loop conditions</p>
+<p>When writing a loop condition involving a value, we can often write the condition in many different ways. The following two loops execute identically:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5959,11 +6123,85 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1">// uses &lt;</span>
+<span class="w">         </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1">// uses !=</span>
+<span class="w">         </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>So which should we prefer? The former is the better choice, as it will terminate even if <code>i</code> jumps over the value <code>10</code>, whereas the latter will not. The following example demonstrates this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1">// uses &lt;, still terminates</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// jump over value 10</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1">// uses !=, infinite loop</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// jump over value 10</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>Avoid <code>operator!=</code> when doing numeric comparisons in the for-loop condition.</p>
+</div>
+<h2 id="_2">差一错误</h2>
+<p>One of the biggest problems that new programmers have with <code>for loops</code> (and other loops that utilize counters) are <a href="../Off-by-one/">差一错误</a>。 Off-by-one errorsoccur when the loop iterates one too many or one too few times to produce the desired result.</p>
+<p>Here’s an example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// oops, we used operator&lt; instead of operator&lt;=</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -5971,7 +6209,7 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 <p>COPY</p>
 <p>This program is supposed to print <code>1 2 3 4 5</code>, but it only prints <code>1 2 3 4</code> because we used the wrong relational operator.</p>
 <p>Although the most common cause for these errors is using the wrong relational operator, they can sometimes occur by using pre-increment or pre-decrement instead of post-increment or post-decrement, or vice-versa.</p>
-<p>Omitted expressions</p>
+<h2 id="_3">省略表达式</h2>
 <p>It is possible to write <em>for loops</em> that omit any or all of the statements or expressions. For example, in the following example, we’ll omit the init-statement and end-expression, leaving only the condition:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5985,7 +6223,9 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -5996,12 +6236,15 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 <span class="w">        </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This <em>for loop</em> produces the result:</p>
-<p>0 1 2 3 4 5 6 7 8 9</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>0 1 2 3 4 5 6 7 8 9
+</code></pre></div></td></tr></table></div>
 <p>Rather than having the <em>for loop</em> do the initialization and incrementing, we’ve done it manually. We have done so purely for academic purposes in this example, but there are cases where not declaring a loop variable (because you already have one) or not incrementing it in the end-expression (because you’re incrementing it some other way) is desired.</p>
 <p>Although you do not see it very often, it is worth noting that the following example produces an infinite loop:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6017,7 +6260,7 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 <p>COPY</p>
 <p>This might be a little unexpected, as you’d probably expect an omitted condition-expression to be treated as <code>false</code>. However, the C++ standard explicitly (and inconsistently) defines that an omitted condition-expression in a for loop should be treated as <code>true</code>.</p>
 <p>We recommend avoiding this form of the for loop altogether and using <code>while(true)</code> instead.</p>
-<p>For loops with multiple counters</p>
+<h2 id="_4">有多个计数的循环</h2>
 <p>Although <code>for loops</code> typically iterate over only one variable, sometimes <code>for loops</code> need to work with multiple variables. To assist with this, the programmer can define multiple variables in the init-statement, and can make use of the comma operator to change the value of multiple variables in the end-expression:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -6040,7 +6283,16 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 <p>COPY</p>
 <p>This loop defines and initializes two new variables: <code>x</code> and <code>y</code>. It iterates <code>x</code> over the range <code>0</code> to <code>9</code>, and after each iteration <code>x</code> is incremented and <code>y</code> is decremented.</p>
 <p>This program produces the result:</p>
-<p>0 9
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>0 9
 1 8
 2 7
 3 6
@@ -6049,11 +6301,14 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 6 3
 7 2
 8 1
-9 0</p>
-<p>This is about the only place in C++ where defining multiple variables in the same statement, and use of the comma operator is considered an acceptable practice.</p>
-<p>Best practice</p>
+9 0
+</code></pre></div></td></tr></table></div>
+This is about the only place in C++ where defining multiple variables in the same statement, and use of the comma operator is considered an acceptable practice.</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Defining multiple variables (in the init-statement) and using the comma operator (in the end-expression) is acceptable inside a <code>for statement</code>.</p>
-<p>Nested for loops</p>
+</div>
+<h2 id="_5">嵌套循环</h2>
 <p>Like other types of loops, <code>for loops</code> can be nested inside other loops. In the following example, we’re nesting a <code>for loop</code> inside another <code>for loop</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6089,18 +6344,27 @@ If exponent is 2, the <code>for loop</code> will execute 2 times, and the func
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>For each iteration of the outer loop, the inner loop runs in its entirety. Consequently, the output is:</p>
-<p>a012
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>a012
 b012
 c012
 d012
-e012</p>
+e012
+</code></pre></div></td></tr></table></div>
 <p>Here’s some more detail on what’s happening here. The outer loop runs first, and char <code>c</code> is initialized to <code>'a'</code>. Then <code>c &lt;= 'e'</code> is evaluated, which is <code>true</code>, so the loop body executes. Since <code>c</code> is set to <code>'a'</code>, this first prints <code>a</code>. Next the inner loop executes entirely (which prints <code>0</code>, <code>1</code>, and <code>2</code>). Then a newline is printed. Now the outer loop body is finished, so the outer loop returns to the top, <code>c</code> is incremented to <code>'b'</code>, and the loop condition is re-evaluated. Since the loop condition is still <code>true</code> the next iteration of the outer loop begins. This prints <code>b012\n</code>. And so on.</p>
-<p>Conclusion</p>
-<p><code>For statements</code> are the most commonly used loop in the C++ language. Even though its syntax is typically a bit confusing to new programmers, you will see <code>for loops</code>so often that you will understand them in no time at all!</p>
+<h2 id="_6">小结</h2>
+<p><code>For statements</code> are the most commonly used loop in the C++ language. Even though its syntax is typically a bit confusing to new programmers, you will see <code>for loops</code> so often that you will understand them in no time at all!</p>
 <p><code>For statements</code> excel when you have a counter variable. If you do not have a counter, a <code>while statement</code> is probably a better choice.</p>
-<p>Best practice</p>
-<p>Prefer <code>for loops</code> over <code>while loops</code> when there is an obvious loop variable.<br />
-Prefer <code>while loops</code> over <code>for loops</code> when there is no obvious loop variable.</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<ul>
+<li>Prefer <code>for loops</code> over <code>while loops</code> when there is an obvious loop variable.  </li>
+<li>Prefer <code>while loops</code> over <code>for loops</code> when there is no obvious loop variable.</li>
+</ul>
+</div>
 
 
               </article>

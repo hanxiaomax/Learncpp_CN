@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2008,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2112,9 +2117,80 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.12 - 代码测试
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.12 - 代码测试
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    有关测试的难题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    化整为零进行测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    非正式测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    保存测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    自动化测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    单元测试框架
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    集成测试
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5822,63 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    有关测试的难题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    化整为零进行测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    非正式测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    保存测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    自动化测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    单元测试框架
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    集成测试
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5801,7 +5934,7 @@
 <p>But more likely you’ve written a program you intend to run many times, that uses loops and conditional logic, and accepts user input of some kind. You’ve possibly written functions that may be reusable in other future programs. You may have experienced a bit of scope creep, where you added some new capabilities that were originally not planned for. Maybe you’re even intending to distribute this program to other people (who are likely to try things you haven’t thought of). In this case, you really should be validating that your program works like you think it does under a wide variety of conditions -- and that requires some proactive testing.</p>
 <p>Just because your program worked for one set of inputs doesn’t mean it’s going to work correctly in all cases.</p>
 <p>Software verification (a.k.a. software testing) is the process of determining whether or not the software works as expected in all cases.</p>
-<p>The testing challenge</p>
+<h2 id="_1">有关测试的难题</h2>
 <p>Before we talk about some practical ways to test your code, let’s talk about why testing your program comprehensively is difficult.</p>
 <p>Consider this simple program:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5861,7 +5994,7 @@
 <p>Every time we ask for user input, or have a conditional in our code, we increase the number of possible ways our program can execute by some multiplicative factor. For all but the simplest programs, explicitly testing every combination of inputs becomes impossible almost immediately.</p>
 <p>Now, your intuition should be telling you that you really shouldn’t need to run the above program 18 quintillion times to ensure it works. You may reasonably conclude that if case 1 works for one pair of <code>x</code> and <code>y</code> values where <code>x &gt; y</code>, it should work for any pair of <code>x</code> and <code>y</code> where <code>x &gt; y</code>. Given that, it becomes apparent that we really only need to run this program about three times (once to exercise each of the three cases in function <code>compare()</code>) to have a high degree of confidence it works as desired. There are other similar tricks we can use to dramatically reduce the number of times we have to test something, in order to make testing manageable.</p>
 <p>There’s a lot that can be written about testing methodologies -- in fact, we could write a whole chapter on it. But since it’s not a C++ specific topic, we’ll stick to a brief and informal introduction, covered from the point of view of you (as the developer) testing your own code. In the next few subsections, we’ll talk about some <em>practical</em> things you should be thinking about as you test your code.</p>
-<p>Test your programs in small pieces</p>
+<h2 id="_2">化整为零进行测试</h2>
 <p>Consider an auto manufacturer that is building a custom concept car. Which of the following do you think they do?<br />
 a) Build (or buy) and test each car component individually before installing it. Once the component has been proven to work, integrate it into the car and retest it to make sure the integration worked. At the end, test the whole car, as a final validation that everything seems good.<br />
 b) Build a car out of all of the components all in one go, then test the whole thing for the first time right at the end.</p>
@@ -5871,11 +6004,13 @@ b) Build a car out of all of the components all in one go, then test the whole t
 <p>By the time they get around to having the whole car assembled, they should have reasonable confidence that the car will work -- after all, all the parts have been tested in isolation and when initially integrated. It’s still possible that unexpected issues will be found at this point, but that risk is minimized by all the prior testing.</p>
 <p>The above analogy holds true for programs as well, though for some reason, new programmers often don’t realize it. You’re much better off writing small functions (or classes), and then compiling and testing them immediately. That way, if you make a mistake, you’ll know it has to be in the small amount of code that you changed since the last time you compiled/tested. That means fewer places to look, and far less time spent debugging.</p>
 <p>Testing a small part of your code in isolation to ensure that “unit” of code is correct is called unit testing. Each unit test is designed to ensure that a particular behavior of the unit is correct.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Write your program in small, well defined units (functions or classes), compile often, and test your code as you go.</p>
+</div>
 <p>If the program is short and accepts user input, trying a variety of user inputs might be sufficient. But as programs get longer and longer, this becomes less sufficient, and there is more value in testing individual functions or classes before integrating them into the rest of the program.</p>
 <p>So how can we test our code in units?</p>
-<p>Informal testing</p>
+<h2 id="_3">非正式测试</h2>
 <p>One way you can test code is to do informal testing as you write the program. After writing a unit of code (a function, a class, or some other discrete “package” of code), you can write some code to test the unit that was just added, and then erase the test once the test passes. As an example, for the following isLowerVowel() function, you might write the following code:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5931,7 +6066,7 @@ b) Build a car out of all of the components all in one go, then test the whole t
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>If the results come back as <code>1</code> and <code>0</code>, then you’re good to go. You know your function works for some basic cases, and you can reasonably infer by looking at the code that it will work for the cases you didn’t test (‘e’, ‘i’, ‘o’, and ‘u’). So you can erase that temporary test code, and continue programming.</p>
-<p>Preserving your tests</p>
+<h2 id="_4">保存测试</h2>
 <p>Although writing temporary tests is a quick and easy way to test some code, it doesn’t account for the fact that at some point, you may want to test that same code again later. Perhaps you modified a function to add a new capability, and want to make sure you didn’t break anything that was already working. For that reason, it can make more sense to preserve your tests so they can be run again in the future. For example, instead of erasing your temporary test code, you could move the tests into a testVowel() function:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5991,9 +6126,8 @@ b) Build a car out of all of the components all in one go, then test the whole t
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <p>As you create more tests, you can simply add them to the <code>testVowel()</code> function.</p>
-<p>Automating your test functions</p>
+<h2 id="_5">自动化测试</h2>
 <p>One problem with the above test function is that it relies on you to manually verify the results when you run it. This requires you to remember what the expected answer was at worst (assuming you didn’t document it), and manually compare the actual results to the expected results.</p>
 <p>We can do better by writing a test function that contains both the tests AND the expected answers and compares them so we don’t have to.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6058,9 +6192,9 @@ b) Build a car out of all of the components all in one go, then test the whole t
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Now, you can call <code>testVowel()</code> at any time to re-prove that you haven’t broken anything, and the test routine will do all the work for you, returning either an “all good” signal (return value <code>0</code>), or the test number that didn’t pass, so you can investigate why it broke. This is particularly useful when going back and modifying old code, to ensure you haven’t accidentally broken anything!</p>
-<p>Unit testing frameworks</p>
+<h2 id="_6">单元测试框架</h2>
 <p>Because writing functions to exercise other functions is so common and useful, there are entire frameworks (called unit testing frameworks) that are designed to help simplify the process of writing, maintaining, and executing unit tests. Since these involve third party software, we won’t cover them here, but you should be aware they exist.</p>
-<p>Integration testing</p>
+<h2 id="_7">集成测试</h2>
 <p>Once each of your units has been tested in isolation, they can be integrated into your program and retested to make sure they were integrated properly. This is called an integration test. Integration testing tends to be more complicated -- for now, running your program a few times and spot checking the behavior of the integrated unit will suffice.</p>
 
 

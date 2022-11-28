@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#so-we-should-use-mersenne-twister-right" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2007,7 +2007,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -5744,8 +5744,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#so-we-should-use-mersenne-twister-right" class="md-nav__link">
-    So we should use Mersenne Twister, right?
+  <a href="#_1" class="md-nav__link">
+    算法和状态
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prngs" class="md-nav__link">
+    伪随机数生成器 (PRNGs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prng" class="md-nav__link">
+    PRNG 的种子
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prngprng" class="md-nav__link">
+    什么样的PRNG是好PRNG？(选读)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prng_1" class="md-nav__link">
+    多种不同的 PRNG 算法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C++ 中的随机化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mersenne-twister" class="md-nav__link">
+    所以我们应该使用 Mersenne Twister，对吗？
   </a>
   
 </li>
@@ -5796,7 +5838,7 @@
 <p>However, computers aren’t designed to take advantage of physical variables -- your computer can’t toss a coin, throw a dice, or shuffle real cards. Modern computers live in a controlled electrical world where everything is binary (0 or 1) and there is no in-between. By their very nature, computers are designed to produce results that are as predictable as possible. When you tell the computer to calculate 2 + 2, you <em>always</em> want the answer to be 4. Not 3 or 5 on occasion.</p>
 <p>Consequently, computers are generally incapable of generating truly random numbers (at least through software). Instead, modern programs typically _simulate_randomness using an algorithm.</p>
 <p>In this lesson, we’ll cover a lot of the theory behind how random numbers are generated in programs, and introduce some terminology we’ll use in future lessons.</p>
-<p>Algorithms and state</p>
+<h2 id="_1">算法和状态</h2>
 <p>First, let’s take a detour through the concepts of algorithms and states.</p>
 <p>An algorithm is a finite sequence of instructions that can be followed to solve some problem or produce some useful result.</p>
 <p>For example, let’s say your boss gives you a small text file containing a bunch of unsorted names (one per line), and asks you to sort the list. Since the list is small, and you don’t expect to do this often, you decide to sort it by hand. There are multiple ways to sort a list, but you might do something like this:</p>
@@ -5851,9 +5893,12 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This prints:</p>
-<p>4
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>4
 5
-6</p>
+6
+</code></pre></div></td></tr></table></div>
 <p>This algorithm is pretty simple. The first time we call <code>plusOne()</code>, <code>s_state</code> is initialized to value <code>3</code>. Then the next number in the sequence is generated and returned.</p>
 <p>An algorithm is considered to be stateful if it retains some information across calls. Conversely, a stateless algorithm does not store any information (and must be given all the information it needs to work with when it is called). Our <code>plusOne()</code> function is stateful, in that it uses the static variable <code>s_state</code> to store the last number that was generated. When applied to algorithms, the term state refers to the current values held in stateful variables.</p>
 <p>To generate the next number in the sequence, our algorithm uses a two step process:</p>
@@ -5862,7 +5907,7 @@
 <li>Then, the next number in the sequence is generated from the new state.</li>
 </ul>
 <p>Our algorithm is considered deterministic, meaning that for a given input (the value provided for <code>start</code>), it will always produce the same output sequence.</p>
-<p>Pseudo-random number generators (PRNGs)</p>
+<h2 id="prngs">伪随机数生成器 (PRNGs)</h2>
 <p>To simulate randomness, programs typically use a pseudo-random number generator. A pseudo-random number generator (PRNG) is an algorithm that generates a sequence of numbers whose properties simulate a sequence of random numbers.</p>
 <p>It’s easy to write a basic PRNG algorithm. Here’s a short PRNG example that generates 100 16-bit pseudo-random numbers:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5929,7 +5974,16 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>The result of this program is:</p>
-<p>23070   27857   22756   10839   27946   11613   30448   21987   22070   1001
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>23070   27857   22756   10839   27946   11613   30448   21987   22070   1001
 27388   5999    5442    28789   13576   28411   10830   29441   21780   23687
 5466    2957    19232   24595   22118   14873   5932    31135   28018   32421
 14648   10539   23166   22833   12612   28343   7562    18877   32592   19011
@@ -5938,44 +5992,65 @@
 15826   15109   24984   15755   23262   17809   2468    13079   19946   26141
 1968    16035   5878    7337    23484   24623   13826   26933   1480    6075
 11022   19393   1492    25927   30234   17485   23520   18643   5926    21209
-2028    16991   3634    30565   2552    20971   23358   12785   25092   30583</p>
+2028    16991   3634    30565   2552    20971   23358   12785   25092   30583
+</code></pre></div></td></tr></table></div>
 <p>Each number appears to be pretty random with respect to the previous one.</p>
 <p>Notice how similar <code>LCG16()</code> is to our <code>plusOne()</code> example above! We can pass <code>LCG16()</code> an initial value that is used to initialize the state. Then to produce the next number in the output sequence, the current state is modified (by applying some mathematical operations) to produce a new state, and the next number in the sequence is generated from that new state.</p>
 <p>As it turns out, this particular algorithm isn’t very good as a random number generator. But most PRNGs work similarly to <code>LCG16()</code> -- they just typically use more state variables and more complex mathematical operations in order to generate better quality results.</p>
-<p>Seeding a PRNG</p>
+<h2 id="prng">PRNG 的种子</h2>
 <p>The sequence of “random numbers” generated by a PRNG is not random at all. Just like our <code>plusOne()</code> function, <code>LCG16()</code> is also deterministic. Once the state has been initialized, <code>LCG16()</code> (and all other PRNGs) will generate the same output sequence.</p>
 <p>When a PRNG is instantiated, an initial value (or set of values) called a random seed (or seed for short) can be provided to initialize the state of the PRNG. When a PRNG has been initialized with a seed, we say it has been seeded.</p>
-<p>Key insight</p>
+<div class="admonition tldr">
+<p class="admonition-title">关键信息</p>
 <p>All of the values that a PRNG will produce are deterministically calculated from the seed value(s).</p>
+</div>
 <p>Most PRNGs that produce quality results use at least 16 bytes of state, if not significantly more. However, the size of the seed value can be smaller than the size of the state of the PRNG. When this happens, we say the PRNG has been underseeded.</p>
 <p>Ideally, every bit in the state is initialized from a seed of equal size, and every bit in the seed has been independently determined somehow. However, if a PRNG is underseeded, some number of bits in the state will need to be initialized from the same bits in the seed. If a PRNG is significantly underseeded (meaning the size of the seed is much smaller than the size of the state), the quality of the random results the PRNG produces can be impacted.</p>
-<p>What makes a good PRNG? (optional reading)</p>
+<h2 id="prngprng">什么样的PRNG是好PRNG？(选读)</h2>
 <p>In order to be a good PRNG, the PRNG needs to exhibit a number of properties:</p>
 <ul>
 <li>The PRNG should generate each number with approximately the same probability.</li>
 </ul>
 <p>This is called distribution uniformity. If some numbers are generated more often than others, the result of the program that uses the PRNG will be biased! To check distribution uniformity, we can use a histogram. A histogram is a graph that tracks how many times each number has been generated. Since our histograms are text-based, we’ll use a * symbol to represent each time a given number was generated.</p>
 <p>Consider a PRNG that generates numbers between 1 and 6. If we generate 36 numbers, a PRNG with distribution uniformity should generate a histogram that looks something like this:</p>
-<p>1|<strong><em>*</em>*
-2|</strong><strong><em>*
-3|</em></strong><strong><em>
-4|</em></strong><strong><em>
-5|</em></strong><strong><em>
-6|</em></strong>***</p>
-<p>A PRNG that is biased in some way will generate a histogram that is uneven, like this:</p>
-<p>1|<strong><em>
-2|</em></strong><strong><em>
-3|</em></strong><strong><em>
-4|</em></strong><strong><em>
-5|</em></strong><strong><em>
-6|</em></strong><strong>*</strong>*</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>1|******
+2|******
+3|******
+4|******
+5|******
+6|******
+</code></pre></div></td></tr></table></div>
+<p>A PRNG that is biased in some way will generate a histogram that is uneven, like this:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>1|***
+2|******
+3|******
+4|******
+5|******
+6|*********
+</code></pre></div></td></tr></table></div></p>
 <p>or this:</p>
-<p>1|<strong><em>*
-2|</em></strong><strong><em>*</em>
-3|</strong><strong><em>*
-4|</em></strong><strong><em>*</em>
-5|</strong><strong><em>*
-6|</em></strong>*</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>1|****
+2|********
+3|******
+4|********
+5|******
+6|****
+</code></pre></div></td></tr></table></div>
 <p>Let’s say you’re trying to write a random item generator for a game. When a monster is killed, your code generates a random number between 1 and 6, and if the result is a 6, the monster will drop a rare item instead of a common one. You would expect a 1 in 6 chance of this happening. But if the underlying PRNG is not uniform, and generates a lot more 6s than it should (like the second histogram above), your players will end up getting more rare items than you’d intended, possibly trivializing the difficulty of your game, or messing up your in-game economy.</p>
 <p>Finding PRNG algorithms that produce uniform results is difficult.</p>
 <ul>
@@ -5994,17 +6069,27 @@
 </ul>
 <p>All PRNGs are periodic, which means that at some point the sequence of numbers generated will begin to repeat itself. The length of the sequence before a PRNG begins to repeat itself is known as the period.</p>
 <p>For example, here are the first 100 numbers generated from a PRNG with poor periodicity:</p>
-<p>112 9   130 97  64  31  152 119 86  53<br />
-20  141 108 75  42  9   130 97  64  31<br />
-152 119 86  53  20  141 108 75  42  9 <br />
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>112 9   130 97  64  31  152 119 86  53  
+20  141 108 75  42  9   130 97  64  31  
+152 119 86  53  20  141 108 75  42  9   
 130 97  64  31  152 119 86  53  20  141 
 108 75  42  9   130 97  64  31  152 119 
-86  53  20  141 108 75  42  9   130 97<br />
-64  31  152 119 86  53  20  141 108 75<br />
-42  9   130 97  64  31  152 119 86  53<br />
-20  141 108 75  42  9   130 97  64  31<br />
-152 119 86  53  20  141 108 75  42  9</p>
-<p>You will note that it generated 9 as the 2nd number, again as the 16th number, and then every 14 numbers after that. This PRNG is stuck generating the following sequence repeatedly: 9-130-97-64-31-152-119-86-53-20-141-108-75-42-(repeat).</p>
+86  53  20  141 108 75  42  9   130 97  
+64  31  152 119 86  53  20  141 108 75  
+42  9   130 97  64  31  152 119 86  53  
+20  141 108 75  42  9   130 97  64  31  
+152 119 86  53  20  141 108 75  42  9
+</code></pre></div></td></tr></table></div>
+<p>You will note that it generated 9 as the 2nd number, again as the 16th number, and then every 14 numbers after that. This PRNG is stuck generating the following sequence repeatedly: <code>9-130-97-64-31-152-119-86-53-20-141-108-75-42-(repeat)</code>.</p>
 <p>This happens because PRNGs are deterministic. Once the state of a PRNG is identical to a prior state, the PRNG will start producing the same sequence of outputs it has produced before -- resulting in a loop.</p>
 <p>A good PRNG should have a long period for <em>all</em> seed numbers. Designing an algorithm that meets this property can be extremely difficult -- many PRNGs have long periods only for some seeds and not others. If the user happens to pick a seed that results in a state with a short period, then the PRNG won’t do a good job if many random numbers are needed.</p>
 <ul>
@@ -6012,21 +6097,21 @@
 </ul>
 <p>Most PRNGs have a state size of less than 4096 bytes, so total memory usage typically isn’t a concern. However, the larger the internal state, the more likely the PRNG is to be underseeded, and the slower the initial seeding will be (since there’s more state to initialize).</p>
 <p>Second, to generate the next number in sequence, a PRNG has to mix up its internal state by applying various mathematical operations. How much time this takes can vary significantly by PRNG and also by architecture (some PRNGs perform better on certain architectures than others). This doesn’t matter if you only generate random numbers periodically, but can have a huge impact if you need lots of randomness.</p>
-<p>There are many different kinds of PRNG algorithms</p>
+<h2 id="prng_1">多种不同的 PRNG 算法</h2>
 <p>Over the years, many different kinds of PRNG algorithms have been developed (Wikipedia has a good list <a href="https://en.wikipedia.org/wiki/List_of_random_number_generators">here</a>). Every PRNG algorithm has strengths and weaknesses that might make it more or less suitable for a particular applications, so selecting the right algorithm for your application is important.</p>
 <p>Many PRNGs are now considered relatively poor by modern standards -- and there’s no reason to use a PRNG that doesn’t perform well when it’s just as easy to use one that does.</p>
-<p>Randomization in C++ <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-random-number-generation/#random"></a></p>
+<h2 id="c">C++ 中的随机化</h2>
 <p>The randomization capabilities in C++ are accessible via the <code>&lt;random&gt;</code> header of the standard library. Within the random library, there are 6 PRNG families available for use (as of C++20):</p>
 <p>Type name   Family  Period  State size* Performance Quality Should I use this?
 minstd_rand
-minstd_rand0    Linear congruential generator   2^31    4 bytes Bad Awful   No
+minstd_rand0    Linear congruential generator   <code>2^31</code>  4 bytes Bad Awful   No
 mt19937
-mt19937_64  Mersenne twister    2^19937 2500 bytes  Decent  Decent  Probably (see next section)
+mt19937_64  Mersenne twister    <code>2^19937</code>   2500 bytes  Decent  Decent  Probably (see next section)
 ranlux24
-ranlux48    Subtract and carry  10^171  96 bytes    Awful   Good    No
-knuth_b Shuffled linear congruential generator  2^31    1028 bytes  Awful   Bad No
+ranlux48    Subtract and carry  <code>10^171</code>    96 bytes    Awful   Good    No
+knuth_b Shuffled linear congruential generator  <code>2^31</code>  1028 bytes  Awful   Bad No
 default_random_engine   Any of above (implementation defined)   Varies  Varies  ?   ?   No2
-rand()  Linear congruential generator   2^31    4 bytes Bad Awful   Nono</p>
+rand()  Linear congruential generator   <code>2^31</code>  4 bytes Bad Awful   Nono</p>
 <p>There is zero reason to use <code>knuth_b</code>, <code>default_random_engine</code>, or <code>rand()</code> (which is a random number generator provided for compatibility with C).</p>
 <p>As of C++20, the Mersenne Twister algorithm is the only PRNG that ships with C++ that has both decent performance and quality.</p>
 <div class="admonition info">
@@ -6034,7 +6119,7 @@ rand()  Linear congruential generator   2^31    4 bytes Bad Awful   Nono</p>
 <p>A test called <a href="http://pracrand.sourceforge.net/">PracRand</a> is often used to assess the performance and quality of PRNGs (to determine whether they have different kinds of biases). You may also see references to SmallCrush, Crush or BigCrush -- these are other tests that are sometimes used for the same purpose.</p>
 <p>If you want to see what the output of Pracrand looks like, <a href="https://arvid.io/2018/06/30/on-cxx-random-number-generator-quality/">this website</a> has output for all of the PRNGs that C++ supports as of C++20.</p>
 </div>
-<h2 id="so-we-should-use-mersenne-twister-right">So we should use Mersenne Twister, right?</h2>
+<h2 id="mersenne-twister">所以我们应该使用 Mersenne Twister，对吗？</h2>
 <p>Probably. For most applications, Mersenne Twister is fine, both in terms of performance and quality.</p>
 <p>However, it’s worth noting that by modern PRNG standards, Mersenne Twister is <a href="https://en.wikipedia.org/wiki/Mersenne_Twister#Disadvantages">a bit outdated</a>. The biggest issue with Mersenne Twister is that its results can be predicted after seeing 624 generated numbers, making it non-suitable for any application that requires non-predictability.</p>
 <p>If you are developing an application that requires the highest quality random results (e.g. a statistical simulation), the fastest results, or one where non-predictability is important (e.g. cryptography), you’ll need to use a 3rd party library.</p>

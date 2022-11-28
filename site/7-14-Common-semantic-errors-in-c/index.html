@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conditional-logic-errors" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2013,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2168,29 +2168,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conditional-logic-errors" class="md-nav__link">
-    Conditional logic errors
+  <a href="#_1" class="md-nav__link">
+    条件逻辑错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#infinite-loops" class="md-nav__link">
-    Infinite loops
+  <a href="#loops" class="md-nav__link">
+    无限循环 loops
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#off-by-one-errors" class="md-nav__link">
-    Off-by-one errors
+  <a href="#_2" class="md-nav__link">
+    差一错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#incorrect-operator-precedence" class="md-nav__link">
-    Incorrect operator precedence
+  <a href="#_3" class="md-nav__link">
+    运算符优先级错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    浮点数的精度问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    整型除法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    意外造成的空语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-else" class="md-nav__link">
+    What else?
   </a>
   
 </li>
@@ -5808,29 +5836,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conditional-logic-errors" class="md-nav__link">
-    Conditional logic errors
+  <a href="#_1" class="md-nav__link">
+    条件逻辑错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#infinite-loops" class="md-nav__link">
-    Infinite loops
+  <a href="#loops" class="md-nav__link">
+    无限循环 loops
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#off-by-one-errors" class="md-nav__link">
-    Off-by-one errors
+  <a href="#_2" class="md-nav__link">
+    差一错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#incorrect-operator-precedence" class="md-nav__link">
-    Incorrect operator precedence
+  <a href="#_3" class="md-nav__link">
+    运算符优先级错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    浮点数的精度问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    整型除法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    意外造成的空语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-else" class="md-nav__link">
+    What else?
   </a>
   
 </li>
@@ -5876,13 +5932,13 @@
   <h1>7.14 - C++ 中常见的语义错误</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>In lesson <a href="../3-1-Syntax-and-semantic-errors/">3.1 - 语法和语义错误</a>, we covered <code>syntax errors</code>, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of these types of errors, so they are trivial to catch, and usually straightforward to fix.</p>
+<p>In lesson <a href="../3-1-Syntax-and-semantic-errors/">3.1 - 语法和语义错误</a>， we covered <code>syntax errors</code>, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of such errors, so they are trivial to catch, and usually straightforward to fix.</p>
 <p>We also covered <code>semantic errors</code>, which occur when you write code that does not do what you intended. The compiler generally will not catch semantic errors (though in some cases, smart compilers may be able to generate a warning).</p>
 <p>Semantic errors can cause most of the same symptoms of <code>undefined behavior</code>, such as causing the program to produce the wrong results, causing erratic behavior, corrupting program data, causing the program to crash -- or they may not have any impact at all.</p>
 <p>When writing programs, it is almost inevitable that you will make semantic errors. You will probably notice some of these just by using the program: for example, if you were writing a maze game, and your character was able to walk through walls. Testing your program (<a href="../7-12-Introduction-to-testing-your-code/">7.12 - 代码测试</a>) can also help surface semantic errors.</p>
 <p>But there’s one other thing that can help -- and that’s knowing which type of semantic errors are most common, so you can spend a little more time ensuring things are right in those cases.</p>
 <p>In this lesson, we’ll cover a bunch of the most common types of semantic errors that occur in C++ (most of which have to do with flow control in some way).</p>
-<h2 id="conditional-logic-errors">Conditional logic errors</h2>
+<h2 id="_1">条件逻辑错误</h2>
 <p>One of the most common types of semantic errors is a conditional logic error. A conditional logic error occurs when the programmer incorrectly codes the logic of a conditional statement or loop condition. Here is a simple example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5905,7 +5961,7 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">// oops, we used operator&gt;= instead of operator&gt;</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is greater than 5&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is greater than 5</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -5933,7 +5989,9 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -5947,6 +6005,8 @@
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
@@ -5955,8 +6015,8 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter an integer: 5
 </code></pre></div></td></tr></table></div>
 <p>It didn’t print anything. This happens because on entrance to the for loop, <code>count &gt; x</code> is <code>false</code>, so the loop never iterates at all.</p>
-<h2 id="infinite-loops">Infinite loops</h2>
-<p>In lesson <a href="../7-7-Intro-to-loops-and-while-statements/">7.7 - 循环和 while 语句</a> we covered infinite loops, and showed this example:</p>
+<h2 id="loops">无限循环 loops</h2>
+<p>In lesson <a href="../7-7-Intro-to-loops-and-while-statements/">7.7 - 循环和 while 语句</a>, we covered infinite loops, and showed this example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5968,7 +6028,9 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -5977,6 +6039,8 @@
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// so this line will repeatedly execute</span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// this line will never execute</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// this line will never execute</span>
 <span class="p">}</span><span class="w"></span>
@@ -6000,7 +6064,9 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -6012,6 +6078,8 @@
 <span class="w">          </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
@@ -6019,8 +6087,8 @@
 <p>This program is supposed to print <code>5 4 3 2 1 blastoff!</code>, which it does, but it doesn’t stop there. In actuality, it prints:</p>
 <p>5 4 3 2 1 blastoff! 4294967295 4294967294 4294967293 4294967292 4294967291</p>
 <p>and then just keeps decrementing. The program will never terminate, because <code>count &gt;= 0</code> can never be <code>false</code> when <code>count</code> is an unsigned integer.</p>
-<h2 id="off-by-one-errors">Off-by-one errors</h2>
-<p>An off-by-one error is an error that occurs when a loop executes one too many or one too few times. Here’s an example that we covered in lesson <a href="../7-9-For-statements/">7.9 - for 语句</a>：</p>
+<h2 id="_2">差一错误</h2>
+<p>An off-by-one error is an error that occurs when a loop executes one too many or one too few times. Here’s an example that we covered in lesson <a href="../7-9-For-statements/">7.9 - for 语句</a>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6031,7 +6099,9 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -6040,12 +6110,15 @@
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>This code is supposed to print <code>1 2 3 4 5</code>, but it only prints <code>1 2 3 4</code> because the wrong relational operator was used.</p>
-<h2 id="incorrect-operator-precedence">Incorrect operator precedence</h2>
-<p>From lesson <a href="../5-7-Logical-operators/">5.7 - 逻辑运算符</a>, the following program makes an operator precedence mistake:</p>
+<p>COPY</p>
+<p>The programmer intended for this code to print <code>1 2 3 4 5</code>. However, the wrong relational operator was used (<code>&lt;</code> instead of <code>&lt;=</code>), so the loop executes one fewer times than intended, printing <code>1 2 3 4</code>.</p>
+<h2 id="_3">运算符优先级错误</h2>
+<p>From lesson <a href="../5-7-Logical-operators/">5.7 - 逻辑运算符</a>， the following program makes an operator precedence mistake:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6080,7 +6153,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5 is greater than 7
 </code></pre></div></td></tr></table></div>
 <p>This can also happen when mixing Logical OR and Logical AND in the same expression (Logical AND takes precedence over Logical OR). Use explicit parenthesization to avoid these kinds of errors.</p>
-<p>Precision issues with floating point types</p>
+<h2 id="_4">浮点数的精度问题</h2>
 <p>The following floating point variable doesn’t have enough precision to store the entire number:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -6095,7 +6168,7 @@
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">{</span><span class="w"> </span><span class="mf">0.123456789f</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -6104,7 +6177,7 @@
 <p>Because of this lack of precision, the number is rounded slightly:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>0.123457
 </code></pre></div></td></tr></table></div>
-<p>In lesson <a href="../5-6-Relational-operators-and-floating-point-comparisons/">5.6 - 关系运算符和浮点数比较</a>, we talked about how using <code>operator==</code> and <code>operator!=</code> can be problematic with floating point numbers due to small rounding errors (as well as what to do about it). Here’s an example:</p>
+<p>In lesson <a href="../5-6-Relational-operators-and-floating-point-comparisons/">5.6 - 关系运算符和浮点数比较</a>, we talked about how using <code>operator==</code> and <code>operator!=</code> can be problematic with floating point numbers due to small rounding errors (as well as what to do about it). Here’s an example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6124,18 +6197,19 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="p">{</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// should sum to 1.0</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;equal&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;not equal&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;not equal</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This program prints:</p>
-<p>not equal</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>not equal
+</code></pre></div></td></tr></table></div>
 <p>The more arithmetic you do with a floating point number, the more it will accumulate small rounding errors.</p>
-<p>Integer division</p>
+<h2 id="_5">整型除法</h2>
 <p>In the following example, we mean to do a floating point division, but because both operands are integers, we end up doing an integer division instead:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6154,7 +6228,7 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; divided by &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c1">// integer division</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; divided by &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// integer division</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -6163,9 +6237,9 @@
 <p>This prints:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5 divided by 3 is: 1
 </code></pre></div></td></tr></table></div>
-<p>In lesson <a href="../5-2-Arithmetic-operators/">5.2 - 数学运算符</a>， we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.</p>
-<p>Accidental null statements</p>
-<p>In lesson <a href="../7-13-Code-coverage/">7.13 - 代码覆盖率</a>, we covered <code>null statements</code>, which are statements that do nothing.</p>
+<p>In lesson <a href="../5-2-Arithmetic-operators/">5.2 - 数学运算符</a>, we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.</p>
+<h2 id="_6">意外造成的空语句</h2>
+<p>In lesson <a href="../7-3-Common-if-statement-problems/">7.3 - 常见的 if 语句错误</a>, we covered <code>null statements</code>, which are statements that do nothing.</p>
 <p>In the below program, we only want to blow up the world if we have the user’s permission:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6205,9 +6279,11 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>However, because of an accidental <code>null statement</code>, the function call to <code>blowUpWorld()</code> is always executed, so we blow it up regardless:</p>
-<p>Should we blow up the world again? (y/n): n
-Kaboom!</p>
-<p>Not using a compound statement when one is required</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Should we blow up the world again? (y/n): n
+Kaboom!
+</code></pre></div></td></tr></table></div>
+Not using a compound statement when one is required</p>
 <p>Another variant of the above program that always blows up the world:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6253,8 +6329,8 @@ Kaboom!</p>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Should we blow up the world again? (y/n): n
 Kaboom!
 </code></pre></div></td></tr></table></div>
-<p>A <code>dangling else</code> (covered in lesson <a href="../7-13-Code-coverage/">7.13 - 代码覆盖率</a>) also falls into this category.</p>
-<p>What else?</p>
+<p>A <code>dangling else</code> (covered in lesson <a href="../7-3-Common-if-statement-problems/">7.3 - 常见的 if 语句错误</a>) also falls into this category.</p>
+<h2 id="what-else">What else?</h2>
 <p>The above represents a good sample of the most common type of semantic errors new C++ programmers tend to make, but there are plenty more. Readers, if you have any additional ones that you think are common pitfalls, leave a note in the comments.</p>
 
 

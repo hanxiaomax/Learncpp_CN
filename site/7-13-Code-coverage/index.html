@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2008,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2126,9 +2131,66 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.13 - 代码覆盖率
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.13 - 代码覆盖率
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    代码覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    语句覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    分支覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    循环覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    测试不同类别的输入
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5808,49 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    代码覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    语句覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    分支覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    循环覆盖率
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    测试不同类别的输入
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5796,9 +5901,9 @@
 
 <details class="note"><summary>关键点速记</summary></details>
 <p>In the previous lesson <a href="../7-12-Introduction-to-testing-your-code/">7.12 - 代码测试</a>， we discussed how to write and preserve simple tests. In this lesson, we’ll talk about what kind of tests are useful to write to ensure your code is correct.</p>
-<p>Code coverage</p>
+<h2 id="_1">代码覆盖率</h2>
 <p>The term code coverage is used to describe how much of the source code of a program is executed while testing. There are many different metrics used for code coverage. We’ll cover a few of the more useful and popular ones in the following sections.</p>
-<p>Statement coverage</p>
+<h2 id="_2">语句覆盖率</h2>
 <p>The term statement coverage refers to the percentage of statements in your code that have been exercised by your testing routines.</p>
 <p>Consider the following function:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5853,7 +5958,7 @@
 <p>COPY</p>
 <p>This function will require two calls to test all of the statements, as there is no way to reach statement 2 and 3 in the same function call.</p>
 <p>While aiming for 100% statement coverage is good, it’s not enough to ensure correctness.</p>
-<p>Branch coverage</p>
+<h2 id="_3">分支覆盖率</h2>
 <p>Branch coverage refers to the percentage of branches that have been executed, each possible branch counted separately. An <code>if statement</code> has two branches -- a branch that executes when the condition is <code>true</code>, and a branch that executes when the condition is <code>false</code> (even if there is no corresponding <code>else statement</code> to execute). A switch statement can have many branches.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -5926,9 +6031,11 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>3 calls are needed to get 100% branch coverage here: <code>compare(1, 0)</code> tests the positive use case for the first <code>if statement</code>. <code>compare(0, 1)</code> tests the negative use case for the first <code>if statement</code> and the positive use case for the second <code>if statement</code>. <code>compare(0, 0)</code> tests the negative use case for the first and second <code>if statement</code> and executes the <code>else statement</code>. Thus, we can say this function is reliably tested with 3 calls (which is slightly better than 18 quintillion).</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Aim for 100% branch coverage of your code.</p>
-<p>Loop coverage</p>
+</div>
+<h2 id="_4">循环覆盖率</h2>
 <p>Loop coverage (informally called the 0, 1, 2 test) says that if you have a loop in your code, you should ensure it works properly when it iterates 0 times, 1 time, and 2 times. If it works correctly for the 2-iteration case, it should work correctly for all iterations greater than 2. These three tests therefore cover all possibilities (since a loop can’t execute a negative number of times).</p>
 <p>Consider:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5947,9 +6054,11 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>To test the loop within this function properly, you should call it three times: <code>spam(0)</code> to test the zero-iteration case, <code>spam(1)</code> to test the one-iteration case, and <code>spam(2)</code>to test the two-iteration case. If <code>spam(2)</code> works, then <code>spam(n)</code> should work, where <code>n &gt; 2</code>.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Use the <code>0, 1, 2 test</code> to ensure your loops work correctly with different number of iterations.</p>
-<p>Testing different categories of input</p>
+</div>
+<h2 id="_5">测试不同类别的输入</h2>
 <p>When writing functions that accept parameters, or when accepting user input, consider what happens with different categories of input. In this context, we’re using the term “category” to mean a set of inputs that have similar characteristics.</p>
 <p>For example, if I wrote a function to produce the square root of an integer, what values would it make sense to test it with? You’d probably start with some normal value, like <code>4</code>. But it would also be a good idea to test with <code>0</code>, and a negative number.</p>
 <p>Here are some basic guidelines for category testing:</p>
@@ -5957,8 +6066,10 @@
 <p>For floating point numbers, make sure you’ve considered how your function handles values that have precision issues (values that are slightly larger or smaller than expected). Good <code>double</code> type values to test with are <code>0.1</code> and <code>-0.1</code> (to test numbers that are slightly larger than expected) and <code>0.6</code> and <code>-0.6</code> (to test numbers that are slightly smaller than expected).</p>
 <p>For strings, make sure you’ve considered how your function handles an empty string (just a null terminator), normal valid strings, strings that have whitespace, and strings that are all whitespace.</p>
 <p>If your function takes a pointer, don’t forget to test <code>nullptr</code> as well (don’t worry if this doesn’t make sense, we haven’t covered it yet).</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Test different categories of input values to make sure your unit handles them properly.</p>
+</div>
 
 
               </article>

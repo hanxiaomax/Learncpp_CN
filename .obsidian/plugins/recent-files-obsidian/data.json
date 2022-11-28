@@ -1,20 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "B-2-introduction-to-C++14",
-      "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "B-1-introduction-to-C++11",
-      "path": "docs/B-1-introduction-to-C++11.md"
-    },
-    {
-      "basename": "A-4-C++FAQ",
-      "path": "docs/A-4-C++FAQ.md"
+      "basename": "B-2-introduction-to-C++14",
+      "path": "docs/B-2-introduction-to-C++14.md"
     },
     {
       "basename": "B-4-introduction-to-C++20",
@@ -23,6 +15,18 @@
     {
       "basename": "B-3-introduction-to-C++17",
       "path": "docs/B-3-introduction-to-C++17.md"
+    },
+    {
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++11",
+      "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "A-4-C++FAQ",
+      "path": "docs/A-4-C++FAQ.md"
     },
     {
       "basename": "M-2-R-value-references",
@@ -195,10 +199,6 @@
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
       "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-7-introduction-to-lambdas-anonymous-functions",
-      "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
     }
   ],
   "omittedPaths": [],

@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#stdexit" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2008,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2098,9 +2103,66 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.11 - 挂起（提前结束程序）
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.11 - 挂起（提前结束程序）
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stdexit" class="md-nav__link">
+    std::exit() 函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdexit_1" class="md-nav__link">
+    显式调用 std::exit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdatexit" class="md-nav__link">
+    std::atexit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdabort-stdterminate" class="md-nav__link">
+    std::abort 和 std::terminate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    什么时候应该挂起程序？
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5808,49 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stdexit" class="md-nav__link">
+    std::exit() 函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdexit_1" class="md-nav__link">
+    显式调用 std::exit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdatexit" class="md-nav__link">
+    std::atexit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdabort-stdterminate" class="md-nav__link">
+    std::abort 和 std::terminate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    什么时候应该挂起程序？
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5795,14 +5900,14 @@
   <h1>7.11 - 挂起（提前结束程序）</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>The last category of flow control statement we’ll cover is the halt. A halt is a flow control statement that terminates the program. In C++, halts are implemented as functions (rather than keywords), so our halt statements will be function calls.</p>
+<p>The last category of flow control statement we’ll cover in this chapter is the halt. A halt is a flow control statement that terminates the program. In C++, halts are implemented as functions (rather than keywords), so our halt statements will be function calls.</p>
 <p>Let’s take a brief detour, and recap what happens when a program exits normally. When the <code>main()</code> function returns (either by reaching the end of the function, or via a <code>return statement</code>), a number of different things happen.</p>
 <p>First, because we’re leaving the function, all local variables and function parameters are destroyed (as per usual).</p>
 <p>Next, a special function called <code>std::exit()</code> is called, with the return value from <code>main()</code> (the <code>status code</code>) passed in as an argument. So what is <code>std::exit()</code>?</p>
-<p>The std::exit() function</p>
+<h2 id="stdexit"><code>std::exit()</code> 函数</h2>
 <p><code>std::exit()</code> is a function that causes the program to terminate normally. Normal termination means the program has exited in an expected way. Note that the term <code>normal termination</code> does not imply anything about whether the program was successful (that’s what the <code>status code</code> is for). For example, let’s say you were writing a program where you expected the user to type in a filename to process. If the user typed in an invalid filename, your program would probably return a non-zero <code>status code</code> to indicate the failure state, but it would still have a <code>normal termination</code>.</p>
 <p><code>std::exit()</code> performs a number of cleanup functions. First, objects with static storage duration are destroyed. Then some other miscellaneous file cleanup is done if any files were used. Finally, control is returned back to the OS, with the argument passed to <code>std::exit()</code> used as the <code>status code</code>.</p>
-<p>Calling std::exit() explicitly</p>
+<h2 id="stdexit_1">显式调用 <code>std::exit()</code></h2>
 <p>Although <code>std::exit()</code> is called implicitly when function <code>main()</code> ends, <code>std::exit()</code> can also be called explicitly to halt the program before it would normally terminate. When <code>std::exit()</code> is called this way, you will need to include the <code>cstdlib</code> header.</p>
 <p>Here is an example of using <code>std::exit()</code> explicitly:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5849,19 +5954,25 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This program prints:</p>
-<p>1
-cleanup!</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>1
+cleanup!
+</code></pre></div></td></tr></table></div>
 <p>Note that the statements after the call to <code>std::exit()</code> never execute because the program has already terminated.</p>
 <p>Although in the program above we call <code>std::exit()</code> from function <code>main()</code>, <code>std::exit()</code> can be called from any function to terminate the program at that point.</p>
 <p>One important note about calling <code>std::exit()</code> explicitly: <code>std::exit()</code> does not clean up any local variables (either in the current function, or in functions up the <code>call stack</code>). Because of this, it’s generally better to avoid calling <code>std::exit()</code>.</p>
-<p>Warning</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
 <p>The <code>std::exit()</code> function does not clean up local variables in the current function or up the call stack.</p>
-<p>std::atexit</p>
+</div>
+<h2 id="stdatexit"><code>std::atexit</code></h2>
 <p>Because <code>std::exit()</code> terminates the program immediately, you may want to manually do some cleanup before terminating. In this context, cleanup means things like closing database or network connections, deallocating any memory you have allocated, writing information to a log file, etc…</p>
 <p>In the above example, we called function <code>cleanup()</code> to handle our cleanup tasks. However, remembering to manually call a cleanup function before calling every call to exit() adds burden to the programmer.</p>
-<p>To assist with this, C++ offers the <code>std::atexit()</code> function, which allows you to specify a function that will automatically be called on program termination via <code>std:exit()</code>.</p>
-<p>Related content</p>
-<p>We discuss passing functions as arguments in lesson <a href="https://www.learncpp.com/cpp-tutorial/function-pointers/">12.1 -- Function Pointers</a>.</p>
+<p>To assist with this, C++ offers the <code>std::atexit()</code> function, which allows you to specify a function that will automatically be called on program termination via <code>std::exit()</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">相关内容</p>
+<p>We discuss passing functions as arguments in lesson <a href="../12-1-function-pointers/">12.1 - 函数指针</a>[</p>
+</div>
 <p>Here’s an example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5911,13 +6022,17 @@ cleanup!</p>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This program has the same output as the prior example:</p>
-<p>1
-cleanup!</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>1
+cleanup!
+</code></pre></div></td></tr></table></div>
 <p>So why would you want to do this? It allows you to specify a cleanup function in one place (probably in <code>main</code>) and then not have to worry about remembering to call that function explicitly before calling <code>std::exit()</code>.</p>
 <p>A few notes here about <code>std::atexit()</code> and the cleanup function: First, because <code>std::exit()</code> is called implicitly when <code>main()</code> terminates, this will invoke any functions registered by <code>std::atexit()</code> if the program exits that way. Second, the function being registered must take no parameters and have no return value. Finally, you can register multiple cleanup functions using <code>std::atexit()</code> if you want, and they will be called in reverse order of registration (the last one registered will be called first).</p>
-<p>For advanced readers</p>
-<p>In multi-threaded programs, calling <code>std::exit()</code> can cause your program to crash (because the thread calling <code>std::exit()</code> will cleanup static objects that may still be accessed by other threads). For this reason, C++ has introduced another pair of functions that work similarly to <code>std::exit()</code> and <code>std::atexit()</code> called <code>std::quick_exit()</code> and <code>std::at_quick_exit()</code>. <code>std::quick_exit()</code> terminates the program normally, but does not clean up static objects, and may or may not do other types of cleanup. <code>std::at_quick_exit()</code> performs the same role as <code>std::atexit()</code> for programs terminated with <code>std::quick_exit()</code>.</p>
-<p>std::abort and std::terminate</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
+<p>In multi-threaded programs, calling <code>std::exit()</code> can cause your program to crash (because the thread calling <code>std::exit()</code> will cleanup static objects that may still be accessed by other threads). For this reason, C++ has introduced another pair of functions that work similarly to <code>std::exit()</code> and <code>std::atexit()</code>called <code>std::quick_exit()</code> and <code>std::at_quick_exit()</code>. <code>std::quick_exit()</code> terminates the program normally, but does not clean up static objects, and may or may not do other types of cleanup. <code>std::at_quick_exit()</code> performs the same role as <code>std::atexit()</code> for programs terminated with <code>std::quick_exit()</code>.</p>
+</div>
+<h2 id="stdabort-stdterminate"><code>std::abort</code> 和 <code>std::terminate</code></h2>
 <p>C++ contains two other halt-related functions.</p>
 <p>The <code>std::abort()</code> function causes your program to terminate abnormally. Abnormal termination means the program had some kind of unusual runtime error and the program couldn’t continue to run. For example, trying to divide by 0 will result in an abnormal termination. <code>std::abort()</code> does not do any cleanup.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5947,12 +6062,14 @@ cleanup!</p>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<p>We will see cases later in this chapter (<a href="https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/">7.17 -- Assert and static_assert</a>) where <code>std::abort</code> is called implicitly.</p>
+<p>We will see cases later in this chapter (<a href="../7-17-assert-and-static-assert/">7.17 - 断言和 static_assert</a>) where <code>std::abort</code> is called implicitly.</p>
 <p>The <code>std::terminate()</code> function is typically used in conjunction with <code>exceptions</code> (we’ll cover exceptions in a later chapter). Although <code>std::terminate</code> can be called explicitly, it is more often called implicitly when an exception isn’t handled (and in a few other exception-related cases). By default, <code>std::terminate()</code> calls <code>std::abort()</code>.</p>
-<p>When should you use a halt?</p>
+<h2 id="_1">什么时候应该挂起程序？</h2>
 <p>The short answer is “almost never”. Destroying local objects is an important part of C++ (particularly when we get into classes), and none of the above-mentioned functions clean up local variables. Exceptions are a better and safer mechanism for handling error cases.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Only use a halt if there is no safe way to return normally from the main function. If you haven’t disabled exceptions, prefer using exceptions for handling errors safely.</p>
+</div>
 
 
               </article>

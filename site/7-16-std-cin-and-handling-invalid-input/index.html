@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#stdcin" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2008,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2168,9 +2173,101 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.16 - std::in 和输入错误处理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.16 - std::in 和输入错误处理
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stdcin" class="md-nav__link">
+    std::cin、缓冲和提取操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    输入验证
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    例程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    非法输入的类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-1-extraction-succeeds-but-input-is-meaningless" class="md-nav__link">
+    Error case 1: Extraction succeeds but input is meaningless
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-2-extraction-succeeds-but-with-extraneous-input" class="md-nav__link">
+    Error case 2: Extraction succeeds but with extraneous input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-3-extraction-fails" class="md-nav__link">
+    Error case 3: Extraction fails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-4-extraction-succeeds-but-the-user-overflows-a-numeric-value" class="md-nav__link">
+    Error case 4: Extraction succeeds but the user overflows a numeric value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    Putting it all together
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5843,84 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stdcin" class="md-nav__link">
+    std::cin、缓冲和提取操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    输入验证
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    例程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    非法输入的类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-1-extraction-succeeds-but-input-is-meaningless" class="md-nav__link">
+    Error case 1: Extraction succeeds but input is meaningless
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-2-extraction-succeeds-but-with-extraneous-input" class="md-nav__link">
+    Error case 2: Extraction succeeds but with extraneous input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-3-extraction-fails" class="md-nav__link">
+    Error case 3: Extraction fails
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-case-4-extraction-succeeds-but-the-user-overflows-a-numeric-value" class="md-nav__link">
+    Error case 4: Extraction succeeds but the user overflows a numeric value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    Putting it all together
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5798,7 +5973,7 @@
 <p>Most programs that have a user interface of some kind need to handle user input. In the programs that you have been writing, you have been using std::cin to ask the user to enter text input. Because text input is so free-form (the user can enter anything), it’s very easy for the user to enter input that is not expected.</p>
 <p>As you write programs, you should always consider how users will (unintentionally or otherwise) misuse your programs. A well-written program will anticipate how users will misuse it, and either handle those cases gracefully or prevent them from happening in the first place (if possible). A program that handles error cases well is said to be <strong>robust</strong>.</p>
 <p>In this lesson, we’ll take a look specifically at ways the user can enter invalid text input via std::cin, and show you some different ways to handle those cases.</p>
-<p>std::cin, buffers, and extraction</p>
+<h2 id="stdcin"><code>std::cin</code>、缓冲和提取操作</h2>
 <p>In order to discuss how std::cin and operator&gt;&gt; can fail, it first helps to know a little bit about how they work.</p>
 <p>When we use operator&gt;&gt; to get user input and put it into a variable, this is called an “extraction”. The &gt;&gt; operator is accordingly called the extraction operator when used in this context.</p>
 <p>When the user enters input in response to an extraction operation, that data is placed in a buffer inside of std::cin. A <strong>buffer</strong> (also called a data buffer) is simply a piece of memory set aside for storing data temporarily while it’s moved from one place to another. In this case, the buffer is used to hold user input while it’s waiting to be extracted to variables.</p>
@@ -5823,7 +5998,7 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>If the user were to enter ‘b’, extraction would fail because ‘b’ can not be extracted to an integer variable.</p>
-<p>Validating input</p>
+<h2 id="_1">输入验证</h2>
 <p>The process of checking whether user input conforms to what the program is expecting is called <strong>input validation</strong>.</p>
 <p>There are three basic ways to do input validation:</p>
 <ul>
@@ -5840,7 +6015,7 @@
 <p>Some graphical user interfaces and advanced text interfaces will let you validate input as the user enters it (character by character). Generally speaking, the programmer provides a validation function that accepts the input the user has entered so far, and returns true if the input is valid, and false otherwise. This function is called every time the user presses a key. If the validation function returns true, the key the user just pressed is accepted. If the validation function returns false, the character the user just input is discarded (and not shown on the screen). Using this method, you can ensure that any input the user enters is guaranteed to be valid, because any invalid keystrokes are discovered and discarded immediately. Unfortunately, std::cin does not support this style of validation.</p>
 <p>Since strings do not have any restrictions on what characters can be entered, extraction is guaranteed to succeed (though remember that std::cin stops extracting at the first non-leading whitespace character). Once a string is entered, the program can then parse the string to see if it is valid or not. However, parsing strings and converting string input to other types (e.g. numbers) can be challenging, so this is only done in rare cases.</p>
 <p>Most often, we let std::cin and the extraction operator do the hard work. Under this method, we let the user enter whatever they want, have std::cin and operator&gt;&gt; try to extract it, and deal with the fallout if it fails. This is the easiest method, and the one we’ll talk more about below.</p>
-<p>A sample program</p>
+<h2 id="_2">例程</h2>
 <p>Consider the following calculator program that has no error handling:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5938,15 +6113,19 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This simple program asks the user to enter two numbers and a mathematical operator.</p>
-<p>Enter a double value: 5
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter a double value: 5
 Enter one of the following: +, -, *, or /: *
 Enter a double value: 7
-5 * 7 is 35</p>
+5 * 7 is 35
+</code></pre></div></td></tr></table></div>
 <p>Now, consider where invalid user input might break this program.</p>
 <p>First, we ask the user to enter some numbers. What if they enter something other than a number (e.g. ‘q’)? In this case, extraction will fail.</p>
 <p>Second, we ask the user to enter one of four possible symbols. What if they enter a character other than one of the symbols we’re expecting? We’ll be able to extract the input, but we don’t currently handle what happens afterward.</p>
 <p>Third, what if we ask the user to enter a symbol and they enter a string like “<em>q hello”. Although we can extract the ‘</em>’ character we need, there’s additional input left in the buffer that could cause problems down the road.</p>
-<p>Types of invalid text input</p>
+<h2 id="_3">非法输入的类型</h2>
 <p>We can generally separate input text errors into four types:</p>
 <ul>
 <li>Input extraction succeeds but the input is meaningless to the program (e.g. entering ‘k’ as your mathematical operator).</li>
@@ -5956,11 +6135,14 @@ Enter a double value: 7
 </ul>
 <p>Thus, to make our programs robust, whenever we ask the user for input, we ideally should determine whether each of the above can possibly occur, and if so, write code to handle those cases.</p>
 <p>Let’s dig into each of these cases, and how to handle them using std::cin.</p>
-<p>Error case 1: Extraction succeeds but input is meaningless</p>
+<h2 id="error-case-1-extraction-succeeds-but-input-is-meaningless">Error case 1: Extraction succeeds but input is meaningless</h2>
 <p>This is the simplest case. Consider the following execution of the above program:</p>
-<p>Enter a double value: 5
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter a double value: 5
 Enter one of the following: +, -, *, or /: k
-Enter a double value: 7</p>
+Enter a double value: 7
+</code></pre></div></td></tr></table></div>
 <p>In this case, we asked the user to enter one of four symbols, but they entered ‘k’ instead. ‘k’ is a valid character, so std::cin happily extracts it to variable op, and this gets returned to main. But our program wasn’t expecting this to happen, so it doesn’t properly deal with this case (and thus never outputs anything).</p>
 <p>The solution here is simple: do input validation. This usually consists of 3 steps:</p>
 <ol>
@@ -6013,7 +6195,7 @@ Enter a double value: 7</p>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>As you can see, we’re using a while loop to continuously loop until the user provides valid input. If they don’t, we ask them to try again until they either give us valid input, shutdown the program, or destroy their computer.</p>
-<p>Error case 2: Extraction succeeds but with extraneous input</p>
+<h2 id="error-case-2-extraction-succeeds-but-with-extraneous-input">Error case 2: Extraction succeeds but with extraneous input</h2>
 <p>Consider the following execution of the above program:</p>
 <p>Enter a double value: 5*7</p>
 <p>What do you think happens next?</p>
@@ -6065,9 +6247,11 @@ Enter one of the following: +, -, </em>, or /: Enter a double value: 5 * 7 is 35
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Now our program will work as expected, even if we enter “5*7” for the first input -- the 5 will be extracted, and the rest of the characters will be removed from the input buffer. Since the input buffer is now empty, the user will be properly asked for input the next time an extraction operation is performed!</p>
-<p>Author’s note</p>
+<div class="admonition info">
+<p class="admonition-title">作者注</p>
 <p>Some lessons still pass 32767 to <code>std::cin.ignore()</code>. This is a magic number with no special meaning to <code>std::cin.ignore()</code> and should be avoided. If you see such an occurrence, feel free to point it out.</p>
-<p>Error case 3: Extraction fails</p>
+</div>
+<h2 id="error-case-3-extraction-fails">Error case 3: Extraction fails</h2>
 <p>Now consider the following execution of our updated calculator program:</p>
 <p>Enter a double value: a</p>
 <p>You shouldn’t be surprised that the program doesn’t perform as expected, but how it fails is interesting:</p>
@@ -6157,7 +6341,7 @@ Enter one of the following: +, -, *, or /: Oops, that input is invalid.  Please 
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>A failed extraction due to invalid input will cause the variable to be zero-initialized. Zero initialization means the variable is set to 0, 0.0, “”, or whatever value 0 converts to for that type.</p>
-<p>Error case 4: Extraction succeeds but the user overflows a numeric value</p>
+<h2 id="error-case-4-extraction-succeeds-but-the-user-overflows-a-numeric-value">Error case 4: Extraction succeeds but the user overflows a numeric value</h2>
 <p>Consider the following simple example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6197,7 +6381,7 @@ Enter one of the following: +, -, *, or /: Oops, that input is invalid.  Please 
 Enter another number between -32768 and 32767: The sum is: 32767</p>
 <p>In the above case, std::cin goes immediately into “failure mode”, but also assigns the closest in-range value to the variable. Consequently, x is left with the assigned value of 32767. Additional inputs are skipped, leaving y with the initialized value of 0. We can handle this kind of error in the same way as a failed extraction.</p>
 <p>A failed extraction due to invalid input will cause the variable to be zero-initialized. Zero initialization means the variable is set to 0, 0.0, “”, or whatever value 0 converts to for that type.</p>
-<p>Putting it all together</p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
 <p>Here’s our example calculator, updated with a few additional bits of error checking:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6371,8 +6555,7 @@ Enter another number between -32768 and 32767: The sum is: 32767</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Conclusion</p>
+<h2 id="_4">小结</h2>
 <p>As you write your programs, consider how users will misuse your program, especially around text input. For each point of text input, consider:</p>
 <ul>
 <li>Could extraction fail?</li>
@@ -6384,7 +6567,6 @@ Enter another number between -32768 and 32767: The sum is: 32767</p>
 <p>The following code will clear any extraneous input:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">.</span><span class="n">ignore</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">streamsize</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <p>The following code will test for and fix failed extractions or overflow:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -6398,10 +6580,11 @@ Enter another number between -32768 and 32767: The sum is: 32767</p>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">.</span><span class="n">ignore</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">streamsize</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">(),</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// and remove the bad input</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <p>Finally, use loops to ask the user to re-enter input if the original input was invalid.</p>
-<p>Author’s note</p>
+<div class="admonition info">
+<p class="admonition-title">作者注</p>
 <p>Input validation is important and useful, but it also tends to make examples more complicated and harder to follow. Accordingly, in future lessons, we will generally not do any kind of input validation unless it’s relevant to something we’re trying to teach.</p>
+</div>
 
 
               </article>

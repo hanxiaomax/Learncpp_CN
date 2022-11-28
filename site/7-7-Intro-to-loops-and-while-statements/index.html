@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-to-loops" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2013,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2070,8 +2070,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction-to-loops" class="md-nav__link">
-    Introduction to loops
+  <a href="#_1" class="md-nav__link">
+    循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    while 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#falsewhile" class="md-nav__link">
+    初始条件为false的while语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    无限循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    有意而为之的无限循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    循环变量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    循环变量应该为有符号数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    迭代执行N次
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    嵌套循环
   </a>
   
 </li>
@@ -5787,8 +5843,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction-to-loops" class="md-nav__link">
-    Introduction to loops
+  <a href="#_1" class="md-nav__link">
+    循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    while 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#falsewhile" class="md-nav__link">
+    初始条件为false的while语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    无限循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    有意而为之的无限循环
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    循环变量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    循环变量应该为有符号数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    迭代执行N次
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    嵌套循环
   </a>
   
 </li>
@@ -5850,9 +5962,9 @@
   <h1>7.7 - 循环和 while 语句</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<h2 id="introduction-to-loops">Introduction to loops</h2>
-<p>And now the real fun begins -- in the next set of lessons, we’ll cover loops. Loops are control flow constructs that allow a piece of code to execute repeatedly until some condition is met. Loops add a significant amount of flexibility into your programming toolkit, allowing you to do many things that would otherwise be difficult.</p>
-<p>For example, let’s say you wanted to print all the numbers between 1 and 10. Without loops, you might try something like this:</p>
+<h2 id="_1">循环</h2>
+<p>现在真正的乐趣开始了——在接下来的课程中，我们将介绍循环。循环是控制流结构，它允许一段代码被重复执行，直到满足某些条件。循环为编程工具包增加了很大的灵活性，帮助我们完成很多不使用循环难以实现的功能。</p>
+<p>例如，假设你想要打印1到10，如果没有循环，你可能会这么做：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5865,20 +5977,21 @@
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;1 2 3 4 5 6 7 8 9 10&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; done!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; done!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>While that’s doable, it becomes increasingly less so as you want to print more numbers: what if you wanted to print all the numbers between 1 and 1000? That would be quite a bit of typing! But such a program is writable in this way because we know at compile time how many numbers we want to print.</p>
-<p>Now, let’s change the parameters a bit. What if we wanted to ask the user to enter a number and then print all the numbers between 1 and the number the user entered? The number the user will enter isn’t knowable at compile-time. So how might we go about solving this?</p>
-<p>While statements</p>
-<p>The while statement (also called a while loop) is the simplest of the three loop types that C++ provides, and it has a definition very similar to that of an <code>if statement</code>:</p>
-<p>while (condition)
-    statement;</p>
-<p>A <code>while statement</code> is declared using the while keyword. When a <code>while statement</code> is executed, the <code>condition</code> is evaluated. If the condition evaluates to <code>true</code>, the associated statement executes.</p>
-<p>However, unlike an <code>if statement</code>, once the statement has finished executing, control returns to the top of the <code>while statement</code> and the process is repeated. This means a <code>while statement</code> will keep looping for as long as the condition evaluates to <code>true</code>.</p>
-<p>Let’s take a look at a simple while loop that prints all the numbers from 1 to 10:</p>
+<p>虽然这么做是可行的，但当我们需要打印更多的数字时，它会变得越来越不可行：如果需要打印1到1000之间的所有数字呢？那打字的工作量就太大了！而且该程序要打印的内容必须在编译时就知道要打印多少数字。</p>
+<p>现在，让我们稍微改变一下参数。如果需要让用户输入一个数字，然后打印1和用户输入的数字之间的所有数字，那会怎么样呢?用户将输入的数字在编译时是不可知的，要怎么解决这个问题呢?</p>
+<h2 id="while"><code>while</code> 语句</h2>
+<p><code>while</code> 语句（也被叫做<code>while</code>循环）是C++中最简单循环，它的定义和 if 语句特别地像：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">statement</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p><code>while</code> 语句的声明需要使用<code>while</code>关键字。当 <code>while</code> 语句执行时，<code>condition</code> 会被求值。如果求值结果是真，则相关的语句会被执行。</p>
+<p>但是，和if语句不同的是，<code>while</code> 语句中的<code>statement</code>执行完成后，会返回到<code>while</code>语句的开始，然后继续执行、这意味着只要条件求值为真，<code>while</code>循环就会不停地执行。</p>
+<p>还是打印1到10的例子，这次使用<code>while</code>循环完成：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5904,18 +6017,18 @@
 <span class="w">        </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;done!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;done!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This outputs:</p>
-<p>1 2 3 4 5 6 7 8 9 10 done!</p>
-<p>Let’s take a closer look at what this program is doing. First, <code>count</code> is initialized to <code>1</code>, which is the first number we’ll print. The condition <code>count &lt;= 10</code> is <code>true</code>, so the statement executes. In this case, our statement is a block, so all the statements in the block will execute. The first statement in the block prints <code>1</code> and a space, and the second increments <code>count</code> to 2. Control now returns back to the top of the <code>while statement</code>, and the condition is evaluated again. <code>2 &lt;= 10</code> evaluates to true, so the code block is executed again. The loop will repeatedly execute until <code>count</code> is <code>11</code>, at which point <code>11 &lt;= 10</code> will evaluate to <code>false</code>, and the statement associated with the loop will be skipped. At this point, the loop is done.</p>
-<p>While this program is a bit more code than typing all the numbers between 1 and 10, consider how easy it would be to modify the program to print all the numbers between 1 and 1000: all you’d need to do is change <code>count &lt;= 10</code> to <code>count &lt;= 1000</code>.</p>
-<p>While statements that evaluate to false initially</p>
-<p>Note that if the condition initially evaluates to <code>false</code>, the associated statement will not execute at all. Consider the following program:</p>
+<p>输出：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1 2 3 4 5 6 7 8 9 10 done!
+</code></pre></div></td></tr></table></div>
+<p>让我们仔细看看这个程序正在做什么。首先，<code>count</code> 被初始化为1，这是我们要打印的第一个数字。条件<code>count &lt;= 10</code> 为 <code>true</code>，因此执行语句。在本例中，我们的语句是一个语句块，因此块中的所有语句都将执行。块中的第一个语句输出 1 和一个空格，第二个语句将<code>count</code> 递增到2。控制现在返回到<code>while</code>的顶部，并再次计算条件。<code>2 &lt;= 10</code> 的计算结果为仍然 <code>true</code>，因此代码块将再次执行。循环将重复执行，直到 <code>count</code> 为11 ，此时<code>11 &lt;= 10</code> 将被计算为 <code>false</code> ，与循环相关的语句将被跳过。至此，循环完成了。</p>
+<p>虽然上面的代码看上去似乎比手动输入1到10还多些，但是你可以想象，如果需要打印1到1000，我们只需要简单地将<code>count &lt;= 10</code> 改为 <code>count &lt;= 1000</code> 即可。</p>
+<h2 id="falsewhile">初始条件为<code>false</code>的<code>while</code>语句</h2>
+<p>如果初始化条件为<code>false</code>，那么语句就完全不会被执行：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5941,15 +6054,14 @@
 <span class="w">        </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;done!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;done!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The condition <code>15 &lt;= 10</code> evaluates to <code>false</code>, so the associated statement is skipped. The program continues, and the only thing printed is <code>done!</code>.</p>
-<p>Infinite loops</p>
-<p>On the other hand, if the expression always evaluates to true, the while loop will execute forever. This is called an <strong>infinite loop</strong>. Here is an example of an infinite loop:</p>
+<p>由于 <code>15 &lt;= 10</code> 求值为 <code>false</code>，所以<code>while</code>中的所有语句都会被跳过，程序继续执行并打印<code>done</code>。</p>
+<h2 id="_2">无限循环</h2>
+<p>如果表达式始终求值为<code>true</code>，则<code>while</code>循环就会一直运行——称为无限循环或死循环。请看下面的例子中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5961,23 +6073,26 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">// this condition will never be false</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">// 该条件用于不会变为false</span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// so this line will repeatedly execute</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 反复执行</span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// this line will never execute</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 永远不会执行</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 永远不会执行</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Because <code>count</code> is never incremented in this program, <code>count &lt;= 10</code> will always be true. Consequently, the loop will never terminate, and the program will print “1 1 1 1 1″… forever.</p>
-<p>Intentional infinite loops</p>
-<p>We can declare an intentional infinite loop like this:</p>
+<p>因为 <code>count</code> 始终没有被递增，所以 <code>count &lt;= 10</code> 总是真。因此循环永远不会停止，程序不停地打印 “1 1 1 1 1″。</p>
+<h2 id="_3">有意而为之的无限循环</h2>
+<p>我们可以故意创建一个无限循环：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5986,9 +6101,8 @@
 <span class="w">  </span><span class="c1">// this loop will execute forever</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The only way to exit an infinite loop is through a return statement, a break statement, an exit statement, a goto statement, an exception being thrown, or the user killing the program.</p>
-<p>Here’s a silly example demonstrating this:</p>
+<p>退出无限循环的唯一方法是使用 <code>return</code>y 语句、<code>break</code> 语句、<code>exit</code> 语句、<code>goto</code> 语句、抛出异常或被其他程序终止。</p>
+<p>请看下面的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6023,16 +6137,17 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program will continuously loop until the user enters <code>n</code> as input, at which point the <code>if statement</code> will evaluate to <code>true</code> and the associated <code>return 0;</code> will cause function <code>main()</code> to exit, terminating the program.</p>
-<p>It is common to see this kind of loop in web server applications that run continuously and service web requests.</p>
-<p>Best practice</p>
-<p>Favor <code>while(true)</code> for intentional infinite loops.</p>
-<p>Loop variables</p>
-<p>Often, we want a loop to execute a certain number of times. To do this, it is common to use a loop variable, often called a counter. A loop variable is an integer that is used to count how many times a loop has executed. In the examples above, the variable <code>count</code> is a loop variable.</p>
-<p>Loop variables are often given simple names, such as <code>i</code>, <code>j</code>, or <code>k</code>. However, if you want to know where in your program a loop variable is used, and you use the search function on <code>i</code>, <code>j</code>, or <code>k</code>, the search function will return half of the lines in your program! For this reason, some developers prefer loop variable names like <code>iii</code>, <code>jjj</code>, or <code>kkk</code>. Because these names are more unique, this makes searching for loop variables much easier, and helps them stand out as loop variables. An even better idea is to use “real” variable names, such as <code>count</code>, or a name that gives more detail about what you’re counting (e.g. <code>userCount</code>).</p>
-<p>Loop variables should be signed</p>
-<p>Loop variables should almost always be signed, as unsigned integers can lead to unexpected issues. Consider the following code:</p>
+<p>该循环会不断执行，直到用户输入<code>n</code>，此时if语句的条件求值为真，<code>return 0</code> 被执行，main函数退出，程序终止。</p>
+<p>在持续运行并为web请求提供服务的web服务器应用程序中，经常可以看到这种循环。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>对于有意而为之的死循环，请使用 <code>while(true)</code>。</p>
+</div>
+<h2 id="_4">循环变量</h2>
+<p>通常，我们会希望一个循环执行一定次数。此时可以使用循环变量，称为计数器。循环变量是一个整数，用于计算循环执行了多少次。在上面的例子中，变量 <code>count</code> 是一个循环变量。</p>
+<p>循环变量通常有简单的名称，如i 、 j 或 k 。但是，如果你想知道循环变量在程序中的哪个位置被使用，此时你会搜索 i 、j 或 k ，此时会返回大量的搜索结果！因此，一些开发人员喜欢用 <code>iii</code> 、<code>jjj</code> 或 <code>kkk</code> 这样的变量名。因为这些名称更加独特，这使得搜索循环变量更加容易，并帮助它们作为循环变量脱颖而出。一个更好的主意是使用“真实的”变量名，比如<code>count</code>，或者一个关于你正在计数的东西的更详细的名字(例如<code>userCount</code>)。</p>
+<h2 id="_5">循环变量应该为有符号数</h2>
+<p>循环变量几乎都应该是有符号的，因为无符号整数可能导致意想不到的问题。考虑以下代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6054,7 +6169,9 @@
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
@@ -6074,17 +6191,20 @@
 <span class="w">        </span><span class="o">--</span><span class="n">count</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Take a look at the above example and see if you can spot the error. It’s not very obvious.</p>
-<p>It turns out, this program is an infinite loop. It starts out by printing <code>10 9 8 7 6 5 4 3 2 1 blastoff!</code> as desired, but then goes off the rails, and starts counting down from <code>4294967295</code>. Why? Because the loop condition <code>count &gt;= 0</code> will never be false! When count is <code>0</code>, <code>0 &gt;= 0</code> is true. Then <code>--count</code> is executed, and count wraps around back to <code>4294967295</code> (Assuming 32-bit integers). And since <code>4294967295 &gt;= 0</code> is true, the program continues. Because <code>count</code> is unsigned, it can never be negative, and because it can never be negative, the loop won’t terminate.</p>
-<p>Best practice</p>
-<p>Loop variables should be of type (signed) int.</p>
-<p>Doing something every N iterations</p>
-<p>Each time a loop executes, it is called an iteration.</p>
-<p>Often, we want to do something every 2nd, 3rd, or 4th iteration, such as print a newline. This can easily be done by using the modulus operator on our counter:</p>
+<p>看一下上面的例子，看看能否发现错误。并不是很明显。</p>
+<p>事实证明，这个程序是一个无限循环。它开始打印 <code>10 9 8 7 6 5 4 3 2 1 blastoff</code>，但随后就脱轨了，从<code>4294967295</code>开始倒数。为什么？因为循环条件 <code>count &gt;= 0</code> 永远不会为假！当<code>count</code>为 0 时，<code>0 &gt;= 0</code> 为真。然后执行<code>--count</code>， <code>count</code> 反转为<code>4294967295</code> (假设是32位整数)。由于 <code>4294967295 &gt;= 0</code> 为真，程序继续执行。因为 <code>count</code> 是无符号的，它永远不可能是负数，所以循环永远不会停止。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>循环变量应该是有符号整型。</p>
+</div>
+<h2 id="n">迭代执行N次</h2>
+<p>每次循环执行被称为一个迭代。</p>
+<p>通常，我们希望每隔第2、3或4次迭代做一些事情，例如打印换行符。这可以通过在计数器上使用求模运算轻松实现:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6128,7 +6248,7 @@
 
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">        </span><span class="c1">// if the loop variable is divisible by 10, print a newline</span>
+<span class="w">        </span><span class="c1">// 如果循环次数可以整除10，则打印换行</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
@@ -6141,8 +6261,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program produces the result:</p>
+<p>打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6153,8 +6272,8 @@
 31 32 33 34 35 36 37 38 39 40
 41 42 43 44 45 46 47 48 49 50
 </code></pre></div></td></tr></table></div>
-<p>Nested loops</p>
-<p>It is also possible to nest loops inside of other loops. In the following example, the nested loop (which we’re calling the inner loop) and the outer loop each have their own counters. Note that the loop expression for the inner loop makes use of the outer loop’s counter as well!</p>
+<h2 id="_6">嵌套循环</h2>
+<p>循环可以嵌套在其他循环中。在下面的例子中，被嵌套循环(我们称之为内层循环)和外层循环都有各自的计数器。注意，内部循环的循环表达式也使用了外部循环的计数器！</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6205,8 +6324,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
+<p>程序打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6217,13 +6335,13 @@
 1 2 3 4
 1 2 3 4 5
 </code></pre></div></td></tr></table></div>
-<p>Nested loops tend to be hard for new programmers to understand, so don’t be discouraged if you find this a bit confusing. For each iteration of the outer loop, the body of the outer loop will execute once. Because the outer loop body contains an inner loop, the inner loop is executed for each iteration of the outer loop.</p>
-<p>Let’s example how this works in more detail.</p>
-<p>First, we have an outer loop (with loop variable <code>outer</code>) that will loop 5 times (with <code>outer</code> having values <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, and <code>5</code> successively).</p>
-<p>On the first iteration of the outer loop, <code>outer</code> has value <code>1</code>, and then the outer loop body executes. Inside the body of the outer loop, we have another loop with loop variable <code>inner</code>. The inner loop iterates from <code>1</code> to <code>outer</code> (which has value <code>1</code>), so this inner loop will execute once, printing the value <code>1</code>. Then we print a newline, and increment <code>outer</code> to <code>2</code>.</p>
-<p>On the second iteration of the outer loop, <code>outer</code> has value <code>2</code>, and then the outer loop body executes. Inside the body of the outer loop, <code>inner</code> iterates from <code>1</code> to <code>outer</code>(which now has value <code>2</code>), so this inner loop will execute twice, printing the values <code>1</code> and <code>2</code>. Then we print a newline, and increment <code>outer</code> to <code>3</code>.</p>
-<p>This process continues, with the inner loop printing <code>1 2 3</code>, <code>1 2 3 4</code>, and <code>1 2 3 4 5</code> on successive passes. Eventually, <code>outer</code> is incremented to <code>6</code>, and because the outer loop condition (<code>outer &lt;= 5</code>) is then false, the outer loop is finished. Then the program ends.</p>
-<p>If you’re still finding this confusing, stepping through this program in a debugger line-by-line and watching the values of <code>inner</code> and <code>outer</code> is a good way to get a better understanding of what’s happening.</p>
+<p>新手程序员往往难以理解嵌套循环，所以如果你也看不懂的话，千万不要灰心丧气。对于外层循环的每一次迭代，外层循环的循环体内语句会执行一次。由于外层循环的循环体内包括内层循环，所以内层循环在每一个外层循环的迭代中都要完整执行一次。</p>
+<p>让我们仔细研究一下上面的代码：</p>
+<p>首先，对于外层循环(循环变量为 <code>outer</code>) 会迭代执行5次（ <code>outer</code> 依次变为 <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, 和 <code>5</code> ）。</p>
+<p>外层循环第一次迭代时 <code>outer</code> 值为 <code>1</code>，然后执行循环体内的语句。在循环体内，有另外一个循环，其循环变量为 <code>inner</code>。内层循环的循环变量从 <code>1</code> 到 <code>outer</code> (此时是 <code>1</code>)，所以内层循环执行一次，打印 <code>1</code>。然后打印换行，并将 <code>outer</code> 递增为<code>2</code>。</p>
+<p>在外层循环执行第二次迭代时，<code>outer</code> 的值为 <code>2</code>，然后执行循环体。在循环体内，<code>inner</code> 仍然从 <code>1</code> 到 <code>outer</code> (此时为 <code>2</code>)进行迭代。 所以这一次内层循环会执行两次，打印 <code>1</code>和<code>2</code>。 然后打印换行，并将 <code>outer</code> 递增为<code>3</code>。</p>
+<p>迭代继续进行的话，内存循环会依次打印 <code>1 2 3</code>、 <code>1 2 3 4</code> 以及<code>1 2 3 4 5</code> 。最终，<code>outer</code> 会递增到 <code>6</code>，此时因为外层的循环条件(<code>outer &lt;= 5</code>) 求值为false，所以外层循环会终止。程序退出。</p>
+<p>如果您仍然感到困惑，可以在调试器中逐行检查这个程序，并查看“inner”和“outer”的值，通过这个方法你可以更好地理解代码的运行逻辑。</p>
 
 
               </article>

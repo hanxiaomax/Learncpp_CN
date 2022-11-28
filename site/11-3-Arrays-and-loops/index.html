@@ -2011,7 +2011,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -6048,7 +6048,7 @@
 </code></pre></div></td></tr></table></div>
 <p>但实际上 <code>scores[5]</code> 是未定义的！ 访问它可能会导致各种各样的问题，最有可能的是访问 <code>scores[5]</code> 会得到一个<em>垃圾值</em>，此时 <code>maxScore</code> 将是错误的。</p>
 <p>然而，想象一下，如果我们无意中给 <code>array[5]</code> 赋了一个值，会发生什么？我们可能会覆盖另一个变量(或它的一部分)，或者可能破坏某些东西——这些类型的bug 是很难定位的！</p>
-<p>因此，在循环遍历数组时，一定要反复检查循环条件，以确保不会引入<strong>差一错误</strong>。</p>
+<p>因此，在循环遍历数组时，一定要反复检查循环条件，以确保不会引入<a href="../Off-by-one/">差一错误</a>。</p>
 
 
               </article>

@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#c20" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2006,7 +2011,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -5562,9 +5567,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            B.4 - C++20
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         B.4 - C++20
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    C++20 是什么？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c20_1" class="md-nav__link">
+    C++20 的改进
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5787,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c20" class="md-nav__link">
+    C++20 是什么？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c20_1" class="md-nav__link">
+    C++20 的改进
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5785,30 +5848,30 @@
   <h1>B.4 - C++20</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p><strong>What is C++20?</strong></p>
-<p>In February of 2020, the <a href="https://www.iso.org/home.html">ISO (International Organization for Standardization)</a> approved a new version of C++, called C++20. C++20 contains the most changes to the language since C++11.</p>
-<p><strong>New improvements in C++20</strong></p>
-<p>For your interest, here’s a list of the major improvements that C++20 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.</p>
+<h2 id="c20">C++20 是什么？</h2>
+<p>2020年2月，<a href="https://www.iso.org/home.html">ISO (国际标准化组织)</a> 通过了C++的新版本——C++20。C++20是自C++11以来，包含最多变化的版本。</p>
+<h2 id="c20_1">C++20 的改进</h2>
+<p>这里列出了C++ 20增加的主要改进。请注意，这个列表不是全面的，而是旨在突出一些感兴趣的关键改进点。</p>
 <ul>
-<li>Abbreviated function templates via auto parameters (<a href="https://www.learncpp.com/cpp-tutorial/function-templates-with-multiple-template-types/">8.15 -- Function templates with multiple template types</a>)</li>
-<li>Chrono extensions for calendar and time zone support (no tutorial yet)</li>
-<li>Concepts, which allow you to put constraints on template parameters (no tutorial yet)</li>
-<li>Constexpr virtual functions, unions, try, catch, dynamic_cast, and typeid (no tutorial yet)</li>
-<li>Constinit keyword, to assert that a variable has static initialization (no tutorial yet)</li>
-<li>Coroutines (no tutorial yet)</li>
-<li>Designated initializers (<a href="https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/">10.6 -- Struct aggregate initialization</a>)</li>
-<li>Immediate functions using the consteval keyword (<a href="https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/">6.14 -- Constexpr and consteval functions</a>)</li>
-<li>Modules, a replacement for #include (no tutorial yet)</li>
-<li>Ranges (no tutorial yet)</li>
-<li>std::erase (no tutorial yet)</li>
-<li>std::make_shared for arrays (no tutorial yet)</li>
-<li>std::map::contains() (no tutorial yet)</li>
-<li>std::span (no tutorial yet)</li>
-<li>String formatting library (no tutorial yet, see <a href="https://en.cppreference.com/w/cpp/utility/format">https://en.cppreference.com/w/cpp/utility/format</a>)</li>
-<li>String literals as template parameters (no tutorial yet)</li>
-<li>Three-way comparison using the spaceship operator &lt;=&gt; (no tutorial yet)</li>
-<li>Using scoped enums (no tutorial yet)</li>
-<li>Views (no tutorial yet)</li>
+<li>通过<code>auto</code>参数支持<a href="../abbreviated%20function%20templates/">缩写函数模板</a>(<a href="../8-15-Function-templates-with-multiple-template-types/">8.15 - 具有多种类型的函数模板</a>)</li>
+<li><code>Chrono</code> 扩展用于支持日历和时区(<em>暂无教程</em>)</li>
+<li>Concepts, which allow you to put constraints on template parameters (<em>暂无教程</em>)</li>
+<li>Constexpr virtual functions, <code>unions</code>, <code>try</code>, <code>catch</code>, <code>dynamic_cast</code>, and <code>typeid</code> (<em>暂无教程</em>)</li>
+<li><code>Constinit</code> 关键字，用于断言某个变量被静态初始化(<em>暂无教程</em>)</li>
+<li>协程 (<em>暂无教程</em>)</li>
+<li><a href="../designated-initializers/">指定初始化</a>(<a href="../10-6-struct-aggregate-initialization/">10.6 - 结构体的聚合初始化</a>)</li>
+<li>使用<code>consteval</code> 创建即时函数 (<a href="../6-14-Constexpr-and-consteval-functions/">6.14 - Constexpr 和 consteval 函数</a>)</li>
+<li>模块，作为 <code>#include</code> 的替代品(<em>暂无教程</em>)</li>
+<li>范围 (<em>暂无教程</em>)</li>
+<li><code>std::erase</code> (<em>暂无教程</em>)</li>
+<li><code>std::make_shared</code> for arrays (<em>暂无教程</em>)</li>
+<li><code>std::map::contains()</code> (<em>暂无教程</em>)</li>
+<li><code>std::span</code> (<em>暂无教程</em>)</li>
+<li>字符串格式化库(<em>暂无教程</em>，参见 <a href="https://en.cppreference.com/w/cpp/utility/format">https://en.cppreference.com/w/cpp/utility/format</a>)</li>
+<li>字符串字面量作为模板参数 (<em>暂无教程</em>)</li>
+<li>使用飞船运算符<code>&lt;=&gt;</code>进行三路比较(<em>暂无教程</em>)</li>
+<li>Using scoped enums (<em>暂无教程</em>)</li>
+<li>Views (<em>暂无教程</em>)</li>
 </ul>
 
 

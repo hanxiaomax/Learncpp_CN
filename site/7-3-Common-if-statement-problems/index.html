@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#flattening-nested-if-statements" class="md-skip">
+        <a href="#ifelse" class="md-skip">
           Skip to content
         </a>
       
@@ -2014,8 +2014,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flattening-nested-if-statements" class="md-nav__link">
-    Flattening nested if statements
+  <a href="#ifelse" class="md-nav__link">
+    嵌套if语句和悬垂else问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    嵌套语句展开
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    空语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    条件语句中的等号和赋值号
   </a>
   
 </li>
@@ -2050,7 +2071,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -5787,8 +5808,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flattening-nested-if-statements" class="md-nav__link">
-    Flattening nested if statements
+  <a href="#ifelse" class="md-nav__link">
+    嵌套if语句和悬垂else问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    嵌套语句展开
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    空语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    条件语句中的等号和赋值号
   </a>
   
 </li>
@@ -5844,9 +5886,9 @@
   <h1>7.3 - 常见的 if 语句错误</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>This lesson is a continuation of lesson <a href="../7-2-If-statements-and-blocks/">7.2 - if 语句和语句块</a> In this lesson, we’ll take a look at some common problems that occur when using <code>if statements</code>.</p>
-<p>Nested if statements and the dangling else problem</p>
-<p>It is possible to nest <code>if statements</code> within other <code>if statements</code>:</p>
+<p>继续 <a href="../7-2-If-statements-and-blocks/">7.2 - if 语句和语句块</a> 的内容。本节课我们会介绍一些和if语句相关的常见错误。</p>
+<h2 id="ifelse">嵌套if语句和悬垂else问题</h2>
+<p>if 语句可以嵌套在其他 if 语句中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5869,16 +5911,15 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// outer if statement</span>
-<span class="w">        </span><span class="c1">// it is bad coding style to nest if statements this way</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// inner if statement</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 外层if语句</span>
+<span class="w">        </span><span class="c1">// 这种嵌套方式是不好的编程风格</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// 内层if语句</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is between 0 and 20</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now consider the following program:</p>
+<p>考虑下面的程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5905,21 +5946,20 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// outer if statement</span>
-<span class="w">        </span><span class="c1">// it is bad coding style to nest if statements this way</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// inner if statement</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 外层if语句</span>
+<span class="w">        </span><span class="c1">// 这种嵌套方式是不好的编程风格</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// 内层if语句</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is between 0 and 20</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">// which if statement does this else belong to?</span>
+<span class="w">    </span><span class="c1">// 这个 else 应该和哪个 if 语句匹配？</span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is negative</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The above program introduces a source of potential ambiguity called a dangling else problem. Is the <code>else statement</code> in the above program matched up with the outer or inner <code>if statement</code>?</p>
-<p>The answer is that an <code>else statement</code> is paired up with the last unmatched <code>if statement</code> in the same block. Thus, in the program above, the <code>else</code> is matched up with the inner <code>if statement</code>, as if the program had been written like this:</p>
+<p>上面的程序引入了一个潜在的歧义来源，称为悬垂else问题。上面程序中的<code>else</code> 语句应该与外部if匹配还是和内部if匹配？</p>
+<p>答案是 <code>else</code> 语句与同一语句块中最后一个未匹配的<code>if</code>语句配对。因此，在上面的程序中，<code>else</code>与内部的<code>if</code>语句匹配，等价于下面形式：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5945,24 +5985,23 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// outer if statement</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 外层 if 语句</span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// inner if statement</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// 内层 if 语句</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is between 0 and 20</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="c1">// attached to inner if statement</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="c1">// 和内层 if 语句匹配</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is negative</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This causes the above program to produce incorrect output:</p>
+<p>这使得程序产生错误的结果：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter a number: 21
 21 is negative
 </code></pre></div></td></tr></table></div>
-<p>To avoid such ambiguities when nesting <code>if statements</code>, it is a good idea to explicitly enclose the inner <code>if statement</code> within a block. This allows us to attach an <code>else</code> to either <code>if statement</code> without ambiguity:</p>
+<p>为了避免因嵌套 if 语句产生的歧义，最好的办法是将内部的if语句显式地定义在语句块中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6003,11 +6042,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The <code>else statement</code> within the block attaches to the inner <code>if statement</code>, and the <code>else statement</code> outside of the block attaches to the outer <code>if statement</code>.</p>
-<h2 id="flattening-nested-if-statements">Flattening nested if statements</h2>
-<p>Nested <code>if statements</code> can often be flattened by either restructuring the logic or by using logical operators (covered in lesson <a href="https://www.learncpp.com/cpp-tutorial/logical-operators/">5.7 -- Logical operators</a>). Code that is less nested is less error prone.</p>
-<p>For example, the above example can be flattened as follows:</p>
+<p>此时，语句块中的 <code>else</code> 语句会和内层的<code>if</code> 语句匹配，而语句块外部的 <code>else</code> 则和外层的 <code>if</code> 语句匹配。</p>
+<h2 id="_1">嵌套语句展开</h2>
+<p>嵌套的多层 <code>if</code> 语句可以通过重新组织逻辑或使用<a href="../5-7-Logical-operators/">逻辑运算符</a>展开成一层逻辑。嵌套越少的代码越不容易出错。</p>
+<p>例如，上面的例子中可以展开成如下形式：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6042,8 +6080,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Here’s another example that uses logical operators to check multiple conditions within a single <code>if statement</code>:</p>
+<p>下面是另一个使用逻辑运算符在一个<code>if</code>语句中检查多个条件的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6076,9 +6113,9 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// &amp;&amp; is logical and -- checks if both conditions are true</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// &amp;&amp; 是逻辑与——检查是否两个条件均为真</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Both numbers are positive</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// || is logical or -- checks if either condition is true</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// || 是逻辑或——检查是否有为真的条件</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;One of the numbers is positive</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Neither number is positive</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
@@ -6086,35 +6123,31 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Null statements</p>
-<p>A null statement is a statement that consists of just a semicolon:</p>
+<h2 id="_2">空语句</h2>
+<p>空语句是一个只包含分号的语句：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="c1">// this is a null statement</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p><code>Null statements</code> do nothing. They are typically used when the language requires a statement to exist but the programmer doesn’t need one. For readability, <code>null statements</code> are typically placed on their own lines.</p>
-<p>We’ll see examples of intentional <code>null statements</code> later in this chapter, when we cover loops. <code>Null statements</code> are rarely intentionally used with <code>if statements</code>. However, they can unintentionally cause problems for new (or careless) programmers. Consider the following snippet:</p>
+<p>空语句什么都不做。一般来说，只有当语言要求存在一条语句但程序员不需要的情况下才这么做。为了可读性，“空语句”通常被放在单独的行中。</p>
+<p>我们将在本章后面讲到循环的时候看到有意的空语句的例子。“空语句”很少与“if语句”一起使用。然而，它们可能会无意中给新手(或粗心的)程序员带来问题。考虑下面的代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nuclearCodesActivated</span><span class="p">());</span><span class="w"></span>
 <span class="w">    </span><span class="n">blowUpTheWorld</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above snippet, the programmer accidentally put a semicolon on the end of the <code>if statement</code> (a common mistake since semicolons end many statements). This unassuming error compiles fine, and causes the snippet to execute as if it had been written like this:</p>
+<p>在上面的例子中，程序员不经意间在if语句的末尾添加了一个分号。这个不起眼的错误可以很好地编译，并使代码段执行起来就像它是这样编写的一样：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nuclearCodesActivated</span><span class="p">())</span><span class="w"></span>
-<span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="c1">// the semicolon acts as a null statement</span>
-<span class="n">blowUpTheWorld</span><span class="p">();</span><span class="w"> </span><span class="c1">// and this line always gets executed!</span>
+<span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="c1">// 分号实际上制造了一个空语句</span>
+<span class="n">blowUpTheWorld</span><span class="p">();</span><span class="w"> </span><span class="c1">// 这个函数总是会执行</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>Be careful not to “terminate” your <code>if statement</code> with a semicolon, otherwise your conditional statement(s) will execute unconditionally (even if they are inside a block).</p>
+<p>注意不要在if语句后面添加分号，否则你的“条件语句”总是会无条件执行（即使你把它写在语句块中）。</p>
 </div>
-<p>Operator== vs Operator= inside the conditional</p>
-<p>Inside your conditional, you should be using <code>operator==</code> when testing for equality, not <code>operator=</code> (which is assignment). Consider the following program:</p>
+<h2 id="_3">条件语句中的等号和赋值号</h2>
+<p>在 if 的条件中，你应该使用等号<code>==</code>来判断是否相等，而不是赋值号<code>=</code>，考虑下面程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6135,7 +6168,7 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter 0 or 1: &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// oops, we used an assignment here instead of a test for equality</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// 糟糕, 我们使用赋值号进行了赋值而不是判断相等</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;You entered 0&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;You entered 1&quot;</span><span class="p">;</span><span class="w"></span>
@@ -6143,13 +6176,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program will compile and run, but will produce the wrong result in some cases:</p>
+<p>程序可以编译运行，但是某些情况下结果是错误的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter 0 or 1: 0
 You entered 1
 </code></pre></div></td></tr></table></div>
-<p>In fact, this program will always produce the result <code>You entered 1</code>. This happens because <code>x = 0</code> first assigns the value <code>0</code> to <code>x</code>, then evaluates to the value of <code>x</code>, which is now <code>0</code>, which is Boolean <code>false</code>. Since the conditional is always <code>false</code>, the <code>else statement</code> always executes.</p>
+<p>事实上，这个程序总是会产生“你输入了1”的结果。这是因为<code>x = 0</code> 首先将值 <code>0</code> 赋值给<code>x</code> ，然后计算 <code>x</code>的值，现在是<code>0</code> ，即布尔值<code>false</code> 。由于条件总是<code>false</code> 所以<code>else</code>语句总是执行。</p>
 
 
               </article>

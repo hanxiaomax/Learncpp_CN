@@ -2013,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2113,35 +2113,49 @@
       
         <li class="md-nav__item">
   <a href="#break" class="md-nav__link">
-    Break
+    Break 语句
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#breaking-a-switch" class="md-nav__link">
-    Breaking a switch
+  <a href="#switch" class="md-nav__link">
+    从 switch 中跳出
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#breaking-a-loop" class="md-nav__link">
-    Breaking a loop
+  <a href="#_1" class="md-nav__link">
+    从循环中跳出
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#break-vs-return" class="md-nav__link">
-    Break vs return
+    break vs return
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#continue" class="md-nav__link">
-    Continue
+    continue 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break-continue" class="md-nav__link">
+    关于 break 和 continue 的争论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    关于提前返回的争论
   </a>
   
 </li>
@@ -5816,35 +5830,49 @@
       
         <li class="md-nav__item">
   <a href="#break" class="md-nav__link">
-    Break
+    Break 语句
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#breaking-a-switch" class="md-nav__link">
-    Breaking a switch
+  <a href="#switch" class="md-nav__link">
+    从 switch 中跳出
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#breaking-a-loop" class="md-nav__link">
-    Breaking a loop
+  <a href="#_1" class="md-nav__link">
+    从循环中跳出
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#break-vs-return" class="md-nav__link">
-    Break vs return
+    break vs return
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#continue" class="md-nav__link">
-    Continue
+    continue 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break-continue" class="md-nav__link">
+    关于 break 和 continue 的争论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    关于提前返回的争论
   </a>
   
 </li>
@@ -5905,9 +5933,9 @@
 
   <h1>7.10 - break 和 continue</h1>
 
-<h2 id="break">Break</h2>
+<h2 id="break">Break 语句</h2>
 <p>Although you have already seen the <code>break statement</code> in the context of <code>switch statements</code> （<a href="../7-4-Switch-statement-basics/">7.4 - switch 语句基础</a>）, it deserves a fuller treatment since it can be used with other types control flow statements as well. The break statement causes a while loop, do-while loop, for loop, or switch statement to end, with execution continuing with the next statement after the loop or switch being broken out of.</p>
-<h2 id="breaking-a-switch">Breaking a switch</h2>
+<h2 id="switch">从 switch 中跳出</h2>
 <p>In the context of a <code>switch statement</code>, a <code>break</code> is typically used at the end of each case to signify the case is finished (which prevents fallthrough into subsequent cases):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5965,7 +5993,7 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>See lesson <a href="../7-5-Switch-fallthrough-and-scoping/">7.5 - switch 落空和作用域</a> for more information about fallthrough, along with some additional examples.</p>
-<h2 id="breaking-a-loop">Breaking a loop</h2>
+<h2 id="_1">从循环中跳出</h2>
 <p>In the context of a loop, a break statement can be used to end the loop early. Execution continues with the next statement after the end of the loop.</p>
 <p>For example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6082,7 +6110,7 @@ Enter 0 to exit or any other integer to continue: 3
 Enter 0 to exit or any other integer to continue: 0
 We&#39;re out!
 </code></pre></div></td></tr></table></div>
-<h2 id="break-vs-return">Break vs return</h2>
+<h2 id="break-vs-return"><code>break</code> vs <code>return</code></h2>
 <p>New programmers sometimes have trouble understanding the difference between <code>break</code> and <code>return</code>. A <code>break statement</code> terminates the switch or loop, and execution continues at the first statement beyond the switch or loop. A <code>return statement</code> terminates the entire function that the loop is within, and execution continues at point where the function was called.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6160,7 +6188,7 @@ Enter &#39;b&#39; to break or &#39;r&#39; to return: b
 We broke out of the loop
 Function breakOrReturn returned 0
 </code></pre></div></td></tr></table></div>
-<h2 id="continue">Continue</h2>
+<h2 id="continue"><code>continue</code> 语句</h2>
 <p>The continue statement provides a convenient way to end the current iteration of a loop without terminating the entire loop.</p>
 <p>Here’s an example of using continue:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -6271,7 +6299,7 @@ Function breakOrReturn returned 0
 </code></pre></div></td></tr></table></div>
 <p>and then goes into an infinite loop. When <code>count</code> is <code>5</code>, the <code>if statement</code> evaluates to <code>true</code>, and the <code>continue</code> causes the execution to jump to the bottom of the loop. The <code>count</code> variable is never incremented. Consequently, on the next pass, <code>count</code> is still <code>5</code>, the <code>if statement</code> is still <code>true</code>, and the program continues to loop forever.</p>
 <p>Of course, you already know that if you have an obvious counter variable, you should be using a <code>for loop</code>, not a <code>while</code> or <code>do-while</code> loop.</p>
-<p>The debate over use of break and continue</p>
+<h2 id="break-continue">关于 <code>break</code> 和 <code>continue</code> 的争论</h2>
 <p>Many textbooks caution readers not to use <code>break</code> and <code>continue</code> in loops, both because it causes the execution flow to jump around, and because it can make the flow of logic harder to follow. For example, a <code>break</code> in the middle of a complicated piece of logic could either be missed, or it may not be obvious under what conditions it should be triggered.</p>
 <p>However, used judiciously, <code>break</code> and <code>continue</code> can help make loops more readable by keeping the number of nested blocks down and reducing the need for complicated looping logic.</p>
 <p>For example, consider the following program:</p>
@@ -6367,15 +6395,19 @@ Function breakOrReturn returned 0
 <p>COPY</p>
 <p>In this version, by using a single <code>break statement</code>, we’ve avoided the use of a Boolean variable (and having to understand both what its intended use is, and where its value is changed), an <code>else statement</code>, and a nested block.</p>
 <p>Minimizing the number of variables used and keeping the number of nested blocks down both improve code comprehensibility more than a <code>break</code> or <code>continue</code> harms it. For that reason, we believe judicious use of <code>break</code> or <code>continue</code> is acceptable.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Use break and continue when they simplify your loop logic.</p>
-<p>The debate over use of early returns</p>
+</div>
+<h2 id="_2">关于提前返回的争论</h2>
 <p>There’s a similar argument to be made for return statements. A return statement that is not the last statement in a function is called an early return. Many programmers believe early returns should be avoided. A function that only has one return statement at the bottom of the function has a simplicity to it -- you can assume the function will take its arguments, do whatever logic it has implemented, and return a result without deviation. Having extra returns complicates the logic.</p>
 <p>The counter-argument is that using early returns allows your function to exit as soon as it is done, which reduces having to read through unnecessary logic and minimizes the need for conditional nested blocks, which makes your code more readable.</p>
 <p>Some developers take a middle ground, and only use early returns at the top of a function to do parameter validation (catch bad arguments passed in), and then a single return thereafter.</p>
 <p>Our stance is that early returns are more helpful than harmful, but we recognize that there is a bit of art to the practice.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Use early returns when they simplify your function’s logic.</p>
+</div>
 
 
               </article>

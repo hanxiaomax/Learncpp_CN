@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quick-if-statement-recap" class="md-skip">
+        <a href="#if" class="md-skip">
           Skip to content
         </a>
       
@@ -2000,8 +2000,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-if-statement-recap" class="md-nav__link">
-    Quick if-statement recap
+  <a href="#if" class="md-nav__link">
+    快速复习一下 if 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    多个条件语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    应该将单独的条件语句写作语句块吗？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    隐式语句块
   </a>
   
 </li>
@@ -2050,7 +2071,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -5787,8 +5808,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-if-statement-recap" class="md-nav__link">
-    Quick if-statement recap
+  <a href="#if" class="md-nav__link">
+    快速复习一下 if 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    多个条件语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    应该将单独的条件语句写作语句块吗？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    隐式语句块
   </a>
   
 </li>
@@ -5843,25 +5885,25 @@
 
   <h1>7.2 - if 语句和语句块</h1>
 
-<p>The first category of control flow statements we’ll talk about are the conditional statements. A conditional statement is a statement that specifies whether some associated statement(s) should be executed or not.</p>
-<p>C++ supports two basic kinds of conditionals: <code>if statements</code> (which we introduced in lesson <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-if-statements/">4.10 -- Introduction to if statements</a>, and will talk about further here) and <code>switch statements</code> (which we’ll cover in a couple of lessons).</p>
-<h2 id="quick-if-statement-recap">Quick if-statement recap</h2>
-<p>The most basic kind of conditional statement in C++ is the <code>if statement</code>. An <code>if statement</code> takes the form:</p>
+<p>我们要讨论的第一类控制流语句是条件语句。条件语句是一种指定是否应该执行某些关联语句的语句。</p>
+<p>C++支持两种基本条件语句：if语句(我们在课程[[4-10-Introduction-to-if-statements|4.10 -if语句简介]中介绍过，并将在这里进一步讨论)和  <code>switch</code> 语句(我们将在几节课中讨论)。</p>
+<h2 id="if">快速复习一下 if 语句</h2>
+<p>if 语句是C++中最基本的条件语句，其形式为：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>if (condition)
-    true_statement;
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">true_statement</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>or with an optional <code>else statement</code>:</p>
+<p>或者是带 <code>else</code> 的形式：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>if (condition)
-    true_statement;
-else
-    false_statement;
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">true_statement</span><span class="p">;</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">false_statement</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>If the <code>condition</code> evaluates to <code>true</code>, the <code>true_statement</code> executes. If the <code>condition</code> evaluates to <code>false</code> and the optional <code>else statement</code> exists, the <code>false_statement</code> executes.</p>
-<p>Here is a simple program that uses an <code>if statement</code> with the optional <code>else statement</code>:</p>
+<p>如果 <code>condition</code> 求值为 <code>true</code>，则执行 <code>true_statement</code>。如果求值为 <code>false</code> 而且存在 <code>else</code> 语句则执行 <code>false_statement</code> 。</p>
+<p>下面的例子展示了if语句和else语句的用法：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5892,14 +5934,19 @@ else
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program works just like you’d expect:</p>
-<p>Enter a number: 15
-15 is greater than 10</p>
-<p>Enter a number: 4
-4 is not greater than 10</p>
-<p>If or else with multiple conditional statements</p>
-<p>New programmers often try something like this:</p>
+<p>程序输出结果如你所期望的那样：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter a number: 15
+15 is greater than 10
+
+Enter a number: 4
+4 is not greater than 10
+</code></pre></div></td></tr></table></div>
+<h2 id="_1">多个条件语句</h2>
+<p>新手程序员可能会编写这样的程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5932,12 +5979,14 @@ else
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, consider the following run of the program:</p>
-<p>Enter your height (in cm): 180
+<p>不过，程序的运行结果可能并不如愿：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter your height (in cm): 180
 You are tall enough to ride.
-Too bad!</p>
-<p>This program doesn’t work as expected because the <code>true_statement</code> and <code>false_statement</code> can only be a single statement. The indentation is deceiving us here -- the above program executes as if it had been written as follows:</p>
+Too bad!
+</code></pre></div></td></tr></table></div>
+<p>这个程序没有像预期的那样工作，因为<code>true_statement</code> 和<code>false_statement</code> 只能是一个语句。这里的缩进欺骗了我们——上面的程序执行起来就好像它是这样写的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5972,9 +6021,8 @@ Too bad!</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This makes it clearer that “Too bad!” will always execute.</p>
-<p>However, it’s common to want to execute multiple statements based on some condition. To do so, we can use a compound statement (block):</p>
+<p>这也就看到很清楚了，显然 “Too bad!” 在任何情况下都会被打印。</p>
+<p>但是，通常希望基于某些条件执行多个语句。为此，我们可以使用复合语句(块):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6011,8 +6059,7 @@ Too bad!</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Remember that blocks are treated as a single statement, so this now works as expected:</p>
+<p>记住，block被当作一个单独的语句，所以现在工作正常：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter your height (in cm): 180
 You are tall enough to ride.
@@ -6023,58 +6070,62 @@ You are tall enough to ride.
 You are not tall enough to ride.
 Too bad!
 </code></pre></div></td></tr></table></div>
-<p>To block or not to block single statements</p>
-<p>There is debate within the programmer community as to whether single statements following an <code>if</code> or <code>else</code> should be explicitly enclosed in blocks or not.</p>
-<p>There are two reasons typically given as rationale for doing so. First, consider the following snippet:</p>
+<h2 id="_2">应该将单独的条件语句写作语句块吗？</h2>
+<p>对于 <code>if</code> 或 <code>else</code> 后面的单个语句是否应该显式地包含在语句块中，在程序员社区中引发了广泛的争论。</p>
+<p>这样做通常有两个理由。首先，考虑下面的代码片段：记住，块被视为一个单独的语句，所以现在工作正常:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="n">purchaseBeer</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now let’s say we’re in a hurry and modify this program to add another ability:</p>
+<p>然后，如果你特别匆忙地将某个新功能加入到程序中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="n">purchaseBeer</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="n">gamble</span><span class="p">();</span><span class="w"> </span><span class="c1">// will always execute</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Oops, we’ve just allowed minors to gamble. Have fun in jail!</p>
-<p>Second, it can make programs more difficult to debug. Let’s say we have the following snippet:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"></span>
+<p>上述代码将允许未成年人赌博。在监狱里玩得开心！</p>
+<p>其次，它会使程序更难调试。假设我们有以下代码片段：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="n">addBeerToCart</span><span class="p">();</span><span class="w"></span>
 
-<span class="n">checkout</span><span class="p">();</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Let’s say we suspect something is wrong with the <code>addBeerToCart()</code> function, so we comment it out:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"></span>
+<span class="n">checkout</span><span class="p">();</span><span class="err">```</span><span class="w"></span>
+
+
+<span class="n">如果我们怀疑</span><span class="w"> </span><span class="err">`</span><span class="n">addBeerToCart</span><span class="p">()</span><span class="err">`</span><span class="w"> </span><span class="n">函数有问题</span><span class="err">，</span><span class="n">往往会将其临时注释掉</span><span class="err">：</span><span class="w"></span>
+
+<span class="err">```</span><span class="n">cpp</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"></span>
 <span class="c1">//    addBeerToCart();</span>
 
 <span class="n">checkout</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now we’ve made <code>checkout()</code> conditional, which we certainly didn’t intend.</p>
-<p>Neither of these problems occur if you always use blocks after an <code>if</code> or <code>else</code> statement.</p>
-<p>The best argument for not using blocks around single statements is that adding blocks makes you able to see less of your code at one time by spacing it out vertically, which makes your code less readable and can lead to other, more serious mistakes.</p>
-<p>The community seems to be more in favor of always using blocks than not, though this recommendation certainly isn’t ubiquitous.</p>
+<p>这样一来会使得 <code>checkout()</code> 按条件执行，这并不是我们想要的结果。</p>
+<p>如果我们总是将if和else的语句放在语句块中的话，上面的这些问题都可以避免。</p>
+<p>反方则认为，不要在单个语句周围使用块的最佳理由是因为添加块会占用垂直空间，使你一次看到的代码更少，这会使代码可读性变差，并可能导致其他更严重的错误。</p>
+<p>社区似乎更倾向于始终使用块，尽管这种建议当然不是普遍存在的。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Consider putting single statements associated with an <code>if</code> or <code>else</code> in blocks (particularly while you are learning). More experienced C++ developers sometimes disregard this practice in favor of tighter vertical spacing.</p>
+<p>考虑将与“<code>if</code>”或“<code>else</code>”相关的单个语句放在块中(特别是在你学习的时候)。更有经验的C++开发人员有时会忽略这种做法，而倾向于更紧凑的垂直间距。</p>
 </div>
-<p>A middle-ground alternative is to put single-lines on the same line as the <code>if</code> or <code>else</code>:</p>
+<p>还有一种折中的办法，即将单一条件语句和if或else写在同一行：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">21</span><span class="p">)</span><span class="w"> </span><span class="n">purchaseBeer</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This avoids both of the above downsides mentioned above at some minor cost to readability.</p>
-<p>Implicit blocks</p>
-<p>If the programmer does not declare a block in the statement portion of an <code>if statement</code> or <code>else statement</code>, the compiler will implicitly declare one. Thus:</p>
+<p>这避免了上面提到的两个缺点，不过可读性稍差了一点。</p>
+<h2 id="_3">隐式语句块</h2>
+<p>如果程序员没有在 <code>if</code> 语句或<code>else</code>语句的部分声明一个语句块，则编译器将隐式声明一个。因此：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6083,7 +6134,7 @@ Too bad!
 else
     false_statement;
 </code></pre></div></td></tr></table></div>
-<p>is actually the equivalent of:</p>
+<p>等价于：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6100,7 +6151,7 @@ else
     false_statement;
 }
 </code></pre></div></td></tr></table></div>
-<p>Most of the time, this doesn’t matter. However, new programmers sometimes try to do something like this:</p>
+<p>多数情况下这并不会带来问题，但是新手程序员可能会尝试这样做：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6127,8 +6178,7 @@ else
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This won’t compile, with the compiler generating an error that identifier <code>x</code> isn’t defined. This is because the above example is the equivalent of:</p>
+<p>此时代码是不能编译的，编译器会报告 <code>x</code> 未定义。因为上述代码等价于：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6152,20 +6202,18 @@ else
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// x destroyed here</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// x 销毁了</span>
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// x destroyed here</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// x 销毁了</span>
 
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// x isn&#39;t in scope here</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// x 并不在该作用域中</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this context, it’s clearer that variable <code>x</code> has block scope and is destroyed at the end of the block. By the time we get to the <code>std::cout</code> line, <code>x</code> doesn’t exist.</p>
-<p>We’ll continue our exploration of <code>if statements</code> in the next lesson.</p>
+<p>这里，很显然变量 <code>x</code> 具有语句块作用域，并且会在语句块结束时销毁。当我们在 <code>std::cout</code> 中访问 <code>x</code> 时，它已经不存在了。</p>
 
 
               </article>

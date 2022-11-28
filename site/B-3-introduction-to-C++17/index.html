@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#c17" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2006,7 +2011,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -5548,9 +5553,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            B.3 - C++17
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         B.3 - C++17
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c17" class="md-nav__link">
+    C++17 是什么？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c17_1" class="md-nav__link">
+    C++17 中的改进
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5787,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#c17" class="md-nav__link">
+    C++17 是什么？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c17_1" class="md-nav__link">
+    C++17 中的改进
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5785,31 +5848,31 @@
   <h1>B.3 - C++17</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p><strong>What is C++17?</strong></p>
-<p>In September of 2017, the <a href="https://www.iso.org/home.html">ISO (International Organization for Standardization)</a> approved a new version of C++, called C++17. C++17 contains a fair amount of new content</p>
-<p><strong>New improvements in C++17</strong></p>
-<p>For your interest, here’s a list of the major improvements that C++17 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.</p>
+<h2 id="c17">C++17 是什么？</h2>
+<p>2017年9月，<a href="https://www.iso.org/home.html">ISO (国际标准化组织)</a> 通过了C++的新版本——C++17。C++17包含了大量的更新。</p>
+<h2 id="c17_1">C++17 中的改进</h2>
+<p>这里是C++17添加的主要改进的列表。请注意，这个列表不是全面的，而是旨在突出一些感兴趣的关键改进。</p>
 <ul>
-<li>__has_include preprocessor identifier to check if optional header files are available (no tutorial yet)</li>
-<li>if statements that resolve at compile time (no tutorial yet)</li>
-<li>Initializers in if statements and switch statements (no tutorial yet)</li>
-<li>inline variables (<a href="https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/">6.9 -- Sharing global constants across multiple files (using inline variables)</a>)</li>
-<li>Fold expressions (no tutorial yet)</li>
-<li>Nested namespaces can now be defined as namespace X::Y (<a href="https://www.learncpp.com/cpp-tutorial/user-defined-namespaces-and-the-scope-resolution-operator/">6.2 -- User-defined namespaces and the scope resolution operator</a>)</li>
-<li>Removal of std::auto_ptr and some other deprecated types</li>
-<li>static_assert no longer requires a diagnostic text message parameter (<a href="https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/">7.17 -- Assert and static_assert</a>)</li>
-<li>std::any (no tutorial yet)</li>
-<li>std::byte (no tutorial yet)</li>
-<li>std::filesystem (no tutorial yet)</li>
-<li>std::optional (no tutorial yet)</li>
-<li>std::shared_ptr can now manage C-style arrays (but std::make_shared can’t create them yet) (<a href="https://www.learncpp.com/cpp-tutorial/stdshared_ptr/">M.7 -- std::shared_ptr</a>)</li>
-<li>std::size (<a href="https://www.learncpp.com/cpp-tutorial/arrays-part-ii/">11.2 -- Arrays (Part II)</a>)</li>
-<li>std::string_view (<a href="https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/">4.18 -- Introduction to std::string_view</a>)</li>
-<li>Structured binding declarations</li>
-<li>Template deduction for constructors (no tutorial yet)</li>
-<li>Trigraphs have been removed</li>
-<li>typename can now be used (instead of class) in a template template parameter</li>
-<li>UTF-8 (u8) character literals (no tutorial yet)</li>
+<li><code>__has_include</code> 预处理器标识符，检查头文件是否包含(<em>暂无教程</em>)</li>
+<li>编译时求值的 if 语句(<em>暂无教程</em>)</li>
+<li>if 和 switch 语句中的初始化值(<em>暂无教程</em>)</li>
+<li>内联变量 (<a href="../6-9-Sharing-global-constants-across-multiple-files-using-inline-variables/">6.9 - 使用 inline 变量共享全局常量</a>)</li>
+<li>高阶函数表达式(Fold expressions) (<em>暂无教程</em>)</li>
+<li>嵌套命名空间可以通过 namespace <code>X::Y</code> 来定义(<a href="../6-2-User-defined-namespaces-and-the-scope-resolution-operator/">6.2 - 用户定义命名空间和作用域解析运算符</a>)</li>
+<li>移除 <code>std::auto_ptr</code> 和其他的一些废弃类型</li>
+<li><code>static_assert</code> 不再要求诊断信息参数(<a href="../7-17-assert-and-static-assert/">7.17 - 断言和 static_assert</a>)</li>
+<li><code>std::any</code> (<em>暂无教程</em>)</li>
+<li><code>std::byte</code> (<em>暂无教程</em>)</li>
+<li><code>std::filesystem</code> (<em>暂无教程</em>)</li>
+<li><code>std::optional</code> (<em>暂无教程</em>)</li>
+<li><code>std::shared_ptr</code> 可用于管理C语言数组 (但还不能通过 <code>std::make_shared</code> 创建) (<a href="../M-7-std-shared-ptr/">M.7 — std::shared_ptr</a>)</li>
+<li><code>std::size</code> (<a href="../11-2-Arrays-Part-II/">11.2 - 数组（第二部分）</a>)</li>
+<li><code>std::string_view</code> (<a href="../4-18-Introduction-to-std-string_view/">4.18 - std::string_view 简介</a>)</li>
+<li>结构化绑定声明</li>
+<li>构造函数的模板推断(<em>暂无教程</em>)</li>
+<li>三字符组（Trigraphs）被移除</li>
+<li>可以在模板的模板参数中使用 <code>typename</code> （而不是<code>class</code>）</li>
+<li>UTF-8 (u8) 字符字面量(<em>暂无教程</em>)</li>
 </ul>
 
 

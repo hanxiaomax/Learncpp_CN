@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "ae30a4ddd4eadbe2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/B-2-introduction-to-C++14.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/B-2-introduction-to-C++14.md"
+                "file": "docs/MOC.md"
               }
             }
           },
@@ -133,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/B-2-introduction-to-C++14.md",
+                "file": "docs/MOC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,17 +138,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "ae30a4ddd4eadbe2",
+  "active": "91708e7b42f222ab",
   "lastOpenFiles": [
-    "docs/MOC.md",
-    "docs/B-1-introduction-to-C++11.md",
     "docs/B-2-introduction-to-C++14.md",
-    "docs/A-4-C++FAQ.md",
     "docs/B-4-introduction-to-C++20.md",
+    "docs/MOC.md",
     "docs/B-3-introduction-to-C++17.md",
+    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
+    "docs/B-1-introduction-to-C++11.md",
+    "docs/A-4-C++FAQ.md",
     "docs/M-2-R-value-references.md",
     "docs/rvalue.md",
-    "docs/20.4.md",
-    "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
+    "docs/20.4.md"
   ]
 }

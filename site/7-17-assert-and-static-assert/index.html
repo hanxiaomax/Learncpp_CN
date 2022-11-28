@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#preconditions-invariants-and-postconditions" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2013,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2210,29 +2210,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preconditions-invariants-and-postconditions" class="md-nav__link">
-    Preconditions, invariants, and postconditions
+  <a href="#_1" class="md-nav__link">
+    前置条件、不变量和后置条件
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assertions" class="md-nav__link">
-    Assertions
+  <a href="#_2" class="md-nav__link">
+    断言
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#making-your-assert-statements-more-descriptive" class="md-nav__link">
-    Making your assert statements more descriptive
+  <a href="#_3" class="md-nav__link">
+    使断言语句更具描述性
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#asserts-vs-error-handling" class="md-nav__link">
-    Asserts vs error handling
+  <a href="#vs" class="md-nav__link">
+    断言 vs 错误处理
   </a>
   
 </li>
@@ -2245,8 +2245,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#some-assert-limitations-and-warnings" class="md-nav__link">
-    Some assert limitations and warnings
+  <a href="#_4" class="md-nav__link">
+    断言的限制和提醒
   </a>
   
 </li>
@@ -5829,29 +5829,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#preconditions-invariants-and-postconditions" class="md-nav__link">
-    Preconditions, invariants, and postconditions
+  <a href="#_1" class="md-nav__link">
+    前置条件、不变量和后置条件
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assertions" class="md-nav__link">
-    Assertions
+  <a href="#_2" class="md-nav__link">
+    断言
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#making-your-assert-statements-more-descriptive" class="md-nav__link">
-    Making your assert statements more descriptive
+  <a href="#_3" class="md-nav__link">
+    使断言语句更具描述性
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#asserts-vs-error-handling" class="md-nav__link">
-    Asserts vs error handling
+  <a href="#vs" class="md-nav__link">
+    断言 vs 错误处理
   </a>
   
 </li>
@@ -5864,8 +5864,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#some-assert-limitations-and-warnings" class="md-nav__link">
-    Some assert limitations and warnings
+  <a href="#_4" class="md-nav__link">
+    断言的限制和提醒
   </a>
   
 </li>
@@ -5939,7 +5939,7 @@
 
   <h1>7.17 - 断言和 static_assert</h1>
 
-<p>In a function that takes parameters, the caller may be able to pass in arguments that are syntactically valid but semantically meaningless. For example, in the previous lesson (<a href="https://www.learncpp.com/cpp-tutorial/detecting-and-handling-errors/">7.15 -- Detecting and handling errors</a>), we showed the following sample function:</p>
+<p>In a function that takes parameters, the caller may be able to pass in arguments that are syntactically valid but semantically meaningless. For example, in the previous lesson (<a href="../7-15-Detecting-and-handling-errors/">7.15 - 发现错误和处理错误</a>), we showed the following sample function:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5958,7 +5958,7 @@
 <p>In the prior lesson, we discussed a couple of ways to deal with such problems, including halting the program, or skipping the offending statements.</p>
 <p>Both of those options are problematic though. If a program skips statements due to an error, then it is essentially failing silently. Especially while we are writing and debugging programs, silent failures are bad, because they obscure real problems. Even if we print an error message, that error message may be lost among the other program output, and it may be non-obvious where the error message is being generated or how the conditions that triggered the error message occurred. Some functions may be called tens or hundreds of times, and if only one of those cases is generating a problem, it can be hard to know which one.</p>
 <p>If the program terminates (via <code>std::exit</code>) then we will have lost our call stack and any debugging information that might help us isolate the problem. <code>std::abort</code> is a better option for such cases, as typically the developer will be given the option to start debugging at the point where the program aborted.</p>
-<h2 id="preconditions-invariants-and-postconditions">Preconditions, invariants, and postconditions</h2>
+<h2 id="_1">前置条件、不变量和后置条件</h2>
 <p>In programming, a precondition is any condition that must always be true prior to the execution of component of code. Our check of <code>y</code> is a precondition that ensures <code>y</code> has a valid value before the function continues.</p>
 <p>It’s more common for functions with preconditions to be written like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5984,7 +5984,7 @@
 <p>COPY</p>
 <p>An invariant is a condition that must be true while some component is executing.</p>
 <p>Similarly, a postcondition is something that must be true after the execution of some component of code. Our function doesn’t have any postconditions.</p>
-<h2 id="assertions">Assertions</h2>
+<h2 id="_2">断言</h2>
 <p>Using a conditional statement to detect an invalid parameter (or to validate some other kind of assumption), along with printing an error message and terminating the program, is such a common response to problems that C++ provides a shortcut method for doing this.</p>
 <p>An assertion is an expression that will be true unless there is a bug in the program. If the expression evaluates to <code>true</code>, the assertion statement does nothing. If the conditional expression evaluates to <code>false</code>, an error message is displayed and the program is terminated (via <code>std::abort</code>). This error message typically contains the expression that failed as text, along with the name of the code file and the line number of the assertion. This makes it very easy to tell not only what the problem was, but where in the code the problem occurred. This can help with debugging efforts immensely.</p>
 <p>In C++, runtime assertions are implemented via the assert preprocessor macro, which lives in the <code>&lt;cassert&gt;</code> header.</p>
@@ -6041,7 +6041,7 @@
 <p>The actual message varies depending on which compiler you use.</p>
 <p>Although asserts are most often used to validate function parameters, they can be used anywhere you would like to validate that something is true.</p>
 <p>Although we told you previously to avoid preprocessor macros, asserts are one of the few preprocessor macros that are considered acceptable to use. We encourage you to use assert statements liberally throughout your code.</p>
-<h2 id="making-your-assert-statements-more-descriptive">Making your assert statements more descriptive</h2>
+<h2 id="_3">使断言语句更具描述性</h2>
 <p>Sometimes assert expressions aren’t very descriptive. Consider the following statement:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">assert</span><span class="p">(</span><span class="n">found</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
@@ -6058,7 +6058,7 @@
 <p>However, when the assert triggers, the string literal will be included in the assert message:</p>
 <p>Assertion failed: found &amp;&amp; "Car could not be found in database", file C:\VCProjects\Test.cpp, line 34</p>
 <p>That gives you some additional context as to what went wrong.</p>
-<h2 id="asserts-vs-error-handling">Asserts vs error handling</h2>
+<h2 id="vs">断言 vs 错误处理</h2>
 <p>Assertions and error handling are similar enough that their purposes can be confused, so let’s clarify:</p>
 <p>The goal of an assertion is to catch programming errors by documenting something that should never happen. If that thing does happen, then the programmer made an error somewhere, and that error can be identified and fixed. Assertions do not allow recovery from errors (after all, if something should never happen, there’s no need to recover from it), and the program will not produce a friendly error message.</p>
 <p>On the other hand, error handling is designed to gracefully handle cases that could happen (however rarely) in release configurations. These may or may not be recoverable, but one should always assume a user of the program may encounter them.</p>
@@ -6077,14 +6077,15 @@
 <p>The <code>assert</code> macro comes with a small performance cost that is incurred each time the assert condition is checked. Furthermore, asserts should (ideally) never be encountered in production code (because your code should already be thoroughly tested). Consequently, many developers prefer that asserts are only active in debug builds. C++ comes with a way to turn off asserts in production code. If the macro <code>NDEBUG</code> is defined, the assert macro gets disabled.</p>
 <p>Some IDEs set <code>NDEBUG</code> by default as part of the project settings for release configurations. For example, in Visual Studio, the following preprocessor definitions are set at the project level: <code>WIN32;NDEBUG;_CONSOLE</code>. If you’re using Visual Studio and want your asserts to trigger in release builds, you’ll need to remove <code>NDEBUG</code> from this setting.</p>
 <p>If you’re using an IDE or build system that doesn’t automatically define <code>NDEBUG</code> in release configuration, you will need to add it in the project or compilation settings manually.</p>
-<h2 id="some-assert-limitations-and-warnings">Some assert limitations and warnings</h2>
+<h2 id="_4">断言的限制和提醒</h2>
 <p>There are a few pitfalls and limitations to asserts. First, the assert itself can have a bug. If this happens, the assert will either report an error where none exists, or fail to report a bug where one does exist.</p>
 <p>Second, your asserts should have no side effects -- that is, the program should run the same with and without the assert. Otherwise, what you are testing in a debug configuration will not be the same as in a release configuration (assuming you ship with NDEBUG).</p>
 <p>Also note that the <code>abort()</code> function terminates the program immediately, without a chance to do any further cleanup (e.g. close a file or database). Because of this, asserts should be used only in cases where corruption isn’t likely to occur if the program terminates unexpectedly.</p>
-<h2 id="static_assert">static_assert</h2>
+<h2 id="static_assert"><code>static_assert</code></h2>
 <p>C++ also has another type of assert called <code>static_assert</code>. A static_assert is an assertion that is checked at compile-time rather than at runtime, with a failing <code>static_assert</code> causing a compile error. Unlike assert, which is declared in the <code>&lt;cassert&gt;</code>header, static_assert is a keyword, so no header needs to be included to use it.</p>
 <p>A <code>static_assert</code> takes the following form:</p>
-<p>static_assert(condition, diagnostic_message)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">static_assert</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">diagnostic_message</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>If the condition is not true, the diagnostic message is printed. Here’s an example of using static_assert to ensure types have a certain size:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>

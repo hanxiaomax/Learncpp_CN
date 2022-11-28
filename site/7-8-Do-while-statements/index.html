@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#do-while" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2008,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2056,9 +2061,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.8 - do-while 语句
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.8 - do-while 语句
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#do-while" class="md-nav__link">
+    do-while 语句
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5780,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#do-while" class="md-nav__link">
+    do-while 语句
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5795,8 +5844,8 @@
   <h1>7.8 - do-while 语句</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>Consider the case where we want to show the user a menu and ask them to make a selection -- and if the user chooses an invalid selection, to ask them again. Clearly the menu and selection should go inside a loop of some kind (so we can keep asking the user until they enter valid input), but what kind of loop should we choose?</p>
-<p>Since a while loop evaluates the condition up front, it’s an awkward choice. We could solve the issue like this:</p>
+<p>考虑这样一种情况，我们希望向用户显示一个菜单，并要求他们进行选择——如果用户选择了无效的选择，则需要再次询问。显然，菜单和选项应该放在某种循环中(这样才可以反复询问用户，直到他们输入有效的输入)，但是应该选择哪种类型的循环呢?</p>
+<p>由于<code>while</code>循环会先对条件求值，所以使用<code>while</code>循环很别扭。假设我们这样做：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5825,7 +5874,7 @@
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// selection must be declared outside while loop so we can use it later</span>
+<span class="w">    </span><span class="c1">// 选择必须被定义在循环外</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">selection</span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">selection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">selection</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
@@ -5839,17 +5888,16 @@
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">selection</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">// do something with selection here</span>
-<span class="w">    </span><span class="c1">// such as a switch statement</span>
+<span class="w">    </span><span class="c1">// 继续选择进行操作</span>
+<span class="w">    </span><span class="c1">// 可以使用 switch 语句进行</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;You selected option #&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">selection</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>But this only works because our initial value of <code>0</code> for <code>selection</code> isn’t in the set of valid values (<code>1, 2, 3 or 4</code>). What if <code>0</code> was a valid choice? We’d have to pick a different initializer to represent “invalid” -- and now we’re introducing magic numbers (<a href="https://www.learncpp.com/cpp-tutorial/const-constexpr-and-symbolic-constants/">4.15 -- Symbolic constants: const and constexpr variables</a>) into our code.</p>
-<p>We could instead add a new variable to track validity, like so:</p>
+<p>但是，上述代码能够正确工作的原因是因为此处的初始值为0——它不是任何合法的<code>selection</code>值 (<code>1, 2, 3 or 4</code>)。如果 0 也是合法的值会怎样？我们必须选择一个不同的初始化值来表示“无效”——这导致我们的代码中引入魔鬼数字(<a href="../4-15-Literals/">4.15 -字面量</a>)。</p>
+<p>我们可以添加一个新的变量来跟踪有效性，就像这样：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5904,15 +5952,17 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>While this avoids the magic number, it introduces a new variable just to ensure the loop runs once, and that adds complexity and the possibility of additional errors.</p>
-<p>Do while statements</p>
-<p>To help solve problems like the above, C++ offers the do-while statement:</p>
-<p>do
-    statement; // can be a single statement or a compound statement
-while (condition);</p>
-<p>A do while statement is a looping construct that works just like a while loop, except the statement always executes at least once. After the statement has been executed, the do-while loop checks the condition. If the condition evaluates to <code>true</code>, the path of execution jumps back to the top of the do-while loop and executes it again.</p>
-<p>Here is our example above using a do-while loop instead of a while loop:</p>
+<p>虽然这避免了魔鬼数字，但引入了一个新变量，以确保循环能够至少运行一次，这增加了复杂性和犯错的可能性。</p>
+<h2 id="do-while">do-while 语句</h2>
+<p>为了帮助解决上述问题，C++提供了<code>do-while</code>语句:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">do</span><span class="w"></span>
+<span class="w">    </span><span class="n">statement</span><span class="p">;</span><span class="w"> </span><span class="c1">// 可以是单一语句，也可以是复合句</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p><code>do-while</code>语句是一个循环构造方式，其工作原理与<code>while</code>循环类似，只不过该语句总是至少执行一次。语句执行后，do-while循环检查条件。如果条件的计算结果为<code>true</code> ，执行路径将跳转回do-while循环的顶部并再次执行。</p>
+<p>下面是我们上面用do-while循环代替while循环的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5965,12 +6015,13 @@ while (condition);</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this way, we’ve avoided both magic numbers and additional variables.</p>
-<p>One thing worth discussing in the above example is that the <code>selection</code> variable must be declared outside of the do block. If the <code>selection</code> variable were to be declared inside the do block, it would be destroyed when the do block terminates, which happens before the conditional is evaluated. But we need the variable in the while conditional -- consequently, the <code>selection</code> variable must be declared outside the do block (even if it wasn’t used later in the body of the function).</p>
-<p>In practice, do-while loops aren’t commonly used. Having the condition at the bottom of the loop obscures the loop condition, which can lead to errors. Many developers recommend avoiding do-while loops altogether as a result. We’ll take a softer stance and advocate for preferring while loops over do-while when given an equal choice.</p>
-<p>Best practice</p>
-<p>Favor while loops over do-while when given an equal choice.</p>
+<p>通过这种方式，我们既避免了魔鬼数字，也避免了额外的变量。</p>
+<p>在上面的例子中有一件事值得讨论，那就是<code>selection</code> 变量必须在do块之外声明。如果在do块中声明了 <code>selection</code> 变量，那么当do块终止时，它将被销毁，这发生在条件值被求值之前。但是我们需要在while条件语句中声明变量——因此，<code>selection</code> 变量必须在do块之外声明(即使它没有在函数体后面使用)。</p>
+<p>实际上，do-while循环并不常用。将条件放在循环的底部会模糊循环条件，这可能会导致错误。因此，许多开发人员建议完全避免do-while循环。我们将采取一种较为温和的立场，如果两种方法都可以使用时，使用while循环而不是do-while循环。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>当给出相同的选择时，更倾向于while循环而不是do-while循环。</p>
+</div>
 
 
               </article>

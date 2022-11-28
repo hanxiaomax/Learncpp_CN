@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#handling-the-error-within-the-function" class="md-skip">
+        <a href="#handling-errors-in-functions" class="md-skip">
           Skip to content
         </a>
       
@@ -2013,7 +2013,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -2182,8 +2182,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#handling-errors-in-functions" class="md-nav__link">
+    Handling errors in functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#handling-the-error-within-the-function" class="md-nav__link">
     Handling the error within the function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    将错误传递给调用者
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    致命错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    异常
   </a>
   
 </li>
@@ -5787,8 +5815,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#handling-errors-in-functions" class="md-nav__link">
+    Handling errors in functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#handling-the-error-within-the-function" class="md-nav__link">
     Handling the error within the function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    将错误传递给调用者
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    致命错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    异常
   </a>
   
 </li>
@@ -5844,7 +5900,7 @@
   <h1>7.15 - 发现错误和处理错误</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>In lesson <a href="../7-14-Common-semantic-errors-in-c/">7.14 - C++ 中常见的语义错误</a>， we covered many types of common C++ semantic errors that new C++ programmers run into with the language. If an error is the result of a misused language feature or logic error, the error can simply be corrected.</p>
+<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/common-semantic-errors-in-c/">7.14 -- Common semantic errors in C++</a>, we covered many types of common C++ semantic errors that new C++ programmers run into with the language. If an error is the result of a misused language feature or logic error, the error can simply be corrected.</p>
 <p>But most errors in a program don’t occur as the result of inadvertently misusing language features -- rather, most errors occur due to faulty assumptions made by the programmer and/or a lack of proper error detection/handling.</p>
 <p>For example, in a function designed to look up a grade for a student, you might have assumed:</p>
 <ul>
@@ -5859,9 +5915,9 @@
 <li>When a program receives input (either from the user, or a file), the programmer may have assumed the input was in the correct format and semantically valid when it was not.</li>
 <li>When a function has been called, the programmer may have assumed the arguments would be semantically valid when they were not.</li>
 </ul>
-<p>Many new programmers write code and then only test the happy path: only the cases where there are no errors. But you should also be planning for and testing your sad paths, where things can and will go wrong. In lesson <a href="../3-10-Finding-issues-before-they-become-problems/">3.10 - 在问题发生前发现问题</a>, we defined defensive programming as the practice of trying to anticipate all of the ways software can be misused, either by end-users, or by developers (either the programmer themselves, or others). Once you’ve anticipated (or discovered) some misuse, the next thing to do is handle it.</p>
+<p>Many new programmers write code and then only test the happy path: only the cases where there are no errors. But you should also be planning for and testing your sad paths, where things can and will go wrong. In lesson <a href="https://www.learncpp.com/cpp-tutorial/finding-issues-before-they-become-problems/">3.10 -- Finding issues before they become problems</a>, we defined defensive programming as the practice of trying to anticipate all of the ways software can be misused, either by end-users, or by developers (either the programmer themselves, or others). Once you’ve anticipated (or discovered) some misuse, the next thing to do is handle it.</p>
 <p>In this lesson, we’ll talk about error handling strategies (what to do when things go wrong) inside a function. In the subsequent lessons, we’ll talk about validating user input, and then introduce a useful tool to help document and validate assumptions.</p>
-<p>Handling errors in functions</p>
+<h2 id="handling-errors-in-functions">Handling errors in functions</h2>
 <p>Functions may fail for any number of reasons -- the caller may have passed in an argument with an invalid value, or something may fail within the body of the function. For example, a function that opens a file for reading might fail if the file cannot be found.</p>
 <p>When this happens, you have quite a few options at your disposal. There is no best way to handle an error -- it really depends on the nature of the problem and whether the problem can be fixed or not.</p>
 <p>There are 4 general strategies that can be used:</p>
@@ -5873,7 +5929,7 @@
 </ul>
 <h2 id="handling-the-error-within-the-function">Handling the error within the function</h2>
 <p>If possible, the best strategy is to recover from the error in the same function in which the error occurred, so that the error can be contained and corrected without impacting any code outside the function. There are two options here: retry until successful, or cancel the operation being executed.</p>
-<p>If the error has occurred due to something outside of the program’s control, the program can retry until success is achieved. For example, if the program requires an internet connection, and the user has lost their connection, the program may be able to display a warning and then use a loop to periodically recheck for internet connectivity. Alternatively, if the user has entered invalid input, the program can ask the user to try again, and loop until the user is successful at entering valid input. We’ll show examples of handling invalid input and using loops to retry in the next lesson (<a href="../7-16-std-cin-and-handling-invalid-input/">7.16 - std::in 和输入错误处理</a>).</p>
+<p>If the error has occurred due to something outside of the program’s control, the program can retry until success is achieved. For example, if the program requires an internet connection, and the user has lost their connection, the program may be able to display a warning and then use a loop to periodically recheck for internet connectivity. Alternatively, if the user has entered invalid input, the program can ask the user to try again, and loop until the user is successful at entering valid input. We’ll show examples of handling invalid input and using loops to retry in the next lesson (<a href="../7-16-std-cin-and-handling-invalid-input/">7.16 - std::in 和输入错误处理</a>)。</p>
 <p>An alternate strategy is just to ignore the error and/or cancel the operation. For example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -5903,9 +5959,11 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>However, if the calling function is expecting the called function to produce a return value or some useful side-effect, then just ignoring the error may not be an option.</p>
-<p>Related content</p>
-<p>We discuss std::cerr in lesson <a href="../3-4-Basic-debugging-tactics/">3.4 — 基本代码调试技术</a>.</p>
-<p>Passing errors back to the caller</p>
+<div class="admonition info">
+<p class="admonition-title">相关内容</p>
+<p>We discuss <code>std::cerr</code> in lesson <a href="../3-4-Basic-debugging-tactics/">3.4 — 基本代码调试技术</a></p>
+</div>
+<h2 id="_1">将错误传递给调用者</h2>
 <p>In many cases, the error can’t reasonably be handled in the function that detects the error. For example, consider the following function:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -5916,7 +5974,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<p>If <code>y</code> is <code>0</code>, what should we do? We can’t just skip the program logic, because the function needs to return some value. We shouldn’t ask the user to enter a new value for <code>y</code>because this is a calculation function, and introducing input routines into it may or may not be appropriate for the program calling this function.</p>
+<p>If <code>y</code> is <code>0</code>, what should we do? We can’t just skip the program logic, because the function needs to return some value. We shouldn’t ask the user to enter a new value for <code>y</code> because this is a calculation function, and introducing input routines into it may or may not be appropriate for the program calling this function.</p>
 <p>In such cases, the best option can be to pass the error back to the caller in hopes that the caller will be able to deal with it.</p>
 <p>How might we do that?</p>
 <p>If the function has a void return type, it can be changed to return a Boolean that indicates success or failure. For example, instead of:</p>
@@ -5993,8 +6051,8 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<p>However, if the full range of return values are needed, then using the return value to indicate an error will not be possible (because the caller would not be able to tell whether the return value is a valid value or an error value). In such a case, an <code>out parameter</code> (covered in lesson <a href="https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/">9.5 -- Pass by lvalue reference</a>) might be a viable choice.</p>
-<p>Fatal errors</p>
+<p>However, if the full range of return values are needed, then using the return value to indicate an error will not be possible (because the caller would not be able to tell whether the return value is a valid value or an error value). In such a case, an <code>out parameter</code> (covered in lesson <a href="../9-5-Pass-by-lvalue-reference/">9.5 - 传递左值引用</a>) might be a viable choice.</p>
+<h2 id="_2">致命错误</h2>
 <p>If the error is so bad that the program can not continue to operate properly, this is called a non-recoverable error (also called a fatal error). In such cases, the best thing to do is terminate the program. If your code is in <code>main()</code> or a function called directly from <code>main()</code>, the best thing to do is let <code>main()</code> return a non-zero status code. However, if you’re deep in some nested subfunction, it may not be convenient or possible to propagate the error all the way back to <code>main()</code>. In such a case, a <code>halt statement</code> (such as <code>std::exit()</code>) can be used.</p>
 <p>For example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6015,13 +6073,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Exceptions</p>
+<h2 id="_3">异常</h2>
 <p>Because returning an error from a function back to the caller is complicated (and the many different ways to do so leads to inconsistency, and inconsistency leads to mistakes), C++ offers an entirely separate way to pass errors back to the caller: <code>exceptions</code>.</p>
 <p>The basic idea is that when an error occurs, an exception is “thrown”. If the current function does not “catch” the error, the caller of the function has a chance to catch the error. If the caller does not catch the error, the caller’s caller has a chance to catch the error. The error progressively moves up the call stack until it is either caught and handled (at which point execution continues normally), or until main() fails to handle the error (at which point the program is terminated with an exception error).</p>
 <p>We cover exception handling in <a href="https://www.learncpp.com/#Chapter20">chapter 20</a> of this tutorial series.</p>
-<p>[</p>
-<p>](https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/)</p>
 
 
               </article>

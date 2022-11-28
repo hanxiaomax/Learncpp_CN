@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#switch" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2000,9 +2005,66 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            7.4 - switch 语句基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         7.4 - switch 语句基础
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    创建 switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    分支标签
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    default 标签
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    没有匹配的分支也没有默认分支
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    使用 break
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2016,7 +2078,7 @@
   
     <li class="md-nav__item">
       <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-nav__link">
-        7.5 - switch 落空和作用域
+        7.5 - switch 贯穿和作用域
       </a>
     </li>
   
@@ -5746,6 +5808,49 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    创建 switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    分支标签
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    default 标签
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    没有匹配的分支也没有默认分支
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break" class="md-nav__link">
+    使用 break
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5801,7 +5906,7 @@
   <h1>7.4 - switch 语句基础</h1>
 
 <details class="note"><summary>关键点速记</summary></details>
-<p>Although it is possible to chain many if-else statements together, this is both difficult to read and inefficient. Consider the following program:</p>
+<p>尽管我们可以编写很多链式 if-else，但是这么做不仅写起来费劲，效率也不高。例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5842,9 +5947,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>While this example isn’t too complex, <code>x</code> is evaluated up to three times (which is inefficient), and the reader has to be sure that it is <code>x</code> being evaluated each time (not some other variable).</p>
-<p>Because testing a variable or expression for equality against a set of different values is common, C++ provides an alternative conditional statement called a <strong>switch statement</strong> that is specialized for this purpose. Here is the same program as above using a switch:</p>
+<p>这个例子并不复杂，x 最多会被求值三次（不高效），读者也必须明白被求值多次的是<code>x</code>而不是其他变量。</p>
+<p>由于针对一组不同的值测试变量或表达式是否相等是很常见的，C++提供了另外一种可选的条件语句，称为<strong>switch语句</strong>，专门用于此目的。下面的代码用switch语句实现了相同的功能：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5899,24 +6003,27 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The idea behind a switch statement is simple: an expression (sometimes called the <code>condition</code>) is evaluated to produce a value. If the expression’s value is equal to the value after any of the <code>case labels</code>, the statements after the matching <code>case label</code> are executed. If no matching value can be found and a <code>default label</code> exists, the statements after the <code>default label</code> are executed instead.</p>
-<p>Compared to the original <code>if statement</code>, the <code>switch statement</code> has the advantage of only evaluating the expression once (making it more efficient), and the <code>switch statement</code> also makes it clearer to the reader that it is the same expression being tested for equality in each case.</p>
-<p>Best practice</p>
-<p>Prefer <code>switch statements</code> over if-else chains when there is a choice.</p>
-<p>Let’s examine each of these concepts in more detail.</p>
-<p>Starting a switch</p>
-<p>We start a <code>switch statement</code> by using the <code>switch</code> keyword, followed by parentheses with the conditional expression that we would like to evaluate inside. Often the expression is just a single variable, but it can be any valid expression.</p>
-<p>The one restriction is that the condition must evaluate to an integral type (see lesson <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-fundamental-data-types/">4.1 -- Introduction to fundamental data types</a> if you need a reminder which fundamental types are considered integral types) or an enumerated type (covered in future lesson <a href="https://www.learncpp.com/cpp-tutorial/unscoped-enumerations/">10.2 -- Unscoped enumerations</a>), or be convertible to one. Expressions that evaluate to floating point types, strings, and most other non-integral types may not be used here.</p>
-<p>For advanced readers</p>
-<p>Why does the switch type only allow for integral (or enumerated) types? The answer is because switch statements are designed to be highly optimized. Historically, the most common way for compilers to implement switch statements is via <a href="https://en.wikipedia.org/wiki/Branch_table">Jump tables</a> -- and jump tables only work with integral values.</p>
-<p>For those of you already familiar with arrays, a jump table works much like an array, an integral value is used as the array index to “jump” directly to a result. This can be much more efficient than doing a bunch of sequential comparisons.</p>
-<p>Of course, compilers don’t have to implement switches using jump tables, and sometimes they don’t. There is technically no reason that C++ couldn’t relax the restriction so that other types could be used as well, they just haven’t done so yet (as of C++20).</p>
-<p>Following the conditional expression, we declare a block. Inside the block, we use labels to define all of the values we want to test for equality. There are two kinds of labels.</p>
-<p>Case labels</p>
-<p>The first kind of label is the case label, which is declared using the <code>case</code> keyword and followed by a constant expression. The constant expression must either match the type of the condition or must be convertible to that type.</p>
-<p>If the value of the conditional expression equals the expression after a <code>case label</code>, execution begins at the first statement after that <code>case label</code> and then continues sequentially.</p>
-<p>Here’s an example of the condition matching a <code>case label</code>:</p>
+<p>switch 背后的思想很简单：表达式(有时称为条件)求值后得到一个值。如果表达式的值能够和后面的某个分支标签匹配，则该标签后的语句就会被执行。如果没有匹配的标签，但是存在default标签，则执行default后面的语句。</p>
+<p>和if语句相比，switch语句的优势在于条件求值只需要做一次（更高效），而且switch语句看起来更清楚，可读性更好。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>如果可以的话，尽量用 switch 语句代替 if-else 语句链。</p>
+</div>
+<p>让我们更详细地研究这些概念。</p>
+<h2 id="switch">创建 switch</h2>
+<p>使用 <code>switch</code> 关键字，后面加上括号以及需要在括号中求值的条件表达式，就可以创建switch语句。通常情况下表达式会是一个单一变量，但是也可以是任何合法的表达式。</p>
+<p>关于这里的条件语句，它的一个限制条件是其求值结果必须为<a href="../integral-type/">整型类型</a>(如何你还不熟悉整型类型，请参见：<a href="../4-1-Introduction-to-fundamental-data-types/">4.1 - 基础数据类型简介</a>) 或<a href="../scoped-enumerations/">有作用域枚举</a>类型(参见：<a href="../10-2-unscoped-enumerations/">10.2 - 无作用域枚举类型</a>)，或者是任何能转换成上述类型的值。浮点类型、字符串和大多数其他非整型的表达式都不可用。</p>
+<div class="admonition info">
+<p class="admonition-title">扩展阅读</p>
+<p>为什么switch只使用整数(或枚举)类型？答案是因为switch语句被高度优化了。历史上，编译器实现switch语句最常见的方法是通过<a href="https://en.wikipedia.org/wiki/Branch_table">跳表</a>实现的，而跳转表只适用于整数值。</p>
+<p>对于那些已经熟悉数组的人来说，跳表的工作原理非常类似于数组，使用整数值作为数组索引，直接“跳转”到结果。这比执行一堆顺序比较要高效得多。</p>
+<p>当然，编译器不必使用跳表实现switch，有时也不需要。从技术上讲，C++没有理由不能放松此处的类型限制，以便其他类型也可以使用，只是目前还没有这样做罢了(直到C++20)。</p>
+</div>
+<p>在条件表达式后面，我们声明一个语句块。在语句块内部，使用标签来定义我们想要测试是否相等的所有值，标签有两种：</p>
+<h2 id="_1">分支标签</h2>
+<p>第一种标签是分支标签，它使用 <code>case</code> 关键字声明，后面跟着一个常量表达式。常量表达式必须匹配条件的类型，或可以转换为该类型。</p>
+<p>如果条件表达式求值结果等于某个分支标签的值，则从该标签后面的第一条语句继续顺序执行。</p>
+<p>下面的例子中，条件表达式可以匹配一个分支标签：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5947,14 +6054,14 @@
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">printDigitName</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// x is evaluated to produce value 2</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// x 求值为 2</span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;One&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="c1">// which matches the case statement here</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Two&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// so execution starts here</span>
-<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// and then we return to the caller</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="c1">// 匹配</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Two&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 从这里开始执行</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// 执行到这条语句后就返回</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"></span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Three&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
@@ -5971,11 +6078,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This code prints:</p>
-<p>Two</p>
-<p>In the above program, <code>x</code> is evaluated to produce value <code>2</code>. Because there is a case label with value <code>2</code>, execution jumps to the statement underneath that matching case label. The program prints <code>Two</code>, and then the <code>return statement</code> is executed, which returns back to the caller.</p>
-<p>There is no practical limit to the number of case labels you can have, but all case labels in a switch must be unique. That is, you can not do this:</p>
+<p>程序输出：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Two
+</code></pre></div></td></tr></table></div>
+<p>在上面的例子中，<code>x</code> 求值为2。因为分支标签中也有2，所以程序会跳转到该标签下的第一条语句开始执行。该程序会打印 <code>Two</code>，然后从 <code>return</code> 语句返回给调用者。</p>
+<p>分支标签的个数并没有现在，但是每个标签必须是唯一的，所以下面的代码是错误的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5988,10 +6095,8 @@
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">:</span><span class="w"> </span><span class="c1">// error: &#39;6&#39; converts to integer value 54, which is already used</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The default label</p>
-<p>The second kind of label is the default label (often called the default case), which is declared using the <code>default</code> keyword. If the conditional expression does not match any case label and a default label exists, execution begins at the first statement after the default label.</p>
-<p>Here’s an example of the condition matching the default label:</p>
+<h2 id="default">default 标签</h2>
+<p>第二种标签称为 default 标签(经常被称为默认分支)，使用 <code>default</code> 关键字定义。如果条件表达式不能够匹配任何其他标签且default 标签存在，则从default标签后的第一条语句开始执行。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6046,16 +6151,79 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This code prints:</p>
-<p>Unknown</p>
-<p>The default label is optional, and there can only be one default label per switch statement. By convention, the <code>default case</code> is placed last in the switch block.</p>
-<p>Best practice</p>
-<p>Place the default case last in the switch block.</p>
-<p>Taking a break</p>
-<p>In the above examples, we used <code>return statements</code> to stop execution of the statements after our labels. However, this also exits the entire function.</p>
-<p>A break statement (declared using the <code>break</code> keyword) tells the compiler that we are done executing statements within the switch, and that execution should continue with the statement after the end of the switch block. This allows us to exit a <code>switch statement</code> without exiting the entire function.</p>
-<p>Here’s a slightly modified example rewritten using <code>break</code> instead of <code>return</code>:</p>
+<p>程序打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Unknown
+</code></pre></div></td></tr></table></div>
+<p>default 分支是可选的，如果有的话则只能有一个。一般来讲，default分支会被放置在switch语句中的最后一个分支。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>将 default 作为最后一个分支。</p>
+</div>
+<h2 id="_2">没有匹配的分支也没有默认分支</h2>
+<p>如果条件表达式的值不匹配任何分支，并且没有提供默认分支，则switch内部不会执行任何case。在switch结束后继续执行。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printDigitName</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// x is evaluated to produce value 5</span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;One&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Two&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Three&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// no matching case exists and there is no default case</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// so execution continues here</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printDigitName</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>在上面的例子中， <code>x</code>  求值为 <code>5</code>，但是由于没有匹配的分支，也没有默认分支。所以不会走到任何case中，程序在switch块结束后继续向下执行。打印 <code>Hello</code>。</p>
+<h2 id="break">使用 break</h2>
+<p>在上面的例子中，我们使用 <code>return</code> 语句来停止标签后面语句的执行。但是，这也会退出整个函数。</p>
+<p><code>break</code> 语句(使用<code>break</code> 关键字声明)告诉编译器，我们已经完成了switch语句的执行但需要继续执行外面的语句。这允许我们在不退出整个函数的情况下退出“switch语句”。</p>
+<p>下面是一个用<code>break</code> 而不是<code>return</code> 重写的例子:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6098,14 +6266,14 @@
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Two&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Three&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// execution starts here</span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// jump to the end of the switch block</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Three&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 从这里开始执行</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// 跳到 switch 结束时</span>
 <span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Unknown&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">// execution continues here</span>
+<span class="w">    </span><span class="c1">// 从这里继续执行</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Ah-Ah-Ah!&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -6116,12 +6284,14 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The above example prints:</p>
-<p>Three Ah-Ah-Ah!</p>
-<p>Best practice</p>
-<p>Each set of statements underneath a label should end in a <code>break statement</code> or a <code>return statement</code>.</p>
-<p>So what happens if you don’t end a set of statements under a label with a <code>break</code> or <code>return</code>? We’ll explore that topic, and others, in the next lesson.</p>
+<p>程序打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Three Ah-Ah-Ah!
+</code></pre></div></td></tr></table></div>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>标签下的每组语句都应该以“break语句”或“return语句”结束。这包括switch最后一个标签下面的语句。</p>
+</div>
+<p>那么，如果不以<code>break</code> 或 <code>return</code> 作为一组语句的结尾，会发生什么呢?我们将在下一课中探讨这个话题和其他话题。</p>
 
 
               </article>
@@ -6158,13 +6328,13 @@
         
         
           
-          <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-footer__link md-footer__link--next" aria-label="Next: 7.5 - switch 落空和作用域" rel="next">
+          <a href="../7-5-Switch-fallthrough-and-scoping/" class="md-footer__link md-footer__link--next" aria-label="Next: 7.5 - switch 贯穿和作用域" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   Next
                 </span>
-                7.5 - switch 落空和作用域
+                7.5 - switch 贯穿和作用域
               </div>
             </div>
             <div class="md-footer__button md-icon">
