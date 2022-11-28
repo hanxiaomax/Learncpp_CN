@@ -10,42 +10,42 @@ tags:
 ---
 
 
-By far, the most utilized loop statement in C++ is the `for statement`. The for statement (also called a for loop) is preferred when we have an obvious loop variable because it lets us easily and concisely define, initialize, test, and change the value of loop variables.
+C++中最常用的语句是`for`语句。当我们有一个明显的循环变量时，首选使用for语句(也称为for循环)，因为它使我们可以轻松而简洁地定义、初始化、测试和更改循环变量的值。
 
-As of C++11, there are two different kinds of `for loops`. We’ll cover the classic `for statement` in this lesson, and the newer `range-based for statement` in a future lesson ([11.13 -- For-each loops](https://www.learncpp.com/cpp-tutorial/for-each-loops/)) once we’ve covered some other prerequisite topics, such as arrays and iterators.
+在 C++11 中，有两种 `for`循环，我们会在本节课介绍最典型的 `for`  循环，然后在后面的课程中（[[11-13-For-each-loops|11.13 - for-each 循环]]）介绍较新的的[[range-based-for-loops|基于范围的for循环]] ([11.13 -- For-each loops](https://www.learncpp.com/cpp-tutorial/for-each-loops/)) 。
 
-The `for statement` looks pretty simple in abstract:
+`for` 循环语法的抽象形式非常简单：
 
 ```cpp
 for (init-statement; condition; end-expression)
    statement;
 ```
 
-The easiest way to initially understand how a `for statement` works is to convert it into an equivalent `while statement`:
+理解 `for` 循环最简单的方式是将其转换成一个等价的 `while`循环：
 
 ```cpp
-{ // note the block here
-    init-statement; // used to define variables used in the loop
+{ // 注意这里的语句块
+    init-statement; // 用于定义循环中使用的变量
     while (condition)
     {
         statement; 
-        end-expression; // used to modify the loop variable prior to reassessment of the condition
+        end-expression; // 用于修改循环变量
     }
-} // variables defined inside the loop go out of scope here
+} // 在循环中定义的变量在这里超出了作用域
 
 ```
 
-## Evaluation of for statements
+## for 语句求值
 
-A `for statement` is evaluated in 3 parts:
+`for`语句求值分三部分：
 
-First, the init-statement is executed. This only happens once when the loop is initiated. The init-statement is typically used for variable definition and initialization. These variables have “loop scope”, which really just is a form of block scope where these variables exist from the point of definition through the end of the loop statement. In our while-loop equivalent, you can see that the init-statement is inside a block that contains the loop, so the variables defined in the init-statement go out of scope when the block containing the loop ends.
+首先是执行 `init-statement` ，但是它之后在循环初始化时执行一次。`init-statement` 通常用于变量的定义和初始化。这些变量均具有“循环作用域”——这只是块作用域的一种形式，这些变量从定义点一直存续到循环语句结束。在等价的while循环中，可以看到`init-statement`位于包含循环的块中，因此当包含循环的块结束时，`init-statement`中定义的变量将超出作用域。
 
-Second, for each loop iteration, the condition is evaluated. If this evaluates to true, the statement is executed. If this evaluates to false, the loop terminates and execution continues with the next statement beyond the loop.
+其次, 对于每个循环迭代，都要计算条件。如果该值为`true`，则执行语句。如果该值为`false`，则循环终止，并继续执行循环以外的下一个语句。
 
-Finally, after the statement is executed, the end-expression is evaluated. Typically, this expression is used to increment or decrement the loop variables defined in the init-statement. After the end-expression has been evaluated, execution returns to the second step (and the condition is evaluated again).
+最后，当`statement`执行后，会对 `end-expression` 进行求值。通常，该表达式用于增加或减少`init-statement`中定义的循环变量。在计算结束表达式之后，执行返回到第二步(再次计算条件)。
 
-Let’s take a look at a sample _for loop_ and discuss how it works:
+接下来看一个 for 循环例程，了解其工作方式：
 
 ```cpp
 #include <iostream>
@@ -61,23 +61,21 @@ int main()
 }
 ```
 
-COPY
+首先，声明一个循环变量 `count`并将其初始化为1。
 
-First, we declare a loop variable named `count`, and initialize it with the value `1`.
+然后对 `count <= 10` 求值，因为 `count`等于1，所以条件求值为 `true`。因此，`statement` 会被执行，打印1和空格。
 
-Second, `count <= 10` is evaluated, and since count is `1`, this evaluates to `true`. Consequently, the statement executes, which prints `1` and a space.
+最后，对 `++count` 求值，将 `count` 递增为 `2`。然后回到第二步。
 
-Finally, `++count` is evaluated, which increments `count` to `2`. Then the loop goes back to the second step.
+现在，再次对 `count <= 10` 求值。由于 `count` 已经是 `2`了，所以求值结果为 `true`，再次执行循环。语句输出`2` 和一个空格，`count` 被增加到`3` 。循环继续迭代，直到`count` 被增加到`11` ，此时 `count <= 10` 的计算值为 `false` ，循环退出。
 
-Now, `count <= 10` is evaluated again. Since `count` has value `2`, this evaluates `true`, so the loop iterates again. The statement prints `2` and a space, and count is incremented to `3`. The loop continues to iterate until eventually `count` is incremented to `11`, at which point `count <= 10` evaluates to `false`, and the loop exits.
-
-Consequently, this program prints the result:
+程序的输出结果为：
 
 ```
 1 2 3 4 5 6 7 8 9 10
 ```
 
-For the sake of example, let’s convert the above `for loop` into an equivalent `while loop`:
+对于这个例子，让我们将其转换为等价的 `while` 循环：
 
 ```cpp
 #include <iostream>
@@ -97,15 +95,13 @@ int main()
 }
 ```
 
-COPY
+看起来没那么糟，是吧？注意，这里需要使用外大括号，因为当循环结束时 `count` 要[[going-out-of-scope|离开作用域]]。
 
-That doesn’t look so bad, does it? Note that the outer braces are necessary here, because `count` goes out of scope when the loop ends.
-
-`For loops` can be hard for new programmers to read -- however, experienced programmers love them because they are a very compact way to do loops with a counter, with all of the necessary information about the loop variables, loop conditions, and loop count modifiers are presented up front. This helps reduce errors.
+对于新程序员来说，“for循环”可能很难读懂——然而，有经验的程序员喜欢它们，因为它们是一种非常紧凑的方法，可以用计数器来执行循环，关于循环变量、循环条件和循环计数修饰符的所有必要信息都在前面给出了。这有助于减少错误。
 
 ## 更多循环案例
 
-Here’s an example of a function that uses a `for loop` to calculate integer exponents:
+下面是一个使用`for`循环计算整数指数的函数示例:
 
 ```cpp
 #include <cstdint> // for fixed-width integers
@@ -122,15 +118,13 @@ std::int64_t pow(int base, int exponent)
 }
 ```
 
-COPY
-
-This function returns the value base^exponent (base to the exponent power).
+This function returns the value `base^exponent` (base to the exponent power).
 
 This is a straightforward incrementing `for loop`, with `count` looping from `0` up to (but excluding) `exponent`.
 
-- If exponent is 0, the `for loop` will execute 0 times, and the function will return 1.  
-- If exponent is 1, the `for loop` will execute 1 time, and the function will return 1 * base.  
-- If exponent is 2, the `for loop` will execute 2 times, and the function will return 1 * base * base.
+- If exponent is `0`, the `for loop` will execute 0 times, and the function will return `1`.  
+- If exponent is `1`, the `for loop` will execute 1 time, and the function will return `1 * base`.  
+- If exponent is `2`, the `for loop` will execute 2 times, and the function will return `1 * base * base`.
 
 Although most `for loops` increment the loop variable by 1, we can decrement it as well:
 

@@ -79,23 +79,21 @@ int main()
 }
 ```
 
-虽然这避免了魔鬼数字，但引入了一个新变量，以确保循环能够至少运行一次，这增加了复杂性和额外错误的可能性。
+虽然这避免了魔鬼数字，但引入了一个新变量，以确保循环能够至少运行一次，这增加了复杂性和犯错的可能性。
 
-While this avoids the magic number, it introduces a new variable just to ensure the loop runs once, and that adds complexity and the possibility of additional errors.
+## do-while 语句
 
-## Do while statements
+为了帮助解决上述问题，C++提供了`do-while`语句:
 
-To help solve problems like the above, C++ offers the do-while statement:
-
-```
+```cpp
 do
-    statement; // can be a single statement or a compound statement
+    statement; // 可以是单一语句，也可以是复合句
 while (condition);
 ```
 
-A do while statement is a looping construct that works just like a while loop, except the statement always executes at least once. After the statement has been executed, the do-while loop checks the condition. If the condition evaluates to `true`, the path of execution jumps back to the top of the do-while loop and executes it again.
+`do-while`语句是一个循环构造方式，其工作原理与`while`循环类似，只不过该语句总是至少执行一次。语句执行后，do-while循环检查条件。如果条件的计算结果为`true` ，执行路径将跳转回do-while循环的顶部并再次执行。
 
-Here is our example above using a do-while loop instead of a while loop:
+下面是我们上面用do-while循环代替while循环的例子：
 
 ```cpp
 #include <iostream>
@@ -126,14 +124,13 @@ int main()
 }
 ```
 
-COPY
 
-In this way, we’ve avoided both magic numbers and additional variables.
+通过这种方式，我们既避免了魔鬼数字，也避免了额外的变量。
 
-One thing worth discussing in the above example is that the `selection` variable must be declared outside of the do block. If the `selection` variable were to be declared inside the do block, it would be destroyed when the do block terminates, which happens before the conditional is evaluated. But we need the variable in the while conditional -- consequently, the `selection` variable must be declared outside the do block (even if it wasn’t used later in the body of the function).
+在上面的例子中有一件事值得讨论，那就是`selection` 变量必须在do块之外声明。如果在do块中声明了 `selection` 变量，那么当do块终止时，它将被销毁，这发生在条件值被求值之前。但是我们需要在while条件语句中声明变量——因此，`selection` 变量必须在do块之外声明(即使它没有在函数体后面使用)。
 
-In practice, do-while loops aren’t commonly used. Having the condition at the bottom of the loop obscures the loop condition, which can lead to errors. Many developers recommend avoiding do-while loops altogether as a result. We’ll take a softer stance and advocate for preferring while loops over do-while when given an equal choice.
+实际上，do-while循环并不常用。将条件放在循环的底部会模糊循环条件，这可能会导致错误。因此，许多开发人员建议完全避免do-while循环。我们将采取一种较为温和的立场，如果两种方法都可以使用时，使用while循环而不是do-while循环。
 
 !!! success "最佳实践"
 
-	Favor while loops over do-while when given an equal choice.
+	当给出相同的选择时，更倾向于while循环而不是do-while循环。

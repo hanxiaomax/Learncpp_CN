@@ -19,13 +19,13 @@ First, because we’re leaving the function, all local variables and function pa
 
 Next, a special function called `std::exit()` is called, with the return value from `main()` (the `status code`) passed in as an argument. So what is `std::exit()`?
 
-## The `std::exit()` function
+## `std::exit()` 函数
 
 `std::exit()` is a function that causes the program to terminate normally. Normal termination means the program has exited in an expected way. Note that the term `normal termination` does not imply anything about whether the program was successful (that’s what the `status code` is for). For example, let’s say you were writing a program where you expected the user to type in a filename to process. If the user typed in an invalid filename, your program would probably return a non-zero `status code` to indicate the failure state, but it would still have a `normal termination`.
 
 `std::exit()` performs a number of cleanup functions. First, objects with static storage duration are destroyed. Then some other miscellaneous file cleanup is done if any files were used. Finally, control is returned back to the OS, with the argument passed to `std::exit()` used as the `status code`.
 
-## Calling `std::exit()` explicitly
+## 显式调用 `std::exit()` 
 
 Although `std::exit()` is called implicitly when function `main()` ends, `std::exit()` can also be called explicitly to halt the program before it would normally terminate. When `std::exit()` is called this way, you will need to include the `cstdlib` header.
 
@@ -70,9 +70,9 @@ Although in the program above we call `std::exit()` from function `main()`, 
 
 One important note about calling `std::exit()` explicitly: `std::exit()` does not clean up any local variables (either in the current function, or in functions up the `call stack`). Because of this, it’s generally better to avoid calling `std::exit()`.
 
-Warning
+!!! warning "注意"
 
-The `std::exit()` function does not clean up local variables in the current function or up the call stack.
+	The `std::exit()` function does not clean up local variables in the current function or up the call stack.
 
 ## `std::atexit`
 
@@ -159,7 +159,7 @@ We will see cases later in this chapter ([7.17 -- Assert and static_assert](http
 
 The `std::terminate()` function is typically used in conjunction with `exceptions` (we’ll cover exceptions in a later chapter). Although `std::terminate` can be called explicitly, it is more often called implicitly when an exception isn’t handled (and in a few other exception-related cases). By default, `std::terminate()` calls `std::abort()`.
 
-## When should you use a halt?
+## 什么时候应该挂起程序？
 
 The short answer is “almost never”. Destroying local objects is an important part of C++ (particularly when we get into classes), and none of the above-mentioned functions clean up local variables. Exceptions are a better and safer mechanism for handling error cases.
 

@@ -11,11 +11,11 @@ tags:
 ---
 
 
-## Break
+## Break 语句
 
 Although you have already seen the `break statement` in the context of `switch statements` （[[7-4-Switch-statement-basics|7.4 - switch 语句基础]]）, it deserves a fuller treatment since it can be used with other types control flow statements as well. The break statement causes a while loop, do-while loop, for loop, or switch statement to end, with execution continuing with the next statement after the loop or switch being broken out of.
 
-## Breaking a switch
+## 从 switch 中跳出
 
 In the context of a `switch statement`, a `break` is typically used at the end of each case to signify the case is finished (which prevents fallthrough into subsequent cases):
 
@@ -53,7 +53,7 @@ COPY
 
 See lesson [[7-5-Switch-fallthrough-and-scoping|7.5 - switch 落空和作用域]] for more information about fallthrough, along with some additional examples.
 
-## Breaking a loop
+## 从循环中跳出
 
 In the context of a loop, a break statement can be used to end the loop early. Execution continues with the next statement after the end of the loop.
 
@@ -137,7 +137,7 @@ Enter 0 to exit or any other integer to continue: 0
 We're out!
 ```
 
-## Break vs return
+## `break` vs `return`
 
 New programmers sometimes have trouble understanding the difference between `break` and `return`. A `break statement` terminates the switch or loop, and execution continues at the first statement beyond the switch or loop. A `return statement` terminates the entire function that the loop is within, and execution continues at point where the function was called.
 
@@ -188,7 +188,7 @@ We broke out of the loop
 Function breakOrReturn returned 0
 ```
 
-## Continue
+## `continue` 语句
 
 The continue statement provides a convenient way to end the current iteration of a loop without terminating the entire loop.
 
@@ -275,7 +275,7 @@ and then goes into an infinite loop. When `count` is `5`, the `if statement`
 
 Of course, you already know that if you have an obvious counter variable, you should be using a `for loop`, not a `while` or `do-while` loop.
 
-The debate over use of break and continue
+## 关于 `break` 和 `continue` 的争论
 
 Many textbooks caution readers not to use `break` and `continue` in loops, both because it causes the execution flow to jump around, and because it can make the flow of logic harder to follow. For example, a `break` in the middle of a complicated piece of logic could either be missed, or it may not be obvious under what conditions it should be triggered.
 
@@ -344,11 +344,11 @@ In this version, by using a single `break statement`, we’ve avoided the use o
 
 Minimizing the number of variables used and keeping the number of nested blocks down both improve code comprehensibility more than a `break` or `continue` harms it. For that reason, we believe judicious use of `break` or `continue` is acceptable.
 
-Best practice
+!!! success "最佳实践"
 
-Use break and continue when they simplify your loop logic.
+	Use break and continue when they simplify your loop logic.
 
-The debate over use of early returns
+## 关于提前返回的争论
 
 There’s a similar argument to be made for return statements. A return statement that is not the last statement in a function is called an early return. Many programmers believe early returns should be avoided. A function that only has one return statement at the bottom of the function has a simplicity to it -- you can assume the function will take its arguments, do whatever logic it has implemented, and return a result without deviation. Having extra returns complicates the logic.
 
@@ -358,6 +358,6 @@ Some developers take a middle ground, and only use early returns at the top of a
 
 Our stance is that early returns are more helpful than harmful, but we recognize that there is a bit of art to the practice.
 
-Best practice
+!!! success "最佳实践"
 
-Use early returns when they simplify your function’s logic.
+	Use early returns when they simplify your function’s logic.

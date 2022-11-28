@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "7-8-Do-while-statements",
-      "path": "docs/7-8-Do-while-statements.md"
+      "basename": "7-11-Halts-exiting-your-program-early",
+      "path": "docs/7-11-Halts-exiting-your-program-early.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
+    },
+    {
+      "basename": "7-9-For-statements",
+      "path": "docs/7-9-For-statements.md"
+    },
+    {
+      "basename": "7-8-Do-while-statements",
+      "path": "docs/7-8-Do-while-statements.md"
     },
     {
       "basename": "7-7-Intro-to-loops-and-while-statements",
@@ -35,10 +47,6 @@
     {
       "basename": "7-13-Code-coverage",
       "path": "docs/7-13-Code-coverage.md"
-    },
-    {
-      "basename": "7-9-For-statements",
-      "path": "docs/7-9-For-statements.md"
     },
     {
       "basename": "11-3-Arrays-and-loops",
@@ -91,14 +99,6 @@
     {
       "basename": "7-15-Detecting-and-handling-errors",
       "path": "docs/7-15-Detecting-and-handling-errors.md"
-    },
-    {
-      "basename": "7-11-Halts-exiting-your-program-early",
-      "path": "docs/7-11-Halts-exiting-your-program-early.md"
-    },
-    {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
     },
     {
       "basename": "7-6-Goto-statements",
