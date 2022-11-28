@@ -62,7 +62,7 @@ There is no way to warn when this happens, or prevent it from happening. The bes
 
 	Covered in lesson [[2-11-Header-files|2.11 - 头文件]]
 
-## Q: Why does (some code that produces undefined behavior) generate a certain result? [](https://www.learncpp.com/cpp-tutorial/cpp-faq/#undefinedbehavior)
+## Q: Why does (some code that produces undefined behavior) generate a certain result? 
 
 Undefined behavior occurs when you perform an operation whose behavior is not defined by the C++ language. Code implementing undefined behavior may exhibit any of the following symptoms:
 

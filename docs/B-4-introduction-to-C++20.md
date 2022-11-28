@@ -20,15 +20,15 @@ In February of 2020, the [ISO (International Organization for Standardization)]
 
 For your interest, here’s a list of the major improvements that C++20 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.
 
--   Abbreviated function templates via auto parameters ([8.15 -- Function templates with multiple template types](https://www.learncpp.com/cpp-tutorial/function-templates-with-multiple-template-types/))
+-   Abbreviated function templates via auto parameters ([[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]])
 -   Chrono extensions for calendar and time zone support (no tutorial yet)
 -   Concepts, which allow you to put constraints on template parameters (no tutorial yet)
 -   Constexpr virtual functions, unions, try, catch, dynamic_cast, and typeid (no tutorial yet)
 -   Constinit keyword, to assert that a variable has static initialization (no tutorial yet)
 -   Coroutines (no tutorial yet)
--   Designated initializers ([10.6 -- Struct aggregate initialization](https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/))
--   Immediate functions using the consteval keyword ([6.14 -- Constexpr and consteval functions](https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/))
--   Modules, a replacement for #include (no tutorial yet)
+-   Designated initializers ([[10-6-struct-aggregate-initialization|10.6 - 结构体的聚合初始化]])
+-   Immediate functions using the consteval keyword ([[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]])
+-   Modules, a replacement for `#include`(no tutorial yet)
 -   Ranges (no tutorial yet)
 -   std::erase (no tutorial yet)
 -   std::make_shared for arrays (no tutorial yet)

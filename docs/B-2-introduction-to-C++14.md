@@ -12,15 +12,15 @@ type: translation
 	
 	- 
 
-**What is C++14?**
+## C++14 是什么？
 
-On August 18, 2014, the [ISO (International Organization for Standardization)](https://www.iso.org/home.html) approved a new version of C++, called C++14. Unlike C++11, which added a huge amount of new functionality, C++14 is a comparatively minor update, mainly featuring bug fixes and small improvements.
+2014年8月18日，[ISO (国际标准化组织)](https://www.iso.org/home.html) 通过了C++的新版本——C++14。C++14没有像C++11那样添加大量新特性，相对来说它只进行了较少地更新，主要专注于修改bug和改进语言。
 
-**New improvements in C++14**
+## C++14中的改进
 
-For your interest, here’s a list of the major improvements that C++14 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.
+这里是C++14添加的主要改进的列表。请注意，这个列表不是全面的，而是旨在突出一些感兴趣的关键改进。
 
--   Aggregate member initialization ([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])
+-   [[聚合成员chu's'h]] member initialization ([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])
 -   Binary literals ([[4-15-Literals|4.15 - 字面量]])
 -   `[[deprecated]]` attribute (no tutorial yet)
 -   Digit separators ([[4-15-Literals|4.15 - 字面量]])

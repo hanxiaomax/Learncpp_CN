@@ -343,7 +343,7 @@
 - [[A-3-using-libraries-with-Code-Blocks|A.3 - 在Code Blocks中使用库]]
 - [[A-4-C++FAQ|A.4 — C++ FAQ]]
 
-## B. C++标准更新  🚧
+## B. C++标准更新 ✅ 
 
 - [[B-1-introduction-to-C++11|B.1 - C++11]]
 - [[B-2-introduction-to-C++14|B.2 - C++14]]

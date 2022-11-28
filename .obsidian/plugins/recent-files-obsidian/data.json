@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "B-3-introduction-to-C++17",
-      "path": "docs/B-3-introduction-to-C++17.md"
+      "basename": "B-2-introduction-to-C++14",
+      "path": "docs/B-2-introduction-to-C++14.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "B-2-introduction-to-C++14",
-      "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
       "basename": "B-1-introduction-to-C++11",
       "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "A-4-C++FAQ",
+      "path": "docs/A-4-C++FAQ.md"
+    },
+    {
+      "basename": "B-4-introduction-to-C++20",
+      "path": "docs/B-4-introduction-to-C++20.md"
+    },
+    {
+      "basename": "B-3-introduction-to-C++17",
+      "path": "docs/B-3-introduction-to-C++17.md"
     },
     {
       "basename": "M-2-R-value-references",
@@ -127,14 +135,6 @@
     {
       "basename": "7-6-Goto-statements",
       "path": "docs/7-6-Goto-statements.md"
-    },
-    {
-      "basename": "B-4-introduction-to-C++20",
-      "path": "docs/B-4-introduction-to-C++20.md"
-    },
-    {
-      "basename": "A-4-C++FAQ",
-      "path": "docs/A-4-C++FAQ.md"
     },
     {
       "basename": "A-3-using-libraries-with-Code-Blocks",
