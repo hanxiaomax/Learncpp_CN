@@ -215,11 +215,12 @@ int main()
 
 	循环变量应该是有符号整型。
 
-## Doing something every N iterations
+## 迭代执行N次
 
-Each time a loop executes, it is called an iteration.
+每次循环执行被称为一个迭代。
 
-Often, we want to do something every 2nd, 3rd, or 4th iteration, such as print a newline. This can easily be done by using the modulus operator on our counter:
+通常，我们希望每隔第2、3或4次迭代做一些事情，例如打印换行符。这可以通过在计数器上使用求模运算轻松实现:
+
 
 ```cpp
 #include <iostream>
@@ -238,7 +239,7 @@ int main()
 
         std::cout << count << ' ';
 
-        // if the loop variable is divisible by 10, print a newline
+        // 如果循环次数可以整除10，则打印换行
         if (count % 10 == 0)
         {
             std::cout << '\n';
@@ -252,9 +253,7 @@ int main()
 }
 ```
 
-COPY
-
-This program produces the result:
+打印：
 
 ```
 01 02 03 04 05 06 07 08 09 10
@@ -264,9 +263,9 @@ This program produces the result:
 41 42 43 44 45 46 47 48 49 50
 ```
 
-## Nested loops
+## 嵌套循环
 
-It is also possible to nest loops inside of other loops. In the following example, the nested loop (which we’re calling the inner loop) and the outer loop each have their own counters. Note that the loop expression for the inner loop makes use of the outer loop’s counter as well!
+循环可以嵌套在其他循环中。在下面的例子中，被嵌套循环(我们称之为内层循环)和外层循环都有各自的计数器。注意，内部循环的循环表达式也使用了外部循环的计数器！
 
 ```cpp
 #include <iostream>
@@ -296,9 +295,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序打印：
 
 ```
 1
@@ -308,16 +305,16 @@ This program prints:
 1 2 3 4 5
 ```
 
-Nested loops tend to be hard for new programmers to understand, so don’t be discouraged if you find this a bit confusing. For each iteration of the outer loop, the body of the outer loop will execute once. Because the outer loop body contains an inner loop, the inner loop is executed for each iteration of the outer loop.
+新手程序员往往难以理解嵌套循环，所以如果你也看不懂的话，千万不要灰心丧气。对于外层循环的每一次迭代，外层循环的循环体内语句会执行一次。由于外层循环的循环体内包括内层循环，所以内层循环在每一个外层循环的迭代中都要完整执行一次。
 
-Let’s example how this works in more detail.
+让我们仔细研究一下上面的代码：
 
-First, we have an outer loop (with loop variable `outer`) that will loop 5 times (with `outer` having values `1`, `2`, `3`, `4`, and `5` successively).
+首先，对于外层循环(循环变量为 `outer`) 会迭代执行5次（ `outer` 依次变为 `1`, `2`, `3`, `4`, 和 `5` ）。
 
-On the first iteration of the outer loop, `outer` has value `1`, and then the outer loop body executes. Inside the body of the outer loop, we have another loop with loop variable `inner`. The inner loop iterates from `1` to `outer` (which has value `1`), so this inner loop will execute once, printing the value `1`. Then we print a newline, and increment `outer` to `2`.
+外层循环第一次迭代时 `outer` 值为 `1`，然后执行循环体内的语句。在循环体内，有另外一个循环，其循环变量为 `inner`。内层循环的循环变量从 `1` 到 `outer` (此时是 `1`)，所以内层循环执行一次，打印 `1`。然后打印换行，并将 `outer` 递增为`2`。
 
-On the second iteration of the outer loop, `outer` has value `2`, and then the outer loop body executes. Inside the body of the outer loop, `inner` iterates from `1` to `outer` (which now has value `2`), so this inner loop will execute twice, printing the values `1` and `2`. Then we print a newline, and increment `outer` to `3`.
+在外层循环执行第二次迭代时，`outer` 的值为 `2`，然后执行循环体。在循环体内，`inner` 仍然从 `1` 到 `outer` (此时为 `2`)进行迭代。 所以这一次内层循环会执行两次，打印 `1`和`2`。 然后打印换行，并将 `outer` 递增为`3`。
 
-This process continues, with the inner loop printing `1 2 3`, `1 2 3 4`, and `1 2 3 4 5` on successive passes. Eventually, `outer` is incremented to `6`, and because the outer loop condition (`outer <= 5`) is then false, the outer loop is finished. Then the program ends.
+迭代继续进行的话，内存循环会依次打印 `1 2 3`、 `1 2 3 4` 以及`1 2 3 4 5` 。最终，`outer` 会递增到 `6`，此时因为外层的循环条件(`outer <= 5`) 求值为false，所以外层循环会终止。程序退出。
 
-If you’re still finding this confusing, stepping through this program in a debugger line-by-line and watching the values of `inner` and `outer` is a good way to get a better understanding of what’s happening.
+如果您仍然感到困惑，可以在调试器中逐行检查这个程序，并查看“inner”和“outer”的值，通过这个方法你可以更好地理解代码的运行逻辑。

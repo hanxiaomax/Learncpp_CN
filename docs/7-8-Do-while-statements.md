@@ -10,17 +10,19 @@ tags:
 ---
 
 ??? note "关键点速记"
-	
-Consider the case where we want to show the user a menu and ask them to make a selection -- and if the user chooses an invalid selection, to ask them again. Clearly the menu and selection should go inside a loop of some kind (so we can keep asking the user until they enter valid input), but what kind of loop should we choose?
 
-Since a while loop evaluates the condition up front, it’s an awkward choice. We could solve the issue like this:
+
+
+考虑这样一种情况，我们希望向用户显示一个菜单，并要求他们进行选择——如果用户选择了无效的选择，则需要再次询问。显然，菜单和选项应该放在某种循环中(这样才可以反复询问用户，直到他们输入有效的输入)，但是应该选择哪种类型的循环呢?
+
+由于`while`循环会先对条件求值，所以使用`while`循环很别扭。假设我们这样做：
 
 ```cpp
 #include <iostream>
 
 int main()
 {
-    // selection must be declared outside while loop so we can use it later
+    // 选择必须被定义在循环外
     int selection{ 0 };
 
     while (selection != 1 && selection != 2 &&
@@ -34,8 +36,8 @@ int main()
         std::cin >> selection;
     }
 
-    // do something with selection here
-    // such as a switch statement
+    // 继续选择进行操作
+    // 可以使用 switch 语句进行
 
     std::cout << "You selected option #" << selection << '\n';
 
@@ -43,11 +45,9 @@ int main()
 }
 ```
 
-COPY
+但是，上述代码能够正确工作的原因是因为此处的初始值为0——它不是任何合法的`selection`值 (`1, 2, 3 or 4`)。如果 0 也是合法的值会怎样？我们必须选择一个不同的初始化值来表示“无效”——这导致我们的代码中引入魔鬼数字([[4-15-Literals|4.15 -字面量]])。
 
-But this only works because our initial value of `0` for `selection` isn’t in the set of valid values (`1, 2, 3 or 4`). What if `0` was a valid choice? We’d have to pick a different initializer to represent “invalid” -- and now we’re introducing magic numbers ([[4-15-Literals|4.15 - 字面量]]) into our code.
-
-We could instead add a new variable to track validity, like so:
+我们可以添加一个新的变量来跟踪有效性，就像这样：
 
 ```cpp
 #include <iostream>
@@ -79,7 +79,7 @@ int main()
 }
 ```
 
-COPY
+虽然这避免了魔鬼数字，但引入了一个新变量，以确保循环能够至少运行一次，这增加了复杂性和额外错误的可能性。
 
 While this avoids the magic number, it introduces a new variable just to ensure the loop runs once, and that adds complexity and the possibility of additional errors.
 
