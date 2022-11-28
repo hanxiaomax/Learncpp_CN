@@ -176,9 +176,9 @@ int main()
 循环变量通常有简单的名称，如i 、 j 或 k 。但是，如果你想知道循环变量在程序中的哪个位置被使用，此时你会搜索 i 、j 或 k ，此时会返回大量的搜索结果！因此，一些开发人员喜欢用 `iii` 、`jjj` 或 `kkk` 这样的变量名。因为这些名称更加独特，这使得搜索循环变量更加容易，并帮助它们作为循环变量脱颖而出。一个更好的主意是使用“真实的”变量名，比如`count`，或者一个关于你正在计数的东西的更详细的名字(例如`userCount`)。
 
 
-## 循环变量应该为有符号shuLoop variables should be signed
+## 循环变量应该为有符号数
 
-Loop variables should almost always be signed, as unsigned integers can lead to unexpected issues. Consider the following code:
+循环变量几乎都应该是有符号的，因为无符号整数可能导致意想不到的问题。考虑以下代码：
 
 ```cpp
 #include <iostream>
@@ -207,15 +207,13 @@ int main()
 }
 ```
 
-COPY
+看一下上面的例子，看看能否发现错误。并不是很明显。
 
-Take a look at the above example and see if you can spot the error. It’s not very obvious.
-
-It turns out, this program is an infinite loop. It starts out by printing `10 9 8 7 6 5 4 3 2 1 blastoff!` as desired, but then goes off the rails, and starts counting down from `4294967295`. Why? Because the loop condition `count >= 0` will never be false! When count is `0`, `0 >= 0` is true. Then `--count` is executed, and count wraps around back to `4294967295` (Assuming 32-bit integers). And since `4294967295 >= 0` is true, the program continues. Because `count` is unsigned, it can never be negative, and because it can never be negative, the loop won’t terminate.
+事实证明，这个程序是一个无限循环。它开始打印 `10 9 8 7 6 5 4 3 2 1 blastoff`，但随后就脱轨了，从`4294967295`开始倒数。为什么？因为循环条件 `count >= 0` 永远不会为假！当`count`为 0 时，`0 >= 0` 为真。然后执行`--count`， `count` 反转为` 4294967295` (假设是32位整数)。由于 `4294967295 >= 0` 为真，程序继续执行。因为 `count` 是无符号的，它永远不可能是负数，所以循环永远不会停止。
 
 !!! success "最佳实践"
 
-	Loop variables should be of type (signed) int.
+	循环变量应该是有符号整型。
 
 ## Doing something every N iterations
 
