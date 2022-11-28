@@ -155,7 +155,7 @@ int main()
 
 COPY
 
-We will see cases later in this chapter ([7.17 -- Assert and static_assert](https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/)) where `std::abort` is called implicitly.
+We will see cases later in this chapter ([[7-17-assert-and-static-assert|7.17 - 断言和 static_assert]]) where `std::abort` is called implicitly.
 
 The `std::terminate()` function is typically used in conjunction with `exceptions` (we’ll cover exceptions in a later chapter). Although `std::terminate` can be called explicitly, it is more often called implicitly when an exception isn’t handled (and in a few other exception-related cases). By default, `std::terminate()` calls `std::abort()`.
 

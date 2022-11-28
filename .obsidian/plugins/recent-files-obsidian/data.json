@@ -1,12 +1,68 @@
 {
   "recentFiles": [
     {
-      "basename": "7-11-Halts-exiting-your-program-early",
-      "path": "docs/7-11-Halts-exiting-your-program-early.md"
+      "basename": "B-3-introduction-to-C++17",
+      "path": "docs/B-3-introduction-to-C++17.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "B-2-introduction-to-C++14",
+      "path": "docs/B-2-introduction-to-C++14.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++11",
+      "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "M-2-R-value-references",
+      "path": "docs/M-2-R-value-references.md"
+    },
+    {
+      "basename": "rvalue",
+      "path": "docs/rvalue.md"
+    },
+    {
+      "basename": "20.4",
+      "path": "docs/20.4.md"
+    },
+    {
+      "basename": "7-19-generating-random-numbers-using-mersenne-twister",
+      "path": "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
+    },
+    {
+      "basename": "7-18-introduction-to-random-number-generation",
+      "path": "docs/7-18-introduction-to-random-number-generation.md"
+    },
+    {
+      "basename": "7-17-assert-and-static-assert",
+      "path": "docs/7-17-assert-and-static-assert.md"
+    },
+    {
+      "basename": "7-16-std-cin-and-handling-invalid-input",
+      "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
+    },
+    {
+      "basename": "7-15-Detecting-and-handling-errors",
+      "path": "docs/7-15-Detecting-and-handling-errors.md"
+    },
+    {
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
+    },
+    {
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
+      "basename": "7-11-Halts-exiting-your-program-early",
+      "path": "docs/7-11-Halts-exiting-your-program-early.md"
     },
     {
       "basename": "7-10-Break-and-continue",
@@ -35,18 +91,6 @@
     {
       "basename": "integral-type",
       "path": "docs/integral-type.md"
-    },
-    {
-      "basename": "7-14-Common-semantic-errors-in-c",
-      "path": "docs/7-14-Common-semantic-errors-in-c.md"
-    },
-    {
-      "basename": "7-12-Introduction-to-testing-your-code",
-      "path": "docs/7-12-Introduction-to-testing-your-code.md"
-    },
-    {
-      "basename": "7-13-Code-coverage",
-      "path": "docs/7-13-Code-coverage.md"
     },
     {
       "basename": "11-3-Arrays-and-loops",
@@ -81,44 +125,12 @@
       "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
     },
     {
-      "basename": "7-19-generating-random-numbers-using-mersenne-twister",
-      "path": "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
-    },
-    {
-      "basename": "7-18-introduction-to-random-number-generation",
-      "path": "docs/7-18-introduction-to-random-number-generation.md"
-    },
-    {
-      "basename": "7-17-assert-and-static-assert",
-      "path": "docs/7-17-assert-and-static-assert.md"
-    },
-    {
-      "basename": "7-16-std-cin-and-handling-invalid-input",
-      "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
-    },
-    {
-      "basename": "7-15-Detecting-and-handling-errors",
-      "path": "docs/7-15-Detecting-and-handling-errors.md"
-    },
-    {
       "basename": "7-6-Goto-statements",
       "path": "docs/7-6-Goto-statements.md"
     },
     {
       "basename": "B-4-introduction-to-C++20",
       "path": "docs/B-4-introduction-to-C++20.md"
-    },
-    {
-      "basename": "B-3-introduction-to-C++17",
-      "path": "docs/B-3-introduction-to-C++17.md"
-    },
-    {
-      "basename": "B-2-introduction-to-C++14",
-      "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
-      "basename": "B-1-introduction-to-C++11",
-      "path": "docs/B-1-introduction-to-C++11.md"
     },
     {
       "basename": "A-4-C++FAQ",
@@ -187,18 +199,6 @@
     {
       "basename": "12-7-introduction-to-lambdas-anonymous-functions",
       "path": "docs/12-7-introduction-to-lambdas-anonymous-functions.md"
-    },
-    {
-      "basename": "return-type-deduction",
-      "path": "docs/return-type-deduction.md"
-    },
-    {
-      "basename": "lambda",
-      "path": "docs/lambda.md"
-    },
-    {
-      "basename": "abbreviated function templates",
-      "path": "docs/abbreviated function templates.md"
     }
   ],
   "omittedPaths": [],

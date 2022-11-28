@@ -32,7 +32,7 @@ Both of those options are problematic though. If a program skips statements due 
 If the program terminates (via `std::exit`) then we will have lost our call stack and any debugging information that might help us isolate the problem. `std::abort` is a better option for such cases, as typically the developer will be given the option to start debugging at the point where the program aborted.
 
 
-## Preconditions, invariants, and postconditions
+## 前置条件、不变量和后置条件
 
 In programming, a precondition is any condition that must always be true prior to the execution of component of code. Our check of `y` is a precondition that ensures `y` has a valid value before the function continues.
 
@@ -57,7 +57,7 @@ An invariant is a condition that must be true while some component is executin
 
 Similarly, a postcondition is something that must be true after the execution of some component of code. Our function doesn’t have any postconditions.
 
-## Assertions
+## 断言
 
 Using a conditional statement to detect an invalid parameter (or to validate some other kind of assumption), along with printing an error message and terminating the program, is such a common response to problems that C++ provides a shortcut method for doing this.
 
@@ -105,7 +105,7 @@ Although asserts are most often used to validate function parameters, they can b
 
 Although we told you previously to avoid preprocessor macros, asserts are one of the few preprocessor macros that are considered acceptable to use. We encourage you to use assert statements liberally throughout your code.
 
-## Making your assert statements more descriptive
+## 使断言语句更具描述性
 
 Sometimes assert expressions aren’t very descriptive. Consider the following statement:
 
@@ -139,7 +139,7 @@ Assertion failed: found && "Car could not be found in database", file C:\\VCProj
 
 That gives you some additional context as to what went wrong.
 
-## Asserts vs error handling
+## 断言 vs 错误处理
 
 Assertions and error handling are similar enough that their purposes can be confused, so let’s clarify:
 
@@ -171,7 +171,7 @@ Some IDEs set `NDEBUG` by default as part of the project settings for release 
 
 If you’re using an IDE or build system that doesn’t automatically define `NDEBUG` in release configuration, you will need to add it in the project or compilation settings manually.
 
-## Some assert limitations and warnings
+## 断言的限制和提醒
 
 There are a few pitfalls and limitations to asserts. First, the assert itself can have a bug. If this happens, the assert will either report an error where none exists, or fail to report a bug where one does exist.
 
@@ -186,7 +186,9 @@ C++ also has another type of assert called `static_assert`. A static_assert i
 
 A `static_assert` takes the following form:
 
+```cpp
 static_assert(condition, diagnostic_message)
+```
 
 If the condition is not true, the diagnostic message is printed. Here’s an example of using static_assert to ensure types have a certain size:
 

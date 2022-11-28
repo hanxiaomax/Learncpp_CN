@@ -16,7 +16,7 @@ In the previous lesson [7.18 -- Introduction to random number generation](https
 
 In this lesson, we’ll take a look at how to generate random numbers in your programs. To access any of the randomization capabilities in C++, we include the `<random>` header of the standard library.
 
-## Generating random numbers in C++ using Mersenne Twister
+## 在 C++ 中使用 Mersenne Twister 生成随机数
 
 The Mersenne Twister PRNG, besides having a great name, is probably the most popular PRNG across all programming languages. Although it is a bit old by today’s standards, it generally produces quality results and has decent performance. The random library has support for two Mersenne Twister types:
 
@@ -72,7 +72,7 @@ In lesson [4.17 -- Introduction to std::string](https://www.learncpp.com/cpp-tu
 
 `mt()` is a concise syntax for calling the function `mt.operator()`, which for these PRNG types has been defined to return the next random result in the sequence. The advantage of using `operator()` instead of a named function is that we don’t need to remember the function’s name, and the concise syntax is less typing.
 
-## Rolling a dice using Mersenne Twister
+## 使用 Mersenne Twister 投掷骰子
 
 A 32-bit PRNG will generate random numbers between 0 and 4,294,967,295, but we do not always want numbers in that range. If our program was simulating a board game or a dice game, we’d probably want to simulate the roll of a 6-sided dice by generating random numbers between 1 and 6. If our program was a dungeon adventure, and the player had a sword that did between 7 and 11 damage to monsters, then we’d want to generate random numbers between 7 and 11 whenever the player hit a monster.
 
@@ -126,7 +126,8 @@ This produces the result:
 
 There are only two noteworthy differences in this example compared to the previous one. First, we’ve created a uniform distribution variable (named `die6`) to generate numbers between 1 and 6. Second, instead of calling `mt()` to generate 32-bit unsigned integer random numbers, we’re now calling `die6(mt)` to generate a value between 1 and 6.
 
-## The above program isn’t as random as it seems
+## 上面的程序并不像它看上去那样随机
+
 
 Although the results of our dice rolling example above are pretty random, there’s a major flaw with the program. Run the program 3 times and see if you can figure out what it is. Go ahead, we’ll wait.
 
@@ -196,7 +197,7 @@ The downside of this approach is that if the program is run several times in qui
 
 
 
-##  Seeding with the random device
+##  使用随机数设备生成种子
 
 The random library contains a type called `std::random_device` that is an implementation-defined PRNG. Normally we avoid implementation-defined capabilities because they have no guarantees about quality or portability, but this is one of the exception cases. Typically `std::random_device` will ask the OS for a random number (how it does this depends on the OS).
 
@@ -237,7 +238,7 @@ However, the latest versions of the most popular compilers (GCC/MinGW, Clang, Vi
 
 	Use `std::random_device` to seed your PRNGs (unless it’s not implemented properly for your target compiler/architecture).
 
-### Q: What does `std::random_device{}()` mean?
+### Q:  `std::random_device{}()` 是什么意思?
 
 `std::random_device{}` creates an value-initialized temporary object of type `std::random_device`. The `()` then calls `operator()` on that temporary object, which returns a randomized value (which we use as an initializer for our Mersenne Twister)
 
@@ -255,9 +256,9 @@ COPY
 
 Using `std::random_device{}()` allows us to get the same result without creating a named function or named variable, so it’s much more concise.
 
-### Q: If std::random_device is random itself, why don’t we just use that instead of Mersenne Twister?
+### Q: 如果 `std::random_device` 本身是随机的，为什么不直接用它代替 Mersenne Twister 呢？
 
-Because std::random_device is implementation defined, we can’t assume much about it. It may be expensive to access or it may cause our program to pause while waiting for more random numbers to become available. The pool of numbers that it draws from may also be depleted quickly, which would impact the random results for other applications requesting random numbers via the same method. For this reason, std::random_device is better used to seed other PRNGs rather than as a PRNG itself.
+Because `std::random_device` is implementation defined, we can’t assume much about it. It may be expensive to access or it may cause our program to pause while waiting for more random numbers to become available. The pool of numbers that it draws from may also be depleted quickly, which would impact the random results for other applications requesting random numbers via the same method. For this reason, std::random_device is better used to seed other PRNGs rather than as a PRNG itself.
 
 Only seed a PRNG once
 
@@ -292,11 +293,11 @@ COPY
 
 In the `getCard()` function, the random number generator is being created and seeded every time the function is called. This is inefficient at best, and will likely cause poor random results.
 
-## Random numbers across multiple functions
+## 跨函数的随机数
 
 What happens if we want to use a random number generator in multiple functions? One way is to create (and seed) our PRNG in our `main()` function, and then pass it everywhere we need it. But that’s a lot of passing for something we may only use sporadically, and in different places.
 
-Although you can create a static local std::mt19937 variable in each function that needs it (static so that it only gets seeded once), it’s overkill to have every function that uses a random number generator define and seed its own local generator. A better option in most cases is to create a global random number generator (inside a namespace!). Remember how we told you to avoid non-const global variables? This is an exception.
+Although you can create a static local `std::mt19937` variable in each function that needs it (static so that it only gets seeded once), it’s overkill to have every function that uses a random number generator define and seed its own local generator. A better option in most cases is to create a global random number generator (inside a namespace!). Remember how we told you to avoid non-const global variables? This is an exception.
 
 ```cpp
 #include <iostream>
@@ -327,9 +328,9 @@ COPY
 
 In the above example, `Random::mt` is a global variable that can be accessed from any function. We’ve created `Random::get()` as an easy way to get a random number between `min` and `max`. `std::uniform_int_distribution` is typically cheap to create, so it’s fine to create when we need it.
 
-## Mersenne Twister and underseeding issues
+## Mersenne Twister 和 underseeding issues
 
-The internal state of a Mersenne Twister is 624 bytes in size. In the examples above, where we seed from the clock or std::random_device, our seed is only a single 32-bit integer. This means we’re essentially initializing a 624-byte object with a 4-byte value, which is significantly underseeding the Mersenne Twister PRNG. The random library does the best it can to fill in the remaining 620 bytes with “random” data… but it can’t work magic. Underseeded PRNG can generate results that are suboptimal for applications that need the highest quality results. For example, seeding `std::mt19937` with a single 32-bit value will never generate the number `42` as its first output.
+The internal state of a Mersenne Twister is 624 bytes in size. In the examples above, where we seed from the clock or `std::random_device`, our seed is only a single 32-bit integer. This means we’re essentially initializing a 624-byte object with a 4-byte value, which is significantly underseeding the Mersenne Twister PRNG. The random library does the best it can to fill in the remaining 620 bytes with “random” data… but it can’t work magic. Underseeded PRNG can generate results that are suboptimal for applications that need the highest quality results. For example, seeding `std::mt19937` with a single 32-bit value will never generate the number `42` as its first output.
 
 So how do we fix this? As of C++20, there’s no easy way. But we do have some suggestions.
 
@@ -370,7 +371,7 @@ COPY
 
 This is pretty straightforward so there isn’t much reason not to do this at a minimum.
 
-### Q: Why not give std::seed_seq 156 integers (624 bytes) from `std::random_device`?
+#### Q: Why not give `std::seed_seq` 156 integers (624 bytes) from `std::random_device`?
 
 You can! However, this may be slow, and risks depleting the pool of random numbers that `std::random_device` uses.
 
@@ -378,7 +379,7 @@ Second, you can use other “random” inputs to `std::seed_seq`. We’ve alrea
 
 An alternate path is to use a different PRNG with a smaller state. Many good PRNGs use 64 or 128 bits of state, which can easily be initialized using `std::seed_seq`filled with 8 calls to `std::random_device`.
 
-## Warming up a PRNG
+## PRNG 热身
 
 When a PRNG is given a poor quality seed (or underseeded), the initial results of the PRNG may not be high quality. For this reason, some PRNGs benefit from being “warmed up”, which is a technique where the first N results generated from the PRNG are discarded. This allows the internal state of the PRNG to be mixed up such that the subsequent results should be of higher quality. Typically a few hundred to a few thousand initial results are discarded. The longer the period of the PRNG, the more initial results should be discarded.
 
@@ -388,18 +389,18 @@ When a PRNG is given a poor quality seed (or underseeded), the initial results o
 
 The `seed_seq` initialization used by `std::mt19937` performs a warm up, so we don’t need to explicitly warm up `std::mt19937` objects.
 
-## Debugging programs that use random numbers
+## 使用随机数带来的debug难题
 
 Programs that use random numbers can be difficult to debug because the program may exhibit different behaviors each time it is run. Sometimes it may work, and sometimes it may not. When debugging, it’s helpful to ensure your program executes the same (incorrect) way each time. That way, you can run the program as many times as needed to isolate where the error is.
 
 For this reason, when debugging, it’s a useful technique to seed your PRNG with a specific value (e.g. `5`) that causes the erroneous behavior to occur. This will ensure your program generates the same results each time, making debugging easier. Once you’ve found the error, you can use your normal seeding method to start generating randomized results again.
 
-## Random FAQ
+## 随机化 FAQ
 
-### Q: Help! My random number generator is generating the same sequence of random numbers.
+#### Q: Help! My random number generator is generating the same sequence of random numbers.
 
 If your random number generator is generating the same sequence of random numbers every time your program is run, you probably didn’t seed it properly (or at all). Make sure you’re seeding it with a value that changes each time the program is run.
 
-### Q: Help! My random number generator keeps generating the same number over and over.
+#### Q: Help! My random number generator keeps generating the same number over and over.
 
 If your random number generator is generating the same number every time you ask it for a random number, then you are probably either reseeding the random number generator before generating a random number, or you’re creating a new random generator for each random number.

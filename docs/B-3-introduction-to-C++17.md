@@ -24,7 +24,7 @@ For your interest, here’s a list of the major improvements that C++17 adds. No
 -   __has_include preprocessor identifier to check if optional header files are available (no tutorial yet)
 -   if statements that resolve at compile time (no tutorial yet)
 -   Initializers in if statements and switch statements (no tutorial yet)
--   inline variables ([6.9 -- Sharing global constants across multiple files (using inline variables)](https://www.learncpp.com/cpp-tutorial/sharing-global-constants-across-multiple-files-using-inline-variables/))
+-   inline variables ([[6]])
 -   Fold expressions (no tutorial yet)
 -   Nested namespaces can now be defined as namespace X::Y ([6.2 -- User-defined namespaces and the scope resolution operator](https://www.learncpp.com/cpp-tutorial/user-defined-namespaces-and-the-scope-resolution-operator/))
 -   Removal of std::auto_ptr and some other deprecated types

@@ -20,16 +20,12 @@ On August 18, 2014, the [ISO (International Organization for Standardization)](
 
 For your interest, here’s a list of the major improvements that C++14 adds. Note that this list is not comprehensive, but rather intended to highlight some of the key improvements of interest.
 
--   Aggregate member initialization ([10.5 -- Introduction to structs, members, and member selection](https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/))
--   Binary literals ([4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/))
--   [[deprecated]] attribute (no tutorial yet)
--   Digit separators ([4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/))
--   Function return type deduction ([8.7 -- Type deduction for objects using the auto keyword](https://www.learncpp.com/cpp-tutorial/type-deduction-for-objects-using-the-auto-keyword/))
--   Generic lambdas ([12.7 -- Introduction to lambdas (anonymous functions)](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/))
--   Relaxed constexpr functions ([6.14 -- Constexpr and consteval functions](https://www.learncpp.com/cpp-tutorial/constexpr-and-consteval-functions/))
+-   Aggregate member initialization ([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])
+-   Binary literals ([[4-15-Literals|4.15 - 字面量]])
+-   `[[deprecated]]` attribute (no tutorial yet)
+-   Digit separators ([[4-15-Literals|4.15 - 字面量]])
+-   Function return type deduction ([[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]])
+-   Generic lambdas ([[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介（匿名函数）]])
+-   Relaxed constexpr functions ([[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]])
 -   Variable templates (no tutorial yet)
--   std::make_unique ([M.6 -- std::unique_ptr](https://www.learncpp.com/cpp-tutorial/stdunique_ptr/))
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/b-3-introduction-to-c17/)
+-   std::make_unique ([[M-6-std-unique-ptr|M.6 — std::unique_ptr]])

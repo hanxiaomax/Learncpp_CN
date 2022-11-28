@@ -19,7 +19,7 @@ As you write programs, you should always consider how users will (unintentionall
 
 In this lesson, we’ll take a look specifically at ways the user can enter invalid text input via std::cin, and show you some different ways to handle those cases.
 
-## `std::cin`, buffers, and extraction
+## `std::cin`、缓冲和提取操作
 
 In order to discuss how std::cin and operator>> can fail, it first helps to know a little bit about how they work.
 
@@ -147,7 +147,7 @@ Second, we ask the user to enter one of four possible symbols. What if they ente
 
 Third, what if we ask the user to enter a symbol and they enter a string like “*q hello”. Although we can extract the ‘*’ character we need, there’s additional input left in the buffer that could cause problems down the road.
 
-## Types of invalid text input
+## 非法输入的类型
 
 We can generally separate input text errors into four types:
 
