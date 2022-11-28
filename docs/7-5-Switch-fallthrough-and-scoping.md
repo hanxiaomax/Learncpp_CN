@@ -1,6 +1,6 @@
 ---
-title: 7.5 - switch 落空和作用域
-alias: 7.5 - switch 落空和作用域
+title: 7.5 - switch 贯穿和作用域
+alias: 7.5 - switch 贯穿和作用域
 origin: /switch-fallthrough-and-scoping/
 origin_title: "7.5 — Switch fallthrough and scoping"
 time: 2022-2-12
@@ -13,22 +13,22 @@ tags:
 	
 
 
-This lesson continues our exploration of switch statements that we started in the prior lesson[[7-4-Switch-statement-basics|7.4 - switch 语句基础]] In the prior lesson, we mentioned that each set of statements underneath a label should end in a `break statement` or a `return statement`.
+本节课继续探索switch语句。在前面的课程中（[[7-4-Switch-statement-basics|7.4 - switch 语句基础]]）我们提到每个分支标签下的语句都应该以`break `或 `return `结尾。
 
-In this lesson, we’ll explore why, and talk about some switch scoping issues that sometimes trip up new programmers.
+在这节课中，我们将探索其中的原因，并讨论一些开关作用域的问题，这些问题有时会绊倒新程序员。
 
-## Fallthrough
 
-When a switch expression matches a case label or optional default label, execution begins at the first statement following the matching label. Execution will then continue sequentially until one of the following termination conditions happens:
+## 贯穿
 
-1.  The end of the switch block is reached.
-2.  Another control flow statement (typically a `break` or `return`) causes the switch block or function to exit.
-3.  Something else interrupts the normal flow of the program (e.g. the OS shuts the program down, the universe implodes, etc…)
+当一个switch表达式匹配一个case标签或可选的默认标签时，从匹配标签后面的第一个语句开始执行。然后继续执行，直到以下终止条件之一发生：
 
-Note that the presence of another case label is _not_ one of these terminating conditions -- thus, without a `break` or `return`, execution will overflow into subsequent cases.
+1.  到达switch末尾；
+2.  遇到其他控制流语句（一般来说是`break`或者`return`）导致switch退出；
+3.  其他中断导致程序的正常流程被打断(例如，操作系统停止程序、宇宙大爆炸等等)。
 
-Here is a program that exhibits this behavior:
+注意，另一个case标签的出现不是这些终止条件之一——因此，如果没有`break` 或`return` ，执行将继续执行后续的case。
 
+例如：
 ```cpp
 #include <iostream>
 
@@ -37,24 +37,22 @@ int main()
     switch (2)
     {
     case 1: // Does not match
-        std::cout << 1 << '\n'; // Skipped
+        std::cout << 1 << '\n'; // 跳过
     case 2: // Match!
-        std::cout << 2 << '\n'; // Execution begins here
+        std::cout << 2 << '\n'; // 从这里开始执行
     case 3:
-        std::cout << 3 << '\n'; // This is also executed
+        std::cout << 3 << '\n'; // 也会被执行
     case 4:
-        std::cout << 4 << '\n'; // This is also executed
+        std::cout << 4 << '\n'; // 也会被执行
     default:
-        std::cout << 5 << '\n'; // This is also executed
+        std::cout << 5 << '\n'; // 也会被执行
     }
 
     return 0;
 }
 ```
 
-COPY
-
-This program outputs the following:
+输出结果：
 
 ```
 2
@@ -63,25 +61,25 @@ This program outputs the following:
 5
 ```
 
-This is probably not what we wanted! When execution flows from a statement underneath a label into statements underneath a subsequent label, this is called fallthrough.
+这可能不是我们想要的!当执行从标签下面的语句流到后续标签下面的语句时，这称为贯穿。
 
 !!! warning "注意"
 
-	Once the statements underneath a case or default label have started executing, they will overflow (fallthrough) into subsequent cases. `Break` or `return` statements are typically used to prevent this.
+	一旦case或default标签下的语句开始执行，它们默认会贯穿到后续的case中。`break`或 `return` 可以防止这种情况。
 
-Since fallthrough is rarely desired or intentional, many compilers and code analysis tools will flag fallthrough as a warning.
+由于人们很少会主动使用贯穿特性，因此许多编译器和代码分析工具会将贯穿标记为警告。
 
-## The [[fallthrough]] attribute
+## 贯穿 `[[fallthrough]]` 属性
 
-Commenting intentional fallthrough is a common convention to tell other developers that fallthrough is intended. While this works for other developers, the compiler and code analysis tools don’t know how to interpret comments, so it won’t get rid of the warnings.
+通过注释告诉其他开发人员故意实现的贯穿是一种常见惯例。虽然其他开发人员可以理解，但编译器和代码分析工具不知道如何解释注释，因此它无法消除警告。
 
-To help address this, C++17 adds a new attribute called `[[fallthrough]]`.
+为了解决这个问题，C++17添加了一个新的属性 `[[fallthrough]]`。
 
-Attributes are a modern C++ feature that allows the programmer to provide the compiler with some additional data about the code. To specify an attribute, the attribute name is placed between double hard braces. Attributes are not statements -- rather, they can be used almost anywhere where they are contextually relevant.
+属性是现代C++的一个特性，它允许程序员向编译器提供一些关于代码的附加数据。要指定属性，属性名要放在双大括号之间。属性不是语句——相反，它们几乎可以在与上下文相关的任何地方使用。
 
-The `[[fallthrough]]` attribute modifies a `null statement` to indicate that fallthrough is intentional (and no warnings should be triggered):
+`[[fallthrough]]` 会修改一个空语句，表明有意而为之的贯穿操作（避免触发告警）：
 
-```cpp
+```cpp hl_lines="12"
 #include <iostream>
 
 int main()
@@ -92,10 +90,10 @@ int main()
         std::cout << 1 << '\n';
         break;
     case 2:
-        std::cout << 2 << '\n'; // Execution begins here
-        [[fallthrough]]; // intentional fallthrough -- note the semicolon to indicate the null statement
+        std::cout << 2 << '\n'; // 从这里开始执行
+        [[fallthrough]]; // 有意地贯穿操作——注意分号创建的空语句
     case 3:
-        std::cout << 3 << '\n'; // This is also executed
+        std::cout << 3 << '\n'; // 同样会执行
         break;
     }
 
@@ -103,24 +101,21 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+输出：
 
 ```
 2
 3
 ```
 
-And it should not generate any warnings about the fallthrough.
 
 !!! success "最佳实践"
 
-	Use the `[[fallthrough]]` attribute (along with a null statement) to indicate intentional fallthrough.
+	使用 `[[fallthrough]]` 属性(和空语句)表明有意而为之的贯穿操作。
+	
+## 顺序分支标签
 
-## Sequential case labels
-
-You can use the logical OR operator to combine multiple tests into a single statement:
+我们可以使用逻辑或运算符来连接多个测试条件：
 
 ```cpp
 bool isVowel(char c)
@@ -130,11 +125,9 @@ bool isVowel(char c)
 }
 ```
 
-COPY
+在switch语句中也有类似的场景：c 被多次求值并测试，此时读代码的人必须确保每次被求值和比较的是c。
 
-This suffers from the same challenges that we presented in the introduction to switch statements: `c` gets evaluated multiple times and the reader has to make sure it is `c`that is being evaluated each time.
-
-You can do something similar using switch statements by placing multiple case labels in sequence:
+我们可以通过顺序排列的多个分支标签来解决这个问题：
 
 ```cpp
 bool isVowel(char c)
@@ -158,46 +151,42 @@ bool isVowel(char c)
 }
 ```
 
-COPY
+记住，执行从匹配的case标签后的第一个语句开始。case标签不是语句(它们是标签)，所以它们不算数。
 
-Remember, execution begins at the first statement after a matching case label. Case labels aren’t statements (they’re labels), so they don’t count.
+在上述程序中，能够匹配的*所有*标签后面第一个语句是 `return true` ，因此，如果任何标签匹配，函数将返回 `true` 。
 
-The first statement after _all_ of the case statements in the above program is `return true`, so if any case labels match, the function will return `true`.
-
-Thus, we can “stack” case labels to make all of those case labels share the same set of statements afterward. This is not considered fallthrough behavior, so use of comments or `[[fallthrough]]` is not needed here.
+因此，我们可以通过“堆叠”标签，使所有这些标签共享相同的语句。这不属于贯穿，所以不必注释或标记“`[[fallthrough]]`”。
 
 ## switch-case 作用域
 
-With `if statements`, you can only have a single statement after the if-condition, and that statement is considered to be implicitly inside a block:
+对于 if 语句来说，条件后面只能有一条语句（或语句块），该语句被认为隐式地属于某个语句块：
 
 ```cpp
 if (x > 10)
     std::cout << x << " is greater than 10\n"; // this line implicitly considered to be inside a block
 ```
 
-COPY
+但是，对于 switch 语句来说，==某个标签后面的语句都属于switch语句块，并没有创建任何的隐式语句块。==
 
-However, with switch statements, the statements after labels are all scoped to the the switch block. No implicit blocks are created.
 
 ```cpp
 switch (1)
 {
-    case 1: // does not create an implicit block
-        foo(); // this is part of the switch scope, not an implicit block to case 1
-        break; // this is part of the switch scope, not an implicit block to case 1
+    case 1: // 并不会创建隐式地语句块
+        foo(); // 属于switch语句块，而不是case1（的隐式语句块）
+        break; // 属于switch语句块，而不是case1（的隐式语句块）
     default:
         std::cout << "default case\n";
         break;
 }
 ```
 
-COPY
 
-In the above example, the 2 statements between the `case 1` and the default label are scoped as part of the switch block, not a block implicit to `case 1`.
+在上面的例子中，case 1 后面的两条语句和 default 后面的语句都属于 switch 语句块。
 
 ## case 语句中声明和初始化变量
 
-You can declare (but not initialize) variables inside the switch, both before and after the case labels:
+我们可以在 switch 中声明变量 (但不能初始化)，在标签的前后进行都可以：
 
 ```cpp
 switch (1)
@@ -211,7 +200,7 @@ switch (1)
         break;
 
     case 2:
-        int z{ 4 }; // illegal: initialization is not allowed if subsequent cases exist
+        int z{ 4 }; // 非法操作: 如果后续还有分支，则不允许初始化
         y = 5; // okay: y was declared above, so we can use it here too
         break;
 
@@ -220,9 +209,8 @@ switch (1)
 }
 ```
 
-COPY
 
-Although variable `y` was defined in `case 1`, it was used in `case 2` as well. Because the statements under each case are not inside an implicit block, that means all statements inside the switch are part of the same scope. Thus, a variable defined in one case can be used in a later case, even if the case in which the variable is defined is never executed!
+尽管变量 `y` 是在 `case 1` 中声明的，但是在 `case 2` 中仍然可以使用它。因为所有的这些语句都不属于某个隐式的作用域而是属于switch语句块，所以它们都在同一个作用域中，前面dias well. Because the statements under each case are not inside an implicit block, that means all statements inside the switch are part of the same scope. Thus, a variable defined in one case can be used in a later case, even if the case in which the variable is defined is never executed!
 
 Put another way, defining a variable without an initializer is just telling the compiler that the variable is now in scope from that point on. This happens at compile time, and doesn’t require the definition to actually be executed at runtime.
 

@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "e2c89d46762a5224",
+            "id": "2d20edc2270b75df",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/7-4-Switch-statement-basics.md",
+                "file": "docs/7-5-Switch-fallthrough-and-scoping.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "hl",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,7 +90,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/7-4-Switch-statement-basics.md"
+                "file": "docs/7-5-Switch-fallthrough-and-scoping.md"
               }
             }
           },
@@ -132,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/7-4-Switch-statement-basics.md",
+                "file": "docs/7-5-Switch-fallthrough-and-scoping.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,12 +152,12 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e2c89d46762a5224",
+  "active": "2d20edc2270b75df",
   "lastOpenFiles": [
     "docs/MOC.md",
-    "docs/integral-type.md",
-    "docs/7-4-Switch-statement-basics.md",
     "docs/7-5-Switch-fallthrough-and-scoping.md",
+    "docs/7-4-Switch-statement-basics.md",
+    "docs/integral-type.md",
     "docs/7-14-Common-semantic-errors-in-c.md",
     "docs/7-12-Introduction-to-testing-your-code.md",
     "docs/7-13-Code-coverage.md",

@@ -296,6 +296,5 @@ Three Ah-Ah-Ah!
 	标签下的每组语句都应该以“break语句”或“return语句”结束。这包括switch最后一个标签下面的语句。
 
 
-那么，如果不以`break` 或' `return` '作为一组语句的结尾，会发生什么呢?我们将在下一课中探讨这个话题和其他话题。
+那么，如果不以`break` 或 `return` 作为一组语句的结尾，会发生什么呢?我们将在下一课中探讨这个话题和其他话题。
 
-So what happens if you don’t end a set of statements under a label with a `break` or `return`? We’ll explore that topic, and others, in the next lesson.

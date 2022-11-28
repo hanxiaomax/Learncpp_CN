@@ -107,7 +107,7 @@
 - [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]]
 - [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]]
 - [[7-4-Switch-statement-basics|7.4 - switch 语句基础]]
-- [[7-5-Switch-fallthrough-and-scoping|7.5 - switch 落空和作用域]]
+- [[7-5-Switch-fallthrough-and-scoping|7.5 - switch 贯穿和作用域]]
 - [[7-6-Goto-statements|7.6 - goto 语句]]
 - [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]]
 - [[7-8-Do-while-statements|7.8 - do-while 语句]]

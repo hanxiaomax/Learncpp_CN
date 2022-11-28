@@ -1,20 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "7-4-Switch-statement-basics",
-      "path": "docs/7-4-Switch-statement-basics.md"
+      "basename": "7-5-Switch-fallthrough-and-scoping",
+      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "integral-type",
-      "path": "docs/integral-type.md"
+      "basename": "7-4-Switch-statement-basics",
+      "path": "docs/7-4-Switch-statement-basics.md"
     },
     {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
+      "basename": "integral-type",
+      "path": "docs/integral-type.md"
     },
     {
       "basename": "7-14-Common-semantic-errors-in-c",
