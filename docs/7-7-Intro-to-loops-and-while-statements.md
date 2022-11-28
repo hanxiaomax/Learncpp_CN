@@ -13,11 +13,11 @@ tags:
 ??? note "关键点速记"
 	
 
-## Introduction to loops
+## 循环
 
-And now the real fun begins -- in the next set of lessons, we’ll cover loops. Loops are control flow constructs that allow a piece of code to execute repeatedly until some condition is met. Loops add a significant amount of flexibility into your programming toolkit, allowing you to do many things that would otherwise be difficult.
+现在真正的乐趣开始了——在接下来的课程中，我们将介绍循环。循环是控制流结构，它允许一段代码被重复执行，直到满足某些条件。循环为编程工具包增加了很大的灵活性，帮助我们完成很多不使用循环难以实现的功能。
 
-For example, let’s say you wanted to print all the numbers between 1 and 10. Without loops, you might try something like this:
+例如，假设你想要打印1到10，如果没有循环，你可能会这么做：
 
 ```cpp
 #include <iostream>
@@ -30,26 +30,24 @@ int main()
 }
 ```
 
-COPY
+虽然这么做是可行的，但当我们需要打印更多的数字时，它会变得越来越不可行：如果需要打印1到1000之间的所有数字呢？那打字的工作量就太大了！而且该程序要打印的内容必须在编译时就知道要打印多少数字。
 
-While that’s doable, it becomes increasingly less so as you want to print more numbers: what if you wanted to print all the numbers between 1 and 1000? That would be quite a bit of typing! But such a program is writable in this way because we know at compile time how many numbers we want to print.
+现在，让我们稍微改变一下参数。如果需要让用户输入一个数字，然后打印1和用户输入的数字之间的所有数字，那会怎么样呢?用户将输入的数字在编译时是不可知的，要怎么解决这个问题呢?
 
-Now, let’s change the parameters a bit. What if we wanted to ask the user to enter a number and then print all the numbers between 1 and the number the user entered? The number the user will enter isn’t knowable at compile-time. So how might we go about solving this?
+## `while` 语句
 
-## While statements
+`while` 语句（也被叫做`while`循环）是C++中最简单循环，它的定义和 if 语句特别地像：
 
-The while statement (also called a while loop) is the simplest of the three loop types that C++ provides, and it has a definition very similar to that of an `if statement`:
-
-```
+```cpp
 while (condition)
     statement;
 ```
 
-A `while statement` is declared using the while keyword. When a `while statement` is executed, the `condition` is evaluated. If the condition evaluates to `true`, the associated statement executes.
+`while` 语句的声明需要使用`while`关键字。当 `while` 语句执行时，`condition` 会被求值。如果求值结果是真，则相关的语句会被执行。
 
-However, unlike an `if statement`, once the statement has finished executing, control returns to the top of the `while statement` and the process is repeated. This means a `while statement` will keep looping for as long as the condition evaluates to `true`.
+但是，和if语句不同的是，`while` 语句中的`statement`执行完成后，会返回到`while`语句的开始，然后继续执行、这意味着只要条件求值为真，`while`循环就会不停地执行。
 
-Let’s take a look at a simple while loop that prints all the numbers from 1 to 10:
+还是打印1到10的例子，这次使用`while`循环完成：
 
 ```cpp
 #include <iostream>
@@ -69,21 +67,19 @@ int main()
 }
 ```
 
-COPY
-
-This outputs:
+输出：
 
 ```
 1 2 3 4 5 6 7 8 9 10 done!
 ```
 
-Let’s take a closer look at what this program is doing. First, `count` is initialized to `1`, which is the first number we’ll print. The condition `count <= 10` is `true`, so the statement executes. In this case, our statement is a block, so all the statements in the block will execute. The first statement in the block prints `1` and a space, and the second increments `count` to 2. Control now returns back to the top of the `while statement`, and the condition is evaluated again. `2 <= 10` evaluates to true, so the code block is executed again. The loop will repeatedly execute until `count` is `11`, at which point `11 <= 10` will evaluate to `false`, and the statement associated with the loop will be skipped. At this point, the loop is done.
+让我们仔细看看这个程序正在做什么。首先，`count` 被初始化为1，这是我们要打印的第一个数字。条件`count <= 10` 为 `true`，因此执行语句。在本例中，我们的语句是一个语句块，因此块中的所有语句都将执行。块中的第一个语句输出 1 和一个空格，第二个语句将`count` 递增到2。控制现在返回到`while`的顶部，并再次计算条件。`2 <= 10` 的计算结果为仍然 `true`，因此代码块将再次执行。循环将重复执行，直到 `count` 为11 ，此时`11 <= 10` 将被计算为 `false` ，与循环相关的语句将被跳过。至此，循环完成了。
 
-While this program is a bit more code than typing all the numbers between 1 and 10, consider how easy it would be to modify the program to print all the numbers between 1 and 1000: all you’d need to do is change `count <= 10` to `count <= 1000`.
+虽然上面的代码看上去似乎比手动输入1到10还多些，但是你可以想象，如果需要打印1到1000，我们只需要简单地将`count <= 10` 改为 `count <= 1000` 即可。
 
-## While statements that evaluate to false initially
+## 初始条件为`false`的`while`语句
 
-Note that if the condition initially evaluates to `false`, the associated statement will not execute at all. Consider the following program:
+如果初始化条件为`false`，那么语句就完全不会被执行：
 
 ```cpp
 #include <iostream>
@@ -103,13 +99,12 @@ int main()
 }
 ```
 
-COPY
 
-The condition `15 <= 10` evaluates to `false`, so the associated statement is skipped. The program continues, and the only thing printed is `done!`.
+由于 `15 <= 10` 求值为 `false`，所以`while`中的所有语句都会被跳过，程序继续执行并打印`done`。
 
-Infinite loops
+## 无限循环
 
-On the other hand, if the expression always evaluates to true, the while loop will execute forever. This is called an **infinite loop**. Here is an example of an infinite loop:
+如果表达式始终求值为`true`，则`while`循环就会一直运行——称为无限循环或死循环。请看下面的例子中：
 
 ```cpp
 #include <iostream>
@@ -117,24 +112,22 @@ On the other hand, if the expression always evaluates to true, the while loop wi
 int main()
 {
     int count{ 1 };
-    while (count <= 10) // this condition will never be false
+    while (count <= 10) // 该条件用于不会变为false
     {
-        std::cout << count << ' '; // so this line will repeatedly execute
+        std::cout << count << ' '; // 反复执行
     }
 
-    std::cout << '\n'; // this line will never execute
+    std::cout << '\n'; // 永远不会执行
 
-    return 0; // this line will never execute
+    return 0; // 永远不会执行
 }
 ```
 
-COPY
+因为 `count` 始终没有被递增，所以 `count <= 10` 总是真。因此循环永远不会停止，程序不停地打印 “1 1 1 1 1″。
 
-Because `count` is never incremented in this program, `count <= 10` will always be true. Consequently, the loop will never terminate, and the program will print “1 1 1 1 1″… forever.
+## 有意而为之的无限循环
 
-## Intentional infinite loops
-
-We can declare an intentional infinite loop like this:
+我们可以故意创建一个无限循环：
 
 ```cpp
 while (true)
@@ -143,11 +136,9 @@ while (true)
 }
 ```
 
-COPY
+退出无限循环的唯一方法是使用 `return`y 语句、`break` 语句、`exit` 语句、`goto` 语句、抛出异常或被其他程序终止。
 
-The only way to exit an infinite loop is through a return statement, a break statement, an exit statement, a goto statement, an exception being thrown, or the user killing the program.
-
-Here’s a silly example demonstrating this:
+请看下面的例子：
 
 ```cpp
 #include <iostream>
@@ -169,23 +160,23 @@ int main()
 }
 ```
 
-COPY
 
-This program will continuously loop until the user enters `n` as input, at which point the `if statement` will evaluate to `true` and the associated `return 0;` will cause function `main()` to exit, terminating the program.
+该循环会不断执行，直到用户输入`n`，此时if语句的条件求值为真，`return 0` 被执行，main函数退出，程序终止。
 
-It is common to see this kind of loop in web server applications that run continuously and service web requests.
+在持续运行并为web请求提供服务的web服务器应用程序中，经常可以看到这种循环。
 
 !!! success "最佳实践"
 
-	Favor `while(true)` for intentional infinite loops.
+	对于有意而为之的死循环，请使用 `while(true)`。
 
-## Loop variables
+## 循环变量
 
-Often, we want a loop to execute a certain number of times. To do this, it is common to use a loop variable, often called a counter. A loop variable is an integer that is used to count how many times a loop has executed. In the examples above, the variable `count` is a loop variable.
+通常，我们会希望一个循环执行一定次数。此时可以使用循环变量，称为计数器。循环变量是一个整数，用于计算循环执行了多少次。在上面的例子中，变量 `count` 是一个循环变量。
 
-Loop variables are often given simple names, such as `i`, `j`, or `k`. However, if you want to know where in your program a loop variable is used, and you use the search function on `i`, `j`, or `k`, the search function will return half of the lines in your program! For this reason, some developers prefer loop variable names like `iii`, `jjj`, or `kkk`. Because these names are more unique, this makes searching for loop variables much easier, and helps them stand out as loop variables. An even better idea is to use “real” variable names, such as `count`, or a name that gives more detail about what you’re counting (e.g. `userCount`).
+循环变量通常有简单的名称，如i 、 j 或 k 。但是，如果你想知道循环变量在程序中的哪个位置被使用，此时你会搜索 i 、j 或 k ，此时会返回大量的搜索结果！因此，一些开发人员喜欢用 `iii` 、`jjj` 或 `kkk` 这样的变量名。因为这些名称更加独特，这使得搜索循环变量更加容易，并帮助它们作为循环变量脱颖而出。一个更好的主意是使用“真实的”变量名，比如`count`，或者一个关于你正在计数的东西的更详细的名字(例如`userCount`)。
 
-## Loop variables should be signed
+
+## 循环变量应该为有符号shuLoop variables should be signed
 
 Loop variables should almost always be signed, as unsigned integers can lead to unexpected issues. Consider the following code:
 

@@ -210,13 +210,13 @@ switch (1)
 ```
 
 
-尽管变量 `y` 是在 `case 1` 中声明的，但是在 `case 2` 中仍然可以使用它。因为所有的这些语句都不属于某个隐式的作用域而是属于switch语句块，所以它们都在同一个作用域中，前面dias well. Because the statements under each case are not inside an implicit block, that means all statements inside the switch are part of the same scope. Thus, a variable defined in one case can be used in a later case, even if the case in which the variable is defined is never executed!
+尽管变量 `y` 是在 `case 1` 中声明的，但是在 `case 2` 中仍然可以使用它。因为所有的这些语句都不属于某个隐式的作用域而是属于switch语句块，所以它们都在同一个作用域中，前面定义的变量自然可以在后面使用，即使定义它的分支从没被执行过也没有问题。
 
-Put another way, defining a variable without an initializer is just telling the compiler that the variable is now in scope from that point on. This happens at compile time, and doesn’t require the definition to actually be executed at runtime.
+换句话说，定义一个没有初始化值的变量只是告诉编译器在这个作用域内，从此时起，这个变量有定义了。这一切都发生在[[compile-time|编译时]]，它并不要该定义在[[runtime|运行时]]被实际执行。
 
-However, initialization of variables _does_ require execution at runtime. Initialization of variables is disallowed in any case that is not the last case (because the initializer could be jumped over, which would leave the variable uninitialized). Initialization is also disallowed before the first case, as those statements will never be executed, as there is no way for the switch to reach them.
+不过，变量的初始化是必须在[[runtime|运行时]]执行才有效的。变量的初始化只能在最后一个分支进行（否则该初始化可能被跳过导致变量没有被初始化）。同时，变量的初始化也不能在第一个分支之前进行，因为这部分代码永远不会被执行。
 
-If a case needs to define and/or initialize a new variable, best practice is to do so inside an explicit block underneath the case statement:
+如果case需要定义和/或初始化一个新变量，最佳做法是在case语句下面的显式块中完成:
 
 ```cpp
 switch (1)
@@ -237,4 +237,4 @@ COPY
 
 !!! success "最佳实践"
 
-	If defining variables used in a case statement, do so in a block inside the case.
+	如果需要定义和/或初始化一个新变量，最佳做法是在case语句下面的显式块中完成

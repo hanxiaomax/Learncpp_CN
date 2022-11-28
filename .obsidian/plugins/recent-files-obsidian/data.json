@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
+      "basename": "7-7-Intro-to-loops-and-while-statements",
+      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-5-Switch-fallthrough-and-scoping",
+      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     },
     {
       "basename": "7-4-Switch-statement-basics",
@@ -95,10 +99,6 @@
     {
       "basename": "7-8-Do-while-statements",
       "path": "docs/7-8-Do-while-statements.md"
-    },
-    {
-      "basename": "7-7-Intro-to-loops-and-while-statements",
-      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
     },
     {
       "basename": "7-6-Goto-statements",
