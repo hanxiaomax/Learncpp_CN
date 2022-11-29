@@ -7,10 +7,11 @@
   "enabledCssSnippets": [
     "bullet-point-relationship-lines",
     "custom-icons-for-specific-folders",
+    "supercharged-links-gen",
     "outliner-for-the-outline-and-file-explorer",
-    "supercharged-links-gen"
+    "custom-style"
   ],
   "interfaceFontFamily": "",
   "textFontFamily": "",
-  "accentColor": "#33a0db"
+  "accentColor": "#7a6af0"
 }

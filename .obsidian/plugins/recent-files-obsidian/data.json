@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "13-14-static-member-functions",
+      "path": "docs/13-14-static-member-functions.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "18-2-virtual-functions-and-polymorphism",
+      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "4-1-Introduction-to-fundamental-data-types",
@@ -11,10 +23,6 @@
     {
       "basename": "17-4-constructors-and-initialization-of-derived-classes",
       "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
     },
     {
       "basename": "B-1-introduction-to-C++11",
@@ -191,14 +199,6 @@
     {
       "basename": "inline-function",
       "path": "docs/inline-function.md"
-    },
-    {
-      "basename": "using-directive",
-      "path": "docs/using-directive.md"
-    },
-    {
-      "basename": "using-declaration",
-      "path": "docs/using-declaration.md"
     }
   ],
   "omittedPaths": [],
