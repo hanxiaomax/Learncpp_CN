@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ad283d7cd2910368",
+        "id": "79d7dbe436cdcc31",
         "type": "tabs",
         "children": [
           {
-            "id": "91708e7b42f222ab",
+            "id": "d500734583852a75",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -51,8 +51,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#include",
-                "matchingCase": false,
+                "query": "quiz.md",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -77,12 +77,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -138,17 +137,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "91708e7b42f222ab",
+  "active": "d500734583852a75",
   "lastOpenFiles": [
-    "docs/B-2-introduction-to-C++14.md",
-    "docs/B-4-introduction-to-C++20.md",
+    "docs/4-1-Introduction-to-fundamental-data-types.md",
     "docs/MOC.md",
-    "docs/B-3-introduction-to-C++17.md",
-    "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md",
+    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
+    "docs/5-1-Operator-precedence-and-associativity.md",
     "docs/B-1-introduction-to-C++11.md",
-    "docs/A-4-C++FAQ.md",
-    "docs/M-2-R-value-references.md",
-    "docs/rvalue.md",
-    "docs/20.4.md"
+    "docs/Template-specialization.md",
+    "docs/19-x-Chapter-19-comprehensive-quiz.md",
+    "docs/quiz.md",
+    "docs/B-4-introduction-to-C++20.md",
+    "docs/B-3-introduction-to-C++17.md"
   ]
 }

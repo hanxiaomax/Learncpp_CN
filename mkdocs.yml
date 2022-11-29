@@ -29,6 +29,8 @@ markdown_extensions:
   - meta
   - pymdownx.details
   - tables
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.highlight:
       linenums: true
   - pymdownx.inlinehilite
@@ -342,7 +344,7 @@ nav:
       - "A-2-using-libraries-with-visual-studio.md"
       - "A-3-using-libraries-with-Code-Blocks.md"
       - "A-4-C++FAQ.md"
-    - 25. C++标准更新: 
+    - B. C++标准更新: 
       - "B-1-introduction-to-C++11.md"
       - "B-2-introduction-to-C++14.md"
       - "B-3-introduction-to-C++17.md"
@@ -355,4 +357,5 @@ nav:
   - 翻译约定: 翻译约定.md
   - 索引: tags.md
   - 关于本站: index.md
+  - 面试八股: quiz.md
   

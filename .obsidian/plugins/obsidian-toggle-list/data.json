@@ -1,0 +1,88 @@
+{
+  "setup_list": [
+    {
+      "index": 0,
+      "states": [
+        "- ",
+        "- [ ] ",
+        "- [x] || {tasks-today}",
+        ""
+      ],
+      "all_states": "- \n- [ ] \n- [x] || {tasks-today}\n",
+      "sorteds": [
+        "- [x] || {tasks-today}",
+        "- [ ] ",
+        "- ",
+        ""
+      ],
+      "states_dict": {}
+    },
+    {
+      "index": 1,
+      "states": [
+        "- [ ] ",
+        "- [ ] #p1 ",
+        "- [ ] #p2 ",
+        "- [ ] #p3 "
+      ],
+      "all_states": "- [ ] \n- [ ] #p1 \n- [ ] #p2 \n- [ ] #p3 ",
+      "sorteds": [
+        "- [ ] #p1 ",
+        "- [ ] #p2 ",
+        "- [ ] #p3 ",
+        "- [ ] "
+      ],
+      "states_dict": {}
+    },
+    {
+      "index": 2,
+      "states": [
+        "- ? ",
+        "- ! ",
+        "- ~ "
+      ],
+      "all_states": "- ? \n- ! \n- ~ ",
+      "sorteds": [
+        "- ? ",
+        "- ! ",
+        "- ~ "
+      ],
+      "states_dict": {}
+    }
+  ],
+  "cmd_list": [
+    {
+      "index": 0,
+      "name": "Task",
+      "tmp_name": "Task",
+      "bindings": [
+        0
+      ]
+    },
+    {
+      "index": 1,
+      "name": "Task Priority",
+      "tmp_name": "Task Priority",
+      "bindings": [
+        1
+      ]
+    },
+    {
+      "index": 2,
+      "name": "Call out",
+      "tmp_name": "Call out",
+      "bindings": [
+        2
+      ]
+    },
+    {
+      "index": 3,
+      "name": "Task + Callout",
+      "tmp_name": "Task + Callout",
+      "bindings": [
+        0,
+        2
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "baseFontSize": 20,
   "theme": "moonstone",
   "translucency": false,
-  "cssTheme": "",
+  "cssTheme": "Minimal",
   "baseFontSizeAction": true,
   "enabledCssSnippets": [
     "bullet-point-relationship-lines",
@@ -12,5 +12,5 @@
   ],
   "interfaceFontFamily": "",
   "textFontFamily": "",
-  "accentColor": "#f59351"
+  "accentColor": "#33a0db"
 }

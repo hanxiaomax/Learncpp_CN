@@ -48,7 +48,6 @@
 - [[3-10-Finding-issues-before-they-become-problems|3.10 - 在问题发生前发现问题]]
 - [[3-x-Chapter-3-summary-and-quiz|3.x - 小结与测试 - 代码调试]]
 
-
 ## 4. 基础数据类型 ✅ 
 
 - [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]
@@ -345,14 +344,15 @@
 
 ## B. C++标准更新 ✅ 
 
-- [[B-1-introduction-to-C++11|B.1 - C++11]]
-- [[B-2-introduction-to-C++14|B.2 - C++14]]
-- [[B-3-introduction-to-C++17|B.3 - C++17]]
-- [[B-4-introduction-to-C++20|B.4 - C++20]]
+- [x] [[B-1-introduction-to-C++11|B.1 - C++11]]
+- [x] [[B-2-introduction-to-C++14|B.2 - C++14]]
+- [x] [[B-3-introduction-to-C++17|B.3 - C++17]]
+- [x] [[B-4-introduction-to-C++20|B.4 - C++20]]
 
 ## O1. 位运算  🚧
 
-- [[O-1-bit-flags-and-bit-manipulation-via-std-bitset|O.1 - bit标记和通过std::bitset操作bit]]
-- [[O-2-bitwise-operators|O.2 - 位运算符]]
-- [[O-3-bit-manipulation-with-bitwise-operators-and-bit-masks|O.3 - 使用位运算符和掩码操作位]]
-- [[O-4-converting-between-binary-and-decimal|O.4 - 二进制和十进制转换]]
+- [ ] [[O-1-bit-flags-and-bit-manipulation-via-std-bitset|O.1 - bit标记和通过std::bitset操作bit]]
+- [ ] [[O-2-bitwise-operators|O.2 - 位运算符]]
+- [ ] [[O-3-bit-manipulation-with-bitwise-operators-and-bit-masks|O.3 - 使用位运算符和掩码操作位]]
+- [ ] [[O-4-converting-between-binary-and-decimal|O.4 - 二进制和十进制转换]]
+

@@ -5,8 +5,32 @@
       "path": "docs/MOC.md"
     },
     {
-      "basename": "B-2-introduction-to-C++14",
-      "path": "docs/B-2-introduction-to-C++14.md"
+      "basename": "4-1-Introduction-to-fundamental-data-types",
+      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
+    },
+    {
+      "basename": "17-4-constructors-and-initialization-of-derived-classes",
+      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
+    },
+    {
+      "basename": "5-1-Operator-precedence-and-associativity",
+      "path": "docs/5-1-Operator-precedence-and-associativity.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++11",
+      "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "Template-specialization",
+      "path": "docs/Template-specialization.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "quiz",
+      "path": "docs/quiz.md"
     },
     {
       "basename": "B-4-introduction-to-C++20",
@@ -17,12 +41,12 @@
       "path": "docs/B-3-introduction-to-C++17.md"
     },
     {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
+      "basename": "B-2-introduction-to-C++14",
+      "path": "docs/B-2-introduction-to-C++14.md"
     },
     {
-      "basename": "B-1-introduction-to-C++11",
-      "path": "docs/B-1-introduction-to-C++11.md"
+      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
+      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
     },
     {
       "basename": "A-4-C++FAQ",
@@ -175,30 +199,6 @@
     {
       "basename": "using-declaration",
       "path": "docs/using-declaration.md"
-    },
-    {
-      "basename": "linkage",
-      "path": "docs/linkage.md"
-    },
-    {
-      "basename": "shadow",
-      "path": "docs/shadow.md"
-    },
-    {
-      "basename": "file-scope",
-      "path": "docs/file-scope.md"
-    },
-    {
-      "basename": "yaml",
-      "path": "Templates/yaml.md"
-    },
-    {
-      "basename": "12-8-lambda-captures",
-      "path": "docs/12-8-lambda-captures.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     }
   ],
   "omittedPaths": [],
