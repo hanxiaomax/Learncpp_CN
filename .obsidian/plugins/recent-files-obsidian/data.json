@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "13-14-static-member-functions",
-      "path": "docs/13-14-static-member-functions.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-14-static-member-functions",
+      "path": "docs/13-14-static-member-functions.md"
     },
     {
       "basename": "18-2-virtual-functions-and-polymorphism",
