@@ -2,7 +2,7 @@
 	![|500](images/onepage/moc-onepage.svg)
 
 
-## 1. C++ 基础 ✅
+## 1. C++ 基础
 
 - [x] [[1-1-Statements-and-the-structure-of-a-program|1.1 - 程序结构和语句]]
 - [ ] [[1-2-comments|1.2 - 注释]]
@@ -17,7 +17,7 @@
 - [x] [[1-11-Developing-your-first-program|1.11 - 开发你的第一个程序]]
 - [x] [[1-x-Chapter-1-summary-and-quiz|1.x - 小结与测试 - C++基础]]
 
-## 2. C++ 基础——函数和文件 ✅
+## 2. C++ 基础——函数和文件 
 
 - [x] [[2-1-Introduction-to-functions|2.1 - 函数简介]]
 - [x] [[2-2-Function-return-values-value-returning functions|2.2 - 函数返回值]]
@@ -48,7 +48,7 @@
 - [ ] [[3-10-Finding-issues-before-they-become-problems|3.10 - 在问题发生前发现问题]]
 - [ ] [[3-x-Chapter-3-summary-and-quiz|3.x - 小结与测试 - 代码调试]]
 
-## 4. 基础数据类型 ✅ 
+## 4. 基础数据类型 
 
 - [x] [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]
 - [x] [[4-2-Void|4.2 - Void]]

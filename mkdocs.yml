@@ -6,7 +6,7 @@ theme:
   name: material
   custom_dir: overrides
   palette: 
-    primary: amber
+    primary: teal
     accent: blue
   features:
     - navigation.instant
@@ -16,7 +16,6 @@ theme:
     - navigation.indexes
     - navigation.tabs
     - navigation.prune
-    - toc.integrate
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
@@ -357,6 +356,6 @@ nav:
   - 翻译约定: 翻译约定.md
   - 索引: tags.md
   - 关于本站: index.md
-  - 面试八股: quiz.md
+  # - 面试八股: quiz.md
   
 
