@@ -136,17 +136,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b9cdb44997e9824e",
+  "active": "d500734583852a75",
   "lastOpenFiles": [
-    "docs/7-5-Switch-fallthrough-and-scoping.md",
+    "docs/1-8-Whitespace-and-basic-formatting.md",
     "docs/MOC.md",
+    "docs/1-1-Statements-and-the-structure-of-a-program.md",
+    "docs/1-3-Introduction-to-objects-and-variables.md",
+    "overrides/partials/Untitled.md",
+    "docs/7-5-Switch-fallthrough-and-scoping.md",
     "docs/13-14-static-member-functions.md",
     "docs/18-2-virtual-functions-and-polymorphism.md",
     "docs/5-1-Operator-precedence-and-associativity.md",
-    "docs/4-1-Introduction-to-fundamental-data-types.md",
-    "docs/17-4-constructors-and-initialization-of-derived-classes.md",
-    "docs/B-1-introduction-to-C++11.md",
-    "docs/Template-specialization.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    "docs/4-1-Introduction-to-fundamental-data-types.md"
   ]
 }

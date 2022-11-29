@@ -27,7 +27,6 @@ markdown_extensions:
   - abbr
   - attr_list
   - admonition
-  - meta
   - pymdownx.details
   - tables
   - pymdownx.tasklist:
@@ -360,3 +359,4 @@ nav:
   - 关于本站: index.md
   - 面试八股: quiz.md
   
+

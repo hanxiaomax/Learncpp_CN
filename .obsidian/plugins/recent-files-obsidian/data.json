@@ -5,6 +5,18 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "1-8-Whitespace-and-basic-formatting",
+      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
       "basename": "7-5-Switch-fallthrough-and-scoping",
       "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "6-x-Chapter-6-summary-and-quiz",
       "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
-    },
-    {
-      "basename": "inline-namespace",
-      "path": "docs/inline-namespace.md"
-    },
-    {
-      "basename": "unnamed-namespace",
-      "path": "docs/unnamed-namespace.md"
-    },
-    {
-      "basename": "inline-function",
-      "path": "docs/inline-function.md"
     }
   ],
   "omittedPaths": [],
