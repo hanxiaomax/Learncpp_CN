@@ -6,7 +6,7 @@ theme:
   name: material
   custom_dir: overrides
   palette: 
-    primary: teal
+    primary: amber
     accent: blue
   features:
     - navigation.instant
@@ -16,6 +16,7 @@ theme:
     - navigation.indexes
     - navigation.tabs
     - navigation.prune
+    - toc.integrate
 extra_css:
   - stylesheets/extra.css
 extra_javascript:

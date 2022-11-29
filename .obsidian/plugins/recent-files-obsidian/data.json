@@ -5,6 +5,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "7-5-Switch-fallthrough-and-scoping",
+      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
+    },
+    {
       "basename": "13-14-static-member-functions",
       "path": "docs/13-14-static-member-functions.md"
     },
@@ -123,10 +127,6 @@
     {
       "basename": "7-7-Intro-to-loops-and-while-statements",
       "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
-    },
-    {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
     },
     {
       "basename": "7-4-Switch-statement-basics",
