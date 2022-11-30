@@ -111,7 +111,7 @@
 - [x] [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]]
 - [x] [[7-8-Do-while-statements|7.8 - do-while 语句]]
 - [x] [[7-9-For-statements|7.9 - for 语句]]
-- [ ] [[7-10-Break-and-continue|7.10 - break 和 continue]]
+- [x] [[7-10-Break-and-continue|7.10 - break 和 continue]]
 - [ ] [[7-11-Halts-exiting-your-program-early|7.11 - 挂起（提前结束程序）]]
 - [ ] [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]
 - [ ] [[7-13-Code-coverage|7.13 - 代码覆盖率]]

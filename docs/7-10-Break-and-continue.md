@@ -1,3 +1,4 @@
+
 ---
 title: 7.10 - break 和 continue
 alias: 7.10 - break 和 continue
@@ -13,7 +14,7 @@ tags:
 
 ## Break 语句
 
-虽然您已经在`switch`语句的上下文中见过`break`语句([[7-4-Switch-statement-basics|7.4 - switch语句基础])，但它值得更仔细研究，因为它也可以用于其他类型的控制流语句。break语句导致while循环、do-while循环、for循环或switch语句结束，并在循环或switch被打破后继续执行下一个语句。
+虽然您已经在`switch`语句的上下文中见过`break`语句([[7-4-Switch-statement-basics|7.4 - switch 语句基础]])，但它值得更仔细研究，因为它也可以用于其他类型的控制流语句。break语句导致while循环、do-while循环、for循环或switch语句结束，并在循环或switch被打破后继续执行下一个语句。
 
 ## 从 switch 中跳出
 
@@ -48,7 +49,6 @@ int main()
     return 0;
 }
 ```
-
 
 关于[[fallthrough|贯穿属性]]的更多详细信息，参见 [[7-5-Switch-fallthrough-and-scoping|7.5 - switch fallthrough属性和作用域]]。
 
@@ -260,17 +260,17 @@ int main()
 4
 ```
 
-随后就进入了无限循环。当 `count` 等于 `5` 时，`if`语句条件求值为 `true`, and the `continue` causes the execution to jump to the bottom of the loop. The `count` variable is never incremented. Consequently, on the next pass, `count` is still `5`, the `if statement` is still `true`, and the program continues to loop forever.
+随后就进入了无限循环。当 `count` 等于 `5` 时，`if`语句条件求值为 `true`，`continue` 语句使控制流跳转到循环底部。所以 `count` 变量无法被递增。这样一来，下一次迭代时 `count` 仍然是 `5`，所以 `if` 语句条件求值仍然为 `true`，程序变成了死循环。
 
-Of course, you already know that if you have an obvious counter variable, you should be using a `for loop`, not a `while` or `do-while` loop.
+当然，如果我们能够识别出一个典型的计数变量的话，你应该使用 `for`循环来代替 `while` 或 `do-while` 循环。
 
 ## 关于 `break` 和 `continue` 的争论
 
-Many textbooks caution readers not to use `break` and `continue` in loops, both because it causes the execution flow to jump around, and because it can make the flow of logic harder to follow. For example, a `break` in the middle of a complicated piece of logic could either be missed, or it may not be obvious under what conditions it should be triggered.
+许多教科书告诫读者不要在循环中使用“break”和“continue”，因为它会导致执行流四处跳跃，也会使逻辑流更难遵循。例如，在一个复杂的逻辑片段中间的“中断”可能被错过，或者在什么条件下应该触发它可能不明显。
 
-However, used judiciously, `break` and `continue` can help make loops more readable by keeping the number of nested blocks down and reducing the need for complicated looping logic.
+然而，如果使用得当，break 和 continue 可以减少嵌套块的数量，减少对复杂循环逻辑的需求，从而使循环更具可读性。
 
-For example, consider the following program:
+例如，考虑以下程序：
 
 ```cpp
 #include <iostream>
@@ -298,11 +298,9 @@ int main()
 }
 ```
 
-COPY
+这个程序使用一个布尔变量来控制循环是否继续，以及一个只在用户不退出时运行的嵌套块。
 
-This program uses a boolean variable to control whether the loop continues or not, as well as a nested block that only runs if the user doesn’t exit.
-
-Here’s a version that’s easier to understand, using a `break statement`:
+下面是一个更容易理解的版本，使用 `break` 语句：
 
 ```cpp
 #include <iostream>
@@ -327,26 +325,24 @@ int main()
 }
 ```
 
-COPY
+在这个版本中，通过使用“break语句”，避免了使用布尔变量(并且必须理解它的预期用途以及它的值在哪里被更改)、“else语句”和嵌套块。
 
-In this version, by using a single `break statement`, we’ve avoided the use of a Boolean variable (and having to understand both what its intended use is, and where its value is changed), an `else statement`, and a nested block.
-
-Minimizing the number of variables used and keeping the number of nested blocks down both improve code comprehensibility more than a `break` or `continue` harms it. For that reason, we believe judicious use of `break` or `continue` is acceptable.
+尽量减少使用的变量数量和保持嵌套块的数量都能提高代码的可理解性，而不是“break”或“continue”对代码的损害。因此，我们认为明智地使用“break”或“continue”是可以接受的。
 
 !!! success "最佳实践"
 
-	Use break and continue when they simplify your loop logic.
+	如果使用break和continue能够简化循环逻辑，则使用它们。
 
 ## 关于提前返回的争论
 
-There’s a similar argument to be made for return statements. A return statement that is not the last statement in a function is called an early return. Many programmers believe early returns should be avoided. A function that only has one return statement at the bottom of the function has a simplicity to it -- you can assume the function will take its arguments, do whatever logic it has implemented, and return a result without deviation. Having extra returns complicates the logic.
+对于`return`语句也有类似的争论。不是函数中最后一条语句的返回语句则称之为**提前返回语句**。许多程序员认为应该避免提前返回。在函数底部只有一个`return`语句的函数更简单——你可以假设函数将接受它的参数，执行它实现的任何逻辑，并返回一个没有偏差的结果。额外的 `return` 语句会使逻辑变得复杂。
 
-The counter-argument is that using early returns allows your function to exit as soon as it is done, which reduces having to read through unnecessary logic and minimizes the need for conditional nested blocks, which makes your code more readable.
+反方则认为，使用提前返回可以让函数在完成后立即退出，这样就减少了阅读不必要的逻辑，并减少了对条件嵌套块的需求，从而使代码更具可读性。
 
-Some developers take a middle ground, and only use early returns at the top of a function to do parameter validation (catch bad arguments passed in), and then a single return thereafter.
+有些开发人员采取中间立场，**只在函数顶部使用提前返回来进行参数验证**(捕获传入的错误参数)，然后在函数之后的部分保证只使用一个`return`语句。
 
-Our stance is that early returns are more helpful than harmful, but we recognize that there is a bit of art to the practice.
+我们的立场是，提前返回利大于弊，但在实践中要因地制宜地使用。
 
 !!! success "最佳实践"
 
-	Use early returns when they simplify your function’s logic.
+	如果提前返回能够简化函数逻辑，则可以使用它

@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
-      "basename": "fallthrough",
-      "path": "docs/fallthrough.md"
+      "basename": "7-11-Halts-exiting-your-program-early",
+      "path": "docs/7-11-Halts-exiting-your-program-early.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-1-Control-flow-introduction",
+      "path": "docs/7-1-Control-flow-introduction.md"
+    },
+    {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
+    },
+    {
+      "basename": "4-8-Floating-point-numbers",
+      "path": "docs/4-8-Floating-point-numbers.md"
+    },
+    {
+      "basename": "fallthrough",
+      "path": "docs/fallthrough.md"
     },
     {
       "basename": "1-8-Whitespace-and-basic-formatting",
@@ -129,10 +141,6 @@
       "path": "docs/7-12-Introduction-to-testing-your-code.md"
     },
     {
-      "basename": "7-11-Halts-exiting-your-program-early",
-      "path": "docs/7-11-Halts-exiting-your-program-early.md"
-    },
-    {
       "basename": "7-9-For-statements",
       "path": "docs/7-9-For-statements.md"
     },
@@ -177,10 +185,6 @@
       "path": "docs/7-2-If-statements-and-blocks.md"
     },
     {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
-    },
-    {
       "basename": "7-x-Chapter-7-summary-and-quiz",
       "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "A-2-using-libraries-with-visual-studio",
       "path": "docs/A-2-using-libraries-with-visual-studio.md"
-    },
-    {
-      "basename": "A-1-static-and-dynamic-libraries",
-      "path": "docs/A-1-static-and-dynamic-libraries.md"
     }
   ],
   "omittedPaths": [],

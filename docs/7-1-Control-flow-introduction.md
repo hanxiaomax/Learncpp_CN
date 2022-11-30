@@ -49,7 +49,7 @@ int main()
 |跳转	|跳转告诉CPU从其他位置开始执行语句.	|`Goto`, `break`, `continue`|
 |函数调用	|函数调用会跳转到其他地方执行再返回	|`Function calls`, `return`|
 |循环	|循环告诉程序重复执行某些语句0次或多次，知道满足某种条件|`while`, `do-while`, `for`, `ranged-for`|
-|停止	|告诉程序停止运行|`std::exit()`, `std::abort()`|
+|挂起	|告诉程序停止运行|`std::exit()`, `std::abort()`|
 |异常	|异常是为错误处理而设计的一种特殊的流控制结构	|`try`, `throw`, `catch`|
 
 
