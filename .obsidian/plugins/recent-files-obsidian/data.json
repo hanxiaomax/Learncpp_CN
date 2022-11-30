@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "7-11-Halts-exiting-your-program-early",
-      "path": "docs/7-11-Halts-exiting-your-program-early.md"
+      "basename": "8-13-Function-templates",
+      "path": "docs/8-13-Function-templates.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
+      "basename": "7-11-Halts-exiting-your-program-early",
+      "path": "docs/7-11-Halts-exiting-your-program-early.md"
     },
     {
       "basename": "7-1-Control-flow-introduction",
@@ -137,10 +145,6 @@
       "path": "docs/7-13-Code-coverage.md"
     },
     {
-      "basename": "7-12-Introduction-to-testing-your-code",
-      "path": "docs/7-12-Introduction-to-testing-your-code.md"
-    },
-    {
       "basename": "7-9-For-statements",
       "path": "docs/7-9-For-statements.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "A-3-using-libraries-with-Code-Blocks",
       "path": "docs/A-3-using-libraries-with-Code-Blocks.md"
-    },
-    {
-      "basename": "A-2-using-libraries-with-visual-studio",
-      "path": "docs/A-2-using-libraries-with-visual-studio.md"
     }
   ],
   "omittedPaths": [],

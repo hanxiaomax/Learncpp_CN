@@ -12,7 +12,7 @@ tags:
 ??? note "关键点速记"
 	
 
-Let’s say you wanted to write a function to calculate the maximum of two numbers. You might do so like this:
+假设我们需要编写一个求两个数中哪个值较大的函数，那么此时可能会这样做：
 
 ```cpp
 int max(int x, int y)
@@ -21,9 +21,9 @@ int max(int x, int y)
 }
 ```
 
-While the caller can pass different values into the function, the type of the parameters is fixed, so the caller can only pass in `int` values. That means this function really only works well for integers (and types that can be promoted to `int`).
+虽然调用者可以向函数传递不同的值，但形参的类型是固定的，因此调用者只能传递`int` 值。这意味着这个函数实际上只适用于整数(以及可以提升为 `int` 的类型)。
 
-So what happens later when you want to find the max of two `double` values? Because C++ requires us to specify the type of all function parameters, the solution is to create a new overloaded version of `max()` with parameters of type `double`:
+那么，当你想找到两个 `double` 值的最大值时，会发生什么呢？因为C++要求我们指定所有函数形参的类型，解决方案是创建一个新的重载版本的 `max()` ，形参类型为`double` ：
 
 ```cpp
 double max(double x, double y)
