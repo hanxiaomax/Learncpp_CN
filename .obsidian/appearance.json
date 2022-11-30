@@ -8,9 +8,11 @@
     "bullet-point-relationship-lines",
     "custom-icons-for-specific-folders",
     "supercharged-links-gen",
-    "outliner-for-the-outline-and-file-explorer"
+    "outliner-for-the-outline-and-file-explorer",
+    "custom-style"
   ],
   "interfaceFontFamily": "",
   "textFontFamily": "",
-  "accentColor": "#7a6af0"
+  "accentColor": "#7a6af0",
+  "monospaceFontFamily": "Andale Mono"
 }

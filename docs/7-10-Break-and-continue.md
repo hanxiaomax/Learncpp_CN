@@ -13,11 +13,11 @@ tags:
 
 ## Break 语句
 
-Although you have already seen the `break statement` in the context of `switch statements` （[[7-4-Switch-statement-basics|7.4 - switch 语句基础]]）, it deserves a fuller treatment since it can be used with other types control flow statements as well. The break statement causes a while loop, do-while loop, for loop, or switch statement to end, with execution continuing with the next statement after the loop or switch being broken out of.
+虽然您已经在`switch`语句的上下文中见过`break`语句([[7-4-Switch-statement-basics|7.4 - switch语句基础])，但它值得更仔细研究，因为它也可以用于其他类型的控制流语句。break语句导致while循环、do-while循环、for循环或switch语句结束，并在循环或switch被打破后继续执行下一个语句。
 
 ## 从 switch 中跳出
 
-In the context of a `switch statement`, a `break` is typically used at the end of each case to signify the case is finished (which prevents fallthrough into subsequent cases):
+在 `switch`语句中，`break`语句通常放置在每个分支的最后，用于退出switch语句(避免贯穿执行分支)：
 
 ```cpp
 #include <iostream>
@@ -49,15 +49,14 @@ int main()
 }
 ```
 
-COPY
 
-See lesson [[7-5-Switch-fallthrough-and-scoping|7.5 - switch 落空和作用域]] for more information about fallthrough, along with some additional examples.
+关于[[fallthrough|贯穿属性]]的更多详细信息，参见 [[7-5-Switch-fallthrough-and-scoping|7.5 - switch fallthrough属性和作用域]]。
 
 ## 从循环中跳出
 
-In the context of a loop, a break statement can be used to end the loop early. Execution continues with the next statement after the end of the loop.
+在循环上下文中，可以使用break语句提前结束循环并从循环结束后的下一条语句继续执行。
 
-For example:
+例如：
 
 ```cpp
 #include <iostream>
@@ -88,11 +87,9 @@ int main()
 }
 ```
 
-COPY
+这个程序允许用户最多输入10个数字，并显示最后输入的所有数字的总和。如果用户输入0，中断将导致循环提前终止(在输入10个数字之前)。
 
-This program allows the user to type up to 10 numbers, and displays the sum of all the numbers entered at the end. If the user enters 0, the break causes the loop to terminate early (before 10 numbers have been entered).
-
-Here’s a sample execution of the above program:
+运行结果如下：
 
 ```
 Enter a number to add, or 0 to exit: 5
@@ -102,7 +99,7 @@ Enter a number to add, or 0 to exit: 0
 The sum of all the numbers you entered is: 8
 ```
 
-Break is also a common way to get out of an intentional infinite loop:
+`break` 也是一种从一个故意设置的无限循环中跳出的常见方法:
 
 ```cpp
 #include <iostream>
@@ -126,9 +123,7 @@ int main()
 }
 ```
 
-COPY
-
-A sample run of the above program:
+运行结果如下：
 
 ```
 Enter 0 to exit or any other integer to continue: 5
@@ -139,7 +134,7 @@ We're out!
 
 ## `break` vs `return`
 
-New programmers sometimes have trouble understanding the difference between `break` and `return`. A `break statement` terminates the switch or loop, and execution continues at the first statement beyond the switch or loop. A `return statement` terminates the entire function that the loop is within, and execution continues at point where the function was called.
+新程序员有时很难理解“break”和“return”之间的区别。break语句终止switch或循环，并从switch或循环以外的第一个语句继续执行。return语句会终止循环所在的整个函数，并在函数被调用的地方继续执行。
 
 ```cpp
 #include <iostream>
@@ -175,9 +170,7 @@ int main()
 }
 ```
 
-COPY
-
-Here are two runs of this program:
+运行函数两次：
 
 ```
 Enter 'b' to break or 'r' to return: r
@@ -190,9 +183,9 @@ Function breakOrReturn returned 0
 
 ## `continue` 语句
 
-The continue statement provides a convenient way to end the current iteration of a loop without terminating the entire loop.
+`continue` 语句提供了一种方便的方式来结束循环的**当前迭代**而不终止整个循环。
 
-Here’s an example of using continue:
+下面是一个使用`continue`的例子:
 
 ```cpp
 #include <iostream>
@@ -215,9 +208,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints all of the numbers from 0 to 9 that aren’t divisible by 4:
+这个程序输出从0到9所有不能被4整除的数：
 
 ```
 1
@@ -229,13 +220,13 @@ This program prints all of the numbers from 0 to 9 that aren’t divisible by 4:
 9
 ```
 
-`Continue statements` work by causing the current point of execution to jump to the bottom of the current loop.
+`continue` 语句使当前执行点跳转到当前循环的底部。
 
-In the case of a for loop, the end-statement of the for loop still executes after a continue (since this happens after the end of the loop body).
+在 for 循环的中，for 循环的结束语句仍然在`continue`语句之后执行(因为这发生在循环体结束之后)。
 
-Be careful when using a `continue statement` with while or do-while loops. These loops typically change the value of variables used in the condition inside the loop body. If use of a `continue statement` causes these lines to be skipped, then the loop can become infinite!
+在使用带有`while`或`do-while`循环的 `continue` 语句时要小心。这些循环通常会更改循环体内部条件中使用的变量的值。如果使用 `continue` 语句导致这些行被跳过，那么循环可能会变成无限循环!
 
-Consider the following program:
+考虑下面的程序:
 
 ```cpp
 #include <iostream>
@@ -246,22 +237,20 @@ int main()
     while (count < 10)
     {
         if (count == 5)
-            continue; // jump to end of loop body
+            continue; // 跳转到末尾
 
         std::cout << count << '\n';
 
-        ++count; // this statement is never executed after count reaches 5
+        ++count; // 到达 5 之后再也不会被执行
 
-        // The continue statement jumps to here
+        // 从这里执行
     }
 
     return 0;
 }
 ```
 
-COPY
-
-This program is intended to print every number between 0 and 9 except 5. But it actually prints:
+这个程序的目的是打印0到9之间除5之外的所有数字。但它实际上打印:
 
 ```
 0
@@ -271,7 +260,7 @@ This program is intended to print every number between 0 and 9 except 5. But it 
 4
 ```
 
-and then goes into an infinite loop. When `count` is `5`, the `if statement` evaluates to `true`, and the `continue` causes the execution to jump to the bottom of the loop. The `count` variable is never incremented. Consequently, on the next pass, `count` is still `5`, the `if statement` is still `true`, and the program continues to loop forever.
+随后就进入了无限循环。当 `count` 等于 `5` 时，`if`语句条件求值为 `true`, and the `continue` causes the execution to jump to the bottom of the loop. The `count` variable is never incremented. Consequently, on the next pass, `count` is still `5`, the `if statement` is still `true`, and the program continues to loop forever.
 
 Of course, you already know that if you have an obvious counter variable, you should be using a `for loop`, not a `while` or `do-while` loop.
 

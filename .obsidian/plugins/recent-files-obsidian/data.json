@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "7-10-Break-and-continue",
+      "path": "docs/7-10-Break-and-continue.md"
+    },
+    {
+      "basename": "fallthrough",
+      "path": "docs/fallthrough.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -125,10 +133,6 @@
       "path": "docs/7-11-Halts-exiting-your-program-early.md"
     },
     {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
       "basename": "7-9-For-statements",
       "path": "docs/7-9-For-statements.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "A-1-static-and-dynamic-libraries",
       "path": "docs/A-1-static-and-dynamic-libraries.md"
-    },
-    {
-      "basename": "6-x-Chapter-6-summary-and-quiz",
-      "path": "docs/6-x-Chapter-6-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],
