@@ -32,8 +32,7 @@ double max(double x, double y)
 }
 ```
 
-
-Note that the code for the implementation of the `double` version of `max()` is exactly the same as for the `int` version of `max()`! In fact, this implementation works for many different types: including `int`, `double`, `long`, `long double`, and even new types that you’ve created yourself (which we’ll cover how to do in future lessons).
+注意，实现 `max()` 的 `double` 版本的代码与`max()` 的`int` 版本的代码完全相同！事实上，这个实现适用于许多不同的类型：包括 `int` 、`double`、`long`、`long double` 甚至是你自己创建的新类型(我们将在未来的课程中介绍如何做)。
 
 Having to create overloaded functions with the same implementation for each set of parameter types we want to support is a maintenance headache, a recipe for errors, and a clear violation of the DRY (don’t repeat yourself) principle. There’s a less-obvious challenge here as well: a programmer who wishes to use the `max()` function may wish to call it with a parameter type that the author of the `max()` did not anticipate (and thus did not write an overloaded function for).
 
