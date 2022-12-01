@@ -72,13 +72,13 @@ Project3.cpp(4): message : see declaration of 'max'
 
 ==你可能会想，为什么编译器不能生成一个 `max<double>(double, double)` 类型的函数，然后通过[[numeric-conversions|数值转换]]将 `int` 转换为 `double` 呢？答案也很简单：类型转换只有在解析函数[[overload|重载]]时才会发生，在执行模板实参推断时并不会进行。==
 
-This lack of type conversion is intentional for at least two reasons. First, it helps keep things simple: we either find an exact match between the function call arguments and template type parameters, or we don’t. Second, it allows us to create function templates for cases where we want to ensure that two or more parameters have the same type (as in the example above).
+不提供类型转换是有意而为之的，且至少有两个原因。首先，它有助于使事情变得简单：我们要么找到函数调用实参和模板类型形参之间的精确匹配，要么找不到。其次，它允许我们在需要确保两个或多个形参具有相同类型的情况下创建函数模板(如上例所示)。
 
-We’ll have to find another solution. Fortunately, we can solve this problem in (at least) three ways.
+我们得另想办法。幸运的是，我们可以用(至少)三种方法解决这个问题。
 
-## Use static_cast to convert the arguments to matching types
+## 使用 `static_cast` 将实参转换为匹配的类型
 
-The first solution is to put the burden on the caller to convert the arguments into matching types. For example:
+解决方案 1：将实参转换为匹配的类型的任务交给调用者。例如:
 
 ```cpp
 #include <iostream>
@@ -97,15 +97,13 @@ int main()
 }
 ```
 
-COPY
+这样一来，两个实参都是 `double` 类型了，所以编译器将会实例化 `max(double, double)` 并执行函数调用。
 
-Now that both arguments are of type `double`, the compiler will be able to instantiate `max(double, double)` that will satisfy this function call.
+不过，这种方法不太自然，可读性也不佳。
 
-However, this solution is awkward and hard to read.
+## 提供实际类型
 
-## Provide an actual type
-
-If we had written a non-template `max(double, double)` function, then we would be able to call `max(int, double)` and let the implicit type conversion rules convert our `int` argument into a `double` so the function call could be resolved:
+如果我们定义了一个非模板函数 `max(double, double)` ，那么是可以调用 `max(int, double)` 并通过[[implicit-type-conversion|隐式类型转换]]将 `int` 转换为 `double`并调用函数的：
 
 ```cpp
 #include <iostream>
@@ -123,9 +121,7 @@ int main()
 }
 ```
 
-COPY
-
-However, when the compiler is doing template argument deduction, it won’t do any type conversions. Fortunately, we don’t have to use template argument deduction if we specify an actual type to be used instead:
+然而，==当编译器进行模板实参推导时，它不会进行任何类型转换==。幸运的是，如果指定要使用的实际类型，编译器就不必使用模板实参推导：
 
 ```cpp
 #include <iostream>
@@ -144,17 +140,16 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, we call `max<double>(2, 3.5)`. Because we’ve explicitly specified that `T` should be replaced with `double`, the compiler won’t use template argument deduction. Instead, it will just instantiate the function `max<double>(double, double)`, and then type convert any mismatched arguments. Our `int` parameter will be implicitly converted to a `double`.
+在上面的例子中，我们调用了 `max<double>(2, 3.5)` 函数。因为显示提供了模板类型 `double`，编译器无需进行模板实参推断。它会直接实例化  `max<double>(double, double)`，然后对不匹配的参数进行类型转换。`int` 就会被隐式转换为`double`。
 
-While this is more readable than using `static_cast`, it would be even nicer if we didn’t even have to think about the types when making a function call to `max` at all.
+尽管这么做的可读性稍好于 `static_cast`，但是如果能够在调用函数`max`时不考虑类型就好了。
 
-## Functions templates with multiple template type parameters
+## 具有多个模板类型形参的函数模板
 
-The root of our problem is that we’ve only defined the single template type (`T`) for our function template, and then specified that both parameters must be of this same type.
+这个问题的根因是因为函数模板中只有一个模板类型 (`T`) ，所以两个参数都必须是该类型的。
 
-The best way to solve this problem is to rewrite our function template in such a way that our parameters can resolve to different types. Rather than using one template type parameter `T`, we’ll now use two (`T` and `U`):
+解决这个问题最佳的方法是让函数模板支持多个不同的类型。为此，我们使用两个类型形参(`T` 和 `U`)：
 
 ```cpp
 #include <iostream>
@@ -173,15 +168,13 @@ int main()
 }
 ```
 
-COPY
+因为，我们使用模板类型`T`定义了`x`，使用`U`定义了`y`，所以现在两个参数可以是不同的类型了。 在调用 `max(2, 3.5)`时 `T` 被解析为 `int` 而 `U` 被解析为 `double`。编译器实例化 `max<int, double>(int, double)` 函数。
 
-Because we’ve defined `x` with template type `T`, and `y` with template type `U`, `x` and `y` can now resolve their types independently. When we call `max(2, 3.5)`, `T` can be an `int` and `U` can be a `double`. The compiler will happily instantiate `max<int, double>(int, double)` for us.
+但是，上面的代码仍然有问题：在使用算数规则时([[8-4-Arithmetic-conversions|8.4 - 算术转换]])，`double`的优先级高于`int`因此条件运算符的返回值是`double`，而函数的返回值类型为 `T` —— 如果此时 `T` 被解析为了 `int`，则 `double` 类型的返回值在返回时会被[[narrowing-convertions|缩窄转换]]为`int`从而产生一个告警（通常也会导致数据丢失）。
 
-However, the above code still has a problem: using the usual arithmetic rules ([8.4 -- Arithmetic conversions](https://www.learncpp.com/cpp-tutorial/arithmetic-conversions/)), `double` takes precedence over `int`, so our conditional operator will return a `double`. But our function is defined as returning a `T` -- in cases where `T` resolves to an `int`, our `double` return value will undergo a narrowing conversion to an `int`, which will produce a warning (and possible loss of data).
+将返回值定义为 `U` 并不能解决这个问题，因为 `T` 和 `U` 在传递时本身就可以互换。
 
-Making the return type a `U` instead doesn’t solve the problem, as we can always flip the order of the operands in the function call to flip the types of `T`and `U`.
-
-How do we solve this? This is a good use for an `auto` return type -- we’ll let the compiler deduce what the return type should be from the return statement:
+那应该如何解决这个问题呢？一个好办法是使用 `auto` 作为返回类型——让编译器从返回语句中推断返回类型：
 
 ```cpp
 #include <iostream>
@@ -200,15 +193,13 @@ int main()
 }
 ```
 
-COPY
+这个版本的 `max` 函数现在可以很好地配合各种参数类型工作了。
 
-This version of `max` now works fine with operands of different types.
+## [[abbreviated function templates|缩写函数模板]]（C++20）
 
-## Abbreviated function templates C++20
+C++20 为 `auto` 关键字引入了新的功能：当使用 `auto` 关键字修饰普通函数的[[parameters|形参]]时，编译器会自动将该函数转换为函数模板，且每个被`auto` 修饰的形参都是独立的模板类型形参。通过这种方法创建的函数模板称为[[abbreviated function templates|缩写函数模板]]。
 
-C++20 introduces a new use of the `auto` keyword: When the `auto` keyword is used as a parameter type in a normal function, the compiler will automatically convert the function into a function template with each auto parameter becoming an independent template type parameter. This method for creating a function template is called an abbreviated function template.
-
-For example:
+例如：
 
 ```cpp
 auto max(auto x, auto y)
@@ -217,9 +208,7 @@ auto max(auto x, auto y)
 }
 ```
 
-COPY
-
-is shorthand in C++20 for the following:
+上面代码是C++20中对下面模板定义的缩写形式：
 
 ```cpp
 template <typename T, typename U>
@@ -229,12 +218,10 @@ auto max(T x, U y)
 }
 ```
 
-COPY
+这和我们上面写的`max` 函数模板是一样的。
 
-which is the same as the `max` function template we wrote above.
-
-In cases where you want each template type parameter to be an independent type, this form is preferred as the removal of the template parameter declaration line makes your code more concise and readable.
+在希望每个模板类型形参都是独立类型的情况下，这种形式是首选的，因为删除模板形参声明行使代码更加简洁和可读。
 
 !!! success "最佳实践"
 
-	Feel free to use abbreviated function templates if each auto parameter should be an independent template type (and your language standard is set to C++20 or newer).
+	如果每个自动参数都应该是独立的模板类型(并且你的语言标准设置为C++20或更新版本)，那么可以随意使用缩写函数模板。

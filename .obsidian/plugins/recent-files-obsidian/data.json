@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "8-15-Function-templates-with-multiple-template-types",
-      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
+      "basename": "1-2-comments",
+      "path": "docs/1-2-comments.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "8-15-Function-templates-with-multiple-template-types",
+      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
+    },
+    {
+      "basename": "narrowing-convertions",
+      "path": "docs/narrowing-convertions.md"
     },
     {
       "basename": "8-14-Function-template-instantiation",
@@ -191,14 +199,6 @@
     {
       "basename": "7-3-Common-if-statement-problems",
       "path": "docs/7-3-Common-if-statement-problems.md"
-    },
-    {
-      "basename": "5-7-Logical-operators",
-      "path": "docs/5-7-Logical-operators.md"
-    },
-    {
-      "basename": "7-2-If-statements-and-blocks",
-      "path": "docs/7-2-If-statements-and-blocks.md"
     }
   ],
   "omittedPaths": [],

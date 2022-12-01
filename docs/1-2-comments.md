@@ -9,20 +9,19 @@ tags:
 - comments
 ---
 
+注释是直接插入到程序源代码，供程序员阅读的笔记。注释被编译器忽略，仅供程序员使用。
 
-A comment is a programmer-readable note that is inserted directly into the source code of the program. Comments are ignored by the compiler and are for the programmer’s use only.
+在C++中有两种不同风格的注释，它们都有相同的目的：帮助程序员以某种方式记录代码。
 
-In C++ there are two different styles of comments, both of which serve the same purpose: to help programmers document the code in some way.
+## 单行注释
 
-## Single-line comments
-
-The `//` symbol begins a C++ single-line comment, which tells the compiler to ignore everything from the _//_ symbol to the end of the line. For example:
+使用 `//` 开头可以创建单行注释，该符号告诉编译器忽略该符号之后到该行末尾的全部内容。例如：
 
 ```cpp
 std::cout << "Hello world!"; // Everything from here to the end of the line is ignored
 ```
 
-Typically, the single-line comment is used to make a quick comment about a single line of code.
+一般来讲，单行注释用于对某行代码进行快速注释。
 
 ```cpp
 std::cout << "Hello world!\n"; // std::cout lives in the iostream library
@@ -31,7 +30,7 @@ std::cout << "Yeah!\n"; // especially when lines are different lengths
 ```
 
 
-Having comments to the right of a line can make both the code and the comment hard to read, particularly if the line is long. If the lines are fairly short, the comments can simply be aligned (usually to a tab stop), like so:
+将注释写在代码行的右侧，会让代码和注释的可读性变差，尤其是 comments to the right of a line can make both the code and the comment hard to read, particularly if the line is long. If the lines are fairly short, the comments can simply be aligned (usually to a tab stop), like so:
 
 ```cpp
 std::cout << "Hello world!\n";                 // std::cout lives in the iostream library
