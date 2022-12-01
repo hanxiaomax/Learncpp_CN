@@ -13,7 +13,7 @@ tags:
 ??? note "关键点速记"
 	
 
-In lesson [[8-13-Function-templates|8.13 - 函数模板]], we wrote a function template to calculate the maximum of two values:
+在 [[8-13-Function-templates|8.13 - 函数模板]] 在我们编写了计算两个值中较大值的函[[function-template|函数模板]]：
 
 ```cpp
 #include <iostream>
@@ -33,30 +33,26 @@ int main()
 }
 ```
 
-COPY
+现在，考虑下面类似的程序：
 
-Now consider the following similar program:
-
-```cpp
+```cpp hl_lines="4"
 #include <iostream>
 
 template <typename T>
-T max(T x, T y)
+T max(T x, T y) // <-- 注意这里
 {
     return (x > y) ? x : y;
 }
 
 int main()
 {
-    std::cout << max(2, 3.5) << '\n';  // compile error
+    std::cout << max(2, 3.5) << '\n';  // 编译错误
 
     return 0;
 }
 ```
 
-COPY
-
-You may be surprised to find that this program won’t compile. Instead, the compiler will issue a bunch of (probably crazy looking) error messages. On Visual Studio, the author got the following:
+你可能会惊讶地发现这个程序无法编译。编译器会发出一堆(可能看起来很疯狂)错误消息。在Visual Studio上，笔者得到了以下内容：
 
 ```
 Project3.cpp(11,18): error C2672: 'max': no matching overloaded function found
@@ -68,13 +64,13 @@ Project3.cpp(11,28): error C2784: 'T max(T,T)': could not deduce template argume
 Project3.cpp(4): message : see declaration of 'max'
 ```
 
-In our function call `max(2, 3.5)`, we’re passing arguments of two different types: one `int` and one `double`. Because we’re making a function call without using angled brackets to specify an actual type, the compiler will first look to see if there is a non-template match for `max(int, double)`. It won’t find one.
+当调用 `max(2, 3.5)` 时，我们实际上传入了两个不同类型的实参：`int` 和 `double`。因为我们没有使用尖括号来指定函数模板的实际类型，编译器会首先查看是否有非模板函数 `max(int, double)` 供其调用，但很遗憾没有找到。
 
-Next, the compiler will see if it can find a function template match (using template argument deduction, which we covered in lesson [8.14 -- Function template instantiation](https://www.learncpp.com/cpp-tutorial/function-template-instantiation/)). However, this will also fail, for a simple reason: `T` can only represent a single type. There is no type for `T` that would allow the compiler to instantiate function template `max<T>(T, T)` into a function with two different parameter types. Put another way, because both parameters in the function template are of type `T`, they must resolve to the same actual type.
+接下来，编译器会查看是否能找到一个匹配的函数模板(使用**模板实参推断**，参见[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]])。但很遗憾，仍然无法找到，原因也非常简单：`T` 只能表示一个类型，编译器无法根据 `max<T>(T, T)` 模板生成能够接受两个不同[[parameters|形参]]类型的函数。换句话说，如果函数模板中的多个参数为相同类型`T`，则它们对应的实际类型也应该是相同的。
 
-Since no non-template match was found, and no template match was found, the function call fails to resolve, and we get a compile error.
+因为无法找到非模板函数，也无法找到合适的函数模板，所以函数解析出错，导致编译器报错。
 
-You might wonder why the compiler didn’t generate function `max<double>(double, double)` and then use numeric conversion to type convert the `int` argument to a `double`. The answer is simple: type conversion is done only when resolving function overloads, not when performing template argument deduction.
+==你可能会想，为什么编译器不能生成一个 `max<double>(double, double)` 类型的函数，然后通过[[numeric-conversions|数值转换]]将 `int` 转换为 `double` 呢？答案也很简单：类型转换只有在解析函数[[overload|重载]]时才会发生，在执行模板实参推断时并不会进行。==
 
 This lack of type conversion is intentional for at least two reasons. First, it helps keep things simple: we either find an exact match between the function call arguments and template type parameters, or we don’t. Second, it allows us to create function templates for cases where we want to ensure that two or more parameters have the same type (as in the example above).
 

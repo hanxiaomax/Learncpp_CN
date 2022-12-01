@@ -139,7 +139,7 @@
 - [x] [[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和不明确匹配]]
 - [x] [[8-12-Default-arguments|8.12 - 默认参数]]
 - [x] [[8-13-Function-templates|8.13 - 函数模板]]
-- [ ] [[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]
+- [x] [[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]
 - [ ] [[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]
 - [x] [[8-x-Chapter-8-summary-and-quiz|8.x - 小结与测试]]
 

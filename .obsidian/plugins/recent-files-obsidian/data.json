@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "8-14-Function-template-instantiation",
-      "path": "docs/8-14-Function-template-instantiation.md"
+      "basename": "8-15-Function-templates-with-multiple-template-types",
+      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "8-14-Function-template-instantiation",
+      "path": "docs/8-14-Function-template-instantiation.md"
     },
     {
       "basename": "function-template-instantiation",
@@ -195,10 +199,6 @@
     {
       "basename": "7-2-If-statements-and-blocks",
       "path": "docs/7-2-If-statements-and-blocks.md"
-    },
-    {
-      "basename": "7-x-Chapter-7-summary-and-quiz",
-      "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

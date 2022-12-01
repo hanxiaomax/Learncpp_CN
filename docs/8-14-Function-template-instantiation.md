@@ -210,19 +210,17 @@ int main()
 }
 ```
 
-请注意，最下面的写法看起来与正常的函数调用是一样的！这通常是调用函数模板时使用的首选语法(在以后的示例中，如果可选我们将默认使用这种语法，除需要这样做)。
-
-Note how the syntax in the bottom case looks identical to a normal function call! This is usually the preferred syntax used when invoking function templates (and the one we’ll default to in future examples, unless required to do otherwise).
+请注意，最下面的写法看起来与正常的函数调用是一样的！这通常是调用函数模板时使用的首选语法(在以后的示例中，如果可行，我们将默认使用这种语法)。
 
 !!! success "最佳实践"
 
-	Favor the normal function call syntax when using function templates.
+	在使用函数模板时，使用正常的函数调用语法。
 
 ## 带有非模板参数的函数模板
 
-It’s possible to create function templates that have both template types and non-template type parameters. The template parameters can be matched to any type, and the non-template parameters work like the parameters of normal functions.
+可以创建同时具有模板类型和非模板类型参数的函数模板。模板形参可以匹配任何类型，非模板形参的工作方式与普通函数的形参类似。
 
-For example:
+例如:
 
 ```cpp
 template <typename T>
@@ -243,11 +241,9 @@ int main()
 }
 ```
 
-COPY
+这个函数模板有一个模板化的第一个形参，但是第二个形参的类型是固定的`double` 。注意，返回类型也可以是任何类型。在这种情况下，我们的函数总是返回一个`int` 值。
 
-This function template has a templated first parameter, but the second parameter is fixed with type `double`. Note that the return type can also be any type. In this case, our function will always return an `int` value.
-
-实例化的函数不一定能够编译。
+注意，实例化的函数不保证一定能够编译。
 
 考虑下面的例子：
 
@@ -269,9 +265,7 @@ int main()
 }
 ```
 
-COPY
-
-The compiler will effectively compile and execute this:
+编译器会编译和执行下面代码：
 
 ```cpp
 #include <iostream>
@@ -300,16 +294,14 @@ int main()
 }
 ```
 
-COPY
-
-which will produce the result:
+运行结果：
 
 ```
 2
 3.3
 ```
 
-But what if we try something like this?
+但是如果我们这么做呢？
 
 ```cpp
 #include <iostream>
@@ -330,9 +322,7 @@ int main()
 }
 ```
 
-COPY
-
-When the compiler tries to resolve `addOne(hello)` it won’t find a non-template function match for `addOne(std::string)`, but it will find our function template for `addOne(T)`, and determine that it can generate an `addOne(std::string)` function from it. Thus, the compiler will generate and compile this:
+当编译器尝试解析 `addOne(hello)` 时，它无法找到一个非模板函数来匹配 `addOne(std::string)`，但是能够找到一个函数模板 `addOne(T)`，并通过该模板生成 `addOne(std::string)` 函数。因此编译器会生成并编译下面的代码：
 
 ```cpp
 #include <iostream>
@@ -356,15 +346,13 @@ int main()
 }
 ```
 
-COPY
-
-However, this will generate a compile error, because `x + 1` doesn’t make sense when `x` is a `std::string`. The obvious solution here is simply not to call `addOne()` with an argument of type `std::string`.
+显然，这会导致编译错误，因为 `x + 1` 并不适用于 `x` 为 `std::string` 类型的情况。解决办法就是不要使用`std::string`类型来调用 `addOne()`。
 
 ## 在多个文件中使用函数模板
 
-In order to instantiate a template, the compiler needs to see the full definition of the template. This means that if we want to use a function template in multiple code files, each code file needs a copy of the definition of the function template. For this reason, templates are typically written in header files, where they can be `#include` into any code file that wants to use them.
+为了实例化模板，编译器需要看到模板的完整定义。这意味着，如果我们想在多个代码文件中使用函数模板，每个代码文件都需要函数模板定义的副本。因此，==模板通常编写在头文件中，它们可以被`#include`到任何想要使用它们的代码文件中。==
 
-Template definitions are not subject to the one-definition rule, and functions instantiated from function templates are implicitly inline, so they are exempt from the one-definition rule.
+模板定义并不受限于[[one-definition-rule|单一定义规则(one-definition-rule)]]，而且由于实例化的函数通常是隐式[[inline-function|内联函数]]，所以也不受限于单一定义规则。
 
 ```cpp title="Max.h"
 #ifndef MAX_H
@@ -379,7 +367,6 @@ T max(T x, T y)
 #endif
 ```
 
-
 ```cpp title="Foo.cp"
 #include "Max.h" // import template definition for max<T, T>()
 #include <iostream>
@@ -389,7 +376,6 @@ void foo()
 	std::cout << max(3, 2);
 }
 ```
-
 
 ```cpp title="main.cpp"
 #include "Max.h" // import template definition for max<T, T>()
@@ -406,22 +392,22 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, both main.cpp and foo.cpp `#include "Max.h"` so the code in both files can make use of the `max<T, T>` function template.
+在上面的例子中，`main.cpp` 和 `foo.cpp` 都 `#include "Max.h"` ，所以这两个文件中的代码都可以使用 `max<T, T>` 函数模板。
+
 
 ## 泛型编程
 
-Because template types can be replaced with any actual type, template types are sometimes called generic types. And because templates can be written agnostically of specific types, programming with templates is sometimes called generic programming. Whereas C++ typically has a strong focus on types and type checking, in contrast, generic programming lets us focus on the logic of algorithms and design of data structures without having to worry so much about type information.
+因为模板类型可以用任何实际类型替换，所以模板类型有时被称为泛型类型。由于模板可以不受具体类型的影响而编写，因此使用模板进行编程有时被称为泛型编程。C++通常非常关注类型和类型检查，相比之下，泛型编程让我们专注于算法的逻辑和数据结构的设计，而不必过多地担心类型信息。
 
 ## 小结
 
-Once you get used to writing function templates, you’ll find they actually don’t take much longer to write than functions with actual types. Function templates can significantly reduce code maintenance and errors by minimizing the amount of code that needs to be written and maintained.
+一旦习惯了编写函数模板，就会发现编写函数模板所花的时间实际上并不比具有实际类型的函数长多少。函数模板通过最小化需要编写和维护的代码数量，可以显著减少代码维护和错误。
 
-Function templates do have a few drawbacks, and we would be remiss not to mention them. First, the compiler will create (and compile) a function for each function call with a unique set of argument types. So while function templates are compact to write, they can expand into a crazy amount of code, which can lead to code bloat and slow compile times. The bigger downside of function templates is that they tend to produce crazy-looking, borderline unreadable error messages that are much harder to decipher than those of regular functions. These error messages can be quite intimidating, but once you understand what they are trying to tell you, the problems they are pinpointing are often quite straightforward to resolve.
+函数模板也确实有一些**缺点**，如果我们不提及它们，那就是失职了。首先，编译器将为每个函数调用创建(并编译)一个函数，该函数具有一组惟一的参数类型。因此，尽管函数模板编写起来很紧凑，但它们可能会被扩展成大量的代码，这可能导致代码膨胀和编译时间变慢。函数模板**更大的缺点**是，它们往往会产生看起来很疯狂、近乎不可读的错误消息，比常规函数的错误消息更难解读。这些错误消息可能相当吓人，但一旦你能够理解了它试图传达的信息，其指出的问题通常非常容易解决。
 
-These drawbacks are fairly minor compared with the power and safety that templates bring to your programming toolkit, so use templates liberally anywhere you need type flexibility! A good rule of thumb is to create normal functions at first, and then convert them into function templates if you find you need an overload for different parameter types.
+模板为编程工具包带来了强大功能和安全性，这些缺点可以说是瑕不掩瑜了。所以在任何需要类型灵活性的地方都可以自由使用模板！一个好的经验法则是：==首先创建普通函数，当发现需要针对不同参数类型[[overload|重载]]函数时，则将它们转换为函数模板。==
 
 !!! success "最佳实践"
 
-	Use function templates to write generic code that can work with a wide variety of types whenever you have the need.
+	使用函数模板来编写泛型代码，这些代码可以在需要时处理各种类型。
