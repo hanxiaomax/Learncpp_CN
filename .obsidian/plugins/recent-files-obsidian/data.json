@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
+    },
+    {
       "basename": "9-4-Lvalue-references-to-const",
       "path": "docs/9-4-Lvalue-references-to-const.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
+      "basename": "key-takeaway",
+      "path": "Templates/key-takeaway.md"
+    },
+    {
+      "basename": "yaml",
+      "path": "Templates/yaml.md"
     },
     {
       "basename": "2-12-Header-guards",
@@ -187,18 +199,6 @@
     {
       "basename": "7-4-Switch-statement-basics",
       "path": "docs/7-4-Switch-statement-basics.md"
-    },
-    {
-      "basename": "integral-type",
-      "path": "docs/integral-type.md"
-    },
-    {
-      "basename": "11-3-Arrays-and-loops",
-      "path": "docs/11-3-Arrays-and-loops.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
     }
   ],
   "omittedPaths": [],

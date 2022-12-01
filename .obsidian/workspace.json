@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "e26edc9b1329d59b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/9-4-Lvalue-references-to-const.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-4-Lvalue-references-to-const.md",
+                "file": "docs/MOC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-4-Lvalue-references-to-const.md"
+                "file": "docs/MOC.md"
               }
             }
           }
@@ -151,17 +137,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e26edc9b1329d59b",
+  "active": "d500734583852a75",
   "lastOpenFiles": [
-    "docs/MOC.md",
+    "docs/9-5-Pass-by-lvalue-reference.md",
     "docs/9-4-Lvalue-references-to-const.md",
+    "Templates/key-takeaway.md",
+    "Templates/yaml.md",
+    "docs/MOC.md",
     "docs/2-12-Header-guards.md",
     "docs/1-2-comments.md",
     "docs/8-15-Function-templates-with-multiple-template-types.md",
     "docs/narrowing-conversions.md",
-    "docs/narrowing-convertions.md",
-    "docs/8-14-Function-template-instantiation.md",
-    "docs/function-template-instantiation.md",
-    "docs/8-13-Function-templates.md"
+    "docs/narrowing-convertions.md"
   ]
 }

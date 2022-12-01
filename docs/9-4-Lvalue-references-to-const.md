@@ -11,7 +11,9 @@ tags:
 ---
 
 ??? note "Key Takeaway"
-	
+
+	- 左值引用只能绑定到可修改的左值。
+	- 对const的左值引用可以绑定到可修改的左值、不可修改的左值和右值。这使得它们成为一种更加灵活的引用类型。
 
 在上节课 ([[9-3-Lvalue-references|9.3 - 左值引用]]) 中，我们讨论了为声明[[lvalue-reference|左值引用]]只能绑定到一个可修改的[[lvalue|左值]]上。这意味着下面的代码是非法的：
 
@@ -31,7 +33,7 @@ int main()
 
 ## 指向 const 的左值引用
 
-使用 `const` 关键字声明左值引用，即要求左值引用将其引用的对象当做const看到。此时称该引用为指向const对象的左值引用（有时称为指向const的引用或const引用）。
+使用 `const` 关键字声明左值引用，即要求左值引用将其引用的对象当做const看到。此时称该引用为指向const对象的左值引用（有时称为指向const的引用或**const左值引用**）。
 
 对const引用可以绑定到不可修改的左值:
 
@@ -86,15 +88,15 @@ int main()
 ```
 
 
-在上面的例子中，我们将const引用 `ref` 绑定到可修改左值 `x`。随后便可以使用 `ref` 访问 `x`，但是因为 `ref` 是 const 的，所以我们不能通过`ref` we can not modify the value of `x` through `ref`. However, we still can modify the value of `x` directly (using the identifier `x`).
+在上面的例子中，我们将const引用 `ref` 绑定到可修改左值 `x`。随后便可以使用 `ref` 访问 `x`，但是因为 `ref` 是 const 的，所以我们不能通过`ref`修改`x`。然而，我们仍然可以直接修改 `x` 。
 
 !!! success "最佳实践"
 
-	Favor `lvalue references to const` over `lvalue references to non-const` unless you need to modify the object being referenced.
+	除非需要修改被引用的对象，最好使用“const左值引用”，而不是“非const的左值引用”。
 
-## Initializing an lvalue reference to const with an rvalue
+## 使用右值初始化const左值引用
 
-Perhaps surprisingly, lvalues references to const can also bind to rvalues:
+也许令人惊讶的是，const左值引用也可以绑定到右值：
 
 ```cpp
 #include <iostream>
@@ -109,19 +111,17 @@ int main()
 }
 ```
 
-COPY
+当这种情况发生时，创建一个临时对象并用右值初始化，对const的引用被绑定到该临时对象。
 
-When this happens, a temporary object is created and initialized with the rvalue, and the reference to const is bound to that temporary object.
+临时对象(有时也称为匿名对象)是在单个表达式中为临时使用(然后销毁)而创建的对象。临时对象完全没有作用域(这是有意义的，因为==作用域是标识符的属性，而临时对象没有标识符==)。这意味着临时对象只能在创建它的位置直接使用，因为没有办法在该位置之后再引用它。
 
-A temporary object (also sometimes called an anonymous object) is an object that is created for temporary use (and then destroyed) within a single expression. Temporary objects have no scope at all (this makes sense, since scope is a property of an identifier, and temporary objects have no identifier). This means a temporary object can only be used directly at the point where it is created, since there is no way to refer to it beyond that point.
+## const 引用绑定到临时对象时会延长临时对象的生命周期
 
-## Const references bound to temporary objects extend the lifetime of the temporary object
+临时对象通常在创建它们的表达式的末尾被销毁。
 
-Temporary objects are normally destroyed at the end of the expression in which they are created.
+但是，如果为保存右值 `5` 而创建的临时对象在初始化 `ref` 的表达式结束时被销毁，那么在上面的例子中会发生什么情况呢？引用`ref` 将变成[[dangling|悬垂]]引用(引用一个已经被销毁的对象)，当我们试图访问 `ref` 时，将产生[[undefined-behavior|未定义行为]]。
 
-However, consider what would happen in the above example if the temporary object created to hold rvalue `5` was destroyed at the end of the expression that initializes `ref`. Reference `ref` would be left dangling (referencing an object that had been destroyed), and we’d get undefined behavior when we tried to access `ref`.
-
-To avoid dangling references in such cases, C++ has a special rule: When a const lvalue reference is bound to a temporary object, the lifetime of the temporary object is extended to match the lifetime of the reference.
+为了避免这种情况下的[[dangling|悬垂]]引用，C++有一个特殊的规则：==当const左值引用被绑定到一个临时对象时，临时对象的生存期将被扩展到与引用的生存期相匹配。==
 
 ```cpp
 #include <iostream>
@@ -136,14 +136,12 @@ int main()
 } // Both ref and the temporary object die here
 ```
 
-COPY
-
-In the above example, when `ref` is initialized with rvalue `5`, a temporary object is created and `ref` is bound to that temporary object. The lifetime of the temporary object matches the lifetime of `ref`. Thus, we can safely print the value of `ref` in the next statement. Then both `ref` and the temporary object go out of scope and are destroyed at the end of the block.
+在上面的例子中，当使用右值`5`初始化 `ref` 时，一个临时对象被创建并绑定到 `ref` 。该临时对象的生命周期就会被扩展到 `ref` 的生命周期。Thus, we can safely print the value of `ref` in the next statement. Then both `ref` and the temporary object go out of scope and are destroyed at the end of the block.
 
 !!! tldr "关键信息"
 
-	Lvalue references can only bind to modifiable lvalues.
+	左值引用只能绑定到可修改的左值。
 	
-	Lvalue references to const can bind to modifiable lvalues, non-modifiable lvalues, and rvalues. This makes them a much more flexible type of reference.
+	对const的左值引用可以绑定到可修改的左值、不可修改的左值和右值。这使得它们成为一种更加灵活的引用类型。
 
-So why does C++ allow a const reference to bind to an rvalue anyway? We’ll answer that question in the next lesson!
+那么，为什么C++允许const引用绑定到右值呢？我们将在[[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]中回答这个问题!

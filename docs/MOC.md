@@ -148,7 +148,7 @@
 - [x] [[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]
 - [x] [[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]
 - [x] [[9-3-Lvalue-references|9.3 - 左值引用]]
-- [ ] [[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]]
+- [x] [[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]]
 - [x] [[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]
 - [x] [[9-6-Introduction-to-pointers|9.6 - 指针简介]]
 - [x] [[9-7-Null-pointers|9.7 - 空指针]]
