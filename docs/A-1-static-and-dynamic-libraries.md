@@ -23,13 +23,15 @@ type: translation
 
 库可以分为两类：静态库和动态库
 
-**静态库**(也称为**存档 archive**)由编译后直接链接到程序中函数组成。当编译使用静态库的程序时，程序使用的静态库的所有功能都成为可执行文件的一部分。在Windows上，静态库通常有一个.lib扩展名，而在Linux上，静态库通常有一个.a(存档)扩展名。静态库的一个优点是，让用户运行你的程序，只需分发可执行文件。因为库成为了程序的一部分，这就确保了程序总是使用正确版本的库。另外，由于静态库成为程序的一部分，你可以像为自己的程序编写的功能一样使用它们。缺点是，由于库的副本成为每个使用它的可执行文件的一部分，这可能导致大量的空间浪费。静态库也不容易升级——要更新库，需要替换整个可执行文件。
+**静态库**(也称为**存档 archive**)由编译后直接链接到程序中程序组成。当编译使用静态库的程序时，程序使用的静态库的所有功能都成为可执行文件的一部分。在Windows上，静态库通常有一个`.lib`扩展名，而在Linux上，静态库通常有一个`.a`(存档)扩展名。静态库的一个优点是，让用户运行你的程序，只需分发可执行文件。因为库成为了程序的一部分，这就确保了程序总是使用正确版本的库。另外，由于静态库成为程序的一部分，你可以像为自己的程序编写的功能一样使用它们。缺点是，由于库的副本成为每个使用它的可执行文件的一部分，这可能导致大量的空间浪费。静态库也不容易升级——要更新库，需要替换整个可执行文件。
 
-A **dynamic library** (also called a **shared library**) consists of routines that are loaded into your application at run time. When you compile a program that uses a dynamic library, the library does not become part of your executable -- it remains as a separate unit. On Windows, dynamic libraries typically have a .dll (dynamic link library) extension, whereas on Linux, dynamic libraries typically have a .so (shared object) extension. One advantage of dynamic libraries is that many programs can share one copy, which saves space. Perhaps a bigger advantage is that the dynamic library can be upgraded to a newer version without replacing all of the executables that use it.
+动态库(也称为**共享库 shared library**)由在运行时加载到应用程序中的程序组成。当编译一个使用动态库的程序时，库不会成为可执行程序的一部分——它仍然是一个独立的单元。在Windows上，动态库通常具有`.dll`(动态链接库)扩展名，而在Linux上，动态库通常具有`.so`(共享对象)扩展名。动态库的一个优点是许多程序可以共享一个副本，这节省了空间。也许更大的优点是动态库可以升级到新版本，而不需要替换使用它的所有可执行程序。
 
-Because dynamic libraries are not linked into your program, programs using dynamic libraries must explicitly load and interface with the dynamic library. This mechanism can be confusing, and makes interfacing with a dynamic library awkward. To make dynamic libraries easier to use, an import library can be used.
+因为动态库没有链接到程序中，所以使用动态库的程序必须显式加载动态库并与之连接。这种机制可能令人困惑，并使与动态库的接口变得尴尬。为了使动态库更容易使用，可以使用导入库。
 
-An **import library** is a library that automates the process of loading and using a dynamic library. On Windows, this is typically done via a small static library (.lib) of the same name as the dynamic library (.dll). The static library is linked into the program at compile time, and then the functionality of the dynamic library can effectively be used as if it were a static library. On Linux, the shared object (.so) file doubles as both a dynamic library and an import library. Most linkers can build an import library for a dynamic library when the dynamic library is created.
+**导入库**是一个自动加载和使用**动态库**的库。在Windows上，这通常是通过与动态库(.dll)同名的小型静态库(.lib)来完成的。在编译时将静态库链接到程序中，然后就可以像使用静态库一样有效地使用动态库的功能。在Linux上，共享对象(.so)文件既是动态库又是导入库。大多数链接器可以在创建动态库时为动态库构建导入库。
+
+**import library** is a library that automates the process of loading and using a dynamic library. On Windows, this is typically done via a small static library (.lib) of the same name as the dynamic library (.dll). The static library is linked into the program at compile time, and then the functionality of the dynamic library can effectively be used as if it were a static library. On Linux, the shared object (.so) file doubles as both a dynamic library and an import library. Most linkers can build an import library for a dynamic library when the dynamic library is created.
 
 ## Installing and using libraries**
 
