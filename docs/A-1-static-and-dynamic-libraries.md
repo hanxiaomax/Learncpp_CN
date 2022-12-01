@@ -29,18 +29,16 @@ type: translation
 
 因为动态库没有链接到程序中，所以使用动态库的程序必须显式加载动态库并与之连接。这种机制可能令人困惑，并使与动态库的接口变得尴尬。为了使动态库更容易使用，可以使用导入库。
 
-**导入库**是一个自动加载和使用**动态库**的库。在Windows上，这通常是通过与动态库(.dll)同名的小型静态库(.lib)来完成的。在编译时将静态库链接到程序中，然后就可以像使用静态库一样有效地使用动态库的功能。在Linux上，共享对象(.so)文件既是动态库又是导入库。大多数链接器可以在创建动态库时为动态库构建导入库。
+**导入库**是一个自动加载和使用**动态库**的库。在Windows上，这通常是通过与动态库(`.dll`)同名的小型静态库(`.lib`)来完成的。在编译时将静态库链接到程序中，然后就可以像使用静态库一样有效地使用动态库的功能。在Linux上，共享对象(`.so`)文件既是动态库又是导入库。==大多数链接器可以在创建动态库时为动态库构建导入库==。
 
-**import library** is a library that automates the process of loading and using a dynamic library. On Windows, this is typically done via a small static library (.lib) of the same name as the dynamic library (.dll). The static library is linked into the program at compile time, and then the functionality of the dynamic library can effectively be used as if it were a static library. On Linux, the shared object (.so) file doubles as both a dynamic library and an import library. Most linkers can build an import library for a dynamic library when the dynamic library is created.
+## 安装和使用库
 
-## Installing and using libraries**
+现在你已经了解了不同类型的库，让我们讨论一下如何在程序中实际使用库。在C++中安装库通常包括4个步骤：
 
-Now that you know about the different kinds of libraries, let’s talk about how to actually use libraries in your program. Installing a library in C++ typically involves 4 steps:
-
-1.  Acquire the library. The best option is to download a precompiled package for your operating system (if it exists) so you do not have to compile the library yourself. If there is not one provided for your operating system, you will have to download a source-code-only package and compile it yourself (which is outside of the scope of this lesson). On Windows, libraries are typically distributed as .zip files. On Linux, libraries are typically distributed as packages (e.g. .RPM). Your package manager may have some of the more popular libraries (e.g. SDL) listed already for easy installation, so check there first.
-2.  Install the library. On Linux, this typically involves invoking the package manager and letting it do all the work. On Windows, this typically involves unzipping the library to a directory of your choice. We recommend keeping all your libraries in one location for easy access. For example, use a directory called C:\Libs, and put each library in it’s own subdirectory.
-3.  Make sure the compiler knows where to look for the header file(s) for the library. On Windows, typically this is the include subdirectory of the directory you installed the library files to (e.g. if you installed your library to C:\libs\SDL-1.2.11, the header files are probably in C:\libs\SDL-1.2.11\include). On Linux, header files are typically installed to /usr/include, which should already be part of your include file search path. However, if the files are installed elsewhere, you will have to tell the compiler where to find them.
-4.  Tell the linker where to look for the library file(s). As with step 3, this typically involves adding a directory to the list of places the linker looks for libraries. On Windows, this is typically the /lib subdirectory of the directory you installed the library files to. On Linux, libraries are typically installed to /usr/lib, which should already be a part of your library search path.
+1. 获得库最好的方式是为你的操作系统下载预编译的包(如果它存在的话)，这样我们就不必自己编译库。如果没有，那么我们将不得不下载一个源代码包并自己编译它(这超出了本课的范围)。在Windows上，库通常以`.zip`文件的形式分发。在Linux上，库通常以包的形式分发(例如`. rpm`)。包管理器可能已经列出了一些更流行的库(例如SDL)，以便于安装，所以请先检查这些库。
+2. 安装库。在Linux上，通常使用包管理器完成所有工作。在Windows上，这通常涉及将库解压缩到你所选择的目录。我们建议将所有的库放在一个位置以便于访问。例如，使用一个名为`C:\Libs`的目录，并将每个库放在它自己的子目录中。
+3. 确保编译器知道在哪里查找库的头文件。在Windows上，通常这是你安装库文件的目录的include子目录(例如，如果你把库安装到`C:\libs\SDL-1.2.11`，头文件可能在`C:\libs\SDL-1.2.11\include`)。在Linux上，头文件通常安装到`/usr/include`，它应该已经是包含文件搜索路径的一部分。但是，如果文件安装在其他地方，则必须告诉编译器在哪里找到它们。
+5.  Tell the linker where to look for the library file(s). As with step 3, this typically involves adding a directory to the list of places the linker looks for libraries. On Windows, this is typically the /lib subdirectory of the directory you installed the library files to. On Linux, libraries are typically installed to /usr/lib, which should already be a part of your library search path.
 
 Once the library is installed and the IDE knows where to look for it, the following 3 steps typically need to be performed for each project that wants to use the library:
 
