@@ -2049,8 +2049,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fallthrough" class="md-nav__link">
-    贯穿 [[fallthrough]] 属性
+  <a href="#fallthroughfallthroughmd" class="md-nav__link">
+    贯穿 [fallthrough](./fallthrough.md) 属性
   </a>
   
 </li>
@@ -2148,7 +2148,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5822,8 +5822,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fallthrough" class="md-nav__link">
-    贯穿 [[fallthrough]] 属性
+  <a href="#fallthroughfallthroughmd" class="md-nav__link">
+    贯穿 [fallthrough](./fallthrough.md) 属性
   </a>
   
 </li>
@@ -5899,7 +5899,7 @@
 
   <h1>7.5 - switch fallthrough属性和作用域</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
+<details class="note"><summary>Key Takeaway</summary></details>
 <p>本节课继续探索switch语句。在前面的课程中（<a href="../7-4-Switch-statement-basics/">7.4 - switch 语句基础</a>）我们提到每个分支标签下的语句都应该以<code>break</code>或 <code>return</code>结尾。</p>
 <p>在这节课中，我们将探索其中的原因，并讨论一些开关作用域的问题，这些问题有时会绊倒新程序员。</p>
 <h2 id="_1">贯穿</h2>
@@ -5966,11 +5966,11 @@
 <p>一旦case或default标签下的语句开始执行，它们默认会贯穿到后续的case中。<code>break</code>或 <code>return</code> 可以防止这种情况。</p>
 </div>
 <p>由于人们很少会主动使用贯穿特性，因此许多编译器和代码分析工具会将贯穿标记为警告。</p>
-<h2 id="fallthrough">贯穿 <code>[[fallthrough]]</code> 属性</h2>
+<h2 id="fallthroughfallthroughmd">贯穿 <code>[fallthrough](./fallthrough.md)</code> 属性</h2>
 <p>通过注释告诉其他开发人员故意实现的贯穿是一种常见惯例。虽然其他开发人员可以理解，但编译器和代码分析工具不知道如何解释注释，因此它无法消除警告。</p>
-<p>为了解决这个问题，C++17添加了一个新的属性 <code>[[fallthrough]]</code>。</p>
+<p>为了解决这个问题，C++17添加了一个新的属性 <code>[fallthrough](./fallthrough.md)</code>。</p>
 <p>属性是现代C++的一个特性，它允许程序员向编译器提供一些关于代码的附加数据。要指定属性，属性名要放在双大括号之间。属性不是语句——相反，它们几乎可以在与上下文相关的任何地方使用。</p>
-<p><code>[[fallthrough]]</code> 会修改一个空语句，表明有意而为之的贯穿操作（避免触发告警）：</p>
+<p><code>[fallthrough](./fallthrough.md)</code> 会修改一个空语句，表明有意而为之的贯穿操作（避免触发告警）：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6000,7 +6000,7 @@
 <span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 从这里开始执行</span>
-<span class="hll"><span class="w">        </span><span class="p">[[</span><span class="n">fallthrough</span><span class="p">]];</span><span class="w"> </span><span class="c1">// 有意地贯穿操作——注意分号创建的空语句</span>
+<span class="hll"><span class="w">        </span><span class="p">[</span><span class="n">fallthrough</span><span class="p">](.</span><span class="o">/</span><span class="n">fallthrough</span><span class="p">.</span><span class="n">md</span><span class="p">);</span><span class="w"> </span><span class="c1">// 有意地贯穿操作——注意分号创建的空语句</span>
 </span><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 同样会执行</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
@@ -6016,7 +6016,7 @@
 </code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>使用 <code>[[fallthrough]]</code> 属性(和空语句)表明有意而为之的贯穿操作。</p>
+<p>使用 <code>[fallthrough](./fallthrough.md)</code> 属性(和空语句)表明有意而为之的贯穿操作。</p>
 </div>
 <h2 id="_2">顺序分支标签</h2>
 <p>我们可以使用逻辑或运算符来连接多个测试条件：</p>
@@ -6072,7 +6072,7 @@
 </code></pre></div></td></tr></table></div>
 <p>记住，执行从匹配的case标签后的第一个语句开始。case标签不是语句(它们是标签)，所以它们不算数。</p>
 <p>在上述程序中，能够匹配的<em>所有</em>标签后面第一个语句是 <code>return true</code> ，因此，如果任何标签匹配，函数将返回 <code>true</code> 。</p>
-<p>因此，我们可以通过“堆叠”标签，使所有这些标签共享相同的语句。这不属于贯穿，所以不必注释或标记“<code>[[fallthrough]]</code>”。</p>
+<p>因此，我们可以通过“堆叠”标签，使所有这些标签共享相同的语句。这不属于贯穿，所以不必注释或标记“<code>[fallthrough](./fallthrough.md)</code>”。</p>
 <h2 id="switch-case">switch-case 作用域</h2>
 <p>对于 if 语句来说，条件后面只能有一条语句（或语句块），该语句被认为隐式地属于某个语句块：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>

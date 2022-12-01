@@ -139,15 +139,15 @@
   },
   "active": "d500734583852a75",
   "lastOpenFiles": [
+    "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md",
+    "docs/MOC.md",
+    "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
     "docs/9-4-Lvalue-references-to-const.md",
     "Templates/key-takeaway.md",
     "Templates/yaml.md",
-    "docs/MOC.md",
     "docs/2-12-Header-guards.md",
     "docs/1-2-comments.md",
-    "docs/8-15-Function-templates-with-multiple-template-types.md",
-    "docs/narrowing-conversions.md",
-    "docs/narrowing-convertions.md"
+    "docs/8-15-Function-templates-with-multiple-template-types.md"
   ]
 }

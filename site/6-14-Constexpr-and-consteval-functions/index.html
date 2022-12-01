@@ -2169,7 +2169,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5953,7 +5953,7 @@
 
   <h1>6.14 - Constexpr 和 consteval 函数</h1>
 
-<details class="note"><summary>关键点速记</summary><ul>
+<details class="note"><summary>Key Takeaway</summary><ul>
 <li>为了能够在编译时求值，函数必须具有 <code>constexpr</code> 类型的返回值，同时不能够调用任何非constexpr函数。不仅如此，调用该函数也必须使用<code>constexpr</code> <a href="../arguments/">实参</a> (例如<code>constexpr</code> 变量或字面量)。</li>
 <li><code>constexpr</code> 函数具有隐含的内联属性，这使得它们能够免于单一定义规则的限制。因为运行时求值必须能够让编译器在函数调用处看到函数完整定义。所以它们应该被定义在头文件中且被包含到使用它们的源文件。</li>
 <li>根据 C++ 标准，如果 <code>constexpr</code> 函数<strong>有资格</strong>进行编译时求值， 而且它的返回值被用在常数表达式中，那么就<strong>必须</strong>进行编译时求值。</li>

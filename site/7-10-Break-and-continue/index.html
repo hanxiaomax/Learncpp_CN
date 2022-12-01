@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7.10 - break 和 continue
+              7 10 Break and continue
             
           </span>
         </div>
@@ -2090,12 +2090,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-            7.10 - break 和 continue
+            7 10 Break and continue
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
       
         
@@ -5893,50 +5893,26 @@
 
   
 
-  <nav class="md-tags" >
-    
-      
-        <a href="../tags/#break" class="md-tag">
-          break
-        </a>
-      
-    
-      
-        <a href="../tags/#continue" class="md-tag">
-          continue
-        </a>
-      
-    
-  </nav>
 
 
 
-  <!-- <div style="background: #efefef;">
-    <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//Break-and-continue/">原文链接: 7.10 - Break and continue</a>
-    </div>
-    <div >
-        <a target="_blank" href="https://www.learncpp.com/author/Alex/">作者: ALEX</a>
-    </div>
-    <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//Break-and-continue/">更新时间: None</a>
-    </div>
-  </div> -->
-  <div class="origin-link">
-    <span class="twemoji">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.3 208-208 208zm-.9-288c21.06 0 40.92 8.312 55.83 23.38 9.375 9.344 24.53 9.5 33.97.156 9.406-9.344 9.469-24.53.156-33.97-24-24.22-55.95-37.56-89.95-37.56 0 0 .032 0 0 0-33.97 0-65.95 13.34-89.95 37.56-49.44 49.88-49.44 131 0 180.9 24 24.22 55.98 37.56 89.95 37.56.032 0 0 0 0 0 34 0 65.95-13.34 89.95-37.56 9.312-9.438 9.25-24.62-.156-33.97-9.438-9.312-24.59-9.219-33.97.156-14.91 15.06-34.77 23.38-55.83 23.38 0 0 .031 0 0 0-21.09 0-40.95-8.312-55.89-23.38-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/></svg> 
-    </span>
-    <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//Break-and-continue/">English
-    </a>
-</div>
-  
+  <h1>7 10 Break and continue</h1>
 
-  <h1>7.10 - break 和 continue</h1>
-
+<hr />
+<p>title: 7.10 - break 和 continue
+alias: 7.10 - break 和 continue
+origin: /Break-and-continue/
+origin_title: "7.10 - Break and continue"
+time: 
+type: translation
+tags:
+- break
+- continue</p>
+<hr />
 <h2 id="break">Break 语句</h2>
-<p>Although you have already seen the <code>break statement</code> in the context of <code>switch statements</code> （<a href="../7-4-Switch-statement-basics/">7.4 - switch 语句基础</a>）, it deserves a fuller treatment since it can be used with other types control flow statements as well. The break statement causes a while loop, do-while loop, for loop, or switch statement to end, with execution continuing with the next statement after the loop or switch being broken out of.</p>
+<p>虽然您已经在<code>switch</code>语句的上下文中见过<code>break</code>语句(<a href="../7-4-Switch-statement-basics/">7.4 - switch 语句基础</a>)，但它值得更仔细研究，因为它也可以用于其他类型的控制流语句。break语句导致while循环、do-while循环、for循环或switch语句结束，并在循环或switch被打破后继续执行下一个语句。</p>
 <h2 id="switch">从 switch 中跳出</h2>
-<p>In the context of a <code>switch statement</code>, a <code>break</code> is typically used at the end of each case to signify the case is finished (which prevents fallthrough into subsequent cases):</p>
+<p>在 <code>switch</code>语句中，<code>break</code>语句通常放置在每个分支的最后，用于退出switch语句(避免贯穿执行分支)：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5991,11 +5967,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>See lesson <a href="../7-5-Switch-fallthrough-and-scoping/">7.5 - switch 落空和作用域</a> for more information about fallthrough, along with some additional examples.</p>
+<p>关于<a href="../fallthrough/">贯穿属性</a>的更多详细信息，参见 <a href="../7-5-Switch-fallthrough-and-scoping/">7.5 - switch fallthrough属性和作用域</a>。</p>
 <h2 id="_1">从循环中跳出</h2>
-<p>In the context of a loop, a break statement can be used to end the loop early. Execution continues with the next statement after the end of the loop.</p>
-<p>For example:</p>
+<p>在循环上下文中，可以使用break语句提前结束循环并从循环结束后的下一条语句继续执行。</p>
+<p>例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6048,9 +6023,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program allows the user to type up to 10 numbers, and displays the sum of all the numbers entered at the end. If the user enters 0, the break causes the loop to terminate early (before 10 numbers have been entered).</p>
-<p>Here’s a sample execution of the above program:</p>
+<p>这个程序允许用户最多输入10个数字，并显示最后输入的所有数字的总和。如果用户输入0，中断将导致循环提前终止(在输入10个数字之前)。</p>
+<p>运行结果如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6061,7 +6035,7 @@ Enter a number to add, or 0 to exit: 1
 Enter a number to add, or 0 to exit: 0
 The sum of all the numbers you entered is: 8
 </code></pre></div></td></tr></table></div>
-<p>Break is also a common way to get out of an intentional infinite loop:</p>
+<p><code>break</code> 也是一种从一个故意设置的无限循环中跳出的常见方法:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6100,8 +6074,7 @@ The sum of all the numbers you entered is: 8
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>A sample run of the above program:</p>
+<p>运行结果如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6111,7 +6084,7 @@ Enter 0 to exit or any other integer to continue: 0
 We&#39;re out!
 </code></pre></div></td></tr></table></div>
 <h2 id="break-vs-return"><code>break</code> vs <code>return</code></h2>
-<p>New programmers sometimes have trouble understanding the difference between <code>break</code> and <code>return</code>. A <code>break statement</code> terminates the switch or loop, and execution continues at the first statement beyond the switch or loop. A <code>return statement</code> terminates the entire function that the loop is within, and execution continues at point where the function was called.</p>
+<p>新程序员有时很难理解“break”和“return”之间的区别。break语句终止switch或循环，并从switch或循环以外的第一个语句继续执行。return语句会终止循环所在的整个函数，并在函数被调用的地方继续执行。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6174,8 +6147,7 @@ We&#39;re out!
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Here are two runs of this program:</p>
+<p>运行函数两次：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6189,8 +6161,8 @@ We broke out of the loop
 Function breakOrReturn returned 0
 </code></pre></div></td></tr></table></div>
 <h2 id="continue"><code>continue</code> 语句</h2>
-<p>The continue statement provides a convenient way to end the current iteration of a loop without terminating the entire loop.</p>
-<p>Here’s an example of using continue:</p>
+<p><code>continue</code> 语句提供了一种方便的方式来结束循环的<strong>当前迭代</strong>而不终止整个循环。</p>
+<p>下面是一个使用<code>continue</code>的例子:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6227,8 +6199,7 @@ Function breakOrReturn returned 0
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints all of the numbers from 0 to 9 that aren’t divisible by 4:</p>
+<p>这个程序输出从0到9所有不能被4整除的数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6243,10 +6214,10 @@ Function breakOrReturn returned 0
 7
 9
 </code></pre></div></td></tr></table></div>
-<p><code>Continue statements</code> work by causing the current point of execution to jump to the bottom of the current loop.</p>
-<p>In the case of a for loop, the end-statement of the for loop still executes after a continue (since this happens after the end of the loop body).</p>
-<p>Be careful when using a <code>continue statement</code> with while or do-while loops. These loops typically change the value of variables used in the condition inside the loop body. If use of a <code>continue statement</code> causes these lines to be skipped, then the loop can become infinite!</p>
-<p>Consider the following program:</p>
+<p><code>continue</code> 语句使当前执行点跳转到当前循环的底部。</p>
+<p>在 for 循环的中，for 循环的结束语句仍然在<code>continue</code>语句之后执行(因为这发生在循环体结束之后)。</p>
+<p>在使用带有<code>while</code>或<code>do-while</code>循环的 <code>continue</code> 语句时要小心。这些循环通常会更改循环体内部条件中使用的变量的值。如果使用 <code>continue</code> 语句导致这些行被跳过，那么循环可能会变成无限循环!</p>
+<p>考虑下面的程序:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6273,20 +6244,19 @@ Function breakOrReturn returned 0
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="c1">// jump to end of loop body</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="c1">// 跳转到末尾</span>
 
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">        </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="c1">// this statement is never executed after count reaches 5</span>
+<span class="w">        </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="c1">// 到达 5 之后再也不会被执行</span>
 
-<span class="w">        </span><span class="c1">// The continue statement jumps to here</span>
+<span class="w">        </span><span class="c1">// 从这里执行</span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program is intended to print every number between 0 and 9 except 5. But it actually prints:</p>
+<p>这个程序的目的是打印0到9之间除5之外的所有数字。但它实际上打印:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6297,12 +6267,12 @@ Function breakOrReturn returned 0
 3
 4
 </code></pre></div></td></tr></table></div>
-<p>and then goes into an infinite loop. When <code>count</code> is <code>5</code>, the <code>if statement</code> evaluates to <code>true</code>, and the <code>continue</code> causes the execution to jump to the bottom of the loop. The <code>count</code> variable is never incremented. Consequently, on the next pass, <code>count</code> is still <code>5</code>, the <code>if statement</code> is still <code>true</code>, and the program continues to loop forever.</p>
-<p>Of course, you already know that if you have an obvious counter variable, you should be using a <code>for loop</code>, not a <code>while</code> or <code>do-while</code> loop.</p>
+<p>随后就进入了无限循环。当 <code>count</code> 等于 <code>5</code> 时，<code>if</code>语句条件求值为 <code>true</code>，<code>continue</code> 语句使控制流跳转到循环底部。所以 <code>count</code> 变量无法被递增。这样一来，下一次迭代时 <code>count</code> 仍然是 <code>5</code>，所以 <code>if</code> 语句条件求值仍然为 <code>true</code>，程序变成了死循环。</p>
+<p>当然，如果我们能够识别出一个典型的计数变量的话，你应该使用 <code>for</code>循环来代替 <code>while</code> 或 <code>do-while</code> 循环。</p>
 <h2 id="break-continue">关于 <code>break</code> 和 <code>continue</code> 的争论</h2>
-<p>Many textbooks caution readers not to use <code>break</code> and <code>continue</code> in loops, both because it causes the execution flow to jump around, and because it can make the flow of logic harder to follow. For example, a <code>break</code> in the middle of a complicated piece of logic could either be missed, or it may not be obvious under what conditions it should be triggered.</p>
-<p>However, used judiciously, <code>break</code> and <code>continue</code> can help make loops more readable by keeping the number of nested blocks down and reducing the need for complicated looping logic.</p>
-<p>For example, consider the following program:</p>
+<p>许多教科书告诫读者不要在循环中使用“break”和“continue”，因为它会导致执行流四处跳跃，也会使逻辑流更难遵循。例如，在一个复杂的逻辑片段中间的“中断”可能被错过，或者在什么条件下应该触发它可能不明显。</p>
+<p>然而，如果使用得当，break 和 continue 可以减少嵌套块的数量，减少对复杂循环逻辑的需求，从而使循环更具可读性。</p>
+<p>例如，考虑以下程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6349,9 +6319,8 @@ Function breakOrReturn returned 0
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program uses a boolean variable to control whether the loop continues or not, as well as a nested block that only runs if the user doesn’t exit.</p>
-<p>Here’s a version that’s easier to understand, using a <code>break statement</code>:</p>
+<p>这个程序使用一个布尔变量来控制循环是否继续，以及一个只在用户不退出时运行的嵌套块。</p>
+<p>下面是一个更容易理解的版本，使用 <code>break</code> 语句：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6392,21 +6361,20 @@ Function breakOrReturn returned 0
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this version, by using a single <code>break statement</code>, we’ve avoided the use of a Boolean variable (and having to understand both what its intended use is, and where its value is changed), an <code>else statement</code>, and a nested block.</p>
-<p>Minimizing the number of variables used and keeping the number of nested blocks down both improve code comprehensibility more than a <code>break</code> or <code>continue</code> harms it. For that reason, we believe judicious use of <code>break</code> or <code>continue</code> is acceptable.</p>
+<p>在这个版本中，通过使用“break语句”，避免了使用布尔变量(并且必须理解它的预期用途以及它的值在哪里被更改)、“else语句”和嵌套块。</p>
+<p>尽量减少使用的变量数量和保持嵌套块的数量都能提高代码的可理解性，而不是“break”或“continue”对代码的损害。因此，我们认为明智地使用“break”或“continue”是可以接受的。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Use break and continue when they simplify your loop logic.</p>
+<p>如果使用break和continue能够简化循环逻辑，则使用它们。</p>
 </div>
 <h2 id="_2">关于提前返回的争论</h2>
-<p>There’s a similar argument to be made for return statements. A return statement that is not the last statement in a function is called an early return. Many programmers believe early returns should be avoided. A function that only has one return statement at the bottom of the function has a simplicity to it -- you can assume the function will take its arguments, do whatever logic it has implemented, and return a result without deviation. Having extra returns complicates the logic.</p>
-<p>The counter-argument is that using early returns allows your function to exit as soon as it is done, which reduces having to read through unnecessary logic and minimizes the need for conditional nested blocks, which makes your code more readable.</p>
-<p>Some developers take a middle ground, and only use early returns at the top of a function to do parameter validation (catch bad arguments passed in), and then a single return thereafter.</p>
-<p>Our stance is that early returns are more helpful than harmful, but we recognize that there is a bit of art to the practice.</p>
+<p>对于<code>return</code>语句也有类似的争论。不是函数中最后一条语句的返回语句则称之为<strong>提前返回语句</strong>。许多程序员认为应该避免提前返回。在函数底部只有一个<code>return</code>语句的函数更简单——你可以假设函数将接受它的参数，执行它实现的任何逻辑，并返回一个没有偏差的结果。额外的 <code>return</code> 语句会使逻辑变得复杂。</p>
+<p>反方则认为，使用提前返回可以让函数在完成后立即退出，这样就减少了阅读不必要的逻辑，并减少了对条件嵌套块的需求，从而使代码更具可读性。</p>
+<p>有些开发人员采取中间立场，<strong>只在函数顶部使用提前返回来进行参数验证</strong>(捕获传入的错误参数)，然后在函数之后的部分保证只使用一个<code>return</code>语句。</p>
+<p>我们的立场是，提前返回利大于弊，但在实践中要因地制宜地使用。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Use early returns when they simplify your function’s logic.</p>
+<p>如果提前返回能够简化函数逻辑，则可以使用它</p>
 </div>
 
 

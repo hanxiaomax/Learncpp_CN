@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
+      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
+      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
     },
     {
       "basename": "9-5-Pass-by-lvalue-reference",
@@ -187,18 +199,6 @@
     {
       "basename": "7-9-For-statements",
       "path": "docs/7-9-For-statements.md"
-    },
-    {
-      "basename": "7-8-Do-while-statements",
-      "path": "docs/7-8-Do-while-statements.md"
-    },
-    {
-      "basename": "7-7-Intro-to-loops-and-while-statements",
-      "path": "docs/7-7-Intro-to-loops-and-while-statements.md"
-    },
-    {
-      "basename": "7-4-Switch-statement-basics",
-      "path": "docs/7-4-Switch-statement-basics.md"
     }
   ],
   "omittedPaths": [],

@@ -2081,7 +2081,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5967,7 +5967,7 @@
 
   <h1>M.6 — std::unique_ptr</h1>
 
-<details class="note"><summary>关键点速记</summary><ul>
+<details class="note"><summary>Key Takeaway</summary><ul>
 <li>智能指针永远都不应该被动态创建，总是应该在栈上</li>
 <li><code>std::unique_ptr</code> 智能指针是其管理资源的唯一拥有者，且只有移动语义</li>
 <li><code>std::unique_ptr</code> 并不一定总是管理着某个对象——有可能是它被初始化为空（使用默认构造函数或<code>nullptr</code>字面量作为参数），也有可能是它管理的资源被转移了，通过直接对它判断true还是false可以知道它是否正在管理资源</li>

@@ -2076,7 +2076,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5794,7 +5794,7 @@
 
   <h1>O.1 - bit标记和通过std::bitset操作bit</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
+<details class="note"><summary>Key Takeaway</summary></details>
 <p>On modern computer architectures, the smallest addressable unit of memory is a byte. Since all objects need to have unique memory addresses, this means objects must be at least one byte in size. For most variable types, this is fine. However, for Boolean values, this is a bit wasteful (pun intended). Boolean types only have two states: true (1), or false (0). This set of states only requires one bit to store. However, if a variable must be at least a byte, and a byte is 8 bits, that means a Boolean is using 1 bit and leaving the other 7 unused.</p>
 <p>In the majority of cases, this is fine -- we’re usually not so hard-up for memory that we need to care about 7 wasted bits (we’re better off optimizing for understandability and maintainability). However, in some storage-intensive cases, it can be useful to “pack” 8 individual Boolean values into a single byte for storage efficiency purposes.</p>
 <p>Doing these things requires that we can manipulate objects at the bit level. Fortunately, C++ gives us tools to do precisely this. Modifying individual bits within an object is called bit manipulation.</p>

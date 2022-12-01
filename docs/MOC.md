@@ -8,7 +8,7 @@
 - [x] [[1-2-comments|1.2 - 注释]]
 - [x] [[1-3-Introduction-to-objects-and-variables|1.3 - 对象和变量]]
 - [x] [[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]
-- [x] [[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介： cout，cin 和 endl]]
+- [x] [[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介：cout，cin 和 endl]]
 - [x] [[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]
 - [x] [[1-7-Keywords-and-naming-identifiers|1.7 - 关键字和标识符]]
 - [x] [[1-8-Whitespace-and-basic-formatting|1.8 - 空白符和基本排版]]

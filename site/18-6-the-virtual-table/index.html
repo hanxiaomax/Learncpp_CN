@@ -2076,7 +2076,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5794,7 +5794,7 @@
 
   <h1>18.6 - 虚函数表</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
+<details class="note"><summary>Key Takeaway</summary></details>
 <p>为了实现虚函数，C++ 使用了一种称为<a href="../virtual-table/">虚表</a>的特殊形式的<a href="../Late-binding/">后期绑定</a>。虚表是一个函数查找表，用于以动态/后期绑定方式解析函数调用。虚表有时也称为 “vtable”、“虚函数表”、“虚方法表”或“调度表”。</p>
 <p><em>因为使用虚函数并不需要了解虚表的工作方式，所以可以将本节视为选修</em></p>
 <p>虚表实际上非常简单，不过用语言描述有点复杂。首先，每个使用虚函数的类(或从使用虚函数的类派生而来的类)都有自己的虚表。这个表只是编译器在编译时设置的一个静态数组。虚表为类的对象调用的每个虚函数都包含一个条目。该表中的每个条目都只是一个函数指针，指向该类可访问的最后派生（most-derived）的函数。</p>

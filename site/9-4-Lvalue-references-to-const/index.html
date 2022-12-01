@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lvalue-reference-to-const" class="md-skip">
+        <a href="#const" class="md-skip">
           Skip to content
         </a>
       
@@ -2081,7 +2081,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -2632,29 +2632,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lvalue-reference-to-const" class="md-nav__link">
-    Lvalue reference to const
+  <a href="#const" class="md-nav__link">
+    指向 const 的左值引用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#initializing-an-lvalue-reference-to-const-with-a-modifiable-lvalue" class="md-nav__link">
-    Initializing an lvalue reference to const with a modifiable lvalue
+  <a href="#const_1" class="md-nav__link">
+    使用可修改左值初始化const左值引用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#initializing-an-lvalue-reference-to-const-with-an-rvalue" class="md-nav__link">
-    Initializing an lvalue reference to const with an rvalue
+  <a href="#const_2" class="md-nav__link">
+    使用右值初始化const左值引用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#const-references-bound-to-temporary-objects-extend-the-lifetime-of-the-temporary-object" class="md-nav__link">
-    Const references bound to temporary objects extend the lifetime of the temporary object
+  <a href="#const_3" class="md-nav__link">
+    const 引用绑定到临时对象时会延长临时对象的生命周期
   </a>
   
 </li>
@@ -5808,29 +5808,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lvalue-reference-to-const" class="md-nav__link">
-    Lvalue reference to const
+  <a href="#const" class="md-nav__link">
+    指向 const 的左值引用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#initializing-an-lvalue-reference-to-const-with-a-modifiable-lvalue" class="md-nav__link">
-    Initializing an lvalue reference to const with a modifiable lvalue
+  <a href="#const_1" class="md-nav__link">
+    使用可修改左值初始化const左值引用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#initializing-an-lvalue-reference-to-const-with-an-rvalue" class="md-nav__link">
-    Initializing an lvalue reference to const with an rvalue
+  <a href="#const_2" class="md-nav__link">
+    使用右值初始化const左值引用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#const-references-bound-to-temporary-objects-extend-the-lifetime-of-the-temporary-object" class="md-nav__link">
-    Const references bound to temporary objects extend the lifetime of the temporary object
+  <a href="#const_3" class="md-nav__link">
+    const 引用绑定到临时对象时会延长临时对象的生命周期
   </a>
   
 </li>
@@ -5891,8 +5891,12 @@
 
   <h1>9.4 - const类型的左值引用</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
-<p>In the previous lesson (<a href="../9-3-Lvalue-references/">9.3 - 左值引用</a>), we discussed how an lvalue reference can only bind to a modifiable lvalue. This means the following is illegal:</p>
+<details class="note"><summary>Key Takeaway</summary><ul>
+<li>左值引用只能绑定到可修改的左值。</li>
+<li>对const的左值引用可以绑定到可修改的左值、不可修改的左值和右值。这使得它们成为一种更加灵活的引用类型。</li>
+</ul>
+</details>
+<p>在上节课 (<a href="../9-3-Lvalue-references/">9.3 - 左值引用</a>) 中，我们讨论了为声明<a href="../lvalue-reference/">左值引用</a>只能绑定到一个可修改的<a href="../lvalue/">左值</a>上。这意味着下面的代码是非法的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5907,12 +5911,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This is disallowed because it would allow us to modify a const variable (<code>x</code>) through the non-const reference (<code>ref</code>).</p>
-<p>But what if we want to have a const variable we want to create a reference to? A normal lvalue reference (to a non-const value) won’t do.</p>
-<h2 id="lvalue-reference-to-const">Lvalue reference to const</h2>
-<p>By using the <code>const</code> keyword when declaring an lvalue reference, we tell an lvalue reference to treat the object it is referencing as const. Such a reference is called an lvalue reference to a const value (sometimes called a reference to const or a const reference).</p>
-<p>Lvalue references to const can bind to non-modifiable lvalues:</p>
+<p>这是不允许的，因为这样我们就能够通过非<code>const</code>引用(<code>ref</code> )修改<code>const</code>变量( <code>x</code> )。</p>
+<p>但如果我们想要一个<code>const</code>变量来创建引用，该怎么办呢？普通的左值引用(指向非const值)是不行的。</p>
+<h2 id="const">指向 const 的左值引用</h2>
+<p>使用 <code>const</code> 关键字声明左值引用，即要求左值引用将其引用的对象当做const看到。此时称该引用为指向const对象的左值引用（有时称为指向const的引用或<strong>const左值引用</strong>）。</p>
+<p>对const引用可以绑定到不可修改的左值:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5927,7 +5930,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>Because lvalue references to const treat the object they are referencing as const, they can be used to access but not modify the value being referenced:</p>
+<p>因为const的左值引用将它们引用的对象视为const，所以它们可以用于访问但不能修改被引用的值:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5952,8 +5955,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h2 id="initializing-an-lvalue-reference-to-const-with-a-modifiable-lvalue">Initializing an lvalue reference to const with a modifiable lvalue</h2>
-<p>Lvalue references to const can also bind to modifiable lvalues. In such a case, the object being referenced is treated as const when accessed through the reference (even though the underlying object is non-const):</p>
+<h2 id="const_1">使用可修改左值初始化const左值引用</h2>
+<p>const左值引用也可以绑定到可修改的左值。在这种情况下，通过引用访问被引用的对象时将被视为const(即使底层对象不是const):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5982,14 +5985,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above program, we bind const reference <code>ref</code> to modifiable lvalue <code>x</code>. We can then use <code>ref</code> to access <code>x</code>, but because <code>ref</code> is const, we can not modify the value of <code>x</code> through <code>ref</code>. However, we still can modify the value of <code>x</code> directly (using the identifier <code>x</code>).</p>
+<p>在上面的例子中，我们将const引用 <code>ref</code> 绑定到可修改左值 <code>x</code>。随后便可以使用 <code>ref</code> 访问 <code>x</code>，但是因为 <code>ref</code> 是 const 的，所以我们不能通过<code>ref</code>修改<code>x</code>。然而，我们仍然可以直接修改 <code>x</code> 。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Favor <code>lvalue references to const</code> over <code>lvalue references to non-const</code> unless you need to modify the object being referenced.</p>
+<p>除非需要修改被引用的对象，最好使用“const左值引用”，而不是“非const的左值引用”。</p>
 </div>
-<h2 id="initializing-an-lvalue-reference-to-const-with-an-rvalue">Initializing an lvalue reference to const with an rvalue</h2>
-<p>Perhaps surprisingly, lvalues references to const can also bind to rvalues:</p>
+<h2 id="const_2">使用右值初始化const左值引用</h2>
+<p>也许令人惊讶的是，const左值引用也可以绑定到右值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6010,13 +6012,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When this happens, a temporary object is created and initialized with the rvalue, and the reference to const is bound to that temporary object.</p>
-<p>A temporary object (also sometimes called an anonymous object) is an object that is created for temporary use (and then destroyed) within a single expression. Temporary objects have no scope at all (this makes sense, since scope is a property of an identifier, and temporary objects have no identifier). This means a temporary object can only be used directly at the point where it is created, since there is no way to refer to it beyond that point.</p>
-<h2 id="const-references-bound-to-temporary-objects-extend-the-lifetime-of-the-temporary-object">Const references bound to temporary objects extend the lifetime of the temporary object</h2>
-<p>Temporary objects are normally destroyed at the end of the expression in which they are created.</p>
-<p>However, consider what would happen in the above example if the temporary object created to hold rvalue <code>5</code> was destroyed at the end of the expression that initializes <code>ref</code>. Reference <code>ref</code> would be left dangling (referencing an object that had been destroyed), and we’d get undefined behavior when we tried to access <code>ref</code>.</p>
-<p>To avoid dangling references in such cases, C++ has a special rule: When a const lvalue reference is bound to a temporary object, the lifetime of the temporary object is extended to match the lifetime of the reference.</p>
+<p>当这种情况发生时，创建一个临时对象并用右值初始化，对const的引用被绑定到该临时对象。</p>
+<p>临时对象(有时也称为匿名对象)是在单个表达式中为临时使用(然后销毁)而创建的对象。临时对象完全没有作用域(这是有意义的，因为==作用域是标识符的属性，而临时对象没有标识符==)。这意味着临时对象只能在创建它的位置直接使用，因为没有办法在该位置之后再引用它。</p>
+<h2 id="const_3">const 引用绑定到临时对象时会延长临时对象的生命周期</h2>
+<p>临时对象通常在创建它们的表达式的末尾被销毁。</p>
+<p>但是，如果为保存右值 <code>5</code> 而创建的临时对象在初始化 <code>ref</code> 的表达式结束时被销毁，那么在上面的例子中会发生什么情况呢？引用<code>ref</code> 将变成<a href="../dangling/">悬垂</a>引用(引用一个已经被销毁的对象)，当我们试图访问 <code>ref</code> 时，将产生<a href="../undefined-behavior/">未定义行为</a>。</p>
+<p>为了避免这种情况下的<a href="../dangling/">悬垂</a>引用，C++有一个特殊的规则：<mark>当const左值引用被绑定到一个临时对象时，临时对象的生存期将被扩展到与引用的生存期相匹配。</mark></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6037,14 +6038,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"> </span><span class="c1">// Both ref and the temporary object die here</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, when <code>ref</code> is initialized with rvalue <code>5</code>, a temporary object is created and <code>ref</code> is bound to that temporary object. The lifetime of the temporary object matches the lifetime of <code>ref</code>. Thus, we can safely print the value of <code>ref</code> in the next statement. Then both <code>ref</code> and the temporary object go out of scope and are destroyed at the end of the block.</p>
+<p>在上面的例子中，当使用右值<code>5</code>初始化 <code>ref</code> 时，一个临时对象被创建并绑定到 <code>ref</code> 。该临时对象的生命周期就会被扩展到 <code>ref</code> 的生命周期。Thus, we can safely print the value of <code>ref</code> in the next statement. Then both <code>ref</code> and the temporary object go out of scope and are destroyed at the end of the block.</p>
 <div class="admonition tldr">
 <p class="admonition-title">关键信息</p>
-<p>Lvalue references can only bind to modifiable lvalues.</p>
-<p>Lvalue references to const can bind to modifiable lvalues, non-modifiable lvalues, and rvalues. This makes them a much more flexible type of reference.</p>
+<p>左值引用只能绑定到可修改的左值。</p>
+<p>对const的左值引用可以绑定到可修改的左值、不可修改的左值和右值。这使得它们成为一种更加灵活的引用类型。</p>
 </div>
-<p>So why does C++ allow a const reference to bind to an rvalue anyway? We’ll answer that question in the next lesson!</p>
+<p>那么，为什么C++允许const引用绑定到右值呢？我们将在<a href="../9-5-Pass-by-lvalue-reference/">9.5 - 传递左值引用</a>中回答这个问题!</p>
 
 
               </article>

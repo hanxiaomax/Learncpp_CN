@@ -2081,7 +2081,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5899,7 +5899,7 @@
 
   <h1>M.4 - std::move</h1>
 
-<details class="note"><summary>关键点速记</summary><ul>
+<details class="note"><summary>Key Takeaway</summary><ul>
 <li>只有右值才能触发<a href="../move-semantics/">移动语义</a>，因此必须是右值（字面量、匿名对象）或者被<code>std::move()</code>作用的左值才能够触发</li>
 <li><code>std::move()</code> 会提示编译器，程序员已经不再需要该值了。所以，<code>std::move()</code> 应该被应用于那些希望资源被移出的对象，且此后不应当假定该对象还持有该资源。给资源被移出的对象赋新值是可以的。</li>
 </ul>

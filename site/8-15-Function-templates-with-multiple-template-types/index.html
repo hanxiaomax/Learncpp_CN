@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-static_cast-to-convert-the-arguments-to-matching-types" class="md-skip">
+        <a href="#static_cast" class="md-skip">
           Skip to content
         </a>
       
@@ -2081,7 +2081,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -2501,29 +2501,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#use-static_cast-to-convert-the-arguments-to-matching-types" class="md-nav__link">
-    Use static_cast to convert the arguments to matching types
+  <a href="#static_cast" class="md-nav__link">
+    使用 static_cast 将实参转换为匹配的类型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#provide-an-actual-type" class="md-nav__link">
-    Provide an actual type
+  <a href="#_1" class="md-nav__link">
+    提供实际类型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions-templates-with-multiple-template-type-parameters" class="md-nav__link">
-    Functions templates with multiple template type parameters
+  <a href="#_2" class="md-nav__link">
+    具有多个模板类型形参的函数模板
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#abbreviated-function-templates-c20" class="md-nav__link">
-    Abbreviated function templates C++20
+  <a href="#c20" class="md-nav__link">
+    缩写函数模板（C++20）
   </a>
   
 </li>
@@ -5808,29 +5808,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#use-static_cast-to-convert-the-arguments-to-matching-types" class="md-nav__link">
-    Use static_cast to convert the arguments to matching types
+  <a href="#static_cast" class="md-nav__link">
+    使用 static_cast 将实参转换为匹配的类型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#provide-an-actual-type" class="md-nav__link">
-    Provide an actual type
+  <a href="#_1" class="md-nav__link">
+    提供实际类型
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions-templates-with-multiple-template-type-parameters" class="md-nav__link">
-    Functions templates with multiple template type parameters
+  <a href="#_2" class="md-nav__link">
+    具有多个模板类型形参的函数模板
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#abbreviated-function-templates-c20" class="md-nav__link">
-    Abbreviated function templates C++20
+  <a href="#c20" class="md-nav__link">
+    缩写函数模板（C++20）
   </a>
   
 </li>
@@ -5891,8 +5891,8 @@
 
   <h1>8.15 - 具有多种类型的函数模板</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
-<p>In lesson <a href="../8-13-Function-templates/">8.13 - 函数模板</a>, we wrote a function template to calculate the maximum of two values:</p>
+<details class="note"><summary>Key Takeaway</summary></details>
+<p>在 <a href="../8-13-Function-templates/">8.13 - 函数模板</a> 在我们编写了计算两个值中较大值的函<a href="../function-template/">函数模板</a>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5923,8 +5923,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now consider the following similar program:</p>
+<p>现在，考虑下面类似的程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5941,20 +5940,19 @@
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
-<span class="n">T</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="n">T</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// &lt;-- 注意这里</span>
+</span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// compile error</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// 编译错误</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>You may be surprised to find that this program won’t compile. Instead, the compiler will issue a bunch of (probably crazy looking) error messages. On Visual Studio, the author got the following:</p>
+<p>你可能会惊讶地发现这个程序无法编译。编译器会发出一堆(可能看起来很疯狂)错误消息。在Visual Studio上，笔者得到了以下内容：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5969,14 +5967,14 @@ Project3.cpp(11,28): message : or       &#39;int&#39;
 Project3.cpp(11,28): error C2784: &#39;T max(T,T)&#39;: could not deduce template argument for &#39;T&#39; from &#39;double&#39;
 Project3.cpp(4): message : see declaration of &#39;max&#39;
 </code></pre></div></td></tr></table></div>
-<p>In our function call <code>max(2, 3.5)</code>, we’re passing arguments of two different types: one <code>int</code> and one <code>double</code>. Because we’re making a function call without using angled brackets to specify an actual type, the compiler will first look to see if there is a non-template match for <code>max(int, double)</code>. It won’t find one.</p>
-<p>Next, the compiler will see if it can find a function template match (using template argument deduction, which we covered in lesson <a href="https://www.learncpp.com/cpp-tutorial/function-template-instantiation/">8.14 -- Function template instantiation</a>). However, this will also fail, for a simple reason: <code>T</code> can only represent a single type. There is no type for <code>T</code> that would allow the compiler to instantiate function template <code>max&lt;T&gt;(T, T)</code> into a function with two different parameter types. Put another way, because both parameters in the function template are of type <code>T</code>, they must resolve to the same actual type.</p>
-<p>Since no non-template match was found, and no template match was found, the function call fails to resolve, and we get a compile error.</p>
-<p>You might wonder why the compiler didn’t generate function <code>max&lt;double&gt;(double, double)</code> and then use numeric conversion to type convert the <code>int</code> argument to a <code>double</code>. The answer is simple: type conversion is done only when resolving function overloads, not when performing template argument deduction.</p>
-<p>This lack of type conversion is intentional for at least two reasons. First, it helps keep things simple: we either find an exact match between the function call arguments and template type parameters, or we don’t. Second, it allows us to create function templates for cases where we want to ensure that two or more parameters have the same type (as in the example above).</p>
-<p>We’ll have to find another solution. Fortunately, we can solve this problem in (at least) three ways.</p>
-<h2 id="use-static_cast-to-convert-the-arguments-to-matching-types">Use static_cast to convert the arguments to matching types</h2>
-<p>The first solution is to put the burden on the caller to convert the arguments into matching types. For example:</p>
+<p>当调用 <code>max(2, 3.5)</code> 时，我们实际上传入了两个不同类型的实参：<code>int</code> 和 <code>double</code>。因为我们没有使用尖括号来指定函数模板的实际类型，编译器会首先查看是否有非模板函数 <code>max(int, double)</code> 供其调用，但很遗憾没有找到。</p>
+<p>接下来，编译器会查看是否能找到一个匹配的函数模板(使用<strong>模板实参推断</strong>，参见<a href="../8-14-Function-template-instantiation/">8.14 - 函数模板的实例化</a>)。但很遗憾，仍然无法找到，原因也非常简单：<code>T</code> 只能表示一个类型，编译器无法根据 <code>max&lt;T&gt;(T, T)</code> 模板生成能够接受两个不同<a href="../parameters/">形参</a>类型的函数。换句话说，如果函数模板中的多个参数为相同类型<code>T</code>，则它们对应的实际类型也应该是相同的。</p>
+<p>因为无法找到非模板函数，也无法找到合适的函数模板，所以函数解析出错，导致编译器报错。</p>
+<p><mark>你可能会想，为什么编译器不能生成一个 <code>max&lt;double&gt;(double, double)</code> 类型的函数，然后通过<a href="../numeric-conversions/">数值转换</a>将 <code>int</code> 转换为 <code>double</code> 呢？答案也很简单：类型转换只有在解析函数<a href="../overload/">重载</a>时才会发生，在执行模板实参推断时并不会进行。</mark></p>
+<p>不提供类型转换是有意而为之的，且至少有两个原因。首先，它有助于使事情变得简单：我们要么找到函数调用实参和模板类型形参之间的精确匹配，要么找不到。其次，它允许我们在需要确保两个或多个形参具有相同类型的情况下创建函数模板(如上例所示)。</p>
+<p>我们得另想办法。幸运的是，我们可以用(至少)三种方法解决这个问题。</p>
+<h2 id="static_cast">使用 <code>static_cast</code> 将实参转换为匹配的类型</h2>
+<p>解决方案 1：将实参转换为匹配的类型的任务交给调用者。例如:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6005,11 +6003,10 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now that both arguments are of type <code>double</code>, the compiler will be able to instantiate <code>max(double, double)</code> that will satisfy this function call.</p>
-<p>However, this solution is awkward and hard to read.</p>
-<h2 id="provide-an-actual-type">Provide an actual type</h2>
-<p>If we had written a non-template <code>max(double, double)</code> function, then we would be able to call <code>max(int, double)</code> and let the implicit type conversion rules convert our <code>int</code> argument into a <code>double</code> so the function call could be resolved:</p>
+<p>这样一来，两个实参都是 <code>double</code> 类型了，所以编译器将会实例化 <code>max(double, double)</code> 并执行函数调用。</p>
+<p>不过，这种方法不太自然，可读性也不佳。</p>
+<h2 id="_1">提供实际类型</h2>
+<p>如果我们定义了一个非模板函数 <code>max(double, double)</code> ，那么是可以调用 <code>max(int, double)</code> 并通过<a href="../implicit-type-conversion/">隐式类型转换</a>将 <code>int</code> 转换为 <code>double</code>并调用函数的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6036,8 +6033,7 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, when the compiler is doing template argument deduction, it won’t do any type conversions. Fortunately, we don’t have to use template argument deduction if we specify an actual type to be used instead:</p>
+<p>然而，<mark>当编译器进行模板实参推导时，它不会进行任何类型转换</mark>。幸运的是，如果指定要使用的实际类型，编译器就不必使用模板实参推导：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6066,12 +6062,11 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, we call <code>max&lt;double&gt;(2, 3.5)</code>. Because we’ve explicitly specified that <code>T</code> should be replaced with <code>double</code>, the compiler won’t use template argument deduction. Instead, it will just instantiate the function <code>max&lt;double&gt;(double, double)</code>, and then type convert any mismatched arguments. Our <code>int</code> parameter will be implicitly converted to a <code>double</code>.</p>
-<p>While this is more readable than using <code>static_cast</code>, it would be even nicer if we didn’t even have to think about the types when making a function call to <code>max</code> at all.</p>
-<h2 id="functions-templates-with-multiple-template-type-parameters">Functions templates with multiple template type parameters</h2>
-<p>The root of our problem is that we’ve only defined the single template type (<code>T</code>) for our function template, and then specified that both parameters must be of this same type.</p>
-<p>The best way to solve this problem is to rewrite our function template in such a way that our parameters can resolve to different types. Rather than using one template type parameter <code>T</code>, we’ll now use two (<code>T</code> and <code>U</code>):</p>
+<p>在上面的例子中，我们调用了 <code>max&lt;double&gt;(2, 3.5)</code> 函数。因为显示提供了模板类型 <code>double</code>，编译器无需进行模板实参推断。它会直接实例化  <code>max&lt;double&gt;(double, double)</code>，然后对不匹配的参数进行类型转换。<code>int</code> 就会被隐式转换为<code>double</code>。</p>
+<p>尽管这么做的可读性稍好于 <code>static_cast</code>，但是如果能够在调用函数<code>max</code>时不考虑类型就好了。</p>
+<h2 id="_2">具有多个模板类型形参的函数模板</h2>
+<p>这个问题的根因是因为函数模板中只有一个模板类型 (<code>T</code>) ，所以两个参数都必须是该类型的。</p>
+<p>解决这个问题最佳的方法是让函数模板支持多个不同的类型。为此，我们使用两个类型形参(<code>T</code> 和 <code>U</code>)：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6100,11 +6095,10 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Because we’ve defined <code>x</code> with template type <code>T</code>, and <code>y</code> with template type <code>U</code>, <code>x</code> and <code>y</code> can now resolve their types independently. When we call <code>max(2, 3.5)</code>, <code>T</code> can be an <code>int</code> and <code>U</code> can be a <code>double</code>. The compiler will happily instantiate <code>max&lt;int, double&gt;(int, double)</code> for us.</p>
-<p>However, the above code still has a problem: using the usual arithmetic rules (<a href="https://www.learncpp.com/cpp-tutorial/arithmetic-conversions/">8.4 -- Arithmetic conversions</a>), <code>double</code> takes precedence over <code>int</code>, so our conditional operator will return a <code>double</code>. But our function is defined as returning a <code>T</code> -- in cases where <code>T</code> resolves to an <code>int</code>, our <code>double</code> return value will undergo a narrowing conversion to an <code>int</code>, which will produce a warning (and possible loss of data).</p>
-<p>Making the return type a <code>U</code> instead doesn’t solve the problem, as we can always flip the order of the operands in the function call to flip the types of <code>T</code>and <code>U</code>.</p>
-<p>How do we solve this? This is a good use for an <code>auto</code> return type -- we’ll let the compiler deduce what the return type should be from the return statement:</p>
+<p>因为，我们使用模板类型<code>T</code>定义了<code>x</code>，使用<code>U</code>定义了<code>y</code>，所以现在两个参数可以是不同的类型了。 在调用 <code>max(2, 3.5)</code>时 <code>T</code> 被解析为 <code>int</code> 而 <code>U</code> 被解析为 <code>double</code>。编译器实例化 <code>max&lt;int, double&gt;(int, double)</code> 函数。</p>
+<p>但是，上面的代码仍然有问题：在使用算数规则时(<a href="../8-4-Arithmetic-conversions/">8.4 - 算术转换</a>)，<code>double</code>的优先级高于<code>int</code>因此条件运算符的返回值是<code>double</code>，而函数的返回值类型为 <code>T</code> —— 如果此时 <code>T</code> 被解析为了 <code>int</code>，则 <code>double</code> 类型的返回值在返回时会被<a href="../narrowing-convertions/">缩窄转换</a>为<code>int</code>从而产生一个告警（通常也会导致数据丢失）。</p>
+<p>将返回值定义为 <code>U</code> 并不能解决这个问题，因为 <code>T</code> 和 <code>U</code> 在传递时本身就可以互换。</p>
+<p>那应该如何解决这个问题呢？一个好办法是使用 <code>auto</code> 作为返回类型——让编译器从返回语句中推断返回类型：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6133,11 +6127,10 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This version of <code>max</code> now works fine with operands of different types.</p>
-<h2 id="abbreviated-function-templates-c20">Abbreviated function templates C++20</h2>
-<p>C++20 introduces a new use of the <code>auto</code> keyword: When the <code>auto</code> keyword is used as a parameter type in a normal function, the compiler will automatically convert the function into a function template with each auto parameter becoming an independent template type parameter. This method for creating a function template is called an abbreviated function template.</p>
-<p>For example:</p>
+<p>这个版本的 <code>max</code> 函数现在可以很好地配合各种参数类型工作了。</p>
+<h2 id="c20"><a href="../abbreviated%20function%20templates/">缩写函数模板</a>（C++20）</h2>
+<p>C++20 为 <code>auto</code> 关键字引入了新的功能：当使用 <code>auto</code> 关键字修饰普通函数的<a href="../parameters/">形参</a>时，编译器会自动将该函数转换为函数模板，且每个被<code>auto</code> 修饰的形参都是独立的模板类型形参。通过这种方法创建的函数模板称为<a href="../abbreviated%20function%20templates/">缩写函数模板</a>。</p>
+<p>例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6146,8 +6139,7 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>is shorthand in C++20 for the following:</p>
+<p>上面代码是C++20中对下面模板定义的缩写形式：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6158,12 +6150,11 @@ Project3.cpp(4): message : see declaration of &#39;max&#39;
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>which is the same as the <code>max</code> function template we wrote above.</p>
-<p>In cases where you want each template type parameter to be an independent type, this form is preferred as the removal of the template parameter declaration line makes your code more concise and readable.</p>
+<p>这和我们上面写的<code>max</code> 函数模板是一样的。</p>
+<p>在希望每个模板类型形参都是独立类型的情况下，这种形式是首选的，因为删除模板形参声明行使代码更加简洁和可读。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Feel free to use abbreviated function templates if each auto parameter should be an independent template type (and your language standard is set to C++20 or newer).</p>
+<p>如果每个自动参数都应该是独立的模板类型(并且你的语言标准设置为C++20或更新版本)，那么可以随意使用缩写函数模板。</p>
 </div>
 
 

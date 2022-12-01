@@ -2077,7 +2077,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -5821,7 +5821,7 @@
 
   <h1>11.12 - 动态分配数组</h1>
 
-<details class="note"><summary>关键点速记</summary><ul>
+<details class="note"><summary>Key Takeaway</summary><ul>
 <li>使用<code>new[]</code>创建动态数组，其长度可以在运行时指定，不需要是常数，但其类型必须是能够被转换为<code>std::size_t</code>的类型</li>
 <li>使用<code>new int[legth]{}</code>分配并初始化数组为全0。从C++11开始，<a href="../initializer-list/">初始化值列表</a>可以用于动态数组：<code>new int[5]{ 9, 7, 5, 3, 1 }</code></li>
 <li>删除动态数组的内存需要使用<code>delete []</code>，无需指定大小</li>

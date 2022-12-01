@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2076,7 +2081,7 @@
   
     <li class="md-nav__item">
       <a href="../7-10-Break-and-continue/" class="md-nav__link">
-        7.10 - break 和 continue
+        7 10 Break and continue
       </a>
     </li>
   
@@ -2459,9 +2464,73 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            8.14 - 函数模板的实例化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         8.14 - 函数模板的实例化
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用函数模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    模板参数推断
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    带有非模板参数的函数模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    在多个文件中使用函数模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    泛型编程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5815,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用函数模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    模板参数推断
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    带有非模板参数的函数模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    在多个文件中使用函数模板
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    泛型编程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5794,8 +5913,8 @@
 
   <h1>8.14 - 函数模板的实例化</h1>
 
-<details class="note"><summary>关键点速记</summary></details>
-<p>In the previous lesson (<a href="../8-13-Function-templates/">8.13 - 函数模板</a>), we introduced function templates, and converted a normal <code>max()</code> function into a <code>max&lt;T&gt;</code>function template:</p>
+<details class="note"><summary>Key Takeaway</summary></details>
+<p>在上节课中 (<a href="../8-13-Function-templates/">8.13 - 函数模板</a>)，我们介绍了<a href="../function-template/">函数模板</a>以及如何将普通函数<code>max()</code>转换成<code>max&lt;T&gt;</code>函数模板：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5806,14 +5925,14 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this lesson, we’ll focus on how function templates are used.</p>
-<p>Using a function template</p>
-<p>Function templates are not actually functions -- their code isn’t compiled or executed directly. Instead, function templates have one job: to generate functions (that are compiled and executed).</p>
-<p>To use our <code>max&lt;T&gt;</code> function template, we can make a function call with the following syntax:</p>
-<p>max<actual_type>(arg1, arg2); // actual_type is some actual type, like int or double</p>
-<p>This looks a lot like a normal function call -- the primary difference is the addition of the type in angled brackets (called a template argument), which specifies the actual type that will be used in place of template type <code>T</code>.</p>
-<p>Let’s take a look at this in a simple example:</p>
+<p>在这节课中，我们将重点介绍如何使用函数模板。</p>
+<h2 id="_1">使用函数模板</h2>
+<p>函数模板并不是真正的函数，其代码不能被直接编译或执行。函数模板只有一个功能：生成函数（可以被编译执行）。</p>
+<p>为了使用 <code>max&lt;T&gt;</code> 函数模板，我们需要使用如下语法：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">max</span><span class="o">&lt;</span><span class="n">actual_type</span><span class="o">&gt;</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="n">arg2</span><span class="p">);</span><span class="w"> </span><span class="c1">// actual_type 是实际类型，例如 int或double</span>
+</code></pre></div></td></tr></table></div>
+<p>这看起来很像普通的函数调用——主要的区别是在尖括号中添加了类型(称为模板实参)，它指定了将用于代替模板类型“T”的实际类型。</p>
+<p>让我们看一个简单的例子:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5842,11 +5961,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When the compiler encounters the function call <code>max&lt;int&gt;(1, 2)</code>, it will determine that a function definition for <code>max&lt;int&gt;(int, int)</code> does not already exist. Consequently, the compiler will use our <code>max&lt;T&gt;</code> function template to create one.</p>
-<p>The process of creating functions (with specific types) from function templates (with template types) is called function template instantiation (or instantiation for short). When this process happens due to a function call, it’s called implicit instantiation. An instantiated function is often called a function instance (instance for short) or a template function. Function instances are normal functions in all regards.</p>
-<p>The process for instantiating a function is simple: the compiler essentially clones the function template and replaces the template type (<code>T</code>) with the actual type we’ve specified (<code>int</code>).</p>
-<p>So when we call <code>max&lt;int&gt;(1, 2)</code>, the function that gets instantiated looks something like this:</p>
+<p>当编译器遇到函数调用 <code>max&lt;int&gt;(1,2)</code> 时，它将确定<code>max&lt;int&gt;(int, int)</code> 的函数定义不存在。因此，编译器将使用 <code>max&lt;T&gt;</code> 函数模板来创建一个。</p>
+<p>从函数模板(带有模板类型)创建函数(带有特定类型)的过程称为<a href="../function-template-instantiation/">函数模板实例化</a>(或简称实例化)。当此过程由于函数调用而发生时，称为隐式实例化。实例化的函数通常称为函数实例(简称实例)或模板函数。函数实例在所有方面都是正常的函数。</p>
+<p>实例化函数的过程很简单：编译器基本上是克隆函数模板，并用实际类型( <code>int</code> )替换模板类型(<code>T</code> )。</p>
+<p>因此，当我们调用<code>max&lt;int&gt;(1,2)</code> 时，被实例化的函数看起来像这样：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5857,8 +5975,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Here’s the same example as above, showing what the compiler actually compiles after all instantiations are done:</p>
+<p>下面是与上面相同的示例，显示了编译器在所有实例化完成后实际编译的内容：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5895,9 +6012,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>You can compile this yourself and see that it works. An instantiated function is only instantiated the first time a function call is made. Further calls to the function are routed to the already instantiated function.</p>
-<p>Let’s do another example:</p>
+<p>你可以自己编译它，看看它是否工作。一个已实例化的函数只在第一次调用函数时被实例化。对该函数的进一步调用被路由到已经实例化的函数。</p>
+<p>再举一个例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5930,8 +6046,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This works similarly to the previous example, but our function template will be used to generate two functions this time: one time replacing <code>T</code> with <code>int</code>, and the other time replacing <code>T</code> with <code>double</code>. After all instantiations, the program will look something like this:</p>
+<p>这与前面的例子类似，但是我们的函数模板这次将用于生成两个函数:一次将 <code>T</code> 替换为<code>int</code> ，另一次将 <code>T</code> 替换为 <code>double</code> 。在所有实例化之后，程序看起来像这样:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5984,28 +6099,24 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>One additional thing to note here: when we instantiate <code>max&lt;double&gt;</code>, the instantiated function has parameters of type <code>double</code>. Because we’ve provided <code>int</code> arguments, those arguments will be implicitly converted to <code>double</code>.</p>
-<p>Template argument deduction</p>
-<p>In most cases, the actual types we want to use for instantiation will match the type of our function parameters. For example:</p>
+<p>需要注意的是：当实例化 <code>max&lt;double&gt;</code> 时，其<a href="../arguments/">实参</a>类型为 <code>double</code>。因为我们提供的是<a href="../arguments/">实参</a>是 <code>int</code> ，所以它会被<a href="../implicit-type-conversion/">隐式类型转换</a>为 <code>double</code>。</p>
+<h2 id="_2">模板参数推断</h2>
+<p>在大多数情况下，我们希望用于实例化的实际类型将与函数形参的类型匹配。例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// specifying we want to call max&lt;int&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this function call, we’ve specified that we want to replace <code>T</code> with <code>int</code>, but we’re also calling the function with <code>int</code> arguments.</p>
-<p>In cases where the type of the arguments match the actual type we want, we do not need to specify the actual type -- instead, we can use template argument deduction to have the compiler deduce the actual type that should be used from the argument types in the function call.</p>
-<p>For example, instead of making a function call like this:</p>
+<p>在这个函数调用中，我们已经指定我们想用<code>int</code> 替换 <code>T</code> ，但我们也调用了带有 <code>int</code> 参数的函数。</p>
+<p>在实参的类型与我们想要的实际类型相匹配的情况下，我们不需要指定实际的类型——相反，我们可以使用模板实参推导，让编译器从函数调用中的实参类型推导出应该使用的实际类型。</p>
+<p>例如，不用像这样调用函数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// specifying we want to call max&lt;int&gt;</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>We can do one of these instead:</p>
+<p>这么做即可：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In either case, the compiler will see that we haven’t provided an actual type, so it will attempt to deduce an actual type from the function arguments that will allow it to generate a <code>max()</code> function where all template parameters match the type of the provided arguments. In this example, the compiler will deduce that using function template <code>max&lt;T&gt;</code> with actual type <code>int</code> allows it to instantiate function <code>max&lt;int&gt;(int, int)</code> where the type of both template parameters (<code>int</code>) matches the type of the provided arguments (<code>int</code>).</p>
-<p>The difference between the two cases has to do with how the compiler resolves the function call from a set of overloaded functions. In the top case (with the empty angled brackets), the compiler will only consider <code>max&lt;int&gt;</code> template function overloads when determining which overloaded function to call. In the bottom case (with no angled brackets), the compiler will consider both <code>max&lt;int&gt;</code> template function overloads and <code>max</code> non-template function overloads.</p>
-<p>For example:</p>
+<p>对于上面例子中的两个语句，编译器会发现我们没有提供实际类型，所以它会尝试从函数<a href="../arguments/">实参</a>推断实际类型以使其能够生成合适的 <code>max()</code> 函数。在这个例子中，如果编译器能够通过实际类型<code>int</code>推断出模板类型并实例化函数 <code>max&lt;int&gt;(int, int)</code>，其所有模板形参都是(<code>int</code>)，能够匹配提供的实参类型(<code>int</code>)。</p>
+<p>这两种情况的区别在于编译器如何解析来自一组重载函数的函数调用。在顶部的情况下(带有空尖括号)，编译器在决定调用哪个重载函数时，只会考虑<code>max&lt;int&gt;</code> 模板函数重载。在下面一个例子(没有尖括号)中，编译器将同时考虑<code>max&lt;int&gt;</code> 模板函数重载和<code>max</code> 非模板函数重载。</p>
+<p>例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6052,13 +6163,14 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Note how the syntax in the bottom case looks identical to a normal function call! This is usually the preferred syntax used when invoking function templates (and the one we’ll default to in future examples, unless required to do otherwise).</p>
-<p>Best practice</p>
-<p>Favor the normal function call syntax when using function templates.</p>
-<p>Function templates with non-template parameters</p>
-<p>It’s possible to create function templates that have both template types and non-template type parameters. The template parameters can be matched to any type, and the non-template parameters work like the parameters of normal functions.</p>
-<p>For example:</p>
+<p>请注意，最下面的写法看起来与正常的函数调用是一样的！这通常是调用函数模板时使用的首选语法(在以后的示例中，如果可行，我们将默认使用这种语法)。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>在使用函数模板时，使用正常的函数调用语法。</p>
+</div>
+<h2 id="_3">带有非模板参数的函数模板</h2>
+<p>可以创建同时具有模板类型和非模板类型参数的函数模板。模板形参可以匹配任何类型，非模板形参的工作方式与普通函数的形参类似。</p>
+<p>例如:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6091,10 +6203,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This function template has a templated first parameter, but the second parameter is fixed with type <code>double</code>. Note that the return type can also be any type. In this case, our function will always return an <code>int</code> value.</p>
-<p>Instantiated functions may not always compile</p>
-<p>Consider the following program:</p>
+<p>这个函数模板有一个模板化的第一个形参，但是第二个形参的类型是固定的<code>double</code> 。注意，返回类型也可以是任何类型。在这种情况下，我们的函数总是返回一个<code>int</code> 值。</p>
+<p>注意，实例化的函数不保证一定能够编译。</p>
+<p>考虑下面的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6125,8 +6236,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The compiler will effectively compile and execute this:</p>
+<p>编译器会编译和执行下面代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6175,11 +6285,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>which will produce the result:</p>
-<p>2
-3.3</p>
-<p>But what if we try something like this?</p>
+<p>运行结果：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>2
+3.3
+</code></pre></div></td></tr></table></div>
+<p>但是如果我们这么做呢？</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6212,8 +6323,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When the compiler tries to resolve <code>addOne(hello)</code> it won’t find a non-template function match for <code>addOne(std::string)</code>, but it will find our function template for <code>addOne(T)</code>, and determine that it can generate an <code>addOne(std::string)</code> function from it. Thus, the compiler will generate and compile this:</p>
+<p>当编译器尝试解析 <code>addOne(hello)</code> 时，它无法找到一个非模板函数来匹配 <code>addOne(std::string)</code>，但是能够找到一个函数模板 <code>addOne(T)</code>，并通过该模板生成 <code>addOne(std::string)</code> 函数。因此编译器会生成并编译下面的代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6252,13 +6362,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, this will generate a compile error, because <code>x + 1</code> doesn’t make sense when <code>x</code> is a <code>std::string</code>. The obvious solution here is simply not to call <code>addOne()</code> with an argument of type <code>std::string</code>.</p>
-<p>Using function templates in multiple files</p>
-<p>In order to instantiate a template, the compiler needs to see the full definition of the template. This means that if we want to use a function template in multiple code files, each code file needs a copy of the definition of the function template. For this reason, templates are typically written in header files, where they can be #included into any code file that wants to use them.</p>
-<p>Template definitions are not subject to the one-definition rule, and functions instantiated from function templates are implicitly inline, so they are exempt from the one-definition rule.</p>
-<p>Max.h:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>显然，这会导致编译错误，因为 <code>x + 1</code> 并不适用于 <code>x</code> 为 <code>std::string</code> 类型的情况。解决办法就是不要使用<code>std::string</code>类型来调用 <code>addOne()</code>。</p>
+<h2 id="_4">在多个文件中使用函数模板</h2>
+<p>为了实例化模板，编译器需要看到模板的完整定义。这意味着，如果我们想在多个代码文件中使用函数模板，每个代码文件都需要函数模板定义的副本。因此，<mark>模板通常编写在头文件中，它们可以被<code>#include</code>到任何想要使用它们的代码文件中。</mark></p>
+<p>模板定义并不受限于<a href="../one-definition-rule/">单一定义规则(one-definition-rule)</a>，而且由于实例化的函数通常是隐式<a href="../inline-function/">内联函数</a>，所以也不受限于单一定义规则。</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Max.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -6278,9 +6386,7 @@
 
 <span class="cp">#endif</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Foo.cpp:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Foo.cp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -6294,9 +6400,7 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>main.cpp:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.cpp</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -6320,16 +6424,17 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, both main.cpp and foo.cpp <code>#include "Max.h"</code> so the code in both files can make use of the <code>max&lt;T, T&gt;</code> function template.</p>
-<p>Generic programming</p>
-<p>Because template types can be replaced with any actual type, template types are sometimes called generic types. And because templates can be written agnostically of specific types, programming with templates is sometimes called generic programming. Whereas C++ typically has a strong focus on types and type checking, in contrast, generic programming lets us focus on the logic of algorithms and design of data structures without having to worry so much about type information.</p>
-<p>Conclusion</p>
-<p>Once you get used to writing function templates, you’ll find they actually don’t take much longer to write than functions with actual types. Function templates can significantly reduce code maintenance and errors by minimizing the amount of code that needs to be written and maintained.</p>
-<p>Function templates do have a few drawbacks, and we would be remiss not to mention them. First, the compiler will create (and compile) a function for each function call with a unique set of argument types. So while function templates are compact to write, they can expand into a crazy amount of code, which can lead to code bloat and slow compile times. The bigger downside of function templates is that they tend to produce crazy-looking, borderline unreadable error messages that are much harder to decipher than those of regular functions. These error messages can be quite intimidating, but once you understand what they are trying to tell you, the problems they are pinpointing are often quite straightforward to resolve.</p>
-<p>These drawbacks are fairly minor compared with the power and safety that templates bring to your programming toolkit, so use templates liberally anywhere you need type flexibility! A good rule of thumb is to create normal functions at first, and then convert them into function templates if you find you need an overload for different parameter types.</p>
-<p>Best practice</p>
-<p>Use function templates to write generic code that can work with a wide variety of types whenever you have the need.</p>
+<p>在上面的例子中，<code>main.cpp</code> 和 <code>foo.cpp</code> 都 <code>#include "Max.h"</code> ，所以这两个文件中的代码都可以使用 <code>max&lt;T, T&gt;</code> 函数模板。</p>
+<h2 id="_5">泛型编程</h2>
+<p>因为模板类型可以用任何实际类型替换，所以模板类型有时被称为泛型类型。由于模板可以不受具体类型的影响而编写，因此使用模板进行编程有时被称为泛型编程。C++通常非常关注类型和类型检查，相比之下，泛型编程让我们专注于算法的逻辑和数据结构的设计，而不必过多地担心类型信息。</p>
+<h2 id="_6">小结</h2>
+<p>一旦习惯了编写函数模板，就会发现编写函数模板所花的时间实际上并不比具有实际类型的函数长多少。函数模板通过最小化需要编写和维护的代码数量，可以显著减少代码维护和错误。</p>
+<p>函数模板也确实有一些<strong>缺点</strong>，如果我们不提及它们，那就是失职了。首先，编译器将为每个函数调用创建(并编译)一个函数，该函数具有一组惟一的参数类型。因此，尽管函数模板编写起来很紧凑，但它们可能会被扩展成大量的代码，这可能导致代码膨胀和编译时间变慢。函数模板<strong>更大的缺点</strong>是，它们往往会产生看起来很疯狂、近乎不可读的错误消息，比常规函数的错误消息更难解读。这些错误消息可能相当吓人，但一旦你能够理解了它试图传达的信息，其指出的问题通常非常容易解决。</p>
+<p>模板为编程工具包带来了强大功能和安全性，这些缺点可以说是瑕不掩瑜了。所以在任何需要类型灵活性的地方都可以自由使用模板！一个好的经验法则是：<mark>首先创建普通函数，当发现需要针对不同参数类型<a href="../overload/">重载</a>函数时，则将它们转换为函数模板。</mark></p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>使用函数模板来编写泛型代码，这些代码可以在需要时处理各种类型。</p>
+</div>
 
 
               </article>
