@@ -38,12 +38,12 @@ type: translation
 1. 获得库最好的方式是为你的操作系统下载预编译的包(如果它存在的话)，这样我们就不必自己编译库。如果没有，那么我们将不得不下载一个源代码包并自己编译它(这超出了本课的范围)。在Windows上，库通常以`.zip`文件的形式分发。在Linux上，库通常以包的形式分发(例如`. rpm`)。包管理器可能已经列出了一些更流行的库(例如SDL)，以便于安装，所以请先检查这些库。
 2. 安装库。在Linux上，通常使用包管理器完成所有工作。在Windows上，这通常涉及将库解压缩到你所选择的目录。我们建议将所有的库放在一个位置以便于访问。例如，使用一个名为`C:\Libs`的目录，并将每个库放在它自己的子目录中。
 3. 确保编译器知道在哪里查找库的头文件。在Windows上，通常这是你安装库文件的目录的include子目录(例如，如果你把库安装到`C:\libs\SDL-1.2.11`，头文件可能在`C:\libs\SDL-1.2.11\include`)。在Linux上，头文件通常安装到`/usr/include`，它应该已经是包含文件搜索路径的一部分。但是，如果文件安装在其他地方，则必须告诉编译器在哪里找到它们。
-5.  Tell the linker where to look for the library file(s). As with step 3, this typically involves adding a directory to the list of places the linker looks for libraries. On Windows, this is typically the /lib subdirectory of the directory you installed the library files to. On Linux, libraries are typically installed to /usr/lib, which should already be a part of your library search path.
+4. 告诉链接器在哪里查找库文件。与步骤3一样，这通常涉及到向链接器查找库的位置列表中添加一个目录。在Windows上，这通常是您安装库文件的目录的`/lib`子目录。在Linux上，库通常安装到`/usr/lib`，它应该已经是库搜索路径的一部分。
 
-Once the library is installed and the IDE knows where to look for it, the following 3 steps typically need to be performed for each project that wants to use the library:
+一旦安装了库，并且IDE知道在哪里查找它们后，对于每个想要使用库的项目，通常还需要执行以下3个步骤:
 
-5.  If using static libraries or import libraries, tell the linker which library files to link.
-6.  #include the library’s header file(s) in your program. This tells the compiler about all of the functionality the library is offering so that your program will compile properly.
-7.  If using dynamic libraries, make sure the program knows where to find them. Under Linux, libraries are typically installed to /usr/lib, which is in the default search path after the paths in the `LD_LIBRARY_PATH` environment variable. On Windows, the default search path includes the directory the program is run from, directories set by calling SetDllDirectory(), the Windows, System, and System32 directories, and directories in the PATH environment variable. The easiest way to use a .dll is to copy the .dll to the location of the executable. Since you’ll typically distribute the .dll with your executable, it makes sense to keep them together anyway.
+5. 如果使用静态库或导入库，请告诉链接器要链接哪些库文件。
+7. 使用 `#include`  在你的程序中包含库的头文件。这可以告诉编译器该库提供的功能有哪些。
+8. 如果使用动态库，请确保程序知道在哪里可以找到它们。在Linux下，库通常安装到`/usr/lib`，它位于`LD_LIBRARY_PATH` 环境变量的默认搜索路径中。在Windows上，默认搜索路径包括运行程序的目录、调用`SetDllDirectory()`设置的目录、Windows、System和System32目录以及path环境变量中的目录。使用`.dll`最简单的方法是将`.dll`复制到可执行文件的位置。由于你通常会将`.dll`与可执行文件一起分发，因此将它们放在一起是有意义的。
 
-Steps 3-5 involve configuring your IDE -- fortunately, almost all IDEs work the same way when it comes to doing these things. Unfortunately, because each IDE has a different interface, the most difficult part of this process is simply locating _where_ the proper place to perform each of these steps is. Consequently, in the next few lessons in this section, we’ll cover how to do all of these steps for both Visual Studio Express 2005 and Code::Blocks. If you are using another IDE, read both -- by the time you’re done, you should have enough information to do the same with your own IDE with a little searching.
+步骤3-5涉及到配置IDE——幸运的是，几乎所有IDE在做这些事情时都以相同的方式工作。不幸的是，因为每个IDE都有不同的接口，所以这个过程中最困难的部分仅仅是找到执行这些步骤的合适位置。因此，在本节接下来的几课中，我们将介绍如何为`Visual Studio Express 2005`和`Code::Blocks`执行所有这些步骤。如果你正在使用另一种IDE，请同时阅读这两种IDE的使用方式——读完之后你应该有足够的信息来使用自己的IDE进行相同的操作，只需要进行一些搜索。
