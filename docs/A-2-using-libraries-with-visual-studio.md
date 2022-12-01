@@ -10,56 +10,48 @@ type: translation
 ??? note "Key Takeaway"
 
 
-To recap the process needed to use a library:
+回顾一下使用库需要完成的几个步骤：
 
-Once per library:
+对于每个库：
 
-1.  Acquire the library. Download it from the website or via a package manager.
-2.  Install the library. Unzip it to a directory or install it via a package manager.
+1.  获取库。从官网或通过包管理器下载库；
+2.  安装库。将库解压或安装到特定的目录。
 
-Once per project:
+对于每个项目：
 
-3.  Tell the compiler where to look for the header file(s) for the library.
-4.  Tell the linker where to look for the library file(s) for the library.
-5.  Tell the linker which static or import library files to link.
-6.  #include the library’s header file(s) in your program.
-7.  Make sure the program know where to find any dynamic libraries being used.
+3. 告知编译器到哪里寻找头文件；
+4. 告知链接器到哪里寻找库文件；
+5. 告知链接器链接哪个静态库或导入库文件；
+6. 在程序中 `#include` 头文件；
+7. 确保程序知道到哪里寻找动态库。
 
-Note: The examples in this lesson show screenshots from Visual Studio 2005 express, but the process hasn’t changed too substantively since then.
+注意：本课中的例子基于 Visual Studio 2005 express，但是从那时起这个过程并没有发生太大的变化。
 
-**Steps 1 and 2 -- Acquire and install library**
+**步骤1和2——获取和安装库
 
-Download and install the library to your hard disk. See the tutorial on [static and dynamic libraries](https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/) for more information about this step.
+下载库到本地电脑，参见 [[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]] 。
 
-**Steps 3 and 4 -- Tell the compiler where to find headers and library files**
+**步骤3和4——告诉编译器到哪里查找头文件和库文件**
 
-A) Go to the Project menu and pick Project -> Properties (it should be at the bottom)
+1. 进入项目菜单，选择项目->属性(它应该在底部)
+2. 在“配置”下拉菜单中，确保选择了“所有配置”。
+3. 在左侧窗口窗格中，选择“配置属性”->“VC++目录”。
+4. 在“Include Directories”行，为库添加.h文件的路径(确保这与前面的条目用分号分隔)。
+5. 在“库目录”中，添加库的`.lib`文件的路径。
+6. 点击“确定”。
 
-B) Under the “Configuration” dropdown, make sure that “All configurations” is selected.
 
-C) In the left window pane, select “Configuration Properties” -> “VC++ Directories”.
+**步骤 5 —— 告诉链接器程序使用哪些库**
 
-D) On the “Include Directories” line, add the path to the .h files for the library (make sure this is separated from previous entries by a semicolon).
+对于第5步，需要将库中的`.lib`文件添加到项目中。我们在每个项目的基础上这样做。
 
-E) On the “Library Directories”, add the path to the .lib files for the library.
+1. 进入项目菜单，选择项目->属性(它应该在底部)
+2. 在“配置”下拉菜单中，确保选择了“所有配置”。
+3. 在左侧窗口中，选择“Configuration Properties”->“Linker”->“Input”。
+4. 将.lib文件的名称添加到“附加依赖项”列表中(用分号与前面的条目分隔)
+5. 点击“确定”。
 
-F) Click “OK”.
-
-**Step 5 -- Tell the linker which libraries your program is using**
-
-For step 5, we need to add .lib files from the library to our project. We do this on an individual project basis.
-
-A) Go to the Project menu and pick Project -> Properties (it should be at the bottom)
-
-B) Under the “Configuration” dropdown, make sure that “All configurations” is selected.
-
-C) In the left window pane, select “Configuration Properties” -> “Linker” -> “Input”.
-
-D) Add the name of your .lib file to the list of “Additional Dependencies” (separated from previous entries by a semicolon)
-
-E) Click “OK”.
-
-**Steps 6 and 7 -- #include header files and make sure project can find DLLs**
+**Steps 6 and 7 -- `#include` tou'wen'j header files and make sure project can find DLLs**
 
 Simply #include the header file(s) from the library in your project as per usual.
 

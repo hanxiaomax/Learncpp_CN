@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "9d68643b120c6ae9",
+            "id": "86e63daad6e0d733",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/A-4-C++FAQ.md",
+                "file": "docs/A-2-using-libraries-with-visual-studio.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#在程序中包含库的头文件。这将告诉编译器库提供的所有功能，以便您的程序能够正确编译。",
+                "query": "tag:#include",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -95,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -122,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/A-4-C++FAQ.md",
+                "file": "docs/A-2-using-libraries-with-visual-studio.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/A-4-C++FAQ.md"
+                "file": "docs/A-2-using-libraries-with-visual-studio.md"
               }
             }
           }
@@ -151,11 +152,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "9d68643b120c6ae9",
+  "active": "86e63daad6e0d733",
   "lastOpenFiles": [
     "docs/MOC.md",
-    "docs/A-1-static-and-dynamic-libraries.md",
     "docs/A-4-C++FAQ.md",
+    "docs/A-1-static-and-dynamic-libraries.md",
     "docs/3-1-Syntax-and-semantic-errors.md",
     "docs/1-7-Keywords-and-naming-identifiers.md",
     "Templates/key-takeaway.md",

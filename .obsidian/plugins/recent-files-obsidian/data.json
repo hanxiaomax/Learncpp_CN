@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "A-4-C++FAQ",
-      "path": "docs/A-4-C++FAQ.md"
+      "basename": "A-2-using-libraries-with-visual-studio",
+      "path": "docs/A-2-using-libraries-with-visual-studio.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "A-4-C++FAQ",
+      "path": "docs/A-4-C++FAQ.md"
     },
     {
       "basename": "A-1-static-and-dynamic-libraries",
@@ -195,10 +199,6 @@
     {
       "basename": "7-17-assert-and-static-assert",
       "path": "docs/7-17-assert-and-static-assert.md"
-    },
-    {
-      "basename": "7-16-std-cin-and-handling-invalid-input",
-      "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
     }
   ],
   "omittedPaths": [],

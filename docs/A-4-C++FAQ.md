@@ -13,11 +13,11 @@ type: translation
 
 There are certain questions that tend to get asked over and over. This FAQ will attempt to answer the most common ones.
 
-## Q: Why shouldn’t we use “using namespace std”? 
+## 问: 为什么不应该使用 “`using namespace std`”? 
 
-The statement `using namespace std;` is a using directive. Using directives import all of the identifiers from a namespace into the scope of the using directive.
+语句 `using namespace std;` 使用了[[using-directive|using 指令]]——它将某个命名空间中的所有标识符都导入到当前命名空间。
 
-You may have seen something like this:
+你可能看过这样的代码：
 
 ```cpp
 #include <iostream>
@@ -32,9 +32,9 @@ int main()
 }
 ```
 
-COPY
+这么做之后，我们就可以不必显式指明`std`的命名空间，再也不用写 `std::` 了。在上面的程序中，只需要使用 `cout` 而不需要使用 `std::cout`。听起来很不错对吧？
 
-This allows us to use names from the `std` namespace without having to explicitly type `std::` over and over. In the above program, we can just type `cout` instead of `std::cout`. Sounds great, right?
+然而，当编译器遇到`using namespace std` 时，它会将在 `namespace std` 中找到的每一个标识符都导入全局作用域(因为using指令就放在全局作用域中)。这带来了3个主要挑战：
 
 However, when the compiler encounters `using namespace std`, it will import every identifier it can find in `namespace std` into the global scope (since that’s where the using directive has been placed). This introduces 3 key challenges:
 
@@ -48,7 +48,7 @@ For this reason, we recommend avoiding `using namespace std` (or any other usi
 
 	See lesson[[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]] for more detail and examples.
 
-## Q: Why can I use (some feature) without including header `<XXX>`? 
+## 问：为什么使用某些功能时不需要包含头文件？
 
 Headers can `#include` other headers. So when you include one header, you also get all of the additional headers that it includes (and all of the headers that those headers include too). All of the additional headers that come along for the ride that you didn’t explicitly include are called “transitive includes”.
 
@@ -62,7 +62,7 @@ There is no way to warn when this happens, or prevent it from happening. The bes
 
 	Covered in lesson [[2-11-Header-files|2.11 - 头文件]]
 
-## Q: Why does (some code that produces undefined behavior) generate a certain result? 
+## 问：为什么（产生未定义行为的代码）有这样的结果？
 
 Undefined behavior occurs when you perform an operation whose behavior is not defined by the C++ language. Code implementing undefined behavior may exhibit any of the following symptoms:
 
@@ -84,7 +84,8 @@ And while such an answer may be interesting mechanically, it’s rarely useful o
 
 	Undefined behavior is covered in lesson [[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]
 
-## Q: I tried to compile an example that should work, but get a compile error. Why? 
+## 问：我尝试编译一个例子，它本应该工作却编译报错了，为什么？
+
 
 The most common reason for this is that your project is being compiled using the wrong language standard.
 
