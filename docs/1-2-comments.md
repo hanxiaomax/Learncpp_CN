@@ -30,7 +30,7 @@ std::cout << "Yeah!\n"; // especially when lines are different lengths
 ```
 
 
-将注释写在代码行的右侧，会让代码和注释的可读性变差，尤其是 comments to the right of a line can make both the code and the comment hard to read, particularly if the line is long. If the lines are fairly short, the comments can simply be aligned (usually to a tab stop), like so:
+将注释写在代码行的右侧，会让代码和注释的可读性变差，尤其是这行比较长的情况。如果该行不长，注释就放在后面吧，通常放置在下一个制表符的位置，像这样：
 
 ```cpp
 std::cout << "Hello world!\n";                 // std::cout lives in the iostream library
@@ -38,8 +38,7 @@ std::cout << "It is very nice to meet you!\n"; // this is much easier to read
 std::cout << "Yeah!\n";                        // don't you think so?
 ```
 
-
-However, if the lines are long, placing comments to the right can make your lines really long. In that case, single-line comments are often placed above the line it is commenting:
+但是，如果行很长，将注释放在右边会使这一行变得特别长。在这种情况下，单行注释通常放在它所注释的行之上：
 
 ```cpp
 // std::cout lives in the iostream library
@@ -55,9 +54,10 @@ std::cout << "Yeah!\n";
 
 !!! info "作者注"
 
-	The statements above represent one of our first encounters with snippets of code. Because snippets aren’t full programs, they aren’t able to be compiled by themselves. Rather, they exist to demonstrate specific concepts in a concise manner.
+	上面的语句是我们第一次遇到“代码片段”。“代码片段”不是完整的程序，所以它们不能被编译。它们的存在是为了以简洁的方式演示特定的概念。
 
-If you would like to compile a snippet, you’ll need to turn it into a full program in order for it to compile. Typically, that program will look something like this:
+
+如果你想编译上述代码片段，则需要将其转换为一个完整的程序，以便编译。通常情况下，该程序看起来像这样:
 
 ```cpp
 #include <iostream>
@@ -71,9 +71,9 @@ int main()
 ```
 
 
-## Multi-line comments
+## 多行注释
 
-The `/*` and `*/` pair of symbols denotes a C-style multi-line comment. Everything in between the symbols is ignored.
+`/*` 和 `*/` 符号对表示C风格的多行注释。在这两个符号之间的任意内容都会被编译器忽略
 
 ```cpp
 /* This is a multi-line comment.
@@ -82,7 +82,7 @@ The `/*` and `*/` pair of symbols denotes a C-style multi-line comment. Ever
 ```
 
 
-Since everything between the symbols is ignored, you will sometimes see programmers “beautify” their multi-line comments:
+因为符号之间的所有内容都被忽略了，你有时会看到程序员“美化”他们的多行注释：
 
 ```cpp
 /* This is a multi-line comment.
@@ -91,52 +91,47 @@ Since everything between the symbols is ignored, you will sometimes see programm
  */
 ```
 
-
-Multi-line style comments can not be nested. Consequently, the following will have unexpected results:
+多行样式的注释不能嵌套。因此，以下情况将产生意想不到的结果：
 
 ```cpp
 /* This is a multi-line /* comment */ this is not inside the comment */
 // The above comment ends at the first */, not the second */
 ```
 
+当编译器尝试编译它时，它将忽略从第一个`/*`到第一个`*/`中的所有内容。因为“`this is not inside the comment */`”不被认为是注释的一部分，所以编译器会尝试编译它。这将不可避免地导致编译错误。
 
-When the compiler tries to compile this, it will ignore everything from the first _/*_ to the first */. Since “_this is not inside the comment */_” is not considered part of the comment, the compiler will try to compile it. That will inevitably result in a compile error.
-
-This is one place where using a syntax highlighter can be really useful, as the different coloring for comment should make clear what’s considered part of the comment vs not.
+在这种情况下，语法高亮特别有用，因为注释具有特定的颜色，所以不属于注释的一部分很容易被看出来。
 
 !!! warning "注意"
 
-	Don’t use multi-line comments inside other multi-line comments. Wrapping single-line comments inside a multi-line comment is okay.
+	不要在其他多行注释中使用多行注释。将单行注释封装在多行注释中是可以的。
 
-## Proper use of comments
+## 正确地使用注释
 
-Typically, comments should be used for three things. First, for a given library, program, or function, comments are best used to describe _what_ the library, program, or function, does. These are typically placed at the top of the file or library, or immediately preceding the function. For example:
+通常，注释应该用于完成三件事。第一，对于一个给定的库、程序或函数，注释最好用来描述该库、程序或函数的功能。它们通常放在文件或库的顶部，或紧挨着函数的前面。例如:
 
 ```cpp
 // This program calculates the student's final grade based on his test and homework scores.
 ```
 
-
 ```cpp
 // This function uses Newton's method to approximate the root of a given equation.
 ```
-
 
 ```cpp
 // The following lines generate a random item based on rarity, level, and a weight factor.
 ```
 
+所有这些注释都可以让读者在不查看实际代码的情况下很好地了解库、程序或函数实现了什么功能。用户(可能是其他人，如果你试图重用以前编写的代码，也可能是你自己)一眼就能看出代码是否与他或她想要实现的目标相关。在团队中工作时，这一点尤其重要，因为不是每个人都熟悉所有的代码。
 
-All of these comments give the reader a good idea of what the library, program, or function is trying to accomplish without having to look at the actual code. The user (possibly someone else, or you if you’re trying to reuse code you’ve previously written) can tell at a glance whether the code is relevant to what he or she is trying to accomplish. This is particularly important when working as part of a team, where not everybody will be familiar with all of the code.
 
-Second, _within_ a library, program, or function described above, comments can be used to describe _how_ the code is going to accomplish its goal.
+第二，在上面描述的库、程序或函数中，注释可以用来描述代码将如何实现它的目标。
 
 ```cpp
 /* To calculate the final grade, we sum all the weighted midterm and homework scores
     and then divide by the number of scores to assign a percentage, which is
     used to calculate a letter grade. */
 ```
-
 
 ```cpp
 // To generate a random item, we're going to do the following:
@@ -147,14 +142,13 @@ Second, _within_ a library, program, or function described above, comments can
 // 5) Return the appropriate item
 ```
 
+这些注释让用户了解代码将如何实现其目标，而不必了解每一行代码的功能。
 
-These comments give the user an idea of how the code is going to accomplish its goal without having to understand what each individual line of code does.
+第三，在语句级别，注释应该被用来描述代码**为什么**做某事，而不是被用来解释该行代码是在**做什么事**。如果你编写的代码非常复杂，以至于需要注释来解释语句在做什么，你可能需要重写语句，而不是为其添加注释。
 
-Third, at the statement level, comments should be used to describe _why_ the code is doing something. A bad statement comment explains _what_ the code is doing. If you ever write code that is so complex that needs a comment to explain _what_ a statement is doing, you probably need to rewrite your statement, not comment it.
+下面是一些具体的例子（有好有坏）：
 
-Here are some examples of bad line comments and good statement comments.
-
-Bad comment:
+反面教材：
 
 ```cpp
 // Set sight range to 0
@@ -162,19 +156,18 @@ sight = 0;
 ```
 
 
-Reason: We already can see that sight is being set to 0 by looking at the statement
+理由：看语句就知道它是在给 `sight` 赋值，无需注释。
 
-Good comment:
+正确示例：
 
 ```cpp
 // The player just drank a potion of blindness and can not see anything
 sight = 0;
 ```
 
+理由：说明为什么要把 player 的 sight 设置为0。
 
-Reason: Now we know why the player’s sight is being set to 0
-
-Bad comment:
+反面教材：
 
 ```cpp
 // Calculate the cost of the items
@@ -182,21 +175,21 @@ cost = quantity * 2 * storePrice;
 ```
 
 
-Reason: We can see that this is a cost calculation, but why is quantity multiplied by 2?
+理由：很显然是在计算`cost`，但是没有解释为什么要乘以2？
 
-Good comment:
+正确示例：
 
 ```cpp
-// We need to multiply quantity by 2 here because they are bought in pairs
+// 我们需要将数量乘以2因为它们是成对购买的
 cost = quantity * 2 * storePrice;
 ```
 
 
-Reason: Now we know why this formula makes sense.
+理由：这样就能理解公式的含义了。
 
-Programmers often have to make a tough decision between solving a problem one way, or solving it another way. Comments are a great way to remind yourself (or tell somebody else) the reason you made one decision instead of another.
+程序员常常不得不在用一种方法解决问题，还是用另一种方法解决问题之间做出艰难的决定。注释是提醒你自己(或告诉别人)做出这个决定而不是另一个决定的原因的好方法。
 
-Good comments:
+正确示例：
 
 ```cpp
 // We decided to use a linked list instead of an array because
@@ -209,40 +202,40 @@ Good comments:
 // there is no deterministic way to solve these equations.
 ```
 
+最后，应该以一种对不知道代码是做什么的人来说有意义的方式编写注释。通常情况下，程序员会说:“这很明显！我不会忘记这件事的。”你猜怎么着？这并不明显，你会惊讶于自己有多健忘。你(或其他人)以后会感谢你用人类语言写下代码的内容、方式和原因。阅读一行行代码很容易，但理解其要完成的目标却不简单。
 
-Finally, comments should be written in a way that makes sense to someone who has no idea what the code does. It is often the case that a programmer will say “It’s obvious what this does! There’s no way I’ll forget about this”. Guess what? It’s _not_ obvious, and you _will_ be amazed how quickly you forget. :) You (or someone else) will thank you later for writing down the what, how, and why of your code in human language. Reading individual lines of code is easy. Understanding what goal they are meant to accomplish is not.
 
 !!! success "最佳实践"
 
-	Comment your code liberally, and write your comments as if speaking to someone who has no idea what the code does. Don’t assume you’ll remember why you made specific choices.
+	对你的代码做大量的注释，写注释时就像对一个不知道代码是做什么的人说话一样。不要以为你会记得为什么你做了特定的选择。
 
 
 !!! info "作者注"
 
-	Throughout the rest of this tutorial series, we’ll use comments inside code blocks to draw your attention to specific things, or help illustrate how things work (while ensuring the programs still compile). Astute readers will note that by the above standards, most of these comments are horrible. :) As you read through the rest of the tutorials, keep in mind that the comments are serving an intentional educational purpose, not trying to demonstrate what good comments look like.
+	在本系列教程的其余部分中，我们将在代码块中使用注释来让你关注特定的内容，或者帮助说明代码是如何工作的(同时确保程序能够编译)。精明的读者会注意到，按照上述标准，大多数评论都很糟糕。:)当你阅读剩下的教程时，请记住，这些注释是为教育目的服务的，而不是试图演示好的注释是什么样子的。
 
-Commenting out code
+## 将代码注释掉
 
-Converting one or more lines of code into a comment is called commenting out your code. This provides a convenient way to (temporarily) exclude parts of your code from being included in your compiled program.
+将一行或多行代码转换为注释称为注释掉代码。这提供了一种方便的方法(临时)将部分代码排除在编译后的程序中。
 
-To comment out a single line of code, simply use the // style comment to turn a line of code into a comment temporarily:
+要注释掉一行代码，只需使用`//`样式注释将一行代码临时变成注释:
 
-Uncommented out:
+未注释掉：
 
 ```cpp
 std::cout << 1;
 ```
 
-Commented out:
+注释掉：
 
 ```cpp
 //    std::cout << 1;
 ```
 
 
-To comment out a block of code, use // on multiple lines of code, or the /* */ style comment to turn the block of code into a comment temporarily.
+要注释掉代码块，可以在多行代码上使用`//`，或者使用`/* */` 注释将代码块临时转换为注释。
 
-Uncommented out:
+未注释掉：
 
 ```cpp
 std::cout << 1;
@@ -250,7 +243,7 @@ std::cout << 2;
 std::cout << 3;
 ```
 
-Commented out:
+注释掉：
 
 ```cpp
 //    std::cout << 1;
@@ -258,7 +251,7 @@ Commented out:
 //    std::cout << 3;
 ```
 
-or
+或
 
 ```cpp
 /*
@@ -269,12 +262,12 @@ or
 ```
 
 
-There are quite a few reasons you might want to do this:
+你需要这么做的原因有很多：
 
-1.  You’re working on a new piece of code that won’t compile yet, and you need to run the program. The compiler won’t let you compile the code if there are compiler errors. Commenting out the code that won’t compile will allow the program to compile so you can run it. When you’re ready, you can uncomment the code, and continue working on it.
-2.  You’ve written new code that compiles but doesn’t work correctly, and you don’t have time to fix it until later. Commenting out the broken code will ensure the broken code doesn’t execute and cause problems until you can fix it.
-3.  To find the source of an error. If a program isn’t producing the desired results (or is crashing), it can sometimes be useful to disable parts of your code to see if you can isolate what’s causing it to not work correctly. If you comment out one or more lines of code, and your program starts working as expected (or stops crashing), odds are whatever you last commented out was part of the problem. You can then investigate why those lines of code are causing the problem.
-4.  You want to replace one piece of code with another piece of code. Instead of just deleting the original code, you can comment it out and leave it there for reference until you’re sure your new code works properly. Once you are sure your new code is working, you can remove the old commented out code. If you can’t get your new code to work, you can always delete the new code and uncomment the old code to revert to what you had before.
+	1.  You’re working on a new piece of code that won’t compile yet, and you need to run the program. The compiler won’t let you compile the code if there are compiler errors. Commenting out the code that won’t compile will allow the program to compile so you can run it. When you’re ready, you can uncomment the code, and continue working on it.
+1.  You’ve written new code that compiles but doesn’t work correctly, and you don’t have time to fix it until later. Commenting out the broken code will ensure the broken code doesn’t execute and cause problems until you can fix it.
+2.  To find the source of an error. If a program isn’t producing the desired results (or is crashing), it can sometimes be useful to disable parts of your code to see if you can isolate what’s causing it to not work correctly. If you comment out one or more lines of code, and your program starts working as expected (or stops crashing), odds are whatever you last commented out was part of the problem. You can then investigate why those lines of code are causing the problem.
+3.  You want to replace one piece of code with another piece of code. Instead of just deleting the original code, you can comment it out and leave it there for reference until you’re sure your new code works properly. Once you are sure your new code is working, you can remove the old commented out code. If you can’t get your new code to work, you can always delete the new code and uncomment the old code to revert to what you had before.
 
 Commenting out code is a common thing to do while developing, so many IDEs provide support for commenting out a highlighted section of code. How you access this functionality varies by IDE.
 
