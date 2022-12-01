@@ -9,6 +9,10 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "function-template-instantiation",
+      "path": "docs/function-template-instantiation.md"
+    },
+    {
       "basename": "8-13-Function-templates",
       "path": "docs/8-13-Function-templates.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "7-x-Chapter-7-summary-and-quiz",
       "path": "docs/7-x-Chapter-7-summary-and-quiz.md"
-    },
-    {
-      "basename": "7-6-Goto-statements",
-      "path": "docs/7-6-Goto-statements.md"
     }
   ],
   "omittedPaths": [],

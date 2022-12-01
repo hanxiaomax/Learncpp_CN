@@ -23,7 +23,7 @@
             }
           },
           {
-            "id": "6d8e4b7fa5081afb",
+            "id": "adf70098e1aad082",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "```cpp title",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,7 +90,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -151,17 +152,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "6d8e4b7fa5081afb",
+  "active": "54f64ac35b54f74b",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/function-template-instantiation.md",
+    "docs/8-14-Function-template-instantiation.md",
     "docs/8-13-Function-templates.md",
     "docs/7-12-Introduction-to-testing-your-code.md",
     "docs/7-11-Halts-exiting-your-program-early.md",
     "docs/7-1-Control-flow-introduction.md",
     "docs/7-10-Break-and-continue.md",
     "docs/4-8-Floating-point-numbers.md",
-    "docs/fallthrough.md",
-    "docs/1-8-Whitespace-and-basic-formatting.md",
-    "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    "docs/fallthrough.md"
   ]
 }
