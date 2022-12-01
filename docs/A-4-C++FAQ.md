@@ -11,7 +11,7 @@ type: translation
 	
 
 
-There are certain questions that tend to get asked over and over. This FAQ will attempt to answer the most common ones.
+有一些问题往往被问了一遍又一遍。本FAQ将尝试回答最常见的问题。
 
 ## 问: 为什么不应该使用 “`using namespace std`”? 
 
@@ -36,7 +36,10 @@ int main()
 
 然而，当编译器遇到`using namespace std` 时，它会将在 `namespace std` 中找到的每一个标识符都导入全局作用域(因为using指令就放在全局作用域中)。这带来了3个主要挑战：
 
-However, when the compiler encounters `using namespace std`, it will import every identifier it can find in `namespace std` into the global scope (since that’s where the using directive has been placed). This introduces 3 key challenges:
+- 你所选择的标识符与 `std` 名称空间中已经存在的标识符之间发生命名冲突的几率大大增加；
+- 标准库的新版本可能会破坏你当前可以工作的程序。这些未来的版本可能会引入导致新的命名冲突的名称，或者在最坏的情况下，程序的行为可能会悄无声息地出乎意料地改变!
+
+—缺少std::前缀会使读者很难理解什么是std库名，什么是用户定义的名称。
 
 -   The chance for a naming collision between a name you’ve picked and something that already exists in the `std` namespace is massively increased.
 -   New versions of the standard library may break your currently working program. These future versions could introduce names that cause new naming collisions, or in the worst case, the behavior of your program might change silently and unexpectedly!

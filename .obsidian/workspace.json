@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "626b28073f8daedf",
+            "id": "540dc10b8307cb0c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/A-3-using-libraries-with-Code-Blocks.md",
+                "file": "docs/A-4-C++FAQ.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -37,25 +37,6 @@
           }
         ],
         "currentTab": 1
-      },
-      {
-        "id": "898e3619f8c40850",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "14a8ae89c5d07c77",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/A-2-using-libraries-with-visual-studio.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -142,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/A-3-using-libraries-with-Code-Blocks.md",
+                "file": "docs/A-4-C++FAQ.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/A-3-using-libraries-with-Code-Blocks.md"
+                "file": "docs/A-4-C++FAQ.md"
               }
             }
           }
@@ -171,11 +152,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "626b28073f8daedf",
+  "active": "540dc10b8307cb0c",
   "lastOpenFiles": [
-    "docs/A-2-using-libraries-with-visual-studio.md",
-    "docs/A-3-using-libraries-with-Code-Blocks.md",
     "docs/MOC.md",
+    "docs/A-3-using-libraries-with-Code-Blocks.md",
+    "docs/A-2-using-libraries-with-visual-studio.md",
     "docs/A-4-C++FAQ.md",
     "docs/A-1-static-and-dynamic-libraries.md",
     "docs/3-1-Syntax-and-semantic-errors.md",

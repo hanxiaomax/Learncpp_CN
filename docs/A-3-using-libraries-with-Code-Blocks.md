@@ -68,4 +68,4 @@ type: translation
 
 只需像往常一样将库中的头文件`#include`到项目中。
 
-参见：[[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]]  获取geng'd
+参见：[[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]]  获取更多关于步骤 7 的信息
