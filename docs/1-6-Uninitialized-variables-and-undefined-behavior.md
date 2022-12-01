@@ -57,7 +57,9 @@ int main()
 
 大多数的现代编译器都能够检测到一个变量是否被赋予了初值。如果能够检测到，则在编译时会产生一个错误。例如，在 Visual Studio 中编译上述程序时，会输出如下的告警信息：
 
-`c:\VCprojects\test\test.cpp(11) : warning C4700: uninitialized local variable 'x' used`
+```
+c:\VCprojects\test\test.cpp(11) : warning C4700: uninitialized local variable 'x' used
+```
 
 如果你的编译器不允许你编译上述代码，可以采用如下方式绕过限制：
 

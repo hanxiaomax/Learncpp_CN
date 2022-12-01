@@ -12,20 +12,18 @@ type: translation
 ??? note "Key Takeaway"
 	
 
+**库**是一个代码包，它可以被许多程序重用。通常，C++库分为两部分：
 
+1. 定义公开接口(提供功能)的头文件。
+2. 一种预编译的二进制文件，其中包含预编译成机器语言的功能的实现。
 
-A **library** is a package of code that is meant to be reused by many programs. Typically, a C++ library comes in two pieces:
+有些库可能被拆分为多个文件和/或具有多个头文件。
 
-1.  A header file that defines the functionality the library is exposing (offering) to the programs using it.
-2.  A precompiled binary that contains the implementation of that functionality pre-compiled into machine language.
+库被预编译有几个原因。首先，由于库很少更改，所以不需要经常重新编译。每次编写使用库的程序时重新编译库是浪费时间的。其次，因为预编译对象是用机器语言编写的，所以它阻止了人们访问或更改源代码，这对于企业或因为知识产权原因不想让源代码可用的人来说很重要。
 
-Some libraries may be split into multiple files and/or have multiple header files.
+库可以分为两类：静态库和动态库
 
-Libraries are precompiled for several reasons. First, since libraries rarely change, they do not need to be recompiled often. It would be a waste of time to recompile the library every time you wrote a program that used them. Second, because precompiled objects are in machine language, it prevents people from accessing or changing the source code, which is important to businesses or people who don’t want to make their source code available for intellectual property reasons.
-
-There are two types of libraries: static libraries and dynamic libraries.
-
-A **static library** (also known as an **archive**) consists of routines that are compiled and linked directly into your program. When you compile a program that uses a static library, all the functionality of the static library that your program uses becomes part of your executable. On Windows, static libraries typically have a .lib extension, whereas on Linux, static libraries typically have an .a (archive) extension. One advantage of static libraries is that you only have to distribute the executable in order for users to run your program. Because the library becomes part of your program, this ensures that the right version of the library is always used with your program. Also, because static libraries become part of your program, you can use them just like functionality you’ve written for your own program. On the downside, because a copy of the library becomes part of every executable that uses it, this can cause a lot of wasted space. Static libraries also can not be upgraded easy -- to update the library, the entire executable needs to be replaced.
+**静态库**(也称为**存档 archive**)由编译后直接链接到程序中函数组成。当编译使用静态库的程序时，程序使用的静态库的所有功能都成为可执行文件的一部分。在Windows上，静态库通常有一个.lib扩展名，而在Linux上，静态库通常有一个.a(存档)扩展名。静态库的一个优点是，让用户运行你的程序，只需分发可执行文件。因为库成为了程序的一部分，这就确保了程序总是使用正确版本的库。另外，由于静态库成为程序的一部分，你可以像为自己的程序编写的功能一样使用它们。缺点是，由于库的副本成为每个使用它的可执行文件的一部分，这可能导致大量的空间浪费。静态库也不容易升级——要更新库，需要替换整个可执行文件。
 
 A **dynamic library** (also called a **shared library**) consists of routines that are loaded into your application at run time. When you compile a program that uses a dynamic library, the library does not become part of your executable -- it remains as a separate unit. On Windows, dynamic libraries typically have a .dll (dynamic link library) extension, whereas on Linux, dynamic libraries typically have a .so (shared object) extension. One advantage of dynamic libraries is that many programs can share one copy, which saves space. Perhaps a bigger advantage is that the dynamic library can be upgraded to a newer version without replacing all of the executables that use it.
 

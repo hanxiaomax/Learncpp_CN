@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
-      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
+      "basename": "A-1-static-and-dynamic-libraries",
+      "path": "docs/A-1-static-and-dynamic-libraries.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "A-4-C++FAQ",
+      "path": "docs/A-4-C++FAQ.md"
+    },
+    {
+      "basename": "3-1-Syntax-and-semantic-errors",
+      "path": "docs/3-1-Syntax-and-semantic-errors.md"
+    },
+    {
+      "basename": "1-7-Keywords-and-naming-identifiers",
+      "path": "docs/1-7-Keywords-and-naming-identifiers.md"
+    },
+    {
+      "basename": "key-takeaway",
+      "path": "Templates/key-takeaway.md"
+    },
+    {
+      "basename": "snake-case",
+      "path": "docs/snake-case.md"
+    },
+    {
+      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
+      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
     },
     {
       "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
@@ -23,10 +47,6 @@
     {
       "basename": "9-4-Lvalue-references-to-const",
       "path": "docs/9-4-Lvalue-references-to-const.md"
-    },
-    {
-      "basename": "key-takeaway",
-      "path": "Templates/key-takeaway.md"
     },
     {
       "basename": "yaml",
@@ -153,10 +173,6 @@
       "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
     },
     {
-      "basename": "A-4-C++FAQ",
-      "path": "docs/A-4-C++FAQ.md"
-    },
-    {
       "basename": "M-2-R-value-references",
       "path": "docs/M-2-R-value-references.md"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "7-16-std-cin-and-handling-invalid-input",
       "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
-    },
-    {
-      "basename": "7-15-Detecting-and-handling-errors",
-      "path": "docs/7-15-Detecting-and-handling-errors.md"
-    },
-    {
-      "basename": "7-14-Common-semantic-errors-in-c",
-      "path": "docs/7-14-Common-semantic-errors-in-c.md"
-    },
-    {
-      "basename": "7-13-Code-coverage",
-      "path": "docs/7-13-Code-coverage.md"
-    },
-    {
-      "basename": "7-9-For-statements",
-      "path": "docs/7-9-For-statements.md"
     }
   ],
   "omittedPaths": [],

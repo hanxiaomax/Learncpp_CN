@@ -9,17 +9,17 @@ tags:
 - Syntax
 ---
 
-Software errors are prevalent. It’s easy to make them, and it’s hard to find them. In this chapter, we’ll explore topics related to the finding and removal of bugs within our C++ programs, including learning how to use the integrated debugger that is part of our IDE.
+软件错误是普遍存在的。制造它们很容易，但要找到它们却很难。在本章中，我们将探讨C++程序问题定位与拍错的相关主题，包括学习如何使用集成调试器，它是IDE的一部分。
 
-Although debugging tools and techniques aren’t part of the C++ standard, learning to find and remove bugs in the programs you write is an extremely important part of being a successful programmer. Therefore, we’ll spend a bit of time covering such topics, so that as the programs you write become more complex, your ability to diagnose and remedy issues advances at a similar pace.
+尽管调试工具和技术并不是C++标准的一部分，但学会在所编写的程序中发现并删除错误是成为一名成功程序员极为重要的一部分。因此，我们将花一点时间讨论这些主题，以便随着你编写的程序变得更加复杂，你诊断和纠正问题的能力也会以匹配的速度提高。
 
-If you have experience from debugging programs in another compiled programming language, much of this will be familiar to you.
+如果你有用另一种编译编程语言调试程序的经验，那么应该已经熟悉其中的大部分内容。
 
-## Syntax and semantic errors
+## 语法错误和语义错误
 
-Programming can be challenging, and C++ is somewhat of a quirky language. Put those two together, and there are a lot of ways to make mistakes. Errors generally fall into one of two categories: syntax errors, and semantic errors (logic errors).
+编程并不简单，更何况 C++是一种有点古怪的语言。把这两者放在一起，就会有很多出错的方式。错误通常分为两类：语法错误和语义错误(逻辑错误)。
 
-A syntax error occurs when you write a statement that is not valid according to the grammar of the C++ language. This includes errors such as missing semicolons, using undeclared variables, mismatched parentheses or braces, etc… For example, the following program contains quite a few syntax errors:
+当编写的语句属于C++无效无效时，就会发生**语法错误**。这包括缺少分号、使用未声明的变量、括号或大括号不匹配等错误。例如，下面的程序包含相当多的语法错误：
 
 ```cpp
 #include <iostream>
@@ -31,13 +31,11 @@ int main()
 }
 ```
 
-COPY
+幸运的是，编译器通常会捕获语法错误并生成警告或错误，因此你可以轻松地识别和修复这些问题。然后就是重新编译直到消除所有错误的问题了。
 
-Fortunately, the compiler will generally catch syntax errors and generate warnings or errors, so you easily identify and fix the problem. Then it’s just a matter of compiling again until you get rid of all the errors.
+一旦你的程序编译正确，让它实际产生你想要的结果可能是棘手的。当语句在语法上是有效的，但并没有按照程序员的意图执行时，就会发生**语义错误**。
 
-Once your program is compiling correctly, getting it to actually produce the result(s) you want can be tricky. A semantic error occurs when a statement is syntactically valid, but does not do what the programmer intended.
-
-Sometimes these will cause your program to crash, such as in the case of division by zero:
+有时这将导致你的程序崩溃，例如除0的情况：
 
 ```cpp
 #include <iostream>
@@ -51,9 +49,7 @@ int main()
 }
 ```
 
-COPY
-
-More often these will just produce the wrong value or behavior:
+但更多时候语义错误只会导致结果错误或行为错误：
 
 ```cpp
 #include <iostream>
@@ -67,9 +63,7 @@ int main()
 }
 ```
 
-COPY
-
-or
+或者
 
 ```cpp
 #include <iostream>
@@ -87,9 +81,7 @@ int main()
 }
 ```
 
-COPY
-
-or
+亦或者
 
 ```cpp
 #include <iostream>
@@ -102,12 +94,7 @@ int main()
 }
 ```
 
-COPY
 
-Modern compilers have been getting better at detecting certain types of common semantic errors (e.g. use of an uninitialized variable). However, in most cases, the compiler will not be able to catch most of these types of problems, because the compiler is designed to enforce grammar, not intent.
+现代编译器在检测某些类型的常见语义错误(例如使用未初始化的变量)方面做得越来越好。然而，在大多数情况下，编译器将无法捕获大多数这类问题，因为编译器被设计为强制语法，而不是强制语义。
 
-In the above example, the errors are fairly easy to spot. But in most non-trivial programs, semantic errors are not easy to find by eyeballing the code. This is where debugging techniques can come in handy.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/the-debugging-process/)
+在上面的例子中，错误很容易发现。但是在大多数重要的程序中，通过目测代码不容易发现语义错误。这就是调试技术派上用场的地方。
