@@ -34,25 +34,25 @@ double max(double x, double y)
 
 注意，实现 `max()` 的 `double` 版本的代码与`max()` 的`int` 版本的代码完全相同！事实上，这个实现适用于许多不同的类型：包括 `int` 、`double`、`long`、`long double` 甚至是你自己创建的新类型(我们将在未来的课程中介绍如何做)。
 
-Having to create overloaded functions with the same implementation for each set of parameter types we want to support is a maintenance headache, a recipe for errors, and a clear violation of the DRY (don’t repeat yourself) principle. There’s a less-obvious challenge here as well: a programmer who wishes to use the `max()` function may wish to call it with a parameter type that the author of the `max()` did not anticipate (and thus did not write an overloaded function for).
+必须为每一组参数类型使用相同的实现来创建重载函数，这是一个令人头痛的问题，也是错误的来源，并且明显违反了DRY(不要重复自己)原则。这里还有一个不太明显的挑战：希望使用 `max()` 函数的程序员可能希望用`max()` 的作者没有预料到的形参类型调用它(因此没有为此编写重载函数)。
 
-What we are really missing is some way to write a single version of `max()` that can work with arguments of any type (even types that may not have been anticipated when the code for `max()` was written). Normal functions are simply not up to the task here. Fortunately, C++ supports another feature that was designed specifically to solve this kind of problem.
+我们需要的是编写单一版本的 `max()` ，它可以处理任何类型的参数(甚至是在编写 `max()` 代码时可能没有预料到的类型)。正常的功能根本无法胜任这里的任务。幸运的是，C++支持另一个专门为解决这类问题而设计的特性。
 
-Welcome to the world of C++ templates.
+欢迎来到C++模板的世界。
 
-## Introduction to C++ templates
+## C++模板简介
 
-In C++, the template system was designed to simplify the process of creating functions (or classes) that are able to work with different data types.
+在C++中，模板系统被设计用来简化创建能够处理不同数据类型的函数(或类)的过程。
 
-Instead of manually creating a bunch of mostly-identical functions or classes (one for each set of different types), we instead create a single `template`. Just like a normal definition, a template describes what a function or class looks like. Unlike a normal definition (where all types must be specified), in a template we can use one or more placeholder types. A placeholder type represents some type that is not known at the time the template is written, but that will be provided later.
+我们不再是手动创建一堆几乎相同的函数或类(每一组不同类型对应一个)，而是创建一个单一的“模板”。就像普通的定义一样，模板描述函数或类的样子。与常规定义(必须指定所有类型)不同，在模板中可以使用一个或多个占位符类型。占位符类型表示在编写模板时不知道但将在后面提供的类型。
 
-Once a template is defined, the compiler can use the template to generate as many overloaded functions (or classes) as needed, each using different actual types!
+一旦定义了模板，编译器就可以根据需要，使用模板生成任意多的重载函数(或类)，每个函数使用不同的实际类型！
 
-The end result is the same -- we end up with a bunch of mostly-identical functions or classes (one for each set of different types). But we only have to create and maintain a single template, and the compiler does all the hard work for us.
+最终的结果是一样的——我们得到一堆几乎相同的函数或类(每一组不同的类型对应一个)。但是我们只需要创建和维护一个模板，编译器会完成所有艰难的工作。
 
 !!! tldr "关键信息"
 
-	The compiler can use a single template to generate a family of related functions or classes, each using a different set of types.
+	编译器可以使用一个模板来生成一系列相关的函数或类，每个函数或类使用一组不同的类型。
 
 !!! cite "题外话"
 
@@ -62,25 +62,25 @@ The end result is the same -- we end up with a bunch of mostly-identical functio
 
 	A template is essentially a stencil for creating functions or classes. We create the template (our stencil) once, and then we can use it as many times as needed, to stencil out a function or class for a specific set of actual types. Those actual types don’t need to be determined until the template is actually used.
 
-Because the actual types aren’t determined until the template is used in a program (not when the template is written), the author of the template doesn’t have to try to anticipate all of the actual types that might be used. This means template code can be used with types that didn’t even exist when the template was written! We’ll see how this comes in handy later, when we start exploring the C++ standard library, which is absolutely full of template code!
+因为只有在程序中使用模板时(而不是在编写模板时)才能确定实际类型，因此模板的作者不必尝试预测可能使用的所有实际类型。这意味着模板代码可以与编写模板时甚至不存在的类型一起使用！稍后，当开始探索C++标准库时，我们将看到这是如何派上用场的，C++标准库充满了模板代码!
 
 !!! tldr "关键信息"
 
-	Templates can work with types that didn’t even exist when the template was written. This helps make template code both flexible and future proof!
+	模板可以使用在编写模板时甚至不存在的类型。这有助于使模板代码既灵活又经得起考验!
 
-In the rest of this lesson, we’ll introduce and explore how to create templates for functions, and describe how they work in more detail. We’ll save discussion of class templates until after we’ve covered what classes are.
+在本课的其余部分，我们将介绍和探索如何创建[[function-template|函数模板]]，并详细描述它们是如何工作的。我们将在介绍了什么是类之后再讨论[[class-template|类模板]]。
 
-## Function templates
+## 函数模板
 
-A function template is a function-like definition that is used to generate one or more overloaded functions, each with a different set of actual types. This is what will allow us to create functions that can work with many different types.
+[[function-template|函数模板]]是一种类似函数的定义，用于生成一个或多个重载函数，每个重载函数都有一组不同的实际类型。这将允许我们创建可以处理许多不同类型的函数。
 
-When we create our function template, we use placeholder types (also called template types) for any parameter types, return types, or types used in the function body that we want to be specified later.
+在创建函数模板时，对于我们希望稍后指定的任何形参类型、返回类型或函数体中使用的类型，我们都使用占位符类型(也称为模板类型)。
 
-Function templates are something that is best taught by example, so let’s convert our normal `max(int, int)` function from the example above into a function template. It’s surprisingly easy, and we’ll explain what’s happening along the way.
+函数模板最好通过示例来教授，所以让我们将上面示例中的`max(int, int)` 函数转换为函数模板。它出奇地简单，我们将解释这一过程中发生了什么。
 
-## Creating a templated max function
+## 创建模板化的`max`函数
 
-Here’s the `int` version of `max()` again:
+下面代码是 `int` 版本的 `max()`：
 
 ```cpp
 int max(int x, int y)
@@ -89,13 +89,11 @@ int max(int x, int y)
 }
 ```
 
-COPY
+注意，我们在这个函数中使用了三次 `int` 类型：一次用于形参`x` ，一次用于形参 `y` ，还有一次用于函数的返回类型。
 
-Note that we use type `int` three times in this function: once for parameter `x`, once for parameter `y`, and once for the return type of the function.
+要创建一个函数模板，我们要做两件事。首先，我们将用模板类型替换特定类型。在本例中，因为我们只有一个需要替换的类型( `int` )，所以只需要一个模板类型。通常约定使用单个大写字母（从大写字母`T`开始）表示模板类型。
 
-To create a function template, we’re going to do two things. First, we’re going to replace our specific types with template types. In this case, because we have only one type that needs replacing (`int`), we only need one template type. It’s common convention to use single capital letters (starting with T) to represent template types.
-
-Here’s our new function that uses a single template type:
+下面是我们使用单一模板类型的新函数：
 
 ```cpp
 T max(T x, T y) // won't compile because we haven't defined T
@@ -105,14 +103,13 @@ T max(T x, T y) // won't compile because we haven't defined T
 ```
 
 
-
 !!! success "最佳实践"
 
-	Use a single capital letter (starting with T) to name your template types (e.g. T, U, V, etc…)
+	使用单个大写字母(从T开始)命名模板类型(例如 T, U, V 等…)
 
-This is a good start -- however, it won’t compile because the compiler doesn’t know what `T` is! And this is still a normal function, not a function template.
+这是一个好的开始——然而，它不会编译，因为编译器不知道`T` 是什么！这仍然是一个普通的函数，而不是一个函数模板。
 
-Second, we’re going to tell the compiler that this is a function template, and that `T` is a template type. This is done using what is called a template parameter declaration:
+其次，我们会告诉编译器这是一个函数模板，而`T` 是一个模板类型。这是通过所谓的模板参数声明来完成的：
 
 ```cpp
 template <typename T> // this is the template parameter declaration
@@ -122,21 +119,20 @@ T max(T x, T y) // this is the function template definition for max<T>
 }
 ```
 
+仔细观察模板参数声明。首先使用关键字 `template` 告诉编译器创建一个模板。接下来，在尖括号( `<>` )中指定模板将使用的**所有模板类型**。对于每个模板类型，我们使用关键字`typename` 或 `class` ，后面跟着模板类型的名称(例如 “T”)。
 
-Let’s take a slightly closer look at the template parameter declaration. We start with the keyword `template`, which tells the compiler that we’re creating a template. Next, we specify all of the template types that our template will use inside angled brackets (`<>`). For each template type, we use the keyword `typename` or `class`, followed by the name of the template type (e.g. `T`).
-
-Each template function (or template class) needs its own template parameter declaration.
+每个模板函数(或模板类)都需要声明自己的模板形参。
 
 !!! cite "题外话"
 
-    There is no difference between the `typename` and `class` keywords in this context. You will often see people use the `class` keyword since it was introduced into the language earlier. However, we prefer the newer `typename` keyword, because it makes it clearer that the template type can be replaced by any type (such as a fundamental type), not just class types.
+	在这个上下文中，`typename` 和`class` 关键字之间没有区别。你会经常看到人们使用`class` 关键字，因为它更早地被引入到语言中。然而，我们更喜欢新式的`typename` 关键字，因为它更清楚地表明模板类型可以被任何类型(例如基本类型)替换，而不仅仅是类类型。
 
-Because this function template has one template type named `T`, we’ll refer to it as `max<T>`.
+因为这个函数模板只需要一个模板类型，称为`T`，我们称其为 `max<T>`。
 
 !!! info "相关内容"
 
-	We discuss how to create function templates with multiple template types in lesson [8.15 -- Function templates with multiple template types](https://www.learncpp.com/cpp-tutorial/function-templates-with-multiple-template-types/).
+	我们会在课程[[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]中讨论如何创建具有多种模板类型的函数模板。
 
-Believe it or not, we’re done!
+搞定！简单到令人难以置信。
 
-In the next lesson, we’ll look at how we use our `max<T>` function template to generate `max()` functions with parameters of different types.
+在下一课中，我们将学习如何使用`max<T>` 函数模板生成带有不同类型参数的`max()` 函数。

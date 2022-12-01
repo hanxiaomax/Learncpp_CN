@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "8-13-Function-templates",
-      "path": "docs/8-13-Function-templates.md"
+      "basename": "8-14-Function-template-instantiation",
+      "path": "docs/8-14-Function-template-instantiation.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "8-13-Function-templates",
+      "path": "docs/8-13-Function-templates.md"
     },
     {
       "basename": "7-12-Introduction-to-testing-your-code",
@@ -195,10 +199,6 @@
     {
       "basename": "7-6-Goto-statements",
       "path": "docs/7-6-Goto-statements.md"
-    },
-    {
-      "basename": "A-3-using-libraries-with-Code-Blocks",
-      "path": "docs/A-3-using-libraries-with-Code-Blocks.md"
     }
   ],
   "omittedPaths": [],
