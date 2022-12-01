@@ -51,12 +51,7 @@ type: translation
 4. 将.lib文件的名称添加到“附加依赖项”列表中(用分号与前面的条目分隔)
 5. 点击“确定”。
 
-**Steps 6 and 7 -- `#include` tou'wen'j header files and make sure project can find DLLs**
+**步骤 6和 7 —— `#include` 头文件
 
-Simply #include the header file(s) from the library in your project as per usual.
+只需像往常一样将库中的头文件`#include`到项目中。
 
-See the tutorial [A1 -- Static and dynamic libraries](https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/) for more information on step 7.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/a3-using-libraries-with-codeblocks/)

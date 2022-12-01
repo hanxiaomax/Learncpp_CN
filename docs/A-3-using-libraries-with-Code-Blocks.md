@@ -10,62 +10,62 @@ type: translation
 ??? note "Key Takeaway"
 
 
-To recap the process needed to use a library:
+回顾一下使用库需要完成的几个步骤：
 
-Once per library:
+对于每个库：
 
-1.  Acquire the library. Download it from the website or via a package manager.
-2.  Install the library. Unzip it to a directory or install it via a package manager.
-3.  Tell the compiler where to look for the header file(s) for the library.
-4.  Tell the linker where to look for the library file(s) for the library.
+1.  获取库。从官网或通过包管理器下载库；
+2.  安装库。将库解压或安装到特定的目录。
+3. 告知编译器到哪里寻找头文件；
+4. 告知链接器到哪里寻找库文件；
 
-Once per project:
+对于每个项目：
 
-5.  Tell the linker which static or import library files to link.
-6. `#include` the library’s header file(s) in your program.
-7.  Make sure the program know where to find any dynamic libraries being used.
+6. 告知链接器链接哪个静态库或导入库文件；
+7. 在程序中 `#include` 头文件；
+8. 确保程序知道到哪里寻找动态库。
 
-**Steps 1 and 2 -- Acquire and install library**
 
-Download and install the library to your hard disk. See the tutorial on [[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]] for more information about this step.
+**步骤1和2——获取和安装库
 
-**Steps 3 and 4 -- Tell the compiler where to find headers and library files**
+下载库到本地电脑，参见 [[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]] 。
 
-We are going to do this on a global basis so the library will be available to all of our projects. Consequently, the following steps only need to be done once per library.
+**步骤3和4——告诉编译器到哪里查找头文件和库文件**
 
-A) Go to the “Settings menu” and pick “Compiler”.
+下面的操作是针对全局的设置，这样所有的项目都可以使用这个库。因此，下面的步骤每个库只需要执行一次。
+
+1. 找到 “Settings menu” 然后选择 “Compiler”。
 
 ![](https://www.learncpp.com/images/CppTutorial/AppendixA/CB-SettingsMenu.png?ezimgfmt=rs:179x123/rscb2/ngcb2/notWebP)
 
-B) Click the “Directories” tab. The compiler tab will already be selected for you.
-
-C) Press the “Add” button, and add the path to the .h files for the library. If you are running Linux and installed the library via a package manager, make sure _/usr/include_ is listed here.
+2. 点击 “Directories” 选项卡找到默认的 “Compiler” 子选项卡。
+3. 按下“Add”按钮，为库的头文件添加路径。如果你使用Linux并通过包管理器安装库，这里列出了 `/usr/include` ；
 
 ![](https://www.learncpp.com/images/CppTutorial/AppendixA/CB-CompilerDirectory.png?ezimgfmt=rs%3Adevice%2Frscb2-1)
 
-D) Click the “Linker” tab. Press the “Add” button, and add the path to the .lib files for the library. If you are running Linux and installed the library via a package manager, make sure _/usr/lib_ is listed here.
+4. 点击 “Linker” 标签。点击 “Add” 按钮并添加`.lib` 文件的地址。如果你运行的是 LInux 且通过包管理器安装的库，请确保在此处列出`/usr/lib`；
 
 ![](https://www.learncpp.com/images/CppTutorial/AppendixA/CB-LinkerDirectory.png?ezimgfmt=rs:512x538/rscb2/ng:webp/ngcb2)
 
-E) Press the “OK” button.
+5. 点击OK按钮。
 
-**Step 5 -- Tell the linker which libraries your program is using**
+**步骤 5 —— 告诉链接器程序使用哪些库**
 
-For step 5, we need to add the library files from the library to our project. We do this on an individual project basis.
+对于步骤 5，我们需要将库文件添加到项目中。这个操作每个项目都需要做一次。
 
-A) Right click on the bolded project name under the default workspace (probably “Console application”, unless you changed it). Choose “Build options” from the menu.
+1. 右键default workspace下面的项目名，选择“Build options”；
+
 
 ![](https://www.learncpp.com/images/CppTutorial/AppendixA/CB-BuildOptions.png?ezimgfmt=rs:324x303/rscb2/ng:webp/ngcb2)
 
-B) Click the linker tab. Under the “Link libraries” window, press the “Add” button and add the library you wish your project to use.
+2. 点击 linker 选项卡。在 “Link libraries” 窗口下点击 “Add” 按钮并添加库；
 
 ![](https://www.learncpp.com/images/CppTutorial/AppendixA/CB-Library.png?ezimgfmt=rs:672x521/rscb2/ng:webp/ngcb2)
 
-C) Press the “OK” button
+3. 点击OK按钮。
 
-**Steps 6 and 7 -- #include header files and make sure project can find DLLs**
+**步骤 6和 7 —— `#include` 头文件**
 
-Simply `#include` the header file(s) from the library in your project.
+只需像往常一样将库中的头文件`#include`到项目中。
 
-See the tutorial [[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]] for more information step 7.
-
+参见：[[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]]  获取geng'd

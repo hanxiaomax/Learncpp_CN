@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "A-3-using-libraries-with-Code-Blocks",
+      "path": "docs/A-3-using-libraries-with-Code-Blocks.md"
+    },
+    {
       "basename": "A-2-using-libraries-with-visual-studio",
       "path": "docs/A-2-using-libraries-with-visual-studio.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "7-18-introduction-to-random-number-generation",
       "path": "docs/7-18-introduction-to-random-number-generation.md"
-    },
-    {
-      "basename": "7-17-assert-and-static-assert",
-      "path": "docs/7-17-assert-and-static-assert.md"
     }
   ],
   "omittedPaths": [],
