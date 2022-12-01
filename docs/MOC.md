@@ -5,7 +5,7 @@
 ## 1. C++ 基础
 
 - [x] [[1-1-Statements-and-the-structure-of-a-program|1.1 - 程序结构和语句]]
-- [ ] [[1-2-comments|1.2 - 注释]]
+- [x] [[1-2-comments|1.2 - 注释]]
 - [x] [[1-3-Introduction-to-objects-and-variables|1.3 - 对象和变量]]
 - [x] [[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]
 - [x] [[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介： cout，cin 和 endl]]
@@ -148,7 +148,7 @@
 - [x] [[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]
 - [x] [[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]
 - [x] [[9-3-Lvalue-references|9.3 - 左值引用]]
-- [ ] [[9-4-Lvalue-references-to-const|9.4 - 左值引用 const]]
+- [ ] [[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]]
 - [x] [[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]
 - [x] [[9-6-Introduction-to-pointers|9.6 - 指针简介]]
 - [x] [[9-7-Null-pointers|9.7 - 空指针]]

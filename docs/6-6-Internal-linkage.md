@@ -9,7 +9,7 @@ tags:
 - linkage
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 	- 全局变量和函数的表示符，链接属性为 [[internal-linkage|内部链接(internal linkage)]] 或 [[external-linkage|内部链接(external linkage)]]  
 	- 具有内部链接属性的标识符，在一个文件内可见可用，**但是在其他文件中不可访问**

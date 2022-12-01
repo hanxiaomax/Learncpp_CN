@@ -10,7 +10,7 @@ tags:
 - operator
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 Overloading the increment (`++`) and decrement (`--`) operators is pretty straightforward, with one small exception. There are actually two versions of the increment and decrement operators: a prefix increment and decrement (e.g. `++x; --y;`) and a postfix increment and decrement (e.g. `x++; y--;`).

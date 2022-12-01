@@ -9,7 +9,7 @@ tags:
 - argument
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 ## 命令行参数的用途

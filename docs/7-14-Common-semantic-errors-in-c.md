@@ -7,7 +7,7 @@ time: 2022-1-2
 type: translation
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 In lesson [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误]]， we covered `syntax errors`, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of such errors, so they are trivial to catch, and usually straightforward to fix.

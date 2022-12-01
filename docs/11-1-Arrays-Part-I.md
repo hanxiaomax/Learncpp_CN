@@ -9,7 +9,7 @@ tags:
 - array
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- 访问数组中的单个元素，需要使用数组名、下标操作符(`[]`)和下标(或索引)，下标从0开始计数
 	- `int prime[5]{}; //初始化数组为0`
 	- 在 C++ 中数组 [[subscripts|下标(subscripts)]]必须是整型类型，包括 `char`, `short`, `int`, `long`, `long long`等，奇怪的是布尔类型竟然也可以（`false`对应索引为0，`true`对应索引为1）。

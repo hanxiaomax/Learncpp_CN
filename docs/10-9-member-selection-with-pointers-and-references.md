@@ -9,7 +9,7 @@ tags:
 - struct
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 ## 结构体和结构体引用的成员选择

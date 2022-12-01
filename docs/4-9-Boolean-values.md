@@ -10,7 +10,7 @@ tags:
 - bool
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- 不能用括号初始化和一个整型数来初始化布尔变量，其他情况是可以转换的
 	- `std::cin` 不能接收`true`或者`false`，除非使用 `std::cout << std::boolalpha;`
 

@@ -11,7 +11,7 @@ tags:
 - operator
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 In lesson [5.6 -- Relational operators and floating point comparisons](https://www.learncpp.com/cpp-tutorial/relational-operators-and-floating-point-comparisons/), we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.

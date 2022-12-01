@@ -9,7 +9,7 @@ tags:
 - object
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 在 [[1-3-Introduction-to-objects-and-variables|1.3 - 对象和变量]] 中，我们将C++中的对象定义为：“一段可以被用来存储值的内存”。一个具有名字的对象称为变量。

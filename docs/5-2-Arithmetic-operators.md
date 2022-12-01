@@ -9,7 +9,7 @@ tags:
 - operator
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- 使用 static_cast 对整型数进行浮点除法
 		- `std::cout << "double / int = " << static_cast<double>(x) / y << '\n';`
 	- 除 0 (或 0.0) 很可能会导致你的程序崩溃

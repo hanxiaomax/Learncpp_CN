@@ -10,7 +10,7 @@ tags:
 - const
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 类型前const表示类型是const，指针前（星号后）const表示指针是const
 	- 就像对const变量的引用一样，指向const的指针也可以指向非const变量。指向const的指针将被指向的值视为常量，而不管该地址的对象最初是否定义为const

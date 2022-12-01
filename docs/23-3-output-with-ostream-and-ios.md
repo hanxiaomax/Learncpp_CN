@@ -9,7 +9,7 @@ tags:
 - io
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 更改格式化的方式有两种，标记和manipulators。标记你可以将其看做是可以开关的布尔量。而manipulators则是放置在流中，可以修改输入输出的对象 。
 	- `setf()`和`unsetf()`分别用于设置和关闭标记

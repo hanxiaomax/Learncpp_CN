@@ -9,7 +9,7 @@ tags:
 - io
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 ## 流的状态

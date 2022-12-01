@@ -10,7 +10,7 @@ tags:
 - file
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)
 

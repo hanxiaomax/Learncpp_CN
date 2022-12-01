@@ -9,7 +9,7 @@ tags:
 - move
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 (感谢读者 Koe 贡献了本节课的草稿！)

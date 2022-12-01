@@ -9,7 +9,7 @@ tags:
 - io
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- [[extraction-operator|提取运算符]]会忽略空白符
 	- `std::get()`可以获取字符或获取字符串（指定最大字符个数），但是它不读取换行符
 	- `getline()`，它的工作方式和`get()`完全一致但是会读取换行符！

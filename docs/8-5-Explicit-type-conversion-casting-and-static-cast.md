@@ -11,7 +11,7 @@ tags:
 - static-cast
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]]、[[static-casts|静态类型转换]]、[[const-cast|const 类型转换]]、[[dynamic-casts|动态类型转换]]和[[reinterpret-casts|重新解释类型转换]]。后四种类型有时称为[[named-cast|具名名类型转换(named cast)]]。
 	- C 语言类型的类型转换在不同的语境下会产生不同的效果，尽量不要使用
 	- 优先使用`static_cast` ，它提供了[[runtime|运行时]]的类型检查机制，不容易犯错。

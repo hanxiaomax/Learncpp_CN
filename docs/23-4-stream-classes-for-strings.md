@@ -10,7 +10,7 @@ tags:
 - string
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 使用[[extraction-operator|提取运算符]]从流中提取“数字格式”的字符串到数值类型，即可完成字符串到数值的转换
 

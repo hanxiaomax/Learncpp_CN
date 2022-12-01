@@ -10,7 +10,7 @@ tags:
 - C++17
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
     - 当需要使用只读字符串时，使用 `std:: string_view` 而不是 `std:: string` ，尤其是函数形参。
     - `std:: string_view` 不能被隐式转换为 `std:: string` 
     - 可以使用 `static_cast` 将 `std:: string_view` 转换为 `std:: string`。 

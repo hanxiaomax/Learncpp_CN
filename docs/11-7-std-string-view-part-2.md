@@ -10,7 +10,7 @@ tags:
 - C++17
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
     - `std:: string_view` 提供了一个观察字符串的视图，字符串本身存放在二进制文件中
     - 创建 `std:: string_view` 时不会发生复制，但是修改时会影响到所有的对象。
     - `remove_prefix`和`remove_suffix`分别用于从字符串视图的左侧和右侧删除字符（不会影响到原字符串）

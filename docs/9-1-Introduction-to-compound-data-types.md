@@ -9,7 +9,7 @@ tags:
 - compound data types
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
     
      - C++支持下列复合数据结构
 	-   函数 Functions

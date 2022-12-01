@@ -9,7 +9,7 @@ tags:
 - string
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 在这一课中，我们将看看如何构造`std::string`的对象，以及如何从数字创建字符串，反之亦然。

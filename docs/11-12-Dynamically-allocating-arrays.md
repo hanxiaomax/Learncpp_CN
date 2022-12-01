@@ -9,7 +9,7 @@ tags:
 - arrays
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 使用`new[]`创建动态数组，其长度可以在运行时指定，不需要是常数，但其类型必须是能够被转换为`std::size_t`的类型
 	- 使用`new int[legth]{}`分配并初始化数组为全0。从C++11开始，[[initializer-list|初始化值列表]]可以用于动态数组：`new int[5]{ 9, 7, 5, 3, 1 }`

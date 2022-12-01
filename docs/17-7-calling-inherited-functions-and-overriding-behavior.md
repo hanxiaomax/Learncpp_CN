@@ -10,7 +10,7 @@ tags:
 - overriding
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 	- 基于派生类调用函数时，编译器沿着继承链向上查找并使用找到的第一个
 

@@ -9,7 +9,7 @@ tags:
 - encapsulation
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 ## 为什么要定义私有成员变量

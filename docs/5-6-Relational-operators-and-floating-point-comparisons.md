@@ -10,7 +10,7 @@ tags:
 - float point
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 请避免对浮点数使用 `operator==` 和 `operator!=`。
 	- 比较运算符可以应用于浮点数

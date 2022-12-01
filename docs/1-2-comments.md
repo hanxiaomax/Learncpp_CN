@@ -9,6 +9,12 @@ tags:
 - comments
 ---
 
+??? note "Key Takeaway"
+
+- 在库、程序或函数级别，使用注释来描述“是什么”。
+- 在库、程序或函数内部，使用注释来描述“怎么做”。
+- 在语句级别，使用注释来描述“为什么这么做”。
+
 注释是直接插入到程序源代码，供程序员阅读的笔记。注释被编译器忽略，仅供程序员使用。
 
 在C++中有两种不同风格的注释，它们都有相同的目的：帮助程序员以某种方式记录代码。
@@ -264,29 +270,29 @@ std::cout << 3;
 
 你需要这么做的原因有很多：
 
-	1.  You’re working on a new piece of code that won’t compile yet, and you need to run the program. The compiler won’t let you compile the code if there are compiler errors. Commenting out the code that won’t compile will allow the program to compile so you can run it. When you’re ready, you can uncomment the code, and continue working on it.
-1.  You’ve written new code that compiles but doesn’t work correctly, and you don’t have time to fix it until later. Commenting out the broken code will ensure the broken code doesn’t execute and cause problems until you can fix it.
-2.  To find the source of an error. If a program isn’t producing the desired results (or is crashing), it can sometimes be useful to disable parts of your code to see if you can isolate what’s causing it to not work correctly. If you comment out one or more lines of code, and your program starts working as expected (or stops crashing), odds are whatever you last commented out was part of the problem. You can then investigate why those lines of code are causing the problem.
-3.  You want to replace one piece of code with another piece of code. Instead of just deleting the original code, you can comment it out and leave it there for reference until you’re sure your new code works properly. Once you are sure your new code is working, you can remove the old commented out code. If you can’t get your new code to work, you can always delete the new code and uncomment the old code to revert to what you had before.
+1. 你正在处理一段尚未编译的新代码，需要运行该程序。如果有编译器错误，编译器将不允许编译代码。注释掉不能编译的代码将允许程序编译，以便可以再次运行。准备好之后，就可以取消对代码的注释，并继续处理它。
+2. 你已经编写了可编译但不能正常工作的新代码，并且直到以后才有时间修复它。注释掉损坏的代码将确保损坏的代码不会执行并导致问题，直到你能够修复它。
+3. 找到错误的来源。如果程序没有产生预期的结果(或崩溃)，有时可以禁用部分代码，看看是否可以分离出导致程序无法正常工作的原因。如果注释掉了一行或多行代码后程序开始按预期运行(或停止崩溃)，那么错误可能位于最后注释掉的代码中。
+4. 你希望用另一段代码替换一段代码，但你暂时不想删除原代码，此时可以将其先注释掉，保留在那里以供参考，直到新代码能够正常工作为止。一旦确定新代码正常工作，就可以删除注释掉的旧代码。如果你不能让你的新代码工作，你总是可以删除新代码和取消注释旧代码恢复到你以前的代码。
 
-Commenting out code is a common thing to do while developing, so many IDEs provide support for commenting out a highlighted section of code. How you access this functionality varies by IDE.
+注释掉代码是开发过程中常见的事情，因此许多IDE都支持注释掉选中的代码部分。使用方式因 IDE 而异。
 
-For Visual Studio users
+#### For Visual Studio users
 
-You can comment or uncomment a selection via Edit menu > Advanced > Comment Selection (or Uncomment Selection).
+你可以通过编辑菜单>高级>注释选择(或取消注释选择)来注释或取消注释选择。
 
-For Code::Blocks users
+#### For Code::Blocks users
 
-You can comment or uncomment a selection via Edit menu > Comment (or Uncomment, or Toggle comment, or any of the other comment tools).
+你可以通过编辑菜单>注释来注释或取消注释选择。
 
 !!! tip "小贴士"
 
-	If you always use single line comments for your normal comments, then you can always use multi-line comments to comment out your code without conflict. If you use multi-line comments to document your code, then commenting-out code using comments can become more challenging.
+	如果你只使用单行注释，那么你总是可以使用多行注释来注释掉代码而不产生冲突。反之则会比较麻烦。
+	
+	如果你确实需要注释掉一个包含多行注释的代码块，你也可以考虑使用`# if 0` 预处理器指令[[2-10-Introduction-to-the-preprocessor|2.10 - 预处理器简介]]
 
-	If you do need to comment out a code block that contains multi-line comments, you can also consider using the `#if 0` preprocessor directive, which we discuss in lesson [2.10 -- Introduction to the preprocessor](https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/).
+## 小结
 
-## Summary
-
--   At the library, program, or function level, use comments to describe _what_.
--   Inside the library, program, or function, use comments to describe _how_.
--   At the statement level, use comments to describe _why_.
+- 在库、程序或函数级别，使用注释来描述“是什么”。
+- 在库、程序或函数内部，使用注释来描述“怎么做”。
+- 在语句级别，使用注释来描述“为什么这么做”。

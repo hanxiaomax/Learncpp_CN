@@ -9,7 +9,7 @@ tags:
 - default
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
     - 默认参数：`void print(int x, int y=10) // 10 is the default argument`
     - 默认参数只能提供给最右边的形参
     - 如果函数有前向声明(特别是在头文件中)，则将默认参数放在那里。否则，将默认实参放入函数定义中。

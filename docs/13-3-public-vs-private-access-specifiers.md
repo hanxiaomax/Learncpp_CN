@@ -9,7 +9,7 @@ tags:
 - access specifier
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 ## 公有和私有成员

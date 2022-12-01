@@ -9,7 +9,7 @@ tags:
 - desgin
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 开始时一切从简
 	- 逐渐添加新的功能

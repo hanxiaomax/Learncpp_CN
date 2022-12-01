@@ -9,7 +9,7 @@ tags:
 - statement
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 函数的嵌套层数不要超过3层。如果你的函数嵌套过高，请考虑将其分解为多个子函数
 

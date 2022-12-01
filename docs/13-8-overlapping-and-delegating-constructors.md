@@ -11,7 +11,7 @@ tags:
 - constructor
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 - 分清楚初始化和赋值
 

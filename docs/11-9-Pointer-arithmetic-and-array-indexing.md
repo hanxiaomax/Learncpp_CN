@@ -9,7 +9,7 @@ tags:
 - Pointer arithmetic
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- 指针+1，移动的内存地址数取决于指针指向的对象的大小，每次移动一个对象的长度。
 	- C++的 algorithms 库提供了`std::count_if`，该函数可以基于某个条件来统计元素
 	- `std::begin`和`std::end`可以返回指向固定数组的第一个元素的迭代器和最后一个元素后面的伪元素的迭代器

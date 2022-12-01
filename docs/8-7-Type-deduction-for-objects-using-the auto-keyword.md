@@ -11,7 +11,7 @@ tags:
 - auto
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 类型推断必须配合变量初始化值使用，这样可以忘记初始化的变量
 	- 类型推断会丢弃 `const`，必须额外添加 `const auto`

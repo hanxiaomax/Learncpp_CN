@@ -10,7 +10,7 @@ tags:
 - unscoped enumerations
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 使用`enum`关键字定义的枚举是[[unscoped-enumerations|无作用域枚举类型]]，它的枚举值被暴露在和枚举类型定义的作用域中，因此更适合被直接定义在使用它的类中
 	- 一个枚举类型的枚举值不能用于另一个枚举类型的对象

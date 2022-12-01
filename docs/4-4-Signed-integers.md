@@ -11,7 +11,7 @@ tags:
 - undefined behavior
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- n 位有符号整型的范围为 $-(2^{n-1})$ 到 $2^{n-1}-1$。
 	- 有符号整型的溢出会导致[[undefined-behavior|未定义行为]]

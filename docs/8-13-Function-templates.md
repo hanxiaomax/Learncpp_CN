@@ -9,7 +9,7 @@ tags:
 - Function templates
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 假设我们需要编写一个求两个数中哪个值较大的函数，那么此时可能会这样做：

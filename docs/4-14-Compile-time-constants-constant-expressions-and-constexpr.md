@@ -10,7 +10,7 @@ tags:
 - constexpr
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 考虑下面的函数：

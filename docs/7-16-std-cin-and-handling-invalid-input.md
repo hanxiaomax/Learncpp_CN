@@ -9,7 +9,7 @@ tags:
 - error handling
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 

@@ -10,7 +10,7 @@ tags:
 - const class
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- const 类型的对象只能调用 const 成员函数。
 	- const 成员函数可以被 const 或 非const 类型的对象调用

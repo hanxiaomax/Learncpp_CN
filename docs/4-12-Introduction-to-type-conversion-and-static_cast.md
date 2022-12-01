@@ -11,7 +11,7 @@ tags:
 ---
 
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 编译器会对基本数据类型进行隐式类型转换，但导致信息丢失的隐式类型转换会引发告警或错误（括号初始化时）
 	- `static_cast<new_type>(expression)` 进行显式类型转换

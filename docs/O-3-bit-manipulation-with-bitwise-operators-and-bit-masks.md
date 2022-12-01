@@ -9,7 +9,7 @@ tags:
 - bit
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 In the previous lesson on bitwise operators ([O.2 -- Bitwise operators](https://www.learncpp.com/cpp-tutorial/bitwise-operators/)), we discussed how the various bitwise operators apply logical operators to each bit within the operands. Now that we understand how they function, let’s take a look at how they’re more commonly used.
 

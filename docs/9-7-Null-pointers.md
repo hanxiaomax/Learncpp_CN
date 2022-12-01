@@ -9,7 +9,7 @@ tags:
 - pointer
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 指针可以通过值初始化设为空值。`int* ptr{};`
 	- 当需要空指针字面量用于指针的初始化、赋值或作为参数时，可以使用 `nullptr`

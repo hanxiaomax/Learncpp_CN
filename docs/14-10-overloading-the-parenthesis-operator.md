@@ -11,7 +11,7 @@ tags:
 - parenthesis
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 All of the overloaded operators you have seen so far let you define the type of the operator’s parameters, but not the number of parameters (which is fixed based on the type of the operator). For example, operator== always takes two parameters, whereas operator! always takes one. The parenthesis operator (operator()) is a particularly interesting operator in that it allows you to vary both the type AND number of parameters it takes.

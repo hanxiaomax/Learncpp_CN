@@ -9,7 +9,7 @@ tags:
 - bit
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 Consider a normal decimal number, such as 5623. We intuitively understand that these digits mean (5 * 1000) + (6 * 100) + (2 * 10) + (3 * 1). Because there are 10 decimal numbers, the value of each subsequent digit to the left increases by a factor of 10.
 

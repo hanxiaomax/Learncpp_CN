@@ -10,7 +10,7 @@ tags:
 - deep copy
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 	-
 In lesson[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]，we discussed how the compiler will use function templates to instantiate functions, which are then compiled. We also noted that these functions may not compile, if the code in the function template tries to perform some operation that the actual type doesn’t support (such as adding integer value `1` to a `std::string`).

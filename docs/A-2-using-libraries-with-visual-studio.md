@@ -7,7 +7,7 @@ time: 2022-8-15
 type: translation
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 To recap the process needed to use a library:

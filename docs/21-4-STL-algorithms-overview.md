@@ -10,7 +10,7 @@ tags:
 - containers
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 算法都是配合迭代器使用的，返回的结果一般也是迭代器
 

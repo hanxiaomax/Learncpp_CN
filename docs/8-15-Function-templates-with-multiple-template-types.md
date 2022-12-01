@@ -10,7 +10,7 @@ tags:
 - C++20
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
 在 [[8-13-Function-templates|8.13 - 函数模板]] 在我们编写了计算两个值中较大值的函[[function-template|函数模板]]：

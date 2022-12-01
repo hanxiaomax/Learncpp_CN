@@ -9,7 +9,7 @@ tags:
 - summary
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 ## 捕获语句以及捕获值

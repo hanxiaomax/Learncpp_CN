@@ -9,7 +9,7 @@ tags:
 - symbolic constants
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- 初始化C字符串常量的两种方法——固定数组和指针
 		- `char myName[]{ "Alex" }; // 固定数组`
 		- `const char* myName{ "Alex" };//指向符号常量的指针`

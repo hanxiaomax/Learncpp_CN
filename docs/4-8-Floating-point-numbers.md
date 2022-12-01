@@ -10,7 +10,7 @@ tags:
 - float
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 浮点数数据类型有三种：**float**(4 bytes), **double**(8 byte) 和 **long double**(8、12、16byte)
 	- 浮点数数据类型始终是有符号的

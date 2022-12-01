@@ -10,7 +10,7 @@ tags:
 - alias
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- `using distance_t = double; // distance_t 作为 double 的别名`
 	- 类型别名并非新类型

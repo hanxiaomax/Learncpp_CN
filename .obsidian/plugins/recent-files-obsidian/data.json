@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
+      "basename": "9-4-Lvalue-references-to-const",
+      "path": "docs/9-4-Lvalue-references-to-const.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "1-2-comments",
+      "path": "docs/1-2-comments.md"
     },
     {
       "basename": "8-15-Function-templates-with-multiple-template-types",
@@ -191,14 +199,6 @@
     {
       "basename": "11-13-For-each-loops",
       "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "Off-by-one",
-      "path": "docs/Off-by-one.md"
-    },
-    {
-      "basename": "7-3-Common-if-statement-problems",
-      "path": "docs/7-3-Common-if-statement-problems.md"
     }
   ],
   "omittedPaths": [],

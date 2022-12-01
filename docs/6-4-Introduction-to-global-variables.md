@@ -10,7 +10,7 @@ tags:
 - storage duration
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- 考虑为全局变量添加 “g” or “g_” 前缀以区别于其他变量。
 	- 全局变量具有文件作用域和静态存储持续时间

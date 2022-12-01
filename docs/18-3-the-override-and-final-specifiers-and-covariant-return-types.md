@@ -11,7 +11,7 @@ tags:
 - covariant-return-types
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	- 派生类虚函数只有在其签名和返回类型完全匹配的情况下才被认为是重写，使用关键字 `override` 可以防止错误 
 	- 在基类的虚函数中使用 `virtual` 关键字。在派生类中对应的函数中使用`override`关键字（无需使用`virtual`关键字）。
 	- 因为`override`修饰符意味着该函数是虚函数，所以不需要使用`virtual`关键字重复标记已经被标记为`override`的函数

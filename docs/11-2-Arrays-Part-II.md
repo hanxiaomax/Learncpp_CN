@@ -11,7 +11,7 @@ tags:
 - C++20
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
     - 使用[[list-initialization]]方式初始化数组 `int prime[5]{ 2,3, 5,7, 11 };`
         - 初始化列表中的元素个数超过数组能容纳的个数时会报错，少于时剩下的会被初始化为 0
         - 初始化一个全 0 数组：`int prime[5]{};`

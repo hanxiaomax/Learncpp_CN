@@ -10,7 +10,7 @@ tags:
 - C++20
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 	- `<algorithms>`中提供了很多好用的算法，用于对容器进行查找、搜索和计数。
 	- [`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。

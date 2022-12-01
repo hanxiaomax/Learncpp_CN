@@ -10,7 +10,7 @@ tags:
 - wstring
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 
 
 C++标准库提供了很多有用的类，但是其中最有用的，可能非 `std::string` 莫属了。`std::string` (和 `std::wstring`) 是一个字符串类，提供了字符串相关的多种操作，包括赋值、比较和修改，在本章中，我们将会一起深入学习字符串类。

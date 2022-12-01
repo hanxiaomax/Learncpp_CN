@@ -11,7 +11,7 @@ tags:
 - subscript
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 When working with arrays, we typically use the subscript operator ([]) to index specific elements of an array:
 

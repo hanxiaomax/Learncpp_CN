@@ -10,6 +10,6 @@ tags:
 - overload
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 	- 

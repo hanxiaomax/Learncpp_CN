@@ -10,10 +10,10 @@ tags:
 - const
 ---
 
-??? note "关键点速记"
+??? note "Key Takeaway"
 	
 
-In the previous lesson ([[9-3-Lvalue-references|9.3 - 左值引用]]), we discussed how an lvalue reference can only bind to a modifiable lvalue. This means the following is illegal:
+在上节课 ([[9-3-Lvalue-references|9.3 - 左值引用]]) 中，我们讨论了为声明[[lvalue-reference|左值引用]]只能绑定到一个可修改的[[lvalue|左值]]上。这意味着下面的代码是非法的：
 
 ```cpp
 int main()
@@ -25,17 +25,15 @@ int main()
 }
 ```
 
-COPY
+这是不允许的，因为这样我们就能够通过非`const`引用(`ref` )修改`const`变量( `x` )。
 
-This is disallowed because it would allow us to modify a const variable (`x`) through the non-const reference (`ref`).
+但如果我们想要一个`const`变量来创建引用，该怎么办呢？普通的左值引用(指向非const值)是不行的。
 
-But what if we want to have a const variable we want to create a reference to? A normal lvalue reference (to a non-const value) won’t do.
+## 指向 const 的左值引用
 
-## Lvalue reference to const
+使用 `const` 关键字声明左值引用，即要求左值引用将其引用的对象当做const看到。此时称该引用为指向const对象的左值引用（有时称为指向const的引用或const引用）。
 
-By using the `const` keyword when declaring an lvalue reference, we tell an lvalue reference to treat the object it is referencing as const. Such a reference is called an lvalue reference to a const value (sometimes called a reference to const or a const reference).
-
-Lvalue references to const can bind to non-modifiable lvalues:
+对const引用可以绑定到不可修改的左值:
 
 ```cpp
 int main()
@@ -47,8 +45,7 @@ int main()
 }
 ```
 
-
-Because lvalue references to const treat the object they are referencing as const, they can be used to access but not modify the value being referenced:
+因为const的左值引用将它们引用的对象视为const，所以它们可以用于访问但不能修改被引用的值:
 
 ```cpp
 #include <iostream>
@@ -66,10 +63,10 @@ int main()
 ```
 
 
+## 使用可修改左值初始化const左值引用
 
-## Initializing an lvalue reference to const with a modifiable lvalue
+const左值引用也可以绑定到可修改的左值。在这种情况下，通过引用访问被引用的对象时将被视为const(即使底层对象不是const):
 
-Lvalue references to const can also bind to modifiable lvalues. In such a case, the object being referenced is treated as const when accessed through the reference (even though the underlying object is non-const):
 
 ```cpp
 #include <iostream>
@@ -88,9 +85,8 @@ int main()
 }
 ```
 
-COPY
 
-In the above program, we bind const reference `ref` to modifiable lvalue `x`. We can then use `ref` to access `x`, but because `ref` is const, we can not modify the value of `x` through `ref`. However, we still can modify the value of `x` directly (using the identifier `x`).
+在上面的例子中，我们将const引用 `ref` 绑定到可修改左值 `x`。随后便可以使用 `ref` 访问 `x`，但是因为 `ref` 是 const 的，所以我们不能通过`ref` we can not modify the value of `x` through `ref`. However, we still can modify the value of `x` directly (using the identifier `x`).
 
 !!! success "最佳实践"
 
