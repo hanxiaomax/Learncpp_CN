@@ -335,12 +335,12 @@
 - [x] [[23-7-random-file-IO|23.7 - 随机文件输入输出]]
 
 
-## A. 其他话题  🚧
+## A. 其他话题  
 
 - [x] [[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]]
 - [x] [[A-2-using-libraries-with-visual-studio|A.2 - 在visual studio中使用库]]
 - [x] [[A-3-using-libraries-with-Code-Blocks|A.3 - 在Code Blocks中使用库]]
-- [ ] [[A-4-C++FAQ|A.4 — C++ FAQ]]
+- [x] [[A-4-C++FAQ|A.4 — C++ FAQ]]
 
 ## B. C++标准更新 
 

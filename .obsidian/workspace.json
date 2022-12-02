@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "540dc10b8307cb0c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/A-4-C++FAQ.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -123,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/A-4-C++FAQ.md",
+                "file": "docs/MOC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/A-4-C++FAQ.md"
+                "file": "docs/MOC.md"
               }
             }
           }
@@ -152,17 +138,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "540dc10b8307cb0c",
+  "active": "d500734583852a75",
   "lastOpenFiles": [
+    "docs/7-17-assert-and-static-assert.md",
     "docs/MOC.md",
+    "docs/7-16-std-cin-and-handling-invalid-input.md",
+    "docs/3-6-Using-an-integrated-debugger-Stepping.md",
+    "docs/A-4-C++FAQ.md",
     "docs/A-3-using-libraries-with-Code-Blocks.md",
     "docs/A-2-using-libraries-with-visual-studio.md",
-    "docs/A-4-C++FAQ.md",
     "docs/A-1-static-and-dynamic-libraries.md",
     "docs/3-1-Syntax-and-semantic-errors.md",
-    "docs/1-7-Keywords-and-naming-identifiers.md",
-    "Templates/key-takeaway.md",
-    "docs/snake-case.md",
-    "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
+    "docs/1-7-Keywords-and-naming-identifiers.md"
   ]
 }

@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "A-4-C++FAQ",
-      "path": "docs/A-4-C++FAQ.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-17-assert-and-static-assert",
+      "path": "docs/7-17-assert-and-static-assert.md"
+    },
+    {
+      "basename": "7-16-std-cin-and-handling-invalid-input",
+      "path": "docs/7-16-std-cin-and-handling-invalid-input.md"
+    },
+    {
+      "basename": "3-6-Using-an-integrated-debugger-Stepping",
+      "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
+    },
+    {
+      "basename": "A-4-C++FAQ",
+      "path": "docs/A-4-C++FAQ.md"
     },
     {
       "basename": "A-3-using-libraries-with-Code-Blocks",
@@ -187,18 +199,6 @@
     {
       "basename": "rvalue",
       "path": "docs/rvalue.md"
-    },
-    {
-      "basename": "20.4",
-      "path": "docs/20.4.md"
-    },
-    {
-      "basename": "7-19-generating-random-numbers-using-mersenne-twister",
-      "path": "docs/7-19-generating-random-numbers-using-mersenne-twister.md"
-    },
-    {
-      "basename": "7-18-introduction-to-random-number-generation",
-      "path": "docs/7-18-introduction-to-random-number-generation.md"
     }
   ],
   "omittedPaths": [],
