@@ -63,28 +63,17 @@ int main()
 
 ## 问：为什么（产生未定义行为的代码）有这样的结果？
 
-当执行行为不是由c++语言定义的操作时，会发生未定义的行为。实现未定义行为的代码可能会出现以下任何症状:
+当程序执行非C++标准定义的操作时，会发生[[undefined-behavior|未定义行为]]。实现未定义行为的代码可能会出现以下任何症状：
 
-- 你的程序每次运行都会产生不同的结果；
-- 你的程序始终产生相同的错误结果；
-- 你的程序行为不一致(有时产生正确的结果，有时不)；
-- 你的程序似乎在工作，但在程序后面产生了不正确的结果；
-- 你的程序崩溃，或立即或稍后；
-- 你的程序可以在一些编译器上工作，但不能在其他编译器上；
-- 你的程序工作，直到你改变一些其他看起来不相关的代码。
+- 程序每次运行都会产生不同的结果；
+- 程序始终产生相同的错误结果；
+- 程序行为不一致(有时产生正确的结果，有时不)；
+- 程序似乎在工作，但在程序后面产生了不正确的结果；
+- 程序立即崩溃或一段时间后崩溃；
+- 程序可以在一些编译器上工作，但不能在其他编译器上工作；
+- 程序可以工作，但是在改变一些其他看起来不相关的代码后就不能工作了
 
-
-Undefined behavior occurs when you perform an operation whose behavior is not defined by the C++ language. Code implementing undefined behavior may exhibit any of the following symptoms:
-
--   Your program produces different results every time it is run.
--   Your program consistently produces the same incorrect result.
--   Your program behaves inconsistently (sometimes produces the correct result, sometimes not).
--   Your program seems like its working but produces incorrect results later in the program.
--   Your program crashes, either immediately or later.
--   Your program works on some compilers but not others.
--   Your program works until you change some other seemingly unrelated code.
-
-Or your code may produce the correct result anyway.
+或者你的代码可能会产生正确的结果。
 
 Readers often ask what is happening to produce a specific result on their system. In most cases, it’s difficult to say, as the result produced may be dependent upon the current program state, your compiler settings, how the compiler implements a feature, the computer’s architecture, and/or the operating system. For example, if you print the value of an uninitialized variable, you might get garbage, or you might always get a particular value. It depends on what type of variable it is, how the compiler lays out the variable in memory, and what’s in that memory beforehand (which might be impacted by the OS or the state of the program prior to that point).
 
