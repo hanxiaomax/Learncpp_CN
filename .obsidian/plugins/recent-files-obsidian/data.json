@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "11-3-Arrays-and-loops",
+      "path": "docs/11-3-Arrays-and-loops.md"
     },
     {
       "basename": "7-17-assert-and-static-assert",
@@ -187,18 +199,6 @@
     {
       "basename": "B-2-introduction-to-C++14",
       "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
-      "basename": "6-2-User-defined-namespaces-and-the-scope-resolution-operator",
-      "path": "docs/6-2-User-defined-namespaces-and-the-scope-resolution-operator.md"
-    },
-    {
-      "basename": "M-2-R-value-references",
-      "path": "docs/M-2-R-value-references.md"
-    },
-    {
-      "basename": "rvalue",
-      "path": "docs/rvalue.md"
     }
   ],
   "omittedPaths": [],
