@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1.5 - iostream 简介： cout，cin 和 endl
+              1.5 - iostream 简介：cout，cin 和 endl
             
           </span>
         </div>
@@ -518,12 +518,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-            1.5 - iostream 简介： cout，cin 和 endl
+            1.5 - iostream 简介：cout，cin 和 endl
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        1.5 - iostream 简介： cout，cin 和 endl
+        1.5 - iostream 简介：cout，cin 和 endl
       </a>
       
         
@@ -554,15 +554,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#std-endl" class="md-nav__link">
-    std:: endl
+  <a href="#stdendl" class="md-nav__link">
+    std::endl
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#std-endl-vs-n" class="md-nav__link">
-    std:: endl vs ‘\n’
+    std:: endl vs \n
   </a>
   
 </li>
@@ -5836,15 +5836,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#std-endl" class="md-nav__link">
-    std:: endl
+  <a href="#stdendl" class="md-nav__link">
+    std::endl
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#std-endl-vs-n" class="md-nav__link">
-    std:: endl vs ‘\n’
+    std:: endl vs \n
   </a>
   
 </li>
@@ -5911,9 +5911,9 @@
 </div>
   
 
-  <h1>1.5 - iostream 简介： cout，cin 和 endl</h1>
+  <h1>1.5 - iostream 简介：cout，cin 和 endl</h1>
 
-<p>本节将重点介绍 <code>std:: cout</code>。我们在 <em>Hello world!</em> 程序中已经使用它向控制台输出过文本 <em>Hello world!</em> 。我们还将介绍如何从用户获取输入，使程序具备与用户交互的能力。</p>
+<p>本节将重点介绍 <code>std::cout</code>。我们在 <em>Hello world!</em> 程序中已经使用它向控制台输出过文本 <em>Hello world!</em> 。我们还将介绍如何从用户获取输入，使程序具备与用户交互的能力。</p>
 <h2 id="_1">输入输出库</h2>
 <p>输入输出库 ( IO 库) 是 C++ 标准库的一部分，用于处理基本的输入和输出。我们会使用该库提供的功能从键盘获取输入并向控制台输出数据。<code>iostream</code> 中的 io 指代的是输入输出（<em>input/output</em>）。</p>
 <p>为了使用 <code>iostream</code> 库提供的功能，我们需要在任何需要使用该库的源文件的顶部包含  <code>iostream</code> 的头文件，像下面这样：</p>
@@ -5924,7 +5924,7 @@
 <span class="c1">// rest of code that uses iostream functionality here</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="std-cout">std:: cout</h2>
-<p><code>iostream</code> 库中包含了一些预定义的变量供我们使用，其中最有用的当属 <code>std:: cout</code>，通过它可以向控制台打印文本，<code>cout</code> 代表的含义就是字符输出（character output）。</p>
+<p><code>iostream</code> 库中包含了一些预定义的变量供我们使用，其中最有用的当属 <code>std::cout</code>，通过它可以向控制台打印文本，<code>cout</code> 代表的含义就是字符输出（character output）。</p>
 <p>提醒一下，下面既是之前的 <em>Hello world</em> 程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -5942,8 +5942,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>在这个程序中，<em>iostream</em> 已经被包含了，因此我们可以访问 <code>_std:: cout_</code>。在主函数中，我们使用了 <code>_std:: cout_</code>，并配合插入运算符（<code>&lt;&lt;</code>）将文本 Hello world!发送到控制台并打印出来。</p>
-<p><code>_std:: cout_</code> 不仅可以打印文本，还可以打印数字：</p>
+<p>在这个程序中，<em>iostream</em> 已经被包含了，因此我们可以访问 <code>std::cout</code>。在主函数中，我们使用了 <code>std::cout</code>，并配合插入运算符（<code>&lt;&lt;</code>）将文本 Hello world!发送到控制台并打印出来。</p>
+<p><code>std::cout</code> 不仅可以打印文本，还可以打印数字：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6023,9 +6023,9 @@
 </code></pre></div></td></tr></table></div>
 <div class="admonition info">
 <p class="admonition-title">相关内容</p>
-<p>我们会在[[2.9 名称冲突和命名空间简介]] 讨论 <code>std::</code> 前缀的作用</p>
+<p>我们会在<a href="../2-9-Naming-collisions-and-an-introduction-to-namespaces/">2.9 - 命名冲突和命名空间</a>讨论<code>std::</code>前缀的作用</p>
 </div>
-<h2 id="std-endl">std:: endl</h2>
+<h2 id="stdendl"><code>std::endl</code></h2>
 <p>你觉得下面的代码打印的结果是什么呢？</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -6048,7 +6048,7 @@
 </code></pre></div></td></tr></table></div>
 <p>显然，将一条语句拆分为两行，并不会产生不同的结果。</p>
 <p>如果我们希望分行打印，则必须要告知控制台将光标移动到下一行。</p>
-<p>一种方式是使用 <code>std:: endl</code>。当使用 <code>std:: cout</code>  进行输出时，<code>std:: endl</code> 会打印一个换行符（促使光标被移动到下一行的开头）。因此，<code>endl</code> 表示的是结束该行（end line）。</p>
+<p>一种方式是使用 <code>std::endl</code>。当使用 <code>std::cout</code>  进行输出时，<code>std::endl</code> 会打印一个换行符（促使光标被移动到下一行的开头）。因此，<code>endl</code> 表示的是结束该行（end line）。</p>
 <p>例程：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -6075,10 +6075,10 @@ My name is Alex.
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">小贴士</p>
-<p>在上面的程序中，第二个 <code>std:: endl</code> 从技术上讲并无必要，因为在执行完这行代码后程序会立即停止。不过，这么做其实还有两个有用的目的：首先，它可以表明该行的内容已经被”完整输出“ （与之相对的是部分输出，即后续代码中还有需要输出的部分）。其次，如果将来我们在后面添加其他额外的输出，就不需要修改已有的代码了。因此不妨加上它。</p>
+<p>在上面的程序中，第二个<code>std::endl</code>从技术上讲并无必要，因为在执行完这行代码后程序会立即停止。不过，这么做其实还有两个有用的目的：首先，它可以表明该行的内容已经被”完整输出“ （与之相对的是部分输出，即后续代码中还有需要输出的部分）。其次，如果将来我们在后面添加其他额外的输出，就不需要修改已有的代码了。因此不妨加上它。</p>
 </div>
-<h2 id="std-endl-vs-n">std:: endl vs ‘\n’</h2>
-<p>使用 <code>std:: endl</code> 换行的效率稍微有点低，因为它通常需要完成两件事：将光标移动到下一行，然后确保输出结果马上显示在屏幕上（称为刷新输出）。当使用 <code>std:: cout</code> 进行输出时，<code>std:: cout</code> 本来就会刷新输出（即使没有刷新，通常也不会产生什么问题）。因此，使用 <code>std:: endl</code> 来刷新输出就有些多余了。</p>
+<h2 id="std-endl-vs-n"><code>std:: endl</code> vs <code>\n</code></h2>
+<p>使用 <code>std::endl</code> 换行的效率稍微有点低，因为它通常需要完成两件事：将光标移动到下一行，然后确保输出结果马上显示在屏幕上（称为刷新输出）。当使用 <code>std::cout</code> 进行输出时，<code>std::cout</code> 本来就会刷新输出（即使没有刷新，通常也不会产生什么问题）。因此，使用 <code>std::endl</code> 来刷新输出就有些多余了。</p>
 <p>因此，使用换行字符(<code>\n</code>)一般来讲是更好的选择。‘\n’ 符号会将光标移动到下一行，但是它并不会请求刷新，因此在无需特别刷新时可以获得更好的性能。‘\n’ 字符还更易读，因为它不仅更简洁，而且还可以嵌入在已有的文本中。</p>
 <p>下面的例子中展现了使用 ‘\n’ 的两种不同方式：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6105,17 +6105,17 @@ My name is Alex.
 And that&#39;s all, folks!
 </code></pre></div></td></tr></table></div></p>
 <p>注意，在单独使用换行符 ‘\n’ 的时候，单引号是必须的。当嵌入在其他已经被双引号包裹的文本中时，则无需再使用单引号。</p>
-<p>我们会在后续的课程中更详细的介绍换行符 ‘\n’ [[4.11 -- Chars]]。</p>
+<p>我们会在后续的课程中更详细的介绍换行符 ‘\n’ (<a href="../4-11-Chars/">4.11 - 字符</a>)。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>在输出时优先使用 ‘\n’ 而不是 <code>std:: endl</code></p>
+<p>在输出时优先使用 ‘\n’ 而不是 <code>std::endl</code></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>‘\n’ 使用的是反斜杠（和其他特殊字符一样），而不是斜杠。使用斜杠（例如 '/n'）可能会带来无法预料的结果。</p>
+<p>‘\n’使用的是反斜杠（和其他特殊字符一样），而不是斜杠。使用斜杠（例如 '/n'）可能会带来无法预料的结果。</p>
 </div>
 <h2 id="std-cin">std:: cin</h2>
-<p><code>std:: cin</code> 是 <code>isstream</code> 中预定义的另外一个变量。与用于输出的 <code>std:: cout</code> 不同， <code>std:: cin</code>(表示字符输入，“character input”) 配合提取运算符(<code>&gt;&gt;</code>)，可以从键盘读取输入。当然，输入的结果必须存放在变量中才可以被使用。</p>
+<p><code>std::cin</code> 是 <code>isstream</code> 中预定义的另外一个变量。与用于输出的 <code>std::cout</code> 不同， <code>std::cin</code>(表示字符输入，“character input”) 配合提取运算符(<code>&gt;&gt;</code>)，可以从键盘读取输入。当然，输入的结果必须存放在变量中才可以被使用。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6184,23 +6184,23 @@ You entered 5 and 6
 </code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>尽管，关于一个变量在用于接收用户输入（例如通过 <code>std:: cin</code>）的数据之前，是否应该进行初始化这个问题有很多争论，毕竟用户的输入会覆盖初始化的值。与我们之前的建议类似，变量在使用前都必须要进行初始化，因此这里的最佳实践仍然是，变量要先进行初始化再用于接收用户输入。</p>
+<p>尽管，关于一个变量在用于接收用户输入（例如通过 <code>std::cin</code>）的数据之前，是否应该进行初始化这个问题有很多争论，毕竟用户的输入会覆盖初始化的值。与我们之前的建议类似，变量在使用前都必须要进行初始化，因此这里的最佳实践仍然是，变量要先进行初始化再用于接收用户输入。</p>
 </div>
-<p>我们会在 [[7.16 -- std:: cin and handling invalid input]] 中讨论 <code>std:: cin</code> 如何应对非法输入。</p>
+<p>我们会在<a href="../7-16-std-cin-and-handling-invalid-input/">7.16 - std::in 和输入错误处理</a>中讨论 <code>std::cin</code> 如何应对非法输入。</p>
 <div class="admonition info">
 <p class="admonition-title">扩展阅读</p>
 <p>C++ 的输入输出库并没有提供一种无需按下回车就可以获取输入结果的方法。如果你希望实现该功能，你必须使用第三方库来完成。如果是开发控制台应用程序，我们推荐尝试 <a href="https://pdcurses.org/">pdcurses</a> 这个库。另外，很多图形用户库界面库也提供了类似的功能。</p>
 </div>
 <h2 id="_2">小结</h2>
-<p>新手程序员常常会混淆 <code>std:: cin</code>、<code>std:: cout</code>、插入运算符 (<code>&lt;&lt;</code>) 和提取运算符 (<code>&gt;&gt;</code>)。下面这些技巧可以帮助你记忆：</p>
+<p>新手程序员常常会混淆 <code>std::cin</code>、<code>std::cout</code>、插入运算符 (<code>&lt;&lt;</code>) 和提取运算符 (<code>&gt;&gt;</code>)。下面这些技巧可以帮助你记忆：</p>
 <ul>
-<li><code>std:: cin</code> 和 <code>std:: cout</code> 总是位于语句的左侧。</li>
-<li><code>std:: cout</code> 用于输出 (cout = character output)</li>
-<li><code>std:: cin</code> 用于输入 (cin = character input)</li>
-<li><code>&lt;&lt;</code> 配合 <code>std:: cout</code> 使用，同时也表明了数据的流动方向 (假设 <code>std:: cout</code> 表示的是控制台，则输出的数据从变量流向控制台）。<code>std:: cout &lt;&lt; 4</code> 就表示将 4 发送到控制台。</li>
-<li><code>&gt;&gt;</code> 配合 <code>std:: cin</code> 使用，同时也表明了数据的流动方向 (假设 <code>std:: cin</code> 表示的是键盘，则输入的数据是从键盘流向变量）。<code>std:: cin &gt;&gt; x</code> 就表示从键盘获取的用户输入被存放到变量 x 中</li>
+<li><code>std::cin</code> 和 <code>std::cout</code> 总是位于语句的左侧。</li>
+<li><code>std::cout</code> 用于输出 (cout = character output)</li>
+<li><code>std::cin</code> 用于输入 (cin = character input)</li>
+<li><code>&lt;&lt;</code> 配合 <code>std::cout</code> 使用，同时也表明了数据的流动方向 (假设 <code>std::cout</code> 表示的是控制台，则输出的数据从变量流向控制台）。<code>std::cout &lt;&lt; 4</code> 就表示将 4 发送到控制台。</li>
+<li><code>&gt;&gt;</code> 配合 <code>std::cin</code> 使用，同时也表明了数据的流动方向 (假设 <code>std::cin</code> 表示的是键盘，则输入的数据是从键盘流向变量）。<code>std::cin &gt;&gt; x</code> 就表示从键盘获取的用户输入被存放到变量 x 中</li>
 </ul>
-<p>更多关于运算符的详细内容，将在 [[1.9 字面量和运算符]] 中进行介绍。</p>
+<p>更多关于运算符的详细内容，将在<a href="../1-9-Introduction-to-literals-and-operators/">1.9 - 字面量和操作符</a>中进行介绍。</p>
 
 
               </article>

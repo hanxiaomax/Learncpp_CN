@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#q-why-shouldnt-we-use-using-namespace-std" class="md-skip">
+        <a href="#using-namespace-std" class="md-skip">
           Skip to content
         </a>
       
@@ -509,7 +509,7 @@
   
     <li class="md-nav__item">
       <a href="../1-5-Introduction-to-iostream-cout-cin-and-endl/" class="md-nav__link">
-        1.5 - iostream 简介： cout，cin 和 endl
+        1.5 - iostream 简介：cout，cin 和 endl
       </a>
     </li>
   
@@ -5491,29 +5491,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#q-why-shouldnt-we-use-using-namespace-std" class="md-nav__link">
-    Q: Why shouldn’t we use “using namespace std”?
+  <a href="#using-namespace-std" class="md-nav__link">
+    问: 为什么不应该使用 “using namespace std”?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-why-can-i-use-some-feature-without-including-header-xxx" class="md-nav__link">
-    Q: Why can I use (some feature) without including header &lt;XXX&gt;?
+  <a href="#_1" class="md-nav__link">
+    问：为什么使用某些功能时不需要包含头文件？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-why-does-some-code-that-produces-undefined-behavior-generate-a-certain-result" class="md-nav__link">
-    Q: Why does (some code that produces undefined behavior) generate a certain result?
+  <a href="#_2" class="md-nav__link">
+    问：为什么（产生未定义行为的代码）有这样的结果？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-i-tried-to-compile-an-example-that-should-work-but-get-a-compile-error-why" class="md-nav__link">
-    Q: I tried to compile an example that should work, but get a compile error. Why?
+  <a href="#_3" class="md-nav__link">
+    问：我尝试编译一个例子，它本应该工作却编译报错了，为什么？
   </a>
   
 </li>
@@ -5808,29 +5808,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#q-why-shouldnt-we-use-using-namespace-std" class="md-nav__link">
-    Q: Why shouldn’t we use “using namespace std”?
+  <a href="#using-namespace-std" class="md-nav__link">
+    问: 为什么不应该使用 “using namespace std”?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-why-can-i-use-some-feature-without-including-header-xxx" class="md-nav__link">
-    Q: Why can I use (some feature) without including header &lt;XXX&gt;?
+  <a href="#_1" class="md-nav__link">
+    问：为什么使用某些功能时不需要包含头文件？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-why-does-some-code-that-produces-undefined-behavior-generate-a-certain-result" class="md-nav__link">
-    Q: Why does (some code that produces undefined behavior) generate a certain result?
+  <a href="#_2" class="md-nav__link">
+    问：为什么（产生未定义行为的代码）有这样的结果？
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#q-i-tried-to-compile-an-example-that-should-work-but-get-a-compile-error-why" class="md-nav__link">
-    Q: I tried to compile an example that should work, but get a compile error. Why?
+  <a href="#_3" class="md-nav__link">
+    问：我尝试编译一个例子，它本应该工作却编译报错了，为什么？
   </a>
   
 </li>
@@ -5876,10 +5876,10 @@
   <h1>A.4 — C++ FAQ</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>There are certain questions that tend to get asked over and over. This FAQ will attempt to answer the most common ones.</p>
-<h2 id="q-why-shouldnt-we-use-using-namespace-std">Q: Why shouldn’t we use “using namespace std”?</h2>
-<p>The statement <code>using namespace std;</code> is a using directive. Using directives import all of the identifiers from a namespace into the scope of the using directive.</p>
-<p>You may have seen something like this:</p>
+<p>有一些问题往往被问了一遍又一遍。本FAQ将尝试回答最常见的问题。</p>
+<h2 id="using-namespace-std">问: 为什么不应该使用 “<code>using namespace std</code>”?</h2>
+<p>语句 <code>using namespace std;</code> 使用了<a href="../using-directive/">using 指令</a>——它将某个命名空间中的所有标识符都导入到当前命名空间。</p>
+<p>你可能看过这样的代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5900,9 +5900,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This allows us to use names from the <code>std</code> namespace without having to explicitly type <code>std::</code> over and over. In the above program, we can just type <code>cout</code> instead of <code>std::cout</code>. Sounds great, right?</p>
-<p>However, when the compiler encounters <code>using namespace std</code>, it will import every identifier it can find in <code>namespace std</code> into the global scope (since that’s where the using directive has been placed). This introduces 3 key challenges:</p>
+<p>这么做之后，我们就可以不必显式指明<code>std</code>的命名空间，再也不用写 <code>std::</code> 了。在上面的程序中，只需要使用 <code>cout</code> 而不需要使用 <code>std::cout</code>。听起来很不错对吧？</p>
+<p>然而，当编译器遇到<code>using namespace std</code> 时，它会将在 <code>namespace std</code> 中找到的每一个标识符都导入全局作用域(因为using指令就放在全局作用域中)。这带来了3个主要挑战：</p>
+<ul>
+<li>你所选择的标识符与 <code>std</code> 名称空间中已经存在的标识符之间发生命名冲突的几率大大增加；</li>
+<li>标准库的新版本可能会破坏你当前可以工作的程序。这些未来的版本可能会引入导致新的命名冲突的名称，或者在最坏的情况下，程序的行为可能会悄无声息地出乎意料地改变!</li>
+</ul>
+<p>—缺少std::前缀会使读者很难理解什么是std库名，什么是用户定义的名称。</p>
 <ul>
 <li>The chance for a naming collision between a name you’ve picked and something that already exists in the <code>std</code> namespace is massively increased.</li>
 <li>New versions of the standard library may break your currently working program. These future versions could introduce names that cause new naming collisions, or in the worst case, the behavior of your program might change silently and unexpectedly!</li>
@@ -5913,7 +5917,7 @@
 <p class="admonition-title">相关内容</p>
 <p>See lesson<a href="../6-12-Using-declarations-and-using%20directives/">6.12 - using 声明和 using 指令</a> for more detail and examples.</p>
 </div>
-<h2 id="q-why-can-i-use-some-feature-without-including-header-xxx">Q: Why can I use (some feature) without including header <code>&lt;XXX&gt;</code>?</h2>
+<h2 id="_1">问：为什么使用某些功能时不需要包含头文件？</h2>
 <p>Headers can <code>#include</code> other headers. So when you include one header, you also get all of the additional headers that it includes (and all of the headers that those headers include too). All of the additional headers that come along for the ride that you didn’t explicitly include are called “transitive includes”.</p>
 <p>For example, your main.cpp file probably <code>#included &lt;iostream&gt;</code>, and on your compiler, <code>&lt;iostream&gt;</code> <code>#included &lt;XXX&gt;</code> (or some other header that <code>#included &lt;XXX&gt;</code>).</p>
 <p>Even though this may compile on your compiler, you should not rely on this. What compiles for you may not compile on another compiler, or even on a future version of your compiler.</p>
@@ -5922,7 +5926,7 @@
 <p class="admonition-title">相关内容</p>
 <p>Covered in lesson <a href="../2-11-Header-files/">2.11 - 头文件</a></p>
 </div>
-<h2 id="q-why-does-some-code-that-produces-undefined-behavior-generate-a-certain-result">Q: Why does (some code that produces undefined behavior) generate a certain result?</h2>
+<h2 id="_2">问：为什么（产生未定义行为的代码）有这样的结果？</h2>
 <p>Undefined behavior occurs when you perform an operation whose behavior is not defined by the C++ language. Code implementing undefined behavior may exhibit any of the following symptoms:</p>
 <ul>
 <li>Your program produces different results every time it is run.</li>
@@ -5940,7 +5944,7 @@
 <p class="admonition-title">相关内容</p>
 <p>Undefined behavior is covered in lesson <a href="../1-6-Uninitialized-variables-and-undefined-behavior/">1.6 - 未初始化变量和未定义行为</a></p>
 </div>
-<h2 id="q-i-tried-to-compile-an-example-that-should-work-but-get-a-compile-error-why">Q: I tried to compile an example that should work, but get a compile error. Why?</h2>
+<h2 id="_3">问：我尝试编译一个例子，它本应该工作却编译报错了，为什么？</h2>
 <p>The most common reason for this is that your project is being compiled using the wrong language standard.</p>
 <p>C++ introduces many new features with each new language standard. If one of our examples uses a feature that was introduced in C++17, but your program is compiling using the C++14 language standard, then it won’t compile because the feature we’re using doesn’t exist. Try setting your language standard to the latest version your compiler supports and see if that resolves the issue.</p>
 <div class="admonition info">

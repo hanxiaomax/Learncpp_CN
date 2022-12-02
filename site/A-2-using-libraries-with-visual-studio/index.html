@@ -65,11 +65,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#include-the-librarys-header-files-in-your-program" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -509,7 +504,7 @@
   
     <li class="md-nav__item">
       <a href="../1-5-Introduction-to-iostream-cout-cin-and-endl/" class="md-nav__link">
-        1.5 - iostream 简介： cout，cin 和 endl
+        1.5 - iostream 简介：cout，cin 和 endl
       </a>
     </li>
   
@@ -5439,8 +5434,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         A.2 - 在visual studio中使用库
@@ -5752,8 +5745,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -5791,45 +5782,46 @@
 </div>
   
 
+  <h1>A.2 - 在visual studio中使用库</h1>
+
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>To recap the process needed to use a library:</p>
-<p>Once per library:</p>
+<p>回顾一下使用库需要完成的几个步骤：</p>
+<p>对于每个库：</p>
 <ol>
-<li>Acquire the library. Download it from the website or via a package manager.</li>
-<li>Install the library. Unzip it to a directory or install it via a package manager.</li>
+<li>获取库。从官网或通过包管理器下载库；</li>
+<li>安装库。将库解压或安装到特定的目录。</li>
 </ol>
-<p>Once per project:</p>
+<p>对于每个项目：</p>
 <ol>
-<li>Tell the compiler where to look for the header file(s) for the library.</li>
-<li>Tell the linker where to look for the library file(s) for the library.</li>
-<li>Tell the linker which static or import library files to link.</li>
-<li>
-<h1 id="include-the-librarys-header-files-in-your-program">include the library’s header file(s) in your program.</h1>
-</li>
-<li>Make sure the program know where to find any dynamic libraries being used.</li>
+<li>告知编译器到哪里寻找头文件；</li>
+<li>告知链接器到哪里寻找库文件；</li>
+<li>告知链接器链接哪个静态库或导入库文件；</li>
+<li>在程序中 <code>#include</code> 头文件；</li>
+<li>确保程序知道到哪里寻找动态库。</li>
 </ol>
-<p>Note: The examples in this lesson show screenshots from Visual Studio 2005 express, but the process hasn’t changed too substantively since then.</p>
-<p><strong>Steps 1 and 2 -- Acquire and install library</strong></p>
-<p>Download and install the library to your hard disk. See the tutorial on <a href="https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/">static and dynamic libraries</a> for more information about this step.</p>
-<p><strong>Steps 3 and 4 -- Tell the compiler where to find headers and library files</strong></p>
-<p>A) Go to the Project menu and pick Project -&gt; Properties (it should be at the bottom)</p>
-<p>B) Under the “Configuration” dropdown, make sure that “All configurations” is selected.</p>
-<p>C) In the left window pane, select “Configuration Properties” -&gt; “VC++ Directories”.</p>
-<p>D) On the “Include Directories” line, add the path to the .h files for the library (make sure this is separated from previous entries by a semicolon).</p>
-<p>E) On the “Library Directories”, add the path to the .lib files for the library.</p>
-<p>F) Click “OK”.</p>
-<p><strong>Step 5 -- Tell the linker which libraries your program is using</strong></p>
-<p>For step 5, we need to add .lib files from the library to our project. We do this on an individual project basis.</p>
-<p>A) Go to the Project menu and pick Project -&gt; Properties (it should be at the bottom)</p>
-<p>B) Under the “Configuration” dropdown, make sure that “All configurations” is selected.</p>
-<p>C) In the left window pane, select “Configuration Properties” -&gt; “Linker” -&gt; “Input”.</p>
-<p>D) Add the name of your .lib file to the list of “Additional Dependencies” (separated from previous entries by a semicolon)</p>
-<p>E) Click “OK”.</p>
-<p><strong>Steps 6 and 7 -- #include header files and make sure project can find DLLs</strong></p>
-<p>Simply #include the header file(s) from the library in your project as per usual.</p>
-<p>See the tutorial <a href="https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/">A1 -- Static and dynamic libraries</a> for more information on step 7.</p>
-<p>[</p>
-<p>](https://www.learncpp.com/cpp-tutorial/a3-using-libraries-with-codeblocks/)</p>
+<p>注意：本课中的例子基于 Visual Studio 2005 express，但是从那时起这个过程并没有发生太大的变化。</p>
+<p>**步骤1和2——获取和安装库</p>
+<p>下载库到本地电脑，参见 <a href="../A-1-static-and-dynamic-libraries/">A.1 - 静态库和动态库</a> 。</p>
+<p><strong>步骤3和4——告诉编译器到哪里查找头文件和库文件</strong></p>
+<ol>
+<li>进入项目菜单，选择项目-&gt;属性(它应该在底部)</li>
+<li>在“配置”下拉菜单中，确保选择了“所有配置”。</li>
+<li>在左侧窗口窗格中，选择“配置属性”-&gt;“VC++目录”。</li>
+<li>在“Include Directories”行，为库添加.h文件的路径(确保这与前面的条目用分号分隔)。</li>
+<li>在“库目录”中，添加库的<code>.lib</code>文件的路径。</li>
+<li>点击“确定”。</li>
+</ol>
+<p><strong>步骤 5 —— 告诉链接器程序使用哪些库</strong></p>
+<p>对于第5步，需要将库中的<code>.lib</code>文件添加到项目中。我们在每个项目的基础上这样做。</p>
+<ol>
+<li>进入项目菜单，选择项目-&gt;属性(它应该在底部)</li>
+<li>在“配置”下拉菜单中，确保选择了“所有配置”。</li>
+<li>在左侧窗口中，选择“Configuration Properties”-&gt;“Linker”-&gt;“Input”。</li>
+<li>将.lib文件的名称添加到“附加依赖项”列表中(用分号与前面的条目分隔)</li>
+<li>点击“确定”。</li>
+</ol>
+<p>**步骤 6和 7 —— <code>#include</code> 头文件</p>
+<p>只需像往常一样将库中的头文件<code>#include</code>到项目中。</p>
 
 
               </article>
