@@ -34,38 +34,45 @@ int main()
 
 这么做之后，我们就可以不必显式指明`std`的命名空间，再也不用写 `std::` 了。在上面的程序中，只需要使用 `cout` 而不需要使用 `std::cout`。听起来很不错对吧？
 
-然而，当编译器遇到`using namespace std` 时，它会将在 `namespace std` 中找到的每一个标识符都导入全局作用域(因为using指令就放在全局作用域中)。这带来了3个主要挑战：
+然而，当编译器遇到 `using namespace std` 时，它会将在 `namespace std` 中找到的每一个标识符都导入全局作用域(因为using指令就放在全局作用域中)。这带来了3个主要挑战：
 
 - 你所选择的标识符与 `std` 名称空间中已经存在的标识符之间发生命名冲突的几率大大增加；
 - 标准库的新版本可能会破坏你当前可以工作的程序。这些未来的版本可能会引入导致新的命名冲突的名称，或者在最坏的情况下，程序的行为可能会悄无声息地出乎意料地改变!
+- 缺少 `std::` 前缀会使读者难以区分哪些名字属于 std 库哪些是用户定义的。
 
-—缺少std::前缀会使读者很难理解什么是std库名，什么是用户定义的名称。
-
--   The chance for a naming collision between a name you’ve picked and something that already exists in the `std` namespace is massively increased.
--   New versions of the standard library may break your currently working program. These future versions could introduce names that cause new naming collisions, or in the worst case, the behavior of your program might change silently and unexpectedly!
--   The lack of std:: prefixes makes it harder for readers to understand what is a std library name and what is a user-defined name.
-
-For this reason, we recommend avoiding `using namespace std` (or any other using directive) entirely. The small savings in typing isn’t worth the additional headaches and future risks.
+因此，我们推荐避免使用 `using namespace std` (以及其他 using 语句)。通过它节省的打字时间和可能带来的风险相比是不划算的。
 
 !!! info "相关内容"
 
-	See lesson[[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]] for more detail and examples.
+	参见 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]] 获取更多信息。
 
 ## 问：为什么使用某些功能时不需要包含头文件？
 
-Headers can `#include` other headers. So when you include one header, you also get all of the additional headers that it includes (and all of the headers that those headers include too). All of the additional headers that come along for the ride that you didn’t explicitly include are called “transitive includes”.
+头文件可以“`#include`”其他头文件。因此，当我们包含一个头文件时，同时就可以获得它包含的所有附加头文件(以及那些头文件包含的所有头文件)。所有没有显式包含的附加头文件称为“传递包含”。
 
-For example, your main.cpp file probably `#included <iostream>`, and on your compiler, `<iostream>` `#included <XXX>` (or some other header that `#included <XXX>`).
+比方说，`main.cpp` 中 `#included <iostream>`，同时你的编译器在 `<iostream>` 中 `#included <XXX>` (或者其他头文件 `#included <XXX>`)。
 
-Even though this may compile on your compiler, you should not rely on this. What compiles for you may not compile on another compiler, or even on a future version of your compiler.
+即使它可以在编译器上编译，也不应该依赖它。因为你能够编译的东西可能不能在其他编译器上编译，甚至不能在你的编译器的未来版本上编译。
 
-There is no way to warn when this happens, or prevent it from happening. The best you can do is take care to explicitly include the proper headers for all of the things you use. Compiling your program on several different compilers may help identify headers that are being transitively included on other compilers.
+没有办法在这种情况发生时发出警告，或防止它发生。我们能做的就是为所使用的所有东西显式地包括适当的头文件。在几个不同的编译器上编译你的程序可能有助于识别被其他编译器传递包含的头文件。
+
 
 !!! info "相关内容"
 
-	Covered in lesson [[2-11-Header-files|2.11 - 头文件]]
+	参见 [[2-11-Header-files|2.11 - 头文件]]
 
 ## 问：为什么（产生未定义行为的代码）有这样的结果？
+
+当执行行为不是由c++语言定义的操作时，会发生未定义的行为。实现未定义行为的代码可能会出现以下任何症状:
+
+- 你的程序每次运行都会产生不同的结果；
+- 你的程序始终产生相同的错误结果；
+- 你的程序行为不一致(有时产生正确的结果，有时不)；
+- 你的程序似乎在工作，但在程序后面产生了不正确的结果；
+- 你的程序崩溃，或立即或稍后；
+- 你的程序可以在一些编译器上工作，但不能在其他编译器上；
+- 你的程序工作，直到你改变一些其他看起来不相关的代码。
+
 
 Undefined behavior occurs when you perform an operation whose behavior is not defined by the C++ language. Code implementing undefined behavior may exhibit any of the following symptoms:
 
