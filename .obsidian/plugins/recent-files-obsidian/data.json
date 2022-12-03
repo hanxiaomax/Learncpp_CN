@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-10-Pass-by-address-part-2",
+      "path": "docs/9-10-Pass-by-address-part-2.md"
+    },
+    {
+      "basename": "9-11-Return-by-reference-and-return-by-address",
+      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
+    },
+    {
       "basename": "11-17-An-introduction-to-std-vector",
       "path": "docs/11-17-An-introduction-to-std-vector.md"
     },
     {
       "basename": "动态数组",
       "path": "docs/动态数组.md"
-    },
-    {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
     },
     {
       "basename": "B-1-introduction-to-C++11",
@@ -187,18 +199,6 @@
     {
       "basename": "13-14-static-member-functions",
       "path": "docs/13-14-static-member-functions.md"
-    },
-    {
-      "basename": "18-2-virtual-functions-and-polymorphism",
-      "path": "docs/18-2-virtual-functions-and-polymorphism.md"
-    },
-    {
-      "basename": "5-1-Operator-precedence-and-associativity",
-      "path": "docs/5-1-Operator-precedence-and-associativity.md"
-    },
-    {
-      "basename": "4-1-Introduction-to-fundamental-data-types",
-      "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
     }
   ],
   "omittedPaths": [],

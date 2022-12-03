@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "4641fa36d293eb70",
+            "id": "7d8a5d7cde63b5c9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/11-17-An-introduction-to-std-vector.md",
+                "file": "docs/9-x-Chapter-9-summary-and-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-17-An-introduction-to-std-vector.md",
+                "file": "docs/9-x-Chapter-9-summary-and-quiz.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-17-An-introduction-to-std-vector.md"
+                "file": "docs/9-x-Chapter-9-summary-and-quiz.md"
               }
             }
           }
@@ -150,17 +150,17 @@
     "direction": "horizontal",
     "width": 300
   },
-  "active": "4641fa36d293eb70",
+  "active": "7d8a5d7cde63b5c9",
   "lastOpenFiles": [
-    "docs/动态数组.md",
-    "docs/11-17-An-introduction-to-std-vector.md",
     "docs/MOC.md",
+    "docs/9-10-Pass-by-address-part-2.md",
+    "docs/9-11-Return-by-reference-and-return-by-address.md",
+    "docs/11-17-An-introduction-to-std-vector.md",
+    "docs/动态数组.md",
     "docs/B-1-introduction-to-C++11.md",
     "docs/11-18-Introduction-to-iterators.md",
     "docs/range-based-for-loops.md",
     "docs/11-13-For-each-loops.md",
-    "docs/11-5-Multidimensional-Arrays.md",
-    "docs/B-3-introduction-to-C++17.md",
-    "docs/B-2-introduction-to-C++14.md"
+    "docs/11-5-Multidimensional-Arrays.md"
   ]
 }
