@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/11-18-Introduction-to-iterators.md",
+                "file": "docs/11-17-An-introduction-to-std-vector.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,10 +65,10 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#include",
+                "query": "统一初始化",
                 "matchingCase": true,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -95,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -123,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-18-Introduction-to-iterators.md",
+                "file": "docs/11-17-An-introduction-to-std-vector.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-18-Introduction-to-iterators.md"
+                "file": "docs/11-17-An-introduction-to-std-vector.md"
               }
             }
           }
@@ -155,14 +154,14 @@
   "active": "4641fa36d293eb70",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/B-1-introduction-to-C++11.md",
+    "docs/B-3-introduction-to-C++17.md",
+    "docs/B-2-introduction-to-C++14.md",
+    "docs/11-18-Introduction-to-iterators.md",
     "docs/11-16-An-introduction-to-std-array.md",
     "docs/11-3-Arrays-and-loops.md",
     "docs/7-17-assert-and-static-assert.md",
     "docs/7-16-std-cin-and-handling-invalid-input.md",
-    "docs/3-6-Using-an-integrated-debugger-Stepping.md",
-    "docs/A-4-C++FAQ.md",
-    "docs/A-3-using-libraries-with-Code-Blocks.md",
-    "docs/A-2-using-libraries-with-visual-studio.md",
-    "docs/A-1-static-and-dynamic-libraries.md"
+    "docs/3-6-Using-an-integrated-debugger-Stepping.md"
   ]
 }
