@@ -1,20 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "range-based-for-loops",
-      "path": "docs/range-based-for-loops.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
-    },
-    {
       "basename": "11-17-An-introduction-to-std-vector",
       "path": "docs/11-17-An-introduction-to-std-vector.md"
+    },
+    {
+      "basename": "动态数组",
+      "path": "docs/动态数组.md"
     },
     {
       "basename": "MOC",
@@ -23,6 +15,22 @@
     {
       "basename": "B-1-introduction-to-C++11",
       "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
+      "basename": "range-based-for-loops",
+      "path": "docs/range-based-for-loops.md"
+    },
+    {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "11-5-Multidimensional-Arrays",
+      "path": "docs/11-5-Multidimensional-Arrays.md"
     },
     {
       "basename": "B-3-introduction-to-C++17",
@@ -191,14 +199,6 @@
     {
       "basename": "4-1-Introduction-to-fundamental-data-types",
       "path": "docs/4-1-Introduction-to-fundamental-data-types.md"
-    },
-    {
-      "basename": "17-4-constructors-and-initialization-of-derived-classes",
-      "path": "docs/17-4-constructors-and-initialization-of-derived-classes.md"
-    },
-    {
-      "basename": "Template-specialization",
-      "path": "docs/Template-specialization.md"
     }
   ],
   "omittedPaths": [],
