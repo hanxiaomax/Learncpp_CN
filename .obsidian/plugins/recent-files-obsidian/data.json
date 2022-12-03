@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "11-13-For-each-loops",
+      "path": "docs/11-13-For-each-loops.md"
+    },
+    {
+      "basename": "range-based-for-loops",
+      "path": "docs/range-based-for-loops.md"
+    },
+    {
+      "basename": "11-18-Introduction-to-iterators",
+      "path": "docs/11-18-Introduction-to-iterators.md"
+    },
+    {
       "basename": "11-17-An-introduction-to-std-vector",
       "path": "docs/11-17-An-introduction-to-std-vector.md"
     },
@@ -19,10 +31,6 @@
     {
       "basename": "B-2-introduction-to-C++14",
       "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
     },
     {
       "basename": "11-16-An-introduction-to-std-array",
@@ -191,14 +199,6 @@
     {
       "basename": "Template-specialization",
       "path": "docs/Template-specialization.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
-      "basename": "quiz",
-      "path": "docs/quiz.md"
     }
   ],
   "omittedPaths": [],
