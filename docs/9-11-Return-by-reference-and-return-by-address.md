@@ -16,6 +16,7 @@ tags:
 - 引用返回的对象必须存在于返回引用的函数的作用域之外，否则将导致悬空引用。永远不要通过引用返回局部变量
 - 不要按引用返回非const的局部静态变量
 - 如果函数返回一个引用，并且该引用用于初始化或赋值给一个非引用变量，则返回值将被复制(就像它是通过value返回的一样)。
+- 如果参数通过引用传递给函数，则通过引用返回该参数是安全的
 
 
 
@@ -203,13 +204,15 @@ int main()
 ```
 
 
-## 返回’s okay to return reference parameters by reference
+## 按引用返回按引用传递的参数没有问题
 
-There are quite a few cases where returning objects by reference makes sense, and we’ll encounter many of those in future lessons. However, there is one useful example that we can show now.
+在很多情况下，通过引用返回对象是有意义的，我们将在未来的课程中遇到许多这样的情况。不过，我们现在可以举一个有用的例子。
 
-If a parameter is passed into a function by reference, it’s safe to return that parameter by reference. This makes sense: in order to pass an argument to a function, the argument must exist in the scope of the caller. When the called function returns, that object must still exist in the scope of the caller.
+==如果参数通过引用传递给函数，则通过引用返回该参数是安全的==。这是有意义的：为了将参数传递给函数，参数必须存在于调用者的作用域中。当被调用的函数返回时，该对象必须仍然存在于调用者的作用域中。
 
-Here is a simple example of such a function:
+下面是这样一个函数的简单示例：
+
+
 
 ```cpp
 #include <iostream>
