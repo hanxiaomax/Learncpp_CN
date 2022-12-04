@@ -71,7 +71,7 @@ int main()
 
 COPY
 
-## Type deduction drops references
+## 类型推断会丢弃引用修饰符
 
 In addition to dropping const qualifiers, type deduction will also drop references:
 
@@ -229,7 +229,7 @@ int main()
 
 COPY
 
-## The difference between `auto` and `auto*` (optional reading)
+## `auto` 和 `auto*` 的区别(选读)
 
 When we use `auto` with a pointer type initializer, the type deduced for `auto` includes the pointer. So for `ptr1` above, the type substituted for `auto` is `std::string*`.
 
@@ -259,7 +259,7 @@ This makes sense: in the `ptr4` case, `auto` deduces to `std::string`, then
 
 Second, there are differences in how `auto` and `auto*` behave when we introduce `const` into the equation. We’ll cover this below.
 
-## Type deduction and const pointers (optional reading)
+## 类型推断和const指针(选读)
 
 Since pointers aren’t dropped, we don’t have to worry about that. But with pointers, we have both the const pointer and the pointer to const cases to think about, and we also have `auto` vs `auto*`. Just like with references, only top-level const is dropped during pointer type deduction.
 

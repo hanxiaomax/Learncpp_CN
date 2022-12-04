@@ -2744,29 +2744,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigninginitializing-a-normal-variable-with-a-returned-reference-makes-a-copy" class="md-nav__link">
-    Assigning/initializing a normal variable with a returned reference makes a copy
+  <a href="#_3" class="md-nav__link">
+    使用返回的引用来访问/初始化普通变量时会创建拷贝
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#its-okay-to-return-reference-parameters-by-reference" class="md-nav__link">
-    It’s okay to return reference parameters by reference
+  <a href="#_4" class="md-nav__link">
+    按引用返回按引用传递的参数没有问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-caller-can-modify-values-through-the-reference" class="md-nav__link">
-    The caller can modify values through the reference
+  <a href="#caller-can-modify-values-through-the-reference" class="md-nav__link">
+    调用者可以通过引用修改值 caller can modify values through the reference
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#return-by-address" class="md-nav__link">
-    Return by address
+  <a href="#_5" class="md-nav__link">
+    按地址返回
   </a>
   
 </li>
@@ -5836,29 +5836,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigninginitializing-a-normal-variable-with-a-returned-reference-makes-a-copy" class="md-nav__link">
-    Assigning/initializing a normal variable with a returned reference makes a copy
+  <a href="#_3" class="md-nav__link">
+    使用返回的引用来访问/初始化普通变量时会创建拷贝
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#its-okay-to-return-reference-parameters-by-reference" class="md-nav__link">
-    It’s okay to return reference parameters by reference
+  <a href="#_4" class="md-nav__link">
+    按引用返回按引用传递的参数没有问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-caller-can-modify-values-through-the-reference" class="md-nav__link">
-    The caller can modify values through the reference
+  <a href="#caller-can-modify-values-through-the-reference" class="md-nav__link">
+    调用者可以通过引用修改值 caller can modify values through the reference
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#return-by-address" class="md-nav__link">
-    Return by address
+  <a href="#_5" class="md-nav__link">
+    按地址返回
   </a>
   
 </li>
@@ -5926,6 +5926,12 @@
   <h1>9.11 - 按引用返回和按地址返回</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
+<ul>
+<li>引用返回的对象必须存在于返回引用的函数的作用域之外，否则将导致悬空引用。永远不要通过引用返回局部变量</li>
+<li>不要按引用返回非const的局部静态变量</li>
+<li>如果函数返回一个引用，并且该引用用于初始化或赋值给一个非引用变量，则返回值将被复制(就像它是通过value返回的一样)。</li>
+<li>如果参数通过引用传递给函数，则通过引用返回该参数是安全的</li>
+</ul>
 <p>在上节课中，我们介绍过，当实参<a href="../pass-by-value/">按值传递</a>时，实参的值会被<strong>拷贝</strong>一份到<a href="../parameters/">形参</a>。 对于基本类型来说（拷贝开销小），这没有什么问题。但是对于<a href="../class-type/">类类型</a>来说，拷贝开销通常会很大（例如 <code>std::string</code>)。通过<a href="../pass-by-reference/">按引用传递</a>（通常为<code>const</code>）或按<a href="../pass-by-address/">按地址传递</a>可以避免这种开销。</p>
 <p>在按值返回时，我们会遇到类似的情况：返回值的副本被传递回调用者。如果函数的返回类型是类类型，则代价可能很高。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">returnByValue</span><span class="p">();</span><span class="w"> </span><span class="c1">// 返回 std::string 的拷贝(expensive)</span>
@@ -6028,7 +6034,8 @@
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 
 <span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">getProgramName</span><span class="p">()</span><span class="w"></span>
@@ -6046,17 +6053,18 @@
 <span class="p">}</span><span class="err">```</span><span class="w"></span>
 
 
-<span class="n">gai</span><span class="w"> </span><span class="n">ce</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">undefined</span><span class="p">.</span><span class="w"> </span><span class="n">When</span><span class="w"> </span><span class="err">`</span><span class="n">getProgramName</span><span class="p">()</span><span class="err">`</span><span class="w"> </span><span class="n">returns</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">bound</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="err">`</span><span class="n">programName</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">returned</span><span class="p">.</span><span class="w"> </span><span class="n">Then</span><span class="p">,</span><span class="w"> </span><span class="n">because</span><span class="w"> </span><span class="err">`</span><span class="n">programName</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">automatic</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span><span class="w"> </span><span class="err">`</span><span class="n">programName</span><span class="err">`</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">destroyed</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">function</span><span class="p">.</span><span class="w"> </span><span class="n">That</span><span class="w"> </span><span class="n">means</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">dangling</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="err">`</span><span class="n">programName</span><span class="err">`</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="err">`</span><span class="n">main</span><span class="p">()</span><span class="err">`</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">undefined</span><span class="w"> </span><span class="n">behavior</span><span class="p">.</span><span class="w"></span>
+<span class="n">该程序的运行结果是未定义的</span><span class="err">。</span><span class="n">当</span><span class="w"> </span><span class="err">`</span><span class="n">getProgramName</span><span class="p">()</span><span class="err">`</span><span class="w"> </span><span class="n">返回时</span><span class="err">，</span><span class="n">一个引用绑定到了局部变量</span><span class="w"> </span><span class="err">`</span><span class="n">programName</span><span class="err">`</span><span class="w"> </span><span class="err">。</span><span class="n">也正是因为该变量是一个局部变量</span><span class="err">，</span><span class="n">它具有</span><span class="p">[</span><span class="n">自动存储持续时间</span><span class="p">](.</span><span class="o">/</span><span class="n">automatic</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">duration</span><span class="p">.</span><span class="n">md</span><span class="p">)</span><span class="err">，</span><span class="n">它会在函数末尾被销毁</span><span class="err">，</span><span class="n">所以返回的引用就是会是一个悬垂引用</span><span class="err">，</span><span class="n">在</span><span class="err">`</span><span class="n">main</span><span class="err">`</span><span class="n">函数中使用该悬垂引用会导致未定义行为</span><span class="err">。</span><span class="w"></span>
 
-<span class="n">Modern</span><span class="w"> </span><span class="n">compilers</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">produce</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">warning</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="p">(</span><span class="n">so</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">above</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">even</span><span class="w"> </span><span class="n">compile</span><span class="p">),</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">compilers</span><span class="w"> </span><span class="n">sometimes</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">trouble</span><span class="w"> </span><span class="n">detecting</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">complicated</span><span class="w"> </span><span class="n">cases</span><span class="p">.</span><span class="w"></span>
+<span class="n">如果试图通过引用返回局部变量</span><span class="err">，</span><span class="n">现代编译器将产生警告或错误</span><span class="p">(</span><span class="n">因此</span><span class="err">，</span><span class="n">上面的程序甚至可能无法编译</span><span class="p">)</span><span class="err">，</span><span class="n">但编译器有时在检测更复杂的情况时会遇到麻烦</span><span class="err">。</span><span class="w"></span>
+
 
 <span class="o">!!!</span><span class="w"> </span><span class="n">warning</span><span class="w"> </span><span class="s">&quot;注意&quot;</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">Objects</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">live</span><span class="w"> </span><span class="n">beyond</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">returning</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">reference</span><span class="p">,</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">dangling</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="w"> </span><span class="n">Never</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="o">==</span><span class="n">引用返回的对象必须存在于返回引用的函数的作用域之外</span><span class="err">，</span><span class="n">否则将导致悬空引用</span><span class="err">。</span><span class="n">永远不要通过引用返回局部变量</span><span class="err">。</span><span class="o">==</span><span class="w"></span>
 
-<span class="cp">## Don’t return non-const local static variables by reference</span>
+<span class="cp">## 不要按引用返回非const的局部静态变量</span>
 
-<span class="n">In</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">original</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="n">above</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">illustrate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">mechanics</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="n">way</span><span class="p">.</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="n">returning</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="k">const</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">fairly</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">idiomatic</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">generally</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">avoided</span><span class="p">.</span><span class="w"> </span><span class="n">Here</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">simplified</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">illustrates</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="n">problem</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">occur</span><span class="o">:</span><span class="w"></span>
+<span class="n">在上面的例子中</span><span class="err">，</span><span class="n">我们按引用返回的是一个const的局部静态变量</span><span class="err">，</span><span class="n">并以此来演示按引用传递的方式</span><span class="err">。</span><span class="n">但是</span><span class="err">，</span><span class="n">按引用返回非const的静态变量并不符合习惯</span><span class="err">，</span><span class="n">通常应该避免这么做</span><span class="err">。</span><span class="n">这么做会有什么问题</span><span class="err">？</span><span class="n">请看下面的程序</span><span class="err">：</span><span class="w"></span>
 
 <span class="err">```</span><span class="n">cpp</span><span class="w"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -6064,35 +6072,34 @@
 
 <span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">getNextId</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s_x</span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// note: variable is non-const</span>
-<span class="w">    </span><span class="o">++</span><span class="n">s_x</span><span class="p">;</span><span class="w"> </span><span class="c1">// generate the next id</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s_x</span><span class="p">;</span><span class="w"> </span><span class="c1">// and return a reference to it</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s_x</span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// 注意: 变量是非const的</span>
+<span class="w">    </span><span class="o">++</span><span class="n">s_x</span><span class="p">;</span><span class="w"> </span><span class="c1">// 生成下一个id</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s_x</span><span class="p">;</span><span class="w"> </span><span class="c1">// 按引用返回</span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">id1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getNextId</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// id1 is a reference</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">id2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getNextId</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// id2 is a reference</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">id1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getNextId</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// id1 是一个引用</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">id2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">getNextId</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// id2 是一个引用</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
+<p>程序打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>22
 </code></pre></div></td></tr></table></div>
-<p>This happens because <code>id1</code> and <code>id2</code> are referencing the same object (the static variable <code>s_x</code>), so when anything (e.g. <code>getNextId()</code>) modifies that value, all references are now accessing the modified value. Another issue that commonly occurs with programs that return a static local by const reference is that there is no standardized way to reset <code>s_x</code> back to the default state. Such programs must either use a non-idiomatic solution (e.g. a reset parameter), or can only be reset by quitting and restarting the program.</p>
-<p>While the above example is a bit silly, there are permutations of the above that programmers sometimes try for optimization purposes, and then their programs don’t work as expected.</p>
+<p>之所以这样是因为 <code>id1</code> 和 <code>id2</code> 引用的是同一个对象(即静态变量 <code>s_x</code>)，所以任何对该变量的修改(例如 <code>getNextId()</code>)，都会影响到所有引用。通过const引用返回静态局部值的程序经常出现的另一个问题是，没有标准化的方法将<code>s_x</code> 重置回默认状态。这样的程序必须使用非惯用的解决方案(例如重置参数)，或者只能通过退出和重新启动程序来重置。</p>
+<p>虽然上面的例子有点傻，但程序员有时会为了优化目的而尝试上面的做法，然后程序就不能按预期工作了。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Avoid returning references to non-const local static variables.</p>
+<p>避免返回对非const局部静态变量的引用。</p>
 </div>
-<p>Returning a const reference to a <em>const</em> local static variable is sometimes done if the local variable being returned by reference is expensive to create (so we don’t have to recreate the variable every function call). But this is rare.</p>
-<p>Returning a const reference to a <em>const</em> global variable is also sometimes done as a way to encapsulate access to a global variable. We discuss this in lesson <a href="https://www.learncpp.com/cpp-tutorial/why-non-const-global-variables-are-evil/">6.8 -- Why (non-const) global variables are evil</a>. When used intentionally and carefully, this is also okay.</p>
-<h2 id="assigninginitializing-a-normal-variable-with-a-returned-reference-makes-a-copy">Assigning/initializing a normal variable with a returned reference makes a copy</h2>
-<p>If a function returns a reference, and that reference is used to initialize or assign to a non-reference variable, the return value will be copied (as if it had been returned by value).</p>
+<p>如果通过引用返回的局部变量的创建成本很高(因此不必每次函数调用都重新创建该变量)，则有时会返回对 const 局部静态变量的const引用。但这是罕见的。</p>
+<p><mark>返回一个指向const全局变量的const引用有时也是一种用于封装对全局变量访问的方式</mark>。我们在课程<a href="../6-8-Why-non-const-global-variables-are-evil/">6.8 - 为什么非 const 全局变量是魔鬼</a>中讨论这个问题。如果有意且谨慎地使用，这也是可以的。</p>
+<h2 id="_3">使用返回的引用来访问/初始化普通变量时会创建拷贝</h2>
+<p>如果函数返回一个引用，并且该引用用于初始化或赋值给一个非引用变量，则返回值将被复制(就像它是通过value返回的一样)。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6131,11 +6138,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, <code>getNextId()</code> is returning a reference, but <code>id1</code> and <code>id2</code> are non-reference variables. In such a case, the value of the returned reference is copied into the normal variable. Thus, this program prints:</p>
-<p>12</p>
-<p>Of course, this also defeats the purpose of returning a value by reference.</p>
-<p>Also note that if a program returns a dangling reference, the reference is left dangling before the copy is made, which will lead to undefined behavior:</p>
+<p>在上面的例子中，<code>getNextId()</code> 返回的是一个引用，但是 <code>id1</code> 和 <code>id2</code> 都是非引用的普通变量。这种情况下，返回的引用绑定的值会被拷贝到这个普通变量，因此程序打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>12
+</code></pre></div></td></tr></table></div>
+<p>当然，这也违背了通过引用返回值的目的。</p>
+<p>还需要注意的是，如果程序返回一个悬垂引用，则该引用在复制之前一直悬空，这将导致<a href="../undefined-behavior/">未定义行为</a>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6170,11 +6177,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<h2 id="its-okay-to-return-reference-parameters-by-reference">It’s okay to return reference parameters by reference</h2>
-<p>There are quite a few cases where returning objects by reference makes sense, and we’ll encounter many of those in future lessons. However, there is one useful example that we can show now.</p>
-<p>If a parameter is passed into a function by reference, it’s safe to return that parameter by reference. This makes sense: in order to pass an argument to a function, the argument must exist in the scope of the caller. When the called function returns, that object must still exist in the scope of the caller.</p>
-<p>Here is a simple example of such a function:</p>
+<h2 id="_4">按引用返回按引用传递的参数没有问题</h2>
+<p>在很多情况下，通过引用返回对象是有意义的，我们将在未来的课程中遇到许多这样的情况。不过，我们现在可以举一个有用的例子。</p>
+<p><mark>如果参数通过引用传递给函数，则通过引用返回该参数是安全的</mark>。这是有意义的：为了将参数传递给函数，参数必须存在于调用者的作用域中。当被调用的函数返回时，该对象必须仍然存在于调用者的作用域中。</p>
+<p>下面是这样一个函数的简单示例：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6211,15 +6217,14 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
+<p>输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Hello
 </code></pre></div></td></tr></table></div>
-<p>In the above function, the caller passes in two std::string objects by const reference, and whichever of these strings comes first alphabetically is passed back by const reference. If we had used pass by value and return by value, we would have made up to 3 copies of std::string (one for each parameter, one for the return value). By using pass by reference/return by reference, we can avoid those copies.</p>
-<h2 id="the-caller-can-modify-values-through-the-reference">The caller can modify values through the reference</h2>
-<p>When an argument is passed to a function by non-const reference, the function can use the reference to modify the value of the argument.</p>
-<p>Similarly, when a non-const reference is returned from a function, the caller can use the reference to modify the value being returned.</p>
-<p>Here’s an illustrative example:</p>
+<p>在这个例子中，调用者按引用传递了两个 <code>std::string</code> 对象，然后经过比较，两个字符串中按照字母表比较排在前面的对象被按引用(const)返回给主调函数。如果我们是按照值传递，则会导致创建<code>std::string</code>的三个拷贝（每个形参拷贝一次、返回值拷贝一次）。而使用引用传递则可以避免这些拷贝。</p>
+<h2 id="caller-can-modify-values-through-the-reference">调用者可以通过引用修改值 caller can modify values through the reference</h2>
+<p>当实参按非const引用传递时，函数可以通过引用修改实参的值。</p>
+<p>类似的，当按非const引用返回给主调函数时，调用者可以使用该引用修改返回值。</p>
+<p>例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6240,7 +6245,7 @@
 <span class="normal">18</span>
 <span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="c1">// takes two integers by non-const reference, and returns the greater by reference</span>
+<span class="c1">// 接受两个整型的非const引用，返回其中较大的一个（按引用返回）</span>
 <span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
@@ -6251,26 +6256,25 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="c1">// sets the greater of a or b to 7</span>
+<span class="w">    </span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="c1">// 将a和b中较大的一个的值设置为 7</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above program, <code>max(a, b)</code> calls the <code>max()</code> function with <code>a</code> and <code>b</code> as arguments. Reference parameter <code>x</code> binds to argument <code>a</code>, and reference parameter <code>y</code> binds to argument <code>b</code>. The function then determines which of <code>x</code> (<code>5</code>) and <code>y</code> (<code>6</code>) is greater. In this case, that’s <code>y</code>, so the function returns <code>y</code>(which is still bound to <code>b</code>) back to the caller. The caller then assigns the value <code>7</code> to this returned reference.</p>
-<p>Therefore, the expression <code>max(a, b) = 7</code> effectively resolves to <code>b = 7</code>.</p>
-<p>This prints:</p>
+<p>在这个例子中， <code>max(a, b)</code> 在调用 <code>max()</code> 函数时传入<code>a</code> 和 <code>b</code> 作为实参。引用形参 <code>x</code> 绑定到实参 <code>a</code>，而引用形参 <code>y</code> 绑定到实参 <code>b</code>。随后，函数会判断 <code>x</code> (<code>5</code>) 和 <code>y</code> (<code>6</code>) 哪个比较大。本例中显然 <code>y</code> 更大，因此 <code>y</code>(仍然绑定到 <code>b</code>) 被按引用返回给主调函数。调用者随后通过返回的引用将 <code>b</code> 赋值为 7。</p>
+<p>因此，表达式 <code>max(a, b) = 7</code> 最终解析为 <code>b = 7</code>。</p>
+<p>程序打印：
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>57
-</code></pre></div></td></tr></table></div>
-<h2 id="return-by-address">Return by address</h2>
-<p>Return by address works almost identically to return by reference, except a pointer to an object is returned instead of a reference to an object. Return by address has the same primary caveat as return by reference -- the object being returned by address must outlive the scope of the function returning the address, otherwise the caller will receive a dangling pointer.</p>
-<p>The major advantage of return by address over return by reference is that we can have the function return <code>nullptr</code> if there is no valid object to return. For example, let’s say we have a list of students that we want to search. If we find the student we are looking for in the list, we can return a pointer to the object representing the matching student. If we don’t find any students matching, we can return <code>nullptr</code> to indicate a matching student object was not found.</p>
-<p>The major disadvantage of return by address is that the caller has to remember to do a <code>nullptr</code> check before dereferencing the return value, otherwise a null pointer dereference may occur and undefined behavior will result. Because of this danger, return by reference should be preferred over return by address unless the ability to return “no object” is needed.</p>
+</code></pre></div></td></tr></table></div></p>
+<h2 id="_5">按地址返回</h2>
+<p><a href="../return-by-address/">按地址返回</a>与<a href="../return-by-reference/">按引用返回</a>的工作原理几乎相同，只不过返回的是指向对象的指针而不是对对象的引用。按地址返回有与按引用返回相同的注意事项——按地址返回的对象必须比返回地址的函数的作用域更长久，否则调用者将收到一个悬垂指针。</p>
+<p>按地址返回比按引用返回的主要优点是，如果没有要返回的有效对象，则可以使用函数返回 <code>nullptr</code> 。例如，假设我们有一个想要搜索的学生列表。如果在列表中找到了要查找的学生，则可以返回一个指向表示匹配学生的对象的指针。如果我们没有找到任何匹配的学生对象，我们可以返回<code>nullptr</code> 来表示没有找到匹配的学生对象。</p>
+<p>其主要缺点则是调用者必须记得在解引用返回值之前进行指针判空操作，则可能会发生空指针解引用并导致<a href="../undefined-behavior/">未定义行为</a>。由于这种危险，除非需要返回“无对象”的能力，否则通过引用返回应优先于通过地址返回。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Prefer return by reference over return by address unless the ability to return “no object” (using <code>nullptr</code>) is important.</p>
+<p>首选通过引用返回而不是通过地址返回，除非返回“无对象”(使用<code>nullptr</code>)的能力很重要。</p>
 </div>
 
 

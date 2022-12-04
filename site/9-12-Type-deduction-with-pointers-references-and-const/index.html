@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#type-deduction-drops-references" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2744,8 +2744,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#type-deduction-drops-references" class="md-nav__link">
-    Type deduction drops references
+  <a href="#_1" class="md-nav__link">
+    类型推断会丢弃引用修饰符
   </a>
   
 </li>
@@ -2765,22 +2765,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     类型推断和指针
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-difference-between-auto-and-auto-optional-reading" class="md-nav__link">
-    The difference between auto and auto* (optional reading)
+  <a href="#auto-auto" class="md-nav__link">
+    auto 和 auto* 的区别(选读)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#type-deduction-and-const-pointers-optional-reading" class="md-nav__link">
-    Type deduction and const pointers (optional reading)
+  <a href="#const_1" class="md-nav__link">
+    类型推断和const指针(选读)
   </a>
   
 </li>
@@ -5822,8 +5822,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#type-deduction-drops-references" class="md-nav__link">
-    Type deduction drops references
+  <a href="#_1" class="md-nav__link">
+    类型推断会丢弃引用修饰符
   </a>
   
 </li>
@@ -5843,22 +5843,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     类型推断和指针
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-difference-between-auto-and-auto-optional-reading" class="md-nav__link">
-    The difference between auto and auto* (optional reading)
+  <a href="#auto-auto" class="md-nav__link">
+    auto 和 auto* 的区别(选读)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#type-deduction-and-const-pointers-optional-reading" class="md-nav__link">
-    Type deduction and const pointers (optional reading)
+  <a href="#const_1" class="md-nav__link">
+    类型推断和const指针(选读)
   </a>
   
 </li>
@@ -5998,7 +5998,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<h2 id="type-deduction-drops-references">Type deduction drops references</h2>
+<h2 id="_1">类型推断会丢弃引用修饰符</h2>
 <p>In addition to dropping const qualifiers, type deduction will also drop references:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6125,7 +6125,7 @@
 <p class="admonition-title">最佳实践</p>
 <p>If you want a const reference, reapply the <code>const</code> qualifier even when it’s not strictly necessary, as it makes your intent clear and helps prevent mistakes.</p>
 </div>
-<h2 id="_1">类型推断和指针</h2>
+<h2 id="_2">类型推断和指针</h2>
 <p>Unlike references, type deduction does not drop pointers:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6172,7 +6172,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<h2 id="the-difference-between-auto-and-auto-optional-reading">The difference between <code>auto</code> and <code>auto*</code> (optional reading)</h2>
+<h2 id="auto-auto"><code>auto</code> 和 <code>auto*</code> 的区别(选读)</h2>
 <p>When we use <code>auto</code> with a pointer type initializer, the type deduced for <code>auto</code> includes the pointer. So for <code>ptr1</code> above, the type substituted for <code>auto</code> is <code>std::string*</code>.</p>
 <p>When we use <code>auto*</code> with a pointer type initializer, the type deduced for auto does <em>not</em> include the pointer -- the pointer is reapplied afterward after the type is deduced. So for <code>ptr2</code> above, the type substituted for <code>auto</code> is <code>std::string</code>, and then the pointer is reapplied.</p>
 <p>In most cases, the practical effect is the same (<code>ptr1</code> and <code>ptr2</code> both deduce to <code>std::string*</code> in the above example).</p>
@@ -6202,7 +6202,7 @@
 <p>COPY</p>
 <p>This makes sense: in the <code>ptr4</code> case, <code>auto</code> deduces to <code>std::string</code>, then the pointer is reapplied. Thus <code>ptr4</code> has type <code>std::string*</code>, and we can’t initialize a <code>std::string*</code> with an initializer that is not a pointer.</p>
 <p>Second, there are differences in how <code>auto</code> and <code>auto*</code> behave when we introduce <code>const</code> into the equation. We’ll cover this below.</p>
-<h2 id="type-deduction-and-const-pointers-optional-reading">Type deduction and const pointers (optional reading)</h2>
+<h2 id="const_1">类型推断和const指针(选读)</h2>
 <p>Since pointers aren’t dropped, we don’t have to worry about that. But with pointers, we have both the const pointer and the pointer to const cases to think about, and we also have <code>auto</code> vs <code>auto*</code>. Just like with references, only top-level const is dropped during pointer type deduction.</p>
 <p>Let’s start with a simple case:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

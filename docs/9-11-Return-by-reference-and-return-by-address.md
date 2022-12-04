@@ -235,28 +235,26 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+输出：
 
 ```
 Hello
 ```
 
-In the above function, the caller passes in two std::string objects by const reference, and whichever of these strings comes first alphabetically is passed back by const reference. If we had used pass by value and return by value, we would have made up to 3 copies of std::string (one for each parameter, one for the return value). By using pass by reference/return by reference, we can avoid those copies.
+在这个例子中，调用者按引用传递了两个 `std::string` 对象，然后经过比较，两个字符串中按照字母表比较排在前面的对象被按引用(const)返回给主调函数。如果我们是按照值传递，则会导致创建`std::string`的三个拷贝（每个形参拷贝一次、返回值拷贝一次）。而使用引用传递则可以避免这些拷贝。
 
-## The caller can modify values through the reference
+## 调用者可以通过引用修改值 caller can modify values through the reference
 
-When an argument is passed to a function by non-const reference, the function can use the reference to modify the value of the argument.
+当实参按非const引用传递时，函数可以通过引用修改实参的值。
 
-Similarly, when a non-const reference is returned from a function, the caller can use the reference to modify the value being returned.
+类似的，当按非const引用返回给主调函数时，调用者可以使用该引用修改返回值。
 
-Here’s an illustrative example:
+例如：
 
 ```cpp
 #include <iostream>
 
-// takes two integers by non-const reference, and returns the greater by reference
+// 接受两个整型的非const引用，返回其中较大的一个（按引用返回）
 int& max(int& x, int& y)
 {
     return (x > y) ? x : y;
@@ -267,7 +265,7 @@ int main()
     int a{ 5 };
     int b{ 6 };
 
-    max(a, b) = 7; // sets the greater of a or b to 7
+    max(a, b) = 7; // 将a和b中较大的一个的值设置为 7
 
     std::cout << a << b << '\n';
 
@@ -275,26 +273,23 @@ int main()
 }
 ```
 
-COPY
+在这个例子中， `max(a, b)` 在调用 `max()` 函数时传入`a` 和 `b` 作为实参。引用形参 `x` 绑定到实参 `a`，而引用形参 `y` 绑定到实参 `b`。随后，函数会判断 `x` (`5`) 和 `y` (`6`) 哪个比较大。本例中显然 `y` 更大，因此 `y`(仍然绑定到 `b`) 被按引用返回给主调函数。调用者随后通过返回的引用将 `b` 赋值为 7。
 
-In the above program, `max(a, b)` calls the `max()` function with `a` and `b` as arguments. Reference parameter `x` binds to argument `a`, and reference parameter `y` binds to argument `b`. The function then determines which of `x` (`5`) and `y` (`6`) is greater. In this case, that’s `y`, so the function returns `y`(which is still bound to `b`) back to the caller. The caller then assigns the value `7` to this returned reference.
+因此，表达式 `max(a, b) = 7` 最终解析为 `b = 7`。
 
-Therefore, the expression `max(a, b) = 7` effectively resolves to `b = 7`.
-
-This prints:
-
+程序打印：
 ```
 57
 ```
 
-## Return by address
+## 按地址返回
 
-Return by address works almost identically to return by reference, except a pointer to an object is returned instead of a reference to an object. Return by address has the same primary caveat as return by reference -- the object being returned by address must outlive the scope of the function returning the address, otherwise the caller will receive a dangling pointer.
+[[return-by-address|按地址返回]]与[[return-by-reference|按引用返回]]的工作原理几乎相同，只不过返回的是指向对象的指针而不是对对象的引用。按地址返回有与按引用返回相同的注意事项——按地址返回的对象必须比返回地址的函数的作用域更长久，否则调用者将收到一个悬垂指针。
 
-The major advantage of return by address over return by reference is that we can have the function return `nullptr` if there is no valid object to return. For example, let’s say we have a list of students that we want to search. If we find the student we are looking for in the list, we can return a pointer to the object representing the matching student. If we don’t find any students matching, we can return `nullptr` to indicate a matching student object was not found.
+按地址返回比按引用返回的主要优点是，如果没有要返回的有效对象，则可以使用函数返回 `nullptr` 。例如，假设我们有一个想要搜索的学生列表。如果在列表中找到了要查找的学生，则可以返回一个指向表示匹配学生的对象的指针。如果我们没有找到任何匹配的学生对象，我们可以返回`nullptr` 来表示没有找到匹配的学生对象。
 
-The major disadvantage of return by address is that the caller has to remember to do a `nullptr` check before dereferencing the return value, otherwise a null pointer dereference may occur and undefined behavior will result. Because of this danger, return by reference should be preferred over return by address unless the ability to return “no object” is needed.
+其主要缺点则是调用者必须记得在解引用返回值之前进行指针判空操作，则可能会发生空指针解引用并导致[[undefined-behavior|未定义行为]]。由于这种危险，除非需要返回“无对象”的能力，否则通过引用返回应优先于通过地址返回。
 
 !!! success "最佳实践"
 
-	Prefer return by reference over return by address unless the ability to return “no object” (using `nullptr`) is important.
+	首选通过引用返回而不是通过地址返回，除非返回“无对象”(使用`nullptr`)的能力很重要。

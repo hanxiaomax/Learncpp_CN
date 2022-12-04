@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "9-11-Return-by-reference-and-return-by-address",
-      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+    },
+    {
+      "basename": "9-11-Return-by-reference-and-return-by-address",
+      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
     },
     {
       "basename": "9-3-Lvalue-references",
@@ -195,10 +199,6 @@
     {
       "basename": "fallthrough",
       "path": "docs/fallthrough.md"
-    },
-    {
-      "basename": "1-8-Whitespace-and-basic-formatting",
-      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
     }
   ],
   "omittedPaths": [],
