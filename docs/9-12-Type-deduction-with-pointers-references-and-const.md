@@ -14,7 +14,7 @@ tags:
 	
 
 
-In lesson[[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]we discussed how the `auto` keyword can be used to have the compiler deduce the type of a variable from the initializer:
+在 [[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]] 中我们介绍了 `auto` 关键字，它告诉编译器根据初始化值对变量的类型进行推断：
 
 ```cpp
 int getVal(); // some function that returns an int by value
@@ -27,9 +27,7 @@ int main()
 }
 ```
 
-COPY
-
-We also noted that by default, type deduction will drop `const` qualifiers:
+默认情况下，类型推断会丢弃 `const` 限定符：
 
 ```cpp
 const double foo()
@@ -48,9 +46,7 @@ int main()
 }
 ```
 
-COPY
-
-Const can be reapplied by adding the `const` qualifier in the definition:
+如果需要，我们需要手动将 `const` 限定符重新添加到定义中：
 
 ```cpp
 const double foo()
@@ -69,11 +65,9 @@ int main()
 }
 ```
 
-COPY
-
 ## 类型推断会丢弃引用修饰符
 
-In addition to dropping const qualifiers, type deduction will also drop references:
+除了删除const限定符外，类型推断也将删除引用：
 
 ```cpp
 #include <string>
@@ -88,7 +82,6 @@ int main()
 }
 ```
 
-COPY
 
 In the above example, variable `ref` is using type deduction. Although function `getRef()` returns a `std::string&`, the reference qualifier is dropped, so the type of `ref`is deduced as `std::string`.
 

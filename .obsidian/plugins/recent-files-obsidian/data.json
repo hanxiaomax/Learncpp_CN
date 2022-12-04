@@ -1,12 +1,84 @@
 {
   "recentFiles": [
     {
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
-      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+      "basename": "Expression-parameters",
+      "path": "docs/Expression-parameters.md"
+    },
+    {
+      "basename": "19-x-Chapter-19-comprehensive-quiz",
+      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
+    },
+    {
+      "basename": "class-instance",
+      "path": "docs/class-instance.md"
+    },
+    {
+      "basename": "8-x-Chapter-8-summary-and-quiz",
+      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
+    },
+    {
+      "basename": "8-14-Function-template-instantiation",
+      "path": "docs/8-14-Function-template-instantiation.md"
+    },
+    {
+      "basename": "function-instance",
+      "path": "docs/function-instance.md"
+    },
+    {
+      "basename": "anonymous-object",
+      "path": "docs/anonymous-object.md"
+    },
+    {
+      "basename": "13-16-anonymous-objects",
+      "path": "docs/13-16-anonymous-objects.md"
+    },
+    {
+      "basename": "13-17-nested-types-in-classes",
+      "path": "docs/13-17-nested-types-in-classes.md"
+    },
+    {
+      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
+      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
+    },
+    {
+      "basename": "8-8-Type-deduction-for-functions",
+      "path": "docs/8-8-Type-deduction-for-functions.md"
+    },
+    {
+      "basename": "12-2-the-stack-and-the-heap",
+      "path": "docs/12-2-the-stack-and-the-heap.md"
+    },
+    {
+      "basename": "stack-frame",
+      "path": "docs/stack-frame.md"
+    },
+    {
+      "basename": "11-7-std-string-view-part-2",
+      "path": "docs/11-7-std-string-view-part-2.md"
+    },
+    {
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+    },
+    {
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
+    },
+    {
+      "basename": "trivial conversion",
+      "path": "docs/trivial conversion.md"
+    },
+    {
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
     },
     {
       "basename": "9-11-Return-by-reference-and-return-by-address",
@@ -127,78 +199,6 @@
     {
       "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
       "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
-    },
-    {
-      "basename": "1-5-Introduction-to-iostream-cout-cin-and-endl",
-      "path": "docs/1-5-Introduction-to-iostream-cout-cin-and-endl.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "9-5-Pass-by-lvalue-reference",
-      "path": "docs/9-5-Pass-by-lvalue-reference.md"
-    },
-    {
-      "basename": "9-4-Lvalue-references-to-const",
-      "path": "docs/9-4-Lvalue-references-to-const.md"
-    },
-    {
-      "basename": "yaml",
-      "path": "Templates/yaml.md"
-    },
-    {
-      "basename": "2-12-Header-guards",
-      "path": "docs/2-12-Header-guards.md"
-    },
-    {
-      "basename": "1-2-comments",
-      "path": "docs/1-2-comments.md"
-    },
-    {
-      "basename": "8-15-Function-templates-with-multiple-template-types",
-      "path": "docs/8-15-Function-templates-with-multiple-template-types.md"
-    },
-    {
-      "basename": "narrowing-convertions",
-      "path": "docs/narrowing-convertions.md"
-    },
-    {
-      "basename": "8-14-Function-template-instantiation",
-      "path": "docs/8-14-Function-template-instantiation.md"
-    },
-    {
-      "basename": "function-template-instantiation",
-      "path": "docs/function-template-instantiation.md"
-    },
-    {
-      "basename": "8-13-Function-templates",
-      "path": "docs/8-13-Function-templates.md"
-    },
-    {
-      "basename": "7-12-Introduction-to-testing-your-code",
-      "path": "docs/7-12-Introduction-to-testing-your-code.md"
-    },
-    {
-      "basename": "7-11-Halts-exiting-your-program-early",
-      "path": "docs/7-11-Halts-exiting-your-program-early.md"
-    },
-    {
-      "basename": "7-1-Control-flow-introduction",
-      "path": "docs/7-1-Control-flow-introduction.md"
-    },
-    {
-      "basename": "7-10-Break-and-continue",
-      "path": "docs/7-10-Break-and-continue.md"
-    },
-    {
-      "basename": "4-8-Floating-point-numbers",
-      "path": "docs/4-8-Floating-point-numbers.md"
-    },
-    {
-      "basename": "fallthrough",
-      "path": "docs/fallthrough.md"
     }
   ],
   "omittedPaths": [],

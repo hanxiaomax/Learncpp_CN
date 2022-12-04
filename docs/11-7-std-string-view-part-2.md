@@ -352,7 +352,7 @@ Your name is �P@�P@
 
 !!! warning "注意"
 
-    确保`std::string_view`观察的字符串不会[[离开作用域(going out of scope)]]，也不会被修改。
+	确保 `std::string_view` 观察的字符串不会 [[going-out-of-scope|离开作用域]]，也不会被修改。
     
 ## 使用`data()`函数来打开”窗户“
 
