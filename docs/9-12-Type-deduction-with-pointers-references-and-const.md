@@ -83,9 +83,9 @@ int main()
 ```
 
 
-In the above example, variable `ref` is using type deduction. Although function `getRef()` returns a `std::string&`, the reference qualifier is dropped, so the type of `ref`is deduced as `std::string`.
+在上面的例子中，变量 `ref` 使用了类型推断。尽管函数 `getRef()` 返回的是 `std::string&`，但引用限定符被丢弃了，所以 `ref` 的类型为 `std::string`。
 
-Just like with the dropped `const` qualifier, if you want the deduced type to be a reference, you can reapply the reference at the point of definition:
+类似于 `const` 限定符，如果引用限定符被丢弃了，也可以显式地被再次加到定义上：
 
 ```cpp
 #include <string>
@@ -101,41 +101,33 @@ int main()
 }
 ```
 
-COPY
+## 顶层 const 和底层 const
 
-## Top-level const and low-level const
-
-A top-level const is a const qualifier that applies to an object itself. For example:
+顶层 `const` 是应用于对象本身的 `const` 限定符。例如：
 
 ```cpp
 const int x;    // this const applies to x, so it is top-level
 int* const ptr; // this const applies to ptr, so it is top-level
 ```
 
-COPY
-
-In contrast, a low-level const is a const qualifier that applies to the object being referenced or pointed to:
+相比之下，底层 `const` 是一个应用于被引用或指向的对象的`const`限定符：
 
 ```cpp
 const int& ref; // this const applies to the object being referenced, so it is low-level
 const int* ptr; // this const applies to the object being pointed to, so it is low-level
 ```
 
-COPY
-
-A reference to a const value is always a low-level const. A pointer can have a top-level, low-level, or both kinds of const:
+const 值的引用总是一个底层const。指针可以是顶层 const、底层const或两者都是：
 
 ```cpp
 const int* const ptr; // the left const is low-level, the right const is top-level
 ```
 
-COPY
-
-When we say that type deduction drops const qualifiers, it only drops top-level consts. Low-level consts are not dropped. We’ll see examples of this in just a moment.
+类型推断在丢弃 const 限定符时，只会丢弃顶层 const。底层 const 不受影响，我们会在后面的例子中说明这一点。
 
 ## 类型推断和const引用
 
-If the initializer is a reference to const, the reference is dropped first (and then reapplied if applicable), and then any top-level const is dropped from the result.
+如果初始化值是对const的引用，则首先删除引用(如果适用，然后重新应用)，然后从结果中删除任何顶级const。
 
 ```cpp
 #include <string>
@@ -150,11 +142,9 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中， `getRef()` 返回 `const std::string&`，该引用会被首先丢弃，返回值类型变为 `const std::string`。此时，该 const 是一个顶层 const，所以也会被丢弃，返回值类型进一步变为`std::string`。
 
-In the above example, since `getRef()` returns a `const std::string&`, the reference is dropped first, leaving us with a `const std::string`. This const is now a top-level const, so it is also dropped, leaving the deduced type as `std::string`.
-
-We can reapply either or both of these:
+两种标识符都可以被手动填回去：
 
 ```cpp
 #include <string>
@@ -172,8 +162,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 We covered the case for `ref1` in the prior example. For `ref2`, this is similar to the `ref1` case, except we’re reapplying the `const` qualifier, so the deduced type is `const std::string`.
 

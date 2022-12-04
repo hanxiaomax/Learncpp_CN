@@ -6070,7 +6070,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <h2 id="_5">类型定义部分上豁免于单一定义原则</h2>
-<p>在课程 <a href="../2-7-Forward-declarations-and-definitions/">2.7 - 前向声明和定义</a>中，我们讨论了<a href="../one-definition-rule/">单一定义规则(one-definition-rule)</a>，该规则要求每个函数和全局变量在<strong>每个程序</strong>中只有一个定义。要在不包含定义的文件中使用给定函数或全局变量，需要向前声明(通常通过头文件实现)。这是可行的，因为当涉及到函数和非constexpr变量时，编译器只需要声明就可以 ，然后链接器会将所需的东西都链接起来。</p>
+<p>在课程 <a href="../2-7-Forward-declarations-and-definitions/">2.7 - 前向声明和定义</a>中，我们讨论了<a href="../one-definition-rule/">单一定义规则(one-definition-rule)</a>，该规则要求每个函数和全局变量在<strong>每个程序</strong>中只有一个定义。要在不包含定义的文件中使用给定函数或全局变量，需要<a href="../forward-declaration/">前向声明</a>(通常通过头文件实现)。这是可行的，因为当涉及到函数和非constexpr变量时，编译器只需要声明就可以 ，然后链接器会将所需的东西都链接起来。</p>
 <p>但是，这个做法并不适用于类型，因为编译器通常需要看到完整的类型定义才能使用给定的类型。我们必须能够将完整的类型定义导入到每个需要它的代码文件。</p>
 <p>为此，<mark>类型定义在某种程度上是不受限于单一定义规则的：类型的定义可以出现在多个代码文件中。</mark></p>
 <p>其实你已经在不经意之间这么做了：如果程序有两个代码文件，且都<code>#include &lt;iostream&gt;</code>，那么我们实际上将所有输入/输出类型定义都导入到了这两个文件中。</p>

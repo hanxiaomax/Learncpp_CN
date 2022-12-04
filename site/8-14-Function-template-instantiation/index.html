@@ -5962,7 +5962,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>当编译器遇到函数调用 <code>max&lt;int&gt;(1,2)</code> 时，它将确定<code>max&lt;int&gt;(int, int)</code> 的函数定义不存在。因此，编译器将使用 <code>max&lt;T&gt;</code> 函数模板来创建一个。</p>
-<p>从函数模板(带有模板类型)创建函数(带有特定类型)的过程称为<a href="../function-template-instantiation/">函数模板实例化</a>(或简称实例化)。当此过程由于函数调用而发生时，称为隐式实例化。实例化的函数通常称为函数实例(简称实例)或模板函数。函数实例在所有方面都是正常的函数。</p>
+<p>从函数模板(带有模板类型)创建函数(带有特定类型)的过程称为<a href="../function-template-instantiation/">函数模板实例化</a>(或简称实例化)。当此过程由于函数调用而发生时，称为隐式实例化。实例化的函数通常称为<a href="../function-instance/">函数实例</a>(简称实例)或模板函数。函数实例在所有方面都是正常的函数。</p>
 <p>实例化函数的过程很简单：编译器基本上是克隆函数模板，并用实际类型( <code>int</code> )替换模板类型(<code>T</code> )。</p>
 <p>因此，当我们调用<code>max&lt;int&gt;(1,2)</code> 时，被实例化的函数看起来像这样：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>

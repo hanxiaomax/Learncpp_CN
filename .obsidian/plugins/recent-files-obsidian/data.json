@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
-      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+      "basename": "3-2-The-debugging-process",
+      "path": "docs/3-2-The-debugging-process.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
     },
     {
       "basename": "Expression-parameters",
@@ -195,10 +199,6 @@
     {
       "basename": "snake-case",
       "path": "docs/snake-case.md"
-    },
-    {
-      "basename": "1-6-Uninitialized-variables-and-undefined-behavior",
-      "path": "docs/1-6-Uninitialized-variables-and-undefined-behavior.md"
     }
   ],
   "omittedPaths": [],

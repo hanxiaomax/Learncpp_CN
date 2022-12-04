@@ -5893,7 +5893,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>在<code>add()</code> 函数中，变量 <code>sum</code> 只被当做一个临时的占位符变量来使用。它并没有其他特别的功能——它唯一的功能就是保存表达式的结果并作为返回值返回。</p>
-<p>实际上，我们可以通过匿名对象编写一个更加简单的 <code>add()</code> 函数。[[anonymous-object|匿名对象]]本质上是一个没有名称的值。因为它们没有名字，所以在它们被创建后，我们没有办法去引用它们。因此，匿名对象只能具有“表达式作用域”，即它们在一个表达式中被创建、求值和销毁。</p>
+<p>实际上，我们可以通过匿名对象编写一个更加简单的 <code>add()</code> 函数。<a href="../anonymous-object/">匿名对象</a>本质上是一个没有名称的值。因为它们没有名字，所以在它们被创建后，我们没有办法去引用它们。因此，匿名对象只能具有“表达式作用域”，即它们在一个表达式中被创建、求值和销毁。</p>
 <p>下面例子中的 <code>add()</code> 函数使用了匿名对象：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>

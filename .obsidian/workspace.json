@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "26200bb7cf5235ea",
+            "id": "e02c5f817b4ba1be",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
+                "file": "docs/3-2-The-debugging-process.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
+                "file": "docs/3-2-The-debugging-process.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+                "file": "docs/3-2-The-debugging-process.md"
               }
             }
           }
@@ -151,9 +151,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "26200bb7cf5235ea",
+  "active": "e02c5f817b4ba1be",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
     "docs/Expression-parameters.md",
     "docs/19-x-Chapter-19-comprehensive-quiz.md",
     "docs/class-instance.md",
@@ -161,7 +162,6 @@
     "docs/8-14-Function-template-instantiation.md",
     "docs/function-instance.md",
     "docs/anonymous-object.md",
-    "docs/13-16-anonymous-objects.md",
-    "docs/13-17-nested-types-in-classes.md"
+    "docs/13-16-anonymous-objects.md"
   ]
 }

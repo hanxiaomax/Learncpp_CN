@@ -6386,7 +6386,7 @@ Your name is �P@�P@
 <p>问题发生的原因在于你通过<code>std::string</code> 创建了一个 <code>std::string_view</code>，然后又修改了 <code>std::string</code>。修改 <code>std::string</code> 会导致内部字符串被销毁或被替换（在代码的其他部分）。<code>std::string_view</code> 总是指向该字符串， 但该字符串可能已经不是它原来的模样或者已经不存在了。</p>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>确保<code>std::string_view</code>观察的字符串不会[[离开作用域(going out of scope)]]，也不会被修改。</p>
+<p>确保 <code>std::string_view</code> 观察的字符串不会 <a href="../going-out-of-scope/">离开作用域</a>，也不会被修改。</p>
 </div>
 <h2 id="data">使用<code>data()</code>函数来打开”窗户“</h2>
 <p><code>std::string_view</code> 观察的字符串，可以通过<code>data()</code> 函数来访问，它返回的结果是一个C风格的字符串。这种方式提供了一种快速访问被观察字符串的方法。但是它只能在<code>std::string_view</code> 视图没有被修改的时候使用(例如通过 <code>remove_prefix</code> 或 <code>remove_suffix</code>修改视图)，，该字符串是有空结束符的。</p>

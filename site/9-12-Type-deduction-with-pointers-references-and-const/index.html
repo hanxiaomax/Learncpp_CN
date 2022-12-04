@@ -5920,7 +5920,7 @@
   <h1>9.12 - 指针、引用和const的类型推断</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>In lesson<a href="../8-7-Type-deduction-for-objects-using-the%20auto-keyword/">8.7 - 使用 auto 关键字进行类型推断</a>we discussed how the <code>auto</code> keyword can be used to have the compiler deduce the type of a variable from the initializer:</p>
+<p>在 <a href="../8-7-Type-deduction-for-objects-using-the%20auto-keyword/">8.7 - 使用 auto 关键字进行类型推断</a> 中我们介绍了 <code>auto</code> 关键字，它告诉编译器根据初始化值对变量的类型进行推断：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5937,8 +5937,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>We also noted that by default, type deduction will drop <code>const</code> qualifiers:</p>
+<p>默认情况下，类型推断会丢弃 <code>const</code> 限定符：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5967,8 +5966,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Const can be reapplied by adding the <code>const</code> qualifier in the definition:</p>
+<p>如果需要，我们需要手动将 <code>const</code> 限定符重新添加到定义中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5997,9 +5995,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <h2 id="_1">类型推断会丢弃引用修饰符</h2>
-<p>In addition to dropping const qualifiers, type deduction will also drop references:</p>
+<p>除了删除const限定符外，类型推断也将删除引用：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6020,7 +6017,6 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <p>In the above example, variable <code>ref</code> is using type deduction. Although function <code>getRef()</code> returns a <code>std::string&amp;</code>, the reference qualifier is dropped, so the type of <code>ref</code>is deduced as <code>std::string</code>.</p>
 <p>Just like with the dropped <code>const</code> qualifier, if you want the deduced type to be a reference, you can reapply the reference at the point of definition:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
