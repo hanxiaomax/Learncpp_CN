@@ -57,14 +57,16 @@ int main()
 
 这段代码的唯一优点就是错的很明显：错误的答案通过第11行打印到屏幕上。这为我们的调查提供了一个起点。
 
-**Find the root cause:** On line 11, we can see that we’re passing in literals for arguments (5 and 3), so there is no room for error there. Since the inputs to function _add_ are correct, but the output isn’t, it’s pretty apparent that function _add_ must be producing the wrong value. The only statement in function _add_ is the return statement, which must be the culprit. We’ve found the problem line. Now that we know where to focus our attention, noticing that we’re subtracting instead of adding is something you’re likely to find via inspection.
+**找到问题的根因**：在第11行，我们可以看到传递的参数(5和3)是字面量，因此没有出错的空间。由于函数 `add` 的输入是正确的，但输出是错误的，很明显函数`add`一定计算出了错误的值。函数 `add` 中唯一的语句是`return`语句，它一定是罪魁祸首。方向没有错，现在我们知道注意力应该集中在哪里，随后便可以发现这里在做减法而不是加法，基本上一眼就可以看出来！
 
-**Understand the problem:** In this case, it’s obvious why the wrong value is being generated -- we’re using the wrong operator.
 
-**Determine a fix:** We’ll simply change _operator-_ to _operator+_.
+**理解问题**：在这里指针，很显然为什么会得到错误的值——因为使用了错误的操作符。
 
-**Repair the issue:** This is actually changing _operator-_ to _operator+_ and ensuring the program recompiles.
+**确定修复方法**：将减号改成加号即可。
 
-**Retest:** After implementing the change, rerunning the program will indicate that our program now produces the correct value of 8. For this simple program, that’s all the testing that’s needed.
+**修复问题**：在程序中将减号改为加号，确保程序可以编译。
 
-This example is trivial, but illustrates the basic process you’ll go through when diagnosing any program.
+**测试**：在实现更改之后，重新运行程序，确定得到了正确值：8。对于这个简单的程序，这就是所有需要的测试。
+
+
+这个示例很简单，但说明了对任何程序进行排错(debug)时应该经历的基本过程。

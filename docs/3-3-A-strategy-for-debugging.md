@@ -14,7 +14,7 @@ When debugging a program, in most cases the vast majority of your time will be s
 
 In this lesson, we’ll start exploring how to find errors.
 
-## Finding problems via code inspection
+## 通过代码检视找到问题
 
 Let’s say you’ve noticed a problem, and you want to track the cause of that specific problem down. In many cases (especially in smaller programs), we can quickly home in on the proximity of where the issue is.
 
@@ -41,7 +41,7 @@ First, there’s a lot more code to look at. Looking at every line of code in a 
 
 Finally, bugs can be caused by making bad assumptions. It’s almost impossible to visually spot a bug caused by a bad assumption, because you’re likely to make the same bad assumption when inspecting the code, and not notice the error. So if we have an issue that we can’t find via code inspection, how do we find it?
 
-## Finding problems by running the program
+## 通过运行程序找到问题
 
 Fortunately, if we can’t find an issue via code inspection, there is another avenue we can take: we can watch the behavior of the program as it runs, and try to diagnose the issue from that. This approach can be generalized as:
 
@@ -51,7 +51,7 @@ Fortunately, if we can’t find an issue via code inspection, there is another a
 
 For the rest of this chapter, we’ll discuss techniques to facilitate this approach.
 
-## Reproducing the problem
+## 复现问题
 
 The first and most important step in finding a problem is to be able to _reproduce the problem_. The reason is simple: it’s extremely hard to find an issue unless you can observe it occurring.
 
@@ -96,7 +96,3 @@ Eventually, with enough guesses and some good technique, we can home in on the e
 What guessing strategy you want to use is up to you -- the best one depends on what type of bug it is, so you’ll likely want to try many different approaches to narrow down the issue. As you gain experience in debugging issues, your intuition will help guide you.
 
 So how do we “make guesses”? There are many ways to do so. We’re going to start with some simple approaches in the next chapter, and then we’ll build on these and explore others in future chapters.
-
-[
-
-](https://www.learncpp.com/cpp-tutorial/basic-debugging-tactics/)

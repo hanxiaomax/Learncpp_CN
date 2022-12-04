@@ -37,7 +37,7 @@
 ## 3. 调试 C++ 程序 🚧
 
 - [x] [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误]]
-- [ ] [[3-2-The-debugging-process|3.2 - 代码调试步骤]]
+- [x] [[3-2-The-debugging-process|3.2 - 代码调试步骤]]
 - [ ] [[3-3-A-strategy-for-debugging|3.3 - 代码调试策略]]
 - [ ] [[3-4-Basic-debugging-tactics|3.4 — 基本代码调试技术]]
 - [ ] [[3-5-More-debugging-tactics|3.5 - 更多代码调试技术]]

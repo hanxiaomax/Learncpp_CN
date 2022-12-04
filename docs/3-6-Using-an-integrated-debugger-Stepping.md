@@ -18,7 +18,7 @@ Behind the techniques we’ve shown so far is an unstated assumption: that once 
 
 However, what if we were able to remove this assumption? Fortunately, most modern IDEs come with an integrated tool called a debugger that is designed to do exactly this.
 
-## The debugger
+## 调试器
 
 A debugger is a computer program that allows the programmer to control how another program executes and examine the program state while that program is running. For example, the programmer can use a debugger to execute a program line by line, examining the value of variables along the way. By comparing the actual value of variables to what is expected, or watching the path of execution through the code, the debugger can help immensely in tracking down semantic (logic) errors.
 
@@ -58,7 +58,7 @@ If you’re compiling your project using a release configuration instead, the fu
 
 	There have been reports that the Code::Blocks integrated debugger (GDB) can have issues recognizing some file paths that contain spaces or non-English characters in them. If the debugger appears to be malfunctioning as you go through these lessons, that could be a reason why.
 
-## Stepping
+## 单步调试
 
 We’re going to start our exploration of the debugger by first examining some of the debugging tools that allow us to control the way a program executes.
 

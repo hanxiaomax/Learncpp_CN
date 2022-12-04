@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "e02c5f817b4ba1be",
+            "id": "60d2c48a4359908e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/3-2-The-debugging-process.md",
+                "file": "docs/4-x-Chapter-4-summary-and-quiz.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/3-2-The-debugging-process.md",
+                "file": "docs/4-x-Chapter-4-summary-and-quiz.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/3-2-The-debugging-process.md"
+                "file": "docs/4-x-Chapter-4-summary-and-quiz.md"
               }
             }
           }
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e02c5f817b4ba1be",
+  "active": "60d2c48a4359908e",
   "lastOpenFiles": [
+    "docs/symbolic-constants.md",
+    "docs/4-x-Chapter-4-summary-and-quiz.md",
+    "docs/4-13-Const-variables-and-symbolic-constants.md",
     "docs/MOC.md",
-    "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
-    "docs/Expression-parameters.md",
-    "docs/19-x-Chapter-19-comprehensive-quiz.md",
-    "docs/class-instance.md",
-    "docs/8-x-Chapter-8-summary-and-quiz.md",
-    "docs/8-14-Function-template-instantiation.md",
-    "docs/function-instance.md",
-    "docs/anonymous-object.md",
-    "docs/13-16-anonymous-objects.md"
+    "docs/constant expression.md",
+    "docs/3-x-Chapter-3-summary-and-quiz.md",
+    "docs/3-10-Finding-issues-before-they-become-problems.md",
+    "docs/3-6-Using-an-integrated-debugger-Stepping.md",
+    "docs/3-5-More-debugging-tactics.md",
+    "docs/3-4-Basic-debugging-tactics.md"
   ]
 }

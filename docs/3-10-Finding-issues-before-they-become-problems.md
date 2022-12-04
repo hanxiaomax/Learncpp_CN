@@ -11,7 +11,7 @@ When you make a semantic error, that error may or may not be immediately noticea
 
 So what can we do about that?
 
-Don’t make errors
+## 不要犯错
 
 Well, the best thing is to not make errors in the first place. Here’s an incomplete list of things that can help avoid making errors:
 
@@ -23,7 +23,7 @@ Well, the best thing is to not make errors in the first place. Here’s an incom
 -   Prefer using the standard library to writing your own code, when possible
 -   Comment your code liberally
 
-Refactoring your code
+## 代码重构
 
 As you add new capabilities to your programs (“behavioral changes”), you will find that some of your functions grow in length. As functions get longer, they get both more complex and harder to understand.
 
@@ -31,11 +31,11 @@ One way to address this is to break a single long function into multiple shorter
 
 So how long is too long for a function? A function that takes up one vertical screen worth of code is generally regarded as far too long -- if you have to scroll to read the whole function, the function’s comprehensibility drops significantly. But the shorter the better -- functions less than ten lines are good. Functions that are less than five lines are even better.
 
-Key insight
+!!! tldr "关键信息"
 
-When making changes to your code, make behavioral changes OR structural changes, and then retest for correctness. Making behavioral and structural changes at the same time tends to lead to more errors as well as errors that are harder to find.
+	When making changes to your code, make behavioral changes OR structural changes, and then retest for correctness. Making behavioral and structural changes at the same time tends to lead to more errors as well as errors that are harder to find.
 
-An introduction to defensive programming
+## 防御式编程简介
 
 Errors can be not only of your own making (e.g. incorrect logic), but also occur when your users use the application in a way that you did not anticipate. For example, if you ask the user to enter an integer, and they enter a letter instead, how does your program behave in such a case? Unless you anticipated this, and added some error handling for this case, probably not very well.
 
@@ -51,7 +51,7 @@ The best way to do this is to program a little bit at a time, and then test your
 
 However, there are a few other techniques we can also use.
 
-An introduction to testing functions
+## 测试函数简介
 
 One common way to help uncover issues with your program is to write testing functions to “exercise” the code you’ve written. Here’s a primitive attempt, more for illustrative purposes than anything:
 
@@ -88,7 +88,7 @@ This is a primitive form of unit testing, which is a software testing method by
 
 As with logging frameworks, there are many 3rd party unit testing frameworks that can be used. It’s also possible to write your own, though we’ll need more language features at our disposal to do the topic justice. We’ll come back to some of this in a future lesson.
 
-An introduction to constraints
+## An introduction to constraints
 
 Constraints-based techniques involve the addition of some extra code (that can be compiled out in a non-debug build, if desired) to check that some set of assumptions or expectations are not violated.
 
@@ -96,7 +96,7 @@ For example, if we were writing a function to calculate the factorial of a numbe
 
 One common method of doing this is via _assert_ and _static_assert_, which we cover in lesson [7.17 -- Assert and static_assert](https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/).
 
-Shotgunning for general issues
+## Shotgunning for general issues
 
 Programmers tend to make certain kinds of common mistakes, and some of those mistakes can be discovered by programs trained to look for them. These programs, generally known as static analysis tools (sometimes informally called _linters_) are programs that analyze your code to identify specific semantic issues (in this context, _static_means that these tools analyze the source code). The issues found by static analysis tools may or may not be the cause of any particular problem you are having, but may help point out fragile areas of code or issues that can be problematic in certain circumstances.
 
@@ -104,9 +104,9 @@ You already have one static analysis tool at your disposal -- your compiler! In 
 
 [Many static analysis tools exist](https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis#C,_C++), some of which can identify over 300 types of programming errors. And on large programs, this can surface tens or hundreds of potential issues. On our small academic programs, use of a static analysis tool is optional (but may help you find areas where your code is non-compliant with best practices). On larger non-academic programs, use of a static analysis tool is highly recommended.
 
-Best practice
+!!! success "最佳实践"
 
-Use a static analysis tool on your programs to help find areas where your code is non-compliant with best practices.
+	Use a static analysis tool on your programs to help find areas where your code is non-compliant with best practices.
 
 For Visual Studio users
 

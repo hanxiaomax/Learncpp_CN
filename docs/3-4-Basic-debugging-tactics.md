@@ -11,7 +11,7 @@ tags:
 
 In the previous lesson, we explored a strategy for finding issues by running our programs and using guesswork to home in on where the problem is. In this lesson, we’ll explore some basic tactics for actually making those guesses and collecting information to help find issues.
 
-## Debugging tactic #1: Commenting out your code
+## Debug 技术 1：注释掉代码
 
 Let’s start with an easy one. If your program is exhibiting erroneous behavior, one way to reduce the amount of code you have to search through is to comment some code out and see if the issue persists. If the issue remains, the commented out code wasn’t responsible.
 
@@ -50,7 +50,7 @@ However, if the problem persists (which is more likely), then we know _doMainte
 
 Don’t forget which functions you’ve commented out so you can uncomment them later!
 
-## Debugging tactic #2: Validating your code flow
+## Debug 技术 2：验证代码流程
 
 Another problem common in more complex programs is that the program is calling a function too many or too few times (including not at all).
 
@@ -86,11 +86,15 @@ You may need to disable “Treat warnings as errors” for the above to compile.
 
 Although we expect this program to print the value _4_, it should print the value:
 
+```
 1
+```
 
 On Visual Studio (and possibly some other compilers), it may print the following instead:
 
+```
 00101424
+```
 
 Let’s add some debugging statements to these functions:
 
@@ -114,14 +118,16 @@ std::cerr << "main() called\n";
 
 COPY
 
-Tip
+!!! tip "小贴士"
 
-When adding temporary debug statements, it can be helpful to not indent them. This makes them easier to find for removal later.
+	When adding temporary debug statements, it can be helpful to not indent them. This makes them easier to find for removal later.
 
 Now when these functions execute, they’ll output their names, indicating that they were called:
 
+```cpp
 main() called
 1
+```
 
 Now we can see that function _getValue_ was never called. There must be some problem with the code that calls the function. Let’s take a closer look at that line:
 
@@ -163,7 +169,7 @@ getValue() called
 
 And we can remove the temporary debugging statements.
 
-## Debugging tactic #3: Printing values
+## Debug 技术 3： 打印值
 
 With some types of bugs, the program may be calculating or passing the wrong value.
 
@@ -210,10 +216,12 @@ COPY
 
 Here’s some output from this program:
 
+```
 Enter a number: 4
 Enter a number: 3
 4 + 3
 The answer is: 9
+```
 
 That’s not right. Do you see the error? Even in this short program, it can be hard to spot. Let’s add some code to debug our values:
 

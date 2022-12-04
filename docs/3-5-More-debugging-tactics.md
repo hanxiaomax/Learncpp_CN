@@ -84,7 +84,7 @@ Now we can enable debugging simply by commenting / uncommenting _#define ENABLE
 
 This addresses the issue with having to remove debug statements and the risk in doing so, but at the cost of even more code clutter. Another downside of this approach is that if you make a typo (e.g. misspell “DEBUG”) or forget to include the header into a code file, some or all of the debugging for that file may not be enabled. So although this is better than the unconditionalized version, there’s still room to improve.
 
-## Using a logger
+## 使用日志
 
 An alternative approach to conditionalized debugging via the preprocessor is to send your debugging information to a log file. A log file is a file (normally stored on disk) that records events that occur in software. The process of writing information to a log file is called logging. Most applications and operating systems write log files that can be used to help diagnose issues that occur.
 
