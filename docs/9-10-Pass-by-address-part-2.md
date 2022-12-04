@@ -12,9 +12,9 @@ tags:
 
 本节课继续[[9-9-Pass-by-address|9.9 - 按地址传递]]的内容。
 
-## Pass by address for “optional” arguments
+## “可选”参数按地址传递
 
-One of the more common uses for pass by address is to allow a function to accept an “optional” argument. This is easier to illustrate by example than to describe:
+传递地址的一个更常见的用途是允许函数接受一个“可选”参数。举例说明比描述更容易：
 
 ```cpp
 #include <iostream>
@@ -37,18 +37,16 @@ int main()
 }
 ```
 
-COPY
-
-This example prints:
+程序输出：
 
 ```
 Hello guest
 Hello Joe
 ```
 
-In this program, the `greet()` function has one parameter that is passed by address and defaulted to `nullptr`. Inside `main()`, we call this function twice. The first call, we don’t know who the user is, so we call `greet()` without an argument. The `name` parameter defaults to `nullptr`, and the greet function substitutes in the name “guest”. For the second call, we now have a valid user, so we call `greet(&joe)`. The `name` parameter receives the address of `joe`, and can use it to print the name “Joe”.
+在这个程序中，`greet()` 函数的参数是按地址传递的，且具有默认值 `nullptr`。在  `main()` 函数中，我们两次调用该函数。第一次调用时，我们不知道用户是谁，所以调用`greet()` 时没有传递任何[[arguments|实参]]，此时参数 `name` 使用默认值 `nullptr`，函数打印 “guest”。 第二次调用时，我们传递了一个有效的用户—— `greet(&joe)`。此时 `name` 参数通过地址得到了`joe`，函数使用它打印了用户名 “Joe”。
 
-However, in many cases, function overloading is a better alternative to achieve the same result:
+然而，在许多情况下，函数重载是实现相同结果的更好选择：
 
 ```cpp
 #include <iostream>
@@ -76,13 +74,12 @@ int main()
 }
 ```
 
-COPY
 
-This has a number of advantages: we no longer have to worry about null dereferences, and we could pass in a string literal if we wanted.
+这样做有很多好处：我们不再需要担心[[dereference-operator|解引用]]空指针，而且如果需要的话，我们可以传入字符串字面量。
 
-## Changing what a pointer parameter points at
+## 改变指针参数指向的值
 
-When we pass an address to a function, that address is copied from the argument into the pointer parameter (which is fine, because copying an address is fast). Now consider the following program:
+当将地址传递给函数时，该地址将从实参复制到指针形参中(这很好，因为复制地址非常快)。现在考虑下面的程序:
 
 ```cpp
 #include <iostream>
@@ -107,9 +104,7 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序输出：
 
 ```
 ptr is non-null
