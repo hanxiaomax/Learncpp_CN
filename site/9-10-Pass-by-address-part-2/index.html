@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pass-by-address-for-optional-arguments" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -2716,42 +2716,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pass-by-address-for-optional-arguments" class="md-nav__link">
-    Pass by address for “optional” arguments
+  <a href="#_1" class="md-nav__link">
+    “可选”参数按地址传递
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#changing-what-a-pointer-parameter-points-at" class="md-nav__link">
-    Changing what a pointer parameter points at
+  <a href="#_2" class="md-nav__link">
+    改变指针参数指向的值
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#pass-by-address-by-reference" class="md-nav__link">
-    Pass by address… by reference?
+    通过引用传地址？Pass by address… by reference?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-using-0-or-null-is-no-longer-preferred-optional" class="md-nav__link">
-    Why using 0 or NULL is no longer preferred (optional)
+  <a href="#0-null" class="md-nav__link">
+    为什么现在不推荐使用 0 或 NULL 表示空指针了？（选读）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stdnullptr_t-optional" class="md-nav__link">
-    std::nullptr_t (optional)
+  <a href="#stdnullptr_t" class="md-nav__link">
+    std::nullptr_t (选读)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     其实都是按值传递
   </a>
   
@@ -5822,42 +5822,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pass-by-address-for-optional-arguments" class="md-nav__link">
-    Pass by address for “optional” arguments
+  <a href="#_1" class="md-nav__link">
+    “可选”参数按地址传递
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#changing-what-a-pointer-parameter-points-at" class="md-nav__link">
-    Changing what a pointer parameter points at
+  <a href="#_2" class="md-nav__link">
+    改变指针参数指向的值
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#pass-by-address-by-reference" class="md-nav__link">
-    Pass by address… by reference?
+    通过引用传地址？Pass by address… by reference?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-using-0-or-null-is-no-longer-preferred-optional" class="md-nav__link">
-    Why using 0 or NULL is no longer preferred (optional)
+  <a href="#0-null" class="md-nav__link">
+    为什么现在不推荐使用 0 或 NULL 表示空指针了？（选读）
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stdnullptr_t-optional" class="md-nav__link">
-    std::nullptr_t (optional)
+  <a href="#stdnullptr_t" class="md-nav__link">
+    std::nullptr_t (选读)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     其实都是按值传递
   </a>
   
@@ -5920,8 +5920,8 @@
   <h1>9.10 - 按地址传递 Part2</h1>
 
 <p>本节课继续<a href="../9-9-Pass-by-address/">9.9 - 按地址传递</a>的内容。</p>
-<h2 id="pass-by-address-for-optional-arguments">Pass by address for “optional” arguments</h2>
-<p>One of the more common uses for pass by address is to allow a function to accept an “optional” argument. This is easier to illustrate by example than to describe:</p>
+<h2 id="_1">“可选”参数按地址传递</h2>
+<p>传递地址的一个更常见的用途是允许函数接受一个“可选”参数。举例说明比描述更容易：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5958,14 +5958,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This example prints:</p>
+<p>程序输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Hello guest
 Hello Joe
 </code></pre></div></td></tr></table></div>
-<p>In this program, the <code>greet()</code> function has one parameter that is passed by address and defaulted to <code>nullptr</code>. Inside <code>main()</code>, we call this function twice. The first call, we don’t know who the user is, so we call <code>greet()</code> without an argument. The <code>name</code> parameter defaults to <code>nullptr</code>, and the greet function substitutes in the name “guest”. For the second call, we now have a valid user, so we call <code>greet(&amp;joe)</code>. The <code>name</code> parameter receives the address of <code>joe</code>, and can use it to print the name “Joe”.</p>
-<p>However, in many cases, function overloading is a better alternative to achieve the same result:</p>
+<p>在这个程序中，<code>greet()</code> 函数的参数是按地址传递的，且具有默认值 <code>nullptr</code>。在  <code>main()</code> 函数中，我们两次调用该函数。第一次调用时，我们不知道用户是谁，所以调用<code>greet()</code> 时没有传递任何<a href="../arguments/">实参</a>，此时参数 <code>name</code> 使用默认值 <code>nullptr</code>，函数打印 “guest”。 第二次调用时，我们传递了一个有效的用户—— <code>greet(&amp;joe)</code>。此时 <code>name</code> 参数通过地址得到了<code>joe</code>，函数使用它打印了用户名 “Joe”。</p>
+<p>然而，在许多情况下，函数重载是实现相同结果的更好选择：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6012,10 +6011,9 @@ Hello Joe
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This has a number of advantages: we no longer have to worry about null dereferences, and we could pass in a string literal if we wanted.</p>
-<h2 id="changing-what-a-pointer-parameter-points-at">Changing what a pointer parameter points at</h2>
-<p>When we pass an address to a function, that address is copied from the argument into the pointer parameter (which is fine, because copying an address is fast). Now consider the following program:</p>
+<p>这样做有很多好处：我们不再需要担心<a href="../dereference-operator/">解引用</a>空指针，而且如果需要的话，我们可以传入字符串字面量。</p>
+<h2 id="_2">改变指针参数指向的值</h2>
+<p>当将地址传递给函数时，该地址将从实参复制到指针形参中(这很好，因为复制地址非常快)。现在考虑下面的程序:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6056,16 +6054,16 @@ Hello Joe
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
+<p>程序输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>ptr is non-null
 ptr is non-null
 </code></pre></div></td></tr></table></div>
-<p>As you can see, changing the address held by the pointer parameter had no impact on the address held by the argument (<code>ptr</code> still points at <code>x</code>). When function <code>nullify()</code> is called, <code>ptr2</code> receives a copy of the address passed in (in this case, the address held by <code>ptr</code>, which is the address of <code>x</code>). When the function changes what <code>ptr2</code> points at, this only affects the copy held by <code>ptr2</code>.</p>
-<p>So what if we want to allow a function to change what a pointer argument points to?</p>
-<h2 id="pass-by-address-by-reference">Pass by address… by reference?</h2>
-<p>Yup, it’s a thing. Just like we can pass a normal variable by reference, we can also pass pointers by reference. Here’s the same program as above with <code>ptr2</code> changed to be a reference to an address:</p>
+<p>如你所见，修改<a href="../parameters/">形参</a>指针的地址对<a href="../arguments/">实参</a>没有影响(<code>ptr</code> 仍然指向 <code>x</code>)。当调用函数 <code>nullify()</code> 被调用时 <code>ptr2</code> 拷贝了一份 <code>ptr</code> 所持有的地址（指向<code>x</code>）。当函数修改 <code>ptr2</code> 的值时，它只是修改了这份拷贝的副本罢了。</p>
+<p>如果我们想让函数改变指针参数的指向，该怎么办呢？</p>
+<h2 id="pass-by-address-by-reference">通过引用传地址？Pass by address… by reference?</h2>
+<p>是的，可以这么做。就像可以通过引用传递普通变量一样，也可以通过<a href="../pass-by-reference/">按引用传递</a>指针。
+在下面的例子中，我们通过引用传递 <code>ptr2</code> 指向的地址：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6104,23 +6102,22 @@ ptr is non-null
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
+<p>运行结果：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>ptr is non-null
 ptr is null
 </code></pre></div></td></tr></table></div>
-<p>Because <code>refptr</code> is now a reference to a pointer, when <code>ptr</code> is passed as an argument, <code>refptr</code> is bound to <code>ptr</code>. This means any changes to <code>refptr</code>are made to <code>ptr</code>.</p>
+<p>因为 <code>refptr</code> 是一个指针的引用，所以当 <code>ptr</code> 传入时，<code>refptr</code> 被绑定<code>ptr</code>。这意味着任何对 <code>refptr</code> 的修改都会作用于 <code>ptr</code>。</p>
 <div class="admonition cite">
 <p class="admonition-title">题外话</p>
-<p>Because references to pointers are fairly uncommon, it can be easy to mix up the syntax (is it <code>int*&amp;</code> or <code>int&amp;*</code>?). The good news is that if you do it backwards, the compiler will error because you can’t have a pointer to a reference (because pointers must hold the address of an object, and references aren’t objects). Then you can switch it around.</p>
+<p>因为对指针的引用相当罕见，其语法很容易混淆(它是 <code>int*&amp;</code> 还是 <code>int&amp;*</code>  ?)好消息是，如果反向操作，编译器将出错，因为不能有指向引用的指针(因为指针必须保存对象的地址，而引用不是对象)。然后你可以把它换过来。</p>
 </div>
-<h2 id="why-using-0-or-null-is-no-longer-preferred-optional">Why using <code>0</code> or <code>NULL</code> is no longer preferred (optional)</h2>
-<p>In this subsection, we’ll explain why using <code>0</code> or <code>NULL</code> is no longer preferred.</p>
-<p>The literal <code>0</code> can be interpreted as either an integer literal, or as a null pointer literal. In certain cases, it can be ambiguous which one we intend -- and in some of those cases, the compiler may assume we mean one when we mean the other -- with unintended consequences to the behavior of our program.</p>
-<p>The definition of preprocessor macro <code>NULL</code> is not defined by the language standard. It can be defined as <code>0</code>, <code>0L</code>, <code>((void*)0)</code>, or something else entirely.</p>
-<p>In lesson <a href="../8-9-Introduction-to-function-overloading/">8.9 - 函数重载</a>we discussed that functions can be overloaded (multiple functions can have the same name, so long as they can be differentiated by the number or type of parameters). The compiler can figure out which overloaded function you desire by the arguments passed in as part of the function call.</p>
-<p>When using <code>0</code> or <code>NULL</code>, this can cause problems:</p>
+<h2 id="0-null">为什么现在不推荐使用 <code>0</code> 或 <code>NULL</code> 表示空指针了？（选读）</h2>
+<p>在本小节中，我们将解释为什么不再使用<code>0</code> 或<code>NULL</code> 。</p>
+<p>字面量“<code>0</code>”既可以被解释为整数<a href="../literals/">字面量</a>，也可以被解释为空指针字面量。在某些情况下，想要区分其准确含义并不容易——在一些情况下，编译器可能认为我们指的是其中一个含义，而我们指的是另一个——这会给程序的行为带来意想不到的后果。</p>
+<p><a href="../preprocessor/">预处理器</a>宏 <code>NULL</code> 并没有在标准中明确定义，它的值可能是 <code>0</code>, <code>0L</code>, <code>((void*)0)</code>, 或其他值。</p>
+<p>在课程<a href="../8-9-Introduction-to-function-overloading/">8.9 - 函数重载</a>中，我们介绍了函数<a href="../overload/">重载</a>(多个函数可以具有相同的名称，只要它们可以通过形参的数量或类型来区分)。编译器可以通过作为函数调用一部分传入的参数来确定您想要哪个重载函数。</p>
+<p>这种情况下使用 <code>0</code> 或 <code>NULL</code> 时可能带来问题：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6151,14 +6148,14 @@ ptr is null
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span><span class="c1"> // for NULL</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span><span class="c1"> // 定义了 NULL</span><span class="cp"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// this function accepts an integer</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// 函数接受整数</span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;print(int): &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="c1">// this function accepts an integer pointer</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="c1">// 接受一个整型指针</span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;print(int*): &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;non-null</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;null</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -6168,21 +6165,20 @@ ptr is null
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w">  </span><span class="c1">// always calls print(int*) because ptr has type int* (good)</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// always calls print(int) because 0 is an integer literal (hopefully this is what we expected)</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w">  </span><span class="c1">// 总是调用 print(int*) 因为ptr类型为 int* (good)</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">    </span><span class="c1">// 总是调用 print(int) 因为 0 是一个整型字面量 (但愿这是我们所希望的)</span>
 
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// this statement could do any of the following:</span>
-<span class="w">    </span><span class="c1">// call print(int) (Visual Studio does this)</span>
-<span class="w">    </span><span class="c1">// call print(int*)</span>
-<span class="w">    </span><span class="c1">// result in an ambiguous function call compilation error (gcc and Clang do this)</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// 这个语句可能做以下任何事：</span>
+<span class="w">    </span><span class="c1">// 调用 print(int) (Visual Studio 会这么做)</span>
+<span class="w">    </span><span class="c1">// 调用 print(int*)</span>
+<span class="w">    </span><span class="c1">// 导致歧义，引发编译错误(gcc 和 Clang 会这么做)</span>
 
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// always calls print(int*)</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// 总是调用 print(int*)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>On the author’s machine (using Visual Studio), this prints:</p>
+<p>在笔者的电脑上(使用 Visual Studio)，打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6191,11 +6187,11 @@ print(int): 0
 print(int): 0
 print(int*): null
 </code></pre></div></td></tr></table></div>
-<p>When passing integer value <code>0</code> as a parameter, the compiler will prefer <code>print(int)</code> over <code>print(int*)</code>. This can lead to unexpected results when we intended <code>print(int*)</code> to be called with a null pointer argument.</p>
-<p>In the case where <code>NULL</code> is defined as value <code>0</code>, <code>print(NULL)</code> will also call <code>print(int)</code>, not <code>print(int*)</code> like you might expect for a null pointer literal. In cases where <code>NULL</code> is not defined as <code>0</code>, other behavior might result, like a call to <code>print(int*)</code> or a compilation error.</p>
-<p>Using <code>nullptr</code> removes this ambiguity (it will always call <code>print(int*)</code>), since <code>nullptr</code> will only match a pointer type.</p>
-<h2 id="stdnullptr_t-optional"><code>std::nullptr_t</code> (optional)</h2>
-<p>Since <code>nullptr</code> can be differentiated from integer values in function overloads, it must have a different type. So what type is <code>nullptr</code>? The answer is that <code>nullptr</code> has type <code>std::nullptr_t</code> (defined in header <code>&lt;cstddef&gt;</code>). <code>std::nullptr_t</code> can only hold one value: <code>nullptr</code>! While this may seem kind of silly, it’s useful in one situation. If we want to write a function that accepts only a <code>nullptr</code> literal argument, we can make the parameter a <code>std::nullptr_t</code>.</p>
+<p>当传递参数0时，编译器会优先调用 <code>print(int)</code> 而不是 <code>print(int*)</code>，这可能会导致问题，如果我们的本意是希望使用空指针并调用 <code>print(int*)</code> 的话。</p>
+<p>在 <code>NULL</code> 被定义为值 <code>0</code> 的情况下，<code>print(NULL)</code> 也会调用 <code>print(int)</code> ，而不是 <code>print(int*)</code> ，就像你期望的NULL指针字面量一样。在 <code>NULL</code> 没有定义为 <code>0</code> 的情况下，可能会导致其他行为，如调用 <code>print(int*)</code> 或编译错误。</p>
+<p>使用 <code>nullptr</code> 可以避免这种二义性(它总是会导致函数 <code>print(int*)</code> 被调用)，因为  <code>nullptr</code> 只能匹配指针类型。</p>
+<h2 id="stdnullptr_t"><code>std::nullptr_t</code> (选读)</h2>
+<p>因为 <code>nullptr</code> 可以在重载函数中区分与整型值，所以它必定属于另外一种类型。那么，<code>nullptr</code> 是什么类型呢？实际上， <code>nullptr</code> 的类型为 <code>std::nullptr_t</code> (定义在 <code>&lt;cstddef&gt;</code>)。<code>std::nullptr_t</code> 只能保存一个值：<code>nullptr</code>！尽管有人觉得这很蠢，但是有一种情况下是有用的。如果我们需要定义一个函数并且只接收 <code>nullptr</code> <strong>字面量</strong>实参，则可以让形参为 <code>std::nullptr_t</code> 类型。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6250,15 +6246,14 @@ print(int*): null
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, the function call <code>print(nullptr)</code> resolves to the function <code>print(std::nullptr_t)</code> over <code>print(int*)</code> because it doesn’t require a conversion.</p>
-<p>The one case that might be a little confusing is when we call <code>print(ptr)</code> when <code>ptr</code> is holding the value <code>nullptr</code>. Remember that function overloading matches on types, not values, and <code>ptr</code> has type <code>int*</code>. Therefore, <code>print(int*)</code> will be matched. <code>print(std::nullptr_t)</code> isn’t even in consideration in this case, as pointer types will not implicitly convert to a <code>std::nullptr_t</code>.</p>
-<p>You probably won’t ever need to use this, but it’s good to know, just in case.</p>
-<h2 id="_1">其实都是按值传递</h2>
-<p>Now that you understand the basic differences between passing by reference, address, and value, let’s get reductionist for a moment. :)</p>
-<p>While the compiler can often optimize references away entirely, there are cases where this is not possible and a reference is actually needed. References are normally implemented by the compiler using pointers. This means that behind the scenes, pass by reference is essentially just a pass by address (with access to the reference doing an implicit dereference).</p>
-<p>And in the previous lesson, we mentioned that pass by address just copies an address from the caller to the called function -- which is just passing an address by value.</p>
-<p>Therefore, we can conclude that C++ really passes everything by value! The properties of pass by address (and reference) come solely from the fact that we can dereference the passed address to change the argument, which we can not do with a normal value parameter!</p>
+<p>在上面的例子中，函数调用 <code>print(nullptr)</code> 会被解析为 <code>print(std::nullptr_t)</code> 而不是 <code>print(int*)</code> ，因为前者无需类型转换即可匹配。</p>
+<p>有一种情况可能会让人有点困惑，那就是当 <code>ptr</code> 值为<code>nullptr</code>时调用 <code>print(ptr)</code> 。记住，函数重载匹配的是类型，而不是值，<code>ptr</code> 的类型是 <code>int*</code> 。因此，<code>print(int*)</code> 将被匹配。<code>print(std::nullptr_t)</code> 在这种情况下甚至不需要考虑，因为指针类型不会隐式转换为 <code>std::nullptr_t</code> 。</p>
+<p>你可能永远都不需要使用它，但为了以防万一，知道它是很好的。</p>
+<h2 id="_3">其实都是按值传递</h2>
+<p>现在您已经理解了通过引用、地址和值传递之间的基本区别，让我们暂时简化一下。：）</p>
+<p>虽然编译器通常可以将引用优化掉，但在有些情况下，这是不可能的，而引用实际上是需要的。引用通常由编译器使用指针实现。这意味着，在幕后，引用传递本质上只是地址传递(对引用的访问执行隐式解引用)。</p>
+<p>在上一课中，我们提到过，通过地址传递只是将一个地址从调用者复制到被调用函数——它只是按值传递一个地址。</p>
+<p>因此，我们可以得出这样的结论：C++确实是按值传递所有内容的！ <a href="../pass-by-address/">按地址传递</a>或<a href="../pass-by-reference/">按引用传递</a>的参数，其特别之处只在于传递进来的地址可以被解引用，所以能通过它修改实参，而普通形参不能做到这一点。</p>
 
 
               </article>

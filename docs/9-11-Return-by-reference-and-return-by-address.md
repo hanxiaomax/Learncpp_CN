@@ -8,38 +8,44 @@ type: translation
 tags:
 - reference
 - address
+- return
 ---
 
-In previous lessons, we discussed that when passing an argument by value, a copy of the argument is made into the function parameter. For fundamental types (which are cheap to copy), this is fine. But copying is typically expensive for class types (such as `std::string`). We can avoid making an expensive copy by utilizing passing by (const) reference (or pass by address) instead.
+??? note "Key Takeaway"
 
-We encounter a similar situation when returning by value: a copy of the return value is passed back to the caller. If the return type of the function is a class type, this can be expensive.
+- 引用返回的对象必须存在于返回引用的函数的作用域之外，否则将导致悬空引用。永远不要通过引用返回局部变量
+- 不要按引用返回非const的局部静态变量
+- 如果函数返回一个引用，并且该引用用于初始化或赋值给一个非引用变量，则返回值将被复制(就像它是通过value返回的一样)。
+
+
+
+在上节课中，我们介绍过，当实参[[pass-by-value|按值传递]]时，实参的值会被**拷贝**一份到[[parameters|形参]]。 对于基本类型来说（拷贝开销小），这没有什么问题。但是对于[[class-type|类类型]]来说，拷贝开销通常会很大（例如 `std::string`)。通过[[pass-by-reference|按引用传递]]（通常为`const`）或按[[pass-by-address|按地址传递]]可以避免这种开销。
+
+在按值返回时，我们会遇到类似的情况：返回值的副本被传递回调用者。如果函数的返回类型是类类型，则代价可能很高。
 
 ```cpp
-std::string returnByValue(); // returns a copy of a std::string (expensive)
+std::string returnByValue(); // 返回 std::string 的拷贝(expensive)
 ```
 
-COPY
+## 按引用返回
 
-## Return by reference
-
-In cases where we’re passing a class type back to the caller, we may (or may not) want to return by reference instead. Return by reference returns a reference that is bound to the object being returned, which avoids making a copy of the return value. To return by reference, we simply define the return value of the function to be a reference type:
+在将类类型传递回调用者的情况下，我们可能(也可能不)希望[[return-by-reference|按引用返回]]。通过引用返回返回一个绑定到被返回对象的引用，这样就避免了对返回值进行复制。要通过引用返回，只需将函数的返回值定义为引用类型:
 
 ```cpp
 std::string&       returnByReference(); // returns a reference to an existing std::string (cheap)
 const std::string& returnByReferenceToConst(); // returns a const reference to an existing std::string (cheap)
 ```
 
-COPY
-
-Here is an academic program to demonstrate the mechanics of return by reference:
+下面例程展示了其原理：
 
 ```cpp
 #include <iostream>
 #include <string>
 
-const std::string& getProgramName() // returns a const reference
+const std::string& getProgramName() // 返回const引用
 {
-    static const std::string s_programName { "Calculator" }; // has static duration, destroyed at end of program
+    static const std::string s_programName { "Calculator" }; // 静态持续时间，持续到程序结束
+
 
     return s_programName;
 }
@@ -52,23 +58,21 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序打印：
 
 ```
 This program is named Calculator
 ```
 
-Because `getProgramName()` returns a const reference, when the line `return s_programName` is executed, `getProgramName()` will return a const reference to `s_programName` (thus avoiding making a copy). That const reference can then be used by the caller to access the value of `s_programName`, which is printed.
+因为 `getProgramName()` 返回 const 引用，所以 `return s_programName` 执行时，`getProgramName()` 会返回 const 引用到 `s_programName` (避免了拷贝对象)。调用者可以使用该引用来访问 `s_programName` 的值，从而将其打印出来。
 
-## The object being returned by reference must exist after the function returns
+## 按引用返回的对象其持续时间必须超过函数调用本身
 
-Using return by reference has one major caveat: the programmer _must_ be sure that the object being referenced outlives the function returning the reference. Otherwise, the reference being returned will be left dangling (referencing an object that has been destroyed), and use of that reference will result in undefined behavior.
+使用按引用返回最需要注意的事是：程序员必须确保被引用的对象比返回引用的函数寿命长。否则，返回的引用将称为[[dangling|悬垂]]引用(引用一个已被销毁的对象)，使用该引用将导致[[undefined-behavior|未定义行为]]。
 
-In the program above, because `s_programName` has static duration, `s_programName` will exist until the end of the program. When `main()` accesses the returned reference, it is actually accessing `s_programName`, which is fine, because `s_programName` won’t be destroyed until later.
+在上面的 程序中，因为 `s_programName` 具有[[static-storage-duration|静态存储持续时间]]，所以它的知道程序结束才会被销毁。当`main`函数访问该返回的引用时，它实际访问的是 `s_programName`，这时是没有问题的，在这个时间点上它还没有被销毁。
 
-Now let’s modify the above program to show what happens in the case where our function returns a dangling reference:
+接下来，修改上面的程序，看看函数返回悬垂引用的情况下会发生什么：
 
 ```cpp
 #include <iostream>
@@ -86,22 +90,21 @@ int main()
     std::cout << "This program is named " << getProgramName();
 
     return 0;
-}
-```
+}```
 
-COPY
 
-The result of this program is undefined. When `getProgramName()` returns, a reference bound to local variable `programName` is returned. Then, because `programName` is a local variable with automatic duration, `programName` is destroyed at the end of the function. That means the returned reference is now dangling, and use of `programName` in the `main()` function results in undefined behavior.
+该程序的运行结果是未定义的。当 `getProgramName()` 返回时，一个引用绑定到了局部变量 `programName` 。也正是因为该变量是一个局部变量，它具有[[automatic-storage-duration|自动存储持续时间]]，它会在函数末尾被销毁，所以返回的引用就是会是一个悬垂引用，在`main`函数中使用该悬垂引用会导致未定义行为。
 
-Modern compilers will produce a warning or error if you try to return a local variable by reference (so the above program may not even compile), but compilers sometimes have trouble detecting more complicated cases.
+如果试图通过引用返回局部变量，现代编译器将产生警告或错误(因此，上面的程序甚至可能无法编译)，但编译器有时在检测更复杂的情况时会遇到麻烦。
+
 
 !!! warning "注意"
 
-	Objects returned by reference must live beyond the scope of the function returning the reference, or a dangling reference will result. Never return a local variable by reference.
+	==引用返回的对象必须存在于返回引用的函数的作用域之外，否则将导致悬空引用。永远不要通过引用返回局部变量。==
 
-## Don’t return non-const local static variables by reference
+## 不要按引用返回非const的局部静态变量
 
-In the original example above, we returned a const local static variable by reference to illustrate the mechanics of return by reference in a simple way. However, returning non-const static variables by reference is fairly non-idiomatic, and should generally be avoided. Here’s a simplified example that illustrates one such problem that can occur:
+在上面的例子中，我们按引用返回的是一个const的局部静态变量，并以此来演示按引用传递的方式。但是，按引用返回非const的静态变量并不符合习惯，通常应该避免这么做。这么做会有什么问题？请看下面的程序：
 
 ```cpp
 #include <iostream>
@@ -109,15 +112,15 @@ In the original example above, we returned a const local static variable by refe
 
 const int& getNextId()
 {
-    static int s_x{ 0 }; // note: variable is non-const
-    ++s_x; // generate the next id
-    return s_x; // and return a reference to it
+    static int s_x{ 0 }; // 注意: 变量是非const的
+    ++s_x; // 生成下一个id
+    return s_x; // 按引用返回
 }
 
 int main()
 {
-    const int& id1 { getNextId() }; // id1 is a reference
-    const int& id2 { getNextId() }; // id2 is a reference
+    const int& id1 { getNextId() }; // id1 是一个引用
+    const int& id2 { getNextId() }; // id2 是一个引用
 
     std::cout << id1 << id2 << '\n';
 
@@ -125,29 +128,27 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序打印：
 
 ```
 22
 ```
 
-This happens because `id1` and `id2` are referencing the same object (the static variable `s_x`), so when anything (e.g. `getNextId()`) modifies that value, all references are now accessing the modified value. Another issue that commonly occurs with programs that return a static local by const reference is that there is no standardized way to reset `s_x` back to the default state. Such programs must either use a non-idiomatic solution (e.g. a reset parameter), or can only be reset by quitting and restarting the program.
+之所以这样是因为 `id1` 和 `id2` 引用的是同一个对象(即静态变量 `s_x`)，所以任何对该变量的修改(例如 `getNextId()`)，都会影响到所有引用。通过const引用返回静态局部值的程序经常出现的另一个问题是，没有标准化的方法将`s_x` 重置回默认状态。这样的程序必须使用非惯用的解决方案(例如重置参数)，或者只能通过退出和重新启动程序来重置。
 
-While the above example is a bit silly, there are permutations of the above that programmers sometimes try for optimization purposes, and then their programs don’t work as expected.
+虽然上面的例子有点傻，但程序员有时会为了优化目的而尝试上面的做法，然后程序就不能按预期工作了。
 
 !!! success "最佳实践"
 
-	Avoid returning references to non-const local static variables.
+	避免返回对非const局部静态变量的引用。
 
-Returning a const reference to a _const_ local static variable is sometimes done if the local variable being returned by reference is expensive to create (so we don’t have to recreate the variable every function call). But this is rare.
+如果通过引用返回的局部变量的创建成本很高(因此不必每次函数调用都重新创建该变量)，则有时会返回对 const 局部静态变量的const引用。但这是罕见的。
 
-Returning a const reference to a _const_ global variable is also sometimes done as a way to encapsulate access to a global variable. We discuss this in lesson [6.8 -- Why (non-const) global variables are evil](https://www.learncpp.com/cpp-tutorial/why-non-const-global-variables-are-evil/). When used intentionally and carefully, this is also okay.
+==返回一个指向const全局变量的const引用有时也是一种用于封装对全局变量访问的方式==。我们在课程[[6-8-Why-non-const-global-variables-are-evil|6.8 - 为什么非 const 全局变量是魔鬼]]中讨论这个问题。如果有意且谨慎地使用，这也是可以的。
 
-## Assigning/initializing a normal variable with a returned reference makes a copy
+## 使用返回的引用来访问/初始化普通变量时会创建拷贝
 
-If a function returns a reference, and that reference is used to initialize or assign to a non-reference variable, the return value will be copied (as if it had been returned by value).
+如果函数返回一个引用，并且该引用用于初始化或赋值给一个非引用变量，则返回值将被复制(就像它是通过value返回的一样)。
 
 ```cpp
 #include <iostream>
@@ -171,15 +172,15 @@ int main()
 }
 ```
 
-COPY
+在上面的例子中，`getNextId()` 返回的是一个引用，但是 `id1` 和 `id2` 都是非引用的普通变量。这种情况下，返回的引用绑定的值会被拷贝到这个普通变量，因此程序打印：
 
-In the above example, `getNextId()` is returning a reference, but `id1` and `id2` are non-reference variables. In such a case, the value of the returned reference is copied into the normal variable. Thus, this program prints:
-
+```
 12
+```
 
-Of course, this also defeats the purpose of returning a value by reference.
+当然，这也违背了通过引用返回值的目的。
 
-Also note that if a program returns a dangling reference, the reference is left dangling before the copy is made, which will lead to undefined behavior:
+还需要注意的是，如果程序返回一个悬垂引用，则该引用在复制之前一直悬空，这将导致[[undefined-behavior|未定义行为]]：
 
 ```cpp
 #include <iostream>
@@ -201,9 +202,8 @@ int main()
 }
 ```
 
-COPY
 
-## It’s okay to return reference parameters by reference
+## 返回’s okay to return reference parameters by reference
 
 There are quite a few cases where returning objects by reference makes sense, and we’ll encounter many of those in future lessons. However, there is one useful example that we can show now.
 

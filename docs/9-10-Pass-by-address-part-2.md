@@ -111,13 +111,15 @@ ptr is non-null
 ptr is non-null
 ```
 
-As you can see, changing the address held by the pointer parameter had no impact on the address held by the argument (`ptr` still points at `x`). When function `nullify()` is called, `ptr2` receives a copy of the address passed in (in this case, the address held by `ptr`, which is the address of `x`). When the function changes what `ptr2` points at, this only affects the copy held by `ptr2`.
+如你所见，修改[[parameters|形参]]指针的地址对[[arguments|实参]]没有影响(`ptr` 仍然指向 `x`)。当调用函数 `nullify()` 被调用时 `ptr2` 拷贝了一份 `ptr` 所持有的地址（指向`x`）。当函数修改 `ptr2` 的值时，它只是修改了这份拷贝的副本罢了。
 
-So what if we want to allow a function to change what a pointer argument points to?
+如果我们想让函数改变指针参数的指向，该怎么办呢？
 
-## Pass by address… by reference?
 
-Yup, it’s a thing. Just like we can pass a normal variable by reference, we can also pass pointers by reference. Here’s the same program as above with `ptr2` changed to be a reference to an address:
+## 通过引用传地址？Pass by address… by reference?
+
+是的，可以这么做。就像可以通过引用传递普通变量一样，也可以通过[[pass-by-reference|按引用传递]]指针。
+在下面的例子中，我们通过引用传递 `ptr2` 指向的地址：
 
 ```cpp
 #include <iostream>
@@ -141,43 +143,41 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+运行结果：
 
 ```
 ptr is non-null
 ptr is null
 ```
 
-Because `refptr` is now a reference to a pointer, when `ptr` is passed as an argument, `refptr` is bound to `ptr`. This means any changes to `refptr`are made to `ptr`.
+因为 `refptr` 是一个指针的引用，所以当 `ptr` 传入时，`refptr` 被绑定`ptr`。这意味着任何对 `refptr` 的修改都会作用于 `ptr`。
 
 !!! cite "题外话"
 
-    Because references to pointers are fairly uncommon, it can be easy to mix up the syntax (is it `int*&` or `int&*`?). The good news is that if you do it backwards, the compiler will error because you can’t have a pointer to a reference (because pointers must hold the address of an object, and references aren’t objects). Then you can switch it around.
+	因为对指针的引用相当罕见，其语法很容易混淆(它是 `int*&` 还是 `int&*`  ?)好消息是，如果反向操作，编译器将出错，因为不能有指向引用的指针(因为指针必须保存对象的地址，而引用不是对象)。然后你可以把它换过来。
 
-## Why using `0` or `NULL` is no longer preferred (optional)
+## 为什么现在不推荐使用 `0` 或 `NULL` 表示空指针了？（选读）
 
-In this subsection, we’ll explain why using `0` or `NULL` is no longer preferred.
+在本小节中，我们将解释为什么不再使用`0` 或`NULL` 。
 
-The literal `0` can be interpreted as either an integer literal, or as a null pointer literal. In certain cases, it can be ambiguous which one we intend -- and in some of those cases, the compiler may assume we mean one when we mean the other -- with unintended consequences to the behavior of our program.
+字面量“`0`”既可以被解释为整数[[literals|字面量]]，也可以被解释为空指针字面量。在某些情况下，想要区分其准确含义并不容易——在一些情况下，编译器可能认为我们指的是其中一个含义，而我们指的是另一个——这会给程序的行为带来意想不到的后果。
 
-The definition of preprocessor macro `NULL` is not defined by the language standard. It can be defined as `0`, `0L`, `((void*)0)`, or something else entirely.
+[[preprocessor|预处理器]]宏 `NULL` 并没有在标准中明确定义，它的值可能是 `0`, `0L`, `((void*)0)`, 或其他值。
 
-In lesson [[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]we discussed that functions can be overloaded (multiple functions can have the same name, so long as they can be differentiated by the number or type of parameters). The compiler can figure out which overloaded function you desire by the arguments passed in as part of the function call.
+在课程[[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]中，我们介绍了函数[[overload|重载]](多个函数可以具有相同的名称，只要它们可以通过形参的数量或类型来区分)。编译器可以通过作为函数调用一部分传入的参数来确定您想要哪个重载函数。
 
-When using `0` or `NULL`, this can cause problems:
+这种情况下使用 `0` 或 `NULL` 时可能带来问题：
 
 ```cpp
 #include <iostream>
-#include <cstddef> // for NULL
+#include <cstddef> // 定义了 NULL
 
-void print(int x) // this function accepts an integer
+void print(int x) // 函数接受整数
 {
 	std::cout << "print(int): " << x << '\n';
 }
 
-void print(int* ptr) // this function accepts an integer pointer
+void print(int* ptr) // 接受一个整型指针
 {
 	std::cout << "print(int*): " << (ptr ? "non-null\n" : "null\n");
 }
@@ -187,23 +187,22 @@ int main()
 	int x{ 5 };
 	int* ptr{ &x };
 
-	print(ptr);  // always calls print(int*) because ptr has type int* (good)
-	print(0);    // always calls print(int) because 0 is an integer literal (hopefully this is what we expected)
+	print(ptr);  // 总是调用 print(int*) 因为ptr类型为 int* (good)
+	print(0);    // 总是调用 print(int) 因为 0 是一个整型字面量 (但愿这是我们所希望的)
 
-	print(NULL); // this statement could do any of the following:
-	// call print(int) (Visual Studio does this)
-	// call print(int*)
-	// result in an ambiguous function call compilation error (gcc and Clang do this)
+	print(NULL); // 这个语句可能做以下任何事：
+	// 调用 print(int) (Visual Studio 会这么做)
+	// 调用 print(int*)
+	// 导致歧义，引发编译错误(gcc 和 Clang 会这么做)
 
-	print(nullptr); // always calls print(int*)
+	print(nullptr); // 总是调用 print(int*)
 
 	return 0;
 }
 ```
 
-COPY
 
-On the author’s machine (using Visual Studio), this prints:
+在笔者的电脑上(使用 Visual Studio)，打印：
 
 ```
 print(int*): non-null
@@ -212,15 +211,15 @@ print(int): 0
 print(int*): null
 ```
 
-When passing integer value `0` as a parameter, the compiler will prefer `print(int)` over `print(int*)`. This can lead to unexpected results when we intended `print(int*)` to be called with a null pointer argument.
+当传递参数0时，编译器会优先调用 `print(int)` 而不是 `print(int*)`，这可能会导致问题，如果我们的本意是希望使用空指针并调用 `print(int*)` 的话。
 
-In the case where `NULL` is defined as value `0`, `print(NULL)` will also call `print(int)`, not `print(int*)` like you might expect for a null pointer literal. In cases where `NULL` is not defined as `0`, other behavior might result, like a call to `print(int*)` or a compilation error.
+在 `NULL` 被定义为值 `0` 的情况下，`print(NULL)` 也会调用 `print(int)` ，而不是 `print(int*)` ，就像你期望的NULL指针字面量一样。在 `NULL` 没有定义为 `0` 的情况下，可能会导致其他行为，如调用 `print(int*)` 或编译错误。
 
-Using `nullptr` removes this ambiguity (it will always call `print(int*)`), since `nullptr` will only match a pointer type.
+使用 `nullptr` 可以避免这种二义性(它总是会导致函数 `print(int*)` 被调用)，因为  `nullptr` 只能匹配指针类型。
 
-## `std::nullptr_t` (optional)
+## `std::nullptr_t` (选读)
 
-Since `nullptr` can be differentiated from integer values in function overloads, it must have a different type. So what type is `nullptr`? The answer is that `nullptr` has type `std::nullptr_t` (defined in header `<cstddef>`). `std::nullptr_t` can only hold one value: `nullptr`! While this may seem kind of silly, it’s useful in one situation. If we want to write a function that accepts only a `nullptr` literal argument, we can make the parameter a `std::nullptr_t`.
+因为 `nullptr` 可以在重载函数中区分与整型值，所以它必定属于另外一种类型。那么，`nullptr` 是什么类型呢？实际上， `nullptr` 的类型为 `std::nullptr_t` (定义在 `<cstddef>`)。`std::nullptr_t` 只能保存一个值：`nullptr`！尽管有人觉得这很蠢，但是有一种情况下是有用的。如果我们需要定义一个函数并且只接收 `nullptr` **字面量**实参，则可以让形参为 `std::nullptr_t` 类型。
 
 ```cpp
 #include <iostream>
@@ -252,20 +251,19 @@ int main()
 }
 ```
 
-COPY
 
-In the above example, the function call `print(nullptr)` resolves to the function `print(std::nullptr_t)` over `print(int*)` because it doesn’t require a conversion.
+在上面的例子中，函数调用 `print(nullptr)` 会被解析为 `print(std::nullptr_t)` 而不是 `print(int*)` ，因为前者无需类型转换即可匹配。
 
-The one case that might be a little confusing is when we call `print(ptr)` when `ptr` is holding the value `nullptr`. Remember that function overloading matches on types, not values, and `ptr` has type `int*`. Therefore, `print(int*)` will be matched. `print(std::nullptr_t)` isn’t even in consideration in this case, as pointer types will not implicitly convert to a `std::nullptr_t`.
+有一种情况可能会让人有点困惑，那就是当 `ptr` 值为`nullptr`时调用 `print(ptr)` 。记住，函数重载匹配的是类型，而不是值，`ptr` 的类型是 `int*` 。因此，`print(int*)` 将被匹配。`print(std::nullptr_t)` 在这种情况下甚至不需要考虑，因为指针类型不会隐式转换为 `std::nullptr_t` 。
 
-You probably won’t ever need to use this, but it’s good to know, just in case.
+你可能永远都不需要使用它，但为了以防万一，知道它是很好的。
 
 ## 其实都是按值传递
 
-Now that you understand the basic differences between passing by reference, address, and value, let’s get reductionist for a moment. :)
+现在您已经理解了通过引用、地址和值传递之间的基本区别，让我们暂时简化一下。：）
 
-While the compiler can often optimize references away entirely, there are cases where this is not possible and a reference is actually needed. References are normally implemented by the compiler using pointers. This means that behind the scenes, pass by reference is essentially just a pass by address (with access to the reference doing an implicit dereference).
+虽然编译器通常可以将引用优化掉，但在有些情况下，这是不可能的，而引用实际上是需要的。引用通常由编译器使用指针实现。这意味着，在幕后，引用传递本质上只是地址传递(对引用的访问执行隐式解引用)。
 
-And in the previous lesson, we mentioned that pass by address just copies an address from the caller to the called function -- which is just passing an address by value.
+在上一课中，我们提到过，通过地址传递只是将一个地址从调用者复制到被调用函数——它只是按值传递一个地址。
 
-Therefore, we can conclude that C++ really passes everything by value! The properties of pass by address (and reference) come solely from the fact that we can dereference the passed address to change the argument, which we can not do with a normal value parameter!
+因此，我们可以得出这样的结论：C++确实是按值传递所有内容的！ [[pass-by-address|按地址传递]]或[[pass-by-reference|按引用传递]]的参数，其特别之处只在于传递进来的地址可以被解引用，所以能通过它修改实参，而普通形参不能做到这一点。

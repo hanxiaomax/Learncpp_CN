@@ -6184,7 +6184,7 @@
 </code></pre></div></td></tr></table></div>
 <p>实际上，基于范围的for循环会在背地里调用被遍历类型的 <code>begin()</code> 和 <code>end()</code> 。<code>std::array</code> 是具有 <code>begin</code> 和 <code>end</code> 成员函数的，所以它可以被用于基于范围的循环。C语言风格的固定数组，也可以通过 <code>std::begin</code> 和 <code>std::end</code> 来获取起止点，所以它也可以被用于基于范围的for循环。动态数组就不好使了，因为<code>std::end</code> 函数对它无效（类型信息不包含数组长度）。</p>
 <p>稍后你将学习如何向类型中添加函数，以便它们也可以被用于基于范围的for循环。</p>
-<p>基于范围的for循环并不是唯一使用迭代器的地方。迭代器也用在<code>std::sort</code> 和其他算法中。在了解迭代器之后你会发现，标准库中大量地使用了迭代器。</p>
+<p><a href="../range-based-for-loops/">基于范围的for循环</a>并不是唯一使用迭代器的地方。迭代器也用在<code>std::sort</code> 和其他算法中。在了解迭代器之后你会发现，标准库中大量地使用了迭代器。</p>
 <h2 id="_4">无效迭代器（悬垂迭代器）</h2>
 <p>Much like pointers and references, iterators can be left “dangling” if the elements being iterated over change address or are destroyed. When this happens, we say the iterator has been invalidated. Accessing an invalidated iterator produces undefined behavior.</p>
 <p>就像指针和引用一样，如果迭代器的元素地址被修改或本身被销毁时，迭代器可能会处于<a href="../dangling/">悬垂</a>状态。当发生这种情况时，我们说迭代器已失效。访问无效的迭代器会产生<a href="../undefined-behavior/">未定义行为</a>。</p>

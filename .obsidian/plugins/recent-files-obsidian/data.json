@@ -1,20 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "9-10-Pass-by-address-part-2",
-      "path": "docs/9-10-Pass-by-address-part-2.md"
+      "basename": "9-11-Return-by-reference-and-return-by-address",
+      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
     {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+      "basename": "9-3-Lvalue-references",
+      "path": "docs/9-3-Lvalue-references.md"
     },
     {
-      "basename": "9-11-Return-by-reference-and-return-by-address",
-      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
+      "basename": "parameters",
+      "path": "docs/parameters.md"
+    },
+    {
+      "basename": "arguments",
+      "path": "docs/arguments.md"
+    },
+    {
+      "basename": "9-10-Pass-by-address-part-2",
+      "path": "docs/9-10-Pass-by-address-part-2.md"
+    },
+    {
+      "basename": "pass-by-address",
+      "path": "docs/pass-by-address.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
     },
     {
       "basename": "11-17-An-introduction-to-std-vector",
@@ -183,22 +199,6 @@
     {
       "basename": "1-8-Whitespace-and-basic-formatting",
       "path": "docs/1-8-Whitespace-and-basic-formatting.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "1-3-Introduction-to-objects-and-variables",
-      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
-      "basename": "7-5-Switch-fallthrough-and-scoping",
-      "path": "docs/7-5-Switch-fallthrough-and-scoping.md"
-    },
-    {
-      "basename": "13-14-static-member-functions",
-      "path": "docs/13-14-static-member-functions.md"
     }
   ],
   "omittedPaths": [],

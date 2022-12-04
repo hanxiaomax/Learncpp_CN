@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "cfcb3662a7d5f4ec",
+            "id": "f896bd3f1c6882af",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/9-10-Pass-by-address-part-2.md",
+                "file": "docs/9-11-Return-by-reference-and-return-by-address.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/9-10-Pass-by-address-part-2.md",
+                "file": "docs/9-11-Return-by-reference-and-return-by-address.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/9-10-Pass-by-address-part-2.md"
+                "file": "docs/9-11-Return-by-reference-and-return-by-address.md"
               }
             }
           }
@@ -148,19 +148,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "cfcb3662a7d5f4ec",
+  "active": "f896bd3f1c6882af",
   "lastOpenFiles": [
     "docs/MOC.md",
-    "docs/9-x-Chapter-9-summary-and-quiz.md",
-    "docs/9-10-Pass-by-address-part-2.md",
+    "docs/9-3-Lvalue-references.md",
     "docs/9-11-Return-by-reference-and-return-by-address.md",
+    "docs/parameters.md",
+    "docs/arguments.md",
+    "docs/9-10-Pass-by-address-part-2.md",
+    "docs/pass-by-address.md",
+    "docs/9-x-Chapter-9-summary-and-quiz.md",
     "docs/11-17-An-introduction-to-std-vector.md",
-    "docs/动态数组.md",
-    "docs/B-1-introduction-to-C++11.md",
-    "docs/11-18-Introduction-to-iterators.md",
-    "docs/range-based-for-loops.md",
-    "docs/11-13-For-each-loops.md"
+    "docs/动态数组.md"
   ]
 }
