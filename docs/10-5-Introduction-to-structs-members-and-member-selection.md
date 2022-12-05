@@ -61,7 +61,7 @@ struct Employee
 
 	在以后的课程中，我们会经常用到“成员”这个词，所以一定要记住它的意思。
 
-正如可以使用空的大括号对一般变量进行[[初始化]]一样 ([[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]) ，空的大括号也可以用于在创建 `Employee` 时对其成员变量进行初始化。 我们会在后续的课程中介绍[[default-member-initializer|默认成员初始化]]([[10-7-default-member-initialization|10.7 - 默认成员初始化]])。
+正如可以使用空的大括号对一般变量进行[[initialization|初始化]]一样 ([[1-4-Variable-assignment-and-initialization|1.4 - 变量赋值和初始化]]) ，空的大括号也可以用于在创建 `Employee` 时对其成员变量进行初始化。 我们会在后续的课程中介绍[[default-member-initializer|默认成员初始化]]([[10-7-default-member-initialization|10.7 - 默认成员初始化]])。
 
 最后，在定义结束处添加分号。
 

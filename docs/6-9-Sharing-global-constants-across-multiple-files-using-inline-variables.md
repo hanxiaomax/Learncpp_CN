@@ -234,4 +234,4 @@ int main()
 
 !!! info "注意"
 
-使用 `std::string_view` 定义 `constexpr` 字符串，我们在 [[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]] 中进行了介绍。
+	使用 `std::string_view` 定义 `constexpr` 字符串，我们在[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]中进行了介绍。

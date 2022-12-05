@@ -1,16 +1,116 @@
 {
   "recentFiles": [
     {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+      "basename": "4-17-an-introduction-to-std-string",
+      "path": "docs/4-17-an-introduction-to-std-string.md"
+    },
+    {
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-16-An-introduction-to-std-array",
+      "path": "docs/11-16-An-introduction-to-std-array.md"
+    },
+    {
+      "basename": "4-15-Literals",
+      "path": "docs/4-15-Literals.md"
+    },
+    {
+      "basename": "dynamic-array",
+      "path": "docs/dynamic-array.md"
+    },
+    {
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
+    },
+    {
+      "basename": "1-4-Variable-assignment-and-initialization",
+      "path": "docs/1-4-Variable-assignment-and-initialization.md"
+    },
+    {
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+    },
+    {
+      "basename": "9-6-Introduction-to-pointers",
+      "path": "docs/9-6-Introduction-to-pointers.md"
+    },
+    {
+      "basename": "smart-pointer",
+      "path": "docs/smart-pointer.md"
+    },
+    {
+      "basename": "dumb-pointer",
+      "path": "docs/dumb-pointer.md"
+    },
+    {
+      "basename": "raw-pointer",
+      "path": "docs/raw-pointer.md"
+    },
+    {
+      "basename": "9-x-Chapter-9-summary-and-quiz",
+      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
+    },
+    {
+      "basename": "10-5-Introduction-to-structs-members-and-member-selection",
+      "path": "docs/10-5-Introduction-to-structs-members-and-member-selection.md"
+    },
+    {
+      "basename": "initialization",
+      "path": "docs/initialization.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
+      "basename": "direct-initialization",
+      "path": "docs/direct-initialization.md"
+    },
+    {
+      "basename": "1-x-Chapter-1-summary-and-quiz",
+      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
+    },
+    {
+      "basename": "initializer",
+      "path": "docs/initializer.md"
+    },
+    {
+      "basename": "2-11-Header-files",
+      "path": "docs/2-11-Header-files.md"
+    },
+    {
+      "basename": "4-13-Const-variables-and-symbolic-constants",
+      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
     },
     {
       "basename": "4-x-Chapter-4-summary-and-quiz",
       "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
-      "basename": "4-13-Const-variables-and-symbolic-constants",
-      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
+      "basename": "7-8-Do-while-statements",
+      "path": "docs/7-8-Do-while-statements.md"
+    },
+    {
+      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
+      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
+    },
+    {
+      "basename": "B-2-introduction-to-C++14",
+      "path": "docs/B-2-introduction-to-C++14.md"
+    },
+    {
+      "basename": "6-14-Constexpr-and-consteval-functions",
+      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
+    },
+    {
+      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
+      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
+    },
+    {
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
     },
     {
       "basename": "2-10-Introduction-to-the-preprocessor",
@@ -33,14 +133,6 @@
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     },
     {
-      "basename": "4-17-An introduction-to-std-string",
-      "path": "docs/4-17-An introduction-to-std-string.md"
-    },
-    {
-      "basename": "4-15-Literals",
-      "path": "docs/4-15-Literals.md"
-    },
-    {
       "basename": "B-1-introduction-to-C++11",
       "path": "docs/B-1-introduction-to-C++11.md"
     },
@@ -57,16 +149,8 @@
       "path": "docs/4-11-Chars.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "4-10-Introduction-to-if-statements",
       "path": "docs/4-10-Introduction-to-if-statements.md"
-    },
-    {
-      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
-      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
     },
     {
       "basename": "12-x-chapter-12-comprehensive-quiz",
@@ -93,10 +177,6 @@
       "path": "docs/O-4-converting-between-binary-and-decimal.md"
     },
     {
-      "basename": "1-3-Introduction-to-objects-and-variables",
-      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
       "basename": "instance",
       "path": "docs/instance.md"
     },
@@ -119,86 +199,6 @@
     {
       "basename": "3-6-Using-an-integrated-debugger-Stepping",
       "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
-    },
-    {
-      "basename": "3-5-More-debugging-tactics",
-      "path": "docs/3-5-More-debugging-tactics.md"
-    },
-    {
-      "basename": "3-4-Basic-debugging-tactics",
-      "path": "docs/3-4-Basic-debugging-tactics.md"
-    },
-    {
-      "basename": "3-3-A-strategy-for-debugging",
-      "path": "docs/3-3-A-strategy-for-debugging.md"
-    },
-    {
-      "basename": "3-2-The-debugging-process",
-      "path": "docs/3-2-The-debugging-process.md"
-    },
-    {
-      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
-      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
-    },
-    {
-      "basename": "Expression-parameters",
-      "path": "docs/Expression-parameters.md"
-    },
-    {
-      "basename": "19-x-Chapter-19-comprehensive-quiz",
-      "path": "docs/19-x-Chapter-19-comprehensive-quiz.md"
-    },
-    {
-      "basename": "class-instance",
-      "path": "docs/class-instance.md"
-    },
-    {
-      "basename": "8-x-Chapter-8-summary-and-quiz",
-      "path": "docs/8-x-Chapter-8-summary-and-quiz.md"
-    },
-    {
-      "basename": "8-14-Function-template-instantiation",
-      "path": "docs/8-14-Function-template-instantiation.md"
-    },
-    {
-      "basename": "function-instance",
-      "path": "docs/function-instance.md"
-    },
-    {
-      "basename": "anonymous-object",
-      "path": "docs/anonymous-object.md"
-    },
-    {
-      "basename": "13-16-anonymous-objects",
-      "path": "docs/13-16-anonymous-objects.md"
-    },
-    {
-      "basename": "13-17-nested-types-in-classes",
-      "path": "docs/13-17-nested-types-in-classes.md"
-    },
-    {
-      "basename": "10-1-Introduction-to-program-defined-user-defined-types",
-      "path": "docs/10-1-Introduction-to-program-defined-user-defined-types.md"
-    },
-    {
-      "basename": "8-8-Type-deduction-for-functions",
-      "path": "docs/8-8-Type-deduction-for-functions.md"
-    },
-    {
-      "basename": "12-2-the-stack-and-the-heap",
-      "path": "docs/12-2-the-stack-and-the-heap.md"
-    },
-    {
-      "basename": "stack-frame",
-      "path": "docs/stack-frame.md"
-    },
-    {
-      "basename": "11-7-std-string-view-part-2",
-      "path": "docs/11-7-std-string-view-part-2.md"
-    },
-    {
-      "basename": "2-5-Introduction-to-local-scope",
-      "path": "docs/2-5-Introduction-to-local-scope.md"
     }
   ],
   "omittedPaths": [],

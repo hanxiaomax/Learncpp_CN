@@ -28,7 +28,7 @@ tags:
 
 在上一节课中，我们介绍了 C 语言风格的字符串，但是使用它们的风险很高。尽管 C 语言风格字符串的性能很好，但是它们并不易用，安全性也不如 `std:: string`。
 
-但是 `std:: string` (在 [[4-17-An introduction-to-std-string|4.17 - std:: string 简介]] 中介绍)也有它的缺点，尤其是当我们需要常量字符串的时候。
+但是 `std:: string` (在 [[4-17-an-introduction-to-std-string|4.17 - std:: string 简介]] 中介绍)也有它的缺点，尤其是当我们需要常量字符串的时候。
 
 考虑下面的例子：
 

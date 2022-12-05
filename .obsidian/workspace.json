@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "3ebb0ddacedbbc6e",
+            "id": "0dc8b7f7921c3aab",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+                "file": "docs/4-17-an-introduction-to-std-string.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[[4-15",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md",
+                "file": "docs/4-17-an-introduction-to-std-string.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+                "file": "docs/4-17-an-introduction-to-std-string.md"
               }
             }
           }
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "3ebb0ddacedbbc6e",
+  "active": "0dc8b7f7921c3aab",
   "lastOpenFiles": [
-    "docs/4-x-Chapter-4-summary-and-quiz.md",
-    "docs/4-13-Const-variables-and-symbolic-constants.md",
-    "docs/2-10-Introduction-to-the-preprocessor.md",
-    "docs/13-11-class-code-and-header-files.md",
-    "docs/1-8-Whitespace-and-basic-formatting.md",
-    "docs/2-4-Introduction-to-function-parameters-and-arguments.md",
-    "docs/4-12-Introduction-to-type-conversion-and-static_cast.md",
-    "docs/4-17-An introduction-to-std-string.md",
+    "docs/MOC.md",
+    "docs/11-16-An-introduction-to-std-array.md",
     "docs/4-15-Literals.md",
-    "docs/B-1-introduction-to-C++11.md"
+    "docs/dynamic-array.md",
+    "docs/9-5-Pass-by-lvalue-reference.md",
+    "docs/1-4-Variable-assignment-and-initialization.md",
+    "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
+    "docs/9-6-Introduction-to-pointers.md",
+    "docs/smart-pointer.md",
+    "docs/dumb-pointer.md"
   ]
 }

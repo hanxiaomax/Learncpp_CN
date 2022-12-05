@@ -30,7 +30,7 @@ double d{ 5.0 };
 
 !!! info "相关内容"
 
-    关于字面量的类型，参见[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]].
+    关于字面量的类型，参见[[4-15-Literals|4.15 - 字面量]]。
 
 如果我们希望一个变量及其初始化式具有相同的类型，那么两次提供了相同的类型信息其实是多余的。
 

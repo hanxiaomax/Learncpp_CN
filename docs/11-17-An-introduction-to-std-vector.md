@@ -22,7 +22,7 @@ tags:
 
 ## `std::vector` 简介
 
-`std::vector` 在C++03中被引入，它提供了[[动态数组]]的功能并且可以自我管理内存的申请和释放。也就是说，你可以在[[runtime|运行时]]创建数组并指定其长度，而不需要使用`new`和`delete`来手动管理内存的申请释放。`std::vector` 位于 `<vector>` 头文件中。
+`std::vector` 在C++03中被引入，它提供了[[dynamic-array]]的功能并且可以自我管理内存的申请和释放。也就是说，你可以在[[runtime|运行时]]创建数组并指定其长度，而不需要使用`new`和`delete`来手动管理内存的申请释放。`std::vector` 位于 `<vector>` 头文件中。
 
 声明一个 `std::vector` 很简单：
 

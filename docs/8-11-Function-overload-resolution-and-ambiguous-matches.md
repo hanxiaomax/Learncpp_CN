@@ -144,9 +144,9 @@ int main()
 
 !!! info "扩展阅读"
 
-    将非引用类型转换为引用类型（或者反过来）也属于[[简单转换(trivial conversion)]] 。
+将非引用类型转换为引用类型（或者反过来）也属于[[[[trivial conversion|简单转换]]。
 
-通过[[trivial conversion]]匹配到的重载函数，也属于**完全匹配**。
+通过[[trivial conversion|简单转换]]匹配到的重载函数，也属于**完全匹配**。
 
 第二步：如果没有找到完全匹配的重载函数，编译器会尝试对实参进行[[numeric promotions|数值提升]]，在[[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中我介绍过，宽度较窄的整型和浮点型数值是如何被自动提升为较宽的类型的，例如 `int` 或 `double`。如果数值提升之后能够找到匹配的函数，则完成函数调用解析。
 

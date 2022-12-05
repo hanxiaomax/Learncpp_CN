@@ -19,7 +19,7 @@ tags:
 	- C++20 引入了 `consteval` 关键字，它可以指定函数**必须**在编译时求值，否则将会产生编译错误。这种函数被称为[[immediate-functions|即时函数(immediate functions)]]。
 	- 使用 consteval 可以让 constexpr 函数在编译时执行
 
-在[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]] 中我们介绍了 `constexpr` 关键字，实用它可以创建[[compile-time|编译时]]的[[symbolic-constants|符号常量]]。此外，我们还介绍了常量表达式——可以在编译时求值的表达式。
+在[[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]中我们介绍了 `constexpr` 关键字，实用它可以创建[[compile-time|编译时]]的[[symbolic-constants|符号常量]]。此外，我们还介绍了常量表达式——可以在编译时求值的表达式。
 
 考虑下面这个程序：
 

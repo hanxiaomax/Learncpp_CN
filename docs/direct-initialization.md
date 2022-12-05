@@ -8,6 +8,6 @@ tags:
 - direct-initialization
 - initialization
 ---
-[[初始化]]
+[[initialization|初始化]]
 
 使用圆括号的初始化

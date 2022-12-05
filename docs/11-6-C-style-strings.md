@@ -24,7 +24,7 @@ tags:
 		- `strncmp()` -- 比较两个字符串中特定格式的字符（相等返回 0）
 	- 不要使用 C 语言风格的字符串
 
-在[[4-17-An introduction-to-std-string|4.17 - std::string 简介]]中，我们将字符定义为一系列字符的集合，例如 “Hello, world!”。字符串c++中处理文本的主要方式，而 `std::string` 可以使C++中处理字符串变得简单。
+在[[4-17-an-introduction-to-std-string|4.17 - std::string 简介]]中，我们将字符定义为一系列字符的集合，例如 “Hello, world!”。字符串c++中处理文本的主要方式，而 `std::string` 可以使C++中处理字符串变得简单。
 
 现代C++支持两种不同类型的字符串：`std::string`(作为标准库的一部分)和C语言风格的字符串(从C语言继承而来)。事实证明，`std::string` 是使用c风格字符串实现的。在这一课中，我们将进一步了解C语言风格的字符串。
 

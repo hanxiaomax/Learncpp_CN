@@ -83,7 +83,7 @@ tags:
 
 - 在日常生活中，我们使用十进制数，它有10位数字。计算机使用二进制，它只有2位数字。C++还支持八进制(以8为基数)和十六进制(以16为基数)。这些都是数字系统的例子，是用来表示数字的符号(数字)的集合。
 
-[[4-17-An introduction-to-std-string|4.17 - std::string 简介]]  
+[[4-17-an-introduction-to-std-string|4.17 - std::string 简介]]  
 [[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]  
 
 - 字符串是用于表示文本(如名称、单词和句子)的顺序字符的集合。字符串字面值总是放在双引号之间。C++中的字符串字面量是C风格的字符串，它的类型比较奇怪，很难处理。

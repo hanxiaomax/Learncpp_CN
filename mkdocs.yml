@@ -109,9 +109,9 @@ nav:
       - "4-12-Introduction-to-type-conversion-and-static_cast.md"
       - "4-13-Const-variables-and-symbolic-constants.md"
       - "4-14-Compile-time-constants-constant-expressions-and-constexpr.md"
-      - "4-15-Symbolic-constants-const-and-constexpr-variables.md"
+      - "4-15-Literals.md"
       - "4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal.md"
-      - "4-17-An introduction-to-std-string.md"
+      - "4-17-an-introduction-to-std-string.md"
       - "4-18-Introduction-to-std-string_view.md"
       - "4-x-Chapter-4-summary-and-quiz.md"
     - 5. 运算符:

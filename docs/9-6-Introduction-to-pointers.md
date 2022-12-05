@@ -80,7 +80,7 @@ int main()
 ```
 
 
-在上面的例子中，我们使用取地址运算符来获取变量x的地址并将其打印处理。内存地址通常是以十六进制值的形式打印的（参考[[4-15-Literals|4.15 - 字面量]]了解十六进制的内容），但通常不包括前缀`0x`。
+在上面的例子中，我们使用取地址运算符来获取变量x的地址并将其打印处理。内存地址通常是以十六进制值的形式打印的（参考[[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数值系统（十进制、二进制、十六进制和八进制）]]了解十六进制的内容），但通常不包括前缀`0x`。
 
 对于使用内存数超过一个字节的对象，取地址会返回该段内存的首地址（第一个字节）。
 
@@ -146,7 +146,7 @@ int main()
 
 !!! cite "题外话"
 
-    在现代 C++ 中，我们此处谈论的指针被称为[[raw-pointer|原始指针]]或[[dumb-pointer|笨指针]]，以便将其与[[smart-pointer|智能指针]]区别开来。智能指针会在[chapter M](https://www.learncpp.com/#ChapterM)介绍。
+在现代 C++ 中，我们此处谈论的指针被称为[[raw-pointer|原始指针]]或[[dumb-pointer|笨指针]]，以便将其与[[smart-pointer|智能指针]]区别开来。智能指针会在[chapter M](https://www.learncpp.com/#ChapterM)介绍。
 
 和使用&定义引用的做法类似，指针类型使用`*`来定义：
 
