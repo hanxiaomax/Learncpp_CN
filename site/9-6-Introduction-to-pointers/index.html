@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6034,7 +6034,7 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>5
 0027FEA0
 </code></pre></div></td></tr></table></div>
-<p>在上面的例子中，我们使用取地址运算符来获取变量x的地址并将其打印处理。内存地址通常是以十六进制值的形式打印的（参考<a href="../4-15-Literals/">4.15 - 字面量</a>了解十六进制的内容），但通常不包括前缀<code>0x</code>。</p>
+<p>在上面的例子中，我们使用取地址运算符来获取变量x的地址并将其打印处理。内存地址通常是以十六进制值的形式打印的（参考<a href="../4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/">4.16 - 数值系统（十进制、二进制、十六进制和八进制）</a>了解十六进制的内容），但通常不包括前缀<code>0x</code>。</p>
 <p>对于使用内存数超过一个字节的对象，取地址会返回该段内存的首地址（第一个字节）。</p>
 <div class="admonition tip">
 <p class="admonition-title">小贴士</p>
@@ -6095,8 +6095,8 @@
 <p>指针可以看做是一个持有内存地址的对象（通常是其他对象的地址）。这使得我们可以在后面的代码中使用该地址。</p>
 <div class="admonition cite">
 <p class="admonition-title">题外话</p>
-<p>在现代 C++ 中，我们此处谈论的指针被称为[[raw-pointer|原始指针]]或[[dumb-pointer|笨指针]]，以便将其与[[smart-pointer|智能指针]]区别开来。智能指针会在<a href="https://www.learncpp.com/#ChapterM">chapter M</a>介绍。</p>
 </div>
+<p>在现代 C++ 中，我们此处谈论的指针被称为<a href="../raw-pointer/">原始指针</a>或<a href="../dumb-pointer/">笨指针</a>，以便将其与<a href="../smart-pointer/">智能指针</a>区别开来。智能指针会在<a href="https://www.learncpp.com/#ChapterM">chapter M</a>介绍。</p>
 <p>和使用&amp;定义引用的做法类似，指针类型使用<code>*</code>来定义：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>

@@ -1361,8 +1361,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -6288,7 +6288,7 @@ Hello, Alex, you picked 2
 <p>Whenever a <code>std::string</code> is initialized, a copy of the string used to initialize it is made. And whenever a <code>std::string</code> is passed by value to a <code>std::string</code> parameter, another copy is made. These copies are expensive, and should be avoided if possible.</p>
 <p>Best practice</p>
 <p>Do not pass <code>std::string</code> by value, as making copies of <code>std::string</code> is expensive. Prefer <code>std::string_view</code> parameters.</p>
-<p>We’ll discuss this topic (and <code>std::string_view</code>) further in lesson <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/">4.18 -- Introduction to std::string_view</a>.</p>
+<p>We’ll discuss this topic (and <code>std::string_view</code>) further in lesson <a href="../4-18-Introduction-to-std-string_view/">4.18 - std::string_view 简介</a></p>
 <h2 id="literals-for-stdstring">Literals for <code>std::string</code></h2>
 <p>Double-quoted string literals (like “Hello, world!”) are C-style strings by default (and thus, have a strange type).</p>
 <p>We can create string literals with type <code>std::string</code> by using a <code>s</code> suffix after the double-quoted string literal.</p>

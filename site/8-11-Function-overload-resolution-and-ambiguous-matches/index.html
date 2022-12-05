@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6080,9 +6080,9 @@
 <p>在上面的例子中，我们调用 <code>print(x)</code> 时， <code>x</code> 是一个 <code>int</code>。编译器会将其从 <code>int</code> 转换为 <code>const int</code>，这样就可以匹配到 <code>print(const int)</code>。</p>
 <div class="admonition info">
 <p class="admonition-title">扩展阅读</p>
-<p>将非引用类型转换为引用类型（或者反过来）也属于[[简单转换(trivial conversion)]] 。</p>
 </div>
-<p>通过<a href="../trivial%20conversion/">trivial conversion</a>匹配到的重载函数，也属于<strong>完全匹配</strong>。</p>
+<p>将非引用类型转换为引用类型（或者反过来）也属于[[[[trivial conversion|简单转换]]。</p>
+<p>通过<a href="../trivial%20conversion/">简单转换</a>匹配到的重载函数，也属于<strong>完全匹配</strong>。</p>
 <p>第二步：如果没有找到完全匹配的重载函数，编译器会尝试对实参进行<a href="../numeric%20promotions/">数值提升</a>，在<a href="../8-1-Implicit-type-conversion-coercion/">8.1 - 隐式类型转换</a>中我介绍过，宽度较窄的整型和浮点型数值是如何被自动提升为较宽的类型的，例如 <code>int</code> 或 <code>double</code>。如果数值提升之后能够找到匹配的函数，则完成函数调用解析。</p>
 <p>例如：
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

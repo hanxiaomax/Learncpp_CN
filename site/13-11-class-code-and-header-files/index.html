@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -5983,7 +5983,7 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">getDay</span><span class="p">()</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_day</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>不过，随着类越来越复杂，将所有的成员函数都直接定义在类中会导致类难以维护。使用一个已经定义好的类时，只需要关注其[[公共接口]]（<a href="../public-member/">公有成员</a>函数）即可，而不需要了解类的底层工作原理。成员函数的实现细节只会对我们造成干扰。</p>
+<p>不过，随着类越来越复杂，将所有的成员函数都直接定义在类中会导致类难以维护。使用一个已经定义好的类时，只需要关注其公共接口（<a href="../public-member/">公有成员</a>函数）即可，而不需要了解类的底层工作原理。成员函数的实现细节只会对我们造成干扰。</p>
 <p>幸运地是，C++ 支持将类的“声明部分”和实现部分分离。这是通过在类定义之外定义类成员函数来实现的。要做到这一点，只需将类的成员函数按照普通函数那样定义，但必须在函数前添加<a href="../scope-resolution-operator/">作用域解析运算符</a>(与命名空间相同)。</p>
 <p>对于下面这个 <code>Data</code> 类定义来说，其构造函数和 <code>setDate()</code> 函数被定义在了类外部。注意，函数的原型仍然在类定义中，但是其实际实现被移动到了类外部：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

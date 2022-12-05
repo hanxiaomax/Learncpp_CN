@@ -1440,8 +1440,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1468,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6090,7 +6090,7 @@
 </code></pre></div></td></tr></table></div>
 <p>注意，多个实参仍然由逗号进行分割。</p>
 <h2 id="_2">形参和实参是如何协同工作的</h2>
-<p>当函数被调用时，所有的形参都被当做变量创建，然后所有的实参都被拷贝到对应的形参。这个过程称为[[按值传递(pass by value)]]。</p>
+<p>当函数被调用时，所有的形参都被当做变量创建，然后所有的实参都被拷贝到对应的形参。这个过程称为<a href="../pass-by-value/">按值传递</a></p>
 <p>例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -6264,7 +6264,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>程序从 <code>main</code> 函数的顶部开始执行，当 <code>add(4,5)</code> 语句求值时，函数 <code>add</code> 被调用，其形参 x 被初始化为 4，形参 y 被初始化为 5。</p>
-<p>函数的 return 语句对 <code>x+y</code> 进行了求值并得到结果 9，该值随后被返回给 <code>main</code> 函数。然后 9 就被输入 <code>std:: cout</code> 并打印到控制台。</p>
+<p>函数的 return 语句对 <code>x+y</code> 进行了求值并得到结果 9，该值随后被返回给 <code>main</code> 函数。然后 9 就被输入 <code>std::cout</code> 并打印到控制台。</p>
 <p>输出结果：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>9
 </code></pre></div></td></tr></table></div>
@@ -6349,7 +6349,7 @@
 <p>下面的语句看上去有点绕，因为 <code>add</code> 函数的一个实参，其值来自于另外一个 <code>add</code> 函数的返回值。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// evaluates 1 + (2 + 3)</span>
 </code></pre></div></td></tr></table></div>
-<p>不过，其实它和前一个例子是完全一样的，<code>add(2,3)</code> 首先求值，返回值为 5。接下来，对 <code>add(1,5)</code> 进行求值，其结果为 6，该值被传递给 <code>std:: cout</code> 用于打印。</p>
+<p>不过，其实它和前一个例子是完全一样的，<code>add(2,3)</code> 首先求值，返回值为 5。接下来，对 <code>add(1,5)</code> 进行求值，其结果为 6，该值被传递给 <code>std::cout</code> 用于打印。</p>
 <p>简单来说：<code>add(1, add(2,3))</code> 求值得到 <code>add(1,5)</code> ，继续求值得到 6。</p>
 <h2 id="_7">结论</h2>
 <p>函数的参数和返回值是函数能够被重用的关键机制，因为该机制可以允许我们在不指定具体值的情况下编写函数获取或计算数据并将返回值返回给主调函数。</p>

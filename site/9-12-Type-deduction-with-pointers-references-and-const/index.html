@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6042,12 +6042,12 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <h2 id="const-const">顶层 const 和底层 const</h2>
-<p>顶层 <code>const</code> 是应用于对象本身的 <code>const</code> 限定符。例如：</p>
+<p><mark>顶层 <code>const</code> 是应用于对象本身的 <code>const</code> 限定符</mark>。例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">    </span><span class="c1">// this const applies to x, so it is top-level</span>
 <span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// this const applies to ptr, so it is top-level</span>
 </code></pre></div></td></tr></table></div>
-<p>相比之下，底层 <code>const</code> 是一个应用于被引用或指向的对象的<code>const</code>限定符：</p>
+<p>相比之下，<mark>底层 <code>const</code> 是一个应用于被引用或指向的对象的<code>const</code>限定符</mark>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"> </span><span class="c1">// this const applies to the object being referenced, so it is low-level</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// this const applies to the object being pointed to, so it is low-level</span>
@@ -6108,15 +6108,15 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>We covered the case for <code>ref1</code> in the prior example. For <code>ref2</code>, this is similar to the <code>ref1</code> case, except we’re reapplying the <code>const</code> qualifier, so the deduced type is <code>const std::string</code>.</p>
-<p>Things get more interesting with <code>ref3</code>. Normally the reference would be dropped, but since we’ve reapplied the reference, it is not dropped. That means the type is still <code>const std::string&amp;</code>. And since this const is a low-level const, it is not dropped. Thus the deduced type is <code>const std::string&amp;</code>.</p>
-<p>The <code>ref4</code> case works similarly to <code>ref3</code>, except we’ve reapplied the <code>const</code> qualifier as well. Since the type is already deduced as a reference to const, us reapplying <code>const</code>here is redundant. That said, using <code>const</code> here makes it explicitly clear that our result will be const (whereas in the <code>ref3</code> case, the constness of the result is implicit and not obvious).</p>
+<p><code>ref1</code> 已经在上一个例子中介绍过了，对于 <code>ref2</code>，它和 <code>ref1</code> 类似，只不过重新添加了 <code>const</code> 限定符，所以最终类型为 <code>const std::string</code>。</p>
+<p><code>ref3</code> 则需要特别注意，通常情况下，引用会被删除，但由于我们已经重新应用了引用，所以它不会被删除。这意味着类型仍然是<code>const std::string&amp;</code> 。因为这个const是一个底层的const，所以它不会被丢弃。因此，推导出的类型是<code>const std::string&amp;</code> 。</p>
+<p><code>ref4</code> 的情况类似于 <code>ref3</code>，只不过重新添加大量 <code>const</code> 限定符。由于类型已经推断为指向常量的引用，所以添加 <code>const</code> 其实是多余的。也就是说，这里我们明确地指出结果应该是 <code>const</code> 的，含义非常清楚（<code>ref3</code>的例子中，常量性是隐式的，并没有那么明显）。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>If you want a const reference, reapply the <code>const</code> qualifier even when it’s not strictly necessary, as it makes your intent clear and helps prevent mistakes.</p>
+<p>如果你想要一个const引用，即使不是严格必要的，也要重新应用<code>const</code>限定符，因为它使你的意图更明确，并有助于防止错误。</p>
 </div>
 <h2 id="_2">类型推断和指针</h2>
-<p>Unlike references, type deduction does not drop pointers:</p>
+<p>与引用不同，类型演绎不会丢弃指针：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6137,8 +6137,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>We can also use an asterisk in conjunction with pointer type deduction:</p>
+<p>我们也可以在指针类型演绎的同时使用星号：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6161,12 +6160,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <h2 id="auto-auto"><code>auto</code> 和 <code>auto*</code> 的区别(选读)</h2>
-<p>When we use <code>auto</code> with a pointer type initializer, the type deduced for <code>auto</code> includes the pointer. So for <code>ptr1</code> above, the type substituted for <code>auto</code> is <code>std::string*</code>.</p>
-<p>When we use <code>auto*</code> with a pointer type initializer, the type deduced for auto does <em>not</em> include the pointer -- the pointer is reapplied afterward after the type is deduced. So for <code>ptr2</code> above, the type substituted for <code>auto</code> is <code>std::string</code>, and then the pointer is reapplied.</p>
-<p>In most cases, the practical effect is the same (<code>ptr1</code> and <code>ptr2</code> both deduce to <code>std::string*</code> in the above example).</p>
-<p>However, there are a couple of difference between <code>auto</code> and <code>auto*</code> in practice. First, <code>auto*</code> must resolve to a pointer initializer, otherwise a compile error will result:</p>
+<p>在使用 <code>auto</code> 和指针类型的初始化值时，类型推断会包括指针，所以上面例子中的 <code>ptr1</code> 类型会被替换：<code>std::string*</code>。</p>
+<p>如果将 <code>auto*</code> 和指针类型初始化值一起使用，则<code>auto</code> 的类型推断不会包含指针——指针是在类型推断完成后被加上的。所以对于上面例子中的 <code>ptr2</code> ，<code>auto</code> 替换为 <code>std::string</code>，而指针的星号是后加上去的。</p>
+<p>多数情况下，上面两个例子的实际效果是一样的(<code>ptr1</code> 和 <code>ptr2</code> 都最终推断为<code>std::string*</code> )。</p>
+<p>但是，在实际使用中 <code>auto</code> 和 <code>auto*</code> 还是存在不少区别的。首先 <code>auto*</code> 必须解析为一个指针初始化值，否则编译会报错：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6183,18 +6181,17 @@
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">ptr3</span><span class="p">{</span><span class="w"> </span><span class="o">*</span><span class="n">getPtr</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w">      </span><span class="c1">// std::string (because we dereferenced getPtr())</span>
-<span class="w">    </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">ptr4</span><span class="p">{</span><span class="w"> </span><span class="o">*</span><span class="n">getPtr</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w">     </span><span class="c1">// does not compile (initializer not a pointer)</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">ptr3</span><span class="p">{</span><span class="w"> </span><span class="o">*</span><span class="n">getPtr</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w">      </span><span class="c1">// std::string (对 getPtr() 解引用了)</span>
+<span class="w">    </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">ptr4</span><span class="p">{</span><span class="w"> </span><span class="o">*</span><span class="n">getPtr</span><span class="p">()</span><span class="w"> </span><span class="p">};</span><span class="w">     </span><span class="c1">// 不能编译 (初始化值不是指针)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This makes sense: in the <code>ptr4</code> case, <code>auto</code> deduces to <code>std::string</code>, then the pointer is reapplied. Thus <code>ptr4</code> has type <code>std::string*</code>, and we can’t initialize a <code>std::string*</code> with an initializer that is not a pointer.</p>
-<p>Second, there are differences in how <code>auto</code> and <code>auto*</code> behave when we introduce <code>const</code> into the equation. We’ll cover this below.</p>
+<p>这么做是有意义的，在 <code>ptr4</code> 的例子中，<code>auto</code> 得到了 <code>std::string</code>，然后指针被重新加上。因此 <code>ptr4</code> 的类型是 <code>std::string*</code>，我们不能使用一个非指针初始化值来初始化 <code>std::string*</code> 类型的变量。</p>
+<p>其次，当表达式中出现<code>const</code>时，<code>auto</code> 和 <code>auto*</code> 的行为是不一样的，接下来我们就会详细介绍这一点。</p>
 <h2 id="const_1">类型推断和const指针(选读)</h2>
-<p>Since pointers aren’t dropped, we don’t have to worry about that. But with pointers, we have both the const pointer and the pointer to const cases to think about, and we also have <code>auto</code> vs <code>auto*</code>. Just like with references, only top-level const is dropped during pointer type deduction.</p>
-<p>Let’s start with a simple case:</p>
+<p>因为指针不会被丢弃，所以我们不必担心这个问题。但是对于指针，我们既要考虑指针常量也要考虑常量指针，以及<code>auto</code> 和 <code>auto*</code> 。就像引用一样，在指针类型推断期间，只有顶层const会被丢弃。</p>
+<p>先看一个简单的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6223,10 +6220,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When we use either <code>auto const</code> or <code>const auto</code>, we’re saying, “make whatever the deduced type is const”. So in the case of <code>ptr1</code> and <code>ptr2</code>, the deduced type is <code>std::string*</code>, and then const is applied, making the final type <code>std::string* const</code>. This is similar to how <code>const int</code> and <code>int const</code> mean the same thing.</p>
-<p>However, when we use <code>auto*</code>, the order of the const qualifier matters. A <code>const</code> on the left means “make the deduced pointer type a pointer to const”, whereas a <code>const</code>on the right means “make the deduced pointer type a const pointer”. Thus <code>ptr3</code> ends up as a pointer to const, and <code>ptr4</code> ends up as a const pointer.</p>
-<p>Now let’s look at an example where the initializer is a const pointer to const.</p>
+<p>不论是 <code>auto const</code> 还是 <code>const auto</code>，都表示 “将类型推断结果变为const”。所以 <code>ptr1</code> 和 <code>ptr2</code> 的例子中，推断的结果为 <code>std::string*</code>，随即又被添加了<code>const</code>，最终得到 <code>std::string* const</code>。这就和 <code>const int</code> 与 <code>int const</code> 是一回事一样。</p>
+<p>但是对于 <code>auto*</code>，<code>const</code> 限定符的位置会带来影响。<code>const</code> 在左面表示“推断得到的指针类型指向常量”，而<code>const</code>在右时表示 “推断得到的指针作为const指针”。因此 <code>ptr3</code> 最终是以一个指向常量的指针，而  <code>ptr4</code> 则是一个常量指针。</p>
+<p>再看一个例子，其中初始化值是指向常量的常量指针：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6267,15 +6263,14 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The <code>ptr1</code> and <code>ptr2</code> cases are straightforward. The top-level const (the const on the pointer itself) is dropped. The low-level const on the object being pointed to is not dropped. So in both cases, the final type is <code>const std::string*</code>.</p>
-<p>The <code>ptr3</code> and <code>ptr4</code> cases are also straightforward. The top-level const is dropped, but we’re reapplying it. The low-level const on the object being pointed to is not dropped. So in both cases, the final type is <code>const std::string* const</code>.</p>
-<p>The <code>ptr5</code> and <code>ptr6</code> cases are analogous to the cases we showed in the prior example. In both cases, the top-level const is dropped. For <code>ptr5</code>, the <code>auto* const</code>reapplies the top-level const, so the final type is <code>const std::string* const</code>. For <code>ptr6</code>, the <code>const auto*</code> applies const to the type being pointed to (which in this case was already const), so the final type is <code>const std::string*</code>.</p>
-<p>In the <code>ptr7</code> case, we’re applying the const qualifier twice, which is disallowed, and will cause a compile error.</p>
-<p>And finally, in the <code>ptr8</code> case, we’re applying const on both sides of the pointer (which is allowed since <code>auto*</code> must be a pointer type), so the resulting types is <code>const std::string* const</code>.</p>
+<p><code>ptr1</code> 和 <code>ptr2</code> 很简单。顶层 <code>const</code> (修饰指针的 const ) 被丢弃。修饰被指对象的底层 const 则被保持下来。所以在这两个例子中，最终的类型都是 <code>const std::string*</code>。</p>
+<p><code>ptr3</code> 和 <code>ptr4</code> 的例子也很简单。顶层 <code>const</code> 被丢弃，但是又被重新添加了。修饰被指对象的底层 <code>const</code>被保留。所以最终类型为 <code>const std::string* const</code>。</p>
+<p><code>ptr5</code> 和 <code>ptr6</code> 与之前例子中的情况类似。它们的顶层<code>const</code>都被丢弃了。对于 <code>ptr5</code>，<code>auto* const</code> 被重新添加，最终类型为  <code>const std::string* const</code>。对于 <code>ptr6</code>，<code>const auto*</code> 应用于被指对象（此时已经是 const ），因此最终类型为<code>const std::string*</code>。</p>
+<p>对于 <code>ptr7</code> ，我们应用了两次 const 限定符，这是不允许的，会导致编译报错。</p>
+<p>对于 <code>ptr8</code> ，我们在指针的两侧添加了 <code>const</code>（可以这么做因为<code>auto*</code>一定是指针类型），所以最终结果为 <code>const std::string* const</code>。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>If you want a const pointer, reapply the <code>const</code> qualifier even when it’s not strictly necessary, as it makes your intent clear and helps prevent mistakes.</p>
+<p>如果你需要一个<code>const</code>指针，即使不是严格必要的，也要重新应用<code>const</code>限定符，因为它使你的意图更明确，并有助于防止错误。</p>
 </div>
 
 

@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6298,7 +6298,7 @@ value = 6
 <p>因为类类型的拷贝开销很大，类类型通常会按引用传递而不是按值传递以避免昂贵的拷贝开销。基本数据类型的拷贝开销是很小的，所以它们通常会按值传递。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>对基本数据类型使用<a href="../pass-by-value/">按值传递</a>，而对于类或者结构体使用const的[[按值传递(pass by value)]] 。</p>
+<p>对基本数据类型使用<a href="../pass-by-value/">按值传递</a>，而对于类或者结构体使用const的按值传递。</p>
 </div>
 <h2 id="_6">按值传递和按引用传递的开销比较（进阶话题）</h2>
 <p>其实，并不是所有的类类型都必须<a href="../pass-by-value/">按值传递</a>。当然你可能会问，都按值传递有何不可呢？在本节中，我们会详细地分析按值传递和按引用传递的开销，并提出如何选择两种方式的最佳实践。</p>

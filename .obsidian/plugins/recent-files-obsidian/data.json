@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "4-17-an-introduction-to-std-string",
-      "path": "docs/4-17-an-introduction-to-std-string.md"
-    },
-    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "9-8-Pointers-and-const",
+      "path": "docs/9-8-Pointers-and-const.md"
+    },
+    {
+      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
+      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
+    },
+    {
+      "basename": "4-17-an-introduction-to-std-string",
+      "path": "docs/4-17-an-introduction-to-std-string.md"
     },
     {
       "basename": "11-16-An-introduction-to-std-array",
@@ -191,14 +199,6 @@
     {
       "basename": "3-x-Chapter-3-summary-and-quiz",
       "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
-    },
-    {
-      "basename": "3-10-Finding-issues-before-they-become-problems",
-      "path": "docs/3-10-Finding-issues-before-they-become-problems.md"
-    },
-    {
-      "basename": "3-6-Using-an-integrated-debugger-Stepping",
-      "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
     }
   ],
   "omittedPaths": [],

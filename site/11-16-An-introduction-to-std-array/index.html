@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -5921,7 +5921,7 @@
 
 <details class="note"><summary>Key Takeaway</summary><p>-</p>
 </details>
-<p>在上节课中，我们讨论了<a href="../fixed-array/">固定数组</a>和[[dynamic-array|动态数组]]。尽管这两种数组都是C++自带的，但是它们缺点可不少：固定数组会[[decay-into-pointer|退化为指针]]，退化和将会丢失数组的长度信息。动态数组在释放时容易出现问题，而且在重新调整大小时也很难做到不出错。</p>
+<p>在上节课中，我们讨论了<a href="../fixed-array/">固定数组</a>和<a href="../dynamic-array/">动态数组</a>。尽管这两种数组都是C++自带的，但是它们缺点可不少：固定数组会退化为指针，退化和将会丢失数组的长度信息。动态数组在释放时容易出现问题，而且在重新调整大小时也很难做到不出错。</p>
 <p>为了解决这些问题，C++标准库提供了 <code>std::array</code> 和<code>std::vector</code> 两个容器类，使得数组管理变得更加简单了。我们会在本节课中介绍 <code>std::array</code>，然后在下节课中介绍 <code>std::vector</code>。</p>
 <h2 id="stdarray"><code>std::array</code></h2>
 <p><mark><code>std::array</code> 实现了固定数组的功能，且在传入函数时不会退化为指针。<code>std::array</code> 被定义在 <code>&lt;array&gt;</code> 头文件中且位于 <code>std</code> <a href="../namespace/">命名空间</a>内。</mark></p>

@@ -1447,8 +1447,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1475,7 +1475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6440,8 +6440,8 @@ You entered: b
 <p>如果你想一次性读入多个字符（例如，名字、单词或者句子），你应该使用字符串而不是字符。字符串是一个字符序列（因此字符串可以保存多个符号）。</p>
 <div class="admonition info">
 <p class="admonition-title">相关内容</p>
-<p>我们会在[[4-13-An introduction-to-std-string|4.13 - std::string 简介]]中讨论关于字符串的内容。</p>
 </div>
+<p>我们会在<a href="../4-17-an-introduction-to-std-string/">4.17 - std::string 简介</a>中讨论关于字符串的内容。</p>
 <h2 id="_4">字符类型的大小、范围和默认符号</h2>
 <p>C++ 将字符类型的大小定义为固定的1字节。默认情况下，字符可以是有符号或者无符号的（多数情况为有符号）。如果你使用字符变量来保存ASCII字符的话，你不需要指定符号，因为有符号和无符号的字符变量都可以保存0-127内的值。</p>
 <p>如果你使用字符变量来保存一些比较小的整型值（如非优化空间这样的特别需要，请不要这么做），你应该指定它是有符号还是无符号的。有符号的字符可以保存的整数范围为-128 到 127。无符号字符则可以保存 0 到 255 范围内的整数。</p>

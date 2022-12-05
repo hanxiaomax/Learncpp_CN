@@ -1398,8 +1398,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1426,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -5853,7 +5853,7 @@
 <p><strong>变量</strong>是一段命名的内存，现在我们便可以使用它来存放值了。变量的名称为<a href="../identifier/">标识符(identifier)</a>。创建变量需要通过声明语句。当程序开始运行的时候，变量就会被<strong>实例化</strong>，即它会被关联到某个内存地址 。</p>
 <p><strong>数据类型</strong>可以告诉编译器如何将一段数据解释为具有含义的值。整型指的是不包含小数部分的值，例如 4、27、0、-2 或-12。</p>
 <p><strong>拷贝赋值</strong> (通过 <code>operator=</code>) 可以被用来向某个已经被创建的变量赋值。</p>
-<p><a href="../%E5%88%9D%E5%A7%8B%E5%8C%96/">初始化</a>用于在变量被创建的同时为其指定。C++ 支持三种类型的初始化：<a href="../copy-initialization/">拷贝初始化</a>、<a href="../direct-initialization/">直接初始化</a>和<a href="../uniform-initialization/">统一初始化</a>（也称为<a href="../list-initialization/">列表初始化</a>或<a href="../%E6%8B%AC%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96/">括号初始化</a>）。</p>
+<p><a href="../initialization/">初始化</a>用于在变量被创建的同时为其指定。C++ 支持三种类型的初始化：<a href="../copy-initialization/">拷贝初始化</a>、<a href="../direct-initialization/">直接初始化</a>和<a href="../uniform-initialization/">统一初始化</a>（也称为<a href="../list-initialization/">列表初始化</a>或<a href="../%E6%8B%AC%E5%8F%B7%E5%88%9D%E5%A7%8B%E5%8C%96/">括号初始化</a>）。</p>
 <p>你应该优先使用统一初始化而不是其他初始化方式，此外，使用初始化也优于赋值。</p>
 <p>尽管在一个语句中可以定义多个变量，但是最好还是每行定义并初始化一个变量。</p>
 <p><code>std:: cout</code> 和 <code>operator&lt;&lt;</code> 可以将表达式的结果作为文本输出到控制台。<code>std:: endl</code> 会输出一个换行符，控制控制台光标移动到下一行。<code>std:: cin</code> 和 <code>operator&gt;&gt;</code> 可以从键盘获取输入值。</p>

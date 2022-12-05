@@ -156,7 +156,7 @@
 - [x] [[9-9-Pass-by-address|9.9 - 按地址传递]]
 - [x] [[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
 - [x] [[9-11-Return-by-reference-and-return-by-address|9.11 - 按引用返回和按地址返回]]
-- [ ] [[9-12-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和const的类型推断]]
+- [x] [[9-12-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和const的类型推断]]
 - [x] [[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试 - 引用和指针]]
 
 

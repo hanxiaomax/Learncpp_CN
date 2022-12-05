@@ -1454,8 +1454,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1482,7 +1482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -6016,7 +6016,7 @@
 </div>
 <h2 id="_2">初始化</h2>
 <p>上述赋值过程的缺点之一，是它需要两条语句才能完成：首先定义变量，然后为变量赋值。</p>
-<p>这两步其实是可以合并的。在定义变量的时候，我们可以为这个变量设置一个初始值，这个过程称为初始化。用于初始化变量的这个值，称为[[初始化值(initializer)]]。</p>
+<p>这两步其实是可以合并的。在定义变量的时候，我们可以为这个变量设置一个初始值，这个过程称为初始化。用于初始化变量的这个值，称为<a href="../initializer/">initializer</a>。</p>
 <p>C++ 中的初始化是出奇的复杂，这里向你展示一个简化后的版本。</p>
 <p>在 C++ 中有 4 种基本的变量初始化方法：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -6029,7 +6029,7 @@
 </code></pre></div></td></tr></table></div>
 <p>你可能已经注意到了上述代码片段中额外的空格（例如 <code>int d{7};</code>）。是否使用这些空格来增强可读性，属于一种个人偏好。</p>
 <h2 id="_3">默认初始化</h2>
-<p>在不提供任何初始化值的时候（例如上面例子中的变量 <code>a</code>），将进行默认初始化。在大多数情况下，默认初始化会导致变量存放一个[[不确定值(indeterminate)]]。相关内容我们会在<a href="../1-6-Uninitialized-variables-and-undefined-behavior/">1.6 - 未初始化变量和未定义行为</a>中进行介绍。</p>
+<p>在不提供任何初始化值的时候（例如上面例子中的变量 <code>a</code>），将进行默认初始化。在大多数情况下，默认初始化会导致变量存放一个不确定值。相关内容我们会在<a href="../1-6-Uninitialized-variables-and-undefined-behavior/">1.6 - 未初始化变量和未定义行为</a>中进行介绍。</p>
 <h2 id="_4">拷贝初始化</h2>
 <p>如果等号后面提供了初始化值，此时将进行拷贝初始化。拷贝初始化继承自 C 语言。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// copy initialization of value 5 into variable width</span>

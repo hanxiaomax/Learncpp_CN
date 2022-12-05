@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "0dc8b7f7921c3aab",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/4-17-an-introduction-to-std-string.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/4-17-an-introduction-to-std-string.md",
+                "file": "docs/MOC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/4-17-an-introduction-to-std-string.md"
+                "file": "docs/MOC.md"
               }
             }
           }
@@ -151,17 +137,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "0dc8b7f7921c3aab",
+  "active": "d500734583852a75",
   "lastOpenFiles": [
+    "docs/9-8-Pointers-and-const.md",
     "docs/MOC.md",
+    "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
+    "docs/4-17-an-introduction-to-std-string.md",
     "docs/11-16-An-introduction-to-std-array.md",
     "docs/4-15-Literals.md",
     "docs/dynamic-array.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
     "docs/1-4-Variable-assignment-and-initialization.md",
-    "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md",
-    "docs/9-6-Introduction-to-pointers.md",
-    "docs/smart-pointer.md",
-    "docs/dumb-pointer.md"
+    "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
   ]
 }

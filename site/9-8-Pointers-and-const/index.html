@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -5944,7 +5944,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>上面的代码片段无法编译——普通指针不能指向const变量。这样的限制是有必要的，因为const变量的值是不能更改的。允许程序员将非const指针设置为const值将允许程序员解引用该指针并更改该值。这将违反变量的常量性。</p>
+<p>上面的代码片段无法编译——<mark>普通指针不能指向const变量</mark>。这样的限制是有必要的，因为const变量的值是不能更改的。允许程序员将非const指针设置为const值将允许程序员解引用该指针并更改该值。这将违反变量的常量性。</p>
 <h2 id="_1">指向常量的指针</h2>
 <p>指针指向一个const的值（一般简称为<a href="../pointer-to-const/">指向常量的指针</a>），也就是说一个非常量的指针指向了一个常量值。</p>
 <p>声明一个可以指向常量的指针，需要在指针的数据类型前添加关键字 <code>const</code>：</p>

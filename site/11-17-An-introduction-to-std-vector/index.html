@@ -1359,8 +1359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-15-Symbolic-constants-const-and-constexpr-variables.md" class="md-nav__link">
-        None
+      <a href="../4-15-Literals/" class="md-nav__link">
+        4.15 - 字面量
       </a>
     </li>
   
@@ -1387,7 +1387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-17-An%20introduction-to-std-string/" class="md-nav__link">
+      <a href="../4-17-an-introduction-to-std-string/" class="md-nav__link">
         4.17 - std::string 简介
       </a>
     </li>
@@ -5938,7 +5938,7 @@
 <p>类似地，C++ 标准库也提供了相应的功能，使得使用动态数组可以更加安全和易用。这个功能就是 <code>std::vector</code>。</p>
 <p>不同于<code>std::array</code>尽可能仿照固定数组的功能，<code>std::vector</code> 则提供了很多数组的额外功能，因此 <code>std::vector</code> 也成为了C++中最有用的工具之一。</p>
 <h2 id="stdvector"><code>std::vector</code> 简介</h2>
-<p><code>std::vector</code> 在C++03中被引入，它提供了<a href="../%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/">动态数组</a>的功能并且可以自我管理内存的申请和释放。也就是说，你可以在<a href="../runtime/">运行时</a>创建数组并指定其长度，而不需要使用<code>new</code>和<code>delete</code>来手动管理内存的申请释放。<code>std::vector</code> 位于 <code>&lt;vector&gt;</code> 头文件中。</p>
+<p><code>std::vector</code> 在C++03中被引入，它提供了<a href="../dynamic-array/">dynamic-array</a>的功能并且可以自我管理内存的申请和释放。也就是说，你可以在<a href="../runtime/">运行时</a>创建数组并指定其长度，而不需要使用<code>new</code>和<code>delete</code>来手动管理内存的申请释放。<code>std::vector</code> 位于 <code>&lt;vector&gt;</code> 头文件中。</p>
 <p>声明一个 <code>std::vector</code> 很简单：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
