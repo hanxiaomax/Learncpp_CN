@@ -5844,27 +5844,83 @@
   <h1>4.x - 小结与测试 - 基本数据类型</h1>
 
 <h2 id="_1">章节回顾</h2>
-<p>内存的最小单元称为<a href="../bit/">位</a>。内存可寻找的最小单位是<a href="../byte/">字节</a>，现代标准一个字节等于8个位。</p>
-<p>一种<strong>数据类型</strong> (<a href="../4-1-Introduction-to-fundamental-data-types/">4.1 - 基础数据类型简介</a>)告诉编译器如何将内存中的数据解析成有意义的值。</p>
-<p>C++ 支持多种基础数据类型，包括浮点数、整型、布尔类型、字符、null指针和 void。</p>
-<p><strong>Void</strong>（<a href="../4-2-Void/">4.2 - Void</a>） 用于表示无类型。其最主要的作用是表明函数无返回值。</p>
-<p>不同数据类型占据的内存大小也不同，同时也会收到机器体系结构的影响。参考 <a href="../4-3-Object-sizes-and-the-sizeof-operator/">4.3 - 对象的大小和 sizeof 操作符</a> 中的表格了解每种基础数据类型占用的空间。</p>
-<p><code>sizeof</code> 运算符可以返回某个类型所占用的字节数。</p>
-<p><strong>有符号整型</strong>（<a href="../4-4-Signed-integers/">4.4 - 有符号整型</a>） 用于保存正数和负数，也包括0。一个特定数据类型能够保存的值，称为该类型的范围。当使用整型时，一定要注意溢出和整型除0问题。</p>
-<p><strong>无符号整型</strong>（<a href="../4-5-Unsigned-integers-and-why-to-avoid-them/">4.5 - 无符号整型以及为什么要避免使用它</a>）只能保存正整数，通常应该避免使用它，除非是用于位运算。</p>
-<p><strong>固定宽度整型</strong> （<a href="../4-6-Fixed-width-integers-and-size_t/">4.6 - 固定宽度整型和 size_t</a>）是具有确定大小的整型，但是并不是所有的体系结构都支持。速度优先和大小优先的整型是保证某其具有某大小前提下的最快的或最小的整型。<code>std::int8_t</code> 和 <code>std::uint8_t</code> 一般不要使用，它们的行为更像字符而不是整型。</p>
-<p><strong>size_t</strong> 是一种无符号整型，它用于表示对象的大小或长度。</p>
-<p><strong>科学计数法</strong> （<a href="../4-7-Introduction-to-scientific-notation/">4.7 - 科学计数法</a>）是一种表示大数的简单记法。C++ 支持科学计数法表示浮点数。科学计数法中，e前面的部分称为有效数字。</p>
-<p><strong>浮点数</strong> （<a href="../4-8-Floating-point-numbers/">4.8 - 浮点数</a>）类型用于保存实数（包括哪些有小数部分的数）。数字的精度指的是在不丢失精度的前提下，可以表示多少个有效数字。<a href="../rounding-error/">舍入误差</a>出现在过多的有效数字被存放在无法保存这么多有效数字的浮点数中。舍入误差一致存在，即使是像 0.1 这样简单的数。因此，你不能将浮点数进行直接比较。</p>
-<p><strong>布尔</strong>（<a href="../4-9-Boolean-values/">4.9 - 布尔值</a>）类型用于存放 <code>true</code> 和 <code>false</code>。</p>
-<p><strong>If 语句</strong> <a href="../4-10-Introduction-to-if-statements/">4.10 - if 语句简介</a> 允许我们满足某种条件时才执行一条或多条语句。if 语句的条件表达式会被解析为布尔值。</p>
-<p><strong>字符</strong> （<a href="../4-11-Chars/">4.11 - 字符</a>）存放的值会被解析为 ASCII 字母。当使用字符时，小心不要将 ASCII 码值和数字搞混。如果需要把字符当整型打印处理，需要使用 <code>static_cast</code>。</p>
-<p>尖括号在 C++ 中通常用来表示参数化类型。在 <code>static_cast</code> 中，尖括号的内容指定了目标类型。(例如 <code>static_cast&lt;int&gt;(x)</code>会把 <code>x</code> 转换为 <code>int</code>)。（<a href="../4-12-Introduction-to-type-conversion-and-static_cast/">4.12 - 类型转换和 static_cast</a>）</p>
-<p><strong>std::string</strong> （<a href="../4-17-An%20introduction-to-std-string/">4.13 - std::string 简介</a>）提供了简便、安全的处理字符串的方式。字符串字面量总是放在双引号中。使用 <code>std::string</code> 需要包含 <code>&lt;string&gt;</code> 头文件。</p>
-<p><strong>常量</strong> （<a href="../4-15-Literals/">4.14 - 字面量常量</a>）指的是值不会改变的变量。C++ 支持两种常量：字面量常量和符号常量</p>
-<p><strong>字面量</strong>（<a href="../4-15-Literals/">4.14 - 字面量常量</a>）是直接嵌入到代码中的常量。字面量是有类型的，而字面量后缀可以用来修改字面量的默认类型。</p>
-<p><strong>Const</strong> （[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]）变量指的是一旦初始化后就不会改变的变量。const 变量要么是编译时常量，要么是运行时常量。<strong>constexpr</strong> 变量必须是编译时常量。</p>
-<p>不要在代码中使用魔术数字，应该用符号常量代替它。</p>
+<p><a href="../4-1-Introduction-to-fundamental-data-types/">4.1 - 基础数据类型简介</a></p>
+<ul>
+<li>内存的最小单元称为<a href="../bit/">位</a>。内存可寻找的最小单位是<a href="../byte/">字节</a>，现代标准一个字节等于8个位。</li>
+<li>一种<strong>数据类型</strong>告诉编译器如何将内存中的数据解析成有意义的值。</li>
+<li>C++ 支持多种基础数据类型，包括浮点数、整型、布尔类型、字符、null指针和 void。</li>
+</ul>
+<p><a href="../4-2-Void/">4.2 - Void</a></p>
+<ul>
+<li><strong>Void</strong>用于表示无类型。其最主要的作用是表明函数无返回值。</li>
+</ul>
+<p><a href="../4-3-Object-sizes-and-the-sizeof-operator/">4.3 - 对象的大小和 sizeof 操作符</a></p>
+<ul>
+<li>不同数据类型占据的内存大小也不同，同时也会收到机器体系结构的影响。参考 <a href="../4-3-Object-sizes-and-the-sizeof-operator/">4.3 - 对象的大小和 sizeof 操作符</a> 中的表格了解每种基础数据类型占用的空间。</li>
+<li><code>sizeof</code> 运算符可以返回某个类型所占用的字节数。</li>
+</ul>
+<p><a href="../4-4-Signed-integers/">4.4 - 有符号整型</a></p>
+<ul>
+<li><strong>有符号整型</strong>用于保存正数和负数，也包括0。一个特定数据类型能够保存的值，称为该类型的范围。当使用整型时，一定要注意溢出和整型除0问题。</li>
+</ul>
+<p><a href="../4-5-Unsigned-integers-and-why-to-avoid-them/">4.5 - 无符号整型以及为什么要避免使用它</a></p>
+<ul>
+<li><strong>无符号整型</strong>只能保存正整数，通常应该避免使用它，除非是用于位运算。</li>
+</ul>
+<p><a href="../4-6-Fixed-width-integers-and-size_t/">4.6 - 固定宽度整型和 size_t</a></p>
+<ul>
+<li><strong>固定宽度整型</strong>是具有确定大小的整型，但是并不是所有的体系结构都支持。速度优先和大小优先的整型是保证某其具有某大小前提下的最快的或最小的整型。<code>std::int8_t</code> 和 <code>std::uint8_t</code> 一般不要使用，它们的行为更像字符而不是整型。</li>
+<li><strong>size_t</strong> 是一种无符号整型，它用于表示对象的大小或长度。</li>
+</ul>
+<p><a href="../4-7-Introduction-to-scientific-notation/">4.7 - 科学计数法</a></p>
+<ul>
+<li>科学计数法是一种表示大数的简单记法。C++ 支持科学计数法表示浮点数。科学计数法中，e前面的部分称为有效数字。</li>
+</ul>
+<p><a href="../4-8-Floating-point-numbers/">4.8 - 浮点数</a></p>
+<ul>
+<li><strong>浮点数</strong>类型用于保存实数（包括哪些有小数部分的数）。数字的精度指的是在不丢失精度的前提下，可以表示多少个有效数字。<a href="../rounding-error/">舍入误差</a>出现在过多的有效数字被存放在无法保存这么多有效数字的浮点数中。舍入误差一致存在，即使是像 0.1 这样简单的数。因此，你不能将浮点数进行直接比较。</li>
+</ul>
+<p><a href="../4-9-Boolean-values/">4.9 - 布尔值</a></p>
+<ul>
+<li><strong>布尔</strong>类型用于存放 <code>true</code> 和 <code>false</code>。</li>
+</ul>
+<p><a href="../4-10-Introduction-to-if-statements/">4.10 - if 语句简介</a></p>
+<ul>
+<li><strong>If 语句</strong> <a href="../4-10-Introduction-to-if-statements/">4.10 - if 语句简介</a> 允许我们满足某种条件时才执行一条或多条语句。if 语句的条件表达式会被解析为布尔值。</li>
+</ul>
+<p><a href="../4-11-Chars/">4.11 - 字符</a></p>
+<ul>
+<li><strong>字符</strong>存放的值会被解析为 ASCII 字母。当使用字符时，小心不要将 ASCII 码值和数字搞混。如果需要把字符当整型打印处理，需要使用 <code>static_cast</code>。</li>
+</ul>
+<p><a href="../4-12-Introduction-to-type-conversion-and-static_cast/">4.12 - 类型转换和 static_cast</a></p>
+<ul>
+<li>尖括号在 C++ 中通常用来表示参数化类型。在 <code>static_cast</code> 中，尖括号的内容指定了目标类型。(例如 <code>static_cast&lt;int&gt;(x)</code>会把 <code>x</code> 转换为 <code>int</code>)。</li>
+</ul>
+<p><a href="../4-13-Const-variables-and-symbolic-constants/">4.13 - const 变量和符号常量</a>  </p>
+<ul>
+<li>常量指的是值不会改变的变量。C++ 支持两种常量：字面量常量和符号常量</li>
+<li><a href="../symbolic-constants/">符号常量</a>指的是给与常量的名字。常量是符号变量的一种，使用替换文本的类对象宏也是符号常量；</li>
+</ul>
+<p><a href="../4-14-Compile-time-constants-constant-expressions-and-constexpr/">4.14 - 编译时常量、常量表达式和 constexpr</a>  </p>
+<ul>
+<li><a href="../constant%20expression/">常量表达式</a>是一个可以在编译时求值的表达式。<strong>编译时常量</strong>是其值在编译时已知的常量。<strong>运行时常量</strong>是在运行时之前不知道其初始化值的常量。constexprvariable必须是编译时常量。</li>
+</ul>
+<p><a href="../4-15-Literals/">4.15 - 字面量</a>  </p>
+<ul>
+<li><a href="../literals/">字面量</a>是直接嵌入到代码中的常量。字面量是有类型的，而字面量后缀可以用来修改字面量的默认类型。</li>
+<li>魔鬼数字指的是含义不明确或是稍后会被修改的字面量（通常是数字），不要在代码中使用魔术数字，应该用符号常量代替它。</li>
+</ul>
+<p><a href="../4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/">4.16 - 数值系统（十进制、二进制、十六进制和八进制）</a></p>
+<ul>
+<li>在日常生活中，我们使用十进制数，它有10位数字。计算机使用二进制，它只有2位数字。C++还支持八进制(以8为基数)和十六进制(以16为基数)。这些都是数字系统的例子，是用来表示数字的符号(数字)的集合。</li>
+</ul>
+<p><a href="../4-17-An%20introduction-to-std-string/">4.17 - std::string 简介</a><br />
+<a href="../4-18-Introduction-to-std-string_view/">4.18 - std::string_view 简介</a>  </p>
+<ul>
+<li>字符串是用于表示文本(如名称、单词和句子)的顺序字符的集合。字符串字面值总是放在双引号之间。C++中的字符串字面量是C风格的字符串，它的类型比较奇怪，很难处理。</li>
+<li><strong>std::string</strong>提供了简便、安全的处理字符串的方式。字符串字面量总是放在双引号中。使用 <code>std::string</code> 需要包含 <code>&lt;string&gt;</code> 头文件；</li>
+<li><code>std::string_view</code> 为已经存在的字符串（C风格字符串、<code>std::string</code>或字符数组）提供了一种只读的访问方式，而不需创建拷贝。 </li>
+</ul>
 
 
               </article>

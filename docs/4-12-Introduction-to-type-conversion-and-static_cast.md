@@ -108,7 +108,7 @@ int main()
 
 !!! info "相关内容"
 
-	隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[8.1 -- Implicit type conversion (coercion)]]）。
+	隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]）。
 
 ## 使用 static_cast 运算符进行显式类型转换
 

@@ -200,7 +200,7 @@ You entered: b
 
 !!! info "相关内容"
 
-	我们会在[[4-13-An introduction-to-std-string|4.13 - std::string 简介]]中讨论关于字符串的内容。
+我们会在[[4-17-An introduction-to-std-string|4.17 - std::string 简介]]中讨论关于字符串的内容。
 
 ## 字符类型的大小、范围和默认符号
 

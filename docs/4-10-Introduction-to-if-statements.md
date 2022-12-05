@@ -76,7 +76,7 @@ Enter an integer: 5
 
 !!! warning "注意"
 
-	_If_ 语句只会有条件地执行一条语句。我们会在[[7.2 -- If statements and blocks|7.2 - if 语句和语句块]]中介绍如何在条件为真时执行多条语句。
+_If_ 语句只会有条件地执行一条语句。我们会在[[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]]中介绍如何在条件为真时执行多条语句。
 
 ## If-else
 

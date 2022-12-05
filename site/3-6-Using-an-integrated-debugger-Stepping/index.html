@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-debugger" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -1038,15 +1038,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-debugger" class="md-nav__link">
-    The debugger
+  <a href="#_1" class="md-nav__link">
+    调试器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stepping" class="md-nav__link">
-    Stepping
+  <a href="#_2" class="md-nav__link">
+    单步调试
   </a>
   
 </li>
@@ -5829,15 +5829,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-debugger" class="md-nav__link">
-    The debugger
+  <a href="#_1" class="md-nav__link">
+    调试器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stepping" class="md-nav__link">
-    Stepping
+  <a href="#_2" class="md-nav__link">
+    单步调试
   </a>
   
 </li>
@@ -5931,7 +5931,7 @@
 <p>In previous lessons, we explored various ways to alter your code to help with debugging, including printing diagnostic information or using a logger. These are simple methods for examining the state of a program while it is running. Although these can be effective if used properly, they still have downsides: they require altering your code, which takes time and can introduce new bugs, and they clutter your code, making the existing code harder to understand.</p>
 <p>Behind the techniques we’ve shown so far is an unstated assumption: that once we run the code, it will run to completion (only pausing to accept input) with no opportunity for us to intervene and inspect the results of the program at whatever point we want.</p>
 <p>However, what if we were able to remove this assumption? Fortunately, most modern IDEs come with an integrated tool called a debugger that is designed to do exactly this.</p>
-<h2 id="the-debugger">The debugger</h2>
+<h2 id="_1">调试器</h2>
 <p>A debugger is a computer program that allows the programmer to control how another program executes and examine the program state while that program is running. For example, the programmer can use a debugger to execute a program line by line, examining the value of variables along the way. By comparing the actual value of variables to what is expected, or watching the path of execution through the code, the debugger can help immensely in tracking down semantic (logic) errors.</p>
 <p>The power behind the debugger is twofold: the ability to precisely control execution of the program, and the ability to view (and modify, if desired) the program’s state.</p>
 <p>Early debuggers, such as <a href="https://en.wikipedia.org/wiki/Gdb">gdb</a>, were separate programs that had command-line interfaces, where the programmer had to type arcane commands to make them work. Later debuggers (such as early versions of Borland’s <a href="https://en.wikipedia.org/wiki/Turbo_Debugger">turbo debugger</a>) were still standalone, but came with their own “graphical” front ends to make working with them easier. Most modern IDEs available these days have an integrated debugger -- that is, a debugger uses the same interface as the code editor, so you can debug using the same environment that you use to write your code (rather than having to switch programs).</p>
@@ -5961,7 +5961,7 @@
 <p class="admonition-title">For Code::Blocks users</p>
 <p>There have been reports that the Code::Blocks integrated debugger (GDB) can have issues recognizing some file paths that contain spaces or non-English characters in them. If the debugger appears to be malfunctioning as you go through these lessons, that could be a reason why.</p>
 </div>
-<h2 id="stepping">Stepping</h2>
+<h2 id="_2">单步调试</h2>
 <p>We’re going to start our exploration of the debugger by first examining some of the debugging tools that allow us to control the way a program executes.</p>
 <p>Stepping is the name for a set of related debugger features that let us execute (step through) our code statement by statement.</p>
 <p>There are a number of related stepping commands that we’ll cover in turn.</p>

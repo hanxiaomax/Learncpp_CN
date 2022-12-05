@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1066,9 +1071,73 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            3.10 - 在问题发生前发现问题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         3.10 - 在问题发生前发现问题
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    不要犯错
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码重构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    防御式编程简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    测试函数简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-introduction-to-constraints" class="md-nav__link">
+    An introduction to constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shotgunning-for-general-issues" class="md-nav__link">
+    Shotgunning for general issues
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5815,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    不要犯错
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码重构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    防御式编程简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    测试函数简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-introduction-to-constraints" class="md-nav__link">
+    An introduction to constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shotgunning-for-general-issues" class="md-nav__link">
+    Shotgunning for general issues
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5786,7 +5905,7 @@
 
 <p>When you make a semantic error, that error may or may not be immediately noticeable when you run your program. An issue may lurk undetected in your code for a long time before newly introduced code or changed circumstances cause it to manifest as a program malfunction. The longer an error sits in the code base before it is found, the more likely it is to be hard to find, and something that may have been easy to fix originally turns into a debugging adventure that eats up time and energy.</p>
 <p>So what can we do about that?</p>
-<p>Don’t make errors</p>
+<h2 id="_1">不要犯错</h2>
 <p>Well, the best thing is to not make errors in the first place. Here’s an incomplete list of things that can help avoid making errors:</p>
 <ul>
 <li>Follow best practices</li>
@@ -5797,13 +5916,15 @@
 <li>Prefer using the standard library to writing your own code, when possible</li>
 <li>Comment your code liberally</li>
 </ul>
-<p>Refactoring your code</p>
+<h2 id="_2">代码重构</h2>
 <p>As you add new capabilities to your programs (“behavioral changes”), you will find that some of your functions grow in length. As functions get longer, they get both more complex and harder to understand.</p>
 <p>One way to address this is to break a single long function into multiple shorter functions. This process of making structural changes to your code without changing its behavior (typically in order to make your program more organized, modular, or performant) is called refactoring.</p>
 <p>So how long is too long for a function? A function that takes up one vertical screen worth of code is generally regarded as far too long -- if you have to scroll to read the whole function, the function’s comprehensibility drops significantly. But the shorter the better -- functions less than ten lines are good. Functions that are less than five lines are even better.</p>
-<p>Key insight</p>
+<div class="admonition tldr">
+<p class="admonition-title">关键信息</p>
 <p>When making changes to your code, make behavioral changes OR structural changes, and then retest for correctness. Making behavioral and structural changes at the same time tends to lead to more errors as well as errors that are harder to find.</p>
-<p>An introduction to defensive programming</p>
+</div>
+<h2 id="_3">防御式编程简介</h2>
 <p>Errors can be not only of your own making (e.g. incorrect logic), but also occur when your users use the application in a way that you did not anticipate. For example, if you ask the user to enter an integer, and they enter a letter instead, how does your program behave in such a case? Unless you anticipated this, and added some error handling for this case, probably not very well.</p>
 <p>Defensive programming is a practice whereby the programmer tries to anticipate all of the ways the software could be misused, either by end-users, or by other developers (including the programmer themselves) using the code. These misuses can often be detected and then mitigated (e.g. by asking a user who entered bad input to try again).</p>
 <p>We’ll explore topics related to error handling in future lessons.</p>
@@ -5811,7 +5932,7 @@
 <p>Since not making errors is difficult in large programs, the next best thing is to catch errors you do make quickly.</p>
 <p>The best way to do this is to program a little bit at a time, and then test your code and make sure it works.</p>
 <p>However, there are a few other techniques we can also use.</p>
-<p>An introduction to testing functions</p>
+<h2 id="_4">测试函数简介</h2>
 <p>One common way to help uncover issues with your program is to write testing functions to “exercise” the code you’ve written. Here’s a primitive attempt, more for illustrative purposes than anything:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5861,16 +5982,18 @@
 <p>The testadd() function tests the add() function by calling it with different values. If all the values match our expectations, then we can be reasonably confident the function works. Even better, we can keep this function around, and run it any time we change function <em>add</em> to ensure we haven’t accidentally broken it.</p>
 <p>This is a primitive form of unit testing, which is a software testing method by which small units of source code are tested to determine whether they are correct.</p>
 <p>As with logging frameworks, there are many 3rd party unit testing frameworks that can be used. It’s also possible to write your own, though we’ll need more language features at our disposal to do the topic justice. We’ll come back to some of this in a future lesson.</p>
-<p>An introduction to constraints</p>
+<h2 id="an-introduction-to-constraints">An introduction to constraints</h2>
 <p>Constraints-based techniques involve the addition of some extra code (that can be compiled out in a non-debug build, if desired) to check that some set of assumptions or expectations are not violated.</p>
 <p>For example, if we were writing a function to calculate the factorial of a number, which expects a non-negative argument, the function could check to make sure the caller passed in a non-negative number before proceeding. If the caller passes in a negative number, then the function could immediately error out rather than producing some indeterminate result, helping ensure the problem is caught immediately.</p>
 <p>One common method of doing this is via <em>assert</em> and <em>static_assert</em>, which we cover in lesson <a href="https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/">7.17 -- Assert and static_assert</a>.</p>
-<p>Shotgunning for general issues</p>
+<h2 id="shotgunning-for-general-issues">Shotgunning for general issues</h2>
 <p>Programmers tend to make certain kinds of common mistakes, and some of those mistakes can be discovered by programs trained to look for them. These programs, generally known as static analysis tools (sometimes informally called <em>linters</em>) are programs that analyze your code to identify specific semantic issues (in this context, _static_means that these tools analyze the source code). The issues found by static analysis tools may or may not be the cause of any particular problem you are having, but may help point out fragile areas of code or issues that can be problematic in certain circumstances.</p>
 <p>You already have one static analysis tool at your disposal -- your compiler! In addition to ensuring your program is syntactically correct, most modern C++ compilers will do some light static analysis to identify some common problems. For example, many compilers will warn you if you try to use a variable that has not been initialized. If you haven’t already, turning up your compiler warning and error levels (see lesson <a href="https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/">0.11 -- Configuring your compiler: Warning and error levels</a>) can help surface these.</p>
 <p><a href="https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis#C,_C++">Many static analysis tools exist</a>, some of which can identify over 300 types of programming errors. And on large programs, this can surface tens or hundreds of potential issues. On our small academic programs, use of a static analysis tool is optional (but may help you find areas where your code is non-compliant with best practices). On larger non-academic programs, use of a static analysis tool is highly recommended.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Use a static analysis tool on your programs to help find areas where your code is non-compliant with best practices.</p>
+</div>
 <p>For Visual Studio users</p>
 <p>Visual Studio 2019 comes with a built-in static analysis tool. You can access it via <em>Build &gt; Run Code Analysis on Solution (Alt+F11)</em>.</p>
 

@@ -121,7 +121,7 @@ int main()
 
 !!! warning "注意"
 
-	尽管 constexpr 变量可以通过 `extern` 关键字赋予外部链接属性，但是由于它们并不能被前向声明，所以这么做并无意义。（[[4-15-Symbolic-constants-const-and-constexpr-variables#constexpr|4.15 - 符号常量 const 和 constexpr 变量]]）
+尽管 constexpr 变量可以通过 `extern` 关键字赋予外部链接属性，但是由于它们并不能被前向声明，所以这么做并无意义。（[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]）
 	
 	这是因为编译器在[[compile-time|编译时]]就必须指定 constexpr 变量的值。如果该变量被定义在其他文件中，那么编译器将无法知道它的值。
 	

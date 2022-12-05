@@ -2751,8 +2751,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#top-level-const-and-low-level-const" class="md-nav__link">
-    Top-level const and low-level const
+  <a href="#const-const" class="md-nav__link">
+    顶层 const 和底层 const
   </a>
   
 </li>
@@ -5829,8 +5829,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#top-level-const-and-low-level-const" class="md-nav__link">
-    Top-level const and low-level const
+  <a href="#const-const" class="md-nav__link">
+    顶层 const 和底层 const
   </a>
   
 </li>
@@ -6017,8 +6017,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>In the above example, variable <code>ref</code> is using type deduction. Although function <code>getRef()</code> returns a <code>std::string&amp;</code>, the reference qualifier is dropped, so the type of <code>ref</code>is deduced as <code>std::string</code>.</p>
-<p>Just like with the dropped <code>const</code> qualifier, if you want the deduced type to be a reference, you can reapply the reference at the point of definition:</p>
+<p>在上面的例子中，变量 <code>ref</code> 使用了类型推断。尽管函数 <code>getRef()</code> 返回的是 <code>std::string&amp;</code>，但引用限定符被丢弃了，所以 <code>ref</code> 的类型为 <code>std::string</code>。</p>
+<p>类似于 <code>const</code> 限定符，如果引用限定符被丢弃了，也可以显式地被再次加到定义上：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6041,27 +6041,23 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<h2 id="top-level-const-and-low-level-const">Top-level const and low-level const</h2>
-<p>A top-level const is a const qualifier that applies to an object itself. For example:</p>
+<h2 id="const-const">顶层 const 和底层 const</h2>
+<p>顶层 <code>const</code> 是应用于对象本身的 <code>const</code> 限定符。例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">    </span><span class="c1">// this const applies to x, so it is top-level</span>
 <span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// this const applies to ptr, so it is top-level</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In contrast, a low-level const is a const qualifier that applies to the object being referenced or pointed to:</p>
+<p>相比之下，底层 <code>const</code> 是一个应用于被引用或指向的对象的<code>const</code>限定符：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"> </span><span class="c1">// this const applies to the object being referenced, so it is low-level</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// this const applies to the object being pointed to, so it is low-level</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>A reference to a const value is always a low-level const. A pointer can have a top-level, low-level, or both kinds of const:</p>
+<p>const 值的引用总是一个底层const。指针可以是顶层 const、底层const或两者都是：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// the left const is low-level, the right const is top-level</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>When we say that type deduction drops const qualifiers, it only drops top-level consts. Low-level consts are not dropped. We’ll see examples of this in just a moment.</p>
+<p>类型推断在丢弃 const 限定符时，只会丢弃顶层 const。底层 const 不受影响，我们会在后面的例子中说明这一点。</p>
 <h2 id="const">类型推断和const引用</h2>
-<p>If the initializer is a reference to const, the reference is dropped first (and then reapplied if applicable), and then any top-level const is dropped from the result.</p>
+<p>如果初始化值是对const的引用，则首先删除引用(如果适用，然后重新应用)，然后从结果中删除任何顶级const。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6082,9 +6078,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the above example, since <code>getRef()</code> returns a <code>const std::string&amp;</code>, the reference is dropped first, leaving us with a <code>const std::string</code>. This const is now a top-level const, so it is also dropped, leaving the deduced type as <code>std::string</code>.</p>
-<p>We can reapply either or both of these:</p>
+<p>在上面的例子中， <code>getRef()</code> 返回 <code>const std::string&amp;</code>，该引用会被首先丢弃，返回值类型变为 <code>const std::string</code>。此时，该 const 是一个顶层 const，所以也会被丢弃，返回值类型进一步变为<code>std::string</code>。</p>
+<p>两种标识符都可以被手动填回去：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6113,7 +6108,6 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
 <p>We covered the case for <code>ref1</code> in the prior example. For <code>ref2</code>, this is similar to the <code>ref1</code> case, except we’re reapplying the <code>const</code> qualifier, so the deduced type is <code>const std::string</code>.</p>
 <p>Things get more interesting with <code>ref3</code>. Normally the reference would be dropped, but since we’ve reapplied the reference, it is not dropped. That means the type is still <code>const std::string&amp;</code>. And since this const is a low-level const, it is not dropped. Thus the deduced type is <code>const std::string&amp;</code>.</p>
 <p>The <code>ref4</code> case works similarly to <code>ref3</code>, except we’ve reapplied the <code>const</code> qualifier as well. Since the type is already deduced as a reference to const, us reapplying <code>const</code>here is redundant. That said, using <code>const</code> here makes it explicitly clear that our result will be const (whereas in the <code>ref3</code> case, the constness of the result is implicit and not obvious).</p>

@@ -68,7 +68,7 @@ std::cout << 3.4; // 3.4 是一个 double 字面量
 
 !!! info "相关内容"
 
-	我们会在[[4-17-An introduction-to-std-string|4.17 - std::string 简介]] 和 [[4.18 — Introduction to std-string_view|4.18 - std::string_view 简介]] 中讨论字符串字面量的后缀。
+我们会在[[4-17-An introduction-to-std-string|4.17 - std::string 简介]] 和[[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]中讨论字符串字面量的后缀。
 
 
 ## 整型字面量

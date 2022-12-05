@@ -1031,8 +1031,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-a-logger" class="md-nav__link">
-    Using a logger
+  <a href="#_1" class="md-nav__link">
+    使用日志
   </a>
   
 </li>
@@ -5801,8 +5801,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-a-logger" class="md-nav__link">
-    Using a logger
+  <a href="#_1" class="md-nav__link">
+    使用日志
   </a>
   
 </li>
@@ -5960,7 +5960,7 @@
 </code></pre></div></td></tr></table></div>
 <p>Now we can enable debugging simply by commenting / uncommenting <em>#define ENABLE_DEBUG</em>. This allows us to reuse previously added debug statements and then just disable them when we’re done with them, rather than having to actually remove them from the code. If this were a multi-file program, the #define ENABLE_DEBUG would go in a header file that’s included into all code files so we can comment / uncomment the #define in a single location and have it propagate to all code files.</p>
 <p>This addresses the issue with having to remove debug statements and the risk in doing so, but at the cost of even more code clutter. Another downside of this approach is that if you make a typo (e.g. misspell “DEBUG”) or forget to include the header into a code file, some or all of the debugging for that file may not be enabled. So although this is better than the unconditionalized version, there’s still room to improve.</p>
-<h2 id="using-a-logger">Using a logger</h2>
+<h2 id="_1">使用日志</h2>
 <p>An alternative approach to conditionalized debugging via the preprocessor is to send your debugging information to a log file. A log file is a file (normally stored on disk) that records events that occur in software. The process of writing information to a log file is called logging. Most applications and operating systems write log files that can be used to help diagnose issues that occur.</p>
 <p>Log files have a few advantages. Because the information written to a log file is separated from your program’s output, you can avoid the clutter caused by mingling your normal output and debug output. Log files can also be easily sent to other people for diagnosis -- so if someone using your software has an issue, you can ask them to send you the log file, and it might help give you a clue where the issue is.</p>
 <p>While you can write your own code to create log file and send output to them, you’re better off using one of the many existing third-party logging tools available. Which one you use is up to you.</p>

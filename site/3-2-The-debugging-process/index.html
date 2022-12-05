@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-general-approach-to-debugging" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -982,8 +982,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-general-approach-to-debugging" class="md-nav__link">
-    A general approach to debugging
+  <a href="#_1" class="md-nav__link">
+    代码排错的一般方法
   </a>
   
 </li>
@@ -5787,8 +5787,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-general-approach-to-debugging" class="md-nav__link">
-    A general approach to debugging
+  <a href="#_1" class="md-nav__link">
+    代码排错的一般方法
   </a>
   
 </li>
@@ -5843,25 +5843,25 @@
 
   <h1>3.2 - 代码调试步骤</h1>
 
-<p>Let’s say you’ve written a program, and it’s not working correctly -- the code all compiles fine, but when you run it, you’re getting an incorrect result. You must have a semantic error somewhere. How can you find it? If you’ve been following best practices by writing a little bit of code and then testing it, you may have a good idea where your error is. Or you may have no clue at all.</p>
-<p>All bugs stem from a simple premise: Something that you thought was correct, isn’t. Actually figuring out where that error is can be challenging. In this lesson, we’ll outline the general process of debugging a program.</p>
-<p>Because we haven’t covered that many C++ topics yet, our example programs in this chapter are going to be pretty basic. That may make some of the techniques we’re showing here seem excessive. However, keep in mind that these techniques are designed to be used with larger, more complex programs, and will be of more use in such a setting (which is where you need them most).</p>
-<h2 id="a-general-approach-to-debugging">A general approach to debugging</h2>
-<p>Once a problem has been identified, debugging the problem generally consists of five steps:</p>
+<p>假设你编写了一个程序，它不能正常工作——代码编译没问题，但是运行的结果不正确。那么你一定在什么地方写了有语义错误的代码。此时应该如何定位问题的原因呢？如果你一直遵循最佳实践，编写少量代码并进行测试，那么可能很清楚错误会发生在哪里，否则你可能很难一下找到问题的原因。</p>
+<p>所有的bug都有一个简单的前提——即你以为的并不是你以为的。实际上，找出错误在哪里是很有挑战性的。在这一课中，我们将概述调试程序的一般过程。</p>
+<p>因为我们还没有涉及到那么多的C++主题，本章中的示例程序将是相当基础的。这可能会让我们在这里展示的一些技术显得多余。但是，请记住，这些技术是为更大、更复杂的程序而设计的，在这样的代码中(这是你最需要它们的地方)会更有用。</p>
+<h2 id="_1">代码排错的一般方法</h2>
+<p>一旦确定了问题，代码排错通常包括五个步骤:</p>
 <ol>
-<li>Find the root cause of the problem (usually the line of code that’s not working)</li>
-<li>Ensure you understand why the issue is occurring</li>
-<li>Determine how you’ll fix the issue</li>
-<li>Repair the issue causing the problem</li>
-<li>Retest to ensure the problem has been fixed and no new problems have emerged</li>
+<li>找出问题的根本原因(通常是无法工作的代码行)；</li>
+<li>确保你了解问题发生的原因；</li>
+<li>决定如何解决这个问题；</li>
+<li>修复引起问题的问题；</li>
+<li>重新测试，以确保问题已被修复，且没有出现新问题。</li>
 </ol>
-<p>Let’s use a real-life analogy here. Let’s say one evening, you go to get some ice from the ice dispenser in your freezer. You put your cup up to the dispenser, press, and … nothing comes out. Uh oh. You’ve discovered some kind of defect. What would you do? You’d probably start an investigation to see if you could identify the root cause of the issue.</p>
-<p><strong>Find the root cause:</strong> Since you hear the ice dispenser trying to deliver ice, it’s probably not the ice delivery mechanism itself. So you open the freezer, and examine the ice tray. No ice. Is that the root cause of the issue? No, it’s another symptom. After further examination, you determine that the ice maker does not appear to be making ice. Is the problem the ice maker or something else? The freezer is still cold, the water line isn’t clogged, and everything else seems to be working, so you conclude that the root cause is that the ice maker is non-functional.</p>
-<p><strong>Understand the problem:</strong> This is simple in this case. A broken ice maker won’t make ice.</p>
-<p><strong>Determine a fix:</strong> At this point, you have several options for a fix: You could work around the issue (buy bags of ice from the store). You could try to diagnose the ice-maker further, to see if there’s a part that can be repaired. You could buy a new ice maker and install it in place of the current one. Or you could buy a new freezer. You decide to buy a new ice maker.</p>
-<p><strong>Repair the issue:</strong> Once the ice maker has arrived, you install it.</p>
-<p><strong>Retest:</strong> After turning the electricity back on and waiting overnight, your new ice maker starts making ice. No new issues are discovered.</p>
-<p>Now let’s apply this process to our simple program from the previous lesson:</p>
+<p>让我们打一个现实生活的比喻。假设有一天晚上，你从冰箱里的制冰机里取冰，把杯子放在出口处，按下按钮后声明都没有出来。哦哦，出问题了！此时你会怎么做？你可能会开始检查及其，看看是否可以确定问题的根本原因。</p>
+<p><strong>找到问题的根因</strong>： 既然你听到了制冰机试图送冰的声音，那很可能不是送冰装置本身。所以你打开冰箱，检查冰盘。没有冰。这是问题的根本原因吗？不，这是一种现象。在进一步检查之后，你确定制冰机似乎没有在制冰。是制冰机出了问题还是别的什么问题？冰箱仍然是冷的，水管没有堵塞，其他一切似乎都在工作，所以你得出结论，根本原因是制冰机坏了。</p>
+<p><strong>理解问题</strong>：在本例中，这很简单。坏了的制冰机制不出冰。</p>
+<p><strong>确定修复方法</strong>： 此时，你有几个解决方案：一是可以绕过这个问题(从商店购买袋装冰)。或者你可以试着进一步诊断制冰机，看看是否有零件需要修复。三是你可以买一个新的制冰机，把它安装在现有的那个地方。你决定买一个新的制冰机。</p>
+<p><strong>修复问题</strong>：制冰机一到，你就把它装上。</p>
+<p><strong>测试</strong>： 在重新接通电源并等待一夜之后，你的新制冰机开始制冰。没有发现新的问题。</p>
+<p>现在让我们把这个过程应用到上节课的简单程序中：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5888,14 +5888,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This code is nice in one regard: the bug is very apparent, because the wrong answer gets printed to the screen via line 11. That gives us a starting point for our investigation.</p>
-<p><strong>Find the root cause:</strong> On line 11, we can see that we’re passing in literals for arguments (5 and 3), so there is no room for error there. Since the inputs to function <em>add</em> are correct, but the output isn’t, it’s pretty apparent that function <em>add</em> must be producing the wrong value. The only statement in function <em>add</em> is the return statement, which must be the culprit. We’ve found the problem line. Now that we know where to focus our attention, noticing that we’re subtracting instead of adding is something you’re likely to find via inspection.</p>
-<p><strong>Understand the problem:</strong> In this case, it’s obvious why the wrong value is being generated -- we’re using the wrong operator.</p>
-<p><strong>Determine a fix:</strong> We’ll simply change <em>operator-</em> to <em>operator+</em>.</p>
-<p><strong>Repair the issue:</strong> This is actually changing <em>operator-</em> to <em>operator+</em> and ensuring the program recompiles.</p>
-<p><strong>Retest:</strong> After implementing the change, rerunning the program will indicate that our program now produces the correct value of 8. For this simple program, that’s all the testing that’s needed.</p>
-<p>This example is trivial, but illustrates the basic process you’ll go through when diagnosing any program.</p>
+<p>这段代码的唯一优点就是错的很明显：错误的答案通过第11行打印到屏幕上。这为我们的调查提供了一个起点。</p>
+<p><strong>找到问题的根因</strong>：在第11行，我们可以看到传递的参数(5和3)是字面量，因此没有出错的空间。由于函数 <code>add</code> 的输入是正确的，但输出是错误的，很明显函数<code>add</code>一定计算出了错误的值。函数 <code>add</code> 中唯一的语句是<code>return</code>语句，它一定是罪魁祸首。方向没有错，现在我们知道注意力应该集中在哪里，随后便可以发现这里在做减法而不是加法，基本上一眼就可以看出来！</p>
+<p><strong>理解问题</strong>：在这里指针，很显然为什么会得到错误的值——因为使用了错误的操作符。</p>
+<p><strong>确定修复方法</strong>：将减号改成加号即可。</p>
+<p><strong>修复问题</strong>：在程序中将减号改为加号，确保程序可以编译。</p>
+<p><strong>测试</strong>：在实现更改之后，重新运行程序，确定得到了正确值：8。对于这个简单的程序，这就是所有需要的测试。</p>
+<p>这个示例很简单，但说明了对任何程序进行排错(debug)时应该经历的基本过程。</p>
 
 
               </article>

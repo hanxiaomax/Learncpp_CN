@@ -312,7 +312,7 @@ Best practice
 
 Do not pass `std::string` by value, as making copies of `std::string` is expensive. Prefer `std::string_view` parameters.
 
-We’ll discuss this topic (and `std::string_view`) further in lesson [4.18 -- Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/).
+We’ll discuss this topic (and `std::string_view`) further in lesson [[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]
 
 ## Literals for `std::string`
 

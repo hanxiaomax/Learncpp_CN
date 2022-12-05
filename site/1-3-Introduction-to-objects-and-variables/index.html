@@ -5954,7 +5954,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// define a variable named x, of type int</span>
 </code></pre></div></td></tr></table></div>
 <p>在编译阶段，当编译器解析到该语句时，它会记录下此时定义的一个名为x、类型为 int 的变量。（稍后会详细介绍类型系统）。从此以后（有一定的限制条件，稍后介绍），每当编译器看到标识符 x，它就知道去引用这个变量。</p>
-<p>在程序运行的时候（称为运行时），该变量会被[[[[instantiated|实例化]]。实例化这个词只是听起来有点玄乎罢了，它的含义很简单——创建对象并为其分配一个内存地址。变量在使用前（存储值前）必须实例化。举例来说，假设变量x实例化后对应的内存地址为140，之后程序在任何时候使用该变量x时，它都会取访问内存地址140。一个实例化之后的对象，通常被称为[[实例(instance)]]。</p>
+<p>在程序运行的时候（称为运行时），该变量会被<a href="../instantiated/">实例化</a>。实例化这个词只是听起来有点玄乎罢了，它的含义很简单——创建对象并为其分配一个内存地址。变量在使用前（存储值前）必须实例化。举例来说，假设变量x实例化后对应的内存地址为140，之后程序在任何时候使用该变量x时，它都会取访问内存地址140。一个实例化之后的对象，通常被称为<a href="../instance/">实例(instance)</a>。</p>
 <h2 id="_4">数据类型</h2>
 <p>到目前为止，我们已经知道了，变量就是某个命名之后的存储区域，它可以存放数据（如何存放将在后续的章节讨论）。数据类型（一般简称为类型）可以告知编译器它要存储的该数据的值是什么类型（例如，数字，字母，文本等等）。</p>
 <p>在上面的例子中，变量 x 的类型是 int，也就是说，该变量 x 表示的是一个整型的值。整型表示该数字不需要小数部分就可以表示，例如 4，27，0，-2 或者 -12。长话短说，这里 x 是一个整型变量。</p>

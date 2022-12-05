@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#debugging-tactic-1-commenting-out-your-code" class="md-skip">
+        <a href="#debug-1" class="md-skip">
           Skip to content
         </a>
       
@@ -1010,22 +1010,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debugging-tactic-1-commenting-out-your-code" class="md-nav__link">
-    Debugging tactic #1: Commenting out your code
+  <a href="#debug-1" class="md-nav__link">
+    Debug 技术 1：注释掉代码
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging-tactic-2-validating-your-code-flow" class="md-nav__link">
-    Debugging tactic #2: Validating your code flow
+  <a href="#debug-2" class="md-nav__link">
+    Debug 技术 2：验证代码流程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging-tactic-3-printing-values" class="md-nav__link">
-    Debugging tactic #3: Printing values
+  <a href="#debug-3" class="md-nav__link">
+    Debug 技术 3： 打印值
   </a>
   
 </li>
@@ -5801,22 +5801,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debugging-tactic-1-commenting-out-your-code" class="md-nav__link">
-    Debugging tactic #1: Commenting out your code
+  <a href="#debug-1" class="md-nav__link">
+    Debug 技术 1：注释掉代码
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging-tactic-2-validating-your-code-flow" class="md-nav__link">
-    Debugging tactic #2: Validating your code flow
+  <a href="#debug-2" class="md-nav__link">
+    Debug 技术 2：验证代码流程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging-tactic-3-printing-values" class="md-nav__link">
-    Debugging tactic #3: Printing values
+  <a href="#debug-3" class="md-nav__link">
+    Debug 技术 3： 打印值
   </a>
   
 </li>
@@ -5872,7 +5872,7 @@
   <h1>3.4 — 基本代码调试技术</h1>
 
 <p>In the previous lesson, we explored a strategy for finding issues by running our programs and using guesswork to home in on where the problem is. In this lesson, we’ll explore some basic tactics for actually making those guesses and collecting information to help find issues.</p>
-<h2 id="debugging-tactic-1-commenting-out-your-code">Debugging tactic #1: Commenting out your code</h2>
+<h2 id="debug-1">Debug 技术 1：注释掉代码</h2>
 <p>Let’s start with an easy one. If your program is exhibiting erroneous behavior, one way to reduce the amount of code you have to search through is to comment some code out and see if the issue persists. If the issue remains, the commented out code wasn’t responsible.</p>
 <p>Consider the following code:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5915,7 +5915,7 @@
 <p>If the problem goes away, then <em>doMaintenance</em> must be causing the problem, and we should focus our attention there.</p>
 <p>However, if the problem persists (which is more likely), then we know <em>doMaintenance</em> wasn’t at fault, and we can exclude the entire function from our search. This doesn’t help us understand whether the actual problem is before or after the call to <em>doMaintenance</em>, but it reduces the amount of code we have to subsequently look through.</p>
 <p>Don’t forget which functions you’ve commented out so you can uncomment them later!</p>
-<h2 id="debugging-tactic-2-validating-your-code-flow">Debugging tactic #2: Validating your code flow</h2>
+<h2 id="debug-2">Debug 技术 2：验证代码流程</h2>
 <p>Another problem common in more complex programs is that the program is calling a function too many or too few times (including not at all).</p>
 <p>In such cases, it can be helpful to place statements at the top of your functions to print the function’s name. That way, when the program runs, you can see which functions are getting called.</p>
 <div class="admonition tip">
@@ -5953,9 +5953,11 @@
 <p>COPY</p>
 <p>You may need to disable “Treat warnings as errors” for the above to compile.</p>
 <p>Although we expect this program to print the value <em>4</em>, it should print the value:</p>
-<p>1</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1
+</code></pre></div></td></tr></table></div>
 <p>On Visual Studio (and possibly some other compilers), it may print the following instead:</p>
-<p>00101424</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>00101424
+</code></pre></div></td></tr></table></div>
 <p>Let’s add some debugging statements to these functions:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5988,11 +5990,15 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<p>Tip</p>
+<div class="admonition tip">
+<p class="admonition-title">小贴士</p>
 <p>When adding temporary debug statements, it can be helpful to not indent them. This makes them easier to find for removal later.</p>
+</div>
 <p>Now when these functions execute, they’ll output their names, indicating that they were called:</p>
-<p>main() called
-1</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="n">called</span><span class="w"></span>
+<span class="mi">1</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>Now we can see that function <em>getValue</em> was never called. There must be some problem with the code that calls the function. Let’s take a closer look at that line:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">getValue</span><span class="p">;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
@@ -6037,7 +6043,7 @@ getValue() called
 4
 </code></pre></div></td></tr></table></div>
 <p>And we can remove the temporary debugging statements.</p>
-<h2 id="debugging-tactic-3-printing-values">Debugging tactic #3: Printing values</h2>
+<h2 id="debug-3">Debug 技术 3： 打印值</h2>
 <p>With some types of bugs, the program may be calculating or passing the wrong value.</p>
 <p>We can also output the value of variables (including parameters) or expressions to ensure that they are correct.</p>
 <p>Consider the following program that is supposed to add two numbers but doesn’t work correctly:</p>
@@ -6107,10 +6113,14 @@ getValue() called
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>Here’s some output from this program:</p>
-<p>Enter a number: 4
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter a number: 4
 Enter a number: 3
 4 + 3
-The answer is: 9</p>
+The answer is: 9
+</code></pre></div></td></tr></table></div>
 <p>That’s not right. Do you see the error? Even in this short program, it can be hard to spot. Let’s add some code to debug our values:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>

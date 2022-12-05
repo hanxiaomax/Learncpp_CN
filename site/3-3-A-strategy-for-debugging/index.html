@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#finding-problems-via-code-inspection" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -996,22 +996,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#finding-problems-via-code-inspection" class="md-nav__link">
-    Finding problems via code inspection
+  <a href="#_1" class="md-nav__link">
+    通过代码检视找到问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#finding-problems-by-running-the-program" class="md-nav__link">
-    Finding problems by running the program
+  <a href="#_2" class="md-nav__link">
+    通过运行程序找到问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reproducing-the-problem" class="md-nav__link">
-    Reproducing the problem
+  <a href="#_3" class="md-nav__link">
+    复现问题
   </a>
   
 </li>
@@ -5808,22 +5808,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#finding-problems-via-code-inspection" class="md-nav__link">
-    Finding problems via code inspection
+  <a href="#_1" class="md-nav__link">
+    通过代码检视找到问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#finding-problems-by-running-the-program" class="md-nav__link">
-    Finding problems by running the program
+  <a href="#_2" class="md-nav__link">
+    通过运行程序找到问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reproducing-the-problem" class="md-nav__link">
-    Reproducing the problem
+  <a href="#_3" class="md-nav__link">
+    复现问题
   </a>
   
 </li>
@@ -5887,7 +5887,7 @@
 
 <p>When debugging a program, in most cases the vast majority of your time will be spent trying to find where the error actually is. Once the issue is found, the remaining steps (fixing the issue and validating that the issue was fixed) are often trivial in comparison.</p>
 <p>In this lesson, we’ll start exploring how to find errors.</p>
-<h2 id="finding-problems-via-code-inspection">Finding problems via code inspection</h2>
+<h2 id="_1">通过代码检视找到问题</h2>
 <p>Let’s say you’ve noticed a problem, and you want to track the cause of that specific problem down. In many cases (especially in smaller programs), we can quickly home in on the proximity of where the issue is.</p>
 <p>Consider the following program snippet:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -5911,7 +5911,7 @@
 <p>However, as programs get more complex, finding issues by code inspection becomes more complex as well.</p>
 <p>First, there’s a lot more code to look at. Looking at every line of code in a program that is thousands of lines long can take a really long time (not to mention it’s incredibly boring). Second, the code itself tends to be more complex, with more possible places for things to go wrong. Third, the code’s behavior may not give you many clues as to where things are going wrong. If you wrote a program to output stock recommendations and it actually output nothing at all, you probably wouldn’t have much of a lead on where to start looking for the problem.</p>
 <p>Finally, bugs can be caused by making bad assumptions. It’s almost impossible to visually spot a bug caused by a bad assumption, because you’re likely to make the same bad assumption when inspecting the code, and not notice the error. So if we have an issue that we can’t find via code inspection, how do we find it?</p>
-<h2 id="finding-problems-by-running-the-program">Finding problems by running the program</h2>
+<h2 id="_2">通过运行程序找到问题</h2>
 <p>Fortunately, if we can’t find an issue via code inspection, there is another avenue we can take: we can watch the behavior of the program as it runs, and try to diagnose the issue from that. This approach can be generalized as:</p>
 <ol>
 <li>Figure out how to reproduce the problem</li>
@@ -5919,7 +5919,7 @@
 <li>Repeat the prior step until you find the problem</li>
 </ol>
 <p>For the rest of this chapter, we’ll discuss techniques to facilitate this approach.</p>
-<h2 id="reproducing-the-problem">Reproducing the problem</h2>
+<h2 id="_3">复现问题</h2>
 <p>The first and most important step in finding a problem is to be able to <em>reproduce the problem</em>. The reason is simple: it’s extremely hard to find an issue unless you can observe it occurring.</p>
 <p>Back to our ice dispenser analogy -- let’s say one day your friend tells you that your ice dispenser isn’t working. You go to look at it, and it works fine. How would you diagnose the problem? It would be very difficult. However, if you could actually see the issue of the ice dispenser not working, then you could start to diagnose why it wasn’t working much more effectively.</p>
 <p>If a software issue is blatant (e.g. the program crashes in the same place every time you run it) then reproducing the problem can be trivial. However, sometimes reproducing an issue can be a lot more difficult. The problem may only occur on certain computers, or in particular circumstances (e.g. when the user enters certain input). In such cases, generating a set of reproduction steps can be helpful. Reproduction steps are a list of clear and precise steps that can be followed to cause an issue to recur with a high level of predictability. The goal is to be able to cause the issue to reoccur as much as possible, so we can run our program over and over and look for clues to determine what’s causing the problem. If the issue can be reproduced 100% of the time, that’s ideal, but less than 100% reproducibility can be okay. An issue that occurs only 50% of the time simply means it’ll take twice as long to diagnose the issue, as half the time the program won’t exhibit the problem and thus not contribute any useful diagnostic information.</p>
@@ -5955,8 +5955,6 @@ Me: Correct
 <p>Eventually, with enough guesses and some good technique, we can home in on the exact line causing the problem! If we’ve made any bad assumptions, this will help us discover where. When you’ve excluded everything else, the only thing left must be causing the problem. Then it’s just a matter of understanding why.</p>
 <p>What guessing strategy you want to use is up to you -- the best one depends on what type of bug it is, so you’ll likely want to try many different approaches to narrow down the issue. As you gain experience in debugging issues, your intuition will help guide you.</p>
 <p>So how do we “make guesses”? There are many ways to do so. We’re going to start with some simple approaches in the next chapter, and then we’ll build on these and explore others in future chapters.</p>
-<p>[</p>
-<p>](https://www.learncpp.com/cpp-tutorial/basic-debugging-tactics/)</p>
 
 
               </article>

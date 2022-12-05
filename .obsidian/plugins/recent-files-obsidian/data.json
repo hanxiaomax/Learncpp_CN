@@ -1,20 +1,108 @@
 {
   "recentFiles": [
     {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
     },
     {
-      "basename": "symbolic-constants",
-      "path": "docs/symbolic-constants.md"
+      "basename": "4-x-Chapter-4-summary-and-quiz",
+      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
     },
     {
       "basename": "4-13-Const-variables-and-symbolic-constants",
       "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
     },
     {
+      "basename": "2-10-Introduction-to-the-preprocessor",
+      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
+    },
+    {
+      "basename": "13-11-class-code-and-header-files",
+      "path": "docs/13-11-class-code-and-header-files.md"
+    },
+    {
+      "basename": "1-8-Whitespace-and-basic-formatting",
+      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
+    },
+    {
+      "basename": "2-4-Introduction-to-function-parameters-and-arguments",
+      "path": "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
+    },
+    {
+      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
+      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
+    },
+    {
+      "basename": "4-17-An introduction-to-std-string",
+      "path": "docs/4-17-An introduction-to-std-string.md"
+    },
+    {
+      "basename": "4-15-Literals",
+      "path": "docs/4-15-Literals.md"
+    },
+    {
+      "basename": "B-1-introduction-to-C++11",
+      "path": "docs/B-1-introduction-to-C++11.md"
+    },
+    {
+      "basename": "13-12-const-class-objects-and-member-functions",
+      "path": "docs/13-12-const-class-objects-and-member-functions.md"
+    },
+    {
+      "basename": "10-2-unscoped-enumerations",
+      "path": "docs/10-2-unscoped-enumerations.md"
+    },
+    {
+      "basename": "4-11-Chars",
+      "path": "docs/4-11-Chars.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "4-10-Introduction-to-if-statements",
+      "path": "docs/4-10-Introduction-to-if-statements.md"
+    },
+    {
+      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
+      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
+    },
+    {
+      "basename": "12-x-chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
+    },
+    {
+      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
+      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
+    },
+    {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "9-10-Pass-by-address-part-2",
+      "path": "docs/9-10-Pass-by-address-part-2.md"
+    },
+    {
+      "basename": "O-4-converting-between-binary-and-decimal",
+      "path": "docs/O-4-converting-between-binary-and-decimal.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
+      "basename": "instance",
+      "path": "docs/instance.md"
+    },
+    {
+      "basename": "symbolic-constants",
+      "path": "docs/symbolic-constants.md"
     },
     {
       "basename": "constant expression",
@@ -109,96 +197,8 @@
       "path": "docs/11-7-std-string-view-part-2.md"
     },
     {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
       "basename": "2-5-Introduction-to-local-scope",
       "path": "docs/2-5-Introduction-to-local-scope.md"
-    },
-    {
-      "basename": "trivial conversion",
-      "path": "docs/trivial conversion.md"
-    },
-    {
-      "basename": "8-11-Function-overload-resolution-and-ambiguous-matches",
-      "path": "docs/8-11-Function-overload-resolution-and-ambiguous-matches.md"
-    },
-    {
-      "basename": "9-11-Return-by-reference-and-return-by-address",
-      "path": "docs/9-11-Return-by-reference-and-return-by-address.md"
-    },
-    {
-      "basename": "9-3-Lvalue-references",
-      "path": "docs/9-3-Lvalue-references.md"
-    },
-    {
-      "basename": "parameters",
-      "path": "docs/parameters.md"
-    },
-    {
-      "basename": "arguments",
-      "path": "docs/arguments.md"
-    },
-    {
-      "basename": "9-10-Pass-by-address-part-2",
-      "path": "docs/9-10-Pass-by-address-part-2.md"
-    },
-    {
-      "basename": "pass-by-address",
-      "path": "docs/pass-by-address.md"
-    },
-    {
-      "basename": "9-x-Chapter-9-summary-and-quiz",
-      "path": "docs/9-x-Chapter-9-summary-and-quiz.md"
-    },
-    {
-      "basename": "11-17-An-introduction-to-std-vector",
-      "path": "docs/11-17-An-introduction-to-std-vector.md"
-    },
-    {
-      "basename": "动态数组",
-      "path": "docs/动态数组.md"
-    },
-    {
-      "basename": "B-1-introduction-to-C++11",
-      "path": "docs/B-1-introduction-to-C++11.md"
-    },
-    {
-      "basename": "11-18-Introduction-to-iterators",
-      "path": "docs/11-18-Introduction-to-iterators.md"
-    },
-    {
-      "basename": "range-based-for-loops",
-      "path": "docs/range-based-for-loops.md"
-    },
-    {
-      "basename": "11-13-For-each-loops",
-      "path": "docs/11-13-For-each-loops.md"
-    },
-    {
-      "basename": "11-5-Multidimensional-Arrays",
-      "path": "docs/11-5-Multidimensional-Arrays.md"
-    },
-    {
-      "basename": "B-3-introduction-to-C++17",
-      "path": "docs/B-3-introduction-to-C++17.md"
-    },
-    {
-      "basename": "B-2-introduction-to-C++14",
-      "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
-      "basename": "11-16-An-introduction-to-std-array",
-      "path": "docs/11-16-An-introduction-to-std-array.md"
-    },
-    {
-      "basename": "11-3-Arrays-and-loops",
-      "path": "docs/11-3-Arrays-and-loops.md"
-    },
-    {
-      "basename": "7-17-assert-and-static-assert",
-      "path": "docs/7-17-assert-and-static-assert.md"
     }
   ],
   "omittedPaths": [],

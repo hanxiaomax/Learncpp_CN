@@ -72,7 +72,7 @@ tags:
 
 [[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]  
 
-- [[constant expression|常量表达式]]是一个可以在编译时求值的表达式。编译时常量是其值在编译时已知的常量。运行时常量是在运行时之前不知道其初始化值的常量。constexprvariable必须是编译时常量。
+- [[constant expression|常量表达式]]是一个可以在编译时求值的表达式。**编译时常量**是其值在编译时已知的常量。**运行时常量**是在运行时之前不知道其初始化值的常量。constexprvariable必须是编译时常量。
 
 [[4-15-Literals|4.15 - 字面量]]  
 
