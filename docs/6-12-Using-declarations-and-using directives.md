@@ -222,7 +222,7 @@ int main()
 
 现在，更新 foolib（使用更新的 `foolib.h`），程序编程下面这样：
 
-```cpp title=foolib.h""
+```cpp title="foolib.h"
 namespace foo
 {
     // newly introduced function
@@ -235,7 +235,7 @@ namespace foo
 }
 ```
 
-```cpp title=main.cpp""
+```cpp title="main.cpp"
 #include <iostream>
 #include <foolib.h>
 

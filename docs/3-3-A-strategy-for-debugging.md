@@ -31,39 +31,38 @@ int main()
 }
 ```
 
-COPY
+如果你期望这个程序按字母顺序打印名称，但它打印的结果却是相反的，那么问题可能出在 `sortNames` 函数上。对于这种可以将问题缩小到特定函数的情况下，只需查看代码就可以发现问题。
 
-If you expected this program to print the names in alphabetical order, but it printed them in opposite order instead, the problem is probably in the _sortNames_ function. In cases where you can narrow the problem down to a specific function, you may be able to spot the issue just by looking at the code.
+然而，随着程序变得越来越复杂，通过代码检查发现问题也变得越来越复杂。
 
-However, as programs get more complex, finding issues by code inspection becomes more complex as well.
+首先，有很多代码要看。在一个数千行长的程序中，逐行走读代码会花费很长时间(而且非常无聊)。其次，代码本身往往更复杂，很多地方都可能出错。第三，代码的行为可能不能提高太多线索。如果你编写了一个输出股票推荐的程序，而它实际上什么也没有输出，那么我们可能就不知道从哪里开始查找问题了。
 
-First, there’s a lot more code to look at. Looking at every line of code in a program that is thousands of lines long can take a really long time (not to mention it’s incredibly boring). Second, the code itself tends to be more complex, with more possible places for things to go wrong. Third, the code’s behavior may not give you many clues as to where things are going wrong. If you wrote a program to output stock recommendations and it actually output nothing at all, you probably wouldn’t have much of a lead on where to start looking for the problem.
-
-Finally, bugs can be caused by making bad assumptions. It’s almost impossible to visually spot a bug caused by a bad assumption, because you’re likely to make the same bad assumption when inspecting the code, and not notice the error. So if we have an issue that we can’t find via code inspection, how do we find it?
+最后，错误可能是由错误的假设引起的。几乎不可能从视觉上发现由错误假设引起的错误，因为在检查代码时，我们往往倾向于会做出同样的错误假设，导致没有注意到错误。所以，如果一个程序无法通过代码检视发现问题，那应该如何定位呢？
 
 ## 通过运行程序找到问题
 
-Fortunately, if we can’t find an issue via code inspection, there is another avenue we can take: we can watch the behavior of the program as it runs, and try to diagnose the issue from that. This approach can be generalized as:
+所幸，如果不能通过代码检视发现问题，还可以采用另一种方法：在程序运行时观察它的行为，并尝试从中诊断问题。这种方法可以概括为:
 
-1.  Figure out how to reproduce the problem
-2.  Run the program and gather information to narrow down where the problem is
-3.  Repeat the prior step until you find the problem
+1.  找到复现问题的条件；
+2.  运行程序，获取信息，逐步逼近"真像"；
+3.  重复上述步骤直到找到问题所在。
 
-For the rest of this chapter, we’ll discuss techniques to facilitate this approach.
+在本章的其余部分，我们将讨论实施这种方法的技术。
 
 ## 复现问题
 
-The first and most important step in finding a problem is to be able to _reproduce the problem_. The reason is simple: it’s extremely hard to find an issue unless you can observe it occurring.
+发现问题的第一步也是最重要的一步是能够重现问题，原因很简单：如果你不能再次观察到问题的话，要如何才能定位它呢？
 
-Back to our ice dispenser analogy -- let’s say one day your friend tells you that your ice dispenser isn’t working. You go to look at it, and it works fine. How would you diagnose the problem? It would be very difficult. However, if you could actually see the issue of the ice dispenser not working, then you could start to diagnose why it wasn’t working much more effectively.
+回到制冰机的类比——假设有一天你的朋友告诉你，你的制冰机坏了。你去检查的时候发现它工作得很好。你应该如何诊断这个问题？这个时候就比较棘手了。然而，如果你能够再次让制冰机进入到不能工作的状态，那么才可以开始定位问题。
 
-If a software issue is blatant (e.g. the program crashes in the same place every time you run it) then reproducing the problem can be trivial. However, sometimes reproducing an issue can be a lot more difficult. The problem may only occur on certain computers, or in particular circumstances (e.g. when the user enters certain input). In such cases, generating a set of reproduction steps can be helpful. Reproduction steps are a list of clear and precise steps that can be followed to cause an issue to recur with a high level of predictability. The goal is to be able to cause the issue to reoccur as much as possible, so we can run our program over and over and look for clues to determine what’s causing the problem. If the issue can be reproduced 100% of the time, that’s ideal, but less than 100% reproducibility can be okay. An issue that occurs only 50% of the time simply means it’ll take twice as long to diagnose the issue, as half the time the program won’t exhibit the problem and thus not contribute any useful diagnostic information.
+如果一个软件bug很明显的(例如，程序在每次运行时都在相同的地方崩溃)，那么重现这个问题就相当简单了。然而，复现问题有时候是很困难的。例如该问题可能只发生在某些设备上，或只在特定情况下(例如，当用户输入某些输入时)才出现。这种情况下，设计一组复现问题的步骤会很有帮助。复现步骤是一个清晰且精确的分步执行列表，你可以遵循这些步骤使问题以更大的概率再次出现。我们的目标是就能够尽可能地使问题再次出现，这样就可以反复运行程序，并查找线索来确定是什么原因导致了问题。如果问题可以100%的重现，那自然是最理想的状态，但低于100%通常也是可以的。一个只有50%几率触发的问题，意味着我们需要花费两倍的时间来诊断问题，因为有一半的时间程序不会显示问题，因此不会提供任何有用的诊断信息。
 
-## Homing in on issues
+## 关注问题
 
-Once we can reasonably reproduce the problem, the next step is to figure out where in the code the problem is. Based on the nature of the problem, this may be easy or difficult. For the sake of example, let’s say we don’t have much of an idea where the problem actually is. How do we find it?
+一旦我们能够比较稳定地复现问题，接下来就是找到导致问题的代码。根据问题的性质不同，这个过程可能很简单，也可能很困难。举个例子，假设我们不太清楚问题到底在哪里。我们怎么找到它?
 
-An analogy will serve us well here. Let’s play a game of hi-lo. I’m going to ask you to guess a number between 1 and 10. For each guess you make, I’ll tell you whether each guess is too high, too low, or correct. An instance of this game might look like this:
+这里可以做个类比。我们来玩个猜数字游戏，你需要猜一个1到10之间的数字，每猜一次，我就会告诉你是太高、太低还是正确：
+
 
 ```
 You: 5
@@ -76,9 +75,9 @@ You: 7
 Me: Correct
 ```
 
-In the above game, you don’t have to guess every number to find the number I was thinking of. Through the process of making guesses and considering the information you learn from each guess, you can “home in” on the correct number with only a few guesses (if you use an optimal strategy, you can always find the number I’m thinking of in 4 or fewer guesses).
+在上面的游戏中，你不需要猜每一个数字来找到答案。通过猜测和考虑从每次猜测中学到的信息的过程，你可能只需几次猜测就可以“锁定”正确的数字(如果你使用最优策略，那么总是可以在4次或更少的猜测中找到目标数字)。
 
-We can use a similar process to debug programs. In the worst case, we may have no idea where the bug is. However, we do know that the problem must be somewhere in the code that executes between the beginning of the program and the point where the program exhibits the first incorrect symptom that we can observe. That at least rules out the parts of the program that execute after the first observable symptom. But that still potentially leaves a lot of code to cover. To diagnose the issue, we’ll make some educated guesses about where the problem is, with the goal of homing in on the problem quickly.
+我们可以使用类似的方法来调试程序。在最坏的情况下，我们可能不知道bug在哪里。然而，我们知道问题一定是在程序开始到程序显示出我们可以观察到的第一个错误症状之间执行的代码中的某个地方。这至少排除了在出现第一个可观察到的症状后执行的程序部分。但这仍然可能留下大量的代码需要覆盖。为了诊断问题，我们将对问题的位置进行一些有根据的猜测，目的是快速找到问题所在。
 
 Often, whatever it was that caused us to notice the problem will give us an initial guess that’s close to where the actual problem is. For example, if the program isn’t writing data to a file when it should be, then the issue is probably somewhere in the code that handles writing to a file (duh!). Then we can use a hi-lo like strategy to try and isolate where the problem actually is.
 

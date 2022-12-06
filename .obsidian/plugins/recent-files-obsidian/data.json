@@ -9,6 +9,18 @@
       "path": "docs/MOC.md"
     },
     {
+      "basename": "3-2-The-debugging-process",
+      "path": "docs/3-2-The-debugging-process.md"
+    },
+    {
+      "basename": "6-12-Using-declarations-and-using directives",
+      "path": "docs/6-12-Using-declarations-and-using directives.md"
+    },
+    {
+      "basename": "6-7-External-linkage-and-variable-forward-declarations",
+      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
+    },
+    {
       "basename": "9-8-Pointers-and-const",
       "path": "docs/9-8-Pointers-and-const.md"
     },
@@ -121,10 +133,6 @@
       "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
     },
     {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
       "basename": "2-10-Introduction-to-the-preprocessor",
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "instance",
       "path": "docs/instance.md"
-    },
-    {
-      "basename": "symbolic-constants",
-      "path": "docs/symbolic-constants.md"
-    },
-    {
-      "basename": "constant expression",
-      "path": "docs/constant expression.md"
     }
   ],
   "omittedPaths": [],
