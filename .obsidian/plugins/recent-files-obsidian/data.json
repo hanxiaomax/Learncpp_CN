@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "3-3-A-strategy-for-debugging",
+      "path": "docs/3-3-A-strategy-for-debugging.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "constant expression",
       "path": "docs/constant expression.md"
-    },
-    {
-      "basename": "3-x-Chapter-3-summary-and-quiz",
-      "path": "docs/3-x-Chapter-3-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

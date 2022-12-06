@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "4f2137b42fba6879",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/3-3-A-strategy-for-debugging.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -108,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MOC.md",
+                "file": "docs/3-3-A-strategy-for-debugging.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MOC.md"
+                "file": "docs/3-3-A-strategy-for-debugging.md"
               }
             }
           }
@@ -137,10 +151,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d500734583852a75",
+  "active": "4f2137b42fba6879",
   "lastOpenFiles": [
-    "docs/9-8-Pointers-and-const.md",
     "docs/MOC.md",
+    "docs/9-8-Pointers-and-const.md",
     "docs/9-12-Type-deduction-with-pointers-references-and-const.md",
     "docs/4-17-an-introduction-to-std-string.md",
     "docs/11-16-An-introduction-to-std-array.md",

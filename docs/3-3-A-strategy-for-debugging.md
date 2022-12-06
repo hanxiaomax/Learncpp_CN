@@ -10,15 +10,15 @@ tags:
 ---
 
 
-When debugging a program, in most cases the vast majority of your time will be spent trying to find where the error actually is. Once the issue is found, the remaining steps (fixing the issue and validating that the issue was fixed) are often trivial in comparison.
+在调试程序时，在大多数情况下，你的绝大多数时间将花在试图找到错误的实际位置上。一旦发现问题，剩下的步骤(修复问题和验证问题已修复)相比起来通常是微不足道的。
 
-In this lesson, we’ll start exploring how to find errors.
+在这节课中，我们将开始探索如何查找错误。
 
 ## 通过代码检视找到问题
 
-Let’s say you’ve noticed a problem, and you want to track the cause of that specific problem down. In many cases (especially in smaller programs), we can quickly home in on the proximity of where the issue is.
+假设您注意到一个问题，您想要追踪这个特定问题的原因。在许多情况下(特别是在较小的程序中)，我们可以快速地定位问题所在的位置。
 
-Consider the following program snippet:
+考虑下面的程序片段：
 
 ```cpp
 int main()
