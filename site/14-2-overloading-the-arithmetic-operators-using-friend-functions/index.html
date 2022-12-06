@@ -5786,13 +5786,13 @@
 
   <!-- <div style="background: #efefef;">
     <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//overloading-the-arithmetic-operators-using-friend-functions/">原文链接: none</a>
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//overloading-the-arithmetic-operators-using-friend-functions/">原文链接: 14.2 — Overloading the arithmetic operators using friend functions</a>
     </div>
     <div >
         <a target="_blank" href="https://www.learncpp.com/author/Alex/">作者: ALEX</a>
     </div>
     <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//overloading-the-arithmetic-operators-using-friend-functions/">更新时间: 2022-7-27</a>
+        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//overloading-the-arithmetic-operators-using-friend-functions/">更新时间: 2022-11-23</a>
     </div>
   </div> -->
   <div class="origin-link">
@@ -5806,10 +5806,494 @@
 
   <h1>14.2 - 使用友元重载算数运算符</h1>
 
-<details class="note"><summary>Key Takeaway</summary><ul>
-<li></li>
-</ul>
-</details>
+<details class="note"><summary>Key Takeaway</summary></details>
+<p>Some of the most commonly used operators in C++ are the arithmetic operators -- that is, the plus operator (+), minus operator (-), multiplication operator (*), and division operator (/). Note that all of the arithmetic operators are binary operators -- meaning they take two operands -- one on each side of the operator. All four of these operators are overloaded in the exact same way.</p>
+<p>It turns out that there are three different ways to overload operators: the member function way, the friend function way, and the normal function way. In this lesson, we’ll cover the friend function way (because it’s more intuitive for most binary operators). Next lesson, we’ll discuss the normal function way. Finally, in a later lesson in this chapter, we’ll cover the member function way. And, of course, we’ll also summarize when to use each in more detail.</p>
+<p>Overloading operators using friend functions</p>
+<p>Consider the following trivial class:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>The following example shows how to overload operator plus (+) in order to add two “Cents” objects together:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// add Cents + Cents using a friend function</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// note: this function is not a member function!</span>
+<span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// use the Cents constructor and operator+(int, int)</span>
+<span class="w">    </span><span class="c1">// we can access m_cents directly because this is a friend function</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Cents</span><span class="p">{</span><span class="n">c1</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">m_cents</span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents1</span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents2</span><span class="p">{</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">centsSum</span><span class="p">{</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cents2</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">centsSum</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>This produces the result:</p>
+<p>I have 14 cents.</p>
+<p>Overloading the plus operator (+) is as simple as declaring a function named operator+, giving it two parameters of the type of the operands we want to add, picking an appropriate return type, and then writing the function.</p>
+<p>In the case of our Cents object, implementing our operator+() function is very simple. First, the parameter types: in this version of operator+, we are going to add two Cents objects together, so our function will take two objects of type Cents. Second, the return type: our operator+ is going to return a result of type Cents, so that’s our return type.</p>
+<p>Finally, implementation: to add two Cents objects together, we really need to add the m_cents member from each Cents object. Because our overloaded operator+() function is a friend of the class, we can access the m_cents member of our parameters directly. Also, because m_cents is an integer, and C++ knows how to add integers together using the built-in version of the plus operator that works with integer operands, we can simply use the + operator to do the adding.</p>
+<p>Overloading the subtraction operator (-) is simple as well:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// add Cents + Cents using a friend function</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// subtract Cents - Cents using a friend function</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// note: this function is not a member function!</span>
+<span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// use the Cents constructor and operator+(int, int)</span>
+<span class="w">    </span><span class="c1">// we can access m_cents directly because this is a friend function</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Cents</span><span class="p">{</span><span class="n">c1</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">m_cents</span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// note: this function is not a member function!</span>
+<span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// use the Cents constructor and operator-(int, int)</span>
+<span class="w">    </span><span class="c1">// we can access m_cents directly because this is a friend function</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Cents</span><span class="p">(</span><span class="n">c1</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">m_cents</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents1</span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents2</span><span class="p">{</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">centsSum</span><span class="p">{</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cents2</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">centsSum</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Overloading the multiplication operator (<em>) and the division operator (/) is as easy as defining functions for operator</em> and operator/ respectively.</p>
+<p>Friend functions can be defined inside the class</p>
+<p>Even though friend functions are not members of the class, they can still be defined inside the class if desired:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// add Cents + Cents using a friend function</span>
+<span class="w">        </span><span class="c1">// This function is not considered a member of the class, even though the definition is inside the class</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// use the Cents constructor and operator+(int, int)</span>
+<span class="w">        </span><span class="c1">// we can access m_cents directly because this is a friend function</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Cents</span><span class="p">{</span><span class="n">c1</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">m_cents</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents1</span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents2</span><span class="p">{</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">centsSum</span><span class="p">{</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cents2</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">centsSum</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>We generally don’t recommend this, as non-trivial function definitions are better kept in a separate .cpp file, outside of the class definition. However, we will use this pattern in future tutorials to keep the examples concise.</p>
+<p>Overloading operators for operands of different types</p>
+<p>Often it is the case that you want your overloaded operators to work with operands that are different types. For example, if we have Cents(4), we may want to add the integer 6 to this to produce the result Cents(10).</p>
+<p>When C++ evaluates the expression <code>x + y</code>, x becomes the first parameter, and y becomes the second parameter. When x and y have the same type, it does not matter if you add x + y or y + x -- either way, the same version of operator+ gets called. However, when the operands have different types, x + y does not call the same function as y + x.</p>
+<p>For example, <code>Cents(4) + 6</code> would call operator+(Cents, int), and <code>6 + Cents(4)</code> would call operator+(int, Cents). Consequently, whenever we overload binary operators for operands of different types, we actually need to write two functions -- one for each case. Here is an example of that:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// add Cents + int using a friend function</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// add int + Cents using a friend function</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span><span class="w"></span>
+
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// note: this function is not a member function!</span>
+<span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// use the Cents constructor and operator+(int, int)</span>
+<span class="w">    </span><span class="c1">// we can access m_cents directly because this is a friend function</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// note: this function is not a member function!</span>
+<span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c1</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// use the Cents constructor and operator+(int, int)</span>
+<span class="w">    </span><span class="c1">// we can access m_cents directly because this is a friend function</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">c1</span><span class="p">{</span><span class="w"> </span><span class="n">Cents</span><span class="p">{</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">c2</span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Cents</span><span class="p">{</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Note that both overloaded functions have the same implementation -- that’s because they do the same thing, they just take their parameters in a different order.</p>
+<p>Another example</p>
+<p>Let’s take a look at another example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MinMax</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_min</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// The min value seen so far</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_max</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// The max value seen so far</span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">MinMax</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">m_min</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">m_max</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">getMin</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_min</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">getMax</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_max</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">MinMax</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">MinMax</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">MinMax</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">MinMax</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m2</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Get the minimum value seen in m1 and m2</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">{</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">m_min</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m2</span><span class="p">.</span><span class="n">m_min</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">m_min</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m2</span><span class="p">.</span><span class="n">m_min</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Get the maximum value seen in m1 and m2</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">{</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">m_max</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">m2</span><span class="p">.</span><span class="n">m_max</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">m_max</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m2</span><span class="p">.</span><span class="n">m_max</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">MinMax</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Get the minimum value seen in m and value</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">{</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">m_min</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">m_min</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Get the maximum value seen in m and value</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">{</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">m_max</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">m_max</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">MinMax</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MinMax</span><span class="o">&amp;</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// call operator+(MinMax, int)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">MinMax</span><span class="w"> </span><span class="n">m1</span><span class="p">{</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">MinMax</span><span class="w"> </span><span class="n">m2</span><span class="p">{</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">MinMax</span><span class="w"> </span><span class="n">m3</span><span class="p">{</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">MinMax</span><span class="w"> </span><span class="n">mFinal</span><span class="p">{</span><span class="w"> </span><span class="n">m1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Result: (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">mFinal</span><span class="p">.</span><span class="n">getMin</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">        </span><span class="n">mFinal</span><span class="p">.</span><span class="n">getMax</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>The MinMax class keeps track of the minimum and maximum values that it has seen so far. We have overloaded the + operator 3 times, so that we can add two MinMax objects together, or add integers to MinMax objects.</p>
+<p>This example produces the result:</p>
+<p>Result: (3, 16)</p>
+<p>which you will note is the minimum and maximum values that we added to mFinal.</p>
+<p>Let’s talk a little bit more about how “MinMax mFinal { m1 + m2 + 5 + 8 + m3 + 16 }” evaluates. Remember that operator+ evaluates from left to right, so m1 + m2 evaluates first. This becomes a call to operator+(m1, m2), which produces the return value MinMax(8, 15). Then MinMax(8, 15) + 5 evaluates next. This becomes a call to operator+(MinMax(8, 15), 5), which produces return value MinMax(5, 15). Then MinMax(5, 15) + 8 evaluates in the same way to produce MinMax(5, 15). Then MinMax(5, 15) + m3 evaluates to produce MinMax(3, 15). And finally, MinMax(3, 15) + 16 evaluates to MinMax(3, 16). This final result is then used to initialize mFinal.</p>
+<p>In other words, this expression evaluates as “MinMax mFinal = (((((m1 + m2) + 5) + 8) + m3) + 16)”, with each successive operation returning a MinMax object that becomes the left-hand operand for the following operator.</p>
+<p>Implementing operators using other operators</p>
+<p>In the above example, note that we defined operator+(int, MinMax) by calling operator+(MinMax, int) (which produces the same result). This allows us to reduce the implementation of operator+(int, MinMax) to a single line, making our code easier to maintain by minimizing redundancy and making the function simpler to understand.</p>
+<p>It is often possible to define overloaded operators by calling other overloaded operators. You should do so if and when doing so produces simpler code. In cases where the implementation is trivial (e.g. a single line) it may or may not be worth doing this.</p>
 
 
               </article>

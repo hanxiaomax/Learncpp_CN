@@ -1,12 +1,60 @@
 {
   "recentFiles": [
     {
-      "basename": "3-3-A-strategy-for-debugging",
-      "path": "docs/3-3-A-strategy-for-debugging.md"
+      "basename": "3-4-Basic-debugging-tactics",
+      "path": "docs/3-4-Basic-debugging-tactics.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "14-11-Overloading-typecasts",
+      "path": "docs/14-11-Overloading-typecasts.md"
+    },
+    {
+      "basename": "14-10-overloading-the-parenthesis-operator",
+      "path": "docs/14-10-overloading-the-parenthesis-operator.md"
+    },
+    {
+      "basename": "14-9-overloading-the-subscript-operator",
+      "path": "docs/14-9-overloading-the-subscript-operator.md"
+    },
+    {
+      "basename": "14-8-overloading-the-increment-and-decrement-operators",
+      "path": "docs/14-8-overloading-the-increment-and-decrement-operators.md"
+    },
+    {
+      "basename": "14-7-overloading-the-comparison-operators",
+      "path": "docs/14-7-overloading-the-comparison-operators.md"
+    },
+    {
+      "basename": "14-6-overloading-unary-operators-+--and-!",
+      "path": "docs/14-6-overloading-unary-operators-+--and-!.md"
+    },
+    {
+      "basename": "14-5-overloading-operators-using-member-functions",
+      "path": "docs/14-5-overloading-operators-using-member-functions.md"
+    },
+    {
+      "basename": "14-4-overloading-the-IO-operators",
+      "path": "docs/14-4-overloading-the-IO-operators.md"
+    },
+    {
+      "basename": "14-3-overloading-operators-using-normal-functions",
+      "path": "docs/14-3-overloading-operators-using-normal-functions.md"
+    },
+    {
+      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
+      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
+    },
+    {
+      "basename": "14-1-introduction-to-operator-overloading",
+      "path": "docs/14-1-introduction-to-operator-overloading.md"
+    },
+    {
+      "basename": "3-3-A-strategy-for-debugging",
+      "path": "docs/3-3-A-strategy-for-debugging.md"
     },
     {
       "basename": "3-2-The-debugging-process",
@@ -151,54 +199,6 @@
     {
       "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
       "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
-    },
-    {
-      "basename": "B-1-introduction-to-C++11",
-      "path": "docs/B-1-introduction-to-C++11.md"
-    },
-    {
-      "basename": "13-12-const-class-objects-and-member-functions",
-      "path": "docs/13-12-const-class-objects-and-member-functions.md"
-    },
-    {
-      "basename": "10-2-unscoped-enumerations",
-      "path": "docs/10-2-unscoped-enumerations.md"
-    },
-    {
-      "basename": "4-11-Chars",
-      "path": "docs/4-11-Chars.md"
-    },
-    {
-      "basename": "4-10-Introduction-to-if-statements",
-      "path": "docs/4-10-Introduction-to-if-statements.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-6-Ellipsis-and-why-to-avoid-them",
-      "path": "docs/12-6-Ellipsis-and-why-to-avoid-them.md"
-    },
-    {
-      "basename": "翻译约定",
-      "path": "docs/翻译约定.md"
-    },
-    {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
-      "basename": "9-10-Pass-by-address-part-2",
-      "path": "docs/9-10-Pass-by-address-part-2.md"
-    },
-    {
-      "basename": "O-4-converting-between-binary-and-decimal",
-      "path": "docs/O-4-converting-between-binary-and-decimal.md"
-    },
-    {
-      "basename": "instance",
-      "path": "docs/instance.md"
     }
   ],
   "omittedPaths": [],

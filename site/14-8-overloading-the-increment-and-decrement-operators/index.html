@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#overloading-prefix-increment-and-decrement" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -3965,9 +3970,45 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            14.8 - 重载递增递减运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         14.8 - 重载递增递减运算符
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overloading-prefix-increment-and-decrement" class="md-nav__link">
+    Overloading prefix increment and decrement**
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overloading-postfix-increment-and-decrement" class="md-nav__link">
+    Overloading postfix increment and decrement**
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5787,28 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overloading-prefix-increment-and-decrement" class="md-nav__link">
+    Overloading prefix increment and decrement**
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overloading-postfix-increment-and-decrement" class="md-nav__link">
+    Overloading postfix increment and decrement**
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5803,7 +5866,7 @@
 <details class="note"><summary>Key Takeaway</summary></details>
 <p>Overloading the increment (<code>++</code>) and decrement (<code>--</code>) operators is pretty straightforward, with one small exception. There are actually two versions of the increment and decrement operators: a prefix increment and decrement (e.g. <code>++x; --y;</code>) and a postfix increment and decrement (e.g. <code>x++; y--;</code>).</p>
 <p>Because the increment and decrement operators are both unary operators and they modify their operands, they’re best overloaded as member functions. We’ll tackle the prefix versions first because they’re the most straightforward.</p>
-<p><strong>Overloading prefix increment and decrement</strong></p>
+<h2 id="overloading-prefix-increment-and-decrement">Overloading prefix increment and decrement**</h2>
 <p>Prefix increment and decrement are overloaded exactly the same as any normal unary operator. We’ll do this one by example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -5928,9 +5991,10 @@
 <p>COPY</p>
 <p>Our Digit class holds a number between 0 and 9. We’ve overloaded increment and decrement so they increment/decrement the digit, wrapping around if the digit is incremented/decremented out range.</p>
 <p>This example prints:</p>
-<p>89098</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>89098
+</code></pre></div></td></tr></table></div>
 <p>Note that we return *this. The overloaded increment and decrement operators return the current implicit object so multiple operators can be “chained” together.</p>
-<p><strong>Overloading postfix increment and decrement</strong></p>
+<h2 id="overloading-postfix-increment-and-decrement">Overloading postfix increment and decrement**</h2>
 <p>Normally, functions can be overloaded when they have the same name but a different number and/or different type of parameters. However, consider the case of the prefix and postfix increment and decrement operators. Both have the same name (eg. operator++), are unary, and take one parameter of the same type. So how it is possible to differentiate the two when overloading?</p>
 <p>The C++ language specification has a special case that provides the answer: the compiler looks to see if the overloaded operator has an int parameter. If the overloaded operator has an int parameter, the operator is a postfix overload. If the overloaded operator has no parameter, the operator is a prefix overload.</p>
 <p>Here is the above Digit class with both prefix and postfix overloads:</p>
@@ -6118,7 +6182,8 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This prints</p>
-<p>5667665</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5667665
+</code></pre></div></td></tr></table></div>
 <p>There are a few interesting things going on here. First, note that we’ve distinguished the prefix from the postfix operators by providing an integer dummy parameter on the postfix version. Second, because the dummy parameter is not used in the function implementation, we have not even given it a name. This tells the compiler to treat this variable as a placeholder, which means it won’t warn us that we declared a variable but never used it.</p>
 <p>Third, note that the prefix and postfix operators do the same job -- they both increment or decrement the object. The difference between the two is in the value they return. The overloaded prefix operators return the object after it has been incremented or decremented. Consequently, overloading these is fairly straightforward. We simply increment or decrement our member variables, and then return *this.</p>
 <p>The postfix operators, on the other hand, need to return the state of the object <em>before</em> it is incremented or decremented. This leads to a bit of a conundrum -- if we increment or decrement the object, we won’t be able to return the state of the object before it was incremented or decremented. On the other hand, if we return the state of the object before we increment or decrement it, the increment or decrement will never be called.</p>

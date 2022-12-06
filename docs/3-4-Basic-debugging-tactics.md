@@ -9,13 +9,13 @@ tags:
 - debugging 
 ---
 
-In the previous lesson, we explored a strategy for finding issues by running our programs and using guesswork to home in on where the problem is. In this lesson, we’ll explore some basic tactics for actually making those guesses and collecting information to help find issues.
+在上一课中，我们探索了一种通过运行程序和使用猜测来查找问题所在的策略。本节课我们将探索一些用于猜测和收集信息以帮助发现问题的基本策略。
 
 ## Debug 技术 1：注释掉代码
 
-Let’s start with an easy one. If your program is exhibiting erroneous behavior, one way to reduce the amount of code you have to search through is to comment some code out and see if the issue persists. If the issue remains, the commented out code wasn’t responsible.
+先从一个简单的问题开始。如果程序表现出错误的行为，我们可以注释掉一些代码，看看问题是否仍然存在。如果问题仍然存在，则注释掉的代码肯定没有问题。
 
-Consider the following code:
+考虑以下代码：
 
 ```cpp
 int main()
@@ -29,8 +29,7 @@ int main()
 }
 ```
 
-
-Let’s say this program is supposed to print the names the user enters in alphabetical order, but its printing them in reverse alphabetical order. Where’s the problem? Is _getNames_ entering the names incorrectly? Is _sortNames_ sorting them backwards? Is _printNames_ printing them backwards? It could be any of those things. But we might suspect doMaintenance() has nothing to do with the problem, so let’s comment it out.
+假设这个程序应该按字母顺序打印用户输入的名字，但它却按相反的字母顺序打印。问题在哪里? `getNames` 是否输入了错误的名称？`sortNames` 是否将它们反向排序？还是 `printNames` 打印的顺序不对？以上任何一种猜测都有可能，但是 `domainmaintenance()` 多半与问题无关，所以可以先将其注释掉。
 
 ```cpp
 int main()
@@ -44,7 +43,11 @@ int main()
 }
 ```
 
-If the problem goes away, then _doMaintenance_ must be causing the problem, and we should focus our attention there.
+如果问题消失了，那么 `domainance` 反倒是有问题的，到时候再注意力集中在那里。
+
+不过，问题很可能还会存在，因此道 `doMaintenance` 不是错误的根源，我们可以从搜索中排除整个函数。这并不能帮助我们理解实际问题是发生在_doMaintenance_调用之前还是之后，但它减少了我们随后必须查看的代码量。
+
+不要忘记注释掉了哪些函数，以便以后可以取消注释!
 
 However, if the problem persists (which is more likely), then we know _doMaintenance_ wasn’t at fault, and we can exclude the entire function from our search. This doesn’t help us understand whether the actual problem is before or after the call to _doMaintenance_, but it reduces the amount of code we have to subsequently look through.
 

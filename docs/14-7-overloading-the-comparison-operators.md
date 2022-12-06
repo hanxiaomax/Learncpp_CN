@@ -14,7 +14,7 @@ tags:
 ??? note "Key Takeaway"
 	
 
-In lesson [5.6 -- Relational operators and floating point comparisons](https://www.learncpp.com/cpp-tutorial/relational-operators-and-floating-point-comparisons/), we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.
+In lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]] we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.
 
 Because the comparison operators are all binary operators that do not modify their left operands, we will make our overloaded comparison operators friend functions.
 
@@ -74,9 +74,9 @@ The code here should be straightforward.
 
 What about operator< and operator>? What would it mean for a Car to be greater or less than another Car? We typically don’t think about cars this way. Since the results of operator< and operator> would not be immediately intuitive, it may be better to leave these operators undefined.
 
-Best practice
+!!! success "最佳实践"
 
-Only define overloaded operators that make intuitive sense for your class.
+	Only define overloaded operators that make intuitive sense for your class.
 
 However, there is one common exception to the above recommendation. What if we wanted to sort a list of Cars? In such a case, we might want to overload the comparison operators to return the member (or members) you’re most likely to want to sort on. For example, an overloaded operator< for Cars might sort based on make and model alphabetically.
 
@@ -163,7 +163,7 @@ COPY
 
 This is also pretty straightforward.
 
-Minimizing comparative redundancy
+## Minimizing comparative redundancy
 
 In the example above, note how similar the implementation of each of the overloaded comparison operators are. Overloaded comparison operators tend to have a high degree of redundancy, and the more complex the implementation, the more redundancy there will be.
 

@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#minimizing-comparative-redundancy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -3951,9 +3956,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            14.7 - 重载比较运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         14.7 - 重载比较运算符
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimizing-comparative-redundancy" class="md-nav__link">
+    Minimizing comparative redundancy
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5780,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimizing-comparative-redundancy" class="md-nav__link">
+    Minimizing comparative redundancy
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5807,7 +5856,7 @@
   <h1>14.7 - 重载比较运算符</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/relational-operators-and-floating-point-comparisons/">5.6 -- Relational operators and floating point comparisons</a>, we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.</p>
+<p>In lesson <a href="../5-6-Relational-operators-and-floating-point-comparisons/">5.6 - 关系运算符和浮点数比较</a> we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.</p>
 <p>Because the comparison operators are all binary operators that do not modify their left operands, we will make our overloaded comparison operators friend functions.</p>
 <p>Here’s an example Car class with an overloaded operator== and operator!=.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -5903,8 +5952,10 @@
 <p>COPY</p>
 <p>The code here should be straightforward.</p>
 <p>What about operator&lt; and operator&gt;? What would it mean for a Car to be greater or less than another Car? We typically don’t think about cars this way. Since the results of operator&lt; and operator&gt; would not be immediately intuitive, it may be better to leave these operators undefined.</p>
-<p>Best practice</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
 <p>Only define overloaded operators that make intuitive sense for your class.</p>
+</div>
 <p>However, there is one common exception to the above recommendation. What if we wanted to sort a list of Cars? In such a case, we might want to overload the comparison operators to return the member (or members) you’re most likely to want to sort on. For example, an overloaded operator&lt; for Cars might sort based on make and model alphabetically.</p>
 <p>Some of the container classes in the standard library (classes that hold sets of other classes) require an overloaded operator&lt; so they can keep the elements sorted.</p>
 <p>Here’s a different example overloading all 6 logical comparison operators:</p>
@@ -6054,7 +6105,7 @@
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
 <p>This is also pretty straightforward.</p>
-<p>Minimizing comparative redundancy</p>
+<h2 id="minimizing-comparative-redundancy">Minimizing comparative redundancy</h2>
 <p>In the example above, note how similar the implementation of each of the overloaded comparison operators are. Overloaded comparison operators tend to have a high degree of redundancy, and the more complex the implementation, the more redundancy there will be.</p>
 <p>Fortunately, many of the comparison operators can be implemented using the other comparison operators:</p>
 <ul>

@@ -5800,10 +5800,244 @@
 
   <h1>14.5 - 使用成员函数重载运算符</h1>
 
-<details class="note"><summary>Key Takeaway</summary><ul>
-<li></li>
+<details class="note"><summary>Key Takeaway</summary></details>
+<p>In lesson <a href="../14-2-overloading-the-arithmetic-operators-using-friend-functions/">14.2 - 使用友元重载算数运算符</a>, you learned how to overload the arithmetic operators using friend functions. You also learned you can overload operators as normal functions. Many operators can be overloaded in a different way: as a member function.</p>
+<p>Overloading operators using a member function is very similar to overloading operators using a friend function. When overloading an operator using a member function:</p>
+<ul>
+<li>The overloaded operator must be added as a member function of the left operand.</li>
+<li>The left operand becomes the implicit *this object</li>
+<li>All other operands become function parameters.</li>
 </ul>
-</details>
+<p>As a reminder, here’s how we overloaded operator+ using a friend function:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Overload Cents + int</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cents</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// note: this function is not a member function!</span>
+<span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cents</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Cents</span><span class="p">(</span><span class="n">cents</span><span class="p">.</span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cents2</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Converting a friend overloaded operator to a member overloaded operator is easy:</p>
+<ol>
+<li>The overloaded operator is defined as a member instead of a friend (Cents::operator+ instead of friend operator+)</li>
+<li>The left parameter is removed, because that parameter now becomes the implicit *this object.</li>
+<li>Inside the function body, all references to the left parameter can be removed (e.g. cents.m_cents becomes m_cents, which implicitly references the *this object).</li>
+</ol>
+<p>Now, the same operator overloaded using the member function method:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Cents</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cents</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Overload Cents + int</span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCents</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// note: this function is a member function!</span>
+<span class="c1">// the cents parameter in the friend version is now the implicit *this parameter</span>
+<span class="n">Cents</span><span class="w"> </span><span class="n">Cents</span><span class="o">::</span><span class="k">operator</span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Cents</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m_cents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Cents</span><span class="w"> </span><span class="n">cents2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cents1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I have &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cents2</span><span class="p">.</span><span class="n">getCents</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; cents.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>Note that the usage of the operator does not change (in both cases, <code>cents1 + 2</code>), we’ve simply defined the function differently. Our two-parameter friend function becomes a one-parameter member function, with the leftmost parameter in the friend version (cents) becoming the implicit *this parameter in the member function version.</p>
+<p>Let’s take a closer look at how the expression <code>cents1 + 2</code> evaluates.</p>
+<p>In the friend function version, the expression <code>cents1 + 2</code> becomes function call operator+(cents1, 2). Note that there are two function parameters. This is straightforward.</p>
+<p>In the member function version, the expression <code>cents1 + 2</code> becomes function call <code>cents1.operator+(2)</code>. Note that there is now only one explicit function parameter, and cents1 has become an object prefix. However, in lesson <a href="https://www.learncpp.com/cpp-tutorial/the-hidden-this-pointer/">13.10 -- The hidden “this” pointer</a>, we mentioned that the compiler implicitly converts an object prefix into a hidden leftmost parameter named *this. So in actuality, <code>cents1.operator+(2)</code> becomes <code>operator+(¢s1, 2)</code>, which is almost identical to the friend version.</p>
+<p>Both cases produce the same result, just in slightly different ways.</p>
+<p>So if we can overload an operator as a friend or a member, which should we use? In order to answer that question, there’s a few more things you’ll need to know.</p>
+<p><strong>Not everything can be overloaded as a friend function</strong></p>
+<p>The assignment (=), subscript ([]), function call (()), and member selection (-&gt;) operators must be overloaded as member functions, because the language requires them to be.</p>
+<p><strong>Not everything can be overloaded as a member function</strong></p>
+<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/overloading-the-io-operators/">14.4 -- Overloading the I/O operators</a>, we overloaded operator&lt;&lt; for our Point class using the friend function method. Here’s a reminder of how we did that:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">m_x</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">m_y</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="n">m_z</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">Point</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">z</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">m_x</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">m_y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">m_z</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="o">&amp;</span><span class="n">point</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="o">&amp;</span><span class="n">point</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Since operator&lt;&lt; is a friend of the Point class, we can access Point&#39;s members directly.</span>
+<span class="w">    </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Point(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">m_x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">m_y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">m_z</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Point</span><span class="w"> </span><span class="n">point1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>However, we are not able to overload operator&lt;&lt; as a member function. Why not? Because the overloaded operator must be added as a member of the left operand. In this case, the left operand is an object of type std::ostream. std::ostream is fixed as part of the standard library. We can’t modify the class declaration to add the overload as a member function of std::ostream.</p>
+<p>This necessitates that operator&lt;&lt; be overloaded as a normal function (preferred) or a friend.</p>
+<p>Similarly, although we can overload operator+(Cents, int) as a member function (as we did above), we can’t overload operator+(int, Cents) as a member function, because int isn’t a class we can add members to.</p>
+<p>Typically, we won’t be able to use a member overload if the left operand is either not a class (e.g. int), or it is a class that we can’t modify (e.g. std::ostream).</p>
+<p><strong>When to use a normal, friend, or member function overload</strong></p>
+<p>In most cases, the language leaves it up to you to determine whether you want to use the normal/friend or member function version of the overload. However, one of the two is usually a better choice than the other.</p>
+<p>When dealing with binary operators that don’t modify the left operand (e.g. operator+), the normal or friend function version is typically preferred, because it works for all parameter types (even when the left operand isn’t a class object, or is a class that is not modifiable). The normal or friend function version has the added benefit of “symmetry”, as all operands become explicit parameters (instead of the left operand becoming *this and the right operand becoming an explicit parameter).</p>
+<p>When dealing with binary operators that do modify the left operand (e.g. operator+=), the member function version is typically preferred. In these cases, the leftmost operand will always be a class type, and having the object being modified become the one pointed to by *this is natural. Because the rightmost operand becomes an explicit parameter, there’s no confusion over who is getting modified and who is getting evaluated.</p>
+<p>Unary operators are usually overloaded as member functions as well, since the member version has no parameters.</p>
+<p>The following rules of thumb can help you determine which form is best for a given situation:</p>
+<ul>
+<li>If you’re overloading assignment (=), subscript ([]), function call (()), or member selection (-&gt;), do so as a member function.</li>
+<li>If you’re overloading a unary operator, do so as a member function.</li>
+<li>If you’re overloading a binary operator that does not modify its left operand (e.g. operator+), do so as a normal function (preferred) or friend function.</li>
+<li>If you’re overloading a binary operator that modifies its left operand, but you can’t add members to the class definition of the left operand (e.g. operator&lt;&lt;, which has a left operand of type ostream), do so as a normal function (preferred) or friend function.</li>
+<li>If you’re overloading a binary operator that modifies its left operand (e.g. operator+=), and you can modify the definition of the left operand, do so as a member function.</li>
+</ul>
+<p>[</p>
+<p>](https://www.learncpp.com/cpp-tutorial/overloading-unary-operators/)</p>
 
 
               </article>

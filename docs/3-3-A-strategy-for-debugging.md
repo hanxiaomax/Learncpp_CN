@@ -79,19 +79,19 @@ Me: Correct
 
 我们可以使用类似的方法来调试程序。在最坏的情况下，我们可能不知道bug在哪里。然而，我们知道问题一定是在程序开始到程序显示出我们可以观察到的第一个错误症状之间执行的代码中的某个地方。这至少排除了在出现第一个可观察到的症状后执行的程序部分。但这仍然可能留下大量的代码需要覆盖。为了诊断问题，我们将对问题的位置进行一些有根据的猜测，目的是快速找到问题所在。
 
-Often, whatever it was that caused us to notice the problem will give us an initial guess that’s close to where the actual problem is. For example, if the program isn’t writing data to a file when it should be, then the issue is probably somewhere in the code that handles writing to a file (duh!). Then we can use a hi-lo like strategy to try and isolate where the problem actually is.
+通常情况下，无论是什么原因导致我们注意到问题，都会给我们一个接近实际问题所在的初始猜测。例如，如果程序在应该写入数据的时候没有写入文件，那么问题可能出在处理写入文件的代码的某个地方(废话!)然后我们可以使用上述游戏策略来尝试找出真正的问题所在。
 
-For example:
+例如：
 
--   If at some point in our program, we can prove that the problem has not occurred yet, this is analogous to receiving a “too low” hi-lo result -- we know the problem must be somewhere later in the program. For example, if our program is crashing in the same place every time, and we can prove that the program has not crashed at a particular point in the execution of the program, then the crash must be later in the code.
--   If at some point in our program we can observe incorrect behavior related to the problem, then this is analogous to receiving a “too high” hi-lo result, and we know the problem must be somewhere earlier in the program. For example, let’s say a program prints the value of some variable _x_. You were expecting it to print value _2_, but it printed _8_ instead. Variable _x_ must have the wrong value. If, at some point during the execution of our program, we can see that variable _x_ already has value _8_, then we know the problem must have occurred before that point.
+-   如果在程序的某个时刻，我们可以证明问题还没有发生，这就类似于收到一个“低了”的结果——我们知道问题一定是在程序后面的某个地方。例如，如果我们的程序每次都在同一个地方崩溃，并且我们可以证明程序没有在程序执行的某个特定点崩溃，那么崩溃一定发生在代码的后面。
+- 如果在程序的某个点上，我们可以观察到与问题相关的不正确行为，那么这就类似于接收到一个“高了”的结果，我们知道问题一定是在程序的早期某个地方。例如，假设一个程序输出某个变量`x`的值。你希望它输出`2`，但是它输出了8。变量`x`的值一定是错误的。如果在程序执行过程中的某个时刻，我们可以看到变量`x`已经有值`8`，那么我们就知道问题一定在这个时刻之前就已经发生了。
 
-The hi-lo analogy isn’t perfect -- we can also sometimes remove entire sections of our code from consideration without gaining any information on whether the actual problem is before or after that point.
+“高了低了”的类比并不完美——我们有时也可以从考虑中删除代码的整个部分，而不获得任何关于实际问题是在该点之前还是之后的信息。
 
-We’ll show examples of all three of these cases in the next lesson.
+我们将在下一课中展示这三种情况的例子。
 
-Eventually, with enough guesses and some good technique, we can home in on the exact line causing the problem! If we’ve made any bad assumptions, this will help us discover where. When you’ve excluded everything else, the only thing left must be causing the problem. Then it’s just a matter of understanding why.
+最终，有了足够的线索，再配合使用合适的技术，我们就可以找到引起问题的确切位置！如果我们是因为某些错误假设而造成了问题，在这个过程中也可以被发现。当你排除了所有其他因素，剩下的一定是导致问题的唯一因素。那就只需要理解为什么了。
 
-What guessing strategy you want to use is up to you -- the best one depends on what type of bug it is, so you’ll likely want to try many different approaches to narrow down the issue. As you gain experience in debugging issues, your intuition will help guide you.
+使用什么猜测策略取决于你自己——猜测策略应该根据bug的性质，因地制宜地使用。所以你可能需要尝试许多不同的方法来缩小问题的范围。当积累了足够多调试问题的经验时，你的直觉也会变得越来越准。
 
-So how do we “make guesses”? There are many ways to do so. We’re going to start with some simple approaches in the next chapter, and then we’ll build on these and explore others in future chapters.
+那么我们如何“猜测”呢？有很多方法可以做到这一点。我们将在下一章从一些简单的方法开始，然后我们将在这些方法的基础上继续发展，并在以后的章节中探讨其他方法。

@@ -17,7 +17,7 @@ Overloading the increment (`++`) and decrement (`--`) operators is pretty straig
 
 Because the increment and decrement operators are both unary operators and they modify their operands, they’re best overloaded as member functions. We’ll tackle the prefix versions first because they’re the most straightforward.
 
-**Overloading prefix increment and decrement**
+## Overloading prefix increment and decrement**
 
 Prefix increment and decrement are overloaded exactly the same as any normal unary operator. We’ll do this one by example:
 
@@ -90,11 +90,13 @@ Our Digit class holds a number between 0 and 9. We’ve overloaded increment and
 
 This example prints:
 
+```
 89098
+```
 
 Note that we return *this. The overloaded increment and decrement operators return the current implicit object so multiple operators can be “chained” together.
 
-**Overloading postfix increment and decrement**
+## Overloading postfix increment and decrement**
 
 Normally, functions can be overloaded when they have the same name but a different number and/or different type of parameters. However, consider the case of the prefix and postfix increment and decrement operators. Both have the same name (eg. operator++), are unary, and take one parameter of the same type. So how it is possible to differentiate the two when overloading?
 
@@ -200,7 +202,9 @@ COPY
 
 This prints
 
+```
 5667665
+```
 
 There are a few interesting things going on here. First, note that we’ve distinguished the prefix from the postfix operators by providing an integer dummy parameter on the postfix version. Second, because the dummy parameter is not used in the function implementation, we have not even given it a name. This tells the compiler to treat this variable as a placeholder, which means it won’t warn us that we declared a variable but never used it.
 
