@@ -86,14 +86,9 @@ std::cerr << "main() called\n";
 
 除了通过预处理器进行条件化调试，我们还可以将调试信息发送到日志文件。日志文件是记录软件中发生的事件的文件(通常存储在磁盘上)。将信息写入日志文件的过程称为日志记录。大多数应用程序和操作系统都会编写日志文件，用于帮助诊断发生的问题。
 
-日志文件有一些优点。因为写入日志文件的信息与程序的输出是分开的，所以可以避免混合正常输出和调试输出所造成的混乱。日志文件也可以很容易地发送给其他人进行诊断——因此，如果使用您的软件的人有问题，您可以要求他们将日志文件发送给您，这可能有助于为您提供问题所在的线索。
+因为写入日志文件的信息与程序的输出是分开的，所以可以避免混合正常输出和调试输出所造成的混乱。日志文件也可以很容易地发送给其他人进行诊断——因此，如果软件客户遇到问题，你可以要求他们将日志文件发过来，这可能有助于为你提供问题的线索。
 
-
-An alternative approach to conditionalized debugging via the preprocessor is to send your debugging information to a log file. A log file is a file (normally stored on disk) that records events that occur in software. The process of writing information to a log file is called logging. Most applications and operating systems write log files that can be used to help diagnose issues that occur.
-
-Log files have a few advantages. Because the information written to a log file is separated from your program’s output, you can avoid the clutter caused by mingling your normal output and debug output. Log files can also be easily sent to other people for diagnosis -- so if someone using your software has an issue, you can ask them to send you the log file, and it might help give you a clue where the issue is.
-
-While you can write your own code to create log file and send output to them, you’re better off using one of the many existing third-party logging tools available. Which one you use is up to you.
+虽然你可以自己编写代码来创建日志文件并向它们发送输出，但我们还是推荐使用现有的许多第三方日志工具，具体用哪一个取决于你自己。
 
 For illustrative purposes, we’ll show what outputting to a logger looks like using the [plog](https://github.com/SergiusTheBest/plog) logger. Plog is implemented as a set of header files, so it’s easy to include anywhere you need it, and it’s lightweight and easy to use.
 
