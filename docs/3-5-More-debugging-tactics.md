@@ -19,7 +19,7 @@ tags:
 
 在这节课中，我们将探索这样做的一些基本技巧。
 
-## Conditionalizing your debugging code
+## 为调试代码添加执行条件
 
 考虑下面程序：
 
@@ -81,12 +81,13 @@ std::cerr << "main() called\n";
 
 这样一来，我们只需要注释或者取消对  `#define ENABLE_DEBUG` 的注释，即可重用之前全部的调试语句，而不需要依次对其进行添加和删除。如果你的项目中包含多个文件，则可以把 `#define ENABLE_DEBUG` 定义到头文件中，然后被其他文件包含，这样一来在一处对此宏定义进行注释就可以将效果应用到全部代码文件。
 
-这解决了必须删除调试语句的问题j风险，但代价是代码更加混乱。这种方法的另一个缺点是，如果你犯了一个拼写错误(例如拼写错误“' DEBUG '”)或忘记将头文件包含到一个代码文件中，该文件的部分或全部调试可能无法启用。因此，尽管这比无条件的版本更好，但仍有改进的空间。
-
-
-This addresses the issue with having to remove debug statements and the risk in doing so, but at the cost of even more code clutter. Another downside of this approach is that if you make a typo (e.g. misspell “`DEBUG`”) or forget to include the header into a code file, some or all of the debugging for that file may not be enabled. So although this is better than the unconditionalized version, there’s still room to improve.
-
+这解决了必须删除调试语句的问题及其潜在的风险，但代价是代码会更加混乱。另一个缺点是，如果你犯了一个拼写错误(例如拼错了“DEBUG '”)或忘记将头文件包含到一个代码文件中，该文件的部分或全部调试可能无法启用。因此，尽管这比无条件的版本更好，但仍有改进的空间。
 ## 使用日志
+
+除了通过预处理器进行条件化调试，我们还可以将调试信息发送到日志文件。日志文件是记录软件中发生的事件的文件(通常存储在磁盘上)。将信息写入日志文件的过程称为日志记录。大多数应用程序和操作系统都会编写日志文件，用于帮助诊断发生的问题。
+
+日志文件有一些优点。因为写入日志文件的信息与程序的输出是分开的，所以可以避免混合正常输出和调试输出所造成的混乱。日志文件也可以很容易地发送给其他人进行诊断——因此，如果使用您的软件的人有问题，您可以要求他们将日志文件发送给您，这可能有助于为您提供问题所在的线索。
+
 
 An alternative approach to conditionalized debugging via the preprocessor is to send your debugging information to a log file. A log file is a file (normally stored on disk) that records events that occur in software. The process of writing information to a log file is called logging. Most applications and operating systems write log files that can be used to help diagnose issues that occur.
 
