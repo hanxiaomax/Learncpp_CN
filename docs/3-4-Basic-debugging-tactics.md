@@ -45,27 +45,24 @@ int main()
 
 如果问题消失了，那么 `domainance` 反倒是有问题的，到时候再注意力集中在那里。
 
-不过，问题很可能还会存在，因此道 `doMaintenance` 不是错误的根源，我们可以从搜索中排除整个函数。这并不能帮助我们理解实际问题是发生在_doMaintenance_调用之前还是之后，但它减少了我们随后必须查看的代码量。
+不过，问题很可能还会存在，因此 `doMaintenance` 不是错误的根源，我们可以从搜索中排除整个函数。这并不能帮助我们理解实际问题是发生在 `doMaintenance` 调用之前还是之后，但终归是缩小了范围。
 
 不要忘记注释掉了哪些函数，以便以后可以取消注释!
 
-However, if the problem persists (which is more likely), then we know _doMaintenance_ wasn’t at fault, and we can exclude the entire function from our search. This doesn’t help us understand whether the actual problem is before or after the call to _doMaintenance_, but it reduces the amount of code we have to subsequently look through.
-
-Don’t forget which functions you’ve commented out so you can uncomment them later!
-
 ## Debug 技术 2：验证代码流程
 
-Another problem common in more complex programs is that the program is calling a function too many or too few times (including not at all).
+复杂程序中另一个常见的问题是程序调用一个函数的次数太多或过少(包括根本不调用)。
 
-In such cases, it can be helpful to place statements at the top of your functions to print the function’s name. That way, when the program runs, you can see which functions are getting called.
+在这种情况下，将语句放在函数的顶部以打印函数名会很有帮助。这样，当程序运行时，就可以打印出调用了哪些函数。
 
 !!! tip "小贴士"
 
-	When printing information for debugging purposes, use std::cerr instead of std::cout. One reason for this is that std::cout may be buffered, which means there may be a pause between when you ask std::cout to output information and when it actually does. If you output using std::cout and then your program crashes immediately afterward, std::cout may or may not have actually output yet. This can mislead you about where the issue is. On the other hand, std::cerr is unbuffered, which means anything you send to it will output immediately. This helps ensure all debug output appears as soon as possible (at the cost of some performance, which we usually don’t care about when debugging).
+	当打印用于调试目的的信息时，使用`std::cerr`而不是`std::cout`。这样做的一个原因是`std::cout`可能会被缓冲，这意味着在要求`std::cout`打印信息和它实际打印信息之间可能会有一个时间差。如果使用`std::cout`进行打印然后程序立即崩溃，那么`std::cout`可能还没有来得及打印。这可能会误导你。另一方面，`std::cerr`是无缓冲的，这意味着发送给它的任何内容都将立即打印。这有助于确保所有调试输出尽快出现(以一些性能为代价，我们在调试时通常不关系性能)。
 
-Using std::cerr also helps make clear that the information being output is for an error case rather than a normal case.
+	使用 `std::cerr` 也可以表明该打印信息和错误流程有关。
 
-Consider the following simple program that doesn’t work correctly:
+
+考虑以下不能正常工作的程序：
 
 ```cpp
 #include <iostream>
@@ -83,23 +80,17 @@ int main()
 }
 ```
 
-COPY
+你必须关闭 “将警告当做错误处理” 的编译选项，才能编译该代码。
 
-You may need to disable “Treat warnings as errors” for the above to compile.
+虽然我们期望这个程序打印值 4，但它实际打印了 `1`。
 
-Although we expect this program to print the value _4_, it should print the value:
-
-```
-1
-```
-
-On Visual Studio (and possibly some other compilers), it may print the following instead:
+在 Visual Studio (或者其他编译器)上，也可能打印：
 
 ```
 00101424
 ```
 
-Let’s add some debugging statements to these functions:
+添加一些调试语句：
 
 ```cpp
 #include <iostream>
@@ -119,28 +110,24 @@ std::cerr << "main() called\n";
 }
 ```
 
-COPY
-
 !!! tip "小贴士"
 
-	When adding temporary debug statements, it can be helpful to not indent them. This makes them easier to find for removal later.
+	在添加临时调试语句时，不缩进会很有帮助。这样在不需要时可以很方便的找到它们并删除。
 
-Now when these functions execute, they’ll output their names, indicating that they were called:
+现在，函数执行时会打印对应的函数名：
 
 ```cpp
 main() called
 1
 ```
 
-Now we can see that function _getValue_ was never called. There must be some problem with the code that calls the function. Let’s take a closer look at that line:
+可以看到 `getValue` 根本没被调用过。那么肯定是调用该函数的代码出了问题。仔细看看那行代码：
 
 ```cpp
 std::cout << getValue;
 ```
 
-COPY
-
-Oh, look, we forgot the parenthesis on the function call. It should be:
+哦，看，我们忘记了函数调用的括号。它应该是：
 
 ```cpp
 #include <iostream>
@@ -160,9 +147,7 @@ std::cerr << "main() called\n";
 }
 ```
 
-COPY
-
-This will now produce the correct output
+这样一来就没问题了：
 
 ```
 main() called
@@ -170,15 +155,15 @@ getValue() called
 4
 ```
 
-And we can remove the temporary debugging statements.
+此时可以删除临时调试语句了。
 
 ## Debug 技术 3： 打印值
 
-With some types of bugs, the program may be calculating or passing the wrong value.
+对于某些类型的错误，程序可能计算或传递了错误的值。
 
-We can also output the value of variables (including parameters) or expressions to ensure that they are correct.
+我们还可以输出变量(包括参数)或表达式的值，以确保它们是正确的。
 
-Consider the following program that is supposed to add two numbers but doesn’t work correctly:
+考虑下面的程序，它应该把两个数字相加，但实际上并不是：
 
 ```cpp
 #include <iostream>
@@ -215,9 +200,7 @@ int main()
 }
 ```
 
-COPY
-
-Here’s some output from this program:
+输出结果不正确：
 
 ```
 Enter a number: 4
@@ -226,7 +209,7 @@ Enter a number: 3
 The answer is: 9
 ```
 
-That’s not right. Do you see the error? Even in this short program, it can be hard to spot. Let’s add some code to debug our values:
+结果不对，但你能发现错误吗？即使在这个简短的程序中，问题也很难被发现。接下来添加一些代码来打印变量的值：
 
 ```cpp
 #include <iostream>
@@ -266,9 +249,7 @@ std::cerr << "main::z = " << z << '\n';
 }
 ```
 
-COPY
-
-Here’s the above output:
+输出：
 
 ```
 Enter a number: 4
@@ -280,9 +261,9 @@ main::z = 9
 The answer is: 9
 ```
 
-Variables _x_ and _y_ are getting the right values, but variable _z_ isn’t. The issue must be between those two points, which makes function _add_ a key suspect.
+变量 `x` 和 `y` 的值都是正确的，但是`z`的值不正确。所以问题肯定在这附近，这样一来`add`函数就非常可疑了。
 
-Let’s modify function add:
+修改一下`add`函数：
 
 ```cpp
 #include <iostream>
@@ -323,9 +304,7 @@ std::cerr << "main::z = " << z << '\n';
 }
 ```
 
-COPY
-
-Now we’ll get the output:
+输出结果：
 
 ```
 Enter a number: 4
@@ -337,19 +316,18 @@ main::z = 9
 The answer is: 9
 ```
 
-Variable _y_ had value 3, but somehow our function _add_ got the value 5 for parameter _y_. We must have passed the wrong argument. Sure enough:
+变量 `y` 的值是3，但是我们的函数 `add` 的参数 `y` 的值是`5`。我们肯定传递了错误的参数。果然：
 
 ```cpp
 int z{ add(x, 5) };
 ```
 
-COPY
+找到了！在调用`add`函数的时候我们传递了字面量 5 而不是变量`y`。修改这个问题只需要把这里的实参改掉就可以了。
 
-There it is. We passed the literal _5_ instead of the value of variable _y_ as an argument. That’s an easy fix, and then we can remove the debug statements.
 
-One more example
+再看一个例子：
 
-This program is very similar to the prior one, but also doesn’t work like it should:
+这个程序与前面的程序非常相似：
 
 ```cpp
 #include <iostream>
@@ -384,9 +362,8 @@ int main()
 }
 ```
 
-COPY
 
-If we run this code and see the following:
+输出结果：
 
 ```
 Enter a number: 4
@@ -394,9 +371,9 @@ Enter a number: 3
 The answer is: 5
 ```
 
-Hmmm, something is wrong. But where?
+结果不对，什么原因呢？
 
-Let’s instrument this code with some debugging:
+让我们对这段代码进行一些调试：
 
 ```cpp
 #include <iostream>
@@ -438,9 +415,7 @@ std::cerr << "main::z = " << z << '\n';
 }
 ```
 
-COPY
-
-Now let’s run the program again with the same inputs:
+现在让我们用相同的输入再次运行程序：
 
 ```
 main() called
@@ -456,9 +431,9 @@ printResult() called (z=5)
 The answer is: 5
 ```
 
-Now we can immediately see something going wrong: The user is entering the value _4_, but main’s _x_ is getting value _3_. Something must be going wrong between where the user enters input and where that value is assigned to main’s variable _x_. Let’s make sure that the program is getting the correct value from the user by adding some debug code to function _getUserInput_:
+这样一来就可以看出问题了：用户输入的值是 `4` ，但是`main` 函数中 `x` 得到的值却是 `3`。在用户输入的位置和给`x`赋值之间的代码肯定出了问题。在函数 `getUserInput` 中添加一些调试代码来，确定程序是否从用户那里获得了正确的值：
 
-```cpp
+```cpp hl_lines="20"
 #include <iostream>
 
 int add(int x, int y)
@@ -479,7 +454,7 @@ std::cerr << "getUserInput() called\n";
 	std::cout << "Enter a number: ";
 	int x{};
 	std::cin >> x;
-std::cerr << "getUserInput::x = " << x << '\n'; // added this additional line of debugging
+std::cerr << "getUserInput::x = " << x << '\n'; // 添加调试信息 this additional line of debugging
 	return --x;
 }
 
