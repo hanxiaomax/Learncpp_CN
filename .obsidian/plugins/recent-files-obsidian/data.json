@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "3-4-Basic-debugging-tactics",
-      "path": "docs/3-4-Basic-debugging-tactics.md"
+      "basename": "3-5-More-debugging-tactics",
+      "path": "docs/3-5-More-debugging-tactics.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "3-4-Basic-debugging-tactics",
+      "path": "docs/3-4-Basic-debugging-tactics.md"
     },
     {
       "basename": "14-11-Overloading-typecasts",
@@ -195,10 +199,6 @@
     {
       "basename": "2-4-Introduction-to-function-parameters-and-arguments",
       "path": "docs/2-4-Introduction-to-function-parameters-and-arguments.md"
-    },
-    {
-      "basename": "4-12-Introduction-to-type-conversion-and-static_cast",
-      "path": "docs/4-12-Introduction-to-type-conversion-and-static_cast.md"
     }
   ],
   "omittedPaths": [],

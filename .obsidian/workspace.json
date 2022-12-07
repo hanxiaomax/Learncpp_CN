@@ -23,12 +23,12 @@
             }
           },
           {
-            "id": "e25bd0e972874bf4",
+            "id": "b484144ee2effe59",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/3-4-Basic-debugging-tactics.md",
+                "file": "docs/3-5-More-debugging-tactics.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/3-4-Basic-debugging-tactics.md",
+                "file": "docs/3-5-More-debugging-tactics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/3-4-Basic-debugging-tactics.md"
+                "file": "docs/3-5-More-debugging-tactics.md"
               }
             }
           }
@@ -151,17 +151,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e25bd0e972874bf4",
+  "active": "b484144ee2effe59",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/3-4-Basic-debugging-tactics.md",
+    "docs/3-5-More-debugging-tactics.md",
     "docs/14-11-Overloading-typecasts.md",
     "docs/14-10-overloading-the-parenthesis-operator.md",
     "docs/14-9-overloading-the-subscript-operator.md",
     "docs/14-8-overloading-the-increment-and-decrement-operators.md",
     "docs/14-7-overloading-the-comparison-operators.md",
     "docs/14-6-overloading-unary-operators-+--and-!.md",
-    "docs/14-5-overloading-operators-using-member-functions.md",
-    "docs/14-4-overloading-the-IO-operators.md",
-    "docs/14-3-overloading-operators-using-normal-functions.md"
+    "docs/14-5-overloading-operators-using-member-functions.md"
   ]
 }

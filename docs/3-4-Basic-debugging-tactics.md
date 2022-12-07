@@ -454,7 +454,7 @@ std::cerr << "getUserInput() called\n";
 	std::cout << "Enter a number: ";
 	int x{};
 	std::cin >> x;
-std::cerr << "getUserInput::x = " << x << '\n'; // 添加调试信息 this additional line of debugging
+std::cerr << "getUserInput::x = " << x << '\n'; // 添加调试信息
 	return --x;
 }
 
@@ -474,9 +474,7 @@ std::cerr << "main::z = " << z << '\n';
 }
 ```
 
-COPY
-
-And the output:
+输出：
 
 ```
 main() called
@@ -494,17 +492,15 @@ printResult() called (z=5)
 The answer is: 5
 ```
 
-With this additional line of debugging, we can see that the user input is received correctly into getUserInput’s variable _x_. And yet somehow main’s variable _x_ is getting the wrong value. The problem must be between those two points. The only culprit left is the return value from function _getUserInput_. Let’s look at that line more closely.
+添加这行调试代码后，我们可以看到用户输入被正确地接收到`getUserInput()`的变量 `x` 中。但是变量`x`却得到了错误的值。问题肯定在这两点之间。唯一的罪魁祸首是函数 `getUserInput()`的返回值：
 
 ```cpp
 return --x;
 ```
 
-COPY
+嗯，这很奇怪。`x`前面的“`--`”符号是什么？由于我们的教程还没有讲到这一点，所以如果你不知道它的意思，也不用担心。但是，即使不知道它是什么意思，通过调试工作，你也可以合理地确定这一行有问题——因此，很可能是这个“`--`”符号导致了问题。
 
-Hmmm, that’s odd. What’s that `--` symbol before x? We haven’t covered that yet in these tutorials, so don’t worry if you don’t know what it means. But even without knowing what it means, through your debugging efforts, you can be reasonably sure that this particular line is at fault -- and thus, it’s likely this `--` symbol is causing the problem.
-
-Since we really want _getUserInput_ to return just the value of _x_, let’s remove the `--` and see what happens:
+因为我们希望 `getUserInput` 只返回 `x`的值，所以干脆把`--`删了试试：
 
 ```cpp
 #include <iostream>
@@ -547,9 +543,7 @@ std::cerr << "main::z = " << z << '\n';
 }
 ```
 
-COPY
-
-And now the output:
+输出：
 
 ```
 main() called
@@ -567,15 +561,15 @@ printResult() called (z=7)
 The answer is: 7
 ```
 
-The program is now working correctly. Even without understanding what `--` was doing, we were able to identify the specific line of code causing the issue, and then fix the issue.
+程序现在可以正常工作了，虽然我们不知道 `--` 是干嘛的，但是这并不影响我们定位和修复这个问题。
 
-Why using printing statements to debug isn’t great
+## 为什么使用打印语句来调试程序并不是上策
 
-While adding debug statements to programs for diagnostic purposes is a common rudimentary technique, and a functional one (especially when a debugger is not available for some reason), it’s not that great for a number of reasons:
+虽然为诊断目的向程序添加调试语句是一种常见的基本技术，也很有用(特别是当调试器由于某些原因不可用时)，但由于以下几个原因，它并不是很好:
 
-1.  Debug statements clutter your code.
-2.  Debug statements clutter the output of your program.
-3.  Debug statements must be removed after you’re done with them, which makes them non-reusable.
-4.  Debug statements require modification of your code to both add and to remove, which can introduce new bugs.
+1. 调试语句使代码变得混乱；
+2. 调试语句使程序的输出变得混乱；
+3. 调试语句在使用完之后必须删除，这使得它们不可重用；
+4. 调试语句需要修改代码来添加和删除，这可能会引入新的错误。
 
-We can do better. We’ll explore how in future lessons.
+下节课，我们将介绍一种更好的办法来调试程序。
