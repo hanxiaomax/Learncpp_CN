@@ -34,9 +34,25 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "afbce5a1378d04bb",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "docs/Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0,
+                  "snapToGrid": false
+                }
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -122,7 +138,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/3-5-More-debugging-tactics.md",
+                "file": "docs/Untitled.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/3-5-More-debugging-tactics.md"
+                "file": "docs/Untitled.canvas"
               }
             }
           }
@@ -151,7 +167,16 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "b484144ee2effe59",
+  "left-ribbon": {
+    "hiddenItems": {
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:New Excalidraw drawing": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "afbce5a1378d04bb",
   "lastOpenFiles": [
     "docs/MOC.md",
     "docs/3-4-Basic-debugging-tactics.md",

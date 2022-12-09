@@ -90,7 +90,7 @@ std::cerr << "main() called\n";
 
 虽然你可以自己编写代码来创建日志文件并向它们发送输出，但我们还是推荐使用现有的许多第三方日志工具，具体用哪一个取决于你自己。
 
-我们会使用[plog](https://github.com/SergiusTheBest/plog)日志记录器输出到日志记录器的样子。Plog是一个纯头文件实现的库，因此很容易在任何需要它的地方包含它，而且它是轻量级的，易于使用。
+我们会使用[plog](https://github.com/SergiusTheBest/plog)日志记录器输出到日志记录器的样子。plog是一个纯头文件实现的库，因此很容易在任何需要它的地方包含它，而且它是轻量级的，易于使用。
 
 ```cpp
 #include <iostream>
