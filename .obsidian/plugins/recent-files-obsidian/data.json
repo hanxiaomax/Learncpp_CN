@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
       "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
-    },
-    {
-      "basename": "2-10-Introduction-to-the-preprocessor",
-      "path": "docs/2-10-Introduction-to-the-preprocessor.md"
     }
   ],
   "omittedPaths": [],

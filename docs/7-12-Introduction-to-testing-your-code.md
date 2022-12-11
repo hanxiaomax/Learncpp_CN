@@ -13,23 +13,23 @@ tags:
 	
 
 
-So, you’ve written a program, it compiles, and it even appears to work! What now?
+当程序可以编译，甚至可以运行后，还有什么工作需要做呢？
 
-Well, it depends. If you’ve written your program to be run once and discarded, then you’re done. In this case, it may not matter that your program doesn’t work for every case -- if it works for the one case you needed it for, and you’re only going to run it once, then you’re done.
+这要看情况。如果该程序只运行一次并被丢弃，那么不需要做其他事情了。在这种情况下，你的程序是否能适用于所有情况可能并不重要——如果它能满足你当前任务的需要，并且你也只需要运行它一次，那么任务就已经完成了。
 
-If your program is entirely linear (has no conditionals, such as `if statements` or `switch statements`), takes no inputs, and produces the correct answer, then you’re done. In this case, you’ve already tested the entire program by running it and validating the output.
+如果你的程序完全是线性的(没有条件，如“If语句”或“switch语句”)，不接受输入，并产生正确的答案，那么你就完成了。在本例中，你已经通过运行和验证输出测试了整个程序。
 
-But more likely you’ve written a program you intend to run many times, that uses loops and conditional logic, and accepts user input of some kind. You’ve possibly written functions that may be reusable in other future programs. You may have experienced a bit of scope creep, where you added some new capabilities that were originally not planned for. Maybe you’re even intending to distribute this program to other people (who are likely to try things you haven’t thought of). In this case, you really should be validating that your program works like you think it does under a wide variety of conditions -- and that requires some proactive testing.
+但更有可能的情况是，你的程序需要被多次运行，而且该程序使用循环和条件逻辑，能够接受某种类型的用户输入。你可能已经编写了可以在将来的其他程序中重用的函数，也可能经添加了一些最初没有计划的新功能。也许还打算将这个程序分发给其他人(用户可能会做出你意料之外的操作)。在这种情况下，我们必须验证程序在各种各样的条件下都能正确工作——这需要测试来保证。
 
-Just because your program worked for one set of inputs doesn’t mean it’s going to work correctly in all cases.
+仅仅因为你的程序适用于一组输入并不意味着它在所有情况下都能正确工作。
 
-Software verification (a.k.a. software testing) is the process of determining whether or not the software works as expected in all cases.
+软件验证(也称为软件测试)是确定软件在所有情况下是否按预期工作的过程。
 
 ## 有关测试的难题
 
-Before we talk about some practical ways to test your code, let’s talk about why testing your program comprehensively is difficult.
+在讨论测试代码的实用方法之前，让我们先谈谈为什么全面测试程序并不容易。
 
-Consider this simple program:
+考虑这个简单的程序：
 
 ```cpp
 #include <iostream>
@@ -60,15 +60,13 @@ int main()
 }
 ```
 
-COPY
+假设有一个4字节的整数，用每种可能的输入组合显式地测试这个程序将需要运行程序18,446,744,073,709,551,616次(~18亿亿次)。显然这是不可行的。
 
-Assuming a 4-byte integer, explicitly testing this program with every possible combination of inputs would require that you run the program 18,446,744,073,709,551,616 (~18 quintillion) times. Clearly that’s not a feasible task!
+当程序要求用户输入或者在代码中存在条件判断时，程序可以执行的方式的就相应地变多了。除了最简单的程序之外，几乎不可能显式地测试每种输入组合。
 
-Every time we ask for user input, or have a conditional in our code, we increase the number of possible ways our program can execute by some multiplicative factor. For all but the simplest programs, explicitly testing every combination of inputs becomes impossible almost immediately.
+现在，直觉告诉我们，其实并不需要真的运行程序18亿亿次才能确保它可以正确工作。你可以合理地得出结论，如果情况1适用于一对 `x` 和`y` 值，其中 `x > y` ，那么它应该适用于任何一对满足 `x>y` 的 `x` 和 `y` 组合。鉴于此，程序实际上只需要运行这个大约三次(在函数 `compare()` 中分别运行一次)，就可以高度确信它能按预期工作。为了使测试易于管理，我们还可以使用其他类似的技巧来大幅减少测试的次数。
 
-Now, your intuition should be telling you that you really shouldn’t need to run the above program 18 quintillion times to ensure it works. You may reasonably conclude that if case 1 works for one pair of `x` and `y` values where `x > y`, it should work for any pair of `x` and `y` where `x > y`. Given that, it becomes apparent that we really only need to run this program about three times (once to exercise each of the three cases in function `compare()`) to have a high degree of confidence it works as desired. There are other similar tricks we can use to dramatically reduce the number of times we have to test something, in order to make testing manageable.
-
-There’s a lot that can be written about testing methodologies -- in fact, we could write a whole chapter on it. But since it’s not a C++ specific topic, we’ll stick to a brief and informal introduction, covered from the point of view of you (as the developer) testing your own code. In the next few subsections, we’ll talk about some _practical_ things you should be thinking about as you test your code.
+关于测试方法有很多东西可以写——事实上，我们可以为此写一整章。但由于这不是C++教程应该关注的事情，所以我们只会简单介绍作为程序员应该如何测试自己的代码。在接下来的几个小节中，我们将讨论一些在测试代码时应该考虑的实际问题。
 
 ## 化整为零进行测试
 
@@ -173,9 +171,10 @@ As you create more tests, you can simply add them to the `testVowel()` functio
 
 ## 自动化测试
 
-One problem with the above test function is that it relies on you to manually verify the results when you run it. This requires you to remember what the expected answer was at worst (assuming you didn’t document it), and manually compare the actual results to the expected results.
+上述测试函数的一个问题是，它依赖于你在运行时手动验证结果。这要求你要记住期望的结果是什么(假设您没有记录它)，并手动将实际结果与预期结果进行比较。
 
-We can do better by writing a test function that contains both the tests AND the expected answers and compares them so we don’t have to.
+我们可以通过编写一个包含测试和预期答案的测试函数来做得更好，这样我们就不必对它们进行人工比较了。
+
 
 ```cpp
 #include <iostream>
@@ -216,8 +215,9 @@ Now, you can call `testVowel()` at any time to re-prove that you haven’t bro
 
 ## 单元测试框架
 
-Because writing functions to exercise other functions is so common and useful, there are entire frameworks (called unit testing frameworks) that are designed to help simplify the process of writing, maintaining, and executing unit tests. Since these involve third party software, we won’t cover them here, but you should be aware they exist.
+
+因为编写函数来执行其他函数是非常常见和有用的需求，所以有一些完整的框架(称为单元测试框架)旨在帮助简化编写、维护和执行单元测试的过程。因为这些涉及到第三方软件，所以我们在这里不做介绍，但是你应该知道它们的存在。
 
 ## 集成测试
 
-Once each of your units has been tested in isolation, they can be integrated into your program and retested to make sure they were integrated properly. This is called an integration test. Integration testing tends to be more complicated -- for now, running your program a few times and spot checking the behavior of the integrated unit will suffice.
+一旦程序的每个单元都单独测试过，它们就可以被集成到你的程序中，并重新测试，以确保它们被正确地集成了。这就是所谓的集成测试。集成测试往往更加复杂——目前，运行几次程序并抽检集成单元的行为就足够了。
