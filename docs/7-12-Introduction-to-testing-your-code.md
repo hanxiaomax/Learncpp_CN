@@ -70,33 +70,33 @@ int main()
 
 ## 化整为零进行测试
 
-Consider an auto manufacturer that is building a custom concept car. Which of the following do you think they do?  
-a) Build (or buy) and test each car component individually before installing it. Once the component has been proven to work, integrate it into the car and retest it to make sure the integration worked. At the end, test the whole car, as a final validation that everything seems good.  
-b) Build a car out of all of the components all in one go, then test the whole thing for the first time right at the end.
+假设你是一家汽车制造商，正在制造一辆客户概念车。那么你会怎么做呢？
+a) 在组装前制造 (或购买) 并测试各个零部件，如果零部件可以正常工作，则将其组装到汽车上，确保仍然可以正常工作。最后，对整车进行测试，确保所有部分都可以正常工作。
+b) 用所有的部件一气呵成地造出一辆车，然后在最后对整个部件进行第一次测试。
 
-It probably seems obvious that option a) is a better choice. And yet, many new programmers write code like option b)!
+很明显选项a)是更好的选择。然而，许多新程序员会按照 b) 描述的方法编写代码！
 
-In case b), if any of the car parts were to not work as expected, the mechanic would have to diagnose the entire car to determine what was wrong -- the issue could be anywhere. A symptom might have many causes -- for example, is the car not starting due to a faulty spark plug, battery, fuel pump, or something else? This leads to lots of wasted time trying to identify exactly where the problems are, and what to do about them. And if a problem is found, the consequences can be disastrous -- a change in one area might cause “ripple effects” (changes) in multiple other places. For example, a fuel pump that is too small might lead to an engine redesign, which leads to a redesign of the car frame. In the worst case, you might end up redesigning a huge part of the car, just to accommodate what was initially a small issue!
+在b)情况下，如果汽车中有任何部件没有按照预期工作，工程师就必须对整辆车进行诊断，以确定哪里出了问题——问题可能在任何地方。一个症状可能有很多原因——例如，由于火花塞、电池、燃油泵或其他原因，汽车无法启动？这无疑会浪费大量时间。如果发现了问题，后果可能是灾难性的——一处修改可能会在其他多个地方引起“涟漪效应”(变化)。例如，燃油泵太小可能会导致发动机重新设计，从而导致汽车框架的重新设计。在最坏的情况下，你可能会重新设计汽车的一个很大的部分，只是为了适应最初的一个小问题!很明显选项a)是更好的选择。然而，许多新程序员编写类似选项b)的代码!
 
-In case a), the company tests as they go. If any component is bad right out of the box, they’ll know immediately and can fix/replace it. Nothing is integrated into the car until it’s proven working by itself, and then that part is retested again as soon as it’s been integrated into the car. This way any unexpected issues are discovered as early as possible, while they are still small problems that can be easily fixed.
+对于 a) 的情况，汽车公司一边组装一边测试。如果任何零件是坏的，他们会立即知道，并能修复/更换它。任何东西都不会被集成到汽车中，直到它被证明可以工作，然后一旦它被集成到汽车中，就会再次进行测试。这样，任何意外的问题都可以尽早发现，而它们仍然是可以轻松解决的小问题。
 
-By the time they get around to having the whole car assembled, they should have reasonable confidence that the car will work -- after all, all the parts have been tested in isolation and when initially integrated. It’s still possible that unexpected issues will be found at this point, but that risk is minimized by all the prior testing.
+开始组装整辆车的时候，制造商应该对汽车能够正常工作有合理的信心——毕竟，所有的部件都已经单独测试过了，并且在初始集成时也进行了测试。在这一点上仍然有可能发现意外的问题，但是通过所有先前的测试将风险降到最低。
 
-The above analogy holds true for programs as well, though for some reason, new programmers often don’t realize it. You’re much better off writing small functions (or classes), and then compiling and testing them immediately. That way, if you make a mistake, you’ll know it has to be in the small amount of code that you changed since the last time you compiled/tested. That means fewer places to look, and far less time spent debugging.
+上面的类比也适用于程序，尽管由于某种原因，新程序员经常没有意识到这一点。最好是编写小函数(或类)，然后立即编译和测试它们。这样，如果你犯了错误就会知道它一定是在上次编译/测试后更改的少量代码中。这意味着要查看的地方更少，花在调试上的时间也更少。
 
-Testing a small part of your code in isolation to ensure that “unit” of code is correct is called unit testing. Each unit test is designed to ensure that a particular behavior of the unit is correct.
+单独测试一小部分代码，以确保代码的“单元”是正确的，这称为单元测试。每个单元测试都被设计用来确保单元的特定行为是正确的。
 
 !!! success "最佳实践"
 
-	Write your program in small, well defined units (functions or classes), compile often, and test your code as you go.
+	用定义良好的小单元(函数或类)编写程序，频繁编译，并在运行时测试代码。
 
-If the program is short and accepts user input, trying a variety of user inputs might be sufficient. But as programs get longer and longer, this becomes less sufficient, and there is more value in testing individual functions or classes before integrating them into the rest of the program.
+如果程序很短并且接受用户输入，那么尝试各种用户输入可能就足够了。但是随着程序变得越来越长，这就不够了，在将单个函数或类集成到程序的其余部分之前就对它们进行测试效果会更好。
 
-So how can we test our code in units?
+那么我们如何以单位来测试代码呢?
 
 ## 非正式测试
 
-One way you can test code is to do informal testing as you write the program. After writing a unit of code (a function, a class, or some other discrete “package” of code), you can write some code to test the unit that was just added, and then erase the test once the test passes. As an example, for the following isLowerVowel() function, you might write the following code:
+测试代码的一种方法是在编写程序时进行非正式测试。在编写了一个代码单元(一个函数、一个类或其他一些离散的“包”代码)之后，可以编写一些代码来测试刚刚添加的单元，然后在测试通过后删除测试。例如，对于下面的isLowerVowel()函数，则可以编写以下代码：
 
 ```cpp
 #include <iostream>
@@ -126,8 +126,6 @@ int main()
     return 0;
 }
 ```
-
-COPY
 
 If the results come back as `1` and `0`, then you’re good to go. You know your function works for some basic cases, and you can reasonably infer by looking at the code that it will work for the cases you didn’t test (‘e’, ‘i’, ‘o’, and ‘u’). So you can erase that temporary test code, and continue programming.
 
