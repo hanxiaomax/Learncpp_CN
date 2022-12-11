@@ -40,7 +40,7 @@
 - [x] [[3-2-The-debugging-process|3.2 - 代码调试步骤]]
 - [x] [[3-3-A-strategy-for-debugging|3.3 - 代码调试策略]]
 - [x] [[3-4-Basic-debugging-tactics|3.4 — 基本代码调试技术]]
-- [ ] [[3-5-More-debugging-tactics|3.5 - 更多代码调试技术]]
+- [x] [[3-5-More-debugging-tactics|3.5 - 更多代码调试技术]]
 - [ ] [[3-6-Using-an-integrated-debugger-Stepping|3.6 - 使用集成调试器之单步调试]]
 - [ ] [[3-7-Using-an-integrated-debugger-Running-and-breakpoints|3.7 - 使用集成调试器之运行和断点]]
 - [ ] [[3-8-Using-an-integrated-debugger-Watching-variables|3.8 - 使用集成调试器之监控变量]]

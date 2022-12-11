@@ -121,33 +121,33 @@ int main()
 ```
 
 
-Here’s output from the above logger (in the `Logfile.txt` file):
+代码输出的日志如下所示(在 `Logfile.txt` 文件中):
 
 ```
 2018-12-26 20:03:33.295 DEBUG [4752] [main@14] main() called
 2018-12-26 20:03:33.296 DEBUG [4752] [getUserInput@4] getUserInput() called
 ```
 
-How you include, initialize, and use a logger will vary depending on the specific logger you select.
+如何包含、初始化和使用记录器取决于你选择的日志工具。
 
-Note that conditional compilation directives are also not required using this method, as most loggers have a method to reduce/eliminate writing output to the log. This makes the code a lot easier to read, as the conditional compilation lines add a lot of clutter. With plog, logging can be temporarily disabled by changing the init statement to the following:
+注意，使用这种方法也不需要条件编译指令，因为大多数记录器都有一种方法来减少/消除对日志的写入输出。这使得代码更容易阅读，因为条件编译行增加了很多混乱。使用`plog`，可以通过更改`init`语句来临时禁用日志记录:
 
 ```cpp
 plog::init(plog::none , "Logfile.txt"); // plog::none eliminates writing of most messages, essentially turning logging off
 ```
 
 
-We won’t use plog in any future lessons, so you don’t need to worry about learning it.
+我们不会在以后的课程中使用plog，所以你不需要担心学习它。
 
 !!! cite "题外话"
 
-    If you want to compile the above example yourself, or use plog in your own projects, you can follow these instructions to install it:
+	如果你想自己编译上面的例子，或者在你自己的项目中使用plog，可以按照这些说明来安装它:
+	
+	首先，获取最新版本的 plog:
+	- 访问 [plog](https://github.com/SergiusTheBest/plog) 的 Github 仓库；
+	-  点击右上角的绿色Code按钮，然后选择“Download zip”。
+	
+	接下来，在电脑上解压压缩包（假设是`somewhere`）。
+	
+	最后，对于每个需要使用它的项目，在IDE的`include directory`设置 `somewhere\plog-master\include\`。如果你使用 Visual Studio 可以参考：[[A-2-using-libraries-with-visual-studio|A.2 - 在visual studio中使用库]]，如果是Code::Blocks则参考[[A-3-using-libraries-with-Code-Blocks|A.3 - 在Code Blocks中使用库]]。
 
-	First, get the latest plog release:
-	
-	-   Visit the [plog](https://github.com/SergiusTheBest/plog) repo.
-	-   Click the green Code button in the top right corner, and choose “Download zip”
-	
-	Next, unzip the entire archive to `somewhere` on your hard drive.
-	
-	Finally, for each project, set the `somewhere\plog-master\include\` directory as an `include directory` inside your IDE. There are instructions on how to do this for Visual Studio here: [A.2 -- Using libraries with Visual Studio](https://www.learncpp.com/cpp-tutorial/a2-using-libraries-with-visual-studio-2005-express/) and Code::Blocks here: [A.3 -- Using libraries with Code::Blocks](https://www.learncpp.com/cpp-tutorial/a3-using-libraries-with-codeblocks/).

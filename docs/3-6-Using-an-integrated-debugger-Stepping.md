@@ -10,33 +10,34 @@ tags:
 ---
 
 
-When you run your program, execution begins at the top of the _main_ function, and then proceeds sequentially statement by statement, until the program ends. At any point in time while your program is running, the program is keeping track of a lot of things: the value of the variables you’re using, which functions have been called (so that when those functions return, the program will know where to go back to), and the current point of execution within the program (so it knows which statement to execute next). All of this tracked information is called your program state (or just _state_, for short).
+当你运行程序时，程序会从 `main` 函数的顶部开始执行，然后逐条执行，直到程序结束。在程序运行的任何时间点，程序都在跟踪很多事情：你正在使用的变量的值，调用了哪些函数(这样当这些函数返回时，程序就知道要返回到哪里)，以及程序中的当前执行点(这样它就知道下一步要执行哪条语句)。所有这些被跟踪的信息都被称为程序状态(或简称为 `state`)。
 
-In previous lessons, we explored various ways to alter your code to help with debugging, including printing diagnostic information or using a logger. These are simple methods for examining the state of a program while it is running. Although these can be effective if used properly, they still have downsides: they require altering your code, which takes time and can introduce new bugs, and they clutter your code, making the existing code harder to understand.
+在前面的课程中，我们介绍的调试方法都需要对代码进行修改，例如添加打印语句或使用日志工具。这些是在程序运行时检查程序状态的简单方法。尽管如果使用得当，这些方法是有效的，但也有缺点：它们需要修改代码，这需要时间，并可能引入新的错误，并且它们会使代码变得混乱，使现有的代码更难理解。
 
-Behind the techniques we’ve shown so far is an unstated assumption: that once we run the code, it will run to completion (only pausing to accept input) with no opportunity for us to intervene and inspect the results of the program at whatever point we want.
+我们之所以这么做，是因为我们基于一个假设——即代码一旦开始运行，程序就会运行到结束(只会在接受输入时暂停)，我们没有机会在任何我们想要的时候进行干预和检查程序的结果。
 
-However, what if we were able to remove this assumption? Fortunately, most modern IDEs come with an integrated tool called a debugger that is designed to do exactly this.
+然而，如果我们能够消除这种假设呢？幸运的是，大多数现代IDE都提供了一种称为调试器的集成工具，该工具正是为此而设计的。
 
 ## 调试器
 
-A debugger is a computer program that allows the programmer to control how another program executes and examine the program state while that program is running. For example, the programmer can use a debugger to execute a program line by line, examining the value of variables along the way. By comparing the actual value of variables to what is expected, or watching the path of execution through the code, the debugger can help immensely in tracking down semantic (logic) errors.
+调试器是一种计算机程序，它允许程序员控制另一个程序的执行方式，并在该程序运行时检查该程序的状态。例如，程序员可以使用调试器逐行执行程序，在整个过程中检查变量的值。通过将变量的实际值与预期值进行比较，或者观察整个代码的执行路径，调试器可以极大地帮助跟踪语义(逻辑)错误。
 
-The power behind the debugger is twofold: the ability to precisely control execution of the program, and the ability to view (and modify, if desired) the program’s state.
+调试器有两大核心功能：精确控制程序执行的能力，以及查看(和修改，如果需要的话)程序状态的能力。
 
-Early debuggers, such as [gdb](https://en.wikipedia.org/wiki/Gdb), were separate programs that had command-line interfaces, where the programmer had to type arcane commands to make them work. Later debuggers (such as early versions of Borland’s [turbo debugger](https://en.wikipedia.org/wiki/Turbo_Debugger)) were still standalone, but came with their own “graphical” front ends to make working with them easier. Most modern IDEs available these days have an integrated debugger -- that is, a debugger uses the same interface as the code editor, so you can debug using the same environment that you use to write your code (rather than having to switch programs).
+早期的调试器，如 [gdb](https://en.wikipedia.org/wiki/Gdb)，是具有命令行接口的独立程序，程序员必须键入神秘的命令才能使它们工作。后来的调试器(如Borland的[turbo debugger]的早期版本(https://en.wikipedia.org/wiki/Turbo_Debugger))仍然是独立的，但有自己的“图形化”前端，能够使其更加易用。目前大多数现代IDE都有一个集成的调试器——也就是说，调试器使用与代码编辑器相同的接口，因此你可以使用编写代码时使用的相同环境进行调试(而不必切换程序)。
 
-Nearly all modern debuggers contain the same standard set of basic features -- however, there is little consistency in terms of how the menus to access these features are arranged, and even less consistency in the keyboard shortcuts. Although our examples will use screenshots from Microsoft Visual Studio (and we’ll cover how to do everything in Code::Blocks as well), you should have little trouble figuring out how to access each feature we discuss no matter which IDE you are using.
-
-!!! tip "小贴士"
-
-	Debugger keyboard shortcuts will only work if the IDE/integrated debugger is the active window.
-
-The remainder of this chapter will be spent learning how to use the debugger.
+几乎所有的现代调试器都包含相同的基本功能标准集——然而，在访问这些功能的菜单如何使用方面几乎没有一致性，键盘快捷键的一致性甚至更低。尽管我们的示例将使用Microsoft Visual Studio的截图(我们也将介绍如何在Code::Blocks中完成所有操作)，但无论你使用的是哪种IDE，都应该不难弄清楚如何访问我们讨论的每个功能。
 
 !!! tip "小贴士"
 
-	Don’t neglect learning to use a debugger. As your programs get more complicated, the amount of time you spend learning to use the integrated debugger effectively will pale in comparison to amount of time you save finding and fixing issues.
+	调试器键盘快捷键只有在IDE/集成调试器是活动窗口时才有效。
+
+本章的剩余部分将学习如何使用调试器。
+
+!!! tip "小贴士"
+
+	不要忽视学习使用调试器。随着程序变得越来越复杂，与查找和修复问题所节省的时间相比，学习有效使用集成调试器所花费的时间就显得微不足道了。
+
 
 !!! warning "注意"
 

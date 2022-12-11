@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Untitled",
-      "path": "docs/Untitled.canvas"
+      "basename": "MOC",
+      "path": "docs/MOC.md"
+    },
+    {
+      "basename": "3-6-Using-an-integrated-debugger-Stepping",
+      "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
     },
     {
       "basename": "3-5-More-debugging-tactics",
       "path": "docs/3-5-More-debugging-tactics.md"
     },
     {
-      "basename": "MOC",
-      "path": "docs/MOC.md"
-    },
-    {
       "basename": "3-4-Basic-debugging-tactics",
       "path": "docs/3-4-Basic-debugging-tactics.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "Untitled",
+      "path": "docs/Untitled.canvas"
     },
     {
       "basename": "14-11-Overloading-typecasts",
@@ -191,16 +199,9 @@
     {
       "basename": "2-10-Introduction-to-the-preprocessor",
       "path": "docs/2-10-Introduction-to-the-preprocessor.md"
-    },
-    {
-      "basename": "13-11-class-code-and-header-files",
-      "path": "docs/13-11-class-code-and-header-files.md"
-    },
-    {
-      "basename": "1-8-Whitespace-and-basic-formatting",
-      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
     }
   ],
   "omittedPaths": [],
-  "maxLength": null
+  "maxLength": null,
+  "openType": "tab"
 }
