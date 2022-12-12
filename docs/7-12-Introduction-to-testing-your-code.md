@@ -127,11 +127,11 @@ int main()
 }
 ```
 
-If the results come back as `1` and `0`, then you’re good to go. You know your function works for some basic cases, and you can reasonably infer by looking at the code that it will work for the cases you didn’t test (‘e’, ‘i’, ‘o’, and ‘u’). So you can erase that temporary test code, and continue programming.
+如果返回的结果是“`1`”和“`0`”，那么程序就是正确的。你的函数适用于一些基本情况，随后你可以通过查看代码合理地推断它也适用于那些尚未测试的情况(`e`，`i`，`o` 和`u` )。因此，你可以删除临时测试代码，并继续编程。
 
 ## 保存测试
 
-Although writing temporary tests is a quick and easy way to test some code, it doesn’t account for the fact that at some point, you may want to test that same code again later. Perhaps you modified a function to add a new capability, and want to make sure you didn’t break anything that was already working. For that reason, it can make more sense to preserve your tests so they can be run again in the future. For example, instead of erasing your temporary test code, you could move the tests into a testVowel() function:
+尽管编写临时的测试代码可以简单快速地测试程序，但如果稍后还需要测试程序的话，就不能依赖这些临时的测试代码了。当我们修改了一个函数并添加新的功能后，往往希望确保没有破坏程序的其他部分。出于这个原因，将测试代码保存起来以便将来可以再次运行是更加有意义的做法。例如，你可以将测试移动到 `testVowel()` 函数中，而不是删除你的临时测试代码：
 
 ```cpp
 #include <iostream>
@@ -165,7 +165,7 @@ int main()
 }
 ```
 
-As you create more tests, you can simply add them to the `testVowel()` function.
+在创建更多测试时，可以将它们添加到 `testVowel()` 函数中。
 
 ## 自动化测试
 
@@ -207,9 +207,7 @@ int main()
 }
 ```
 
-COPY
-
-Now, you can call `testVowel()` at any time to re-prove that you haven’t broken anything, and the test routine will do all the work for you, returning either an “all good” signal (return value `0`), or the test number that didn’t pass, so you can investigate why it broke. This is particularly useful when going back and modifying old code, to ensure you haven’t accidentally broken anything!
+这样一来，你就可以在任何时候调用 `testVowel()` 函数来测试程序，确保它始终能够正确运行。测试代码可以自动帮你测试所有用例，返回“all good”（返回值0），或者返回失败用例的序号。这样的测试在我们修改老代码时尤为重要，因为谁也不希望无意间破坏程序原本正常的功能！
 
 ## 单元测试框架
 

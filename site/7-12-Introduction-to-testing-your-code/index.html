@@ -5928,15 +5928,15 @@
   <h1>7.12 - 代码测试</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>So, you’ve written a program, it compiles, and it even appears to work! What now?</p>
-<p>Well, it depends. If you’ve written your program to be run once and discarded, then you’re done. In this case, it may not matter that your program doesn’t work for every case -- if it works for the one case you needed it for, and you’re only going to run it once, then you’re done.</p>
-<p>If your program is entirely linear (has no conditionals, such as <code>if statements</code> or <code>switch statements</code>), takes no inputs, and produces the correct answer, then you’re done. In this case, you’ve already tested the entire program by running it and validating the output.</p>
-<p>But more likely you’ve written a program you intend to run many times, that uses loops and conditional logic, and accepts user input of some kind. You’ve possibly written functions that may be reusable in other future programs. You may have experienced a bit of scope creep, where you added some new capabilities that were originally not planned for. Maybe you’re even intending to distribute this program to other people (who are likely to try things you haven’t thought of). In this case, you really should be validating that your program works like you think it does under a wide variety of conditions -- and that requires some proactive testing.</p>
-<p>Just because your program worked for one set of inputs doesn’t mean it’s going to work correctly in all cases.</p>
-<p>Software verification (a.k.a. software testing) is the process of determining whether or not the software works as expected in all cases.</p>
+<p>当程序可以编译，甚至可以运行后，还有什么工作需要做呢？</p>
+<p>这要看情况。如果该程序只运行一次并被丢弃，那么不需要做其他事情了。在这种情况下，你的程序是否能适用于所有情况可能并不重要——如果它能满足你当前任务的需要，并且你也只需要运行它一次，那么任务就已经完成了。</p>
+<p>如果你的程序完全是线性的(没有条件，如“If语句”或“switch语句”)，不接受输入，并产生正确的答案，那么你就完成了。在本例中，你已经通过运行和验证输出测试了整个程序。</p>
+<p>但更有可能的情况是，你的程序需要被多次运行，而且该程序使用循环和条件逻辑，能够接受某种类型的用户输入。你可能已经编写了可以在将来的其他程序中重用的函数，也可能经添加了一些最初没有计划的新功能。也许还打算将这个程序分发给其他人(用户可能会做出你意料之外的操作)。在这种情况下，我们必须验证程序在各种各样的条件下都能正确工作——这需要测试来保证。</p>
+<p>仅仅因为你的程序适用于一组输入并不意味着它在所有情况下都能正确工作。</p>
+<p>软件验证(也称为软件测试)是确定软件在所有情况下是否按预期工作的过程。</p>
 <h2 id="_1">有关测试的难题</h2>
-<p>Before we talk about some practical ways to test your code, let’s talk about why testing your program comprehensively is difficult.</p>
-<p>Consider this simple program:</p>
+<p>在讨论测试代码的实用方法之前，让我们先谈谈为什么全面测试程序并不容易。</p>
+<p>考虑这个简单的程序：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5989,29 +5989,28 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Assuming a 4-byte integer, explicitly testing this program with every possible combination of inputs would require that you run the program 18,446,744,073,709,551,616 (~18 quintillion) times. Clearly that’s not a feasible task!</p>
-<p>Every time we ask for user input, or have a conditional in our code, we increase the number of possible ways our program can execute by some multiplicative factor. For all but the simplest programs, explicitly testing every combination of inputs becomes impossible almost immediately.</p>
-<p>Now, your intuition should be telling you that you really shouldn’t need to run the above program 18 quintillion times to ensure it works. You may reasonably conclude that if case 1 works for one pair of <code>x</code> and <code>y</code> values where <code>x &gt; y</code>, it should work for any pair of <code>x</code> and <code>y</code> where <code>x &gt; y</code>. Given that, it becomes apparent that we really only need to run this program about three times (once to exercise each of the three cases in function <code>compare()</code>) to have a high degree of confidence it works as desired. There are other similar tricks we can use to dramatically reduce the number of times we have to test something, in order to make testing manageable.</p>
-<p>There’s a lot that can be written about testing methodologies -- in fact, we could write a whole chapter on it. But since it’s not a C++ specific topic, we’ll stick to a brief and informal introduction, covered from the point of view of you (as the developer) testing your own code. In the next few subsections, we’ll talk about some <em>practical</em> things you should be thinking about as you test your code.</p>
+<p>假设有一个4字节的整数，用每种可能的输入组合显式地测试这个程序将需要运行程序18,446,744,073,709,551,616次(~18亿亿次)。显然这是不可行的。</p>
+<p>当程序要求用户输入或者在代码中存在条件判断时，程序可以执行的方式的就相应地变多了。除了最简单的程序之外，几乎不可能显式地测试每种输入组合。</p>
+<p>现在，直觉告诉我们，其实并不需要真的运行程序18亿亿次才能确保它可以正确工作。你可以合理地得出结论，如果情况1适用于一对 <code>x</code> 和<code>y</code> 值，其中 <code>x &gt; y</code> ，那么它应该适用于任何一对满足 <code>x&gt;y</code> 的 <code>x</code> 和 <code>y</code> 组合。鉴于此，程序实际上只需要运行这个大约三次(在函数 <code>compare()</code> 中分别运行一次)，就可以高度确信它能按预期工作。为了使测试易于管理，我们还可以使用其他类似的技巧来大幅减少测试的次数。</p>
+<p>关于测试方法有很多东西可以写——事实上，我们可以为此写一整章。但由于这不是C++教程应该关注的事情，所以我们只会简单介绍作为程序员应该如何测试自己的代码。在接下来的几个小节中，我们将讨论一些在测试代码时应该考虑的实际问题。</p>
 <h2 id="_2">化整为零进行测试</h2>
-<p>Consider an auto manufacturer that is building a custom concept car. Which of the following do you think they do?<br />
-a) Build (or buy) and test each car component individually before installing it. Once the component has been proven to work, integrate it into the car and retest it to make sure the integration worked. At the end, test the whole car, as a final validation that everything seems good.<br />
-b) Build a car out of all of the components all in one go, then test the whole thing for the first time right at the end.</p>
-<p>It probably seems obvious that option a) is a better choice. And yet, many new programmers write code like option b)!</p>
-<p>In case b), if any of the car parts were to not work as expected, the mechanic would have to diagnose the entire car to determine what was wrong -- the issue could be anywhere. A symptom might have many causes -- for example, is the car not starting due to a faulty spark plug, battery, fuel pump, or something else? This leads to lots of wasted time trying to identify exactly where the problems are, and what to do about them. And if a problem is found, the consequences can be disastrous -- a change in one area might cause “ripple effects” (changes) in multiple other places. For example, a fuel pump that is too small might lead to an engine redesign, which leads to a redesign of the car frame. In the worst case, you might end up redesigning a huge part of the car, just to accommodate what was initially a small issue!</p>
-<p>In case a), the company tests as they go. If any component is bad right out of the box, they’ll know immediately and can fix/replace it. Nothing is integrated into the car until it’s proven working by itself, and then that part is retested again as soon as it’s been integrated into the car. This way any unexpected issues are discovered as early as possible, while they are still small problems that can be easily fixed.</p>
-<p>By the time they get around to having the whole car assembled, they should have reasonable confidence that the car will work -- after all, all the parts have been tested in isolation and when initially integrated. It’s still possible that unexpected issues will be found at this point, but that risk is minimized by all the prior testing.</p>
-<p>The above analogy holds true for programs as well, though for some reason, new programmers often don’t realize it. You’re much better off writing small functions (or classes), and then compiling and testing them immediately. That way, if you make a mistake, you’ll know it has to be in the small amount of code that you changed since the last time you compiled/tested. That means fewer places to look, and far less time spent debugging.</p>
-<p>Testing a small part of your code in isolation to ensure that “unit” of code is correct is called unit testing. Each unit test is designed to ensure that a particular behavior of the unit is correct.</p>
+<p>假设你是一家汽车制造商，正在制造一辆客户概念车。那么你会怎么做呢？
+a) 在组装前制造 (或购买) 并测试各个零部件，如果零部件可以正常工作，则将其组装到汽车上，确保仍然可以正常工作。最后，对整车进行测试，确保所有部分都可以正常工作。
+b) 用所有的部件一气呵成地造出一辆车，然后在最后对整个部件进行第一次测试。</p>
+<p>很明显选项a)是更好的选择。然而，许多新程序员会按照 b) 描述的方法编写代码！</p>
+<p>在b)情况下，如果汽车中有任何部件没有按照预期工作，工程师就必须对整辆车进行诊断，以确定哪里出了问题——问题可能在任何地方。一个症状可能有很多原因——例如，由于火花塞、电池、燃油泵或其他原因，汽车无法启动？这无疑会浪费大量时间。如果发现了问题，后果可能是灾难性的——一处修改可能会在其他多个地方引起“涟漪效应”(变化)。例如，燃油泵太小可能会导致发动机重新设计，从而导致汽车框架的重新设计。在最坏的情况下，你可能会重新设计汽车的一个很大的部分，只是为了适应最初的一个小问题!很明显选项a)是更好的选择。然而，许多新程序员编写类似选项b)的代码!</p>
+<p>对于 a) 的情况，汽车公司一边组装一边测试。如果任何零件是坏的，他们会立即知道，并能修复/更换它。任何东西都不会被集成到汽车中，直到它被证明可以工作，然后一旦它被集成到汽车中，就会再次进行测试。这样，任何意外的问题都可以尽早发现，而它们仍然是可以轻松解决的小问题。</p>
+<p>开始组装整辆车的时候，制造商应该对汽车能够正常工作有合理的信心——毕竟，所有的部件都已经单独测试过了，并且在初始集成时也进行了测试。在这一点上仍然有可能发现意外的问题，但是通过所有先前的测试将风险降到最低。</p>
+<p>上面的类比也适用于程序，尽管由于某种原因，新程序员经常没有意识到这一点。最好是编写小函数(或类)，然后立即编译和测试它们。这样，如果你犯了错误就会知道它一定是在上次编译/测试后更改的少量代码中。这意味着要查看的地方更少，花在调试上的时间也更少。</p>
+<p>单独测试一小部分代码，以确保代码的“单元”是正确的，这称为单元测试。每个单元测试都被设计用来确保单元的特定行为是正确的。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Write your program in small, well defined units (functions or classes), compile often, and test your code as you go.</p>
+<p>用定义良好的小单元(函数或类)编写程序，频繁编译，并在运行时测试代码。</p>
 </div>
-<p>If the program is short and accepts user input, trying a variety of user inputs might be sufficient. But as programs get longer and longer, this becomes less sufficient, and there is more value in testing individual functions or classes before integrating them into the rest of the program.</p>
-<p>So how can we test our code in units?</p>
+<p>如果程序很短并且接受用户输入，那么尝试各种用户输入可能就足够了。但是随着程序变得越来越长，这就不够了，在将单个函数或类集成到程序的其余部分之前就对它们进行测试效果会更好。</p>
+<p>那么我们如何以单位来测试代码呢?</p>
 <h2 id="_3">非正式测试</h2>
-<p>One way you can test code is to do informal testing as you write the program. After writing a unit of code (a function, a class, or some other discrete “package” of code), you can write some code to test the unit that was just added, and then erase the test once the test passes. As an example, for the following isLowerVowel() function, you might write the following code:</p>
+<p>测试代码的一种方法是在编写程序时进行非正式测试。在编写了一个代码单元(一个函数、一个类或其他一些离散的“包”代码)之后，可以编写一些代码来测试刚刚添加的单元，然后在测试通过后删除测试。例如，对于下面的isLowerVowel()函数，则可以编写以下代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6064,10 +6063,9 @@ b) Build a car out of all of the components all in one go, then test the whole t
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>If the results come back as <code>1</code> and <code>0</code>, then you’re good to go. You know your function works for some basic cases, and you can reasonably infer by looking at the code that it will work for the cases you didn’t test (‘e’, ‘i’, ‘o’, and ‘u’). So you can erase that temporary test code, and continue programming.</p>
+<p>如果返回的结果是“<code>1</code>”和“<code>0</code>”，那么程序就是正确的。你的函数适用于一些基本情况，随后你可以通过查看代码合理地推断它也适用于那些尚未测试的情况(<code>e</code>，<code>i</code>，<code>o</code> 和<code>u</code> )。因此，你可以删除临时测试代码，并继续编程。</p>
 <h2 id="_4">保存测试</h2>
-<p>Although writing temporary tests is a quick and easy way to test some code, it doesn’t account for the fact that at some point, you may want to test that same code again later. Perhaps you modified a function to add a new capability, and want to make sure you didn’t break anything that was already working. For that reason, it can make more sense to preserve your tests so they can be run again in the future. For example, instead of erasing your temporary test code, you could move the tests into a testVowel() function:</p>
+<p>尽管编写临时的测试代码可以简单快速地测试程序，但如果稍后还需要测试程序的话，就不能依赖这些临时的测试代码了。当我们修改了一个函数并添加新的功能后，往往希望确保没有破坏程序的其他部分。出于这个原因，将测试代码保存起来以便将来可以再次运行是更加有意义的做法。例如，你可以将测试移动到 <code>testVowel()</code> 函数中，而不是删除你的临时测试代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6126,10 +6124,10 @@ b) Build a car out of all of the components all in one go, then test the whole t
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>As you create more tests, you can simply add them to the <code>testVowel()</code> function.</p>
+<p>在创建更多测试时，可以将它们添加到 <code>testVowel()</code> 函数中。</p>
 <h2 id="_5">自动化测试</h2>
-<p>One problem with the above test function is that it relies on you to manually verify the results when you run it. This requires you to remember what the expected answer was at worst (assuming you didn’t document it), and manually compare the actual results to the expected results.</p>
-<p>We can do better by writing a test function that contains both the tests AND the expected answers and compares them so we don’t have to.</p>
+<p>上述测试函数的一个问题是，它依赖于你在运行时手动验证结果。这要求你要记住期望的结果是什么(假设您没有记录它)，并手动将实际结果与预期结果进行比较。</p>
+<p>我们可以通过编写一个包含测试和预期答案的测试函数来做得更好，这样我们就不必对它们进行人工比较了。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6190,12 +6188,11 @@ b) Build a car out of all of the components all in one go, then test the whole t
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Now, you can call <code>testVowel()</code> at any time to re-prove that you haven’t broken anything, and the test routine will do all the work for you, returning either an “all good” signal (return value <code>0</code>), or the test number that didn’t pass, so you can investigate why it broke. This is particularly useful when going back and modifying old code, to ensure you haven’t accidentally broken anything!</p>
+<p>这样一来，你就可以在任何时候调用 <code>testVowel()</code> 函数来测试程序，确保它始终能够正确运行。测试代码可以自动帮你测试所有用例，返回“all good”（返回值0），或者返回失败用例的序号。这样的测试在我们修改老代码时尤为重要，因为谁也不希望无意间破坏程序原本正常的功能！</p>
 <h2 id="_6">单元测试框架</h2>
-<p>Because writing functions to exercise other functions is so common and useful, there are entire frameworks (called unit testing frameworks) that are designed to help simplify the process of writing, maintaining, and executing unit tests. Since these involve third party software, we won’t cover them here, but you should be aware they exist.</p>
+<p>因为编写函数来执行其他函数是非常常见和有用的需求，所以有一些完整的框架(称为单元测试框架)旨在帮助简化编写、维护和执行单元测试的过程。因为这些涉及到第三方软件，所以我们在这里不做介绍，但是你应该知道它们的存在。</p>
 <h2 id="_7">集成测试</h2>
-<p>Once each of your units has been tested in isolation, they can be integrated into your program and retested to make sure they were integrated properly. This is called an integration test. Integration testing tends to be more complicated -- for now, running your program a few times and spot checking the behavior of the integrated unit will suffice.</p>
+<p>一旦程序的每个单元都单独测试过，它们就可以被集成到你的程序中，并重新测试，以确保它们被正确地集成了。这就是所谓的集成测试。集成测试往往更加复杂——目前，运行几次程序并抽检集成单元的行为就足够了。</p>
 
 
               </article>
