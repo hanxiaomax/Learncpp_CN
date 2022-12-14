@@ -14,17 +14,17 @@ tags:
 
 
 
-In the previous lesson [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]， we discussed how to write and preserve simple tests. In this lesson, we’ll talk about what kind of tests are useful to write to ensure your code is correct.
+在 [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]] 中我们介绍了如何编写和保存测试。在这节课中，我们将探讨哪些测试对于保证程序质量是至关重要的。
 
 ## 代码覆盖率
 
-The term code coverage is used to describe how much of the source code of a program is executed while testing. There are many different metrics used for code coverage. We’ll cover a few of the more useful and popular ones in the following sections.
+术语代码覆盖率用于描述测试执行时可以运行的程序源代码数量。代码覆盖率有许多不同的度量标准。我们将在接下来的部分中介绍一些更有用和更受欢迎的方法。
 
 ## 语句覆盖率
 
-The term statement coverage refers to the percentage of statements in your code that have been exercised by your testing routines.
+术语语句覆盖率指的是测试例程执行过的代码中语句的百分比。
 
-Consider the following function:
+考虑以下函数：
 
 ```cpp
 int foo(int x, int y)
@@ -38,38 +38,34 @@ int foo(int x, int y)
 }
 ```
 
-COPY
+调用 `foo(1, 0)` 可以实现该函数语句的完全覆盖，即函数中的每条语句都会执行。
 
-Calling this function as `foo(1, 0)` will give you complete statement coverage for this function, as every statement in the function will execute.
-
-For our `isLowerVowel()` function:
+对于 `isLowerVowel()` 函数来说：
 
 ```cpp
 bool isLowerVowel(char c)
 {
-    switch (c) // statement 1
+    switch (c) // 语句 1
     {
     case 'a':
     case 'e':
     case 'i':
     case 'o':
     case 'u':
-        return true; // statement 2
+        return true; // 语句 2
     default:
-        return false; // statement 3
+        return false; // 语句 3
     }
 }
 ```
 
-COPY
+这个函数需要两次调用才能实现语句的完全 覆盖，因为语句2和3不可能在一次函数调用中同时执行。
 
-This function will require two calls to test all of the statements, as there is no way to reach statement 2 and 3 in the same function call.
-
-While aiming for 100% statement coverage is good, it’s not enough to ensure correctness.
+100%的语句覆盖率是很好的指标，但这其实并不足以确保正确性。
 
 ## 分支覆盖率
 
-Branch coverage refers to the percentage of branches that have been executed, each possible branch counted separately. An `if statement` has two branches -- a branch that executes when the condition is `true`, and a branch that executes when the condition is `false` (even if there is no corresponding `else statement` to execute). A switch statement can have many branches.
+分支覆盖率是指已经执行的分支的百分比，每个可能的分支分别计算。一个' if语句'有两个分支——一个分支在条件为'真'时执行，另一个分支在条件为'假'时执行(即使没有相应的' else语句'要执行)。一个switch语句可以有很多分支。
 
 ```cpp
 int foo(int x, int y)
@@ -83,9 +79,7 @@ int foo(int x, int y)
 }
 ```
 
-COPY
-
-The previous call to foo(1, 0) gave us 100% statement coverage and exercised the use case where `x > y`, but that only gives us 50% branch coverage. We need one more call, to `foo(0, 1)`, to test the use case where the `if statement` does not execute.
+在之前的例子中，调用 `foo(1, 0)` 可以实现100%的语句覆盖率，并且测试 `x > y` 的情况，但是分支覆盖率却只有50%。我们需要再调用一次 `foo(0, 1)`，这样就可以测到`if`语句不执行的情况。
 
 ```cpp
 bool isLowerVowel(char c)
@@ -104,12 +98,10 @@ bool isLowerVowel(char c)
 }
 ```
 
-COPY
 
-In the isLowerVowel() function, two calls will be needed to give you 100% branch coverage: one (such as `isLowerVowel('a')`) to test the first cases, and another (such as `isLowerVowel('q')`) to test the default case. Multiple cases that feed into the same body don’t need to be tested separately -- if one works, they all should.
+在 `isLowerVowel()` 函数中，我们也需要调用两次才能得到100%的分支覆盖率：第一次调用 (例如 `isLowerVowel('a')`) 测试前面的几个case分支，第二次调用(例如 `isLowerVowel('q')`) 来测试`default`分支。能够在一次测试中执行到的分支，不需要分别测试。
 
-Now consider the following function:
-
+考虑下面的函数：
 ```cpp
 void compare(int x, int y)
 {
@@ -122,19 +114,18 @@ void compare(int x, int y)
 }
 ```
 
-COPY
+该函数需要三次调用才能实现100%分支覆盖：`compare(1, 0)` 测试第一个`if`语句为真的分支，`compare(0, 1)` 测试第一个`if`语句为假且第二个`if`语句为真的分支。`compare(0, 0)` 测试两个`if`语句都为假，执行`else`的分支。执行完这三次测试后，我们就有信心说这个函数被可靠地测试了（三次测试总好过1800亿亿个输入组合吧）。
 
-3 calls are needed to get 100% branch coverage here: `compare(1, 0)` tests the positive use case for the first `if statement`. `compare(0, 1)` tests the negative use case for the first `if statement` and the positive use case for the second `if statement`. `compare(0, 0)` tests the negative use case for the first and second `if statement` and executes the `else statement`. Thus, we can say this function is reliably tested with 3 calls (which is slightly better than 18 quintillion).
 
 !!! success "最佳实践"
 
-	Aim for 100% branch coverage of your code.
+	100%分支覆盖率是我们的测试目标！
 
 ## 循环覆盖率
 
-Loop coverage (informally called the 0, 1, 2 test) says that if you have a loop in your code, you should ensure it works properly when it iterates 0 times, 1 time, and 2 times. If it works correctly for the 2-iteration case, it should work correctly for all iterations greater than 2. These three tests therefore cover all possibilities (since a loop can’t execute a negative number of times).
+循环覆盖率(非正式地称为0,1,2测试)指的是，如果你的代码中有一个循环，则应该确保它在迭代0次、1次和2次时正常工作。如果它对2次迭代的情况正确工作，那么它应该对所有大于2次的迭代都正确工作。因此，这三个测试涵盖了所有的可能性(因为循环不能执行负数次)。
 
-Consider:
+考虑下面代码：
 
 ```cpp
 #include <iostream>

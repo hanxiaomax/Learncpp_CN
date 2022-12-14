@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "7-12-Introduction-to-testing-your-code",
-      "path": "docs/7-12-Introduction-to-testing-your-code.md"
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-12-Introduction-to-testing-your-code",
+      "path": "docs/7-12-Introduction-to-testing-your-code.md"
     },
     {
       "basename": "3-6-Using-an-integrated-debugger-Stepping",
@@ -195,10 +199,6 @@
     {
       "basename": "6-14-Constexpr-and-consteval-functions",
       "path": "docs/6-14-Constexpr-and-consteval-functions.md"
-    },
-    {
-      "basename": "6-9-Sharing-global-constants-across-multiple-files-using-inline-variables",
-      "path": "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md"
     }
   ],
   "omittedPaths": [],
