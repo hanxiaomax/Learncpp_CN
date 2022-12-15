@@ -137,30 +137,29 @@ void spam(int timesToPrint)
 }
 ```
 
-COPY
 
-To test the loop within this function properly, you should call it three times: `spam(0)` to test the zero-iteration case, `spam(1)` to test the one-iteration case, and `spam(2)`to test the two-iteration case. If `spam(2)` works, then `spam(n)` should work, where `n > 2`.
+为了更好地测试这个函数中的循环，我们需要调用三次该函数：`spam(0)` 测试0次迭代的情况，`spam(1)` 测试1次迭代的情况，然后调用 `spam(2)` 测试 2 次迭代的情况。如果 `spam(2)` 可以工作，则对于任意 `n>2` 的情况 `spam(n)` 都应该可以工作。
 
 !!! success "最佳实践"
 
-	Use the `0, 1, 2 test` to ensure your loops work correctly with different number of iterations.
+	使用 “0,1,2测试” 来确保你的循环在不同次数的迭代下都能正常工作。
 
 ## 测试不同类别的输入
 
-When writing functions that accept parameters, or when accepting user input, consider what happens with different categories of input. In this context, we’re using the term “category” to mean a set of inputs that have similar characteristics.
+在编写接受参数的函数或接受用户输入时，要考虑不同类别的输入会发生什么。在这种情况下，我们使用术语“类别”来表示具有相似特征的一组输入。
 
-For example, if I wrote a function to produce the square root of an integer, what values would it make sense to test it with? You’d probably start with some normal value, like `4`. But it would also be a good idea to test with `0`, and a negative number.
+例如，对于一个产生整数平方根的函数，用什么值来测试它是有意义的？你可能会从一些正常的值开始，比如“4”。但是用“0”和负数来测试也是一个好主意。
 
-Here are some basic guidelines for category testing:
+以下是分类测试的一些基本准则：
 
-For integers, make sure you’ve considered how your function handles negative values, zero, and positive values. You should also check for overflow if that’s relevant.
+对于整数，需要考虑函数如何处理负值、零和正值。如果可能的话，还应该检查是否溢出。
 
-For floating point numbers, make sure you’ve considered how your function handles values that have precision issues (values that are slightly larger or smaller than expected). Good `double` type values to test with are `0.1` and `-0.1` (to test numbers that are slightly larger than expected) and `0.6` and `-0.6` (to test numbers that are slightly smaller than expected).
+对于浮点数，确保考虑了函数如何处理有精度问题的值(略大于或略小于预期值)。适合测试的`double`类型值是 `0.1` 和 `-0.1` (用于测试略大于预期的数字)以及 `0.6` 和 `-0.6` (用于测试略小于预期的数字)。
 
-For strings, make sure you’ve considered how your function handles an empty string (just a null terminator), normal valid strings, strings that have whitespace, and strings that are all whitespace.
+对于字符串，确保你考虑了函数如何处理空字符串(只是一个空结束符)、正常有效的字符串、有空格的字符串以及全是空格的字符串。
 
-If your function takes a pointer, don’t forget to test `nullptr` as well (don’t worry if this doesn’t make sense, we haven’t covered it yet).
+如果函数会处理指针，不要忘记测试 `nullptr` (如果你不知道这是什么也不要紧，毕竟我们还没介绍过它)。
 
 !!! success "最佳实践"
 
-	Test different categories of input values to make sure your unit handles them properly.
+	测试不同类别的输入值，以确保代码单元能够正确地处理它们。
