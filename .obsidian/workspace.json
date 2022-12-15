@@ -34,9 +34,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "8a75cb121dece9c0",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.1.5"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -162,7 +172,7 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "e676ff78099cc8bd",
+  "active": "8a75cb121dece9c0",
   "lastOpenFiles": [
     "docs/MOC.md",
     "docs/7-13-Code-coverage.md",
