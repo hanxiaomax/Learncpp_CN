@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "7-13-Code-coverage",
-      "path": "docs/7-13-Code-coverage.md"
+      "basename": "13-2-classes-and-class-members",
+      "path": "docs/13-2-classes-and-class-members.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "13-11-class-code-and-header-files",
+      "path": "docs/13-11-class-code-and-header-files.md"
+    },
+    {
+      "basename": "3-5-More-debugging-tactics",
+      "path": "docs/3-5-More-debugging-tactics.md"
+    },
+    {
+      "basename": "Untitled 1",
+      "path": "docs/Untitled 1.canvas"
+    },
+    {
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
     },
     {
       "basename": "7-12-Introduction-to-testing-your-code",
@@ -15,10 +31,6 @@
     {
       "basename": "3-6-Using-an-integrated-debugger-Stepping",
       "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
-    },
-    {
-      "basename": "3-5-More-debugging-tactics",
-      "path": "docs/3-5-More-debugging-tactics.md"
     },
     {
       "basename": "3-4-Basic-debugging-tactics",
@@ -187,18 +199,6 @@
     {
       "basename": "7-8-Do-while-statements",
       "path": "docs/7-8-Do-while-statements.md"
-    },
-    {
-      "basename": "8-7-Type-deduction-for-objects-using-the auto-keyword",
-      "path": "docs/8-7-Type-deduction-for-objects-using-the auto-keyword.md"
-    },
-    {
-      "basename": "B-2-introduction-to-C++14",
-      "path": "docs/B-2-introduction-to-C++14.md"
-    },
-    {
-      "basename": "6-14-Constexpr-and-consteval-functions",
-      "path": "docs/6-14-Constexpr-and-consteval-functions.md"
     }
   ],
   "omittedPaths": [],

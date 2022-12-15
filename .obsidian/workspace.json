@@ -23,30 +23,20 @@
             }
           },
           {
-            "id": "e676ff78099cc8bd",
+            "id": "7acfecb01440353b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/7-13-Code-coverage.md",
+                "file": "docs/13-2-classes-and-class-members.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
-          },
-          {
-            "id": "8a75cb121dece9c0",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.1.5"
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -105,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254
+    "width": 254,
+    "collapsed": true
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -132,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/7-13-Code-coverage.md",
+                "file": "docs/13-2-classes-and-class-members.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/7-13-Code-coverage.md"
+                "file": "docs/13-2-classes-and-class-members.md"
               }
             }
           }
@@ -172,17 +163,17 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "8a75cb121dece9c0",
+  "active": "7acfecb01440353b",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/13-11-class-code-and-header-files.md",
+    "docs/3-5-More-debugging-tactics.md",
+    "docs/Untitled 1.canvas",
     "docs/7-13-Code-coverage.md",
     "docs/7-12-Introduction-to-testing-your-code.md",
     "docs/3-6-Using-an-integrated-debugger-Stepping.md",
-    "docs/3-5-More-debugging-tactics.md",
     "docs/3-4-Basic-debugging-tactics.md",
-    "docs/Untitled 1.canvas",
     "docs/1-1-Statements-and-the-structure-of-a-program.md",
-    "docs/Untitled.canvas",
-    "docs/14-11-Overloading-typecasts.md"
+    "docs/Untitled.canvas"
   ]
 }
