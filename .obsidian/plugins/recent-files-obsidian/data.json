@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "13-2-classes-and-class-members",
-      "path": "docs/13-2-classes-and-class-members.md"
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "8-9-Introduction-to-function-overloading",
+      "path": "docs/8-9-Introduction-to-function-overloading.md"
+    },
+    {
+      "basename": "12-3-std-vector-capacity-and-stack-behavior",
+      "path": "docs/12-3-std-vector-capacity-and-stack-behavior.md"
+    },
+    {
+      "basename": "11-17-An-introduction-to-std-vector",
+      "path": "docs/11-17-An-introduction-to-std-vector.md"
+    },
+    {
+      "basename": "9-5-Pass-by-lvalue-reference",
+      "path": "docs/9-5-Pass-by-lvalue-reference.md"
+    },
+    {
+      "basename": "9-4-Lvalue-references-to-const",
+      "path": "docs/9-4-Lvalue-references-to-const.md"
+    },
+    {
+      "basename": "13-2-classes-and-class-members",
+      "path": "docs/13-2-classes-and-class-members.md"
     },
     {
       "basename": "13-11-class-code-and-header-files",
@@ -129,10 +153,6 @@
       "path": "docs/dynamic-array.md"
     },
     {
-      "basename": "9-5-Pass-by-lvalue-reference",
-      "path": "docs/9-5-Pass-by-lvalue-reference.md"
-    },
-    {
       "basename": "1-4-Variable-assignment-and-initialization",
       "path": "docs/1-4-Variable-assignment-and-initialization.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "1-x-Chapter-1-summary-and-quiz",
       "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
-    },
-    {
-      "basename": "initializer",
-      "path": "docs/initializer.md"
-    },
-    {
-      "basename": "2-11-Header-files",
-      "path": "docs/2-11-Header-files.md"
-    },
-    {
-      "basename": "4-13-Const-variables-and-symbolic-constants",
-      "path": "docs/4-13-Const-variables-and-symbolic-constants.md"
-    },
-    {
-      "basename": "4-x-Chapter-4-summary-and-quiz",
-      "path": "docs/4-x-Chapter-4-summary-and-quiz.md"
-    },
-    {
-      "basename": "7-8-Do-while-statements",
-      "path": "docs/7-8-Do-while-statements.md"
     }
   ],
   "omittedPaths": [],

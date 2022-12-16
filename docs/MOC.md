@@ -135,7 +135,7 @@
 - [x] [[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]
 - [x] [[8-8-Type-deduction-for-functions|8.8 - 函数的类型推断]]
 - [x] [[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]
-- [x] [[8-10-Function-overload-differentiation|8.10 - 函数重载和区分]]
+- [x] [[8-10-Function-overload-differentiation|8.10 - 重载函数的区分]]
 - [x] [[8-11-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和不明确匹配]]
 - [x] [[8-12-Default-arguments|8.12 - 默认参数]]
 - [x] [[8-13-Function-templates|8.13 - 函数模板]]
