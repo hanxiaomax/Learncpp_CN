@@ -34,9 +34,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "24b68587dcba6c2c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.1.6"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -163,7 +173,7 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "bbd10eb7de252ded",
+  "active": "24b68587dcba6c2c",
   "lastOpenFiles": [
     "docs/MOC.md",
     "docs/8-10-Function-overload-differentiation.md",
