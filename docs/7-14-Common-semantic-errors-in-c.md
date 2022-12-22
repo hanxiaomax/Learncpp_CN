@@ -146,7 +146,7 @@ COPY
 
 ## 差一错误
 
-An off-by-one error is an error that occurs when a loop executes one too many or one too few times. Here’s an example that we covered in lesson [[7-9-For-statements|7.9 - for 语句]]：
+[[Off-by-one|差一错误]]指的是循环多执行一次或少执行一次而产生的错误。情况下面这个例子：
 
 ```cpp
 #include <iostream>
@@ -164,13 +164,12 @@ int main()
 }
 ```
 
-COPY
 
-The programmer intended for this code to print `1 2 3 4 5`. However, the wrong relational operator was used (`<` instead of `<=`), so the loop executes one fewer times than intended, printing `1 2 3 4`.
+程序员希望代码打印 `1 2 3 4 5`。但是，由于使用了错误的运算符 (`<` 而不是 `<=`)，所以循环少执行了一次，程序打印 `1 2 3 4`。
 
 ## 运算符优先级错误
 
-From lesson [[5-7-Logical-operators|5.7 - 逻辑运算符]]， the following program makes an operator precedence mistake:
+在 [[5-7-Logical-operators|5.7 - 逻辑运算符]] 中，下面程序存在优先级错误：
 
 ```cpp
 #include <iostream>
@@ -189,15 +188,15 @@ int main()
 }
 ```
 
-COPY
+因为逻辑运算符  `NOT` 比 `operator>` 的优先级更高，所以条件表达式实际上是按照 `(!x) > y` 求值，这并不是程序员所希望的。
 
-Because `logical NOT` has higher precedence than `operator>`, the conditional evaluates as if it was written `(!x) > y`, which isn’t what the programmer intended.
-
-As a result, this program prints:
+结果，这个程序输出：
 
 ```
 5 is greater than 7
 ```
+
+在同一个表达式中混合逻辑或和逻辑与时也会发生这种情况(逻辑与优先于逻辑或)。使用显式括号可以避免这类错误。
 
 This can also happen when mixing Logical OR and Logical AND in the same expression (Logical AND takes precedence over Logical OR). Use explicit parenthesization to avoid these kinds of errors.
 
