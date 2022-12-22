@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "8-10-Function-overload-differentiation",
-      "path": "docs/8-10-Function-overload-differentiation.md"
+      "basename": "7-14-Common-semantic-errors-in-c",
+      "path": "docs/7-14-Common-semantic-errors-in-c.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "7-13-Code-coverage",
+      "path": "docs/7-13-Code-coverage.md"
+    },
+    {
+      "basename": "2-5-Introduction-to-local-scope",
+      "path": "docs/2-5-Introduction-to-local-scope.md"
+    },
+    {
+      "basename": "2-12-Header-guards",
+      "path": "docs/2-12-Header-guards.md"
+    },
+    {
+      "basename": "8-10-Function-overload-differentiation",
+      "path": "docs/8-10-Function-overload-differentiation.md"
     },
     {
       "basename": "8-9-Introduction-to-function-overloading",
@@ -43,10 +59,6 @@
     {
       "basename": "Untitled 1",
       "path": "docs/Untitled 1.canvas"
-    },
-    {
-      "basename": "7-13-Code-coverage",
-      "path": "docs/7-13-Code-coverage.md"
     },
     {
       "basename": "7-12-Introduction-to-testing-your-code",
@@ -187,18 +199,6 @@
     {
       "basename": "initialization",
       "path": "docs/initialization.md"
-    },
-    {
-      "basename": "1-3-Introduction-to-objects-and-variables",
-      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
-    },
-    {
-      "basename": "direct-initialization",
-      "path": "docs/direct-initialization.md"
-    },
-    {
-      "basename": "1-x-Chapter-1-summary-and-quiz",
-      "path": "docs/1-x-Chapter-1-summary-and-quiz.md"
     }
   ],
   "omittedPaths": [],

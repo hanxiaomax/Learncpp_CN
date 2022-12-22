@@ -10,21 +10,21 @@ type: translation
 ??? note "Key Takeaway"
 	
 
-In lesson [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误]]， we covered `syntax errors`, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of such errors, so they are trivial to catch, and usually straightforward to fix.
+在 [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误] 中我们介绍了**语法错误**——当代码不符合C++语义的语法规则时，就会产生语法错误。编译器能够识别并报告语法错误，所以它们很容易被识别到，通常也很容易修复。
 
-We also covered `semantic errors`, which occur when you write code that does not do what you intended. The compiler generally will not catch semantic errors (though in some cases, smart compilers may be able to generate a warning).
+我们还介绍了**语义错误**——当代码的行为不符合你的本意时，就被认为是语义错误。编译器通常情况下并不能识别到语义错误（在某些情况下，智能的编译器可能会对语义错误产生告警信息）。
 
-Semantic errors can cause most of the same symptoms of `undefined behavior`, such as causing the program to produce the wrong results, causing erratic behavior, corrupting program data, causing the program to crash -- or they may not have any impact at all.
+语义错误可能会导致很多[[undefined-behavior|未定义行为]]类似的症状，例如导致程序产生错误的结果、产生古怪的程序行为、破坏数据、导致程序崩溃——或者不产生任何影响。
 
-When writing programs, it is almost inevitable that you will make semantic errors. You will probably notice some of these just by using the program: for example, if you were writing a maze game, and your character was able to walk through walls. Testing your program ([[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]) can also help surface semantic errors.
+在编写程序时，我们很难完全避免语义错误。通常情况下，在使用程序时我们就会遇到这些语义错误：例如，在你编写的迷宫游戏中，游戏角色竟然能够穿墙！通过对程序进行测试 ([[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]) 可以帮助我们发现语义错误。
 
-But there’s one other thing that can help -- and that’s knowing which type of semantic errors are most common, so you can spend a little more time ensuring things are right in those cases.
+不过，除了测试之外，还有一件事可以帮助你——那就是知道哪种类型的语义错误最常见，这样你就可以对这些情况多加注意！
 
-In this lesson, we’ll cover a bunch of the most common types of semantic errors that occur in C++ (most of which have to do with flow control in some way).
+本节课中我们会介绍几种常见的意义错误（很多都和条件控制相关）。
 
 ## 条件逻辑错误
 
-One of the most common types of semantic errors is a conditional logic error. A conditional logic error occurs when the programmer incorrectly codes the logic of a conditional statement or loop condition. Here is a simple example:
+最常见的语义错误类型之一是**条件逻辑错误**。当程序员错误地编写了条件语句或循环条件的逻辑时，就会发生条件逻辑错误。这里有一个简单的例子：
 
 ```cpp
 #include <iostream>
@@ -42,18 +42,16 @@ int main()
 }
 ```
 
-COPY
-
-Here’s a run of the program that exhibits the conditional logic error:
+运行程序，很容易观察到逻辑错误：
 
 ```
 Enter an integer: 5
 5 is greater than 5
 ```
 
-When the user enters `5`, the conditional expression `x >= 5` evaluates to `true`, so the associated statement is executed.
+当用户输入5时，条件表达式 `x >= 5` 求值为 `true`，所以对应的打印语句就执行了。
 
-Here’s another example, using a for loop:
+另外一个例子是关于 for 循环的：
 
 ```cpp
 #include <iostream>
@@ -76,19 +74,18 @@ int main()
 }
 ```
 
-COPY
 
-This program is supposed to print all of the numbers between 1 and the number the user entered. But here’s what it actually does:
+这个程序应该打印从1到用户输入的数字之间的所有数字。但它实际上是这样做的：
 
 ```
 Enter an integer: 5
 ```
 
-It didn’t print anything. This happens because on entrance to the for loop, `count > x` is `false`, so the loop never iterates at all.
+程序没有打印任何内容。这是因为进入循环的条件 `count > x` 求值为 `false`，所以循环根本没有进行。
 
-## 无限循环 loops
+## 无限循环
 
-In lesson [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]], we covered infinite loops, and showed this example:
+在 [[7-7-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]] 中我们介绍了无限循环（死循环），请看这个例子：
 
 ```cpp
 #include <iostream>
@@ -107,17 +104,16 @@ int main()
 }
 ```
 
-COPY
 
-In this case, we forgot to increment `count`, so the loop condition will never be false, and the loop will continue to print:
+在这个例子中，我们忘记了对 `count` 进行递增，所以循环条件求值结果永远都不为 `false`，循环也就永远不会停止，只能不停打印：
 
 ```
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 
-… until the user shuts down the program.
+直到用户终止该程序。
 
-Here’s another example that teachers love asking as a quiz question. What’s wrong with the following code?
+这是另一个容易被问到的小测验问题——下面的代码有什么问题?
 
 ```cpp
 #include <iostream>
@@ -140,11 +136,13 @@ int main()
 
 COPY
 
-This program is supposed to print `5 4 3 2 1 blastoff!`, which it does, but it doesn’t stop there. In actuality, it prints:
+程序的本意是打印 `5 4 3 2 1 blastoff!`，但是在完成操作后，程序实际上并没有停止，而是继续打印：
 
+```
 5 4 3 2 1 blastoff! 4294967295 4294967294 4294967293 4294967292 4294967291
+```
 
-and then just keeps decrementing. The program will never terminate, because `count >= 0` can never be `false` when `count` is an unsigned integer.
+然后继续递减。程序永远不会停止，因为当`count`是无符号整型时 `count >= 0` 永远为真。
 
 ## 差一错误
 

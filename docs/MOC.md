@@ -114,7 +114,7 @@
 - [x] [[7-10-Break-and-continue|7.10 - break 和 continue]]
 - [x] [[7-11-Halts-exiting-your-program-early|7.11 - 挂起（提前结束程序）]]
 - [x] [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]
-- [ ] [[7-13-Code-coverage|7.13 - 代码覆盖率]]
+- [x] [[7-13-Code-coverage|7.13 - 代码覆盖率]]
 - [ ] [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
 - [ ] [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
 - [ ] [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]

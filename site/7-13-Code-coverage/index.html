@@ -2467,7 +2467,7 @@
   
     <li class="md-nav__item">
       <a href="../8-10-Function-overload-differentiation/" class="md-nav__link">
-        8.10 - 函数重载和区分
+        8.10 - 重载函数的区分
       </a>
     </li>
   
@@ -5900,12 +5900,12 @@
   <h1>7.13 - 代码覆盖率</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>In the previous lesson <a href="../7-12-Introduction-to-testing-your-code/">7.12 - 代码测试</a>， we discussed how to write and preserve simple tests. In this lesson, we’ll talk about what kind of tests are useful to write to ensure your code is correct.</p>
+<p>在 <a href="../7-12-Introduction-to-testing-your-code/">7.12 - 代码测试</a> 中我们介绍了如何编写和保存测试。在这节课中，我们将探讨哪些测试对于保证程序质量是至关重要的。</p>
 <h2 id="_1">代码覆盖率</h2>
-<p>The term code coverage is used to describe how much of the source code of a program is executed while testing. There are many different metrics used for code coverage. We’ll cover a few of the more useful and popular ones in the following sections.</p>
+<p>术语代码覆盖率用于描述测试执行时可以运行的程序源代码数量。代码覆盖率有许多不同的度量标准。我们将在接下来的部分中介绍一些更有用和更受欢迎的方法。</p>
 <h2 id="_2">语句覆盖率</h2>
-<p>The term statement coverage refers to the percentage of statements in your code that have been exercised by your testing routines.</p>
-<p>Consider the following function:</p>
+<p>术语语句覆盖率指的是测试例程执行过的代码中语句的百分比。</p>
+<p>考虑以下函数：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5924,9 +5924,8 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Calling this function as <code>foo(1, 0)</code> will give you complete statement coverage for this function, as every statement in the function will execute.</p>
-<p>For our <code>isLowerVowel()</code> function:</p>
+<p>调用 <code>foo(1, 0)</code> 可以实现该函数语句的完全覆盖，即函数中的每条语句都会执行。</p>
+<p>对于 <code>isLowerVowel()</code> 函数来说：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5942,24 +5941,23 @@
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isLowerVowel</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">// statement 1</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">// 语句 1</span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;i&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// statement 2</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// 语句 2</span>
 <span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// statement 3</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// 语句 3</span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This function will require two calls to test all of the statements, as there is no way to reach statement 2 and 3 in the same function call.</p>
-<p>While aiming for 100% statement coverage is good, it’s not enough to ensure correctness.</p>
+<p>这个函数需要两次调用才能实现语句的完全 覆盖，因为语句2和3不可能在一次函数调用中同时执行。</p>
+<p>100%的语句覆盖率是很好的指标，但这其实并不足以确保正确性。</p>
 <h2 id="_3">分支覆盖率</h2>
-<p>Branch coverage refers to the percentage of branches that have been executed, each possible branch counted separately. An <code>if statement</code> has two branches -- a branch that executes when the condition is <code>true</code>, and a branch that executes when the condition is <code>false</code> (even if there is no corresponding <code>else statement</code> to execute). A switch statement can have many branches.</p>
+<p>分支覆盖率是指已经执行的分支的百分比，每个可能的分支分别计算。一个' if语句'有两个分支——一个分支在条件为'真'时执行，另一个分支在条件为'假'时执行(即使没有相应的' else语句'要执行)。一个switch语句可以有很多分支。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -5978,8 +5976,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The previous call to foo(1, 0) gave us 100% statement coverage and exercised the use case where <code>x &gt; y</code>, but that only gives us 50% branch coverage. We need one more call, to <code>foo(0, 1)</code>, to test the use case where the <code>if statement</code> does not execute.</p>
+<p>在之前的例子中，调用 <code>foo(1, 0)</code> 可以实现100%的语句覆盖率，并且测试 <code>x &gt; y</code> 的情况，但是分支覆盖率却只有50%。我们需要再调用一次 <code>foo(0, 1)</code>，这样就可以测到<code>if</code>语句不执行的情况。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6008,9 +6005,8 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In the isLowerVowel() function, two calls will be needed to give you 100% branch coverage: one (such as <code>isLowerVowel('a')</code>) to test the first cases, and another (such as <code>isLowerVowel('q')</code>) to test the default case. Multiple cases that feed into the same body don’t need to be tested separately -- if one works, they all should.</p>
-<p>Now consider the following function:</p>
+<p>在 <code>isLowerVowel()</code> 函数中，我们也需要调用两次才能得到100%的分支覆盖率：第一次调用 (例如 <code>isLowerVowel('a')</code>) 测试前面的几个case分支，第二次调用(例如 <code>isLowerVowel('q')</code>) 来测试<code>default</code>分支。能够在一次测试中执行到的分支，不需要分别测试。</p>
+<p>考虑下面的函数：
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6028,16 +6024,15 @@
 <span class="w">    </span><span class="k">else</span><span class="w"></span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is equal to &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// case 3</span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>3 calls are needed to get 100% branch coverage here: <code>compare(1, 0)</code> tests the positive use case for the first <code>if statement</code>. <code>compare(0, 1)</code> tests the negative use case for the first <code>if statement</code> and the positive use case for the second <code>if statement</code>. <code>compare(0, 0)</code> tests the negative use case for the first and second <code>if statement</code> and executes the <code>else statement</code>. Thus, we can say this function is reliably tested with 3 calls (which is slightly better than 18 quintillion).</p>
+</code></pre></div></td></tr></table></div></p>
+<p>该函数需要三次调用才能实现100%分支覆盖：<code>compare(1, 0)</code> 测试第一个<code>if</code>语句为真的分支，<code>compare(0, 1)</code> 测试第一个<code>if</code>语句为假且第二个<code>if</code>语句为真的分支。<code>compare(0, 0)</code> 测试两个<code>if</code>语句都为假，执行<code>else</code>的分支。执行完这三次测试后，我们就有信心说这个函数被可靠地测试了（三次测试总好过1800亿亿个输入组合吧）。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Aim for 100% branch coverage of your code.</p>
+<p>100%分支覆盖率是我们的测试目标！</p>
 </div>
 <h2 id="_4">循环覆盖率</h2>
-<p>Loop coverage (informally called the 0, 1, 2 test) says that if you have a loop in your code, you should ensure it works properly when it iterates 0 times, 1 time, and 2 times. If it works correctly for the 2-iteration case, it should work correctly for all iterations greater than 2. These three tests therefore cover all possibilities (since a loop can’t execute a negative number of times).</p>
-<p>Consider:</p>
+<p>循环覆盖率(非正式地称为0,1,2测试)指的是，如果你的代码中有一个循环，则应该确保它在迭代0次、1次和2次时正常工作。如果它对2次迭代的情况正确工作，那么它应该对所有大于2次的迭代都正确工作。因此，这三个测试涵盖了所有的可能性(因为循环不能执行负数次)。</p>
+<p>考虑下面代码：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6052,23 +6047,22 @@
 <span class="w">         </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Spam! &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>To test the loop within this function properly, you should call it three times: <code>spam(0)</code> to test the zero-iteration case, <code>spam(1)</code> to test the one-iteration case, and <code>spam(2)</code>to test the two-iteration case. If <code>spam(2)</code> works, then <code>spam(n)</code> should work, where <code>n &gt; 2</code>.</p>
+<p>为了更好地测试这个函数中的循环，我们需要调用三次该函数：<code>spam(0)</code> 测试0次迭代的情况，<code>spam(1)</code> 测试1次迭代的情况，然后调用 <code>spam(2)</code> 测试 2 次迭代的情况。如果 <code>spam(2)</code> 可以工作，则对于任意 <code>n&gt;2</code> 的情况 <code>spam(n)</code> 都应该可以工作。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Use the <code>0, 1, 2 test</code> to ensure your loops work correctly with different number of iterations.</p>
+<p>使用 “0,1,2测试” 来确保你的循环在不同次数的迭代下都能正常工作。</p>
 </div>
 <h2 id="_5">测试不同类别的输入</h2>
-<p>When writing functions that accept parameters, or when accepting user input, consider what happens with different categories of input. In this context, we’re using the term “category” to mean a set of inputs that have similar characteristics.</p>
-<p>For example, if I wrote a function to produce the square root of an integer, what values would it make sense to test it with? You’d probably start with some normal value, like <code>4</code>. But it would also be a good idea to test with <code>0</code>, and a negative number.</p>
-<p>Here are some basic guidelines for category testing:</p>
-<p>For integers, make sure you’ve considered how your function handles negative values, zero, and positive values. You should also check for overflow if that’s relevant.</p>
-<p>For floating point numbers, make sure you’ve considered how your function handles values that have precision issues (values that are slightly larger or smaller than expected). Good <code>double</code> type values to test with are <code>0.1</code> and <code>-0.1</code> (to test numbers that are slightly larger than expected) and <code>0.6</code> and <code>-0.6</code> (to test numbers that are slightly smaller than expected).</p>
-<p>For strings, make sure you’ve considered how your function handles an empty string (just a null terminator), normal valid strings, strings that have whitespace, and strings that are all whitespace.</p>
-<p>If your function takes a pointer, don’t forget to test <code>nullptr</code> as well (don’t worry if this doesn’t make sense, we haven’t covered it yet).</p>
+<p>在编写接受参数的函数或接受用户输入时，要考虑不同类别的输入会发生什么。在这种情况下，我们使用术语“类别”来表示具有相似特征的一组输入。</p>
+<p>例如，对于一个产生整数平方根的函数，用什么值来测试它是有意义的？你可能会从一些正常的值开始，比如“4”。但是用“0”和负数来测试也是一个好主意。</p>
+<p>以下是分类测试的一些基本准则：</p>
+<p>对于整数，需要考虑函数如何处理负值、零和正值。如果可能的话，还应该检查是否溢出。</p>
+<p>对于浮点数，确保考虑了函数如何处理有精度问题的值(略大于或略小于预期值)。适合测试的<code>double</code>类型值是 <code>0.1</code> 和 <code>-0.1</code> (用于测试略大于预期的数字)以及 <code>0.6</code> 和 <code>-0.6</code> (用于测试略小于预期的数字)。</p>
+<p>对于字符串，确保你考虑了函数如何处理空字符串(只是一个空结束符)、正常有效的字符串、有空格的字符串以及全是空格的字符串。</p>
+<p>如果函数会处理指针，不要忘记测试 <code>nullptr</code> (如果你不知道这是什么也不要紧，毕竟我们还没介绍过它)。</p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>Test different categories of input values to make sure your unit handles them properly.</p>
+<p>测试不同类别的输入值，以确保代码单元能够正确地处理它们。</p>
 </div>
 
 

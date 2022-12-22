@@ -23,30 +23,20 @@
             }
           },
           {
-            "id": "bbd10eb7de252ded",
+            "id": "689241e2d1e2ea5d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/8-10-Function-overload-differentiation.md",
+                "file": "docs/7-14-Common-semantic-errors-in-c.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
               }
             }
-          },
-          {
-            "id": "24b68587dcba6c2c",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.1.6"
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -75,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "GIVEN",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -105,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -133,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/8-10-Function-overload-differentiation.md",
+                "file": "docs/7-14-Common-semantic-errors-in-c.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/8-10-Function-overload-differentiation.md"
+                "file": "docs/7-14-Common-semantic-errors-in-c.md"
               }
             }
           }
@@ -173,17 +162,17 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "24b68587dcba6c2c",
+  "active": "689241e2d1e2ea5d",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/7-13-Code-coverage.md",
+    "docs/2-5-Introduction-to-local-scope.md",
+    "docs/2-12-Header-guards.md",
     "docs/8-10-Function-overload-differentiation.md",
     "docs/8-9-Introduction-to-function-overloading.md",
     "docs/12-3-std-vector-capacity-and-stack-behavior.md",
     "docs/11-17-An-introduction-to-std-vector.md",
     "docs/9-5-Pass-by-lvalue-reference.md",
-    "docs/9-4-Lvalue-references-to-const.md",
-    "docs/13-2-classes-and-class-members.md",
-    "docs/13-11-class-code-and-header-files.md",
-    "docs/3-5-More-debugging-tactics.md"
+    "docs/9-4-Lvalue-references-to-const.md"
   ]
 }
