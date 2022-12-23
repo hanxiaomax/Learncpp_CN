@@ -21,22 +21,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "689241e2d1e2ea5d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/7-14-Common-semantic-errors-in-c.md",
-                "mode": "source",
-                "backlinks": true,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/7-14-Common-semantic-errors-in-c.md",
+                "file": "docs/MOC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/7-14-Common-semantic-errors-in-c.md"
+                "file": "docs/MOC.md"
               }
             }
           }
@@ -162,17 +148,17 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "689241e2d1e2ea5d",
+  "active": "d500734583852a75",
   "lastOpenFiles": [
+    "docs/1-10-Introduction-to-expressions.md",
+    "docs/9-x-Chapter-9-comprehensive-quiz.md.md",
+    "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
+    "docs/sentinel.md",
+    "docs/11-18-Introduction-to-iterators.md",
+    "docs/10-x-Chapter-10-comprehensive-quiz.md",
+    "docs/10-9-member-selection-with-pointers-and-references.md",
+    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
     "docs/MOC.md",
-    "docs/7-13-Code-coverage.md",
-    "docs/2-5-Introduction-to-local-scope.md",
-    "docs/2-12-Header-guards.md",
-    "docs/8-10-Function-overload-differentiation.md",
-    "docs/8-9-Introduction-to-function-overloading.md",
-    "docs/12-3-std-vector-capacity-and-stack-behavior.md",
-    "docs/11-17-An-introduction-to-std-vector.md",
-    "docs/9-5-Pass-by-lvalue-reference.md",
-    "docs/9-4-Lvalue-references-to-const.md"
+    "docs/11-x-chapter-11-comprehensive-quiz.md"
   ]
 }

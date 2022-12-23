@@ -2175,50 +2175,50 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#loops" class="md-nav__link">
-    无限循环 loops
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    差一错误
+    无限循环
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    运算符优先级错误
+    差一错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    浮点数的精度问题
+    运算符优先级错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    整型除法
+    浮点数的精度问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    整型除法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     意外造成的空语句
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-else" class="md-nav__link">
-    What else?
+  <a href="#_8" class="md-nav__link">
+    还有什么？
   </a>
   
 </li>
@@ -5843,50 +5843,50 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#loops" class="md-nav__link">
-    无限循环 loops
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    差一错误
+    无限循环
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    运算符优先级错误
+    差一错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    浮点数的精度问题
+    运算符优先级错误
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    整型除法
+    浮点数的精度问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    整型除法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     意外造成的空语句
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-else" class="md-nav__link">
-    What else?
+  <a href="#_8" class="md-nav__link">
+    还有什么？
   </a>
   
 </li>
@@ -5932,14 +5932,14 @@
   <h1>7.14 - C++ 中常见的语义错误</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>In lesson <a href="../3-1-Syntax-and-semantic-errors/">3.1 - 语法和语义错误</a>， we covered <code>syntax errors</code>, which occur when you write code that is not valid according to the grammar of the C++ language. The compiler will notify you of such errors, so they are trivial to catch, and usually straightforward to fix.</p>
-<p>We also covered <code>semantic errors</code>, which occur when you write code that does not do what you intended. The compiler generally will not catch semantic errors (though in some cases, smart compilers may be able to generate a warning).</p>
-<p>Semantic errors can cause most of the same symptoms of <code>undefined behavior</code>, such as causing the program to produce the wrong results, causing erratic behavior, corrupting program data, causing the program to crash -- or they may not have any impact at all.</p>
-<p>When writing programs, it is almost inevitable that you will make semantic errors. You will probably notice some of these just by using the program: for example, if you were writing a maze game, and your character was able to walk through walls. Testing your program (<a href="../7-12-Introduction-to-testing-your-code/">7.12 - 代码测试</a>) can also help surface semantic errors.</p>
-<p>But there’s one other thing that can help -- and that’s knowing which type of semantic errors are most common, so you can spend a little more time ensuring things are right in those cases.</p>
-<p>In this lesson, we’ll cover a bunch of the most common types of semantic errors that occur in C++ (most of which have to do with flow control in some way).</p>
+<p>在 [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误] 中我们介绍了<strong>语法错误</strong>——当代码不符合C++语义的语法规则时，就会产生语法错误。编译器能够识别并报告语法错误，所以它们很容易被识别到，通常也很容易修复。</p>
+<p>我们还介绍了<strong>语义错误</strong>——当代码的行为不符合你的本意时，就被认为是语义错误。编译器通常情况下并不能识别到语义错误（在某些情况下，智能的编译器可能会对语义错误产生告警信息）。</p>
+<p>语义错误可能会导致很多<a href="../undefined-behavior/">未定义行为</a>类似的症状，例如导致程序产生错误的结果、产生古怪的程序行为、破坏数据、导致程序崩溃——或者不产生任何影响。</p>
+<p>在编写程序时，我们很难完全避免语义错误。通常情况下，在使用程序时我们就会遇到这些语义错误：例如，在你编写的迷宫游戏中，游戏角色竟然能够穿墙！通过对程序进行测试 (<a href="../7-12-Introduction-to-testing-your-code/">7.12 - 代码测试</a>) 可以帮助我们发现语义错误。</p>
+<p>不过，除了测试之外，还有一件事可以帮助你——那就是知道哪种类型的语义错误最常见，这样你就可以对这些情况多加注意！</p>
+<p>本节课中我们会介绍几种常见的意义错误（很多都和条件控制相关）。</p>
 <h2 id="_1">条件逻辑错误</h2>
-<p>One of the most common types of semantic errors is a conditional logic error. A conditional logic error occurs when the programmer incorrectly codes the logic of a conditional statement or loop condition. Here is a simple example:</p>
+<p>最常见的语义错误类型之一是<strong>条件逻辑错误</strong>。当程序员错误地编写了条件语句或循环条件的逻辑时，就会发生条件逻辑错误。这里有一个简单的例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5966,14 +5966,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Here’s a run of the program that exhibits the conditional logic error:</p>
+<p>运行程序，很容易观察到逻辑错误：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter an integer: 5
 5 is greater than 5
 </code></pre></div></td></tr></table></div>
-<p>When the user enters <code>5</code>, the conditional expression <code>x &gt;= 5</code> evaluates to <code>true</code>, so the associated statement is executed.</p>
-<p>Here’s another example, using a for loop:</p>
+<p>当用户输入5时，条件表达式 <code>x &gt;= 5</code> 求值为 <code>true</code>，所以对应的打印语句就执行了。</p>
+<p>另外一个例子是关于 for 循环的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6010,13 +6009,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program is supposed to print all of the numbers between 1 and the number the user entered. But here’s what it actually does:</p>
+<p>这个程序应该打印从1到用户输入的数字之间的所有数字。但它实际上是这样做的：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Enter an integer: 5
 </code></pre></div></td></tr></table></div>
-<p>It didn’t print anything. This happens because on entrance to the for loop, <code>count &gt; x</code> is <code>false</code>, so the loop never iterates at all.</p>
-<h2 id="loops">无限循环 loops</h2>
-<p>In lesson <a href="../7-7-Intro-to-loops-and-while-statements/">7.7 - 循环和 while 语句</a>, we covered infinite loops, and showed this example:</p>
+<p>程序没有打印任何内容。这是因为进入循环的条件 <code>count &gt; x</code> 求值为 <code>false</code>，所以循环根本没有进行。</p>
+<h2 id="_2">无限循环</h2>
+<p>在 <a href="../7-7-Intro-to-loops-and-while-statements/">7.7 - 循环和 while 语句</a> 中我们介绍了无限循环（死循环），请看这个例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6045,12 +6043,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// this line will never execute</span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>In this case, we forgot to increment <code>count</code>, so the loop condition will never be false, and the loop will continue to print:</p>
+<p>在这个例子中，我们忘记了对 <code>count</code> 进行递增，所以循环条件求值结果永远都不为 <code>false</code>，循环也就永远不会停止，只能不停打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 </code></pre></div></td></tr></table></div>
-<p>… until the user shuts down the program.</p>
-<p>Here’s another example that teachers love asking as a quiz question. What’s wrong with the following code?</p>
+<p>直到用户终止该程序。</p>
+<p>这是另一个容易被问到的小测验问题——下面的代码有什么问题?</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6084,11 +6081,12 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>COPY</p>
-<p>This program is supposed to print <code>5 4 3 2 1 blastoff!</code>, which it does, but it doesn’t stop there. In actuality, it prints:</p>
-<p>5 4 3 2 1 blastoff! 4294967295 4294967294 4294967293 4294967292 4294967291</p>
-<p>and then just keeps decrementing. The program will never terminate, because <code>count &gt;= 0</code> can never be <code>false</code> when <code>count</code> is an unsigned integer.</p>
-<h2 id="_2">差一错误</h2>
-<p>An off-by-one error is an error that occurs when a loop executes one too many or one too few times. Here’s an example that we covered in lesson <a href="../7-9-For-statements/">7.9 - for 语句</a>：</p>
+<p>程序的本意是打印 <code>5 4 3 2 1 blastoff!</code>，但是在完成操作后，程序实际上并没有停止，而是继续打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5 4 3 2 1 blastoff! 4294967295 4294967294 4294967293 4294967292 4294967291
+</code></pre></div></td></tr></table></div>
+<p>然后继续递减。程序永远不会停止，因为当<code>count</code>是无符号整型时 <code>count &gt;= 0</code> 永远为真。</p>
+<h2 id="_3">差一错误</h2>
+<p><a href="../Off-by-one/">差一错误</a>指的是循环多执行一次或少执行一次而产生的错误。情况下面这个例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6115,10 +6113,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>The programmer intended for this code to print <code>1 2 3 4 5</code>. However, the wrong relational operator was used (<code>&lt;</code> instead of <code>&lt;=</code>), so the loop executes one fewer times than intended, printing <code>1 2 3 4</code>.</p>
-<h2 id="_3">运算符优先级错误</h2>
-<p>From lesson <a href="../5-7-Logical-operators/">5.7 - 逻辑运算符</a>， the following program makes an operator precedence mistake:</p>
+<p>程序员希望代码打印 <code>1 2 3 4 5</code>。但是，由于使用了错误的运算符 (<code>&lt;</code> 而不是 <code>&lt;=</code>)，所以循环少执行了一次，程序打印 <code>1 2 3 4</code>。</p>
+<h2 id="_4">运算符优先级错误</h2>
+<p>在 <a href="../5-7-Logical-operators/">5.7 - 逻辑运算符</a> 中，下面程序存在优先级错误：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6147,14 +6144,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Because <code>logical NOT</code> has higher precedence than <code>operator&gt;</code>, the conditional evaluates as if it was written <code>(!x) &gt; y</code>, which isn’t what the programmer intended.</p>
-<p>As a result, this program prints:</p>
+<p>因为逻辑运算符  <code>NOT</code> 比 <code>operator&gt;</code> 的优先级更高，所以条件表达式实际上是按照 <code>(!x) &gt; y</code> 求值，这并不是程序员所希望的。</p>
+<p>结果，这个程序输出：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5 is greater than 7
 </code></pre></div></td></tr></table></div>
-<p>This can also happen when mixing Logical OR and Logical AND in the same expression (Logical AND takes precedence over Logical OR). Use explicit parenthesization to avoid these kinds of errors.</p>
-<h2 id="_4">浮点数的精度问题</h2>
-<p>The following floating point variable doesn’t have enough precision to store the entire number:</p>
+<p>在同一个表达式中混合逻辑或和逻辑与时也会发生这种情况(逻辑与优先于逻辑或)。使用显式括号可以避免这类错误。</p>
+<h2 id="_5">浮点数的精度问题</h2>
+<p>下面的浮点变量没有足够的精度来存储整个数字：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -6173,11 +6169,10 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Because of this lack of precision, the number is rounded slightly:</p>
+<p>由于缺乏精度，这个数字被稍稍四舍五入：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>0.123457
 </code></pre></div></td></tr></table></div>
-<p>In lesson <a href="../5-6-Relational-operators-and-floating-point-comparisons/">5.6 - 关系运算符和浮点数比较</a>, we talked about how using <code>operator==</code> and <code>operator!=</code> can be problematic with floating point numbers due to small rounding errors (as well as what to do about it). Here’s an example:</p>
+<p>在 <a href="../5-6-Relational-operators-and-floating-point-comparisons/">5.6 - 关系运算符和浮点数比较</a> 中，我们讨论了<code>operator==</code> 和 <code>operator !=</code> 在应对浮点数时，可能会产生由于微小摄入而导致的问题：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6204,13 +6199,12 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
+<p>打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>not equal
 </code></pre></div></td></tr></table></div>
-<p>The more arithmetic you do with a floating point number, the more it will accumulate small rounding errors.</p>
-<h2 id="_5">整型除法</h2>
-<p>In the following example, we mean to do a floating point division, but because both operands are integers, we end up doing an integer division instead:</p>
+<p>由于缺乏精度，这个数字会略微四舍五入：你对浮点数做的算术越多，它就会积累越多的小四舍五入错误。</p>
+<h2 id="_6">整型除法</h2>
+<p>在下面的例子中，我们打算做浮点除法，但因为两个操作数都是整数，所以我们最终做的是整数除法：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6233,14 +6227,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
+<p>打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5 divided by 3 is: 1
 </code></pre></div></td></tr></table></div>
-<p>In lesson <a href="../5-2-Arithmetic-operators/">5.2 - 数学运算符</a>, we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.</p>
-<h2 id="_6">意外造成的空语句</h2>
-<p>In lesson <a href="../7-3-Common-if-statement-problems/">7.3 - 常见的 if 语句错误</a>, we covered <code>null statements</code>, which are statements that do nothing.</p>
-<p>In the below program, we only want to blow up the world if we have the user’s permission:</p>
+<p>在 <a href="../5-2-Arithmetic-operators/">5.2 - 数学运算符</a> 中，我们介绍了如何使用 <code>static_cast</code> 将整型操作数转换为浮点数，以便可以进行浮点数除法。</p>
+<h2 id="_7">意外造成的空语句</h2>
+<p>在 <a href="../7-3-Common-if-statement-problems/">7.3 - 常见的 if 语句错误</a> 中我们介绍了空语句——空语句不执行任何操作。</p>
+<p>在下面的程序中，我们只想在得到用户许可的情况下"炸掉这个世界"：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6256,35 +6249,30 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">blowUpWorld</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Kaboom!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Should we blow up the world again? (y/n): &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">{};</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;y&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// accidental null statement here</span>
-<span class="w">        </span><span class="n">blowUpWorld</span><span class="p">();</span><span class="w"> </span><span class="c1">// so this will always execute since it&#39;s not part of the if-statement</span>
-
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="o">==</span><span class="sc">&#39;y&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 意外导致了空语句 null statement here</span>
+<span class="w">        </span><span class="n">blowUpWorld</span><span class="p">();</span><span class="w"> </span><span class="c1">// 该语句总是会执行，因为它不属于if语句</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, because of an accidental <code>null statement</code>, the function call to <code>blowUpWorld()</code> is always executed, so we blow it up regardless:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>但是，因为存在一条意外造成的空语句，函数 <code>blowUpWorld()</code> 总是会执行，所以“世界”总是会被毁灭：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Should we blow up the world again? (y/n): n
 Kaboom!
 </code></pre></div></td></tr></table></div>
-Not using a compound statement when one is required</p>
-<p>Another variant of the above program that always blows up the world:</p>
+<p>当需要复合语句时，没有使用复合语句</p>
+<p>上述程序的另一种变体：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -6323,15 +6311,14 @@ Not using a compound statement when one is required</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This program prints:</p>
+<p>程序打印：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Should we blow up the world again? (y/n): n
 Kaboom!
 </code></pre></div></td></tr></table></div>
-<p>A <code>dangling else</code> (covered in lesson <a href="../7-3-Common-if-statement-problems/">7.3 - 常见的 if 语句错误</a>) also falls into this category.</p>
-<h2 id="what-else">What else?</h2>
-<p>The above represents a good sample of the most common type of semantic errors new C++ programmers tend to make, but there are plenty more. Readers, if you have any additional ones that you think are common pitfalls, leave a note in the comments.</p>
+<p>悬垂 <code>else</code> (参见 <a href="../7-3-Common-if-statement-problems/">7.3 - 常见的 if 语句错误</a>) 也会导致此类问题。</p>
+<h2 id="_8">还有什么？</h2>
+<p>以上是新手C++程序员容易犯的、最常见语义错误，当然，除了这些还有更多。读者们，如果你还有其他你认为常见的陷阱，请在评论区告诉我们。</p>
 
 
               </article>

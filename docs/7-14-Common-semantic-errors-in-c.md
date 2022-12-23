@@ -198,11 +198,9 @@ int main()
 
 在同一个表达式中混合逻辑或和逻辑与时也会发生这种情况(逻辑与优先于逻辑或)。使用显式括号可以避免这类错误。
 
-This can also happen when mixing Logical OR and Logical AND in the same expression (Logical AND takes precedence over Logical OR). Use explicit parenthesization to avoid these kinds of errors.
-
 ## 浮点数的精度问题
 
-The following floating point variable doesn’t have enough precision to store the entire number:
+下面的浮点变量没有足够的精度来存储整个数字：
 
 ```cpp
 #include <iostream>
@@ -216,15 +214,13 @@ int main()
 }
 ```
 
-COPY
-
-Because of this lack of precision, the number is rounded slightly:
+由于缺乏精度，这个数字被稍稍四舍五入：
 
 ```
 0.123457
 ```
 
-In lesson [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]], we talked about how using `operator==` and `operator!=` can be problematic with floating point numbers due to small rounding errors (as well as what to do about it). Here’s an example:
+在 [[5-6-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]] 中，我们讨论了`operator==` 和 `operator !=` 在应对浮点数时，可能会产生由于微小摄入而导致的问题：
 
 ```cpp
 #include <iostream>
@@ -242,19 +238,17 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+打印：
 
 ```
 not equal
 ```
 
-The more arithmetic you do with a floating point number, the more it will accumulate small rounding errors.
+由于缺乏精度，这个数字会略微四舍五入：你对浮点数做的算术越多，它就会积累越多的小四舍五入错误。
 
 ## 整型除法
 
-In the following example, we mean to do a floating point division, but because both operands are integers, we end up doing an integer division instead:
+在下面的例子中，我们打算做浮点除法，但因为两个操作数都是整数，所以我们最终做的是整数除法：
 
 ```cpp
 #include <iostream>
@@ -270,21 +264,19 @@ int main()
 }
 ```
 
-COPY
-
-This prints:
+打印：
 
 ```
 5 divided by 3 is: 1
 ```
 
-In lesson [[5-2-Arithmetic-operators|5.2 - 数学运算符]], we showed that we can use static_cast to convert one of the integral operands to a floating point value in order to do floating point division.
+在 [[5-2-Arithmetic-operators|5.2 - 数学运算符]] 中，我们介绍了如何使用 `static_cast` 将整型操作数转换为浮点数，以便可以进行浮点数除法。
 
 ## 意外造成的空语句
 
-In lesson [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]], we covered `null statements`, which are statements that do nothing.
+在 [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]] 中我们介绍了空语句——空语句不执行任何操作。
 
-In the below program, we only want to blow up the world if we have the user’s permission:
+在下面的程序中，我们只想在得到用户许可的情况下"炸掉这个世界"：
 
 ```cpp
 #include <iostream>
@@ -293,31 +285,28 @@ void blowUpWorld()
 {
     std::cout << "Kaboom!\n";
 }
-
 int main()
 {
     std::cout << "Should we blow up the world again? (y/n): ";
     char c{};
     std::cin >> c;
 
-    if (c=='y'); // accidental null statement here
-        blowUpWorld(); // so this will always execute since it's not part of the if-statement
-
+    if (c=='y'); // 意外导致了空语句 null statement here
+        blowUpWorld(); // 该语句总是会执行，因为它不属于if语句
     return 0;
 }
 ```
 
-COPY
-
-However, because of an accidental `null statement`, the function call to `blowUpWorld()` is always executed, so we blow it up regardless:
+但是，因为存在一条意外造成的空语句，函数 `blowUpWorld()` 总是会执行，所以“世界”总是会被毁灭：
 
 ```
 Should we blow up the world again? (y/n): n
 Kaboom!
 ```
-Not using a compound statement when one is required
 
-Another variant of the above program that always blows up the world:
+当需要复合语句时，没有使用复合语句
+
+上述程序的另一种变体：
 
 ```cpp
 #include <iostream>
@@ -341,17 +330,15 @@ int main()
 }
 ```
 
-COPY
-
-This program prints:
+程序打印：
 
 ```
 Should we blow up the world again? (y/n): n
 Kaboom!
 ```
 
-A `dangling else` (covered in lesson [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]]) also falls into this category.
+悬垂 `else` (参见 [[7-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]]) 也会导致此类问题。
 
-## What else?
+## 还有什么？
 
-The above represents a good sample of the most common type of semantic errors new C++ programmers tend to make, but there are plenty more. Readers, if you have any additional ones that you think are common pitfalls, leave a note in the comments.
+以上是新手C++程序员容易犯的、最常见语义错误，当然，除了这些还有更多。读者们，如果你还有其他你认为常见的陷阱，请在评论区告诉我们。

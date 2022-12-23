@@ -6070,7 +6070,7 @@
 <p>COPY</p>
 <p>This produces the answer 3.5, which may look correct at first glance, but omits the last number in the average, because we only told it we were going to provide 6 additional values (and then actually provided 7). These kind of mistakes can be very hard to catch.</p>
 <h2 id="2">方法2： 使用哨兵值</h2>
-<p>Method #2 is to use a [[sentinel|哨兵]] value. A <strong>sentinel</strong> is a special value that is used to terminate a loop when it is encountered. For example, with strings, the null terminator is used as a sentinel value to denote the end of the string. With ellipsis, the sentinel is typically passed in as the last parameter. Here’s an example of findAverage() rewritten to use a sentinel value of -1:</p>
+<p>Method #2 is to use a <a href="../sentinel/">哨兵</a> value. A <strong>sentinel</strong> is a special value that is used to terminate a loop when it is encountered. For example, with strings, the null terminator is used as a sentinel value to denote the end of the string. With ellipsis, the sentinel is typically passed in as the last parameter. Here’s an example of findAverage() rewritten to use a sentinel value of -1:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

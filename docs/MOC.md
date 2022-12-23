@@ -115,7 +115,7 @@
 - [x] [[7-11-Halts-exiting-your-program-early|7.11 - 挂起（提前结束程序）]]
 - [x] [[7-12-Introduction-to-testing-your-code|7.12 - 代码测试]]
 - [x] [[7-13-Code-coverage|7.13 - 代码覆盖率]]
-- [ ] [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
+- [x] [[7-14-Common-semantic-errors-in-c|7.14 - C++ 中常见的语义错误]]
 - [ ] [[7-15-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]
 - [ ] [[7-16-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]
 - [ ] [[7-17-assert-and-static-assert|7.17 - 断言和 static_assert]]
@@ -157,7 +157,7 @@
 - [x] [[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
 - [x] [[9-11-Return-by-reference-and-return-by-address|9.11 - 按引用返回和按地址返回]]
 - [x] [[9-12-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和const的类型推断]]
-- [x] [[9-x-Chapter-9-summary-and-quiz|9.x - 小结与测试 - 引用和指针]]
+- [x] [[9-x-Chapter-9-comprehensive-quiz.md|9.x - 小结与测试 - 引用和指针]]
 
 
 ## 10. 复合类型-枚举和结构体 
