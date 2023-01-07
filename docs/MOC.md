@@ -1,7 +1,5 @@
 ??? note "Mind Map"
-	![|500](images/onepage/moc-onepage.svg)
-
-
+	
 ## 1. C++ 基础
 
 - [x] [[1-1-Statements-and-the-structure-of-a-program|1.1 - 程序结构和语句]]

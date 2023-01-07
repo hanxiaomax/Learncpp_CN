@@ -33,9 +33,9 @@ var __toModule = (module2) => {
   return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
 
-// node_modules/base64-js/index.js
+// node_modules/.pnpm/base64-js@1.5.1/node_modules/base64-js/index.js
 var require_base64_js = __commonJS({
-  "node_modules/base64-js/index.js"(exports) {
+  "node_modules/.pnpm/base64-js@1.5.1/node_modules/base64-js/index.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     exports.byteLength = byteLength;
@@ -132,9 +132,9 @@ var require_base64_js = __commonJS({
   }
 });
 
-// node_modules/ieee754/index.js
+// node_modules/.pnpm/ieee754@1.2.1/node_modules/ieee754/index.js
 var require_ieee754 = __commonJS({
-  "node_modules/ieee754/index.js"(exports) {
+  "node_modules/.pnpm/ieee754@1.2.1/node_modules/ieee754/index.js"(exports) {
     init_polyfill_buffer();
     exports.read = function(buffer2, offset, isLE, mLen, nBytes) {
       var e, m;
@@ -216,9 +216,9 @@ var require_ieee754 = __commonJS({
   }
 });
 
-// node_modules/buffer/index.js
+// node_modules/.pnpm/buffer@6.0.3/node_modules/buffer/index.js
 var require_buffer = __commonJS({
-  "node_modules/buffer/index.js"(exports) {
+  "node_modules/.pnpm/buffer@6.0.3/node_modules/buffer/index.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var base64 = require_base64_js();
@@ -1868,9 +1868,9 @@ var init_polyfill_buffer = __esm({
   }
 });
 
-// node_modules/async-lock/lib/index.js
+// node_modules/.pnpm/async-lock@1.4.0/node_modules/async-lock/lib/index.js
 var require_lib = __commonJS({
-  "node_modules/async-lock/lib/index.js"(exports, module2) {
+  "node_modules/.pnpm/async-lock@1.4.0/node_modules/async-lock/lib/index.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     var AsyncLock2 = function(opts) {
@@ -2091,18 +2091,18 @@ var require_lib = __commonJS({
   }
 });
 
-// node_modules/async-lock/index.js
+// node_modules/.pnpm/async-lock@1.4.0/node_modules/async-lock/index.js
 var require_async_lock = __commonJS({
-  "node_modules/async-lock/index.js"(exports, module2) {
+  "node_modules/.pnpm/async-lock@1.4.0/node_modules/async-lock/index.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     module2.exports = require_lib();
   }
 });
 
-// node_modules/inherits/inherits_browser.js
+// node_modules/.pnpm/inherits@2.0.4/node_modules/inherits/inherits_browser.js
 var require_inherits_browser = __commonJS({
-  "node_modules/inherits/inherits_browser.js"(exports, module2) {
+  "node_modules/.pnpm/inherits@2.0.4/node_modules/inherits/inherits_browser.js"(exports, module2) {
     init_polyfill_buffer();
     if (typeof Object.create === "function") {
       module2.exports = function inherits(ctor, superCtor) {
@@ -2133,9 +2133,9 @@ var require_inherits_browser = __commonJS({
   }
 });
 
-// node_modules/safe-buffer/index.js
+// node_modules/.pnpm/safe-buffer@5.2.1/node_modules/safe-buffer/index.js
 var require_safe_buffer = __commonJS({
-  "node_modules/safe-buffer/index.js"(exports, module2) {
+  "node_modules/.pnpm/safe-buffer@5.2.1/node_modules/safe-buffer/index.js"(exports, module2) {
     init_polyfill_buffer();
     var buffer2 = require_buffer();
     var Buffer3 = buffer2.Buffer;
@@ -2192,9 +2192,9 @@ var require_safe_buffer = __commonJS({
   }
 });
 
-// node_modules/sha.js/hash.js
+// node_modules/.pnpm/sha.js@2.4.11/node_modules/sha.js/hash.js
 var require_hash = __commonJS({
-  "node_modules/sha.js/hash.js"(exports, module2) {
+  "node_modules/.pnpm/sha.js@2.4.11/node_modules/sha.js/hash.js"(exports, module2) {
     init_polyfill_buffer();
     var Buffer3 = require_safe_buffer().Buffer;
     function Hash2(blockSize, finalSize) {
@@ -2255,9 +2255,9 @@ var require_hash = __commonJS({
   }
 });
 
-// node_modules/sha.js/sha1.js
+// node_modules/.pnpm/sha.js@2.4.11/node_modules/sha.js/sha1.js
 var require_sha1 = __commonJS({
-  "node_modules/sha.js/sha1.js"(exports, module2) {
+  "node_modules/.pnpm/sha.js@2.4.11/node_modules/sha.js/sha1.js"(exports, module2) {
     init_polyfill_buffer();
     var inherits = require_inherits_browser();
     var Hash2 = require_hash();
@@ -2338,9 +2338,9 @@ var require_sha1 = __commonJS({
   }
 });
 
-// node_modules/crc-32/crc32.js
+// node_modules/.pnpm/crc-32@1.2.2/node_modules/crc-32/crc32.js
 var require_crc32 = __commonJS({
-  "node_modules/crc-32/crc32.js"(exports) {
+  "node_modules/.pnpm/crc-32@1.2.2/node_modules/crc-32/crc32.js"(exports) {
     init_polyfill_buffer();
     var CRC32;
     (function(factory) {
@@ -2443,9 +2443,9 @@ var require_crc32 = __commonJS({
   }
 });
 
-// node_modules/pako/lib/utils/common.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/utils/common.js
 var require_common = __commonJS({
-  "node_modules/pako/lib/utils/common.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/utils/common.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var TYPED_OK = typeof Uint8Array !== "undefined" && typeof Uint16Array !== "undefined" && typeof Int32Array !== "undefined";
@@ -2533,9 +2533,9 @@ var require_common = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/trees.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/trees.js
 var require_trees = __commonJS({
-  "node_modules/pako/lib/zlib/trees.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/trees.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var utils = require_common();
@@ -3137,9 +3137,9 @@ var require_trees = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/adler32.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/adler32.js
 var require_adler32 = __commonJS({
-  "node_modules/pako/lib/zlib/adler32.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/adler32.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     function adler32(adler, buf, len, pos) {
@@ -3160,9 +3160,9 @@ var require_adler32 = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/crc32.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/crc32.js
 var require_crc322 = __commonJS({
-  "node_modules/pako/lib/zlib/crc32.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/crc32.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     function makeTable() {
@@ -3189,9 +3189,9 @@ var require_crc322 = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/messages.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/messages.js
 var require_messages = __commonJS({
-  "node_modules/pako/lib/zlib/messages.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/messages.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     module2.exports = {
@@ -3208,9 +3208,9 @@ var require_messages = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/deflate.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/deflate.js
 var require_deflate = __commonJS({
-  "node_modules/pako/lib/zlib/deflate.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/deflate.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var utils = require_common();
@@ -4244,9 +4244,9 @@ var require_deflate = __commonJS({
   }
 });
 
-// node_modules/pako/lib/utils/strings.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/utils/strings.js
 var require_strings = __commonJS({
-  "node_modules/pako/lib/utils/strings.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/utils/strings.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var utils = require_common();
@@ -4387,9 +4387,9 @@ var require_strings = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/zstream.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/zstream.js
 var require_zstream = __commonJS({
-  "node_modules/pako/lib/zlib/zstream.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/zstream.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     function ZStream() {
@@ -4410,9 +4410,9 @@ var require_zstream = __commonJS({
   }
 });
 
-// node_modules/pako/lib/deflate.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/deflate.js
 var require_deflate2 = __commonJS({
-  "node_modules/pako/lib/deflate.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/deflate.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var zlib_deflate = require_deflate();
@@ -4566,9 +4566,9 @@ var require_deflate2 = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/inffast.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/inffast.js
 var require_inffast = __commonJS({
-  "node_modules/pako/lib/zlib/inffast.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/inffast.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     var BAD = 30;
@@ -4796,9 +4796,9 @@ var require_inffast = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/inftrees.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/inftrees.js
 var require_inftrees = __commonJS({
-  "node_modules/pako/lib/zlib/inftrees.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/inftrees.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     var utils = require_common();
@@ -5109,9 +5109,9 @@ var require_inftrees = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/inflate.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/inflate.js
 var require_inflate = __commonJS({
-  "node_modules/pako/lib/zlib/inflate.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/inflate.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var utils = require_common();
@@ -6311,9 +6311,9 @@ var require_inflate = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/constants.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/constants.js
 var require_constants = __commonJS({
-  "node_modules/pako/lib/zlib/constants.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/constants.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     module2.exports = {
@@ -6348,9 +6348,9 @@ var require_constants = __commonJS({
   }
 });
 
-// node_modules/pako/lib/zlib/gzheader.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/gzheader.js
 var require_gzheader = __commonJS({
-  "node_modules/pako/lib/zlib/gzheader.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/zlib/gzheader.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     function GZheader() {
@@ -6369,9 +6369,9 @@ var require_gzheader = __commonJS({
   }
 });
 
-// node_modules/pako/lib/inflate.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/inflate.js
 var require_inflate2 = __commonJS({
-  "node_modules/pako/lib/inflate.js"(exports) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/lib/inflate.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var zlib_inflate = require_inflate();
@@ -6542,9 +6542,9 @@ var require_inflate2 = __commonJS({
   }
 });
 
-// node_modules/pako/index.js
+// node_modules/.pnpm/pako@1.0.11/node_modules/pako/index.js
 var require_pako = __commonJS({
-  "node_modules/pako/index.js"(exports, module2) {
+  "node_modules/.pnpm/pako@1.0.11/node_modules/pako/index.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     var assign2 = require_common().assign;
@@ -6557,9 +6557,9 @@ var require_pako = __commonJS({
   }
 });
 
-// node_modules/ignore/index.js
+// node_modules/.pnpm/ignore@5.2.4/node_modules/ignore/index.js
 var require_ignore = __commonJS({
-  "node_modules/ignore/index.js"(exports, module2) {
+  "node_modules/.pnpm/ignore@5.2.4/node_modules/ignore/index.js"(exports, module2) {
     init_polyfill_buffer();
     function makeArray(subject) {
       return Array.isArray(subject) ? subject : [subject];
@@ -6568,12 +6568,17 @@ var require_ignore = __commonJS({
     var SPACE = " ";
     var ESCAPE = "\\";
     var REGEX_TEST_BLANK_LINE = /^\s+$/;
+    var REGEX_INVALID_TRAILING_BACKSLASH = /(?:[^\\]|^)\\$/;
     var REGEX_REPLACE_LEADING_EXCAPED_EXCLAMATION = /^\\!/;
     var REGEX_REPLACE_LEADING_EXCAPED_HASH = /^\\#/;
     var REGEX_SPLITALL_CRLF = /\r?\n/g;
     var REGEX_TEST_INVALID_PATH = /^\.*\/|^\.+$/;
     var SLASH = "/";
-    var KEY_IGNORE = typeof Symbol !== "undefined" ? Symbol.for("node-ignore") : "node-ignore";
+    var TMP_KEY_IGNORE = "node-ignore";
+    if (typeof Symbol !== "undefined") {
+      TMP_KEY_IGNORE = Symbol.for("node-ignore");
+    }
+    var KEY_IGNORE = TMP_KEY_IGNORE;
     var define2 = (object, key2, value) => Object.defineProperty(object, key2, { value });
     var REGEX_REGEXP_RANGE = /([0-z])-([0-z])/g;
     var RETURN_FALSE = () => false;
@@ -6622,8 +6627,11 @@ var require_ignore = __commonJS({
         (_, index2, str) => index2 + 6 < str.length ? "(?:\\/[^\\/]+)*" : "\\/.+"
       ],
       [
-        /(^|[^\\]+)\\\*(?=.+)/g,
-        (_, p1) => `${p1}[^\\/]*`
+        /(^|[^\\]+)(\\\*)+(?=.+)/g,
+        (_, p1, p2) => {
+          const unescaped = p2.replace(/\\\*/g, "[^\\/]*");
+          return p1 + unescaped;
+        }
       ],
       [
         /\\\\\\(?=[$.|*+(){^])/g,
@@ -6659,7 +6667,7 @@ var require_ignore = __commonJS({
       return ignoreCase ? new RegExp(source, "i") : new RegExp(source);
     };
     var isString = (subject) => typeof subject === "string";
-    var checkPattern = (pattern) => pattern && isString(pattern) && !REGEX_TEST_BLANK_LINE.test(pattern) && pattern.indexOf("#") !== 0;
+    var checkPattern = (pattern) => pattern && isString(pattern) && !REGEX_TEST_BLANK_LINE.test(pattern) && !REGEX_INVALID_TRAILING_BACKSLASH.test(pattern) && pattern.indexOf("#") !== 0;
     var splitPattern = (pattern) => pattern.split(REGEX_SPLITALL_CRLF);
     var IgnoreRule = class {
       constructor(origin, pattern, negative, regex2) {
@@ -6803,9 +6811,9 @@ var require_ignore = __commonJS({
   }
 });
 
-// node_modules/pify/index.js
+// node_modules/.pnpm/pify@4.0.1/node_modules/pify/index.js
 var require_pify = __commonJS({
-  "node_modules/pify/index.js"(exports, module2) {
+  "node_modules/.pnpm/pify@4.0.1/node_modules/pify/index.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     var processFn = (fn, options) => function(...args) {
@@ -6869,9 +6877,9 @@ var require_pify = __commonJS({
   }
 });
 
-// node_modules/clean-git-ref/lib/index.js
+// node_modules/.pnpm/clean-git-ref@2.0.1/node_modules/clean-git-ref/lib/index.js
 var require_lib2 = __commonJS({
-  "node_modules/clean-git-ref/lib/index.js"(exports, module2) {
+  "node_modules/.pnpm/clean-git-ref@2.0.1/node_modules/clean-git-ref/lib/index.js"(exports, module2) {
     init_polyfill_buffer();
     "use strict";
     function escapeRegExp(string) {
@@ -6903,9 +6911,9 @@ var require_lib2 = __commonJS({
   }
 });
 
-// node_modules/diff3/onp.js
+// node_modules/.pnpm/diff3@0.0.3/node_modules/diff3/onp.js
 var require_onp = __commonJS({
-  "node_modules/diff3/onp.js"(exports, module2) {
+  "node_modules/.pnpm/diff3@0.0.3/node_modules/diff3/onp.js"(exports, module2) {
     init_polyfill_buffer();
     module2.exports = function(a_, b_) {
       var a = a_, b = b_, m = a.length, n = b.length, reverse = false, ed = null, offset = m + 1, path2 = [], pathposi = [], ses = [], lcs = "", SES_DELETE = -1, SES_COMMON = 0, SES_ADD = 1;
@@ -7033,9 +7041,9 @@ var require_onp = __commonJS({
   }
 });
 
-// node_modules/diff3/diff3.js
+// node_modules/.pnpm/diff3@0.0.3/node_modules/diff3/diff3.js
 var require_diff3 = __commonJS({
-  "node_modules/diff3/diff3.js"(exports, module2) {
+  "node_modules/.pnpm/diff3@0.0.3/node_modules/diff3/diff3.js"(exports, module2) {
     init_polyfill_buffer();
     var onp = require_onp();
     function longestCommonSubsequence(file1, file2) {
@@ -7239,9 +7247,9 @@ var require_diff3 = __commonJS({
   }
 });
 
-// node_modules/ms/index.js
+// node_modules/.pnpm/ms@2.1.2/node_modules/ms/index.js
 var require_ms = __commonJS({
-  "node_modules/ms/index.js"(exports, module2) {
+  "node_modules/.pnpm/ms@2.1.2/node_modules/ms/index.js"(exports, module2) {
     init_polyfill_buffer();
     var s = 1e3;
     var m = s * 60;
@@ -7352,9 +7360,9 @@ var require_ms = __commonJS({
   }
 });
 
-// node_modules/debug/src/common.js
+// node_modules/.pnpm/debug@4.3.4_supports-color@7.2.0/node_modules/debug/src/common.js
 var require_common2 = __commonJS({
-  "node_modules/debug/src/common.js"(exports, module2) {
+  "node_modules/.pnpm/debug@4.3.4_supports-color@7.2.0/node_modules/debug/src/common.js"(exports, module2) {
     init_polyfill_buffer();
     function setup(env) {
       createDebug.debug = createDebug;
@@ -7516,9 +7524,9 @@ var require_common2 = __commonJS({
   }
 });
 
-// node_modules/debug/src/browser.js
+// node_modules/.pnpm/debug@4.3.4_supports-color@7.2.0/node_modules/debug/src/browser.js
 var require_browser = __commonJS({
-  "node_modules/debug/src/browser.js"(exports, module2) {
+  "node_modules/.pnpm/debug@4.3.4_supports-color@7.2.0/node_modules/debug/src/browser.js"(exports, module2) {
     init_polyfill_buffer();
     exports.formatArgs = formatArgs;
     exports.save = save;
@@ -7682,9 +7690,9 @@ var require_browser = __commonJS({
   }
 });
 
-// node_modules/@kwsites/file-exists/dist/src/index.js
+// node_modules/.pnpm/@kwsites+file-exists@1.1.1_supports-color@7.2.0/node_modules/@kwsites/file-exists/dist/src/index.js
 var require_src = __commonJS({
-  "node_modules/@kwsites/file-exists/dist/src/index.js"(exports) {
+  "node_modules/.pnpm/@kwsites+file-exists@1.1.1_supports-color@7.2.0/node_modules/@kwsites/file-exists/dist/src/index.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     var __importDefault = exports && exports.__importDefault || function(mod) {
@@ -7727,9 +7735,9 @@ var require_src = __commonJS({
   }
 });
 
-// node_modules/@kwsites/file-exists/dist/index.js
+// node_modules/.pnpm/@kwsites+file-exists@1.1.1_supports-color@7.2.0/node_modules/@kwsites/file-exists/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/@kwsites/file-exists/dist/index.js"(exports) {
+  "node_modules/.pnpm/@kwsites+file-exists@1.1.1_supports-color@7.2.0/node_modules/@kwsites/file-exists/dist/index.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     function __export3(m) {
@@ -7742,9 +7750,9 @@ var require_dist = __commonJS({
   }
 });
 
-// node_modules/@kwsites/promise-deferred/dist/index.js
+// node_modules/.pnpm/@kwsites+promise-deferred@1.1.1/node_modules/@kwsites/promise-deferred/dist/index.js
 var require_dist2 = __commonJS({
-  "node_modules/@kwsites/promise-deferred/dist/index.js"(exports) {
+  "node_modules/.pnpm/@kwsites+promise-deferred@1.1.1/node_modules/@kwsites/promise-deferred/dist/index.js"(exports) {
     init_polyfill_buffer();
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -7785,9 +7793,9 @@ var require_dist2 = __commonJS({
   }
 });
 
-// node_modules/hogan.js/lib/compiler.js
+// node_modules/.pnpm/hogan.js@3.0.2/node_modules/hogan.js/lib/compiler.js
 var require_compiler = __commonJS({
-  "node_modules/hogan.js/lib/compiler.js"(exports) {
+  "node_modules/.pnpm/hogan.js@3.0.2/node_modules/hogan.js/lib/compiler.js"(exports) {
     init_polyfill_buffer();
     (function(Hogan4) {
       var rIsWhitespace = /\S/, rQuot = /\"/g, rNewline = /\n/g, rCr = /\r/g, rSlash = /\\/g, rLineSep = /\u2028/, rParagraphSep = /\u2029/;
@@ -8112,9 +8120,9 @@ var require_compiler = __commonJS({
   }
 });
 
-// node_modules/hogan.js/lib/template.js
+// node_modules/.pnpm/hogan.js@3.0.2/node_modules/hogan.js/lib/template.js
 var require_template = __commonJS({
-  "node_modules/hogan.js/lib/template.js"(exports) {
+  "node_modules/.pnpm/hogan.js@3.0.2/node_modules/hogan.js/lib/template.js"(exports) {
     init_polyfill_buffer();
     var Hogan4 = {};
     (function(Hogan5) {
@@ -8356,9 +8364,9 @@ var require_template = __commonJS({
   }
 });
 
-// node_modules/hogan.js/lib/hogan.js
+// node_modules/.pnpm/hogan.js@3.0.2/node_modules/hogan.js/lib/hogan.js
 var require_hogan = __commonJS({
-  "node_modules/hogan.js/lib/hogan.js"(exports, module2) {
+  "node_modules/.pnpm/hogan.js@3.0.2/node_modules/hogan.js/lib/hogan.js"(exports, module2) {
     init_polyfill_buffer();
     var Hogan4 = require_compiler();
     Hogan4.Template = require_template().Template;
@@ -8367,9 +8375,9 @@ var require_hogan = __commonJS({
   }
 });
 
-// node_modules/feather-icons/dist/feather.js
+// node_modules/.pnpm/feather-icons@4.29.0/node_modules/feather-icons/dist/feather.js
 var require_feather = __commonJS({
-  "node_modules/feather-icons/dist/feather.js"(exports, module2) {
+  "node_modules/.pnpm/feather-icons@4.29.0/node_modules/feather-icons/dist/feather.js"(exports, module2) {
     init_polyfill_buffer();
     (function webpackUniversalModuleDefinition(root, factory) {
       if (typeof exports === "object" && typeof module2 === "object")
@@ -9795,7 +9803,7 @@ __export(exports, {
 });
 init_polyfill_buffer();
 
-// node_modules/isomorphic-git/index.js
+// node_modules/.pnpm/isomorphic-git@1.21.0/node_modules/isomorphic-git/index.js
 init_polyfill_buffer();
 var import_async_lock = __toModule(require_async_lock());
 var import_sha1 = __toModule(require_sha1());
@@ -18711,7 +18719,7 @@ var import_obsidian7 = __toModule(require("obsidian"));
 // src/isomorphicGit.ts
 init_polyfill_buffer();
 
-// node_modules/diff/lib/index.mjs
+// node_modules/.pnpm/diff@5.1.0/node_modules/diff/lib/index.mjs
 init_polyfill_buffer();
 function Diff() {
 }
@@ -20329,7 +20337,7 @@ var import_obsidian6 = __toModule(require("obsidian"));
 var path = __toModule(require("path"));
 var import_path = __toModule(require("path"));
 
-// node_modules/simple-git/dist/esm/index.js
+// node_modules/.pnpm/simple-git@3.15.1_supports-color@7.2.0/node_modules/simple-git/dist/esm/index.js
 init_polyfill_buffer();
 var import_file_exists = __toModule(require_dist());
 var import_debug = __toModule(require_browser());
@@ -24166,6 +24174,34 @@ var SimpleGit = class extends GitManager {
       conflicted: status2.conflicted.map((path2) => this.formatPath({ path: path2 }).path)
     };
   }
+  async getSubmodulePaths() {
+    return new Promise(async (resolve) => {
+      this.git.outputHandler(async (cmd, stdout, stderr, args) => {
+        if (!(args.contains("submodule") && args.contains("foreach"))) {
+          return;
+        }
+        let body = "";
+        const root = this.app.vault.adapter.getBasePath() + (this.plugin.settings.basePath ? "/" + this.plugin.settings.basePath : "");
+        stdout.on("data", (chunk) => {
+          body += chunk.toString("utf8");
+        });
+        stdout.on("end", async () => {
+          const submods = body.split("\n");
+          const strippedSubmods = submods.map((i) => {
+            const submod = i.match(/'([^']*)'/);
+            if (submod != void 0) {
+              return root + "/" + submod[1] + import_path.sep;
+            }
+          }).filter((i) => !!i);
+          strippedSubmods.reverse();
+          resolve(strippedSubmods);
+        });
+      });
+      await this.git.subModule(["foreach", "--recursive", ""]);
+      this.git.outputHandler(() => {
+      });
+    });
+  }
   formatPath(path2, renamed = false) {
     function format(path3) {
       if (path3 == void 0)
@@ -24190,37 +24226,11 @@ var SimpleGit = class extends GitManager {
   async commitAll({ message }) {
     if (this.plugin.settings.updateSubmodules) {
       this.plugin.setState(PluginState.commit);
-      await new Promise(async (resolve, reject) => {
-        this.git.outputHandler(async (cmd, stdout, stderr, args) => {
-          if (!(args.contains("submodule") && args.contains("foreach")))
-            return;
-          let body = "";
-          const root = this.app.vault.adapter.getBasePath() + (this.plugin.settings.basePath ? "/" + this.plugin.settings.basePath : "");
-          stdout.on("data", (chunk) => {
-            body += chunk.toString("utf8");
-          });
-          stdout.on("end", async () => {
-            const submods = body.split("\n");
-            const strippedSubmods = submods.map((i) => {
-              const submod = i.match(/'([^']*)'/);
-              if (submod != void 0) {
-                return root + "/" + submod[1] + import_path.sep;
-              }
-            });
-            strippedSubmods.reverse();
-            for (const item of strippedSubmods) {
-              if (item != void 0) {
-                await this.git.cwd({ path: item, root: false }).add("-A", (err) => this.onError(err));
-                await this.git.cwd({ path: item, root: false }).commit(await this.formatCommitMessage(message), (err) => this.onError(err));
-              }
-            }
-            resolve();
-          });
-        });
-        await this.git.subModule(["foreach", "--recursive", ""]);
-        this.git.outputHandler(() => {
-        });
-      });
+      const submodulePaths = await this.getSubmodulePaths();
+      for (const item of submodulePaths) {
+        await this.git.cwd({ path: item, root: false }).add("-A", (err) => this.onError(err));
+        await this.git.cwd({ path: item, root: false }).commit(await this.formatCommitMessage(message), (err) => this.onError(err));
+      }
     }
     this.plugin.setState(PluginState.add);
     await this.git.add("-A", (err) => this.onError(err));
@@ -24361,6 +24371,15 @@ var SimpleGit = class extends GitManager {
   }
   async checkout(branch2) {
     await this.git.checkout(branch2, (err) => this.onError(err));
+    if (this.plugin.settings.submoduleRecurseCheckout) {
+      const submodulePaths = await this.getSubmodulePaths();
+      for (const submodulePath of submodulePaths) {
+        let branchSummary = await this.git.cwd({ path: submodulePath, root: false }).branch();
+        if (Object.keys(branchSummary.branches).includes(branch2)) {
+          await this.git.cwd({ path: submodulePath, root: false }).checkout(branch2, (err) => this.onError(err));
+        }
+      }
+    }
   }
   async createBranch(branch2) {
     await this.git.checkout(["-b", branch2], (err) => this.onError(err));
@@ -24701,11 +24720,18 @@ var ObsidianGitSettingsTab = class extends import_obsidian7.PluginSettingTab {
       });
     containerEl.createEl("br");
     containerEl.createEl("h3", { text: "Advanced" });
-    if (plugin.gitManager instanceof SimpleGit)
+    if (plugin.gitManager instanceof SimpleGit) {
       new import_obsidian7.Setting(containerEl).setName("Update submodules").setDesc('"Create backup" and "pull" takes care of submodules. Missing features: Conflicted files, count of pulled/pushed/committed files. Tracking branch needs to be set for each submodule').addToggle((toggle) => toggle.setValue(plugin.settings.updateSubmodules).onChange((value) => {
         plugin.settings.updateSubmodules = value;
         plugin.saveSettings();
       }));
+      if (plugin.settings.updateSubmodules) {
+        new import_obsidian7.Setting(containerEl).setName("Submodule recurse checkout/switch").setDesc("Whenever a checkout happens on the root repository, recurse the checkout on the submodules (if the branches exist).").addToggle((toggle) => toggle.setValue(plugin.settings.submoduleRecurseCheckout).onChange((value) => {
+          plugin.settings.submoduleRecurseCheckout = value;
+          plugin.saveSettings();
+        }));
+      }
+    }
     if (plugin.gitManager instanceof SimpleGit)
       new import_obsidian7.Setting(containerEl).setName("Custom Git binary path").addText((cb) => {
         var _a2;
@@ -25115,13 +25141,13 @@ async function getData(manager) {
 // src/ui/diff/diffView.ts
 init_polyfill_buffer();
 
-// node_modules/diff2html/lib-esm/diff2html.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/diff2html.js
 init_polyfill_buffer();
 
-// node_modules/diff2html/lib-esm/diff-parser.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/diff-parser.js
 init_polyfill_buffer();
 
-// node_modules/diff2html/lib-esm/types.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/types.js
 init_polyfill_buffer();
 var LineType;
 (function(LineType2) {
@@ -25143,7 +25169,7 @@ var DiffStyleType = {
   CHAR: "char"
 };
 
-// node_modules/diff2html/lib-esm/utils.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/utils.js
 init_polyfill_buffer();
 var specials = [
   "-",
@@ -25181,7 +25207,7 @@ function hashCode(text2) {
   return hash2;
 }
 
-// node_modules/diff2html/lib-esm/diff-parser.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/diff-parser.js
 var __spreadArray = function(to, from, pack) {
   if (pack || arguments.length === 2)
     for (var i = 0, l = from.length, ar; i < l; i++) {
@@ -25477,13 +25503,13 @@ function parse(diffInput, config) {
   return files;
 }
 
-// node_modules/diff2html/lib-esm/file-list-renderer.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/file-list-renderer.js
 init_polyfill_buffer();
 
-// node_modules/diff2html/lib-esm/render-utils.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/render-utils.js
 init_polyfill_buffer();
 
-// node_modules/diff2html/lib-esm/rematch.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/rematch.js
 init_polyfill_buffer();
 function levenshtein(a, b) {
   if (a.length === 0) {
@@ -25577,7 +25603,7 @@ function newMatcherFn(distance2) {
   return group;
 }
 
-// node_modules/diff2html/lib-esm/render-utils.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/render-utils.js
 var __assign = function() {
   __assign = Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -25767,7 +25793,7 @@ function diffHighlight(diffLine1, diffLine2, isCombined, config) {
   };
 }
 
-// node_modules/diff2html/lib-esm/file-list-renderer.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/file-list-renderer.js
 var baseTemplatesPath = "file-summary";
 var iconsBaseTemplatesPath = "icon";
 function render(diffFiles, hoganUtils) {
@@ -25789,7 +25815,7 @@ function render(diffFiles, hoganUtils) {
   });
 }
 
-// node_modules/diff2html/lib-esm/line-by-line-renderer.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/line-by-line-renderer.js
 init_polyfill_buffer();
 var __assign2 = function() {
   __assign2 = Object.assign || function(t) {
@@ -25985,7 +26011,7 @@ var LineByLineRenderer = function() {
 }();
 var line_by_line_renderer_default = LineByLineRenderer;
 
-// node_modules/diff2html/lib-esm/side-by-side-renderer.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/side-by-side-renderer.js
 init_polyfill_buffer();
 var __assign3 = function() {
   __assign3 = Object.assign || function(t) {
@@ -26194,11 +26220,11 @@ var SideBySideRenderer = function() {
 }();
 var side_by_side_renderer_default = SideBySideRenderer;
 
-// node_modules/diff2html/lib-esm/hoganjs-utils.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/hoganjs-utils.js
 init_polyfill_buffer();
 var Hogan3 = __toModule(require_hogan());
 
-// node_modules/diff2html/lib-esm/diff2html-templates.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/diff2html-templates.js
 init_polyfill_buffer();
 var Hogan2 = __toModule(require_hogan());
 var defaultTemplates = {};
@@ -26594,7 +26620,7 @@ defaultTemplates["tag-file-renamed"] = new Hogan2.Template({ code: function(c, p
   return t.fl();
 }, partials: {}, subs: {} });
 
-// node_modules/diff2html/lib-esm/hoganjs-utils.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/hoganjs-utils.js
 var __assign4 = function() {
   __assign4 = Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -26640,7 +26666,7 @@ var HoganJsUtils = function() {
 }();
 var hoganjs_utils_default = HoganJsUtils;
 
-// node_modules/diff2html/lib-esm/diff2html.js
+// node_modules/.pnpm/diff2html@3.4.22/node_modules/diff2html/lib-esm/diff2html.js
 var __assign5 = function() {
   __assign5 = Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -26806,7 +26832,7 @@ var import_obsidian22 = __toModule(require("obsidian"));
 // src/ui/sidebar/gitView.svelte
 init_polyfill_buffer();
 
-// node_modules/svelte/internal/index.mjs
+// node_modules/.pnpm/svelte@3.55.0/node_modules/svelte/internal/index.mjs
 init_polyfill_buffer();
 function noop() {
 }
@@ -27436,20 +27462,20 @@ var SvelteComponent = class {
 // src/ui/sidebar/gitView.svelte
 var import_obsidian21 = __toModule(require("obsidian"));
 
-// node_modules/svelte/index.mjs
+// node_modules/.pnpm/svelte@3.55.0/node_modules/svelte/index.mjs
 init_polyfill_buffer();
 
-// node_modules/svelte/transition/index.mjs
+// node_modules/.pnpm/svelte@3.55.0/node_modules/svelte/transition/index.mjs
 init_polyfill_buffer();
 
-// node_modules/svelte/easing/index.mjs
+// node_modules/.pnpm/svelte@3.55.0/node_modules/svelte/easing/index.mjs
 init_polyfill_buffer();
 function cubicOut(t) {
   const f = t - 1;
   return f * f * f + 1;
 }
 
-// node_modules/svelte/transition/index.mjs
+// node_modules/.pnpm/svelte@3.55.0/node_modules/svelte/transition/index.mjs
 function slide(node, { delay: delay2 = 0, duration = 400, easing = cubicOut } = {}) {
   const style = getComputedStyle(node);
   const opacity = +style.opacity;
@@ -27487,29 +27513,34 @@ var DiscardModal = class extends import_obsidian16.Modal {
   onOpen() {
     const { contentEl, titleEl } = this;
     titleEl.setText(`${this.deletion ? "Delete" : "Discard"} this file?`);
-    contentEl.createEl("h4").setText(`Do you really want to ${this.deletion ? "delete" : "discard the changes of"} "${this.filename}"`);
-    const div = contentEl.createDiv();
-    div.addClass("obsidian-git-center");
-    div.createEl("button", {
-      text: "Cancel",
-      attr: {
-        style: "margin: 0 10px"
-      }
-    }).addEventListener("click", () => {
+    contentEl.createEl("p").setText(`Do you really want to ${this.deletion ? "delete" : "discard the changes of"} "${this.filename}"`);
+    const div = contentEl.createDiv({ cls: "modal-button-container" });
+    const discard = div.createEl("button", {
+      cls: "mod-warning",
+      text: this.deletion ? "Delete" : "Discard"
+    });
+    discard.addEventListener("click", async () => {
+      if (this.resolve)
+        this.resolve(true);
+      this.close();
+    });
+    discard.addEventListener("keypress", async () => {
+      if (this.resolve)
+        this.resolve(true);
+      this.close();
+    });
+    const close = div.createEl("button", {
+      text: "Cancel"
+    });
+    close.addEventListener("click", () => {
       if (this.resolve)
         this.resolve(false);
       return this.close();
     });
-    div.createEl("button", {
-      cls: "mod-cta",
-      text: "Confirm",
-      attr: {
-        style: "margin: 0 10px"
-      }
-    }).addEventListener("click", async () => {
+    close.addEventListener("keypress", () => {
       if (this.resolve)
-        this.resolve(true);
-      this.close();
+        this.resolve(false);
+      return this.close();
     });
   }
   onClose() {
@@ -27522,10 +27553,10 @@ var DiscardModal = class extends import_obsidian16.Modal {
 init_polyfill_buffer();
 var import_obsidian18 = __toModule(require("obsidian"));
 
-// node_modules/obsidian-community-lib/dist/index.js
+// node_modules/.pnpm/obsidian-community-lib@2.0.2/node_modules/obsidian-community-lib/dist/index.js
 init_polyfill_buffer();
 
-// node_modules/obsidian-community-lib/dist/utils.js
+// node_modules/.pnpm/obsidian-community-lib@2.0.2/node_modules/obsidian-community-lib/dist/utils.js
 init_polyfill_buffer();
 var feather = __toModule(require_feather());
 var import_obsidian17 = __toModule(require("obsidian"));
@@ -31252,9 +31283,7 @@ var ObsidianGit = class extends import_obsidian23.Plugin {
     let status2;
     let unstagedFiles;
     if (this.gitManager instanceof SimpleGit) {
-      const file = this.app.vault.getAbstractFileByPath(this.conflictOutputFile);
-      if (file != null)
-        await this.app.vault.delete(file);
+      this.mayDeleteConflictFile();
       status2 = await this.updateCachedStatus();
       if (fromAutoBackup && status2.conflicted.length > 0) {
         this.displayError(`Did not commit, because you have conflicts in ${status2.conflicted.length} ${status2.conflicted.length == 1 ? "file" : "files"}. Please resolve them and commit per command.`);
@@ -31267,9 +31296,7 @@ var ObsidianGit = class extends import_obsidian23.Plugin {
       this.displayError(`Did not commit, because you have conflicts. Please resolve them and commit per command.`);
       return false;
     } else if (hadConflict) {
-      const file = this.app.vault.getAbstractFileByPath(this.conflictOutputFile);
-      if (file != null)
-        await this.app.vault.delete(file);
+      await this.mayDeleteConflictFile();
       status2 = await this.updateCachedStatus();
       changedFiles = [...status2.changed, ...status2.staged];
     } else {
@@ -31346,10 +31373,9 @@ var ObsidianGit = class extends import_obsidian23.Plugin {
     if (!await this.remotesAreSet()) {
       return false;
     }
-    const file = this.app.vault.getAbstractFileByPath(this.conflictOutputFile);
     const hadConflict = this.localStorage.getConflict() === "true";
-    if (this.gitManager instanceof SimpleGit && file)
-      await this.app.vault.delete(file);
+    if (this.gitManager instanceof SimpleGit)
+      await this.mayDeleteConflictFile();
     let status2;
     if (this.gitManager instanceof SimpleGit && (status2 = await this.updateCachedStatus()).conflicted.length > 0) {
       this.displayError(`Cannot push. You have conflicts in ${status2.conflicted.length} ${status2.conflicted.length == 1 ? "file" : "files"}`);
@@ -31386,6 +31412,17 @@ var ObsidianGit = class extends import_obsidian23.Plugin {
       this.lastPulledFiles = pulledFiles;
     }
     return pulledFiles.length != 0;
+  }
+  async mayDeleteConflictFile() {
+    const file = this.app.vault.getAbstractFileByPath(this.conflictOutputFile);
+    if (file) {
+      this.app.workspace.iterateAllLeaves((leaf) => {
+        if (leaf.view instanceof import_obsidian23.MarkdownView && leaf.view.file.path == file.path) {
+          leaf.detach();
+        }
+      });
+      await this.app.vault.delete(file);
+    }
   }
   async stageFile(file) {
     if (!await this.isAllInitialized())
@@ -31584,7 +31621,10 @@ var ObsidianGit = class extends import_obsidian23.Plugin {
     if (conflicted !== void 0) {
       lines = [
         "# Conflicts",
-        "Please resolve them and commit per command (This file will be deleted before the commit).",
+        "Please resolve them and commit them using the commands `Obsidian Git: Commit all changes` followed by `Obsidian Git: Push`",
+        "(This file will automatically be deleted before commit)",
+        "[[#Additional Instructions]] available below file list",
+        "",
         ...conflicted.map((e) => {
           const file = this.app.vault.getAbstractFileByPath(e);
           if (file instanceof import_obsidian23.TFile) {
@@ -31593,7 +31633,18 @@ var ObsidianGit = class extends import_obsidian23.Plugin {
           } else {
             return `- Not a file: ${e}`;
           }
-        })
+        }),
+        `
+# Additional Instructions
+I strongly recommend to use "Source mode" for viewing the conflicted files. For simple conflicts, in each file listed above replace every occurrence of the following text blocks with the desired text.
+
+\`\`\`diff
+<<<<<<< HEAD
+    File changes in local repository
+=======
+    File changes in remote repository
+>>>>>>> origin/main
+\`\`\``
       ];
     }
     this.writeAndOpenFile(lines == null ? void 0 : lines.join("\n"));

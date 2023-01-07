@@ -13,30 +13,27 @@ tags:
 	
 
 
+本课程是可选的，适用于想要了解更多C++知识的高级读者。未来的课程并不会建立在这节课上。
 
-This lesson is optional, for advanced readers who want to learn more about C++. No future lessons build on this lesson.
+指向指针的指针正是你所期望的那样：它是保存另一个指针地址的指针。
 
-A pointer to a pointer is exactly what you’d expect: a pointer that holds the address of another pointer.
+## 指向指针的指针
 
-**Pointers to pointers**
-
-A normal pointer to an int is declared using a single asterisk:
+指向int型的普通指针使用单个星号来声明：
 
 ```cpp
 int* ptr; // pointer to an int, one asterisk
 ```
 
-COPY
-
-A pointer to a pointer to an int is declared using two asterisks
+指向指针的指针使用两个星号来声明：
 
 ```cpp
 int** ptrptr; // pointer to a pointer to an int, two asterisks
 ```
 
-COPY
+一个指向int型的普通指针使用一个星号声明：指向指针的指针和普通指针的工作方式一样——你可以解引用它来检索指向的值。因为该值本身是一个指针，所以可以再次解除引用以获得底层值。这些解引用可以连续执行:
 
-A pointer to a pointer works just like a normal pointer — you can dereference it to retrieve the value pointed to. And because that value is itself a pointer, you can dereference it again to get to the underlying value. These dereferences can be done consecutively:
+
 
 ```cpp
 int value { 5 };
@@ -52,8 +49,10 @@ COPY
 
 The above program prints:
 
+```
 5
 5
+```
 
 Note that you can not set a pointer to a pointer directly to a value:
 
@@ -74,7 +73,7 @@ int** ptrptr { nullptr };
 
 COPY
 
-**Arrays of pointers**
+## 指针数组
 
 Pointers to pointers have a few uses. The most common use is to dynamically allocate an array of pointers:
 
@@ -86,9 +85,9 @@ COPY
 
 This works just like a standard dynamically allocated array, except the array elements are of type “pointer to integer” instead of integer.
 
-**Two-dimensional dynamically allocated arrays**
+## 二维动态数组
 
-Another common use for pointers to pointers is to facilitate dynamically allocated multidimensional arrays (see [11.5 -- Multidimensional Arrays](https://www.learncpp.com/cpp-tutorial/multidimensional-arrays/) for a review of multidimensional arrays).
+Another common use for pointers to pointers is to facilitate dynamically allocated multidimensional arrays (see [[11-5-Multidimensional-Arrays|11.5 - 多维数组]] for a review of multidimensional arrays).
 
 Unlike a two dimensional fixed array, which can easily be declared like this:
 
@@ -196,13 +195,13 @@ array[getSingleIndex(9, 4, 5)] = 3;
 
 COPY
 
-**Passing a pointer by address**
+## 通过地址传递指针
 
 Much like we can use a pointer parameter to change the actual value of the underlying argument passed in, we can pass a pointer to a pointer to a function and use that pointer to change the value of the pointer it points to (confused yet?).
 
 However, if we want a function to be able to modify what a pointer argument points to, this is generally better done using a reference to a pointer instead. This is covered in lesson [9.10 -- Pass by address (part 2)](https://www.learncpp.com/cpp-tutorial/pass-by-address-part-2/).
 
-**Pointer to a pointer to a pointer to…**
+## 指针的指针的指针
 
 It’s also possible to declare a pointer to a pointer to a pointer:
 
@@ -226,10 +225,7 @@ Or higher, if you wish.
 
 However, in reality these don’t see much use because it’s not often you need so much indirection.
 
-**Conclusion**
+## 小结
 
 We recommend avoiding using pointers to pointers unless no other options are available, because they’re complicated to use and potentially dangerous. It’s easy enough to dereference a null or dangling pointer with normal pointers — it’s doubly easy with a pointer to a pointer since you have to do a double-dereference to get to the underlying value!
 
-[
-
-](https://www.learncpp.com/cpp-tutorial/an-introduction-to-stdarray/)

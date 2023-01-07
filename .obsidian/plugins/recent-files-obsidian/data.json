@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
+      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+    },
+    {
       "basename": "MOC",
       "path": "docs/MOC.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "9-8-Pointers-and-const",
       "path": "docs/9-8-Pointers-and-const.md"
-    },
-    {
-      "basename": "9-12-Type-deduction-with-pointers-references-and-const",
-      "path": "docs/9-12-Type-deduction-with-pointers-references-and-const.md"
     }
   ],
   "omittedPaths": [],
