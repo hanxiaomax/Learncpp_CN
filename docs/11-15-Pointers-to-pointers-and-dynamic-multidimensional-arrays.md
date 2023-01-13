@@ -33,8 +33,6 @@ int** ptrptr; // pointer to a pointer to an int, two asterisks
 
 一个指向int型的普通指针使用一个星号声明：指向指针的指针和普通指针的工作方式一样——你可以解引用它来检索指向的值。因为该值本身是一个指针，所以可以再次解除引用以获得底层值。这些解引用可以连续执行:
 
-
-
 ```cpp
 int value { 5 };
 
@@ -45,23 +43,20 @@ int** ptrptr { &ptr };
 std::cout << **ptrptr << '\n'; // dereference to get pointer to int, dereference again to get int value
 ```
 
-COPY
-
-The above program prints:
+上述程序打印：
 
 ```
 5
 5
 ```
 
-Note that you can not set a pointer to a pointer directly to a value:
+注意：指针的指针不能直接赋值：
 
 ```cpp
 int value { 5 };
 int** ptrptr { &&value }; // not valid
 ```
 
-COPY
 
 This is because the address of operator (operator&) requires an lvalue, but &value is an rvalue.
 
