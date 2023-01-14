@@ -50,77 +50,64 @@ std::cout << **ptrptr << '\n'; // dereference to get pointer to int, dereference
 5
 ```
 
-注意：指针的指针不能直接赋值：
+注意：指针的指针不能直接设置为一个值：
 
 ```cpp
 int value { 5 };
 int** ptrptr { &&value }; // not valid
 ```
 
+这是因为取地址操作符需要一个[[lvalue|左值]]作为操作数，但是`&value`是一个[[rvalue|右值]]。
 
-This is because the address of operator (operator&) requires an lvalue, but &value is an rvalue.
-
-However, a pointer to a pointer can be set to null:
+但是，它可以被设置为空指针：
 
 ```cpp
 int** ptrptr { nullptr };
 ```
 
-COPY
-
 ## 指针数组
 
-Pointers to pointers have a few uses. The most common use is to dynamically allocate an array of pointers:
+指向指针的指针有一些用途。最常见的用法是动态分配指针数组：
 
 ```cpp
 int** array { new int*[10] }; // allocate an array of 10 int pointers
 ```
 
-COPY
-
-This works just like a standard dynamically allocated array, except the array elements are of type “pointer to integer” instead of integer.
+上述代码和一般的动态数组行为一致，只不过数组元素是“整型指针”而不是整型罢了。
 
 ## 二维动态数组
 
-Another common use for pointers to pointers is to facilitate dynamically allocated multidimensional arrays (see [[11-5-Multidimensional-Arrays|11.5 - 多维数组]] for a review of multidimensional arrays).
+指向指针的指针的另外一个常见用途是分配多维数组(参见 [[11-5-Multidimensional-Arrays|11.5 - 多维数组]] )。
 
-Unlike a two dimensional fixed array, which can easily be declared like this:
+二维固定数组的声明非常简单：
 
 ```cpp
 int array[10][5];
 ```
 
-COPY
-
-Dynamically allocating a two-dimensional array is a little more challenging. You may be tempted to try something like this:
+但是动态数组却稍微有些复杂。你可能会尝试这样做：
 
 ```cpp
 int** array { new int[10][5] }; // won’t work!
 ```
 
-COPY
+但这样做是错误的。
 
-But it won’t work.
-
-There are two possible solutions here. If the rightmost array dimension is constexpr, you can do this:
+右两种方式可以实现，如果列是固定的，你可以这样做：
 
 ```cpp
 int x { 7 }; // non-constant
 int (*array)[5] { new int[x][5] }; // rightmost dimension must be constexpr
 ```
 
-COPY
-
-The parenthesis are required here to ensure proper precedence. This is a good place to use automatic type deduction:
+为确保正确的优先级，这里的括号是必须的。这里特别适合使用[[type deduction|类型推断]]：
 
 ```cpp
 int x { 7 }; // non-constant
 auto array { new int[x][5] }; // so much simpler!
 ```
 
-COPY
-
-Unfortunately, this relatively simple solution doesn’t work if the rightmost array dimension isn’t a compile-time constant. In that case, we have to get a little more complicated. First, we allocate an array of pointers (as per above). Then we iterate through the array of pointers and allocate a dynamic array for each array element. Our dynamic two-dimensional array is a dynamic one-dimensional array of dynamic one-dimensional arrays!
+不幸的是，如果最右边的数组维度不是编译时常量，这个相对简单的解决方案就不起作用。在这种情况下，操作就更复杂了。首先，我们分配一个指针数组(如上所述)。然后遍历指针数组，并为每个数组元素分配一个动态数组。我们的动态二维数组是动态一维数组的动态一维数组!
 
 ```cpp
 int** array { new int*[10] }; // allocate an array of 10 int pointers — these are our rows
@@ -128,17 +115,13 @@ for (int count { 0 }; count < 10; ++count)
     array[count] = new int[5]; // these are our columns
 ```
 
-COPY
-
-We can then access our array like usual:
+访问数组的方式和平常一样：
 
 ```cpp
 array[9][4] = 3; // This is the same as (array[9])[4] = 3;
 ```
 
-COPY
-
-With this method, because each array column is dynamically allocated independently, it’s possible to make dynamically allocated two dimensional arrays that are not rectangular. For example, we can make a triangle-shaped array:
+使用这种方法，由于每个数组列都是独立动态分配的，因此可以动态分配非矩形的二维数组。例如，我们可以创建一个三角形数组：
 
 ```cpp
 int** array { new int*[10] }; // allocate an array of 10 int pointers — these are our rows
@@ -148,7 +131,7 @@ for (int count { 0 }; count < 10; ++count)
 
 COPY
 
-In the above example, note that array[0] is an array of length 1, array[1] is an array of length 2, etc…
+In the above example, note that `array[0]` is an array of length 1, `array[1]` is an array of length 2, etc…
 
 Deallocating a dynamically allocated two-dimensional array using this method requires a loop as well:
 
@@ -162,7 +145,7 @@ COPY
 
 Note that we delete the array in the opposite order that we created it (elements first, then the array itself). If we delete array before the array columns, then we’d have to access deallocated memory to delete the array columns. And that would result in undefined behavior.
 
-Because allocating and deallocating two-dimensional arrays is complex and easy to mess up, it’s often easier to “flatten” a two-dimensional array (of size x by y) into a one-dimensional array of size x * y:
+Because allocating and deallocating two-dimensional arrays is complex and easy to mess up, it’s often easier to “flatten” a two-dimensional array (of size x by y) into a one-dimensional array of size `x * y`:
 
 ```cpp
 // Instead of this:
@@ -192,35 +175,31 @@ COPY
 
 ## 通过地址传递指针
 
-Much like we can use a pointer parameter to change the actual value of the underlying argument passed in, we can pass a pointer to a pointer to a function and use that pointer to change the value of the pointer it points to (confused yet?).
+就像我们可以使用指针形参来更改传入的底层参数的实际值一样，我们可以将一个指针传递给一个指向函数的指针，然后使用该指针来更改它所指向的指针的值(还不明白吗?)
 
-However, if we want a function to be able to modify what a pointer argument points to, this is generally better done using a reference to a pointer instead. This is covered in lesson [9.10 -- Pass by address (part 2)](https://www.learncpp.com/cpp-tutorial/pass-by-address-part-2/).
+However, if we want a function to be able to modify what a pointer argument points to, this is generally better done using a reference to a pointer instead. This is covered in lesson [[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
 
 ## 指针的指针的指针
 
-It’s also possible to declare a pointer to a pointer to a pointer:
+声明指向指针的指针的指针也是可以的：
 
 ```cpp
 int*** ptrx3;
 ```
 
-COPY
+这样可以动态分配一个三维数组。然而，这样做将需要一个循环中的循环，并且要得到正确的结果是极其复杂的。
 
-This can be used to dynamically allocate a three-dimensional array. However, doing so would require a loop inside a loop, and is extremely complicated to get correct.
-
-You can even declare a pointer to a pointer to a pointer to a pointer:
+你甚至可以声明一个四重指针：
 
 ```cpp
 int**** ptrx4;
 ```
 
-COPY
+只要你愿意，更高层的指针也是可以的。
 
-Or higher, if you wish.
-
-However, in reality these don’t see much use because it’s not often you need so much indirection.
+但是，现实中并不会出现这样的定义，因为我们不会使用这么多层次的间接关系。
 
 ## 小结
 
-We recommend avoiding using pointers to pointers unless no other options are available, because they’re complicated to use and potentially dangerous. It’s easy enough to dereference a null or dangling pointer with normal pointers — it’s doubly easy with a pointer to a pointer since you have to do a double-dereference to get to the underlying value!
+我们建议避免使用指向指针的指针，除非没有其他可用的选项，因为它们使用起来很复杂，而且有潜在的危险。用普通指针解除对空指针或悬浮指针的引用非常简单——使用指向指针的指针更加容易，因为必须执行双重解除引用才能得到底层值！
 
