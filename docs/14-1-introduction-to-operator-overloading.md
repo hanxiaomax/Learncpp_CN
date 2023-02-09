@@ -24,6 +24,7 @@ In this chapter, we’ll examine topics related to operator overloading.
 
 Consider the following example:
 
+考虑以下示例：
 ```cpp
 int x { 2 };
 int y { 3 };
