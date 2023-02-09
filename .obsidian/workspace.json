@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
+                "file": "docs/14-1-introduction-to-operator-overloading.md",
                 "mode": "source",
                 "backlinks": true,
                 "source": false
@@ -95,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 254,
-    "collapsed": true
+    "width": 254
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -123,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
+                "file": "docs/14-1-introduction-to-operator-overloading.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+                "file": "docs/14-1-introduction-to-operator-overloading.md"
               }
             }
           }
@@ -166,6 +165,7 @@
   "active": "52db5326e2917da8",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
     "docs/1-10-Introduction-to-expressions.md",
     "docs/9-x-Chapter-9-comprehensive-quiz.md.md",
     "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
@@ -173,7 +173,6 @@
     "docs/11-18-Introduction-to-iterators.md",
     "docs/10-x-Chapter-10-comprehensive-quiz.md",
     "docs/10-9-member-selection-with-pointers-and-references.md",
-    "docs/11-9-Pointer-arithmetic-and-array-indexing.md",
-    "docs/11-x-chapter-11-comprehensive-quiz.md"
+    "docs/11-9-Pointer-arithmetic-and-array-indexing.md"
   ]
 }

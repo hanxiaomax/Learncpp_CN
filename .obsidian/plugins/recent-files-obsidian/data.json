@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
-      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
+      "basename": "14-1-introduction-to-operator-overloading",
+      "path": "docs/14-1-introduction-to-operator-overloading.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
+      "path": "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md"
     },
     {
       "basename": "1-10-Introduction-to-expressions",
@@ -175,10 +179,6 @@
     {
       "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
       "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
-    },
-    {
-      "basename": "14-1-introduction-to-operator-overloading",
-      "path": "docs/14-1-introduction-to-operator-overloading.md"
     },
     {
       "basename": "3-3-A-strategy-for-debugging",
