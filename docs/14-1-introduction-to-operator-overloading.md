@@ -14,7 +14,7 @@ tags:
 	
 
 
-In lesson [8.9 -- Introduction to function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/), you learned about function overloading, which provides a mechanism to create and resolve function calls to multiple functions with the same name, so long as each function has a unique function prototype. This allows you to create variations of a function to work with different data types, without having to think up a unique name for each variant.
+In lesson [[8-9-Introduction-to-function-overloading|8.9 - 函数重载]] you learned about function overloading, which provides a mechanism to create and resolve function calls to multiple functions with the same name, so long as each function has a unique function prototype. This allows you to create variations of a function to work with different data types, without having to think up a unique name for each variant.
 
 In C++, operators are implemented as functions. By using function overloading on the operator functions, you can define your own versions of the operators that work with different data types (including classes that you’ve written). Using function overloading to overload operators is called **operator overloading**.
 
@@ -31,9 +31,8 @@ int y { 3 };
 std::cout << x + y << '\n';
 ```
 
-COPY
 
-The compiler comes with a built-in version of the plus operator (+) for integer operands -- this function adds integers x and y together and returns an integer result. When you see the expression `x + y`, you can translate this in your head to the function call `operator+(x, y)` (where operator+ is the name of the function).
+The compiler comes with a built-in version of the plus operator (`+`) for integer operands -- this function adds integers x and y together and returns an integer result. When you see the expression `x + y`, you can translate this in your head to the function call `operator+(x, y)` (where operator+ is the name of the function).
 
 Now consider this similar snippet:
 
@@ -68,9 +67,9 @@ When evaluating an expression containing an operator, the compiler uses the foll
 
 **What are the limitations on operator overloading?**
 
-First, almost any existing operator in C++ can be overloaded. The exceptions are: conditional (?:), sizeof, scope (::), member selector (.), pointer member selector (.*), typeid, and the casting operators.
+First, almost any existing operator in C++ can be overloaded. The exceptions are: conditional (`?:`), sizeof, scope (`::`), member selector (`.`), pointer member selector (`->`), typeid, and the casting operators.
 
-Second, you can only overload the operators that exist. You can not create new operators or rename existing operators. For example, you could not create an operator ** to do exponents.
+Second, you can only overload the operators that exist. You can not create new operators or rename existing operators. For example, you could not create an operator `**` to do exponents.
 
 Third, at least one of the operands in an overloaded operator must be a user-defined type. This means you can not overload the plus operator to work with one integer and one double. However, you could overload the plus operator to work with an integer and a Mystring.
 
@@ -78,25 +77,25 @@ Fourth, it is not possible to change the number of operands an operator supports
 
 Finally, all operators keep their default precedence and associativity (regardless of what they’re used for) and this can not be changed.
 
-Some new programmers attempt to overload the bitwise XOR operator (^) to do exponentiation. However, in C++, operator^ has a lower precedence level than the basic arithmetic operators, which causes expressions to evaluate incorrectly.
+Some new programmers attempt to overload the bitwise XOR operator (`^`) to do exponentiation. However, in C++, `operator^` has a lower precedence level than the basic arithmetic operators, which causes expressions to evaluate incorrectly.
 
-In basic mathematics, exponentiation is resolved before basic arithmetic, so 4 + 3 ^ 2 resolves as 4 + (3 ^ 2) => 4 + 9 => 13.  
-However, in C++, the arithmetic operators have higher precedence than operator^, so 4 + 3 ^ 2 resolves as (4 + 3) ^ 2 => 7 ^ 2 => 49.
+In basic mathematics, exponentiation is resolved before basic arithmetic, so `4 + 3 ^ 2` resolves as `4 + (3 ^ 2) => 4 + 9 => 13`.  
+However, in C++, the arithmetic operators have higher precedence than `operator^`, so `4 + 3 ^ 2` resolves as (`4 + 3) ^ 2 => 7 ^ 2 => 49`.
 
-You’d need to explicitly parenthesize the exponent portion (e.g. 4 + (3 ^ 2)) every time you used it for this to work properly, which isn’t intuitive, and is potentially error-prone.
+You’d need to explicitly parenthesize the exponent portion (e.g. `4 + (3 ^ 2)`) every time you used it for this to work properly, which isn’t intuitive, and is potentially error-prone.
 
 Because of this precedence issue, it’s generally a good idea to use operators only in an analogous way to their original intent.
 
-Best practice
+!!! success "最佳实践"
 
-When overloading operators, it’s best to keep the function of the operators as close to the original intent of the operators as possible.
+	When overloading operators, it’s best to keep the function of the operators as close to the original intent of the operators as possible.
 
 Furthermore, because operators don’t have descriptive names, it’s not always clear what they are intended to do. For example, operator+ might be a reasonable choice for a string class to do concatenation of strings. But what about operator-? What would you expect that to do? It’s unclear.
 
-Best practice
+!!! success "最佳实践"
 
-If the meaning of an overloaded operator is not clear and intuitive, use a named function instead.
+	If the meaning of an overloaded operator is not clear and intuitive, use a named function instead.
 
-Within those confines, you will still find plenty of useful functionality to overload for your custom classes! You can overload the + operator to concatenate your user-defined string class, or add two Fraction class objects together. You can overload the << operator to make it easy to print your class to the screen (or a file). You can overload the equality operator (==) to compare two class objects. This makes operator overloading one of the most useful features in C++ -- simply because it allows you to work with your classes in a more intuitive way.
+Within those confines, you will still find plenty of useful functionality to overload for your custom classes! You can overload the + operator to concatenate your user-defined string class, or add two Fraction class objects together. You can overload the << operator to make it easy to print your class to the screen (or a file). You can overload the equality operator (`==`) to compare two class objects. This makes operator overloading one of the most useful features in C++ -- simply because it allows you to work with your classes in a more intuitive way.
 
 In the upcoming lessons, we’ll take a deeper look at overloading different kinds of operators.
