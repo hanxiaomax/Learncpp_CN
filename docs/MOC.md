@@ -233,7 +233,7 @@
 
 ## 14. 操作符重载  🚧
 
-- [ ] [[14-1-introduction-to-operator-overloading|14.1 - 运算符重载简介]]
+- [x] [[14-1-introduction-to-operator-overloading|14.1 - 运算符重载简介]]
 - [ ] [[14-2-overloading-the-arithmetic-operators-using-friend-functions|14.2 - 使用友元重载算数运算符]]
 - [ ] [[14-3-overloading-operators-using-normal-functions|14.3 - 使用普通函数重载运算符]]
 - [ ] [[14-4-overloading-the-IO-operators|14.4 - 重载输入输出运算符]]

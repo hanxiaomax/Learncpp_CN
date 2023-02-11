@@ -19368,7 +19368,7 @@ var MyAdapter = class {
         return this.adapter.read(path2);
       }
     } else {
-      if (path2.endsWith(".git/index")) {
+      if (path2.endsWith(this.gitDir + "/index")) {
         return (_a2 = this.index) != null ? _a2 : this.adapter.readBinary(path2);
       }
       const file = this.vault.getAbstractFileByPath(path2);
@@ -19390,7 +19390,7 @@ var MyAdapter = class {
         return this.adapter.write(path2, data);
       }
     } else {
-      if (path2.endsWith(".git/index")) {
+      if (path2.endsWith(this.gitDir + "/index")) {
         this.index = data;
         this.indexmtime = Date.now();
       } else {
@@ -19424,7 +19424,7 @@ var MyAdapter = class {
     return this.adapter.rmdir(path2, (_b = (_a2 = opts == null ? void 0 : opts.options) == null ? void 0 : _a2.recursive) != null ? _b : false);
   }
   async stat(path2) {
-    if (path2.endsWith(".git/index")) {
+    if (path2.endsWith(this.gitDir + "/index")) {
       if (this.index !== void 0 && this.indexctime != void 0 && this.indexmtime != void 0) {
         return {
           isFile: () => true,
@@ -19499,7 +19499,7 @@ var MyAdapter = class {
   }
   async saveAndClear() {
     if (this.index !== void 0) {
-      await this.adapter.writeBinary(this.plugin.gitManager.getVaultPath(".git/index"), this.index, {
+      await this.adapter.writeBinary(this.plugin.gitManager.getVaultPath(this.gitDir + "/index"), this.index, {
         ctime: this.indexctime,
         mtime: this.indexmtime
       });
@@ -19507,6 +19507,10 @@ var MyAdapter = class {
     this.index = void 0;
     this.indexctime = void 0;
     this.indexmtime = void 0;
+  }
+  get gitDir() {
+    var _a2;
+    return (_a2 = this.plugin.settings.gitDir) != null ? _a2 : ".git";
   }
   maybeLog(text2) {
   }
@@ -19644,13 +19648,15 @@ var IsomorphicGit = class extends GitManager {
     this.fs = new MyAdapter(this.app.vault, this.plugin);
   }
   getRepo() {
+    var _a2;
     return {
       fs: this.fs,
       dir: this.plugin.settings.basePath,
+      gitdir: (_a2 = this.plugin.settings.gitDir) != null ? _a2 : void 0,
       onAuth: () => {
-        var _a2, _b;
+        var _a3, _b;
         return {
-          username: (_a2 = this.plugin.localStorage.getUsername()) != null ? _a2 : void 0,
+          username: (_a3 = this.plugin.localStorage.getUsername()) != null ? _a3 : void 0,
           password: (_b = this.plugin.localStorage.getPassword()) != null ? _b : void 0
         };
       },
@@ -24138,10 +24144,19 @@ var SimpleGit = class extends GitManager {
         binary: this.plugin.localStorage.getGitPath() || void 0,
         config: ["core.quotepath=off"]
       });
-      const env = this.plugin.localStorage.getPATHPaths();
-      if (env.length > 0) {
-        const path3 = process.env["PATH"] + ":" + env.join(":");
+      const pathPaths = this.plugin.localStorage.getPATHPaths();
+      const envVars = this.plugin.localStorage.getEnvVars();
+      const gitDir = this.plugin.settings.gitDir;
+      if (pathPaths.length > 0) {
+        const path3 = process.env["PATH"] + ":" + pathPaths.join(":");
         process.env["PATH"] = path3;
+      }
+      if (gitDir) {
+        process.env["GIT_DIR"] = gitDir;
+      }
+      for (const envVar of envVars) {
+        const [key2, value] = envVar.split("=");
+        process.env[key2] = value;
       }
       const debug2 = require_browser();
       debug2.enable("simple-git");
@@ -24743,6 +24758,14 @@ var ObsidianGitSettingsTab = class extends import_obsidian7.PluginSettingTab {
         });
       });
     if (plugin.gitManager instanceof SimpleGit)
+      new import_obsidian7.Setting(containerEl).setName("Additional environment variables").setDesc("Use each line for a new environment variable in the format KEY=VALUE").addTextArea((cb) => {
+        cb.setPlaceholder("GIT_DIR=/path/to/git/dir");
+        cb.setValue(plugin.localStorage.getEnvVars().join("\n"));
+        cb.onChange((value) => {
+          plugin.localStorage.setEnvVars(value.split("\n"));
+        });
+      });
+    if (plugin.gitManager instanceof SimpleGit)
       new import_obsidian7.Setting(containerEl).setName("Additional PATH environment variable paths").setDesc("Use each line for one path").addTextArea((cb) => {
         cb.setValue(plugin.localStorage.getPATHPaths().join("\n"));
         cb.onChange((value) => {
@@ -24750,7 +24773,7 @@ var ObsidianGitSettingsTab = class extends import_obsidian7.PluginSettingTab {
         });
       });
     if (plugin.gitManager instanceof SimpleGit)
-      new import_obsidian7.Setting(containerEl).setName("Reload with new PATH environment variable").addButton((cb) => {
+      new import_obsidian7.Setting(containerEl).setName("Reload with new environment variables").setDesc("Removing previously added environment variables will not take effect until Obsidian is restarted.").addButton((cb) => {
         cb.setButtonText("Reload");
         cb.setCta();
         cb.onClick(() => {
@@ -24767,6 +24790,14 @@ var ObsidianGitSettingsTab = class extends import_obsidian7.PluginSettingTab {
         plugin.settings.basePath = value;
         plugin.saveSettings();
         plugin.gitManager.updateBasePath(value || "");
+      });
+    });
+    new import_obsidian7.Setting(containerEl).setName("Custom Git directory path (Instead of '.git')").setDesc(`Requires restart of Obsidian to take effect. Use "\\" instead of "/" on Windows.`).addText((cb) => {
+      cb.setValue(plugin.settings.gitDir);
+      cb.setPlaceholder(".git");
+      cb.onChange((value) => {
+        plugin.settings.gitDir = value;
+        plugin.saveSettings();
       });
     });
     new import_obsidian7.Setting(containerEl).setName("Disable on this device").addToggle((toggle) => toggle.setValue(plugin.localStorage.getPluginDisabled()).onChange((value) => {
@@ -25087,6 +25118,13 @@ var LocalStorageSettings = class {
   }
   setPATHPaths(value) {
     return app.saveLocalStorage(this.prefix + "PATHPaths", value.join(":"));
+  }
+  getEnvVars() {
+    var _a2;
+    return JSON.parse((_a2 = app.loadLocalStorage(this.prefix + "envVars")) != null ? _a2 : "[]");
+  }
+  setEnvVars(value) {
+    return app.saveLocalStorage(this.prefix + "envVars", JSON.stringify(value));
   }
   getPluginDisabled() {
     return app.loadLocalStorage(this.prefix + "pluginDisabled") == "true";

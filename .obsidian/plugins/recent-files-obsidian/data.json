@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "14-1-introduction-to-operator-overloading",
-      "path": "docs/14-1-introduction-to-operator-overloading.md"
+      "basename": "Drawing 2023-02-11 13.33.50.excalidraw",
+      "path": "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "14-1-introduction-to-operator-overloading",
+      "path": "docs/14-1-introduction-to-operator-overloading.md"
+    },
+    {
+      "basename": "13-18-timing-your-code",
+      "path": "docs/13-18-timing-your-code.md"
     },
     {
       "basename": "11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays",
@@ -191,14 +199,6 @@
     {
       "basename": "6-12-Using-declarations-and-using directives",
       "path": "docs/6-12-Using-declarations-and-using directives.md"
-    },
-    {
-      "basename": "6-7-External-linkage-and-variable-forward-declarations",
-      "path": "docs/6-7-External-linkage-and-variable-forward-declarations.md"
-    },
-    {
-      "basename": "9-8-Pointers-and-const",
-      "path": "docs/9-8-Pointers-and-const.md"
     }
   ],
   "omittedPaths": [],

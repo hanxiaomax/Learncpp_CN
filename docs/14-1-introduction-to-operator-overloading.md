@@ -13,89 +13,87 @@ tags:
 ??? note "Key Takeaway"
 	
 
+在课程[[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]中，我们介绍了函数重载，它提供了一种机制，可以使用相同的名称创建和解析多个函数调用，只要每个函数都具有唯一的函数原型即可。这样，你就可以创建与不同数据类型一起使用的函数变体，而无需为每个变体想出一个独特的名称。
 
-In lesson [[8-9-Introduction-to-function-overloading|8.9 - 函数重载]] you learned about function overloading, which provides a mechanism to create and resolve function calls to multiple functions with the same name, so long as each function has a unique function prototype. This allows you to create variations of a function to work with different data types, without having to think up a unique name for each variant.
+在C++中，操作符也被实现为函数。通过在操作符函数上使用函数重载，你可以自定义操作符的功能，使其可以与不同的数据类型一起使用（包括你编写的类）。使用函数重载来重载操作符称为**操作符重载**。
 
-In C++, operators are implemented as functions. By using function overloading on the operator functions, you can define your own versions of the operators that work with different data types (including classes that you’ve written). Using function overloading to overload operators is called **operator overloading**.
+在本章中，我们将检查与操作符重载相关的主题。
 
-In this chapter, we’ll examine topics related to operator overloading.
-
-**Operators as functions**
-
-Consider the following example:
+## 操作符作为函数
 
 考虑以下示例：
+
 ```cpp
 int x { 2 };
 int y { 3 };
-std::cout << x + y << '\n';
+std::cout << x + y << '\\\\\\\\n';
 ```
 
+编译器提供了用于整数操作数的加号运算符（`+`）的内置版本 —— 该函数将整数`x`和`y`相加，并返回一个整数结果。当你看到表达式`x + y`时，你可以将其在头脑中翻译为函数调用`operator+(x, y)`（其中`operator+`是函数的名称）。
 
-The compiler comes with a built-in version of the plus operator (`+`) for integer operands -- this function adds integers x and y together and returns an integer result. When you see the expression `x + y`, you can translate this in your head to the function call `operator+(x, y)` (where operator+ is the name of the function).
-
-Now consider this similar snippet:
+考虑下面代码：
 
 ```cpp
 double z { 2.0 };
 double w { 3.0 };
-std::cout << w + z << '\n';
+std::cout << w + z << '\\\\\\\\n';
+
 ```
 
-COPY
+编译器也附带了双精度操作数的加号运算符（`+`）的内置版本。表达式`w + z`变为函数调用`operator+(w, z)`，并使用函数重载来确定编译器应该调用此函数的双精度版本而不是整数版本。
 
-The compiler also comes with a built-in version of the plus operator (+) for double operands. Expression w + z becomes function call `operator+(w, z)`, and function overloading is used to determine that the compiler should be calling the double version of this function instead of the integer version.
-
-Now consider what happens if we try to add two objects of a user-defined class:
+现在考虑如果我们尝试将两个用户定义的类的对象相加时会发生什么：
 
 ```cpp
 Mystring string1 { "Hello, " };
 Mystring string2 { "World!" };
-std::cout << string1 + string2 << '\n';
+std::cout << string1 + string2 << '\\\\\\\\n';
 ```
 
-COPY
 
-What would you expect to happen in this case? The intuitive expected result is that the string “Hello, World!” would be printed on the screen. However, because Mystring is a user-defined class, the compiler does not have a built-in version of the plus operator that it can use for Mystring operands. So in this case, it will give us an error. In order to make it work like we want, we’d need to write an overloaded function to tell the compiler how the + operator should work with two operands of type Mystring. We’ll look at how to do this in the next lesson.
 
-**Resolving overloaded operators**
+运行结果如何？字符串“Hello，World！”本应该将会被打印到屏幕上。但是，由于Mystring是用户定义的类，编译器没有可用于`Mystring`类型操作数的加号运算符。因此，在这种情况下，编译器会报告错误。为了使其按照我们想要的方式工作，则需要重载函数——告诉编译器如何将`+`操作符与两个`Mystring`类型的操作数一起使用。我们将在下一课中看到如何做到这一点。
 
-When evaluating an expression containing an operator, the compiler uses the following rules:
+## 解析重载操作符
 
--   If _all_ of the operands are fundamental data types, the compiler will call a built-in routine if one exists. If one does not exist, the compiler will produce a compiler error.
--   If _any_ of the operands are user data types (e.g. one of your classes, or an enum type), the compiler looks to see whether the type has a matching overloaded operator function that it can call. If it can’t find one, it will try to convert one or more of the user-defined type operands into fundamental data types so it can use a matching built-in operator (via an overloaded typecast, which we’ll cover later in this chapter). If that fails, then it will produce a compile error.
+在计算包含操作符的表达式时，编译器使用以下规则：
 
-**What are the limitations on operator overloading?**
+-   如果*所有*操作数都是基本数据类型，则编译器将调用内置例程（如果存在）。如果不存在，编译器将生成编译器错误。
+-   如果*任何*操作数是用户数据类型（例如你的类之一或枚举类型），则编译器将查看该类型是否具有匹配的重载操作符函数可以调用。如果找不到，它将尝试将一个或多个用户定义类型操作数转换为基本数据类型，以便它可以使用匹配的内置操作符（通过重载型转换，我们将在本章的后面介绍）。如果失败，则它将生成编译错误。
 
-First, almost any existing operator in C++ can be overloaded. The exceptions are: conditional (`?:`), sizeof, scope (`::`), member selector (`.`), pointer member selector (`->`), typeid, and the casting operators.
+## 操作符重载的限制是什么？
 
-Second, you can only overload the operators that exist. You can not create new operators or rename existing operators. For example, you could not create an operator `**` to do exponents.
+首先，C++中几乎可以重载所有现有操作符。例外情况是：条件（`?:`），sizeof，范围（`::`），成员选择器（`.`），指针成员选择器（`->`），typeid以及转换操作符。
 
-Third, at least one of the operands in an overloaded operator must be a user-defined type. This means you can not overload the plus operator to work with one integer and one double. However, you could overload the plus operator to work with an integer and a Mystring.
+其次，你只能重载现有的操作符。你不能创建新操作符或重命名现有操作符。例如，你不能创建一个操作符`**`来执行幂。
 
-Fourth, it is not possible to change the number of operands an operator supports.
+第三，重载操作符中至少有一个操作数必须是用户定义类型。这意味着你不能重载加号操
 
-Finally, all operators keep their default precedence and associativity (regardless of what they’re used for) and this can not be changed.
+第四，不可能改变操作符支持的操作数的数量。
 
-Some new programmers attempt to overload the bitwise XOR operator (`^`) to do exponentiation. However, in C++, `operator^` has a lower precedence level than the basic arithmetic operators, which causes expressions to evaluate incorrectly.
+最后，所有操作符都保持其默认的优先级和结合性（无论它们用于什么），这是不能改变的。
 
-In basic mathematics, exponentiation is resolved before basic arithmetic, so `4 + 3 ^ 2` resolves as `4 + (3 ^ 2) => 4 + 9 => 13`.  
-However, in C++, the arithmetic operators have higher precedence than `operator^`, so `4 + 3 ^ 2` resolves as (`4 + 3) ^ 2 => 7 ^ 2 => 49`.
+一些新的程序员试图重载位运算XOR操作符（`^`）来实现指数运算。但是，在C++中，`operator^`的优先级低于基本算术运算符，这会导致表达式评估不正确。
 
-You’d need to explicitly parenthesize the exponent portion (e.g. `4 + (3 ^ 2)`) every time you used it for this to work properly, which isn’t intuitive, and is potentially error-prone.
+在基本数学中，指数运算优先于基本算术运算，因此`4 + 3 ^ 2`解析为`4 + (3 ^ 2) => 4 + 9 => 13`。但是，在C++中，算术运算符的优先级高于`operator^`，因此`4 + 3 ^ 2`解析为（`4 + 3）^ 2 => 7 ^ 2 => 49`。
 
-Because of this precedence issue, it’s generally a good idea to use operators only in an analogous way to their original intent.
+要正确使用它，每次都显式地为指数部分添加括号（例如`4 + (3 ^ 2)`），这并不直观，并且可能存在错误。
 
-!!! success "最佳实践"
+因此，出于这个优先级问题，最好只以类似于其原始意图的方式使用运算符。
 
-	When overloading operators, it’s best to keep the function of the operators as close to the original intent of the operators as possible.
-
-Furthermore, because operators don’t have descriptive names, it’s not always clear what they are intended to do. For example, operator+ might be a reasonable choice for a string class to do concatenation of strings. But what about operator-? What would you expect that to do? It’s unclear.
 
 !!! success "最佳实践"
 
-	If the meaning of an overloaded operator is not clear and intuitive, use a named function instead.
+	当重载操作符时，最好使操作符的功能尽可能接近操作符的原始意图。
 
-Within those confines, you will still find plenty of useful functionality to overload for your custom classes! You can overload the + operator to concatenate your user-defined string class, or add two Fraction class objects together. You can overload the << operator to make it easy to print your class to the screen (or a file). You can overload the equality operator (`==`) to compare two class objects. This makes operator overloading one of the most useful features in C++ -- simply because it allows you to work with your classes in a more intuitive way.
 
-In the upcoming lessons, we’ll take a deeper look at overloading different kinds of operators.
+此外，由于操作符没有描述性的名称，它们的用途并不总是很清楚。例如，`operator+` 可能是字符串类连接字符串的合理选择。但是`operator-`呢？你期望它做什么？这不清楚。
+
+!!! success "最佳实践"
+
+	如果重载操作符的含义不清晰、不直观，请使用命名函数代替操作符重载。
+
+在这些限制内，你仍然可以找到许多有用的功能来重载你的自定义类！你可以重载`+`运算符来连接你的用户定义的字符串类，或将两个`Fraction`类对象相加。你可以重载`<<`运算符，以便轻松将你的类打印到屏幕（或文件）。你可以重载等式运算符（`==`）来比较两个类对象。这使得运算符重载成为C ++中最有用的功能之一 —— 因为它允许你以更直观的方式使用你的类。
+
+在接下来的课程中，我们将更深入地研究重载不同类型的运算符。
+
