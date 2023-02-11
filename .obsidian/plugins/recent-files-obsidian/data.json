@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Drawing 2023-02-11 13.33.50.excalidraw",
-      "path": "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md"
+      "basename": "7-15-Detecting-and-handling-errors",
+      "path": "docs/7-15-Detecting-and-handling-errors.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "3-6-Using-an-integrated-debugger-Stepping",
+      "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
+    },
+    {
+      "basename": "Drawing 2023-02-11 13.33.50.excalidraw",
+      "path": "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md"
     },
     {
       "basename": "14-1-introduction-to-operator-overloading",
@@ -69,10 +77,6 @@
       "path": "docs/1-9-Introduction-to-literals-and-operators.md"
     },
     {
-      "basename": "7-15-Detecting-and-handling-errors",
-      "path": "docs/7-15-Detecting-and-handling-errors.md"
-    },
-    {
       "basename": "7-14-Common-semantic-errors-in-c",
       "path": "docs/7-14-Common-semantic-errors-in-c.md"
     },
@@ -131,10 +135,6 @@
     {
       "basename": "7-12-Introduction-to-testing-your-code",
       "path": "docs/7-12-Introduction-to-testing-your-code.md"
-    },
-    {
-      "basename": "3-6-Using-an-integrated-debugger-Stepping",
-      "path": "docs/3-6-Using-an-integrated-debugger-Stepping.md"
     },
     {
       "basename": "3-4-Basic-debugging-tactics",

@@ -23,12 +23,15 @@
             }
           },
           {
-            "id": "fb821d9a9e3bfb72",
+            "id": "3a45942f6e807952",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md"
+                "file": "docs/7-15-Detecting-and-handling-errors.md",
+                "mode": "source",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -120,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md",
+                "file": "docs/7-15-Detecting-and-handling-errors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md"
+                "file": "docs/7-15-Detecting-and-handling-errors.md"
               }
             }
           }
@@ -160,17 +163,17 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "fb821d9a9e3bfb72",
+  "active": "3a45942f6e807952",
   "lastOpenFiles": [
     "docs/MOC.md",
+    "docs/3-6-Using-an-integrated-debugger-Stepping.md",
+    "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md",
     "docs/14-1-introduction-to-operator-overloading.md",
     "docs/13-18-timing-your-code.md",
     "docs/11-15-Pointers-to-pointers-and-dynamic-multidimensional-arrays.md",
     "docs/1-10-Introduction-to-expressions.md",
     "docs/9-x-Chapter-9-comprehensive-quiz.md.md",
     "docs/12-6-Ellipsis-and-why-to-avoid-them.md",
-    "docs/sentinel.md",
-    "docs/11-18-Introduction-to-iterators.md",
-    "docs/10-x-Chapter-10-comprehensive-quiz.md"
+    "docs/sentinel.md"
   ]
 }
