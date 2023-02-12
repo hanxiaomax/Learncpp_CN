@@ -90,13 +90,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 355.5
   },
   "right": {
     "id": "2d4c7ea0a4baec3c",
@@ -154,16 +152,16 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
       "templater-obsidian:Templater": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "canvas:Create new canvas": false,
       "darlal-switcher-plus:Open in Headings Mode": false,
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "3a45942f6e807952",
+  "active": "b9cdb44997e9824e",
   "lastOpenFiles": [
     "docs/MOC.md",
     "docs/3-6-Using-an-integrated-debugger-Stepping.md",
