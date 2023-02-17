@@ -11,37 +11,28 @@ tags:
 
 ??? note "Key Takeaway"
 
+在现代计算机体系结构上，最小的可寻址内存单元是字节。由于所有对象都需要具有唯一的内存地址，这意味着对象的大小必须至少为一个字节。对于大多数变量类型，这很好。但是，对于布尔值，这有点浪费(双关语）`“原文:this is a bit wasteful”`。布尔类型只有两种状态：真 （1） 或假 （0）。这组状态只需要一个位来存储。但是，如果变量必须至少是一个字节，并且一个字节是 8 位，这意味着布尔值使用 1 位，而其他 7 位未使用。
 
-On modern computer architectures, the smallest addressable unit of memory is a byte. Since all objects need to have unique memory addresses, this means objects must be at least one byte in size. For most variable types, this is fine. However, for Boolean values, this is a bit wasteful (pun intended). Boolean types only have two states: true (1), or false (0). This set of states only requires one bit to store. However, if a variable must be at least a byte, and a byte is 8 bits, that means a Boolean is using 1 bit and leaving the other 7 unused.
+在大多数情况下，这么做很好 —— 我们通常不会对内存管理如此苛刻，以至于我们需要关心7个浪费的位（我们更应该使代码易于理解，易于维护）。**但是，在某些存储密集型情况下，出于存储效率目的，将 8 个单独的布尔值“打包”到单个字节中可能很有用。**
 
-In the majority of cases, this is fine -- we’re usually not so hard-up for memory that we need to care about 7 wasted bits (we’re better off optimizing for understandability and maintainability). However, in some storage-intensive cases, it can be useful to “pack” 8 individual Boolean values into a single byte for storage efficiency purposes.
+做这些事情需要我们可以在位级别操作对象。幸运的是，C++为我们提供了做到这一点的工具。修改对象中的单个位称为**位操作**。
 
-Doing these things requires that we can manipulate objects at the bit level. Fortunately, C++ gives us tools to do precisely this. Modifying individual bits within an object is called bit manipulation.
+位操作在加密和压缩算法中也很有用。
 
-Bit manipulation is also useful in encryption and compression algorithms.
+<!--more-->
 
-Author’s note
+## 位标志
 
-This entire chapter is optional reading. Feel free to skip it and come back later.
-
-Bit flags
-
-Up to this point, we’ve used variables to hold single values:
+到目前为止，我们已经使用变量来保存单个值：
 
 ```cpp
 int foo { 5 }; // assign foo the value 5 (probably uses 32 bits of storage)
 std::cout << foo; // print the value 5
 ```
 
-COPY
+但是，我们可以将它们视为单个位的集合，而不是将对象视为包含单个值的对象。当对象的单个位用作布尔值时，这些位称为**位标志**。
 
-However, instead of viewing objects as holding a single value, we can instead view them as a collection of individual bits. When individual bits of an object are used as Boolean values, the bits are called bit flags.
-
-As an aside…
-
-In computing, a flag is a value that acts as a signal for some function or process. Analogously, in real life, a mailbox flag is used to signal that there is something inside the mailbox, so the mailbox doesn’t have to be opened to check.
-
-To define a set of bit flags, we’ll typically use an unsigned integer of the appropriate size (8 bits, 16 bits, 32 bits, etc… depending on how many flags we have), or std::bitset.
+要定义一组位标志，我们通常会使用**适当大小的无符号整数**（8 位、16 位、32 位等......取决于我们有多少标志），或**std::bitset**。
 
 ```cpp
 #include <bitset> // for std::bitset
@@ -49,37 +40,38 @@ To define a set of bit flags, we’ll typically use an unsigned integer of the a
 std::bitset<8> mybitset {}; // 8 bits in size means room for 8 flags
 ```
 
-COPY
+<table>     <tr>         <td bgcolor=Lightgreen>
+    最佳实践：</br>
+    位操作是少数应该明确使用无符号整数（或 std：：bitset）的情况之一。</td>     </tr> </table>
 
-Best practice
 
-Bit manipulation is one of the few times when you should unambiguously use unsigned integers (or std::bitset).
+在本课中，我们将展示如何通过 std::bitset 以简单的方式进行位操作。在下一组课程中，我们将探讨如何以更困难但用途广泛的方式做到这一点。
 
-In this lesson, we’ll show how to do bit manipulation the easy way, via std::bitset. In the next set of lessons, we’ll explore how to do it the more difficult but versatile way.
+## 位编号和位位置
 
-Bit numbering and bit positions
+给定一个位序列，我们通常从右到左对位进行编号，**从 0（而不是 1）开始**。每个数字表示一个**位位置**。
 
-Given a sequence of bits, we typically number the bits from right to left, starting with 0 (not 1). Each number denotes a bit position.
-
+```
 76543210  Bit position
 00000101  Bit sequence
+```
 
-Given the bit sequence 0000 0101, the bits that are in position 0 and 2 have value 1, and the other bits have value 0.
+给定位序列 0000 0101，位于位置 0 和 2 的位的值为 1，其他位的值为 0。
 
-Manipulating bits via std::bitset
+## 通过 std::bitset 操作位
 
-In lesson [4.16 -- Numeral systems (decimal, binary, hexadecimal, and octal)](https://www.learncpp.com/cpp-tutorial/numeral-systems-decimal-binary-hexadecimal-and-octal/) we already showed how to use a std::bitset to print values in binary. However, this isn’t the only useful thing std::bitset can do.
+在[第 4.16 课——数字系统十进制、二进制、十六进制和八进制](https://blog.0xfe.cc/Learncpp_CN/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/)中，我们已经展示了如何使用 std::bitset 打印二进制值。然而，这并不是 std::bitset 能做的唯一有用的事情。
 
-std::bitset provides 4 key functions that are useful for doing bit manipulation:
+std::bitset 提供了 4 个可用于位操作的关键函数：
 
--   test() allows us to query whether a bit is a 0 or 1
--   set() allows us to turn a bit on (this will do nothing if the bit is already on)
--   reset() allows us to turn a bit off (this will do nothing if the bit is already off)
--   flip() allows us to flip a bit value from a 0 to a 1 or vice versa
+- test() 允许我们查询某个位是 0 还是 1
+- set() 允许我们打开一个位（如果位已经打开，这将不执行任何操作）
+- reset() 允许我们关闭一个位（如果该位已经关闭，这将不执行任何操作）
+- flip() 允许我们将位值从 0 翻转为 1，反之亦然
 
-Each of these functions takes the position of the bit we want to operate on as their only argument.
+这些函数中的每一个都将我们要操作的位的位置作为它们唯一的参数。
 
-Here’s an example:
+这是一个例子：
 
 ```cpp
 #include <bitset>
@@ -100,18 +92,18 @@ int main()
 }
 ```
 
-COPY
+这打印：
 
-This prints:
-
+```
 All the bits: 00001101
 Bit 3 has value: 1
 Bit 4 has value: 0
+```
 
-A reminder
+<table>     <tr>         <td bgcolor=Lightgrey>
+    一个提醒：</br>
+    如果您需要复习什么是`0b`前缀或`'`分隔符，请查看[4.16 - 数字系统（十进制、二进制、十六进制和八进制）](https://blog.0xfe.cc/Learncpp_CN/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/)。</td>     </tr> </table>
+如果我们想一次获取或设置多个位怎么办
 
-If you need a refresher on what the `0b` prefix or the `'` separator is, review [4.16 -- Numeral systems (decimal, binary, hexadecimal, and octal)](https://www.learncpp.com/cpp-tutorial/numeral-systems-decimal-binary-hexadecimal-and-octal/).
+std::bitset 并不容易实现这个需求。为了做到这一点，或者如果我们想使用无符号整数位标志而不是 std::bitset，我们需要使用更传统的方法。我们将在接下来的几节课中介绍这些内容。
 
-What if we want to get or set multiple bits at once
-
-std::bitset doesn’t make this easy. In order to do this, or if we want to use unsigned integer bit flags instead of std::bitset, we need to turn to more traditional methods. We’ll cover these in the next couple of lessons.
