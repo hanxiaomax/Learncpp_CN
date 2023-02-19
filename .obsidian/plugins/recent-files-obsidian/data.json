@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "翻译约定",
+      "path": "docs/翻译约定.md"
+    },
+    {
       "basename": "6-5-Variable-shadowing-name-hiding",
       "path": "docs/6-5-Variable-shadowing-name-hiding.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "14-4-overloading-the-IO-operators",
       "path": "docs/14-4-overloading-the-IO-operators.md"
-    },
-    {
-      "basename": "14-3-overloading-operators-using-normal-functions",
-      "path": "docs/14-3-overloading-operators-using-normal-functions.md"
     }
   ],
   "omittedPaths": [],
