@@ -2800,8 +2800,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../9-x-Chapter-9-comprehensive-quiz.md" class="md-nav__link">
-        None
+      <a href="../9-x-Chapter-9-comprehensive-quiz/" class="md-nav__link">
+        9.x - 小结与测试 - 引用和指针
       </a>
     </li>
   
@@ -6184,12 +6184,12 @@ You entered 5 and 6
 </code></pre></div></td></tr></table></div>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
-<p>尽管，关于一个变量在用于接收用户输入（例如通过 <code>std::cin</code>）的数据之前，是否应该进行初始化这个问题有很多争论，毕竟用户的输入会覆盖初始化的值。与我们之前的建议类似，变量在使用前都必须要进行初始化，因此这里的最佳实践仍然是，变量要先进行初始化再用于接收用户输入。</p>
+<p>变量在用于接收用户输入（例如通过 <code>std::cin</code>）的数据之前，是否应该进行初始化这个问题有很多争论，因为用户的输入会覆盖初始化的值。与我们之前的建议类似，变量在使用前都必须要进行初始化，因此这里的最佳实践仍然是，变量要先进行初始化再用于接收用户输入。</p>
 </div>
 <p>我们会在<a href="../7-16-std-cin-and-handling-invalid-input/">7.16 - std::in 和输入错误处理</a>中讨论 <code>std::cin</code> 如何应对非法输入。</p>
 <div class="admonition info">
 <p class="admonition-title">扩展阅读</p>
-<p>C++ 的输入输出库并没有提供一种无需按下回车就可以获取输入结果的方法。如果你希望实现该功能，你必须使用第三方库来完成。如果是开发控制台应用程序，我们推荐尝试 <a href="https://pdcurses.org/">pdcurses</a> 这个库。另外，很多图形用户库界面库也提供了类似的功能。</p>
+<p>C++ 的输入输出库并没有提供一种无需按下回车就可以获取输入结果的方法。如果你希望实现该功能，将不得不使用第三方库。如果是开发控制台应用程序，我们推荐尝试 <a href="https://pdcurses.org/">pdcurses</a> 、<a href="https://github.com/ArthurSonzogni/FTXUI">FXTUI</a>或<a href="https://github.com/jupyter-xeus/cpp-terminal">cpp-terminal</a>。另外，很多图形用户库界面库也提供了类似的功能。</p>
 </div>
 <h2 id="_2">小结</h2>
 <p>新手程序员常常会混淆 <code>std::cin</code>、<code>std::cout</code>、插入运算符 (<code>&lt;&lt;</code>) 和提取运算符 (<code>&gt;&gt;</code>)。下面这些技巧可以帮助你记忆：</p>

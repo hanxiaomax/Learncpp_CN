@@ -207,7 +207,7 @@
 - [ ] [[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]
 - [x] [[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]
 - [x] [[12-8-lambda-captures|12.8 - lambda 闭包]]
-- [x] [[12-x-chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
+- [x] [[12-x-Chapter-12-comprehensive-quiz|12.x - 小结与测试 - 函数]]
 
 ## 13. 面向对象编程基础 
 

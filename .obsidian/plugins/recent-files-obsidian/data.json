@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "12-x-Chapter-12-comprehensive-quiz",
+      "path": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+    },
+    {
       "basename": "9-x-Chapter-9-comprehensive-quiz",
       "path": "docs/9-x-Chapter-9-comprehensive-quiz.md"
     },
@@ -83,10 +87,6 @@
     {
       "basename": "13-x-Chapter-13-comprehensive-quiz",
       "path": "docs/13-x-Chapter-13-comprehensive-quiz.md"
-    },
-    {
-      "basename": "12-x-chapter-12-comprehensive-quiz",
-      "path": "docs/12-x-chapter-12-comprehensive-quiz.md"
     },
     {
       "basename": "12-8-lambda-captures",

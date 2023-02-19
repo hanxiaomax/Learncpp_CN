@@ -21,8 +21,22 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "a75f376e6b990947",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/12-x-Chapter-12-comprehensive-quiz.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -106,7 +120,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "docs/12-x-Chapter-12-comprehensive-quiz.md"
+              }
             }
           }
         ]
@@ -127,10 +143,10 @@
       "darlal-switcher-plus:Open Symbols for the active editor": false
     }
   },
-  "active": "b9cdb44997e9824e",
+  "active": "a75f376e6b990947",
   "lastOpenFiles": [
-    "docs/9-x-Chapter-9-comprehensive-quiz.md",
     "docs/9-x-Chapter-9-comprehensive-quiz.md.md",
+    "docs/9-x-Chapter-9-comprehensive-quiz.md",
     "docs/8-14-Function-template-instantiation.md",
     "docs/6-x-Chapter-6-summary-and-quiz.md",
     "docs/6-9-Sharing-global-constants-across-multiple-files-using-inline-variables.md",

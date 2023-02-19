@@ -65,11 +65,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              9.x - 小结与测试 - 引用和指针
+              简单转换
             
           </span>
         </div>
@@ -2722,8 +2717,8 @@
   
   
     <li class="md-nav__item">
-      <a href="." class="md-nav__link">
-        None
+      <a href="../9-x-Chapter-9-comprehensive-quiz/" class="md-nav__link">
+        9.x - 小结与测试 - 引用和指针
       </a>
     </li>
   
@@ -5737,21 +5732,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    复习
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -5769,8 +5749,14 @@
   <nav class="md-tags" >
     
       
-        <a href="../tags/#summary" class="md-tag">
-          summary
+        <a href="../tags/#" class="md-tag">
+          词汇表
+        </a>
+      
+    
+      
+        <a href="../tags/#trivial-conversion" class="md-tag">
+          简单转换(trivial conversion)
         </a>
       
     
@@ -5778,89 +5764,10 @@
 
 
 
-  <!-- <div style="background: #efefef;">
-    <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//chapter-9-comprehensive-and-quiz/">原文链接: 9.x — Chapter 9 summary and quiz</a>
-    </div>
-    <div >
-        <a target="_blank" href="https://www.learncpp.com/author/Alex/">作者: ALEX</a>
-    </div>
-    <div >
-        <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//chapter-9-comprehensive-and-quiz/">更新时间: 2022-6-12</a>
-    </div>
-  </div> -->
-  <div class="origin-link">
-    <span class="twemoji">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208-93.3 208-208 208zm-.9-288c21.06 0 40.92 8.312 55.83 23.38 9.375 9.344 24.53 9.5 33.97.156 9.406-9.344 9.469-24.53.156-33.97-24-24.22-55.95-37.56-89.95-37.56 0 0 .032 0 0 0-33.97 0-65.95 13.34-89.95 37.56-49.44 49.88-49.44 131 0 180.9 24 24.22 55.98 37.56 89.95 37.56.032 0 0 0 0 0 34 0 65.95-13.34 89.95-37.56 9.312-9.438 9.25-24.62-.156-33.97-9.438-9.312-24.59-9.219-33.97.156-14.91 15.06-34.77 23.38-55.83 23.38 0 0 .031 0 0 0-21.09 0-40.95-8.312-55.89-23.38-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/></svg> 
-    </span>
-    <a target="_blank" href="https://www.learncpp.com/cpp-tutorial//chapter-9-comprehensive-and-quiz/">English
-    </a>
-</div>
-  
 
-  <h1>9.x - 小结与测试 - 引用和指针</h1>
+  <h1>简单转换</h1>
 
-<h2 id="_1">复习</h2>
-<p><a href="../9-1-Introduction-to-compound-data-types/">9.1 - 复合数据类型</a></p>
-<ul>
-<li><strong>复合数据类型</strong> (也称作<strong>组合数据类型</strong>)，指的是哪些由基础数据类型组成的数据类型（或由其他复合类型组成）。</li>
-</ul>
-<p><a href="../9-2-Value-categories-lvalues-and-rvalues/">9.2 - 值的分类（左值和右值）</a></p>
-<ul>
-<li>一个表达式的值类别（value category）表明一个表达式最终会被解析为一个值、一个函数还是某种类型的对象。</li>
-<li><a href="../lvalue/">左值</a>表达式求值为一个具有标识的函数或者一个对象。一个对象具有标识，意味着它具有标识符或者一个具有标识的内存地址。左值有两个子类：可变左值是可以被修改的左值，不可变左值是不可以被修改的左值（通常因为它们是<code>const</code>或<code>constexpr</code>类型的）。</li>
-<li>当表达式不是左值时，它便是<a href="../rvalue/">右值</a>。包括字面量（字符串字面量除外）和函数或操作（当<a href="../return-by-value/">按值返回</a>时）的返回值。</li>
-</ul>
-<p><a href="../9-3-Lvalue-references/">9.3 - 左值引用</a></p>
-<ul>
-<li><strong>引用</strong>是某个已经<strong>存在</strong>的对象的别名。引用一旦被定义，任何对引用的操作都相当于操作该引用所表示的对象。C++ 有两种引用，左值引用和右值引用。左值引用（简称引用）就是某个左值的别名。左值引用变量就是一个用作左值引用的变量，其引用的左值通常是另外一个变量。</li>
-<li>当使用对象或函数对引用进行初始化之后，我们说该引用和对象或函数绑定了。被引用的对象或者函数称为referent。</li>
-<li>左值引用不可以被绑定到不可修改的左值或右值（不然的话你就可以通过该引用来修改它们的值了，这违反了它们作为常量的属性）。因此，左值引用有时也被称为左值非常量引用（简称常量引用）。</li>
-<li>引用一旦初始化，它便不能够被重置，也就是说不能修改它去引用别的对象。</li>
-<li>当如果对象先于它的引用被销毁，则该引用会指向一个不存在的对象，此时该引用被称为<a href="../dangling/">悬垂</a>引用。访问悬垂引用会导致<a href="../1-6-Uninitialized-variables-and-undefined-behavior/">未定义行为</a>。</li>
-</ul>
-<p><a href="../9-4-Lvalue-references-to-const/">9.4 - const类型的左值引用</a></p>
-<ul>
-<li>当使用<code>const</code> 关键字来修饰一个左值引用时，即要求该引用将它所引用的对象看做常量。此时成该引用为<strong>指向常量值的左值引用</strong>（简称指向常量的引用或常量引用）。<strong>常量引用</strong>可以被绑定到可以修改左值，不可修改左值和右值。</li>
-<li>一个临时对象（有时称为未命名对象或匿名对象）是指在一个单一表达式中为了临时使用而创建的对象（使用后销毁）。</li>
-</ul>
-<p><a href="../9-5-Pass-by-lvalue-reference/">9.5 - 传递左值引用</a></p>
-<ul>
-<li>当进行<a href="../pass-by-reference/">按引用传递</a>时，我们将函数的<a href="../parameters/">形参</a>声明为引用或常量引用而不是普通的变量。当函数被调用时，形参中的引用会绑定到<a href="../arguments/">实参</a>。因为引用只是对象的别名，所以这种情况下并不会创建实参的拷贝。</li>
-<li><a href="../address-of-operator/">取地址运算符 (&amp;)</a>会返回其操作数的地址。而<a href="../dereference-operator/">解引用(*)</a>运算符则会返回给定地址存放的左值。</li>
-</ul>
-<p><a href="../9-6-Introduction-to-pointers/">9.6 - 指针简介</a></p>
-<ul>
-<li>指针是一个对象，它<strong>持有</strong>一个内存地址（通常是另外一个变量的地址）作为其值。使用指针我们可以将某个对象的地址保存起来以便稍后使用。和不同的变量一样，指针不会被默认初始化。而没有被初始化的指针通常被称为<a href="../wild-pointer/">野指针</a>。<a href="../dangling/">悬垂</a>指针则是那些保存着无效地址的指针（该地址中的对象已经被销毁）。</li>
-</ul>
-<p><a href="../9-7-Null-pointers/">9.7 - 空指针</a></p>
-<ul>
-<li>除了内存地址，指针还可以保存一个特殊值，即空值（null）。null是一个特殊值它表示空值。当指针的值为null时，表示它没有指向任何地址。此时该指针被称为空指针。关键字<code>nullptr</code>是空指针的字面量。我们可以通过<code>nullptr</code>来显式地为指针初始化或赋值为空值。</li>
-<li>指针应当持有一个包含有效对象的地址，或者设置为 <code>nullptr</code>。这种情况下我们只需要判断指针是不是空即可，否则我们就认为它是有效的。</li>
-</ul>
-<p><a href="../9-8-Pointers-and-const/">9.8 - 指针和const</a></p>
-<ul>
-<li>指针如果指向一个const常量（有时简称为指向常量的指针），则表示一个（非常量）指针指向一个常量。</li>
-<li>而一个常量指针，则是在其持有地址被初始后，不能再改变的指针。</li>
-<li>指向常量的常量指针，其指针本身所持有的地址不能改变，也不能修改该地址所指向的对象。</li>
-</ul>
-<p><a href="../9-9-Pass-by-address/">9.9 - 按地址传递</a></p>
-<ul>
-<li>对于<a href="../pass-by-address/">传地址</a>来说，调用者会使用对象的地址（通过指针）而不是对象本身作为<a href="../arguments/">实参</a>。该指针（持有该对象的地址）会被拷贝到被调函数的指针参数（<a href="../parameters/">形参</a>），该参数此时保存着该对象所在地址（的一份拷贝）。随后，函数可以对该指针进行<a href="../dereference-operator/">解引用</a>以访问该对象。</li>
-</ul>
-<p><a href="../9-10-Pass-by-address-part-2/">9.10 - 按地址传递 Part2</a></p>
-<ul>
-<li><a href="../return-by-reference/">按引用返回</a>时，函数返回绑定到返回对象的引用，这种情况下不会对返回值进行拷贝。在返回引用时，有一点需要注意：该引用所绑定的对象其生命周期要比函数长。否则返回的引用将变成<a href="../dangling/">悬垂</a>引用（引用的对象被销毁了），此时继续使用该引用会导致未定义行为。<mark>如果实参通过引用的方式被传入，那么使用按引用返回该参数也是更安全的</mark>。</li>
-</ul>
-<p><a href="../9-11-Return-by-reference-and-return-by-address/">9.11 - 按引用返回和按地址返回</a></p>
-<ul>
-<li>如果一个函数返回引用，且该引用被用来初始化或赋值给一个非引用类型的变量，那么该返回值会被拷贝（和<a href="../return-by-value/">按值返回</a>的效果是一样的）。</li>
-<li><a href="../return-by-address/">按地址返回</a>和<a href="../return-by-reference/">按引用返回</a>的工作原理几乎是一样的，区别只在于前者返回的是指向对象的指针而后者返回的是一个对象的引用。</li>
-</ul>
-<p><a href="../9-12-Type-deduction-with-pointers-references-and-const/">9.12 - 指针、引用和const的类型推断</a></p>
-<ul>
-<li>使用<code>auto</code>进行类型推断时，它会移除引用标记或其他顶层常量修饰符。如果，你仍需要这些标识符，则需要将其作为变量声明的一部分进行添加。</li>
-</ul>
+
 
 
               </article>

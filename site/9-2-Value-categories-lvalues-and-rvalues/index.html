@@ -2793,8 +2793,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../9-x-Chapter-9-comprehensive-quiz.md" class="md-nav__link">
-        None
+      <a href="../9-x-Chapter-9-comprehensive-quiz/" class="md-nav__link">
+        9.x - 小结与测试 - 引用和指针
       </a>
     </li>
   
@@ -5976,7 +5976,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>对于 <code>v1</code>，编译器会在<a href="../compile-time/">编译时</a>确定两个<code>int</code>的求值结果是<code>int</code>，所以<code>int</code>就是表达式的类型。通过[[type-inference|类型推断]]，<code>int</code>最终会作为 <code>v1</code> 的类型。</p>
+<p>对于 <code>v1</code>，编译器会在<a href="../compile-time/">编译时</a>确定两个<code>int</code>的求值结果是<code>int</code>，所以<code>int</code>就是表达式的类型。通过<a href="../type-inference/">类型推断</a>，<code>int</code>最终会作为 <code>v1</code> 的类型。</p>
 <p>对于 <code>v2</code>，编译器会在<a href="../compile-time/">编译时</a>确定，一个<code>double</code> 操作数和一个 <code>int</code> 操作数的求值结果是 <code>double</code> 类型的。还记得吗，算数运算符要求两个操作数具有匹配的类型，因此在这个例子中，<code>int</code> 操作数会被转换为<code>double</code>，随后就会执行浮点数除法。所以 <code>double</code> 会成为表达式的类型。</p>
 <p><mark>编译器会使用表达式的类型来判断在特定上下文中是不是合法的表达式</mark>，例如：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
