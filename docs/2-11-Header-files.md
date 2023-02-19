@@ -66,7 +66,7 @@ int main()
 
 !!! success "最佳实践"
 
-    头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则。例外的是 [[symbolic-constants|符号常量]] (在[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常数和 constexpr 变量]]中会进行介绍)。
+    头文件中一般不应该包含函数和变量的定义，以便遵循单一定义规则。例外的是 [[symbolic-constants|符号常量]] (在[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]中会进行介绍)。
 
 ## 编写头文件
 
