@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "7-15-Detecting-and-handling-errors",
-      "path": "docs/7-15-Detecting-and-handling-errors.md"
+      "basename": "6-5-Variable-shadowing-name-hiding",
+      "path": "docs/6-5-Variable-shadowing-name-hiding.md"
     },
     {
       "basename": "MOC",
       "path": "docs/MOC.md"
+    },
+    {
+      "basename": "1-8-Whitespace-and-basic-formatting",
+      "path": "docs/1-8-Whitespace-and-basic-formatting.md"
+    },
+    {
+      "basename": "1-3-Introduction-to-objects-and-variables",
+      "path": "docs/1-3-Introduction-to-objects-and-variables.md"
+    },
+    {
+      "basename": "1-1-Statements-and-the-structure-of-a-program",
+      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
+    },
+    {
+      "basename": "0-8-A-few-common-C++-problems",
+      "path": "docs/0-8-A-few-common-C++-problems.md"
+    },
+    {
+      "basename": "7-15-Detecting-and-handling-errors",
+      "path": "docs/7-15-Detecting-and-handling-errors.md"
     },
     {
       "basename": "3-6-Using-an-integrated-debugger-Stepping",
@@ -141,10 +161,6 @@
       "path": "docs/3-4-Basic-debugging-tactics.md"
     },
     {
-      "basename": "1-1-Statements-and-the-structure-of-a-program",
-      "path": "docs/1-1-Statements-and-the-structure-of-a-program.md"
-    },
-    {
       "basename": "Untitled",
       "path": "docs/Untitled.canvas"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "14-3-overloading-operators-using-normal-functions",
       "path": "docs/14-3-overloading-operators-using-normal-functions.md"
-    },
-    {
-      "basename": "14-2-overloading-the-arithmetic-operators-using-friend-functions",
-      "path": "docs/14-2-overloading-the-arithmetic-operators-using-friend-functions.md"
-    },
-    {
-      "basename": "3-3-A-strategy-for-debugging",
-      "path": "docs/3-3-A-strategy-for-debugging.md"
-    },
-    {
-      "basename": "3-2-The-debugging-process",
-      "path": "docs/3-2-The-debugging-process.md"
-    },
-    {
-      "basename": "6-12-Using-declarations-and-using directives",
-      "path": "docs/6-12-Using-declarations-and-using directives.md"
     }
   ],
   "omittedPaths": [],
