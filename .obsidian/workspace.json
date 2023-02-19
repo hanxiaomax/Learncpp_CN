@@ -28,7 +28,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/翻译约定.md",
+                "file": "docs/12-8-lambda-captures.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "翻译约定",
+                "query": "12-8",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -122,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/翻译约定.md"
+                "file": "docs/12-8-lambda-captures.md"
               }
             }
           }
@@ -146,6 +146,7 @@
   },
   "active": "2b469dadef266821",
   "lastOpenFiles": [
+    "docs/翻译约定.md",
     "docs/6-5-Variable-shadowing-name-hiding.md",
     "docs/MOC.md",
     "docs/1-8-Whitespace-and-basic-formatting.md",
@@ -154,7 +155,6 @@
     "docs/0-8-A-few-common-C++-problems.md",
     "docs/7-15-Detecting-and-handling-errors.md",
     "docs/3-6-Using-an-integrated-debugger-Stepping.md",
-    "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md",
-    "docs/14-1-introduction-to-operator-overloading.md"
+    "docs/images/onepage/Drawing 2023-02-11 13.33.50.excalidraw.md"
   ]
 }

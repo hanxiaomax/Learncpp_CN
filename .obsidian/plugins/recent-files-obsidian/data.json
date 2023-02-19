@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "12-8-lambda-captures",
+      "path": "docs/12-8-lambda-captures.md"
+    },
+    {
       "basename": "翻译约定",
       "path": "docs/翻译约定.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "14-5-overloading-operators-using-member-functions",
       "path": "docs/14-5-overloading-operators-using-member-functions.md"
-    },
-    {
-      "basename": "14-4-overloading-the-IO-operators",
-      "path": "docs/14-4-overloading-the-IO-operators.md"
     }
   ],
   "omittedPaths": [],
