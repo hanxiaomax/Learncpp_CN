@@ -19,8 +19,6 @@ tags:
 
 位操作在加密和压缩算法中也很有用。
 
-<!--more-->
-
 ## 位标志
 
 到目前为止，我们已经使用变量来保存单个值：
@@ -39,11 +37,9 @@ std::cout << foo; // print the value 5
 
 std::bitset<8> mybitset {}; // 8 bits in size means room for 8 flags
 ```
+!!! success "最佳实践"
 
-<table>     <tr>         <td bgcolor=Lightgreen>
-    最佳实践：</br>
-    位操作是少数应该明确使用无符号整数（或 std：：bitset）的情况之一。</td>     </tr> </table>
-
+	位操作是少数应该明确使用无符号整数（或 std：：bitset）的情况之一。
 
 在本课中，我们将展示如何通过 std::bitset 以简单的方式进行位操作。在下一组课程中，我们将探讨如何以更困难但用途广泛的方式做到这一点。
 
@@ -60,7 +56,7 @@ std::bitset<8> mybitset {}; // 8 bits in size means room for 8 flags
 
 ## 通过 std::bitset 操作位
 
-在[第 4.16 课——数字系统十进制、二进制、十六进制和八进制](https://blog.0xfe.cc/Learncpp_CN/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/)中，我们已经展示了如何使用 std::bitset 打印二进制值。然而，这并不是 std::bitset 能做的唯一有用的事情。
+在[[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|第 4.16 课——数字系统十进制、二进制、十六进制和八进制]]中，我们已经展示了如何使用 std::bitset 打印二进制值。然而，这并不是 std::bitset 能做的唯一有用的事情。
 
 std::bitset 提供了 4 个可用于位操作的关键函数：
 
@@ -100,10 +96,15 @@ Bit 3 has value: 1
 Bit 4 has value: 0
 ```
 
-<table>     <tr>         <td bgcolor=Lightgrey>
-    一个提醒：</br>
-    如果您需要复习什么是`0b`前缀或`'`分隔符，请查看[4.16 - 数字系统（十进制、二进制、十六进制和八进制）](https://blog.0xfe.cc/Learncpp_CN/4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/)。</td>     </tr> </table>
-如果我们想一次获取或设置多个位怎么办
+!!! tip "小贴士"
 
+    如果您需要复习什么是`0b`前缀或`'`分隔符，请查看[[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数字系统十进制、二进制、十六进制和八进制]]
+
+## 如果我们想一次获取或设置多个位怎么办
 std::bitset 并不容易实现这个需求。为了做到这一点，或者如果我们想使用无符号整数位标志而不是 std::bitset，我们需要使用更传统的方法。我们将在接下来的几节课中介绍这些内容。
 
+## std::bitset 的大小
+
+一个潜在的惊喜是 std::bitset **针对速度进行了优化**，而不是节省内存。std::bitset 的大小通常是保存位所需的字节数，`四舍五入到(rounded up to)`最接近的`sizeof(size_t)`，在 32 位机器上为 4 字节，在 64 位机器上为 8 字节。
+
+因此，`std::bitset<8>` 通常使用 4 或 8 字节的内存，即使它在技术上只需要 1 个字节来存储 8 位。因此，当我们想要方便而不是节省内存时，std::bitset 是最有用的。

@@ -11,27 +11,25 @@ tags:
 
 ??? note "Key Takeaway"
 
-In the previous lesson on bitwise operators ([O.2 -- Bitwise operators](https://www.learncpp.com/cpp-tutorial/bitwise-operators/)), we discussed how the various bitwise operators apply logical operators to each bit within the operands. Now that we understand how they function, let’s take a look at how they’re more commonly used.
+## 位掩码
 
-Bit masks
+为了操作单个位（例如打开或关闭它们），我们需要一些方法来识别我们想要操作的特定位。不幸的是，按位运算符不知道如何处理位位置。相反，他们使用位掩码。
 
-In order to manipulate individual bits (e.g. turn them on or off), we need some way to identify the specific bits we want to manipulate. Unfortunately, the bitwise operators don’t know how to work with bit positions. Instead they work with bit masks.
+**位掩码**是一组预定义的位，用于选择哪些特定位将被后续操作修改。
 
-A bit mask is a predefined set of bits that is used to select which specific bits will be modified by subsequent operations.
+考虑一个真实的案例，您想要绘制一个窗框。如果您不小心，您不仅会冒着粉刷窗框的风险，还会冒着粉刷玻璃本身的风险。您可以购买一些遮蔽胶带并将其贴在玻璃和您不想涂漆的任何其他部件上。然后，当您绘画时，遮蔽胶带会阻止油漆接触到您不想涂漆的任何东西。最后，只有未遮罩的部分（您要绘制的部分）被绘制。
 
-Consider a real-life case where you want to paint a window frame. If you’re not careful, you risk painting not only the window frame, but also the glass itself. You might buy some masking tape and apply it to the glass and any other parts you don’t want painted. Then when you paint, the masking tape blocks the paint from reaching anything you don’t want painted. In the end, only the non-masked parts (the parts you want painted) get painted.
+位掩码本质上对位执行相同的功能——**位掩码阻止按位运算符接触我们不想修改的位，并允许访问我们确实想要修改的位。**
 
-A bit mask essentially performs the same function for bits -- the bit mask blocks the bitwise operators from touching bits we don’t want modified, and allows access to the ones we do want modified.
+让我们首先探讨如何定义一些简单的位掩码，然后我们将向您展示如何使用它们。
 
-Let’s first explore how to define some simple bit masks, and then we’ll show you how to use them.
+## 在 C++14 中定义位掩码
 
-Defining bit masks in C++14
+最简单的一组位掩码是为每个位位置定义一个位掩码。我们用 0 来屏蔽我们不关心的位，用 1 来表示我们想要修改的位。
 
-The simplest set of bit masks is to define one bit mask for each bit position. We use 0s to mask out the bits we don’t care about, and 1s to denote the bits we want modified.
+尽管位掩码可以是文字，但它们通常被定义为符号常量，因此可以为它们指定一个有意义的名称并易于重用。
 
-Although bit masks can be literals, they’re often defined as symbolic constants so they can be given a meaningful name and easily reused.
-
-Because C++14 supports binary literals, defining these bit masks is easy:
+因为 C++14 支持二进制文字，所以定义这些位掩码很容易：
 
 ```cpp
 #include <cstdint>
@@ -46,26 +44,25 @@ constexpr std::uint8_t mask6{ 0b0100'0000 }; // represents bit 6
 constexpr std::uint8_t mask7{ 0b1000'0000 }; // represents bit 7
 ```
 
-COPY
+现在我们有一组代表每个位位置的符号常量。我们可以使用这些来操作位（稍后我们将展示如何操作）。
 
-Now we have a set of symbolic constants that represents each bit position. We can use these to manipulate the bits (which we’ll show how to do in just a moment).
+## 在 C++11 或更早版本中定义位掩码
 
-Defining bit masks in C++11 or earlier
+因为 **C++11 不支持二进制文字**，我们必须使用其他方法来设置符号常量。有两种很好的方法可以做到这一点。
 
-Because C++11 doesn’t support binary literals, we have to use other methods to set the symbolic constants. There are two good methods for doing this.
+第一种方法是使用十六进制文字。
 
-The first method is to use hexadecimal literals.
+相关内容
 
-!!! info "相关内容"
+我们在[[4-15-Literals|4.15-字面量]]中讨论了十六进制。
 
-	We talk about hexadecimal in lesson [4.15 -- Literals](https://www.learncpp.com/cpp-tutorial/literals/).
+十六进制转二进制的方法如下：
 
-Here’s how hexadecimal converts to binary:
+| 十六进制 | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | A    | B    | C    | D    | E    | F    |
+| -------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 二进制   | 0000 | 0001 | 0010 | 0011 | 0100 | 0101 | 0110 | 0111 | 1000 | 1001 | 1010 | 1011 | 1100 | 1101 | 1110 | 1111 |
 
-Hexadecimal	0	1	2	3	4	5	6	7	8	9	A	B	C	D	E	F
-Binary	0000	0001	0010	0011	0100	0101	0110	0111	1000	1001	1010	1011	1100	1101	1110	1111
-
-Therefore, we can define bit masks using hexadecimal like this:
+因此，我们可以像这样使用十六进制定义位掩码：
 
 ```cpp
 constexpr std::uint8_t mask0{ 0x01 }; // hex for 0000 0001
@@ -78,11 +75,9 @@ constexpr std::uint8_t mask6{ 0x40 }; // hex for 0100 0000
 constexpr std::uint8_t mask7{ 0x80 }; // hex for 1000 0000
 ```
 
-COPY
+有时会省略前导的十六进制 0（例如，`0x01`您只会看到`0x1`）。无论哪种方式，如果您不熟悉十六进制到二进制的转换，这可能有点难以阅读。
 
-Sometimes leading hexadecimal 0s will be omitted (e.g. instead of `0x01` you’ll just see `0x1`). Either way, this can be a little hard to read if you’re not familiar with hexadecimal to binary conversion.
-
-An easier method is to use the left-shift operator to shift a single bit into the proper location:
+一种更简单的方法是使用左移运算符将一位移动到正确的位置：
 
 ```cpp
 constexpr std::uint8_t mask0{ 1 << 0 }; // 0000 0001
@@ -95,13 +90,11 @@ constexpr std::uint8_t mask6{ 1 << 6 }; // 0100 0000
 constexpr std::uint8_t mask7{ 1 << 7 }; // 1000 0000
 ```
 
-COPY
+## 测试一下（看它是1还是0）
 
-Testing a bit (to see if it is on or off)
+现在我们有了一组位掩码，我们可以将它们与位标志变量结合使用来操作我们的位标志。
 
-Now that we have a set of bit masks, we can use these in conjunction with a bit flag variable to manipulate our bit flags.
-
-To determine if a bit is on or off, we use _bitwise AND_ in conjunction with the bit mask for the appropriate bit:
+要确定某个位是开还是关，我们使用*按位与*结合相应位的位掩码：
 
 ```cpp
 #include <cstdint>
@@ -127,16 +120,16 @@ int main()
 }
 ```
 
-COPY
+这打印：
 
-This prints:
-
-bit 0 is on
+```
 bit 1 is off
+bit 1 is on
+```
 
-Setting a bit
+## 置1一位
 
-To set (turn on) a bit, we use bitwise OR equals (operator |=) in conjunction with the bit mask for the appropriate bit:
+要设置（置1）位，我们将按位或等于（运算符 |=）与相应位的位掩码结合使用：
 
 ```cpp
 #include <cstdint>
@@ -165,24 +158,22 @@ int main()
 }
 ```
 
-COPY
+这打印：
 
-This prints:
-
+```
 bit 1 is off
 bit 1 is on
+```
 
-We can also turn on multiple bits at the same time using _Bitwise OR_:
+*我们还可以使用按位或*同时置1多个位：
 
 ```cpp
 flags |= (mask4 | mask5); // turn bits 4 and 5 on at the same time
 ```
 
-COPY
+## 置0一位
 
-Resetting a bit
-
-To clear a bit (turn off), we use _Bitwise AND_ and _Bitwise NOT_ together:
+要清除位（置0），我们同时使用*按位与*和*按位非*：
 
 ```cpp
 #include <cstdint>
@@ -211,24 +202,22 @@ int main()
 }
 ```
 
-COPY
+这打印：
 
-This prints:
-
+```
 bit 2 is on
 bit 2 is off
+```
 
-We can turn off multiple bits at the same time:
+我们可以同时关闭多个位：
 
 ```cpp
 flags &= ~(mask4 | mask5); // turn bits 4 and 5 off at the same time
 ```
 
-COPY
+## 翻转一位 
 
-Flipping a bit
-
-To toggle a bit state, we use _Bitwise XOR_:
+要切换位状态，我们使用*按位异或*：
 
 ```cpp
 #include <cstdint>
@@ -257,27 +246,25 @@ int main()
 }
 ```
 
-COPY
+这打印：
 
-This prints:
-
+```
 bit 2 is on
 bit 2 is off
 bit 2 is on
+```
 
-We can flip multiple bits simultaneously:
+我们可以同时翻转多个位：
 
 ```cpp
 flags ^= (mask4 | mask5); // flip bits 4 and 5 at the same time
 ```
 
-COPY
+## 位掩码和 std::bitset
 
-Bit masks and std::bitset
+std::bitset 支持全套位运算符。因此，尽管使用函数（测试、设置、重置和翻转）修改单个位更容易，但您可以根据需要使用按位运算符和位掩码。
 
-std::bitset supports the full set of bitwise operators. So even though it’s easier to use the functions (test, set, reset, and flip) to modify individual bits, you can use bitwise operators and bit masks if you want.
-
-Why would you want to? The functions only allow you to modify individual bits. The bitwise operators allow you to modify multiple bits at once.
+你为什么要这样做？**这些函数test(),set(),reset(),flip()只允许您修改单个位。按位运算符允许您一次修改多个位。**
 
 ```cpp
 #include <cstdint>
@@ -315,10 +302,9 @@ int main()
 }
 ```
 
-COPY
+这打印：
 
-This prints:
-
+```
 bit 1 is off
 bit 2 is on
 bit 1 is on
@@ -327,12 +313,13 @@ bit 1 is on
 bit 2 is on
 bit 1 is off
 bit 2 is off
+```
 
-Making bit masks meaningful
+## 使位掩码有意义
 
-Naming our bit masks “mask1” or “mask2” tells us what bit is being manipulated, but doesn’t give us any indication of what that bit flag is actually being used for.
+将我们的位掩码命名为“mask1”或“mask2”可以告诉我们正在操作的是哪个位，但不会告诉我们该位标志实际用于什么。
 
-A best practice is to give your bit masks useful names as a way to document the meaning of your bit flags. Here’s an example from a game we might write:
+最佳做法是为您的位掩码提供有用的名称，作为记录位标志含义的一种方式。这是我们可能编写的游戏的示例：
 
 ```cpp
 #include <cstdint>
@@ -363,9 +350,7 @@ int main()
 }
 ```
 
-COPY
-
-Here’s the same example implemented using std::bitset:
+下面是使用 std::bitset 实现的相同示例：
 
 ```cpp
 #include <iostream>
@@ -396,67 +381,55 @@ int main()
 }
 ```
 
-COPY
+这里有两个注意事项：首先，std::bitset 没有允许您使用位掩码查询位的好函数。因此，如果您想使用位掩码而不是位置索引，则必须使用*按位与*查询位。其次，我们使用 any() 函数，如果设置了任何位，该函数返回 true，否则返回 false，以查看我们查询的位是否保持打开或关闭。
 
-Two notes here: First, std::bitset doesn’t have a nice function that allows you to query bits using a bit mask. So if you want to use bit masks rather than positional indexes, you’ll have to use _Bitwise AND_ to query bits. Second, we make use of the any() function, which returns true if any bits are set, and false otherwise to see if the bit we queried remains on or off.
+## 什么时候位标志最有用？
 
-When are bit flags most useful?
+细心的读者可能会注意到，上面的示例实际上并没有节省任何内存。8 个布尔值通常需要 8 个字节。但是上面的例子使用了 9 个字节（8 个字节用于定义位掩码，1 个字节用于标志变量）！
 
-Astute readers may note that the above examples don’t actually save any memory. 8 booleans would normally take 8 bytes. But the above examples use 9 bytes (8 bytes to define the bit masks, and 1 byte for the flag variable)!
+当您有许多相同的标志变量时，位标志最有意义。例如，在上面的示例中，假设您有 100 个而不是一个人（我）。如果您每个人使用 8 个布尔值（每个可能的状态一个），您将使用 800 个字节的内存。对于位标志，您将使用 8 个字节作为位掩码，使用 100 个字节作为位标志变量，总共需要 108 个字节的内存——大约减少 8 倍的内存。
 
-Bit flags make the most sense when you have many identical flag variables. For example, in the example above, imagine that instead of having one person (me), you had 100. If you used 8 Booleans per person (one for each possible state), you’d use 800 bytes of memory. With bit flags, you’d use 8 bytes for the bit masks, and 100 bytes for the bit flag variables, for a total of 108 bytes of memory -- approximately 8 times less memory.
+对于大多数程序，使用位标志节省的内存量不值得增加复杂性。但是在有数万甚至数百万个相似对象的程序中，使用位标志可以大大减少内存使用。如果需要，将其包含在您的工具包中是一项有用的优化。
 
-For most programs, the amount of memory saved using bit flags is not worth the added complexity. But in programs where there are tens of thousands or even millions of similar objects, using bit flags can reduce memory use substantially. It’s a useful optimization to have in your toolkit if you need it.
-
-There’s another case where bit flags and bit masks can make sense. Imagine you had a function that could take any combination of 32 different options. One way to write that function would be to use 32 individual Boolean parameters:
+在另一种情况下，位标志和位掩码是有意义的。想象一下，您有一个函数可以采用 32 种不同选项的任意组合。编写该函数的一种方法是使用 32 个单独的布尔参数：
 
 ```cpp
 void someFunction(bool option1, bool option2, bool option3, bool option4, bool option5, bool option6, bool option7, bool option8, bool option9, bool option10, bool option11, bool option12, bool option13, bool option14, bool option15, bool option16, bool option17, bool option18, bool option19, bool option20, bool option21, bool option22, bool option23, bool option24, bool option25, bool option26, bool option27, bool option28, bool option29, bool option30, bool option31, bool option32);
 ```
 
-COPY
+希望你能给你的参数起更具描述性的名字，但这里的重点是向你展示参数列表是多么令人讨厌。
 
-Hopefully you’d give your parameters more descriptive names, but the point here is to show you how obnoxiously long the parameter list is.
-
-Then when you wanted to call the function with options 10 and 32 set to true, you’d have to do so like this:
+然后当你想调用选项 10 和 32 设置为 true 的函数时，你必须这样做：
 
 ```cpp
 someFunction(false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true);
 ```
 
-COPY
+这非常难以阅读（选项 9、10 或 11 是否设置为 true？），并且还意味着您必须记住哪个参数对应于哪个选项（将“编辑标志”设置为第 9、10 或第 11 个参数？）它也可能不是很高效，因为每个函数调用都必须将 32 个布尔值从调用者复制到函数。
 
-This is ridiculously difficult to read (is that option 9, 10, or 11 that’s set to true?), and also means you have to remember which argument corresponds to which option (is setting the “edit flag” the 9th, 10th, or 11th parameter?) It may also not be very performant, as every function call has to copy 32 booleans from the caller to the function.
-
-Instead, if you defined the function using bit flags like this:
+相反，如果您使用这样的位标志定义函数：
 
 ```cpp
 void someFunction(std::bitset<32> options);
 ```
 
-COPY
-
-Then you could use bit flags to pass in only the options you wanted:
+然后你可以使用位标志来只传递你想要的选项：
 
 ```cpp
 someFunction(option10 | option32);
 ```
 
-COPY
+这不仅更具可读性，而且性能也可能更高，因为它只涉及 2 个操作（一个*按位或*和一个参数复制）。
 
-Not only is this much more readable, it’s likely to be more performant as well, since it only involves 2 operations (one _Bitwise OR_ and one parameter copy).
+这就是广受好评的 3d 图形库 OpenGL 选择使用位标志参数而不是许多连续的布尔参数的原因之一。
 
-This is one of the reasons OpenGL, a well regarded 3d graphic library, opted to use bit flag parameters instead of many consecutive Boolean parameters.
-
-Here’s a sample function call from OpenGL:
+下面是来自 OpenGL 的示例函数调用：
 
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the color and the depth buffer
 ```
 
-COPY
-
-GL_COLOR_BUFFER_BIT and GL_DEPTH_BUFFER_BIT are bit masks defined as follows (in gl2.h):
+GL_COLOR_BUFFER_BIT 和 GL_DEPTH_BUFFER_BIT 是位掩码，定义如下（在 gl2.h 中）：
 
 ```cpp
 #define GL_DEPTH_BUFFER_BIT               0x00000100
@@ -464,26 +437,23 @@ GL_COLOR_BUFFER_BIT and GL_DEPTH_BUFFER_BIT are bit masks defined as follows (in
 #define GL_COLOR_BUFFER_BIT               0x00004000
 ```
 
-COPY
+## 涉及多个位的位掩码
 
-Bit masks involving multiple bits
+尽管位掩码通常用于选择单个位，但它们也可用于选择多个位。让我们看一个稍微复杂一点的例子。
 
-Although bit masks often are used to select a single bit, they can also be used to select multiple bits. Lets take a look at a slightly more complicated example where we do this.
+电视机、显示器等彩色显示设备由数百万个像素组成，每个像素都可以显示一个颜色的点。颜色点由三束光组成：一束红色、一束绿色和一束蓝色 (RGB)。通过改变颜色的强度，可以制成色谱上的任何颜色。通常，给定像素的 R、G 和 B 的数量由 8 位无符号整数表示。例如，红色像素的 R=255、G=0、B=0。紫色像素的 R=255、G=0、B=255。中灰色像素将具有 R=127、G=127、B=127。
 
-Color display devices such as TVs and monitors are composed of millions of pixels, each of which can display a dot of color. The dot of color is composed from three beams of light: one red, one green, and one blue (RGB). By varying the intensity of the colors, any color on the color spectrum can be made. Typically, the amount of R, G, and B for a given pixel is represented by an 8-bit unsigned integer. For example, a red pixel would have R=255, G=0, B=0. A purple pixel would have R=255, G=0, B=255. A medium-grey pixel would have R=127, G=127, B=127.
+在为像素分配颜色值时，除了 R、G 和 B 之外，通常还会使用称为 A 的第 4 个值。“A”代表“alpha”，它控制颜色的透明度。如果 A=0，颜色是完全透明的。如果 A=255，则颜色不透明。
 
-When assigning color values to a pixel, in addition to R, G, and B, a 4th value called A is often used. “A” stands for “alpha”, and it controls how transparent the color is. If A=0, the color is fully transparent. If A=255, the color is opaque.
+R、G、B 和 A 通常存储为单个 32 位整数，每个分量使用 8 位：
 
-R, G, B, and A are normally stored as a single 32-bit integer, with 8 bits used for each component:
+| 32 位 RGBA 值 |          |          |          |
+| ------------- | -------- | -------- | -------- |
+| 31-24 位      | 23-16 位 | 15-8 位  | 7-0 位   |
+| RRRRRRRR      | GGGGGGGG | BBBBBBBB | AAAAAAAA |
+| red           | green    | blue     | alpha    |
 
-
-32-bit RGBA value
-bits 31-24	bits 23-16	bits 15-8	bits 7-0
-RRRRRRRR	GGGGGGGG	BBBBBBBB	AAAAAAAA
-red	green	blue	alpha
-
-
-The following program asks the user to enter a 32-bit hexadecimal value, and then extracts the 8-bit color values for R, G, B, and A.
+下面的程序要求用户输入一个 32 位的十六进制值，然后提取 R、G、B 和 A 的 8 位颜色值。
 
 ```cpp
 #include <cstdint>
@@ -518,50 +488,44 @@ int main()
 }
 ```
 
-COPY
+这会产生输出：
 
-This produces the output:
-
+```
 Enter a 32-bit RGBA color value in hexadecimal (e.g. FF7F3300): FF7F3300
 Your color contains:
 ff red
 7f green
 33 blue
 0 alpha
+```
 
-In the above program, we use a _bitwise AND_ to query the set of 8 bits we’re interested in, and then we _right shift_ them into an 8-bit value so we can print them back as hex values.
+在上面的程序中，我们使用*按位与*来查询我们感兴趣的 8 位集合，然后将它们*右*移到一个 8 位值中，以便我们可以将它们作为十六进制值打印回来。
 
-Summary
+## 概括
 
-Summarizing how to set, clear, toggle, and query bit flags:
+总结如何设置、清除、切换和查询位标志：
 
-To query bit states, we use _bitwise AND_:
+要查询位状态，我们使用*按位与*：
 
 ```cpp
 if (flags & option4) ... // if option4 is set, do something
 ```
 
-COPY
-
-To set bits (turn on), we use _bitwise OR_:
+要设置位（打开），我们使用*按位或*：
 
 ```cpp
 flags |= option4; // turn option 4 on.
 flags |= (option4 | option5); // turn options 4 and 5 on.
 ```
 
-COPY
-
-To clear bits (turn off), we use _bitwise AND_ with _bitwise NOT_:
+要清除位（关闭），我们使用*按位 AND*和*按位 NOT*：
 
 ```cpp
 flags &= ~option4; // turn option 4 off
 flags &= ~(option4 | option5); // turn options 4 and 5 off
 ```
 
-COPY
-
-To flip bit states, we use _bitwise XOR_:
+要翻转位状态，我们使用*按位异或*：
 
 ```cpp
 flags ^= option4; // flip option4 from on to off, or vice versa
