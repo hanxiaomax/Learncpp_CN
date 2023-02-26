@@ -122,7 +122,7 @@ int main()
 auto s { "Hello, world" }; // s will be type const char*, not std::string
 ```
 
-如果你希望推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀 (参考：[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]):
+如果你希望推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀 (参考：[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]):
 
 ```cpp
 #include <string>

@@ -2786,8 +2786,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../9-x-Chapter-9-comprehensive-quiz.md" class="md-nav__link">
-        None
+      <a href="../9-x-Chapter-9-comprehensive-quiz/" class="md-nav__link">
+        9.x - 小结与测试 - 引用和指针
       </a>
     </li>
   
@@ -6007,7 +6007,7 @@
 <p>出于某些历史原因，字符串在 C++ 中是一个特殊的类型。因此，下面的代码可能并不能如你所愿地工作：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Hello, world&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// s will be type const char*, not std::string</span>
 </code></pre></div></td></tr></table></div>
-<p>如果你希望推断出的类型为 <code>std:: string</code> 或 <code>std:: string_view</code>，你需要使用 <code>s</code> 或者 <code>sv</code> 字面量后缀 (参考：[[4-15-Symbolic-constants-const-and-constexpr-variables|4.15 - 符号常量 const 和 constexpr 变量]]):</p>
+<p>如果你希望推断出的类型为 <code>std:: string</code> 或 <code>std:: string_view</code>，你需要使用 <code>s</code> 或者 <code>sv</code> 字面量后缀 (参考：<a href="../4-13-Const-variables-and-symbolic-constants/">4.13 - const 变量和符号常量</a>):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
