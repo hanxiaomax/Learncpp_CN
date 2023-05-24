@@ -2258,6 +2258,55 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    前置条件、不变量和后置条件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    断言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    使断言语句更具描述性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    断言与错误处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ndebug_1" class="md-nav__link">
+    NDEBUG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    断言的限制和提醒
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static_assert_1" class="md-nav__link">
+    static_assert
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5877,6 +5926,55 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    前置条件、不变量和后置条件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    断言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    使断言语句更具描述性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    断言与错误处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ndebug_1" class="md-nav__link">
+    NDEBUG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    断言的限制和提醒
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static_assert_1" class="md-nav__link">
+    static_assert
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6107,6 +6205,170 @@
 </code></pre></div></td></tr></table></div>
 <p>Because <code>static_assert</code> is evaluated by the compiler, the condition must be able to be evaluated at compile time. Also, unlike normal <code>assert</code> (which is evaluated at runtime), <code>static_assert</code> can be placed anywhere in the code file (even in the global namespace).</p>
 <p>Prior to C++17, the diagnostic message must be supplied as the second parameter. Since C++17, providing a diagnostic message is optional.</p>
+<hr />
+<p>在接收参数的函数中，调用者可能会传递语法上有效但语义上无意义的参数。例如，在上一课中（<a href="../7-15-Detecting-and-handling-errors/">7.15 - 发现错误和处理错误</a>），我们展示了以下示例函数：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">printDivision</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error: Could not divide by zero</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>该函数显式检查<code>y</code>是否为<code>0</code>，因为除以零是语义错误，如果执行将导致程序崩溃。</p>
+<p>在之前的课程中，我们讨论了处理此类问题的几种方法，包括停止程序或跳过有问题的语句。</p>
+<p>但这两种选项都有问题。如果程序由于错误而跳过语句，则实际上是在默默地失败。尤其是在编写和调试程序时，静默失败是不好的，因为它们会掩盖真正的问题。即使我们打印错误消息，该错误消息也可能会在其他程序输出中丢失，并且可能不明显地生成错误消息或触发错误消息的条件在哪里。有些函数可能会被调用十次或几百次，如果只有其中一个情况生成问题，那么很难知道是哪个情况。</p>
+<p>如果程序终止（通过<code>std::exit</code>），则我们将失去调用堆栈和任何可能帮助我们隔离问题的调试信息。<code>std::abort</code>是这种情况的更好选择，因为通常开发人员将有选择在程序中止的点开始调试。</p>
+<h2 id="_5">前置条件、不变量和后置条件</h2>
+<p>在编程中，前置条件是指在代码组件执行之前必须始终为真的任何条件。我们对<code>y</code>的检查是确保函数继续之前<code>y</code>具有有效值的前置条件。</p>
+<p>更常见的是，具有前置条件的函数编写如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">printDivision</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error: Could not divide by zero</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>不变量是指某个组件执行时必须为真的条件。</p>
+<p>类似地，后置条件是指某个代码组件执行后必须为真的条件。我们的函数没有任何后置条件。</p>
+<h2 id="_6">断言</h2>
+<p>使用条件语句检测无效参数（或验证某种其他类型的假设），并打印错误消息并终止程序是对问题的常见响应，因此C++提供了一种快捷方法来执行此操作。</p>
+<p>断言是一个表达式，除非程序中存在错误，否则该表达式将为真。如果表达式的值为<code>true</code>，则断言语句不执行任何操作。如果条件表达式的值为<code>false</code>，则显示错误消息并通过<code>std::abort</code>终止程序。此错误消息通常包含以文本形式失败的表达式，以及断言的代码文件的名称和行号。这使得不仅可以确定问题所在，还可以确定问题发生的代码位置。这可以极大地帮助调试工作。</p>
+<p>在C++中，运行时断言是通过assert预处理宏实现的，该宏位于头文件中。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include  </span><span class="c1">// for assert()</span>
+<span class="cp">#include  </span><span class="c1">// for std::sqrt</span>
+<span class="cp">#include </span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">calculateTimeUntilObjectHitsGround</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">initialHeight</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">gravity</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">gravity</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// The object won&#39;t reach the ground unless there is positive gravity.</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initialHeight</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The object is already on the ground. Or buried.</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">2.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">initialHeight</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">gravity</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Took &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">calculateTimeUntilObjectHitsGround</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mf">-9.8</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; second(s)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>COPY</p>
+<p>当程序调用<code>calculateTimeUntilObjectHitsGround(100.0, -9.8)</code>时，<code>assert(gravity &gt; 0.0)</code>将计算为<code>false</code>，这将触发断言。这将打印类似于以下内容的消息：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>dropsimulator: src/main.cpp:6: double calculateTimeUntilObjectHitsGround(double, double): Assertion &#39;gravity &gt; 0.0&#39; failed.
+</code></pre></div></td></tr></table></div>
+<p>实际消息因使用的编译器而异。</p>
+<p>尽管断言最常用于验证函数参数，但它们可以用于任何您想要验证的内容。</p>
+<p>尽管我们之前告诉过您要避免预处理宏，但断言是少数被认为可以使用的预处理宏之一。我们鼓励您在代码中大量使用assert语句。</p>
+<h2 id="_7">使断言语句更具描述性</h2>
+<p>有时，断言表达式的描述性并不好，例如下面的语句：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">assert</span><span class="p">(</span><span class="n">found</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>如果触发此断言，则会显示：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Assertion failed: found, file C:\\VCProjects\\Test.cpp, line 34
+</code></pre></div></td></tr></table></div>
+<p>这是什么意思？显然，<code>found</code>是<code>false</code>（因为断言触发了），至于是什么没找到？你必须查看代码才能确定。</p>
+<p>幸运的是，你可以使用一个小技巧使<code>assert</code>语句更具描述性。只需添加一个逻辑AND连接的字符串字面量：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">assert</span><span class="p">(</span><span class="n">found</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s">&quot;Car could not be found in database&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这是为什么它有效的原因：字符串字面量始终计算为布尔值<code>true</code>。因此，如果<code>found</code>为<code>false</code>，则<code>false &amp;&amp; true</code>为<code>false</code>。如果<code>found</code>为<code>true</code>，则<code>true &amp;&amp; true</code>为<code>true</code>。因此，在逻辑AND字符串字面量不会影响断言的评估。</p>
+<p>但是，当断言触发时，字符串字面量将包含在断言消息中：</p>
+<p><code>Assertion failed: found &amp;&amp; "Car could not be found in database", file C:\\VCProjects\\Test.cpp, line 34</code></p>
+<p>这为你提供了有关出了什么问题的其他上下文。</p>
+<h2 id="_8">断言与错误处理</h2>
+<p>断言和错误处理非常相似，以至于它们的目的可能会混淆，因此让我们澄清：</p>
+<p>断言的目标是通过记录永远不应发生的事情来捕获编程错误。如果发生了那件事，那么程序员在某个地方犯了错误，并且可以确定并修复该错误。断言不允许从错误中恢复（毕竟，如果某件事情永远不应该发生，那么无需从中恢复），并且程序不会生成友好的错误消息。</p>
+<p>另一方面，错误处理旨在优雅地处理在发布配置中可能发生（无论多么罕见）的情况。这些可能是可恢复的，也可能是不可恢复的，但是应始终假定程序的用户可能会遇到它们。</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>使用断言记录应该在逻辑上不可能的情况。</p>
+</div>
+<p>断言有时也用于记录由于编写代码时不需要的情况：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Assert with a message, covered in the next section</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">moved</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s">&quot;Need to handle case where student was just moved to another classroom&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>这样，如果代码的后续维护者确实遇到需要这种情况的情况，代码将因为一个有用的错误信息而失败，程序员可以确定如何实现这种情况。</p>
+<h2 id="ndebug_1">NDEBUG</h2>
+<p><code>assert</code> 宏会带来一些小的性能损失，每次检查 assert 条件时都会产生。此外，(理想情况下)asserts 不应该出现在生产代码中(因为你的代码应该已经经过彻底测试)。因此，许多开发人员希望 asserts 仅在调试版本中处于活动状态。C++ 提供了一种在生产代码中关闭 asserts 的方法。如果定义了宏 <code>NDEBUG</code>，assert 宏将被禁用。</p>
+<p>一些 IDE 默认设置 <code>NDEBUG</code> 作为发布配置的项目设置的一部分。例如，在 Visual Studio 中，以下预处理器定义被设置为项目级别: <code>WIN32;NDEBUG;_CONSOLE</code>。如果你正在使用 Visual Studio 并希望在发布版本中触发 asserts，则需要从此设置中删除 <code>NDEBUG</code>。</p>
+<p>如果你使用的 IDE 或构建系统在发布配置中没有自动定义 <code>NDEBUG</code>，则需要在项目或编译设置中手动添加它。</p>
+<h2 id="_9">断言的限制和提醒</h2>
+<p>关于 asserts 有一些陷阱和限制。首先，assert 本身可能有 bug。如果发生这种情况，assert 将报告不存在的错误，或者无法报告存在的错误。</p>
+<p>其次，你的 asserts 不应该有任何副作用——也就是说，在有 assert 和没有 assert 的情况下，程序应该运行相同。否则，在调试配置中进行测试的内容将与发布配置中进行的测试内容不同(假设你使用了 NDEBUG)。</p>
+<p>还要注意的是，abort() 函数会立即终止程序，没有机会进行任何进一步的清理(例如关闭文件或数据库)。因此，asserts 应该仅在程序意外终止不太可能导致损坏的情况下使用。</p>
+<h2 id="static_assert_1"><code>static_assert</code></h2>
+<p>C++ 还有另一种称为 <code>static_assert</code> 的 assert 类型。<code>static_assert</code> 是在编译时而不是运行时检查的断言，一个失败的 <code>static_assert</code> 会导致编译错误。与 assert 不同，assert 是在头文件中声明的，而 static_assert 是一个关键字，因此不需要包含头文件才能使用它。</p>
+<p><code>static_assert</code> 的形式如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">static_assert</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">diagnostic_message</span><span class="p">)</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>如果条件不成立，就会打印出诊断信息。下面是使用 static_assert 确保类型具有特定大小的示例：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;long must be 8 bytes&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;int must be 4 bytes&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>在作者的机器上，编译时编译器会报错：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1&gt;c:\consoleapplication1\main.cpp(19): error C2338: long must be 8 bytes
+</code></pre></div></td></tr></table></div>
+<p>因为 <code>static_assert</code> 是由编译器评估的，所以条件必须能够在编译时进行评估。此外，与正常的 assert 不同(在运行时评估)，<code>static_assert</code> 可以放置在代码文件中的任何位置(甚至是全局命名空间中)。</p>
+<p>在 C++17 之前，诊断消息必须作为第二个参数提供。自 C++17 以来，提供诊断消息是可选的。</p>
 
 
               </article>

@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -5619,9 +5624,66 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+            O.1 - bit标记和通过std::bitset操作bit
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         O.1 - bit标记和通过std::bitset操作bit
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    位标志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    位编号和位位置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdbitset" class="md-nav__link">
+    通过 std::bitset 操作位
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    如果我们想一次获取或设置多个位怎么办
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdbitset_1" class="md-nav__link">
+    std::bitset 的大小
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5746,6 +5808,49 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    位标志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    位编号和位位置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdbitset" class="md-nav__link">
+    通过 std::bitset 操作位
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    如果我们想一次获取或设置多个位怎么办
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stdbitset_1" class="md-nav__link">
+    std::bitset 的大小
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5795,49 +5900,47 @@
   <h1>O.1 - bit标记和通过std::bitset操作bit</h1>
 
 <details class="note"><summary>Key Takeaway</summary></details>
-<p>On modern computer architectures, the smallest addressable unit of memory is a byte. Since all objects need to have unique memory addresses, this means objects must be at least one byte in size. For most variable types, this is fine. However, for Boolean values, this is a bit wasteful (pun intended). Boolean types only have two states: true (1), or false (0). This set of states only requires one bit to store. However, if a variable must be at least a byte, and a byte is 8 bits, that means a Boolean is using 1 bit and leaving the other 7 unused.</p>
-<p>In the majority of cases, this is fine -- we’re usually not so hard-up for memory that we need to care about 7 wasted bits (we’re better off optimizing for understandability and maintainability). However, in some storage-intensive cases, it can be useful to “pack” 8 individual Boolean values into a single byte for storage efficiency purposes.</p>
-<p>Doing these things requires that we can manipulate objects at the bit level. Fortunately, C++ gives us tools to do precisely this. Modifying individual bits within an object is called bit manipulation.</p>
-<p>Bit manipulation is also useful in encryption and compression algorithms.</p>
-<p>Author’s note</p>
-<p>This entire chapter is optional reading. Feel free to skip it and come back later.</p>
-<p>Bit flags</p>
-<p>Up to this point, we’ve used variables to hold single values:</p>
+<p>在现代计算机体系结构上，最小的可寻址内存单元是字节。由于所有对象都需要具有唯一的内存地址，这意味着对象的大小必须至少为一个字节。对于大多数变量类型，这很好。但是，对于布尔值，这有点浪费(双关语）<code>“原文:this is a bit wasteful”</code>。布尔类型只有两种状态：真 （1） 或假 （0）。这组状态只需要一个位来存储。但是，如果变量必须至少是一个字节，并且一个字节是 8 位，这意味着布尔值使用 1 位，而其他 7 位未使用。</p>
+<p>在大多数情况下，这么做很好 —— 我们通常不会对内存管理如此苛刻，以至于我们需要关心7个浪费的位（我们更应该使代码易于理解，易于维护）。<strong>但是，在某些存储密集型情况下，出于存储效率目的，将 8 个单独的布尔值“打包”到单个字节中可能很有用。</strong></p>
+<p>做这些事情需要我们可以在位级别操作对象。幸运的是，C++为我们提供了做到这一点的工具。修改对象中的单个位称为<strong>位操作</strong>。</p>
+<p>位操作在加密和压缩算法中也很有用。</p>
+<h2 id="_1">位标志</h2>
+<p>到目前为止，我们已经使用变量来保存单个值：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// assign foo the value 5 (probably uses 32 bits of storage)</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"> </span><span class="c1">// print the value 5</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>However, instead of viewing objects as holding a single value, we can instead view them as a collection of individual bits. When individual bits of an object are used as Boolean values, the bits are called bit flags.</p>
-<p>As an aside…</p>
-<p>In computing, a flag is a value that acts as a signal for some function or process. Analogously, in real life, a mailbox flag is used to signal that there is something inside the mailbox, so the mailbox doesn’t have to be opened to check.</p>
-<p>To define a set of bit flags, we’ll typically use an unsigned integer of the appropriate size (8 bits, 16 bits, 32 bits, etc… depending on how many flags we have), or std::bitset.</p>
+<p>但是，我们可以将它们视为单个位的集合，而不是将对象视为包含单个值的对象。当对象的单个位用作布尔值时，这些位称为<strong>位标志</strong>。</p>
+<p>要定义一组位标志，我们通常会使用<strong>适当大小的无符号整数</strong>（8 位、16 位、32 位等......取决于我们有多少标志），或<strong>std::bitset</strong>。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bitset&gt;</span><span class="c1"> // for std::bitset</span><span class="cp"></span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mybitset</span><span class="w"> </span><span class="p">{};</span><span class="w"> </span><span class="c1">// 8 bits in size means room for 8 flags</span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>Best practice</p>
-<p>Bit manipulation is one of the few times when you should unambiguously use unsigned integers (or std::bitset).</p>
-<p>In this lesson, we’ll show how to do bit manipulation the easy way, via std::bitset. In the next set of lessons, we’ll explore how to do it the more difficult but versatile way.</p>
-<p>Bit numbering and bit positions</p>
-<p>Given a sequence of bits, we typically number the bits from right to left, starting with 0 (not 1). Each number denotes a bit position.</p>
-<p>76543210  Bit position
-00000101  Bit sequence</p>
-<p>Given the bit sequence 0000 0101, the bits that are in position 0 and 2 have value 1, and the other bits have value 0.</p>
-<p>Manipulating bits via std::bitset</p>
-<p>In lesson <a href="https://www.learncpp.com/cpp-tutorial/numeral-systems-decimal-binary-hexadecimal-and-octal/">4.16 -- Numeral systems (decimal, binary, hexadecimal, and octal)</a> we already showed how to use a std::bitset to print values in binary. However, this isn’t the only useful thing std::bitset can do.</p>
-<p>std::bitset provides 4 key functions that are useful for doing bit manipulation:</p>
+<div class="admonition success">
+<p class="admonition-title">最佳实践</p>
+<p>位操作是少数应该明确使用无符号整数（或 std：：bitset）的情况之一。</p>
+</div>
+<p>在本课中，我们将展示如何通过 std::bitset 以简单的方式进行位操作。在下一组课程中，我们将探讨如何以更困难但用途广泛的方式做到这一点。</p>
+<h2 id="_2">位编号和位位置</h2>
+<p>给定一个位序列，我们通常从右到左对位进行编号，<strong>从 0（而不是 1）开始</strong>。每个数字表示一个<strong>位位置</strong>。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>76543210  Bit position
+00000101  Bit sequence
+</code></pre></div></td></tr></table></div>
+<p>给定位序列 0000 0101，位于位置 0 和 2 的位的值为 1，其他位的值为 0。</p>
+<h2 id="stdbitset">通过 std::bitset 操作位</h2>
+<p>在<a href="../4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/">第 4.16 课——数字系统十进制、二进制、十六进制和八进制</a>中，我们已经展示了如何使用 std::bitset 打印二进制值。然而，这并不是 std::bitset 能做的唯一有用的事情。</p>
+<p>std::bitset 提供了 4 个可用于位操作的关键函数：</p>
 <ul>
-<li>test() allows us to query whether a bit is a 0 or 1</li>
-<li>set() allows us to turn a bit on (this will do nothing if the bit is already on)</li>
-<li>reset() allows us to turn a bit off (this will do nothing if the bit is already off)</li>
-<li>flip() allows us to flip a bit value from a 0 to a 1 or vice versa</li>
+<li>test() 允许我们查询某个位是 0 还是 1</li>
+<li>set() 允许我们打开一个位（如果位已经打开，这将不执行任何操作）</li>
+<li>reset() 允许我们关闭一个位（如果该位已经关闭，这将不执行任何操作）</li>
+<li>flip() 允许我们将位值从 0 翻转为 1，反之亦然</li>
 </ul>
-<p>Each of these functions takes the position of the bit we want to operate on as their only argument.</p>
-<p>Here’s an example:</p>
+<p>这些函数中的每一个都将我们要操作的位的位置作为它们唯一的参数。</p>
+<p>这是一个例子：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5870,15 +5973,22 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>COPY</p>
-<p>This prints:</p>
-<p>All the bits: 00001101
+<p>这打印：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>All the bits: 00001101
 Bit 3 has value: 1
-Bit 4 has value: 0</p>
-<p>A reminder</p>
-<p>If you need a refresher on what the <code>0b</code> prefix or the <code>'</code> separator is, review <a href="https://www.learncpp.com/cpp-tutorial/numeral-systems-decimal-binary-hexadecimal-and-octal/">4.16 -- Numeral systems (decimal, binary, hexadecimal, and octal)</a>.</p>
-<p>What if we want to get or set multiple bits at once</p>
-<p>std::bitset doesn’t make this easy. In order to do this, or if we want to use unsigned integer bit flags instead of std::bitset, we need to turn to more traditional methods. We’ll cover these in the next couple of lessons.</p>
+Bit 4 has value: 0
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">小贴士</p>
+<p>如果您需要复习什么是<code>0b</code>前缀或<code>'</code>分隔符，请查看<a href="../4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal/">4.16 - 数字系统十进制、二进制、十六进制和八进制</a></p>
+</div>
+<h2 id="_3">如果我们想一次获取或设置多个位怎么办</h2>
+<p>std::bitset 并不容易实现这个需求。为了做到这一点，或者如果我们想使用无符号整数位标志而不是 std::bitset，我们需要使用更传统的方法。我们将在接下来的几节课中介绍这些内容。</p>
+<h2 id="stdbitset_1">std::bitset 的大小</h2>
+<p>一个潜在的惊喜是 std::bitset <strong>针对速度进行了优化</strong>，而不是节省内存。std::bitset 的大小通常是保存位所需的字节数，<code>四舍五入到(rounded up to)</code>最接近的<code>sizeof(size_t)</code>，在 32 位机器上为 4 字节，在 64 位机器上为 8 字节。</p>
+<p>因此，<code>std::bitset&lt;8&gt;</code> 通常使用 4 或 8 字节的内存，即使它在技术上只需要 1 个字节来存储 8 位。因此，当我们想要方便而不是节省内存时，std::bitset 是最有用的。</p>
 
 
               </article>
