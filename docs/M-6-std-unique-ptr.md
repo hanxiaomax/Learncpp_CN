@@ -172,7 +172,7 @@ Resource destroyed
 
 ## `std::unique_ptr` 和数组
 
-和 `std::auto_ptr` 不一样的是，`std::unique_ptr` 足够只能，它懂得使用恰当的`delete`去删除内存（普通 `delete` 或数组 `delete`），所以，`std::unique_ptr` 既可以用于一般对象，也可以用于数组。
+和 `std::auto_ptr` 不一样的是，`std::unique_ptr` 足够智能，它懂得使用恰当的`delete`去删除内存（普通 `delete` 或数组 `delete`），所以，`std::unique_ptr` 既可以用于一般对象，也可以用于数组。
 
 但是，==相对于使用 `std::unique_ptr` 管理一个固定数组或C风格字符串，使用`std::array` 或者 `std::vector` (或者 `std::string`) 总是更好的选择。== 
 
@@ -248,7 +248,7 @@ some_function(std::unique_ptr<T>(new T), function_that_can_throw_exception());
 
 对于如何执行上述函数调用，编译器有很大的灵活性。它可以先创建新的类型T，然后调用`function_that_can_throw_exception()`吗，然后创建`std::unique_ptr` 去管理动态分配的T。如果 `function_that_can_throw_exception()` 抛出了依次，那么T在被分配内存后，没有被释放，因为用于管理它的智能指针还没有被创建。显然这会导致内存泄漏。
 
-`std::make_unique()` 客服了整个问题，因为对象T和 `std::unique_ptr` 的创建都是在 `std::make_unique()`中完成的，执行顺序没有歧义。
+`std::make_unique()`克服了整个问题，因为对象T和 `std::unique_ptr` 的创建都是在 `std::make_unique()`中完成的，执行顺序没有歧义。
 
 ## 函数返回 `std::unique_ptr`
 
