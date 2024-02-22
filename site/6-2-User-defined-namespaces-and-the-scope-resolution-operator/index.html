@@ -1767,6 +1767,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    如何使用命名空间
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1992,6 +1999,10 @@
       
       
       
+        
+          
+        
+          
         
           
         
@@ -2275,6 +2286,34 @@
     <li class="md-nav__item">
       <a href="../7-17-assert-and-static-assert/" class="md-nav__link">
         7.17 - 断言和 static_assert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-18-introduction-to-random-number-generation/" class="md-nav__link">
+        7.18 - 随机数生成器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-19-generating-random-numbers-using-mersenne-twister/" class="md-nav__link">
+        7.19 - 使用 Mersenne Twister 生成随机数
       </a>
     </li>
   
@@ -3125,6 +3164,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_11">
@@ -3245,6 +3292,62 @@
     <li class="md-nav__item">
       <a href="../11-8-Pointers-and-arrays/" class="md-nav__link">
         11.8 - 指针和数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-9-Pointer-arithmetic-and-array-indexing/" class="md-nav__link">
+        11.9 - 指针运算和数组索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-10-C-style-string-symbolic-constants/" class="md-nav__link">
+        11.10 - C 风格字符串符号常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-11-Dynamic-memory-allocation-with-new-and-delete/" class="md-nav__link">
+        11.11 - 使用 new 和 delete 进行动态内存分配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-12-Dynamically-allocating-arrays/" class="md-nav__link">
+        11.12 - 动态分配数组
       </a>
     </li>
   
@@ -3534,8 +3637,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../12-x-Chapter-12-comprehensive-quiz" class="md-nav__link">
-        None
+      <a href="../12-x-Chapter-12-comprehensive-quiz/" class="md-nav__link">
+        12.x - 小结与测试 - 函数
       </a>
     </li>
   
@@ -5905,6 +6008,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    如何使用命名空间
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6658,6 +6768,30 @@
 <h2 id="_9">什么时候应该使用命名空间</h2>
 <p>在实际应用中，命名空间可以被用来分割与当前应用程序强相关的代码和那些可能在日后被重用的代码（例如数学函数）。例如，物理和数学函数可以定义在一个命名空间中(例如 <code>math::</code>)。语言和本地化的函数则可以定义在另外的命名空间中（例如<code>lang::</code>） 。</p>
 <p>如果你编写的是库函数或用于提供给他人使用的代码，请始终把你的函数定义在一个自定义的命名空间中。如果你不遵循这项最佳实践，即你的代码没有声明在一个特定的命名空间中，那么很有可能会造成命名冲突。将你的代码放在自定义命名空间中的另外一个好处是，你的用户可以借助编辑器的自动补全和提示功能看到你库中的的内容。</p>
+<h2 id="_10">如何使用命名空间</h2>
+<p>值得注意的是，C++ 中的命名空间最初并不是作为一种实现信息层次结构的方法而设计的，它们主要是作为一种防止命名冲突的机制而设计的。整个标准库都位于单一的顶级命名空间 <code>std</code> 下，这就是最好的证明。引入大量名称的新标准库功能已开始使用嵌套名称空间（如 <code>std::ranges</code>），以避免在 <code>std</code> 名称空间内发生命名冲突。</p>
+<ul>
+<li>为自己开发的小型应用程序通常不需要放在命名空间中。但是，对于包含大量第三方库的大型个人项目，对代码进行命名可以避免与未正确命名的库发生命名冲突。</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">作者注</p>
+</div>
+<p>这些教程中的示例通常不会使用命名空间，除非我们要说明命名空间的一些特殊情况，以保持示例的简洁性。</p>
+<ul>
+<li>
+<p>任何将发布给他人的代码都必须使用命名空间，以防止与集成到其中的代码发生冲突。通常一个顶级命名空间就足够了（例如 <code>Foologger</code>）。将库代码置于命名空间内还有一个好处，即用户可以使用编辑器的自动完成和建议功能查看库的内容（例如，如果输入 <code>Foologger</code>，自动完成功能会显示 <code>Foologger</code> 中的所有名称）。</p>
+</li>
+<li>
+<p>在多团队组织中，为了防止不同团队生成的代码之间出现命名冲突，通常会使用两级甚至三级命名空间。这些命名空间通常采用以下形式之一：</p>
+</li>
+<li>
+<p>项目或库 <code>::</code>模块（例如 <code>Foologger::Lang</code>）</p>
+</li>
+<li>公司或组织<code>::</code>项目或库（例如 <code>Foosoft::Foologger</code>）</li>
+<li>公司或组织<code>::</code>项目或库<code>::</code>模块（例如 <code>Foosoft::Foologger::Lang</code>）</li>
+</ul>
+<p>使用模块级命名空间有助于将日后可能重用的代码与不可重用的特定应用程序代码区分开来。例如，物理和数学函数可以放在一个命名空间中（如 <code>Math::</code>）。语言和本地化功能可以放在另一个命名空间（如 <code>Lang::</code>）。不过，目录结构也可用于此目的（特定于应用程序的代码放在项目目录树中，可重复使用的代码放在单独的共享目录树中）。</p>
+<p>一般来说，应避免深度嵌套命名空间（超过 3 层）。</p>
 
 
               </article>

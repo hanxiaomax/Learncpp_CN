@@ -1929,6 +1929,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_7">
@@ -2175,6 +2179,34 @@
     <li class="md-nav__item">
       <a href="../7-17-assert-and-static-assert/" class="md-nav__link">
         7.17 - 断言和 static_assert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-18-introduction-to-random-number-generation/" class="md-nav__link">
+        7.18 - 随机数生成器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-19-generating-random-numbers-using-mersenne-twister/" class="md-nav__link">
+        7.19 - 使用 Mersenne Twister 生成随机数
       </a>
     </li>
   
@@ -3025,6 +3057,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_11">
@@ -3145,6 +3185,62 @@
     <li class="md-nav__item">
       <a href="../11-8-Pointers-and-arrays/" class="md-nav__link">
         11.8 - 指针和数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-9-Pointer-arithmetic-and-array-indexing/" class="md-nav__link">
+        11.9 - 指针运算和数组索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-10-C-style-string-symbolic-constants/" class="md-nav__link">
+        11.10 - C 风格字符串符号常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-11-Dynamic-memory-allocation-with-new-and-delete/" class="md-nav__link">
+        11.11 - 使用 new 和 delete 进行动态内存分配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-12-Dynamically-allocating-arrays/" class="md-nav__link">
+        11.12 - 动态分配数组
       </a>
     </li>
   
@@ -3434,8 +3530,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../12-x-Chapter-12-comprehensive-quiz" class="md-nav__link">
-        None
+      <a href="../12-x-Chapter-12-comprehensive-quiz/" class="md-nav__link">
+        12.x - 小结与测试 - 函数
       </a>
     </li>
   
@@ -5796,7 +5892,7 @@
 
 <ul>
 <li>使用[[template|模板]]可以基于<a href="../placeholder-types/">占位符类型</a>来定义函数或者类，这样我们就可以定义出配合不同类型工作，但是结构完全一致的函数或者类。被实例化的函数或者类，称为<a href="../function-instance/">函数实例</a>或<a href="../class-instance/">类实例</a></li>
-<li>所有的模板函数或模板类，都必须以[[template-parameter-declaration|模板参数声明]]开头。在模板参数声明中，我们需要指定模板的类型参数或表达式参数。<a href="../template-type-parameters/">模板类型参数</a>其实就是<a href="../placeholder-types/">占位符类型</a>，通常会写作<code>T</code>，<code>T1</code>，<code>T2</code>或者其他单独字母（例如<code>S</code>）。<a href="../Expression-parameters/">表达式参数</a>通常是整型类型，但是也可以是指针或者引用类型（指向某个函数，对象或成员函数）。</li>
+<li>所有的模板函数或模板类，都必须以<a href="../template-parameter-declaration/">模板参数声明</a>开头。在模板参数声明中，我们需要指定模板的类型参数或表达式参数。<a href="../template-type-parameters/">模板类型参数</a>其实就是<a href="../placeholder-types/">占位符类型</a>，通常会写作<code>T</code>，<code>T1</code>，<code>T2</code>或者其他单独字母（例如<code>S</code>）。<a href="../Expression-parameters/">表达式参数</a>通常是整型类型，但是也可以是指针或者引用类型（指向某个函数，对象或成员函数）。</li>
 <li>模板类及其成员函数定义并不能像其他一般类那样进行分离——你不能将类的定义放在头文件中然后将成员函数的定义放在<code>.cpp</code>文件中。通常情况下，最好将它们都定义在一个头文件中，模板类的定义在前，其成员函数的定义在后。</li>
 <li><a href="../Template-specialization/">模板特化</a> can be used when we want to override the default behavior from the templated function or class for a specific type. If all types are overridden, this is called full specialization. Classes also support partial specialization, where only some of the templated parameters are specialized. Functions can not be partially specialized.</li>
 <li>C++标准库中的很多类都使用了模板，包括 <code>std::array</code> 和 <code>std::vector</code>。模板经常被用来实现容器类，这样的容器类就可以配合任意类型的对象来使用。</li>

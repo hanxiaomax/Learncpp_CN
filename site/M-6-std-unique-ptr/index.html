@@ -1934,6 +1934,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_7">
@@ -2180,6 +2184,34 @@
     <li class="md-nav__item">
       <a href="../7-17-assert-and-static-assert/" class="md-nav__link">
         7.17 - 断言和 static_assert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-18-introduction-to-random-number-generation/" class="md-nav__link">
+        7.18 - 随机数生成器简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-19-generating-random-numbers-using-mersenne-twister/" class="md-nav__link">
+        7.19 - 使用 Mersenne Twister 生成随机数
       </a>
     </li>
   
@@ -3030,6 +3062,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2_11">
@@ -3150,6 +3190,62 @@
     <li class="md-nav__item">
       <a href="../11-8-Pointers-and-arrays/" class="md-nav__link">
         11.8 - 指针和数组
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-9-Pointer-arithmetic-and-array-indexing/" class="md-nav__link">
+        11.9 - 指针运算和数组索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-10-C-style-string-symbolic-constants/" class="md-nav__link">
+        11.10 - C 风格字符串符号常量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-11-Dynamic-memory-allocation-with-new-and-delete/" class="md-nav__link">
+        11.11 - 使用 new 和 delete 进行动态内存分配
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-12-Dynamically-allocating-arrays/" class="md-nav__link">
+        11.12 - 动态分配数组
       </a>
     </li>
   
@@ -3439,8 +3535,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../12-x-Chapter-12-comprehensive-quiz" class="md-nav__link">
-        None
+      <a href="../12-x-Chapter-12-comprehensive-quiz/" class="md-nav__link">
+        12.x - 小结与测试 - 函数
       </a>
     </li>
   
@@ -6187,7 +6283,7 @@ Resource destroyed
 </code></pre></div></td></tr></table></div>
 <p>在上面的例子中，我们使用了重载的<a href="../dereference-operator/">解引用运算符</a>来获取 <code>std::unique_ptr</code> <code>res</code> 管理的 <code>Resource</code> 对象，然后将其送去 <code>std::cout</code> 打印。</p>
 <h2 id="stdunique_ptr_1"><code>std::unique_ptr</code> 和数组</h2>
-<p>和 <code>std::auto_ptr</code> 不一样的是，<code>std::unique_ptr</code> 足够只能，它懂得使用恰当的<code>delete</code>去删除内存（普通 <code>delete</code> 或数组 <code>delete</code>），所以，<code>std::unique_ptr</code> 既可以用于一般对象，也可以用于数组。</p>
+<p>和 <code>std::auto_ptr</code> 不一样的是，<code>std::unique_ptr</code> 足够智能，它懂得使用恰当的<code>delete</code>去删除内存（普通 <code>delete</code> 或数组 <code>delete</code>），所以，<code>std::unique_ptr</code> 既可以用于一般对象，也可以用于数组。</p>
 <p>但是，<mark>相对于使用 <code>std::unique_ptr</code> 管理一个固定数组或C风格字符串，使用<code>std::array</code> 或者 <code>std::vector</code> (或者 <code>std::string</code>) 总是更好的选择。</mark> </p>
 <div class="admonition success">
 <p class="admonition-title">最佳实践</p>
@@ -6283,7 +6379,7 @@ Resource destroyed
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">some_function</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">T</span><span class="p">),</span><span class="w"> </span><span class="n">function_that_can_throw_exception</span><span class="p">());</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>对于如何执行上述函数调用，编译器有很大的灵活性。它可以先创建新的类型T，然后调用<code>function_that_can_throw_exception()</code>吗，然后创建<code>std::unique_ptr</code> 去管理动态分配的T。如果 <code>function_that_can_throw_exception()</code> 抛出了依次，那么T在被分配内存后，没有被释放，因为用于管理它的智能指针还没有被创建。显然这会导致内存泄漏。</p>
-<p><code>std::make_unique()</code> 客服了整个问题，因为对象T和 <code>std::unique_ptr</code> 的创建都是在 <code>std::make_unique()</code>中完成的，执行顺序没有歧义。</p>
+<p><code>std::make_unique()</code>克服了整个问题，因为对象T和 <code>std::unique_ptr</code> 的创建都是在 <code>std::make_unique()</code>中完成的，执行顺序没有歧义。</p>
 <h2 id="stdunique_ptr_2">函数返回 <code>std::unique_ptr</code></h2>
 <p><code>std::unique_ptr</code> 可以安全地从函数中<a href="../return-by-value/">按值返回</a>：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
