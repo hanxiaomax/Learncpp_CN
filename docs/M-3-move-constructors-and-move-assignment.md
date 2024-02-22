@@ -718,3 +718,88 @@ int main()
 Move assign
 Joe
 ```
+
+## 删除移动构造函数和移动赋值
+
+使用 `= delete` 语法删除移动构造函数和移动赋值的方法与删除复制构造函数和复制赋值的方法完全相同。
+
+```cpp
+#include <iostream>
+#include <string>
+#include <string_view>
+
+class Name
+{
+private:
+    std::string m_name {};
+
+public:
+    Name(std::string_view name) : m_name{ name }
+    {
+    }
+
+    Name(const Name& name) = delete;
+    Name& operator=(const Name& name) = delete;
+    Name(Name&& name) = delete;
+    Name& operator=(Name&& name) = delete;
+
+    const std::string& get() const { return m_name; }
+};
+
+int main()
+{
+    Name n1{ "Alex" };
+    n1 = Name{ "Joe" }; // error: move assignment deleted
+
+    std::cout << n1.get() << '\n';
+
+    return 0;
+}
+```
+
+如果删除复制构造函数，编译器将不会生成隐式移动构造函数（使对象既不可复制也不可移动）。因此，在删除复制构造函数时，最好明确说明你希望从移动构造函数中得到什么行为。要么显式删除构造函数（明确这是我们想要的行为），要么默认删除构造函数（使类只可移动）。
+
+* Key insight
+> `五则运算法则`指出，如果定义或删除了复制构造函数、复制赋值函数、移动构造函数、移动赋值函数或析构函数，那么就应该定义或删除这些函数中的> 每一个。
+
+如果你想要一个可复制但不可移动的对象，那么只删除 move 构造函数和 move 赋值似乎是个好主意，但这样做的不幸后果是，在强制复制消除不适用的情况下，该类不能按值返回。出现这种情况的原因是，已删除的移动构造函数仍被声明，因此符合重载解析的条件。而按值返回将使已删除的移动构造函数优先于未删除的复制构造函数。下面的程序可以说明这一点：
+
+```cpp
+#include <iostream>
+#include <string>
+#include <string_view>
+
+class Name
+{
+private:
+    std::string m_name {};
+
+public:
+    Name(std::string_view name) : m_name{ name }
+    {
+    }
+
+    Name(const Name& name) = default;
+    Name& operator=(const Name& name) = default;
+
+    Name(Name&& name) = delete;
+    Name& operator=(Name&& name) = delete;
+
+    const std::string& get() const { return m_name; }
+};
+
+Name getJoe()
+{
+    Name joe{ "Joe" };
+    return joe; // error: Move constructor was deleted
+}
+
+int main()
+{
+    Name n{ getJoe() };
+
+    std::cout << n.get() << '\n';
+
+    return 0;
+}
+```
