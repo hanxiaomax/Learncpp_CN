@@ -13,7 +13,7 @@ tags:
 
 
 
-在上一章 [[17-9-multiple-inheritance|17.9 - 多重继承]] 一课中，我们谈论了[[the-diamond-problem|菱形继承问题]]。本章我们会继续该话题。
+在上一章 [[17-9-multiple-inheritance|17.9 - 多重继承]]一课中，我们谈论了[[the-diamond-problem|菱形继承问题]]。本章我们会继续该话题。
 
 *注意：本节是高级主题，可以作为选修。*
 
