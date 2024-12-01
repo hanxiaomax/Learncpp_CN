@@ -23,7 +23,7 @@ tags:
 
 ## 无符号整型
 
-在上节课 ([[4-4-Signed-integers|4.4 - 有符号整型]]) 中，我们介绍了有符号整型，这些征信可以保存正负整数和 0。
+在上节课 ([[4-4-Signed-integers|4.4 - 有符号整型]]) 中，我们介绍了有符号整型，这些整型可以保存正负整数和 0。
 
 C++ 还支持无符号整型。无符号整型只能表示非符整数。
 
@@ -60,8 +60,6 @@ unsigned long long ull;
 很多新手程序员经常把有符号(signed) 和无符号(unsigned)这两个术语搞混。以下介绍一种简单的方法来记忆它们的不同：为了区分负数和正数，我们需要负号。如果没有指定符号，我们假定该数为正数。这样一来，具有符号的整型（有符号整型）可以区分正负。而不具有符号的整型（有符号整型）则全部为正数。
 
 ## 无符号整型溢出
-
-What happens if we try to store the number 280 (which requires 9 bits to represent) in a 1-byte (8-bit) unsigned integer? The answer is overflow.
 
 如果我们尝试把 280 （需要 9 个位来表示）赋值给一个 8 位无符号整型会发生什么呢？答案是——溢出。
 
