@@ -213,7 +213,7 @@ And that's all, folks!
 
 ## std:: cin
 
-`std::cin` 是 `isstream` 中预定义的另外一个变量。与用于输出的 `std::cout` 不同， `std::cin`(表示字符输入，“character input”) 配合提取运算符(`>>`)，可以从键盘读取输入。当然，输入的结果必须存放在变量中才可以被使用。
+`std::cin` 是 `iostream` 中预定义的另外一个变量。与用于输出的 `std::cout` 不同， `std::cin`(表示字符输入，“character input”) 配合提取运算符(`>>`)，可以从键盘读取输入。当然，输入的结果必须存放在变量中才可以被使用。
 
 ```cpp
 #include <iostream>  // for std::cout and std::cin
