@@ -9,24 +9,26 @@ tags:
 - debugger
 ---
 
+虽然单步调试（3.6 - 使用集成调试器之单步调试）对于独立测试单行代码是非常有用的，但是对于大型程序而言，使用单步调试可能需要花费很长的时间才能调试到对应的代码点。
 
-While stepping (covered in lesson [[3-6-Using-an-integrated-debugger-Stepping|3.6 - 使用集成调试器之单步调试]]) is useful for examining each individual line of your code in isolation, in a large program, it can take a long time to step through your code to even get to the point where you want to examine in more detail.
+幸运的是，现代调试器提供了很多工具来帮助我们更高效的调试程序，在本章节，我们将会了解到一些帮助我们更快导航到我们要调试的目标代码的调试器功能。
 
-Fortunately, modern debuggers provide more tools to help us efficiently debug our programs. In this lesson, we’ll look at some of the debugger features that let us more quickly navigate our code.
 
-## Run to cursor
+## 运行到光标处
 
-The first useful command is commonly called _Run to cursor_. This Run to cursor command executes the program until execution reaches the statement selected by your cursor. Then it returns control to you so you can debug starting at that point. This makes for an efficient way to start debugging at a particular point in your code, or if already debugging, to move straight to some place you want to examine further.
+第一个非常有帮助的命令通常称为 _运行到光标处_。这个命令会执行程序到你光标选中的语句处，然后将控制权返回给你以便于你可以开始在指定点开始调试，这为在代码中的特定点开始调试提供了一种有效的方法，或者如果你已经在调试，可以直接移动到您想要进一步检查的位置。
 
-For Visual Studio users
+!!! example "Visual Studio 用户"
 
-In Visual Studio, the _run to cursor_ command can be accessed by right clicking a statement in your code and choosing _Run to Cursor_ from the context menu, or by pressing the ctrl-F10 keyboard combo.
+	在 Visual Studio 中，可以在语句处单击鼠标右键然后在弹出的菜单中选择 _运行到光标处_，或者按 ctrl-F10 组合快捷键来访问 _运行到光标处_ 命令。
 
-For Code::Blocks users
 
-In Code::Blocks, the _run to cursor_ command can be accessed by right clicking a statement in your code and choosing either _Run to cursor_ from the context menu or _Debug menu > Run to cursor_, or by pressing the F4 shortcut key.
+!!! example "Code::Blocks 用户"
+    
+    在 Code::Blocks 中，可以在语句处单击鼠标右键然后在弹出的菜单中选择 _运行到光标处_，或者 _Debug菜单 > 运行到光标处_，或者按 F4 快捷键。
 
-Let’s try it using the same program we’ve been using:
+
+让我们用和之前一样的代码来尝试一下这个命令：
 
 ```cpp
 #include <iostream>
@@ -44,73 +46,112 @@ int main()
 }
 ```
 
-COPY
-
-Simply right click anywhere on line 5, then choose “Run to cursor”.
+在第五行任意位置单击鼠标右键，然后选择“运行到光标处”。
 
 ![](https://www.learncpp.com/images/CppTutorial/Chapter3/VS-StepInto4-min.png?ezimgfmt=rs:611x321/rscb2/ngcb2/notWebP)
 
-You will notice the program starts running, and the execution marker moves to the line you just selected. Your program has executed up to this point and is now waiting for your further debugging commands. From here, you can step through your program, _run to cursor_ to a different location, etc…
+你将看到程序开始运行，然后执行标记移动到你刚刚选中的第5行，代码会执行到这个位置然后等待你的进一步调试命令，从这里开始，你可以开始单步调试你的代码，或者继续 _运行到光标处_ 等。
 
-If you _run to cursor_ to a location that doesn’t execute, _run to cursor_ will simply run your program until termination.
+如果你通过 _运行到光标处_ 的代码并没有执行，_运行到光标处_ 命令会正常执行你的程序直到结束。
 
-Continue
+## 继续执行
 
-Once you’re in the middle of a debugging session, you may want to just run the program from that point forward. The easiest way to do this is to use the _continue_command. The continue debug command simply continues running the program as per normal, either until the program terminates, or until something triggers control to return back to you again (such as a breakpoint, which we’ll cover later in this lesson).
+一旦你正处于调试中的状态，你可能想程序继续从调试点往下执行。最简单的方式是使用 _继续执行_ 命令，这个命令会正常继续执行代码直到结束，或者因为某些原因控制权被重新返回给你（比如下面要介绍的断点）。
 
-For Visual Studio users
+!!! example "Visual Studio 用户"
 
-In Visual Studio, the _continue_ command can be accessed while already debugging a program via _Debug menu > Continue_, or by pressing the F5 shortcut key.
+    在 Visual Studio 中，如果已经进入到代码调试中状态，你可以通过 _Debug菜单 > 继续执行_，或者按 F5 快捷键来访问 _继续执行_ 命令。
 
-For Code::Blocks users
 
-In Code::Blocks, the _continue_ command can be accessed while already debugging a program via _Debug menu > Start / Continue_, or by pressing the F8 shortcut key.
+!!! example "Code::Blocks 用户"
+    
+    在 Code::Blocks中，如果已经进入到代码调试中状态，你可以通过 _Debug菜单 > 开始执行/继续执行_，或者按 F8 快捷键来访问 _继续执行_ 命令。
 
-Let’s test out the _continue_ command. If your execution marker isn’t already on line 5, _run to cursor_ to line 5. Then choose _continue_ from this point. Your program will finish executing and then terminate.
 
-Start
+让我们来测试一下 _继续执行_ 命令，如果你的执行标记尚未在第五行上，使用 _运行到光标处_ 执行到第5行，然后选择 _继续执行_，你可以看到程序继续执行直到结束。
 
-The _continue_ command has a twin brother named _start_. The _start_ command performs the same action as _continue_, just starting from the beginning of the program. It can only be invoked when not already in a debug session.
+## 开始执行
 
-For Visual Studio users
+_继续执行_ 有一个叫 _开始执行_ 的孪生兄弟，其行为跟 _继续执行_ 很相似，只是从头开始执行程序，这个命令只能在未处于调试中状态的时候使用。
 
-In Visual Studio, the _start_ command can be accessed while not debugging a program via _Debug menu > Start Debugging_, or by pressing the F5 shortcut key.
+!!! example "Visual Studio 用户"
 
-For Code::Blocks users
+    在 Visual Studio 中，如果未处于调试中状态，可以通过 _Debug菜单 > 开始执行，或者按下 F5 快捷键 来访问 _开始执行_ 命令。 
 
-In Code::Blocks, the _start_ command can be accessed while not debugging a program via _Debug menu > Start / Continue_, or by pressing the F8 shortcut key.
+!!! example "Code::Blocks 用户"
 
-If you use the _start_ command on the above sample program, it will run all the way through without interruption. While this may seem unremarkable, that’s only because we haven’t told the debugger to interrupt the program. We’ll put this command to better use in the next section.
+    在 Code::Blocks 中，如果未处于调试中状态，可以通过_Debug菜单 > 开始执行/继续执行_，或者按 F8 快捷键来访问 _开始执行_ 命令。
 
-Breakpoints
 
-The last topic we are going to talk about in this section is breakpoints. A breakpoint is a special marker that tells the debugger to stop execution of the program at the breakpoint when running in debug mode.
+如果你对上面的代码使用 _开始执行_ 命令，程序将不会中断地完整执行，这可能看起来没什么用处，因为我们还没有告诉调试器要中断程序执行，在下一节我们将会知道怎么样更好的使用这个命令。
 
-For Visual Studio users
+## 断点
 
-In Visual Studio, you can set or remove a breakpoint via _Debug menu > Toggle Breakpoint_, or by right clicking on a statement and choosing _Toggle Breakpoint_ from the context menu, or by pressing the F9 shortcut key, or by clicking to the left of the line number (in the light grey area).
+本节我们要讨论的最后一个话题是断点，断点是一个特殊的标记，用于在调试模式下，告诉调试器当程序执行到断点处时应该停下来。
 
-For Code::Blocks users
+!!! example "Visual Studio 用户"
 
-In Code::Blocks, you can set or remove a breakpoint via _Debug menu > Toggle breakpoint_, or by right clicking on a statement and choosing _Toggle breakpoint_ from the context menu, or by pressing the F5 shortcut key, or by clicking to the right of the line number.
+    在 Visual Studio 中，您可以通过 _Debug 菜单 > 切换断点_，或鼠标右键单击代码并从弹出的菜单中选择 _切换断点_ ，或按 F9 快捷键，或单击行号左侧（浅灰色区域）来设置或删除断点。
 
-When you set a breakpoint, you will see a new type of icon appear. Visual Studio uses a red circle, Code::Blocks uses a red octagon (like a stop sign):
+!!! example "Code::Blocks 用户"
+
+    在 Code::Blocks 中，您可以通过 _Debug菜单 > 切换断点_ ，或者鼠标右键单击代码并从弹出的菜单中选择 _切换断点_，或者按 F5 快捷键，或者单击行号右侧来设置或删除断点
+
+
+当你设置上断点以后，你将会看到一个新样式的图标出现，在 Visual Studio中是一个红色的圆圈，Code::Blocks中是一个红色的八边形（就像 停止 的标志）：
 
 ![](https://www.learncpp.com/images/CppTutorial/Chapter3/VS-Breakpoint1-min.png?ezimgfmt=rs:494x308/rscb2/ng:webp/ngcb2)
 
-Go ahead and set a breakpoint on the line 5, as shown in the image above.
+让我们继续，如上图所示在第5行处设置上断点。
 
-Now, choose the _Start_ command to have the debugger run your code, and let’s see the breakpoint in action. You will notice that instead of running all the way to the end of the program, the debugger stops at the breakpoint (with the execution marker sitting on top of the breakpoint icon):
+现在，选择 _开始执行_ 命令来让调试器开始执行你的代码，同时我们来观察断点的行为。你将会注意到，与直接将程序完整执行直到结束不同，调试器会停在断点处（执行标记将会叠加在断点图标上）：
 
 ![](https://www.learncpp.com/images/CppTutorial/Chapter3/VS-Breakpoint2-min.png?ezimgfmt=rs:541x289/rscb2/ng:webp/ngcb2)
 
-It’s just as if you’d _run to cursor_ to this point.
+其表现就像你通过在这个位置使用 _运行到光标处_ 一样。
 
-Breakpoints have a couple of advantages over _run to cursor_. First, a breakpoint will cause the debugger to return control to you every time they are encountered (unlike _run to cursor_, which only runs to the cursor once each time it is invoked). Second, you can set a breakpoint and it will persist until you remove it, whereas with _run to cursor_ you have to locate the spot you want to run to each time you invoke the command.
+断点跟 _运行到光标处_ 相比有几个有点。第一，调试器遇到断点的时候，会将控制权返回给你（不像 _运行到光标处_ 每次调用只会运行一次）。第二，除非你主动移除断点，否则你设置的断点将会一直存在，不像 _运行到光标处_ 每次使用这个命令你都需要重新设置你想定位的位置。
 
-Note that breakpoints placed on lines that are not in the path of execution will not cause the debugger to halt execution of the code.
+特别注意，如果断点没有设置在程序执行路径上，是不会导致调试器停止执行代码的。
 
-Let’s take a look at a slightly modified program that better illustrates the difference between breakpoints and _run to cursor_:
+让我们对上面的程序稍作修改来更好的说明 _断点_ 和 _运行到光标处_ 的差异：
+
+```cpp
+#include <iostream>
+
+void printValue(int value)
+{
+    std::cout << value;
+}
+
+int main()
+{
+    printValue(5);
+    printValue(6);
+    printValue(7);
+
+    return 0;
+}
+```
+首先，开启一个新的调试会话，然后在第5行执行 _运行到光标处_，然后选择 _继续执行_。程序将会继续执行直到结束（虽然第5行会多次执行，但是调试器并不会再次停在第5行）。
+
+然后，在第5行设置一个断点，执行 _开始执行_。程序将会停在第5行，现在选择 _继续执行_，程序会第二次停在第5行，再一次选择 _继续执行_ 程序会第三次停在第5行，当再一次选择 _继续执行_ 程序将会执行结束，你可以看到，断点处代码被执行了多少次，断点就会停留多少次。
+
+
+## 设置下一条语句 Set next statement
+
+还有一个不太常用的调试命令，即便你应该不会常用，但还是值得了解一下，_设置下一条语句_ 允许我们将程序执行点改为其它语句（有时也叫_跳转_），这可以用来跳过一些要被执行的代码，或者回到之前已经执行过的位置然后再执行一遍。
+
+!!! example "Visual Studio 用户"
+
+    在 Visual Studio 中，如果已经处于调试中状态，你可以在语句处单击鼠标右键语句并从弹出的菜单中选择_设置下一条语句_，或按 Ctrl-Shift-F10 组合快捷键来跳转执行点。
+
+
+!!! example "Code::Blocks 用户"
+
+    在 Code::Blocks 中，你可以通过 _Debug菜单 > 设置下一条语句_ ，或者在语句处单击鼠标右键语句并从弹出的菜单中选择_设置下一条语句_ 来访问 _设置下一条语句_ 命令。Code::Blocks 没有此命令的键盘快捷键。
+
+让我们来看一下向后跳转的表现：
 
 ```cpp
 #include <iostream>
@@ -130,74 +171,43 @@ int main()
 }
 ```
 
-COPY
+首先，通过 _运行到光标处_ 执行到第11行，你应该可以看到控制台窗口输出了5。
 
-First, start a new debugging session and then do a _run to cursor_ to line 5. Now choose _continue_. The program will continue to the end (it won’t stop on line 5 again, even though line 5 is executed twice more).
+现在，在第12行处单击鼠标右键，选择 _设置下一条语句_。这会导致第11行被跳过并且不会执行，然后选择 _继续执行_ 来结束程序执行。
 
-Next, place a breakpoint on line 5, then choose _start_. The program will stop on line 5. Now choose _continue_. The program will stop on line 5 a second time. Choose _continue_again, and it will stop a third time. One more _continue_, and the program will terminate. You can see that the breakpoint caused the program to stop as many times as that line was executed.
+代码执行的结果如下：
 
-Set next statement
+> 5
+> 
+> 7
 
-There’s one more debugging command that’s used fairly uncommonly, but is still at least worth knowing about, even if you won’t use it very often. The set next statementcommand allows us to change the point of execution to some other statement (sometimes informally called _jumping_). This can be used to jump the point of execution forwards and skip some code that would otherwise execute, or backwards and have something that already executed run again.
+可以看到，`printValue(6)`被跳过了。
 
-For Visual Studio users
+在某些场景下，这个功能很有用。
 
-In Visual Studio, you can jump the point of execution by right clicking on a statement and choosing _Set next statement_ from the context menu, or by pressing the Ctrl-Shift-F10 shortcut combination. This option is contextual and only occurs while already debugging a program.
+在我们对基础调试工具的探索中，我们讨论了通过把一个函数注释掉的方式来确定是不是因为该函数导致的问题，这需要我们修改代码，并且要记得在之后恢复被注释的代码。而在调试器中，没有一种直接的方式可以跳过代码的执行，所以如果你确定要跳过代码执行，使用 _设置下一条语句_ 来跳过中间所有的函数调用是最简单的方式。
 
-For Code::Blocks users
+使用 _设置下一条语句_ 来往回跳转，这在当我们想要刚刚执行过的函数再一次执行来更细致的观察函数在做什么时非常有用。
 
-In Code::Blocks, you can jump the point of execution via _Debug menu > Set next statement_, or by right clicking on a statement and choosing _Set next statement_ from the context menu. Code::Blocks doesn’t have a keyboard shortcut for this command.
+以上面的代码为例，在第12行使用 _运行到光标处_，然后在第11行处使用 _设置下一条语句_，然后 _继续执行_，程序输出如下所示：
 
-Let’s see jumping forwards in action:
+> 5
+> 
+> 6
+> 
+> 6
+> 
+> 7
 
-```cpp
-#include <iostream>
+!!! warning "注意"
 
-void printValue(int value)
-{
-    std::cout << value;
-}
+    _设置下一条语句_ 将会改变程序的执行点，但是不会改变程序的状态，你的变量将会保持他们跳转到下一条语句之前的值。因此，跳转可能会导致你的程序产生与不同的值，结果，或者行为。谨慎使用这个能力（尤其是使用向后跳转）。
 
-int main()
-{
-    printValue(5);
-    printValue(6);
-    printValue(7);
+!!! warning "注意"
 
-    return 0;
-}
-```
+    你不应该使用 _设置下一条语句_ 来改变代码点使其执行去到另外一个不同的函数，这会导致未定义的行为，比如崩溃之类的。
 
-COPY
 
-First, _run to cursor_ to line 11. At this point, you should see the value of _5_ in the console output window.
+## 小结
 
-Now, right click on line 12, and choose _set next statement_. This causes line 11 to be skipped and not execute. Then choose _continue_ to finish executing your program.
-
-The output of your program should look like this:
-
-57
-
-We can see that `printValue(6)` was skipped.
-
-This functionality can be useful in several contexts.
-
-In our exploration of basic debugging techniques, we discussed commenting out a function as a way to determine whether that function had a role in causing an issue. This requires modifying our code, and remembering to uncomment the function later. In the debugger, there’s no direct way to skip a function, so if you decide you want to do this, using _set next statement_ to jump over a function call is the easiest way to do so.
-
-Jumping backwards can also be useful if we want to watch a function that just executed run again, so we can see what it is doing.
-
-With the same code above, _run to cursor_ to line 12. Then _set next statement_ on line 11, and _continue_. The program’s output should be:
-
-5667
-
-Warning
-
-The _set next statement_ command will change the point of execution, but will not otherwise change the program state. Your variables will retain whatever values they had before the jump. As a result, jumping may cause your program to produce different values, results, or behaviors than it would otherwise. Use this capability judiciously (especially jumping backwards).
-
-Warning
-
-You should not use _set next statement_ to change the point of execution to a different function. This will result in undefined behavior, and likely a crash.
-
-Conclusion
-
-You now learned the major ways that you can use an integrated debugger to watch and control how your program executes. While these commands can be useful for diagnosing code flow issues (e.g. to determine if certain functions are or aren’t being called), they are only a portion of the benefit that the integrated debugger brings to the table. In the next lesson, we’ll start exploring additional ways to examine your program’s state, for which you’ll need these commands as a prerequisite. Let’s go!
+你现在已经学会了如何通过集成调试器来观测和控制你的函数执行的主要方式，这些命令对于诊断代码流程问题非常的有用（比如用于明确一个函数是否被调用），这只是集成调试器所带来的部分好处。在下一节中，我们将开始探索一些用于检测程序状态的额外的方式，为此你需要先了解这些命令。
