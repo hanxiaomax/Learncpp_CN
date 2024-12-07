@@ -6248,7 +6248,7 @@
 <p>如果链接器报告了 <code>add</code>函数未定义的错误，请确保  <em>add.cpp</em> 被添加到了项目中，这样<code>add</code>函数才能够被正确链接。</p>
 <h2 id="vs">尖括号 vs 双引号</h2>
 <p>你可能会好奇，为什么 <code>iostream</code> 使用的是尖括号，而 <code>add.h</code>就需要使用双引号。这是因为，同名的文件可能会分布在不同的目录中。区分使用尖括号和双引用，可以告诉编译器到哪里寻找头文件。</p>
-<p>当使用尖括号的时候，其实是在告诉预处理器对应的头文件并不是我们编写的。编译器只会在 <code>include directories</code> 指定的目录中搜索。<code>include directories</code>是项目、IDE或编译器配置的一部分，默认的路径是由编译器或操作系统提供的。编译器并不会在你的项目目录中搜索对饮的头文件。</p>
+<p>当使用尖括号的时候，其实是在告诉预处理器对应的头文件并不是我们编写的。编译器只会在 <code>include directories</code> 指定的目录中搜索。<code>include directories</code>是项目、IDE或编译器配置的一部分，默认的路径是由编译器或操作系统提供的。编译器并不会在你的项目目录中搜索对应的头文件。</p>
 <p>当使用双引号的时候，其实是在告诉预处理器头文件是我们自己编写的。编译器首先会搜索当前目录，如果找不到所需的头文件，则会在 <code>include directories</code> 中进行查找。</p>
 <div class="admonition note">
 <p class="admonition-title">法则</p>

@@ -6123,9 +6123,9 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>其中的一个赋值语句是合法的（将 5 赋值给 x），另外一个则是合法的（将x的值赋值给字面量5是什么意思？）。可是，编译器是如何判断赋值语句中的表达式是否合法呢？</p>
+<p>其中的一个赋值语句是合法的（将 5 赋值给 x），另外一个则是非法的（将x的值赋值给字面量5是什么意思？）。可是，编译器是如何判断赋值语句中的表达式是否合法呢？</p>
 <p>这个问题的答案就在于第二个表达式属性：表达式<a href="../value-category/">值类型</a>。值类型表明一个表达式会求值得到一个值、一个函数还是一个对象。</p>
-<p>在 C++11 之前，C++ 中只有啷个可能的值类型：<a href="../lvalue/">左值</a>和<a href="../rvalue/">右值</a>。</p>
+<p>在 C++11 之前，C++ 中只有两个可能的值类型：<a href="../lvalue/">左值</a>和<a href="../rvalue/">右值</a>。</p>
 <p>在 C++11 中，新增了三个值类型 (<code>glvalue</code>、<code>prvalue</code> 和 <code>xvalue</code>)，用于支持<a href="../move-semantics/">移动语义</a>。</p>
 <div class="admonition info">
 <p class="admonition-title">作者注</p>
