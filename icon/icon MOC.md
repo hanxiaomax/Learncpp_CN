@@ -1,1 +1,0 @@
-![[icon-MOC-overview.excalidraw|1000]]
