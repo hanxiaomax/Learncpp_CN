@@ -1,7 +1,7 @@
 ---
-title:打桩
+title: 打桩
 alias: 打桩
-english:stub
+english: stub
 type: glossary
 tags:
 - glossary
