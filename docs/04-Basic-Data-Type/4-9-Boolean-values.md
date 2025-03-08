@@ -10,9 +10,9 @@ tags:
 - bool
 ---
 
-??? note "Key Takeaway"
-	- 不能用括号初始化和一个整型数来初始化布尔变量，其他情况是可以转换的
-	- `std::cin` 不能接收`true`或者`false`，除非使用 `std::cout << std::boolalpha;`
+> [!note] "Key Takeaway"
+> - 不能用括号初始化和一个整型数来初始化布尔变量，其他情况是可以转换的
+> - `std::cin` 不能接收`true`或者`false`，除非使用 `std::cout << std::boolalpha;`
 
 在现实中，有些问题的答案只有”是“或”不是“两种。”苹果是水果吗？“，是的。”你爱吃笋吗？“不。
 

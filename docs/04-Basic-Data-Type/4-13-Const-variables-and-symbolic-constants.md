@@ -9,12 +9,12 @@ tags:
 - const
 ---
 
-??? note "Key Takeaway"
-    - const 变量必须初始化，且初始化之后值不可以改变
-    - 函数参数可以为 `const`，但是传值的情况下不需要用
-    - 函数的返回值可以为 `const`，但是一般不要用，没有意义而且会影响性能
-    - 避免将对象形式的预处理器宏用于符号常量
-    - 在多个文件中共享符号常量，可以[[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|使用 inline 变量共享全局常量]]
+> [!note] "Key Takeaway"
+> - const 变量必须初始化，且初始化之后值不可以改变
+> - 函数参数可以为 `const`，但是传值的情况下不需要用
+> - 函数的返回值可以为 `const`，但是一般不要用，没有意义而且会影响性能
+> - 避免将对象形式的预处理器宏用于符号常量
+> - 在多个文件中共享符号常量，可以[[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|使用 inline 变量共享全局常量]]
 
 在编程中，常量（constant）指的是不会改变的值。C++支持几种类型的常量：`const` 变量（参见：[[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]）和[[literals|字面量]]（参见：[[4-15-Literals|4.15 - 字面量]]）
 

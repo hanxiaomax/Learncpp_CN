@@ -10,7 +10,7 @@ tags:
 - control flow
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 尽管我们可以编写很多链式 if-else，但是这么做不仅写起来费劲，效率也不高。例如：

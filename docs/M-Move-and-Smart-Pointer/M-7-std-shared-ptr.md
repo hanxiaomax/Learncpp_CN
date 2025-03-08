@@ -13,9 +13,8 @@ tags:
 - C++20
 ---
 
-??? note "Key Takeaway"
-
-	- 如果你需要为相同的资源创建额外的 `std::shared_ptr` ，请从已有的 `std::shared_ptr` 复制一份。
+> [!note] "Key Takeaway"
+> - 如果你需要为相同的资源创建额外的 `std::shared_ptr` ，请从已有的 `std::shared_ptr` 复制一份。
 
 
 `std::unique_ptr` 被设计出来独占它所管理的资源，与此不同的是 `std::shared_ptr` 则是为了解决多个指针共同管理同一个资源的情况。

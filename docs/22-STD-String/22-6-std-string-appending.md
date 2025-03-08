@@ -9,7 +9,6 @@ tags:
 - string
 ---
 
-??? note "Key Takeaway"
 
 ## 追加字符串
 

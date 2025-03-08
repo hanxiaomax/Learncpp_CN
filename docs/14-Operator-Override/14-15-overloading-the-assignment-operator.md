@@ -10,9 +10,7 @@ tags:
 - assignment
 ---
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 The **assignment operator** (operator=) is used to copy values from one object to another _already existing object_.
 

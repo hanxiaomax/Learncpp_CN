@@ -10,14 +10,13 @@ tags:
 - C++20
 ---
 
-??? note "Key Takeaway"
-
-	- `<algorithms>`中提供了很多好用的算法，用于对容器进行查找、搜索和计数。
-	- [`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。
-	- [`std::find_if`](https://en.cppreference.com/w/cpp/algorithm/find)在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串）
-	- [`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
-	- [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 默认对数组进行升序排序，但是可以接受第三个参数，定义排序规则
-	- [`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) 接受一个列表作为输入，然后对列表中的每个元素应用一个自定义的函数。支持并行处理。
+> [!note] "Key Takeaway"
+> - `<algorithms>`中提供了很多好用的算法，用于对容器进行查找、搜索和计数。
+> - [`std::find`](https://en.cppreference.com/w/cpp/algorithm/find) 函数用于查找某个值在元素中第一次出现的位置。`std::find` 有三个参数：序列中起始元素的迭代器、终点元素的迭代器、需要搜索的值。该函数会返回指向目标元素的迭代器（如果找到的话），或者指向容器的末尾（如果没找的话）。
+> - [`std::find_if`](https://en.cppreference.com/w/cpp/algorithm/find)在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串）
+> - [`std::count`](https://en.cppreference.com/w/cpp/algorithm/count) 和 `std::count_if` 用于搜索满足某个条件的元素，并对其出现次数进行统计。
+> - [`std::sort`](https://en.cppreference.com/w/cpp/algorithm/sort) 默认对数组进行升序排序，但是可以接受第三个参数，定义排序规则
+> - [`std::for_each`](https://en.cppreference.com/w/cpp/algorithm/for_each) 接受一个列表作为输入，然后对列表中的每个元素应用一个自定义的函数。支持并行处理。
 
 
 新手程序员可能会画上大量的时间来编写循环代码处理很多简单的任务，例如排序、计数或者是搜索数组。这些循环可能很容易带来问题，一方面本身编写数组循环就容易产生问题，另外一方面可维护性也很不好，因为循环代码通常比较难以理解。

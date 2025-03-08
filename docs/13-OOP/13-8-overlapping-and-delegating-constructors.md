@@ -11,7 +11,7 @@ tags:
 - constructor
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 - 分清楚初始化和赋值
 

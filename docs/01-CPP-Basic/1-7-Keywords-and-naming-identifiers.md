@@ -9,8 +9,7 @@ tags:
 - identifier
 ---
 
-??? note "Key Takeaway"
-	- 
+> [!note] "Key Takeaway"
 
 ## 关键字
 

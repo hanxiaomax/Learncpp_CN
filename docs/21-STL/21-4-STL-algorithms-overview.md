@@ -10,9 +10,8 @@ tags:
 - containers
 ---
 
-??? note "Key Takeaway"
-
-	- 算法都是配合迭代器使用的，返回的结果一般也是迭代器
+> [!note] "Key Takeaway"
+> - 算法都是配合迭代器使用的，返回的结果一般也是迭代器
 
 
 除了[[container-class|容器类]]和[[iterator|迭代器]]，STL还提供了很多[[generic-algorithm|泛型算法]] 来配合容器类中的元素使用，对它们进行搜索、排序、插入、重排、删除和拷贝。

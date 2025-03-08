@@ -9,7 +9,7 @@ tags:
 - pointer
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 

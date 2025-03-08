@@ -11,11 +11,11 @@ tags:
 - static-cast
 ---
 
-??? note "Key Takeaway"
-	- C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]]、[[static-casts|静态类型转换]]、[[const-cast|const 类型转换]]、[[dynamic-casts|动态类型转换]]和[[reinterpret-casts|重新解释类型转换]]。后四种类型有时称为[[named-cast|具名名类型转换(named cast)]]。
-	- C 语言类型的类型转换在不同的语境下会产生不同的效果，尽量不要使用
-	- 优先使用`static_cast` ，它提供了[[runtime|运行时]]的类型检查机制，不容易犯错。
-	- 使用 `static_cast`  进行显式地缩窄转换
+> [!note] "Key Takeaway"
+> - C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]]、[[static-casts|静态类型转换]]、[[const-cast|const 类型转换]]、[[dynamic-casts|动态类型转换]]和[[reinterpret-casts|重新解释类型转换]]。后四种类型有时称为[[named-cast|具名名类型转换(named cast)]]。
+> - C 语言类型的类型转换在不同的语境下会产生不同的效果，尽量不要使用
+> - 优先使用`static_cast` ，它提供了[[runtime|运行时]]的类型检查机制，不容易犯错。
+> - 使用 `static_cast`  进行显式地缩窄转换
 
 在 [[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中我们介绍过，编译器可以隐式地将一种类型的值转换成另外一种类型，即[[implicit-type-conversion|隐式类型转换]]。当你想要将一个数值类型通过[[numeric promotions|数值提升]]的方式转换为更宽的类型时，使用隐式类型转换是可以的。
 

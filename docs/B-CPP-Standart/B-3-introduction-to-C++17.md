@@ -8,10 +8,6 @@ type: translation
 ---
 
 
-??? note "Key Takeaway"
-	
-
-
 
 ## C++17 是什么？
 

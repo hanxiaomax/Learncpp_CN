@@ -9,7 +9,7 @@ tags:
 - access specifier
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 ## 公有和私有成员

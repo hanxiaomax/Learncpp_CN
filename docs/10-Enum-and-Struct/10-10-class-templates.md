@@ -8,8 +8,7 @@ type: translation
 tags:
 - class template
 ---
-
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 

@@ -10,9 +10,8 @@ tags:
 - string
 ---
 
-??? note "Key Takeaway"
-
-	- 使用[[extraction-operator|提取运算符]]从流中提取“数字格式”的字符串到数值类型，即可完成字符串到数值的转换
+> [!note] "Key Takeaway"
+> - 使用[[extraction-operator|提取运算符]]从流中提取“数字格式”的字符串到数值类型，即可完成字符串到数值的转换
 
 
 到目前为止，你看到的所有I/O示例都是从`cout`写入或从`cin`读取的。但是，还有另一组称为字符串流类的类，它允许你使用熟悉的[[insertion-operator|插入运算符]]和[[extraction-operator|提取运算符]]来处理字符串。像`istream`和`ostream`一样，字符串流提供了一个缓冲区来保存数据。然而，与`cin`和`cout`不同的是，这些流不连接到I/O通道(如键盘、显示器等)。字符串流的主要用途之一是缓冲输出以便稍后显示，或者逐行处理输入。

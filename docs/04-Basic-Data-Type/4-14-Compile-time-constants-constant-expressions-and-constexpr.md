@@ -10,7 +10,6 @@ tags:
 - constexpr
 ---
 
-??? note "Key Takeaway"
 
 
 考虑下面的函数：

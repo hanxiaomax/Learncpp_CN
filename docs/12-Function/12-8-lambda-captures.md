@@ -9,7 +9,7 @@ tags:
 - summary
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 ## 捕获语句以及捕获值

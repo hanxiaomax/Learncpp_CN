@@ -9,8 +9,8 @@ tags:
 - error handling
 ---
 
-??? note "Key Takeaway"
-	
+
+> [!note] "Key Takeaway"
 
 
 Most programs that have a user interface of some kind need to handle user input. In the programs that you have been writing, you have been using std::cin to ask the user to enter text input. Because text input is so free-form (the user can enter anything), it’s very easy for the user to enter input that is not expected.

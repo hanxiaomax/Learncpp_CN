@@ -9,8 +9,6 @@ type: translation
 ---
 
 
-??? note "Key Takeaway"
-	
 
 **库**是一个代码包，它可以被许多程序重用。通常，C++库分为两部分：
 

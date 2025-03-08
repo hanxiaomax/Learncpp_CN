@@ -9,7 +9,7 @@ tags:
 - string
 ---
 
-??? note "Key Takeaway"
+
 
 
 ## 访问字符

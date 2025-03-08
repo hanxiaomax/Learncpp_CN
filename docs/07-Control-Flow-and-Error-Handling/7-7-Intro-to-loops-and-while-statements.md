@@ -10,7 +10,7 @@ tags:
 - for
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 ## 循环

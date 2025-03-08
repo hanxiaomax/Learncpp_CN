@@ -9,15 +9,14 @@ tags:
 - linkage
 ---
 
-??? note "Key Takeaway"
-	
-	- 全局变量和函数的表示符，链接属性为 [[internal-linkage|内部链接(internal linkage)]] 或 [[external-linkage|内部链接(external linkage)]]  
-	- 具有内部链接属性的标识符，在一个文件内可见可用，**但是在其他文件中不可访问**
-	- `static` 可以将全局变量声明为**内部变量**，`Const` 和 `constexpr` 的全局变量则默认具有内部链接属性
-	- 存储类型说明符可以同时设置变量的链接属性和存储持续时间（但不是其作用域），最常用的有`static`, `extern`, and `mutable`。
-	- 定义在不同文件中的内部变量是独立的实体，因此不违反[[one-definition-rule|单一定义规则]]
-	- 链接是标识符的属性（而不是变量的属性）
-	- 函数标识符默认是外部链接，可以通过`static`关键字修改为内部链接，此时函数只能在文件内部使用
+> [!note] "Key Takeaway"
+> - 全局变量和函数的表示符，链接属性为 [[internal-linkage|内部链接(internal linkage)]] 或 [[external-linkage|内部链接(external linkage)]]  
+> - 具有内部链接属性的标识符，在一个文件内可见可用，**但是在其他文件中不可访问**
+> - `static` 可以将全局变量声明为**内部变量**，`Const` 和 `constexpr` 的全局变量则默认具有内部链接属性
+> - 存储类型说明符可以同时设置变量的链接属性和存储持续时间（但不是其作用域），最常用的有`static`, `extern`, and `mutable`。
+> - 定义在不同文件中的内部变量是独立的实体，因此不违反[[one-definition-rule|单一定义规则]]
+> - 链接是标识符的属性（而不是变量的属性）
+> - 函数标识符默认是外部链接，可以通过`static`关键字修改为内部链接，此时函数只能在文件内部使用
 
  
  在[[6-3-Local-variables|6.3 - 局部变量]]中我们讲过，标识符的链接属性决定了变量的多个声明是否指的是同一个对象。同时我们也介绍了局部变量的链接属性为*无链接*。

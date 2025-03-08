@@ -10,11 +10,11 @@ tags:
 - input-manipulator
 ---
 
-??? note "Key Takeaway"
-	- `std::string` 不能接收空格，为了输入一整行文本，最好是使用 `std::getline()` 函数
-	- 使用输入或输出操纵器，可以修改`std::cin`或`std::cout`的行为，`std::ws` 输入操纵器告诉`std::cin`要忽略任何前置空白
-	- 输入字符串时，敲击回车会导致输入流中填入`\n`，它可能被提取，也可能被留在流中，这取决于接收它的变量是什么类型。如果留在流中则会导致`std::getline`认为输入已经完成
-	- 使用`std::string`的成员函数`std::string::length()`获取字符串长度，它的返回值类型为`size_t`（无符号整型）
+> [!note] "Key Takeaway"
+> - `std::string` 不能接收空格，为了输入一整行文本，最好是使用 `std::getline()` 函数
+> - 使用输入或输出操纵器，可以修改`std::cin`或`std::cout`的行为，`std::ws` 输入操纵器告诉`std::cin`要忽略任何前置空白
+> - 输入字符串时，敲击回车会导致输入流中填入`\n`，它可能被提取，也可能被留在流中，这取决于接收它的变量是什么类型。如果留在流中则会导致`std::getline`认为输入已经完成
+> - 使用`std::string`的成员函数`std::string::length()`获取字符串长度，它的返回值类型为`size_t`（无符号整型）
  
  你编写的第一个 C++ 程序可能是下面这样：
  

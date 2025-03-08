@@ -10,17 +10,17 @@ tags:
 - C++17
 ---
 
-??? note "Key Takeaway"
-    - `std:: string_view` 提供了一个观察字符串的视图，字符串本身存放在二进制文件中
-    - 创建 `std:: string_view` 时不会发生复制，但是修改时会影响到所有的对象。
-    - `remove_prefix`和`remove_suffix`分别用于从字符串视图的左侧和右侧删除字符（不会影响到原字符串）
-    - 要将`std:: string_view` 转换为C风格的字符串，我们可以先转换为`std:: string`
-    - 使用 `str.c_str()`获取C风格字符串
-    - 如果我们想写一个接受字符串形参的函数，将形参设置为 `std:: string_view` 是最灵活的选择，因为它可以高效地配合C风格的字符串参数(包括字符串字面量)、`std:: string`参数(将隐式转换为' std:: string_view ')和 `std:: string_view`参数来工作：
-    - 优先使用`std:: string_view`([[pass-by-value|按值传递]])而不是`const std:: string&`，除非你需要调用其他要求使用C风格字符串或`std::string`的函数。
-    - 确保`std::string_view`观察的字符串不会[[going-out-of-scope|离开作用域]]，也不会被修改。
-	    - 因为 `std::string_view` 的生命周期是独立于它“观察”的字符串的（也就是说该字符串对象可以在先于`std::string_view`被销毁)。这种情况下访问`std::string_view`就会造成[[1-6-Uninitialized-variables-and-undefined-behavior|未定义行为]]。
-    - 只有在`std::string_view`没有被修改的情况下且字符串以空结束符结尾的情况下使用`std::string_view::data()` 如果字符串没有以空结束符结尾，则`std::string_view::data()`会导致未定义行为。
+> [!note] "Key Takeaway"
+> - `std:: string_view` 提供了一个观察字符串的视图，字符串本身存放在二进制文件中
+> - 创建 `std:: string_view` 时不会发生复制，但是修改时会影响到所有的对象。
+> - `remove_prefix`和`remove_suffix`分别用于从字符串视图的左侧和右侧删除字符（不会影响到原字符串）
+> - 要将`std:: string_view` 转换为C风格的字符串，我们可以先转换为`std:: string`
+> - 使用 `str.c_str()`获取C风格字符串
+> - 如果我们想写一个接受字符串形参的函数，将形参设置为 `std:: string_view` 是最灵活的选择，因为它可以高效地配合C风格的字符串参数(包括字符串字面量)、`std:: string`参数(将隐式转换为' std:: string_view ')和 `std:: string_view`参数来工作：
+> - 优先使用`std:: string_view`([[pass-by-value|按值传递]])而不是`const std:: string&`，除非你需要调用其他要求使用C风格字符串或`std::string`的函数。
+> - 确保`std::string_view`观察的字符串不会[[going-out-of-scope|离开作用域]]，也不会被修改。
+>   - 因为 `std::string_view` 的生命周期是独立于它“观察”的字符串的（也就是说该字符串对象可以在先于`std::string_view`被销毁)。这种情况下访问`std::string_view`就会造成[[1-6-Uninitialized-variables-and-undefined-behavior|未定义行为]]。
+> - 只有在`std::string_view`没有被修改的情况下且字符串以空结束符结尾的情况下使用`std::string_view::data()` 如果字符串没有以空结束符结尾，则`std::string_view::data()`会导致未定义行为。
 
 > [!info] "作者注"
 > 本课程的部分内容被移动到了[[4-18-Introduction-to-std-string_view|4.18 - std:: string_view 简介]] 。因此，这节课中有部分尚未清理的重复部分。

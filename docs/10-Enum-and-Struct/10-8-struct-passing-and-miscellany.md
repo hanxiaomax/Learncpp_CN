@@ -8,9 +8,7 @@ type: translation
 tags:
 - struct
 ---
-
-??? note "Key Takeaway"
-
+> [!note] "Key Takeaway"
 
 
 假设一个员工由3个松散变量表示：

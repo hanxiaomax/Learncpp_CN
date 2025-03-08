@@ -7,8 +7,6 @@ time: 2020-5-3
 type: translation
 ---
 
-??? note "Key Takeaway"
-	
 
 
 有一些问题往往被问了一遍又一遍。本FAQ将尝试回答最常见的问题。

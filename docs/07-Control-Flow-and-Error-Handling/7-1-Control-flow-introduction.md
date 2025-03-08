@@ -9,8 +9,8 @@ tags:
 - control flow
 ---
 
-??? note "Key Takeaway"
-	
+
+> [!note] "Key Takeaway"
 
 
 当程序开始运行时，CPU从 `main()` 的顶部开始执行指令（默认按照顺序执行），当到达 `main()` 函数末尾时，程序停止。CPU执行语句的特定顺序，称为执行路径（简称路径）。

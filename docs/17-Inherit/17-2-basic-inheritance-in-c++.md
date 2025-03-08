@@ -9,10 +9,8 @@ tags:
 - inheritance
 ---
 
-??? note "Key Takeaway"
-	
-	-
-
+> [!note] "Key Takeaway"
+> 
 从抽象层面讨论过继承之后，让我们来看看 C++ 中的继承吧。
 
 C++的继承发生在类与类之间。在继承关系中，被继承的类称为[[parent-class|父类(parent class)]]、[[base-class|基类(base class)]]或[[super-class|超类(super class)]]。而继承父类的类，则称为[[child-class|子类(child class / sub class)]]、[[derived-class|派生类]]。

@@ -10,11 +10,10 @@ tags:
 - operator<<
 ---
 
-??? note "Key Takeaway"
-
-	- [[friend-function|友元函数]]不属于[[member-function|成员函数]]，因此不能是[[virtual-function|虚函数]]
-	- 不同类`<<`需要传入不同类的对象，所以即使能定义为虚函数，派生类也没法重写它
-	- 友元的运算符可以将实际工作委派给一个普通的成员函数（[[virtual-function|虚函数]]），而且无需在派生类中实现该运算符，只需要实现该虚函数的重写函数即可
+> [!note] "Key Takeaway"
+> - [[friend-function|友元函数]]不属于[[member-function|成员函数]]，因此不能是[[virtual-function|虚函数]]
+> - 不同类`<<`需要传入不同类的对象，所以即使能定义为虚函数，派生类也没法重写它
+> - 友元的运算符可以将实际工作委派给一个普通的成员函数（[[virtual-function|虚函数]]），而且无需在派生类中实现该运算符，只需要实现该虚函数的重写函数即可
 
 下面这个程序使用了[[virtual-function|虚函数]]：
 

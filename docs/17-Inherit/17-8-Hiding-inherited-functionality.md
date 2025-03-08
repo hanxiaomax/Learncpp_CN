@@ -10,9 +10,7 @@ tags:
 - overriding
 ---
 
-??? note "Key Takeaway"
-	
-	-
+
 
 ## 修改继承成员的访问级别
 

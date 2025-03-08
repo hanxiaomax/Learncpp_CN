@@ -10,9 +10,8 @@ tags:
 - file
 ---
 
-??? note "Key Takeaway"
-
-	- 基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)
+> [!note] "Key Takeaway"
+> - 基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)
 
 
 C++中的文件I/O和普通 I/O 非常类似。基本的文件IO类有三个： `ifstream` (派生自 `istream`)、 `ofstream` (派生自 `ostream`) 和 `fstream` (派生自 `iostream`)。这些类可以分别用于文件输入、文件输出和文件输入输出。使用这些文件IO类时，需要包含 `fstream` 头文件。

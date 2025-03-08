@@ -9,7 +9,7 @@ tags:
 - argument
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 ## 命令行参数的用途

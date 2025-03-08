@@ -11,7 +11,7 @@ tags:
 - dynamic-memory
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 

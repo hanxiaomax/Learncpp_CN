@@ -8,7 +8,3 @@ type: translation
 tags:
 - optional-parameter
 ---
-
-??? note "Key Takeaway"
-	
-	- 

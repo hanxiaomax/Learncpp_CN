@@ -8,9 +8,6 @@ type: translation
 ---
 
 
-??? note "Key Takeaway"
-	
-	- 
 
 ## C++14 是什么？
 

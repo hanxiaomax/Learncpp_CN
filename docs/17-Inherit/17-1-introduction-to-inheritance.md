@@ -9,9 +9,7 @@ tags:
 - inheritance
 ---
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 在上一章中我们讨论了[[object-composition|对象组合]]——复杂的类可以通过简单的类和类型组成。对象组合非常适合构建整体和部分具有“有一个”语义关系的对象。不过，对象组合只是C++提供的两种构建复杂类的方式之一。另外一种主要方式是[[inheritance|继承]]，它表示两个对象之间的“是一个”关系。
 

@@ -9,9 +9,7 @@ tags:
 - inheritance
 ---
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 在[[17-2-basic-inheritance-in-c++|17.2 - C++继承基础]]中我们了解到，类可以通过继承其他类来获取其成员变量。在这节课中，我们会探讨当派生类被[[instantiated|实例化]]时，相关类的构造顺序是如何的。
 

@@ -11,7 +11,7 @@ tags:
 - weak_ptr
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 In the previous lesson, we saw how `std::shared_ptr` allowed us to have multiple smart pointers co-owning the same resource. However, in certain cases, this can become problematic. Consider the following case, where the shared pointers in two separate objects each point at the other object:
 

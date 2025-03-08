@@ -8,10 +8,10 @@ type: translation
 tags:
 - using
 ---
-??? note "Key Takeaway"
 
-    - 函数内部使用 `using` 声明可以提高代码可读性，同时也是安全的
-    - 明确指定作用域好过 `using` 语句。尽可能地避免使用 `using` 指令。在语句块中使用 `using` 声明通常是可以的。
+> [!note] "Key Takeaway"
+> - 函数内部使用 `using` 声明可以提高代码可读性，同时也是安全的
+> - 明确指定作用域好过 `using` 语句。尽可能地避免使用 `using` 指令。在语句块中使用 `using` 声明通常是可以的。
 
 你可能在很多教材或者教程中都看过这样的程序：
 

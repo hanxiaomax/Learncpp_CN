@@ -9,27 +9,28 @@ tags:
 - compound data types
 ---
 
-??? note "Key Takeaway"
-    
-     - C++支持下列复合数据结构
-	-   函数 Functions
-	-   数组 Arrays
-	-   指针 Pointer types:
-	    -   指向对象的指针 Pointer to object
-	    -   指向函数的指针 Pointer to function
-	-   指向成员的指针 Pointer to member types:
-	    -   指向数据成员的指针 Pointer to data member
-	    -   指向成员函数的指针 Pointer to member function
-	-   引用 Reference types:
-	    -   左值引用 L-value references
-	    -   右值引用 R-value references
-	-   枚举 Enumerated types:
-	    -   [[unscoped-enumerations|无作用域枚举类型]] Unscoped enumerations
-	    -   [[scoped-enumerations|限定作用域枚举]] Scoped enumerations
-	-   类 Class types:
-	    -   结构体 Structs
-	    -   类 Classes
-	    -   联合体 Unions
+> [!note] "Key Takeaway"
+>   - C++支持下列复合数据结构
+>	-   函数 Functions
+>	-   数组 Arrays
+>	-   指针 Pointer types:
+>	    -   指向对象的指针 Pointer to object
+>	    -   指向函数的指针 Pointer to function
+>	-   指向成员的指针 Pointer to member types:
+>	    -   指向数据成员的指针 Pointer to data member
+>	    -   指向成员函数的指针 Pointer to member function
+>	-   引用 Reference types:
+>	    -   左值引用 L-value references
+>	    -   右值引用 R-value references
+>	-   枚举 Enumerated types:
+>	    -   [[unscoped-enumerations|无作用域枚举类型]] Unscoped enumerations
+>	    -   [[scoped-enumerations|限定作用域枚举]] Scoped enumerations
+>	-   类 Class types:
+>	    -   结构体 Structs
+>	    -   类 Classes
+>	    -   联合体 Unions
+>
+
 
 在 [[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]] 中我们介绍了基础数据类型，它们是C++语言核心的一部分。
 

@@ -9,7 +9,7 @@ tags:
 - bit
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 ## 按位运算符
 

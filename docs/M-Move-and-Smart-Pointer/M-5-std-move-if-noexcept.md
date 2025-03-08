@@ -9,8 +9,7 @@ tags:
 - move
 ---
 
-??? note "Key Takeaway"
-
+> [!note] "Key Takeaway"
 
 (感谢读者 Koe 贡献了本节课的草稿！)
 

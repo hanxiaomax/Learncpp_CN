@@ -8,9 +8,7 @@ type: translation
 ---
 
 
-??? note "Key Takeaway"
-
-
+> [!note] "Key Takeaway"
 
 In the previous lesson [7.18 -- Introduction to random number generation](https://www.learncpp.com/cpp-tutorial/introduction-to-random-number-generation/), we introduced the concept of random number generation, and discussed how PRNG algorithms are typically used to simulate randomness in programs.
 

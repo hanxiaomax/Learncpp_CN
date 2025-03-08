@@ -10,10 +10,9 @@ tags:
 - unscoped enumerations
 ---
 
-??? note "Key Takeaway"
-
-	- 使用`enum`关键字定义的枚举是[[unscoped-enumerations|无作用域枚举类型]]，它的枚举值被暴露在和枚举类型定义的作用域中，因此更适合被直接定义在使用它的类中
-	- 一个枚举类型的枚举值不能用于另一个枚举类型的对象
+> [!note] "Key Takeaway"
+> - 使用`enum`关键字定义的枚举是[[unscoped-enumerations|无作用域枚举类型]]，它的枚举值被暴露在和枚举类型定义的作用域中，因此更适合被直接定义在使用它的类中
+> - 一个枚举类型的枚举值不能用于另一个枚举类型的对象
 
 
 C++ 中内置了很多有用的基础数据类型和符合类型（分别在[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]和[[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]中进行了介绍）。但是这些内置数据类型并不是总能满足我们的需要。

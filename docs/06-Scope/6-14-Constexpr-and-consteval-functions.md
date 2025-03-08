@@ -11,13 +11,13 @@ tags:
 - C++20
 ---
 
-??? note "Key Takeaway"
-	- 为了能够在编译时求值，函数必须具有 `constexpr` 类型的返回值，同时不能够调用任何非constexpr函数。不仅如此，调用该函数也必须使用`constexpr` [[arguments|实参]] (例如`constexpr` 变量或字面量)。
-	- `constexpr` 函数具有隐含的内联属性，这使得它们能够免于单一定义规则的限制。因为运行时求值必须能够让编译器在函数调用处看到函数完整定义。所以它们应该被定义在头文件中且被包含到使用它们的源文件。
-	- 根据 C++ 标准，如果 `constexpr` 函数**有资格**进行编译时求值， 而且它的返回值被用在常数表达式中，那么就**必须**进行编译时求值。
-	- 使用满足条件的函数返回值初始化一个 constexpr 变量可以确保函数在编译时求值
-	- C++20 引入了 `consteval` 关键字，它可以指定函数**必须**在编译时求值，否则将会产生编译错误。这种函数被称为[[immediate-functions|即时函数(immediate functions)]]。
-	- 使用 consteval 可以让 constexpr 函数在编译时执行
+> [!note] "Key Takeaway"
+> - 为了能够在编译时求值，函数必须具有 `constexpr` 类型的返回值，同时不能够调用任何非constexpr函数。不仅如此，调用该函数也必须使用`constexpr` [[arguments|实参]] (例如`constexpr` 变量或字面量)。
+> - `constexpr` 函数具有隐含的内联属性，这使得它们能够免于单一定义规则的限制。因为运行时求值必须能够让编译器在函数调用处看到函数完整定义。所以它们应该被定义在头文件中且被包含到使用它们的源文件。
+> - 根据 C++ 标准，如果 `constexpr` 函数**有资格**进行编译时求值， 而且它的返回值被用在常数表达式中，那么就**必须**进行编译时求值。
+> - 使用满足条件的函数返回值初始化一个 constexpr 变量可以确保函数在编译时求值
+> - C++20 引入了 `consteval` 关键字，它可以指定函数**必须**在编译时求值，否则将会产生编译错误。这种函数被称为[[immediate-functions|即时函数(immediate functions)]]。
+> - 使用 consteval 可以让 constexpr 函数在编译时执行
 
 在[[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]中我们介绍了 `constexpr` 关键字，实用它可以创建[[compile-time|编译时]]的[[symbolic-constants|符号常量]]。此外，我们还介绍了常量表达式——可以在编译时求值的表达式。
 

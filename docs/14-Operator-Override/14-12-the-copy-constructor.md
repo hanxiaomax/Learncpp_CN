@@ -10,9 +10,7 @@ tags:
 - constructor
 ---
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 
 ## 初始化回顾

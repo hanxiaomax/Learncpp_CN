@@ -11,11 +11,10 @@ tags:
 - auto
 ---
 
-??? note "Key Takeaway"
-
-	- 类型推断必须配合变量初始化值使用，这样可以忘记初始化的变量
-	- 类型推断会丢弃 `const`，必须额外添加 `const auto`
-	- 如果希望字符串推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀
+> [!note] "Key Takeaway"
+> - 类型推断必须配合变量初始化值使用，这样可以忘记初始化的变量
+> - 类型推断会丢弃 `const`，必须额外添加 `const auto`
+> - 如果希望字符串推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀
 
 
 在下面这个简单的变量定义中，存在一个难以察觉的冗余点：

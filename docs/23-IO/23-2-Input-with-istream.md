@@ -9,11 +9,11 @@ tags:
 - io
 ---
 
-??? note "Key Takeaway"
-	- [[extraction-operator|提取运算符]]会忽略空白符
-	- `std::get()`可以获取字符或获取字符串（指定最大字符个数），但是它不读取换行符
-	- `getline()`，它的工作方式和`get()`完全一致但是会读取换行符！
-	- `getline()`的一个特殊版本存在于`istream`类之外，用于读入`std::string`类型的变量。这个特殊版本不是`ostream`或`istream`的成员，包含在`string`头文件中。
+> [!note] "Key Takeaway"
+> - [[extraction-operator|提取运算符]]会忽略空白符
+> - `std::get()`可以获取字符或获取字符串（指定最大字符个数），但是它不读取换行符
+> - `getline()`，它的工作方式和`get()`完全一致但是会读取换行符！
+> - `getline()`的一个特殊版本存在于`istream`类之外，用于读入`std::string`类型的变量。这个特殊版本不是`ostream`或`istream`的成员，包含在`string`头文件中。
 
 `iostream` 库是很复杂的——所以本教程不可能涵盖它的方方面面。不过，我们会向你介绍其中最常用的那些功能。在本节中，我们会讨论输入库`istream`的各项功能。
 

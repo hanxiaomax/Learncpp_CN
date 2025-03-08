@@ -9,7 +9,7 @@ tags:
 - switch
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 

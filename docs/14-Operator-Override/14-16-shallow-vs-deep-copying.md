@@ -10,9 +10,7 @@ tags:
 - deep copy
 ---
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 
 ## 浅拷贝

@@ -9,9 +9,7 @@ tags:
 - virtual-table
 ---
 
-??? note "Key Takeaway"
 
-	
 
 为了实现虚函数，C++ 使用了一种称为[[virtual-table|虚表]]的特殊形式的[[Late-binding|后期绑定]]。虚表是一个函数查找表，用于以动态/后期绑定方式解析函数调用。虚表有时也称为 “vtable”、“虚函数表”、“虚方法表”或“调度表”。
 

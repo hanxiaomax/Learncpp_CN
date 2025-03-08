@@ -10,7 +10,7 @@ tags:
 - overload
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 在课程[[8-9-Introduction-to-function-overloading|8.9 - 函数重载]]中，我们介绍了函数重载，它提供了一种机制，可以使用相同的名称创建和解析多个函数调用，只要每个函数都具有唯一的函数原型即可。这样，你就可以创建与不同数据类型一起使用的函数变体，而无需为每个变体想出一个独特的名称。

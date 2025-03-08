@@ -9,7 +9,7 @@ tags:
 - bit
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 ## 位掩码
 

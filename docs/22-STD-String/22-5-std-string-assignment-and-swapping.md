@@ -9,8 +9,6 @@ tags:
 - string
 ---
 
-??? note "Key Takeaway"
-
 
 ## String 赋值
 

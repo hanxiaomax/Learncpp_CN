@@ -10,8 +10,6 @@ tags:
 - containers
 ---
 
-??? note "Key Takeaway"
-	
 
 
 [[iterator|迭代器]]是一个可以遍历[[container-class|容器类]]的对象，使用它遍历容器时，使用者无需知道容器的实现细节。对于很多类来说（尤其是链表或关联容器），迭代器是是访问其元素的首选方式。

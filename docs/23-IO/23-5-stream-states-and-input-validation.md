@@ -9,7 +9,6 @@ tags:
 - io
 ---
 
-??? note "Key Takeaway"
 
 
 ## 流的状态

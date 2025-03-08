@@ -10,9 +10,9 @@ tags:
 - deep copy
 ---
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
+>
+> 
 In lesson[[8-14-Function-template-instantiation|8.14 - 函数模板的实例化]]，we discussed how the compiler will use function templates to instantiate functions, which are then compiled. We also noted that these functions may not compile, if the code in the function template tries to perform some operation that the actual type doesn’t support (such as adding integer value `1` to a `std::string`).
 
 In this lesson, we’ll take a look at a few examples where our instantiated functions won’t compile because our actual class types don’t support those operators, and show how we can define those operators so that the instantiated functions will then compile.

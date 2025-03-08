@@ -10,7 +10,7 @@ tags:
 - operator
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 For classes that have multiple member variables, printing each of the individual variables on the screen can get tiresome fast. For example, consider the following class:

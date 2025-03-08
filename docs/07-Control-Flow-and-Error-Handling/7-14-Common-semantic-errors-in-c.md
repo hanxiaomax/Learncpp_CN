@@ -7,7 +7,7 @@ time: 2022-1-2
 type: translation
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 在 [[3-1-Syntax-and-semantic-errors|3.1 - 语法和语义错误] 中我们介绍了**语法错误**——当代码不符合C++语义的语法规则时，就会产生语法错误。编译器能够识别并报告语法错误，所以它们很容易被识别到，通常也很容易修复。

@@ -9,7 +9,7 @@ tags:
 - ellipsis
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 

@@ -11,8 +11,8 @@ tags:
 - subscript
 ---
 
-??? note "Key Takeaway"
-	
+> [!note] "Key Takeaway"
+> 
 When working with arrays, we typically use the subscript operator ([]) to index specific elements of an array:
 
 ```cpp

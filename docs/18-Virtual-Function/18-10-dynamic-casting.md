@@ -8,9 +8,7 @@ type: translation
 tags:
 - dynamic casting
 ---
-
-??? note "Key Takeaway"
-
+> [!note] "Key Takeaway"
 
 
 早在 [[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换和static_cast]] 中我们就讨论过类型转换的话题，当时我们使用[[static-casts|静态类型转换]]—— `static_cast` 将变量转换为其他类型。

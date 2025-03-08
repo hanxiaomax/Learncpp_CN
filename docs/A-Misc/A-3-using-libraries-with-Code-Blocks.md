@@ -7,7 +7,6 @@ time: 2020-1-23
 type: translation
 ---
 
-??? note "Key Takeaway"
 
 
 回顾一下使用库需要完成的几个步骤：

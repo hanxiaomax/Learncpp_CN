@@ -10,7 +10,7 @@ tags:
 - C++17
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 

@@ -10,8 +10,8 @@ tags:
 - containers
 ---
 
-??? note "Key Takeaway"
-	
+
+
 
 STL库中最有用的功能要算是STL容器类了。如果你需要快速复习一下什么是容器类，请参考 [[16-6-container-classes|16.6 - 容器类]]。
 

@@ -9,9 +9,7 @@ tags:
 - testing
 ---
 
-??? note "Key Takeaway"
-	
-
+> [!note] "Key Takeaway"
 
 当程序可以编译，甚至可以运行后，还有什么工作需要做呢？
 

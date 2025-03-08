@@ -9,7 +9,7 @@ tags:
 - goto
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 	
 
 

@@ -11,8 +11,7 @@ tags:
 - C++17
 ---
 
-??? note "Key Takeaway"
-
+> [!note] "Key Takeaway"
 
 ## 类模板实参推断 (CTAD) (C++17)
 

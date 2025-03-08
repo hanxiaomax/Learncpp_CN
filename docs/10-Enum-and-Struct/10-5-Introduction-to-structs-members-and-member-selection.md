@@ -11,8 +11,7 @@ tags:
 - member selection
 ---
 
-??? note "Key Takeaway"
-	
+> [!note] "Key Takeaway"
 
 
 在编程中我们经常需要使用多个变量来表示更复杂的对象，正如在之前章节中([[9-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]])介绍的那样，分数是由两个具有关联的数学对象——分子分母组成的。

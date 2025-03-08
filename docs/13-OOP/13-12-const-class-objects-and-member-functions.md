@@ -10,10 +10,9 @@ tags:
 - const class
 ---
 
-??? note "Key Takeaway"
-
-	- const 类型的对象只能调用 const 成员函数。
-	- const 成员函数可以被 const 或 非const 类型的对象调用
+> [!note] "Key Takeaway"
+> - const 类型的对象只能调用 const 成员函数。
+> - const 成员函数可以被 const 或 非const 类型的对象调用
 
 通过学习 [[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]] ，我们知道基本数据类型(`int`, `double`, `char` 等)，可以通过`const`关键字被定义为const类型。同时所有的const变量都必须在创建时被初始化。
  

@@ -10,7 +10,7 @@ tags:
 - heap
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 

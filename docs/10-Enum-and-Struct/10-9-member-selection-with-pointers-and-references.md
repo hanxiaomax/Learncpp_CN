@@ -8,9 +8,7 @@ type: translation
 tags:
 - struct
 ---
-
-??? note "Key Takeaway"
-
+> [!note] "Key Takeaway"
 
 ## 结构体和结构体引用的成员选择
 

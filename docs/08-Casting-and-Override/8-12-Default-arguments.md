@@ -9,11 +9,11 @@ tags:
 - default
 ---
 
-??? note "Key Takeaway"
-    - 默认参数：`void print(int x, int y=10) // 10 is the default argument`
-    - 默认参数只能提供给最右边的形参
-    - 如果函数有前向声明(特别是在头文件中)，则将默认参数放在那里。否则，将默认实参放入函数定义中。
-    - 带有默认参数的函数可以重载，但是容易造成[[ambiguous-match|不明确匹配]]
+> [!note] "Key Takeaway"
+> - 默认参数：`void print(int x, int y=10) // 10 is the default argument`
+> - 默认参数只能提供给最右边的形参
+> - 如果函数有前向声明(特别是在头文件中)，则将默认参数放在那里。否则，将默认实参放入函数定义中。
+> - 带有默认参数的函数可以重载，但是容易造成[[ambiguous-match|不明确匹配]]
 
 默认[[arguments|实参]]是为函数[[parameters|形参]]提供的默认值。例如：
 

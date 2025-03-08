@@ -9,12 +9,11 @@ tags:
 - Numeral systems
 ---
 
-??? note "Key Takeaway"
-
-	- C++14才支持了使用`0b`创建二进制字面量，同时可以用单引号作为位的分隔符，但是分隔符不能放在第一位前面
-	- 使用`std::dec`、`std::oct` 和 `std::hex`可以轻松打印十进制、八进制和十六进制。但不能直接打印二进制。
-	- `std::cout << std::hex << x << '\n'; // hexadecimal`
-	- 使用 `std::bitset`，我们可以定义一个 `std::bitset` 变量，并且告诉 `std::bitset` 有多少位需要存储。需要包含`<bitset>`头文件
+> [!note] "Key Takeaway"
+> - C++14才支持了使用`0b`创建二进制字面量，同时可以用单引号作为位的分隔符，但是分隔符不能放在第一位前面
+> - 使用`std::dec`、`std::oct` 和 `std::hex`可以轻松打印十进制、八进制和十六进制。但不能直接打印二进制。
+> - `std::cout << std::hex << x << '\n'; // hexadecimal`
+> - 使用 `std::bitset`，我们可以定义一个 `std::bitset` 变量，并且告诉 `std::bitset` 有多少位需要存储。需要包含`<bitset>`头文件
 
 
 > [!info] "作者注"

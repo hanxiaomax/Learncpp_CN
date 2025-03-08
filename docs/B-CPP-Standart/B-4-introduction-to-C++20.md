@@ -8,9 +8,6 @@ type: translation
 ---
 
 
-??? note "Key Takeaway"
-
-
 
 ## C++20 是什么？
 

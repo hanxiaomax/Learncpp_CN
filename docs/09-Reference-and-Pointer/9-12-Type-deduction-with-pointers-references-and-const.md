@@ -10,9 +10,7 @@ tags:
 - type deduction
 ---
 
-??? note "Key Takeaway"
-	
-
+> [!note] "Key Takeaway"
 
 在 [[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]] 中我们介绍了 `auto` 关键字，它告诉编译器根据初始化值对变量的类型进行推断：
 

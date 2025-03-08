@@ -9,10 +9,7 @@ tags:
 - inheritance
 ---
 
-??? note "Key Takeaway"
-	
-	-
-
+> [!note] "Key Takeaway"
 
 在前面两节课中，我们探讨了C++中继承的一些基础知识以及派生类初始化的顺序。本节课，我们将进一步了解构造函数在派生类初始化中的作用。为此，我们将继续使用上一课中开发的`Base`和`Derived`类：
 

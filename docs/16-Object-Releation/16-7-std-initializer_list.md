@@ -11,9 +11,7 @@ tags:
 ---
 
 
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 
 考虑下面这个整型数组：

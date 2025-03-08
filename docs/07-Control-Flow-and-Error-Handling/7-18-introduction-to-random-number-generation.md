@@ -8,9 +8,7 @@ type: translation
 ---
 
 
-??? note "Key Takeaway"
-	
-
+> [!note] "Key Takeaway"
 
 
 The ability to generate random numbers can be useful in certain kinds of programs, particularly in games, statistical modelling programs, and cryptographic applications that need to encrypt and decrypt things. Take games for example -- without random events, monsters would always attack you the same way, you’d always find the same treasure, the dungeon layout would never change, etc… and that would not make for a very good game.

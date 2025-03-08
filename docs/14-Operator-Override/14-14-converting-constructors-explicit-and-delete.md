@@ -11,10 +11,7 @@ tags:
 - delete
 ---
 
-??? note "Key Takeaway"
-	
-	-
-
+> [!note] "Key Takeaway"
 
 默认情况下，C++会把所有的构造函数都当做隐式地转换操作符。考虑下面的例子：
 

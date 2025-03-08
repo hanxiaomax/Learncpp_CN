@@ -9,8 +9,6 @@ tags:
 - io
 ---
 
-??? note "Key Takeaway"
-
 
 ## 文件指针
 

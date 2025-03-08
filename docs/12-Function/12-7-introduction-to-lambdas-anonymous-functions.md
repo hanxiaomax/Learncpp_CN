@@ -11,7 +11,7 @@ tags:
 - C++20
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 请考虑下面这段代码，我们在 [[11-19-Introduction-to-standard-library-algorithms|11.19 — 标准库算法简介]]中介绍过它：
 

@@ -10,10 +10,7 @@ tags:
 - composition
 ---
 
-
-??? note "Key Takeaway"
-	
-	-
+> [!note] "Key Takeaway"
 
 ## 对象组合
 

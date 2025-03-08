@@ -9,8 +9,7 @@ tags:
 - error handling
 ---
 
-??? note "Key Takeaway"
-	
+> [!note] "Key Takeaway"
 
 In lesson [7.14 -- Common semantic errors in C++](https://www.learncpp.com/cpp-tutorial/common-semantic-errors-in-c/), we covered many types of common C++ semantic errors that new C++ programmers run into with the language. If an error is the result of a misused language feature or logic error, the error can simply be corrected.
 

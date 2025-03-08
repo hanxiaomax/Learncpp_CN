@@ -9,9 +9,7 @@ tags:
 - if
 ---
 
-??? note "Key Takeaway"
-	
-
+> [!note] "Key Takeaway"
 
 继续 [[7-2-If-statements-and-blocks|7.2 - if 语句和语句块]] 的内容。本节课我们会介绍一些和if语句相关的常见错误。
 

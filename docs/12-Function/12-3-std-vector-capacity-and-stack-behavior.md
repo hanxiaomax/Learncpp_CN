@@ -10,7 +10,7 @@ tags:
 - stack
 ---
 
-??? note "Key Takeaway"
+> [!note] "Key Takeaway"
 
 
 在 [[11-17-An-introduction-to-std-vector|11.17 — 动态数组 std::vector 简介]]中我们介绍了 `std::vector` 以及如何将其当做动态数组使用（可以记录自身长度也可以根据需要调整大小）。
