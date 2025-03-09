@@ -7,5 +7,5 @@ Documents moved to content folder. if you use obsidian, make content your vault.
 
 ```
 npm i
-npx quartz create
+npx quartz build --serve
 ```
