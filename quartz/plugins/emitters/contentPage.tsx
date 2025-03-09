@@ -11,7 +11,7 @@ import { FullPageLayout } from "../../cfg"
 import { Argv } from "../../util/ctx"
 import { FilePath, isRelativeURL, joinSegments, pathToRoot } from "../../util/path"
 import { defaultContentPageLayout, sharedPageComponents } from "../../../quartz.layout"
-import { Content } from "../../components"
+import { Content, Landing } from "../../components"
 import chalk from "chalk"
 import { write } from "./helpers"
 import DepGraph from "../../depgraph"
@@ -77,6 +77,7 @@ export const ContentPage: QuartzEmitterPlugin<Partial<FullPageLayout>> = (userOp
         ...left,
         ...right,
         Footer,
+        Landing(),
       ]
     },
     async getDependencyGraph(ctx, content, _resources) {
