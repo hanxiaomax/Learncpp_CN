@@ -309,7 +309,7 @@ int main()
 
 上面代码的输出结果如下：
 
-```
+```bash
 Not printing!
 ```
 

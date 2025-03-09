@@ -117,9 +117,8 @@ int main()
 x is equal to: 5
 ```
 
-!!! info "相关内容"
-
-    我们会在[[2-9-Naming-collisions-and-an-introduction-to-namespaces|2.9 - 命名冲突和命名空间]]讨论`std::`前缀的作用
+> [!info] "相关内容"
+> 我们会在[[2-9-Naming-collisions-and-an-introduction-to-namespaces|2.9 - 命名冲突和命名空间]]讨论`std::`前缀的作用
 
 ## `std::endl`
 
