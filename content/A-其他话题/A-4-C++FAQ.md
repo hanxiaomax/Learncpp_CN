@@ -40,9 +40,8 @@ int main()
 
 因此，我们推荐避免使用 `using namespace std` (以及其他 using 语句)。通过它节省的打字时间和可能带来的风险相比是不划算的。
 
-!!! info "相关内容"
-
-	参见 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]] 获取更多信息。
+> [!info] "相关内容"
+> 参见 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]] 获取更多信息。
 
 ## 问：为什么使用某些功能时不需要包含头文件？
 
@@ -55,9 +54,8 @@ int main()
 没有办法在这种情况发生时发出警告，或防止它发生。我们能做的就是为所使用的所有东西显式地包括适当的头文件。在几个不同的编译器上编译你的程序可能有助于识别被其他编译器传递包含的头文件。
 
 
-!!! info "相关内容"
-
-	参见 [[2-11-Header-files|2.11 - 头文件]]
+> [!info] "相关内容"
+> 参见 [[2-11-Header-files|2.11 - 头文件]]
 
 ## 问：为什么（产生未定义行为的代码）有这样的结果？
 
@@ -78,9 +76,8 @@ int main()
 虽然回答上述问题可能很有趣，但总体上这样的答案并没有什么用用(而且可能会在其他东西发生变化时发生变化)。这就像在问:“当我把安全带穿过方向盘并连接到油门上时，为什么我在雨天转头时，汽车会向转？”最好的答案不是对正在发生的事情做出解释，而是“不要那样做”。
 
 
-!!! info "相关内容"
-
-	[[undefined-behavior|未定义行为]]请参考 [[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]。
+> [!info] "相关内容"
+> [[undefined-behavior|未定义行为]]请参考 [[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]。
 
 ## 问：我尝试编译一个例子，它本应该工作却编译报错了，为什么？
 
@@ -88,8 +85,7 @@ int main()
 
 C++在每个新的语言标准中都引入了许多新特性。如果我们的一个示例使用C++ 17中引入的特性，但你的程序正在使用C++ 14语言标准编译，那么它将无法编译，因为我们正在使用的特性不存在。尝试标准设置为编译器支持的最新版本，看看这是否解决了问题。
 
-!!! info "相关内容"
-
-	参考 [0.12 -- Configuring your compiler: Choosing a language standard](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/).
+> [!info] "相关内容"
+> 参考 [0.12 -- Configuring your compiler: Choosing a language standard](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/).
 
 也有可能你的编译器还不支持特定的特性，或者在某些情况下有一个bug导致其无法使用。在这种情况下，尝试将编译器更新到可用的最新版本。

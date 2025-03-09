@@ -365,9 +365,8 @@ int main()
 
 `std:: size()` 也可以用于其他类型的对象（例如 `std:: array` 和 `std:: vector`），而且如果你对被传入函数的数组使用 `std: size()` 时，会产生编译报错。注意，`std:: size` 会返回的是一个无符号值，如果你需要使用有符号值，则要么将其转换为有符号值，或者使用 C++20 中提供的 `std:: ssize()` (signed size)。
 
-!!! info "译者注"
-
- [为什么 C++20 要引入 `std: ssize()`](https://stackoverflow.com/questions/56217283/why-is-stdssize-introduced-in-c20)
+> [!info] "作者注"
+> [为什么 C++20 要引入 `std: ssize()`](https://stackoverflow.com/questions/56217283/why-is-stdssize-introduced-in-c20)
 
 `std:: size()` 是在 C++17 中引入的，所以如果你使用的是旧版本的编译器，那么只好使用 `sizeof` 运算符。`sizeof` 运算符使用起来不如 `std: size()` 方便，而且有些地方要特别注意。如果你使用的是兼容 C++17 的编译器， 可以直接跳到*数组访问越界*一节。
 

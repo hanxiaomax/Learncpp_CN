@@ -88,9 +88,8 @@ int main()
 > [!tldr] "关键信息"
 > 只要编译器能够区分每个重载函数，函数就可以被重载。如果不能区分重载函数，将导致编译错误。
 
-!!! info "相关内容"
-
-	因为 C++ 中的操作符其实也是函数，所以它们也可以被重载，我们会在 [14.1 -- Introduction to operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/)中进行介绍。
+> [!info] "相关内容"
+> 因为 C++ 中的操作符其实也是函数，所以它们也可以被重载，我们会在 [14.1 -- Introduction to operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/)中进行介绍。
 
 ## 函数重载解析
 

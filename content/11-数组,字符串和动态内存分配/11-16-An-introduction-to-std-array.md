@@ -248,9 +248,8 @@ int main()
 }
 ```
 
-!!! info "相关内容"
-
-	函数模板会在 [[8-13-Function-templates|8.13 - 函数模板]] 中介绍。
+> [!info] "相关内容"
+> 函数模板会在 [[8-13-Function-templates|8.13 - 函数模板]] 中介绍。
 	
 
 ## 基于`size_type` 对 `std::array` 进行人工索引

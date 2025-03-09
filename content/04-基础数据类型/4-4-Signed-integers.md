@@ -38,9 +38,8 @@ tags:
 
 在这节课中，我们会专注于介绍有符号整型(signed)。无符号(unsigned)整型（只能保存非负值）则会在后续的课程中进行讨论。
 
-!!! info "相关内容"
-
-    我们在 [O.4 -- Converting between binary and decimal](https://www.learncpp.com/cpp-tutorial/converting-between-binary-and-decimal/) 中讨论了二进制表示法时符号位如何使用。
+> [!info] "相关内容"
+> 我们在 [O.4 -- Converting between binary and decimal](https://www.learncpp.com/cpp-tutorial/converting-between-binary-and-decimal/) 中讨论了二进制表示法时符号位如何使用。
 
 ## 定义有符号整型
 

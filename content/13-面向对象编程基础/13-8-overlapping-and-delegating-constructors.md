@@ -298,6 +298,5 @@ int main()
 
 在上面的例子中，我们首先创建了一个默认的 `Foo` 对象(包含默认初值)。然后我们将这个新 `Foo` 对象赋值给调用`reset()`成员函数的对象 (`*this`)。此时编译器会进行[[memberwise-copy|成员依次拷贝]]。
 
-!!! info "相关内容"
-
-	我们会在 [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]] 中介绍this指针，类对象的赋值则会在 [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/) 中进行介绍。
+> [!info] "相关内容"
+> 我们会在 [[13-10-the-hidden-this-pointer|13.10 - 隐藏的this指针]] 中介绍this指针，类对象的赋值则会在 [14.15 -- Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/) 中进行介绍。

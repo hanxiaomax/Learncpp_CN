@@ -232,20 +232,19 @@ int main()
 
 实际上，上述代码是不能编译的，你会被告知 `claseSize` 没有定义。正如定义在函数中的变量会在函数结束时销毁一样，定义在 if/else 语句块中的变量也会在 if/else 结束时销毁。因此，当我们打印 `classSize` 时，该变量实际上已经被销毁了。
 
-!!! info "译者注"
-
-	如果你没有一眼看出上面的问题，可能和它的表现形式有关，我们都知道，通过大括号可以限制变量的作用域，如果修改为下面这样的形式，你应该就能够看出了：
-	```cpp
-	if (inBigClassroom)
-	{
-		constexpr int classSize { 30 };
-	}
-	else
-	{
-	    constexpr int classSize { 20 };
-	}
-	```
-	参考[[6-1-Compound-statements-blocks|6.1 - 复合语句（语句块）]]和[[6-3-Local-variables|6.3 - 局部变量]]
+> [!info] "作者注"
+> 如果你没有一眼看出上面的问题，可能和它的表现形式有关，我们都知道，通过大括号可以限制变量的作用域，如果修改为下面这样的形式，你应该就能够看出了：
+> ```cpp
+> if (inBigClassroom)
+> {
+>     constexpr int classSize { 30 };
+> }
+> else
+> {
+>     constexpr int classSize { 20 };
+> }
+> ```
+> 参考[[6-1-Compound-statements-blocks|6.1 - 复合语句（语句块）]]和[[6-3-Local-variables|6.3 - 局部变量]]
 
 因此，如果你希望使用 if/else 完成和条件表达式一样的效果，你可能需要这样做；
 

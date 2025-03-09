@@ -80,9 +80,8 @@ COPY
 
 However, if the calling function is expecting the called function to produce a return value or some useful side-effect, then just ignoring the error may not be an option.
 
-!!! info "相关内容"
-
-	We discuss `std::cerr` in lesson [[3-4-Basic-debugging-tactics|3.4 — 基本代码调试技术]]
+> [!info] "相关内容"
+> We discuss `std::cerr` in lesson [[3-4-Basic-debugging-tactics|3.4 — 基本代码调试技术]]
 
 ## 将错误传递给调用者
 

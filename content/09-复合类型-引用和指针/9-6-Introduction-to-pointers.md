@@ -22,9 +22,8 @@ tags:
 实际上，指针的行为和[[lvalue-reference|左值引用]]是很像的。但是在我们继续介绍之前，先来左一些准备工作。
 
 
-!!! info "相关内容"
-
-	如果你还不熟悉左值引用，现在是复习的好时机。[[9-3-Lvalue-references|9.3 - 左值引用]]、[[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]]和[[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]都是非常有帮助的材料。
+> [!info] "相关内容"
+> 如果你还不熟悉左值引用，现在是复习的好时机。[[9-3-Lvalue-references|9.3 - 左值引用]]、[[9-4-Lvalue-references-to-const|9.4 - const类型的左值引用]]和[[9-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]都是非常有帮助的材料。
 
 考虑下下面代码：
 

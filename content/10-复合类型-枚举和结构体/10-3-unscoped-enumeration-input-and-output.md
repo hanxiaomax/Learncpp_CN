@@ -202,10 +202,9 @@ int main()
 }
 ```
 
-COPY
 
-!!! info "相关内容"
 
+> [!info] "相关内容"
 > Constexpr 返回类型在[[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]中介绍。
 
 ## 让 `operator<<` 知道如何打印枚举值

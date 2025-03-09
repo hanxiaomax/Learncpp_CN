@@ -171,6 +171,5 @@ int main()
 ```
 
 
-!!! info "相关内容"
-
-	还有一些情况也会造成上述求值顺序问题，我们会在[[5-4-Increment-decrement-operators-and-side-effects|5.4 - 自增自减运算符及其副作用]]中进行介绍。
+> [!info] "相关内容"
+> 还有一些情况也会造成上述求值顺序问题，我们会在[[5-4-Increment-decrement-operators-and-side-effects|5.4 - 自增自减运算符及其副作用]]中进行介绍。

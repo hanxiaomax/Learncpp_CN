@@ -228,9 +228,8 @@ int main()
 
 在进行用户自定义转换后，编译器还可能尝试额外的隐式提升或转换来查找匹配，所以如果我们定义的转换规则是将 `X` 转换为 `char`而不是`int`，编译器会继续对`char`进行数值提升使其提升为`int`。
 
-!!! info "相关内容"
-
-我们会在[[14-11-Overloading-typecasts|14.11 - 重载类型转换操作符]]中介绍如何通过重载类型转换操作符来创建用户自定义转换。
+> [!info] "相关内容"
+> 我们会在[[14-11-Overloading-typecasts|14.11 - 重载类型转换操作符]]中介绍如何通过重载类型转换操作符来创建用户自定义转换。
 
 > [!info] "扩展阅读"
 > 类的[[constructor|构造函数(constructor)]]同样具有自定义转换的功能，在也可以被用在第四步。
@@ -238,9 +237,8 @@ int main()
 
 第五步：如果通过用户自定义转换后仍然没有找到匹配的重载函数，编译器会尝试匹配使用了省略号的函数。
 
-!!! info "相关内容"
-
-省略号的使用会在[[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]中介绍。
+> [!info] "相关内容"
+> 省略号的使用会在[[12-6-Ellipsis-and-why-to-avoid-them|12.6 - 省略号以及为什么要避免使用它]]中介绍。
 
 第六步： 如果到此还没有找到匹配的函数，编译器会放弃继续查找并产生一个没有找到匹配函数的编译错误。
 
@@ -289,7 +287,7 @@ int main()
 
 在 Visual Studio 2019 上会产生如下报错信息：
 
-```
+```bash
 error C2668: 'print': ambiguous call to overloaded function
 message : could be 'void print(double)'
 message : or       'void print(int)'

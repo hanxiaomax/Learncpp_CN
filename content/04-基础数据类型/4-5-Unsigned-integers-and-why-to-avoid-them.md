@@ -191,9 +191,8 @@ int main()
 
 这个程序可以正常编译，看上去也符合逻辑。但是它打印的结果却是错误的。尽管编译器在检查到有符号/无符号不匹配时，会发出一个警告。但是由于还有很多其他情况下编译器也会报告完全一样的警告（例如两个数都是正数时），这会让我们很难判断真正的问题在哪里。
 
-!!! info "相关内容"
-
-    我们会在[[4-10-Introduction-to-if-statements|4.10 - if 语句]]中介绍`if`语句。
+> [!info] "相关内容"
+> 我们会在[[4-10-Introduction-to-if-statements|4.10 - if 语句]]中介绍`if`语句。
 
 此外，还有一些可能有问题的情况，是根本无法被检查到的。考虑下面这个例子：
 
@@ -224,13 +223,11 @@ int main()
 > [!success] "最佳实践"
 > 尽量使用有符号数来存放数量值（尽管数量可能都是非负的）和进行数学运算。避免混用有符号和无符号类型。
     
-!!! info "相关内容"
-
-    支持上述建议的一些材料(同时也驳斥了一些常见的反对意见）：
-
-    1.  [Interactive C++ panel](https://www.youtube.com/watch?v=_nrly6PH6NU) (see 12:12-13:08,42:40-45:26, and 1:02:50-1:03:15)
-    2.  [Subscripts and sizes should be signed](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf)
-    3.  [Unsigned integers from the libtorrent blog](https://blog.libtorrent.org/2016/05/unsigned-integers/)
+> [!info] "相关内容"
+> 支持上述建议的一些材料(同时也驳斥了一些常见的反对意见）：
+> 1.  [Interactive C++ panel](https://www.youtube.com/watch?v=_nrly6PH6NU) (see 12:12-13:08,42:40-45:26, and 1:02:50-1:03:15)
+> 2.  [Subscripts and sizes should be signed](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1428r0.pdf)
+> 3.  [Unsigned integers from the libtorrent blog](https://blog.libtorrent.org/2016/05/unsigned-integers/)
 
 ## 那么什么时候才使用无符号数呢？
 
@@ -240,8 +237,7 @@ int main()
 
 其次，在有些时候无符号数是无法避免的（很多与数组进行索引有关）。我们会在有关数组的课程中进行详细介绍。在这些情况下，无符号数可以被转换为有符号数。
 
-!!! info "相关内容"
-
-    我们会在[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]中介绍如何将无符号数转换为有符号数。
+> [!info] "相关内容"
+> 我们会在[[4-12-Introduction-to-type-conversion-and-static_cast|4.12 - 类型转换和 static_cast]]中介绍如何将无符号数转换为有符号数。
     
 同时请注意，如果你在开发嵌入式系统（例如 Arduino）或者其他处理器/内存比较吃紧的环境，出于性能的原因而使用无符号数是非常常见的，同时也是可以被接受的（在有些场景下也是无法避免的）。

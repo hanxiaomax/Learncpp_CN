@@ -123,9 +123,8 @@ int main()
 ```
 
 
-!!! info "相关内容"
-
-	我们会在[[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]]详细介绍常量全局变量。
+> [!info] "相关内容"
+> 我们会在[[6-9-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]]详细介绍常量全局变量。
 
 ## 关于非常量类型全局变量的提醒
 

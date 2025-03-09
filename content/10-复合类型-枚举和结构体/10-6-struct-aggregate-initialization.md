@@ -146,9 +146,8 @@ int main()
 Employee joe {}; // value-initialize all members
 ```
 
-!!! info "译者注"
-
-	关于默认初始化请参考[[10-7-default-member-initialization|10.7 - 默认成员初始化]]。
+> [!info] "作者注"
+> 关于默认初始化请参考[[10-7-default-member-initialization|10.7 - 默认成员初始化]]。
 
 
 ## const 结构体

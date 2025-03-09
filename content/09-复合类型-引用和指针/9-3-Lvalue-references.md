@@ -27,9 +27,8 @@ tags:
 
 现代C++存在两种类型的引用：[[lvalue-reference|左值引用]]和[[rvalue-reference|右值引用]]。在本章中我们会首先讨论左值引用。
 
-!!! info "相关内容"
-
-	因为我们在本章会讨论左值和右值，如果你需要复习一下的话，请参考[[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]。
+> [!info] "相关内容"
+> 因为我们在本章会讨论左值和右值，如果你需要复习一下的话，请参考[[9-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]。
 
 右值引用会在[[move-semantics|移动语义]]章节进行介绍 ([chapter M](https://www.learncpp.com/#ChapterM)).
 

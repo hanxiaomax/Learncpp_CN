@@ -150,6 +150,5 @@ int main()
 
 在 C++20 中，`auto` 关键字再次得到了扩展，所以上述程序可以正常编译了。不过，此时 `auto` 并不是被用做类型推断，而是用于触发[[function-template|函数模板(function template)]]特性。
 
-!!! info "相关内容"
-
-    我们会在[[8-13-Function-templates|8.13 - 函数模板]]中介绍函数模板并在[[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]中讨论 `auto` 在此语境中的用途。
+> [!info] "相关内容"
+> 我们会在[[8-13-Function-templates|8.13 - 函数模板]]中介绍函数模板并在[[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]中讨论 `auto` 在此语境中的用途。

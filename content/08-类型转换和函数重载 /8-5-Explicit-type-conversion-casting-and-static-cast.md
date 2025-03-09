@@ -56,9 +56,8 @@ C++支持 5 种类型的显示类型转换: [[C-style-casts|C风格类型转换]
 在本课中，我们将介绍**C风格类型转换**和**静态类型转换**。
 
 
-!!! info "相关内容"
-
-	我们会在[18.10 -- Dynamic casting](https://www.learncpp.com/cpp-tutorial/dynamic-casting/)中介绍动态类型转换，但是我们首先要介绍一些前置内容。
+> [!info] "相关内容"
+> 我们会在[18.10 -- Dynamic casting](https://www.learncpp.com/cpp-tutorial/dynamic-casting/)中介绍动态类型转换，但是我们首先要介绍一些前置内容。
 
 通常应该避免使用**const 类型转换**和**重新解释类型转换**，因为只有很少的情况下会需要使用它们，而且使用不当是非常有害的。
 
@@ -102,9 +101,8 @@ double d { double(x) / y }; // convert x to a double so we get floating point di
 虽然“c风格类型转换”看起来是单一类型转换，但实际上它可以根据上下文执行各种不同的转换。这可以包括“静态类型转换”、“const类型转换”或“重新解释类型转换”(我们在上面提到的后两种类型应该避免)。因此，“C风格强制转换”有可能被无意中误用，而不会产生预期的行为，而使用c++强制转换则可以避免这种情况。
 
 
-!!! info "相关内容"
-
-	如果你很好奇，C语言风格的类型转换是如何工作的，可以参考[这篇文章](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/) 。
+> [!info] "相关内容"
+> 如果你很好奇，C语言风格的类型转换是如何工作的，可以参考[这篇文章](https://anteru.net/blog/2007/c-background-static-reinterpret-and-c-style-casts/) 。
 
 > [!success] "最佳实践"
 > 避免使用C语言风格的类型转换。

@@ -302,7 +302,6 @@ int main()
 
 注意，这种情况下函数是[[return-by-value|值返回]]，虽然在运行时值返回会影响性能（如果返回值的类型属于拷贝开销比较大的那种，例如`std::string`），在编译时其实不存在该问题，因为全部调用 `consteval` 函数的地方都会被替换为计算后的值。
 
-!!! info "相关内容"
-
-	- 我们会在[[8-8-Type-deduction-for-functions|8.8 - 函数的类型推断]] 中介绍 `auto` 类型的返回值； 
-	- 我们会在[[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]] 中介绍简写函数模板（`auto`[[parameters|形参]]）
+> [!info] "相关内容"
+> - 我们会在[[8-8-Type-deduction-for-functions|8.8 - 函数的类型推断]] 中介绍 `auto` 类型的返回值； 
+> - 我们会在[[8-15-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]] 中介绍简写函数模板（`auto`[[parameters|形参]]）

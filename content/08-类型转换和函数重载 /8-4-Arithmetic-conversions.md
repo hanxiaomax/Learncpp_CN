@@ -101,13 +101,12 @@ double 5.5
 
 注意，你的编译器可能会产生稍微不同的结果，因为 `typeid.name()` 输出的结果是由编译器决定的。
 
-!!! info "译者注"
-
-	在g++上使用[[typeid|typeid 运算符]]，输出的结果为[修饰名](https://en.wikipedia.org/wiki/Name_mangling)，可以使用
-	```bash
-	a.out | c++filt --types
-	```
-	得到可读的结果。[参考](https://stackoverflow.com/questions/4465872/why-does-typeid-name-return-weird-characters-using-gcc-and-how-to-make-it-prin)
+> [!info] "作者注"
+> 在g++上使用[[typeid|typeid 运算符]]，输出的结果为[修饰名](https://en.wikipedia.org/wiki/Name_mangling)，可以使用
+> ```bash
+> a.out | c++filt --types
+> ```
+> 得到可读的结果。[参考](https://stackoverflow.com/questions/4465872/why-does-typeid-name-return-weird-characters-using-gcc-and-how-to-make-it-prin)
 
 现在，将两个`short`类型的值相加：
 
@@ -150,7 +149,7 @@ int main()
 
 你可能会认为表达式 `5u - 10` 求值会等于 `-5` ，因为 `5 - 10` = `-5`。但实际结果却不是这样的：
 
-```
+```bash
 unsigned int 4294967291
 ```
 

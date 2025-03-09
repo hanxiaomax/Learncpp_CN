@@ -227,6 +227,5 @@ int main()
 > 如果你的编译器支持 C++17，最好将全局变量定义为 `inline constexpr` 类型并放置在头文件中。
 	
 
-!!! info "注意"
-
-	使用 `std::string_view` 定义 `constexpr` 字符串，我们在[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]中进行了介绍。
+> [!info] "提醒"
+> 使用 `std::string_view` 定义 `constexpr` 字符串，我们在[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]中进行了介绍。

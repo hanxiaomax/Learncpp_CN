@@ -65,9 +65,8 @@ std::cout << 3.4; // 3.4 是一个 double 字面量
 
 后缀是区分大小写的，但是由于小写字母`L`看起来很像 1 ，所以开发者通常喜欢用大写。
 
-!!! info "相关内容"
-
-我们会在[[4-17-an-introduction-to-std-string|4.17 - std::string 简介]] 和[[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]中讨论字符串字面量的后缀。
+> [!info] "相关内容"
+> 我们会在[[4-17-an-introduction-to-std-string|4.17 - std::string 简介]] 和[[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]中讨论字符串字面量的后缀。
 
 
 ## 整型字面量
