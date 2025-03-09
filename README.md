@@ -1,11 +1,11 @@
 
+## LearnCPP CN
 
+Documents moved to content folder. if you use obsidian, make content your vault.
 
-## Static Generate with [Quartz 4](https://quartz.jzhao.xyz/)
+## Run locally with [Quartz 4](https://quartz.jzhao.xyz/)
 
 ```
-git clone https://github.com/jackyzha0/quartz.git
-cd quartz
 npm i
 npx quartz create
 ```

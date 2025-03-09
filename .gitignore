@@ -1,5 +1,14 @@
 .obsidian/
-/quartz/
 .DS_Store
+node_modules
 .DS_Store
-.DS_Store
+.gitignore
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.obsidian
+.quartz-cache
+private/
+.replit
+replit.nix
