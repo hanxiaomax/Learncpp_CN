@@ -9,7 +9,7 @@
   "homepage": "https://hanxiaomax.github.io/Learncpp_CN",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackyzha0/quartz.git"
+    "url": "git@github.com:hanxiaomax/Learncpp_CN.git"
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
