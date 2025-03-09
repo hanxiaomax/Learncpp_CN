@@ -6,8 +6,6 @@ interface CardMap {
   [key: string]: (fileData: any) => JSX.Element
 }
 
-const WIP_CHAPTERS: string[] = []
-
 export const CARDS: CardMap = {
   "01-CPP-Basic": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "01-CPP-Basic" as FullSlug)}>
@@ -138,7 +136,7 @@ export const CARDS: CardMap = {
   ),
   "14-Operator-Override": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "14-Operator-Override" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">运算符重载</p>
         <p class="card-subhead">章节 14 (进行中)</p>
         <div class="card-illustration"></div>
@@ -147,7 +145,7 @@ export const CARDS: CardMap = {
   ),
   "16-Object-Releation": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "16-Object-Releation" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">对象关系</p>
         <p class="card-subhead">章节 16 (进行中)</p>
         <div class="card-illustration"></div>
@@ -156,7 +154,7 @@ export const CARDS: CardMap = {
   ),
   "17-Inherit": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "17-Inherit" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">继承</p>
         <p class="card-subhead">章节 17 (进行中)</p>
         <div class="card-illustration"></div>
@@ -165,7 +163,7 @@ export const CARDS: CardMap = {
   ),
   "18-Virtual-Function": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "18-Virtual-Function" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">虚函数</p>
         <p class="card-subhead">章节 18 (进行中)</p>
         <div class="card-illustration"></div>
@@ -174,7 +172,7 @@ export const CARDS: CardMap = {
   ),
   "19-Template": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "19-Template" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">模板</p>
         <p class="card-subhead">章节 19 (进行中)</p>
         <div class="card-illustration"></div>
@@ -183,7 +181,7 @@ export const CARDS: CardMap = {
   ),
   "20-Exception": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "20-Exception" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">异常</p>
         <p class="card-subhead">章节 20 (进行中)</p>
         <div class="card-illustration"></div>
@@ -219,7 +217,7 @@ export const CARDS: CardMap = {
   ),
   "A-Misc": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "A-Misc" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">其他话题</p>
         <p class="card-subhead">附录 A (进行中)</p>
         <div class="card-illustration"></div>
@@ -228,7 +226,7 @@ export const CARDS: CardMap = {
   ),
   "B-CPP-Standart": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "B-CPP-Standart" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">C++标准更新</p>
         <p class="card-subhead">附录 B (进行中)</p>
         <div class="card-illustration"></div>
@@ -237,7 +235,7 @@ export const CARDS: CardMap = {
   ),
   "M-Move-and-Smart-Pointer": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "M-Move-and-Smart-Pointer" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">move 和智能指针</p>
         <p class="card-subhead">附录 M (进行中)</p>
         <div class="card-illustration"></div>
@@ -246,7 +244,7 @@ export const CARDS: CardMap = {
   ),
   "O1-Bit-Operation": (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "O1-Bit-Operation" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">位运算</p>
         <p class="card-subhead">附录 O1 (进行中)</p>
         <div class="card-illustration"></div>
@@ -255,7 +253,7 @@ export const CARDS: CardMap = {
   ),
   Templates: (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "Templates" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">模板</p>
         <p class="card-subhead">模板 (进行中)</p>
         <div class="card-illustration"></div>
@@ -264,7 +262,7 @@ export const CARDS: CardMap = {
   ),
   Glossary: (fileData: any) => (
     <a href={resolveRelative(fileData.slug as FullSlug, "Glossary" as FullSlug)}>
-      <div class="card card-wip">
+      <div class="card card-published">
         <p class="card-title">术语表</p>
         <p class="card-subhead">术语表 (进行中)</p>
         <div class="card-illustration"></div>
@@ -311,18 +309,11 @@ export default (() => {
               const folderNumber = folder.match(/^(\d+)-/) ? folder.match(/^(\d+)-/)![1] : ""
               const displayName = folder.replace(/^\d+-/, "").replace(/-/g, " ")
 
-              const isWIP = WIP_CHAPTERS.includes(folder)
-              const cardClass = isWIP ? "card-wip" : "card-published"
-              const statusText = isWIP ? " (完善中)" : ""
-
               return (
                 <a href={resolveRelative(fileData.slug as FullSlug, folder as FullSlug)}>
-                  <div class={`card ${cardClass}`}>
+                  <div class={`card card-published`}>
                     <p class="card-title">{displayName}</p>
-                    <p class="card-subhead">
-                      章节 {folderNumber}
-                      {statusText}
-                    </p>
+                    <p class="card-subhead">章节 {folderNumber}</p>
                     <div class="card-illustration"></div>
                   </div>
                 </a>

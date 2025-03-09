@@ -1,11 +1,6 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
-/**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
- */
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "LearnCPP CN",
@@ -16,7 +11,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "hanxiaomax.github.io/LearnCPP-CN",
+    baseUrl: "https://hanxiaomax.github.io/Learncpp_CN/",
     ignorePatterns: ["private", "Templates", ".obsidian"],
     defaultDateType: "created",
     generateSocialImages: false,
@@ -41,15 +36,15 @@ const config: QuartzConfig = {
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
+          light: "#faf8f8",
+          lightgray: "#e5e5e5",
+          gray: "#b8b8b8",
+          darkgray: "#4e4e4e",
+          dark: "#2b2b2b",
+          secondary: "#284b63",
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          textHighlight: "#fff23688",
         },
       },
     },
@@ -79,7 +74,32 @@ const config: QuartzConfig = {
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
-      Plugin.FolderPage(),
+      Plugin.FolderPage({
+        sort: (f1, f2) => {
+          const naturalCompare = (a: string, b: string) => {
+            const splitA = a.split(/(\d+)/).filter(Boolean)
+            const splitB = b.split(/(\d+)/).filter(Boolean)
+
+            for (let i = 0; i < Math.min(splitA.length, splitB.length); i++) {
+              const numA = parseInt(splitA[i], 10)
+              const numB = parseInt(splitB[i], 10)
+
+              if (!isNaN(numA) && !isNaN(numB)) {
+                if (numA !== numB) return numA - numB
+              } else {
+                const compare = splitA[i].localeCompare(splitB[i])
+                if (compare !== 0) return compare
+              }
+            }
+
+            return splitA.length - splitB.length
+          }
+
+          const f1Title = f1.frontmatter?.title?.toLowerCase() ?? ""
+          const f2Title = f2.frontmatter?.title?.toLowerCase() ?? ""
+          return naturalCompare(f1Title, f2Title)
+        },
+      }),
       Plugin.TagPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,
