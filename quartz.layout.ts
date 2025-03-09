@@ -9,6 +9,7 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/hanxiaomax/Learncpp_CN",
+      英文原站点: "https://www.learncpp.com",
     },
   }),
 }
