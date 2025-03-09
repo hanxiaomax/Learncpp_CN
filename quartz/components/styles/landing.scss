@@ -72,117 +72,43 @@
   /* Apply shake animation to image on hover */
 }
 
-/* CARD COLORS */
+/* CARD COLORS - 只保留两种样式 */
 
-.card-coming {
-  background: #cfccc4;
-}
-
-.card-1 {
-  background: #649aea;
+/* 已发布的内容卡片 */
+.card-published {
+  background: #4a90e2;
   background-image: linear-gradient(135deg, #4a90e2, #5b9fe2);
   background-size: cover;
   overflow: visible;
 }
 
-.card-illustration-1 {
+/* 正在进行中的卡片 */
+.card-wip {
+  background: #cfccc4;
+  background-image: linear-gradient(135deg, #cfccc4, #b5b2aa);
+  background-size: cover;
+}
+
+/* 卡片图标 */
+.card-illustration {
   position: absolute;
   bottom: 0;
-  left: -15px;
-  width: 70%;
-  height: 70%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,20 C35,20 20,35 20,50 C20,65 35,80 50,80 C65,80 80,65 80,50 C80,35 65,20 50,20 Z' fill='%23ffffff' fill-opacity='0.3'/%3E%3Cpath d='M40,40 C40,40 45,30 60,40' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='45' r='3' fill='%23ffffff'/%3E%3Ccircle cx='60' cy='45' r='3' fill='%23ffffff'/%3E%3C/svg%3E");
+  right: 10px;
+  width: 60%;
+  height: 60%;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.card-2 {
-  background: #aab172;
-  background-image: linear-gradient(135deg, #8bc34a, #7cb342);
-  background-size: cover;
+/* 已发布内容的图标 */
+.card-published .card-illustration {
 }
 
-.card-illustration-2 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  bottom: 20px;
-  left: 40px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.card-3 {
-  background: #bf7d1a;
-  background-image: linear-gradient(135deg, #f39c12, #e67e22);
-  background-size: cover;
-}
-
-.card-illustration-3 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  bottom: -40px;
-  left: 30%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='30' y='30' width='40' height='40' rx='5' ry='5' fill='%23ffffff' fill-opacity='0.3' transform='rotate(45, 50, 50)'/%3E%3Cpath d='M40,50 C40,50 45,60 60,50' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='45' r='3' fill='%23ffffff'/%3E%3Ccircle cx='60' cy='45' r='3' fill='%23ffffff'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.card-4 {
-  background: #ad7e95;
-  background-image: linear-gradient(135deg, #9c27b0, #8e24aa);
-  background-size: cover;
-}
-
-.card-illustration-4 {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  bottom: 0;
-  right: -10px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.card-5 {
-  background: #eb856f;
-  background-image: linear-gradient(135deg, #ff7f50, #ff6347);
-  background-size: cover;
-  overflow: visible;
-}
-
-.card-illustration-5 {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  bottom: 0;
-  right: -10px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,30 L70,50 L50,70 L30,50 Z' fill='%23ffffff' fill-opacity='0.3'/%3E%3Cpath d='M40,50 C40,50 45,40 60,50' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='45' r='3' fill='%23ffffff'/%3E%3Ccircle cx='60' cy='45' r='3' fill='%23ffffff'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.card-6 {
-  background: #e18fa7;
-  background-image: linear-gradient(135deg, #e91e63, #d81b60);
-  background-size: cover;
-  overflow: visible;
-}
-
-.card-illustration-6 {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  bottom: 0;
-  right: -10px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30,40 Q50,20 70,40 Q90,60 70,80 Q50,100 30,80 Q10,60 30,40 Z' fill='%23ffffff' fill-opacity='0.3'/%3E%3Cpath d='M40,50 C40,50 45,40 60,50' stroke='%23ffffff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='45' r='3' fill='%23ffffff'/%3E%3Ccircle cx='60' cy='45' r='3' fill='%23ffffff'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
+/* 进行中内容的图标 */
+.card-wip .card-illustration {
 }
 
 /* ANIMATIONS */
-
 @keyframes shake {
   0% {
     transform: rotate(0deg);
@@ -200,8 +126,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f7f1;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23dbd8d0' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 /* media queries */
@@ -241,37 +165,9 @@
     aspect-ratio: 3 / 4;
   }
 
-  // loop through all cards
-  $num-cards: 7;
-
-  @for $i from 1 through $num-cards {
-    .card-illustration-#{$i} {
-      width: 25%;
-    }
-  }
-
-  .card-illustration-1 {
-    left: unset;
-    right: 60px;
-  }
-  .card-illustration-2 {
-    left: unset;
-    right: 40px;
-  }
-  .card-illustration-3 {
-    left: unset;
-    top: 15px;
-    right: 100px;
-  }
-  .card-illustration-4 {
-    left: unset;
-    top: 15px;
-    right: 60px;
-  }
-  .card-illustration-6 {
-    left: unset;
-    right: 20px;
-    top: 20px;
+  .card-illustration {
+    width: 40%;
+    height: 40%;
   }
 }
 
