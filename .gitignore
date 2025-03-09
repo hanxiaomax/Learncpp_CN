@@ -1,1 +1,14 @@
 .obsidian/
+.DS_Store
+node_modules
+.DS_Store
+.gitignore
+node_modules
+public
+prof
+tsconfig.tsbuildinfo
+.obsidian
+.quartz-cache
+private/
+.replit
+replit.nix

@@ -1,8 +1,11 @@
 
+## LearnCPP CN
 
+Documents moved to content folder. if you use obsidian, make content your vault.
 
-## Develop
+## Run locally with [Quartz 4](https://quartz.jzhao.xyz/)
 
 ```
-mkdocs serve
+npm i
+npx quartz create
 ```
