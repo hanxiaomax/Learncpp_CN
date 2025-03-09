@@ -25,7 +25,23 @@ export const defaultContentPageLayout: PageLayout = {
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
-    Component.Explorer(),
+    Component.Explorer({
+      title: "Chapters", // title of the explorer component
+      folderClickBehavior: "collapse", // what happens when you click a folder ("link" to navigate to folder page on click or "collapse" to collapse folder on click)
+      folderDefaultState: "collapsed", // default state of folders ("collapsed" or "open")
+      useSavedState: true, // whether to use local storage to save "state" (which folders are opened) of explorer
+      order: ["filter", "map", "sort"],
+      sortFn: (a, b) => {
+        if ((!a.file && !b.file) || (a.file && b.file)) {
+          return a.displayName.localeCompare(b.displayName)
+        }
+        if (a.file && !b.file) {
+          return -1
+        } else {
+          return 1
+        }
+      },
+    }),
   ],
   right: [Component.DesktopOnly(Component.TableOfContents()), Component.Backlinks()],
 }
