@@ -20,13 +20,13 @@ tags:
 
 最简单的 _if_ 语句形式如下：
 
-```
+```cpp
 if (condition) true_statement;
 ```
 
 下面这种形式可读性更好：
 
-```
+```cpp
 if (condition)
     true_statement;
 ```
@@ -55,7 +55,7 @@ int main()
 
 输出结果如下：
 
-```
+```bash
 Enter an integer: 0
 The value is zero
 ```
@@ -68,7 +68,7 @@ The value is zero
 
 再次运行程序：
 
-```
+```bash
 Enter an integer: 5
 ```
 
@@ -125,7 +125,7 @@ int main()
 
 这两个程序其实没必要这么复杂，我们可以使用另一种形式的 *if* 语句——*if-else*语句。*if-else*语句的形式如下：
 
-```
+```cpp
 if (condition)
     true_statement;
 else
@@ -156,12 +156,12 @@ int main()
 
 现在，程序的输出结果如下：
 
-```
+```bash
 Enter an integer: 0
 The value is zero
 ```
 
-```
+```bash
 Enter an integer: 5
 The value is non-zero
 ```
@@ -195,17 +195,17 @@ int main()
 
 多次运行程序，输出结果如下：
 
-```
+```bash
 Enter an integer: 4
 The value is positive
 ```
 
-```
+```bash
 Enter an integer: -3
 The value is negative
 ```
 
-```
+```bash
 Enter an integer: 0
 The value is zero
 ```
@@ -277,13 +277,13 @@ int main()
 
 两次运行上述程序：
 
-```
+```bash
 Enter an integer: 5
 Enter another integer: 5
 5 and 5 are equal
 ```
 
-```
+```bash
 Enter an integer: 6
 Enter another integer: 4
 6 and 4 are not equal

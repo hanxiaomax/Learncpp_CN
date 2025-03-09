@@ -72,7 +72,7 @@ int main()
 
 Outputs:
 
-```
+```bash
 1
 0
 0
@@ -99,7 +99,7 @@ int main()
 
 打印结果：
 
-```
+```bash
 1
 0
 true
@@ -150,7 +150,7 @@ int main()
 
 打印结果为：
 
-```
+```bash
 true
 false
 ```
@@ -178,7 +178,7 @@ int main()
 ```
 
 
-```
+```bash
 Enter a Boolean value: true
 You entered: 0
 ```
@@ -247,13 +247,13 @@ int main()
 
 两次运行的输出结果如下：
 
-```
+```bash
 Enter an integer: 5
 Enter another integer: 5
 5 and 5 are equal? true
 ```
 
-```
+```bash
 Enter an integer: 6
 Enter another integer: 4
 6 and 4 are equal? false

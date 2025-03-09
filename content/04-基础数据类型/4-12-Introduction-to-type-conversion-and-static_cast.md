@@ -43,7 +43,7 @@ int main()
 
 在大多数情况下，C++ 会很乐于将一种基本类型转换为另一种基本类型，这个转换过程称为[[type-conversion|类型转换(type conversion)]]。因此，[[arguments|实参]] 5 会被转换为 double 类型的值 5.0 并且被拷贝给形参  `x`。于是 `print()`  就将该值打印了出来：
 
-```
+```bash
 5
 ```
 
@@ -103,9 +103,8 @@ int main()
 ```
 
 
-!!! info "相关内容"
-
-	隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]）。
+> [!info] "相关内容"
+> 隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]）。
 
 ## 使用 static_cast 运算符进行显式类型转换
 
@@ -115,7 +114,7 @@ C++ 还支持另外一种类型转换，称为**显式类型转换**。显式类
 
 大多数情况下，我们会使用 `static_cast` 操作符进行显式类型转换。 `static cast` 的语法看上去有些古怪：
 
-```
+```bash
 static_cast<new_type>(expression)
 ```
 
@@ -145,9 +144,8 @@ int main()
 
 在上面的例子中，因为我们显式地要求将 `double` 类型的值 5.5 转换为 `int` 类型值，所以编译器不会产生告警信息（无需关闭 “将警告当做错误处理” 功能）。
 
-!!! info "相关内容"
-
-C++ 还支持其他类型的转换。我们会在[[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换]]中进行详细介绍
+> [!info] "相关内容"
+> C++ 还支持其他类型的转换。我们会在[[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换]]中进行详细介绍
 
 ## 使用 static_cast 将 char 转换为 int
 
@@ -167,7 +165,7 @@ int main()
 
 This prints:
 
-```
+```bash
 a
 ```
 
@@ -187,7 +185,7 @@ int main()
 
 打印结果：
 
-```
+```bash
 a has value 97
 ```
 
@@ -274,7 +272,7 @@ int main()
 
 运行程序：
 
-```
+```bash
 Enter a number between 0 and 255: 35
 You entered: 51
 ```

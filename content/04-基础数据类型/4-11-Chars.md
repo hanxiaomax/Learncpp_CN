@@ -285,7 +285,7 @@ int main()
 
 打印结果：
 
-```
+```bash
 "This is quoted text"
 This string contains a single backslash \
 6F in hex is char 'o'
