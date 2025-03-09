@@ -60,13 +60,13 @@ int main()
 
 用户输入：
 
-```
+```bash
 Hello my name is Alex
 ```
 
 由于[[extraction-operator|提取运算符]]会跳过空格和换行，所以读取的结果是：
 
-```
+```bash
 HellomynameisAlex
 ```
 
@@ -87,13 +87,13 @@ int main()
 
 用户输入：
 
-```
+```bash
 Hello my name is Alex
 ```
 
 输出为：
 
-```
+```bash
 Hello my name is Alex
 ```
 
@@ -112,13 +112,13 @@ int main()
 
 如果输入为：
 
-```
+```bash
 Hello my name is Alex
 ```
 
 则输出为：
 
-```
+```bash
 Hello my n
 ```
 
@@ -143,7 +143,7 @@ int main()
 
 如果输入为：
 
-```
+```bash
 Hello!
 ```
 

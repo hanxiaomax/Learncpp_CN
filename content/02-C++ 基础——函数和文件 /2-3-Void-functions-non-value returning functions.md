@@ -11,7 +11,7 @@ tags:
 
 在[[2-1-Introduction-to-functions|2.1 - 函数简介]]中，我们介绍了函数定义的语法应该像下面这样：
 
-```
+```bash
 return-type identifier() // identifier replaced with the name of your function
 {
 // Your code here
@@ -216,7 +216,7 @@ int main()
 
 上述程序输出结果如下：
 
-```
+```bash
 A5
 ```
 
@@ -224,6 +224,5 @@ A5
 
 历史上，提前返回是不受鼓励的行为。不过，在现代编程中，它们是可以被接受的，提前返回能够简化程序时，或在发生错误时终止函数后续的操作。
 
-!!! info "相关内容"
-
-我们会在 [[7-10-Break-and-continue|7.10 - break 和 continue]] 中讨论有关提前返回的争论。
+> [!info] "相关内容"
+> 我们会在 [[7-10-Break-and-continue|7.10 - break 和 continue]] 中讨论有关提前返回的争论。

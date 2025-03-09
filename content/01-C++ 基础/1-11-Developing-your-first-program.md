@@ -13,7 +13,7 @@ type: translation
 
 首先，我们会要求用户输入一个整型数并等待用户完成输入，然后我们会将该值乘以 2 并告诉用户计算结果。上述程序的输出结果如下（假设输入值为 4）：
 
-```
+```bash
 Enter an integer: 4
 Double that number is: 8
 ```
@@ -88,7 +88,7 @@ int main()
 
 糟糕！作者的 Visual Studio 2017 报告了如下信息：
 
-```
+```bash
 1>------ Build started: Project: Double, Configuration: Release Win32 ------
 1>Double.cpp
 1>c:\vcprojects\double\double.cpp(8): error C2678: binary '<<': no operator found which takes a left-hand operand of type 'std::istream' (or there is no acceptable conversion)
@@ -124,7 +124,7 @@ int main()
 
 这份代码是可以编译的，而且我们可以对它进行测试。该程序会等待你输入一个数组，这里我们输入 4。程序的输出结果如下：
 
-```
+```bash
 Enter an integer: 4
 ```
 

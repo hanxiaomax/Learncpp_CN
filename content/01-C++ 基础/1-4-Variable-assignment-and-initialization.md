@@ -143,12 +143,12 @@ int width {}; // zero initialization to value 0
 > [!question] "Q & A"
 > Q: 什么时候应该使用 { 0 } ，是什么时候使用 {}?
 > A: 如果你使用的的确是 0 这个具体值，那么就应当明确地将其初始化为 0
-
+> 
 > ```
 > int x { 0 }; // explicit initialization to value 0
 > std::cout << x; // we're using that zero value
 > ```
-
+>
 > A: 如果初始化的值只是临时值且即将被替换，则可以使用值初始化。
 > ```
 > int x {}; // value initialization
@@ -163,9 +163,8 @@ int width {}; // zero initialization to value 0
 
 我们会在[[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]中详细讨论当我们试图使用一个没有被”恰当定义“的变量时会发生什么。
 
-!!! question Q&A
-	
-	在创建变量时对其进行初始化。
+> [!question] Q&A
+> 在创建变量时对其进行初始化。
 
 ## 初始化多个变量
 

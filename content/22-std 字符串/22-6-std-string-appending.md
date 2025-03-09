@@ -37,7 +37,7 @@ std::cout << sString << '\n';
 
 Output:
 
-```
+```bash
 one two three
 ```
 
@@ -62,7 +62,7 @@ std::cout << sString << '\n';
 
 输出：
 
-```
+```bash
 one three
 ```
 
@@ -88,7 +88,7 @@ std::cout << sString << '\n';
 
 输出：
 
-```
+```bash
 one two three
 ```
 
@@ -112,7 +112,7 @@ std::cout << sString << '\n';
 
 输出：
 
-```
+```bash
 one three
 ```
 
@@ -139,7 +139,7 @@ std::cout << sString << '\n';
 
 输出：
 
-```
+```bash
 one 2
 ```
 
@@ -164,7 +164,7 @@ std::cout << sString << '\n';
 
 输出：
 
-```
+```bash
 aaabbbb
 ```
 

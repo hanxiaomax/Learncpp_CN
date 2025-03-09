@@ -217,21 +217,18 @@ void something(int) // 错误: 错误的返回类型
 
 更好的办法是告诉编译器或者 IDE有些头文件存放在其他位置，此时当它们无法在当前目录下被找到时，编译器会到指定的目录中查找。通常可以通过在 IDE 中设置项目的 _include path_ 或 _search directory_ 来实现。
 
-!!! exmaple  "For Visual Studio users"
+> [!example]  "For Visual Studio users"
+> 右键单击项目的 _Solution Explorer_ 然后选择 _Properties_ 然后选择 _VC++ Directories_ 选项卡。在这里你可以看到 _Include Directories_ 将你希望编译器搜索的包含了头文件的目录填写到这里即可。
 
-	右键单击项目的 _Solution Explorer_ 然后选择 _Properties_ 然后选择 _VC++ Directories_ 选项卡。在这里你可以看到 _Include Directories_ 将你希望编译器搜索的包含了头文件的目录填写到这里即可。
+> [!example] "For Code:: Blocks users"
+> 在 Code:: Blocks 中，选择 _Project_ 菜单并选择 _Build Options_，再选择 _Search directories_ 选项卡，将你希望编译器搜索的包含了头文件的目录填写到这里即可。
 
-!!! exmaple "For Code:: Blocks users"
-
-    在 Code:: Blocks 中，选择 _Project_ 菜单并选择 _Build Options_，再选择 _Search directories_ 选项卡，将你希望编译器搜索的包含了头文件的目录填写到这里即可。
-
-!!! exmaple  "For GCC/G++ users"
-
-    使用 g++ 是，你可以通过 `-I` 选项来指明头文件搜索路径：
-
-    ```cpp
-    g++ -o main -I/source/includes main.cpp
-    ```
+> [!example]  "For GCC/G++ users"
+> 使用 g++ 是，你可以通过 `-I` 选项来指明头文件搜索路径：
+>
+>    ```cpp
+>    g++ -o main -I/source/includes main.cpp
+>    ```
 
 这么做的好处是，如果你改变了目录结构，那么只需要在设置里面修改路径即可，而不必对代码中每一处使用该头文件的地方进行修改。
 
@@ -249,9 +246,8 @@ void something(int) // 错误: 错误的返回类型
 
 不幸的是，我们很难去甄别究竟哪些代码正在依赖那些被间接引入的头文件。
 
-!!! question "Q: 我没有`include <someheader> `，但是程序仍然能正常工作！为什么？"
-
-    这个问题也是常备问到的问题之一。这可能是因为你包含了某个头文件的时候，恰巧该文件也包含了你所需的那个头文件，所以代码可以工作。尽管你的程序可以编译，最佳实践告诉我们，这种方式并不可靠。在你的电脑上能编译，不代表在其他电脑上也能编译。
+> [!question] "Q: 我没有`include <someheader> `，但是程序仍然能正常工作！为什么？"
+> 这个问题也是常备问到的问题之一。这可能是因为你包含了某个头文件的时候，恰巧该文件也包含了你所需的那个头文件，所以代码可以工作。尽管你的程序可以编译，最佳实践告诉我们，这种方式并不可靠。在你的电脑上能编译，不代表在其他电脑上也能编译。
     
 ## 头文件 `#include` 的顺序
 

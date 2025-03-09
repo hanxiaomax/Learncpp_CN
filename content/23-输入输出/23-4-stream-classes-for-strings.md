@@ -46,7 +46,7 @@ std::cout << os.str();
 
 打印：
 
-```
+```bash
 12345 67.89
 ```
 
@@ -68,7 +68,7 @@ std::cout << strValue << " - " << strValue2 << '\n';
 
 程序打印：
 
-```
+```bash
 12345 - 67.89
 ```
 
@@ -95,7 +95,7 @@ std::cout << strValue1 << ' ' << strValue2 << '\n';
 
 输出结果：
 
-```
+```bash
 12345 67.89
 ```
 
@@ -114,7 +114,7 @@ std::cout << nValue << ' ' << dValue << '\n';
 
 输出结果：
 
-```
+```bash
 12345 67.89
 ```
 
@@ -148,7 +148,7 @@ std::cout << os.str();
 
 两个程序的输出结果是相同的：
 
-```
+```bash
 World!
 ```
 

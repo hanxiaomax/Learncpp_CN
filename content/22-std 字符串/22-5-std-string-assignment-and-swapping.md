@@ -56,7 +56,7 @@ std::cout << sString << ' ' << sOther << '\n';
 
 输出：
 
-```
+```bash
 One
 Two
 Three
@@ -85,7 +85,7 @@ std::cout << sDest << '\n';
 
 输出：
 
-```
+```bash
 cdef
 ```
 
@@ -106,7 +106,7 @@ std::cout << sDest << '\n';
 
 输出：
 
-```
+```bash
 abcd
 ```
 
@@ -129,7 +129,7 @@ std::cout << sDest << '\n';
 
 输出：
 
-```
+```bash
 gggg
 ```
 
@@ -158,7 +158,7 @@ std::cout << sStr1 << ' ' << sStr2 << '\n';
 
 输出：
 
-```
+```bash
 red blue
 blue red
 red blue

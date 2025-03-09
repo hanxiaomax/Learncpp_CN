@@ -181,6 +181,5 @@ int main()
 > 
 > 应该在程序或头文件中避免使用 `using` 指令 (例如 `using namespace std;`)，这么做就违背了使用命名空间的初衷。
 
-!!! info "相关内容"
-
-    我们会在 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]中介绍 `using` 语句以及如何使用它。
+> [!info] "相关内容"
+> 我们会在 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]中介绍 `using` 语句以及如何使用它。

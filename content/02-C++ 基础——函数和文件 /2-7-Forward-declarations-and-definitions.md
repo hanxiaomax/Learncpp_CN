@@ -39,13 +39,13 @@ int add(int x, int y)
 
 我们期望的结果是程序有如下输出：
 
-```
+```bash
 The sum of 3 and 4 is: 7
 ```
 
 但实际上这个程序根本就不能被编译！Visual Studio 打印的错误信息如下：
 
-```
+```bash
 add.cpp(5) : error C3861: 'add': identifier not found
 ```
 
@@ -161,7 +161,7 @@ int main()
 
 在这个程序中，我们对 `add` 进行了前向声明并且调用了 `add` 函数。不过，我们却没有对其进行声明。如果对程序进行编译，Visual Studio 会报告如下信息：
 
-```
+```bash
 Compiling...
 add.cpp
 Linking...

@@ -76,7 +76,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 5
 ```
 
@@ -94,7 +94,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 Hello world!
 ```
 
@@ -113,7 +113,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 x is equal to: 5
 ```
 
@@ -138,7 +138,7 @@ int main()
 
 看到下面的结果你会觉得吃惊吗：
 
-```
+```bash
 Hi!My name is Alex.
 ```
 
@@ -164,7 +164,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 Hi!
 My name is Alex.
 ```
@@ -193,7 +193,7 @@ int main()
 ```
 
 输出结果：
-```
+```bash
 x is equal to: 5
 And that's all, folks!
 ```
@@ -230,7 +230,7 @@ int main()
 请尝试自行编译和运行上述程序。在执行程序时，第五行代码会打印“Enter a number: “，当执行到第八行是，程序会等待用户输入。当你输入一个数字（并按下回车）后，它会被赋值给变量 x。最后，第十行代码会打印 “You entered ” 以及你刚才输入的数字。
 
 例如：
-```
+```bash
 Enter a number: 4
 You entered 4
 ```
@@ -260,7 +260,7 @@ int main()
 
 输出结果如下：
 
-```
+```bash
 Enter two numbers separated by a space: 5 6
 You entered 5 and 6
 ```

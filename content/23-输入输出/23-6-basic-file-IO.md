@@ -95,7 +95,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 This
 is
 line
@@ -143,7 +143,7 @@ int main()
 ```
 
 输出结果：
-```
+```bash
 This is line 1
 This is line 2
 ```
@@ -209,7 +209,7 @@ int main()
 
 现在，如果我们看一下*Sample .txt*(使用上面的一个示例程序打印它的内容，或在文本编辑器中加载它)，可以看到以下内容:
 
-```
+```bash
 This is line 1
 This is line 2
 This is line 3

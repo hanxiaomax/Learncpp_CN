@@ -39,7 +39,7 @@ cout << sString << endl;
 
 输出：
 
-```
+```bash
 aaaa
 aabbbbaa
 aabbccccbbaa
@@ -66,7 +66,7 @@ cout << sString << endl;
 
 输出：
 
-```
+```bash
 aa3456aa
 ```
 
@@ -91,7 +91,7 @@ cout << sString << endl;
 
 输出：
 
-```
+```bash
 aabcdaa
 ```
 
@@ -115,7 +115,7 @@ cout << sString << endl;
 
 输出：
 
-```
+```bash
 aaccccaa
 ```
 

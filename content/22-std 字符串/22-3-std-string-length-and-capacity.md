@@ -31,7 +31,7 @@ std::cout << s.length() << '\n';
 
 输出：
 
-```
+```bash
 9
 ```
 
@@ -53,7 +53,7 @@ std::cout << (string2.empty() ? "true" : "false")  << '\n';
 
 输出：
 
-```
+```bash
 false
 true
 ```
@@ -74,7 +74,7 @@ std::cout << s.max_size() << '\n';
 
 输出：
 
-```
+```bash
 4294967294
 ```
 
@@ -96,7 +96,7 @@ std::cout << "Capacity: " << s.capacity() << '\n';
 
 输出：
 
-```
+```bash
 Length: 8
 Capacity: 15
 ```
@@ -121,7 +121,7 @@ std::cout << "Capacity: " << s.capacity() << '\n';
 
 输出结果：
 
-```
+```bash
 Length: 15
 Capacity: 15
 ```
@@ -143,7 +143,7 @@ std::cout << "Capacity: " << s.capacity() << '\n';
 
 输出结果：
 
-```
+```bash
 Length: 15
 Capacity: 15
 Length: 16
@@ -174,7 +174,7 @@ std::cout << "Capacity: " << s.capacity() << '\n';
 
 输出：
 
-```
+```bash
 Length: 8
 Capacity: 15
 Length: 8
@@ -210,7 +210,7 @@ int main()
 
 这个程序的结果每次都会改变，其中一次的结果为：
 
-```
+```bash
 wzpzujwuaokbakgijqdawvzjqlgcipiiuuxhyfkdppxpyycvytvyxwqsbtielxpy
 ```
 

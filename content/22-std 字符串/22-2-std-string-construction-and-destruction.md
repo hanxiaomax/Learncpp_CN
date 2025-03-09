@@ -34,7 +34,7 @@ std::cout << sSource;
 
 输出：
 
-```
+```bash
 ```
 
 **`string::string(const string& strString)`**
@@ -51,7 +51,7 @@ std::cout << sOutput;
 
 输出：
 
-```
+```bash
 my string
 ```
 
@@ -116,7 +116,7 @@ std::cout << sOutput << '\n';
 
 输出：
 
-```
+```bash
 my s
 ```
 
@@ -134,7 +134,7 @@ std::cout << sOutput << '\n';
 
 输出：
 
-```
+```bash
 QQQQ
 ```
 
@@ -165,13 +165,13 @@ std::string sFour{ 4 };
 
 输出结果：
 
-```
+```bash
 c:vcprojectstest2test2test.cpp(10) : error C2664: 'std::basic_string<_Elem,_Traits,_Ax>::basic_string(std::basic_string<_Elem,_Traits,_Ax>::_Has_debug_it)' : cannot convert parameter 1 from 'int' to 'std::basic_string<_Elem,_Traits,_Ax>::_Has_debug_it'
 ```
 
 还记得我说过字符串类会产生可怕的报错信息吗？就是像上面这样。这里的有用的信息是：
 
-```
+```bash
 cannot convert parameter 1 from 'int' to 'std::basic_string
 ```
 
@@ -211,7 +211,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 4
 6.7
 A
@@ -219,9 +219,8 @@ A
 
 注意，这里我们忽略了错误检查。将`tX`插入`oStream`中可能会失败，如果转换失败则应该抛出一个异常。
 
-!!! info "相关内容"
-
-	标准库还包含一个名为 `std::to_string()` 的函数，可用于将字符和数字转换为 `std::string`。虽然这是基本场合中更简单的解决方案，但`std::to_string`的输出可能与上面`std::cout`或`out ToString()`函数的输出不同。其中一些差异被记录[这里](https://en.cppreference.com/w/cpp/string/basic_string/to_string)。
+> [!info] "相关内容"
+> 标准库还包含一个名为 `std::to_string()` 的函数，可用于将字符和数字转换为 `std::string`。虽然这是基本场合中更简单的解决方案，但`std::to_string`的输出可能与上面`std::cout`或`out ToString()`函数的输出不同。其中一些差异被记录[这里](https://en.cppreference.com/w/cpp/string/basic_string/to_string)。
 
 
 ## 从字符串创建数字
@@ -256,7 +255,7 @@ int main()
 
 输出结果：
 
-```
+```bash
 3.4
 ```
 

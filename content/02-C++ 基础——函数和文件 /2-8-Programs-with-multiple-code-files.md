@@ -16,47 +16,29 @@ tags:
 > [!success] "最佳实践"
 > 在为项目添加代码文件时，请使用 `.cpp` 作为扩展名。
 
-!!! example "For Visual Studio users"
+> [!example] "For Visual Studio users"
+> 在 Visual Studio 中，在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > New Item…_.
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem1.png?ezimgfmt=rs%3Adevice%2Frscb2-1)
+> 选择 _C++ File (.cpp)_。为其指定一个文件名，就可以将文件添加到项目中。
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem2.png?ezimgfmt=rs:699x393/rscb2/ng:webp/ngcb2)
+> 注意：如果你是从 File 菜单而不是 Solution Explorer 窗口创建的文件，那么该文件不会被自动添加到项目中。因此你必须在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > Existing Item_，然后选择刚才创建的文件。
+> 接下来，在编译程序的时候，你会发现编译器会将该文件列出来，因为它会对其进行编译。
 
-    在 Visual Studio 中，在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > New Item…_.
+> [!example] "For Code:: Blocks users"
+> 在 Code:: Blocks 中，在 _File_ 菜单中选择 _New > File…_。
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem1.png?ezimgfmt=rs:540x233/rscb2/ng:webp/ngcb2)
+> 在 _New from template_ 对话框中，选择 _C/C++ source_ 并点击 _Go_。
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem2.png?ezimgfmt=rs:604x453/rscb2/ng:webp/ngcb2)
+> 你可能会来到一个 _welcome to the C/C++ source file wizard_ 对话框。此时点击 _Next_。
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem3.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
+> 在向导的下一个页面中，选择 “C++” 并点击 _Next_。
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem4.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
+> 接下来，为这个新文件起一个名字（不要忘了使用 `.cpp` 作为后缀名），然后点击 _All_ 按钮确保所有的构建目标都被勾选了。最后，选择 _finish_。
+> ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem5.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
+> 现在，当你编译程序的时候，你就可以看到编译器在编译时列出了该文件的名字。
 
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem1.png?ezimgfmt=rs%3Adevice%2Frscb2-1)
-
-    选择 _C++ File (.cpp)_。为其指定一个文件名，就可以将文件添加到项目中。
-
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/VS-AddNewItem2.png?ezimgfmt=rs:699x393/rscb2/ng:webp/ngcb2)
-
-    注意：如果你是从 File 菜单而不是 Solution Explorer 窗口创建的文件，那么该文件不会被自动添加到项目中。因此你必须在解决方案浏览器窗口(Solution Explorer)右键点击 _Source Files_ 目录并选择 _Add > Existing Item_，然后选择刚才创建的文件。
-
-    接下来，在编译程序的时候，你会发现编译器会将该文件列出来，因为它会对其进行编译。
-
-!!! example "For Code:: Blocks users"
-
-    在 Code:: Blocks 中，在 _File_ 菜单中选择 _New > File…_。
-
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem1.png?ezimgfmt=rs:540x233/rscb2/ng:webp/ngcb2)
-
-    在 _New from template_ 对话框中，选择 _C/C++ source_ 并点击 _Go_。
-
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem2.png?ezimgfmt=rs:604x453/rscb2/ng:webp/ngcb2)
-
-    你可能会来到一个 _welcome to the C/C++ source file wizard_ 对话框。此时点击 _Next_。
-
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem3.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
-
-    在向导的下一个页面中，选择 “C++” 并点击 _Next_。
-
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem4.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
-
-    接下来，为这个新文件起一个名字（不要忘了使用 `.cpp` 作为后缀名），然后点击 _All_ 按钮确保所有的构建目标都被勾选了。最后，选择 _finish_。
-
-    ![](https://www.learncpp.com/images/CppTutorial/Chapter2/CB-AddNewItem5.png?ezimgfmt=rs:524x443/rscb2/ng:webp/ngcb2)
-
-    现在，当你编译程序的时候，你就可以看到编译器在编译时列出了该文件的名字。
-
-!!! example "For GCC/G++ users"
-
-    你可以从命令行来创建文件并为其指定一个文件名。在编译程序的时候，你必须将相关的文件都包含在编译命令中。`g++ main.cpp add.cpp -o main`, 其中，`main.cpp` 和 `add.cpp` 是需要编译的文件，`main` 则是输出文件的文件名。
+> [!example] "For GCC/G++ users"
+> 你可以从命令行来创建文件并为其指定一个文件名。在编译程序的时候，你必须将相关的文件都包含在编译命令中。`g++ main.cpp add.cpp -o main`, 其中，`main.cpp` 和 `add.cpp` 是需要编译的文件，`main` 则是输出文件的文件名。
 
 ## 一个多文件程序的例子
 
@@ -104,7 +86,7 @@ int main()
 
 你的编译器可能会先编译 *add.cpp* 或者先编译 *main.cpp*。不论是那种情况，编译器都会报告和之前一样的编译错误：
 
-```
+```bash
 main.cpp(5) : error C3861: 'add': identifier not found
 ```
 
@@ -153,7 +135,7 @@ int add(int x, int y)
 
 1.  如果你遇到了 `main` 中没有定义 `add` 的问题，和可能是因为忘记在 _main.cpp_ 中对 `add` 函数进行前向声明。
 2.  如果链接器报告了无法找到 _add_ 定义的问题，例如：
-    ```
+    ```bash
     unresolved external symbol "int __cdecl add(int,int)" (?add@@YAHHH@Z) referenced in function _main
     ```
     1. 最大的可能性是 _add.cpp_ 文件没有被正确地添加到项目中。在编译程序的时候，你应该能够看到编译器列出了 _main.cpp_ 和 _add.cpp_。如果你值看到了 _main.cpp_，那么 _add.cpp_ 肯定没有被编译。如果你使用 Visual Studio 或 Code:: Blocks，你应该能够在 Solution Explorer/project 中看到 _add.cpp_。如果你没有看到，请右键点击项目并添加文件，然后尝试重新编译。如果你使用的是命令行的方式，请将 _main.cpp_ 和 _add.cpp_ 都包含在编译命令中。

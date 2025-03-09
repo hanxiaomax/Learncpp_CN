@@ -34,7 +34,7 @@ std::cout << sSource << '\n';
 
 输出：
 
-```
+```bash
 f
 abcdeXg
 ```
@@ -60,7 +60,7 @@ std::cout << sSource << '\n';
 
 输出
 
-```
+```bash
 f
 abcdeXg
 ```
@@ -86,7 +86,7 @@ std::cout << std::strlen(sSource.c_str());
 
 输出：
 
-```
+```bash
 7
 ```
 
@@ -137,7 +137,7 @@ std::cout << szBuf << '\n';
 
 输出：
 
-```
+```bash
 black
 ```
 

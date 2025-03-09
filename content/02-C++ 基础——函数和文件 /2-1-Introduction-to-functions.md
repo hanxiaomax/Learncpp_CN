@@ -27,7 +27,7 @@ C++ 函数也可以通过类似的方法去工作。当遇到函数调用的时�
 
 首先，让我们熟悉一下定义函数的基本语法。在接下来的几节课中，用户定义函数都是如下形式：
 
-```
+```bash
 return-type identifier() // identifier replaced with the name of your function
 {
 // Your code here
@@ -65,7 +65,7 @@ int main()
 
 上述代码的输出结果如下：
 
-```
+```bash
 Starting main()
 In doPrint()
 Ending main()
@@ -106,7 +106,7 @@ int main()
 
 上述程序输出结果如下：
 
-```
+```bash
 Starting main()
 In doPrint()
 In doPrint()

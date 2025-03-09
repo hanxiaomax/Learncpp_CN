@@ -97,7 +97,7 @@ int main()
 ```
 
 输出结果如下：
-```
+```bash
 is line 1
 line 2
 This is line 4
@@ -119,7 +119,7 @@ std::cout << inf.tellg();
 
 打印结果：
 
-```
+```bash
 64
 ```
 
@@ -203,7 +203,7 @@ int main()
 
 运行程序，输出结果如下：
 
-```
+```bash
 Th#s #s l#n# 1
 Th#s #s l#n# 2
 Th#s #s l#n# 3
