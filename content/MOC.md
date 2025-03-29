@@ -280,7 +280,7 @@
 - [[18-8-virtual-base-classes|18.8 - 虚基类]]
 - [[18-9-object-slicing|18.9 - 对象切片]]
 - [[18-10-dynamic-casting|18.10 - 动态类型转换]]
-- [[18-11-printing-inherited-classes-using-operator<<|18.11 - 使用<<运算符打印继承类]]
+- [[18-11-printing-inherited-classes-using-insertion-operator|18.11 - 使用<<运算符打印继承类]]
 - [[18-x-Chapter-18-comprehensive-quiz|18.x - 小结与测试 - 虚函数]]
 
 ## 19. 模板和类  🚧
