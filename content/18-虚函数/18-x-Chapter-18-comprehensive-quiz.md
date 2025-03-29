@@ -58,6 +58,6 @@ tags:
 
 - [[dynamic-casts|动态类型转换]]可以用来将一个指向基类对象的指针转换为指向派生类对象的指针，即[[downcasting]]。如果转换失败，则会返回一个空指针。
 
-[[18-11-printing-inherited-classes-using-insertion-operator|18.11 - 使用<<运算符打印继承类]]
+[[18-11-printing-inherited-classes-using-operator<<|18.11 - 使用<<运算符打印继承类]]
 
 - 为派生类重载`<<` 运算符的最简单的办法，是重载最基础的基类的`<<`运算符，然后调用虚成员函数来进行打印。
