@@ -153,7 +153,7 @@
 - [[9-10-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
 - [[9-11-Return-by-reference-and-return-by-address|9.11 - 按引用返回和按地址返回]]
 - [[9-12-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和const的类型推断]]
-- [[9-x-Chapter-9-comprehensive-quiz.md|9.x - 小结与测试 - 引用和指针]]
+- [[9-x-Chapter-9-comprehensive-quiz|9.x - 小结与测试 - 引用和指针]]
 
 
 ## 10. 复合类型-枚举和结构体 
