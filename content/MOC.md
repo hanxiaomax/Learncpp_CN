@@ -101,7 +101,7 @@
 - [[6-8-Logical-operators|6.8 - 逻辑运算符]]
 - [[6-x-Chapter-6-summary-and-quiz|6.x - 小结与测试 - 运算符]]
 
-## O1. 位运算（可选章节）
+## O. 位运算（可选章节）
 
 - [[O-1-bit-flags-and-bit-manipulation-via-std-bitset|O.1 - bit标记和通过std::bitset操作bit]]
 - [[O-2-bitwise-operators|O.2 - 位运算符]]
@@ -230,7 +230,7 @@
 - [[13-x-Chapter-13-comprehensive-quiz|13.x - 小结与测试 - 枚举和结构体]]
 - [[13-y-using-a-language-reference|13.y - 学会使用C++参考手册]]
 
-## 14. 面向对象编程基础 🚧
+## 14. 类简介 🚧
 
 - [[14-1-welcome-to-object-oriented-programming|14.1 - 欢迎来到面向对象的世界]]
 - [[14-2-classes-and-class-members|14.2 - 类和类成员]]
@@ -249,7 +249,7 @@
 - [[14-15-copy-initialization|14.15 - 拷贝初始化]]
 - [[14-16-converting-constructors-explicit-and-delete|14.16 - 转换构造函数与explicit和delete关键字]]
 - [ ] [[14-17-constexpr-aggregates-and-classes|14-17-constexpr-aggregates-and-classes]]
-- [[14-面向对象编程基础/14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试 - 面向对象基础]]
+- [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试 - 面向对象基础]]
 
 ## 15. 深入类 🚧
 
@@ -281,11 +281,11 @@
 - [ ] [[16-12-stdvector-bool|16-12-stdvector-bool]]
 - [ ] [[16-x-chapter-16-summary-and-quiz|16-x-chapter-16-summary-and-quiz]]
 
-## 17. 数组，字符串和动态内存分配 🚧
+## 17. 固定长度数组：std::array和C风格数组 🚧
 
 - [[17-1-An-introduction-to-std-array|17.1 — 固定数组 std::array 简介]]
 - [ ] [[17-2-stdarray-length-and-indexing|17-2-stdarray-length-and-indexing]]
-- [ ] [[17-3-passing-and-returning-stdarray|17-3-passing-and-returning-stdarray]]\
+- [ ] [[17-3-passing-and-returning-stdarray|17-3-passing-and-returning-stdarray]]
 - [ ] [[17-4-stdarray-of-class-types-and-brace-elision|17-4-stdarray-of-class-types-and-brace-elision]]
 - [ ] [[17-5-arrays-of-references-via-stdreference_wrapper|17-5-arrays-of-references-via-stdreference_wrapper]]
 - [ ] [[17-6-stdarray-and-enumerations|17-6-stdarray-and-enumerations]]
