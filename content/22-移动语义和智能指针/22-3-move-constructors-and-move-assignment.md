@@ -1,6 +1,6 @@
 ---
-title: M.3 - 移动构造函数和移动赋值
-alias: M.3 - 移动构造函数和移动赋值
+title: 22.3 - 移动构造函数和移动赋值
+alias: 22.3 - 移动构造函数和移动赋值
 origin: /move-constructors-and-move-assignment/
 origin_title: "M.3 — Move constructors and move assignment"
 time: 2022-10-3
@@ -20,7 +20,7 @@ tags:
 > - 在支持移动语义的类中，有时需要删除拷贝构造函数和拷贝赋值函数，以确保不会执行拷贝
 
 
-在[[22-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]中我们介绍了`std::auto_ptr`，进而引申出了[[move-semantics|移动语义]]的重要性。然后，我们讨论了当将本来被设计为拷贝语义的函数（[[copy-initialization|拷贝初始化]]和[[copy-assignment-operator|拷贝赋值运算符]]）被用来实现移动语义时会带来的问题。
+在[[22-1-introduction-to-smart-pointers-and-move-semantics|22.1 - 智能指针和移动语义简介]]中我们介绍了`std::auto_ptr`，进而引申出了[[move-semantics|移动语义]]的重要性。然后，我们讨论了当将本来被设计为拷贝语义的函数（[[copy-initialization|拷贝初始化]]和[[copy-assignment-operator|拷贝赋值运算符]]）被用来实现移动语义时会带来的问题。
 
 在本节课中，我们会深入分析C++11是如何通过[[move-constructor|移动构造函数]]和[[move-assignment-operator|移动赋值运算符]]来解决上述问题的。
 

@@ -29,7 +29,7 @@ type: translation
 -   `std::byte` (*暂无教程*)
 -   `std::filesystem` (*暂无教程*)
 -   `std::optional` (*暂无教程*)
--   `std::shared_ptr` 可用于管理C语言数组 (但还不能通过 `std::make_shared` 创建) ([[22-6-std-shared-ptr|M.7 — std::shared_ptr]])
+-   `std::shared_ptr` 可用于管理C语言数组 (但还不能通过 `std::make_shared` 创建) ([[22-6-std-shared-ptr|22.6 — std::shared_ptr]])
 -   `std::size` ([[11-2-Arrays-Part-II|11.2 - 数组（第二部分）]])
 -   `std::string_view` ([[5-8-Introduction-to-std-string_view|5.8 - std::string_view 简介]])
 -   结构化绑定声明

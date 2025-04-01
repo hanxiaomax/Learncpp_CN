@@ -25,4 +25,4 @@ type: translation
 -   泛型 lambdas ([[20-6-introduction-to-lambdas-anonymous-functions|20.6 - lambda表达式简介（匿名函数）]])
 -   Relaxed constexpr functions ([[F-1-Constexpr-and-consteval-functions|F.1 - Constexpr 和 consteval 函数]])
 -   变量模板 (*暂无教程*)
--   `std::make_unique` ([[22-5-std-unique-ptr|M.6 — std::unique_ptr]])
+-   `std::make_unique` ([[22-5-std-unique-ptr|22.5 — std::unique_ptr]])

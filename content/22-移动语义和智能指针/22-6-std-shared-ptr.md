@@ -1,6 +1,6 @@
 ---
-title: M.7 — std::shared_ptr
-alias: M.7 — std::shared_ptr
+title: 22.6 — std::shared_ptr
+alias: 22.6 — std::shared_ptr
 origin: /stdshared_ptr/
 origin_title: "M.7 — std::shared_ptr"
 time: 2022-9-16

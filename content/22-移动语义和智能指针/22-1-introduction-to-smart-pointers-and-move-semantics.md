@@ -1,13 +1,13 @@
 ---
-title: M.1 - 智能指针和移动语义简介
-alias: M.1 - 智能指针和移动语义简介
+title: 22.1 - 智能指针和移动语义简介
+aliases: 22.1 - 智能指针和移动语义简介
 origin: /introduction-to-smart-pointers-move-semantics/
-origin_title: "M.1 — Introduction to smart pointers and move semantics"
+origin_title: M.1 — Introduction to smart pointers and move semantics
 time: 2022-9-16
 type: translation
 tags:
-- smart-pointers
-- move-semantics
+  - smart-pointers
+  - move-semantics
 ---
 
 > [!note] "Key Takeaway"

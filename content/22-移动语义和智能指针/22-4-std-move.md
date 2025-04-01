@@ -1,6 +1,6 @@
 ---
-title: M.4 - std::move
-alias: M.4 - std::move
+title: 22.4 - std::move
+alias: 22.4 - std::move
 origin: /stdmove/
 origin_title: "M.4 — std::move"
 time: 2022-10-4

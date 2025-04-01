@@ -125,7 +125,7 @@ int main()
 在 C++11 中，新增了三个值类型 (`glvalue`、`prvalue` 和 `xvalue`)，用于支持[[move-semantics|移动语义]]。
 
 > [!info] "作者注"
-> 在本节课中，我们只关注 C++11 之前的两种值类型（也是我们目前所需要的）作为简介。我们会在[[22-x-chapter-M-comprehensive-review|M.x - 小结与测试 - 移动和智能指针]]一章中介绍移动语义和其他的几种值类型。
+> 在本节课中，我们只关注 C++11 之前的两种值类型（也是我们目前所需要的）作为简介。我们会在[[22-x-chapter-M-comprehensive-review|22.x - 小结与测试 - 移动和智能指针]]一章中介绍移动语义和其他的几种值类型。
 
 ## Lvalue 和 rvalue 表达式
 

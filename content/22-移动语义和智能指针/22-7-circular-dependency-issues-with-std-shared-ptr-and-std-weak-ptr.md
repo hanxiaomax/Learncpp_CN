@@ -1,6 +1,6 @@
 ---
-title: M.8 - 智能指针带来的循环依赖问题
-alias: M.8 — 智能指针带来的循环依赖问题
+title: 22.7 - 智能指针带来的循环依赖问题
+alias: 22.7 — 智能指针带来的循环依赖问题
 origin: /circular-dependency-issues-with-stdshared_ptr-and-stdweak_ptr/
 origin_title: "M.8 — Circular dependency issues with std::shared_ptr, and std::weak_ptr"
 time: 2022-9-16

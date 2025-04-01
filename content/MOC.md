@@ -292,15 +292,15 @@
 
 ## M. move 和智能指针 
 
-- [[22-1-introduction-to-smart-pointers-and-move-semantics|M.1 - 智能指针和移动语义简介]]
-- [[22-2-R-value-references|M.2 - 右值引用]]
-- [[22-3-move-constructors-and-move-assignment|M.3 - 移动构造函数和移动赋值]]
-- [[22-4-std-move|M.4 - std::move]]
-- [ ] [[27-10-std-move-if-noexcept|M.5 - std::move_if_noexcept]]
-- [[22-5-std-unique-ptr|M.6 — std::unique_ptr]]
-- [[22-6-std-shared-ptr|M.7 — std::shared_ptr]]
-- [ ] [[22-7-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|M.8 - 智能指针带来的循环依赖问题]]
--  [[22-x-chapter-M-comprehensive-review|M.x - 小结与测试 - 移动和智能指针]]
+- [[22-1-introduction-to-smart-pointers-and-move-semantics|22.1 - 智能指针和移动语义简介]]
+- [[22-2-R-value-references|22.2 - 右值引用]]
+- [[22-3-move-constructors-and-move-assignment|22.3 - 移动构造函数和移动赋值]]
+- [[22-4-std-move|22.4 - std::move]]
+- [ ] [[27-10-std-move-if-noexcept|27.10 - std::move_if_noexcept]]
+- [[22-5-std-unique-ptr|22.5 — std::unique_ptr]]
+- [[22-6-std-shared-ptr|22.6 — std::shared_ptr]]
+- [ ] [[22-7-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|22.7 - 智能指针带来的循环依赖问题]]
+-  [[22-x-chapter-M-comprehensive-review|22.x - 小结与测试 - 移动和智能指针]]
 
 ## 21. STL 
 

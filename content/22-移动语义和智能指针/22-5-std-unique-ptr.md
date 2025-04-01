@@ -1,6 +1,6 @@
 ---
-title: M.6 — std::unique_ptr
-alias: M.6 — std::unique_ptr
+title: 22.5 — std::unique_ptr
+alias: 22.5 — std::unique_ptr
 origin: /stdunique_ptr/
 origin_title: "M.6 — std::unique_ptr"
 time: 2022-8-9

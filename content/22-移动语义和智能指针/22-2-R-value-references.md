@@ -1,6 +1,6 @@
 ---
-title: M.2 - 右值引用
-alias: M.2 - 右值引用
+title: 22.2 - 右值引用
+alias: 22.2 - 右值引用
 origin: /rvalue-references/
 origin_title: "M.2 — R-value references"
 time: 2022-9-16
