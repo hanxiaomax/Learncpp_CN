@@ -1,6 +1,6 @@
 ---
-title: 23.4 - 用于字符串的 stream 类
-alias: 23.4 - 用于字符串的 stream 类
+title: 28.4 - 用于字符串的 stream 类
+alias: 28.4 - 用于字符串的 stream 类
 origin: /stream-classes-for-strings/
 origin_title: "23.4 — Stream classes for strings"
 time: 2022-6-27

@@ -1,6 +1,6 @@
 ---
-title: 9.6 - 指针简介
-alias: 9.6 - 指针简介
+title: 12.7 - 指针简介
+alias: 12.7 - 指针简介
 origin: //introduction-to-pointers/
 origin_title: "9.6 — Introduction to pointers"
 time: 2022-1-2

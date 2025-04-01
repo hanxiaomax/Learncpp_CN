@@ -1,6 +1,6 @@
 ---
-title: 8.8 - 函数的类型推断
-alias: 8.8 - 函数的类型推断
+title: 10.9 - 函数的类型推断
+alias: 10.9 - 函数的类型推断
 origin: /type-deduction-for-functions/
 origin_title: "8.8 — Type deduction for functions"
 time: 2022-1-20

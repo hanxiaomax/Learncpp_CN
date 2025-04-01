@@ -1,6 +1,6 @@
 ---
-title: 14.13 - 拷贝初始化
-alias: 14.13 - 拷贝初始化
+title: 14.15 - 拷贝初始化
+alias: 14.15 - 拷贝初始化
 origin: /the-copy-constructor/
 origin_title: "14.13 — Copy initialization"
 time: 2022-7-27

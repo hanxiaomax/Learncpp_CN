@@ -1,6 +1,6 @@
 ---
-title: 7.13 - 代码覆盖率
-alias: 7.13 - 代码覆盖率
+title: 9.2 - 代码覆盖率
+alias: 9.2 - 代码覆盖率
 origin: /code-coverage/
 origin_title: "/code-coverage/"
 time: 2022-2-15

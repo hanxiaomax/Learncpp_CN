@@ -1,6 +1,6 @@
 ---
-title: 9.1 - 复合数据类型
-alias: 9.1 - 复合数据类型
+title: 12.1 - 复合数据类型
+alias: 12.1 - 复合数据类型
 origin: /introduction-to-compound-data-types/
 origin_title: "9.1 — Introduction to compound data types"
 time: 2022-1-2

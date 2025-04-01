@@ -1,6 +1,6 @@
 ---
-title: 14.12 - 拷贝构造函数
-alias: 14.12 - 拷贝构造函数
+title: 14.14 - 拷贝构造函数
+alias: 14.14 - 拷贝构造函数
 origin: /the-copy-constructor/
 origin_title: "14.12 — The copy constructor"
 time: 2022-10-3

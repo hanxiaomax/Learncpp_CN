@@ -1,6 +1,6 @@
 ---
-title: 7.12 - 代码测试
-alias: 7.12 - 代码测试
+title: 9.1 - 代码测试
+alias: 9.1 - 代码测试
 origin: /introduction-to-testing-your-code/
 origin_title: "7.12 — Introduction to testing your code"
 time: 2021-10-23

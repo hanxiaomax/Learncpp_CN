@@ -1,6 +1,6 @@
 ---
-title: 11.13 - for-each 循环
-alias: 11.13 - for-each 循环
+title: 16.8 - for-each 循环
+alias: 16.8 - for-each 循环
 origin: /none/
 origin_title: "none"
 time: 2022-1-2

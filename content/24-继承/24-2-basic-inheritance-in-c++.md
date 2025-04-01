@@ -1,6 +1,6 @@
 ---
-title: 17.2 - C++继承基础
-alias: 17.2 - C++继承基础
+title: 24.2 - C++继承基础
+alias: 24.2 - C++继承基础
 origin: /basic-inheritance-in-c/
 origin_title: "17.2 — Basic inheritance in C++"
 time: 2020-12-21

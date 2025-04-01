@@ -1,6 +1,6 @@
 ---
-title: 13.18 - 对程序进行计时
-alias: 13.18 - 对程序进行计时
+title: 18.4 - 对程序进行计时
+alias: 18.4 - 对程序进行计时
 origin: /timing-your-code/
 origin_title: "13.18 — Timing your code"
 time: 2022-9-16

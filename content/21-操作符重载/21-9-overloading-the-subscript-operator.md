@@ -1,6 +1,6 @@
 ---
-title: 14.9 - 重载下标运算符
-alias: 14.9 - 重载下标运算符
+title: 21.9 - 重载下标运算符
+alias: 21.9 - 重载下标运算符
 origin: /overloading-the-subscript-operator/
 origin_title: "14.9 — Overloading the subscript operator"
 time: 2022-6-24

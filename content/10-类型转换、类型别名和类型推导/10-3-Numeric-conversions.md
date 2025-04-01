@@ -1,6 +1,6 @@
 ---
-title: 8.3 - 数值转换
-alias: 8.3 - 数值转换
+title: 10.3 - 数值转换
+alias: 10.3 - 数值转换
 origin: /none/
 origin_title: "8.3 — Numeric conversions"
 time: 2022-3-17

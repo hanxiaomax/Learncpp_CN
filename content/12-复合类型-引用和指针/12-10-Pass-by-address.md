@@ -1,6 +1,6 @@
 ---
-title: 9.9 - 按地址传递
-alias: 9.9 - 按地址传递
+title: 12.10 - 按地址传递
+alias: 12.10 - 按地址传递
 origin: /pass-by-address/
 origin_title: "9.9 — Pass by address"
 time: 2022-9-7

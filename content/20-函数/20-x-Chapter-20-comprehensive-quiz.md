@@ -1,6 +1,6 @@
 ---
-title: 12.x - 小结与测试 - 函数
-alias: 12.x - 小结与测试 - 函数
+title: 20.x - 小结与测试 - 函数
+alias: 20.x - 小结与测试 - 函数
 origin: /chapter-12-comprehensive-quiz/
 origin_title: "12.x — Chapter 12 comprehensive quiz"
 time: 2022-4-8

@@ -1,6 +1,6 @@
 ---
-title: 18.7 - 纯虚函数，抽象基类和接口类
-alias: 18.7 - 纯虚函数，抽象基类和接口类
+title: 25.7 - 纯虚函数，抽象基类和接口类
+alias: 25.7 - 纯虚函数，抽象基类和接口类
 origin: /pure-virtual-functions-abstract-base-classes-and-interface-classes/
 origin_title: "18.7 — Pure virtual functions, abstract base classes, and interface classes"
 time: 2022-9-30

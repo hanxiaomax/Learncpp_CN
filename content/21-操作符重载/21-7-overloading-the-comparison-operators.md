@@ -1,6 +1,6 @@
 ---
-title: 14.7 - 重载比较运算符
-alias: 14.7 - 重载比较运算符
+title: 21.7 - 重载比较运算符
+alias: 21.7 - 重载比较运算符
 origin: /overloading-the-comparison-operators/
 origin_title: "14.7 — Overloading the comparison operators"
 time: 2022-5-24

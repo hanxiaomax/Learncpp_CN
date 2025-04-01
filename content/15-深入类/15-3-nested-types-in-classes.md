@@ -1,6 +1,6 @@
 ---
-title: 13.17 - 类中的嵌套类型
-alias: 13.17 - 类中的嵌套类型
+title: 15.3 - 类中的嵌套类型
+alias: 15.3 - 类中的嵌套类型
 origin: /nested-types-in-classes/
 origin_title: "13.17 — Nested types in classes"
 time: 2022-9-16

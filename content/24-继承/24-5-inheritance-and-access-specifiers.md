@@ -1,6 +1,6 @@
 ---
-title: 17.5 - 继承和访问说明符
-alias: 17.5 - 继承和访问说明符
+title: 24.5 - 继承和访问说明符
+alias: 24.5 - 继承和访问说明符
 origin: /inheritance-and-access-specifiers/
 origin_title: "17.5 — Inheritance and access specifiers"
 time: 2022-3-24

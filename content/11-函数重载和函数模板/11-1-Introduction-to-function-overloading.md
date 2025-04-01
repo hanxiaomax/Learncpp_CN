@@ -1,6 +1,6 @@
 ---
-title: 8.9 - 函数重载
-alias: 8.9 - 函数重载
+title: 11.1 - 函数重载
+alias: 11.1 - 函数重载
 origin: /introduction-to-function-overloading/
 origin_title: "8.9 — Introduction to function overloading"
 time: 2022-5-31

@@ -1,6 +1,6 @@
 ---
-title: 8.2 - 浮点数和整型提升
-alias: 8.2 - 浮点数和整型提升
+title: 10.2 - 浮点数和整型提升
+alias: 10.2 - 浮点数和整型提升
 origin: /cpp-tutorial/floating-point-and-integral-promotion/
 origin_title: "8.2 — Floating-point and integral promotion"
 time: 2021-12-30

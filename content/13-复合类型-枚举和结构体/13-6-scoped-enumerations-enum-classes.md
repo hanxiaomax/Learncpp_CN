@@ -1,6 +1,6 @@
 ---
-title: 10.4 - 限定作用域枚举（枚举类）
-alias: 10.4 - 限定作用域枚举（枚举类）
+title: 13.6 - 限定作用域枚举（枚举类）
+alias: 13.6 - 限定作用域枚举（枚举类）
 origin: /scoped-enumerations-enum-classes/
 origin_title: "10.4 — Scoped enumerations (enum classes)"
 time: 2022-8-23

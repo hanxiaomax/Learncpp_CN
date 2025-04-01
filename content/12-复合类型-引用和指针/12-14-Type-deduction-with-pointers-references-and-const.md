@@ -1,6 +1,6 @@
 ---
-title: 9.12 - 指针、引用和const的类型推断
-alias: 9.12 - 指针、引用和const的类型推断
+title: 12.14 - 指针、引用和const的类型推断
+alias: 12.14 - 指针、引用和const的类型推断
 origin: /none/
 origin_title: "9.12 -- Type deduction with pointers, references, and const"
 time: 2022-6-2

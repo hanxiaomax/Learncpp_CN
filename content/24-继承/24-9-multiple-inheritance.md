@@ -1,6 +1,6 @@
 ---
-title: 17.9 - 多重继承
-alias: 17.9 - 多重继承
+title: 24.9 - 多重继承
+alias: 24.9 - 多重继承
 origin: /multiple-inheritance/
 origin_title: "17.9 — Multiple inheritance"
 time: 2022-6-2

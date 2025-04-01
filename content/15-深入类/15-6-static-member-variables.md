@@ -1,6 +1,6 @@
 ---
-title: 13.13 - 静态成员变量
-alias: 13.13 - 静态成员变量
+title: 15.6 - 静态成员变量
+alias: 15.6 - 静态成员变量
 origin: /static-member-variables/
 origin_title: "13.13 — Static member variables"
 time: 2022-9-16

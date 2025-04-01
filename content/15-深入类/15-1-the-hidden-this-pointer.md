@@ -1,6 +1,6 @@
 ---
-title: 13.10 - 隐藏的this指针
-alias: 13.10 - 隐藏的this指针
+title: 15.1 - 隐藏的this指针
+alias: 15.1 - 隐藏的this指针
 origin: /the-hidden-this-pointer/
 origin_title: "13.10 — The hidden “this” pointer"
 time: 2022-9-16

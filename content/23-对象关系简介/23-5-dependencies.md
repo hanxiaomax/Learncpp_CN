@@ -1,6 +1,6 @@
 ---
-title: 16.5 - 依赖关系
-alias: 16.5 - 依赖关系
+title: 23.5 - 依赖关系
+alias: 23.5 - 依赖关系
 origin: /dependencies/
 origin_title: "16.5 — Dependencies"
 time: 2022-5-31

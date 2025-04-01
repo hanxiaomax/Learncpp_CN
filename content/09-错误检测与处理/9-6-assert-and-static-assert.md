@@ -1,6 +1,6 @@
 ---
-title: 7.17 - 断言和 static_assert
-alias: 7.17 - 断言和 static_assert
+title: 9.6 - 断言和 static_assert
+alias: 9.6 - 断言和 static_assert
 origin: /assert-and-static_assert/
 origin_title: "8.x — Chapter 8 summary and quiz"
 time: 2022-8-12

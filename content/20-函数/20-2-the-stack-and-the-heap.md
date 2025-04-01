@@ -1,6 +1,6 @@
 ---
-title: 12.2 - 栈和堆
-alias: 12.2 - 栈和堆
+title: 20.2 - 栈和堆
+alias: 20.2 - 栈和堆
 origin: /the-stack-and-the-heap/
 origin_title: "12.2 — The stack and the heap"
 time: 2022-9-22

@@ -1,6 +1,6 @@
 ---
-title: 7.1 - 控制流
-alias: 7.1 - 控制流
+title: 8.1 - 控制流
+alias: 8.1 - 控制流
 origin: /control-flow-introduction/
 origin_title: "7.1 — Control flow introduction"
 time: 2021-8-2

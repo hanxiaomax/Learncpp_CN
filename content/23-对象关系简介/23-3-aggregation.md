@@ -1,6 +1,6 @@
 ---
-title: 16.3 - 聚合关系
-alias: 16.3 - 聚合关系
+title: 23.3 - 聚合关系
+alias: 23.3 - 聚合关系
 origin: /aggregation/
 origin_title: "16.3 — Aggregation"
 time: 2022-7-13

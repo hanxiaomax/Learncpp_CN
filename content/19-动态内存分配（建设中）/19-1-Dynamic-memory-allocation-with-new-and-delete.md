@@ -1,6 +1,6 @@
 ---
-title: 11.11 - 使用 new 和 delete 进行动态内存分配
-alias: 11.11 - 使用 new 和 delete 进行动态内存分配
+title: 19.1 - 使用 new 和 delete 进行动态内存分配
+alias: 19.1 - 使用 new 和 delete 进行动态内存分配
 origin: /dynamic-memory-allocation-with-new-and-delete/
 origin_title: "11.11 — Dynamic memory allocation with new and delete"
 time: 2022-4-8

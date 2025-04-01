@@ -1,6 +1,6 @@
 ---
-title: 12.1 - 函数指针
-alias: 12.1 - 函数指针
+title: 20.1 - 函数指针
+alias: 20.1 - 函数指针
 origin: /function-pointers/
 origin_title: "12.1 — Function Pointers"
 time: 2022-9-26

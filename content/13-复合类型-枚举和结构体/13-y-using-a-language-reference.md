@@ -1,6 +1,6 @@
 ---
-title: 10.y - 学会使用C++参考手册
-alias: 10.y - 学会使用C++参考手册
+title: 13.y - 学会使用C++参考手册
+alias: 13.y - 学会使用C++参考手册
 origin: /using-a-language-reference/
 origin_title: "10.y — Using a language reference"
 time: 2022-8-25

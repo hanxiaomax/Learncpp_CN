@@ -1,6 +1,6 @@
 ---
-title: 6.11 - 作用域和链接小结
-alias: 6.11 - 作用域和链接小结
+title: 7.12 - 作用域和链接小结
+alias: 7.12 - 作用域和链接小结
 origin: /scope-duration-and-linkage-summary/
 origin_title: "6.11 — Scope, duration, and linkage summary"
 time: 2022-5-27

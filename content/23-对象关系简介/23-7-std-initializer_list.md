@@ -1,6 +1,6 @@
 ---
-title: 16.7 - std::initializer_list
-alias: 16.7 - std::initializer_list
+title: 23.7 - std::initializer_list
+alias: 23.7 - std::initializer_list
 origin: /stdinitializer_list/
 origin_title: "16.7 — std::initializer_list"
 time: 2022-5-31

@@ -1,6 +1,6 @@
 ---
-title: 23.1 - 输入输出流
-alias: 23.1 - 输入输出流
+title: 28.1 - 输入输出流
+alias: 28.1 - 输入输出流
 origin: /input-and-output-io-streams/
 origin_title: "23.1 — Input and output (I/O) streams"
 time: 2022-10-15

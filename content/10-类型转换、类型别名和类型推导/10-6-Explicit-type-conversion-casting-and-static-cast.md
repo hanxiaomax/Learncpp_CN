@@ -1,6 +1,6 @@
 ---
-title: 8.5 - 显式类型转换和static_cast
-alias: 8.5 - 显式类型转换和static_cast
+title: 10.6 - 显式类型转换和static_cast
+alias: 10.6 - 显式类型转换和static_cast
 origin: /explicit-type-conversion-casting-and-static-cast/
 origin_title: "8.5 -- Explicit type conversion (casting) and static_cast"
 time: 2022-1-2

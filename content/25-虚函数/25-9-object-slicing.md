@@ -1,6 +1,6 @@
 ---
-title: 18.9 - 对象切片
-alias: 18.9 - 对象切片
+title: 25.9 - 对象切片
+alias: 25.9 - 对象切片
 origin: /object-slicing/
 origin_title: "18.9 — Object slicing"
 time: 2022-9-30

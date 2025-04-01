@@ -1,6 +1,6 @@
 ---
-title: 11.5 - 多维数组
-alias: 11.5 - 多维数组
+title: 17.12 - 多维数组
+alias: 17.12 - 多维数组
 origin: /multidimensional-arrays/
 origin_title: "11.5 — Multidimensional Arrays"
 time: 2022-4-8

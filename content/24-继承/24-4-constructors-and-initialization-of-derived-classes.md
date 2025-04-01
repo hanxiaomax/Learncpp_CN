@@ -1,6 +1,6 @@
 ---
-title: 17.4 - 派生类的构造和初始化
-alias: 17.4 - 派生类的构造和初始化
+title: 24.4 - 派生类的构造和初始化
+alias: 24.4 - 派生类的构造和初始化
 origin: /constructors-and-initialization-of-derived-classes/
 origin_title: "17.4 — Constructors and initialization of derived classes"
 time: 2020-12-21

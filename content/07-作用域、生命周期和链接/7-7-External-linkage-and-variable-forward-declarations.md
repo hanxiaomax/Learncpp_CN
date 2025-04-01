@@ -1,6 +1,6 @@
 ---
-title: 6.7 - 外部链接和变量前向声明
-alias: 6.7 - 外部链接和变量前向声明
+title: 7.7 - 外部链接和变量前向声明
+alias: 7.7 - 外部链接和变量前向声明
 origin: /external-linkage-and-variable-forward-declarations/
 origin_title: "6.7 — External linkage and variable forward declarations"
 time: 2022-4-27

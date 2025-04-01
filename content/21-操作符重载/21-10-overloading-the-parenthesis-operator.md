@@ -1,6 +1,6 @@
 ---
-title: 14.10 - 重载括号运算符
-alias: 14.10 - 重载括号运算符
+title: 21.10 - 重载括号运算符
+alias: 21.10 - 重载括号运算符
 origin: /overloading-the-parenthesis-operator/
 origin_title: "14.10 — Overloading the parenthesis operator"
 time: 2022-9-16

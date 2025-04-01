@@ -1,6 +1,6 @@
 ---
-title: 17.1 - 继承简介
-alias: 17.1 - 继承简介
+title: 24.1 - 继承简介
+alias: 24.1 - 继承简介
 origin: /introduction-to-inheritance/
 origin_title: "17.1 — Introduction to inheritance"
 time: 2020-12-21

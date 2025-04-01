@@ -1,6 +1,6 @@
 ---
-title: 6.10 - 静态局部变量
-alias: 6.10 - 静态局部变量
+title: 7.11 - 静态局部变量
+alias: 7.11 - 静态局部变量
 origin: /static-local-variables/
 origin_title: "6.10 — Static local variables"
 time: 2021-6-4

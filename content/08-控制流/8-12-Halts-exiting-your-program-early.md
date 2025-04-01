@@ -1,6 +1,6 @@
 ---
-title: 7.11 - 挂起（提前结束程序）
-alias: 7.11 - 挂起（提前结束程序
+title: 8.12 - 挂起（提前结束程序）
+alias: 8.12 - 挂起（提前结束程序
 origin: /halts-exiting-your-program-early/
 origin_title: "7.11 — Halts (exiting your program early)"
 time: 2022-5-31

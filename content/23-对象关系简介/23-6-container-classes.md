@@ -1,6 +1,6 @@
 ---
-title: 16.6 - 容器类
-alias: 16.6 - 容器类
+title: 23.6 - 容器类
+alias: 23.6 - 容器类
 origin: /dependencies/
 origin_title: "16.6 — Container classes"
 time: 2022-5-31

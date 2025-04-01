@@ -1,6 +1,6 @@
 ---
-title: 8.15 - 具有多种类型的函数模板
-alias: 8.15 - 具有多种类型的函数模板
+title: 11.8 - 具有多种类型的函数模板
+alias: 11.8 - 具有多种类型的函数模板
 origin: /function-templates-with-multiple-template-types/
 origin_title: "8.15 — Function templates with multiple template types"
 time: 2021-11-8

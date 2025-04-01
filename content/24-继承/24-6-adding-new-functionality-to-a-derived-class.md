@@ -1,6 +1,6 @@
 ---
-title: 17.6 - 为派生类添加新功能
-alias: 17.6 - 为派生类添加新功能
+title: 24.6 - 为派生类添加新功能
+alias: 24.6 - 为派生类添加新功能
 origin: /adding-new-functionality-to-a-derived-class/
 origin_title: "17.6 — Adding new functionality to a derived class"
 time: 2022-3-24

@@ -1,6 +1,6 @@
 ---
-title: 18.5 - 早期绑定和后期绑定
-alias: 18.5 - 早期绑定和后期绑定
+title: 25.5 - 早期绑定和后期绑定
+alias: 25.5 - 早期绑定和后期绑定
 origin: /early-binding-and-late-binding/
 origin_title: "18.5 — Early binding and late binding"
 time: 2022-5-9

@@ -1,6 +1,6 @@
 ---
-title: 6.15 - 未命名和内联命名空间
-alias: 6.15 - 未命名和内联命名空间
+title: 7.14 - 未命名和内联命名空间
+alias: 7.14 - 未命名和内联命名空间
 origin: /unnamed-and-inline-namespaces/
 origin_title: "6.15 - 未命名和内联命名空间"
 time: 2022-5-29

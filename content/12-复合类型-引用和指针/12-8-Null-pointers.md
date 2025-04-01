@@ -1,6 +1,6 @@
 ---
-title: 9.7 - 空指针
-alias: 9.7 - 空指针
+title: 12.8 - 空指针
+alias: 12.8 - 空指针
 origin: /null-pointers/
 origin_title: "9.7 — Null pointers"
 time: 2022-9-22

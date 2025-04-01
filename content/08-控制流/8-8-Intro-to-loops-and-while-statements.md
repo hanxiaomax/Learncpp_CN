@@ -1,6 +1,6 @@
 ---
-title: 7.7 - 循环和 while 语句
-alias: 7.7 - 循环和 while 语句
+title: 8.8 - 循环和 while 语句
+alias: 8.8 - 循环和 while 语句
 origin: /none/
 origin_title: "7.7 — Intro to loops and while statements"
 time: 2022-5-30

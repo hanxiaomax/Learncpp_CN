@@ -1,6 +1,6 @@
 ---
-title: 7.2 - if 语句和语句块
-alias: 7.2 - if 语句和语句块
+title: 8.2 - if 语句和语句块
+alias: 8.2 - if 语句和语句块
 origin: /if-statements-and-blocks/
 origin_title: "7.2 -- If statements and blocks"
 time: 2022-2-10

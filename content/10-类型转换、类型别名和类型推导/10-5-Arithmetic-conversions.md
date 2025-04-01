@@ -1,6 +1,6 @@
 ---
-title: 8.4 - 算术转换
-alias: 8.4 - 算术转换
+title: 10.5 - 算术转换
+alias: 10.5 - 算术转换
 origin: /arithmetic-conversions/
 origin_title: "8.4 — Arithmetic conversions"
 time: 2022-1-2

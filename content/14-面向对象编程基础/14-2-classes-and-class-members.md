@@ -1,6 +1,6 @@
 ---
-title: 13.2 - 类和类成员
-alias: 13.2 - 类和类成员
+title: 14.2 - 类和类成员
+alias: 14.2 - 类和类成员
 origin: /classes-and-class-members/
 origin_title: "13.2 — Classes and class members"
 time: 2022-9-16

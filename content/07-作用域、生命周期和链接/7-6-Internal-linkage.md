@@ -1,6 +1,6 @@
 ---
-title: 6.6 - 内部链接
-alias: 6.6 - 内部链接
+title: 7.6 - 内部链接
+alias: 7.6 - 内部链接
 origin: /cpp-tutorial/internal-linkage/
 origin_title: "6.6 — Internal linkage"
 time: 2020-9-19

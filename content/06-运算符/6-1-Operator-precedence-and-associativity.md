@@ -1,6 +1,6 @@
 ---
-title: 5.1 - 运算符优先级和结合律
-alias: 5.1 - 运算符优先级和结合律
+title: 6.1 - 运算符优先级和结合律
+alias: 6.1 - 运算符优先级和结合律
 origin: /operator-precedence-and-associativity/
 origin_title: "5.1 — Operator precedence and associativity"
 time: 2022-4-24

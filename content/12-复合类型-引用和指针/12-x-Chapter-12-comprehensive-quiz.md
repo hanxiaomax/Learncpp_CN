@@ -1,6 +1,6 @@
 ---
-title: 9.x - 小结与测试 - 引用和指针
-alias: 9.x - 小结与测试 - 引用和指针
+title: 12.x - 小结与测试 - 引用和指针
+alias: 12.x - 小结与测试 - 引用和指针
 origin: /chapter-9-comprehensive-and-quiz/
 origin_title: "9.x — Chapter 9 summary and quiz"
 time: 2022-6-12

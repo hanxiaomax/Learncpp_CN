@@ -1,6 +1,6 @@
 ---
-title: 8.11 - 函数重载解析和不明确匹配
-alias: 8.11 - 函数重载解析和不明确匹配
+title: 11.3 - 函数重载解析和不明确匹配
+alias: 11.3 - 函数重载解析和不明确匹配
 origin: /function-overload-resolution-and-ambiguous-matches/
 origin_title: "8.11 — Function overload resolution and ambiguous matches"
 time: 2022-6-16

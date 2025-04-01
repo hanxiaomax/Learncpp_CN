@@ -1,6 +1,6 @@
 ---
-title: 7.4 - switch 语句基础
-alias: 7.4 - switch 语句基础
+title: 8.5 - switch 语句基础
+alias: 8.5 - switch 语句基础
 origin: /switch-statement-basics/
 origin_title: "7.4 — Switch statement basics"
 time: 2022-2-10

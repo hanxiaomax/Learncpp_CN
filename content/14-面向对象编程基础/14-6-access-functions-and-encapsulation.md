@@ -1,6 +1,6 @@
 ---
-title: 13.4 - 成员访问函数与封装
-alias: 13.4 - 成员访问函数与封装
+title: 14.6 - 成员访问函数与封装
+alias: 14.6 - 成员访问函数与封装
 origin: /access-functions-and-encapsulation/
 origin_title: "13.4 — Access functions and encapsulation"
 time: 2022-9-16

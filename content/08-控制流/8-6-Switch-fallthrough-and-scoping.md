@@ -1,6 +1,6 @@
 ---
-title: 7.5 - switch fallthrough属性和作用域
-alias: 7.5 - switch fallthrough属性和作用域
+title: 8.6 - switch fallthrough属性和作用域
+alias: 8.6 - switch fallthrough属性和作用域
 origin: /switch-fallthrough-and-scoping/
 origin_title: "7.5 — Switch fallthrough and scoping"
 time: 2022-2-12

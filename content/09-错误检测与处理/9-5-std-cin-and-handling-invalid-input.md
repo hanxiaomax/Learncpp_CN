@@ -1,6 +1,6 @@
 ---
-title: 7.16 - std::in 和输入错误处理
-alias: 7.16 - std::in 和输入错误处理
+title: 9.5 - std::in 和输入错误处理
+alias: 9.5 - std::in 和输入错误处理
 origin: /stdcin-and-handling-invalid-input/
 origin_title: "7.16 — std::cin and handling invalid input"
 time: 2022-4-26

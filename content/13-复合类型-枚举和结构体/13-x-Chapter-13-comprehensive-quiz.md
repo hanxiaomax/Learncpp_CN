@@ -1,6 +1,6 @@
 ---
-title: 10.x - 小结与测试 - 枚举和结构体
-alias: 10.x - 小结与测试 - 枚举和结构体
+title: 13.x - 小结与测试 - 枚举和结构体
+alias: 13.x - 小结与测试 - 枚举和结构体
 origin: /chapter-10-comprehensive-quiz/
 origin_title: "10.x — Chapter 10 comprehensive quiz"
 time: 2022-5-2

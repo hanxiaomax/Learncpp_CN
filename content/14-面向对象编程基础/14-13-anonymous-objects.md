@@ -1,6 +1,6 @@
 ---
-title: 13.16 - 匿名对象
-alias: 13.16 - 匿名对象
+title: 14.13 - 匿名对象
+alias: 14.13 - 匿名对象
 origin: /anonymous-objects/
 origin_title: "13.16 — Anonymous objects"
 time: 2022-9-16

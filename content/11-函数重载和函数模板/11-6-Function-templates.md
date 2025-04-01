@@ -1,6 +1,6 @@
 ---
-title: 8.13 - 函数模板
-alias: 8.13 - 函数模板
+title: 11.6 - 函数模板
+alias: 11.6 - 函数模板
 origin: /function-templates/
 origin_title: "8.13 — Function templates"
 time: 2021-8-30

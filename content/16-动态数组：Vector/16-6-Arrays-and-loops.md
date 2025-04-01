@@ -1,6 +1,6 @@
 ---
-title: 11.3 - 数组和循环
-alias: 11.3 - 数组和循环
+title: 16.6 - 数组和循环
+alias: 16.6 - 数组和循环
 origin: /arrays-and-loops/
 origin_title: "11.3 — Arrays and loops"
 time: 2022-5-21

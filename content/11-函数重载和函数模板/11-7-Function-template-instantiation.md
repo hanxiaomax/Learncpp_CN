@@ -1,6 +1,6 @@
 ---
-title: 8.14 - 函数模板的实例化
-alias: 8.14 - 函数模板的实例化
+title: 11.7 - 函数模板的实例化
+alias: 11.7 - 函数模板的实例化
 origin: /function-template-instantiation/
 origin_title: "8.14 — Function template instantiation"
 time: 2022-3-29

@@ -1,6 +1,6 @@
 ---
-title: 16.1 - 对象关系
-alias: 16.1 - 对象关系
+title: 23.1 - 对象关系
+alias: 23.1 - 对象关系
 origin: /object-relationships/
 origin_title: "16.1 — Object relationships"
 time: 2020-10-21

@@ -1,6 +1,6 @@
 ---
-title: 9.2 - 值的分类（左值和右值）
-alias: 9.2 - 值的分类（左值和右值）
+title: 12.2 - 值的分类（左值和右值）
+alias: 12.2 - 值的分类（左值和右值）
 origin: /value-categories-lvalues-and-rvalues/
 origin_title: "9.2 — Value categories (lvalues and rvalues)"
 time: 2022-1-2

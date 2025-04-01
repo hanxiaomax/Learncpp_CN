@@ -1,6 +1,6 @@
 ---
-title: 10.7 - 默认成员初始化
-alias: 10.7 - 默认成员初始化
+title: 13.9 - 默认成员初始化
+alias: 13.9 - 默认成员初始化
 origin: /default-member-initialization/
 origin_title: "10.7 — Default member initialization"
 time: 2022-9-14

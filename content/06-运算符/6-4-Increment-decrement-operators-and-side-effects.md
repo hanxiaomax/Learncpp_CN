@@ -1,6 +1,6 @@
 ---
-title: 5.4 - 自增自减运算符及其副作用
-alias: 5.4 - 自增自减运算符及其副作用
+title: 6.4 - 自增自减运算符及其副作用
+alias: 6.4 - 自增自减运算符及其副作用
 origin: /increment-decrement-operators-and-side-effects/
 origin_title: "5.4 — Increment/decrement operators, and side effects"
 time: 2021-12-2

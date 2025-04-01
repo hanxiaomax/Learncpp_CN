@@ -1,6 +1,6 @@
 ---
-title: 18.10 - 动态类型转换
-alias: 18.10 - 动态类型转换
+title: 25.10 - 动态类型转换
+alias: 25.10 - 动态类型转换
 origin: /dynamic-casting/
 origin_title: "18.10 — Dynamic casting"
 time: 2022-8-6

@@ -1,6 +1,6 @@
 ---
-title: 7.x - 小结与测试 - 控制流和错误处理
-alias: 7.x - 小结与测试 - 控制流和错误处理
+title: 8.x - 小结与测试 - 控制流和错误处理
+alias: 8.x - 小结与测试 - 控制流和错误处理
 origin: /chapter-7-summary-and-quiz/
 origin_title: "7.x — Chapter 7 summary and quiz"
 time: 2022-1-20

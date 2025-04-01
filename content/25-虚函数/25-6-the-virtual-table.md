@@ -1,6 +1,6 @@
 ---
-title: 18.6 - 虚函数表
-alias: 18.6 - 虚函数表
+title: 25.6 - 虚函数表
+alias: 25.6 - 虚函数表
 origin: /the-virtual-table/
 origin_title: "18.6 — The virtual table"
 time: 2022-9-30

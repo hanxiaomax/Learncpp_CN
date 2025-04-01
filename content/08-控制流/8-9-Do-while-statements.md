@@ -1,6 +1,6 @@
 ---
-title: 7.8 - do-while 语句
-alias: 7.8 - do-while 语句
+title: 8.9 - do-while 语句
+alias: 8.9 - do-while 语句
 origin: /do-while-statements/
 origin_title: "7.8 — Do while statements"
 time: 2022-4-23

@@ -1,6 +1,6 @@
 ---
-title: 14.17 - 重载运算符和函数模板
-alias: 14.17 - 重载运算符和函数模板
+title: 21.14 - 重载运算符和函数模板
+alias: 21.14 - 重载运算符和函数模板
 origin: /overloading-operators-and-function-templates/
 origin_title: "14.17 — Overloading operators and function templates"
 time: 2022-8-25

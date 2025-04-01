@@ -1,6 +1,6 @@
 ---
-title: 17.8 - 隐藏继承的函数
-alias: 17.8 - 隐藏继承的函数
+title: 24.8 - 隐藏继承的函数
+alias: 24.8 - 隐藏继承的函数
 origin: /hiding-inherited-functionality/
 origin_title: "17.8 — Hiding inherited functionality"
 time: 2022-6-2

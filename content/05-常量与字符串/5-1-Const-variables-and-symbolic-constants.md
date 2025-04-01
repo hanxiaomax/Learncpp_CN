@@ -1,6 +1,6 @@
 ---
-title: 4.13 - const 变量和符号常量
-alias: 4.13 - const 变量和符号常量
+title: 5.1 - const 变量和符号常量
+alias: 5.1 - const 变量和符号常量
 origin: /const-variables-and-symbolic-constants/
 origin_title: "4.13 — Const variables and symbolic constants"
 time: 2022-6-16

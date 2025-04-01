@@ -1,6 +1,6 @@
 ---
-title: 23.2 - 使用istream处理输入
-alias: 23.2 - 使用istream处理输入
+title: 28.2 - 使用istream处理输入
+alias: 28.2 - 使用istream处理输入
 origin: /input-with-istream/
 origin_title: "23.2 — Input with istream"
 time: 2022-9-6

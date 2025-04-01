@@ -1,6 +1,6 @@
 ---
-title: 7.18 - 随机数生成器简介
-alias: 7.18 - 随机数生成器简介
+title: 8.13 - 随机数生成器简介
+alias: 8.13 - 随机数生成器简介
 origin: /introduction-to-random-number-generation/
 origin_title: "7.18 — Introduction to random number generation"
 time: 2022-8-12

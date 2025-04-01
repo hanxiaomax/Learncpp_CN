@@ -1,6 +1,6 @@
 ---
-title: 17.3 - 派生类的构造顺序
-alias: 17.3 - 派生类的构造顺序
+title: 24.3 - 派生类的构造顺序
+alias: 24.3 - 派生类的构造顺序
 origin: /order-of-construction-of-derived-classes/
 origin_title: "17.3 — Order of construction of derived classes"
 time: 2020-12-21

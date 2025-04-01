@@ -1,6 +1,6 @@
 ---
-title: 4.16 - 数值系统（十进制、二进制、十六进制和八进制）
-alias: 4.16 - 数值系统（十进制、二进制、十六进制和八进制）
+title: 5.3 - 数值系统（十进制、二进制、十六进制和八进制）
+alias: 5.3 - 数值系统（十进制、二进制、十六进制和八进制）
 origin: /none/
 origin_title: "4.16 — Numeral systems (decimal, binary, hexadecimal, and octal)"
 time: 2022-1-2

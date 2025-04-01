@@ -1,6 +1,6 @@
 ---
-title: 10.9 - 基于指针和引用的成员选择
-alias: 10.9 - 基于指针和引用的成员选择
+title: 13.12 - 基于指针和引用的成员选择
+alias: 13.12 - 基于指针和引用的成员选择
 origin: /member-selection-with-pointers-and-references/
 origin_title: "10.9 — Member selection with pointers and references"
 time: 2022-8-25

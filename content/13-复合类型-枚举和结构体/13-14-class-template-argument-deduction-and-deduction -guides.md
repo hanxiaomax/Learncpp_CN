@@ -1,6 +1,6 @@
 ---
-title: 10.11 - 类模板参数推断CTAD
-alias: 10.11 - 类模板参数推断CTAD
+title: 13.14 - 类模板参数推断CTAD
+alias: 13.14 - 类模板参数推断CTAD
 origin: /class-template-argument-deduction-ctad-and-deduction-guides/
 origin_title: "10.11 — Class template argument deduction (CTAD) and deduction guides"
 time: 2022-8-24

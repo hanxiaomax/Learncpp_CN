@@ -1,6 +1,6 @@
 ---
-title: 11.12 - 动态分配数组
-alias: 11.12 - 动态分配数组
+title: 19.2 - 动态分配数组
+alias: 19.2 - 动态分配数组
 origin: /dynamically-allocating-arrays/
 origin_title: "11.12 — Dynamically allocating arrays"
 time: 2022-1-2

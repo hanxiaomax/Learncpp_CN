@@ -1,6 +1,6 @@
 ---
-title: 7.19 - 使用 Mersenne Twister 生成随机数
-alias: 7.19 - 使用 Mersenne Twister 生成随机数
+title: 8.14 - 使用 Mersenne Twister 生成随机数
+alias: 8.14 - 使用 Mersenne Twister 生成随机数
 origin: /introduction-to-random-number-generation/
 origin_title: "7.19 — Generating random numbers using Mersenne Twister"
 time: 2022-11-25

@@ -1,6 +1,6 @@
 ---
-title: 13.1 - 欢迎来到面向对象的世界
-alias: 13.1 - 欢迎来到面向对象的世界
+title: 14.1 - 欢迎来到面向对象的世界
+alias: 14.1 - 欢迎来到面向对象的世界
 origin: /welcome-to-object-oriented-programming/
 origin_title: "13.1 — Welcome to object-oriented programming"
 time: 2022-9-16

@@ -1,6 +1,6 @@
 ---
-title: 11.9 - 指针运算和数组索引
-alias: 11.9 - 指针运算和数组索引
+title: 17.9 - 指针运算和数组索引
+alias: 17.9 - 指针运算和数组索引
 origin: /pointer-arithmetic-and-array-indexing/
 origin_title: "none"
 time: 2022-1-2

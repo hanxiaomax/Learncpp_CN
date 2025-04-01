@@ -1,6 +1,6 @@
 ---
-title: 5.3 - 求模和指数运算
-alias: 5.3 - 求模和指数运算
+title: 6.3 - 求模和指数运算
+alias: 6.3 - 求模和指数运算
 origin: /5-3-modulus-and-exponentiation/
 origin_title: "5.3 — Modulus and Exponentiation"
 time: 2022-4-7

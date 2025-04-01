@@ -1,6 +1,6 @@
 ---
-title: 7.6 - goto 语句
-alias: 7.6 - goto 语句
+title: 8.7 - goto 语句
+alias: 8.7 - goto 语句
 origin: /goto-statements/
 origin_title: "none"
 time: 2021-8-6

@@ -1,6 +1,6 @@
 ---
-title: 7.15 - 发现错误和处理错误
-alias: 7.15 - 发现错误和处理错误
+title: 9.4 - 发现错误和处理错误
+alias: 9.4 - 发现错误和处理错误
 origin: /detecting-and-handling-errors/
 origin_title: "7.15 — Detecting and handling errors"
 time: 2022-5-6

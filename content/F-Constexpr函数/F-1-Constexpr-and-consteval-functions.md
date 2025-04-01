@@ -1,6 +1,6 @@
 ---
-title: 6.14 - Constexpr 和 consteval 函数
-alias: 6.14 - Constexpr 和 consteval 函数
+title: F.1 - Constexpr 和 consteval 函数
+alias: F.1 - Constexpr 和 consteval 函数
 origin: /constexpr-and-consteval-functions/
 origin_title: "6.14 — Constexpr and consteval functions"
 time: 2022-4-12

@@ -1,6 +1,6 @@
 ---
-title: 10.2 - 无作用域枚举类型
-alias: 10.2 - 无作用域枚举类型
+title: 13.2 - 无作用域枚举类型
+alias: 13.2 - 无作用域枚举类型
 origin: /unscoped-enumerations/
 origin_title: "10.2 — Unscoped enumerations"
 time: 2022-9-16

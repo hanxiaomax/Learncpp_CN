@@ -1,6 +1,6 @@
 ---
-title: 6.12 - using 声明和 using 指令
-alias: 6.12 - using 声明和 using 指令
+title: 7.13 - using 声明和 using 指令
+alias: 7.13 - using 声明和 using 指令
 origin: /none/
 origin_title: "none"
 time: 2022-4-24

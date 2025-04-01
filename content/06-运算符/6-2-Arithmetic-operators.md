@@ -1,6 +1,6 @@
 ---
-title: 5.2 - 数学运算符
-alias: 5.2 - 数学运算符
+title: 6.2 - 数学运算符
+alias: 6.2 - 数学运算符
 origin: /arithmetic-operators/
 origin_title: "5.2 -- Arithmetic operators"
 time: 2022-5-5

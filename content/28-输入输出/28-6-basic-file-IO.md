@@ -1,6 +1,6 @@
 ---
-title: 23.6 - 基本文件输入输出
-alias: 23.6 - 基本文件输入输出
+title: 28.6 - 基本文件输入输出
+alias: 28.6 - 基本文件输入输出
 origin: /basic-file-io/
 origin_title: "23.6 — Basic file I/O"
 time: 2022-9-7

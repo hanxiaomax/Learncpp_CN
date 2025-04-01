@@ -1,6 +1,6 @@
 ---
-title: 11.4 - 数组排序之选择排序
-alias: 11.4 - 数组排序之选择排序
+title: 18.1 - 数组排序之选择排序
+alias: 18.1 - 数组排序之选择排序
 origin: /sorting-an-array-using-selection-sort/
 origin_title: "11.4 — Sorting an array using selection sort"
 time: 2022-4-8

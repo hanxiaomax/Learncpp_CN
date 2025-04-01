@@ -1,6 +1,6 @@
 ---
-title: 12.4 - 递归
-alias: 12.4 - 递归
+title: 20.3 - 递归
+alias: 20.3 - 递归
 origin: /recursion/
 origin_title: "12.4 — Recursion"
 time: 2022-10-3

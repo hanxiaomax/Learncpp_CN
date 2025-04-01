@@ -1,6 +1,6 @@
 ---
-title: 18.3 - override、final标识符以及协变返回类型
-alias: 18.3 - override、final标识符以及协变返回类型
+title: 25.3 - override、final标识符以及协变返回类型
+alias: 25.3 - override、final标识符以及协变返回类型
 origin: /the-override-and-final-specifiers-and-covariant-return-types/
 origin_title: "18.3 — The override and final specifiers, and covariant return types"
 time: 2022-8-23

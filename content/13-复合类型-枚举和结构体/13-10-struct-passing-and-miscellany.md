@@ -1,6 +1,6 @@
 ---
-title: 10.8 - 结构体传递及其他
-alias: 10.8 - 结构体传递及其他
+title: 13.10 - 结构体传递及其他
+alias: 13.10 - 结构体传递及其他
 origin: /default-member-initialization/
 origin_title: "10.8 — Struct passing and miscellany"
 time: 2022-8-25

@@ -1,6 +1,6 @@
 ---
-title: 17.x - 小结与测试 - 继承
-alias: 17.x - 小结与测试 - 继承
+title: 24.x - 小结与测试 - 继承
+alias: 24.x - 小结与测试 - 继承
 origin: /chapter-17-comprehensive-quiz/
 origin_title: "17.x — Chapter 17 comprehensive quiz"
 time: 2022-8-12

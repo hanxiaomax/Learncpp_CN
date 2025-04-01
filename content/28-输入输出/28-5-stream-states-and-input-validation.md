@@ -1,6 +1,6 @@
 ---
-title: 23.5 - 流状态和输入验证
-alias: 23.5 - 流状态和输入验证
+title: 28.5 - 流状态和输入验证
+alias: 28.5 - 流状态和输入验证
 origin: /stream-states-and-input-validation/
 origin_title: "23.5 — Stream states and input validation"
 time: 2022-9-7

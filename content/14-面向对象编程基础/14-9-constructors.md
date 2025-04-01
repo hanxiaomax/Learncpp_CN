@@ -1,6 +1,6 @@
 ---
-title: 13.5 - 构造函数
-alias: 13.5 - 构造函数
+title: 14.9 - 构造函数
+alias: 14.9 - 构造函数
 origin: /constructors/
 origin_title: "13.5 — Constructors"
 time: 2022-9-16

@@ -1,6 +1,6 @@
 ---
-title: 10.6 - 结构体的聚合初始化
-alias: 10.6 - 结构体的聚合初始化
+title: 13.8 - 结构体的聚合初始化
+alias: 13.8 - 结构体的聚合初始化
 origin: /struct-aggregate-initialization//
 origin_title: "10.6 — Struct aggregate initialization"
 time: 2022-9-13

@@ -1,6 +1,6 @@
 ---
-title: 16.2 - 组合关系
-alias: 16.2 - 组合关系
+title: 23.2 - 组合关系
+alias: 23.2 - 组合关系
 origin: /composition/
 origin_title: "16.2 — Composition"
 time: 2022-7-13

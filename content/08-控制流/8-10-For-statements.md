@@ -1,6 +1,6 @@
 ---
-title: 7.9 - for 语句
-alias: 7.9 - for 语句
+title: 8.10 - for 语句
+alias: 8.10 - for 语句
 origin: /for-statements/
 origin_title: "7.9 -- For statements"
 time: 2022-5-24

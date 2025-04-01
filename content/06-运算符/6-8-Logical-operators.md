@@ -1,6 +1,6 @@
 ---
-title: 5.7 - 逻辑运算符
-alias: 5.7 - 逻辑运算符
+title: 6.8 - 逻辑运算符
+alias: 6.8 - 逻辑运算符
 origin: /logical-operators/
 origin_title: "5.7 — Logical operators"
 time: 2022-5-2

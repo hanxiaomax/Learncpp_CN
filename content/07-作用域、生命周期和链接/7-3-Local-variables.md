@@ -1,6 +1,6 @@
 ---
-title: 6.3 - 局部变量
-alias: 6.3 - 局部变量
+title: 7.3 - 局部变量
+alias: 7.3 - 局部变量
 origin: /local-variables/
 origin_title: "6.3 — Local variables"
 time: 2022-6-4

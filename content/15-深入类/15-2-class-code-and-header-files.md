@@ -1,6 +1,6 @@
 ---
-title: 13.11 - 类代码和头文件
-alias: 13.11 - 类代码和头文件
+title: 15.2 - 类代码和头文件
+alias: 15.2 - 类代码和头文件
 origin: /class-code-and-header-files/
 origin_title: "13.11 — Class code and header files"
 time: 2022-9-16

@@ -1,6 +1,6 @@
 ---
-title: 18.4 - 虚构造函数、虚赋值和重载虚拟化
-alias: 18.4 - 虚构造函数、虚赋值和重载虚拟化
+title: 25.4 - 虚构造函数、虚赋值和重载虚拟化
+alias: 25.4 - 虚构造函数、虚赋值和重载虚拟化
 origin: /virtual-destructors-virtual-assignment-and-overriding-virtualization/
 origin_title: "18.4 — Virtual destructors, virtual assignment, and overriding virtualization"
 time: 2022-9-16

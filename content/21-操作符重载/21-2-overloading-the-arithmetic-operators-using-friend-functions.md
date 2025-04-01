@@ -1,6 +1,6 @@
 ---
-title: 14.2 - 使用友元重载算数运算符
-alias: 14.2 - 使用友元重载算数运算符
+title: 21.2 - 使用友元重载算数运算符
+alias: 21.2 - 使用友元重载算数运算符
 origin: /overloading-the-arithmetic-operators-using-friend-functions/
 origin_title: "14.2 — Overloading the arithmetic operators using friend functions"
 time: 2022-11-23

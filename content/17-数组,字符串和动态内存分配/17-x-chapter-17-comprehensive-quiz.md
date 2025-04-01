@@ -1,6 +1,6 @@
 ---
-title: 11.x - 小结与测试 - 数组、字符串和动态分配
-alias: 11.x - 小结与测试 - 数组、字符串和动态分配
+title: 17.x - 小结与测试 - 数组、字符串和动态分配
+alias: 17.x - 小结与测试 - 数组、字符串和动态分配
 origin: /chapter-11-comprehensive-quiz/
 origin_title: "11.x — Chapter 11 comprehensive quiz"
 time: 2022-9-16

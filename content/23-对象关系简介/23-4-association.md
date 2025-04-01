@@ -1,6 +1,6 @@
 ---
-title: 16.4 - 关联关系
-alias: 16.4 - 关联关系
+title: 23.4 - 关联关系
+alias: 23.4 - 关联关系
 origin: /association/
 origin_title: "16.4 — Association"
 time: 2022-5-31

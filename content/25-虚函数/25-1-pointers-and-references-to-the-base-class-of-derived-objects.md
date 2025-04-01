@@ -1,6 +1,6 @@
 ---
-title: 18.1 - 基类的指针和引用
-alias: 18.1 - 基类的指针和引用
+title: 25.1 - 基类的指针和引用
+alias: 25.1 - 基类的指针和引用
 origin: /pointers-and-references-to-the-base-class-of-derived-objects/
 origin_title: "18.1 — Pointers and references to the base class of derived objects"
 time: 2022-2-23

@@ -1,6 +1,6 @@
 ---
-title: 10.5 - 结构体、成员和成员选择
-alias: 10.5 - 结构体、成员和成员选择
+title: 13.7 - 结构体、成员和成员选择
+alias: 13.7 - 结构体、成员和成员选择
 origin: /none/
 origin_title: "none"
 time: 2022-1-2

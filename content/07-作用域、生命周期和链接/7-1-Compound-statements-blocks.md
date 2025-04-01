@@ -1,6 +1,6 @@
 ---
-title: 6.1 - 复合语句（语句块）
-alias: 6.1 - 复合语句（语句块）
+title: 7.1 - 复合语句（语句块）
+alias: 7.1 - 复合语句（语句块）
 origin: /compound-statements-blocks/
 origin_title: "6.1 — Compound statements (blocks)"
 time: 2021-8-5

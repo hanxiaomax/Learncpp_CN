@@ -1,6 +1,6 @@
 ---
-title: 12.7 - lambda表达式简介（匿名函数）
-alias: 12.7 - lambda表达式简介（匿名函数）
+title: 20.6 - lambda表达式简介（匿名函数）
+alias: 20.6 - lambda表达式简介（匿名函数）
 origin: /chapter-12-comprehensive-quiz/
 origin_title: "12.7 — Introduction to lambdas (anonymous functions)"
 time: 2022-4-8

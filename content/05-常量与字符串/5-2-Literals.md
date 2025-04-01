@@ -1,6 +1,6 @@
 ---
-title: 4.15 - 字面量
-alias: 4.15 - 字面量
+title: 5.2 - 字面量
+alias: 5.2 - 字面量
 origin: /literals/
 origin_title: "4.14 — Literal"
 time: 2022-6-17

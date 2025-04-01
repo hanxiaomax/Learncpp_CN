@@ -1,6 +1,6 @@
 ---
-title: 13.8 - 重叠和委托构造函数
-alias: 13.8 - 重叠和委托构造函数
+title: 14.12 - 重叠和委托构造函数
+alias: 14.12 - 重叠和委托构造函数
 origin: /overlapping-and-delegating-constructors/
 origin_title: "13.8 — Overlapping and delegating constructors"
 time: 2022-9-16

@@ -1,6 +1,6 @@
 ---
-title: 8.10 - 重载函数的区分
-alias: 8.10 - 重载函数的区分
+title: 11.2 - 重载函数的区分
+alias: 11.2 - 重载函数的区分
 origin: /function-overload-differentiation/
 origin_title: "8.10 — Function overload differentiation"
 time: 2022-5-31

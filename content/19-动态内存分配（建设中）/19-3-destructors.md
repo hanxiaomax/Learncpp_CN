@@ -1,6 +1,6 @@
 ---
-title: 13.9 - 析构函数
-alias: 13.9 - 析构函数
+title: 19.3 - 析构函数
+alias: 19.3 - 析构函数
 origin: /destructors/
 origin_title: "13.9 — Destructors"
 time: 2022-9-16

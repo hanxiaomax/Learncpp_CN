@@ -1,6 +1,6 @@
 ---
-title: 23.7 - 随机文件输入输出
-alias: 23.7 - 随机文件输入输出
+title: 28.7 - 随机文件输入输出
+alias: 28.7 - 随机文件输入输出
 origin: /random-file-io/
 origin_title: "23.7 — Random file I/O"
 time: 2022-9-11

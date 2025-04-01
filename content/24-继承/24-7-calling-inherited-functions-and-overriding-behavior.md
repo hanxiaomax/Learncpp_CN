@@ -1,6 +1,6 @@
 ---
-title: 17.7 - 调用继承函数和重写
-alias: 17.7 - 调用继承函数和重写
+title: 24.7 - 调用继承函数和重写
+alias: 24.7 - 调用继承函数和重写
 origin: /calling-inherited-functions-and-overriding-behavior/
 origin_title: "17.7 — Calling inherited functions and overriding behavior"
 time: 2022-6-2

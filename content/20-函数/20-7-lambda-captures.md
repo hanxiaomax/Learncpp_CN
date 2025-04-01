@@ -1,6 +1,6 @@
 ---
-title: 12.8 - lambda 闭包
-alias: 12.8 - lambda 闭包
+title: 20.7 - lambda 闭包
+alias: 20.7 - lambda 闭包
 origin: /lambda-captures/
 origin_title: "12.8 — Lambda captures"
 time: 2022-9-16

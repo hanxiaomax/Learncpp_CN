@@ -1,6 +1,6 @@
 ---
-title: 11.6 - C 语言风格字符串
-alias: 11.6 - C 语言风格字符串
+title: 17.10 - C 语言风格字符串
+alias: 17.10 - C 语言风格字符串
 origin: /c-style-strings/
 origin_title: "11.6 — C-style strings"
 time: 2022-4-8

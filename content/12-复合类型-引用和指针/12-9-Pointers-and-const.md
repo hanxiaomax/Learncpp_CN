@@ -1,6 +1,6 @@
 ---
-title: 9.8 - 指针和const
-alias: 9.8 - 指针和const
+title: 12.9 - 指针和const
+alias: 12.9 - 指针和const
 origin: /pointers-and-const/
 origin_title: "9.8 — Pointers and const"
 time: 2022-9-22

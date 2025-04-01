@@ -1,6 +1,6 @@
 ---
-title: 13.15 - 友元函数和友元类
-alias: 13.15 - 友元函数和友元类
+title: 15.8 - 友元函数和友元类
+alias: 15.8 - 友元函数和友元类
 origin: /friend-functions-and-classes/
 origin_title: "13.15 — Friend functions and classes"
 time: 2022-9-16

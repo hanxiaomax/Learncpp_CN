@@ -1,6 +1,6 @@
 ---
-title: 18.11 - 使用 << 运算符打印继承类
-alias: 18.11 - 使用 << 运算符打印继承类
+title: 25.11 - 使用 << 运算符打印继承类
+alias: 25.11 - 使用 << 运算符打印继承类
 origin: /printing-inherited-classes-using-operator/
 origin_title: "18.11 — Printing inherited classes using operator<<"
 time: 2022-8-26

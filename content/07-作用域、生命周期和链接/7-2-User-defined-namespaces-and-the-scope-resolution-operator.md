@@ -1,6 +1,6 @@
 ---
-title: 6.2 - 用户定义命名空间和作用域解析运算符
-alias: 6.2 - 用户定义命名空间和作用域解析运算符
+title: 7.2 - 用户定义命名空间和作用域解析运算符
+alias: 7.2 - 用户定义命名空间和作用域解析运算符
 origin: /user-defined-namespaces-and-the-scope-resolution-operator/
 origin_title: "6.2 — User-defined namespaces and the scope resolution operator"
 time: 2021-7-4

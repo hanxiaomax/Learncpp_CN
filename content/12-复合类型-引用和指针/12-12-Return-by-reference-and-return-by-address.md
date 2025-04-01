@@ -1,6 +1,6 @@
 ---
-title: 9.11 - 按引用返回和按地址返回
-alias: 9.11 - 按引用返回和按地址返回
+title: 12.12 - 按引用返回和按地址返回
+alias: 12.12 - 按引用返回和按地址返回
 origin: /return-by-reference-and-return-by-address/
 origin_title: "9.11 — Return by reference and return by address"
 time: 2022-9-12

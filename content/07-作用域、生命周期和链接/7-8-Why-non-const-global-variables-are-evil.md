@@ -1,6 +1,6 @@
 ---
-title: 6.8 - 为什么非 const 全局变量是魔鬼
-alias: 6.8 - 为什么非 const 全局变量是魔鬼
+title: 7.8 - 为什么非 const 全局变量是魔鬼
+alias: 7.8 - 为什么非 const 全局变量是魔鬼
 origin: /why-non-const-global-variables-are-evil/
 origin_title: "6.8 — Why (non-const) global variables are evil"
 time: 2022-2-24

@@ -1,6 +1,6 @@
 ---
-title: 13.x - 小结与测试 - 面向对象基础
-alias: 13.x - 小结与测试 - 面向对象基础
+title: 14.x - 小结与测试 - 面向对象基础
+alias: 14.x - 小结与测试 - 面向对象基础
 origin: /chapter-13-comprehensive-quiz/
 origin_title: "13.x — Chapter 13 comprehensive quiz"
 time: 2022-9-16

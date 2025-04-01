@@ -1,6 +1,6 @@
 ---
-title: 18.8 - 虚基类
-alias: 18.8 - 虚基类
+title: 25.8 - 虚基类
+alias: 25.8 - 虚基类
 origin: /virtual-base-classes/
 origin_title: "18.8 — Virtual base classes"
 time: 2022-9-30

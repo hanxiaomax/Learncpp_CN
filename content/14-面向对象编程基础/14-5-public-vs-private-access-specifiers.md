@@ -1,6 +1,6 @@
 ---
-title: 13.3 - 访问修饰符 public 和 private
-alias: 13.3 - 访问修饰符 public 和 private
+title: 14.5 - 访问修饰符 public 和 private
+alias: 14.5 - 访问修饰符 public 和 private
 origin: /public-vs-private-access-specifiers/
 origin_title: "13.3 — Public vs private access specifiers"
 time: 2022-9-16

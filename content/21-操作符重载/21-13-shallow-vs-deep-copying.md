@@ -1,6 +1,6 @@
 ---
-title: 14.16 - 浅拷贝和深拷贝
-alias: 14.16 - 浅拷贝和深拷贝
+title: 21.13 - 浅拷贝和深拷贝
+alias: 21.13 - 浅拷贝和深拷贝
 origin: /shallow-vs-deep-copying/
 origin_title: "14.16 — Shallow vs. deep copying"
 time: 2022-7-27

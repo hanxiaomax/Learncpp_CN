@@ -1,6 +1,6 @@
 ---
-title: 4.17 - std::string 简介
-alias: 4.17 - std::string 简介
+title: 5.7 - std::string 简介
+alias: 5.7 - std::string 简介
 origin: /an-introduction-to-stdstring/
 origin_title: "4.17 — An introduction to std::string"
 time: 2021-10-21

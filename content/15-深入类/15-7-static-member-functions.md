@@ -1,6 +1,6 @@
 ---
-title: 13.14 - 静态成员函数
-alias: 13.14 - 静态成员函数
+title: 15.7 - 静态成员函数
+alias: 15.7 - 静态成员函数
 origin: /static-member-functions/
 origin_title: "13.14 — Static member functions"
 time: 2022-9-16

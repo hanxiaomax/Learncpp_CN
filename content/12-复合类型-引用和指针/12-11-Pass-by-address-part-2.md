@@ -1,6 +1,6 @@
 ---
-title: 9.10 - 按地址传递 Part2
-alias: 9.10 - 按地址传递 Part2
+title: 12.11 - 按地址传递 Part2
+alias: 12.11 - 按地址传递 Part2
 origin: /pass-by-address-part-2/
 origin_title: "9.10 — Pass by address part 2"
 time: 2022-9-7

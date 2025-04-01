@@ -1,6 +1,6 @@
 ---
-title: 12.6 - 省略号以及为什么要避免使用它
-alias: 12.6 - 省略号以及为什么要避免使用它
+title: 20.5 - 省略号以及为什么要避免使用它
+alias: 20.5 - 省略号以及为什么要避免使用它
 origin: /ellipsis-and-why-to-avoid-them/
 origin_title: "12.6 -- Ellipsis (and why to avoid them)"
 time: 2022-1-2
