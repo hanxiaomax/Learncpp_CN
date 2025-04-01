@@ -48,7 +48,7 @@ C++ 11在主旨思想上与C++03相差不大，但它确实增加了大量的新
 -   [[lambda|匿名函数]] ([[20-6-introduction-to-lambdas-anonymous-functions|20.6 - lambda表达式简介（匿名函数）]]) 和[[closure|闭包]]([[20-7-lambda-captures|20.7 - lambda 闭包]])
 -   `long long int` ([[4-3-Object-sizes-and-the-sizeof-operator|4.3 - 对象的大小和 sizeof 操作符]])
 -   [[move-constructor|移动构造函数]]和[[move-assignment-operator|移动赋值运算符]]([[22-3-move-constructors-and-move-assignment|22.3 - 移动构造函数和移动赋值]])
--   `Noexcept` 说明符 (quick mention in [[20.4]])
+-   `Noexcept` 说明符 ([[27-4-uncaught-exceptions-catch-all-handlers|27-4-uncaught-exceptions-catch-all-handlers]])
 -   `nullptr` ([[12-8-Null-pointers|12.8 - 空指针]])
 -   `override` 和 `final` 说明符([[25-3-the-override-and-final-specifiers-and-covariant-return-types|25.3 - override、final标识符以及协变返回类型]])
 -   [[range-based-for-loops|基于范围的for循环]] ([[16-8-For-each-loops|16.8 - for-each 循环]])
