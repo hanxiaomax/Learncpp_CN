@@ -195,7 +195,7 @@ You entered: b
 如果你想一次性读入多个字符（例如，名字、单词或者句子），你应该使用字符串而不是字符。字符串是一个字符序列（因此字符串可以保存多个符号）。
 
 > [!info] "相关内容"
-> 我们会在[[5-7-an-introduction-to-std-string|4.17 - std::string 简介]]中讨论关于字符串的内容。
+> 我们会在[[5-7-an-introduction-to-std-string|5.7 - std::string 简介]]中讨论关于字符串的内容。
 
 ## 字符类型的大小、范围和默认符号
 
@@ -292,7 +292,7 @@ This string contains a single backslash \
 
 ## Newline (`\n`) vs. std::endl
 
-在[[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介： cout，cin 和 endl]]中已经介绍了。
+在[[1-5-Introduction-to-iostream-cout-cin-and-endl|1.5 - iostream 简介：cout，cin 和 endl]]中已经介绍了。
 
 ## 字符放在单引号和双引号中有什么区别
 

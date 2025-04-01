@@ -107,7 +107,7 @@
 - [[8-8-Intro-to-loops-and-while-statements|8.8 - 循环和 while 语句]]
 - [[8-9-Do-while-statements|8.9 - do-while 语句]]
 - [[8-10-For-statements|8.10 - for 语句]]
-- [[8-11-Break-and-continue|Break 语句]]
+- [[8-11-Break-and-continue|8.11 - break 和 continue]]
 - [[8-12-Halts-exiting-your-program-early|8.12 - 挂起（提前结束程序）]]
 - [[9-1-Introduction-to-testing-your-code|9.1 - 代码测试]]
 - [[9-2-Code-coverage|9.2 - 代码覆盖率]]

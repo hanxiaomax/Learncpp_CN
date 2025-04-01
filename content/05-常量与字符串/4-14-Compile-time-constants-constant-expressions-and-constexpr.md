@@ -178,4 +178,4 @@ int main()
 Although function parameters can be `const`, function parameters cannot be `constexpr`.
 
 > [!info] "相关内容"
-> C++ 也支持在编译时求值的函数(因此可以在常量表达式中使用)——我们会在[[F-1-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]中讨论这些函数。
+> C++ 也支持在编译时求值的函数(因此可以在常量表达式中使用)——我们会在[[F-1-Constexpr-and-consteval-functions|F.1 - Constexpr 和 consteval 函数]]中讨论这些函数。

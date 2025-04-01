@@ -74,7 +74,7 @@ int main()
 首先，必须指定函数返回值的类型，函数返回值类型的定义位于函数名前面。在上面的例子中，`getValueFromUser` 函数的返回值类型为 `void`（表示无需返回任何值给主调函数），而 `main` 函数的返回值类型则为 `int` （即返回一个 `int` 类型的值给主调函数）。注意，这里并不是定义返回的具体是什么值，而仅是指定其*类型*。
 
 > [!info] "相关内容"
-> 返回值为 `void` 类型的函数将在下节课中介绍（[[2-3-Void-functions-non-value returning functions]]）
+> 返回值为 `void` 类型的函数将在下节课中介绍（[[2-3-Void-functions-non-value returning functions|2.3 - void 函数]]）
 
 其次，在需要返回值的函数中，需要通过 `return` 语句来指定要返回的具体值。该具体值称为函数的**返回值**。当 `return` 语句被执行时，函数会立即退出，同时将返回值*拷贝*给主调函数。这个过程称为[[return-by-value|按值返回]]。
 
@@ -189,7 +189,7 @@ C++ 不允许显式调用 `main` 函数。
 一个具有返回值的函数必须返回对应类型的值（使用 `return` 语句），否则会产生[[undefined-behavior|未定义行为]]。
 
 > [!info] "相关内容"
-> 我们在[[1-6-Uninitialized-variables-and-undefined-behavior]]中讨论了未定义行为。
+> 我们在[[1-6-Uninitialized-variables-and-undefined-behavior|1.6 - 未初始化变量和未定义行为]]中讨论了未定义行为。
 
 下面是一个函数产生未定义行为的例子：
 

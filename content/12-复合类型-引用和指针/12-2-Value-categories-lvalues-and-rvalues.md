@@ -34,7 +34,7 @@ int main()
 
 在上面的程序中，表达式 `2 + 3` 求值会得到 5，然后 5 被打印到控制台上。
 
-在 [[6-4-Increment-decrement-operators-and-side-effects|5.4 - 自增自减运算符及其副作用]] 中，我们还介绍过，表达式是可以有[[side-effects|副作用]]的，即其结果的生命周期会超过表达式本身：
+在 [[6-4-Increment-decrement-operators-and-side-effects|6.4 - 自增自减运算符及其副作用]] 中，我们还介绍过，表达式是可以有[[side-effects|副作用]]的，即其结果的生命周期会超过表达式本身：
 
 ```cpp
 #include <iostream>
@@ -129,7 +129,7 @@ int main()
 
 ## Lvalue 和 rvalue 表达式
 
-左值 lvalue (是 “left value” 或 “locator value”的缩写，有时也写作 “l-value”) 是一种表达式，它最终会求值得到一个具有[[identity|身份特征]]的函数或对象。如果一个对象具有[[identifier|标识符(identifier)]]（例如变量名或函数名）或一个可被标识的内存地址（可以通过`&`运算符取地址——会在[[12-7-Introduction-to-pointers|9.6 - 指针简介]]中进行介绍）则称其具有身份特征。具有标识的对象生命周期会超过表达式本身。
+左值 lvalue (是 “left value” 或 “locator value”的缩写，有时也写作 “l-value”) 是一种表达式，它最终会求值得到一个具有[[identity|身份特征]]的函数或对象。如果一个对象具有[[identifier|标识符(identifier)]]（例如变量名或函数名）或一个可被标识的内存地址（可以通过`&`运算符取地址——会在[[12-7-Introduction-to-pointers|12.7 - 指针简介]]中进行介绍）则称其具有身份特征。具有标识的对象生命周期会超过表达式本身。
 
 ```cpp
 #include <iostream>

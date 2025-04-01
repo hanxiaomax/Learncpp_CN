@@ -12,7 +12,7 @@ tags:
 
 > [!note] "Key Takeaway"
 > 
-在上节课中([[13-2-unscoped-enumerations|10.2 - 无作用域枚举类型]])我们提到，枚举是一种[[symbolic-constants|符号常量]]。但是我们没说的是，枚举实际上是一个整型符号常量。因此，枚举类型中保存的其实是一个整型值。
+在上节课中([[13-2-unscoped-enumerations|13.2 - 无作用域枚举类型]])我们提到，枚举是一种[[symbolic-constants|符号常量]]。但是我们没说的是，枚举实际上是一个整型符号常量。因此，枚举类型中保存的其实是一个整型值。
 
 在这一点上，枚举类型类似于字符 ([[4-11-Chars|4.11 - 字符]])。考虑下面代码：
 
@@ -205,7 +205,7 @@ int main()
 
 
 > [!info] "相关内容"
-> Constexpr 返回类型在[[F-1-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]中介绍。
+> Constexpr 返回类型在[[F-1-Constexpr-and-consteval-functions|F.1 - Constexpr 和 consteval 函数]]中介绍。
 
 ## 让 `operator<<` 知道如何打印枚举值
 
@@ -256,7 +256,7 @@ Your shirt is blue
 > [!info] "扩展阅读"
 > 如果你好奇的话，这里简单介绍一下上面代码的工作原理。当我们尝试通过`std::cout` 和 `operator<<` 打印 `shirt` 时，编译器发现被重载的 `operator<<` 可以配合 `Color` 类型的对象工作。于是重载的 `operator<<` 被调用，参数`out`是 `std::cout`，参数`color`则是 `shirt`。因为`out`是`std::cout`的引用，所以 `out << "blue"` 就是将 `"blue"` 送到 `std::cout`打印。
 
-我们会在 [[21-4-overloading-the-IO-operators|14.4 - 重载输入输出运算符]] 中介绍IO运算符的重载。目前你可以先拷贝这份代码并用于你自己的枚举类型。
+我们会在 [[21-4-overloading-the-IO-operators|21.4 - 重载输入输出运算符]] 中介绍IO运算符的重载。目前你可以先拷贝这份代码并用于你自己的枚举类型。
 
 
 ## 枚举的大小和基类型

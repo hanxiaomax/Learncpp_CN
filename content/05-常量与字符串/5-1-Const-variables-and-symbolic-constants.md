@@ -16,7 +16,7 @@ tags:
 > - 避免将对象形式的预处理器宏用于符号常量
 > - 在多个文件中共享符号常量，可以[[7-10-Sharing-global-constants-across-multiple-files-using-inline-variables|使用 inline 变量共享全局常量]]
 
-在编程中，常量（constant）指的是不会改变的值。C++支持几种类型的常量：`const` 变量（参见：[[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]）和[[literals|字面量]]（参见：[[5-2-Literals|4.15 - 字面量]]）
+在编程中，常量（constant）指的是不会改变的值。C++支持几种类型的常量：`const` 变量（参见：[[4-14-Compile-time-constants-constant-expressions-and-constexpr|4.14 - 编译时常量、常量表达式和 constexpr]]）和[[literals|字面量]]（参见：[[5-2-Literals|5.2 - 字面量]]）
 
 ## const 变量
 
@@ -126,7 +126,7 @@ int main()
 > [!success] "最佳实践"
 > 在[[pass-by-value|按值传递]]时不要使用 `const`。
 
-在本系列教程的后面部分，我们将讨论向函数传递参数的另外两种方法：[[pass-by-reference|传引用]]和[[pass-by-address|传地址]]。在使用这两种方法时，正确使用 `const` 非常重要。
+在本系列教程的后面部分，我们将讨论向函数传递参数的另外两种方法：[[pass-by-reference|按引用传递]]和[[pass-by-address|按地址传递]]。在使用这两种方法时，正确使用 `const` 非常重要。
 
 ## Const 类型返回值
 
@@ -216,4 +216,4 @@ int main()
 
 在很多应用程序中，有些符号常量需要被所有的代码使用（而不仅仅是被局部的代码使用）。这些变量可能是物理常量或数学常量（例如 π 或阿伏伽德罗常数），或者是某个应用程序需要的参数（例如摩擦系数或引力系数）。与其在多个文件中各定义一遍这些变量，不如将它们集中定义在一个地方然后按需使用。这样，万一你需要修改它们的值，你只需要在一处修改即可。
 
-在 C++ 中有很多方法可以实现上述需求，我们会在 [[7-10-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]] 中进行详细的介绍。
+在 C++ 中有很多方法可以实现上述需求，我们会在 [[7-10-Sharing-global-constants-across-multiple-files-using-inline-variables|7.10 - 使用 inline 变量共享全局常量]] 中进行详细的介绍。

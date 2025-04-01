@@ -14,7 +14,7 @@ tags:
 > - const 类型的对象只能调用 const 成员函数。
 > - const 成员函数可以被 const 或 非const 类型的对象调用
 
-通过学习 [[5-1-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]] ，我们知道基本数据类型(`int`, `double`, `char` 等)，可以通过`const`关键字被定义为const类型。同时所有的const变量都必须在创建时被初始化。
+通过学习 [[5-1-Const-variables-and-symbolic-constants|5.1 - const 变量和符号常量]] ，我们知道基本数据类型(`int`, `double`, `char` 等)，可以通过`const`关键字被定义为const类型。同时所有的const变量都必须在创建时被初始化。
  
 对于 const 类型的基本数据类型，初始化可以通过[[copy-initialization|拷贝初始化]]、[[direct-initialization|直接初始化]]或[[uniform-initialization|统一初始化]]来完成：
 
@@ -148,7 +148,7 @@ public:
 
 尽管实例化const类对象是创建const对象的一种方法，但获得const对象更常见的方法是通过const引用将对象传递给函数。
 
-在 [[12-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]] 中我们介绍了通过常量引用传递类参数时的特性。回忆一下，[[pass-by-value|按值传递]]对象会导致对象被赋值（效率低）——大多数情况下，我们并不需要一份拷贝，使用原始对象的引用就可以了，而且由于避免了不必要的拷贝，性能自然也更好。通常情况下，我们会使用 const 类型的引用来确保实参不被修改，而且使得函数可以配合[[rvalue|右值]]来使用（例如字面量），因为右值只能通过const引用传递。
+在 [[12-5-Pass-by-lvalue-reference|12.5 - 传递左值引用]] 中我们介绍了通过常量引用传递类参数时的特性。回忆一下，[[pass-by-value|按值传递]]对象会导致对象被赋值（效率低）——大多数情况下，我们并不需要一份拷贝，使用原始对象的引用就可以了，而且由于避免了不必要的拷贝，性能自然也更好。通常情况下，我们会使用 const 类型的引用来确保实参不被修改，而且使得函数可以配合[[rvalue|右值]]来使用（例如字面量），因为右值只能通过const引用传递。
 
 你能看出下面代码中的问题吗？
 

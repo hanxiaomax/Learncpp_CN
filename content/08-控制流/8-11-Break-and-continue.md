@@ -1,4 +1,3 @@
-
 ---
 title: 8.11 - break 和 continue
 alias: 8.11 - break 和 continue
@@ -14,7 +13,7 @@ tags:
 
 ## Break 语句
 
-虽然您已经在`switch`语句的上下文中见过`break`语句([[8-5-Switch-statement-basics|7.4 - switch 语句基础]])，但它值得更仔细研究，因为它也可以用于其他类型的控制流语句。break语句导致while循环、do-while循环、for循环或switch语句结束，并在循环或switch被打破后继续执行下一个语句。
+虽然您已经在`switch`语句的上下文中见过`break`语句([[8-5-Switch-statement-basics|8.5 - switch 语句基础]])，但它值得更仔细研究，因为它也可以用于其他类型的控制流语句。break语句导致while循环、do-while循环、for循环或switch语句结束，并在循环或switch被打破后继续执行下一个语句。
 
 ## 从 switch 中跳出
 
@@ -50,7 +49,7 @@ int main()
 }
 ```
 
-关于[[fallthrough|贯穿属性]]的更多详细信息，参见 [[8-6-Switch-fallthrough-and-scoping|7.5 - switch fallthrough属性和作用域]]。
+关于[[fallthrough|贯穿属性]]的更多详细信息，参见 [[8-6-Switch-fallthrough-and-scoping|8.6 - switch fallthrough属性和作用域]]。
 
 ## 从循环中跳出
 

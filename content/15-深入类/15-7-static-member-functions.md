@@ -14,7 +14,7 @@ tags:
 ## 静态成员函数
 
 
-在上一节课 [[15-6-static-member-variables|13.13 - 静态成员变量]] 中，我们知道了[[static-member-variables|静态成员变量]]是属于类而不是类对象的。如果静态成员变量是[[public-member|公有成员]]的话我们自然可以通过类名[[scope-resolution-operator|作用域解析运算符]]来访问它，但是如果它是[[private-member|私有成员]]的话，我们应该如何访问它呢？考虑下面的例子：
+在上一节课 [[15-6-static-member-variables|15.6 - 静态成员变量]] 中，我们知道了[[static-member-variables|静态成员变量]]是属于类而不是类对象的。如果静态成员变量是[[public-member|公有成员]]的话我们自然可以通过类名[[scope-resolution-operator|作用域解析运算符]]来访问它，但是如果它是[[private-member|私有成员]]的话，我们应该如何访问它呢？考虑下面的例子：
 
 ```cpp
 class Something

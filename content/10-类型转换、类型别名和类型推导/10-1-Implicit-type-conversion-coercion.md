@@ -19,9 +19,9 @@ tags:
 >   - 当在 if 语句中使用非布尔值时
 >   - 当传递给函数的实参与函数形参类型不同时
 > - C++ 标准定义了不同的基本类型的转换方式，包括：
->   - 数值提升(参考：[[10-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]])；
->   - 数值转换(参考：[[10-3-Numeric-conversions|8.3 - 数值转换]])；
->   - 算数转换(参考：[[10-5-Arithmetic-conversions|8.4 - 算数转换]])；
+>   - 数值提升(参考：[[10-2-Floating-point-and-integral-promotion|10.2 - 浮点数和整型提升]])；
+>   - 数值转换(参考：[[10-3-Numeric-conversions|10.3 - 数值转换]])；
+>   - 算数转换(参考：[[10-5-Arithmetic-conversions|10.5 - 算术转换]])；
 >   - 其他转换 (包括多种指针和引用的转换)
 
 
@@ -39,7 +39,7 @@ float f{ 3 }; // initialize floating point variable with int 3
 
 将一种数据类型转换为另外一种数据类型的过程，称为类型转换。
 
-类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）。我们会在本节课介绍[[implicit-type-conversion|隐式类型转换(implicit type conversion)]]，然后在下节课 [[10-6-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换]] 中介绍[[explicit-type-conversion|显式类型转换(Explicit type conversion)]]。
+类型转换可以通过两种方式触发：隐式地（编译器需要这么做）或是显式地（由程序员发起）。我们会在本节课介绍[[implicit-type-conversion|隐式类型转换(implicit type conversion)]]，然后在下节课 [[10-6-Explicit-type-conversion-casting-and-static-cast|10.6 - 显式类型转换]] 中介绍[[explicit-type-conversion|显式类型转换(Explicit type conversion)]]。
 
 ## 隐式类型转换
 
@@ -97,7 +97,7 @@ int x { 3.5 }; // 括号类型转换不允许类型转换以避免数据丢失
 
 即使编译器知道如何将 `double` 类型转换为 `int` 类型，但在使用括号初始化时，这样的转换是不允许的。
 
-还有一些情况下，编译器可能无法确定几种可能的类型转换中哪一种是最适合使用的。我们会在 [[11-3-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]] 中进行介绍。
+还有一些情况下，编译器可能无法确定几种可能的类型转换中哪一种是最适合使用的。我们会在 [[11-3-Function-overload-resolution-and-ambiguous-matches|11.3 - 函数重载解析和不明确匹配]] 中进行介绍。
 
 那么编译器实际上是如何确定它是否可以将一个值从一种类型转换为另一种类型的呢?
 
@@ -107,9 +107,9 @@ C++语言标准定义了不同的基本类型(也包括一些复合类型)应当
 
 转换标准大致可分为四类，每一类涵盖不同的转换方式:
 
-- 数值提升(参考：[[10-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]])；
-- 数值转换(参考：[[10-3-Numeric-conversions|8.3 - 数值转换]])；
-- 算数转换(参考：[[10-5-Arithmetic-conversions|8.4 - 算数转换]])；
+- 数值提升(参考：[[10-2-Floating-point-and-integral-promotion|10.2 - 浮点数和整型提升]])；
+- 数值转换(参考：[[10-3-Numeric-conversions|10.3 - 数值转换]])；
+- 算数转换(参考：[[10-5-Arithmetic-conversions|10.5 - 算术转换]])；
 - 其他转换 (包括多种指针和引用的转换)
 
 当需要类型转换时，编译器将查看是否有标准转换，可以用来将值转换为所需的类型。编译器可以在转换过程中应用 0 个、1 个或多个标准转换。

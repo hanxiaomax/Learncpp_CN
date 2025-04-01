@@ -28,7 +28,7 @@ tags:
 现代C++存在两种类型的引用：[[lvalue-reference|左值引用]]和[[rvalue-reference|右值引用]]。在本章中我们会首先讨论左值引用。
 
 > [!info] "相关内容"
-> 因为我们在本章会讨论左值和右值，如果你需要复习一下的话，请参考[[12-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]]。
+> 因为我们在本章会讨论左值和右值，如果你需要复习一下的话，请参考[[12-2-Value-categories-lvalues-and-rvalues|12.2 - 值的分类（左值和右值）]]。
 
 右值引用会在[[move-semantics|移动语义]]章节进行介绍 ([chapter M](https://www.learncpp.com/#ChapterM)).
 
@@ -254,7 +254,7 @@ int main()
 
 当一个对象先于它的引用被销毁，则其引用此时会绑定到一个已经不存在的对象。此时该引用会成为一个[[dangling|悬垂]]引用。访问悬垂引用会导致[[undefined-behavior|未定义行为]]。
 
-悬垂指针其实很容易避免，但是我们会在[[12-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]] 中像你展示一个由悬垂指针引发未定义行为的案例。
+悬垂指针其实很容易避免，但是我们会在[[12-5-Pass-by-lvalue-reference|12.5 - 传递左值引用]] 中像你展示一个由悬垂指针引发未定义行为的案例。
 
 ## 引用不是对象
 

@@ -21,7 +21,7 @@ tags:
 
 `static` 是 C++ 中最令人困惑的术语之一，这主要是因为`static`在不同语境下的含义也是不同的。
 
-在之前的课程中（[[7-4-Introduction-to-global-variables|6.4 - 全局变量]]），我们介绍过全局变量具有[[static-storage-duration|静态存储持续时间]]，也就是说全局变量会在程序开始时被创建，并且在程序结束时被销毁。
+在之前的课程中（[[7-4-Introduction-to-global-variables|7.4 - 全局变量]]），我们介绍过全局变量具有[[static-storage-duration|静态存储持续时间]]，也就是说全局变量会在程序开始时被创建，并且在程序结束时被销毁。
 
 我们还介绍了 `static` 关键字可以使全局变量具有[[internal-linkage|内部链接]]属性，也就是该全局变量只能在定义它的文件中使用。
 

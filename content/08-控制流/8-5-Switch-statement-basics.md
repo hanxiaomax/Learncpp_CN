@@ -85,7 +85,7 @@ switch 背后的思想很简单：表达式(有时称为条件)求值后得到�
 
 使用 `switch` 关键字，后面加上括号以及需要在括号中求值的条件表达式，就可以创建switch语句。通常情况下表达式会是一个单一变量，但是也可以是任何合法的表达式。
 
-关于这里的条件语句，它的一个限制条件是其求值结果必须为[[integral-type|整型类型]](如何你还不熟悉整型类型，请参见：[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]) 或[[scoped-enumerations|有作用域枚举]]类型(参见：[[13-2-unscoped-enumerations|10.2 - 无作用域枚举类型]])，或者是任何能转换成上述类型的值。浮点类型、字符串和大多数其他非整型的表达式都不可用。
+关于这里的条件语句，它的一个限制条件是其求值结果必须为[[integral-type|整型类型]](如何你还不熟悉整型类型，请参见：[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]) 或[[scoped-enumerations|有作用域枚举]]类型(参见：[[13-2-unscoped-enumerations|13.2 - 无作用域枚举类型]])，或者是任何能转换成上述类型的值。浮点类型、字符串和大多数其他非整型的表达式都不可用。
 
 > [!info] "扩展阅读"
 > 为什么switch只使用整数(或枚举)类型？答案是因为switch语句被高度优化了。历史上，编译器实现switch语句最常见的方法是通过[跳表](https://en.wikipedia.org/wiki/Branch_table)实现的，而跳转表只适用于整数值。

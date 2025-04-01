@@ -134,7 +134,7 @@ If you run the program multiple times, you will note that it prints the same num
 
 Imagine that you’re writing a game of hi-lo, where the user has 10 tries to guess a number that has been picked randomly, and the computer tells the user whether their guess is too high or too low. If the computer picks the same random number every time, the game won’t be interesting past the first time it is played. So let’s take a deeper look at why this is happening, and how we can fix it.
 
-In the prior lesson ([[8-13-introduction-to-random-number-generation|7.18 - 随机数生成器简介]]), we covered that each number in a PRNG sequence is in a deterministic way. And that the state of the PRNG is initialized from the seed value. Thus, given any starting seed number, PRNGs will always generate the same sequence of numbers from that seed as a result.
+In the prior lesson ([[8-13-introduction-to-random-number-generation|8.13 - 随机数生成器简介]]), we covered that each number in a PRNG sequence is in a deterministic way. And that the state of the PRNG is initialized from the seed value. Thus, given any starting seed number, PRNGs will always generate the same sequence of numbers from that seed as a result.
 
 Because we are default initializing our Mersenne Twister, it is being initialized with the same seed every time the program is run. And because the seed is the same, the random numbers being generated are also the same.
 

@@ -14,7 +14,7 @@ tags:
 
 ## 捕获语句以及捕获值
 
-在上节课 [[20-6-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介]]) 中我们介绍了整个例子：
+在上节课 [[20-6-introduction-to-lambdas-anonymous-functions|20.6 - lambda表达式简介（匿名函数）]]) 中我们介绍了整个例子：
 
 ```cpp
 #include <algorithm>

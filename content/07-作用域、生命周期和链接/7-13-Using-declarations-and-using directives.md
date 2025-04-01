@@ -333,4 +333,4 @@ int main()
 > 明确指定作用域好过 `using` 语句。尽可能地避免使用 `using` 指令。在语句块中使用 `using` 声明通常是可以的。
 
 > [!info] "相关内容"
-> `using` 关键字还可以用来定义类型别名，我们会在[[10-7-Typedefs-and-type-aliases|8.6 - typedef 和类型别名]]中详细介绍类型别名。
+> `using` 关键字还可以用来定义类型别名，我们会在[[10-7-Typedefs-and-type-aliases|10.7 - typedef 和类型别名]]中详细介绍类型别名。

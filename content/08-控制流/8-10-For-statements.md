@@ -12,7 +12,7 @@ tags:
 
 C++中最常用的语句是`for`语句。当我们有一个明显的循环变量时，首选使用for语句(也称为for循环)，因为它使我们可以轻松而简洁地定义、初始化、测试和更改循环变量的值。
 
-在 C++11 中，有两种 `for`循环，我们会在本节课介绍最典型的 `for`  循环，然后在后面的课程中（[[16-8-For-each-loops|11.13 - for-each 循环]]）介绍较新的的[[range-based-for-loops|基于范围的for循环]] ([11.13 -- For-each loops](https://www.learncpp.com/cpp-tutorial/for-each-loops/)) 。
+在 C++11 中，有两种 `for`循环，我们会在本节课介绍最典型的 `for`  循环，然后在后面的课程中（[[16-8-For-each-loops|16.8 - for-each 循环]]）介绍较新的的[[range-based-for-loops|基于范围的for循环]] ([11.13 -- For-each loops](https://www.learncpp.com/cpp-tutorial/for-each-loops/)) 。
 
 `for` 循环语法的抽象形式非常简单：
 

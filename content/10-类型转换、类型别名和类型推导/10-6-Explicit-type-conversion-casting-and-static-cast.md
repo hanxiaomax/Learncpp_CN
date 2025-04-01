@@ -17,7 +17,7 @@ tags:
 > - 优先使用`static_cast` ，它提供了[[runtime|运行时]]的类型检查机制，不容易犯错。
 > - 使用 `static_cast`  进行显式地缩窄转换
 
-在 [[10-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]中我们介绍过，编译器可以隐式地将一种类型的值转换成另外一种类型，即[[implicit-type-conversion|隐式类型转换]]。当你想要将一个数值类型通过[[numeric promotions|数值提升]]的方式转换为更宽的类型时，使用隐式类型转换是可以的。
+在 [[10-1-Implicit-type-conversion-coercion|10.1 - 隐式类型转换]]中我们介绍过，编译器可以隐式地将一种类型的值转换成另外一种类型，即[[implicit-type-conversion|隐式类型转换]]。当你想要将一个数值类型通过[[numeric promotions|数值提升]]的方式转换为更宽的类型时，使用隐式类型转换是可以的。
 
 很多新手 C++ 程序员会这样做：
 

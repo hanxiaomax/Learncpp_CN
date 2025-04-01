@@ -22,7 +22,7 @@ tags:
 
 ## `std::vector` 简介
 
-`std::vector` 在C++03中被引入，它提供了[[dynamic-array]]的功能并且可以自我管理内存的申请和释放。也就是说，你可以在[[runtime|运行时]]创建数组并指定其长度，而不需要使用`new`和`delete`来手动管理内存的申请释放。`std::vector` 位于 `<vector>` 头文件中。
+`std::vector` 在C++03中被引入，它提供了[[dynamic-array|动态数组]]的功能并且可以自我管理内存的申请和释放。也就是说，你可以在[[runtime|运行时]]创建数组并指定其长度，而不需要使用`new`和`delete`来手动管理内存的申请释放。`std::vector` 位于 `<vector>` 头文件中。
 
 声明一个 `std::vector` 很简单：
 
@@ -211,7 +211,7 @@ The length is: 5
 ```
 
 > [!tip] "小贴士"
-> 我们会在 [[23-7-std-initializer_list|16.7 - std::initializer_list]] 中介绍[[direct-initialization|直接初始化]]和[[括号初始化]]的不同。经验法则是：对于你不想初始化的列表型类型，使用直接初始化。
+> 我们会在 [[23-7-std-initializer_list|23.7 - std::initializer_list]] 中介绍[[direct-initialization|直接初始化]]和[[括号初始化]]的不同。经验法则是：对于你不想初始化的列表型类型，使用直接初始化。
 		
 
 ## 压缩布尔值
@@ -245,7 +245,7 @@ The length is: 5
 
 ## 更多内容
 
-注意，本节课只是对 `std::vector`进行简介，在 [[16-10-std-vector-capacity-and-stack-behavior|12.3 - std::vector的容量和类栈行为]]中，我们会介绍它的一些额外的功能，包括长度和容量的区别，并且详细介绍`std::vector` 是如何管理内存的。
+注意，本节课只是对 `std::vector`进行简介，在 [[16-10-std-vector-capacity-and-stack-behavior|16.10 - std::vector的容量和类栈行为]]中，我们会介绍它的一些额外的功能，包括长度和容量的区别，并且详细介绍`std::vector` 是如何管理内存的。
 
 ## 结论
 

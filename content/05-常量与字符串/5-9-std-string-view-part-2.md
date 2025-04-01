@@ -23,11 +23,11 @@ tags:
 > - 只有在`std::string_view`没有被修改的情况下且字符串以空结束符结尾的情况下使用`std::string_view::data()` 如果字符串没有以空结束符结尾，则`std::string_view::data()`会导致未定义行为。
 
 > [!info] "作者注"
-> 本课程的部分内容被移动到了[[5-8-Introduction-to-std-string_view|4.18 - std:: string_view 简介]] 。因此，这节课中有部分尚未清理的重复部分。
+> 本课程的部分内容被移动到了[[5-8-Introduction-to-std-string_view|5.8 - std::string_view 简介]] 。因此，这节课中有部分尚未清理的重复部分。
 
 在上一节课中，我们介绍了 C 语言风格的字符串，但是使用它们的风险很高。尽管 C 语言风格字符串的性能很好，但是它们并不易用，安全性也不如 `std:: string`。
 
-但是 `std:: string` (在 [[5-7-an-introduction-to-std-string|4.17 - std:: string 简介]] 中介绍)也有它的缺点，尤其是当我们需要常量字符串的时候。
+但是 `std:: string` (在 [[5-7-an-introduction-to-std-string|5.7 - std::string 简介]] 中介绍)也有它的缺点，尤其是当我们需要常量字符串的时候。
 
 考虑下面的例子：
 

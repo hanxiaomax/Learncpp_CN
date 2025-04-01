@@ -11,7 +11,7 @@ tags:
 
 > [!note] "Key Takeaway"
 
-继续 [[8-2-If-statements-and-blocks|7.2 - if 语句和语句块]] 的内容。本节课我们会介绍一些和if语句相关的常见错误。
+继续 [[8-2-If-statements-and-blocks|8.2 - if 语句和语句块]] 的内容。本节课我们会介绍一些和if语句相关的常见错误。
 
 ## 嵌套if语句和悬垂else问题
 

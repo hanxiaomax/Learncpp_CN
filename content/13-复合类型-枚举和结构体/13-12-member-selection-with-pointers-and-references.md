@@ -12,7 +12,7 @@ tags:
 
 ## 结构体和结构体引用的成员选择
 
-在[[13-7-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]]中我们提到，访问结构体的成员可以使用[[member-selection-operator|成员选择运算符]]：
+在[[13-7-Introduction-to-structs-members-and-member-selection|13.7 - 结构体、成员和成员选择]]中我们提到，访问结构体的成员可以使用[[member-selection-operator|成员选择运算符]]：
 ```cpp
 #include <iostream>
 

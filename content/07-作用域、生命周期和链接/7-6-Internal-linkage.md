@@ -19,9 +19,9 @@ tags:
 > - 函数标识符默认是外部链接，可以通过`static`关键字修改为内部链接，此时函数只能在文件内部使用
 
  
- 在[[7-3-Local-variables|6.3 - 局部变量]]中我们讲过，标识符的链接属性决定了变量的多个声明是否指的是同一个对象。同时我们也介绍了局部变量的链接属性为*无链接*。
+ 在[[7-3-Local-variables|7.3 - 局部变量]]中我们讲过，标识符的链接属性决定了变量的多个声明是否指的是同一个对象。同时我们也介绍了局部变量的链接属性为*无链接*。
 
-全局变量和函数的标识符的链接属性可以是 [[internal-linkage|内部链接(internal linkage)]] 或 [[external-linkage|外部链接(external linkage)]]  。本节课会针对内部链接进行详细介绍，而外部链接会放到下一节课——[[7-7-External-linkage-and-variable-forward-declarations|6.7 - 外部链接和变量前向声明]]。
+全局变量和函数的标识符的链接属性可以是 [[internal-linkage|内部链接(internal linkage)]] 或 [[external-linkage|外部链接(external linkage)]]  。本节课会针对内部链接进行详细介绍，而外部链接会放到下一节课——[[7-7-External-linkage-and-variable-forward-declarations|7.7 - 外部链接和变量前向声明]]。
 
 具有内部链接属性的标识符，在一个文件内可见可用，但是在其他文件中不可访问（即不会暴露给链接器）。这意味着，如果两个文件中具有同名的标识符，且它们具有内部链接，这些标识符会被看做是互相独立的。
 
@@ -129,4 +129,4 @@ static int foo() {};     // 定义内部函数
 ```
 
 
-我们会在 [[7-12-Scope-duration-and-linkage-summary|6.11 - 作用域和链接小结]]中对相关内容进行更详细的总结。
+我们会在 [[7-12-Scope-duration-and-linkage-summary|7.12 - 作用域和链接小结]]中对相关内容进行更详细的总结。

@@ -122,7 +122,7 @@ ConsoleApplication1.obj : error LNK2019: unresolved external symbol "int __cdecl
 
 在这个例子中，编译没有问题(因为我们提供了[[forward-declaration|前向声明]])，但是链接器并不能在 global 作用域中找到 `doSomething` 的定义。这是因为这两个版本的 `doSomething`都已经不在 global 作用域中了。
 
-告诉编译器使用哪个版本 `doSomething()` 的方法有两种，一种是[[scope-resolution-operator|作用域解析运算符]]，一种是using语句（参见:[[7-13-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]）。
+告诉编译器使用哪个版本 `doSomething()` 的方法有两种，一种是[[scope-resolution-operator|作用域解析运算符]]，一种是using语句（参见:[[7-13-Using-declarations-and-using directives|7.13 - using 声明和 using 指令]]）。
 
 在接下来的例子中，我们还是回到单文件的场景，这样看起来更加清晰。
 

@@ -38,7 +38,7 @@ tags:
 在 C++17 之前，定义全局常量最简单的方法如下：
 
 1.  定义一个头文件来存放这些常量
-2. 在头文件中，定义一个命名空间 (参见：[[7-2-User-defined-namespaces-and-the-scope-resolution-operator|6.2 - 用户定义命名空间和作用域解析运算符]]
+2. 在头文件中，定义一个命名空间 (参见：[[7-2-User-defined-namespaces-and-the-scope-resolution-operator|7.2 - 用户定义命名空间和作用域解析运算符]]
 3. 将全部的常量放到该命名空间中（同时确保它们都是 `constexpr` 类型的） 
 4. 在需要使用这些常量的地方，`#include` 该头文件
 
@@ -101,7 +101,7 @@ int main()
 避免这个问题的方法之一，是将全局常量定义为[[external-variable|外部变量]]，这样一个变量（初始化一次）就可以被所有的文件“共享使用”。为此，我们必须将常量定义在一个`a.cpp`文件中（确保它只被定义一次），然后在头文件中添加其前向定义（该头文件仍需要被包含到使用了该变量的文件中）。
 
 > [!info] "作者注"
-> 这里使用了 `const` 类型的变量，这是因为 `constexpr` 类型的变量不能被前向声明（[[7-7-External-linkage-and-variable-forward-declarations#^ce6263]]），因为编译器需要在编译时知道`constexpr` 类型变量的定义，而前向声明并不能提供定义的信息。
+> 这里使用了 `const` 类型的变量，这是因为 `constexpr` 类型的变量不能被前向声明（[[7-7-External-linkage-and-variable-forward-declarations#^ce6263|7.7 - 外部链接和变量前向声明]]），因为编译器需要在编译时知道`constexpr` 类型变量的定义，而前向声明并不能提供定义的信息。
 
 
 ```cpp title="constants.cpp"
@@ -228,4 +228,4 @@ int main()
 	
 
 > [!info] "提醒"
-> 使用 `std::string_view` 定义 `constexpr` 字符串，我们在[[5-1-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]中进行了介绍。
+> 使用 `std::string_view` 定义 `constexpr` 字符串，我们在[[5-1-Const-variables-and-symbolic-constants|5.1 - const 变量和符号常量]]中进行了介绍。

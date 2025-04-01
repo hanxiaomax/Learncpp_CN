@@ -79,7 +79,7 @@ int main()
 Fraction six(Fraction(6));
 ```
 
-在上一节课中（[[14-14-the-copy-constructor|14.12 - 拷贝构造函数]]）我们学到，上面的代码可能会调用 `Fraction(int, int)` 以及 `Fraction` 的拷贝构造函数（可能会被优化掉）。不过，由于省略不被保证一定发生，所以最好避免使用拷贝初始化来初始化类，而改用[[uniform-initialization|统一初始化]]。
+在上一节课中（[[14-14-the-copy-constructor|14.14 - 拷贝构造函数]]）我们学到，上面的代码可能会调用 `Fraction(int, int)` 以及 `Fraction` 的拷贝构造函数（可能会被优化掉）。不过，由于省略不被保证一定发生，所以最好避免使用拷贝初始化来初始化类，而改用[[uniform-initialization|统一初始化]]。
 
 
 > [!success] "最佳实践"

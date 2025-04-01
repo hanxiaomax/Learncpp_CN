@@ -12,7 +12,7 @@ tags:
 
 ## 重温 static 关键字
 
-在 [[7-11-Static-local-variables|6.10 - 静态局部变量]] 中我们学习了 `static` 关键字，它可以定义一个变量并确保它不会在[[going-out-of-scope|离开作用域]]后被销毁，例如：
+在 [[7-11-Static-local-variables|7.11 - 静态局部变量]] 中我们学习了 `static` 关键字，它可以定义一个变量并确保它不会在[[going-out-of-scope|离开作用域]]后被销毁，例如：
 
 ```cpp
 #include <iostream>

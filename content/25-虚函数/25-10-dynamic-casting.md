@@ -11,7 +11,7 @@ tags:
 > [!note] "Key Takeaway"
 
 
-早在 [[10-6-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换和static_cast]] 中我们就讨论过类型转换的话题，当时我们使用[[static-casts|静态类型转换]]—— `static_cast` 将变量转换为其他类型。
+早在 [[10-6-Explicit-type-conversion-casting-and-static-cast|10.6 - 显式类型转换和static_cast]] 中我们就讨论过类型转换的话题，当时我们使用[[static-casts|静态类型转换]]—— `static_cast` 将变量转换为其他类型。
 
 本节课我们会讨论另外一种类型的转换：[[dynamic-casts|动态类型转换]]——`dynamic_cast`.
 

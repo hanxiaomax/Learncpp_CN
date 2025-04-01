@@ -16,10 +16,10 @@ C++ 支持三种类型的初始化：[[copy-initialization|拷贝初始化]]、[
   
 	
 [[initializer-list|初始化值列表]]
-[[23-7-std-initializer_list|16.7 - std::initializer_list]]
+[[23-7-std-initializer_list|23.7 - std::initializer_list]]
 [[zero-initialization|0初始化]]
 [[value-initialization|值初始化]]
-[[initializer]]
+[[initializer|初始化值]]
 [[designated-initializers|指定初始化]]
 [[default-initialization|默认初始化]]
 [[member-initializer-list|成员初始化值列表]]

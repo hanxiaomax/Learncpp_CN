@@ -13,7 +13,7 @@ tags:
 > - 现代编译器可以决定函数是否应当被展开。
 > - 有些函数是隐式的内联函数，包括：
 >		- 定义在类、结构体或联合体中的函数；
->		- Constexpr / consteval 函数 [[F-1-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
+>		- Constexpr / consteval 函数 [[F-1-Constexpr-and-consteval-functions|F.1 - Constexpr 和 consteval 函数]]
 > - `inline`关键字是一种*提示*，编译器可以忽略它。同时编译器也可以展开没有标记`inline`的函数。
 > - 现代`inline`关键字的含义是**允许多处定义**
 > - 内联函数定义在头文件中：为了能够展开函数，编译器必须能够在函数调用处看到函数的定义。因此，内联函数通常被定义在头文件中，这样它们就可以被包含到使用它们的源文件中，以便编译器看到函数的完整定义。
@@ -103,7 +103,7 @@ int main()
 > [!info] "扩展阅读"
 > 有些函数是隐式的内联函数，包括：
 > -   定义在类、结构体或联合体中的函数；
-> -   Constexpr / consteval 函数 [[F-1-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]]
+> -   Constexpr / consteval 函数 [[F-1-Constexpr-and-consteval-functions|F.1 - Constexpr 和 consteval 函数]]
 
 ## 历史上的 inline 关键字
 
@@ -144,7 +144,7 @@ int main()
 在之前的章节中，我们介绍过，头文件中不应该放置函数的实现，因为这些头文件中的内容会被包含到多个.cpp文件中，那么这些函数的定义也就会被复制多份。因此，这些文件编译后，链接器就会报错，因为函数的定义违反了[[one-definition-rule|单一定义规则(one-definition-rule)]]。
 
 
-在 [[7-10-Sharing-global-constants-across-multiple-files-using-inline-variables|6.9 - 使用 inline 变量共享全局常量]]中我们介绍了，在现代 C++ 中，`inline` 概念发展出了新的含义：允许多重定义。对于函数和变量都是适用的。因此，如果你将函数标记为内联后，该函数就可以被多次定义了（在不同的函数中），只要这些定义是一致的即可。
+在 [[7-10-Sharing-global-constants-across-multiple-files-using-inline-variables|7.10 - 使用 inline 变量共享全局常量]]中我们介绍了，在现代 C++ 中，`inline` 概念发展出了新的含义：允许多重定义。对于函数和变量都是适用的。因此，如果你将函数标记为内联后，该函数就可以被多次定义了（在不同的函数中），只要这些定义是一致的即可。
 
 为了能够展开函数，编译器必须能够在函数调用处看到函数的定义。因此，内联函数通常被定义在头文件中，这样它们就可以被包含到使用它们的源文件中，以便编译器看到函数的完整定义。
 

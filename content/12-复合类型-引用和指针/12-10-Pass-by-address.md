@@ -141,7 +141,7 @@ printByAddress(&str); // use address-of operator (&) to get pointer holding addr
 ```
 
 
-As we noted in[[12-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]], [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/), copying a `std::string` is expensive, so that’s something we want to avoid. When we pass a `std::string` by address, we’re not copying the actual `std::string` object -- we’re just copying the pointer (holding the address of the object) from the caller to the called function. Since an address is typically only 4 or 8 bytes, a pointer is only 4 or 8 bytes, so copying a pointer is always fast.
+As we noted in[[12-5-Pass-by-lvalue-reference|12.5 - 传递左值引用]], [9.5 -- Pass by lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/), copying a `std::string` is expensive, so that’s something we want to avoid. When we pass a `std::string` by address, we’re not copying the actual `std::string` object -- we’re just copying the pointer (holding the address of the object) from the caller to the called function. Since an address is typically only 4 or 8 bytes, a pointer is only 4 or 8 bytes, so copying a pointer is always fast.
 
 Thus, just like pass by reference, pass by address is fast, and avoids making a copy of the argument object.
 

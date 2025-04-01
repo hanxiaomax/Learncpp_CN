@@ -16,7 +16,7 @@ type: translation
 
 语义错误可能会导致很多[[undefined-behavior|未定义行为]]类似的症状，例如导致程序产生错误的结果、产生古怪的程序行为、破坏数据、导致程序崩溃——或者不产生任何影响。
 
-在编写程序时，我们很难完全避免语义错误。通常情况下，在使用程序时我们就会遇到这些语义错误：例如，在你编写的迷宫游戏中，游戏角色竟然能够穿墙！通过对程序进行测试 ([[9-1-Introduction-to-testing-your-code|7.12 - 代码测试]]) 可以帮助我们发现语义错误。
+在编写程序时，我们很难完全避免语义错误。通常情况下，在使用程序时我们就会遇到这些语义错误：例如，在你编写的迷宫游戏中，游戏角色竟然能够穿墙！通过对程序进行测试 ([[9-1-Introduction-to-testing-your-code|9.1 - 代码测试]]) 可以帮助我们发现语义错误。
 
 不过，除了测试之外，还有一件事可以帮助你——那就是知道哪种类型的语义错误最常见，这样你就可以对这些情况多加注意！
 
@@ -85,7 +85,7 @@ Enter an integer: 5
 
 ## 无限循环
 
-在 [[8-8-Intro-to-loops-and-while-statements|7.7 - 循环和 while 语句]] 中我们介绍了无限循环（死循环），请看这个例子：
+在 [[8-8-Intro-to-loops-and-while-statements|8.8 - 循环和 while 语句]] 中我们介绍了无限循环（死循环），请看这个例子：
 
 ```cpp
 #include <iostream>
@@ -169,7 +169,7 @@ int main()
 
 ## 运算符优先级错误
 
-在 [[6-8-Logical-operators|5.7 - 逻辑运算符]] 中，下面程序存在优先级错误：
+在 [[6-8-Logical-operators|6.8 - 逻辑运算符]] 中，下面程序存在优先级错误：
 
 ```cpp
 #include <iostream>
@@ -220,7 +220,7 @@ int main()
 0.123457
 ```
 
-在 [[6-7-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]] 中，我们讨论了`operator==` 和 `operator !=` 在应对浮点数时，可能会产生由于微小摄入而导致的问题：
+在 [[6-7-Relational-operators-and-floating-point-comparisons|6.7 - 关系运算符和浮点数比较]] 中，我们讨论了`operator==` 和 `operator !=` 在应对浮点数时，可能会产生由于微小摄入而导致的问题：
 
 ```cpp
 #include <iostream>
@@ -270,11 +270,11 @@ int main()
 5 divided by 3 is: 1
 ```
 
-在 [[6-2-Arithmetic-operators|5.2 - 数学运算符]] 中，我们介绍了如何使用 `static_cast` 将整型操作数转换为浮点数，以便可以进行浮点数除法。
+在 [[6-2-Arithmetic-operators|6.2 - 数学运算符]] 中，我们介绍了如何使用 `static_cast` 将整型操作数转换为浮点数，以便可以进行浮点数除法。
 
 ## 意外造成的空语句
 
-在 [[8-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]] 中我们介绍了空语句——空语句不执行任何操作。
+在 [[8-3-Common-if-statement-problems|8.3 - 常见的 if 语句错误]] 中我们介绍了空语句——空语句不执行任何操作。
 
 在下面的程序中，我们只想在得到用户许可的情况下"炸掉这个世界"：
 
@@ -337,7 +337,7 @@ Should we blow up the world again? (y/n): n
 Kaboom!
 ```
 
-悬垂 `else` (参见 [[8-3-Common-if-statement-problems|7.3 - 常见的 if 语句错误]]) 也会导致此类问题。
+悬垂 `else` (参见 [[8-3-Common-if-statement-problems|8.3 - 常见的 if 语句错误]]) 也会导致此类问题。
 
 ## 还有什么？
 

@@ -11,7 +11,7 @@ tags:
 - C++17
 ---
 
-In a function that takes parameters, the caller may be able to pass in arguments that are syntactically valid but semantically meaningless. For example, in the previous lesson ([[9-4-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]), we showed the following sample function:
+In a function that takes parameters, the caller may be able to pass in arguments that are syntactically valid but semantically meaningless. For example, in the previous lesson ([[9-4-Detecting-and-handling-errors|9.4 - 发现错误和处理错误]]), we showed the following sample function:
 
 ```cpp
 void printDivision(int x, int y)
@@ -216,7 +216,7 @@ Prior to C++17, the diagnostic message must be supplied as the second parameter.
 
 -----
 
-在接收参数的函数中，调用者可能会传递语法上有效但语义上无意义的参数。例如，在上一课中（[[9-4-Detecting-and-handling-errors|7.15 - 发现错误和处理错误]]），我们展示了以下示例函数：
+在接收参数的函数中，调用者可能会传递语法上有效但语义上无意义的参数。例如，在上一课中（[[9-4-Detecting-and-handling-errors|9.4 - 发现错误和处理错误]]），我们展示了以下示例函数：
 
 ```cpp
 void printDivision(int x, int y)

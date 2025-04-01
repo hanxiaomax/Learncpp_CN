@@ -55,7 +55,7 @@ std::bitset<8> mybitset {}; // 8 bits in size means room for 8 flags
 
 ## 通过 std::bitset 操作位
 
-在[[5-3-Numeral-systems-decimal-binary-hexadecimal-and-octal|第 4.16 课——数字系统十进制、二进制、十六进制和八进制]]中，我们已经展示了如何使用 std::bitset 打印二进制值。然而，这并不是 std::bitset 能做的唯一有用的事情。
+在[[5-3-Numeral-systems-decimal-binary-hexadecimal-and-octal|5.3 - 数值系统（十进制、二进制、十六进制和八进制）]]中，我们已经展示了如何使用 std::bitset 打印二进制值。然而，这并不是 std::bitset 能做的唯一有用的事情。
 
 std::bitset 提供了 4 个可用于位操作的关键函数：
 
@@ -96,7 +96,7 @@ Bit 4 has value: 0
 ```
 
 > [!tip] "小贴士"
-> 如果您需要复习什么是`0b`前缀或`'`分隔符，请查看[[5-3-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数字系统十进制、二进制、十六进制和八进制]]
+> 如果您需要复习什么是`0b`前缀或`'`分隔符，请查看[[5-3-Numeral-systems-decimal-binary-hexadecimal-and-octal|5.3 - 数值系统（十进制、二进制、十六进制和八进制）]]
 
 ## 如果我们想一次获取或设置多个位怎么办
 std::bitset 并不容易实现这个需求。为了做到这一点，或者如果我们想使用无符号整数位标志而不是 std::bitset，我们需要使用更传统的方法。我们将在接下来的几节课中介绍这些内容。

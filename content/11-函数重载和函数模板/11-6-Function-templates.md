@@ -126,7 +126,7 @@ T max(T x, T y) // this is the function template definition for max<T>
 因为这个函数模板只需要一个模板类型，称为`T`，我们称其为 `max<T>`。
 
 > [!info] "相关内容"
-> 我们会在课程[[11-8-Function-templates-with-multiple-template-types|8.15 - 具有多种类型的函数模板]]中讨论如何创建具有多种模板类型的函数模板。
+> 我们会在课程[[11-8-Function-templates-with-multiple-template-types|11.8 - 具有多种类型的函数模板]]中讨论如何创建具有多种模板类型的函数模板。
 
 搞定！简单到令人难以置信。
 

@@ -82,7 +82,7 @@ cleanup!
 为了帮助我们完成这项工作，C++提供了`std::atexit()` 函数，它允许指定一个函数，该函数将在程序终止时通过 `std::exit()` 自动调用。
 
 > [!info] "相关内容"
-> 我们会在[[20-1-function-pointers|12.1 - 函数指针]]中介绍如何将函数作为参数传递
+> 我们会在[[20-1-function-pointers|20.1 - 函数指针]]中介绍如何将函数作为参数传递
 
 请看下面的例子：
 
@@ -148,7 +148,7 @@ int main()
 }
 ```
 
-我们将在本章后面看到隐式调用`std::abort()` 的情况([[9-6-assert-and-static-assert|7.17 -断言和static_assert]])。
+我们将在本章后面看到隐式调用`std::abort()` 的情况([[9-6-assert-and-static-assert|9.6 - 断言和 static_assert]])。
 
 `std::terminate()` 函数通常与异常一起使用(我们将在后面的章节中讨论异常)。虽然可以显式地调用`std::terminate` ，但在没有处理异常时(以及在其他一些与异常相关的情况下)，更多的情况是隐式地调用它。默认情况下，`std::terminate()`会调用`std:: abort()`。
 

@@ -249,7 +249,7 @@ int main()
 ```
 
 > [!info] "相关内容"
-> 函数模板会在 [[11-6-Function-templates|8.13 - 函数模板]] 中介绍。
+> 函数模板会在 [[11-6-Function-templates|11.6 - 函数模板]] 中介绍。
 	
 
 ## 基于`size_type` 对 `std::array` 进行人工索引

@@ -13,7 +13,7 @@ tags:
 > [!note] "Key Takeaway"
 
 
-在第九章中我们介绍了[[value-category|值类型]]([[12-2-Value-categories-lvalues-and-rvalues|9.2 - 值的分类（左值和右值）]])——值类型是表达式的一个属性，用于确定表达式求值得到值、函数还是对象。我们还介绍了[[lvalue|左值]]和[[rvalue|右值]]，以便展开对[[lvalue-reference|左值引用]]的讨论。
+在第九章中我们介绍了[[value-category|值类型]]([[12-2-Value-categories-lvalues-and-rvalues|12.2 - 值的分类（左值和右值）]])——值类型是表达式的一个属性，用于确定表达式求值得到值、函数还是对象。我们还介绍了[[lvalue|左值]]和[[rvalue|右值]]，以便展开对[[lvalue-reference|左值引用]]的讨论。
 
 如果你对左值和右值感到生疏了，现在正是复习它们的好时机。
 

@@ -77,7 +77,7 @@ int** array { new int*[10] }; // allocate an array of 10 int pointers
 
 ## 二维动态数组
 
-指向指针的指针的另外一个常见用途是分配多维数组(参见 [[17-12-Multidimensional-Arrays|11.5 - 多维数组]] )。
+指向指针的指针的另外一个常见用途是分配多维数组(参见 [[17-12-Multidimensional-Arrays|17.12 - 多维数组]] )。
 
 二维固定数组的声明非常简单：
 
@@ -177,7 +177,7 @@ COPY
 
 就像我们可以使用指针形参来更改传入的底层参数的实际值一样，我们可以将一个指针传递给一个指向函数的指针，然后使用该指针来更改它所指向的指针的值(还不明白吗?)
 
-However, if we want a function to be able to modify what a pointer argument points to, this is generally better done using a reference to a pointer instead. This is covered in lesson [[12-11-Pass-by-address-part-2|9.10 - 按地址传递 Part2]]
+However, if we want a function to be able to modify what a pointer argument points to, this is generally better done using a reference to a pointer instead. This is covered in lesson [[12-11-Pass-by-address-part-2|12.11 - 按地址传递 Part2]]
 
 ## 指针的指针的指针
 

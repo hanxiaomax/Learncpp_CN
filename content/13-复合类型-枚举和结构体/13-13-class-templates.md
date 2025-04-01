@@ -63,7 +63,7 @@ int main()
 ```
 
 > [!info] "相关内容"
-> 我们在[[11-7-Function-template-instantiation|8.14 - 函数模板的实例化]]中介绍了函数模板的实例化。
+> 我们在[[11-7-Function-template-instantiation|11.7 - 函数模板的实例化]]中介绍了函数模板的实例化。
 
 ## 聚合类型也面临类似的问题
 
@@ -142,7 +142,7 @@ int main()
 幸运的是，我们有更好的办法！
 
 > [!info] "作者注"
-> 在继续阅读之前，如果你还不熟悉函数模板、模板类型或者函数模板实例化是如何工作的，推荐复习一下 [[11-6-Function-templates|8.13 - 函数模板]]和[[11-7-Function-template-instantiation|8.14 - 函数模板的实例化]]。
+> 在继续阅读之前，如果你还不熟悉函数模板、模板类型或者函数模板实例化是如何工作的，推荐复习一下 [[11-6-Function-templates|11.6 - 函数模板]]和[[11-7-Function-template-instantiation|11.7 - 函数模板的实例化]]。
 	
 ## 类模板
 

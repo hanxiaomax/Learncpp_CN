@@ -12,7 +12,7 @@ tags:
 > [!note] "Key Takeaway"
 
 
-在上节课中 ([[11-6-Function-templates|8.13 - 函数模板]])，我们介绍了[[function-template|函数模板]]以及如何将普通函数`max()`转换成`max<T>`函数模板：
+在上节课中 ([[11-6-Function-templates|11.6 - 函数模板]])，我们介绍了[[function-template|函数模板]]以及如何将普通函数`max()`转换成`max<T>`函数模板：
 
 ```cpp
 template <typename T>

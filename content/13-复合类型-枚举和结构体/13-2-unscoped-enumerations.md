@@ -15,7 +15,7 @@ tags:
 > - 一个枚举类型的枚举值不能用于另一个枚举类型的对象
 
 
-C++ 中内置了很多有用的基础数据类型和符合类型（分别在[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]和[[12-1-Introduction-to-compound-data-types|9.1 - 复合数据类型]]中进行了介绍）。但是这些内置数据类型并不是总能满足我们的需要。
+C++ 中内置了很多有用的基础数据类型和符合类型（分别在[[4-1-Introduction-to-fundamental-data-types|4.1 - 基础数据类型简介]]和[[12-1-Introduction-to-compound-data-types|12.1 - 复合数据类型]]中进行了介绍）。但是这些内置数据类型并不是总能满足我们的需要。
 
 例如，我们的程序需要追踪一个苹果的颜色是红色、黄色还是绿色。亦或者我们需要描述一件T恤的可选颜色（通过一个颜色列表）。如果只能使用基础类型的话，你会怎么做？
 
@@ -31,7 +31,7 @@ int main()
 }
 ```
 
-但是这么做并不直观，而且我们讨论过为什么使用魔鬼数字是不利的（[[5-1-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]）。我们可以使用符号常量来避免魔鬼数字的问题：
+但是这么做并不直观，而且我们讨论过为什么使用魔鬼数字是不利的（[[5-1-Const-variables-and-symbolic-constants|5.1 - const 变量和符号常量]]）。我们可以使用符号常量来避免魔鬼数字的问题：
 
 ```cpp
 constexpr int red{ 0 };
@@ -84,9 +84,9 @@ Color eyeColor{ 8 }; // 语法正确，但语义错误（8不是一个被定义�
 
 枚举(也称为枚举类型和`enum`) 是一种复合类型。在枚举类型中，每个可能的值都被定义为一个[[symbolic-constants|符号常量]]（称为枚举值）。
 
-因为枚举属于程序定义类型（[[13-1-Introduction-to-program-defined-user-defined-types|10.1 - 程序定义类型简介]]），所以枚举类型在使用前必须先进行定义。
+因为枚举属于程序定义类型（[[13-1-Introduction-to-program-defined-user-defined-types|13.1 - 程序定义类型简介]]），所以枚举类型在使用前必须先进行定义。
 
-C++ 支持两种类型的枚举：[[13-2-unscoped-enumerations|10.2 - 无作用域枚举类型]]和[[13-6-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]
+C++ 支持两种类型的枚举：[[13-2-unscoped-enumerations|13.2 - 无作用域枚举类型]]和[[13-6-scoped-enumerations-enum-classes|13.6 - 限定作用域枚举（枚举类）]]
 
 ## 无作用域枚举类型
 
@@ -462,9 +462,9 @@ int main()
 但这意味着我们现在必须在枚举和枚举值名称前面加上作用域名称。
 
 > [!info] "扩展阅读"
-> 类也能够提供作用域，通常将与类相关的枚举类型直接定义在类内。我们会在[[15-3-nested-types-in-classes|13.17 - 类中的嵌套类型]]中进行详细介绍。
+> 类也能够提供作用域，通常将与类相关的枚举类型直接定义在类内。我们会在[[15-3-nested-types-in-classes|15.3 - 类中的嵌套类型]]中进行详细介绍。
 
-另外一个接近方案是使用[[scoped-enumerations|限定作用域枚举]]会在[[13-6-scoped-enumerations-enum-classes|10.4 - 限定作用域枚举（枚举类）]]中进行介绍。
+另外一个接近方案是使用[[scoped-enumerations|限定作用域枚举]]会在[[13-6-scoped-enumerations-enum-classes|13.6 - 限定作用域枚举（枚举类）]]中进行介绍。
 
 > [!success] "最佳实践"
 > 最好将枚举放在一个命名的作用域中(例如命名空间或类)，这样枚举值就不会污染全局命名空间。

@@ -177,7 +177,7 @@ cannot convert parameter 1 from 'int' to 'std::basic_string
 
 换句话说，它试图将int转换为字符串，但失败了。
 
-将数字转换为字符串最简单的方法是使用`std::ostringstream` 类。`std::ostringstream` 可以接受来自各种来源的输入，包括字符、数字、字符串等…它还能够输出字符串(通过[[extraction-operator|提取运算符]]，或通过`str()` 函数)。有关 `std::ostringstream` 的更多信息，参考 [[28-4-stream-classes-for-strings|23.4 - 用于字符串的 stream 类]]。
+将数字转换为字符串最简单的方法是使用`std::ostringstream` 类。`std::ostringstream` 可以接受来自各种来源的输入，包括字符、数字、字符串等…它还能够输出字符串(通过[[extraction-operator|提取运算符]]，或通过`str()` 函数)。有关 `std::ostringstream` 的更多信息，参考 [[28-4-stream-classes-for-strings|28.4 - 用于字符串的 stream 类]]。
 
 ==从不同类型的输入创建字符串的例子如下：==
 

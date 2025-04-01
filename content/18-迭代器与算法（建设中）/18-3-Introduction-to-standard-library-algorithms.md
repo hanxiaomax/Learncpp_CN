@@ -102,7 +102,7 @@ Could not find 0
 
 有的时候我们需要在容器中查找是否有一个满足某种条件的值（例如字符串中是否包含某个特定的子串），而不是某个具体的值。在这种情况下，`std::find_if` 很好用。
 
-`std::find_if` 函数的工作方式和`std::find`很类似，但是我们不需要传递一个具体的值，而是传递一个[[callable-object|可调用对象]]，例如函数指针（或者[[20-6-introduction-to-lambdas-anonymous-functions|lambda表达式]]）。
+`std::find_if` 函数的工作方式和`std::find`很类似，但是我们不需要传递一个具体的值，而是传递一个[[callable-object|可调用对象]]，例如函数指针（或者[[20-6-introduction-to-lambdas-anonymous-functions|20.6 - lambda表达式简介（匿名函数）]]）。
 当元素被依次遍历时，`std::find_if`会调用函数（通过实参传入的函数），而该函数会返回`true`或`false`。
 
 下面的例子中使用了 `std::find_if` 来查找包含`nut`子串的元素：
@@ -249,7 +249,7 @@ int main()
 
 
 > [!info] "扩展阅读"
-> 这里我们详细介绍一下`std::sort`是如何使用比较函数的。首先，我们需要修改一下[[18-1-Sorting-an-array-using-selection-sort|11.4 - 数组排序之选择排序]]中实现的选择排序算法。
+> 这里我们详细介绍一下`std::sort`是如何使用比较函数的。首先，我们需要修改一下[[18-1-Sorting-an-array-using-selection-sort|18.1 - 数组排序之选择排序]]中实现的选择排序算法。
 > ```cpp
 > #include <iostream>
 > #include <iterator>

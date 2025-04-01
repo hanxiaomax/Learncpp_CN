@@ -12,7 +12,7 @@ tags:
 
 > [!note] "Key Takeaway"
 
-In lesson [[10-6-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换和static_cast]], you learned that C++ allows you to convert one data type to another. The following example shows an int being converted into a double:
+In lesson [[10-6-Explicit-type-conversion-casting-and-static-cast|10.6 - 显式类型转换和static_cast]], you learned that C++ allows you to convert one data type to another. The following example shows an int being converted into a double:
 
 ```cpp
 int n{ 5 };

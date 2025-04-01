@@ -17,7 +17,7 @@ tags:
 > - 列表初始化聚合类型时，按照[[memberwise initialization|成员依次初始化]]进行，此时如果插入新声明的成员到前面，则对应的列表必须移动，而编译器并不会检测到这类问题。
 > - 在向聚合中添加新成员时，最安全的做法是将其添加到定义列表的底部，这样其他成员的初始化式就不需要调整顺序。
 
-在上节课中([[13-7-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。
+在上节课中([[13-7-Introduction-to-structs-members-and-member-selection|13.7 - 结构体、成员和成员选择]])，我们讨论了如何定义、初始化一个结构体以及如何访问其成员。在这节课中，我们会介绍如何初始化一个结构体。
 
 ## 数据成员默认不会被初始化
 
@@ -147,7 +147,7 @@ Employee joe {}; // value-initialize all members
 ```
 
 > [!info] "作者注"
-> 关于默认初始化请参考[[13-9-default-member-initialization|10.7 - 默认成员初始化]]。
+> 关于默认初始化请参考[[13-9-default-member-initialization|13.9 - 默认成员初始化]]。
 
 
 ## const 结构体

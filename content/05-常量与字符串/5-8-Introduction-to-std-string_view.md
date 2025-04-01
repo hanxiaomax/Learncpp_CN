@@ -201,8 +201,8 @@ int main()
 
 
 > [!tip] "小贴士"
-> `sv` 后缀位于命名空间 `std:: literals:: string_view_literals` 中。访问字面量后缀最简单的方法是使用指令 `using namespace std:: literals` 。我们在课程[[7-13-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]中讨论了 `using` 指令。这是 `using` 整个命名空间是可以的例外情况之一。
+> `sv` 后缀位于命名空间 `std:: literals:: string_view_literals` 中。访问字面量后缀最简单的方法是使用指令 `using namespace std:: literals` 。我们在课程[[7-13-Using-declarations-and-using directives|7.13 - using 声明和 using 指令]]中讨论了 `using` 指令。这是 `using` 整个命名空间是可以的例外情况之一。
 
 ## 不要返回 `std:: string_view` 类型的值
 
-从函数返回 `std:: string_view` 类型的值可不是个好主意，我们会在 [[5-9-std-string-view-part-2|11.7 - std:: string_view（第二部分）]]中讨论。目前你只需要记住不要这么做就行。
+从函数返回 `std:: string_view` 类型的值可不是个好主意，我们会在 [[5-9-std-string-view-part-2|5.9 - std::string_view（第二部分）]]中讨论。目前你只需要记住不要这么做就行。

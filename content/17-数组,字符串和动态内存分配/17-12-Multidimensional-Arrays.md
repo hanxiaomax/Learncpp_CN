@@ -105,7 +105,7 @@ for (int row{ 0 }; row < numRows; ++row) // step through the rows in the array
 }
 ```
 
-在 C++11 中，`for-each` 循环也可以用于多维数组，我们会在[[16-8-For-each-loops|11.11 - for-each 循环]]中进行介绍。
+在 C++11 中，`for-each` 循环也可以用于多维数组，我们会在[[16-8-For-each-loops|16.8 - for-each 循环]]中进行介绍。
 
 ## 超过二维的多维数组
 

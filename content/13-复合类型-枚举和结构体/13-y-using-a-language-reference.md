@@ -79,7 +79,7 @@ Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)
 
 ## 案例二：`std::cin.ignore`
 
-在[[9-5-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]]中我们介绍过 `std::cin.ignore`，它可以忽略换行之前的全部内容。这个函数的其中一个形参又长又啰嗦，很难被记住。是什么来着？怎么用来着？让我们查查看。
+在[[9-5-std-cin-and-handling-invalid-input|9.5 - std::in 和输入错误处理]]中我们介绍过 `std::cin.ignore`，它可以忽略换行之前的全部内容。这个函数的其中一个形参又长又啰嗦，很难被记住。是什么来着？怎么用来着？让我们查查看。
 
 在搜索来输入 “std::cin.ignore” ：
 
@@ -108,7 +108,7 @@ Cppreference 的首页是一个[总览页面](https://en.cppreference.com/w/cpp)
 
 ![ignore](https://www.learncpp.com/blog/wp-content/uploads/images/CppTutorial/cppreference/ignore-top-min.png?ezimgfmt=rs:772x250/rscb2/ng:webp/ngcb2)
 
-在页面的顶部有函数签名、函数简介及其两个参数的功能描述。形参后面的`=` 符号表示默认实参(在课程[[11-5-Default-arguments|8.12 -默认参数]]中讨论过)。如果没有为具有默认值的形参提供实参，则使用默认值。
+在页面的顶部有函数签名、函数简介及其两个参数的功能描述。形参后面的`=` 符号表示默认实参(在课程[[11-5-Default-arguments|11.5 - 默认参数]]中讨论过)。如果没有为具有默认值的形参提供实参，则使用默认值。
 
 接下来的无序列表中包含三条内容。可以看到 `std::numeric_limits<std::streamsize>::max()` 在 `std::cin.ignore` 中是由特殊含义的，它可以忽略字符计数检查。也就是说，`std::cin.ignore` 会忽略分隔符前所有的字符，或者直到耗尽需要关注的字符个数。
 

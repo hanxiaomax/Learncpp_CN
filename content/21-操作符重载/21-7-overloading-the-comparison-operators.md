@@ -14,7 +14,7 @@ tags:
 > [!note] "Key Takeaway"
 	
 
-In lesson [[6-7-Relational-operators-and-floating-point-comparisons|5.6 - 关系运算符和浮点数比较]] we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.
+In lesson [[6-7-Relational-operators-and-floating-point-comparisons|6.7 - 关系运算符和浮点数比较]] we discussed the six comparison operators. Overloading these comparison operators is comparatively simple (see what I did there?), as they follow the same patterns as we’ve seen in overloading other operators.
 
 Because the comparison operators are all binary operators that do not modify their left operands, we will make our overloaded comparison operators friend functions.
 

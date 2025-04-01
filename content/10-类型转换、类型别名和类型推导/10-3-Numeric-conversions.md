@@ -30,13 +30,13 @@ tags:
 >		- 整数转浮点数，只要范围ok就可以
 >		- 浮点数转整数，只要范围ok就可以，但是小数部分会丢失
 
-在上一节课 ([[10-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]) 中，我们介绍了[[numeric promotions|数值提升]]，它属于一种类型转换，可以将更窄的数据类型转换为更宽的数据类型(通常是 `int` 或 `double`) 使其可以被更高效地处理。
+在上一节课 ([[10-2-Floating-point-and-integral-promotion|10.2 - 浮点数和整型提升]]) 中，我们介绍了[[numeric promotions|数值提升]]，它属于一种类型转换，可以将更窄的数据类型转换为更宽的数据类型(通常是 `int` 或 `double`) 使其可以被更高效地处理。
 
 C++ 支持另一种类数值类型转换，称为[[numeric-conversions|数值转换(numeric conversions)]]，它涵盖了数值提升规则没有涵盖的其他类型转换。
 
 
 > [!tldr] "关键信息"
-> 任何符合**数值提升**规则（[[10-2-Floating-point-and-integral-promotion|8.2 - 浮点数和整型提升]]）的类型转换，都属于[[numeric promotions|数值提升]]而不是数值转换。
+> 任何符合**数值提升**规则（[[10-2-Floating-point-and-integral-promotion|10.2 - 浮点数和整型提升]]）的类型转换，都属于[[numeric promotions|数值提升]]而不是数值转换。
 
 #### 五种基本的数值转换：
 

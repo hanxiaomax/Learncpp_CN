@@ -11,7 +11,7 @@ tags:
 
 > [!note] "Key Takeaway"
 
-在 [[12-7-Introduction-to-pointers|9.6 - 指针简介]] 中我们介绍了指针，指针是一个保存着其他地址变量的变量。[[function-pointer|函数指针]]也是类似的，只不过它指向的不是变量，而是一个函数！
+在 [[12-7-Introduction-to-pointers|12.7 - 指针简介]] 中我们介绍了指针，指针是一个保存着其他地址变量的变量。[[function-pointer|函数指针]]也是类似的，只不过它指向的不是变量，而是一个函数！
 
 考虑下面函数：
 

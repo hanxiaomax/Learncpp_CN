@@ -50,7 +50,7 @@ There are 4 general strategies that can be used:
 
 If possible, the best strategy is to recover from the error in the same function in which the error occurred, so that the error can be contained and corrected without impacting any code outside the function. There are two options here: retry until successful, or cancel the operation being executed.
 
-If the error has occurred due to something outside of the program’s control, the program can retry until success is achieved. For example, if the program requires an internet connection, and the user has lost their connection, the program may be able to display a warning and then use a loop to periodically recheck for internet connectivity. Alternatively, if the user has entered invalid input, the program can ask the user to try again, and loop until the user is successful at entering valid input. We’ll show examples of handling invalid input and using loops to retry in the next lesson ([[9-5-std-cin-and-handling-invalid-input|7.16 - std::in 和输入错误处理]])。
+If the error has occurred due to something outside of the program’s control, the program can retry until success is achieved. For example, if the program requires an internet connection, and the user has lost their connection, the program may be able to display a warning and then use a loop to periodically recheck for internet connectivity. Alternatively, if the user has entered invalid input, the program can ask the user to try again, and loop until the user is successful at entering valid input. We’ll show examples of handling invalid input and using loops to retry in the next lesson ([[9-5-std-cin-and-handling-invalid-input|9.5 - std::in 和输入错误处理]])。
 
 An alternate strategy is just to ignore the error and/or cancel the operation. For example:
 
@@ -166,7 +166,7 @@ double reciprocal(double x)
 
 COPY
 
-However, if the full range of return values are needed, then using the return value to indicate an error will not be possible (because the caller would not be able to tell whether the return value is a valid value or an error value). In such a case, an `out parameter` (covered in lesson [[12-5-Pass-by-lvalue-reference|9.5 - 传递左值引用]]) might be a viable choice.
+However, if the full range of return values are needed, then using the return value to indicate an error will not be possible (because the caller would not be able to tell whether the return value is a valid value or an error value). In such a case, an `out parameter` (covered in lesson [[12-5-Pass-by-lvalue-reference|12.5 - 传递左值引用]]) might be a viable choice.
 
 ## 致命错误
 

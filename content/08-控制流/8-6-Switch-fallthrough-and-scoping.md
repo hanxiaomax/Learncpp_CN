@@ -13,7 +13,7 @@ tags:
 	
 
 
-本节课继续探索switch语句。在前面的课程中（[[8-5-Switch-statement-basics|7.4 - switch 语句基础]]）我们提到每个分支标签下的语句都应该以`break `或 `return `结尾。
+本节课继续探索switch语句。在前面的课程中（[[8-5-Switch-statement-basics|8.5 - switch 语句基础]]）我们提到每个分支标签下的语句都应该以`break `或 `return `结尾。
 
 在这节课中，我们将探索其中的原因，并讨论一些开关作用域的问题，这些问题有时会绊倒新程序员。
 

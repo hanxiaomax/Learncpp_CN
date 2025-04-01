@@ -66,7 +66,7 @@ std::cout << 3.4; // 3.4 是一个 double 字面量
 后缀是区分大小写的，但是由于小写字母`L`看起来很像 1 ，所以开发者通常喜欢用大写。
 
 > [!info] "相关内容"
-> 我们会在[[5-7-an-introduction-to-std-string|4.17 - std::string 简介]] 和[[5-8-Introduction-to-std-string_view|4.18 - std::string_view 简介]]中讨论字符串字面量的后缀。
+> 我们会在[[5-7-an-introduction-to-std-string|5.7 - std::string 简介]] 和[[5-8-Introduction-to-std-string_view|5.8 - std::string_view 简介]]中讨论字符串字面量的后缀。
 
 
 ## 整型字面量
@@ -133,7 +133,7 @@ std::cout << "Hello," " world!"; // C++ 会链接字符串字面量
 出于某些历史原因，C++ 处理字符串的方式有些特别。目前来讲，你可以使用字符串字面量来作为打印文本或用于初始化 `std::string`。
 
 > [!info] "扩展阅读"
-> C++ 同样也支持 std::string 和 std::string_view 字面量。虽然在很多时候并不需要使用它们，但是在使用类型推断的时候，它们还是挺有用的。类型推断可以发生在使用 `auto`关键字（[[10-8-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]]）或是在类模板参数推断时。
+> C++ 同样也支持 std::string 和 std::string_view 字面量。虽然在很多时候并不需要使用它们，但是在使用类型推断的时候，它们还是挺有用的。类型推断可以发生在使用 `auto`关键字（[[10-8-Type-deduction-for-objects-using-the auto-keyword|10.8 - 使用 auto 关键字进行类型推断]]）或是在类模板参数推断时。
 
 > ```cpp
 > #include <iostream>

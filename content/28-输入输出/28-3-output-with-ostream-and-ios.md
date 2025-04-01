@@ -21,7 +21,7 @@ tags:
 
 [[insertion-operator|插入运算符]]用于向输出流插入数据。C++为所有的内建数据结构都预定义了插入运算符，我们也可以通过[[21-4-overloading-the-IO-operators|重载输入输出运算符]]为自定义的类提供插入运算符。
 
-在[[28-1-Input-and-output-IO-streams|23.1 - 输入输出流]]中我们介绍过， `istream` 和 `ostream` 都是从 `ios` 类派生来的。`ios` (和 `ios_base`) 类的一个功能就是控制输出的格式。
+在[[28-1-Input-and-output-IO-streams|28.1 - 输入输出流]]中我们介绍过， `istream` 和 `ostream` 都是从 `ios` 类派生来的。`ios` (和 `ios_base`) 类的一个功能就是控制输出的格式。
 
 ## 格式化
 

@@ -27,7 +27,7 @@ tags:
 
 ## 堆内存段
 
-堆段(也称为“自由存储区”)跟踪用于动态内存分配的内存。我们已经在 [[19-1-Dynamic-memory-allocation-with-new-and-delete|11.11 - 使用 new 和 delete 进行动态内存分配]] 中介绍了堆，所以这里只是复习一下：
+堆段(也称为“自由存储区”)跟踪用于动态内存分配的内存。我们已经在 [[19-1-Dynamic-memory-allocation-with-new-and-delete|19.1 - 使用 new 和 delete 进行动态内存分配]] 中介绍了堆，所以这里只是复习一下：
 
 在 C++ 中，当你使用 new 分配内存时，该内存就会位于堆段。
 

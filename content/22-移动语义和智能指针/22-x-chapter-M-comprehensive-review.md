@@ -46,6 +46,6 @@ tags:
 - 当多个对象需要访问同一个资源时，可以使用 `std::shared_ptr`。在最后一个`std::shared_ptr`被销毁前，资源不会被销毁。应该使用`std::make_shared()` 来创建 `std::shared_ptr`。
 - 如果需要创建`std::shared_ptr`指向一个相同的资源，则需要使用拷贝语义从 `std::shared_ptr` 创建。
 
-[[22-7-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|M.8 — 智能指针带来的循环依赖问题]]
+[[22-7-circular-dependency-issues-with-std-shared-ptr-and-std-weak-ptr|M.8 - 智能指针带来的循环依赖问题]]
 
 - 当你需要一个或多个对象来观察或获取由`std::shared_pr`管理的资源时，可以使用智能指针 `std::weak_ptr`。但是，和`std::shared_ptr`不同的是，在判断资源是否需要被销毁时，指向它的 `std::weak_ptr` 的个数不会被考虑在内。

@@ -230,7 +230,7 @@ project3.cpp(15): note: see declaration of 'x'
 ```
 
 > [!info] "扩展阅读"
-> 标识符相同但参数不同的函数，被看做是不同的函数。我们会在[[11-1-Introduction-to-function-overloading|8.9 - 函数重载]]中进行介绍。
+> 标识符相同但参数不同的函数，被看做是不同的函数。我们会在[[11-1-Introduction-to-function-overloading|11.1 - 函数重载]]中进行介绍。
 
 声明则是一条语句，它告诉编译器某个标识符是存在的，并提供其类型信息。声明相关的例子如下：
 

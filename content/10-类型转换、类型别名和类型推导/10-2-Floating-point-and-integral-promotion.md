@@ -132,6 +132,6 @@ int main()
 
 ## 不是所有的值保留类型转换都是数值提升
 
-一些[[value-preserving|值保留(value-preserving)]] 的类型转换(例如 `char` 到 `short`、`int` 到 `long` 或者 `int` 到 `double`) 在 C++ 中并不被看做数值提升（它们属于**数值转换**），我们会在[[10-3-Numeric-conversions|8.3 - 数值转换]]中进行介绍)。这是因为这样的转换不能帮助实现将较小类型转换为可以更有效地处理的较大类型的目标。
+一些[[value-preserving|值保留(value-preserving)]] 的类型转换(例如 `char` 到 `short`、`int` 到 `long` 或者 `int` 到 `double`) 在 C++ 中并不被看做数值提升（它们属于**数值转换**），我们会在[[10-3-Numeric-conversions|10.3 - 数值转换]]中进行介绍)。这是因为这样的转换不能帮助实现将较小类型转换为可以更有效地处理的较大类型的目标。
 
-这种区别主要是学术上的。但是，在某些情况下，编译器会倾向于数值提升而不是数值转换。当我们讨论函数重载解析时，我们将看到这样做的不同之处(参见：[[11-3-Function-overload-resolution-and-ambiguous-matches|8.11 - 函数重载解析和匹配歧义]])。
+这种区别主要是学术上的。但是，在某些情况下，编译器会倾向于数值提升而不是数值转换。当我们讨论函数重载解析时，我们将看到这样做的不同之处(参见：[[11-3-Function-overload-resolution-and-ambiguous-matches|11.3 - 函数重载解析和不明确匹配]])。

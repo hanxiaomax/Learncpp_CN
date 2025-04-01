@@ -13,7 +13,7 @@ tags:
 > [!note] "Key Takeaway"
 	
 
-In lesson [[21-2-overloading-the-arithmetic-operators-using-friend-functions|14.2 - 使用友元重载算数运算符]], you learned how to overload the arithmetic operators using friend functions. You also learned you can overload operators as normal functions. Many operators can be overloaded in a different way: as a member function.
+In lesson [[21-2-overloading-the-arithmetic-operators-using-friend-functions|21.2 - 使用友元重载算数运算符]], you learned how to overload the arithmetic operators using friend functions. You also learned you can overload operators as normal functions. Many operators can be overloaded in a different way: as a member function.
 
 Overloading operators using a member function is very similar to overloading operators using a friend function. When overloading an operator using a member function:
 

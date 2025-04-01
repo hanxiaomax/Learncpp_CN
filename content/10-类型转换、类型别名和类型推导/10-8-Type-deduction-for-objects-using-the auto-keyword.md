@@ -28,7 +28,7 @@ double d{ 5.0 };
 但是，既然被用来初始化 `d` 的[[literals|字面量]]`5.0` 已经是 `double` 类型的了，难道再为 d 指定 `double` 不多于吗？
 
 > [!info] "相关内容"
-> 关于字面量的类型，参见[[5-2-Literals|4.15 - 字面量]]。
+> 关于字面量的类型，参见[[5-2-Literals|5.2 - 字面量]]。
 
 如果我们希望一个变量及其初始化式具有相同的类型，那么两次提供了相同的类型信息其实是多余的。
 
@@ -81,7 +81,7 @@ int main()
 虽然对基本数据类型使用类型推断只能少打几个字，但在后续的课程中我们会看到，在某些情况下，类型可能会变得复杂和冗长（或者在某些情况下类型会变得难以确定）在这种情况下，使用 `auto` 可以节省大量的输入(和错别字)。
 
 > [!info] "相关内容"
-> 指针和引用的类型推断有些复杂，我们会在 [[12-14-Type-deduction-with-pointers-references-and-const|9.12 - 指针、引用和 const 的类型推断]] 中进行介绍。
+> 指针和引用的类型推断有些复杂，我们会在 [[12-14-Type-deduction-with-pointers-references-and-const|12.14 - 指针、引用和 const 的类型推断]] 中进行介绍。
 
 ## 类型推断会丢弃 const 修饰符
 
@@ -119,7 +119,7 @@ int main()
 auto s { "Hello, world" }; // s will be type const char*, not std::string
 ```
 
-如果你希望推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀 (参考：[[5-1-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]):
+如果你希望推断出的类型为 `std:: string` 或 `std:: string_view`，你需要使用 `s` 或者 `sv` 字面量后缀 (参考：[[5-1-Const-variables-and-symbolic-constants|5.1 - const 变量和符号常量]]):
 
 ```cpp
 #include <string>
