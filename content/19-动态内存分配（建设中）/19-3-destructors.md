@@ -1,13 +1,17 @@
 ---
 title: 19.3 - 析构函数
-alias: 19.3 - 析构函数
+aliases:
+  - 19.3 - 析构函数
 origin: /destructors/
-origin_title: "13.9 — Destructors"
+origin_title: 13.9 — Destructors
 time: 2022-9-16
 type: translation
 tags:
-- destructors
+  - destructors
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[15-4-introduction-to-destructors|15-4-introduction-to-destructors]]
 
 [[destructor|析构函数]]是另外一种雷叔的类成员函数，它会在对象销毁时自动执行。构造函数函数用于初始化对象，而析构函数则用于对对象进行“清理”。
 

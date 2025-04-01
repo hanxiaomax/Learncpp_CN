@@ -1,15 +1,19 @@
 ---
 title: 13.10 - 结构体传递及其他
-alias: 13.10 - 结构体传递及其他
+aliases:
+  - 13.10 - 结构体传递及其他
 origin: /default-member-initialization/
-origin_title: "10.8 — Struct passing and miscellany"
+origin_title: 10.8 — Struct passing and miscellany
 time: 2022-8-25
 type: translation
 tags:
-- struct
+  - struct
+  - split
 ---
-> [!note] "Key Takeaway"
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[13-11-struct-miscellany|13-11-struct-miscellany]]
 
+> [!note] "Key Takeaway"
 
 假设一个员工由3个松散变量表示：
 

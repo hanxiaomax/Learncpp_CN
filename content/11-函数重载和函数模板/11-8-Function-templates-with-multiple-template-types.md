@@ -1,14 +1,19 @@
 ---
 title: 11.8 - 具有多种类型的函数模板
-alias: 11.8 - 具有多种类型的函数模板
+aliases:
+  - 11.8 - 具有多种类型的函数模板
 origin: /function-templates-with-multiple-template-types/
-origin_title: "8.15 — Function templates with multiple template types"
+origin_title: 8.15 — Function templates with multiple template types
 time: 2021-11-8
 type: translation
 tags:
-- function template
-- C++20
+  - function
+  - template
+  - C++20
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[11-10-using-function-templates-in-multiple-files|11-10-using-function-templates-in-multiple-files]]
 
 > [!note] "Key Takeaway"	
 

@@ -95,7 +95,7 @@
 - [[6-2-Arithmetic-operators|6.2 - 数学运算符]]
 - [[6-3-Modulus-and-Exponentiation|6.3 - 求模和指数运算]]
 - [[6-4-Increment-decrement-operators-and-side-effects|6.4 - 自增自减运算符及其副作用]]
-- [[6-5-Comma-and-conditional-operators|6.5 - 逗号和条件运算符]]
+- [ ] [[6-5-Comma-and-conditional-operators|6.5 - 逗号和条件运算符]]
 - [ ] [[6-6-the-conditional-operator|6-6-the-conditional-operator]]
 - [[6-7-Relational-operators-and-floating-point-comparisons|6.7 - 关系运算符和浮点数比较]]
 - [[6-8-Logical-operators|6.8 - 逻辑运算符]]
@@ -159,7 +159,7 @@
 
 - [[10-1-Implicit-type-conversion-coercion|10.1 - 隐式类型转换]]
 - [[10-2-Floating-point-and-integral-promotion|10.2 - 浮点数和整型提升]]
-- [[10-3-Numeric-conversions|10.3 - 数值转换]]
+- [ ] [[10-3-Numeric-conversions|10.3 - 数值转换]]
 - [ ] [[10-4-narrowing-conversions-list-initialization-and-constexpr-initializers|10-4-narrowing-conversions-list-initialization-and-constexpr-initializers]]
 - [[10-5-Arithmetic-conversions|10.5 - 算术转换]]
 - [[10-6-Explicit-type-conversion-casting-and-static-cast|10.6 - 显式类型转换和static_cast]]
@@ -177,7 +177,7 @@
 - [[11-5-Default-arguments|11.5 - 默认参数]]
 - [[11-6-Function-templates|11.6 - 函数模板]]
 - [[11-7-Function-template-instantiation|11.7 - 函数模板的实例化]]
-- [[11-8-Function-templates-with-multiple-template-types|11.8 - 具有多种类型的函数模板]]
+- [ ] [[11-8-Function-templates-with-multiple-template-types|11.8 - 具有多种类型的函数模板]]
 - [ ] [[11-9-non-type-template-parameters|11-9-non-type-template-parameters]]
 - [ ] [[11-10-using-function-templates-in-multiple-files|11-10-using-function-templates-in-multiple-files]]
 - [ ] [[11-x-chapter-11-summary-and-quiz|11-x-chapter-11-summary-and-quiz]]
@@ -196,7 +196,7 @@
 - [[12-2-Value-categories-lvalues-and-rvalues|12.2 - 值的分类（左值和右值）]]
 - [[12-3-Lvalue-references|12.3 - 左值引用]]
 - [[12-4-Lvalue-references-to-const|12.4 - const类型的左值引用]]
-- [[12-5-Pass-by-lvalue-reference|12.5 - 传递左值引用]]
+- [ ] [[12-5-Pass-by-lvalue-reference|12.5 - 传递左值引用]]
 - [ ] [[12-6-pass-by-const-lvalue-reference|12-6-pass-by-const-lvalue-reference]]
 - [[12-7-Introduction-to-pointers|12.7 - 指针简介]]
 - [[12-8-Null-pointers|12.8 - 空指针]]
@@ -214,14 +214,14 @@
 
 - [[13-1-Introduction-to-program-defined-user-defined-types|13.1 - 程序定义类型简介]]
 - [[13-2-unscoped-enumerations|13.2 - 无作用域枚举类型]]
-- [[13-3-unscoped-enumeration-input-and-output|13.3 - 限定作用域枚举类型的输入输出]]
+- [ ] [[13-3-unscoped-enumeration-input-and-output|13.3 - 限定作用域枚举类型的输入输出]]
 - [ ] [[13-4-converting-an-enumeration-to-and-from-a-string|13-4-converting-an-enumeration-to-and-from-a-string]]
 - [ ] [[13-5-introduction-to-overloading-the-i-o-operators|13-5-introduction-to-overloading-the-i-o-operators]]
 - [[13-6-scoped-enumerations-enum-classes|13.6 - 限定作用域枚举（枚举类）]]
 - [[13-7-Introduction-to-structs-members-and-member-selection|13.7 - 结构体、成员和成员选择]]
 - [[13-8-struct-aggregate-initialization|13.8 - 结构体的聚合初始化]]
 - [[13-9-default-member-initialization|13.9 - 默认成员初始化]]
-- [[13-10-struct-passing-and-miscellany|13.10 - 结构体传递及其他]]
+- [ ] [[13-10-struct-passing-and-miscellany|13.10 - 结构体传递及其他]]
 - [ ] [[13-11-struct-miscellany|13-11-struct-miscellany]]
 - [[13-12-member-selection-with-pointers-and-references|13.12 - 基于指针和引用的成员选择]]
 - [[13-13-class-templates|13.13 - 类模板]]
@@ -233,21 +233,21 @@
 ## 14. 类简介 🚧
 
 - [[14-1-welcome-to-object-oriented-programming|14.1 - 欢迎来到面向对象的世界]]
-- [[14-2-classes-and-class-members|14.2 - 类和类成员]]
+- [ ] [[14-2-classes-and-class-members|14.2 - 类和类成员]]
 - [ ] [[14-3-member-functions|14-3-member-functions]]
 - [[14-4-const-class-objects-and-member-functions|14.4 - const 对象和成员函数]]
 - [[14-5-public-vs-private-access-specifiers|14.5 - 访问修饰符 public 和 private]]
-- [[14-6-access-functions-and-encapsulation|14.6 - 成员访问函数与封装]]
+- [ ] [[14-6-access-functions-and-encapsulation|14.6 - 成员访问函数与封装]]
 - [ ] [[14-7-member-functions-returning-references-to-data-members|14-7-member-functions-returning-references-to-data-members]]
 - [ ] [[14-8-the-benefits-of-data-hiding-encapsulation|14-8-the-benefits-of-data-hiding-encapsulation]]
-- [[14-9-constructors|14.9 - 构造函数]]
-- [[14-10-constructor-member-initializer-lists|14.10 - 构造函数成员初始化值列表]]
+- [ ] [[14-9-constructors|14.9 - 构造函数]]
+- [ ] [[14-10-constructor-member-initializer-lists|14.10 - 构造函数成员初始化值列表]]
 - [ ] [[14-11-default-constructors-and-default-arguments|14-11-default-constructors-and-default-arguments]]
 - [[14-12-overlapping-and-delegating-constructors|14.12 - 重叠和委托构造函数]]
 - [[14-13-anonymous-objects|14.13 - 匿名对象]]
 - [[14-14-the-copy-constructor|14.14 - 拷贝构造函数]]
 - [[14-15-copy-initialization|14.15 - 拷贝初始化]]
-- [[14-16-converting-constructors-explicit-and-delete|14.16 - 转换构造函数与explicit和delete关键字]]
+- [ ] [[14-16-converting-constructors-explicit-and-delete|14.16 - 转换构造函数与explicit和delete关键字]]
 - [ ] [[14-17-constexpr-aggregates-and-classes|14-17-constexpr-aggregates-and-classes]]
 - [[14-x-Chapter-14-comprehensive-quiz|14.x - 小结与测试 - 面向对象基础]]
 
@@ -260,7 +260,7 @@
 - [ ] [[15-5-class-templates-with-member-functions|15-5-class-templates-with-member-functions]]
 - [[15-6-static-member-variables|15.6 - 静态成员变量]]
 - [[15-7-static-member-functions|15.7 - 静态成员函数]]
-- [[15-8-friend-functions-and-classes|15.8 - 友元函数和友元类]]
+- [ ] [[15-8-friend-functions-and-classes|15.8 - 友元函数和友元类]]
 - [ ] [[15-9-friend-classes-and-friend-member-functions|15-9-friend-classes-and-friend-member-functions]]
 - [ ] [[15-10-ref-qualifiers|15-10-ref-qualifiers]]
 - [ ] [[15-x-chapter-15-summary-and-quiz|15-x-chapter-15-summary-and-quiz]]
@@ -276,7 +276,7 @@
 - [ ] [[16-7-arrays-loops-and-sign-challenge-solutions|16-7-arrays-loops-and-sign-challenge-solutions]]
 - [[16-8-For-each-loops|16.8 - for-each 循环]]
 - [ ] [[16-9-array-indexing-and-length-using-enumerators|16-9-array-indexing-and-length-using-enumerators]]
-- [[16-10-std-vector-capacity-and-stack-behavior|16.10 - std::vector的容量和类栈行为]]
+- [ ] [[16-10-std-vector-capacity-and-stack-behavior|16.10 - std::vector的容量和类栈行为]]
 - [ ] [[16-11-stdvector-and-stack-behavior|16-11-stdvector-and-stack-behavior]]
 - [ ] [[16-12-stdvector-bool|16-12-stdvector-bool]]
 - [ ] [[16-x-chapter-16-summary-and-quiz|16-x-chapter-16-summary-and-quiz]]
@@ -305,11 +305,11 @@
 - [[18-3-Introduction-to-standard-library-algorithms|18.3 — 标准库算法简介]]
 - [[18-4-timing-your-code|18.4 - 对程序进行计时]]
 
-## 19. 动态内存分配
+## 19. 动态内存分配 🚧
 
 - [[19-1-Dynamic-memory-allocation-with-new-and-delete|19.1 - 使用 new 和 delete 进行动态内存分配]]
 - [[19-2-Dynamically-allocating-arrays|19.2 - 动态分配数组]]
-- [[19-3-destructors|19.3 - 析构函数]]
+- [ ] [[19-3-destructors|19.3 - 析构函数]]
 - [[19-4-Pointers-to-pointers-and-dynamic-multidimensional-arrays|19.4 — 指向指针的指针和多维数组]]
 - [[19-5-Void-pointers|19.5 - void 指针]]
 
@@ -424,7 +424,6 @@
 - [[28-5-stream-states-and-input-validation|28.5 - 流状态和输入验证]]
 - [[28-6-basic-file-IO|28.6 - 基本文件输入输出]]
 - [[28-7-random-file-IO|28.7 - 随机文件输入输出]]
-
 
 ## A. 其他话题  
 

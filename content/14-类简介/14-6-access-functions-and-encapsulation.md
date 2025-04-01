@@ -1,16 +1,19 @@
 ---
 title: 14.6 - 成员访问函数与封装
-alias: 14.6 - 成员访问函数与封装
+aliases:
+  - 14.6 - 成员访问函数与封装
 origin: /access-functions-and-encapsulation/
-origin_title: "13.4 — Access functions and encapsulation"
+origin_title: 13.4 — Access functions and encapsulation
 time: 2022-9-16
 type: translation
 tags:
-- encapsulation
+  - encapsulation
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[14-8-the-benefits-of-data-hiding-encapsulation|14-8-the-benefits-of-data-hiding-encapsulation]]
 
 > [!note] "Key Takeaway"
-
 
 ## 为什么要定义私有成员变量
 

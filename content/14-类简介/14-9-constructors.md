@@ -1,14 +1,17 @@
 ---
 title: 14.9 - 构造函数
-alias: 14.9 - 构造函数
+aliases:
+  - 14.9 - 构造函数
 origin: /constructors/
-origin_title: "13.5 — Constructors"
+origin_title: 13.5 — Constructors
 time: 2022-9-16
 type: translation
 tags:
-- constructors
+  - constructors
+  - split
 ---
-
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[14-11-default-constructors-and-default-arguments|14-11-default-constructors-and-default-arguments]]
 
 如果一个类或者结构体的成员都是[[public-member|公有成员]]，则可以使用[[aggregate-initialization|聚合初始化]]，通过[[list-initialization|列表初始化]]对类进行初始化：
 

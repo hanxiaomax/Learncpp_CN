@@ -1,13 +1,17 @@
 ---
 title: 14.2 - 类和类成员
-alias: 14.2 - 类和类成员
+aliases:
+  - 14.2 - 类和类成员
 origin: /classes-and-class-members/
-origin_title: "13.2 — Classes and class members"
+origin_title: 13.2 — Classes and class members
 time: 2022-9-16
 type: translation
 tags:
-- class
+  - class
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[14-3-member-functions|14-3-member-functions]]
 
 > [!note] "Key Takeaway"
 

@@ -1,15 +1,20 @@
 ---
 title: 10.3 - 数值转换
-alias: 10.3 - 数值转换
+aliases:
+  - 10.3 - 数值转换
 origin: /none/
-origin_title: "8.3 — Numeric conversions"
+origin_title: 8.3 — Numeric conversions
 time: 2022-3-17
 type: translation
 tags:
-- numeric conversions
-- conversions
-- static_cast
+  - numeric
+  - conversions
+  - conversions
+  - static_cast
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[10-4-narrowing-conversions-list-initialization-and-constexpr-initializers|10-4-narrowing-conversions-list-initialization-and-constexpr-initializers]]
 
 > [!note] "Key Takeaway"
 > - 符合数值提升规则的类型转换是首先是数值提升，不是数值转换

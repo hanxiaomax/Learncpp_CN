@@ -1,14 +1,18 @@
 ---
 title: 15.8 - 友元函数和友元类
-alias: 15.8 - 友元函数和友元类
+aliases:
+  - 15.8 - 友元函数和友元类
 origin: /friend-functions-and-classes/
-origin_title: "13.15 — Friend functions and classes"
+origin_title: 13.15 — Friend functions and classes
 time: 2022-9-16
 type: translation
 tags:
-- class
-- friend
+  - class
+  - friend
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[15-9-friend-classes-and-friend-member-functions|15-9-friend-classes-and-friend-member-functions]]
 
 本章中很大部分篇幅中我们都在强调封装（数据私有）的重要性。不过，有时候我们也会发现，有些类和函数会和其他其他外部类密切配合工作。例如，有一个类负责存放数据，而另外一个函数（或另外一个类）用于将数据打印到屏幕上。尽管存储类和显示代码出于便于维护的目的而被分割开来，但是显示代码实际上非常紧密地依靠着存储类。这样一来，将存储类的细节对显示代码隐藏起来并无太多帮助。
 

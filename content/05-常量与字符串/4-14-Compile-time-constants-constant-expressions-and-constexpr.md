@@ -1,16 +1,21 @@
 ---
 title: 4.14 - 编译时常量、常量表达式和 constexpr
-alias: 4.14 - 编译时常量、常量表达式和 constexpr
+aliases:
+  - 4.14 - 编译时常量、常量表达式和 constexpr
 origin: /compile-time-constants-constant-expressions-and-constexpr/
-origin_title: "4.14 — Compile-time constants, constant expressions, and constexpr"
+origin_title: 4.14 — Compile-time constants, constant expressions, and constexpr
 time: 2022-1-2
 type: translation
 tags:
-- const
-- constexpr
+  - const
+  - constexpr
+  - split
 ---
 
-
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[5-4-the-as-if-rule-and-compile-time-optimization|5-4-the-as-if-rule-and-compile-time-optimization]]
+> - [[5-5-constant-expressions|5-5-constant-expressions]]
+> - [[5-6-constexpr-variables|5-6-constexpr-variables]]
 
 考虑下面的函数：
 

@@ -1,15 +1,20 @@
 ---
 title: 14.16 - 转换构造函数与explicit和delete关键字
-alias: 14.16 - 转换构造函数与explicit和delete关键字
+aliases:
+  - 14.16 - 转换构造函数与explicit和delete关键字
 origin: /converting-constructors-explicit-and-delete/
-origin_title: "14.14 — Converting constructors, explicit, and delete"
+origin_title: 14.14 — Converting constructors, explicit, and delete
 time: 2022-7-27
 type: translation
 tags:
-- converting constructors
-- explicit
-- delete
+  - converting
+  - constructors
+  - explicit
+  - delete
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[11-4-deleting-functions|11-4-deleting-functions]]
 
 > [!note] "Key Takeaway"
 

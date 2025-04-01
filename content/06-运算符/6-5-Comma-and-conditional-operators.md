@@ -1,13 +1,17 @@
 ---
 title: 6.5 - 逗号和条件运算符
-alias: 6.5 - 逗号和条件运算符
+aliases:
+  - 6.5 - 逗号和条件运算符
 origin: /comma-and-conditional-operators/
-origin_title: "5.5 — Comma and conditional operators"
+origin_title: 5.5 — Comma and conditional operators
 time: 2021-12-15
 type: translation
 tags:
-- operator
+  - operator
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[6-6-the-conditional-operator|6-6-the-conditional-operator]]
 
 
 > [!note] "Key Takeaway"

@@ -1,14 +1,18 @@
 ---
 title: 14.10 - 构造函数成员初始化值列表
-alias: 14.10 - 构造函数成员初始化值列表
+aliases:
+  - 14.10 - 构造函数成员初始化值列表
 origin: /constructor-member-initializer-lists/
-origin_title: "13.6 — Constructor member initializer lists"
+origin_title: 13.6 — Constructor member initializer lists
 time: 2022-9-16
 type: translation
 tags:
-- constructors
-- initialization
+  - constructors
+  - initialization
+  - merge
 ---
+> [!NOTE] Merge：此文章将合并以下文章内容：
+> - [[13-7-non-static-member-initialization|13.7 - 非静态成员初始化]]
 
 在上一节课中，为了简化问题，我们在构造函数中使用赋值运算符对成员变量进行初始化。例如：
 

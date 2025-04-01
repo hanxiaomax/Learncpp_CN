@@ -1,14 +1,20 @@
 ---
 title: 13.3 - 限定作用域枚举类型的输入输出
-alias: 13.3 - 限定作用域枚举类型的输入输出
+aliases:
+  - 13.3 - 限定作用域枚举类型的输入输出
 origin: /unscoped-enumeration-input-and-output/
-origin_title: "10.3 — Unscoped enumeration input and output"
+origin_title: 10.3 — Unscoped enumeration input and output
 time: 2022-8-25
 type: translation
 tags:
-- enum 
-- unscoped enumerations
+  - enum
+  - unscoped
+  - enumerations
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[13-4-converting-an-enumeration-to-and-from-a-string|13-4-converting-an-enumeration-to-and-from-a-string]]
+> - [[13-5-introduction-to-overloading-the-i-o-operators|13-5-introduction-to-overloading-the-i-o-operators]]
 
 > [!note] "Key Takeaway"
 > 

@@ -1,14 +1,18 @@
 ---
 title: 16.10 - std::vector的容量和类栈行为
-alias: 16.10 - std::vector的容量和类栈行为
+aliases:
+  - 16.10 - std::vector的容量和类栈行为
 origin: /stdvector-capacity-and-stack-behavior/
-origin_title: "12.3 — std::vector capacity and stack behavior"
+origin_title: 12.3 — std::vector capacity and stack behavior
 time: 2022-9-22
 type: translation
 tags:
-- vector
-- stack
+  - vector
+  - stack
+  - split
 ---
+> [!NOTE] Split：此文章内容会被分拆至以下文章：
+> - [[16-11-stdvector-and-stack-behavior|16-11-stdvector-and-stack-behavior]]
 
 > [!note] "Key Takeaway"
 
