@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.9 — Configuring your compiler: Build configurations
+> [!note] "Key Takeaway"
+
+# 0.9 — Configuring your compiler: Build configurations
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

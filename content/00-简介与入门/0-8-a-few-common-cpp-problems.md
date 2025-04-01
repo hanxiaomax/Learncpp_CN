@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.8 — A few common C++ problems
+> [!note] "Key Takeaway"
+
+# 0.8 — A few common C++ problems
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

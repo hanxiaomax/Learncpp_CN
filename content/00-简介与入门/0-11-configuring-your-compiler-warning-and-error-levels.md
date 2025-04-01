@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.11 — Configuring your compiler: Warning and error levels
+> [!note] "Key Takeaway"
+
+# 0.11 — Configuring your compiler: Warning and error levels
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

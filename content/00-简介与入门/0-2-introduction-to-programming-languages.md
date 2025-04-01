@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.2 — Introduction to programs and programming languages
+> [!note] "Key Takeaway"
+
+# 0.2 — Introduction to programs and programming languages
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

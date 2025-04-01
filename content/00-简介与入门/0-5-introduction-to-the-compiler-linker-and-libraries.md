@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.5 — Introduction to the compiler, linker, and libraries
+> [!note] "Key Takeaway"
+
+# 0.5 — Introduction to the compiler, linker, and libraries
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

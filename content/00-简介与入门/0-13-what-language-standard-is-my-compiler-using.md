@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.13 — What language standard is my compiler using?
+> [!note] "Key Takeaway"
+
+# 0.13 — What language standard is my compiler using?
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

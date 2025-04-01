@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.3 — Introduction to C/C++
+> [!note] "Key Takeaway"
+
+# 0.3 — Introduction to C/C++
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

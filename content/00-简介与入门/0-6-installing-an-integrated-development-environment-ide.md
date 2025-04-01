@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.6 — Installing an Integrated Development Environment (IDE)
+> [!note] "Key Takeaway"
+
+# 0.6 — Installing an Integrated Development Environment (IDE)
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

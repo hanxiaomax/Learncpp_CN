@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.10 — Configuring your compiler: Compiler extensions
+> [!note] "Key Takeaway"
+
+# 0.10 — Configuring your compiler: Compiler extensions
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.12 — Configuring your compiler: Choosing a language standard
+> [!note] "Key Takeaway"
+
+# 0.12 — Configuring your compiler: Choosing a language standard
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 

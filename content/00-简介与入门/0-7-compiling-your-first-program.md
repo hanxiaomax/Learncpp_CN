@@ -8,7 +8,9 @@ type: translation-under-construction
 tags:
 ---
 
-> [!note] "Key Takeaway"# 0.7 — Compiling your first program
+> [!note] "Key Takeaway"
+
+# 0.7 — Compiling your first program
 
 [*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
 
