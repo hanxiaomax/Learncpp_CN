@@ -12,7 +12,7 @@ tags:
 
 ## String 赋值
 
-为字符串赋值的最简单的方法是使用[[14-15-overloading-the-assignment-operator|重载赋值运算符]] ，此外，`assign()`函数也提供了类似的功能。
+为字符串赋值的最简单的方法是使用[[21-12-overloading-the-assignment-operator|重载赋值运算符]] ，此外，`assign()`函数也提供了类似的功能。
 
 **`string& string::operator= (const string& str)`**  
 **`string& string::assign (const string& str)`**  

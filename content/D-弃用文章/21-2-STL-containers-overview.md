@@ -13,7 +13,7 @@ tags:
 
 
 
-STL库中最有用的功能要算是STL容器类了。如果你需要快速复习一下什么是容器类，请参考 [[16-6-container-classes|16.6 - 容器类]]。
+STL库中最有用的功能要算是STL容器类了。如果你需要快速复习一下什么是容器类，请参考 [[23-6-container-classes|16.6 - 容器类]]。
 
 STL 提供了很多不同场合使用的[[container-class|容器类]]。通常，这些容器类可以分为三个大类：[[Sequence-containers|顺序容器]]，[[Associative-containers|关联容器]] 和[[container-adapter|容器适配器]] 。
 

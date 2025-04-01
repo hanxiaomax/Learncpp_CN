@@ -14,7 +14,7 @@ tags:
 
 ## 访问字符
 
-访问字符也有两个极其类似的方法。最简单也是最块的方法是使用[[14-9-overloading-the-subscript-operator|重载下标运算符]]：
+访问字符也有两个极其类似的方法。最简单也是最块的方法是使用[[21-9-overloading-the-subscript-operator|重载下标运算符]]：
 
 **`char& string::operator[] (size_type nIndex)`**  
 **`const char& string::operator[] (size_type nIndex) const`**

@@ -54,7 +54,7 @@ constexpr std::uint8_t mask7{ 0b1000'0000 }; // represents bit 7
 
 相关内容
 
-我们在[[4-15-Literals|4.15-字面量]]中讨论了十六进制。
+我们在[[5-2-Literals|4.15-字面量]]中讨论了十六进制。
 
 十六进制转二进制的方法如下：
 

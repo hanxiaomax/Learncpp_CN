@@ -17,12 +17,12 @@ type: translation
 
 这里是C++14添加的主要改进的列表。请注意，这个列表不是全面的，而是旨在突出一些感兴趣的关键改进。
 
--   聚合成员初始化([[10-5-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])
--   二进制字面量 ([[4-15-Literals|4.15 - 字面量]])
+-   聚合成员初始化([[13-7-Introduction-to-structs-members-and-member-selection|10.5 - 结构体、成员和成员选择]])
+-   二进制字面量 ([[5-2-Literals|4.15 - 字面量]])
 -   `[[deprecated]]` 属性 (*暂无教程*)
--   数字分隔符 ([[4-15-Literals|4.15 - 字面量]])
--   函数返回值类型推断([[8-7-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]])
--   泛型 lambdas ([[12-7-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介（匿名函数）]])
--   Relaxed constexpr functions ([[6-14-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]])
+-   数字分隔符 ([[5-2-Literals|4.15 - 字面量]])
+-   函数返回值类型推断([[10-8-Type-deduction-for-objects-using-the auto-keyword|8.7 - 使用 auto 关键字进行类型推断]])
+-   泛型 lambdas ([[20-6-introduction-to-lambdas-anonymous-functions|12.7 - lambda表达式简介（匿名函数）]])
+-   Relaxed constexpr functions ([[F-1-Constexpr-and-consteval-functions|6.14 - Constexpr 和 consteval 函数]])
 -   变量模板 (*暂无教程*)
--   `std::make_unique` ([[M-6-std-unique-ptr|M.6 — std::unique_ptr]])
+-   `std::make_unique` ([[22-5-std-unique-ptr|M.6 — std::unique_ptr]])

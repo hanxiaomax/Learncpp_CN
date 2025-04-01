@@ -64,7 +64,7 @@ tags:
 
 - 尖括号在 C++ 中通常用来表示参数化类型。在 `static_cast` 中，尖括号的内容指定了目标类型。(例如 `static_cast<int>(x)`会把 `x` 转换为 `int`)。
 
-[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]  
+[[5-1-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]  
 
 - 常量指的是值不会改变的变量。C++ 支持两种常量：字面量常量和符号常量
 - [[symbolic-constants|符号常量]]指的是给与常量的名字。常量是符号变量的一种，使用替换文本的类对象宏也是符号常量；
@@ -74,17 +74,17 @@ tags:
 
 - [[constant expression|常量表达式]]是一个可以在编译时求值的表达式。**编译时常量**是其值在编译时已知的常量。**运行时常量**是在运行时之前不知道其初始化值的常量。constexprvariable必须是编译时常量。
 
-[[4-15-Literals|4.15 - 字面量]]  
+[[5-2-Literals|4.15 - 字面量]]  
 
 - [[literals|字面量]]是直接嵌入到代码中的常量。字面量是有类型的，而字面量后缀可以用来修改字面量的默认类型。
 - 魔鬼数字指的是含义不明确或是稍后会被修改的字面量（通常是数字），不要在代码中使用魔术数字，应该用符号常量代替它。
 
-[[4-16-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数值系统（十进制、二进制、十六进制和八进制）]]
+[[5-3-Numeral-systems-decimal-binary-hexadecimal-and-octal|4.16 - 数值系统（十进制、二进制、十六进制和八进制）]]
 
 - 在日常生活中，我们使用十进制数，它有10位数字。计算机使用二进制，它只有2位数字。C++还支持八进制(以8为基数)和十六进制(以16为基数)。这些都是数字系统的例子，是用来表示数字的符号(数字)的集合。
 
-[[4-17-an-introduction-to-std-string|4.17 - std::string 简介]]  
-[[4-18-Introduction-to-std-string_view|4.18 - std::string_view 简介]]  
+[[5-7-an-introduction-to-std-string|4.17 - std::string 简介]]  
+[[5-8-Introduction-to-std-string_view|4.18 - std::string_view 简介]]  
 
 - 字符串是用于表示文本(如名称、单词和句子)的顺序字符的集合。字符串字面值总是放在双引号之间。C++中的字符串字面量是C风格的字符串，它的类型比较奇怪，很难处理。
 - **std::string**提供了简便、安全的处理字符串的方式。字符串字面量总是放在双引号中。使用 `std::string` 需要包含 `<string>` 头文件；
