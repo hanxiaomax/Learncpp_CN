@@ -1,6 +1,6 @@
 ---
-title: M.5 - std::move_if_noexcept
-alias: M.5 - std::move_if_noexcept
+title: 27.10 - std::move_if_noexcept
+alias: 27.10 - std::move_if_noexcept
 origin: /stdmove_if_noexcept/
 origin_title: "M.5 — std::move_if_noexcept"
 time: 2022-8-23

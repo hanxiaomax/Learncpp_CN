@@ -1,5 +1,5 @@
 ---
-title: 11.14 — void 指针
+title: 19.5 — void 指针
 alias: 19.5 - void 指针
 origin: /void-pointers/
 origin_title: ""

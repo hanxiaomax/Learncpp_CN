@@ -1,6 +1,6 @@
 ---
-title: 11.15 — 指向指针的指针和多维数组
-alias: 11.15 — 指向指针的指针和多维数组
+title: 19.4 — 指向指针的指针和多维数组
+alias: 19.4 — 指向指针的指针和多维数组
 origin: /pointers-to-pointers/
 origin_title: "11.15 — Pointers to pointers and dynamic multidimensional arrays"
 time: 2022-10-15

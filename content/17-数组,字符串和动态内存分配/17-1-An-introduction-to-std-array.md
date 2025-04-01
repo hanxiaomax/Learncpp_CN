@@ -1,6 +1,6 @@
 ---
-title: 11.16 — 固定数组 std::array 简介
-alias: 11.16 — 固定数组 std::array 简介
+title: 17.1 — 固定数组 std::array 简介
+alias: 17.1 — 固定数组 std::array 简介
 origin: /an-introduction-to-stdarray/
 origin_title: "11.16 — An introduction to std::array"
 time: 2022-9-15

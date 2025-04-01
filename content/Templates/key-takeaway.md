@@ -1,2 +1,1 @@
-??? note "Key Takeaway"
-	- 
+> [!note] "Key Takeaway"

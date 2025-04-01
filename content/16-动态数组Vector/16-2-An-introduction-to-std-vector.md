@@ -1,6 +1,6 @@
 ---
-title: 11.17 — 动态数组 std::vector 简介
-alias: 11.17 — 动态数组 std::vector 简介
+title: 16.2 — 动态数组 std::vector 简介
+alias: 16.2 — 动态数组 std::vector 简介
 origin: /an-introduction-to-stdvector/
 origin_title: "11.17 — An introduction to std::vector"
 time: 2022-4-8

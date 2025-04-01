@@ -1,6 +1,6 @@
 ---
 title: 5-5-constant-expressions
-aliases: 
+aliases: 5-5-constant-expressions
 origin: 
 origin_title: 5-5-constant-expressions
 time: 2025-04-01 

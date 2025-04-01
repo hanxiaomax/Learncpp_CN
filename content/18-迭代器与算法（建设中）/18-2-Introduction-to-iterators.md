@@ -1,6 +1,6 @@
 ---
-title: 11.18 — 迭代器简介
-alias: 11.18 — 迭代器简介
+title: 18.2 — 迭代器简介
+alias: 18.2 — 迭代器简介
 origin: /introduction-to-iterators/
 origin_title: "11.18 — Introduction to iterators"
 time: 2022-9-15

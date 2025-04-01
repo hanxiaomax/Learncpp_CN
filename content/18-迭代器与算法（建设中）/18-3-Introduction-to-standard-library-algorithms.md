@@ -1,6 +1,6 @@
 ---
-title: 11.19 — 标准库算法简介
-alias: 11.19 — 标准库算法简介
+title: 18.3 — 标准库算法简介
+alias: 18.3 — 标准库算法简介
 origin: /introduction-to-standard-library-algorithms/
 origin_title: "11.19 — Introduction to standard library algorithms"
 time: 2022-10-15

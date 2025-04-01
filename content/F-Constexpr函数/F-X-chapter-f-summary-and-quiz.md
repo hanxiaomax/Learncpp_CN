@@ -1,6 +1,6 @@
 ---
-title: F-5-chapter-f-summary-and-quiz
-aliases: F-5-chapter-f-summary-and-quiz
+title: F.X-chapter-f-summary-and-quiz
+aliases: F.X-chapter-f-summary-and-quiz
 origin: 
 origin_title: F-5-chapter-f-summary-and-quiz
 time: 2025-04-01 
