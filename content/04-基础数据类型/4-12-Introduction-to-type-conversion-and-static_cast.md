@@ -104,7 +104,7 @@ int main()
 
 
 > [!info] "相关内容"
-> 隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[8-1-Implicit-type-conversion-coercion|8.1 - 隐式类型转换]]）。
+> 隐式类型转换是一个内容非常丰富的话题，我们会在后续的课程中对其进行深入解析（[[10-1-Implicit-type-conversion-coercion|10.1 - 隐式类型转换]]）。
 
 ## 使用 static_cast 运算符进行显式类型转换
 
@@ -145,7 +145,7 @@ int main()
 在上面的例子中，因为我们显式地要求将 `double` 类型的值 5.5 转换为 `int` 类型值，所以编译器不会产生告警信息（无需关闭 “将警告当做错误处理” 功能）。
 
 > [!info] "相关内容"
-> C++ 还支持其他类型的转换。我们会在[[8-5-Explicit-type-conversion-casting-and-static-cast|8.5 - 显式类型转换]]中进行详细介绍
+> C++ 还支持其他类型的转换。我们会在[[10-6-Explicit-type-conversion-casting-and-static-cast|10.6 - 显式类型转换和static_cast]]中进行详细介绍
 
 ## 使用 static_cast 将 char 转换为 int
 

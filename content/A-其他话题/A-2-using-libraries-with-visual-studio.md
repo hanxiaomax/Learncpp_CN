@@ -27,7 +27,7 @@ type: translation
 
 **步骤1和2——获取和安装库
 
-下载库到本地电脑，参见 [[A-1-static-and-dynamic-libraries|A.1 - 静态库和动态库]] 。
+下载库到本地电脑，参见 [[A-1-static-and-dynamic-libraries|安装和使用库]] 。
 
 **步骤3和4——告诉编译器到哪里查找头文件和库文件**
 

@@ -108,7 +108,7 @@ int main()
 <mark class="hltr-red">对象类型的宏过去也被用来作定义常量（一种开销更小的方式）。随着编译器的发展和语言的更新，此类需求在现如今已经没必要了。对象类型的宏应该仅出现在历史遗留代码中才对。</mark> 
 
 
-我们建议彻底放弃使用此类宏定义，因为有更好的方法可以用。我们会在[[4-13-Const-variables-and-symbolic-constants|4.13 - const 变量和符号常量]]中进行介绍
+我们建议彻底放弃使用此类宏定义，因为有更好的方法可以用。我们会在[[5-1-Const-variables-and-symbolic-constants|5.1 - const 变量和符号常量]]中进行介绍
 
 ## 无替换文本的对象类型宏
 
@@ -313,6 +313,6 @@ int main()
 Not printing!
 ```
 
-尽管 `PRINT` 被定义在了 _main.cpp_ 中，但是它丝毫不会影响  _function.cpp_ （对 `PRINT` 的定义只在 *main.cpp*中有效）。我们会在[[2-12-Header-guards|2.12 - 头文件重复包含保护]]中探讨其影响。
+尽管 `PRINT` 被定义在了 _main.cpp_ 中，但是它丝毫不会影响  _function.cpp_ （对 `PRINT` 的定义只在 *main.cpp*中有效）。我们会在[[2-12-Header-guards|2.12 - 头文件防卫式声明]]中探讨其影响。
 
 

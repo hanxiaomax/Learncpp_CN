@@ -76,7 +76,7 @@ int main()
 
 在文章开始的例子中，函数 `main()` 和两个版本的 `myFcn()` 都定义在全局命名空间中。这个例子中的命名冲突也是因为两个 `myFcn()` 都处于全局命名空间，也就违反了命名空间中标识符必须唯一的规则。
 
-**只有声明和定义语句可以出现在全局命名空间中**。这也就意味着我们可以在全局命名空间中定义变量，尽管通常我们应该避免这么做(我们会在[[6-4-Introduction-to-global-variables|6.4 - 全局变量]]一节中详细介绍全局变量)。也同样也意味着，<mark class="hltr-green">其他类型的语句(例如表达式)不能位于全局命名空间(全局变量的初始化是一个例外)：</mark>
+**只有声明和定义语句可以出现在全局命名空间中**。这也就意味着我们可以在全局命名空间中定义变量，尽管通常我们应该避免这么做(我们会在[[7-4-Introduction-to-global-variables|7.4 - 全局变量]]一节中详细介绍全局变量)。也同样也意味着，<mark class="hltr-green">其他类型的语句(例如表达式)不能位于全局命名空间(全局变量的初始化是一个例外)：</mark>
 
 ```cpp
 #include <iostream> // handled by preprocessor
@@ -182,4 +182,4 @@ int main()
 > 应该在程序或头文件中避免使用 `using` 指令 (例如 `using namespace std;`)，这么做就违背了使用命名空间的初衷。
 
 > [!info] "相关内容"
-> 我们会在 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]]中介绍 `using` 语句以及如何使用它。
+> 我们会在 [[7-13-Using-declarations-and-using directives|7.13 - using 声明和 using 指令]]中介绍 `using` 语句以及如何使用它。

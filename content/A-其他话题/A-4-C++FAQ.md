@@ -41,7 +41,7 @@ int main()
 因此，我们推荐避免使用 `using namespace std` (以及其他 using 语句)。通过它节省的打字时间和可能带来的风险相比是不划算的。
 
 > [!info] "相关内容"
-> 参见 [[6-12-Using-declarations-and-using directives|6.12 - using 声明和 using 指令]] 获取更多信息。
+> 参见 [[7-13-Using-declarations-and-using directives|7.13 - using 声明和 using 指令]] 获取更多信息。
 
 ## 问：为什么使用某些功能时不需要包含头文件？
 

@@ -1,7 +1,7 @@
 
 ## LearnCPP CN
 
-Documents moved to content folder. if you use obsidian, make content your vault.
+Documents moved to content folder. if you use obsidian, set `content` directory as your vault.
 
 ## Run locally with [Quartz 4](https://quartz.jzhao.xyz/)
 
