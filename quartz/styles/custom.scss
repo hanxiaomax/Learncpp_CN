@@ -1,3 +1,371 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+// Import required SCSS modules
+@use "sass:map";
+@use "./variables.scss" as *;
+@use "./syntax.scss";
+@use "./callouts.scss";
+
+
+// Tittle and header font
+@font-face {
+  font-family: "SourceSerif";
+  src: url("/Learncpp_CN/static/fonts/SourceSerif4-Light.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSerifSC";
+  src: url("/Learncpp_CN/static/fonts/NotoSansSC-Light.ttf") format("truetype");
+  font-display: swap;
+}
+
+
+// body font
+@font-face {
+  font-family: "NotoSans";
+  src: url("/Learncpp_CN/static/fonts/NotoSans-Thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSansSC";
+  src: url("/Learncpp_CN/static/fonts/NotoSansSC-Thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+
+//code
+@font-face {
+  font-family: "JetBrainsMono";
+  src: url("/Learncpp_CN/static/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root[saved-theme="dark"],
+:root[saved-theme="light"],
+:root {
+  --titleFont: "SourceSerif","NotoSerifSC" ,sans-serif !important;
+  --headerFont: "SourceSerif" ,"NotoSerifSC", sans-serif !important;
+  --bodyFont: "NotoSans","NotoSansSC", !important;
+  --codeFont: "JetBrainsMono", monospace !important;
+}
+
+
+
+// Base body styles
+body {
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  font-size: 18px;
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light);
+  font-weight: 400;
+}
+
+//more line height for space
+tbody,
+li,
+p {
+  line-height: 2rem;
+}
+
+// Mobile responsive adjustments
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0.2rem;
+  }
+}
+
+// Heading styles
+h1 {
+  font-family: var(--titleFont);
+  color: var(--dark);
+  line-height: 1.7;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: 450;
+  letter-spacing: -0.02em;
+}
+
+// Heading styles
+h2, h3, h4, h5, h6 {
+  font-family: var(--headerFont);
+  color: var(--dark);
+  line-height: 1.4;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: 450;
+  letter-spacing: -0.02em;
+}
+
+// Individual heading styles
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 2em;
+  font-weight: 450;
+  padding-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 1.5em;
+  font-weight: 450;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 450;
+}
+
+// Mobile heading adjustments
+@media (max-width: 768px) {
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+}
+
+// Paragraph styles
+p {
+  margin: 2em 0;
+  text-align: justify;
+  font-weight: 450;
+  color: var(--dark);
+  line-height: 1.8;
+}
+
+// Link styles
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 450;
+
+  &:hover {
+    color: var(--tertiary);
+  }
+
+  // Internal link styles
+  &.internal {
+    text-decoration: none;
+    background: linear-gradient(to right, var(--highlight) 0%, var(--highlight) 100%);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    padding-bottom: 2px;
+    line-height: 1.2rem;
+    font-weight: 400;
+
+    &:has(> img) {
+      background: none;
+      padding: 0;
+    }
+
+    // Tag link styles
+    &.tag-link {
+      background: var(--lightgray);
+      padding: 0.2em 0.8em;
+      border-radius: 20px;
+      font-size: 0.75em;
+      color: var(--darkgray);
+      transition: all 0.2s ease;
+      margin: 0 0.2em;
+      border: 1px solid transparent;
+      line-height: 1.6;
+      display: inline-block;
+
+      &:hover {
+        background: var(--light);
+        color: var(--secondary);
+        border-color: var(--secondary);
+        transform: translateY(-1px);
+      }
+
+      &::before {
+        content: "#";
+        opacity: 0.6;
+        margin-right: 0.2em;
+      }
+    }
+  }
+
+  // External link styles
+  &.external {
+    background: linear-gradient(to right, var(--secondary) 0%, var(--secondary) 100%);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    padding-bottom: 2px;
+    font-weight: 450;
+
+    .external-icon {
+      position: absolute;
+      right: 0;
+      top: 0.1em;
+      height: 0.8em;
+      width: 0.8em;
+      margin: 0;
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+
+      >path {
+        fill: var(--dark);
+      }
+    }
+
+    &:hover {
+      color: var(--secondary);
+      .external-icon {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Blockquote styles
+blockquote {
+  border-left: 2px solid var(--secondary);
+  margin: 2.5em 0;
+  padding: 1em 1.5em;
+  color: var(--darkgray);
+  font-family: var(--titleFont);
+  font-weight: 450;
+}
+
+// Text highlight styles
+.text-highlight {
+  background: linear-gradient(to right, var(--textHighlight) 0%, var(--textHighlight) 100%);
+  background-size: 100% 0.5em;
+  background-repeat: no-repeat;
+  background-position: 0 85%;
+  padding: 0 0.1rem;
+  font-weight: 450;
+}
+
+// Text selection styles
+::selection {
+  background: color-mix(in srgb, var(--light) 70%, rgba(34, 33, 32, 0.395));
+  color: var(--darkgray);
+}
+
+// Code block styles
+pre, code {
+  font-family: var(--codeFont);
+  border-radius: 0;
+  padding: 0.2em 0.4em;
+  font-weight: 450;
+}
+
+pre {
+  padding: 1.5em;
+  overflow-x: auto;
+  margin: 2em 0;
+  border: 1px solid var(--lightgray);
+}
+
+// Table styles
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1em 0;
+  border: 1px solid var(--lightgray);
+
+  th, td {
+    padding: 1em;
+    border-bottom: 1px solid var(--lightgray);
+    color: var(--dark);
+    text-align: left;
+    font-weight: 450;
+  }
+
+  th {
+    font-weight: 450;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-bottom: 2px solid var(--lightgray);
+    white-space: nowrap;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: var(--lightgray);
+  }
+
+  // Responsive table styles
+  @media (max-width: 800px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    th, td {
+      min-width: 120px;
+    }
+  }
+}
+
+// Image styles
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 2.5em auto;
+  border: 1px solid var(--lightgray);
+  display: block;
+}
+
+// Image caption styles
+img + em {
+  display: block;
+  text-align: center;
+  font-size: 1em;
+  color: var(--darkgray);
+  margin-top: 1em;
+  margin-bottom: 2.5em;
+  font-style: normal;
+  font-weight: 450;
+}
+
+.page {
+  max-width: calc(#{map.get($breakpoints, desktop)} + 400px);
+  margin: 0 auto;
+  // padding: 0 2rem;
+
+  & > #quartz-body {
+    & .sidebar {
+      gap: 2rem;
+      top: 0;
+      box-sizing: border-box;
+      padding: $topSpacing 2rem 2rem 2rem;
+      display: flex;
+      height: 100vh;
+      position: sticky;
+      font-size: 1rem;
+      
+
+      @media (min-width: 800px) {
+        transition: opacity 0.3s ease;
+
+        &:not(:focus-within) {
+          opacity: 0.4;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    & .page-footer {
+      margin-top: 4rem;
+    }
+  }
+}
