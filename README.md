@@ -7,5 +7,5 @@ Documents moved to content folder. if you use obsidian, set `content` directory 
 
 ```
 npm i
-npx quartz build --serve
+npm run dev
 ```
