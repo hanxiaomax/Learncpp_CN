@@ -9,11 +9,6 @@ tags:
 ---
 # 27.6 — Rethrowing exceptions
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-February 5, 2017, 2:10 pm PST
-August 15, 2024
-
 Occasionally you may run into a case where you want to catch an exception, but not want to (or have the ability to) fully handle it at the point where you catch it. This is common when you want to log an error, but pass the issue along to the caller to actually handle.
 
 When a function can use a return code, this is simple. Consider the following example:
@@ -261,28 +256,4 @@ If rethrowing an exception is required, this method should be preferred over the
 
 Rule
 
-When rethrowing the same exception, use the throw keyword by itself
-
-\[Next lesson
-
-27.7Function try blocks\](https://www.learncpp.com/cpp-tutorial/function-try-blocks/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.5Exceptions, classes, and inheritance\](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)
-
-*Previous Post*[15.3 — Nested types (member types)](https://www.learncpp.com/cpp-tutorial/nested-types-member-types/)
-
-*Next Post*[27.7 — Function try blocks](https://www.learncpp.com/cpp-tutorial/function-try-blocks/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move
+When rethrowing the same exception, use the throw keyword by itself.

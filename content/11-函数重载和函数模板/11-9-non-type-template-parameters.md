@@ -9,11 +9,6 @@ tags:
 ---
 # 11.9 — Non-type template parameters
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-April 21, 2023, 4:12 pm PDT
-October 20, 2024
-
 In the previous lessons, we discussed how to create function templates that use type template parameters. A type template parameter serves as a placeholder for an actual type that is passed in as a template argument.
 
 While type template parameters are by far the most common type of template parameter used, there is another kind of template parameter worth knowing about: the non-type template parameter.
@@ -320,75 +315,3 @@ int main()
     return 0;
 }
 ```
-
-Quiz time
-
-Question #1
-
-Write a constexpr function template with a non-type template parameter that returns the factorial of the template argument. The following program should fail to compile when it reaches `factorial<-3>()`.
-
-```cpp
-// define your factorial() function template here
-
-int main()
-{
-    static_assert(factorial<0>() == 1);
-    static_assert(factorial<3>() == 6);
-    static_assert(factorial<5>() == 120);
-
-    factorial<-3>(); // should fail to compile
-
-    return 0;
-}
-```
-
-\[Show Solution\](javascript:void(0))
-
-```cpp
-template <int N>
-constexpr int factorial()
-{
-    static_assert(N >= 0);
-
-    int product { 1 };
-    for (int i { 2 }; i <= N; ++i)
-        product *= i;
-
-    return product;
-}
-
-int main()
-{
-    static_assert(factorial<0>() == 1);
-    static_assert(factorial<3>() == 6);
-    static_assert(factorial<5>() == 120);
-
-    factorial<-3>(); // should fail to compile
-
-    return 0;
-}
-```
-
-\[Next lesson
-
-11.10Using function templates in multiple files\](https://www.learncpp.com/cpp-tutorial/using-function-templates-in-multiple-files/)
-[Back to table of contents](/)
-\[Previous lesson
-
-11.8Function templates with multiple template types\](https://www.learncpp.com/cpp-tutorial/function-templates-with-multiple-template-types/)
-
-*Previous Post*[21.y — Chapter 21 project](https://www.learncpp.com/cpp-tutorial/chapter-21-project/)
-
-*Next Post*[10.4 — Narrowing conversions, list initialization, and constexpr initializers](https://www.learncpp.com/cpp-tutorial/narrowing-conversions-list-initialization-and-constexpr-initializers/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -12,11 +12,6 @@ tags:
 
 # 0.7 — Compiling your first program
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 28, 2007, 10:35 pm PDT
-January 21, 2025
-
 Before we can write our first program, we need to learn how to create new programs within our Integrated Development Environment (IDE). In this lesson, we’ll cover how to do that, and you’ll also compile and execute your first program!
 
 Projects
@@ -363,27 +358,3 @@ Conclusion
 Congratulations, you made it through the hardest part of this tutorial (installing the IDE and compiling your first program)!
 
 Don’t worry if you don’t understand what the different lines in the Hello World program do. We’ll examine and explain each line in detail at the start of the next chapter.
-
-\[Next lesson
-
-0.8A few common C++ problems\](https://www.learncpp.com/cpp-tutorial/a-few-common-cpp-problems/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.6Installing an Integrated Development Environment (IDE)\](https://www.learncpp.com/cpp-tutorial/installing-an-integrated-development-environment-ide/)
-
-*Previous Post*[0.6 — Installing an Integrated Development Environment (IDE)](https://www.learncpp.com/cpp-tutorial/installing-an-integrated-development-environment-ide/)
-
-*Next Post*[1.1 — Statements and the structure of a program](https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

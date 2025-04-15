@@ -12,11 +12,6 @@ tags:
 
 # 0.9 — Configuring your compiler: Build configurations
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-February 17, 2015, 2:14 pm PST
-September 5, 2024
-
 A **build configuration** (also called a **build target**) is a collection of project settings that determines how your IDE will build your project. The build configuration typically includes things like what the executable will be named, what directories the IDE will look in for other code and library files, whether to keep or strip out debugging information, how much to have the compiler optimize your program, etc… Generally, you will want to leave these settings at their default values unless you have a specific reason to change something.
 
 When you create a new project in your IDE, most IDEs will set up two different build configurations for you: a release configuration, and a debug configuration.
@@ -89,27 +84,3 @@ This will help prevent making the change to the wrong build configuration, and e
 Tip
 
 Whenever you update your project settings, make the change for all build configurations (unless it’s not appropriate for some reason).
-
-\[Next lesson
-
-0.10Configuring your compiler: Compiler extensions\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-compiler-extensions/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.8A few common C++ problems\](https://www.learncpp.com/cpp-tutorial/a-few-common-cpp-problems/)
-
-*Previous Post*[4.2 — Void](https://www.learncpp.com/cpp-tutorial/void/)
-
-*Next Post*[5.1 — Constant variables (named constants)](https://www.learncpp.com/cpp-tutorial/constant-variables-named-constants/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

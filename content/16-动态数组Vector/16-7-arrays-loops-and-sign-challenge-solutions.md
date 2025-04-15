@@ -9,11 +9,6 @@ tags:
 ---
 # 16.7 — Arrays, loops, and sign challenge solutions
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 2:34 pm PDT
-October 19, 2024
-
 In lesson [4.5 -- Unsigned integers, and why to avoid them](https://www.learncpp.com/cpp-tutorial/unsigned-integers-and-why-to-avoid-them/), we noted how we generally prefer to use signed values to hold quantities, because unsigned values can act in surprising ways. However, in lesson [16.3 -- std::vector and the unsigned length and subscript problem](https://www.learncpp.com/cpp-tutorial/stdvector-and-the-unsigned-length-and-subscript-problem/), we discussed how `std::vector` (and other container classes) uses unsigned integral type `std::size_t` for length and indices.
 
 This can lead to problems such as this one:
@@ -474,27 +469,3 @@ If you’re only using the index variable to traverse the array, then prefer a m
 Best practice
 
 Avoid array indexing with integral values whenever possible.
-
-\[Next lesson
-
-16.8Range-based for loops (for-each)\](https://www.learncpp.com/cpp-tutorial/range-based-for-loops-for-each/)
-[Back to table of contents](/)
-\[Previous lesson
-
-16.6Arrays and loops\](https://www.learncpp.com/cpp-tutorial/arrays-and-loops/)
-
-*Previous Post*[16.3 — std::vector and the unsigned length and subscript problem](https://www.learncpp.com/cpp-tutorial/stdvector-and-the-unsigned-length-and-subscript-problem/)
-
-*Next Post*[16.9 — Array indexing and length using enumerators](https://www.learncpp.com/cpp-tutorial/array-indexing-and-length-using-enumerators/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

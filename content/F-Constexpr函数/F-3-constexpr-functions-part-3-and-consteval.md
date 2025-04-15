@@ -9,11 +9,6 @@ tags:
 ---
 # F.3 — Constexpr functions (part 3) and consteval
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-November 26, 2024, 4:49 pm PST
-March 5, 2025
-
 Forcing a constexpr function to be evaluated at compile-time
 
 There is no way to tell the compiler that a constexpr function should prefer to evaluate at compile-time whenever it can (e.g. in cases where the return value of a constexpr function is used in a non-constant expression).
@@ -183,27 +178,3 @@ For advanced readers
 
 We cover auto return types in lesson [10.9 -- Type deduction for functions](https://www.learncpp.com/cpp-tutorial/type-deduction-for-functions/).\
 We cover abbreviated function templates (auto parameters) in lesson 11.8 -- Function templates with multiple template types [11.8 -- Function templates with multiple template types](https://www.learncpp.com/cpp-tutorial/function-templates-with-multiple-template-types/).
-
-\[Next lesson
-
-F.4Constexpr functions (part 4)\](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-4/)
-[Back to table of contents](/)
-\[Previous lesson
-
-F.2Constexpr functions (part 2)\](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-2/)
-
-*Previous Post*[F.2 — Constexpr functions (part 2)](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-2/)
-
-*Next Post*[F.4 — Constexpr functions (part 4)](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-4/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

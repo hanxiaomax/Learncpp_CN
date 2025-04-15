@@ -7,12 +7,7 @@ time: 2025-04-01
 type: translation-under-construction
 tags:
 ---
-# 16.12 — std::vector<bool>
-
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 2:54 pm PDT
-January 10, 2024
+# 16.12 — std::vector\<bool>
 
 In lesson [O.1 -- Bit flags and bit manipulation via std::bitset](https://www.learncpp.com/cpp-tutorial/bit-flags-and-bit-manipulation-via-stdbitset/), we discussed how `std::bitset` has the capability to compact 8 Boolean values into a byte. Those bits can then be modified via the member functions of `std::bitset`.
 
@@ -97,27 +92,3 @@ Our recommendation is as follows:
 Best practice
 
 Favor `constexpr std::bitset`, `std::vector<char>`, or 3rd party dynamic bitsets over `std::vector<bool>`.
-
-\[Next lesson
-
-16.xChapter 16 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-16-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-16.11std::vector and stack behavior\](https://www.learncpp.com/cpp-tutorial/stdvector-and-stack-behavior/)
-
-*Previous Post*[16.11 — std::vector and stack behavior](https://www.learncpp.com/cpp-tutorial/stdvector-and-stack-behavior/)
-
-*Next Post*[16.x — Chapter 16 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-16-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

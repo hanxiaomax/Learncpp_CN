@@ -12,11 +12,6 @@ tags:
 
 # 0.5 — Introduction to the compiler, linker, and libraries
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 18, 2018, 2:53 pm PDT
-February 23, 2025
-
 Continuing our discussion of this diagram from the previous lesson ([0.4 -- Introduction to C++ development](https://www.learncpp.com/cpp-tutorial/introduction-to-cpp-development/)):
 
 ![The software development process](https://www.learncpp.com/images/CppTutorial/Chapter0/Development-min.png)
@@ -86,27 +81,3 @@ We will discuss how to test and debug your programs in more detail in future cha
 Integrated development environments (IDEs)
 
 Note that steps 3, 4, 5, and 7 all involve software programs that must be installed (editor, compiler, linker, debugger). While you can use separate programs for each of these activities, a software package known as an integrated development environment (IDE) bundles and integrates all of these features together. We’ll discuss IDEs, and install one, in the next section.
-
-\[Next lesson
-
-0.6Installing an Integrated Development Environment (IDE)\](https://www.learncpp.com/cpp-tutorial/installing-an-integrated-development-environment-ide/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.4Introduction to C++ development\](https://www.learncpp.com/cpp-tutorial/introduction-to-cpp-development/)
-
-*Previous Post*[B.3 — Introduction to C++17](https://www.learncpp.com/cpp-tutorial/introduction-to-c17/)
-
-*Next Post*[0.10 — Configuring your compiler: Compiler extensions](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-compiler-extensions/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

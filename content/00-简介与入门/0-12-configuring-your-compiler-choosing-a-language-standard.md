@@ -12,11 +12,6 @@ tags:
 
 # 0.12 — Configuring your compiler: Choosing a language standard
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-November 12, 2019, 6:26 pm PST
-February 27, 2025
-
 With many different versions of C++ available (C++98, C++03, C++11, C++14, C++17, C++20, C++23, etc…) how does your compiler know which one to use? Generally, a compiler will pick a standard to default to. Typically the default is *not* the most recent language standard -- many default to C++14, which is missing many of the latest and greatest features.
 
 If you wish to use a different language standard (and you probably will), you’ll have to configure your IDE/compiler to do so.
@@ -173,27 +168,3 @@ If you attempt to compile a program that should compile but mysteriously won’t
 The CPPReference website tracks compiler support for each feature per language standard. You can find those support tables linked from their [home page](https://en.cppreference.com/w/cpp), top right, under “Compiler Support” (by language standard). For example, you can see which C++23 features are supported [here](https://en.cppreference.com/w/cpp/compiler_support/23).
 
 If a newer version of your compiler supports the problematic feature, you can upgrade your compiler to the latest version and try compiling your program again. If the latest version of your compiler still doesn’t support the feature you are trying to use, you can either try a different compiler that does provide support, or find a solution using a different set of features.
-
-\[Next lesson
-
-0.13What language standard is my compiler using?\](https://www.learncpp.com/cpp-tutorial/what-language-standard-is-my-compiler-using/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.11Configuring your compiler: Warning and error levels\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/)
-
-*Previous Post*[5.8 — Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/)
-
-*Next Post*[18.2 — Introduction to iterators](https://www.learncpp.com/cpp-tutorial/introduction-to-iterators/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

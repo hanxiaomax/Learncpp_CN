@@ -9,11 +9,6 @@ tags:
 ---
 # 27.2 — Basic exception handling
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 4, 2008, 1:29 pm PDT
-January 6, 2025
-
 In the previous lesson on [the need for exceptions](https://www.learncpp.com/cpp-tutorial/151-the-need-for-exceptions/), we talked about how using return codes causes your control flow and error flow to be intermingled, constraining both. Exceptions in C++ are implemented using three keywords that work in conjunction with each other: **throw**, **try**, and **catch**.
 
 Throwing exceptions
@@ -245,27 +240,3 @@ Second, catch blocks may return a value or error code back to the caller.
 Third, a catch block may throw another exception. Because the catch block is outside of the try block, the newly thrown exception in this case is not handled by the preceding try block -- it’s handled by the next enclosing try block.
 
 Fourth, a catch block in main() may be used to catch fatal errors and terminate the program in a clean way.
-
-\[Next lesson
-
-27.3Exceptions, functions, and stack unwinding\](https://www.learncpp.com/cpp-tutorial/exceptions-functions-and-stack-unwinding/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.1The need for exceptions\](https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/)
-
-*Previous Post*[27.1 — The need for exceptions](https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/)
-
-*Next Post*[27.3 — Exceptions, functions, and stack unwinding](https://www.learncpp.com/cpp-tutorial/exceptions-functions-and-stack-unwinding/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

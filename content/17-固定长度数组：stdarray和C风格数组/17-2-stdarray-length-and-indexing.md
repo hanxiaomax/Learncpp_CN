@@ -9,11 +9,6 @@ tags:
 ---
 # 17.2 — std::array length and indexing
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 3:32 pm PDT
-August 15, 2024
-
 In lesson [16.3 -- std::vector and the unsigned length and subscript problem](https://www.learncpp.com/cpp-tutorial/stdvector-and-the-unsigned-length-and-subscript-problem/), we discussed the unfortunate decision to make the standard library container classes use unsigned values for lengths and indices. Because `std::array` is a standard library container class, it is subject to the same issues.
 
 In this lesson, we’ll recap ways to index and get the length of a `std::array`. Because `std::vector` and `std::array` have similar interfaces, this will parallel the what we covered for `std::vector`. But since only `std::array` has full support for constexpr, we’ll focus a little more on that.
@@ -207,57 +202,3 @@ int main()
 Inside the implementation of `std::get()`, there is a static_assert that checks to ensure that the non-type template argument is smaller than the array length. If it isn’t, then the static_assert will halt the compilation process with compilation error.
 
 Since template arguments must be constexpr, `std::get()` can only be called with constexpr indices.
-
-Quiz time
-
-Question #1
-
-Initialize a `std::array` with the following values: ‘h’, ‘e’, ‘l’, ‘l’, ‘o’. Print the length of the array, and then use `operator[]`, `at()` and `std::get()` to print the value of the element with index 1.
-
-The program should print:
-
-```cpp
-The length is 5
-eee
-
-```
-
-\[Show Solution\](javascript:void(0))
-
-```cpp
-#include <array>
-#include <iostream>
-
-int main()
-{
-    constexpr std::array arr { 'h', 'e', 'l', 'l', 'o' };
-    std::cout << "The length is " << std::size(arr) << '\n';
-    std::cout << arr[1] << arr.at(1) << std::get<1>(arr) << '\n';
-
-    return 0;
-}
-```
-
-\[Next lesson
-
-17.3Passing and returning std::array\](https://www.learncpp.com/cpp-tutorial/passing-and-returning-stdarray/)
-[Back to table of contents](/)
-\[Previous lesson
-
-17.1Introduction to std::array\](https://www.learncpp.com/cpp-tutorial/introduction-to-stdarray/)
-
-*Previous Post*[16.x — Chapter 16 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-16-summary-and-quiz/)
-
-*Next Post*[17.3 — Passing and returning std::array](https://www.learncpp.com/cpp-tutorial/passing-and-returning-stdarray/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

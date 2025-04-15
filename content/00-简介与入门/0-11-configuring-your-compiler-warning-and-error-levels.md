@@ -12,11 +12,6 @@ tags:
 
 # 0.11 — Configuring your compiler: Warning and error levels
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 19, 2018, 9:58 am PDT
-March 17, 2025
-
 When you write your programs, the compiler will check to ensure you’ve followed the rules of the C++ language (assuming you’ve turned off compiler extensions, as per lesson [0.10 -- Configuring your compiler: Compiler extensions](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-compiler-extensions/)). If you have done something that definitively violates the rules of the language, then your program is **ill-formed**.
 
 In most cases, when the compiler encounters some kind of issue, it will emit **diagnostic message** (often called a **diagnostic** for short). The C++ standard does not define how diagnostic messages should be categorized, worded, or how those issues should affect the compilation of the program. However, modern compilers have conventionally adopted the following:
@@ -160,27 +155,3 @@ In the `tasks.json` file, add the following flags before “${file}”, one per 
 "-Werror",
 
 ```
-
-\[Next lesson
-
-0.12Configuring your compiler: Choosing a language standard\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.10Configuring your compiler: Compiler extensions\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-compiler-extensions/)
-
-*Previous Post*[0.10 — Configuring your compiler: Compiler extensions](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-compiler-extensions/)
-
-*Next Post*[1.4 — Variable assignment and initialization](https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

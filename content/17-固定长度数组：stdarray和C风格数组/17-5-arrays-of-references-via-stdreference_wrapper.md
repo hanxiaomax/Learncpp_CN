@@ -9,11 +9,6 @@ tags:
 ---
 # 17.5 — Arrays of references via std::reference_wrapper
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 3:50 pm PDT
-October 14, 2023
-
 In the prior lesson, we mentioned that arrays can have elements of any object type. This includes objects with fundamental types (e.g. int) and objects with compound types (e.g. pointer to int).
 
 ```cpp
@@ -131,27 +126,3 @@ Of course, now that we have CTAD in C++17, we can also do this:
 ```
 
 But since `std::ref()` and `std::cref()` are shorter to type, they are still widely used to create `std::reference_wrapper` objects.
-
-\[Next lesson
-
-17.6std::array and enumerations\](https://www.learncpp.com/cpp-tutorial/stdarray-and-enumerations/)
-[Back to table of contents](/)
-\[Previous lesson
-
-17.4std::array of class types, and brace elision\](https://www.learncpp.com/cpp-tutorial/stdarray-of-class-types-and-brace-elision/)
-
-*Previous Post*[17.4 — std::array of class types, and brace elision](https://www.learncpp.com/cpp-tutorial/stdarray-of-class-types-and-brace-elision/)
-
-*Next Post*[17.6 — std::array and enumerations](https://www.learncpp.com/cpp-tutorial/stdarray-and-enumerations/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

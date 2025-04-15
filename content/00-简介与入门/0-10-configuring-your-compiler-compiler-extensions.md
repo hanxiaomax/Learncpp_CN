@@ -12,11 +12,6 @@ tags:
 
 # 0.10 — Configuring your compiler: Compiler extensions
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 19, 2018, 9:57 am PDT
-October 25, 2024
-
 The C++ standard defines rules about how programs should behave in specific circumstances. And in most cases, compilers will follow these rules. However, many compilers implement their own changes to the language, often to enhance compatibility with other versions of the language (e.g. C99), or for historical reasons. These compiler-specific behaviors are called **compiler extensions**.
 
 Writing a program that makes use of a compiler extension allows you to write programs that are incompatible with the C++ standard. Programs using non-standard extensions generally will not compile on other compilers (that don’t support those same extensions), or if they do, they may not run correctly.
@@ -73,27 +68,3 @@ Xcode users can refer to [Rory’s comment](https://www.learncpp.com/cpp-tutoria
 A reminder
 
 These settings are applied on a per-project basis. You need to set them every time you create a new project, or create a template project with those settings once and use that to create new projects.
-
-\[Next lesson
-
-0.11Configuring your compiler: Warning and error levels\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.9Configuring your compiler: Build configurations\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-build-configurations/)
-
-*Previous Post*[0.5 — Introduction to the compiler, linker, and libraries](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/)
-
-*Next Post*[0.11 — Configuring your compiler: Warning and error levels](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

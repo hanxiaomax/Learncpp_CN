@@ -9,11 +9,6 @@ tags:
 ---
 # 15.10 — Ref qualifiers
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 5, 2023, 12:59 pm PDT
-September 25, 2024
-
 Author’s note
 
 This is an optional lesson. We recommend having a light read-through to familiarize yourself with the material, but comprehensive understanding is not required to proceed with future lessons.
@@ -160,27 +155,3 @@ Additionally:
 - The standard library typically does not make use of this feature.
 
 Based on all of the above, we are not recommending the use of ref-qualifiers as a best practice. Instead, we recommend always using the result of an access function immediately and not saving returned references for use later.
-
-\[Next lesson
-
-15.xChapter 15 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-15-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-15.9Friend classes and friend member functions\](https://www.learncpp.com/cpp-tutorial/friend-classes-and-friend-member-functions/)
-
-*Previous Post*[14.7 — Member functions returning references to data members](https://www.learncpp.com/cpp-tutorial/member-functions-returning-references-to-data-members/)
-
-*Next Post*[11.4 — Deleting functions](https://www.learncpp.com/cpp-tutorial/deleting-functions/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

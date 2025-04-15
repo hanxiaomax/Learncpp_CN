@@ -9,11 +9,6 @@ tags:
 ---
 # 27.8 — Exception dangers and downsides
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 26, 2008, 12:27 pm PDT
-October 31, 2024
-
 As with almost everything that has benefits, there are some potential downsides to exceptions as well. This article is not meant to be comprehensive, but just to point out some of the major issues that should be considered when using exceptions (or deciding whether to use them).
 
 **Cleaning up resources**
@@ -152,27 +147,3 @@ Exception handling is best used when all of the following are true:
 As an example, let’s consider the case where you’ve written a function that expects the user to pass in the name of a file on disk. Your function will open this file, read some data, close the file, and pass back some result to the caller. Now, let’s say the user passes in the name of a file that doesn’t exist, or a null string. Is this a good candidate for an exception?
 
 In this case, the first two bullets above are trivially met -- this isn’t something that’s going to happen often, and your function can’t calculate a result when it doesn’t have any data to work with. The function can’t handle the error either -- it’s not the job of the function to re-prompt the user for a new filename, and that might not even be appropriate, depending on how your program is designed. The fourth bullet is the key -- is there a good alternative way to return an error code back to the caller? It depends on the details of your program. If so (e.g. you can return a null pointer, or a status code to indicate failure), that’s probably the better choice. If not, then an exception would be reasonable.
-
-\[Next lesson
-
-27.9Exception specifications and noexcept\](https://www.learncpp.com/cpp-tutorial/exception-specifications-and-noexcept/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.7Function try blocks\](https://www.learncpp.com/cpp-tutorial/function-try-blocks/)
-
-*Previous Post*[27.5 — Exceptions, classes, and inheritance](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)
-
-*Next Post*[8.14 — Generating random numbers using Mersenne Twister](https://www.learncpp.com/cpp-tutorial/generating-random-numbers-using-mersenne-twister/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

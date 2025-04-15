@@ -9,11 +9,6 @@ tags:
 ---
 # 26.5 — Partial template specialization
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-August 17, 2008, 6:59 pm PDT
-March 16, 2024
-
 This lesson and the next are optional reading for those desiring a deeper knowledge of C++ templates. Partial template specialization is not used all that often (but can be useful in specific cases).
 
 In lesson [26.2 -- Template non-type parameters](https://www.learncpp.com/cpp-tutorial/template-non-type-parameters/), you learned how expression parameters could be used to parameterize template classes.
@@ -534,27 +529,3 @@ int main()
 ```
 
 This prints the same as above, but has significantly less duplicated code.
-
-\[Next lesson
-
-26.6Partial template specialization for pointers\](https://www.learncpp.com/cpp-tutorial/partial-template-specialization-for-pointers/)
-[Back to table of contents](/)
-\[Previous lesson
-
-26.4Class template specialization\](https://www.learncpp.com/cpp-tutorial/class-template-specialization/)
-
-*Previous Post*[26.4 — Class template specialization](https://www.learncpp.com/cpp-tutorial/class-template-specialization/)
-
-*Next Post*[27.1 — The need for exceptions](https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

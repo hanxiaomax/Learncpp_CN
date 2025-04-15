@@ -9,11 +9,6 @@ tags:
 ---
 # 16.5 — Returning std::vector, and an introduction to move semantics
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-January 10, 2024, 7:20 pm PST
-December 16, 2024
-
 When we need to pass a `std::vector` to a function, we pass it by (const) reference so that we do not make an expensive copy of the array data.
 
 Therefore, you will probably be surprised to find that it is okay to return a `std::vector` by value.
@@ -194,27 +189,3 @@ Copy 4 is made because we’re passing by value from the called function back to
 Elision is the best option here, but whether it happens is out of our control. The next best option for move-capable types is move semantics, which can be used in cases where the compiler doesn’t elide the copy. And for move-capable types, move semantics is invoked automatically when returning by value.
 
 To summarize, for move-capable types, we prefer to pass by const reference, and return by value.
-
-\[Next lesson
-
-16.6Arrays and loops\](https://www.learncpp.com/cpp-tutorial/arrays-and-loops/)
-[Back to table of contents](/)
-\[Previous lesson
-
-16.4Passing std::vector\](https://www.learncpp.com/cpp-tutorial/passing-stdvector/)
-
-*Previous Post*[11.x — Chapter 11 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-11-summary-and-quiz/)
-
-*Next Post*[B.5 — Introduction to C++23](https://www.learncpp.com/cpp-tutorial/introduction-to-c23/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -9,11 +9,6 @@ tags:
 ---
 # 27.7 — Function try blocks
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-February 6, 2017, 2:22 pm PST
-December 19, 2024
-
 Try and catch blocks work well enough in most cases, but there is one particular case in which they are not sufficient. Consider the following example:
 
 ```cpp
@@ -226,27 +221,3 @@ Don’t use function try to clean up resources
 When construction of an object fails, the destructor of the class is not called. Consequently, you may be tempted to use a function try block as a way to clean up a class that had partially allocated resources before failing. However, referring to members of the failed object is considered undefined behavior since the object is “dead” before the catch block executes. This means that you can’t use function try to clean up after a class. If you want to clean up after a class, follow the standard rules for cleaning up classes that throw exceptions (see the “When constructors fail” subsection of lesson [27.5 -- Exceptions, classes, and inheritance](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)).
 
 Function try is useful primarily for either logging failures before passing the exception up the stack, or for changing the type of exception thrown.
-
-\[Next lesson
-
-27.8Exception dangers and downsides\](https://www.learncpp.com/cpp-tutorial/exception-dangers-and-downsides/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.6Rethrowing exceptions\](https://www.learncpp.com/cpp-tutorial/rethrowing-exceptions/)
-
-*Previous Post*[27.6 — Rethrowing exceptions](https://www.learncpp.com/cpp-tutorial/rethrowing-exceptions/)
-
-*Next Post*[27.x — Chapter 27 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-27-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

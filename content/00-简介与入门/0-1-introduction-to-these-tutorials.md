@@ -12,11 +12,6 @@ tags:
 
 # 0.1 — Introduction to these tutorials
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 27, 2007, 8:50 am PDT
-February 23, 2025
-
 Welcome!
 
 Welcome to the Learn C++ tutorials! Above all else, these tutorials aim to make learning C++ easy.
@@ -102,27 +97,3 @@ Not easily, but you can! See [darkreader.org](https://darkreader.org/).
 Finally, one small nag: This site is free because it is ad-supported. If you find yourself enjoying the lessons, please consider disabling your ad blocker.
 
 Alright, let’s get on with it!
-
-\[Next lesson
-
-0.2Introduction to programs and programming languages\](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/)
-[Back to table of contents](/)
-\[Previous lesson
-
-No previous lesson\](#)
-
-*Previous Post*[Welcome to LearnCpp.com!](https://www.learncpp.com/site-news/this-is-a-news-test-post/)
-
-*Next Post*[0.2 — Introduction to programs and programming languages](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

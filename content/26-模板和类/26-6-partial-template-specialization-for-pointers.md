@@ -9,11 +9,6 @@ tags:
 ---
 # 26.6 — Partial template specialization for pointers
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-December 5, 2016, 11:15 pm PST
-March 29, 2024
-
 In previous lesson [26.4 -- Class template specialization](https://www.learncpp.com/cpp-tutorial/class-template-specialization/), we took a look at a simple templated `Storage` class, along with a specialization for type `double`:
 
 ```cpp
@@ -334,27 +329,3 @@ int main()
 ```
 
 Using partial template class specialization to create separate pointer and non-pointer implementations of a class is extremely useful when you want a class to handle both differently, but in a way that’s completely transparent to the end-user.
-
-\[Next lesson
-
-26.xChapter 26 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-26-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-26.5Partial template specialization\](https://www.learncpp.com/cpp-tutorial/partial-template-specialization/)
-
-*Previous Post*[26.3 — Function template specialization](https://www.learncpp.com/cpp-tutorial/function-template-specialization/)
-
-*Next Post*[26.x — Chapter 26 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-26-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

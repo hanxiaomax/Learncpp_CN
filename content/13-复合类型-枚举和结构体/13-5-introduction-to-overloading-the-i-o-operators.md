@@ -9,11 +9,6 @@ tags:
 ---
 # 13.5 — Introduction to overloading the I/O operators
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-March 25, 2024, 2:51 pm PDT
-October 28, 2024
-
 In the prior lesson ([13.4 -- Converting an enumeration to and from a string](https://www.learncpp.com/cpp-tutorial/converting-an-enumeration-to-and-from-a-string/)), we showed this example, where we used a function to convert an enumeration into an equivalent string:
 
 ```cpp
@@ -247,27 +242,3 @@ If the user did not enter a valid pet, then we handle that case by putting `std:
 Related content
 
 In lesson [17.6 -- std::array and enumerations](https://www.learncpp.com/cpp-tutorial/stdarray-and-enumerations/), we show how we can use `std::array` to make our input and output operators less redundant, and avoid having to modify them when a new enumerator is added.
-
-\[Next lesson
-
-13.6Scoped enumerations (enum classes)\](https://www.learncpp.com/cpp-tutorial/scoped-enumerations-enum-classes/)
-[Back to table of contents](/)
-\[Previous lesson
-
-13.4Converting an enumeration to and from a string\](https://www.learncpp.com/cpp-tutorial/converting-an-enumeration-to-and-from-a-string/)
-
-*Previous Post*[13.4 — Converting an enumeration to and from a string](https://www.learncpp.com/cpp-tutorial/converting-an-enumeration-to-and-from-a-string/)
-
-*Next Post*[0.13 — What language standard is my compiler using?](https://www.learncpp.com/cpp-tutorial/what-language-standard-is-my-compiler-using/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

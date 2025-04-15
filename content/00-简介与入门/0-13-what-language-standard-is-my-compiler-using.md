@@ -12,11 +12,6 @@ tags:
 
 # 0.13 — What language standard is my compiler using?
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-April 18, 2024, 10:29 am PDT
-December 29, 2024
-
 The following program is designed to print the name of the language standard your compiler is currently using. You can copy/paste, compile, and run this program to validate that your compiler is using the language standard you expect.
 
 PrintStandard.cpp:
@@ -98,27 +93,3 @@ If this program prints a different language standard than you were expecting:
 Q: If my compiler is using a preview/pre-release version, should I go back one version?
 
 If you are just learning the language, it’s not necessary. Just be aware that some features from the upcoming version of the language may be missing, incomplete, buggy, or may change slightly.
-
-\[Next lesson
-
-1.1Statements and the structure of a program\](https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.12Configuring your compiler: Choosing a language standard\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/)
-
-*Previous Post*[13.5 — Introduction to overloading the I/O operators](https://www.learncpp.com/cpp-tutorial/introduction-to-overloading-the-i-o-operators/)
-
-*Next Post*[14.17 — Constexpr aggregates and classes](https://www.learncpp.com/cpp-tutorial/constexpr-aggregates-and-classes/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

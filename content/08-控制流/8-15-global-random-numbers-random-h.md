@@ -9,11 +9,6 @@ tags:
 ---
 # 8.15 — Global random numbers (Random.h)
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-December 28, 2023, 4:46 pm PST
-January 29, 2025
-
 What happens if we want to use a random number generator in multiple functions or files? One way is to create (and seed) our PRNG in our `main()` function, and then pass it everywhere we need it. But that’s a lot of passing for something we may only use sporadically, and in many different places. It would add a lot of clutter to our code to pass such an object around.
 
 Alternately, you could create a static local `std::mt19937` variable in each function that needs it (static so that it only gets seeded once). However, it’s overkill to have every function that uses a random number generator define and seed its own local generator, and the low volume of calls to each generator may lead to lower quality results.
@@ -153,27 +148,3 @@ Related content
 We cover inline functions and variables in lesson [7.9 -- Inline functions and variables](https://www.learncpp.com/cpp-tutorial/inline-functions-and-variables/).
 
 The other challenge that we have to overcome is in how we initialize our global `Random::mt` object, as we want it to be self-seeding so that we don’t have to remember to explicitly call an initialization function for it to work correctly. Our initializer must be an expression. But in order to initialize a `std::mt19937`, we need several helper objects (a `std::random_device` and a `std::seed_seq`) which must be defined as statements. This is where a helper function comes in handy. A function call is an expression, so we can use the return value of a function as an initializer. And inside the function itself, we can have any combination of statements that we need. Thus, our `generate()` function creates and returns a fully-seeded `std::mt19937` object (seeded using both the system clock and `std::random_device`) that we use as the initializer to our global `Random::mt` object.
-
-\[Next lesson
-
-8.xChapter 8 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-8-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-8.14Generating random numbers using Mersenne Twister\](https://www.learncpp.com/cpp-tutorial/generating-random-numbers-using-mersenne-twister/)
-
-*Previous Post*[9.x — Chapter 9 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-9-summary-and-quiz/)
-
-*Next Post*[11.x — Chapter 11 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-11-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

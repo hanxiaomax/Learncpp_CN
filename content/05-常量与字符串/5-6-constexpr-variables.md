@@ -10,11 +10,6 @@ tags:
 ---
 # 5.6 — Constexpr variables
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 23, 2023, 1:58 pm PDT
-February 5, 2025
-
 In the previous lesson [5.5 -- Constant expressions](https://www.learncpp.com/cpp-tutorial/constant-expressions/#whywecare), we defined what a constant expression is, discussed why constant expressions are desirable, and concluded with when constant expressions actually evaluate at compile-time.
 
 In this lesson, we’ll take a closer look at how we create variables that can be used in constant expressions in modern C++. We’ll also explore our first method for ensuring that code actually executes at compile-time.
@@ -209,27 +204,3 @@ We used to discuss constexpr functions in detail in this chapter, but feedback f
 The key thing to take away from this introduction is that a constexpr function may be called in constant expressions.
 
 You will see constexpr functions used in some future examples (where appropriate), but we will not expect you to understand them further or write your own constexpr functions until we’ve formally covered the topic.
-
-\[Next lesson
-
-5.7Introduction to std::string\](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/)
-[Back to table of contents](/)
-\[Previous lesson
-
-5.5Constant expressions\](https://www.learncpp.com/cpp-tutorial/constant-expressions/)
-
-*Previous Post*[5.x — Chapter 5 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-5-summary-and-quiz/)
-
-*Next Post*[9.x — Chapter 9 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-9-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

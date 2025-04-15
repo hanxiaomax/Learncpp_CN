@@ -9,11 +9,6 @@ tags:
 ---
 # 14.7 — Member functions returning references to data members
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 5, 2023, 12:55 pm PDT
-March 29, 2024
-
 In lesson [12.12 -- Return by reference and return by address](https://www.learncpp.com/cpp-tutorial/return-by-reference-and-return-by-address/), we covered return by reference. In particular, we noted, “The object being returned by reference must exist after the function returns”. This means we should not return local variables by reference, as the reference will be left dangling after the local variable is destroyed. However, it is generally okay to return by reference either function parameters passed by reference, or variables with static duration (either static local variables or global variables), as they will generally not be destroyed after the function returns.
 
 For example:
@@ -285,27 +280,3 @@ Const member functions can’t return non-const references to data members
 A const member function is not allowed to return a non-const reference to members. This makes sense -- a const member function is not allowed to modify the state of the object, nor is it allowed to call functions that would modify the state of the object. It should not be doing anything that might lead to the modification of the object.
 
 If a const member function was allowed to return a non-const reference to a member, it would be handing the caller a way to directly modify that member. This violates the intent of a const member function.
-
-\[Next lesson
-
-14.8The benefits of data hiding (encapsulation)\](https://www.learncpp.com/cpp-tutorial/the-benefits-of-data-hiding-encapsulation/)
-[Back to table of contents](/)
-\[Previous lesson
-
-14.6Access functions\](https://www.learncpp.com/cpp-tutorial/access-functions/)
-
-*Previous Post*[13.15 — Alias templates](https://www.learncpp.com/cpp-tutorial/alias-templates/)
-
-*Next Post*[15.10 — Ref qualifiers](https://www.learncpp.com/cpp-tutorial/ref-qualifiers/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

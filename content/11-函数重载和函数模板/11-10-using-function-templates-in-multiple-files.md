@@ -9,11 +9,6 @@ tags:
 ---
 # 11.10 — Using function templates in multiple files
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-June 11, 2024, 11:06 am PDT
-October 20, 2024
-
 Consider the following program, which doesn’t work correctly:
 
 main.cpp:
@@ -160,27 +155,3 @@ In the above example, both main.cpp and foo.cpp `#include "max.h"` so the code i
 Best practice
 
 Templates that are needed in multiple files should be defined in a header file, and then #included wherever needed. This allows the compiler to see the full template definition and instantiate the template when needed.
-
-\[Next lesson
-
-11.xChapter 11 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-11-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-11.9Non-type template parameters\](https://www.learncpp.com/cpp-tutorial/non-type-template-parameters/)
-
-*Previous Post*[14.17 — Constexpr aggregates and classes](https://www.learncpp.com/cpp-tutorial/constexpr-aggregates-and-classes/)
-
-*Next Post*[5.4 — The as-if rule and compile-time optimization](https://www.learncpp.com/cpp-tutorial/the-as-if-rule-and-compile-time-optimization/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -9,11 +9,6 @@ tags:
 ---
 # 12.13 — In and out parameters
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-July 31, 2023, 11:22 am PDT
-December 9, 2024
-
 A function and its caller communicate with each other via two mechanisms: parameters and return values. When a function is called, the caller provides arguments, which the function receives via its parameters. These arguments can be passed by value, reference, or address.
 
 Typically, we’ll pass arguments by value or by const reference. But there are times when we may need to do otherwise.
@@ -287,27 +282,3 @@ For advanced readers
 The most common example of the above is when a function needs to fill a large C-style array or `std::array` with data, and the array has an expensive-to-copy element type. We discuss arrays in a future chapter.
 
 That said, objects are rarely so expensive to copy that resorting to non-conventional methods of returning those objects is worthwhile.
-
-\[Next lesson
-
-12.14Type deduction with pointers, references, and const\](https://www.learncpp.com/cpp-tutorial/type-deduction-with-pointers-references-and-const/)
-[Back to table of contents](/)
-\[Previous lesson
-
-12.12Return by reference and return by address\](https://www.learncpp.com/cpp-tutorial/return-by-reference-and-return-by-address/)
-
-*Previous Post*[12.6 — Pass by const lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-const-lvalue-reference/)
-
-*Next Post*[15.4 — Introduction to destructors](https://www.learncpp.com/cpp-tutorial/introduction-to-destructors/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

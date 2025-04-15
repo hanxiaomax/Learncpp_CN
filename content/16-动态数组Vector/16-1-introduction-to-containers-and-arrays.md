@@ -9,11 +9,6 @@ tags:
 ---
 # 16.1 — Introduction to containers and arrays
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 1:58 pm PDT
-August 13, 2024
-
 The variable scalability challenge
 
 Consider a scenario where we want to record the test scores for 30 students and calculate the average score for the class. To do so, we’ll need 30 variables. We could define those like this:
@@ -212,27 +207,3 @@ A quick note on terminology:
 Okay, ready?
 
 Let’s goooooooooooooooooooooooooooooooooooooooooooooooo.
-
-\[Next lesson
-
-16.2Introduction to std::vector and list constructors\](https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/)
-[Back to table of contents](/)
-\[Previous lesson
-
-15.xChapter 15 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-15-summary-and-quiz/)
-
-*Previous Post*[15.x — Chapter 15 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-15-summary-and-quiz/)
-
-*Next Post*[16.4 — Passing std::vector](https://www.learncpp.com/cpp-tutorial/passing-stdvector/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

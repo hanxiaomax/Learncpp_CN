@@ -9,11 +9,6 @@ tags:
 ---
 # 12.6 — Pass by const lvalue reference
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-July 26, 2023, 4:26 pm PDT
-November 21, 2024
-
 Unlike a reference to non-const (which can only bind to modifiable lvalues), a reference to const can bind to modifiable lvalues, non-modifiable lvalues, and rvalues. Therefore, if we make a reference parameter const, then it will be able to bind to any type of argument:
 
 ```cpp
@@ -310,27 +305,3 @@ int main()
 Additionally, we need to consider the cost of accessing the parameter inside the function. Because a `std::string_view` parameter is a normal object, the string being viewed can be accessed directly. Accessing a `std::string&` parameter requires an additional step to get to the referenced object before the string can be accessed.
 
 Finally, if we want to pass in a substring of an existing string (of any type), it is comparatively cheap to create a `std::string_view` substring, which can then be cheaply passed to a `std::string_view` parameter. In comparison, passing a substring to a `const std::string&` is more expensive, as the substring must at some point be copied into the `std::string` that the reference parameter binds to.
-
-\[Next lesson
-
-12.7Introduction to pointers\](https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/)
-[Back to table of contents](/)
-\[Previous lesson
-
-12.5Pass by lvalue reference\](https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/)
-
-*Previous Post*[13.11 — Struct miscellany](https://www.learncpp.com/cpp-tutorial/struct-miscellany/)
-
-*Next Post*[12.13 — In and out parameters](https://www.learncpp.com/cpp-tutorial/in-and-out-parameters/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

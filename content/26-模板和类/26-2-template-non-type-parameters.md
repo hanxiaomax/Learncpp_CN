@@ -9,11 +9,6 @@ tags:
 ---
 # 26.2 — Template non-type parameters
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-June 19, 2008, 7:07 pm PDT
-September 11, 2023
-
 In previous lessons, you’ve learned how to use template type parameters to create functions and classes that are type independent. A template type parameter is a placeholder type that is substituted for a type passed in as an argument.
 
 However, template type parameters are not the only type of template parameters available. Template classes and functions can make use of another kind of template parameter known as a non-type parameter.
@@ -116,27 +111,3 @@ int main()
 ```
 
 In such a case, your compiler will issue an error.
-
-\[Next lesson
-
-26.3Function template specialization\](https://www.learncpp.com/cpp-tutorial/function-template-specialization/)
-[Back to table of contents](/)
-\[Previous lesson
-
-26.1Template classes\](https://www.learncpp.com/cpp-tutorial/template-classes/)
-
-*Previous Post*[26.1 — Template classes](https://www.learncpp.com/cpp-tutorial/template-classes/)
-
-*Next Post*[26.4 — Class template specialization](https://www.learncpp.com/cpp-tutorial/class-template-specialization/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

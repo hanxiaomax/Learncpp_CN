@@ -9,11 +9,6 @@ tags:
 ---
 # 14.11 — Default constructors and default arguments
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 12:21 pm PDT
-September 16, 2024
-
 A **default constructor** is a constructor that accepts no arguments. Typically, this is a constructor that has been defined with no parameters.
 
 Here is an example of a class that has a default constructor:
@@ -418,27 +413,3 @@ int main()
 ```
 
 For a class representing an employee, it doesn’t make sense to allow creation of employees with no name. Thus, such a class should not have a default constructor, so that a compilation error will result if the user of the class tries to do so.
-
-\[Next lesson
-
-14.12Delegating constructors\](https://www.learncpp.com/cpp-tutorial/delegating-constructors/)
-[Back to table of contents](/)
-\[Previous lesson
-
-14.10Constructor member initializer lists\](https://www.learncpp.com/cpp-tutorial/constructor-member-initializer-lists/)
-
-*Previous Post*[14.8 — The benefits of data hiding (encapsulation)](https://www.learncpp.com/cpp-tutorial/the-benefits-of-data-hiding-encapsulation/)
-
-*Next Post*[15.5 — Class templates with member functions](https://www.learncpp.com/cpp-tutorial/class-templates-with-member-functions/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -12,11 +12,6 @@ tags:
 
 # 0.6 — Installing an Integrated Development Environment (IDE)
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 28, 2007, 6:18 pm PDT
-January 29, 2025
-
 An **Integrated Development Environment (IDE)** is a piece of software designed to make it easy to develop, build, and debug your programs.
 
 A typical modern IDE will include:
@@ -192,27 +187,3 @@ If you’re still encountering issues at this point, you have two options. The e
 Moving on
 
 Once your IDE is installed (which can be one of the hardest steps if things don’t go as expected), or if you’re temporarily proceeding with a web-based compiler, you are ready to write your first program!
-
-\[Next lesson
-
-0.7Compiling your first program\](https://www.learncpp.com/cpp-tutorial/compiling-your-first-program/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.5Introduction to the compiler, linker, and libraries\](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/)
-
-*Previous Post*[0.4 — Introduction to C++ development](https://www.learncpp.com/cpp-tutorial/introduction-to-cpp-development/)
-
-*Next Post*[0.7 — Compiling your first program](https://www.learncpp.com/cpp-tutorial/compiling-your-first-program/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

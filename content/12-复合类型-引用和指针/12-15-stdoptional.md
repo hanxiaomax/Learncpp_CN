@@ -382,27 +382,3 @@ Best practice
 Prefer `std::optional` for optional return types.
 
 Prefer function overloading for optional function parameters (when possible). Otherwise, use `std::optional<T>` for optional arguments when `T` would normally be passed by value. Favor `const T*` when `T` is expensive to copy.
-
-\[Next lesson
-
-12.xChapter 12 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-12-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-12.14Type deduction with pointers, references, and const\](https://www.learncpp.com/cpp-tutorial/type-deduction-with-pointers-references-and-const/)
-
-*Previous Post*[B.5 — Introduction to C++23](https://www.learncpp.com/cpp-tutorial/introduction-to-c23/)
-
-*Next Post*[13.4 — Converting an enumeration to and from a string](https://www.learncpp.com/cpp-tutorial/converting-an-enumeration-to-and-from-a-string/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -12,11 +12,6 @@ tags:
 
 # 0.3 — Introduction to C/C++
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 27, 2007, 3:32 pm PDT
-September 16, 2024
-
 Before C++, there was C
 
 The C language was developed in 1972 by Dennis Ritchie at Bell Telephone laboratories, primarily as a systems programming language (a language to write operating systems with). Ritchie’s primary goals were to produce a minimalistic language that was easy to compile, allowed efficient access to memory, produced efficient code, and was self-contained (not reliant on other programs). For a high-level language, C was designed to give the programmer a lot of control, while allowing developers to write a program that could be run on different platforms.
@@ -73,27 +68,3 @@ Q: Do I need to know C before I do these tutorials?
 Nope! It’s perfectly fine to start with C++, and we’ll teach you everything you need to know (including pitfalls to avoid) along the way.
 
 Once you know C++, it should be pretty easy to learn standard C if you ever have the need. These days, C is mostly used for niche use cases: code that runs on embedded devices, when you need to interact with other languages that can only interface with C, etc… For most other cases, C++ is recommended.
-
-\[Next lesson
-
-0.4Introduction to C++ development\](https://www.learncpp.com/cpp-tutorial/introduction-to-cpp-development/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.2Introduction to programs and programming languages\](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/)
-
-*Previous Post*[0.2 — Introduction to programs and programming languages](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/)
-
-*Next Post*[0.4 — Introduction to C++ development](https://www.learncpp.com/cpp-tutorial/introduction-to-cpp-development/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

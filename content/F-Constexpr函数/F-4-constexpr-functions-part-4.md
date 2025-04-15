@@ -9,11 +9,6 @@ tags:
 ---
 # F.4 — Constexpr functions (part 4)
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-November 26, 2024, 4:49 pm PST
-March 17, 2025
-
 Constexpr/consteval functions can use non-const local variables
 
 Within a constexpr or consteval function, we can use local variables that are not constexpr, and the value of these variables can be changed.
@@ -158,27 +153,3 @@ There are a few reasons:
 1. Repetition helps ingrain best practices.
 
 On a non-trivial project, it’s a good idea to implement your functions with the mindset that they may be reused (or extended) in the future. Any time you modify an existing function, you risk breaking it, and that means it needs to be retested, which takes time and energy. It’s often worth spending an extra minute or two “doing it right the first time” so you don’t have to redo (and retest) it again later.
-
-\[Next lesson
-
-F.XChapter F summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-f-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-F.3Constexpr functions (part 3) and consteval\](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-3-and-consteval/)
-
-*Previous Post*[F.3 — Constexpr functions (part 3) and consteval](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-3-and-consteval/)
-
-*Next Post*[F.X — Chapter F summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-f-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

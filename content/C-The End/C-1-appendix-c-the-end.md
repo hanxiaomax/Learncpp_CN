@@ -9,11 +9,6 @@ tags:
 ---
 # C.1 — The end?
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-February 16, 2018, 3:28 pm PST
-July 12, 2024
-
 Congratulations! You made it all the way through the tutorials! Take a moment and give yourself a well-deserved (insert something you enjoy here).
 
 Now, after breathing a long sigh of relief, you’re probably asking the question, “What next?”.
@@ -105,27 +100,3 @@ Good luck (and skill) in your future endeavors, and happy programming! And remem
 -Alex
 
 PS: If you have any feedback or other suggestions for things to explore next, please mention them in the comment section below.
-
-\[Next lesson
-
-21.1The Standard Library\](https://www.learncpp.com/cpp-tutorial/the-standard-library/)
-[Back to table of contents](/)
-\[Previous lesson
-
-B.5Introduction to C++23\](https://www.learncpp.com/cpp-tutorial/introduction-to-c23/)
-
-*Previous Post*[18.4 — Timing your code](https://www.learncpp.com/cpp-tutorial/timing-your-code/)
-
-*Next Post*[B.3 — Introduction to C++17](https://www.learncpp.com/cpp-tutorial/introduction-to-c17/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -9,11 +9,6 @@ tags:
 ---
 # 14.8 — The benefits of data hiding (encapsulation)
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 12:18 pm PDT
-February 20, 2025
-
 In a previous lesson ([14.5 -- Public and private members and access specifiers](https://www.learncpp.com/cpp-tutorial/public-and-private-members-and-access-specifiers/)), we mentioned that the member variables of a class are typically made private. Programmers who are learning about classes for the first time often have a hard time understanding why you’d want to do this. After all, making your variables private means they can’t be accessed by the public. At best, this makes for more work when writing your classes. At worst, it may seem completely pointless (especially if we’re providing public access functions to the private member data).
 
 The answer to this question is so foundational that we’re going to spend an entire lesson on the topic!
@@ -515,27 +510,3 @@ The following order is recommended by the [Google C++ style guide](https://googl
 - Destructor
 - All other functions (static and non-static member functions, and friend functions)
 - Data members (static and non-static)
-
-\[Next lesson
-
-14.9Introduction to constructors\](https://www.learncpp.com/cpp-tutorial/introduction-to-constructors/)
-[Back to table of contents](/)
-\[Previous lesson
-
-14.7Member functions returning references to data members\](https://www.learncpp.com/cpp-tutorial/member-functions-returning-references-to-data-members/)
-
-*Previous Post*[14.2 — Introduction to classes](https://www.learncpp.com/cpp-tutorial/introduction-to-classes/)
-
-*Next Post*[14.11 — Default constructors and default arguments](https://www.learncpp.com/cpp-tutorial/default-constructors-and-default-arguments/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move
