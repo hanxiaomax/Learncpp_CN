@@ -9,11 +9,6 @@ tags:
 ---
 # 13.11 — Struct miscellany
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-July 21, 2023, 4:09 pm PDT
-September 25, 2024
-
 Structs with program-defined members
 
 In C++, structs (and classes) can have members that are other program-defined types. There are two ways to do this.
@@ -233,27 +228,3 @@ Tip
 You can minimize padding by defining your members in decreasing order of size.
 
 The C++ compiler is not allowed to reorder members, so this has to be done manually.
-
-\[Next lesson
-
-13.12Member selection with pointers and references\](https://www.learncpp.com/cpp-tutorial/member-selection-with-pointers-and-references/)
-[Back to table of contents](/)
-\[Previous lesson
-
-13.10Passing and returning structs\](https://www.learncpp.com/cpp-tutorial/passing-and-returning-structs/)
-
-*Previous Post*[8.4 — Constexpr if statements](https://www.learncpp.com/cpp-tutorial/constexpr-if-statements/)
-
-*Next Post*[12.6 — Pass by const lvalue reference](https://www.learncpp.com/cpp-tutorial/pass-by-const-lvalue-reference/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

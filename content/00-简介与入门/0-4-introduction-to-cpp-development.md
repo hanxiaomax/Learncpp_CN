@@ -12,11 +12,6 @@ tags:
 
 # 0.4 — Introduction to C++ development
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 27, 2007, 8:10 pm PDT
-October 17, 2024
-
 Before we can write and execute our first C++ program, we need to understand in more detail how C++ programs get developed. Here is a graphic outlining a simplistic approach:
 
 ![The software development process](https://www.learncpp.com/images/CppTutorial/Chapter0/Development-min.png)
@@ -114,27 +109,3 @@ Best practice
 Name the first/primary source code file in each program `main.cpp`. This makes it easy to determine which source code file is the primary one.
 
 Once you’ve written your program, the next steps are to convert the source code into something that can be run, and then see whether it works! We’ll discuss those steps (4-7) in the next lesson.
-
-\[Next lesson
-
-0.5Introduction to the compiler, linker, and libraries\](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.3Introduction to C/C++\](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
-
-*Previous Post*[0.3 — Introduction to C/C++](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
-
-*Next Post*[0.6 — Installing an Integrated Development Environment (IDE)](https://www.learncpp.com/cpp-tutorial/installing-an-integrated-development-environment-ide/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

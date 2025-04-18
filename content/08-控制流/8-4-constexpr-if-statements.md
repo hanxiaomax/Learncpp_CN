@@ -9,11 +9,6 @@ tags:
 ---
 # 8.4 — Constexpr if statements
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 30, 2023, 5:18 pm PDT
-March 5, 2024
-
 Normally, the conditional of an if-statement is evaluated at runtime.
 
 However, consider the case where the conditional is a constant expression, such as in the following example:
@@ -87,27 +82,3 @@ Modern compilers and if statements with constexpr conditionals C++17
 For optimization purposes, modern compilers will generally treat non-constexpr if-statements that have constexpr conditionals as if they were constexpr-if-statements. However, they are not required to do so.
 
 A compiler that encounters a non-constexpr if-statement with a constexpr conditional may issue a warning advising you to use `if constexpr` instead. This will ensure that compile-time evaluation will occur (even if optimizations are disabled).
-
-\[Next lesson
-
-8.5Switch statement basics\](https://www.learncpp.com/cpp-tutorial/switch-statement-basics/)
-[Back to table of contents](/)
-\[Previous lesson
-
-8.3Common if statement problems\](https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/)
-
-*Previous Post*[10.4 — Narrowing conversions, list initialization, and constexpr initializers](https://www.learncpp.com/cpp-tutorial/narrowing-conversions-list-initialization-and-constexpr-initializers/)
-
-*Next Post*[13.11 — Struct miscellany](https://www.learncpp.com/cpp-tutorial/struct-miscellany/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

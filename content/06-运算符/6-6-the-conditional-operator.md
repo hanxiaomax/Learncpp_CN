@@ -9,11 +9,6 @@ tags:
 ---
 # 6.6 — The conditional operator
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 23, 2023, 1:42 pm PDT
-February 14, 2025
-
 | Operator | Symbol | Form | Meaning |
 | --- | --- | --- | --- |
 | Conditional | ?: | c ? x : y | If conditional `c` is `true` then evaluate `x`, otherwise evaluate `y` |
@@ -346,27 +341,3 @@ Complicated expressions should generally avoid use of the conditional operator, 
 Best practice
 
 Prefer to avoid the conditional operator in complicated expressions.
-
-\[Next lesson
-
-6.7Relational operators and floating point comparisons\](https://www.learncpp.com/cpp-tutorial/relational-operators-and-floating-point-comparisons/)
-[Back to table of contents](/)
-\[Previous lesson
-
-6.5The comma operator\](https://www.learncpp.com/cpp-tutorial/the-comma-operator/)
-
-*Previous Post*[11.4 — Deleting functions](https://www.learncpp.com/cpp-tutorial/deleting-functions/)
-
-*Next Post*[5.x — Chapter 5 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-5-summary-and-quiz/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

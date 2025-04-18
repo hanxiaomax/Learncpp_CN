@@ -9,11 +9,6 @@ tags:
 ---
 # 27.9 — Exception specifications and noexcept
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-August 11, 2020, 9:16 pm PDT
-October 31, 2024
-
 (h/t to reader Koe for providing the first draft of this lesson!)
 
 Looking at a typical function declaration, it is not possible to determine whether a function might throw an exception or not:
@@ -258,27 +253,3 @@ int doSomething() throw(...); // may throw anything
 ```
 
 Due to factors such as incomplete compiler implementations, some incompatibility with template functions, common misunderstandings about how they worked, and the fact that the standard library mostly didn’t use them, the dynamic exception specifications were deprecated in C++11 and removed from the language in C++17 and C++20. See [this paper](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0003r0.html#2.0) for more context.
-
-\[Next lesson
-
-27.10std::move_if_noexcept\](https://www.learncpp.com/cpp-tutorial/stdmove_if_noexcept/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.8Exception dangers and downsides\](https://www.learncpp.com/cpp-tutorial/exception-dangers-and-downsides/)
-
-*Previous Post*[13.y — Using a language reference](https://www.learncpp.com/cpp-tutorial/using-a-language-reference/)
-
-*Next Post*[27.10 — std::move_if_noexcept](https://www.learncpp.com/cpp-tutorial/stdmove_if_noexcept/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -9,11 +9,6 @@ tags:
 ---
 # 13.4 — Converting an enumeration to and from a string
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-March 25, 2024, 2:51 pm PDT
-February 13, 2025
-
 In the prior lesson ([13.3 -- Unscoped enumerator integral conversions](https://www.learncpp.com/cpp-tutorial/unscoped-enumerator-integral-conversions/)), we showed an example like this:
 
 ```cpp
@@ -281,26 +276,3 @@ We cover lambdas in lesson [20.6 -- Introduction to lambdas (anonymous functions
 
 Similar to the output case, it would be better if we could just `std::cin >> pet`. We’ll cover this in upcoming lesson [13.5 -- Introduction to overloading the I/O operators](https://www.learncpp.com/cpp-tutorial/introduction-to-overloading-the-i-o-operators/).
 
-\[Next lesson
-
-13.5Introduction to overloading the I/O operators\](https://www.learncpp.com/cpp-tutorial/introduction-to-overloading-the-i-o-operators/)
-[Back to table of contents](/)
-\[Previous lesson
-
-13.3Unscoped enumerator integral conversions\](https://www.learncpp.com/cpp-tutorial/unscoped-enumerator-integral-conversions/)
-
-*Previous Post*[12.15 — std::optional](https://www.learncpp.com/cpp-tutorial/stdoptional/)
-
-*Next Post*[13.5 — Introduction to overloading the I/O operators](https://www.learncpp.com/cpp-tutorial/introduction-to-overloading-the-i-o-operators/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

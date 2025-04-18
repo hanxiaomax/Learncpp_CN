@@ -9,11 +9,6 @@ tags:
 ---
 # 13.15 — Alias templates
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 27, 2023, 10:20 am PDT
-June 11, 2024
-
 In lesson [10.7 -- Typedefs and type aliases](https://www.learncpp.com/cpp-tutorial/typedefs-and-type-aliases/), we discussed how type aliases let us define an alias for an existing type.
 
 Creating a type alias for a class template where all template arguments are explicitly specified works just like a normal type alias:
@@ -115,27 +110,3 @@ void print(const Coord& c) // won't work, missing template arguments
 ```
 
 This is no different than if we’d used `Pair` or `Pair<T>` instead of `Coord` or `Coord<T>`.
-
-\[Next lesson
-
-13.xChapter 13 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-13-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-13.14Class template argument deduction (CTAD) and deduction guides\](https://www.learncpp.com/cpp-tutorial/class-template-argument-deduction-ctad-and-deduction-guides/)
-
-*Previous Post*[17.13 — Multidimensional std::array](https://www.learncpp.com/cpp-tutorial/multidimensional-stdarray/)
-
-*Next Post*[14.7 — Member functions returning references to data members](https://www.learncpp.com/cpp-tutorial/member-functions-returning-references-to-data-members/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

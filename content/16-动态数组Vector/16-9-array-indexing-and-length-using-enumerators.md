@@ -9,11 +9,6 @@ tags:
 ---
 # 16.9 — Array indexing and length using enumerators
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 2:43 pm PDT
-May 8, 2024
-
 One of the bigger documentation problems with arrays is that integer indices do not provide any information to the programmer about the meaning of the index.
 
 Consider an array holding 5 test scores:
@@ -348,69 +343,3 @@ int main()
 ```
 
 However, if you’re going to be doing a lot of enumerator to integral conversions, it’s probably better to just use a standard enum inside a namespace (or class).
-
-Quiz time
-
-Question #1
-
-Create a program-defined enum (inside a namespace) containing the names of the following animals: chicken, dog, cat, elephant, duck, and snake. Define an array with an element for each of these animals, and use an initializer list to initialize each element to hold the number of legs that animal has. Assert that the array has the correct number of initializers.
-
-Write a main() function that prints the number of legs an elephant has, using the enumerator.
-
-\[Show Solution\](javascript:void(0))
-
-```cpp
-#include <cassert>
-#include <iostream>
-#include <vector>
-
-namespace Animals
-{
-    enum Animals
-    {
-        chicken,
-        dog,
-        cat,
-        elephant,
-        duck,
-        snake,
-        max_animals
-    };
-
-    const std::vector legs{ 2, 4, 4, 4, 2, 0 };
-}
-
-int main()
-{
-    // Ensure the number of legs is the same as the number of animals
-    assert(std::size(Animals::legs) == Animals::max_animals);
-
-    std::cout << "An elephant has " << Animals::legs[Animals::elephant] << " legs.\n";
-
-    return 0;
-}
-```
-
-\[Next lesson
-
-16.10std::vector resizing and capacity\](https://www.learncpp.com/cpp-tutorial/stdvector-resizing-and-capacity/)
-[Back to table of contents](/)
-\[Previous lesson
-
-16.8Range-based for loops (for-each)\](https://www.learncpp.com/cpp-tutorial/range-based-for-loops-for-each/)
-
-*Previous Post*[16.7 — Arrays, loops, and sign challenge solutions](https://www.learncpp.com/cpp-tutorial/arrays-loops-and-sign-challenge-solutions/)
-
-*Next Post*[16.11 — std::vector and stack behavior](https://www.learncpp.com/cpp-tutorial/stdvector-and-stack-behavior/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

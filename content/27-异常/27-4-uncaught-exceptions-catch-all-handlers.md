@@ -9,11 +9,6 @@ tags:
 ---
 # 27.4 — Uncaught exceptions and catch-all handlers
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 25, 2008, 12:07 pm PDT
-September 12, 2024
-
 By now, you should have a reasonable idea of how exceptions work. In this lesson, we’ll cover a few more interesting exception cases.
 
 Uncaught exceptions
@@ -222,27 +217,3 @@ int main()
 Syntactically, a try block requires at least one associated catch block. So if the catch-all handler is conditionally compiled out, we either need to conditionally compile out the try block, or we need to conditionally compile in another catch block. It’s cleaner to do the latter.
 
 For this purpose, we create class `DummyException` which can’t be instantiated because it has a deleted default constructor and no other constructors. When `NDEBUG` is defined, we compile-in a catch handler to catch an exception of type `DummyException`. Since we can’t create a `DummyException`, this catch handler will never catch anything. Therefore any exceptions that reach this point will not be handled.
-
-\[Next lesson
-
-27.5Exceptions, classes, and inheritance\](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.3Exceptions, functions, and stack unwinding\](https://www.learncpp.com/cpp-tutorial/exceptions-functions-and-stack-unwinding/)
-
-*Previous Post*[27.3 — Exceptions, functions, and stack unwinding](https://www.learncpp.com/cpp-tutorial/exceptions-functions-and-stack-unwinding/)
-
-*Next Post*[27.5 — Exceptions, classes, and inheritance](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

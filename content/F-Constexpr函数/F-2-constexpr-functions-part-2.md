@@ -9,11 +9,6 @@ tags:
 ---
 # F.2 — Constexpr functions (part 2)
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-November 26, 2024, 4:16 pm PST
-December 10, 2024
-
 Constexpr function calls in non-required constant expressions
 
 You might expect that a constexpr function would evaluate at compile-time whenever possible, but unfortunately this is not the case.
@@ -268,27 +263,3 @@ For example, both gcc and Clang will not compile-time evaluate a constexpr funct
 For advanced readers
 
 The compiler might also choose to inline a function call, or even optimize a function call away entirely. Both of these can affect when (or if) the content of the function call are evaluated.
-
-\[Next lesson
-
-F.3Constexpr functions (part 3) and consteval\](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-3-and-consteval/)
-[Back to table of contents](/)
-\[Previous lesson
-
-F.1Constexpr functions\](https://www.learncpp.com/cpp-tutorial/constexpr-functions/)
-
-*Previous Post*[5.4 — The as-if rule and compile-time optimization](https://www.learncpp.com/cpp-tutorial/the-as-if-rule-and-compile-time-optimization/)
-
-*Next Post*[F.3 — Constexpr functions (part 3) and consteval](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-3-and-consteval/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

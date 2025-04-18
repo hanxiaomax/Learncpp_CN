@@ -9,11 +9,6 @@ tags:
 ---
 # 27.5 — Exceptions, classes, and inheritance
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 26, 2008, 9:52 am PDT
-January 29, 2025
-
 **Exceptions and member functions**
 
 Up to this point in the tutorial, you’ve only seen exceptions used in non-member functions. However, exceptions are equally useful in member functions, and even more so in overloaded operators. Consider the following overloaded [] operator as part of a simple integer array class:
@@ -631,27 +626,3 @@ int main()
 When this program is compiled, the compiler will complain that the Derived copy constructor is not available, and halt compilation.
 
 Exception objects should not keep pointers or references to stack-allocated objects. If a thrown exception results in stack unwinding (causing the destruction of stack-allocated objects), these pointers or references may be left dangling.
-
-\[Next lesson
-
-27.6Rethrowing exceptions\](https://www.learncpp.com/cpp-tutorial/rethrowing-exceptions/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.4Uncaught exceptions and catch-all handlers\](https://www.learncpp.com/cpp-tutorial/uncaught-exceptions-catch-all-handlers/)
-
-*Previous Post*[27.4 — Uncaught exceptions and catch-all handlers](https://www.learncpp.com/cpp-tutorial/uncaught-exceptions-catch-all-handlers/)
-
-*Next Post*[27.8 — Exception dangers and downsides](https://www.learncpp.com/cpp-tutorial/exception-dangers-and-downsides/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

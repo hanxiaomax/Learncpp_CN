@@ -9,11 +9,6 @@ tags:
 ---
 # 11.4 — Deleting functions
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 10, 2023, 1:26 pm PDT
-December 28, 2023
-
 In some cases, it is possible to write functions that don’t behave as desired when called with values of certain types.
 
 Consider the following example:
@@ -122,27 +117,3 @@ int main()
     return 0;
 }
 ```
-
-\[Next lesson
-
-11.5Default arguments\](https://www.learncpp.com/cpp-tutorial/default-arguments/)
-[Back to table of contents](/)
-\[Previous lesson
-
-11.3Function overload resolution and ambiguous matches\](https://www.learncpp.com/cpp-tutorial/function-overload-resolution-and-ambiguous-matches/)
-
-*Previous Post*[15.10 — Ref qualifiers](https://www.learncpp.com/cpp-tutorial/ref-qualifiers/)
-
-*Next Post*[6.6 — The conditional operator](https://www.learncpp.com/cpp-tutorial/the-conditional-operator/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

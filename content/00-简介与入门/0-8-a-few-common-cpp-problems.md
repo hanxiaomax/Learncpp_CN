@@ -12,11 +12,6 @@ tags:
 
 # 0.8 — A few common C++ problems
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-December 16, 2007, 12:11 am PST
-December 19, 2024
-
 In this section, we’ll address some of the common issues that new programmers seem to run across with fairly high probability. This is not meant to be a comprehensive list of compilation or execution problems, but rather a pragmatic list of solutions to very basic issues. If you have any suggestions for other issues that might be added to this list, post them in the comments section below.
 
 General run-time issues
@@ -147,27 +142,3 @@ Second, **ask an AI** like [ChatGPT via Bing](https://www.bing.com/chat). Start 
 Note that AIs may return inaccurate or outdated information, and the programs they write will probably not follow modern best practices.
 
 If the above fails, **ask on a Q&A board**. There are websites designed for programming questions and answers, like [Stack Overflow](https://www.stackoverflow.com). Try posting your question there. Remember to be thorough about what your problem is, and include all relevant information like what OS you’re on and what IDE you’re using.
-
-\[Next lesson
-
-0.9Configuring your compiler: Build configurations\](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-build-configurations/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.7Compiling your first program\](https://www.learncpp.com/cpp-tutorial/compiling-your-first-program/)
-
-*Previous Post*[23.6 — Container classes](https://www.learncpp.com/cpp-tutorial/container-classes/)
-
-*Next Post*[24.1 — Introduction to inheritance](https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -9,11 +9,6 @@ tags:
 ---
 # 14.17 — Constexpr aggregates and classes
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 22, 2024, 4:43 pm PDT
-January 29, 2025
-
 In lesson [F.1 -- Constexpr functions](https://www.learncpp.com/cpp-tutorial/constexpr-functions/), we covered constexpr functions, which are functions that may be evaluated at either compile-time or runtime. For example:
 
 ```cpp
@@ -394,27 +389,3 @@ constexpr const int* const getXPtr() const { return &m_x; }
 ```
 
 Isn’t it beautiful? No? Okay, fine.
-
-\[Next lesson
-
-14.xChapter 14 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-14-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-14.16Converting constructors and the explicit keyword\](https://www.learncpp.com/cpp-tutorial/converting-constructors-and-the-explicit-keyword/)
-
-*Previous Post*[0.13 — What language standard is my compiler using?](https://www.learncpp.com/cpp-tutorial/what-language-standard-is-my-compiler-using/)
-
-*Next Post*[11.10 — Using function templates in multiple files](https://www.learncpp.com/cpp-tutorial/using-function-templates-in-multiple-files/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

@@ -9,11 +9,6 @@ tags:
 ---
 # 16.3 — std::vector and the unsigned length and subscript problem
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 2:28 pm PDT
-November 11, 2024
-
 In the prior lesson [16.2 -- Introduction to std::vector and list constructors](https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/), we introduced `operator[]`, which can be used to subscript an array to access an element.
 
 In this lesson, we’ll look at other ways to access array elements, as well as a few different ways to get the length of an container class (the number of elements currently in the container class).
@@ -369,77 +364,3 @@ Under the hood, `std::vector` holds its elements in a C-style array. The `data()
 Author’s note
 
 We’ll discuss additional options to address such indexing challenges in lesson [16.7 -- Arrays, loops, and sign challenge solutions](https://www.learncpp.com/cpp-tutorial/arrays-loops-and-sign-challenge-solutions/).
-
-Quiz time
-
-Question #1
-
-Initialize a `std::vector` with the following values: ‘h’, ‘e’, ‘l’, ‘l’, ‘o’. Then print the length of the array (use `std::size()`). Finally, print the value of the element with index 1 using the subscript operator and the `at()` member function.
-
-The program should output the following:
-
-```cpp
-The array has 5 elements.
-ee
-
-```
-
-\[Show Solution\](javascript:void(0))
-
-```cpp
-#include <iostream>
-#include <vector>
-
-int main()
-{
-    std::vector arr { 'h', 'e', 'l', 'l', 'o' };
-    std::cout << "The array has " << std::size(arr) << " elements.\n";
-    std::cout << arr[1] << arr.at(1) << '\n';
-
-    return 0;
-}
-```
-
-Question #2
-
-a) What is `size_type` and what is it used for?
-
-\[Show Solution\](javascript:void(0))
-
-`size_type` is a nested typedef that is an alias for the type used to store the length (and indices, if supported) of a standard library container.
-
-b) What type does `size_type` default to? Is it signed or unsigned?
-
-\[Show Solution\](javascript:void(0))
-
-`std::size_t`, which is an unsigned type.
-
-c) Which functions to get the length of a container return `size_type`?
-
-\[Show Solution\](javascript:void(0))
-
-The `size()` member function and `std::size` both return `size_type`.
-
-\[Next lesson
-
-16.4Passing std::vector\](https://www.learncpp.com/cpp-tutorial/passing-stdvector/)
-[Back to table of contents](/)
-\[Previous lesson
-
-16.2Introduction to std::vector and list constructors\](https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/)
-
-*Previous Post*[16.4 — Passing std::vector](https://www.learncpp.com/cpp-tutorial/passing-stdvector/)
-
-*Next Post*[16.7 — Arrays, loops, and sign challenge solutions](https://www.learncpp.com/cpp-tutorial/arrays-loops-and-sign-challenge-solutions/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

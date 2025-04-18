@@ -9,11 +9,6 @@ tags:
 ---
 # 26.1 — Template classes
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-June 16, 2008, 8:04 pm PDT
-July 23, 2024
-
 In a previous chapter, we covered function templates ([11.6 -- Function templates](https://www.learncpp.com/cpp-tutorial/function-templates/)), which allow us to generalize functions to work with many different data types. While this is a great start down the road to generalized programming, it doesn’t solve all of our problems. Let’s take a look at an example of one such problem, and see what templates can further do for us.
 
 Templates and container classes
@@ -382,27 +377,3 @@ template class Array<double>; // Explicitly instantiate template Array<double>
 The “template class” command causes the compiler to explicitly instantiate the template class. In the above case, the compiler will stencil out definitions for Array<int> and Array<double> inside of templates.cpp. Other code files that want to use these types can include Array.h (to satisfy the compiler), and the linker will link in these explicit type definitions from template.cpp.
 
 This method may be more efficient (depending on how your compiler and linker handle templates and duplicate definitions), but requires maintaining the templates.cpp file for each program.
-
-\[Next lesson
-
-26.2Template non-type parameters\](https://www.learncpp.com/cpp-tutorial/template-non-type-parameters/)
-[Back to table of contents](/)
-\[Previous lesson
-
-25.xChapter 25 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-25-summary-and-quiz/)
-
-*Previous Post*[21.14 — Overloading operators and function templates](https://www.learncpp.com/cpp-tutorial/overloading-operators-and-function-templates/)
-
-*Next Post*[26.2 — Template non-type parameters](https://www.learncpp.com/cpp-tutorial/template-non-type-parameters/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

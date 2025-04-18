@@ -12,11 +12,6 @@ tags:
 
 # 0.2 — Introduction to programs and programming languages
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 27, 2007, 10:42 am PDT
-March 20, 2025
-
 Modern computers are incredibly fast, and getting faster all the time. However, computers also have some significant constraints: they only natively understand a limited set of instructions, and must be told exactly what to do.
 
 A **computer program** is a sequence of instructions that directs a computer to perform certain actions in a specified order. Computer programs are typically written in a **programming language**, which is a language designed to facilitate the writing of instructions for computers. There are many different programming languages available, each of which caters to a different set of needs. The act (and art) of writing a program is called **programming**. We’ll talk more specifically about how to create programs in C++ in upcoming lessons in this chapter.
@@ -178,27 +173,3 @@ Best practices are things that you *should* do, because that way of doing things
 Warning
 
 Warnings are things that you *should not* do, because they will generally lead to unexpected results.
-
-\[Next lesson
-
-0.3Introduction to C/C++\](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
-[Back to table of contents](/)
-\[Previous lesson
-
-0.1Introduction to these tutorials\](https://www.learncpp.com/cpp-tutorial/introduction-to-these-tutorials/)
-
-*Previous Post*[0.1 — Introduction to these tutorials](https://www.learncpp.com/cpp-tutorial/introduction-to-these-tutorials/)
-
-*Next Post*[0.3 — Introduction to C/C++](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

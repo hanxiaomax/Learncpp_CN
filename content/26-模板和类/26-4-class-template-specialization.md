@@ -9,11 +9,6 @@ tags:
 ---
 # 26.4 — Class template specialization
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-August 16, 2008, 2:25 pm PDT
-July 5, 2024
-
 In the previous lesson [26.3 -- Function template specialization](https://www.learncpp.com/cpp-tutorial/function-template-specialization/), we saw how it was possible to specialize functions in order to provide different functionality for specific data types. As it turns out, it is not only possible to specialize functions, it is also possible to specialize classes!
 
 Consider the case where you want a class that stores 8 objects. Here’s a simplified class template to do so:
@@ -374,27 +369,3 @@ For this reason, specialized classes and functions are often defined in a header
 If a specialization is only required in a single translation unit, it can be defined in the source file for that translation unit. Because other translation units will not be able to see the definition of the specialization, they will continue to use the non-specialized version.
 
 Be wary of putting a specialization in its own separate header file, with the intent of including the specialization’s header in any translation unit where the specialization is desired. It’s a bad idea to design code that transparently changes behavior based on the presence or absence of a header file. For example, if you intend to use the specialization but forget to include the header of the specialization, you may end up using the non-specialized version instead. If you intend to use the non-specialization, you may end up using the specialization anyway if some other header includes the specialization as a transitive include.
-
-\[Next lesson
-
-26.5Partial template specialization\](https://www.learncpp.com/cpp-tutorial/partial-template-specialization/)
-[Back to table of contents](/)
-\[Previous lesson
-
-26.3Function template specialization\](https://www.learncpp.com/cpp-tutorial/function-template-specialization/)
-
-*Previous Post*[26.2 — Template non-type parameters](https://www.learncpp.com/cpp-tutorial/template-non-type-parameters/)
-
-*Next Post*[26.5 — Partial template specialization](https://www.learncpp.com/cpp-tutorial/partial-template-specialization/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

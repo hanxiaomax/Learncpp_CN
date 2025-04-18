@@ -9,11 +9,6 @@ tags:
 ---
 # 10.4 — Narrowing conversions, list initialization, and constexpr initializers
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-May 5, 2023, 6:10 pm PDT
-February 16, 2024
-
 In the previous lesson ([10.3 -- Numeric conversions](https://www.learncpp.com/cpp-tutorial/numeric-conversions/)), we covered numeric conversions, which cover a wide range of different type conversions between fundamental types.
 
 Narrowing conversions
@@ -221,27 +216,3 @@ int main()
 ```
 
 However, your compiler may still issue a warning in this case (GCC and Clang do if you use the -Wconversion compile flag).
-
-\[Next lesson
-
-10.5Arithmetic conversions\](https://www.learncpp.com/cpp-tutorial/arithmetic-conversions/)
-[Back to table of contents](/)
-\[Previous lesson
-
-10.3Numeric conversions\](https://www.learncpp.com/cpp-tutorial/numeric-conversions/)
-
-*Previous Post*[11.9 — Non-type template parameters](https://www.learncpp.com/cpp-tutorial/non-type-template-parameters/)
-
-*Next Post*[8.4 — Constexpr if statements](https://www.learncpp.com/cpp-tutorial/constexpr-if-statements/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

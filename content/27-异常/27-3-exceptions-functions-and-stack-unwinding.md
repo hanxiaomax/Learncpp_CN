@@ -9,11 +9,6 @@ tags:
 ---
 # 27.3 — Exceptions, functions, and stack unwinding
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 5, 2008, 11:25 am PDT
-September 29, 2024
-
 In the previous lesson on [27.2 -- Basic exception handling](https://www.learncpp.com/cpp-tutorial/basic-exception-handling/), we explained how throw, try, and catch work together to enable exception handling. In this lesson, we’ll talk about how exception handling interacts with functions.
 
 **Throwing exceptions from a called function**
@@ -231,27 +226,3 @@ Finally, once a matching catch block executes, control flow proceeds as normal, 
 As you can see, stack unwinding provides us with some very useful behavior -- if a function does not want to handle an exception, it doesn’t have to. The exception will propagate up the stack until it finds someone who will! This allows us to decide where in the call stack is the most appropriate place to handle any errors that may occur.
 
 In the next lesson, we’ll take a look at what happens when you don’t capture an exception, and a method to prevent that from happening.
-
-\[Next lesson
-
-27.4Uncaught exceptions and catch-all handlers\](https://www.learncpp.com/cpp-tutorial/uncaught-exceptions-catch-all-handlers/)
-[Back to table of contents](/)
-\[Previous lesson
-
-27.2Basic exception handling\](https://www.learncpp.com/cpp-tutorial/basic-exception-handling/)
-
-*Previous Post*[27.2 — Basic exception handling](https://www.learncpp.com/cpp-tutorial/basic-exception-handling/)
-
-*Next Post*[27.4 — Uncaught exceptions and catch-all handlers](https://www.learncpp.com/cpp-tutorial/uncaught-exceptions-catch-all-handlers/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

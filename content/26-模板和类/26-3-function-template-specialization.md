@@ -9,11 +9,6 @@ tags:
 ---
 # 26.3 — Function template specialization
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-December 3, 2016, 5:10 pm PST
-July 30, 2024
-
 When instantiating a function template for a given type, the compiler stencils out a copy of the templated function and replaces the template type parameters with the actual types used in the variable declaration. This means a particular function will have the same implementation details for each instanced type (just using different types). While most of the time this is exactly what you want, occasionally there are cases where it is useful to implement a templated function slightly differently for a specific data type.
 
 Using a non-template function
@@ -193,27 +188,3 @@ Let’s say we again want to create a version of the `print()` function that pri
 Although it may seem like we need to use function template specialization here, that’s the wrong tool. Note that `i.print()` calls `Storage<int>::print()` and `d.print()` calls `Storage<double>::print()`. Therefore, if we want to change the behavior of this function when `T` is a double, we need to specialize `Storage<double>::print()`, which is a class template specialization, not a function template specialization!
 
 So how might we do that? We’ll cover class template specialization in the next lesson.
-
-\[Next lesson
-
-26.4Class template specialization\](https://www.learncpp.com/cpp-tutorial/class-template-specialization/)
-[Back to table of contents](/)
-\[Previous lesson
-
-26.2Template non-type parameters\](https://www.learncpp.com/cpp-tutorial/template-non-type-parameters/)
-
-*Previous Post*[25.x — Chapter 25 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-25-summary-and-quiz/)
-
-*Next Post*[26.6 — Partial template specialization for pointers](https://www.learncpp.com/cpp-tutorial/partial-template-specialization-for-pointers/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

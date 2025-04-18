@@ -9,11 +9,6 @@ tags:
 ---
 # 17.13 — Multidimensional std::array
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 4:18 pm PDT
-June 26, 2024
-
 In the prior lesson ([17.12 -- Multidimensional C-style Arrays](https://www.learncpp.com/cpp-tutorial/multidimensional-c-style-arrays/)), we discussed C-style multidimensional arrays.
 
 ```cpp
@@ -411,27 +406,3 @@ This should be fairly straightforward, but there are a few things worth noting:
 - In C++23, `operator[]` accepts multiple indices, so we use `[row, col]` as our index instead of `[row][col]`.
 
 C++26 will include `std::mdarray`, which essentially combines `std::array` and `std::mdspan` into an owning multidimensional array!
-
-\[Next lesson
-
-17.xChapter 17 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-17-summary-and-quiz/)
-[Back to table of contents](/)
-\[Previous lesson
-
-17.12Multidimensional C-style Arrays\](https://www.learncpp.com/cpp-tutorial/multidimensional-c-style-arrays/)
-
-*Previous Post*[17.6 — std::array and enumerations](https://www.learncpp.com/cpp-tutorial/stdarray-and-enumerations/)
-
-*Next Post*[13.15 — Alias templates](https://www.learncpp.com/cpp-tutorial/alias-templates/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

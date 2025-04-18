@@ -9,11 +9,6 @@ tags:
 ---
 # 27.1 — The need for exceptions
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 4, 2008, 1:26 pm PDT
-May 23, 2024
-
 In the previous lesson on [handling errors](https://www.learncpp.com/cpp-tutorial/712-handling-errors-assert-cerr-exit-and-exceptions/), we talked about ways to use assert(), std::cerr, and exit() to handle errors. However, we deferred one further topic that we will now cover: exceptions.
 
 **When return codes fail**
@@ -112,27 +107,3 @@ To summarize, the primary issue with return codes is that the error handling cod
 Exception handling provides a mechanism to decouple handling of errors or other exceptional circumstances from the typical control flow of your code. This allows more freedom to handle errors when and how ever is most useful for a given situation, alleviating most (if not all) of the messiness that return codes cause.
 
 In the next lesson, we’ll take a look at how exceptions work in C++.
-
-\[Next lesson
-
-27.2Basic exception handling\](https://www.learncpp.com/cpp-tutorial/basic-exception-handling/)
-[Back to table of contents](/)
-\[Previous lesson
-
-26.xChapter 26 summary and quiz\](https://www.learncpp.com/cpp-tutorial/chapter-26-summary-and-quiz/)
-
-*Previous Post*[26.5 — Partial template specialization](https://www.learncpp.com/cpp-tutorial/partial-template-specialization/)
-
-*Next Post*[27.2 — Basic exception handling](https://www.learncpp.com/cpp-tutorial/basic-exception-handling/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

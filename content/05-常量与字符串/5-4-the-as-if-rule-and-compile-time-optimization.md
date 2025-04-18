@@ -10,11 +10,6 @@ tags:
 ---
 # 5.4 — The as-if rule and compile-time optimization
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-October 22, 2024, 12:48 pm PDT
-January 1, 2025
-
 Introduction to optimization
 
 In programming, **optimization** is the process of modifying software to make it work more efficiently (e.g. to run faster, or use fewer resources). Optimization can have a huge impact on the overall performance level of an application.
@@ -330,27 +325,3 @@ For this reason, we recommend avoiding these terms. We’ll discuss the nomencla
 Author’s note
 
 We are in the process of phasing these terms out of future articles.
-
-\[Next lesson
-
-5.5Constant expressions\](https://www.learncpp.com/cpp-tutorial/constant-expressions/)
-[Back to table of contents](/)
-\[Previous lesson
-
-5.3Numeral systems (decimal, binary, hexadecimal, and octal)\](https://www.learncpp.com/cpp-tutorial/numeral-systems-decimal-binary-hexadecimal-and-octal/)
-
-*Previous Post*[11.10 — Using function templates in multiple files](https://www.learncpp.com/cpp-tutorial/using-function-templates-in-multiple-files/)
-
-*Next Post*[F.2 — Constexpr functions (part 2)](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-2/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move

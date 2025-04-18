@@ -9,11 +9,6 @@ tags:
 ---
 # 15.4 — Introduction to destructors
 
-[*Alex*](https://www.learncpp.com/author/Alex/ "View all posts by Alex")
-
-September 11, 2023, 11:55 am PDT
-September 23, 2024
-
 The cleanup problem
 
 Let’s say that you are writing a program that needs to send some data over a network. However, establishing a connection to the server is expensive, so you want to collect a bunch of data and then send it all at once. Such a class might be structured like this:
@@ -214,27 +209,3 @@ In lesson [8.12 -- Halts (exiting your program early)](https://www.learncpp.com/
 For advanced readers
 
 Unhandled exceptions will also cause the program to terminate, and may not unwind the stack before doing so. If stack unwinding does not happen, destructors will not be called prior to the termination of the program.
-
-\[Next lesson
-
-15.5Class templates with member functions\](https://www.learncpp.com/cpp-tutorial/class-templates-with-member-functions/)
-[Back to table of contents](/)
-\[Previous lesson
-
-15.3Nested types (member types)\](https://www.learncpp.com/cpp-tutorial/nested-types-member-types/)
-
-*Previous Post*[12.13 — In and out parameters](https://www.learncpp.com/cpp-tutorial/in-and-out-parameters/)
-
-*Next Post*[14.2 — Introduction to classes](https://www.learncpp.com/cpp-tutorial/introduction-to-classes/)
-
-\[wpDiscuz\](javascript:void(0);)
-
-Insert
-
-You are going to send email to
-
-Send
-
-Move Comment
-
-Move
